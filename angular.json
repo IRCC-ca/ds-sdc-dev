@@ -149,5 +149,8 @@
       }
     }
   },
-  "defaultProject": "component-library"
+  "defaultProject": "component-library",
+  "cli": {
+    "analytics": false
+  }
 }
