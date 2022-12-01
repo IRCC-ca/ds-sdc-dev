@@ -1,0 +1,41 @@
+{
+  "generator-ngx-rocket": {
+    "version": "11.0.0",
+    "props": {
+      "location": "path",
+      "strict": true,
+      "skipInstall": false,
+      "skipQuickstart": false,
+      "initGit": true,
+      "usePrefix": true,
+      "appName": "component-library",
+      "target": [
+        "web"
+      ],
+      "ui": "bootstrap",
+      "features": [
+        "cypress"
+      ],
+      "languages": [
+        "en-US",
+        "fr-FR"
+      ],
+      "tools": [
+        "hads",
+        "jest"
+      ],
+      "utility": [],
+      "deploy": "none",
+      "projectName": "component-library",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": [],
+      "pwa": false,
+      "auth": false,
+      "lazy": false,
+      "e2e": false,
+      "cypress": true,
+      "angulartics": false
+    }
+  }
+}
