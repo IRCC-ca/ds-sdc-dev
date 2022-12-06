@@ -1,0 +1,83 @@
+.page-nav-tabs {
+  border-bottom: none;
+
+  .mat-tab-label {
+    color: #888888;
+    font-size: 0.875rem;
+    line-height: 22px;
+  }
+
+  .mat-tab-label-active {
+    font-weight: 700;
+    color: #252525;
+  }
+
+  .mat-tab-body.mat-tab-body-active {
+    overflow: unset;
+  }
+
+  .mat-tab-body-content {
+    overflow: unset;
+    padding: 2px;
+  }
+
+  .mat-tab-body-wrapper {
+    margin-top: 27px;
+  }
+}
+
+.overview-status-tabs {
+  border-bottom: none;
+
+  .mat-tab-label-container {
+    margin-top: 28px;
+  }
+
+  .mat-tab-label {
+    color: #888888;
+    font-size: 0.875rem;
+    line-height: 22px;
+  }
+
+  .mat-tab-label-active {
+    font-weight: 700;
+    color: #252525;
+  }
+
+  .mat-tab-body.mat-tab-body-active {
+    overflow: unset;
+  }
+
+  .mat-tab-body-content {
+    overflow: unset;
+    padding: 2px;
+  }
+
+  .mat-tab-body-wrapper {
+    margin-top: 0px;
+  }
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #172b4d;
+  height: 5px;
+}
+
+.mat-tab-body-wrapper {
+  overflow-x: auto !important;
+
+  &::-webkit-scrollbar {
+    height: 0.6rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $moderate;
+    border-radius: 15px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $mid-dark;
+    border-radius: 15px;
+  }
+}

@@ -1,0 +1,133 @@
+@import '../../assets/scss/partials/variables';
+.layout {
+    /* Auto layout */
+    position: fixed;
+    right: 20px; 
+    bottom: 20px;
+}
+.banner-container {
+    box-sizing: border-box;
+    display: flex;
+    padding: 12px;
+    gap: 11px;
+    width: 400px;
+    max-width: 400px;
+    height: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04), 0px 16px 28px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+
+    .layout {
+        /* Auto layout */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+    }
+
+    .alert-line {
+        width: 4px;
+        height: auto;
+        border-radius: 4px;
+        flex: none;
+        order: 0;
+        align-self: stretch;
+        flex-grow: 0;
+    }
+
+    .information {
+        width: 1.25rem;
+        color: $ircc-banner-info;
+        display: flex;
+        align-items: flex-start;
+        @media (max-width: 700px) {
+          width: 1.5rem;
+        }
+    }
+
+    .exclamation-triangle {
+        font-size: 1.25rem;
+        color: $ircc-banner-warning;
+        @media (max-width: 700px) {
+          width: 1.5rem;
+        }
+    }
+
+    .exclamation-circle {
+        font-size: 1.25rem;
+        color: $ircc-banner-critical;
+        @media (max-width: 700px) {
+          width: 1.5rem;
+        }
+    }
+
+    .checkmark {
+        font-size: 1.25rem;
+        color: $positive;
+        @media (max-width: 700px) {
+          width: 1.5rem;
+        }
+    }
+
+    .text {
+        .title{
+            width: 307px;
+            height: auto;
+            margin-bottom: 4px;
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+            /* identical to box height, or 150% */
+            color: $ircc-ca-black;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+        .body {
+            width: 307px;
+            height: auto;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            /* or 143% */
+            color: $ircc-ca-black;
+            flex: none;
+            order: 1;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+    }
+}
+.success {
+    background: $ircc-banner-success-background;
+    border: 1px solid $ircc-banner-success-border;
+    .alert-line {
+        background: $ircc-banner-success-border;
+    }
+}
+.info {
+    background: $ircc-banner-info-background;
+    border: 1px solid $ircc-banner-info-border;
+    .alert-line {
+        background: $ircc-banner-info-border;
+    }
+}
+.warning {
+    background: $ircc-banner-warning-background;
+    border: 1px solid $ircc-banner-warning-border;
+    .alert-line {
+        background: $ircc-banner-warning-border;
+    }
+}
+.critical {
+    background: $ircc-ca-error-background;
+    border: 1px solid $ircc-ca-error;
+    .alert-line {
+        background: $ircc-ca-error;
+    }
+}

@@ -1,0 +1,23 @@
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before,
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  display: none !important;
+}
+
+.ngx-pagination .ng-star-inserted {
+  padding: 10px !important;
+  &:hover {
+    background: transparent !important;
+  }
+}
+.ngx-pagination li.current.ng-star-inserted {
+  font-weight: 700;
+  background: transparent !important;
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+.ngx-pagination a.ng-star-inserted {
+  color: $semi-dark !important;
+}

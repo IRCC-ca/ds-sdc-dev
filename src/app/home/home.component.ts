@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
-
+import { IJLInputComponent } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +8,22 @@ import { finalize } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  quote: string | undefined;
+  demoText = '';
+
+  inputComponentConfig: IJLInputComponent = {
+    label: 'Input Label',
+    placeholder: 'placeholder'
+  }
+
   isLoading = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  valueChange(event: Event) {
+    this.demoText = event.toString();
   }
 
 }

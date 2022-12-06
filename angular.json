@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "preserveSymlinks": true,
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -144,6 +145,37 @@
             "production": {
               "devServerTarget": "component-library:serve:production"
             }
+          }
+        }
+      }
+    },
+    "ircc-ds-angular-component-library": {
+      "projectType": "library",
+      "root": "projects/ircc-ds-angular-component-library",
+      "sourceRoot": "projects/ircc-ds-angular-component-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ircc-ds-angular-component-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ircc-ds-angular-component-library/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ircc-ds-angular-component-library/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ircc-ds-angular-component-library/src/test.ts",
+            "tsConfig": "projects/ircc-ds-angular-component-library/tsconfig.spec.json",
+            "karmaConfig": "projects/ircc-ds-angular-component-library/karma.conf.js"
           }
         }
       }

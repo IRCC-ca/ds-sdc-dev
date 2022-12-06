@@ -1,1 +1,21 @@
-<p>HELLO WORLD</p>
+<div class="pageContainer">
+    <p>HELLO WORLD</p>
+    <lib-test></lib-test>
+
+    <jl-pr-sclp-checkbox [label]="'testing'"></jl-pr-sclp-checkbox>
+
+    <jl-pr-sclp-dropdown></jl-pr-sclp-dropdown>
+
+    <br>
+    <div>
+        <div class="demoInput">
+            <jl-pr-sclp-input [label]="inputComponentConfig.label || ''"
+                [placeholder]="inputComponentConfig.placeholder || ''" (valueChange)="valueChange($event)">
+            </jl-pr-sclp-input>
+        </div>
+        <div>
+            <h3>Current Text in Input:</h3>
+            <p>{{demoText}}</p>
+        </div>
+    </div>
+</div>

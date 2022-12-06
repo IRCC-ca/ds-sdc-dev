@@ -1,0 +1,320 @@
+@import '../../../assets/scss/partials/variables';
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+// Set initial font-size to base rem values off of
+html {
+  font-size: 16px;
+}
+
+#wb-cont {
+  min-height: calc(100% - 120px);
+  padding-bottom: 40px;
+}
+
+// Represents P | Large body text
+body {
+  margin: 0;
+  @include body-font(400, 1rem, 24px);
+}
+
+// Header styles here instead of scss module to account for noscript header
+header {
+  background: $primary;
+  color: $light;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 1.125rem;
+}
+
+.jl-mt-72 {
+  margin-top: 72px;
+}
+
+.jl-mb-4 {
+  margin-bottom: 4px;
+}
+
+.jl-mb-8 {
+  margin-bottom: 8px;
+}
+
+.jl-mb-16 {
+  margin-bottom: 16px !important;
+}
+
+.jl-mb-24 {
+  margin-bottom: 24px;
+}
+
+.jl-mb-44 {
+  margin-bottom: 44px !important;
+}
+
+.jl-ml-20 {
+  margin-left: 20px;
+}
+
+.jl-mr-20 {
+  margin-right: 20px;
+}
+
+.jl-my-40-28 {
+  margin: 40px 0 28px;
+}
+
+// Buttons
+.primary-button {
+  @include button($light, $primary);
+  &:focus {
+    @include focus-state;
+  }
+}
+
+.secondary-button {
+  @include button($light, $secondary);
+  &:focus {
+    @include focus-state;
+  }
+}
+
+.dark-button {
+  @include button($light, $dark);
+  &:focus {
+    @include focus-state;
+  }
+}
+
+.danger-button {
+  @include button($light, $alert);
+  &:focus {
+    @include danger-focus;
+  }
+}
+
+.primary-button-solid {
+  @include button($primary, $light);
+  &:focus {
+    @include focus-state;
+  }
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
+.secondary-button-solid {
+  @include button($secondary, $light);
+  &:focus {
+    @include focus-state;
+  }
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
+.disabled-button:disabled {
+  @include button($light, $secondary);
+  opacity: 0.3;
+}
+
+// Headings
+h1 {
+  @include body-font(400, 2.1875rem, 2.5rem);
+}
+
+h2 {
+  @include body-font(700, 1.8125rem, 2rem);
+}
+
+h3 {
+  @include body-font(700, 1.5rem, 1.75rem);
+}
+
+h4 {
+  @include body-font(400, 1.25rem, 1.5rem);
+}
+
+h5 {
+  @include body-font(700, 1rem, 1.5rem);
+}
+
+p.standard {
+  @include body-font(400, 0.875rem, 1.375rem);
+}
+
+.caption {
+  @include body-font(400, 0.75rem, 0.875rem);
+}
+
+// Component Specific: Information Card
+
+.info-card-heading {
+  @include body-font(400, 1.25rem, 24px);
+}
+.info-card-heading-detail {
+  @include body-font(400, 0.75rem, 14px);
+}
+
+// Auth pages
+.auth-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-page-container {
+  margin: 0 auto;
+  max-width: 436px;
+  width: 90%;
+  input {
+    padding: 5px 8px;
+    font-size: 0.875rem;
+    border: 1px solid $mid-dark;
+  }
+  .input-icon-container {
+    input {
+      padding: 5px 28px 5px 8px;
+    }
+  }
+  .primary-button-solid {
+    margin-top: 58px;
+  }
+  .forgot-password {
+    margin-top: 16px;
+  }
+  .forgot-password,
+  .register {
+    display: block;
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+.image-loading {
+  position: fixed;
+  left: 0px;
+  top: 80px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0.3;
+  background: url('../../images/loading.gif') 50% 45% no-repeat
+    rgb(255, 255, 255);
+}
+
+.input-icon-container {
+  i {
+    bottom: 10px;
+    right: 8px;
+    cursor: pointer;
+  }
+}
+
+input.red-border {
+  .ng-touched.ng-invalid:not(form) {
+    @include invalid-red-border;
+  }
+}
+
+.client-table-container {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 22px;
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 24px;
+    color: $primary;
+    margin-top: 44px;
+    margin-bottom: 10px;
+  }
+
+  .table {
+    tr {
+      border-bottom: 4px solid $light;
+    }
+
+    th {
+      font-weight: 400;
+      border: none;
+      vertical-align: middle;
+    }
+
+    td {
+      font-weight: 700;
+      border: none;
+      background-color: $pale;
+      vertical-align: middle;
+      height: 80px;
+      word-wrap: break-word;
+    }
+
+    .criminality-sub-row {
+      td {
+        background-color: $moderate;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.not-found-statement {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: 0;
+}
+
+.page-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 24px;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.gen-info-widget-card {
+  h5 {
+    margin-bottom: 8px;
+    @include body-font(700, 1rem, 24px);
+    color: $primary;
+  }
+
+  .row {
+    margin-left: 0;
+  }
+
+  .col-6 {
+    font-size: 0.875rem;
+    line-height: 22px;
+    font-weight: 400;
+    padding-left: 0;
+    margin-bottom: 4px;
+  }
+
+  .field-info {
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 1100px) {
+  html {
+    font-size: 14px;
+  }
+}

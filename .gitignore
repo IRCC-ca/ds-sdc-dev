@@ -9,6 +9,7 @@
 
 # Dependencies
 /node_modules
+/projects/ircc-ds-angular-component-library/node_modules
 
 # Cordova
 /www
