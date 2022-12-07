@@ -75,7 +75,7 @@ export class JLInputComponent implements ControlValueAccessor {
   }
 
   public clearvalue() {
-    this.value = ``;
+    this.value = ``;//test
   }
 
   writeValue(value: string): void {
