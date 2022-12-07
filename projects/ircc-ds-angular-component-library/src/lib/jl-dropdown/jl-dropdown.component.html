@@ -1,6 +1,6 @@
 <ng-container *ngIf="options.length > 0; then notEmpty; else isEmpty">
+  <!-- an *ngIf may be better here, since there are only two cases -->
 </ng-container>
-
 <ng-template #notEmpty>
   <div class="select-container" [ngClass]="{ large: large, error: error }">
     <div

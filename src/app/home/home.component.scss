@@ -1,3 +1,7 @@
+.pageContainer, .displayCol {
+  margin-left: 32px;
+}
+
 .logo {
   width: 100px;
 }
@@ -12,6 +16,15 @@ q {
   max-width: 250px;
 }
 
-.pageContainer {
-  margin-left: 32px;
+.demoCheckbox {
+  margin-bottom: 12px;
+}
+
+.demoCheckboxContainer, .demoDropdownContainer {
+  margin-top: 32px;
+}
+
+.pageCols {
+  display: inline-block;
+  max-width: 300px;
 }

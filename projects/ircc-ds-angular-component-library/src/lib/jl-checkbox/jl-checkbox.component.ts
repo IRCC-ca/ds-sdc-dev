@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface ICheckBoxComponentConfig {
-  disabled: boolean;
-  error: boolean;
-  large: boolean;
-  mixed: boolean;
-  focus: boolean;
-  checked: boolean;
-  label: string;
+  disabled?: boolean;
+  error?: boolean;
+  large?: boolean;
+  mixed?: boolean;
+  focus?: boolean;
+  checked?: boolean;
+  label?: string;
 }
 
 @Component({
@@ -15,15 +15,13 @@ export interface ICheckBoxComponentConfig {
   templateUrl: './jl-checkbox.component.html',
   styleUrls: ['./jl-checkbox.scss']
 })
-export class JLCheckboxComponent implements OnInit {
-  @Input() disabled = false;
-  @Input() error = false;
-  @Input() large = false;
-  @Input() mixed = false;
-  @Input() focus = false;
-  @Input() checked = false;
-  @Input() label = '';
-  constructor() {}
-
-  ngOnInit(): void {}
+export class JLCheckboxComponent {
+  //TODO: Add output - consider using a formControl as output rather than anything else.
+  @Input() disabled?: boolean; //Default false
+  @Input() error?: boolean; //Default false
+  @Input() large?: boolean; //Default false
+  @Input() mixed?: boolean; //Default false
+  @Input() focus?: boolean; //Default false
+  @Input() checked?: boolean; //Default false
+  @Input() label?: string; //Default ''
 }

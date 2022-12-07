@@ -28,6 +28,10 @@
     line-height: inherit;
   }
 
+  .password {
+    padding-right: 24px;
+  }
+
   input {
     padding: 10px 12px;
     background: $light;
@@ -73,4 +77,8 @@
       }
     }
   }
+}
+.passwordIcon {
+position: absolute;
+//TODO: Calculate the position of the eye icon
 }

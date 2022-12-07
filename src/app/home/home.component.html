@@ -1,21 +1,52 @@
 <div class="pageContainer">
-    <p>HELLO WORLD</p>
-    <lib-test></lib-test>
+    <div class="pageCols">
+        <p>HELLO WORLD</p>
+        <lib-test></lib-test>
 
-    <jl-pr-sclp-checkbox [label]="'testing'"></jl-pr-sclp-checkbox>
-
-    <jl-pr-sclp-dropdown></jl-pr-sclp-dropdown>
-
-    <br>
-    <div>
-        <div class="demoInput">
-            <jl-pr-sclp-input [label]="inputComponentConfig.label || ''"
-                [placeholder]="inputComponentConfig.placeholder || ''" (valueChange)="valueChange($event)">
-            </jl-pr-sclp-input>
+        <div class="demoCheckboxContainer">
+            <div class="demoCheckbox">
+                <jl-pr-sclp-checkbox [label]="'Testing Label'"></jl-pr-sclp-checkbox>
+            </div>
+            <div class="demoCheckbox">
+                <jl-pr-sclp-checkbox [label]="'Large Test'" [large]="true"></jl-pr-sclp-checkbox>
+            </div>
+            <div class="demoCheckbox">
+                <jl-pr-sclp-checkbox [label]="'Error Check'" [error]="true"></jl-pr-sclp-checkbox>
+            </div>
         </div>
+
+        <div class="demoDropdownContainer">
+            <jl-pr-sclp-dropdown
+            [options]="dropdownOptions"></jl-pr-sclp-dropdown>
+        </div>
+
+        <br>
         <div>
-            <h3>Current Text in Input:</h3>
-            <p>{{demoText}}</p>
+            <div class="demoInput">
+                <jl-pr-sclp-input 
+                    [label]="inputComponentConfig.label"
+                    [placeholder]="inputComponentConfig.placeholder" 
+                    [id]="inputComponentConfig.id"
+                    (valueChange)="valueChange($event)">
+                </jl-pr-sclp-input>
+            </div>
+            <div class="demoInput">
+                <jl-pr-sclp-input
+                [label]="inputTestPasswordConfig.label"
+                [type]="inputTestPasswordConfig.type"
+                [id]="inputTestPasswordConfig.id"
+                (valueChange)="valueChange($event)">
+                </jl-pr-sclp-input>
+            </div>
+        </div>
+    </div>
+    <div class="pageCols displayCol">
+        <div>
+            <h3>Values in Input</h3>
+            <ng-container *ngFor="let element of demoTextArray">
+                <h6>{{element.id}}:</h6>
+                <p>{{element.value}}</p>
+            </ng-container>
         </div>
     </div>
 </div>

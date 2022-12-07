@@ -12,6 +12,7 @@ import { JlSecondaryChipsComponent } from './jl-chips/jl-secondary-chips/jl-seco
 import { JLDropdownComponent } from './jl-dropdown/jl-dropdown.component';
 import { JLInputComponent } from './jl-input/jl-input.component';
 import { TestComponent } from './test/test.component';
+import { RadioInputComponent } from './radio-input/radio-input.component';
 
 
 
@@ -27,6 +28,7 @@ import { TestComponent } from './test/test.component';
     JLInputComponent,
     JLAutocompleteComponent,
     JLBannerComponent,
+    RadioInputComponent,
   ],
   imports: [
     CommonModule,

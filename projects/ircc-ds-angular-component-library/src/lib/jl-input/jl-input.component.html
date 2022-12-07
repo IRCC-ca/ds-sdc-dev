@@ -15,10 +15,14 @@
         <ng-content></ng-content>
         <!-- ngModel doesn't mind undefined values, apparently
         TODO: Should probably change the (keyup) to (onblur) -->
+        <i *ngIf="type === 'password' || showPassword" role="switch" class="passwordIcon fa-solid" 
+        aria-pressed="getShowHideText('check')"
+        [ngClass]="{'fa-eye': (!showPassword), 'fa-eye-slash': (showPassword)}"
+        (click)="hideShow()"></i>
         <input
           autocomplete="{{ autocomplete }}"
           placeholder="{{ (placeholder || '') | translate }}"
-          class="input"
+          [ngClass]="(showPassword || type === 'password') ? 'password' : 'input'"
           type="{{ type }}"
           [attr.name]="name || ''"
           [(ngModel)]="value"

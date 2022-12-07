@@ -20,6 +20,7 @@ import { DropdownTypes } from '../../shared/constants/jl-components/jl-component
   styleUrls: ['./jl-dropdown.scss']
 })
 export class JLDropdownComponent implements OnInit, DoCheck {
+  //TODO: Make an interface for this!
   @Input() options = [
     {
       text: `Text`,
