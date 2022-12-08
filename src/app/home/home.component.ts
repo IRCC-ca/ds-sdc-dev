@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IJLInputComponentConfig, IJLInputComponentOutput, InputTypes } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,43 @@ import { IJLInputComponentConfig, IJLInputComponentOutput, InputTypes } from 'ir
 })
 export class HomeComponent implements OnInit {
 
+  checkboxesConfigs: ICheckBoxComponentConfig[] = [
+    { //checkbox1
+      id: 'checkbox_label_test',
+      label: 'Testing Label'
+    },
+    { //checkbox2
+      id: 'checkbox_large_test',
+      label: 'Large Test'
+    },
+    { //checkbox3
+      id: 'checkbox_error_test',
+      label: 'Error Check',
+      error: true
+    }
+  ];
+
+  dropdownConfig: IJLDropdownComponentConfig = {
+    id: 'dropdown_test1',
+    options: [
+      {
+        text: 'Option1',
+        value: 'Value1'
+      },
+      {
+        text: 'Option2',
+        value: 'Value2'
+      },
+      {
+        text: 'Option3',
+        value: 'Value3'
+      }
+    ],
+    type: DropdownTypes.input
+  }
+
   demoText = '';
-  demoTextArray: IJLInputComponentOutput[] = [];
+  demoTextArray: IComponentOutputEvent[] = [];
 
   inputComponentConfig: IJLInputComponentConfig = {
     label: 'Input Label',
@@ -46,10 +81,11 @@ export class HomeComponent implements OnInit {
   }
 
   valueChange(event: any) {
+    console.log(event);
     if (event.id) {
       let index = this.demoTextArray.findIndex(val => val.id === event.id);
       if (index === -1) {
-        let temp: IJLInputComponentOutput = { id: event.id, value: event.value };
+        let temp: IComponentOutputEvent = { id: event.id, value: event.value };
         this.demoTextArray.push(temp)
       } else {
         this.demoTextArray[index].value = event.value;

@@ -3,39 +3,31 @@
         <p>HELLO WORLD</p>
         <lib-test></lib-test>
 
+        <!-- Checkbox Test -->
         <div class="demoCheckboxContainer">
-            <div class="demoCheckbox">
-                <jl-pr-sclp-checkbox [label]="'Testing Label'"></jl-pr-sclp-checkbox>
-            </div>
-            <div class="demoCheckbox">
-                <jl-pr-sclp-checkbox [label]="'Large Test'" [large]="true"></jl-pr-sclp-checkbox>
-            </div>
-            <div class="demoCheckbox">
-                <jl-pr-sclp-checkbox [label]="'Error Check'" [error]="true"></jl-pr-sclp-checkbox>
+            <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
+                <jl-pr-sclp-checkbox [config]="checkbox"
+                                     (valueChange)="valueChange($event)"></jl-pr-sclp-checkbox>
             </div>
         </div>
 
+        <!-- Dropdown Test -->
         <div class="demoDropdownContainer">
-            <jl-pr-sclp-dropdown
-            [options]="dropdownOptions"></jl-pr-sclp-dropdown>
+            <jl-pr-sclp-dropdown [config]="dropdownConfig"
+                                 (valueChange)="valueChange($event)"></jl-pr-sclp-dropdown>
         </div>
 
+        <!-- Input Test -->
         <br>
         <div>
             <div class="demoInput">
-                <jl-pr-sclp-input 
-                    [label]="inputComponentConfig.label"
-                    [placeholder]="inputComponentConfig.placeholder" 
-                    [id]="inputComponentConfig.id"
-                    (valueChange)="valueChange($event)">
+                <jl-pr-sclp-input [label]="inputComponentConfig.label" [placeholder]="inputComponentConfig.placeholder"
+                    [id]="inputComponentConfig.id" (valueChange)="valueChange($event)">
                 </jl-pr-sclp-input>
             </div>
             <div class="demoInput">
-                <jl-pr-sclp-input
-                [label]="inputTestPasswordConfig.label"
-                [type]="inputTestPasswordConfig.type"
-                [id]="inputTestPasswordConfig.id"
-                (valueChange)="valueChange($event)">
+                <jl-pr-sclp-input [label]="inputTestPasswordConfig.label" [type]="inputTestPasswordConfig.type"
+                    [id]="inputTestPasswordConfig.id" (valueChange)="valueChange($event)">
                 </jl-pr-sclp-input>
             </div>
         </div>

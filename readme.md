@@ -1,7 +1,12 @@
 # component-library
 
 This project was generated with [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket/)
-version 11.0.0
+version 11.0.0.
+
+This project uses a git submodule. For more information, see https://git-scm.com/book/en/v2/Git-Tools-Submodules 
+When first cloning this project use "git clone --recurse-submodules <repoURL>" or the submodule folder will be empty. If you
+have already cloned this project, you can run "git submodule init", then "git submodule update" to populate the submodule.
+
 
 # Getting started
 
