@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DropdownTypes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-home',
@@ -41,6 +41,24 @@ export class HomeComponent implements OnInit {
       }
     ],
     type: DropdownTypes.input
+  };
+
+  radioConfig: IRadioInputComponentConfig = {
+    id: 'radio_input_test1',
+    label: 'Radio Lable Test',
+    options: [
+      {
+        text: 'Text Test',
+        value: 'Test Value',
+      },
+      {
+        text: 'Test noValue'
+      },
+      {
+        text: 'Size Override Test',
+        sizeOverride: DSSizes.small
+      }
+    ]
   }
 
   demoText = '';
