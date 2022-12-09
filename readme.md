@@ -25,7 +25,6 @@ have already cloned this project, you can run "git submodule init", then "git su
 ```
 dist/                        web app production build
 docs/                        project docs and coding guides
-cypress/                     end-to-end tests (Cypress)
 src/                         project source code
 |- app/                      app components
 |  |- core/                  core module (singleton services and single-use components)
