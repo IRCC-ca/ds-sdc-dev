@@ -20,9 +20,14 @@ export class HomeComponent implements OnInit {
     },
     { //checkbox3
       id: 'checkbox_error_test',
-      label: 'Error Check',
+      label: 'Error Test',
       error: true
-    }
+    },
+     {
+      id: 'checkbox_disabled_test',
+      label: 'Disabled Test',
+      disabled: true
+     }
   ];
 
   dropdownConfig: IJLDropdownComponentConfig = {
@@ -58,6 +63,10 @@ export class HomeComponent implements OnInit {
       {
         text: 'Size Override Test',
         sizeOverride: DSSizes.small
+      },
+      {
+        text: 'Disabled Single Field Test',
+        disabled: true
       }
     ]
   }
@@ -89,7 +98,7 @@ export class HomeComponent implements OnInit {
     {
       text: 'Option3',
       value: 'Value3'
-    }
+    },
   ]
 
   isLoading = false;
