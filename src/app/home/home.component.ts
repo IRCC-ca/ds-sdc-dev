@@ -14,8 +14,9 @@ export class HomeComponent implements OnInit {
       label: 'Testing Label'
     },
     { //checkbox2
-      id: 'checkbox_large_test',
-      label: 'Large Test'
+      id: 'checkbox_small_test',
+      label: 'Small Test',
+      small: true
     },
     { //checkbox3
       id: 'checkbox_error_test',
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
 
   radioConfig: IRadioInputComponentConfig = {
     id: 'radio_input_test1',
-    label: 'Radio Lable Test',
+    label: 'Radio Label Test',
     options: [
       {
         text: 'Text Test',
