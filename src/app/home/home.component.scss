@@ -1,5 +1,6 @@
-.pageContainer, .displayCol {
+.pageContainer {
   margin-left: 32px;
+  display: grid;
 }
 
 .logo {
@@ -24,7 +25,17 @@ q {
   margin-top: 32px;
 }
 
-.pageCols {
-  display: inline-block;
+.configTestCol, .displayCol, .nonConfigTestCol {
+  grid-template-columns: auto;
   max-width: 300px;
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.nonConfigTestCol {
+  grid-column-start: 2;
+}
+
+.displayCol {
+  grid-column-start: 3;
 }
