@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
       disabled: true
      }
   ];
+  //TODO: Test non-config checkboxes
 
   dropdownConfig: IJLDropdownComponentConfig = {
     id: 'dropdown_test1',
