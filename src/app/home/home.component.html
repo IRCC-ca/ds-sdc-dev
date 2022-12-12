@@ -1,7 +1,17 @@
 <div class="pageContainer">
     <div class="configTestCol">
-        <p>HELLO WORLD</p>
-        <lib-test></lib-test>
+        <button (click)="resetChips()">Reset Chips</button>
+        <div class="demoChipContainer">
+            <div class="demoChipItem">
+                <jl-pr-sclp-jl-chip-item [chipContent]="'Test Item Chip'"></jl-pr-sclp-jl-chip-item>
+            </div>
+            <div class="demoChipListContainer">
+                <jl-pr-sclp-jl-chip-list [chipList]="['test1', 'test2', 'test3']"></jl-pr-sclp-jl-chip-list>
+            </div>
+            <div class="demo">
+                <jl-pr-sclp-jl-secondary-chips [chipContent]="'Test Secondary'"></jl-pr-sclp-jl-secondary-chips>
+            </div>
+        </div>
 
         <!-- Checkbox Test -->
         <div class="demoCheckboxContainer">
