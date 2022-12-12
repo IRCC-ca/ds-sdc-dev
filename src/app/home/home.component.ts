@@ -64,11 +64,20 @@ export class HomeComponent implements OnInit {
       },
       {
         text: 'Size Override Test',
-        sizeOverride: DSSizes.small
+        sizeOverride: DSSizes.small,
       },
       {
         text: 'Disabled Single Field Test',
         disabled: true
+      },
+      {
+        text: 'Large Error State Test',
+        error: true
+      },
+      {
+        text: 'Small Error State Test',
+        sizeOverride: DSSizes.small,
+        error: true
       }
     ]
   }
