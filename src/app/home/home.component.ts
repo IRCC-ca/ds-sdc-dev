@@ -11,7 +11,8 @@ export class HomeComponent implements OnInit {
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
       id: 'checkbox_label_test',
-      label: 'Testing Label'
+      label: 'Testing Label',
+      disableFocus: true //TODO: Not working
     },
     { //checkbox2
       id: 'checkbox_small_test',
