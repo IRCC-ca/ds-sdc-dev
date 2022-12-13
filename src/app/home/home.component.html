@@ -26,24 +26,12 @@
             <!-- Dropdown Test -->
             <div class="demoDropdownContainer">
                 <jl-pr-sclp-dropdown [config]="dropdownConfig"
-                    (valueChange)="valueChange($event)"></jl-pr-sclp-dropdown>
+                    formControlName="{{dropdownConfig.id}}"></jl-pr-sclp-dropdown>
             </div>
 
             <!-- Input Test -->
             <br>
-            <div>
-                <div class="demoInput">
-                    <jl-pr-sclp-input [label]="inputComponentConfig.label"
-                        [placeholder]="inputComponentConfig.placeholder" [id]="inputComponentConfig.id"
-                        (valueChange)="valueChange($event)">
-                    </jl-pr-sclp-input>
-                </div>
-                <div class="demoInput">
-                    <jl-pr-sclp-input [label]="inputTestPasswordConfig.label" [type]="inputTestPasswordConfig.type"
-                        [id]="inputTestPasswordConfig.id" (valueChange)="valueChange($event)">
-                    </jl-pr-sclp-input>
-                </div>
-            </div>
+            
             <!-- Radio Input Test -->
             <br>
             <div>
@@ -61,6 +49,21 @@
                         [small]="checkbox.small || undefined" [error]="checkbox.error || undefined"
                         [disabled]="checkbox.disabled || false"
                         formControlName="{{checkbox.id + '_nonConfig'}}"></jl-pr-sclp-checkbox>
+                </div>
+            </div>
+
+            <div>
+                <div class="demoInput">
+                    <jl-pr-sclp-input [label]="inputComponentConfig.label"
+                        [placeholder]="inputComponentConfig.placeholder" [id]="inputComponentConfig.id"
+                        formControlName="{{inputComponentConfig.id}}">
+                    </jl-pr-sclp-input>
+                </div>
+                <div class="demoInput">
+                    <jl-pr-sclp-input [label]="inputTestPasswordConfig.label" [type]="inputTestPasswordConfig.type"
+                        [id]="inputTestPasswordConfig.id" 
+                        formControlName="{{inputTestPasswordConfig.id}}">
+                    </jl-pr-sclp-input>
                 </div>
             </div>
         </form>

@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
 
   form = new FormGroup({});
 
-
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
       id: 'checkbox_label_test',
@@ -140,6 +139,9 @@ export class HomeComponent implements OnInit {
       this.form.addControl((checkbox.id + '_nonConfig'), new FormControl());
     });
     this.form.addControl(this.radioConfig.id, new FormControl());
+    this.form.addControl(this.inputComponentConfig.id, new FormControl());
+    this.form.addControl(this.inputTestPasswordConfig.id, new FormControl());
+    this.form.addControl(this.dropdownConfig.id, new FormControl());
   }
 
   valueChange(event: any) {
