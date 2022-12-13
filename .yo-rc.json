@@ -14,7 +14,6 @@
       ],
       "ui": "bootstrap",
       "features": [
-        "cypress"
       ],
       "languages": [
         "en-US",
@@ -34,7 +33,7 @@
       "auth": false,
       "lazy": false,
       "e2e": false,
-      "cypress": true,
+      "cypress": false,
       "angulartics": false
     }
   }

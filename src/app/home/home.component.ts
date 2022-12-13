@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DropdownTypes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +11,26 @@ export class HomeComponent implements OnInit {
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
       id: 'checkbox_label_test',
-      label: 'Testing Label'
+      label: 'Testing Label',
+      disableFocus: true //TODO: Not working
     },
     { //checkbox2
-      id: 'checkbox_large_test',
-      label: 'Large Test'
+      id: 'checkbox_small_test',
+      label: 'Small Test',
+      small: true
     },
     { //checkbox3
       id: 'checkbox_error_test',
-      label: 'Error Check',
+      label: 'Error Test',
       error: true
-    }
+    },
+     {
+      id: 'checkbox_disabled_test',
+      label: 'Disabled Test',
+      disabled: true
+     }
   ];
+  //TODO: Test non-config checkboxes
 
   dropdownConfig: IJLDropdownComponentConfig = {
     id: 'dropdown_test1',
@@ -41,6 +49,37 @@ export class HomeComponent implements OnInit {
       }
     ],
     type: DropdownTypes.input
+  };
+
+  radioConfig: IRadioInputComponentConfig = {
+    id: 'radio_input_test1',
+    label: 'Radio Label Test',
+    options: [
+      {
+        text: 'Text Test',
+        value: 'Test Value',
+      },
+      {
+        text: 'Test noValue'
+      },
+      {
+        text: 'Size Override Test',
+        sizeOverride: DSSizes.small,
+      },
+      {
+        text: 'Disabled Single Field Test',
+        disabled: true
+      },
+      {
+        text: 'Large Error State Test',
+        error: true
+      },
+      {
+        text: 'Small Error State Test',
+        sizeOverride: DSSizes.small,
+        error: true
+      }
+    ]
   }
 
   demoText = '';
@@ -70,7 +109,7 @@ export class HomeComponent implements OnInit {
     {
       text: 'Option3',
       value: 'Value3'
-    }
+    },
   ]
 
   isLoading = false;
@@ -91,6 +130,10 @@ export class HomeComponent implements OnInit {
         this.demoTextArray[index].value = event.value;
       }
     }
+  }
+
+  resetChips() {
+    
   }
 
 }
