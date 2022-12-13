@@ -15,10 +15,14 @@
 
         <!-- Checkbox Test -->
         <div class="demoCheckboxContainer">
+            <form [formGroup]="form">
             <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
                 <jl-pr-sclp-checkbox [config]="checkbox"
-                                     (valueChange)="valueChange($event)"></jl-pr-sclp-checkbox>
+                formControlName="{{checkbox.id}}"></jl-pr-sclp-checkbox>
             </div>
+        </form>
+        <button (click)="buttonActions(homeButtonActionTypes.disableCheckbox)">Toggle Disable Checkbox</button>
+        <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">Toggle Error Checkbox</button>
         </div>
 
         <!-- Dropdown Test -->
@@ -69,6 +73,12 @@
             <ng-container *ngFor="let element of demoTextArray">
                 <h6>{{element.id}}:</h6>
                 <p>{{element.value}}</p>
+            </ng-container>
+            <h3>Values in Form</h3>
+            <ng-container *ngFor="let element of getFormElements()">
+                <span class="displayContainerSpan"><h5>{{element.key}}:</h5>
+                <p>{{element.value}}</p>
+            </span>
             </ng-container>
         </div>
     </div>

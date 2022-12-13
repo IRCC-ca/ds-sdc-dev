@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+
+export enum HomeButtonActionTypes {
+  disableCheckbox = 'disableCheckbox',
+  checkboxError = 'checkboxError'
+}
 
 @Component({
   selector: 'app-home',
@@ -7,6 +13,10 @@ import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  homeButtonActionTypes = HomeButtonActionTypes;
+
+  form = new FormGroup({});
+
 
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
@@ -24,11 +34,19 @@ export class HomeComponent implements OnInit {
       label: 'Error Test',
       error: true
     },
-     {
+    {
       id: 'checkbox_disabled_test',
       label: 'Disabled Test',
       disabled: true
-     }
+    },
+    {
+      id: 'checkbox_form_disabled_test',
+      label: 'Form Disabled Test'
+    },
+    {
+      id: 'checkbox_form_error_test',
+      label: 'Form Error Test'
+    }
   ];
   //TODO: Test non-config checkboxes
 
@@ -117,6 +135,9 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.checkboxesConfigs.forEach(checkbox => {
+      this.form.addControl(checkbox.id, new FormControl())
+    });
   }
 
   valueChange(event: any) {
@@ -133,7 +154,33 @@ export class HomeComponent implements OnInit {
   }
 
   resetChips() {
-    
+
+  }
+
+  getFormElements() {
+    interface IValReturn {
+      key: string;
+      value: string;
+    };
+    let valReturn: IValReturn[] = [];
+    console.log(this.form.value);
+    Object.keys(this.form.value).forEach(key => {
+      valReturn.push({ key: key, value: this.form.get(key)?.value });
+    });
+    return valReturn;
+  }
+
+  buttonActions(actionType: HomeButtonActionTypes) {
+    switch (actionType) {
+      case HomeButtonActionTypes.disableCheckbox:
+        this.form.get('checkbox_form_disabled_test')?.disabled ?
+          this.form.get('checkbox_form_disabled_test')?.enable() : this.form.get('checkbox_form_disabled_test')?.disable();
+        break;
+
+      case HomeButtonActionTypes.checkboxError:
+      this.form.get('checkbox_form_error_test')?.setErrors({'invalid': true});
+      console.log(this.form);
+    }
   }
 
 }
