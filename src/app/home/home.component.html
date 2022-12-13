@@ -1,71 +1,71 @@
 <div class="pageContainer">
     <div class="configTestCol">
-        <button (click)="resetChips()">Reset Chips</button>
-        <div class="demoChipContainer">
-            <div class="demoChipItem">
-                <jl-pr-sclp-jl-chip-item [chipContent]="'Test Item Chip'"></jl-pr-sclp-jl-chip-item>
+        <form [formGroup]="form">
+            <button (click)="resetChips()">Reset Chips</button>
+            <div class="demoChipContainer">
+                <div class="demoChipItem">
+                    <jl-pr-sclp-jl-chip-item [chipContent]="'Test Item Chip'"></jl-pr-sclp-jl-chip-item>
+                </div>
+                <div class="demoChipListContainer">
+                    <jl-pr-sclp-jl-chip-list [chipList]="['test1', 'test2', 'test3']"></jl-pr-sclp-jl-chip-list>
+                </div>
+                <div class="demo">
+                    <jl-pr-sclp-jl-secondary-chips [chipContent]="'Test Secondary'"></jl-pr-sclp-jl-secondary-chips>
+                </div>
             </div>
-            <div class="demoChipListContainer">
-                <jl-pr-sclp-jl-chip-list [chipList]="['test1', 'test2', 'test3']"></jl-pr-sclp-jl-chip-list>
-            </div>
-            <div class="demo">
-                <jl-pr-sclp-jl-secondary-chips [chipContent]="'Test Secondary'"></jl-pr-sclp-jl-secondary-chips>
-            </div>
-        </div>
 
-        <!-- Checkbox Test -->
-        <div class="demoCheckboxContainer">
-            <form [formGroup]="form">
-            <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
-                <jl-pr-sclp-checkbox [config]="checkbox"
-                formControlName="{{checkbox.id}}"></jl-pr-sclp-checkbox>
+            <!-- Checkbox Test -->
+            <div class="demoCheckboxContainer">
+                <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
+                    <jl-pr-sclp-checkbox [config]="checkbox" formControlName="{{checkbox.id}}"></jl-pr-sclp-checkbox>
+                </div>
+                <button (click)="buttonActions(homeButtonActionTypes.disableCheckbox)">Toggle Disable Checkbox</button>
+                <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">Toggle Error Checkbox</button>
+            </div>
+
+            <!-- Dropdown Test -->
+            <div class="demoDropdownContainer">
+                <jl-pr-sclp-dropdown [config]="dropdownConfig"
+                    (valueChange)="valueChange($event)"></jl-pr-sclp-dropdown>
+            </div>
+
+            <!-- Input Test -->
+            <br>
+            <div>
+                <div class="demoInput">
+                    <jl-pr-sclp-input [label]="inputComponentConfig.label"
+                        [placeholder]="inputComponentConfig.placeholder" [id]="inputComponentConfig.id"
+                        (valueChange)="valueChange($event)">
+                    </jl-pr-sclp-input>
+                </div>
+                <div class="demoInput">
+                    <jl-pr-sclp-input [label]="inputTestPasswordConfig.label" [type]="inputTestPasswordConfig.type"
+                        [id]="inputTestPasswordConfig.id" (valueChange)="valueChange($event)">
+                    </jl-pr-sclp-input>
+                </div>
+            </div>
+            <!-- Radio Input Test -->
+            <br>
+            <div>
+                <lib-radio-input [config]="radioConfig" formControlName="{{radioConfig.id}}"></lib-radio-input>
             </div>
         </form>
-        <button (click)="buttonActions(homeButtonActionTypes.disableCheckbox)">Toggle Disable Checkbox</button>
-        <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">Toggle Error Checkbox</button>
-        </div>
-
-        <!-- Dropdown Test -->
-        <div class="demoDropdownContainer">
-            <jl-pr-sclp-dropdown [config]="dropdownConfig"
-                                 (valueChange)="valueChange($event)"></jl-pr-sclp-dropdown>
-        </div>
-
-        <!-- Input Test -->
-        <br>
-        <div>
-            <div class="demoInput">
-                <jl-pr-sclp-input [label]="inputComponentConfig.label" [placeholder]="inputComponentConfig.placeholder"
-                    [id]="inputComponentConfig.id" (valueChange)="valueChange($event)">
-                </jl-pr-sclp-input>
-            </div>
-            <div class="demoInput">
-                <jl-pr-sclp-input [label]="inputTestPasswordConfig.label" [type]="inputTestPasswordConfig.type"
-                    [id]="inputTestPasswordConfig.id" (valueChange)="valueChange($event)">
-                </jl-pr-sclp-input>
-            </div>
-        </div>
-        <!-- Radio Input Test -->
-        <br>
-        <div>
-            <lib-radio-input [config]="radioConfig"
-                             (valueChange)="valueChange($event)"></lib-radio-input>
-        </div>
     </div>
 
     <!-- Non-Config Tests -->
     <div class="nonConfigTestCol">
-        <div class="demoCheckboxContainer">
-            <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
-                <jl-pr-sclp-checkbox [id]="(checkbox.id + '_nonConfig')"
-                                     [label]="checkbox.label || undefined"
-                                     [small]="checkbox.small || undefined"
-                                     [error]="checkbox.error || undefined"
-                                     [disabled]="checkbox.disabled || undefined"
-                                     (valueChange)="valueChange($event)"></jl-pr-sclp-checkbox>
+        <form [formGroup]="form">
+            <div class="demoCheckboxContainer">
+                <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
+                    <jl-pr-sclp-checkbox [id]="(checkbox.id + '_nonConfig')" [label]="checkbox.label || undefined"
+                        [small]="checkbox.small || undefined" [error]="checkbox.error || undefined"
+                        [disabled]="checkbox.disabled || false"
+                        formControlName="{{checkbox.id + '_nonConfig'}}"></jl-pr-sclp-checkbox>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
+
 
     <div class="displayCol">
         <div>
@@ -76,10 +76,13 @@
             </ng-container>
             <h3>Values in Form</h3>
             <ng-container *ngFor="let element of getFormElements()">
-                <span class="displayContainerSpan"><h5>{{element.key}}:</h5>
-                <p>{{element.value}}</p>
-            </span>
+                <span class="displayContainerSpan">
+                    <h5>{{element.key}}:</h5>
+                    <p>{{element.value}}</p>
+                </span>
             </ng-container>
         </div>
+
     </div>
+
 </div>

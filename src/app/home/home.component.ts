@@ -136,8 +136,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.checkboxesConfigs.forEach(checkbox => {
-      this.form.addControl(checkbox.id, new FormControl())
+      this.form.addControl(checkbox.id, new FormControl());
+      this.form.addControl((checkbox.id + '_nonConfig'), new FormControl());
     });
+    this.form.addControl(this.radioConfig.id, new FormControl());
   }
 
   valueChange(event: any) {
