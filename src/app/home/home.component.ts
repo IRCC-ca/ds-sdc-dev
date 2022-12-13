@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
     });
     this.form.addControl(this.radioConfig.id, new FormControl());
     this.form.addControl(this.inputComponentConfig.id, new FormControl());
-    this.form.addControl(this.inputTestPasswordConfig.id, new FormControl());
+    this.form.addControl(this.inputTestPasswordConfig.id, new FormControl('', [Validators.required]));
     this.form.addControl(this.dropdownConfig.id, new FormControl());
   }
 
@@ -179,6 +179,11 @@ export class HomeComponent implements OnInit {
       case HomeButtonActionTypes.disableCheckbox:
         this.form.get('checkbox_form_disabled_test')?.disabled ?
           this.form.get('checkbox_form_disabled_test')?.enable() : this.form.get('checkbox_form_disabled_test')?.disable();
+
+        this.form.get('password')?.disabled ?
+        this.form.get('password')?.enable() : this.form.get('password')?.disable() 
+
+
         break;
 
       case HomeButtonActionTypes.checkboxError:
