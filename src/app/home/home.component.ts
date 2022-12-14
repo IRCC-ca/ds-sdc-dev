@@ -4,7 +4,8 @@ import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
-  checkboxError = 'checkboxError'
+  checkboxError = 'checkboxError',
+  disableRadio = 'disableRadio'
 }
 
 @Component({
@@ -20,30 +21,30 @@ export class HomeComponent implements OnInit {
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
       id: 'checkbox_label_test',
+      formGroup: this.form,
       label: 'Testing Label',
       disableFocus: true //TODO: Not working
     },
     { //checkbox2
       id: 'checkbox_small_test',
+      formGroup: this.form,
       label: 'Small Test',
       small: true
     },
     { //checkbox3
       id: 'checkbox_error_test',
+      formGroup: this.form,
       label: 'Error Test',
       error: true
     },
     {
-      id: 'checkbox_disabled_test',
-      label: 'Disabled Test',
-      disabled: true
-    },
-    {
       id: 'checkbox_form_disabled_test',
+      formGroup: this.form,
       label: 'Form Disabled Test'
     },
     {
       id: 'checkbox_form_error_test',
+      formGroup: this.form,
       label: 'Form Error Test'
     }
   ];
@@ -70,6 +71,7 @@ export class HomeComponent implements OnInit {
 
   radioConfig: IRadioInputComponentConfig = {
     id: 'radio_input_test1',
+    formGroup: this.form,
     label: 'Radio Label Test',
     options: [
       {
@@ -95,6 +97,23 @@ export class HomeComponent implements OnInit {
         text: 'Small Error State Test',
         sizeOverride: DSSizes.small,
         error: true
+      },
+    ]
+  };
+
+  radioErrorTestConfig: IRadioInputComponentConfig = {
+    id: 'radio_error_test',
+    formGroup: this.form,
+    label: 'Radio Form Error Test',
+    options: [
+      {
+        text: 'Test 1'
+      },
+      {
+        text: 'Test 2 - Invalid'
+      },
+      {
+        text: 'Test 3'
       }
     ]
   }
@@ -136,12 +155,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.checkboxesConfigs.forEach(checkbox => {
       this.form.addControl(checkbox.id, new FormControl());
-      this.form.addControl((checkbox.id + '_nonConfig'), new FormControl());
     });
     this.form.addControl(this.radioConfig.id, new FormControl());
     this.form.addControl(this.inputComponentConfig.id, new FormControl());
     this.form.addControl(this.inputTestPasswordConfig.id, new FormControl('', [Validators.required]));
     this.form.addControl(this.dropdownConfig.id, new FormControl());
+    this.form.addControl(this.radioErrorTestConfig.id, new FormControl('', [Validators.maxLength(6)]));
   }
 
   valueChange(event: any) {
@@ -180,16 +199,24 @@ export class HomeComponent implements OnInit {
         this.form.get('checkbox_form_disabled_test')?.disabled ?
           this.form.get('checkbox_form_disabled_test')?.enable() : this.form.get('checkbox_form_disabled_test')?.disable();
 
-        this.form.get('password')?.disabled ?
-        this.form.get('password')?.enable() : this.form.get('password')?.disable() 
+        this.form.get('checkbox_form_error_test')?.disabled ?
+          this.form.get('checkbox_form_error_test')?.enable() : this.form.get('checkbox_form_error_test')?.disable();
 
+        this.form.get('password')?.disabled ?
+          this.form.get('password')?.enable() : this.form.get('password')?.disable()
 
         break;
 
       case HomeButtonActionTypes.checkboxError:
-      this.form.get('checkbox_form_error_test')?.setErrors({'invalid': true});
-      console.log(this.form);
+        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true });
+        console.log(this.form);
+        break;
+
+      case HomeButtonActionTypes.disableRadio:
+        console.log('disable')
+        this.form.get(this.radioErrorTestConfig.id)?.disabled ?
+          this.form.get(this.radioErrorTestConfig.id)?.enable() : this.form.get(this.radioErrorTestConfig.id)?.disable();
+        break;
     }
   }
-
 }

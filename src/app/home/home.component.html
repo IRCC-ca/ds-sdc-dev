@@ -17,7 +17,7 @@
             <!-- Checkbox Test -->
             <div class="demoCheckboxContainer">
                 <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
-                    <jl-pr-sclp-checkbox [config]="checkbox" formControlName="{{checkbox.id}}"></jl-pr-sclp-checkbox>
+                    <jl-pr-sclp-checkbox [config]="checkbox" [formControlName]="checkbox.id"></jl-pr-sclp-checkbox>
                 </div>
                 <button (click)="buttonActions(homeButtonActionTypes.disableCheckbox)">Toggle Disable Checkbox</button>
                 <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">Toggle Error Checkbox</button>
@@ -26,7 +26,7 @@
             <!-- Dropdown Test -->
             <div class="demoDropdownContainer">
                 <jl-pr-sclp-dropdown [config]="dropdownConfig"
-                    formControlName="{{dropdownConfig.id}}"></jl-pr-sclp-dropdown>
+                    [formControlName]="dropdownConfig.id"></jl-pr-sclp-dropdown>
             </div>
 
             <!-- Input Test -->
@@ -35,7 +35,7 @@
             <!-- Radio Input Test -->
             <br>
             <div>
-                <lib-radio-input [config]="radioConfig" formControlName="{{radioConfig.id}}"></lib-radio-input>
+                <lib-radio-input [config]="radioConfig" [formControlName]="radioConfig.id"></lib-radio-input>
             </div>
         </form>
     </div>
@@ -43,16 +43,12 @@
     <!-- Non-Config Tests -->
     <div class="nonConfigTestCol">
         <form [formGroup]="form">
-            <div class="demoCheckboxContainer">
-                <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
-                    <jl-pr-sclp-checkbox [id]="(checkbox.id + '_nonConfig')" [label]="checkbox.label || undefined"
-                        [small]="checkbox.small || undefined" [error]="checkbox.error || undefined"
-                        [disabled]="checkbox.disabled || false"
-                        formControlName="{{checkbox.id + '_nonConfig'}}"></jl-pr-sclp-checkbox>
-                </div>
-            </div>
-
             <div>
+                <div>
+                    <lib-radio-input [config]="radioErrorTestConfig" [formControlName]="radioErrorTestConfig.id"></lib-radio-input>
+                </div>
+                <button (click)="buttonActions(homeButtonActionTypes.disableRadio)">Disable Radio</button>
+
                 <div class="demoInput">
                     <jl-pr-sclp-input [label]="inputComponentConfig.label"
                         [placeholder]="inputComponentConfig.placeholder" [id]="inputComponentConfig.id"
