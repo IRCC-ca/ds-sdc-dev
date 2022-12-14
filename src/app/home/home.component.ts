@@ -5,7 +5,8 @@ import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
   checkboxError = 'checkboxError',
-  disableRadio = 'disableRadio'
+  disableRadio = 'disableRadio',
+  disablePassword = 'disablePassword'
 }
 
 @Component({
@@ -121,17 +122,20 @@ export class HomeComponent implements OnInit {
   demoText = '';
   demoTextArray: IComponentOutputEvent[] = [];
 
-  inputComponentConfig: IJLInputComponentConfig = {
-    label: 'Input Label',
-    placeholder: 'placeholder',
-    id: 'input1'
-  }
-
-  inputTestPasswordConfig: IJLInputComponentConfig = {
-    label: 'Password Test',
-    type: InputTypes.password,
-    id: 'password'
-  }
+  inputConfigs: IJLInputComponentConfig[] = [
+    {
+      label: 'Input Label',
+      placeholder: 'placeholder',
+      id: 'input1',
+      formGroup: this.form
+    },
+    {
+      label: "Password Test - error state applies, but ng-invalid class doesn't change anything",
+      type: InputTypes.password,
+      id: 'password',
+      formGroup: this.form
+    }
+  ]
 
   dropdownOptions = [
     {
@@ -157,8 +161,8 @@ export class HomeComponent implements OnInit {
       this.form.addControl(checkbox.id, new FormControl());
     });
     this.form.addControl(this.radioConfig.id, new FormControl());
-    this.form.addControl(this.inputComponentConfig.id, new FormControl());
-    this.form.addControl(this.inputTestPasswordConfig.id, new FormControl('', [Validators.required]));
+    this.form.addControl(this.inputConfigs[0].id, new FormControl());
+    this.form.addControl(this.inputConfigs[1].id, new FormControl('', [Validators.required]));
     this.form.addControl(this.dropdownConfig.id, new FormControl());
     this.form.addControl(this.radioErrorTestConfig.id, new FormControl('', [Validators.maxLength(6)]));
   }
@@ -217,6 +221,10 @@ export class HomeComponent implements OnInit {
         this.form.get(this.radioErrorTestConfig.id)?.disabled ?
           this.form.get(this.radioErrorTestConfig.id)?.enable() : this.form.get(this.radioErrorTestConfig.id)?.disable();
         break;
-    }
+
+      case HomeButtonActionTypes.disablePassword:
+        this.form.get(this.inputConfigs[1].id)?.disabled ?
+          this.form.get(this.inputConfigs[1].id)?.enable() : this.form.get(this.inputConfigs[1].id)?.disable();
+      }
   }
 }

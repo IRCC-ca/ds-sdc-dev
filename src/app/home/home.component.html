@@ -29,9 +29,6 @@
                     [formControlName]="dropdownConfig.id"></jl-pr-sclp-dropdown>
             </div>
 
-            <!-- Input Test -->
-            <br>
-            
             <!-- Radio Input Test -->
             <br>
             <div>
@@ -50,17 +47,10 @@
                 <button (click)="buttonActions(homeButtonActionTypes.disableRadio)">Disable Radio</button>
 
                 <div class="demoInput">
-                    <jl-pr-sclp-input [label]="inputComponentConfig.label"
-                        [placeholder]="inputComponentConfig.placeholder" [id]="inputComponentConfig.id"
-                        formControlName="{{inputComponentConfig.id}}">
+                    <jl-pr-sclp-input *ngFor="let config of inputConfigs" [config]="config" [formControlName]="config.id">
                     </jl-pr-sclp-input>
                 </div>
-                <div class="demoInput">
-                    <jl-pr-sclp-input [label]="inputTestPasswordConfig.label" [type]="inputTestPasswordConfig.type"
-                        [id]="inputTestPasswordConfig.id" 
-                        formControlName="{{inputTestPasswordConfig.id}}">
-                    </jl-pr-sclp-input>
-                </div>
+                <button (click)="buttonActions(homeButtonActionTypes.disablePassword)">Toggle Disable Password</button>
             </div>
         </form>
     </div>
