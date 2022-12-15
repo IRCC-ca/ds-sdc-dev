@@ -109,7 +109,7 @@ export class QuickDemoComponent implements OnInit {
       }
     });
     this.form.setControl(this.uciInputConfig.id, new FormControl('', [Validators.required, 
-      Validators.pattern(/\d\d\d\d-\d\d\d\d|\d\d-\d\d\d\d-\d\d\d\d/i)]));
+      Validators.pattern(/\d{4}-\d{4}$|\d\d-\d{4}-\d{4}$/i)]));
     this.form.setControl(this.nameChangeConfig.id, new FormControl('', [Validators.required]));
 
 
@@ -119,6 +119,7 @@ export class QuickDemoComponent implements OnInit {
   }
 
   checkValidity() {
+    this.form.markAllAsTouched();
     this.form.valid ? this.formIsValid = 'VALID FORM' : this.formIsValid = 'INVALID FORM';
   }
 }
