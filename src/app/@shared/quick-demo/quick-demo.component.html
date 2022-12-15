@@ -63,17 +63,18 @@
         </div>
         <div class="buttonsContainer">
             <div>
-                <button category="plain">
+                <button category="plain" [routerLink]="'/home'">
                     <i class="fa-regular fa-arrow-left"></i>
                     Previous
                 </button>
             </div>
             <div class="buffer"></div>
             <div>
-                <button>Next
+                <button (click)="checkValidity()">Next
                     <i class="fa-regular fa-arrow-right"></i>
                 </button>
             </div>
         </div>
     </form>
+    <p>{{formIsValid}}</p>
 </div>

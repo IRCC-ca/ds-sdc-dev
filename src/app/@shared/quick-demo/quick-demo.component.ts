@@ -17,6 +17,7 @@ export enum StatusTypes {
 export class QuickDemoComponent implements OnInit {
   form = new FormGroup({});
   statusTypes = StatusTypes;
+  formIsValid = '';
 
 
   radioConfig:IRadioInputComponentConfig = {
@@ -50,7 +51,7 @@ export class QuickDemoComponent implements OnInit {
     {
       label: 'Year (YYYY)',
       id: 'date_year',
-      formGroup: this.form
+      formGroup: this.form,
     },
     {
       label: 'Month',
@@ -92,16 +93,32 @@ export class QuickDemoComponent implements OnInit {
       if (change === StatusTypes.resident) {
         this.dateInputConfigs.forEach(config => {
           if (config.id === 'date_year'){
-            this.form.setControl(config.id, new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]));
+            this.form.setControl(config.id, new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4),
+            Validators.pattern(/\d\d\d\d/i)]));
+          } else if (config.id === 'date_month') {
+          this.form.setControl(config.id, new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(2),
+            Validators.pattern(/0[1-9]|1[0-2]/i)]));
           } else {
-          this.form.setControl(config.id, new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]));
+            this.form.setControl(config.id, new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(2),
+              Validators.pattern(/0[1-9]|1[0-9]|2[0-9]|3[0-1]/i)]));
           }
+          this.form.get(config.id)?.statusChanges.subscribe(status => {
+            status === 'INVALID' ? config.error = true : config.error = false;
+          });
         });
       }
     });
-    this.form.setControl(this.uciInputConfig.id, new FormControl('', [Validators.required]));
+    this.form.setControl(this.uciInputConfig.id, new FormControl('', [Validators.required, 
+      Validators.pattern(/\d\d\d\d-\d\d\d\d|\d\d-\d\d\d\d-\d\d\d\d/i)]));
     this.form.setControl(this.nameChangeConfig.id, new FormControl('', [Validators.required]));
+
+
+    this.form.get(this.uciInputConfig.id)?.statusChanges.subscribe(change => {
+      change === 'INVALID' ? this.uciInputConfig.error = true : this.uciInputConfig.error = false;
+    });
   }
 
-
+  checkValidity() {
+    this.form.valid ? this.formIsValid = 'VALID FORM' : this.formIsValid = 'INVALID FORM';
+  }
 }
