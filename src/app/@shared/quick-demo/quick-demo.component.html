@@ -4,7 +4,9 @@
         <h2><strong>Status in Canada</strong></h2>
         <div class="identityContainer">
             <h5><strong>Identity verification</strong></h5>
-            <p>We are looking to understand your Canadian immigration history for identity verification purposes</p>
+            <p class="orangeIdentityText">We are looking </p>
+            <p class="identityText">to understand your Canadian immigration history for identity verification purposes
+            </p>
         </div>
         <!----------------------------- Current Status  --------------------------->
         <div class="formContainer">
@@ -12,16 +14,20 @@
             <lib-radio-input [config]="radioConfig" [formControlName]="radioConfig.id"></lib-radio-input>
         </div>
         <!---------------------------------- Date ------------------------->
-        <div class="dateContainer" *ngIf="form.get(radioConfig.id)?.value === statusTypes.resident">
-            <div class="dateTextContainer">
-                <h6><strong>What data did you obtain permanent residence status?</strong></h6>
-                <p>You can find this information on your record of landing or confirmation of permanent residence</p>
-            </div>
-            <div class="datePickerContainers">
-                <div class="datePicker">
-                    <jl-pr-sclp-input *ngFor="let config of dateInputConfigs" [config]="config"
-                        [formControlName]="config.id">
-                    </jl-pr-sclp-input>
+        <div class="secondaryFormContainer" *ngIf="form.get(radioConfig.id)?.value === statusTypes.resident">
+            <div class="dateContainer">
+                <div class="dateTextContainer">
+                    <h6><strong>What data did you obtain permanent residence status?</strong></h6>
+                    <p>You can find this information on your record of landing or confirmation of permanent residence
+                    </p>
+                </div>
+                <div class="datePickerContainers">
+                    <div class="datePicker">
+                        <div *ngFor="let config of dateInputConfigs" class="datePickerInput">
+                            <jl-pr-sclp-input [config]="config" [formControlName]="config.id">
+                            </jl-pr-sclp-input>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--------------------------- UCI ----------------------->
@@ -31,10 +37,12 @@
                             Immigration, Refugee and Citizenship Canada?</strong></h6>
                     <p class="uciDetails">A UCI is formatted as follows:</p>
                     <div class="uciList">
-                        <li>four numbers, a hyphen and four more numbers (Example: 0000-0000)</li>
-                        <li>two numbers, a hyphen, four numbers, a hyphen and four more numbers (Example:
-                            00-0000-0000)
-                        </li>
+                        <ul>
+                            <li>four numbers, a hyphen and four more numbers (Example: 0000-0000)</li>
+                            <li>two numbers, a hyphen, four numbers, a hyphen and four more numbers (Example:
+                                00-0000-0000)
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <jl-pr-sclp-input [config]="uciInputConfig" [formControlName]="uciInputConfig.id"></jl-pr-sclp-input>
@@ -51,6 +59,20 @@
                     <lib-radio-input [config]="nameChangeConfig" [formControlName]="nameChangeConfig.id">
                     </lib-radio-input>
                 </div>
+            </div>
+        </div>
+        <div class="buttonsContainer">
+            <div>
+                <button category="plain">
+                    <i class="fa-regular fa-arrow-left"></i>
+                    Previous
+                </button>
+            </div>
+            <div class="buffer"></div>
+            <div>
+                <button>Next
+                    <i class="fa-regular fa-arrow-right"></i>
+                </button>
             </div>
         </div>
     </form>

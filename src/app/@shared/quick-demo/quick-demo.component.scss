@@ -1,6 +1,15 @@
 .pageContainer {
     margin-left: 40px;
 
+    .identityContainer {
+        .orangeIdentityText, .identityText {
+            display: inline;
+        }
+        .orangeIdentityText {
+            color: orange;
+        }
+    }
+
     .formContainer,
     .dateContainer {
         margin-top: 32px;
@@ -16,13 +25,17 @@
         width: auto;
         display: inline-block;
         .datePicker {
-            width: 135px;
             margin-right: 12px;
-            display: inline;
+            display: flex;
+            flex-direction: row;
+        }
+        .datePickerInput {
+            margin-right: 12px;
         }
     }
 
     .uciContainer {
+        max-width: 500px;
         margin-top: 12px;
         .uciDetails {
             margin-top: -12px;
@@ -33,11 +46,21 @@
     }
 
     .changeNameContainer {
+        max-width: 500px;
         margin-top:32px;
         .changeNameRadio, .changeNameDetails {
             margin-top: -12px;
         }
+    }
 
-
+    .buttonsContainer {
+        max-width: 752px;
+        margin-top: 64px;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        .buffer {
+            flex-grow: 1;
+        }
     }
 }
