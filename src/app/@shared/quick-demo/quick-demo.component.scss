@@ -1,0 +1,43 @@
+.pageContainer {
+    margin-left: 40px;
+
+    .formContainer,
+    .dateContainer {
+        margin-top: 32px;
+        max-width: 500px;
+    }
+
+    p.dateTextContainer {
+        color: gray;
+    }
+
+    .datePickerContainers {
+        max-width: 500px;
+        width: auto;
+        display: inline-block;
+        .datePicker {
+            width: 135px;
+            margin-right: 12px;
+            display: inline;
+        }
+    }
+
+    .uciContainer {
+        margin-top: 12px;
+        .uciDetails {
+            margin-top: -12px;
+        }
+        .uciList {
+            margin-top: -12px;
+        }
+    }
+
+    .changeNameContainer {
+        margin-top:32px;
+        .changeNameRadio, .changeNameDetails {
+            margin-top: -12px;
+        }
+
+
+    }
+}
