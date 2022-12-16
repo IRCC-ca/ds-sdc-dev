@@ -1,26 +1,62 @@
+# version: 0.1
+
+# phases:
+#   install:
+#     commands:
+#       - echo installing nodejs...
+#       - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+#       - apt-get install -y nodejs
+#       # - echo installing yarn...
+#       # - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+#       # - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+#   pre_build:
+#     commands:
+#       - echo installing dependencies...
+#       - npm i -g @angular/cli
+#       - npm install
+#   build:
+#     commands:
+#       # - echo testing...
+#       # - echo building...
+#       - ng build
+# artifacts:
+#   files:
+#     - "**/*"
+#   discard-paths: no
+#   base-directory: dist/component-library
+
 version: 0.1
 
 phases:
   install:
     commands:
-      - echo installing nodejs...
-      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
-      - apt-get install -y nodejs
-      - echo installing yarn...
       - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - apt-get update
+      - apt-get install -y ca-certificates libgnutls30
+      - echo '-k' > ~/.curlrc
+      - echo installing yarn...
       - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - apt install --no-install-recommends yarn
   pre_build:
     commands:
       - echo installing dependencies...
-      - npm i -g @angular/cli
-      - npm install
+      - n 16.16.0
+      - npm i -g @angular/cli@14.1.3
+      - npm ci
+      # - npm run cypress:run:quick
   build:
     commands:
-      # - echo testing...
-      # - echo building...
+      - cd ./projects/ircc-ds-angular-component-library
+      - ng build
+      - cd ../../
       - ng build
 artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: dist/component-library
+  base-directory: dist/ircc-ds-angular-component-library
+
+cache:
+  paths:
+    - "/root/.npm/**/*"
+    - "node_modules/**/*"

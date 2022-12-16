@@ -1,0 +1,78 @@
+.pageContainer {
+    margin-left: 40px;
+    max-width: 752px;
+
+    .identityContainer {
+
+        .orangeIdentityText,
+        .identityText {
+            display: inline;
+        }
+
+        .orangeIdentityText {
+            color: orange;
+        }
+    }
+
+    .formContainer,
+    .dateContainer {
+        margin-top: 32px;
+        max-width: 500px;
+    }
+
+    .dateContainer {
+        .datePickerContainers {
+            max-width: 500px;
+            width: auto;
+            display: inline-block;
+
+            .datePicker {
+                margin-right: 12px;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .datePickerInput {
+                margin-right: 12px;
+            }
+        }
+        .dateGray {
+            color: grey
+        }
+    }
+
+    .uciContainer {
+        margin-top: 32px;
+
+        .uciDetails {
+            margin-top: -12px;
+        }
+
+        .uciList,
+        .uciInput {
+            margin-top: -12px;
+            max-width: 550px;
+        }
+    }
+
+    .changeNameContainer {
+        margin-top: 32px;
+
+        .changeNameRadio,
+        .changeNameDetails {
+            margin-top: -12px;
+            max-width: 550px;
+        }
+    }
+
+    .buttonsContainer {
+        margin-top: 64px;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        
+        .buffer {
+            flex-grow: 1;
+        }
+    }
+}

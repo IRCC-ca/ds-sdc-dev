@@ -17,4 +17,9 @@
 @import "theme/theme";
 
 //IRCC Design System
-@import "projects/ircc-ds-angular-component-library/styles"
+@import "projects/ircc-ds-angular-component-library/styles";
+
+//TODO: Band-aid for DS bug!
+* {
+    font-family: 'Lato', sans-serif;
+  }
