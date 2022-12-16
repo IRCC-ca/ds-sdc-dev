@@ -5,7 +5,7 @@
         <div class="identityContainer">
             <h5><strong>Identity verification</strong></h5>
             <p class="orangeIdentityText">We are looking </p>
-            <p class="identityText">to understand your Canadian immigration history for identity verification purposes
+            <p class="identityText">to understand your Canadian immigration history for identity verification purposes.
             </p>
         </div>
         <!----------------------------- Current Status  --------------------------->
@@ -18,7 +18,7 @@
             <div class="dateContainer">
                 <div class="dateTextContainer">
                     <h6><strong>What data did you obtain permanent residence status?</strong></h6>
-                    <p>You can find this information on your record of landing or confirmation of permanent residence
+                    <p class="dateGray">You can find this information on your record of landing or confirmation of permanent residence.
                     </p>
                 </div>
                 <div class="datePickerContainers">
@@ -45,7 +45,10 @@
                         </ul>
                     </div>
                 </div>
-                <jl-pr-sclp-input [config]="uciInputConfig" [formControlName]="uciInputConfig.id"></jl-pr-sclp-input>
+                <div class="uciInput">
+                    <jl-pr-sclp-input [config]="uciInputConfig"
+                        [formControlName]="uciInputConfig.id"></jl-pr-sclp-input>
+                </div>
             </div>
             <!---------------- When you became a permanent resident (...) ------------------>
             <div class="changeNameContainer">

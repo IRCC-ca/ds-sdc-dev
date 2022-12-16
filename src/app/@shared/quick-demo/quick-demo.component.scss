@@ -1,10 +1,14 @@
 .pageContainer {
     margin-left: 40px;
+    max-width: 752px;
 
     .identityContainer {
-        .orangeIdentityText, .identityText {
+
+        .orangeIdentityText,
+        .identityText {
             display: inline;
         }
+
         .orangeIdentityText {
             color: orange;
         }
@@ -16,49 +20,57 @@
         max-width: 500px;
     }
 
-    p.dateTextContainer {
-        color: gray;
-    }
+    .dateContainer {
+        .datePickerContainers {
+            max-width: 500px;
+            width: auto;
+            display: inline-block;
 
-    .datePickerContainers {
-        max-width: 500px;
-        width: auto;
-        display: inline-block;
-        .datePicker {
-            margin-right: 12px;
-            display: flex;
-            flex-direction: row;
+            .datePicker {
+                margin-right: 12px;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .datePickerInput {
+                margin-right: 12px;
+            }
         }
-        .datePickerInput {
-            margin-right: 12px;
+        .dateGray {
+            color: grey
         }
     }
 
     .uciContainer {
-        max-width: 500px;
-        margin-top: 12px;
+        margin-top: 32px;
+
         .uciDetails {
             margin-top: -12px;
         }
-        .uciList {
+
+        .uciList,
+        .uciInput {
             margin-top: -12px;
+            max-width: 550px;
         }
     }
 
     .changeNameContainer {
-        max-width: 500px;
-        margin-top:32px;
-        .changeNameRadio, .changeNameDetails {
+        margin-top: 32px;
+
+        .changeNameRadio,
+        .changeNameDetails {
             margin-top: -12px;
+            max-width: 550px;
         }
     }
 
     .buttonsContainer {
-        max-width: 752px;
         margin-top: 64px;
         width: auto;
         display: flex;
         flex-direction: row;
+        
         .buffer {
             flex-grow: 1;
         }

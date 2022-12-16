@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
@@ -150,7 +150,27 @@ export class HomeComponent implements OnInit {
       text: 'Option3',
       value: 'Value3'
     },
-  ]
+  ];
+
+  selectDropDownConfig: IDropdownInputConfig = {
+    id: 'selectDropDown',
+    formGroup: this.form,
+    label: 'Select Dropdown Test',
+    options: [
+      {
+        text: 'Test 1',
+        value: 'Test 1',
+      },
+      {
+        text: 'Test 2',
+        value: 'Test 2',
+      },
+      {
+        text: 'Test Error',
+        value: 'Test Error',
+      },
+    ]
+  }
 
   isLoading = false;
 
@@ -165,6 +185,7 @@ export class HomeComponent implements OnInit {
     this.form.addControl(this.inputConfigs[1].id, new FormControl('', [Validators.required]));
     this.form.addControl(this.dropdownConfig.id, new FormControl());
     this.form.addControl(this.radioErrorTestConfig.id, new FormControl('', [Validators.maxLength(6)]));
+    this.form.addControl(this.selectDropDownConfig.id, new FormControl('', [Validators.required, Validators.maxLength(6)]));
   }
 
   valueChange(event: any) {
@@ -225,6 +246,6 @@ export class HomeComponent implements OnInit {
       case HomeButtonActionTypes.disablePassword:
         this.form.get(this.inputConfigs[1].id)?.disabled ?
           this.form.get(this.inputConfigs[1].id)?.enable() : this.form.get(this.inputConfigs[1].id)?.disable();
-      }
+    }
   }
 }

@@ -52,6 +52,10 @@
                 </div>
                 <button (click)="buttonActions(homeButtonActionTypes.disablePassword)">Toggle Disable Password</button>
             </div>
+
+            <div class="selectDropDown">
+                <lib-dropdown-input [config]="selectDropDownConfig" [formControlName]="selectDropDownConfig.id"></lib-dropdown-input>
+            </div>
         </form>
     </div>
 
