@@ -47,9 +47,7 @@ phases:
       # - npm run cypress:run:quick
   build:
     commands:
-      - cd ./projects/ircc-ds-angular-component-library
-      - ng build
-      - cd ../../
+      - ng build ircc-ds-angular-component-library
       - ng build
 artifacts:
   files:
