@@ -15,7 +15,7 @@ phases:
   build:
     commands:
       - ng build ircc-ds-angular-component-library
-      - npm i
+      - npm ci
       - ng build
 artifacts:
   files:
