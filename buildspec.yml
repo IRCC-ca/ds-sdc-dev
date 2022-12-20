@@ -30,24 +30,19 @@ version: 0.1
 phases:
   install:
     commands:
-      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - apt-get update
-      - apt-get install -y ca-certificates libgnutls30
       - echo '-k' > ~/.curlrc
-      - echo installing yarn...
-      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-      - apt install --no-install-recommends yarn
   pre_build:
     commands:
       - echo installing dependencies...
       - n 16.16.0
-      - npm i -g @angular/cli@14.1.3
-      - npm i
+      # - npm i -g @angular/cli@14.1.3
       - npm i --prefix ./projects/ircc-ds-angular-component-library
       # - npm run cypress:run:quick
   build:
     commands:
       - ng build ircc-ds-angular-component-library
+      - npm i
       - ng build
 artifacts:
   files:
