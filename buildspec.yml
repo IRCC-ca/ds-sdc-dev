@@ -9,8 +9,8 @@ phases:
     commands:
       - echo installing dependencies...
       - n 16.16.0
-      # - npm i -g @angular/cli@14.1.3
-      - npm ci --prefix ./projects/ircc-ds-angular-component-library
+      - npm i -g @angular/cli@14.1.3
+      - npm ci --prefix ./component-lib
       # - npm run cypress:run:quick
   build:
     commands:
@@ -21,7 +21,7 @@ artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: dist/ircc-ds-angular-component-library
+  base-directory: dist/demo-project
 
 cache:
   paths:
