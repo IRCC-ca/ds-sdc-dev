@@ -1,0 +1,25 @@
+<!-- TODO: Fix how large is handled here to work with DS rather than against it -->
+<div>
+  <form [formGroup]="config.formGroup">
+    <p *ngIf="config.type === 'password' || showPassword">TODO: This element does not actually have correct aria text on
+      it!</p>
+    <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
+      <div class="input-text">
+        <label for="{{ (config.value || '') }}">{{ (config.label || '') | translate }}</label>
+        <p *ngIf="config.hintText" class="hint-text">{{ config.hintText | translate }}</p>
+        <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
+          <!-- ngModel doesn't mind undefined values, apparently
+        TODO: Should probably change the (keyup) to (onblur) -->
+          <input autocomplete="{{ config.autocomplete }}" placeholder="{{ (config.placeholder || '') | translate }}"
+            tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
+            [type]="config.type" [id]="config.id" [formControlName]="config.id" />
+        </div>
+        <button *ngIf="config.type === 'password' || showPassword" role="switch" color="plain" class="transparentButton" (click)="hideShow()" [disabled]="disabled">
+          <i class="passwordIcon fa-solid"
+            aria-pressed="getShowHideText('check')"
+            [ngClass]="{'fa-eye': (!showPassword), 'fa-eye-slash': (showPassword)}"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

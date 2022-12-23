@@ -1,0 +1,59 @@
+<ng-container *ngIf="(config?.options || options || []).length > 0; then notEmpty; else isEmpty">
+  <!-- an *ngIf may be better here, since there are only two cases -->
+</ng-container>
+<ng-template #notEmpty>
+  <div class="select-container" [ngClass]="{ large: config?.large || large, error: config?.error || error }">
+    <div
+      class="select"
+      [ngClass]="!hideDropdown ? 'open' : ''"
+      [class]="(config?.type || type || dropdownTypes.input)"
+    >
+      <div
+        tabindex="0"
+        class="selected input"
+        (keyup)="toggleDropDownKey($event)"
+        [ngClass]="!hideDropdown ? 'active' : ''"
+        *ngIf="(config?.type === dropdownTypes.input) || (type === dropdownTypes.input)"
+      >
+        {{ getOptions(config?.selectedIndex || selectedIndex || 0) | translate }}
+      </div>
+
+      <div
+        tabindex="0"
+        class="selected cta"
+        (keyup)="toggleDropDownKey($event)"
+        [ngClass]="!hideDropdown ? 'active' : ''"
+        *ngIf="(config?.type === dropdownTypes.cta) || (type === dropdownTypes.cta)"
+      >
+        {{ (config?.text || text || '') | translate }}
+      </div>
+
+      <div
+        class="select-options"
+        [ngClass]="!hideDropdown ? '' : 'hide'"
+      >
+        <div
+          *ngFor="let option of config?.options || options; let index = index" 
+          class="option select-target"
+          (click)="selectIndex(index)"
+          [tabindex]="index + 1"
+          [ngClass]="{ active: index === (config?.selectedIndex || selectedIndex || 0), hide: (config?.type === dropdownTypes.cta) || (type === dropdownTypes.cta) }"
+        > 
+        <!-- TODO: Check if the above line defaults to 0 if the selectedIndex is undefined, or if it also triggers if 0 -->
+          <p class="select-target">{{ option.text | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #isEmpty>
+  <div
+    class="select-container empty"
+    [ngClass]="{ large: config?.large || large, error: config?.error || error }"
+  >
+    <div class="select">
+      <div tabindex="0" class="selected">&#160;</div>
+    </div>
+  </div>
+</ng-template>

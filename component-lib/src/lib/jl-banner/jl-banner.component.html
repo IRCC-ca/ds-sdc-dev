@@ -1,0 +1,22 @@
+<ng-container *ngIf="true; then notEmpty"> </ng-container>
+
+<ng-template #notEmpty>
+    <div *ngIf="!hide" class="banner-container" [ngClass]="{'layout': fixedLayout, 'success': type === 'success', 'info': type === 'info', 'warning': type === 'warning', 'critical': type === 'critical'}">
+        <div class="alert-line">
+        </div>
+
+        <td *ngIf="type === 'info'" class="information">        
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21" fill="none">
+            <path d="M10 0.5C4.45312 0.5 0 4.99219 0 10.5C0 16.0469 4.45312 20.5 10 20.5C15.5078 20.5 20 16.0469 20 10.5C20 4.99219 15.5078 0.5 10 0.5ZM10 19.25C5.15625 19.25 1.25 15.3438 1.25 10.5C1.25 5.69531 5.15625 1.75 10 1.75C14.8047 1.75 18.75 5.69531 18.75 10.5C18.75 15.3438 14.8047 19.25 10 19.25ZM10 7.6875C10.5078 7.6875 10.9375 7.29688 10.9375 6.75C10.9375 6.24219 10.5078 5.8125 10 5.8125C9.45312 5.8125 9.0625 6.24219 9.0625 6.75C9.0625 7.29688 9.45312 7.6875 10 7.6875ZM11.875 14.25H10.625V9.875C10.625 9.5625 10.3125 9.25 10 9.25H8.75C8.39844 9.25 8.125 9.5625 8.125 9.875C8.125 10.2266 8.39844 10.5 8.75 10.5H9.375V14.25H8.125C7.77344 14.25 7.5 14.5625 7.5 14.875C7.5 15.2266 7.77344 15.5 8.125 15.5H11.875C12.1875 15.5 12.5 15.2266 12.5 14.875C12.5 14.5625 12.1875 14.25 11.875 14.25Z" fill="#1F83A1"/>
+            </svg>
+        </td>
+        <td *ngIf="type === 'warning'" class="exclamation-triangle"><i class="bi bi-exclamation-triangle"></i></td>
+        <td *ngIf="type === 'critical'" class="exclamation-circle"><i class="bi bi-exclamation-circle"></i></td>
+        <td *ngIf="type === 'success'" class="checkmark"><i class="bi bi-check-circle"></i></td>
+        <div class="text">
+            <div class="title">{{ title | translate }}</div>
+            <div *ngIf="type === 'success'" class="body">{{ body | translate: { assignedApplications: applications } }}</div>
+            <div *ngIf="type !== 'success'" class="body">{{ body | translate }}</div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,9 @@
+.container {
+    max-width: 100%;
+    .dropdown {
+        .custom-select {
+            position: relative;
+            border-radius: 4px;
+        }
+    }
+}

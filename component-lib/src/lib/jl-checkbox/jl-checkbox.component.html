@@ -1,0 +1,20 @@
+<div class="checkbox-container" [formGroup]="config.formGroup">
+  <div>
+    <div class="checkbox-layout" [ngClass]="{ error: config?.error }">
+      <div class="checkbox">
+        <input *ngIf="config.small" id="{{config.id}}" class="check"
+          [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus}"
+          size="small" type="checkbox" [checked]="config.checked"
+           [formControlName]="config.id"/>
+        <input *ngIf="(!config.small)" id="{{config.id}}" class="check"
+          [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus}" size="large"
+          type="checkbox" [checked]="config.checked" 
+          [formControlName]="config.id"/>
+        <span class="checkmark"></span>
+      </div>
+      <label class="label"
+        [ngClass]="{'disabled-label': isDisabled }">{{
+        config.label || '' }}</label>
+    </div>
+  </div>
+</div>
