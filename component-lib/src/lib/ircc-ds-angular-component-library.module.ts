@@ -13,6 +13,7 @@ import { JLDropdownComponent } from './jl-dropdown/jl-dropdown.component';
 import { JLInputComponent } from './jl-input/jl-input.component';
 import { RadioInputComponent } from './radio-input/radio-input.component';
 import { DropdownInputComponent } from './dropdown-input/dropdown-input.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 
 
@@ -29,6 +30,7 @@ import { DropdownInputComponent } from './dropdown-input/dropdown-input.componen
     JLBannerComponent,
     RadioInputComponent,
     DropdownInputComponent,
+    DatePickerComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { DropdownInputComponent } from './dropdown-input/dropdown-input.componen
     JLBannerComponent,
     RadioInputComponent,
     DropdownInputComponent,
+    DatePickerComponent,
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }

@@ -1,0 +1,15 @@
+.date-form {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  
+    .fixed-width {
+      width: 80px;
+    }
+  
+    .expand-to-fit {
+      flex: 1;
+    }
+  }
+  

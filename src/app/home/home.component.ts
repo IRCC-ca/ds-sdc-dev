@@ -170,7 +170,9 @@ export class HomeComponent implements OnInit {
         value: 'Test Error',
       },
     ]
-  }
+  };
+
+  datePickerID = 'datePicker';
 
   isLoading = false;
 
