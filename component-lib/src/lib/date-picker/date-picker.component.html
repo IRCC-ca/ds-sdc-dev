@@ -1,15 +1,26 @@
 <div class="date-title" [attr.aria-label]="title">{{ title }}</div>
-<form [formGroup]="dateForm" class="date-form">
-    <label for="day" class="sr-only">Day:</label>
-    <select id="day" aria-label="Select a day" [formControlName]="id + '_dayControl'" class="date-input fixed-width">
-        <option *ngFor="let day of days" [value]="day">{{ day }}</option>
-    </select>
-    <label for="month" class="sr-only">Month:</label>
-    <select id="month" aria-label="Select a month" [formControlName]="id + '_monthControl'" class="date-input expand-to-fit">
-        <option *ngFor="let month of months" [value]="month">{{ month }}</option>
-    </select>
-    <label for="year" class="sr-only">Year:</label>
-    <select id="year" aria-label="Select a year" [formControlName]="id + '_yearControl'" class="date-input fixed-width">
-        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-    </select>
-  </form>    
+<div class="date-form">
+    <form [formGroup]="dateForm">
+        <div class="select-container">
+            <div class="label-year">Year YYYY</div>
+            <label for="year" class="sr-only">Year:</label>
+            <select id="year" aria-label="Select a year" [formControlName]="id + '_yearControl'" class="date-input">
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <div class="label-month">Month MM</div>
+            <label for="month" class="sr-only">Month:</label>
+            <select id="month" aria-label="Select a month" [formControlName]="id + '_monthControl'" class="date-input">
+                <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <div class="label-day">Day DD</div>
+            <label for="day" class="sr-only">Day:</label>
+            <select id="day" aria-label="Select a day" [formControlName]="id + '_dayControl'" class="date-input">
+                <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+            </select>
+        </div>
+    </form>
+</div>
