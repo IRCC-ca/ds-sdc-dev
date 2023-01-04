@@ -7,6 +7,7 @@ export interface IDropdownInputConfig {
   small?: boolean;
   label?: string;
   options?: IDropdownInputOptionsConfig[]
+  category?: string;
 };
 
 export interface IDropdownInputOptionsConfig {
@@ -31,7 +32,8 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
 
   @Input() config: IDropdownInputConfig = {
     id: '',
-    formGroup: new FormGroup({})
+    formGroup: new FormGroup({}),
+    category: 'secondary'
   }
 
   onChange = (formValue: string) => { };

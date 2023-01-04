@@ -14,6 +14,8 @@ import { JLInputComponent } from './jl-input/jl-input.component';
 import { RadioInputComponent } from './radio-input/radio-input.component';
 import { DropdownInputComponent } from './dropdown-input/dropdown-input.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -31,6 +33,8 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     RadioInputComponent,
     DropdownInputComponent,
     DatePickerComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +55,8 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     RadioInputComponent,
     DropdownInputComponent,
     DatePickerComponent,
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }
