@@ -1,0 +1,14 @@
+<button
+    [attr.aria-label]="ariaLabel"
+    [attr.color]="color"
+    [attr.category]="category"
+    [attr.size]="size"
+    [attr.type]="type"
+    [disabled]="disabled"
+    [ngClass]="iconDirection === 'right' ? 'icon-right' : ''"
+>
+<div class="icon">
+    <lib-icon *ngIf="icon != ''" [class]="icon"></lib-icon>
+</div>
+    <ng-content></ng-content>
+</button>
