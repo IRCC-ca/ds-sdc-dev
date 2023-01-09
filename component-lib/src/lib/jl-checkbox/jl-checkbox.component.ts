@@ -18,7 +18,6 @@ export interface ICheckBoxComponentConfig {
 @Component({
   selector: 'jl-pr-sclp-checkbox',
   templateUrl: './jl-checkbox.component.html',
-  styleUrls: ['./jl-checkbox.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -12,6 +12,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~14.1.3",
-    "@ircc-ca/ds-sdc-core": "^1.3.2"
+    "@ircc-ca/ds-sdc-core": "^1.3.3"
   }
 }
