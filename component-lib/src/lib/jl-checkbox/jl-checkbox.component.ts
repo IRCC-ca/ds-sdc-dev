@@ -1,6 +1,5 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IComponentOutputEvent } from '../../shared/interfaces/component-configs';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn, Validators } from '@angular/forms';
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
@@ -11,6 +10,7 @@ export interface ICheckBoxComponentConfig {
   checked?: boolean; //Controls the actual checked state of the component
   label?: string;
   id: string; //used for identifying the component everywhere and should NEVER be missing
+  validators?: ValidatorFn[];
 }
 
 @Component({
@@ -27,6 +27,19 @@ export interface ICheckBoxComponentConfig {
 
 })
 export class JLCheckboxComponent implements ControlValueAccessor {
+  formGroupEmpty: FormGroup = new FormGroup({});
+  checkboxIsChecked = false;
+  touched = false;
+
+  //TODO: Add output - consider using a formControl as output rather than anything else. Many different approaches are possible
+  @Input() config: ICheckBoxComponentConfig = {
+    id: '',
+    formGroup: this.formGroupEmpty,
+  };
+
+  @Input() formGroup = this.formGroupEmpty;
+  @Input() id = '';
+
   isDisabled = false;
 
   onTouch = () => {};
@@ -51,15 +64,15 @@ export class JLCheckboxComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
+  ngOnInit() {
+    if (this.id !== '') {
+      this.config.id = this.id;
+    }
 
-  formGroupEmpty: FormGroup = new FormGroup({});
-  checkboxIsChecked = false;
-  touched = false;
-
-  //TODO: Add output - consider using a formControl as output rather than anything else. Many different approaches are possible
-  @Input() config: ICheckBoxComponentConfig = {
-    id: '',
-    formGroup: this.formGroupEmpty
-  };
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    }
+    this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
+  }
 
 }

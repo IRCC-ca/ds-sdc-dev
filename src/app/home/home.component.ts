@@ -47,6 +47,12 @@ export class HomeComponent implements OnInit {
       id: 'checkbox_form_error_test',
       formGroup: this.form,
       label: 'Form Error Test'
+    },
+    {
+      id: 'checkbox_validators_test',
+      formGroup: this.form,
+      label: 'Form Validators Test',
+      validators: [Validators.required]
     }
   ];
   //TODO: Test non-config checkboxes
@@ -179,9 +185,6 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.checkboxesConfigs.forEach(checkbox => {
-      this.form.addControl(checkbox.id, new FormControl());
-    });
     this.form.addControl(this.radioConfig.id, new FormControl());
     this.form.addControl(this.inputConfigs[0].id, new FormControl());
     this.form.addControl(this.inputConfigs[1].id, new FormControl('', [Validators.required]));
@@ -235,7 +238,10 @@ export class HomeComponent implements OnInit {
         break;
 
       case HomeButtonActionTypes.checkboxError:
-        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true });
+        this.form.get('checkbox_form_error_test')?.valid ? 
+        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) : 
+        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': false });
+        this.form.updateValueAndValidity;
         console.log(this.form);
         break;
 
