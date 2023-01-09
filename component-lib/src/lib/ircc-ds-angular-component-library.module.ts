@@ -16,6 +16,8 @@ import { DropdownInputComponent } from './dropdown-input/dropdown-input.componen
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ButtonComponent } from './button/button.component';
+import { IconComponent } from './icon/icon.component';
 
 
 
@@ -34,7 +36,9 @@ import { FooterComponent } from './footer/footer.component';
     DropdownInputComponent,
     DatePickerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ButtonComponent,
+    IconComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +60,9 @@ import { FooterComponent } from './footer/footer.component';
     DropdownInputComponent,
     DatePickerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ButtonComponent,
+    IconComponent
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }
