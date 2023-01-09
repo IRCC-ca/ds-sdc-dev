@@ -53,7 +53,13 @@ export class HomeComponent implements OnInit {
       formGroup: this.form,
       label: 'Form Validators Test',
       validators: [Validators.required]
-    }
+    },
+    {
+      id: 'checkbox_mixed_test',
+      formGroup: this.form,
+      mixed: true,
+      label: 'Form Mixed Test',
+    },
   ];
   //TODO: Test non-config checkboxes
 

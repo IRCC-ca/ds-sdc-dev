@@ -1,167 +1,167 @@
-@import '../../assets/scss/partials/variables';
+// @import '../../assets/scss/partials/variables';
 
-//TODO: Remove as much of the custom scss as possible - the error state is currently triggered by the global classes 'ng-invalid' and 'ng-touched' (applied together)
-.check {
-    display: inline-flex;
-    cursor: pointer;
-    position: relative;
-    height: 20px;
-    width: 20px;
-    border-radius: 4px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    outline: none;
-    transition-duration: 0.3s;
-    border: 1px solid $ircc-ca-global-neutral;
-    vertical-align: middle;
-    background: none;
-    flex-grow: 0;
-    background-color: $ircc-ca-white;
-    transition: background 300ms;
+// //TODO: Remove as much of the custom scss as possible - the error state is currently triggered by the global classes 'ng-invalid' and 'ng-touched' (applied together)
+// .check {
+//     display: inline-flex;
+//     cursor: pointer;
+//     position: relative;
+//     height: 20px;
+//     width: 20px;
+//     border-radius: 4px;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//     -o-appearance: none;
+//     appearance: none;
+//     outline: none;
+//     transition-duration: 0.3s;
+//     border: 1px solid $ircc-ca-global-neutral;
+//     vertical-align: middle;
+//     background: none;
+//     flex-grow: 0;
+//     background-color: $ircc-ca-white;
+//     transition: background 300ms;
 
-    &::before {
-        content: "";
-        color: transparent;
-        display: block;
-        width: inherit;
-        height: inherit;
-        border-radius: inherit;
-        border: 0;
-        background-color: transparent;
-        background-size: contain;
-    }
+//     &::before {
+//         content: "";
+//         color: transparent;
+//         display: block;
+//         width: inherit;
+//         height: inherit;
+//         border-radius: inherit;
+//         border: 0;
+//         background-color: transparent;
+//         background-size: contain;
+//     }
 
-    &:checked::before {
-        box-shadow: none;
-        background-image: url('../../assets/icons/checkmark.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 80%;
-    }
+//     &:checked::before {
+//         box-shadow: none;
+//         background-image: url('../../assets/icons/checkmark.svg');
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: 80%;
+//     }
 
-    &:active {
-        background: $pale;
-    }
+//     &:active {
+//         background: $pale;
+//     }
 
-    &:hover {
-        border: 1px solid $ircc-ca-hover-border;
-    }
+//     &:hover {
+//         border: 1px solid $ircc-ca-hover-border;
+//     }
 
-    &:checked {
-        background: $ircc-ca-focus;
-        border: none;
-        &:hover {
-            background: $ircc-ca-checked-hover-blue;
-            border: none;
-        }
-    }
+//     &:checked {
+//         background: $ircc-ca-focus;
+//         border: none;
+//         &:hover {
+//             background: $ircc-ca-checked-hover-blue;
+//             border: none;
+//         }
+//     }
 
-    &.focus:focus{
-        outline: solid 3px $ircc-ca-focus;
-        outline-offset: 2px;
-    }
-}
+//     &.focus:focus{
+//         outline: solid 3px $ircc-ca-focus;
+//         outline-offset: 2px;
+//     }
+// }
 
-.checkbox-layout {
-    display: flex;
-    align-items: baseline;
+// .checkbox-layout {
+//     display: flex;
+//     align-items: baseline;
 
-    .disabled {
-        border: 1px solid $ircc-ca-disabled-border;
-        cursor: not-allowed;
+//     .disabled {
+//         border: 1px solid $ircc-ca-disabled-border;
+//         cursor: not-allowed;
 
-        &:checked {
-            background: $ircc-ca-checked-background-blue;
-            border: none;
-        }
-    }
-}
+//         &:checked {
+//             background: $ircc-ca-checked-background-blue;
+//             border: none;
+//         }
+//     }
+// }
 
-.large {
-    height: 24px !important;
-    width: 24px !important;
-}
+// .large {
+//     height: 24px !important;
+//     width: 24px !important;
+// }
 
-.error {
-    accent-color: $ircc-ca-error;
-    .disabled {
-        display: none;
+// .error {
+//     accent-color: $ircc-ca-error;
+//     .disabled {
+//         display: none;
 
-    }
+//     }
 
-    .check {
-        border: 1px solid $ircc-ca-error;
-        background-color: $ircc-ca-error-background;
+//     .check {
+//         border: 1px solid $ircc-ca-error;
+//         background-color: $ircc-ca-error-background;
 
-        &:hover {
-            background-color: $ircc-ca-error-active;
-            border: 1px solid $ircc-ca-error-border;
-        }
+//         &:hover {
+//             background-color: $ircc-ca-error-active;
+//             border: 1px solid $ircc-ca-error-border;
+//         }
 
-        &:active {
-            border: 1px solid $ircc-ca-error-border;
-            background-color: $ircc-ca-error-border-background;
-        }  
+//         &:active {
+//             border: 1px solid $ircc-ca-error-border;
+//             background-color: $ircc-ca-error-border-background;
+//         }  
 
-        &:checked {
-            background-color: $ircc-ca-error;
-        }
+//         &:checked {
+//             background-color: $ircc-ca-error;
+//         }
 
-        &:checked:hover {
-            background-color: $ircc-ca-error-border;
-        }
+//         &:checked:hover {
+//             background-color: $ircc-ca-error-border;
+//         }
 
-        &:checked:active {
-            background: $ircc-ca-checked-active-red;
-            border: 1px solid $ircc-ca-checked-active-red;
-        }
+//         &:checked:active {
+//             background: $ircc-ca-checked-active-red;
+//             border: 1px solid $ircc-ca-checked-active-red;
+//         }
 
-        &:checked::before {
-            margin-top: -1px;
-            background-size: 90%;
-        }
-    }
+//         &:checked::before {
+//             margin-top: -1px;
+//             background-size: 90%;
+//         }
+//     }
 
-    .mixed:checked::before {
-        margin-top: -1px;
-    }
-}
+//     .mixed:checked::before {
+//         margin-top: -1px;
+//     }
+// }
 
-.mixed:checked {
-    padding-left: 2px;
-    padding-right: 2px;
-}
+// .mixed:checked {
+//     padding-left: 2px;
+//     padding-right: 2px;
+// }
 
-.mixed:checked::before {
-    box-shadow: none;
-    background-image: url('../../../../../assets/icons/line.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
+// .mixed:checked::before {
+//     box-shadow: none;
+//     background-image: url('../../../../../assets/icons/line.svg');
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     background-size: contain;
+// }
 
-.label {
-    padding-left: 8px;
-    width: 130px;
-    height: 20px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: $ircc-ca-black;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-}
+// .label {
+//     padding-left: 8px;
+//     width: 130px;
+//     height: 20px;
+//     font-family: 'Inter';
+//     font-style: normal;
+//     font-weight: 400;
+//     font-size: 14px;
+//     line-height: 20px;
+//     color: $ircc-ca-black;
+//     flex: none;
+//     order: 0;
+//     flex-grow: 1;
+// }
 
-.error-disabled-label {
-    display: none !important;
-}
+// .error-disabled-label {
+//     display: none !important;
+// }
 
-.disabled-label {
-    color: $ircc-ca-border;
-}
+// .disabled-label {
+//     color: $ircc-ca-border;
+// }
 
