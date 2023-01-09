@@ -3,5 +3,11 @@
   "About": "About",
   "Hello world !": "Hello world !",
   "Home": "Home",
-  "Version": "Version"
+  "Version": "Version",
+
+  "INPUT": {
+    "ERROR": "Input error"
+  }
+
+
 }

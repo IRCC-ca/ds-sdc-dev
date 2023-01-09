@@ -11,6 +11,8 @@ export interface ICheckBoxComponentConfig {
   label?: string;
   id: string; //used for identifying the component everywhere and should NEVER be missing
   validators?: ValidatorFn[];
+  helpText?: string;
+  customErrorText?: string;
 }
 
 @Component({
