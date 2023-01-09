@@ -13,7 +13,9 @@
     "translations:extract": "ngx-translate-extract --input ./src --output ./src/translations/template.json --format=json --clean --sort",
     "docs": "hads ./docs -o",
     "write:env": "ngx-scripts env npm_package_version",
-    "generate": "ng generate"
+    "generate": "ng generate",
+    "build-component": "cd component-lib && ng build ircc-ds-angular-component-library",
+    "build-component-watch": "cd component-lib && ng build ircc-ds-angular-component-library --watch"
   },
   "dependencies": {
     "@angular/animations": "~14.1.3",

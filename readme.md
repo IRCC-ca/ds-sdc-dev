@@ -65,6 +65,8 @@ Task automation is based on [NPM scripts](https://docs.npmjs.com/misc/scripts).
 | `npm run lint`                                  | Lint code                                                                                                        |
 | `npm run translations:extract`                  | Extract strings from code and templates to `src/app/translations/template.json`                                  |
 | `npm run docs`                                  | Display project documentation and coding guides                                                                  |
+| `npm run build-component`                       | Compile Angular components into distribution folder                                                              |
+| `npm run build-component-watch`                 | Compile Angular components into distribution folder while watch file changes                                     |
 
 When building the application, you can specify the target configuration using the additional flag
 `--configuration <name>` (do not forget to prepend `--` to pass arguments to npm scripts).
