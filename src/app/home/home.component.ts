@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ButtonIconDirection, DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
