@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
 
 export interface IJLInputComponentConfig {
   label?: string;
@@ -19,6 +19,7 @@ export interface IJLInputComponentConfig {
   large?: true;
   error?: boolean;
   empty?: boolean; //Default is TRUE
+  validators?: ValidatorFn[];
 }
 
 export enum InputTypes {
@@ -38,11 +39,15 @@ export enum InputTypes {
   ]
 })
 export class JLInputComponent implements ControlValueAccessor, OnInit {
+  formGroupEmpty: FormGroup = new FormGroup({});
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: IJLInputComponentConfig = {
     id: '',
     formGroup: new FormGroup({})
   };
+
+  @Input() id = '';
+  @Input() formGroup = this.formGroupEmpty;
 
   disabled = false;
   focusState = false;
@@ -53,8 +58,15 @@ export class JLInputComponent implements ControlValueAccessor, OnInit {
 
 
   ngOnInit() {
-    //initial null check to ensure that a null value isn't assigned since it can't be set in the html with an enum
-    // !!this.type ?? (this.type = InputTypes.text); //TODO: Check if this actually works
+    if (this.id !== '') {
+      this.config.id = this.id;
+    }
+
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    }
+
+    this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
   }
 
   public focusInput(focusValue: boolean): void {
