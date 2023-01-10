@@ -78,6 +78,11 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
   }
 
+  /**
+   *
+   * @param override
+   * @returns
+   */
   getSize(override: DSSizes | undefined) {
     if (override) {
       return override;
