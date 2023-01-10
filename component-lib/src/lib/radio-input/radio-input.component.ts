@@ -23,7 +23,6 @@ export interface IRadioInputOption {
 @Component({
   selector: 'lib-radio-input',
   templateUrl: './radio-input.component.html',
-  styleUrls: ['./radio-input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
