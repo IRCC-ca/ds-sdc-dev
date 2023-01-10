@@ -15,7 +15,12 @@ have already cloned this project, you can run "git submodule init", then "git su
  npm install
  ```
 
-2. Launch development server, and open `localhost:4200` in your browser:
+2. Go to `component-lib` folder and install dependencies:
+```sh
+cd component-lib && npm install
+ ```
+
+3. Launch development server, and open `localhost:4200` in your browser:
  ```sh
  npm start
  ```
@@ -50,16 +55,18 @@ proxy.conf.js                backend proxy configuration
 
 Task automation is based on [NPM scripts](https://docs.npmjs.com/misc/scripts).
 
-Task                            | Description
---------------------------------|--------------------------------------------------------------------------------------
-`npm start`                     | Run development server on `http://localhost:4200/`
-`npm run build [-- --configuration=production]` | Lint code and build web app for production (with [AOT](https://angular.io/guide/aot-compiler)) in `dist/` folder
-`npm test`                      | Run unit tests via [Karma](https://karma-runner.github.io) in watch mode
-`npm run test:ci`               | Lint code and run unit tests once for continuous integration
-`npm run e2e`                   | Run e2e tests using [Cypress](https://www.cypress.io/)
-`npm run lint`                  | Lint code
-`npm run translations:extract`  | Extract strings from code and templates to `src/app/translations/template.json`
-`npm run docs`                  | Display project documentation and coding guides
+| Task                                            | Description                                                                                                      |
+|-------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `npm start`                                     | Run development server on `http://localhost:4200/`                                                               |
+| `npm run build [-- --configuration=production]` | Lint code and build web app for production (with [AOT](https://angular.io/guide/aot-compiler)) in `dist/` folder |
+| `npm test`                                      | Run unit tests via [Karma](https://karma-runner.github.io) in watch mode                                         |
+| `npm run test:ci`                               | Lint code and run unit tests once for continuous integration                                                     |
+| `npm run e2e`                                   | Run e2e tests using [Cypress](https://www.cypress.io/)                                                           |
+| `npm run lint`                                  | Lint code                                                                                                        |
+| `npm run translations:extract`                  | Extract strings from code and templates to `src/app/translations/template.json`                                  |
+| `npm run docs`                                  | Display project documentation and coding guides                                                                  |
+| `npm run build-component`                       | Compile Angular components into distribution folder                                                              |
+| `npm run build-component-watch`                 | Compile Angular components into distribution folder while watch file changes                                     |
 
 When building the application, you can specify the target configuration using the additional flag
 `--configuration <name>` (do not forget to prepend `--` to pass arguments to npm scripts).

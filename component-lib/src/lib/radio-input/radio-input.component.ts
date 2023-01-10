@@ -1,5 +1,11 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormControl,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+  ValidatorFn
+} from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 
 export interface IRadioInputComponentConfig {
@@ -10,6 +16,7 @@ export interface IRadioInputComponentConfig {
   small?: true; //Default is large in the DS, so this is to keep things consistent.
   disabled?: boolean;
   error?: true;
+  validators?: ValidatorFn[];
 }
 
 export interface IRadioInputOption {
@@ -23,7 +30,6 @@ export interface IRadioInputOption {
 @Component({
   selector: 'lib-radio-input',
   templateUrl: './radio-input.component.html',
-  styleUrls: ['./radio-input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -42,6 +48,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     id: '',
     formGroup: this.formGroupEmpty
   };
+  @Input() id = '';
+  @Input() formGroup = this.formGroupEmpty;
 
   onChange = (formValue: string) => { };
   onTouched = () => { };
@@ -63,16 +71,17 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    console.log(this.size);
-    if (this.config?.small) {
-      this.size = DSSizes.small;
-    }
+    if (this.config?.small) this.size = DSSizes.small;
+    if (this.id !== '') this.config.id = this.id;
+    if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
+
+    this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
   }
 
   /**
-   * 
-   * @param override 
-   * @returns 
+   *
+   * @param override
+   * @returns
    */
   getSize(override: DSSizes | undefined) {
     if (override) {
