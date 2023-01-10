@@ -29,7 +29,6 @@ export enum InputTypes {
 @Component({
   selector: 'jl-pr-sclp-input',
   templateUrl: './jl-input.component.html',
-  styleUrls: ['./jl-input.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
