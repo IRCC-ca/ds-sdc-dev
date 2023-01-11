@@ -113,7 +113,8 @@ export class HomeComponent implements OnInit {
         sizeOverride: DSSizes.small,
         error: true
       },
-    ]
+    ],
+    helpText: 'Help text test'
   };
 
   radioErrorTestConfig: IRadioInputComponentConfig = {
