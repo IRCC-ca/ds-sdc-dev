@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection} from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IAlertConfig, AlertType} from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
@@ -63,6 +63,14 @@ export class HomeComponent implements OnInit {
       label: 'Form Mixed Test',
     },
   ];
+
+  alertConfig: IAlertConfig = {
+    id: '123',
+    title: 'Alert Title',
+    body: 'Alert body. Alert body. Alert body. Alert body. Alert body. Alert body. Alert body. Alert body. Alert body. Alert body. Alert body.',
+    type: AlertType.info,
+    rounded: true
+  };
   //TODO: Test non-config checkboxes
 
   dropdownConfig: IJLDropdownComponentConfig = {

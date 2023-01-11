@@ -8,29 +8,34 @@ export enum AlertType {
   warning = 'warning'
 };
 
+export interface IAlertConfig {
+  id: string,
+  title: string,
+  body: string,
+  type?: AlertType,
+  rounded?: boolean
+}
+
 @Component({
   selector: 'lib-alert',
   templateUrl: './alert.component.html'
 })
 export class AlertComponent implements OnInit {
 
-  test = 'test';
-
+  @Input() config: IAlertConfig = {
+    id: '',
+    title: '',
+    body: ''
+  };
   @Input() id = '';
   @Input() title = '';
   @Input() body = '';
-  @Input() type? = AlertType.generic;
-  @Input() rounded? = false;
 
   @Output() closeItem? = new EventEmitter();
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.id);
-    console.log(this.title);
-    console.log(this.body);
-    console.log(this.type);
-    console.log(this.rounded);
+  ngOnInit() {
+    console.log('it is', this.config.type);
   }
 }
