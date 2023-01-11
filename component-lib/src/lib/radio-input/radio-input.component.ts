@@ -17,6 +17,8 @@ export interface IRadioInputComponentConfig {
   disabled?: boolean;
   error?: true;
   validators?: ValidatorFn[];
+  helpText?: string;
+  customErrorText?: string;
 }
 
 export interface IRadioInputOption {
