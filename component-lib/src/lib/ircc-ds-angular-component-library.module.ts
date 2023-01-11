@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ButtonComponent } from './button/button.component';
 import { IconComponent } from './icon/icon.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 
@@ -38,7 +39,8 @@ import { IconComponent } from './icon/icon.component';
     HeaderComponent,
     FooterComponent,
     ButtonComponent,
-    IconComponent
+    IconComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +64,8 @@ import { IconComponent } from './icon/icon.component';
     HeaderComponent,
     FooterComponent,
     ButtonComponent,
-    IconComponent
+    IconComponent,
+    AlertComponent
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }
