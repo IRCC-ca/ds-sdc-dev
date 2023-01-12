@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import {IconButtonCategories} from "../../../component-lib/src/lib/icon-button/icon-button.component";
 
 @Component({
   selector: 'app-test-page',
@@ -11,6 +12,7 @@ export class TestPageComponent implements OnInit {
 
   testTitle = 'Test Title';
   testID = 'testID';
+  eIconButtonCategories = IconButtonCategories;
 
   constructor() { }
 
