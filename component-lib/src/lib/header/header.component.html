@@ -1,10 +1,28 @@
-<header class="heading">
+<!-- <header class="heading">
     <div class="grid-container">
         <picture>
-            <source srcset="assets/canada_govt_logo_dark.svg" media="(prefers-color-scheme: dark)">
-            <img src="assets/canada_govt_logo_light.svg">
+            <source srcset="assets/images/canada_govt_logo_dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="assets/images/canada_govt_logo_light.svg">
         </picture>
         <div class="item2"><ng-content></ng-content></div>
     </div>
     <hr class="headerLine"/>
-</header>
+</header> -->
+
+<header class="heading">
+    <div class="grid-container" [id]="id">
+        <picture>
+            <!-- <source srcset="../../assets/images/goc-flag.png" media="(prefers-color-scheme: dark)"> -->
+            <img src="./assets/images/goc-flag.png">
+        </picture>
+        <picture class="gocText">
+          <source srcset="../../assets/images/goc-text.png" media="(prefers-color-scheme: dark)">
+          <img src="../../assets/images/goc-text.png">
+        </picture>
+        <div class="item2"><ng-content></ng-content></div>
+        <div class="languageSwitch">
+            <lib-language-switch [id]="id + '_langToggle'"></lib-language-switch>
+        </div>
+    </div>
+    <hr class="headerLine"/>
+  </header>

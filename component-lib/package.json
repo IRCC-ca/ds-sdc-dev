@@ -1,6 +1,9 @@
 {
   "name": "ircc-ds-angular-component-library",
-  "version": "0.0.1",
+  "version": "0.0.7",
+  "assets": [
+    "./src/assets"
+  ],
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",

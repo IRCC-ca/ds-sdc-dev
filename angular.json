@@ -31,7 +31,12 @@
               "src/favicon.ico",
               "src/apple-touch-icon.png",
               "src/robots.txt",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./dist/ircc-ds-angular-component-library/src/assets",
+                "output": "src/assets"
+              }
             ],
             "styles": [
               "src/main.scss"

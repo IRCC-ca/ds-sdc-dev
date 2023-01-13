@@ -22,6 +22,10 @@ export * from './lib/icon/icon.component';
 
 export * from './lib/header/header.component';
 export * from './lib/footer/footer.component';
+export * from './lib/icon-button/icon-button.component';
+export * from './lib/language-switch/language-switch.component';
+export * from './lib/language-switch/language-switch-button.service';
+
 
 export * from './shared/interfaces/component-configs';
 export * from './shared/constants/jl-components/jl-components.constants/jl-components.constants'
