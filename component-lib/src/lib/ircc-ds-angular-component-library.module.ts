@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ButtonComponent } from './button/button.component';
 import { IconComponent } from './icon/icon.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
+import { LanguageSwitchComponent } from './language-switch/language-switch.component';
 
 
 
@@ -41,6 +42,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     ButtonComponent,
     IconComponent,
     IconButtonComponent,
+    LanguageSwitchComponent,
   ],
   imports: [
     CommonModule,
@@ -66,6 +68,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     ButtonComponent,
     IconComponent,
     IconButtonComponent,
+    LanguageSwitchComponent,
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }

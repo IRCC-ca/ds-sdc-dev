@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-test-page',
@@ -13,9 +15,16 @@ export class TestPageComponent implements OnInit {
   testID = 'testID';
   // eIconButtonCategories = IconButtonCategories;
 
-  constructor() { }
+  langToggleSub?: Subscription;
 
-  ngOnInit(): void {
+  constructor(
+    private langToggle: LanguageSwitchButtonService,
+  ) { }
+
+  ngOnInit() {
+    this.langToggleSub = this.langToggle.languageClickObs$.subscribe(response => {
+    });
   }
+
 
 }
