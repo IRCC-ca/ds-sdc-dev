@@ -40,7 +40,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     FooterComponent,
     ButtonComponent,
     IconComponent,
-    IconButtonComponent
+    IconButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -65,7 +65,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     FooterComponent,
     ButtonComponent,
     IconComponent,
-    IconButtonComponent
+    IconButtonComponent,
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }
