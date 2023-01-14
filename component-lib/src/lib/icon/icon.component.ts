@@ -23,10 +23,10 @@ export class IconComponent {
     @Input() iconConfig!: IIconConfig;
 
     public get formattedIcon(): string {
-        return "'" + '\\' + this.iconConfig.unicode + "'";
+        return "'" + '\\' + this.iconConfig?.unicode + "'";
     }
 
     public get isHidden(): boolean {
-        return this.iconConfig.ariaLabel === '';
+        return this.iconConfig?.ariaLabel === '';
     }
 }
