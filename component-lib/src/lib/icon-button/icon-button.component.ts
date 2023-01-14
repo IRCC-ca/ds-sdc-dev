@@ -4,19 +4,31 @@ export enum IconButtonCategories {
   critical = 'critical',
   custom = 'custom'
 }
+
+export interface IconButtonIconConfig {
+  class: string;
+  color?: string;
+}
 @Component({
   selector: 'lib-icon-button',
   templateUrl: './icon-button.component.html',
 })
 export class IconButtonComponent implements OnInit {
-
   @Input()
-  category?: IconButtonCategories | keyof typeof IconButtonCategories
-  icon?: string;
-  constructor() { }
+  category!: keyof typeof IconButtonCategories
+  icon?: IconButtonIconConfig;
+  iconConfigs: { [key: string]: IconButtonIconConfig } = {
+    primary: {
+      class: 'fa-thin fa-xmark',
+    },
+    critical: {
+      class: 'fa-solid fa-trash-can',
+      color: 'var(--critical-text)'
+    }
+  }
 
   ngOnInit(): void {
-    this.icon = 'fa-thin fa-xmark';
+    this.icon = this.iconConfigs[this.category];
   }
 
 }
