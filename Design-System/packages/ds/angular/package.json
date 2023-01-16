@@ -1,0 +1,48 @@
+{
+    "name": "@ircc-ca/ds-sdc-angular",
+    "version": "1.1.0",
+    "description": "Angular components for Digital Journey Labs Design System",
+    "author": "IRCC-ca",
+    "homepage": "https://github.com/IRCC-ca/ds-sdc#readme",
+    "license": "MIT",
+    "main": "dist/public-api.d.ts",
+    "directories": {
+        "lib": "lib",
+        "test": "__tests__"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/IRCC-ca/ds-sdc.git"
+    },
+    "scripts": {
+        "test": "echo \"ng test\"",
+        "test:cov": "ng test --coverage",
+        "test:watch": "ng test --watch",
+        "format": "prettier \"./**/**.{ts,json,css,scss,html}\" --write",
+        "format:check": "prettier \"./**/**.{ts,json,css,scss,html}\" --check",
+        "lint:style": "stylelint ./**/*.scss",
+        "lint:md": "alex --quiet ./**/*.md && alex --quiet *.md",
+        "lint": "ng lint && npm run lint:style",
+        "build": "ng build @ircc-ca/ds-sdc-angular",
+        "prepublishOnly": "ng build @ircc-ca/ds-sdc-angular",
+        "postpublish": "rm -rf dist/"
+    },
+    "bugs": {
+        "url": "https://github.com/IRCC-ca/ds-sdc/issues"
+    },
+    "peerDependencies": {
+        "@angular/common": "^14.2.5",
+        "@angular/core": "^14.2.5"
+    },
+    "dependencies": {
+        "@ircc-ca/ds-sdc-core": "^1.3.0",
+        "tslib": "^2.4.0"
+    },
+    "publishConfig": {
+        "@ircc-ca:registry": "https://registry.npmjs.com/"
+    },
+    "devDependencies": {
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.6.2"
+    }
+}

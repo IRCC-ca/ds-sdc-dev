@@ -1,0 +1,66 @@
+@use '../tokens/template-const' as template-const;
+@use './color' as color;
+
+/// Content passed to this mixin will only be displayed when the color scheme is set to light
+@mixin light {
+    @if (color.$color-scheme == light) {
+        @content;
+    } @else if (color.$color-scheme == system) {
+        @media(prefers-color-scheme: light){
+            @content;
+        }
+    }
+}
+
+/// Content passed to this mixin will only be displayed when the color scheme is set to dark
+@mixin dark {
+    @if (color.$color-scheme == dark) {
+        @content;
+    } @else if (color.$color-scheme == system) {
+        @media(prefers-color-scheme: dark){
+            @content;
+        }
+    }
+}
+
+/// Content will be displayed conditionally based on matching the attribute
+/// being assigned to the value, or if the attribute is not assigned if it
+/// matches the default.
+/// @param {String} $value - The value the conditional is dependent on
+/// @param {String} $attribute - The attribute to check for the conditional
+/// @param {String} $default - If the attribute is not assigned, will match value to default
+/// @deprecated - use select-attribute in place
+@mixin selector(
+    $value,
+    $attribute,
+    $default
+) {
+    @include select-attribute($value, $attribute, $default) {
+        @content;
+    }
+}
+
+/// Content will be displayed conditionally based on matching the attribute
+/// being assigned to the value, or if the attribute is not assigned if it
+/// matches the default.
+/// @param {String} $value - The value the conditional is dependent on
+/// @param {String} $attribute - The attribute to check for the conditional
+/// @param {String} $default - If the attribute is not assigned, will match value to default
+@mixin select-attribute(
+    $value,
+    $attribute,
+    $default
+) {
+    @if not $value {
+        @content;
+    } @else if $value == $default {
+        &:where(:not([#{$attribute}])),
+        &:where([#{$attribute}='#{$value}']) {
+            @content;
+        }
+    } @else {
+        &:where([#{$attribute}='#{$value}']) {
+            @content;
+        }
+    }
+}

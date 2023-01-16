@@ -1,0 +1,80 @@
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../template-const' as template-const;
+@use '../sizes' as sizes;
+@use '../../util/device' as device;
+@use 'sass:map';
+
+@mixin tokens($cta-palette, $visited-palette, $focus-palette) {
+    @include theme.light {
+        @include device.if-hover {
+            --link-text-hover: #{color.mix-token($focus-palette, 800)};
+        }
+        --link-text: #{color.mix-token($cta-palette, 700)};
+        --link-text-active: #{color.mix-token($cta-palette, 900)};
+        --link-text-visited: #{color.mix-token($visited-palette, 700)};
+    }
+
+    @include theme.dark {
+        @include device.if-hover {
+            --link-text-hover: #{color.mix-token($focus-palette, 500)};
+        }
+        --link-text: #{color.mix-token($cta-palette, 400)};
+        --link-text-active: #{color.mix-token($cta-palette, 300)};
+        --link-text-visited: #{color.mix-token($visited-palette, 500)};
+    }
+}
+
+@mixin anchor-selector {
+    a,
+    .link {
+        &#{template-const.$escape} {
+            @content;
+        }
+    }
+}
+
+@mixin create(
+    $palette: (
+        cta: cta,
+        visited: visited,
+        focus: focus
+    )
+) {
+    @include anchor-selector() {
+        @include tokens(
+            map.get($palette, cta),
+            map.get($palette, visited),
+            map.get($palette, focus),
+        );
+        @include layout();
+    }
+}
+
+@mixin layout {
+    border-radius: sizes.$border-radius;
+    padding: sizes.$fixed-2 sizes.$fixed-4;
+    display: inline;
+
+    &:link {
+        color: var(--link-text);
+    }
+    @include device.if-hover {
+        color: var(--link-text-hover);
+        background-color: var(--generic-hover);
+    }
+
+    &:focus {
+        box-shadow: none;
+        outline-offset: 0;
+    }
+
+    &:active {
+        color: var(--link-text-active);
+        background-color: var(--generic-active);
+    }
+
+    &:visited {
+        color: var(--link-text-visited);
+    }
+}

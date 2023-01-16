@@ -1,0 +1,79 @@
+@use '../../util/theme';
+@use './button-const';
+@use './plain';
+@use '../sizes';
+@use '../template-const';
+@use '../../util/device';
+@use '../../util/color';
+@use '../../util/size';
+
+@mixin selectors {
+    a:any-link, #{button-const.$selectors}:where(:not([category])) {
+        &#{template-const.$escape}:where(nav *) {
+            @content;
+        }
+    }
+}
+
+@mixin create {
+    @include selectors() {
+        @include layout();
+        @include layout-tab();
+    }
+}
+
+@mixin layout-tab() {
+    background: var(--surface1);
+    --text: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    @include size.selector(small) {
+        &:where([selected])::after {
+            transform: translateY(sizes.$fixed-8);
+        }
+    }
+    @include size.selector(large) {
+        &:where([selected])::after {
+            transform: translateY(sizes.$fixed-12);
+        }
+    }
+    &:where([selected])::after {
+        content: '';
+        height:sizes.$fixed-4;
+        background: var(--navigation);
+        border-radius: sizes.$fixed-4;
+        display: block;
+
+    }
+    &:where([selected]){
+        --text: var(--text-primary);
+    }
+
+    @include device.if-hover() {
+        background: var(--generic-hover);
+        &:where([selected])::after {
+            background: var(--navigation-hover);
+        }
+    }
+    &:active {
+        background: var(--generic-active);
+        &:where([selected])::after {
+            background: var(--navigation-hover);
+        }
+    }
+    &:disabled {
+        background: var(--surface1);
+        color: var(--text-disabled);
+        &:where([selected])::after {
+            background: var(--navigation-disabled);
+        }
+    }
+
+
+}
+
+@mixin layout() {
+    @include button-const.layout();
+    @include layout-tab();
+}
