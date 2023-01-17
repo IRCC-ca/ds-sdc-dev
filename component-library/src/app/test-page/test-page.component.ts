@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { FormControl, FormGroup } from '@angular/forms';
 import { IJLInputComponentConfig, InputTypes, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
-=======
-import { FormGroup } from '@angular/forms';
-import { LanguageSwitchButtonService, IAlertConfig, AlertType } from 'ircc-ds-angular-component-library';
->>>>>>> 8678ba6 (mono-repo updates)
 import { Subscription } from 'rxjs';
 
 
@@ -23,18 +18,10 @@ export class TestPageComponent implements OnInit {
 
   langToggleSub?: Subscription;
 
-<<<<<<< HEAD
   inputConfig: IJLInputComponentConfig = {
     id: 'input',
     formGroup: new FormGroup({}),
     type: InputTypes.password,
-=======
-  alertConfig : IAlertConfig = {
-    id:'123',
-    title: 'Alert Title',
-    body: 'This is the Alert Body, testing it out.',
-    type: AlertType.success
->>>>>>> 8678ba6 (mono-repo updates)
   }
 
   constructor(

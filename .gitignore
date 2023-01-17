@@ -3,11 +3,6 @@
 
 
 # Compiled output
-<<<<<<< HEAD
-**/dist/**
-# NOT WORKING
-./component-library/dist/
-=======
 
 **/dist/**
 
@@ -15,7 +10,6 @@
 
 ./component-library/dist/
 
->>>>>>> 8678ba6 (mono-repo updates)
 **/tmp
 
 **/out-tsc
