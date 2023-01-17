@@ -12,13 +12,16 @@ have already cloned this project, you can run "git submodule init", then "git su
 
 1. Go to project folder and install dependencies:
  ```sh
+ cd ./component-lib
+ npm install
+ cd ../
  npm install
  ```
 
-2. Go to `component-lib` folder and install dependencies:
+2. Build the library using the --watch option to update the project whenever there is a change to the library:
 ```sh
-cd component-lib && npm install
- ```
+ng build ircc-ds-angular-component-library --watch
+```
 
 3. Launch development server, and open `localhost:4200` in your browser:
  ```sh
