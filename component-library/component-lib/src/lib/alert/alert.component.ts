@@ -33,9 +33,4 @@ export class AlertComponent implements OnInit {
 
   @Output() closeItem? = new EventEmitter();
 
-  constructor() {}
-
-  ngOnInit() {
-    console.log('it is', this.config.type);
-  }
 }
