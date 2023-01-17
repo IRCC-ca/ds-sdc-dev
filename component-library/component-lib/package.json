@@ -7,8 +7,8 @@
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
-    "@ircc-ca/ds-sdc-core": "file:../../Design-System/core",
-    "@ngx-translate/core": "^14.0.0"
+    "@ngx-translate/core": "^14.0.0",
+    "@ircc-ca/ds-sdc-core": "file:../../core-library"
   },
   "dependencies": {
     "tslib": "^2.3.0"
