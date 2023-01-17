@@ -1,0 +1,62 @@
+// Import JL Design System
+@use '@ircc-ca/ds-sdc-core/index' as ircc-ds;
+@include ircc-ds.theme-init-required(
+  ircc-ds.palette-journeylab(),
+  default,
+  small
+);
+@include ircc-ds.element-styles();
+
+// Font Families
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+//TODO: put ng-invalid and ng-touched here so it's not on the DS style sheet, but remains global. It can thus be removed from the DSCore
+input.red-border {
+  .ng-touched.ng-invalid:not(form) {
+    @include invalid-red-border;
+  }
+}
+
+
+
+/* Reset and Border-Box Styles */
+@import 'partials/setup';
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+/* Importing Bootstrap Icons. */
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* Importing Custom SCSS file. Global incl variables*/
+@import 'partials/global';
+@import 'partials/responsive-bootstrap-overwrite';
+
+/* Importing Custom Formly SCSS file. */
+@import 'partials/formly';
+
+/* Material Angular Navigation tab in pages SCSS file */
+@import 'partials/page-nav-tabs';
+
+/* Material Angular Navigation tab for notes SCSS file */
+@import 'partials/note-nav-tabs';
+
+/* ng2-pdf-viewer */
+@import 'partials/pdf-widget';
+
+/* Material Tooltip */
+@import 'partials/tooltip';
+
+/* Material Dialog */
+@import 'partials/settings-dialog';
+
+/* Pagination */
+@import 'partials/inventory-pagination';
+
+/* Inventory filters */
+@import 'partials/_inventory-filters';
+
+/* Delete Confirmation Dialog */
+@import 'partials/delete-dialog';
+
+@import 'partials/inventory-application-input';

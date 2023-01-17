@@ -1,0 +1,54 @@
+@use '../theme/ircc-jl-colors' as tokens;
+@use 'sass:map';
+@use 'sass:list';
+@import '../tokens/template-const';
+
+/// global palette constant
+$root-palette: ();
+/// global color mode constant
+$color-mode: '';
+/// global color scheme constant
+$color-scheme: '';
+
+/// override the color mode setting (required before theme creation)
+/// @param {String} $new-mode - new setting for color mode, as defined in the theme map
+@mixin set-mode($new-mode: default) {
+    // overrides the color mode
+    $color-mode: $new-mode !global;
+}
+
+/// override the color mode setting (required before theme creation)
+/// @param {String} $new-scheme - new setting for color scheme
+@mixin set-scheme($new-scheme: light) {
+    // overrides the color scheme
+    $color-scheme: $new-scheme !global;
+}
+
+/// @param {Map} $palette - set the palette to be used when generating
+// components, multiple modes can be passed to allow for generating
+// corresponding stylesheets.
+@mixin set-palette($palette: tokens.$journeylab-palette) {
+    $root-palette: $palette !global;
+}
+/// Draws HSL list from $root-palette
+/// @param {String} $palette-key - Palette key to reference to draw HSL values
+/// @param {Number} $shade - shade key to reference to draw HSL values
+/// @returns {List} - HSL values for given color
+@function get-raw-color($palette-key, $shade) {
+    @return map.get($root-palette, $color-mode, $palette-key, $shade);
+}
+
+/// Mix token using the selected palette
+/// @param {String} $palette-key - Palette key to reference for generating token, as defined in palette
+/// @param {Number} $shade - Shade key to reference for generating token, as defined in palette
+/// @param {Number} $opacity - Normalized opacity on a 0 - 1 scale
+/// @returns {Color} - determined color value with supplied token inputs
+@function mix-token($palette-key, $shade: 1200, $opacity: 1) {
+    $color: get-raw-color($palette-key, $shade);
+    @return #{hsla(
+            $hue: list.nth($color, 1),
+            $saturation: list.nth($color, 2),
+            $lightness: list.nth($color, 3),
+            $alpha: $opacity
+        )};
+}

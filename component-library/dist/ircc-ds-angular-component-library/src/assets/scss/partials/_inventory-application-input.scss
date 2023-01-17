@@ -1,0 +1,8 @@
+@import '../../../assets/scss/partials/variables';
+
+.application-input-tooltip {
+  color: $dark !important;
+  background-color: $light;
+  border: 0.5px solid $moderate;
+  @include drop-shadow-left;
+}

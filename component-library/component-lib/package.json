@@ -1,0 +1,19 @@
+{
+  "name": "ircc-ds-angular-component-library",
+  "version": "0.0.7",
+  "assets": [
+    "./src/assets"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@ircc-ca/ds-sdc-core": "file:../../Design-System/core",
+    "@ngx-translate/core": "^14.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~14.1.3"
+  }
+}
