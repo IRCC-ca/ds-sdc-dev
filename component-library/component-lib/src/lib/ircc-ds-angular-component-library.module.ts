@@ -20,6 +20,7 @@ import { ButtonComponent } from './button/button.component';
 import { IconComponent } from './icon/icon.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { LanguageSwitchComponent } from './language-switch/language-switch.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 
@@ -43,6 +44,7 @@ import { LanguageSwitchComponent } from './language-switch/language-switch.compo
     IconComponent,
     IconButtonComponent,
     LanguageSwitchComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -69,6 +71,7 @@ import { LanguageSwitchComponent } from './language-switch/language-switch.compo
     IconComponent,
     IconButtonComponent,
     LanguageSwitchComponent,
+    AlertComponent
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }
