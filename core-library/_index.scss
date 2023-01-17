@@ -31,6 +31,7 @@
 @use './component-styling/dropdown/primary' as dd-primary;
 @use './component-styling/dropdown/secondary' as dd-secondary;
 @use './component-styling/alert/alert';
+@use './component-styling/icon-button/icon-button';
 
 @use './typography/fa-wrapper';
 
@@ -78,6 +79,7 @@
         @include element(input-component);
         @include element(alert);
         @include element(alert-tokens);
+        @include element(icon-button);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -126,5 +128,7 @@
         @include alert.create();
     } @else if $key == alert-tokens {
         @include alert-tokens.create();
+    } @else if $key == icon-button {
+        @include icon-button.create();
     }
 }
