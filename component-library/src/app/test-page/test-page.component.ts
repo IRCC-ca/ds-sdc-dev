@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { IJLInputComponentConfig, InputTypes, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-test-page',
@@ -20,7 +21,7 @@ export class TestPageComponent implements OnInit {
   inputConfig: IJLInputComponentConfig = {
     id: 'input',
     formGroup: new FormGroup({}),
-    type: InputTypes.password
+    type: InputTypes.password,
   }
 
   constructor(
@@ -30,6 +31,8 @@ export class TestPageComponent implements OnInit {
   ngOnInit() {
     this.langToggleSub = this.langToggle.languageClickObs$.subscribe(response => {
     });
+    this.inputConfig.formGroup.addControl(this.inputConfig.id, new FormControl());
+
   }
 
 
