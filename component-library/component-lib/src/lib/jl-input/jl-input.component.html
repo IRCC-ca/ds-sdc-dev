@@ -14,10 +14,12 @@
             tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
             [type]="config.type" [id]="config.id" [formControlName]="config.id" />
         </div>
-        <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain" class="transparentButton" (click)="hideShow()" [disabled]="disabled">
-          <i class="passwordIcon fa-solid"
-            aria-pressed="getShowHideText('check')"
-            [ngClass]="{'fa-eye': (!showPassword), 'fa-eye-slash': (showPassword)}"></i>
+        <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
+          class="transparentButton" (click)="hideShow()" [disabled]="disabled">
+          <div *ngIf="showPassword"><i class="fa-solid fa-eye-slash"></i></div>
+          <div *ngIf="!showPassword"><i class="fa-solid fa-eye"></i></div>
+          <!-- <i class="passwordIcon fa-solid" aria-pressed="getShowHideText('check')"
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i> -->
         </button>
       </div>
     </div>

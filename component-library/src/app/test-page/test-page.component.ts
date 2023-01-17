@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import { IJLInputComponentConfig, InputTypes, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,6 +16,12 @@ export class TestPageComponent implements OnInit {
   // eIconButtonCategories = IconButtonCategories;
 
   langToggleSub?: Subscription;
+
+  inputConfig: IJLInputComponentConfig = {
+    id: 'input',
+    formGroup: new FormGroup({}),
+    type: InputTypes.password
+  }
 
   constructor(
     private langToggle: LanguageSwitchButtonService,
