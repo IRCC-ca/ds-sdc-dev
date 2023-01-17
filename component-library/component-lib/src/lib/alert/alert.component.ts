@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export enum AlertType {
   generic = 'generic',
@@ -20,7 +20,7 @@ export interface IAlertConfig {
   selector: 'lib-alert',
   templateUrl: './alert.component.html'
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent{
 
   @Input() config: IAlertConfig = {
     id: '',
