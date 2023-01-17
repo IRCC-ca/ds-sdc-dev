@@ -11,8 +11,7 @@
     "@ircc-ca/ds-sdc-core": "file:../../core-library"
   },
   "dependencies": {
-    "tslib": "^2.3.0",
-    "@ircc-ca/ds-sdc-core": "file:../../core-library"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~14.1.3"
