@@ -66,4 +66,3 @@ xcuserdata/
 # System Files
 .DS_Store
 Thumbs.db
-component-library/dist/**
