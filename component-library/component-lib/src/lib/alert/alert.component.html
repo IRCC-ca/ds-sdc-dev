@@ -1,0 +1,14 @@
+<div class="alert-container" [ngClass]="{'rounded': config.rounded, 'information': config.type == 'info', 'success': config.type == 'success', 'warning': config.type == 'warning', 'critical': config.type == 'critical'}">
+    <div class="alert-header">
+        <i class="fa-regular alert-icon" [ngClass]="{'fa-circle-info': config.type == 'info', 'fa-circle-check': config.type == 'success', 'fa-triangle-exclamation': config.type == 'warning', 'fa-circle-exclamation': config.type == 'critical'}"></i>
+        <div class="alert-title">
+            <p class="h6"><strong>{{ config.title }}</strong></p>
+        </div>    
+    </div>
+    <div class="alert-content">
+    <div class="alert-line"></div>
+    <div class="alert-body">
+        <p>{{ config.body}}</p>
+    </div>
+    </div>
+</div>
