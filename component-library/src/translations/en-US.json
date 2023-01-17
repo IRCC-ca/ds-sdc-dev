@@ -1,4 +1,8 @@
 {
+  "OPPOSITE_LANGUAGE": "Français",
+
+  "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",
+
   "APP_NAME": "component-library",
   "About": "About",
   "Hello world !": "Hello world !",
