@@ -10,7 +10,7 @@
 
     color: var(--global-divider);
     width: 100%;
-    border-width: sizes.$fixed-2;
+    border-width: 1px;
     border-style: solid;
     margin-top: sizes.$fixed-24;
 }
@@ -19,6 +19,8 @@
     display: grid;
     @include layout-grid.grid(max-content auto, auto);
     * {grid-column: auto / span 1};
+    padding-left: 64px;
+    padding-right: 64px;
 
     align-items: center;
 
