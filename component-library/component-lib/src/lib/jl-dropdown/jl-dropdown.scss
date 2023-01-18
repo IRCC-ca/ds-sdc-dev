@@ -1,186 +1,186 @@
-@import '../../assets/scss/partials/variables';
+// @import '../../assets/scss/partials/variables';
 
-.select-container {
+// .select-container {
 
-  user-select: none;
+//   user-select: none;
 
-  .select {
-    height: 40px;
-    width: 100%;
-    min-width: 15ch;
-    max-width: 30ch;
-    justify-self: stretch;
+//   .select {
+//     height: 40px;
+//     width: 100%;
+//     min-width: 15ch;
+//     max-width: 30ch;
+//     justify-self: stretch;
     
-    display: grid;
-    grid-template-areas: 'select';
-    align-items: center;
+//     display: grid;
+//     grid-template-areas: 'select';
+//     align-items: center;
 
-    width: 100%;
-  }
-  .select:after {
-    content: "\f282";
-    color: $ircc-ca-black;
-    font-family: bootstrap-icons !important;
-    grid-area: select;
-    justify-self: end;
-    margin-right: 14px;
+//     width: 100%;
+//   }
+//   .select:after {
+//     content: "\f282";
+//     color: $ircc-ca-black;
+//     font-family: bootstrap-icons !important;
+//     grid-area: select;
+//     justify-self: end;
+//     margin-right: 14px;
     
-    height: 16px;
-    width: 14px;
-    line-height: initial;
-    pointer-events: none;
-    transition: all 0.1s;
-  }
+//     height: 16px;
+//     width: 14px;
+//     line-height: initial;
+//     pointer-events: none;
+//     transition: all 0.1s;
+//   }
 
-  .selected {
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: inherit;
-    line-height: inherit;
-    padding: 10px 12px;
-    padding-right: 30px;
-    cursor: pointer;
+//   .selected {
+//     appearance: none;
+//     background-color: transparent;
+//     border: none;
+//     margin: 0;
+//     font-family: inherit;
+//     font-size: inherit;
+//     cursor: inherit;
+//     line-height: inherit;
+//     padding: 10px 12px;
+//     padding-right: 30px;
+//     cursor: pointer;
   
-    grid-area: select;
-    @keyframes active {
-      0% {background-color:$ircc-ca-active-background;}
-      99%   {background-color:$ircc-ca-active-background;}
-      100% {background-color: transparent;}
-    }
+//     grid-area: select;
+//     @keyframes active {
+//       0% {background-color:$ircc-ca-active-background;}
+//       99%   {background-color:$ircc-ca-active-background;}
+//       100% {background-color: transparent;}
+//     }
 
-    &:hover {
-      background-color: $ircc-ca-hover-background;
-    }
+//     &:hover {
+//       background-color: $ircc-ca-hover-background;
+//     }
 
-    &:focus-visible{
-      outline: solid 3px $ircc-ca-focus;
-      // border: ;
-    }
+//     &:focus-visible{
+//       outline: solid 3px $ircc-ca-focus;
+//       // border: ;
+//     }
     
-    &.active{
-      background-color: transparent;
-      animation-name: active;
-      animation-duration: 2s;
-    }
+//     &.active{
+//       background-color: transparent;
+//       animation-name: active;
+//       animation-duration: 2s;
+//     }
 
-  }
+//   }
 
-  .selected, .select-options{
-    background: $light;
-    font-size: 14px;
-    line-height: 20px;
-    color: $ircc-ca-black;
-    font-family: 'Inter', sans-serif !important;
-    border-radius: 4px;
-    border: 1px solid $ircc-ca-border;
-  }
+//   .selected, .select-options{
+//     background: $light;
+//     font-size: 14px;
+//     line-height: 20px;
+//     color: $ircc-ca-black;
+//     font-family: 'Inter', sans-serif !important;
+//     border-radius: 4px;
+//     border: 1px solid $ircc-ca-border;
+//   }
   
-  .select.open:after{
-    content: "\f286";
-  } 
+//   .select.open:after{
+//     content: "\f286";
+//   } 
 
-  .cta {
-    @include cta-button(180px);
+//   .cta {
+//     @include cta-button(180px);
   
-    &:after {
-      color: $ircc-ca-white;
-    }
+//     &:after {
+//       color: $ircc-ca-white;
+//     }
 
-    .select-options {
-      min-width: 234px;
-      width: auto;
-      margin-left: -53px;
+//     .select-options {
+//       min-width: 234px;
+//       width: auto;
+//       margin-left: -53px;
 
       
-    }
-  }
+//     }
+//   }
   
-  .select-options{
-    z-index: 2;
-    width: auto;
-    margin-top: 9px;
-    box-shadow: 0px 8px 20px $ircc-ca-box-shadow;
-    position: relative;
+//   .select-options{
+//     z-index: 2;
+//     width: auto;
+//     margin-top: 9px;
+//     box-shadow: 0px 8px 20px $ircc-ca-box-shadow;
+//     position: relative;
     
-    &.hide{
-      display: none;
-    }
+//     &.hide{
+//       display: none;
+//     }
 
-    .option{
+//     .option{
 
-      margin: 8px 0px;
-      width: 100%;
-      padding: 10px 12px;
+//       margin: 8px 0px;
+//       width: 100%;
+//       padding: 10px 12px;
       
       
-      display: grid;
-      grid-template-areas: 'options';
-      align-items: center;
+//       display: grid;
+//       grid-template-areas: 'options';
+//       align-items: center;
       
-      &:hover{
-        background-color: $ircc-ca-hover-background;
-        cursor: pointer;
-      }
+//       &:hover{
+//         background-color: $ircc-ca-hover-background;
+//         cursor: pointer;
+//       }
 
-      &.hide::after {
-        display: none !important;
-      }
+//       &.hide::after {
+//         display: none !important;
+//       }
 
-      &.hide .select-target {
-        padding-right: 0px;
-      }
+//       &.hide .select-target {
+//         padding-right: 0px;
+//       }
  
-      &.active::after{
-        grid-area: options;
-        justify-self: end;
-        content: '';
-        height: 16px;
-        width: 14px;
-        pointer-events: none;
-        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIiA/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIHZpZXdCb3g9IjAgMCA2NDAgNDgwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGRlc2M+Q3JlYXRlZCB3aXRoIEZhYnJpYy5qcyAzLjYuMzwvZGVzYz4KPGRlZnM+CjwvZGVmcz4KPGcgdHJhbnNmb3JtPSJtYXRyaXgoMS40MyAwIDAgMS40MyAzMjAuMTYgMjM4Ljg3KSIgID4KPHBhdGggc3R5bGU9InN0cm9rZTogbm9uZTsgc3Ryb2tlLXdpZHRoOiAxOyBzdHJva2UtZGFzaGFycmF5OiBub25lOyBzdHJva2UtbGluZWNhcDogYnV0dDsgc3Ryb2tlLWRhc2hvZmZzZXQ6IDA7IHN0cm9rZS1saW5lam9pbjogbWl0ZXI7IHN0cm9rZS1taXRlcmxpbWl0OiA0OyBmaWxsOiByZ2IoNzMsMTE2LDI0NSk7IGZpbGwtcnVsZTogbm9uemVybzsgb3BhY2l0eTogMTsiICB0cmFuc2Zvcm09IiB0cmFuc2xhdGUoLTI1NS45NSwgLTI1Ni4wNSkiIGQ9Ik0gNDcwLjYgMTA1LjQgYyAxMi41IDEyLjUgMTIuNSAzMi44IDAgNDUuMyBsIC0yNTYgMjU2IGMgLTEyLjUgMTIuNSAtMzIuOCAxMi41IC00NS4zIDAgbCAtMTI4IC0xMjggYyAtMTIuNSAtMTIuNSAtMTIuNSAtMzIuOCAwIC00NS4zIHMgMzIuOCAtMTIuNSA0NS4zIDAgTCAxOTIgMzM4LjcgTCA0MjUuNCAxMDUuNCBjIDEyLjUgLTEyLjUgMzIuOCAtMTIuNSA0NS4zIDAgeiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgo8L2c+Cjwvc3ZnPg==');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: 100%;
-      }
+//       &.active::after{
+//         grid-area: options;
+//         justify-self: end;
+//         content: '';
+//         height: 16px;
+//         width: 14px;
+//         pointer-events: none;
+//         background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIiA/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIHZpZXdCb3g9IjAgMCA2NDAgNDgwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGRlc2M+Q3JlYXRlZCB3aXRoIEZhYnJpYy5qcyAzLjYuMzwvZGVzYz4KPGRlZnM+CjwvZGVmcz4KPGcgdHJhbnNmb3JtPSJtYXRyaXgoMS40MyAwIDAgMS40MyAzMjAuMTYgMjM4Ljg3KSIgID4KPHBhdGggc3R5bGU9InN0cm9rZTogbm9uZTsgc3Ryb2tlLXdpZHRoOiAxOyBzdHJva2UtZGFzaGFycmF5OiBub25lOyBzdHJva2UtbGluZWNhcDogYnV0dDsgc3Ryb2tlLWRhc2hvZmZzZXQ6IDA7IHN0cm9rZS1saW5lam9pbjogbWl0ZXI7IHN0cm9rZS1taXRlcmxpbWl0OiA0OyBmaWxsOiByZ2IoNzMsMTE2LDI0NSk7IGZpbGwtcnVsZTogbm9uemVybzsgb3BhY2l0eTogMTsiICB0cmFuc2Zvcm09IiB0cmFuc2xhdGUoLTI1NS45NSwgLTI1Ni4wNSkiIGQ9Ik0gNDcwLjYgMTA1LjQgYyAxMi41IDEyLjUgMTIuNSAzMi44IDAgNDUuMyBsIC0yNTYgMjU2IGMgLTEyLjUgMTIuNSAtMzIuOCAxMi41IC00NS4zIDAgbCAtMTI4IC0xMjggYyAtMTIuNSAtMTIuNSAtMTIuNSAtMzIuOCAwIC00NS4zIHMgMzIuOCAtMTIuNSA0NS4zIDAgTCAxOTIgMzM4LjcgTCA0MjUuNCAxMDUuNCBjIDEyLjUgLTEyLjUgMzIuOCAtMTIuNSA0NS4zIDAgeiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgo8L2c+Cjwvc3ZnPg==');
+//         background-repeat: no-repeat;
+//         background-position: center center;
+//         background-size: 100%;
+//       }
       
-      p{
-        grid-area: options;
-        margin: 0;
-        padding-right: 30px;
-        color: $ircc-ca-black;
-        font-family: 'Inter', sans-serif !important;
-      }
-    }
-  }
+//       p{
+//         grid-area: options;
+//         margin: 0;
+//         padding-right: 30px;
+//         color: $ircc-ca-black;
+//         font-family: 'Inter', sans-serif !important;
+//       }
+//     }
+//   }
 
-  &.large .selected,
-  &.large .select-options{
-    font-size: 16px;
-    padding: 14px 12px;
-  }
+//   &.large .selected,
+//   &.large .select-options{
+//     font-size: 16px;
+//     padding: 14px 12px;
+//   }
   
-  &.error {
-    .selected{
-      border-color: $ircc-ca-error;
-      background: $ircc-ca-error-background;
+//   &.error {
+//     .selected{
+//       border-color: $ircc-ca-error;
+//       background: $ircc-ca-error-background;
       
-      &:hover {
-        border-color: $ircc-ca-error-border;
-      }
+//       &:hover {
+//         border-color: $ircc-ca-error-border;
+//       }
       
-      &:focus-visible{
-        outline: solid 3px $ircc-ca-focus;
-        // border: ;
-      }
-      &.active{
-        border-color: $ircc-ca-error-border;
-        background-color: ircc-ca-error-active;
-      }
+//       &:focus-visible{
+//         outline: solid 3px $ircc-ca-focus;
+//         // border: ;
+//       }
+//       &.active{
+//         border-color: $ircc-ca-error-border;
+//         background-color: ircc-ca-error-active;
+//       }
       
-    }
-  }
-}
+//     }
+//   }
+// }

@@ -7,7 +7,6 @@ export const FRENCH_BANNER_URL = 'https://www.canada.ca/etc/designs/canada/wet-b
 @Component({
     selector: 'lib-header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
     @Input() id = '';
