@@ -19,10 +19,9 @@ export interface IRadioInputComponentConfig {
   small?: true; //Default is large in the DS, so this is to keep things consistent.
   disabled?: boolean;
   error?: true;
-  errorMessage?: string;
   validators?: ValidatorFn[];
   helpText?: string;
-  customErrorText?: string;
+  customErrorText?: string; //TODO: move to it's own component
 }
 
 export interface IRadioInputOption {
