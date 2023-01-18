@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IJLInputComponentConfig, InputTypes, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
-import { Subscription } from 'rxjs';
+import { IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+
 
 
 @Component({
@@ -12,27 +12,39 @@ import { Subscription } from 'rxjs';
 export class TestPageComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
-  testTitle = 'Test Title';
-  testID = 'testID';
-  // eIconButtonCategories = IconButtonCategories;
-
-  langToggleSub?: Subscription;
-
-  inputConfig: IJLInputComponentConfig = {
-    id: 'input',
-    formGroup: new FormGroup({}),
-    type: InputTypes.password,
+  radioConfig: IRadioInputComponentConfig = {
+    id: 'testing_radio_input_1',
+    formGroup: this.form,
+    label: 'Radio Label Test',
+    desc: 'Description for radio input',
+    hint: 'this is hint text',
+    error: true,
+    errorMessage: 'Error message',
+    required: true,
+    options: [
+      {
+        text: 'Text Test',
+        value: 'Test Value',
+      },
+      {
+        text: 'Text Test2',
+        value: 'Test Value2',
+      },
+      {
+        text: 'Text Test',
+        value: 'Test Value',
+      },
+      {
+        text: 'Text Test2',
+        value: 'Test Value2',
+      }]
   }
 
   constructor(
-    private langToggle: LanguageSwitchButtonService,
   ) { }
 
   ngOnInit() {
-    this.langToggleSub = this.langToggle.languageClickObs$.subscribe(response => {
-    });
-    this.inputConfig.formGroup.addControl(this.inputConfig.id, new FormControl());
-
+    this.form.addControl(this.radioConfig.id, new FormControl());
   }
 
 

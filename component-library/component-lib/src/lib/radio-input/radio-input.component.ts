@@ -12,10 +12,14 @@ export interface IRadioInputComponentConfig {
   id: string;
   formGroup: FormGroup;
   label?: string;
+  desc?: string;
+  hint?: string;
+  required?: boolean;
   options?: IRadioInputOption[];
   small?: true; //Default is large in the DS, so this is to keep things consistent.
   disabled?: boolean;
   error?: true;
+  errorMessage?: string;
   validators?: ValidatorFn[];
   helpText?: string;
   customErrorText?: string;
@@ -77,7 +81,6 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     if (this.id !== '') this.config.id = this.id;
     if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
 
-    this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
   }
 
   /**

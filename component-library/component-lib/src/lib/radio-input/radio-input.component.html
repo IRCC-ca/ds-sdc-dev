@@ -7,7 +7,10 @@
             (config.customErrorText || '' | translate)
           : (config.label || '' | translate) + ' ' + (config?.helpText || '' | translate)
        "
-       [for]="config.id">{{(config.label || '') | translate}}</label>
+       [for]="config.id"
+       class="radio-label"><span *ngIf="config.required" class="required-star">*</span> {{(config.label || '') | translate}} <span *ngIf="config.required">&nbsp;(required)</span></label>
+       <p *ngIf="config.desc" class="radio-desc">{{(config.desc || '') | translate}}</p>
+       <p *ngIf="config.hint" class="radio-hint">{{(config.hint || '') | translate}}</p>
     <div *ngFor="let option of config.options; let index = index" class="radio">
         <ng-container [ngSwitch]="getSize(option.sizeOverride)">
             <ng-container *ngSwitchCase="sizes.small">
@@ -42,6 +45,7 @@
             </ng-container>
         </ng-container>
 
-        <label for="{{config.id}}">{{option.text | translate}}</label>
+        <label for="{{config.id}}">{{(option.text || '') | translate}}</label>
     </div>
+    <p *ngIf="config.error" class="radio-error"><i class="fa-regular fa-circle-exclamation"></i> {{(config.errorMessage || '') | translate}}</p>
 </form>
