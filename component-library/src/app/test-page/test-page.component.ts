@@ -18,7 +18,6 @@ export class TestPageComponent implements OnInit {
     label: 'Radio Label Test',
     desc: 'Description for radio input',
     hint: 'this is hint text',
-    error: true,
     errorMessage: 'Error message',
     required: true,
     options: [
