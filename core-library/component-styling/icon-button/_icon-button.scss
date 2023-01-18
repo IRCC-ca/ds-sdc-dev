@@ -20,11 +20,39 @@
   }
 }
 
+@mixin primary-lg {
+  padding: 8px 15px;
+  svg {
+    width: 15px;
+  }
+}
+
+@mixin primary-sm {
+  padding: 6px 14px;
+  svg {
+    width: 13px;
+  }
+}
+
+@mixin critical-lg {
+  padding: 8px 12px;
+  svg {
+    width: 21px;
+  }
+}
+
+@mixin critical-sm {
+  padding: 6px 11px;
+  svg {
+    width: 18px;
+  }
+}
+
 @mixin layout {
   > button {
     border-radius: 50%;
     &:focus {
-      border: 3px solid var(--navigation);
+      outline-offset: -3px;
     }
     &:disabled {
       svg {
@@ -33,16 +61,10 @@
     }
     &.primary {
       &.large {
-        padding: 8px 15px;
-        svg {
-          width: 15px;
-        }
+        @include primary-lg;
       }
       &.small {
-        padding: 6px 14px;
-        svg {
-          width: 13px;
-        }
+        @include primary-sm;
       }
       &.extraSmall {
         padding: 0 9px;
@@ -50,21 +72,27 @@
           width: 10px;
         }
       }
+      @include size.selector(large) {
+        @include primary-lg;
+      }
+      @include size.selector(small) {
+        @include primary-sm;
+      }
     }
     &.critical {
       padding-top: 14px;
       padding-bottom: 14px;
       &.large {
-        padding: 8px 12px;
-        svg {
-          width: 21px;
-        }
+        @include critical-lg;
       }
       &.small {
-        padding: 6px 11px;
-        svg {
-          width: 18px;
-        }
+        @include critical-sm;
+      }
+      @include size.selector(large) {
+        @include critical-lg;
+      }
+      @include size.selector(small) {
+        @include critical-sm;
       }
     }
   }

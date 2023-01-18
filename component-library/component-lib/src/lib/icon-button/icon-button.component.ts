@@ -11,49 +11,47 @@ export enum IconButtonSize {
   extraSmall = 'extraSmall'
 }
 
-export interface IconButtonIconConfig {
+export interface IIconButtonIconConfig {
   class: string; // Fontawesome icon class
   color?: string; // icon color
 }
 
-export interface IconButtonComponentConfig {
+export interface IIconButtonComponentConfig {
   id: string,
   category: keyof typeof IconButtonCategories,
   size?: keyof typeof IconButtonSize,
   ariaLabel?: string,
   disabled?: boolean,
-  customIcon?: IconButtonIconConfig
+  customIcon?: IIconButtonIconConfig
 }
+
+export const CLASS_X_MARK = 'fa-thin fa-xmark';
+export const CLASS_TRASHCAN = 'fa-solid fa-trash-can';
 @Component({
   selector: 'lib-icon-button',
   templateUrl: './icon-button.component.html',
 })
 export class IconButtonComponent implements OnInit {
-  @Input() config: IconButtonComponentConfig = {
+  @Input() config: IIconButtonComponentConfig = {
     id: '',
     category: IconButtonCategories.primary,
     ariaLabel: ''
   };
   @Input() id = '';
-  @Input()
-  category!: keyof typeof IconButtonCategories | IconButtonCategories;
-  @Input()
-  size!: keyof typeof IconButtonSize | IconButtonSize;
-  @Input()
-  ariaLabel?: string;
-  @Input()
-  disabled?: boolean;
-  @Output()
-  clickEvent = new EventEmitter<string>();
-  icon?: IconButtonIconConfig;
+  @Input() category?: keyof typeof IconButtonCategories | IconButtonCategories;
+  @Input() size!: keyof typeof IconButtonSize | IconButtonSize;
+  @Input() ariaLabel?: string;
+  @Input() disabled?: boolean;
+  @Output() clickEvent = new EventEmitter<string>();
+  icon?: IIconButtonIconConfig;
   // Mapping of icons to category
-  iconConfigs: { [key: string]: IconButtonIconConfig } = {
+  iconConfigs: { [key: string]: IIconButtonIconConfig } = {
     primary: {
-      class: 'fa-thin fa-xmark',
+      class: CLASS_X_MARK,
       color: 'var(--primary-text)'
     },
     critical: {
-      class: 'fa-solid fa-trash-can',
+      class: CLASS_TRASHCAN,
       color: 'var(--critical-text)'
     }
   }
@@ -64,10 +62,10 @@ export class IconButtonComponent implements OnInit {
     if (this.size) this.config.size = this.size;
     if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
     if (this.disabled) this.config.disabled = this.disabled;
-    this.icon = this.config.category === 'custom' ? this.config.customIcon : this.iconConfigs[this.config.category];
+    this.icon = this.config.category === IconButtonCategories.custom ? this.config.customIcon : this.iconConfigs[this.config.category];
   }
 
-  buttonClick(id: string) {
+  buttonClick(id = this.config.id) {
     this.clickEvent.emit(id);
   }
 }

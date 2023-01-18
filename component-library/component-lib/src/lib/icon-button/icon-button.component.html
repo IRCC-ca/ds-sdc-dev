@@ -1,7 +1,7 @@
 <button category="plain"
         [attr.aria-label]="config?.ariaLabel"
         [disabled]="config?.disabled"
-        (click)="buttonClick(config.id)"
+        (click)="buttonClick()"
         [class]="config.category+' '+config.size">
   <lib-icon [class]="icon?.class" [style.color]="icon?.color"></lib-icon>
 </button>
