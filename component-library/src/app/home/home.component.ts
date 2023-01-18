@@ -88,6 +88,9 @@ export class HomeComponent implements OnInit {
     id: 'radio_input_test1',
     formGroup: this.form,
     label: 'Radio Label Test',
+    desc: 'Test description',
+    hint: 'Test hint text',
+    required: true,
     options: [
       {
         text: 'Text Test',
