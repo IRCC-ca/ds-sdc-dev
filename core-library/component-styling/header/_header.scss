@@ -1,5 +1,5 @@
-@use '~@ircc-ca/ds-sdc-core/tokens/sizes';
-@use '~@ircc-ca/ds-sdc-core/layout/layout-grid';
+@use '../../tokens/sizes';
+@use '../../layout/layout-grid';
 @use '../../util/color' as color;
 @use '../../util/theme' as theme;
 @use '../../util/device' as device;
