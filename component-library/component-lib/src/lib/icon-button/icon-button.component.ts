@@ -39,7 +39,7 @@ export class IconButtonComponent implements OnInit {
   };
   @Input() id = '';
   @Input() category?: keyof typeof IconButtonCategories | IconButtonCategories;
-  @Input() size!: keyof typeof IconButtonSize | IconButtonSize;
+  @Input() size?: keyof typeof IconButtonSize | IconButtonSize;
   @Input() ariaLabel?: string;
   @Input() disabled?: boolean;
   @Output() clickEvent = new EventEmitter<string>();

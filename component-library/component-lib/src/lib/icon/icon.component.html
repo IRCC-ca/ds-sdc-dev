@@ -1,7 +1,7 @@
 <span
     class="font-icon"
-    [attr.aria-hidden]="isHidden"
-    [attr.aria-label]="iconConfig?.ariaLabel"
+    [attr.aria-hidden]="(config.ariaLabel === '')"
+    [attr.aria-label]="config.ariaLabel"
     [style.--font-unicode]="formattedIcon"
-    [ngClass]="iconConfig?.fontFamily"
+    [ngClass]="config.fontFamily"
 ></span>
