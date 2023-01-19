@@ -20,13 +20,22 @@ export interface IIconConfig {
     styleUrls: ['./icon.component.scss'],
 })
 export class IconComponent {
-    @Input() iconConfig!: IIconConfig;
+    @Input() config: IIconConfig = {
+        unicode: '',
+        fontFamily: 'fa-regular'
+    };
 
-    public get formattedIcon(): string {
-        return "'" + '\\' + this.iconConfig.unicode + "'";
-    }
+    @Input() ariaLabel?: string;
+    @Input() unicode?: string;
+    @Input() fontFamily?: keyof typeof FONT_FAMILIES;
 
-    public get isHidden(): boolean {
-        return this.iconConfig.ariaLabel === '';
+    formattedIcon = '';
+
+    ngOnInit() {
+        this.formattedIcon = "'" + '\\' + this.config?.unicode + "'";
+
+        if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
+        if (this.fontFamily) this.config.fontFamily = this.fontFamily;
+        if (this.unicode) this.config.unicode = this.unicode;
     }
 }

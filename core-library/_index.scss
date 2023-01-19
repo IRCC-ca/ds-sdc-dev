@@ -32,6 +32,7 @@
 @use './component-styling/dropdown/secondary' as dd-secondary;
 @use './component-styling/alert/alert';
 @use './component-styling/radio/radio' as radio-component;
+@use './component-styling/icon-button/icon-button';
 
 @use './typography/fa-wrapper';
 
@@ -80,6 +81,7 @@
         @include element(alert);
         @include element(alert-tokens);
         @include element(radio-component);
+        @include element(icon-button);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -130,5 +132,7 @@
         @include alert-tokens.create();
     } @else if $key == radio-component {
         @include radio-component.create();
+    } @else if $key == icon-button {
+        @include icon-button.create();
     }
 }
