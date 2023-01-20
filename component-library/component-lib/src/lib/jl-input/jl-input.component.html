@@ -6,6 +6,7 @@
     <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
       <div class="input-text">
         <label class="label-text" for="{{ (config.value || '') }}">{{ (config.label || '') | translate }}</label>
+        <p *ngIf="config.desc" class="radio-desc">{{(config.desc || '') | translate}}</p>
         <p *ngIf="config.hintText" class="hint-text">{{ config.hintText | translate }}</p>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
