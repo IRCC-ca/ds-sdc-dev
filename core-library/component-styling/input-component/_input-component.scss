@@ -22,14 +22,22 @@
 
 @mixin layout {
 
-.input-container {
-  user-select: none;
-
-  .input-text {
-    width: 100%;
-    display: grid;
-    position: relative;
-  }
+  .input-container {
+    user-select: none;
+  
+    .input-text {
+      width: 100%;
+      display: grid;
+      position: relative;
+  
+      .label-text {
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .hint-text {
+        color: #6F6F71;
+      }
+    }
 
 
 .passwordIcon {
@@ -38,19 +46,34 @@
   //TODO: Calculate the position of the eye icon
 }
 
-.transparentButton {
-  position: absolute;
-  justify-self: flex-end;
-  align-self: flex-end;
-  margin-bottom: 0px;
-  background: transparent;
-  z-index: 1;
+.input-content-area{
+  position: relative;
 
-  &:focus{
-    box-shadow: 0 0 0 3px var(--focus-border);
+  .input-field{
+    box-sizing: border-box;
+    padding-right: 50px;
   }
+
+  .transparentButton {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin-bottom: 0px;
+    background: transparent;
+    z-index: 1;
   
+    &:focus{
+      // box-shadow: 0 0 0 3px var(--focus-border);
+      box-shadow: none;
+      outline: none;
+    }
+    
+  }
+
 }
+
 
 }
    

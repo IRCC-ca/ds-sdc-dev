@@ -5,20 +5,21 @@
       it!</p>
     <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
       <div class="input-text">
-        <label for="{{ (config.value || '') }}">{{ (config.label || '') | translate }}</label>
+        <label class="label-text" for="{{ (config.value || '') }}">{{ (config.label || '') | translate }}</label>
         <p *ngIf="config.hintText" class="hint-text">{{ config.hintText | translate }}</p>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
-        TODO: Should probably change the (keyup) to (onblur) -->
-          <input autocomplete="{{ config.autocomplete }}" placeholder="{{ (config.placeholder || '') | translate }}"
+          TODO: Should probably change the (keyup) to (onblur) -->
+          <input class="input-field" autocomplete="{{ config.autocomplete }}" placeholder="{{ (config.placeholder || '') | translate }}"
             tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
             [type]="config.type" [id]="config.id" [formControlName]="config.id" />
+
+          <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
+            class="transparentButton" (click)="hideShow()" [disabled]="disabled">
+            <div *ngIf="showPassword"><i class="fa-solid fa-eye-slash"></i></div>
+            <div *ngIf="!showPassword"><i class="fa-solid fa-eye"></i></div>
+          </button>
         </div>
-        <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
-          class="transparentButton" (click)="hideShow()" [disabled]="disabled">
-          <div *ngIf="showPassword"><i class="fa-solid fa-eye-slash"></i></div>
-          <div *ngIf="!showPassword"><i class="fa-solid fa-eye"></i></div>
-        </button>
       </div>
     </div>
   </form>
