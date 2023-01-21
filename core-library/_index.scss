@@ -33,6 +33,7 @@
 @use './component-styling/alert/alert';
 @use './component-styling/radio/radio' as radio-component;
 @use './component-styling/icon-button/icon-button';
+@use './component-styling/header/header' as header-component;
 
 @use './typography/fa-wrapper';
 
@@ -82,6 +83,7 @@
         @include element(alert-tokens);
         @include element(radio-component);
         @include element(icon-button);
+        @include element(header-component);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -134,5 +136,7 @@
         @include radio-component.create();
     } @else if $key == icon-button {
         @include icon-button.create();
+    } @else if $key == header-component {
+        @include header-component.create();
     }
 }
