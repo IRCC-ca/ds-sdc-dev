@@ -1,4 +1,10 @@
 {
+  "ROUTES": {
+    "LandingPage": "landing-page",
+    "DevTest": "test-dev",
+    "FormComponents": "form-components"
+  },
+
   "OPPOSITE_LANGUAGE": "English",
 
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
@@ -7,5 +13,9 @@
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
   "Home": "Accueil",
-  "Version": "Version"
+  "Version": "Version",
+
+  "LandingPage": {
+    "header": "Ce page est pour les tests et assurance du qualité seulment"
+  }
 }

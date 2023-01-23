@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 
 
 @Component({
@@ -8,11 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestPageComponent implements OnInit {
 
-  constructor(
-  ) { }
+  constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
-
+    this.altLang.setAltLangLink('DevTest');
   }
 
 

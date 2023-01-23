@@ -1,17 +1,22 @@
 {
+  "ROUTES": {
+      "LandingPage": "page-general",
+      "DevTest": "test-dev",
+      "FormComponents": "components-formulaire"
+  },
+  
   "OPPOSITE_LANGUAGE": "Français",
-
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",
-
   "APP_NAME": "component-library",
   "About": "About",
   "Hello world !": "Hello world !",
   "Home": "Home",
   "Version": "Version",
-
   "INPUT": {
     "ERROR": "Input error"
+  },
+
+  "LandingPage": {
+    "header": "This page is for testing and QA purposes only"
   }
-
-
 }
