@@ -2,7 +2,7 @@ name: Publish-core-patch
 on:
   workflow_dispatch:
     branches:
-    - main
+    - dev
 jobs:
   publish:
     runs-on: ubuntu-latest
