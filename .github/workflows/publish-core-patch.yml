@@ -2,11 +2,15 @@ name: Publish-core-patch
 on:
   workflow_dispatch:
     branches:
-    - dev
+    - main
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+    - name: "Checkout"
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # Checkout all branches and tags
     - name: "Use NodeJS 16"
       uses: actions/setup-node@v2
       with: 
