@@ -10,6 +10,7 @@ export interface IJLInputComponentConfig {
   label?: string;
   hintText?: string;
   desc?: string
+  required?: boolean
   placeholder?: string;
   type?: InputTypes;
   value?: string;

@@ -5,7 +5,9 @@
       it!</p>
     <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
       <div class="input-text">
-        <label class="label-text" for="{{ (config.value || '') }}">{{ (config.label || '') | translate }}</label>
+        <label class="label-text" for="{{ (config.value || '') }}">
+          <i *ngIf="config.required" class="fa-regular fa-asterisk required-star">*</i> {{(config.label || '') | translate}} <span *ngIf="config.required">&nbsp;(required)</span>
+        </label>
         <p *ngIf="config.desc" class="radio-desc">{{(config.desc || '') | translate}}</p>
         <p *ngIf="config.hintText" class="hint-text">{{ config.hintText | translate }}</p>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
