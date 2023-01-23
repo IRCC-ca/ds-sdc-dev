@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 
-
 @Component({
-  selector: 'app-test-page',
-  templateUrl: './test-page.component.html',
-  styleUrls: ['./test-page.component.scss']
+  selector: 'app-miscellaneous',
+  templateUrl: './miscellaneous.component.html',
+  styleUrls: ['./miscellaneous.component.scss']
 })
-export class TestPageComponent implements OnInit {
+export class MiscellaneousComponent implements OnInit {
 
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
-    this.altLang.setAltLangLink('DevTest-alt');
+    this.altLang.setAltLangLink('Miscellaneous-alt');
   }
-
-
 }

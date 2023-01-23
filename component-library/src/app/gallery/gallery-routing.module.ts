@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormInputComponent } from './form-input/form-input.component';
+import { HeaderFooterComponent } from './header-footer/header-footer.component';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingPage } from './landing-page/landing-page.service';
+import { MiscellaneousComponent } from './miscellaneous/miscellaneous.component';
 import { TestPageComponent } from './test-page/test-page.component';
 
 const routes: Routes = [
@@ -15,7 +17,13 @@ const routes: Routes = [
         //TODO: Check for another way to route through router-outlet (see how app-component does it).
     LandingPage.childRoutes([
       { path: 'form-components', component: FormInputComponent }, //English
-      { path: 'components-formulaire', component: FormInputComponent } //French
+      { path: 'components-formulaire', component: FormInputComponent }, //French
+
+      { path: 'header-footer', component: HeaderFooterComponent }, //English
+      { path: 'en-tête-pied-de-page', component: HeaderFooterComponent }, //French
+      
+      { path: 'miscellaneous', component: MiscellaneousComponent }, //English
+      { path: 'divers', component: MiscellaneousComponent }, //French
     ])
 
 

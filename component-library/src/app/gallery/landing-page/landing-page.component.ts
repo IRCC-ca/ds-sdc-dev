@@ -18,25 +18,25 @@ export class LandingPageComponent implements OnInit {
 
   componentsButtons: ILibraryNavButtons[] = [
     {
-      name: 'Form Inputs',
+      name: 'BUTTONS.FormInputs',
       url: 'FormComponents'
     },
     {
-      name: 'Header/Footer',
-      url: ''
+      name: 'BUTTONS.HeaderFooter',
+      url: 'HeaderFooter'
     },
     {
-      name: 'Miscellaneous',
-      url: ''
+      name: 'BUTTONS.Miscellaneous',
+      url: 'Miscellaneous'
     },
     {
-      name: 'Dev Test Page',
+      name: 'BUTTONS.DevTestPage',
       url: 'DevTest'
     }
   ]
 
   ngOnInit() {
-    this.altLang.setAltLangLink('LandingPage');
+    this.altLang.setAltLangLink('LandingPage-alt');
     
 
     this.createButtonIds();

@@ -1,8 +1,22 @@
 {
   "ROUTES": {
-    "LandingPage": "landing-page",
+    "LandingPage": "page-general",
+    "LandingPage-alt": "landing-page",
     "DevTest": "test-dev",
+    "DevTest-alt": "dev-test",
+    "HeaderFooter": "en-tête-pied-de-page",
+    "HeaderFooter-alt": "header-footer",
+    "Miscellaneous": "divers",
+    "Miscellaneous-alt": "miscellaneous",
     "FormComponents": "form-components"
+  },
+
+  "BUTTONS": {
+    "Back": "Retour",
+    "FormInputs": "Components formulaire",
+    "HeaderFooter": "En tête / pied de page",
+    "Miscellaneous": "Divers",
+    "DevTestPage": "Page de teste"
   },
 
   "OPPOSITE_LANGUAGE": "English",
