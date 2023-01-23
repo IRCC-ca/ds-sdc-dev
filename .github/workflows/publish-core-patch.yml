@@ -1,0 +1,29 @@
+name: Publish-core-patch
+on:
+  workflow_dispatch:
+    branches:
+    - dev
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Use NodeJS 16"
+      uses: actions/setup-node@v2
+      with: 
+        node-version: '16'
+    - name: "Build"
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor}}@users.noreply.github.com"
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: "Publishing core"
+      working-directory: packages/ds/core/
+      run: |
+        echo publishing core...
+        npm i
+        npm set @ircc-ca:registry=https://registry.npmjs.com/
+        npm set "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+        npm publish --tag=patch
+      env:
+       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
