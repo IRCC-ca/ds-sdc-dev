@@ -85,13 +85,6 @@
     }
   }
 
-
-  // .passwordIcon {
-  //   justify-self: flex-end;
-  //   align-self: flex-end;
-  //   //TODO: Calculate the position of the eye icon
-  // }
-
   .input-content-area{
     position: relative;
     .input-field{
@@ -112,7 +105,6 @@
       z-index: 1;
     
       &:focus{
-        // box-shadow: 0 0 0 3px var(--focus-border);
         box-shadow: none;
         outline: none;
       }
