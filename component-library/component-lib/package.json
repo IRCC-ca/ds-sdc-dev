@@ -1,6 +1,6 @@
 {
   "name": "ircc-ds-angular-component-library",
-  "version": "0.0.7-beta.3",
+  "version": "0.0.7-beta.6",
   "assets": [
     "./src/assets"
   ],
@@ -8,7 +8,7 @@
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
     "@ngx-translate/core": "^14.0.0",
-    "@ircc-ca/ds-sdc-core": "file:../../core-library"
+    "@ircc-ca/ds-sdc-core": "^1.3.6"
   },
   "dependencies": {
     "tslib": "^2.3.0"
