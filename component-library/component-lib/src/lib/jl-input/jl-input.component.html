@@ -5,7 +5,17 @@
       it!</p>
     <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
       <div class="input-text">
-        <label class="input-label" for="{{ (config.value || '') }}">
+        <label *ngIf="config.label" class="input-label" 
+        [attr.aria-label]="
+          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+          ? (config.label || '' | translate) + ' ' +
+            (config.desc || '' | translate) + ' ' + ('INPUT.ERROR' | translate) + ' ' +
+            (config.hint || '' | translate)
+          : (config.label || '' | translate)  + ' ' +
+            (config.desc || '' | translate) + ' ' +
+            (config.hint || '' | translate)
+       "
+        >
           <i *ngIf="config.required" class="fa-regular fa-asterisk required-star">*</i>{{(config.label || '') | translate}}<span *ngIf="config.required">&nbsp;(required)</span>
         </label>
         <p *ngIf="config.desc" class="input-desc">{{(config.desc || '') | translate}}</p>
@@ -15,7 +25,7 @@
           TODO: Should probably change the (keyup) to (onblur) -->
           <input class="input-field" autocomplete="{{ config.autocomplete }}" placeholder="{{ (config.placeholder || '') | translate }}"
             tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
-            [type]="config.type" [id]="config.id" [formControlName]="config.id" />
+            [type]="config.type" [id]="config.id" [formControlName]="config.id" [value]='(config?.empty) ? "" : config?.value || "" '/>
 
           <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
             class="passwordIcon" (click)="hideShow()" [disabled]="disabled">
