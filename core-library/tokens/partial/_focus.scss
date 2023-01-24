@@ -33,7 +33,7 @@
 }
 
 @mixin selector {
-    *:focus {
+    *:focus-visible {
         @content;
     }
 }
