@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 
 import { HomeComponent } from './home.component';
-import { Shell } from '@app/shell/shell.service';
 import { QuickDemoComponent } from '@app/@shared/quick-demo/quick-demo.component';
 import { TestPageComponent } from '@app/gallery/test-page/test-page.component';
 

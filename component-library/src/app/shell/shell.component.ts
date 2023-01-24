@@ -35,13 +35,28 @@ isMobile = false;
     });
   
     this.languageSwitchButton.languageClickObs$.subscribe(response => {
+      console.log(response);
       if (response) this.changeLang(); //Has to ignore the first response. 
     });
   }
   
   /** Toggles language without reloading component */
   changeLang() {
-    // Swaps language
+    // // Swaps language
+    // let lang = ''
+    // switch (this.translate.currentLang) {
+    //   case 'en':
+    //     lang = 'en-US';
+    //     break;
+    //   case 'fr': 
+    //     lang = 'fr-FR';
+    //     break;
+    //   default:
+    //     lang = this.translate.currentLang;
+    // }
+    // let test = ''
+    // const curLang = lang;
+    // console.log(curLang);
     const curLang = this.translate.currentLang;
     this.translate.use(curLang === 'en-US' ? 'fr-FR' : 'en-US');
     // Changes the html lang attribute

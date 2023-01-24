@@ -51,7 +51,7 @@ export class LanguageSwitchComponent implements OnInit {
   }
 
   setText(lang: string) {
-    if (lang === 'en-US') {
+    if (lang === 'en' || 'en-US') {
       this.isMobile ? (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE) : (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH);
       this.aria = LANGUAGE_SWITCH_ARIA_ENGLISH;
     } else {

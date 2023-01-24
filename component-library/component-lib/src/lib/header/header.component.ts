@@ -14,17 +14,19 @@ export class HeaderComponent {
     imageURL = '';
 
     constructor(private translate: TranslateService) {
-     }
+    }
 
     ngOnInit() {
         this.setLang(this.translate.currentLang);
         this.translate.onLangChange.subscribe(change => {
-        this.setLang(change.lang);
+            console.log(change, 'header');
+            this.setLang(change.lang);
         });
+        console.log(this.translate.currentLang);
     }
 
     setLang(lang: string) {
-        lang === 'en-US' ? (this.imageURL = ENGLISH_BANNER_URL)
+        lang === 'en' || 'en-US' ? (this.imageURL = ENGLISH_BANNER_URL)
             : (this.imageURL = FRENCH_BANNER_URL);
     }
 }
