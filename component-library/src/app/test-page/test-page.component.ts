@@ -10,20 +10,6 @@ import { IJLInputComponentConfig, InputTypes } from 'ircc-ds-angular-component-l
 })
 export class TestPageComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({});
-
-  inputConfig : IJLInputComponentConfig = {
-    id: 'test_input_1',
-    formGroup: this.form,
-    label: 'Password',
-    desc: "This is password description",
-    hint: 'enter your password',
-    type: InputTypes.password,
-    placeholder: 'Placeholder text',
-    error: true,
-    required: true,
-  }
-
   constructor(
   ) { }
 
