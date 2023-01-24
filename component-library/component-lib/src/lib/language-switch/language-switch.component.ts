@@ -42,6 +42,7 @@ export class LanguageSwitchComponent implements OnInit {
     let lang = this.translate.currentLang;
     this.setText(lang);
     this.translate.onLangChange.subscribe(newLang => {
+      console.log(newLang.lang, 'switch');
       this.setText(newLang.lang);      
     });
   }
@@ -51,7 +52,7 @@ export class LanguageSwitchComponent implements OnInit {
   }
 
   setText(lang: string) {
-    if (lang === 'en' || 'en-US') {
+    if ((lang === 'en') || (lang === 'en-US')) {
       this.isMobile ? (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE) : (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH);
       this.aria = LANGUAGE_SWITCH_ARIA_ENGLISH;
     } else {

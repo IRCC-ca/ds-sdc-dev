@@ -19,14 +19,14 @@ export class HeaderComponent {
     ngOnInit() {
         this.setLang(this.translate.currentLang);
         this.translate.onLangChange.subscribe(change => {
-            console.log(change, 'header');
+            console.log(change, 'headeru');
             this.setLang(change.lang);
         });
         console.log(this.translate.currentLang);
     }
 
     setLang(lang: string) {
-        lang === 'en' || 'en-US' ? (this.imageURL = ENGLISH_BANNER_URL)
+        (lang === 'en') || (lang === 'en-US') ? (this.imageURL = ENGLISH_BANNER_URL)
             : (this.imageURL = FRENCH_BANNER_URL);
     }
 }

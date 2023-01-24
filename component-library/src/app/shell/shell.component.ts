@@ -35,32 +35,18 @@ isMobile = false;
     });
   
     this.languageSwitchButton.languageClickObs$.subscribe(response => {
-      console.log(response);
       if (response) this.changeLang(); //Has to ignore the first response. 
     });
   }
   
   /** Toggles language without reloading component */
+  //This currently uses both 'en' and 'en-US' language values, sine in some cases, en is provided in initial load
   changeLang() {
-    // // Swaps language
-    // let lang = ''
-    // switch (this.translate.currentLang) {
-    //   case 'en':
-    //     lang = 'en-US';
-    //     break;
-    //   case 'fr': 
-    //     lang = 'fr-FR';
-    //     break;
-    //   default:
-    //     lang = this.translate.currentLang;
-    // }
-    // let test = ''
-    // const curLang = lang;
-    // console.log(curLang);
     const curLang = this.translate.currentLang;
-    this.translate.use(curLang === 'en-US' ? 'fr-FR' : 'en-US');
+    this.translate.use((curLang === 'en-US') || (curLang === 'en') ? 'fr-FR' : 'en-US');
     // Changes the html lang attribute
-    document.documentElement.lang = (curLang === 'en-US' ? 'fr' : 'en'); 
+    console.log((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
+    document.documentElement.lang = ((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
     // Pushes page into history to allow the use of the 'Back' button on browser
     window.history.pushState('', '', this.altLangURL);
     this.setAltLangURL();
@@ -68,7 +54,8 @@ isMobile = false;
   
   //Alt-language url key must be in the corresponding language, but have the french work
   setAltLangURL() {
-    this.altLangURL = this.translate.currentLang === "en-US" ? 'fr' : 'en';
+    console.log(this.translate.currentLang);
+    this.altLangURL = ((this.translate.currentLang === "en-US") || (this.translate.currentLang === 'en') ? 'fr' : 'en');
     if (this.altPathKey) this.altLangURL += '/' + this.translate.instant('ROUTES.' + this.altPathKey);
   }
   
