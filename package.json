@@ -6,7 +6,7 @@
         "install": "cd component-library/component-lib && npm ci && cd .. && npm ci",
         "build": "cd component-library && ng build ircc-ds-angular-component-library --watch",
         "start": "cd component-library && ng serve",
-        "deploy-build": "cd component-library && ng build ircc-ds-angular-component-library && cd ../ && ng build"
+        "deploy-build": "cd component-library/component-lib && ng build ircc-ds-angular-component-library && cd .. && ng build"
     }
 
   }
