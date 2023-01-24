@@ -8,7 +8,7 @@ import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Valida
 
 export interface IJLInputComponentConfig {
   label?: string;
-  hintText?: string;
+  hint?: string;
   desc?: string
   required?: boolean
   placeholder?: string;
