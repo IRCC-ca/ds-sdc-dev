@@ -20,7 +20,8 @@ const routes: Routes = [
       ]
     },
       //Must be last, as it contains the fallback route when no prior route is matched
-    { path: '**', redirectTo: 'en/landing-page', pathMatch: 'full' }
+      //TODO: Check this
+    { path: '**', redirectTo: '/en/landing-page' }
   ])
 ];
 
