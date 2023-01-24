@@ -20,7 +20,7 @@ artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: ./dist/demo-project
+  base-directory: component-library/dist/demo-project
 
 cache:
   paths:
