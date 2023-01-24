@@ -8,6 +8,10 @@ export interface IDropdownInputConfig {
   label?: string;
   options?: IDropdownInputOptionsConfig[]
   category?: string;
+  required?: boolean;
+  hint?: string;
+  desc?: string;
+  error?: boolean;
 };
 
 export interface IDropdownInputOptionsConfig {
