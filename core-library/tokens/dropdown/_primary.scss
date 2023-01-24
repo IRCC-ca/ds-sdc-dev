@@ -1,7 +1,7 @@
 @use '../../util/color' as color;
 @use '../../util/theme' as theme;
 @use '../../tokens/template-const' as template-const;
-@use './dropdown-const' as dropdown-const;
+@use '../../component-styling/dropdown/dropdown' as dropdown;
 @use '../../util/device' as device;
 @use 'sass:map';
 
@@ -41,7 +41,7 @@ $default-color: null;
         (role: critical, text: neutral),
     )
 ) {
-    @include dropdown-const.selectors() {
+    @include dropdown.selectors() {
         &:where(lib-dropdown-input[category='#{$primary}']) {
             @each $map in $palette {
                 @if not $default-color {
@@ -55,7 +55,7 @@ $default-color: null;
 }
 
 @mixin layout() {
-    @include dropdown-const.layout();
+    @include dropdown.layout();
     select{
         background-color: var(--primary-background);
         @include device.if-hover {

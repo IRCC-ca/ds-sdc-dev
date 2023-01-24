@@ -2,7 +2,7 @@
 @use '../../tokens/text' as text;
 @use '../../util/theme' as theme;
 @use '../../tokens/template-const' as template-const;
-@use './dropdown-const' as dropdown-const;
+@use '../../component-styling/dropdown/dropdown' as dropdown;
 @use '../../util/device' as device;
 @use '../../tokens/sizes' as sizes;
 
@@ -24,12 +24,28 @@ $default-color: null;
 }
 
 @mixin layout() {
-        @include dropdown-const.layout();
+        @include dropdown.layout();
     select{   
         background-color: var(--surface1);
         color: var(--text);
         @include device.if-hover {
             background: var(--generic-hover);
+            // border: ;
+        }
+        &:focus {
+            box-shadow: none;
+            outline-offset: 0;
+        }
+    
+        &:active {
+            color: var(--link-text-active);
+            background-color: var(--generic-active);
+        }
+        &:disabled {
+            --text: var(--secondary-text-disabled);
+            color: var(--text);
+            background-color: var(--surface1);
+            border-color: var(--secondary-border-disabled);
         }
     }
 }
@@ -41,7 +57,7 @@ $default-color: null;
         critical,
     )
 ) {
-    @include dropdown-const.selectors() {
+    @include dropdown.selectors() {
         &:where([category='#{$plain}']) {
             @each $key in $palette {
                 @if not $default-color{

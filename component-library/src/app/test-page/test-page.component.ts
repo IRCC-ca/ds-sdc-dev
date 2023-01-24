@@ -9,12 +9,12 @@ import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
   styleUrls: ['./test-page.component.scss']
 })
 export class TestPageComponent implements OnInit {
-  form = new FormGroup({});
+  form: FormGroup = new FormGroup({});
 
   selectConfig: IDropdownInputConfig = {
     id: 'select-dropdown-test',
+    formGroup: this.form,
     label: "Dropdown test",
-    formGroup: new FormGroup({}),
     category: 'secondary',
     options: [
       {
@@ -25,14 +25,18 @@ export class TestPageComponent implements OnInit {
         text: "Two",
         value: 'Second'
       }
-    ]
+    ],
+    required: true,
+    hint: "Hint Text",
+    desc: "Description text",
+    error: true
   }
 
   constructor(
   ) { }
 
   ngOnInit() {
-    this.form.addControl(this.selectConfig.id, new FormControl('', [Validators.required]));
+    this.form.addControl(this.selectConfig.id, new FormControl());
   }
 
 
