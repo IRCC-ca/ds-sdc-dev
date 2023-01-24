@@ -22,6 +22,10 @@
 @use './tokens/global/validation';
 @use './tokens/alert/alert' as alert-tokens;
 
+@use './tokens/dropdown/plain' as dd-plain;
+@use './tokens/dropdown/primary' as dd-primary;
+@use './tokens/dropdown/secondary' as dd-secondary;
+
 @use './tokens/partial/focus';
 @use './tokens/partial/disable';
 
@@ -30,7 +34,7 @@
 @use './component-styling/alert/alert';
 @use './component-styling/radio/radio' as radio-component;
 @use './component-styling/icon-button/icon-button';
-@use './component-styling/dropdown/dropdown' as dropdown;
+@use './component-styling/dropdown/dropdown';
 
 @use './typography/fa-wrapper';
 
@@ -47,9 +51,7 @@
 @forward './tokens/checkbox/checkbox' as checkbox-*;
 @forward './tokens/input/input' as input-text-*;
 @forward './tokens/input/textarea' as input-textarea-*;
-@use './tokens/dropdown/plain' as dd-plain;
-@use './tokens/dropdown/primary' as dd-primary;
-@use './tokens/dropdown/secondary' as dd-secondary;
+
 
 @mixin element-styles($include: null) {
     @include global.create();

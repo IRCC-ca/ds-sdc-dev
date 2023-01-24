@@ -1,6 +1,6 @@
 @use '../../util/color' as color;
 @use '../../util/theme' as theme;
-@use '../../tokens/template-const' as template-const;
+@use '../template-const' as template-const;
 @use '../../component-styling/dropdown/dropdown' as dropdown;
 @use '../../util/device' as device;
 @use 'sass:map';

@@ -13,6 +13,12 @@ $selectors: 'lib-dropdown-input';
 	}
 }
 
+@mixin create {
+	@include selectors() {
+	  @include layout();
+	}
+  }
+
 @mixin layout {
 	.required-star {
     color: var(--critical-text);
