@@ -32,6 +32,10 @@ export class LandingPageComponent implements OnInit {
     {
       name: 'BUTTONS.DevTestPage',
       url: 'DevTest'
+    },
+    {
+      name: 'BUTTONS.QATesting',
+      url: 'QATesting'
     }
   ]
 

@@ -15,7 +15,8 @@
     "FormInputs": "Form Inputs",
     "HeaderFooter": "Header/Footer",
     "Miscellaneous": "Miscellaneous",
-    "DevTestPage": "Dev Test Page"
+    "DevTestPage": "Dev Test Page",
+    "QATesting": "QA Testing Page"
   },
   "OPPOSITE_LANGUAGE": "Français",
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",

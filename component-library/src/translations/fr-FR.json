@@ -16,7 +16,8 @@
     "FormInputs": "Components formulaire",
     "HeaderFooter": "En tête / pied de page",
     "Miscellaneous": "Divers",
-    "DevTestPage": "Page de teste"
+    "DevTestPage": "Page de teste",
+    "QATesting": "Page de teste pour AQ"
   },
 
   "OPPOSITE_LANGUAGE": "English",
