@@ -9,15 +9,15 @@
 @use 'sass:map';
 
 @mixin selector {
-    jl-pr-sclp-input#{template-const.$escape} {
-        @content;
-    }
+  jl-pr-sclp-input#{template-const.$escape} {
+      @content;
+  }
 }
 
 @mixin create {
-    @include selector() {
-        @include layout();
-    }
+  @include selector() {
+      @include layout();
+  }
 }
 
 @mixin layout {
@@ -103,6 +103,7 @@
       margin-bottom: 0px;
       background: transparent;
       z-index: 1;
+      padding-right: 10px;
     
       &:focus{
         box-shadow: none;
