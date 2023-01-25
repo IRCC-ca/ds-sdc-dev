@@ -1,7 +1,6 @@
-<!-- TODO: Fix how large is handled here to work with DS rather than against it -->
 <div>
   <form [formGroup]="config.formGroup">
-    <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
+    <div class="input-container">
       <div class="input-text">
         <label *ngIf="config.label" class="input-label" 
         [attr.aria-label]="
@@ -21,9 +20,9 @@
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
           TODO: Should probably change the (keyup) to (onblur) -->
-          <input class="input-field" autocomplete="{{ config.autocomplete }}" placeholder="{{ (config.placeholder || '') | translate }}"
+          <input class="input-field" placeholder="{{ (config.placeholder || '') | translate }}"
             tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
-            [type]="config.type" [id]="config.id" [formControlName]="config.id" [value]='(config?.empty) ? "" : config?.value || "" '/>
+            [type]="config.type" [id]="config.id" [formControlName]="config.id"/>
 
           <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
             class="passwordIcon" (click)="hideShow()" [disabled]="disabled">

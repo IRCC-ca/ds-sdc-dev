@@ -161,7 +161,6 @@ export class HomeComponent implements OnInit {
       hint: 'Password Hint',
       type: InputTypes.password,
       placeholder: 'Placeholder text',
-      error: true,
       required: true,
     }
   ]
