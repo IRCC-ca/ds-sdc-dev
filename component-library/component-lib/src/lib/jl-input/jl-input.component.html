@@ -1,8 +1,6 @@
 <!-- TODO: Fix how large is handled here to work with DS rather than against it -->
 <div>
   <form [formGroup]="config.formGroup">
-    <p *ngIf="config.type === 'password' || showPassword">TODO: This element does not actually have correct aria text on
-      it!</p>
     <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
       <div class="input-text">
         <label *ngIf="config.label" class="input-label" 
