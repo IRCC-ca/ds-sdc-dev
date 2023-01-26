@@ -1,11 +1,9 @@
 <div class="checkbox-container" [formGroup]="config.formGroup">
   <div class="checkbox-layout" [ngClass]="{ error: config?.error }">
     <div class="checkbox">
-      <input *ngIf="config.small" id="{{config.id}}" class="check"
-        [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus}" size="small" type="checkbox"
-        [checked]="config.checked" [formControlName]="config.id" />
-      <input *ngIf="(!config.small)" id="{{config.id}}" class="check"
-        [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus}" size="large" type="checkbox"
+      <input id="{{config.id}}" class="check"
+        [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus}"
+        [attr.size]="config.size" type="checkbox"
         [checked]="config.checked" [formControlName]="config.id" />
       <span class="checkmark"></span>
     </div>
@@ -14,7 +12,7 @@
       ? (config.label || '' | translate) + ' ' +
         (config.helpText || '' | translate) + ' ' +
         ('INPUT.ERROR' | translate) + ' ' +
-        (config.customErrorText || '' | translate) : 
+        (config.customErrorText || '' | translate) :
         (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
   " [ngClass]="{'disabled-label': isDisabled }">{{
       config.label || '' }}</label>
