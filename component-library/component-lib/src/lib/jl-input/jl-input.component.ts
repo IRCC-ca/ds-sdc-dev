@@ -8,17 +8,13 @@ import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Valida
 
 export interface IJLInputComponentConfig {
   label?: string;
-  hintText?: string;
+  hint?: string;
+  desc?: string
+  required?: boolean
   placeholder?: string;
   type?: InputTypes;
-  value?: string;
-  name?: string;
   id: string;
   formGroup: FormGroup;
-  autocomplete?: string;
-  large?: true;
-  error?: boolean;
-  empty?: boolean; //Default is TRUE
   validators?: ValidatorFn[];
 }
 
@@ -26,6 +22,7 @@ export enum InputTypes {
   text = 'text',
   password = 'password'
 }
+
 @Component({
   selector: 'jl-pr-sclp-input',
   templateUrl: './jl-input.component.html',
@@ -79,11 +76,8 @@ export class JLInputComponent implements ControlValueAccessor, OnInit {
   }
 
   public clearvalue() {
-    this.config.value = ``;
   }
-
   writeValue(value: string): void {
-    this.config.value = value;
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -94,22 +88,4 @@ export class JLInputComponent implements ControlValueAccessor, OnInit {
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
   }
-
-  /**
- * Used to get the aria-pressed text for the show password button
- * @param fieldID id of the input field the text is for
- * @returns translated text
- */
-  //  getShowHideText(fieldID: string) {
-  //   let text = ''
-  //   if (fieldID === 'password') {
-  //     text = this.translate.instant('Password.accessibility.passwordMatch1');
-  //   } else {
-  //     this.translate.instant('Password.accessibility.passwordMatch2');
-  //   }
-  //   (this.passwordFieldType === InputType.password) ?
-  //     (text += (' ' + this.translate.instant('Password.accessibility.passHidden'))) :
-  //     (text += (' ' + this.translate.instant('Password.accessibility.passShown')));
-  //   return text;
-  // }
 }

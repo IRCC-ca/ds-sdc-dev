@@ -152,6 +152,16 @@ export class HomeComponent implements OnInit {
       type: InputTypes.password,
       id: 'password',
       formGroup: this.form
+    },
+    {
+      id: 'test_input_1',
+      formGroup: this.form,
+      label: 'Password',
+      desc: "Password description",
+      hint: 'Password Hint',
+      type: InputTypes.password,
+      placeholder: 'Placeholder text',
+      required: true,
     }
   ]
 
@@ -206,6 +216,7 @@ export class HomeComponent implements OnInit {
     this.form.addControl(this.radioConfig.id, new FormControl());
     this.form.addControl(this.inputConfigs[0].id, new FormControl());
     this.form.addControl(this.inputConfigs[1].id, new FormControl('', [Validators.required]));
+    this.form.addControl(this.inputConfigs[2].id, new FormControl('', [Validators.required]));
     this.form.addControl(this.dropdownConfig.id, new FormControl());
     this.form.addControl(this.radioErrorTestConfig.id, new FormControl('', [Validators.maxLength(6)]));
     this.form.addControl(this.selectDropDownConfig.id, new FormControl('', [Validators.required, Validators.maxLength(6)]));
@@ -270,8 +281,8 @@ export class HomeComponent implements OnInit {
         break;
 
       case HomeButtonActionTypes.disablePassword:
-        this.form.get(this.inputConfigs[1].id)?.disabled ?
-          this.form.get(this.inputConfigs[1].id)?.enable() : this.form.get(this.inputConfigs[1].id)?.disable();
+        this.form.get(this.inputConfigs[2].id)?.disabled ?
+          this.form.get(this.inputConfigs[2].id)?.enable() : this.form.get(this.inputConfigs[2].id)?.disable();
     }
   }
 }

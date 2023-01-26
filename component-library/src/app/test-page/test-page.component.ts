@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
 
-
 @Component({
   selector: 'app-test-page',
   templateUrl: './test-page.component.html',
