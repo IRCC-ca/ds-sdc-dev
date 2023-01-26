@@ -14,7 +14,7 @@
         ('INPUT.ERROR' | translate) + ' ' +
         (config.customErrorText || '' | translate) :
         (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
-  " [ngClass]="{'disabled-label': isDisabled }">{{
+  " [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{
       config.label || '' }}</label>
   </div>
 </div>

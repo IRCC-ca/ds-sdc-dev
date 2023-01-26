@@ -21,9 +21,16 @@
 }
 
 @mixin layout {
-.checkbox-layout {
-    display: flex;
-    align-items: baseline;
-} 
-   
+    .checkbox-layout {
+        display: flex;
+        align-items: baseline;
+    }
+    label.small {
+        font-size: 14px;
+    }
+    @include size.selector(small) {
+        label {
+            font-size: 14px;
+        }
+    };
 }
