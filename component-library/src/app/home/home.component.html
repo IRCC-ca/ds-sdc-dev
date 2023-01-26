@@ -33,7 +33,7 @@
             <br>
             <div>
                 <lib-radio-input [config]="radioConfig" [formControlName]="radioConfig.id"></lib-radio-input>
-            </div>
+            </div>            
         </form>
     </div>
 
@@ -50,7 +50,7 @@
                     <jl-pr-sclp-input *ngFor="let config of inputConfigs" [config]="config" [formControlName]="config.id">
                     </jl-pr-sclp-input>
                 </div>
-                <button (click)="buttonActions(homeButtonActionTypes.disablePassword)">Toggle Disable Password</button>
+                <button class="disable-button" (click)="buttonActions(homeButtonActionTypes.disablePassword)">Toggle Disable Password</button>
             </div>
 
             <div class="selectDropDown">

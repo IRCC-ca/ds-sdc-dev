@@ -1,24 +1,35 @@
-<!-- TODO: Fix how large is handled here to work with DS rather than against it -->
 <div>
   <form [formGroup]="config.formGroup">
-    <p *ngIf="config.type === 'password' || showPassword">TODO: This element does not actually have correct aria text on
-      it!</p>
-    <div class="input-container" [ngClass]="{ large: config.large, error: config.error }">
+    <div class="input-container">
       <div class="input-text">
-        <label for="{{ (config.value || '') }}">{{ (config.label || '') | translate }}</label>
-        <p *ngIf="config.hintText" class="hint-text">{{ config.hintText | translate }}</p>
+        <label *ngIf="config.label" class="input-label" 
+        [attr.aria-label]="
+          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+          ? (config.label || '' | translate) + ' ' +
+            (config.desc || '' | translate) + ' ' + ('INPUT.ERROR' | translate) + ' ' +
+            (config.hint || '' | translate)
+          : (config.label || '' | translate)  + ' ' +
+            (config.desc || '' | translate) + ' ' +
+            (config.hint || '' | translate)
+       "
+        >
+          <i *ngIf="config.required" class="fa-regular fa-asterisk required-star">*</i>{{(config.label || '') | translate}}<span *ngIf="config.required">&nbsp;(required)</span>
+        </label>
+        <p *ngIf="config.desc" class="input-desc">{{(config.desc || '') | translate}}</p>
+        <p *ngIf="config.hint" class="input-hint">{{ config.hint | translate }}</p>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
-        TODO: Should probably change the (keyup) to (onblur) -->
-          <input autocomplete="{{ config.autocomplete }}" placeholder="{{ (config.placeholder || '') | translate }}"
+          TODO: Should probably change the (keyup) to (onblur) -->
+          <input class="input-field" placeholder="{{ (config.placeholder || '') | translate }}"
             tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
-            [type]="config.type" [id]="config.id" [formControlName]="config.id" />
+            [type]="config.type" [id]="config.id" [formControlName]="config.id"/>
+
+          <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
+            class="passwordIcon" (click)="hideShow()" [disabled]="disabled">
+            <div *ngIf="showPassword"><i class="fa-solid fa-eye-slash"></i></div>
+            <div *ngIf="!showPassword"><i class="fa-solid fa-eye"></i></div>
+          </button>
         </div>
-        <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
-          class="transparentButton" (click)="hideShow()" [disabled]="disabled">
-          <div *ngIf="showPassword"><i class="fa-solid fa-eye-slash"></i></div>
-          <div *ngIf="!showPassword"><i class="fa-solid fa-eye"></i></div>
-        </button>
       </div>
     </div>
   </form>
