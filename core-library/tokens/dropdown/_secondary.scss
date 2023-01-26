@@ -5,23 +5,21 @@
 @use '../../component-styling/dropdown/dropdown' as dropdown;
 @use '../../util/device' as device;
 @use '../sizes' as sizes;
+
 $secondary: 'secondary';
 $default-color: null;
+
 @mixin tokens($palette: cta) {
     @include theme.select-attribute($palette, color, $default-color) {
         --border: var(--text);
         @include theme.light {
-            @include device.if-hover {
-                --secondary-border-hover: #{color.mix-token($palette, 800)};
-            }
+            --secondary-border-hover: #{color.mix-token($palette, 800)};
             --secondary-text: #{color.mix-token($palette, 700)};
             --secondary-text-disabled: #{color.mix-token($palette, 300)};
             --secondary-border-active: #{color.mix-token($palette, 900)};
         }
         @include theme.dark {
-            @include device.if-hover {
-                --secondary-border-hover: #{color.mix-token($palette, 300)};
-            }
+            --secondary-border-hover: #{color.mix-token($palette, 300)};
             --secondary-text: #{color.mix-token($palette, 400)};
             --secondary-text-disabled: #{color.mix-token($palette, 1000)};
             --secondary-border-active: #{color.mix-token($palette, 200)};
@@ -51,29 +49,33 @@ $default-color: null;
 
 @mixin layout() {
     @include dropdown.layout();
+
     select{
+        // border: var(--secondary-text);
         // box-shadow: sizes.$border-style;
+		border: 1px solid var(--border);
         background-color: var(--surface1);
         @include device.if-hover {
-            // background-color: var(--generic-hover);
-            background-color: transparent;
-            border: 1px solid black;
+            background-color: var(--generic-hover);
+            --border: var(--secondary-border-hover);
         }
         &:focus {
-            box-shadow: none;
-            outline-offset: 2;
-            // box-shadow: sizes.$border-style, sizes.$focus-shadow;
+            border: none;
         }
     
         &:active {
-            color: var(--link-text-active);
             background-color: var(--generic-active);
         }
         &:disabled {
             --text: var(--secondary-text-disabled);
-            color: var(--text);
-            background-color: var(--surface1);
-            border-color: var(--secondary-border-disabled);
+            --border: var(--secondary-text-disabled);
+            @include device.if-hover {
+                background-color: var(--surface1);
+                --border: var(--secondary-text-disabled);
+            }
         }
+        // &::after {
+        //     background-color: red;
+        // }
     }
 }

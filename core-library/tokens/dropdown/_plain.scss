@@ -25,27 +25,26 @@ $default-color: null;
 
 @mixin layout() {
         @include dropdown.layout();
-    select{   
+
+    select {   
         background-color: var(--surface1);
         color: var(--text);
+        border: none;
         @include device.if-hover {
             background: var(--generic-hover);
-            // border: ;
         }
         &:focus {
             box-shadow: none;
-            outline-offset: 0;
+            outline-offset: 1;
         }
     
         &:active {
-            color: var(--link-text-active);
             background-color: var(--generic-active);
         }
         &:disabled {
-            --text: var(--secondary-text-disabled);
-            color: var(--text);
+            --text: var(--plain-text-disabled);
             background-color: var(--surface1);
-            border-color: var(--secondary-border-disabled);
+            border-color: var(--plain-border-disabled);
         }
     }
 }

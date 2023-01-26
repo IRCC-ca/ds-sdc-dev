@@ -1,17 +1,33 @@
 <div>
-    <label *ngIf="config.label" [for]="config.id" class="select-label">
+    <label *ngIf="config.label" 
+        [attr.aria-label]="
+          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+          ? (config.label || '' | translate) + ' ' +
+            (config.desc || '' | translate) + ' ' + ('INPUT.ERROR' | translate) + ' ' +
+            (config.hint || '' | translate)
+          : (config.label || '' | translate) + ' ' +
+            (config.desc || '' | translate) + ' ' +
+            (config.hint || '' | translate)
+        "
+        [for]="config.id" class="select-label">
         <i *ngIf="config.required" class="fa-regular fa-asterisk required-star">*</i> {{(config.label || '') | translate}} <span *ngIf="config.required">&nbsp;(required)</span>
     </label>
     <p *ngIf="config.desc" class="select-desc">{{(config.desc || '') | translate}}</p>
     <p *ngIf="config.hint" class="select-hint">{{(config.hint || '') | translate}}</p>
     <form [formGroup]="config.formGroup">
         <div class="dropdown">
-            <select class="custom-select"
+            <!-- <select class="custom-select h6" [ngClass]="{'select-disabled': config.disabled}"
              [name]="config.id" [id]="config.id" [formControlName]="config.id">
              <option *ngFor="let option of config.options" [value]="option.value || option.text">{{option.text}}
             </option>
-        </select>
-        <i class="fa-thin fa-chevron-down custom-chevron"></i>
+            </select>
+            <i [ngClass]="{'icon-disabled': config.disabled}" class="fa-thin fa-chevron-down custom-chevron"></i> -->
+            <select class="custom-select h6"
+            [name]="config.id" [id]="config.id" [formControlName]="config.id">
+                <option *ngFor="let option of config.options" [value]="option.value || option.text">{{option.text}}
+                </option>
+           </select>
+           <i class="fa-thin fa-chevron-down custom-chevron"></i>
         </div>
         <p *ngIf="config.error" class="select-error"><i class="fa-regular fa-circle-exclamation select-exclamation"></i>Error Message</p>
     </form>

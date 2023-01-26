@@ -29,7 +29,7 @@ export class TestPageComponent implements OnInit {
     required: true,
     hint: "Hint Text",
     desc: "Description text",
-    error: true
+    error: true,
   }
 
   constructor(

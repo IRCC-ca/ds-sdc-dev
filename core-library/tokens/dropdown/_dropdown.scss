@@ -1,0 +1,33 @@
+@use '../../util/device';
+@use '../../util/theme';
+@use '../../util/color';
+@use '../template-const';
+
+@mixin create($palette: (cta)) {
+    @at-root {
+        #{template-const.$root-selectors} {
+          @include tokens($palette, $text-palette);
+        }
+    }
+}
+
+@mixin tokens($palette, $text-palette) {
+  @include theme.light() {
+    --primary-background-hover: #{color.mix-token($palette, 800)};
+    --primary-background: #{color.mix-token($palette, 700)};
+    --primary-background-active: #{color.mix-token($palette, 900)};
+    --primary-background-disabled: #{color.mix-token($palette, 300)};
+    --primary-text: #{color.mix-token($text-palette, 100)};
+    --primary-text-disabled: #{color.mix-token($palette, 300)};
+  }
+
+  @include theme.dark() {
+    --primary-background-hover: #{color.mix-token($palette, 500)};
+    --primary-background: #{color.mix-token($palette, 600)};
+    --primary-background-active: #{color.mix-token($palette, 400)};
+    --primary-background-disabled: #{color.mix-token($palette, 1000)};
+    --primary-text: #{color.mix-token($text-palette, 200)};
+    --primary-text-disabled: #{color.mix-token($text-palette, 1000)};
+  }
+
+}
