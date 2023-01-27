@@ -11,7 +11,6 @@ export class TestPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
   }
 
 
