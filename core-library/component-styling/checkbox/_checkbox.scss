@@ -33,9 +33,30 @@
             color: var(--text-disabled);
         }
     }
-    @include size.selector(small) {
-        label {
+    p {
+        &.small {
             font-size: 14px;
+            margin-bottom: 8px !important;
+        }
+        &.check-desc {
+            margin-bottom: token-size.$fixed-12;
+        }
+        &.check-hint {
+            color: var(--text-placeholder);
+            margin-bottom: token-size.$fixed-8;
+            margin-top: 0;
+        }
+        &.check-error {
+            color: var(--critical-text);
+            margin-top: token-size.$fixed-8;
+        }
+    }
+    @include size.selector(small) {
+        label, p {
+            font-size: token-size.$fixed-14;
+        }
+        p {
+            margin-bottom: token-size.$fixed-8;
         }
     };
 }

@@ -15,6 +15,7 @@ export interface ICheckBoxComponentConfig {
   validators?: ValidatorFn[];
   helpText?: string;
   customErrorText?: string;
+  desc?: string;
 }
 
 @Component({
