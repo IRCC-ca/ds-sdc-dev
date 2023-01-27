@@ -101,7 +101,7 @@
 }
 
 @mixin invalid {
-    &:invalid, &.ng-invalid.ng-touched{
+    &:invalid, &.ng-invalid.ng-touched, &.error {
         --border: var(--critical-border);
         background-color: var(--critical-background-weak);
 
