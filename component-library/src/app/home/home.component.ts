@@ -160,6 +160,7 @@ export class HomeComponent implements OnInit {
       desc: "Password description",
       hint: 'Password Hint',
       type: InputTypes.password,
+      size: 'small',
       placeholder: 'Placeholder text',
       required: true,
     }

@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
+import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
 
 export interface IJLInputComponentConfig {
   label?: string;
@@ -14,6 +15,7 @@ export interface IJLInputComponentConfig {
   placeholder?: string;
   type?: InputTypes;
   id: string;
+  size?: keyof typeof DSSizes;
   formGroup: FormGroup;
   validators?: ValidatorFn[];
 }

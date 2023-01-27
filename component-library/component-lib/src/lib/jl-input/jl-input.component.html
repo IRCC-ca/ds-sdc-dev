@@ -1,6 +1,6 @@
 <div>
   <form [formGroup]="config.formGroup">
-    <div class="input-container">
+    <div class="input-container" [ngClass]="config.size">
       <div class="input-text">
         <label *ngIf="config.label" class="input-label" 
         [attr.aria-label]="
@@ -20,7 +20,7 @@
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
           TODO: Should probably change the (keyup) to (onblur) -->
-          <input class="input-field" placeholder="{{ (config.placeholder || '') | translate }}"
+          <input class="input-field {{config.type}}-field" placeholder="{{ (config.placeholder || '') | translate }}"
             tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
             [type]="config.type" [id]="config.id" [formControlName]="config.id"/>
 
