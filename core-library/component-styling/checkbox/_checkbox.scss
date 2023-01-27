@@ -25,8 +25,13 @@
         display: flex;
         align-items: baseline;
     }
-    label.small {
-        font-size: 14px;
+    label {
+        &.small {
+            font-size: 14px;
+        }
+        &.disabled-label {
+            color: var(--text-disabled);
+        }
     }
     @include size.selector(small) {
         label {
