@@ -40,20 +40,12 @@
     font-size: 16px;
   }
 
-  .password-field{
+  .input-field {
     height: 52px;
   }
 
-  .text-field {
-    height: 76px
-  }
-
   .passwordIcon {
-    svg {
-      width: 22.5px;
-      height: 17.5px;
-    }
-    
+    font-size: 20px
   }
 }
 
@@ -79,19 +71,12 @@
     // margin-right: 5px;
   }
 
-  .password-field{
+  .input-field {
     height: 40px;
   }
 
-  .text-field {
-    height: 60px
-  }
-
   .passwordIcon {
-    svg {
-      width: 18px;
-      height: 14px;
-    }
+    font-size: 16px
   }
 }
 
@@ -145,13 +130,14 @@
       box-sizing: border-box;
       padding-right: 50px;
       // height: 40px;
-      margin-top: 4px;
+      // margin-top: 4px;
     }
 
     .passwordIcon {
-      top: 4px;
-      right: 0px;
       position: absolute;
+      top: 50%;
+      right: 0px;
+      transform: translate(0%, -50%);
       justify-self: flex-end;
       align-self: flex-end;
       margin-bottom: 0px;
