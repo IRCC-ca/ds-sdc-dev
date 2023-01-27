@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface IDropdownInputConfig {
   id: string;
@@ -34,6 +34,7 @@ export interface IDropdownInputOptionsConfig {
 })
 export class DropdownInputComponent implements OnInit, ControlValueAccessor {
   touched = false;
+  disabled = false;
 
   @Input() config: IDropdownInputConfig = {
     id: '',
@@ -51,6 +52,9 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
   }
   registerOnTouched(onTouched: any) {
     this.onTouched = onTouched;
+  }
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
   }
 
   markAsTouched() {

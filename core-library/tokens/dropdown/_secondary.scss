@@ -50,9 +50,7 @@ $default-color: null;
 @mixin layout() {
     @include dropdown.layout();
 
-    select{
-        // border: var(--secondary-text);
-        // box-shadow: sizes.$border-style;
+    select {
 		border: 1px solid var(--border);
         background-color: var(--surface1);
         @include device.if-hover {
@@ -74,8 +72,5 @@ $default-color: null;
                 --border: var(--secondary-text-disabled);
             }
         }
-        // &::after {
-        //     background-color: red;
-        // }
     }
 }
