@@ -2,7 +2,7 @@
   <div class="checkbox-layout" [ngClass]="{ error: config?.error }">
     <div class="checkbox">
       <input id="{{config.id}}" class="check"
-        [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus, error: config?.error}"
+        [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus, error: (config?.error || config.formGroup.get(config.id)?.invalid)}"
         [attr.size]="config.size" type="checkbox"
         [checked]="config.checked" [formControlName]="config.id" />
       <span class="checkmark"></span>
