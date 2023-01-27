@@ -198,7 +198,6 @@ export class HomeComponent implements OnInit {
     required: true,
     hint: "Hint Text",
     desc: "Description text",
-    error: false,
   };
 
   iconButtonConfig: IIconButtonComponentConfig = {

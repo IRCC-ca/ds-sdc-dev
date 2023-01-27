@@ -11,8 +11,6 @@ export interface IDropdownInputConfig {
   required?: boolean;
   hint?: string;
   desc?: string;
-  error?: boolean;
-  disabled?: boolean;
 };
 
 export interface IDropdownInputOptionsConfig {
@@ -34,7 +32,6 @@ export interface IDropdownInputOptionsConfig {
 })
 export class DropdownInputComponent implements OnInit, ControlValueAccessor {
   touched = false;
-  disabled = false;
 
   @Input() config: IDropdownInputConfig = {
     id: '',
@@ -52,9 +49,6 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
   }
   registerOnTouched(onTouched: any) {
     this.onTouched = onTouched;
-  }
-  setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled;
   }
 
   markAsTouched() {
