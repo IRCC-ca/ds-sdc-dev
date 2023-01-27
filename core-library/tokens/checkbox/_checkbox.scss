@@ -131,7 +131,8 @@
 }
 
 @mixin mixed-state {
-    &:indeterminate {
+    &:indeterminate,
+    &.mixed:checked {
         box-shadow: none;
         background-color: var(--formcontrol);
 
