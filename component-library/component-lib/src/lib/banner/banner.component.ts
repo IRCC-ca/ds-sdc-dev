@@ -19,7 +19,7 @@ export interface IBannerConfig {
   id: string,
   title?: string,
   content?: string,
-  type?: BannerType,
+  type?: keyof typeof BannerType,
   rounded?: boolean,
   dismissible?: boolean,
   //cta?: ICTAConfig[]
