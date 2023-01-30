@@ -197,20 +197,20 @@ export class HomeComponent implements OnInit {
     id: 'selectDropDown',
     formGroup: this.form,
     label: 'Select Dropdown Test',
+    category: 'secondary',
     options: [
       {
-        text: 'Test 1',
-        value: 'Test 1',
+        text: "One",
+        value: 'First'
       },
       {
-        text: 'Test 2',
-        value: 'Test 2',
-      },
-      {
-        text: 'Test Error',
-        value: 'Test Error',
-      },
-    ]
+        text: "Two",
+        value: 'Second'
+      }
+    ],
+    required: true,
+    hint: "Hint Text",
+    desc: "Description text",
   };
 
   iconButtonConfig: IIconButtonComponentConfig = {
