@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig, IBannerConfig, BannerType } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
@@ -20,6 +20,18 @@ export class HomeComponent implements OnInit {
   form = new FormGroup({});
 
   iconDirectionEnum = ButtonIconDirection;
+
+  bannerConfig : IBannerConfig = {
+    id: 'banner',
+    title: 'Title',
+    content: `<p>This is descriptione. <strong>This is the text.<strong> For the description. This is it.</p>
+    <ul>
+      <li>List example</li>
+      <li>Another list example</li>
+    </ul>`,
+    type: BannerType.warning,
+    dismissible: true
+  }
 
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
