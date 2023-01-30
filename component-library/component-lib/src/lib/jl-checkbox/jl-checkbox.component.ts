@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn} from '@angular/forms';
+import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DSSizes} from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 
 export interface ICheckBoxComponentConfig {
@@ -9,10 +9,8 @@ export interface ICheckBoxComponentConfig {
   small?: true; //DS Default is Large, hence this being changed for consistency
   mixed?: true;
   disableFocus?: boolean; //Default is true
-  checked?: boolean; //Controls the actual checked state of the component
   label?: string;
   id: string; //used for identifying the component everywhere and should NEVER be missing
-  validators?: ValidatorFn[];
   helpText?: string;
   customErrorText?: string;
   desc?: string;
@@ -50,8 +48,7 @@ export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
   onTouch = () => {};
   onChange = () => {};
 
-  writeValue(checked: boolean): void {
-    this.config.checked = checked;
+  writeValue(): void {
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -73,12 +70,11 @@ export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.id !== '') {
       this.config.id = this.id;
     }
-    if (!this.config?.size) this.config.size = this.config?.small ? DSSizes.small : DSSizes.large;
+    if (this.config?.size) this.config.size = DSSizes.large;
 
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
-    this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
   }
 
 }

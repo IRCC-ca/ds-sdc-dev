@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
@@ -26,19 +26,26 @@ export class HomeComponent implements OnInit {
       id: 'checkbox_label_test',
       formGroup: this.form,
       label: 'Testing Label',
-      disableFocus: true //TODO: Not working
+      helpText: 'Hint text',
+      desc: 'Description line of text',
+      disableFocus: true, //TODO: Not working,
     },
     { //checkbox2
       id: 'checkbox_small_test',
       formGroup: this.form,
       label: 'Small Test',
-      small: true
+      size: 'small',
+      helpText: 'Hint text',
+      desc: 'Description line of text',
     },
     { //checkbox3
       id: 'checkbox_error_test',
       formGroup: this.form,
       label: 'Error Test',
-      error: true
+      error: true,
+      customErrorText: 'Error Message',
+      helpText: 'Test help text',
+      desc: 'Description line of text',
     },
     {
       id: 'checkbox_form_disabled_test',
@@ -54,13 +61,19 @@ export class HomeComponent implements OnInit {
       id: 'checkbox_validators_test',
       formGroup: this.form,
       label: 'Form Validators Test',
-      validators: [Validators.required]
     },
     {
       id: 'checkbox_mixed_test',
       formGroup: this.form,
       mixed: true,
       label: 'Form Mixed Test',
+    },
+    {
+      id: 'checkbox_mixed_test',
+      formGroup: this.form,
+      mixed: true,
+      error: true,
+      label: 'Form Mixed Error Test',
     },
   ];
   //TODO: Test non-config checkboxes
@@ -220,6 +233,12 @@ export class HomeComponent implements OnInit {
     this.form.addControl(this.dropdownConfig.id, new FormControl());
     this.form.addControl(this.radioErrorTestConfig.id, new FormControl('', [Validators.maxLength(6)]));
     this.form.addControl(this.selectDropDownConfig.id, new FormControl('', [Validators.required, Validators.maxLength(6)]));
+    // Checkbox
+    for (let i in [0,1,2,3,4,6,7]) {
+      this.form.addControl(this.checkboxesConfigs[i].id, new FormControl());
+
+    }
+    this.form.addControl(this.checkboxesConfigs[5].id, new FormControl('', [Validators.required]));
   }
 
   valueChange(event: any) {
@@ -243,7 +262,7 @@ export class HomeComponent implements OnInit {
     interface IValReturn {
       key: string;
       value: string;
-    };
+    }
     let valReturn: IValReturn[] = [];
     console.log(this.form.value);
     Object.keys(this.form.value).forEach(key => {
@@ -267,8 +286,8 @@ export class HomeComponent implements OnInit {
         break;
 
       case HomeButtonActionTypes.checkboxError:
-        this.form.get('checkbox_form_error_test')?.valid ? 
-        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) : 
+        this.form.get('checkbox_form_error_test')?.valid ?
+        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) :
         this.form.get('checkbox_form_error_test')?.reset();
         this.form.updateValueAndValidity();
         console.log(this.form.get('checkbox_form_error_test')?.valid);
