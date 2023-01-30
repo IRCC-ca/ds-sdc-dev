@@ -6,7 +6,6 @@ export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
   size?: keyof typeof DSSizes | DSSizes;
   error?: true;
-  small?: true; //DS Default is Large, hence this being changed for consistency
   mixed?: true;
   disableFocus?: boolean; //Default is true
   label?: string;
@@ -75,6 +74,8 @@ export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
+
+    console.log(this.config.id, this.config.formGroup.get(this.config.id)?.invalid)
   }
 
 }
