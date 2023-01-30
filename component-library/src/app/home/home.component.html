@@ -35,7 +35,11 @@
                 <lib-radio-input [config]="radioConfig" [formControlName]="radioConfig.id"></lib-radio-input>
             </div>            
         </form>
+        <lib-banner [config]="bannerConfig"></lib-banner>
+
     </div>
+
+
 
     <!-- Non-Config Tests -->
     <div class="nonConfigTestCol">
@@ -58,6 +62,7 @@
             </div>
         </form>
         <lib-date-picker [title]="'Testing'" [dateForm]="form" [id]="datePickerID"></lib-date-picker>
+
     </div>
 
     <div class="displayCol">
@@ -85,5 +90,4 @@
       <div>
         <lib-icon-button [config]="iconButtonConfig"></lib-icon-button>
       </div>
-      <lib-banner [config]="bannerConfig"></lib-banner>
 </div>

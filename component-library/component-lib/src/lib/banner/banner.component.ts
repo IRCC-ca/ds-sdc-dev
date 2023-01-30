@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ButtonCategories, ButtonColor } from 'dist/ircc-ds-angular-component-library/public-api';
+//import { ButtonCategories, ButtonColor } from 'dist/ircc-ds-angular-component-library/public-api';
 
 export enum BannerType {
   generic = 'generic',
@@ -9,11 +9,11 @@ export enum BannerType {
   warning = 'warning'
 };
 
-export interface ICTAConfig {
-  text: string,
-  category: ButtonCategories,
-  color: ButtonColor
-}
+// export interface ICTAConfig {
+//   text: string,
+//   category: ButtonCategories,
+//   color: ButtonColor
+// }
 
 export interface IBannerConfig {
   id: string,
@@ -22,7 +22,7 @@ export interface IBannerConfig {
   type?: BannerType,
   rounded?: boolean,
   dismissible?: boolean,
-  cta?: ICTAConfig[]
+  //cta?: ICTAConfig[]
 }
 
 @Component({
