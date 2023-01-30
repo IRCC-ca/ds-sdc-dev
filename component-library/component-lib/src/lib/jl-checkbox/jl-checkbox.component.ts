@@ -74,8 +74,5 @@ export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
-
-    console.log(this.config.id, this.config.formGroup.get(this.config.id)?.invalid)
   }
-
 }
