@@ -23,9 +23,6 @@
 }
 
 @mixin layout {
-    .heading {
-        padding-top: sizes.$fixed-8;
-    }
 
     .headerLine {
         --global-divider: #102242;
@@ -34,7 +31,8 @@
         width: 100%;
         border-width: sizes.$fixed-2;
         border-style: solid;
-        margin-top: sizes.$fixed-24;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     .grid-container {
@@ -51,6 +49,22 @@
 
         img {
             min-width: 295px;
+            margin: {
+                left: 20px;
+                top: 24px;
+                bottom: 24px;
+            };
+            height: 27.3px;
+            
+            @include device.in-phone-layout {
+                min-width: 249px;
+                height: 22.93px;
+                margin: {
+                    left: 16px;
+                    top: 24px;
+                    bottom: 28px;
+                };
+            }
         }
     }
 
@@ -60,5 +74,28 @@
 
     .languageSwitch {
         justify-self: end;
+        margin: {
+            top: 12px;
+            bottom: 14px;
+        };
+
+        @include device.in-phone-layout {
+            margin: {
+                top: 12px;
+                bottom: 18px;
+            };
+        }
+        
+        button {
+            font-size: 16px;
+            font-family: 'Inter';
+            text-decoration: underline;
+            text-underline-offset: 4px; //Adjust space between line & text
+            @include device.in-phone-layout {
+                padding-right: 16px;
+                margin-right: 0;
+            }
+        }
     }
 }
+

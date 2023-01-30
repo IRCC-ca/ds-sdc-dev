@@ -28,13 +28,16 @@ export class LanguageSwitchComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private langToggle: LanguageSwitchButtonService,
-    private translate: TranslateService) { }
+    private translate: TranslateService) { 
+      this.isMobile = window.innerWidth <= 893;
+    }
 
   /** Listens for screen resizes and sets mobile boolean */
   @HostListener('window:resize', ['$event'])
   handleResize(e: any) {
     if (isPlatformBrowser(this.platformId)) {
       this.isMobile = window.innerWidth <= 893;
+      this.setText(this.translate.currentLang);
     }
   }
 
