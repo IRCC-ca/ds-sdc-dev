@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { I18nModule } from '@app/i18n';
 import { ShellComponent } from './shell.component';
 import { HeaderComponent } from './header/header.component';
+import { SharedModule } from '@app/@shared';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { HeaderComponent } from './header/header.component';
     TranslateModule,
     NgbModule,
     I18nModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     HeaderComponent,
