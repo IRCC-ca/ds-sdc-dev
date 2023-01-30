@@ -54,6 +54,21 @@
         width: 100%;      
     }
 
+    .banner-right{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .banner-body{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+
+
     .banner-left{
         display: flex;
         flex-direction: column;
@@ -85,6 +100,14 @@
 
     .banner-content > *{
         margin-top: 0;
+    }
+
+    .banner-ctas{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 5px;
     }
 
     @include types(information);
