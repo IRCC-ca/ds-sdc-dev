@@ -19,10 +19,8 @@ export class HeaderComponent {
     ngOnInit() {
         this.setLang(this.translate.currentLang);
         this.translate.onLangChange.subscribe(change => {
-            console.log(change, 'headeru');
             this.setLang(change.lang);
         });
-        console.log(this.translate.currentLang);
     }
 
     setLang(lang: string) {
