@@ -1,4 +1,4 @@
-<div class="checkbox-container" [formGroup]="config.formGroup">
+<form class="checkbox-container" [formGroup]="config.formGroup">
   <p *ngIf="config?.desc" class="check-desc" [ngClass]="config.size">{{(config.desc || '') | translate}}</p>
   <p *ngIf="config?.helpText" class="check-hint" [ngClass]="config.size">{{(config.helpText || '') | translate}}</p>
   <div class="checkbox-layout" [ngClass]="{ error: config?.error }">
@@ -23,4 +23,4 @@
     <lib-icon [class]="'fa-regular fa-circle-exclamation'"></lib-icon>
     {{(config.customErrorText || '') | translate}}
   </p>
-</div>
+</form>
