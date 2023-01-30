@@ -9,49 +9,112 @@
 @use 'sass:map';
 
 @mixin selector {
-    jl-pr-sclp-input#{template-const.$escape} {
-        @content;
-    }
+  jl-pr-sclp-input#{template-const.$escape} {
+      @content;
+  }
 }
 
 @mixin create {
-    @include selector() {
-        @include layout();
-    }
+  @include selector() {
+      @include layout();
+  }
 }
 
 @mixin layout {
 
-.input-container {
-  user-select: none;
-
-  .input-text {
-    width: 100%;
-    display: grid;
-    position: relative;
-  }
-
-
-.passwordIcon {
-  justify-self: flex-end;
-  align-self: flex-end;
-  //TODO: Calculate the position of the eye icon
-}
-
-.transparentButton {
-  position: absolute;
-  justify-self: flex-end;
-  align-self: flex-end;
-  margin-bottom: 0px;
-  background: transparent;
-  z-index: 1;
-
-  &:focus{
-    box-shadow: 0 0 0 3px var(--focus-border);
-  }
+  .input-container {
+    user-select: none;
   
-}
+    .input-text {
+      width: 100%;
+      display: grid;
+      position: relative;
+      
+      .input-label {
+        display: flex;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .input-desc {
+        font-size: 14px;
+        margin: 4px 0px 0px 0px;
+      }
 
-}
-   
+      .input-hint {
+        font-size: 14px;
+        color: #6F6F71;
+        margin: 8px 0px 0px 0px;
+      }
+      .required-star {
+        font-size: 12px;
+        color: var(--critical-text);
+        font-weight: 400;
+        line-height: 16px;
+        justify-self:flex-start;
+        margin-right: 4px;
+      }
+      
+
+      @include size.selector(large) {
+
+        .input-label {
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+        .input-desc {
+          font-size: 16px;
+          margin: 4px 0px 0px 0px;
+        }
+
+        .input-hint {
+          font-size: 16px;
+          color: #6F6F71;
+          margin: 12px 0px 0px 0px;
+        }
+
+        .required-star {
+          font-size: 16px;
+          color: var(--critical-text);
+          font-weight: 400;
+          line-height: 16px;
+          justify-self: flex-start;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .input-content-area{
+    position: relative;
+    .input-field{
+      box-sizing: border-box;
+      padding-right: 50px;
+      height: 40px;
+      margin-top: 4px;
+    }
+
+    .passwordIcon {
+      top: 4px;
+      right: 0px;
+      position: absolute;
+      justify-self: flex-end;
+      align-self: flex-end;
+      margin-bottom: 0px;
+      background: transparent;
+      z-index: 1;
+      padding-right: 10px;
+    
+      &:focus{
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    @include size.selector(large) {
+      .input-field{
+        height: 52px;
+      }
+    }
+  }
 }

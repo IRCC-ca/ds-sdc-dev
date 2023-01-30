@@ -22,18 +22,20 @@
 @use './tokens/global/validation';
 @use './tokens/alert/alert' as alert-tokens;
 
+@use './tokens/dropdown/plain' as dd-plain;
+@use './tokens/dropdown/primary' as dd-primary;
+@use './tokens/dropdown/secondary' as dd-secondary;
+
 @use './tokens/partial/focus';
 @use './tokens/partial/disable';
 
 @use './component-styling/checkbox/checkbox' as checkbox-component;
 @use './component-styling/input-component/input-component';
-@use './component-styling/dropdown/plain' as dd-plain;
-@use './component-styling/dropdown/primary' as dd-primary;
-@use './component-styling/dropdown/secondary' as dd-secondary;
 @use './component-styling/alert/alert';
 @use './component-styling/radio/radio' as radio-component;
 @use './component-styling/icon-button/icon-button';
 @use './component-styling/header/header' as header-component;
+@use './component-styling/dropdown/dropdown';
 
 @use './typography/fa-wrapper';
 
@@ -50,6 +52,7 @@
 @forward './tokens/checkbox/checkbox' as checkbox-*;
 @forward './tokens/input/input' as input-text-*;
 @forward './tokens/input/textarea' as input-textarea-*;
+
 
 @mixin element-styles($include: null) {
     @include global.create();
@@ -68,6 +71,7 @@
         @include element(dd-plain);
         @include element(dd-primary);
         @include element(dd-secondary);
+        @include element(dropdown);
         @include element(nav);
         @include element(round);
         @include element(checkbox);
@@ -106,6 +110,8 @@
         @include dd-secondary.create();
     } @else if $key == dd-plain {
         @include dd-plain.create();
+    } @else if $key == dropdown {
+        @include dropdown.create();
     } @else if $key == nav {
         @include nav.create();
     } @else if $key == round {
