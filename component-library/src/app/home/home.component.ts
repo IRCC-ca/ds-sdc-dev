@@ -290,7 +290,6 @@ export class HomeComponent implements OnInit {
         this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) :
         this.form.get('checkbox_form_error_test')?.reset();
         this.form.updateValueAndValidity();
-        console.log(this.form.get('checkbox_form_error_test')?.valid);
         break;
 
       case HomeButtonActionTypes.disableRadio:
