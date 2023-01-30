@@ -20,7 +20,7 @@
   }
 }
 
-@mixin size-large-test() {
+@mixin size-large() {
   .input-label {
     font-size: 20px;
     font-weight: 700;
@@ -28,7 +28,6 @@
 
   .input-desc {
     font-size: 16px;
-    // margin: 4px 0px 0px 0px;
   }
 
   .input-hint {
@@ -49,7 +48,7 @@
   }
 }
 
-@mixin size-small-test() {
+@mixin size-small() {
 
   .input-label {
     font-size: 16px;
@@ -58,7 +57,6 @@
 
   .input-desc {
     font-size: 14px;
-    // margin: 4px 0px 0px 0px;
   }
 
   .input-hint {
@@ -68,7 +66,6 @@
 
   .required-star {
     font-size: 12px;
-    // margin-right: 5px;
   }
 
   .input-field {
@@ -111,16 +108,16 @@
   }
 
   @include size.selector(large) {
-    @include size-large-test();
+    @include size-large();
     .small {
-      @include size-small-test()
+      @include size-small()
     }  
   }
 
   @include size.selector(small) {
-    @include size-small-test();
+    @include size-small();
     .large {
-      @include size-large-test()
+      @include size-large()
     }  
   }
 
@@ -129,8 +126,6 @@
     .input-field {
       box-sizing: border-box;
       padding-right: 50px;
-      // height: 40px;
-      // margin-top: 4px;
     }
 
     .passwordIcon {
