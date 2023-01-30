@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   iconDirectionEnum = ButtonIconDirection;
 
   bannerConfig : IBannerConfig = {
-    id: 'banner',
+    id: 'banner_52',
     title: 'Title',
     content: `<p>This is descriptione. <strong>This is the text.<strong> For the description. This is it.</p>
     <ul>

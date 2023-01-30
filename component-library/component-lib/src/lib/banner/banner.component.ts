@@ -38,12 +38,11 @@ export class BannerComponent implements OnInit {
 
   @Output() btnEvent? = new EventEmitter();
 
-  eventHandler(){
-    this.btnEvent?.emit(this.config?.id);
+  eventHandler(emitValue: string){
+    this.btnEvent?.emit(emitValue);
   }
 
   ngOnInit(){
-
     this.closeButtonId = this.config?.id + '_closeBtn';
   }
 
