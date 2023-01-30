@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 //import { ButtonCategories, ButtonColor } from 'dist/ircc-ds-angular-component-library/public-api';
 
 export enum BannerType {
@@ -29,13 +29,22 @@ export interface IBannerConfig {
   selector: 'lib-banner',
   templateUrl: './banner.component.html'
 })
-export class BannerComponent{
+export class BannerComponent implements OnInit {
 
-  @Input() config: IBannerConfig = {
-    id: '',
-  };
-  @Input() id = '';
+  closeButtonId = '';
 
-  @Output() closeItem? = new EventEmitter();
+  @Input() config?: IBannerConfig;
+  @Input() id?: string;
+
+  @Output() btnEvent? = new EventEmitter();
+
+  eventHandler(){
+    this.btnEvent?.emit(this.config?.id);
+  }
+
+  ngOnInit(){
+
+    this.closeButtonId = this.config?.id + '_closeBtn';
+  }
 
 }
