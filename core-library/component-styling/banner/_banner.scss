@@ -1,0 +1,203 @@
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as token-size;
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+    lib-banner#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin types($category: information){
+    .#{$category}{
+        background-color: var(--#{$category}-alert-background);
+        .banner-left{
+            .banner-line{
+                background-color: var(--#{$category}-alert-border);
+            }
+            .banner-icon{
+                color: var(--#{$category}-alert-icon);
+            }
+        }
+    }
+}
+
+@mixin layout {
+
+    .banner-component{
+        width: 100%;
+        height: auto;
+        background-color: var(--neutral-alert-background);
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .banner-container{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 16px; 
+        gap: 12px;
+        width: 100%;      
+    }
+
+    .banner-left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        height: 100%;
+        gap: 5%;
+    }
+
+    .banner-line{
+        min-height: 20px;
+        height: 90%;
+        width: 4px;
+        border-radius: 4px;
+    }
+
+    .banner-icon{
+        height: 24px;
+        width: 24px;
+    }
+
+    .banner-text{
+        width: 95%
+    }
+
+    .banner-title{
+        margin-bottom: 8px;
+    }
+
+    .banner-content > *{
+        margin-top: 0;
+    }
+
+    @include types(information);
+    @include types(critical);
+    @include types(warning);
+    @include types(success);
+
+
+    // .banner-container{
+    //     width: 100%;
+    //     background-color: var(--neutral-alert-background);
+    //     padding: 10px 0px 0px 10px;
+    //     margin: auto;
+    // }
+
+    // .banner-content{
+    //     display: flex;
+    //     flex-direction: row;
+    // }
+
+    // .banner-header{
+    //     display:flex;
+    //     flex-direction: row;
+    // }
+
+    // .banner-icon{
+    //     margin-right: 1rem;
+    //     align-self: center;
+    //     width: 20px;
+    //     height: 20px;
+    //     font-weight: 300;
+    //     display: none;
+    // }
+
+    // .banner-line{
+    //     background-color: var(--information-alert-border);
+    //     height: 36px;
+    //     width: 4px;
+    //     border-radius: 4px;
+    //     align-self: center;
+    //     z-index: 100;
+    //     margin-left: 0.5rem;
+    //     margin-right: 1.5rem;
+    //     display: none;
+    // }
+
+    // .banner-title p{
+    //     font-size: 16px;
+    //     font-weight: 700;
+    //     align-self: center;
+    //     margin: 0;
+    // }
+
+    // .banner-body {
+    //     margin: 0.5rem 0;
+    //     align-self: center;
+    //     width: 100%;
+    // }
+
+    // .banner-body div > p, ul, ol {
+    //     margin: 0;
+    //     font-size: 14px;
+    // }
+
+    // .information {
+    //     background-color: var(--information-alert-background);
+    //     .banner-icon {
+    //         color: var(--information-alert-icon);
+    //         display: block;
+    //     }
+    //     .banner-line {
+    //         background-color: var(--information-alert-border);
+    //         display: block;
+    //     }
+    // }
+
+    // .warning {
+    //     background-color: var(--warning-alert-background);
+    //     .banner-icon {
+    //         color: var(--warning-alert-icon);
+    //         display: block;
+    //     }
+    //     .banner-line {
+    //         background-color: var(--warning-alert-border);
+    //         display: block;
+    //     }
+    // }
+
+    // .success {
+    //     background-color: var(--success-alert-background);
+    //     .banner-icon {
+    //         color: var(--success-alert-icon);
+    //         display: block;
+    //     }
+    //     .banner-line {
+    //         background-color: var(--success-alert-border);
+    //         display: block;
+    //     }
+    // }
+
+    // .critical {
+    //     background-color: var(--critical-alert-background);
+    //     .banner-icon {
+    //         color: var(--critical-alert-icon);
+    //         display: block;
+    //     }
+    //     .banner-line {
+    //         background-color: var(--critical-alert-border);
+    //         display: block;
+    //     }
+    // }
+
+    // .rounded {
+    //     border-radius: 4px;
+    // }
+}

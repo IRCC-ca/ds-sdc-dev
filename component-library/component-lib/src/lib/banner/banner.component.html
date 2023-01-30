@@ -1,0 +1,20 @@
+<div class="banner-component" [ngClass]="{'rounded': config.rounded, 'information': config.type == 'info', 'success': config.type == 'success', 'warning': config.type == 'warning', 'critical': config.type == 'critical'}">
+    <div class="banner-container">
+    <div class="banner-left" *ngIf="config.type != 'generic'"> 
+    <i class="fa-regular banner-icon" [ngClass]="{
+        'fa-circle-info': config.type == 'info', 
+        'fa-circle-check': config.type == 'success', 
+        'fa-triangle-exclamation': config.type == 'warning', 
+        'fa-circle-exclamation': config.type == 'critical'
+    }"></i>
+    <div class="banner-line"></div>
+    </div>   
+    <div class="banner-text">
+        <div class="banner-title h6 emphasis" *ngIf="config.title">{{(config.title || '') | translate}}</div>
+        <div class="banner-content" [innerHTML]="config.content" *ngIf="config.content"></div>
+    </div>
+    <div class="banner-btn">
+    <lib-icon-button class="banner-close" *ngIf="config.dismissible"></lib-icon-button>
+    </div>
+    </div>
+</div>
