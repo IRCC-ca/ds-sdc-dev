@@ -4,7 +4,10 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IErrorPairs } from 'component-lib/src/shared/interfaces/component-configs';
+
+
 
 export interface IJLInputComponentConfig {
   label?: string;
@@ -12,10 +15,10 @@ export interface IJLInputComponentConfig {
   desc?: string
   required?: boolean
   placeholder?: string;
-  type?: InputTypes;
+  type?: InputTypes | keyof InputTypes; //TODO: Finish setting this up!
   id: string;
   formGroup: FormGroup;
-  validators?: ValidatorFn[];
+  errorMessages?: IErrorPairs[];
 }
 
 export enum InputTypes {
@@ -61,6 +64,10 @@ export class JLInputComponent implements ControlValueAccessor, OnInit {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
+
+    // this.config.formGroup.get(this.config.id)?.valueChanges.subscribe(value => {
+    //   console.log(this.config.formGroup.get(this.config.id)?.errors);
+    // })
   }
 
   public focusInput(focusValue: boolean): void {

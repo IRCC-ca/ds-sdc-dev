@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IErrorComponentConfig } from 'ircc-ds-angular-component-library';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IErrorComponentConfig, IJLInputComponentConfig, InputTypes } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-test-page',
@@ -7,6 +8,15 @@ import { IErrorComponentConfig } from 'ircc-ds-angular-component-library';
   styleUrls: ['./test-page.component.scss']
 })
 export class TestPageComponent implements OnInit {
+
+  form = new FormGroup({});
+
+  inputConfig: IJLInputComponentConfig = {
+    id: 'input',
+    formGroup: this.form,
+    type: InputTypes.password,
+    errorMessages: [{key: 'required', errorLOV: 'testRequiredLOV'}, {key: 'maxlength', errorLOV: 'maxLength of 3'}]
+  }
 
   errorConfig: IErrorComponentConfig = {
     id: 'error',
@@ -17,7 +27,6 @@ export class TestPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.form.addControl(this.inputConfig.id, (new FormControl('', [Validators.required, Validators.maxLength(3)])));
   }
-
-
 }

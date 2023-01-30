@@ -35,6 +35,7 @@
 @use './component-styling/radio/radio' as radio-component;
 @use './component-styling/icon-button/icon-button';
 @use './component-styling/dropdown/dropdown';
+@use './component-styling/error/error' as error-component;
 
 @use './typography/fa-wrapper';
 
@@ -86,6 +87,7 @@
         @include element(alert-tokens);
         @include element(radio-component);
         @include element(icon-button);
+        @include element(error-component)
     } @else {
         @each $key in $include {
             @include element($key);
@@ -140,5 +142,7 @@
         @include radio-component.create();
     } @else if $key == icon-button {
         @include icon-button.create();
+    } @else if $key == error-component {
+        @include error-component.create();
     }
 }

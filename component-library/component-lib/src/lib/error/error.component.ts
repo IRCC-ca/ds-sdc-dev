@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+
 export interface IErrorIconConfig {
   class: string; // Fontawesome icon class
   color?: string; // icon color
