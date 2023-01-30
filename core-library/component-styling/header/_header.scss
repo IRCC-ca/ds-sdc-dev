@@ -55,14 +55,14 @@
                 bottom: 24px;
             };
             height: 27.3px;
-            
+
             @include device.in-phone-layout {
                 min-width: 249px;
                 height: 22.93px;
                 margin: {
                     left: 16px;
                     top: 24px;
-                    bottom: 28px;
+                    bottom: 28.48px;
                 };
             }
         }
