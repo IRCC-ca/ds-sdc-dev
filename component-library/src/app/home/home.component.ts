@@ -21,18 +21,6 @@ export class HomeComponent implements OnInit {
 
   iconDirectionEnum = ButtonIconDirection;
 
-  bannerConfig : IBannerConfig = {
-    id: 'banner_52',
-    title: 'Title',
-    content: `<p>This is descriptione. <strong>This is the text.<strong> For the description. This is it.</p>
-    <ul>
-      <li>List example</li>
-      <li>Another list example</li>
-    </ul>`,
-    type: BannerType.warning,
-    dismissible: true
-  }
-
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
       id: 'checkbox_label_test',
