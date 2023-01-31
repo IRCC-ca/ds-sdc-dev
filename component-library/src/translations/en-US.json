@@ -8,7 +8,19 @@
     "HeaderFooter-alt": "en-tête-pied-de-page",
     "Miscellaneous": "miscellaneous",
     "Miscellaneous-alt": "divers",
-    "FormComponents": "components-formulaire"
+    "FormComponents": "components-formulaire",
+    "QATesting": "qa",
+    "QATesting-alt": "aq",
+    "kris": "kris-en",
+    "kris-alt": "kris-fr",
+    "mahsa": "mahsa-en",
+    "mahsa-alt": "mahsa-fr",
+    "naseer": "naseer-en",
+    "naseer-alt": "naseer-fr",
+    "mike": "mike-en",
+    "mike-alt": "mike-fr",
+    "michael": "michael-en",
+    "michael-alt": "michael-fr"
   },
   "BUTTONS": {
     "Back": "Back",
@@ -30,5 +42,9 @@
   },
   "LandingPage": {
     "header": "This page is for testing and QA purposes only"
+  },
+
+  "QA": {
+    "header": "QA Landing Page"
   }
 }
