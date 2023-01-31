@@ -44,5 +44,9 @@
 
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
+  },
+
+  "QA": {
+    "header": "Page de AQ"
   }
 }

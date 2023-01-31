@@ -42,5 +42,9 @@
   },
   "LandingPage": {
     "header": "This page is for testing and QA purposes only"
+  },
+
+  "QA": {
+    "header": "QA Landing Page"
   }
 }
