@@ -13,6 +13,10 @@ const routes: Routes = [
     { path: 'dev-test', component: TestPageComponent }, //English
     { path: 'test-dev', component: TestPageComponent }, //French
 
+    { path: 'qa', loadChildren: () => import('./QA/qa.module').then(m => m.QaModule) }, //English
+    { path: 'aq', loadChildren: () => import('./QA/qa.module').then(m => m.QaModule) }, //French
+
+
         //TODO: all other components will be going through another router outlet inside the gallery component. 
         //TODO: Check for another way to route through router-outlet (see how app-component does it).
     LandingPage.childRoutes([
@@ -24,6 +28,7 @@ const routes: Routes = [
       
       { path: 'miscellaneous', component: MiscellaneousComponent }, //English
       { path: 'divers', component: MiscellaneousComponent }, //French
+
     ])
 
 

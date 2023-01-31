@@ -8,7 +8,19 @@
     "HeaderFooter-alt": "header-footer",
     "Miscellaneous": "divers",
     "Miscellaneous-alt": "miscellaneous",
-    "FormComponents": "form-components"
+    "FormComponents": "form-components",
+    "QATesting": "aq",
+    "QATesting-alt": "qa",
+    "kris": "kris-fr",
+    "kris-alt": "kris-en",
+    "mahsa": "mahsa-fr",
+    "mahsa-alt": "mahsa-en",
+    "naseer": "naseer-fr",
+    "naseer-alt": "naseer-en",
+    "mike": "mike-fr",
+    "mike-alt": "mike-en",
+    "michael": "michael-fr",
+    "michael-alt": "michael-en"
   },
 
   "BUTTONS": {
