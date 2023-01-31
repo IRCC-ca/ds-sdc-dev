@@ -39,8 +39,14 @@
     font-size: 16px;
   }
 
-  .input-field {
+  .input-password-field {
     height: 52px;
+  }
+
+  .input-text-field {
+    height: 76px;
+    font-size: 16px;
+    padding: 14px 16px 14px 20px;
   }
 
   .passwordIcon {
@@ -68,8 +74,14 @@
     font-size: 12px;
   }
 
-  .input-field {
+  .input-password-field {
     height: 40px;
+  }
+
+  .input-text-field {
+    font-size: 14px;
+    height: 60px;
+    padding: 10px 15px 10px 15px;
   }
 
   .passwordIcon {
@@ -123,9 +135,14 @@
 
   .input-content-area{
     position: relative;
-    .input-field {
+    .input-password-field {
       box-sizing: border-box;
       padding-right: 50px;
+    }
+
+    .input-text-field {
+      box-sizing: border-box;
+      resize: none;
     }
 
     .passwordIcon {
