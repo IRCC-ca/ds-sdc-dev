@@ -62,10 +62,6 @@ export class JLInputComponent implements ControlValueAccessor, OnInit {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
-
-    // if (this.config.required) {
-    //   this.config.formGroup.setControl(this.config.id, new FormControl('', [Validators.required]))
-    // }
   }
 
   public focusInput(focusValue: boolean): void {
