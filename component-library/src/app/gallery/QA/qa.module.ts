@@ -9,6 +9,7 @@ import { MahsaComponent } from './mahsa/mahsa.component';
 import { NaseerComponent } from './naseer/naseer.component';
 import { MichaelComponent } from './michael/michael.component';
 import { MikeComponent } from './mike/mike.component';
+import { AutoTesterComponent } from './auto-tester/auto-tester.component';
 
 
 
@@ -19,7 +20,8 @@ import { MikeComponent } from './mike/mike.component';
     MahsaComponent,
     NaseerComponent,
     MichaelComponent,
-    MikeComponent
+    MikeComponent,
+    AutoTesterComponent
   ],
   imports: [
     CommonModule,
