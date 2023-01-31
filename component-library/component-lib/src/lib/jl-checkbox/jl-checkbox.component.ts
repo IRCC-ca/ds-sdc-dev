@@ -28,8 +28,6 @@ export interface ICheckBoxComponentConfig {
 })
 export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
   formGroupEmpty: FormGroup = new FormGroup({});
-  checkboxIsChecked = false;
-  touched = false;
 
   //TODO: Add output - consider using a formControl as output rather than anything else. Many different approaches are possible
   @Input() config: ICheckBoxComponentConfig = {
@@ -68,7 +66,7 @@ export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.id !== '') {
       this.config.id = this.id;
     }
-    if (this.config?.size) this.config.size = DSSizes.large;
+    if (!this.config?.size) this.config.size = DSSizes.large;
 
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
