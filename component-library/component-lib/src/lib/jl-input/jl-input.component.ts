@@ -4,14 +4,14 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
 
 export interface IJLInputComponentConfig {
   label?: string;
   hint?: string;
   desc?: string;
-  required?: boolean;
+  required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
   placeholder?: string;
   type?: keyof typeof InputTypes;
   id: string;
@@ -62,6 +62,10 @@ export class JLInputComponent implements ControlValueAccessor, OnInit {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
+
+    // if (this.config.required) {
+    //   this.config.formGroup.setControl(this.config.id, new FormControl('', [Validators.required]))
+    // }
   }
 
   public focusInput(focusValue: boolean): void {
