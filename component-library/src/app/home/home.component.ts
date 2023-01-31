@@ -145,6 +145,7 @@ export class HomeComponent implements OnInit {
       label: 'Input Label',
       placeholder: 'placeholder',
       id: 'input1',
+      size: "small",
       formGroup: this.form,
       required: true
     },
@@ -152,7 +153,8 @@ export class HomeComponent implements OnInit {
       label: "Password Test - error state applies, but ng-invalid class doesn't change anything",
       type: 'password',
       id: 'password',
-      formGroup: this.form
+      formGroup: this.form,
+      required: false
     },
     {
       id: 'test_input_1',
@@ -216,8 +218,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.form.addControl(this.radioConfig.id, new FormControl());
-    this.form.addControl(this.inputConfigs[0].id, new FormControl());
-    this.form.addControl(this.inputConfigs[1].id, new FormControl('', [Validators.required]));
+    this.form.addControl(this.inputConfigs[0].id, new FormControl('', [Validators.required]));
+    this.form.addControl(this.inputConfigs[1].id, new FormControl());
     this.form.addControl(this.inputConfigs[2].id, new FormControl('', [Validators.required]));
     this.form.addControl(this.dropdownConfig.id, new FormControl());
     this.form.addControl(this.radioErrorTestConfig.id, new FormControl('', [Validators.maxLength(6)]));
