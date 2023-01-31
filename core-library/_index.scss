@@ -36,6 +36,15 @@
 @use './component-styling/icon-button/icon-button';
 @use './component-styling/header/header' as header-component;
 @use './component-styling/dropdown/dropdown';
+@use './component-styling/autocomplete/autocomplete';
+@use './component-styling/date-picker/date-picker';
+@use './component-styling/footer/footer';
+@use './component-styling/icon/icon';
+
+
+@use './component-styling/chips/item' as chip-item;
+@use './component-styling/chips/list' as chip-list;
+@use './component-styling/chips/secondary' as chip-secondary;
 
 @use './typography/fa-wrapper';
 
@@ -88,6 +97,14 @@
         @include element(radio-component);
         @include element(icon-button);
         @include element(header-component);
+        @include element(footer);
+        @include element(autocomplete);
+        @include element(chip-item);
+        @include element(chip-list);
+        @include element(chip-secondary);
+        @include element(date-picker);
+        @include element(icon);
+
     } @else {
         @each $key in $include {
             @include element($key);
@@ -144,5 +161,20 @@
         @include icon-button.create();
     } @else if $key == header-component {
         @include header-component.create();
+    } @else if $key == footer {
+        @include footer.create();
+    } @else if $key == autocomplete {
+        @include autocomplete.create();
+    } @else if $key == chip-item {
+        @include chip-item.create();
+    } @else if $key == chip-list {
+        @include chip-list.create();
+    } @else if $key == chip-secondary {
+        @include chip-secondary.create();
+    } @else if $key == date-picker {
+        @include date-picker.create();
+    } @else if $key == icon {
+        @include icon.create();
     }
+
 }

@@ -1,0 +1,22 @@
+@use '../../tokens/template-const' as template-const;
+ 
+@mixin selector {
+    lib-chip-list#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+.chip-list {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+  overflow-x: auto;
+}    
+}

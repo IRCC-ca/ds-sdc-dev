@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IDropdownComponentConfig, IInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   ];
   //TODO: Test non-config checkboxes
 
-  dropdownConfig: IJLDropdownComponentConfig = {
+  dropdownConfig: IDropdownComponentConfig = {
     id: 'dropdown_test1',
     options: [
       {
@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
   demoText = '';
   demoTextArray: IComponentOutputEvent[] = [];
 
-  inputConfigs: IJLInputComponentConfig[] = [
+  inputConfigs: IInputComponentConfig[] = [
     {
       label: 'Input Label',
       placeholder: 'placeholder',
