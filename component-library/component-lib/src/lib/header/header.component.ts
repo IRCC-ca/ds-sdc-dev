@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 export const ENGLISH_BANNER_URL = 'https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg';
@@ -14,17 +14,17 @@ export class HeaderComponent {
     imageURL = '';
 
     constructor(private translate: TranslateService) {
-     }
+    }
 
     ngOnInit() {
         this.setLang(this.translate.currentLang);
         this.translate.onLangChange.subscribe(change => {
-        this.setLang(change.lang);
+            this.setLang(change.lang);
         });
     }
 
     setLang(lang: string) {
-        lang === 'en-US' ? (this.imageURL = ENGLISH_BANNER_URL)
+        (lang === 'en') || (lang === 'en-US') ? (this.imageURL = ENGLISH_BANNER_URL)
             : (this.imageURL = FRENCH_BANNER_URL);
     }
 }

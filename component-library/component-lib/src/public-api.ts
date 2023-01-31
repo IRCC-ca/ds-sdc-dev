@@ -19,7 +19,7 @@ export * from './lib/dropdown-input/dropdown-input.component';
 export * from './lib/date-picker/date-picker.component';
 export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
-export * from './lib/alert/alert.component';
+export * from './lib/banner/banner.component';
 
 export * from './lib/header/header.component';
 export * from './lib/footer/footer.component';

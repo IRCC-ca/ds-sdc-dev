@@ -20,7 +20,7 @@
 @use './tokens/global/selected';
 @use './tokens/global/text-global';
 @use './tokens/global/validation';
-@use './tokens/alert/alert' as alert-tokens;
+@use './tokens/alert/alert';
 
 @use './tokens/dropdown/plain' as dd-plain;
 @use './tokens/dropdown/primary' as dd-primary;
@@ -31,9 +31,10 @@
 
 @use './component-styling/checkbox/checkbox' as checkbox-component;
 @use './component-styling/input-component/input-component';
-@use './component-styling/alert/alert';
+@use './component-styling/banner/banner';
 @use './component-styling/radio/radio' as radio-component;
 @use './component-styling/icon-button/icon-button';
+@use './component-styling/header/header' as header-component;
 @use './component-styling/dropdown/dropdown';
 
 @use './typography/fa-wrapper';
@@ -83,9 +84,10 @@
         @include element(checkbox-component);
         @include element(input-component);
         @include element(alert);
-        @include element(alert-tokens);
+        @include element(banner);
         @include element(radio-component);
         @include element(icon-button);
+        @include element(header-component);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -134,11 +136,13 @@
         @include input-component.create();
     } @else if $key == alert {
         @include alert.create();
-    } @else if $key == alert-tokens {
-        @include alert-tokens.create();
+    } @else if $key == banner {
+        @include banner.create();
     } @else if $key == radio-component {
         @include radio-component.create();
     } @else if $key == icon-button {
         @include icon-button.create();
+    } @else if $key == header-component {
+        @include header-component.create();
     }
 }
