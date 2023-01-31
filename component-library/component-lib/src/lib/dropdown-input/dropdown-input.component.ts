@@ -21,7 +21,6 @@ export interface IDropdownInputOptionsConfig {
 @Component({
   selector: 'lib-dropdown-input',
   templateUrl: './dropdown-input.component.html',
-  styleUrls: ['./dropdown-input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

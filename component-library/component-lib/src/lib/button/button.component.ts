@@ -40,8 +40,7 @@ export interface IButtonConfig {
 
 @Component({
     selector: 'lib-button',
-    templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss'],
+    templateUrl: './button.component.html'
 })
 export class ButtonComponent {
 @Input() config: IButtonConfig = {
