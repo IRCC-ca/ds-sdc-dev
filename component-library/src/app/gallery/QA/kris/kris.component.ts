@@ -168,5 +168,4 @@ export class KrisComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ICheckBoxComponentConfig, IDropdownInputConfig } from 'ircc-ds-angular-component-library';
 
@@ -24,13 +24,10 @@ export class AutoTesterComponent implements OnInit {
     id: '',
     formGroup: new FormGroup({})
   }
-  @Output() clickEvent = new EventEmitter<string[]>();
 
   constructor() { }
 
   ngOnInit() {
-    //Add the auto-test form controls procedurally to FormGroup
-
   }
 
 }
