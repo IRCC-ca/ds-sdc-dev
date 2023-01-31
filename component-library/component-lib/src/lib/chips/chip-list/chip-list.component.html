@@ -1,0 +1,8 @@
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+  <lib-input name="chipContentText" [(ngModel)]="chipContentText" placeholder="Add Chip">
+  </lib-input>
+</form>
+<div class="chip-list">
+  <lib-chip-item *ngFor="let chip of chipList; let idx = index" [chipContent]="chip"
+    (iconClickEvent)="removeChipItem(idx)"></lib-chip-item>
+</div>

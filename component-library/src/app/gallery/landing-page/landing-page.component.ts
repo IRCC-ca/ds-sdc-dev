@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
+import { ButtonCategories } from 'ircc-ds-angular-component-library';
+import { ILibraryNavButtons, INavButtonComponentConfig } from '../nav-buttons/nav-buttons.component';
 
-export interface ILibraryNavButtons {
-  name: string;
-  url: string;
-  id?: string;
-}
 
 @Component({
   selector: 'app-landing-page',
@@ -16,7 +13,9 @@ export class LandingPageComponent implements OnInit {
 
   constructor(private altLang: LanguageSwitchService) { }
 
-  componentsButtons: ILibraryNavButtons[] = [
+   navConfig: INavButtonComponentConfig = {
+    id: 'landingPage_buttons',
+    buttons: [
     {
       name: 'BUTTONS.FormInputs',
       url: 'FormComponents'
@@ -38,18 +37,9 @@ export class LandingPageComponent implements OnInit {
       url: 'QATesting'
     }
   ]
+};
 
   ngOnInit() {
-    this.altLang.setAltLangLink('LandingPage-alt');
-    
-
-    this.createButtonIds();
+    this.altLang.setAltLangLink('LandingPage-alt');   
   }
-
-  createButtonIds() {
-    this.componentsButtons.forEach(button => {
-      button.id = button.name.replace(/\s/g, "");
-    });
-  }
-
 }
