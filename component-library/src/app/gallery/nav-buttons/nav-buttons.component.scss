@@ -1,6 +1,5 @@
 .navContainer {
     margin: auto;
-    width: 40%;
 
     .navFlexContainer {
         .navHeader {
@@ -9,10 +8,10 @@
             justify-content: center;
         }
 
-        // max-width: 75%;
         margin-bottom: 32px;
         display: flex;
-        justify-content: space-between;
+        gap: 24px;
+        justify-content: center;
         flex-wrap: wrap;
 
         .button {

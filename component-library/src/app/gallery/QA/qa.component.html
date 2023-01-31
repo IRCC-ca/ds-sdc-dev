@@ -1,9 +1,6 @@
 <div>
-    <h1>{{'QA.header' | translate}}</h1>
-    <!-- Nav Buttons -->
-    <ng-container *ngFor="let button of componentsButtons">
-        <button id="{{button.id}}" [routerLink]="'ROUTES.' + button.url | translate">{{button.name |
-            translate}}</button>
-    </ng-container>
+    <app-nav-buttons [config]="navConfig"></app-nav-buttons>
+
+    <!-- Outlet -->
     <router-outlet></router-outlet>
 </div>

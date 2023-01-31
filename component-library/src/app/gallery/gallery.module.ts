@@ -23,6 +23,7 @@ import { MiscellaneousComponent } from './miscellaneous/miscellaneous.component'
     CommonModule,
     SharedModule,
     TranslateModule,
+    SharedModule,
     GalleryRoutingModule,
   ],
   exports: [

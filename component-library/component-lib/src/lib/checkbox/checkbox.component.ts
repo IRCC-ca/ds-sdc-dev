@@ -73,7 +73,7 @@ export class CheckboxComponent implements ControlValueAccessor {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
-    this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
+    // this.config.formGroup.addControl(this.config.id, new FormControl('', this.config.validators));
   }
 
 }
