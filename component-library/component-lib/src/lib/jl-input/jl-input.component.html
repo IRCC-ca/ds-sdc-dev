@@ -21,16 +21,20 @@
           <!-- ngModel doesn't mind undefined values, apparently
           TODO: Should probably change the (keyup) to (onblur) -->
           <textarea *ngIf="(config.type === 'text' || !config.type) && !showPassword" class="input-text-field" [id]="config.id" 
-          [ngClass]="config.type" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0" [formControlName]="config.id"></textarea>
+          [ngClass]="config.type" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0" [formControlName]="config.id" 
+          [attr.aria-label]="
+            'Text Input' + ' ' + (config.placeholder|| '' | translate)"></textarea>
 
           <input *ngIf="config.type === 'password' || showPassword" class="input-password-field" placeholder="{{ (config.placeholder || '') | translate }}"
             tabindex="0" [ngClass]="(showPassword || config.type === 'password') ? 'password' : 'input'"
-            [type]="config.type" [id]="config.id" [formControlName]="config.id"/>
+            [type]="config.type" [id]="config.id" [formControlName]="config.id" [attr.aria-label]="
+            'Password Input' + ' ' + (config.placeholder|| '' | translate)
+            "/>
 
           <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
-            class="passwordIcon" (click)="hideShow()" [disabled]="disabled">
-            <div *ngIf="showPassword"><i class="fa-solid fa-eye-slash"></i></div>
-            <div *ngIf="!showPassword"><i class="fa-solid fa-eye"></i></div>
+            class="passwordIcon" (click)="hideShow()" [disabled]="disabled" aria-label="Password eye Icon">
+            <div *ngIf="showPassword" attr.aria-label="{{ 'Input_Component.Password-icon.hide_password_aria-label' | translate }}"><i class="fa-solid fa-eye-slash"></i></div>
+            <div *ngIf="!showPassword" attr.aria-label="{{ 'Input_Component.Password-icon.show_password_aria-label' | translate }}"><i class="fa-solid fa-eye"></i></div>
           </button>
         </div>
       </div>

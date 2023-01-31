@@ -7,5 +7,12 @@
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
   "Home": "Accueil",
-  "Version": "Version"
+  "Version": "Version",
+
+  "Input_Component": {
+    "Password-icon" : {
+      "show_password_aria-label": "afficher le texte du mot de passe",
+      "hide_password_aria-label": "masquer le texte du mot de passe"
+    }
+  }
 }

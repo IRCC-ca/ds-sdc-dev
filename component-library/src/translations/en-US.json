@@ -11,6 +11,13 @@
 
   "INPUT": {
     "ERROR": "Input error"
+  },
+
+  "Input_Component": {
+    "Password-icon" : {
+      "show_password_aria-label": "display password text",
+      "hide_password_aria-label": "mask password text"
+    }
   }
 
 
