@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
@@ -145,11 +145,12 @@ export class HomeComponent implements OnInit {
       label: 'Input Label',
       placeholder: 'placeholder',
       id: 'input1',
-      formGroup: this.form
+      formGroup: this.form,
+      required: true
     },
     {
       label: "Password Test - error state applies, but ng-invalid class doesn't change anything",
-      type: InputTypes.password,
+      type: 'password',
       id: 'password',
       formGroup: this.form
     },
@@ -159,7 +160,7 @@ export class HomeComponent implements OnInit {
       label: 'Password',
       desc: "Password description",
       hint: 'Password Hint',
-      type: InputTypes.password,
+      type: 'password',
       size: 'small',
       placeholder: 'Placeholder text',
       required: true,

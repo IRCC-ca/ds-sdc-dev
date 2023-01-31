@@ -10,14 +10,13 @@ import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-com
 export interface IJLInputComponentConfig {
   label?: string;
   hint?: string;
-  desc?: string
-  required?: boolean
+  desc?: string;
+  required?: boolean;
   placeholder?: string;
-  type?: InputTypes;
+  type?: keyof typeof InputTypes;
   id: string;
   size?: keyof typeof DSSizes;
   formGroup: FormGroup;
-  validators?: ValidatorFn[];
 }
 
 export enum InputTypes {
