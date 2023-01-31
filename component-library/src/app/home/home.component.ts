@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig, IBannerConfig, BannerType } from 'ircc-ds-angular-component-library';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
@@ -279,8 +279,8 @@ export class HomeComponent implements OnInit {
         break;
 
       case HomeButtonActionTypes.checkboxError:
-        this.form.get('checkbox_form_error_test')?.valid ? 
-        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) : 
+        this.form.get('checkbox_form_error_test')?.valid ?
+        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) :
         this.form.get('checkbox_form_error_test')?.reset();
         this.form.updateValueAndValidity();
         console.log(this.form.get('checkbox_form_error_test')?.valid);

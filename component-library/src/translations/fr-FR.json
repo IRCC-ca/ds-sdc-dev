@@ -1,4 +1,25 @@
 {
+  "ROUTES": {
+    "LandingPage": "page-general",
+    "LandingPage-alt": "landing-page",
+    "DevTest": "test-dev",
+    "DevTest-alt": "dev-test",
+    "HeaderFooter": "en-tête-pied-de-page",
+    "HeaderFooter-alt": "header-footer",
+    "Miscellaneous": "divers",
+    "Miscellaneous-alt": "miscellaneous",
+    "FormComponents": "form-components"
+  },
+
+  "BUTTONS": {
+    "Back": "Retour",
+    "FormInputs": "Components formulaire",
+    "HeaderFooter": "En tête / pied de page",
+    "Miscellaneous": "Divers",
+    "DevTestPage": "Page de teste",
+    "QATesting": "Page de teste pour AQ"
+  },
+
   "OPPOSITE_LANGUAGE": "English",
 
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
@@ -7,5 +28,9 @@
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
   "Home": "Accueil",
-  "Version": "Version"
+  "Version": "Version",
+
+  "LandingPage": {
+    "header": "Ce page est pour les tests et assurance du qualité seulment"
+  }
 }

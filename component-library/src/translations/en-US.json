@@ -1,17 +1,34 @@
 {
+  "ROUTES": {
+    "LandingPage": "landing-page",
+    "LandingPage-alt": "page-general",
+    "DevTest": "dev-test",
+    "DevTest-alt": "test-dev",
+    "HeaderFooter": "header-footer",
+    "HeaderFooter-alt": "en-tête-pied-de-page",
+    "Miscellaneous": "miscellaneous",
+    "Miscellaneous-alt": "divers",
+    "FormComponents": "components-formulaire"
+  },
+  "BUTTONS": {
+    "Back": "Back",
+    "FormInputs": "Form Inputs",
+    "HeaderFooter": "Header/Footer",
+    "Miscellaneous": "Miscellaneous",
+    "DevTestPage": "Dev Test Page",
+    "QATesting": "QA Testing Page"
+  },
   "OPPOSITE_LANGUAGE": "Français",
-
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",
-
   "APP_NAME": "component-library",
   "About": "About",
   "Hello world !": "Hello world !",
   "Home": "Home",
   "Version": "Version",
-
   "INPUT": {
     "ERROR": "Input error"
+  },
+  "LandingPage": {
+    "header": "This page is for testing and QA purposes only"
   }
-
-
 }
