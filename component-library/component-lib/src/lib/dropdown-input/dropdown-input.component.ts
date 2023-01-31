@@ -6,7 +6,7 @@ export interface IDropdownInputConfig {
   formGroup: FormGroup;
   small?: boolean;
   label?: string;
-  options?: IDropdownInputOptionsConfig[]
+  options?: IDropdownInputOptionsConfig[];
   category?: string;
   required?: boolean;
   hint?: string;
