@@ -3,7 +3,7 @@
 <form [formGroup]="form">
   <div class="demoCheckboxContainer">
     <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
-      <jl-pr-sclp-checkbox [config]="checkbox" [formControlName]="checkbox.id"></jl-pr-sclp-checkbox>
+      <lib-checkbox [config]="checkbox" [formControlName]="checkbox.id"></lib-checkbox>
     </div>
     <button (click)="buttonActions('disableCheckbox')">Toggle Disable Checkbox</button>
     <button (click)="buttonActions('checkboxError')">Toggle Error Checkbox</button>

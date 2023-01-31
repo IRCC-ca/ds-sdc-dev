@@ -26,7 +26,7 @@ export interface ICheckBoxComponentConfig {
   ]
 
 })
-export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
+export class CheckboxComponent implements ControlValueAccessor, OnInit {
   formGroupEmpty: FormGroup = new FormGroup({});
 
   //TODO: Add output - consider using a formControl as output rather than anything else. Many different approaches are possible
