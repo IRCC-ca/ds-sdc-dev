@@ -20,19 +20,31 @@
 @use './tokens/global/selected';
 @use './tokens/global/text-global';
 @use './tokens/global/validation';
-@use './tokens/alert/alert' as alert-tokens;
+@use './tokens/alert/alert';
+
+@use './tokens/dropdown/plain' as dd-plain;
+@use './tokens/dropdown/primary' as dd-primary;
+@use './tokens/dropdown/secondary' as dd-secondary;
 
 @use './tokens/partial/focus';
 @use './tokens/partial/disable';
 
 @use './component-styling/checkbox/checkbox' as checkbox-component;
 @use './component-styling/input-component/input-component';
-@use './component-styling/dropdown/plain' as dd-plain;
-@use './component-styling/dropdown/primary' as dd-primary;
-@use './component-styling/dropdown/secondary' as dd-secondary;
-@use './component-styling/alert/alert';
+@use './component-styling/banner/banner';
 @use './component-styling/radio/radio' as radio-component;
 @use './component-styling/icon-button/icon-button';
+@use './component-styling/header/header' as header-component;
+@use './component-styling/dropdown/dropdown';
+@use './component-styling/autocomplete/autocomplete';
+@use './component-styling/date-picker/date-picker';
+@use './component-styling/footer/footer';
+@use './component-styling/icon/icon';
+
+
+@use './component-styling/chips/item' as chip-item;
+@use './component-styling/chips/list' as chip-list;
+@use './component-styling/chips/secondary' as chip-secondary;
 
 @use './typography/fa-wrapper';
 
@@ -49,6 +61,7 @@
 @forward './tokens/checkbox/checkbox' as checkbox-*;
 @forward './tokens/input/input' as input-text-*;
 @forward './tokens/input/textarea' as input-textarea-*;
+
 
 @mixin element-styles($include: null) {
     @include global.create();
@@ -67,6 +80,7 @@
         @include element(dd-plain);
         @include element(dd-primary);
         @include element(dd-secondary);
+        @include element(dropdown);
         @include element(nav);
         @include element(round);
         @include element(checkbox);
@@ -79,9 +93,18 @@
         @include element(checkbox-component);
         @include element(input-component);
         @include element(alert);
-        @include element(alert-tokens);
+        @include element(banner);
         @include element(radio-component);
         @include element(icon-button);
+        @include element(header-component);
+        @include element(footer);
+        @include element(autocomplete);
+        @include element(chip-item);
+        @include element(chip-list);
+        @include element(chip-secondary);
+        @include element(date-picker);
+        @include element(icon);
+
     } @else {
         @each $key in $include {
             @include element($key);
@@ -104,6 +127,8 @@
         @include dd-secondary.create();
     } @else if $key == dd-plain {
         @include dd-plain.create();
+    } @else if $key == dropdown {
+        @include dropdown.create();
     } @else if $key == nav {
         @include nav.create();
     } @else if $key == round {
@@ -128,11 +153,28 @@
         @include input-component.create();
     } @else if $key == alert {
         @include alert.create();
-    } @else if $key == alert-tokens {
-        @include alert-tokens.create();
+    } @else if $key == banner {
+        @include banner.create();
     } @else if $key == radio-component {
         @include radio-component.create();
     } @else if $key == icon-button {
         @include icon-button.create();
+    } @else if $key == header-component {
+        @include header-component.create();
+    } @else if $key == footer {
+        @include footer.create();
+    } @else if $key == autocomplete {
+        @include autocomplete.create();
+    } @else if $key == chip-item {
+        @include chip-item.create();
+    } @else if $key == chip-list {
+        @include chip-list.create();
+    } @else if $key == chip-secondary {
+        @include chip-secondary.create();
+    } @else if $key == date-picker {
+        @include date-picker.create();
+    } @else if $key == icon {
+        @include icon.create();
     }
+
 }

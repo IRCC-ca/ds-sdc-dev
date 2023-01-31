@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IJLDropdownComponentConfig, IJLInputComponentConfig, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DropdownTypes, DSSizes, ICheckBoxComponentConfig, IComponentOutputEvent, IDropdownInputConfig, IDropdownComponentConfig, IInputComponentConfig, InputTypes, IRadioInputComponentConfig, ButtonIconDirection, IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
 
 export enum HomeButtonActionTypes {
   disableCheckbox = 'disableCheckbox',
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   ];
   //TODO: Test non-config checkboxes
 
-  dropdownConfig: IJLDropdownComponentConfig = {
+  dropdownConfig: IDropdownComponentConfig = {
     id: 'dropdown_test1',
     options: [
       {
@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
   demoText = '';
   demoTextArray: IComponentOutputEvent[] = [];
 
-  inputConfigs: IJLInputComponentConfig[] = [
+  inputConfigs: IInputComponentConfig[] = [
     {
       label: 'Input Label',
       placeholder: 'placeholder',
@@ -188,20 +188,20 @@ export class HomeComponent implements OnInit {
     id: 'selectDropDown',
     formGroup: this.form,
     label: 'Select Dropdown Test',
+    category: 'secondary',
     options: [
       {
-        text: 'Test 1',
-        value: 'Test 1',
+        text: "One",
+        value: 'First'
       },
       {
-        text: 'Test 2',
-        value: 'Test 2',
-      },
-      {
-        text: 'Test Error',
-        value: 'Test Error',
-      },
-    ]
+        text: "Two",
+        value: 'Second'
+      }
+    ],
+    required: true,
+    hint: "Hint Text",
+    desc: "Description text",
   };
 
   iconButtonConfig: IIconButtonComponentConfig = {
@@ -271,8 +271,8 @@ export class HomeComponent implements OnInit {
         break;
 
       case HomeButtonActionTypes.checkboxError:
-        this.form.get('checkbox_form_error_test')?.valid ? 
-        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) : 
+        this.form.get('checkbox_form_error_test')?.valid ?
+        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) :
         this.form.get('checkbox_form_error_test')?.reset();
         this.form.updateValueAndValidity();
         console.log(this.form.get('checkbox_form_error_test')?.valid);

@@ -1,0 +1,22 @@
+.navContainer {
+    margin: auto;
+    width: 60%;
+
+    .navFlexContainer {
+        .navHeader {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        // max-width: 75%;
+        margin-bottom: 32px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .button {
+            max-height: fit-content;
+        }
+    }
+}

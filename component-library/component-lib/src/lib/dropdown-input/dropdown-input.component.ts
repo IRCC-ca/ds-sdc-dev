@@ -1,13 +1,16 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface IDropdownInputConfig {
   id: string;
   formGroup: FormGroup;
   small?: boolean;
   label?: string;
-  options?: IDropdownInputOptionsConfig[]
+  options?: IDropdownInputOptionsConfig[];
   category?: string;
+  required?: boolean;
+  hint?: string;
+  desc?: string;
 };
 
 export interface IDropdownInputOptionsConfig {
@@ -18,7 +21,6 @@ export interface IDropdownInputOptionsConfig {
 @Component({
   selector: 'lib-dropdown-input',
   templateUrl: './dropdown-input.component.html',
-  styleUrls: ['./dropdown-input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -33,7 +35,7 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
   @Input() config: IDropdownInputConfig = {
     id: '',
     formGroup: new FormGroup({}),
-    category: 'secondary'
+    category: 'secondary',
   }
 
   onChange = (formValue: string) => { };

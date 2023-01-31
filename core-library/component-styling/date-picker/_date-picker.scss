@@ -1,0 +1,37 @@
+@use '../../tokens/template-const' as template-const;
+ 
+@mixin selector {
+    lib-date-picker#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+.date-title {
+  margin-top: 4px; //TODO: Check figma for this
+}
+
+.date-form {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  .label {
+    text-align: left;
+  }
+
+  .date-input {
+    height: 40px;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 120px;
+  }
+}
+}

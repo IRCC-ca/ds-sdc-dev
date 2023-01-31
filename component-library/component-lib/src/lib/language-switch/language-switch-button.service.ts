@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LanguageSwitchButtonService {
-  private languageClickSub = new BehaviorSubject<any>('');
+  private languageClickSub = new BehaviorSubject<boolean>(false);
   languageClickObs$ = this.languageClickSub.asObservable();
 
   languageToggleClick() {

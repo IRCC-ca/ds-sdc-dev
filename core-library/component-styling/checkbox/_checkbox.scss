@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-    jl-pr-sclp-checkbox#{template-const.$escape} {
+    lib-checkbox#{template-const.$escape} {
         @content;
     }
 }

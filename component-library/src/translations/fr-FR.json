@@ -1,4 +1,37 @@
 {
+  "ROUTES": {
+    "LandingPage": "page-general",
+    "LandingPage-alt": "landing-page",
+    "DevTest": "test-dev",
+    "DevTest-alt": "dev-test",
+    "HeaderFooter": "en-tête-pied-de-page",
+    "HeaderFooter-alt": "header-footer",
+    "Miscellaneous": "divers",
+    "Miscellaneous-alt": "miscellaneous",
+    "FormComponents": "form-components",
+    "QATesting": "aq",
+    "QATesting-alt": "qa",
+    "kris": "kris-fr",
+    "kris-alt": "kris-en",
+    "mahsa": "mahsa-fr",
+    "mahsa-alt": "mahsa-en",
+    "naseer": "naseer-fr",
+    "naseer-alt": "naseer-en",
+    "mike": "mike-fr",
+    "mike-alt": "mike-en",
+    "michael": "michael-fr",
+    "michael-alt": "michael-en"
+  },
+
+  "BUTTONS": {
+    "Back": "Retour",
+    "FormInputs": "Components formulaire",
+    "HeaderFooter": "En tête / pied de page",
+    "Miscellaneous": "Divers",
+    "DevTestPage": "Page de teste",
+    "QATesting": "Page de teste pour AQ"
+  },
+
   "OPPOSITE_LANGUAGE": "English",
 
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
@@ -14,5 +47,13 @@
       "show_password_aria-label": "afficher le texte du mot de passe",
       "hide_password_aria-label": "masquer le texte du mot de passe"
     }
+  },
+  
+  "LandingPage": {
+    "header": "Ce page est pour les tests et assurance du qualité seulment"
+  },
+
+  "QA": {
+    "header": "Page de AQ"
   }
 }

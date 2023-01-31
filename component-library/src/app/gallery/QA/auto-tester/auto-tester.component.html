@@ -1,0 +1,14 @@
+<div class="dropdowns">
+    <ng-container *ngFor="let input of config.testFields?.dropdowns">
+        <div class="dropdown">
+            <lib-dropdown-input [config]="input"></lib-dropdown-input>
+        </div>
+    </ng-container>
+</div>
+<div class="checkboxes">
+    <ng-container *ngFor="let input of config.testFields?.checkboxes">
+        <div class="checkbox">
+            <lib-checkbox [config]="input"></lib-checkbox>
+        </div>
+    </ng-container>
+</div>

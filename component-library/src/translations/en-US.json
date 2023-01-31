@@ -1,14 +1,42 @@
 {
+  "ROUTES": {
+    "LandingPage": "landing-page",
+    "LandingPage-alt": "page-general",
+    "DevTest": "dev-test",
+    "DevTest-alt": "test-dev",
+    "HeaderFooter": "header-footer",
+    "HeaderFooter-alt": "en-tête-pied-de-page",
+    "Miscellaneous": "miscellaneous",
+    "Miscellaneous-alt": "divers",
+    "FormComponents": "components-formulaire",
+    "QATesting": "qa",
+    "QATesting-alt": "aq",
+    "kris": "kris-en",
+    "kris-alt": "kris-fr",
+    "mahsa": "mahsa-en",
+    "mahsa-alt": "mahsa-fr",
+    "naseer": "naseer-en",
+    "naseer-alt": "naseer-fr",
+    "mike": "mike-en",
+    "mike-alt": "mike-fr",
+    "michael": "michael-en",
+    "michael-alt": "michael-fr"
+  },
+  "BUTTONS": {
+    "Back": "Back",
+    "FormInputs": "Form Inputs",
+    "HeaderFooter": "Header/Footer",
+    "Miscellaneous": "Miscellaneous",
+    "DevTestPage": "Dev Test Page",
+    "QATesting": "QA Testing Page"
+  },
   "OPPOSITE_LANGUAGE": "Français",
-
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",
-
   "APP_NAME": "component-library",
   "About": "About",
   "Hello world !": "Hello world !",
   "Home": "Home",
   "Version": "Version",
-
   "INPUT": {
     "ERROR": "Input error"
   },
@@ -18,7 +46,13 @@
       "show_password_aria-label": "display password text",
       "hide_password_aria-label": "mask password text"
     }
+  },
+
+  "LandingPage": {
+    "header": "This page is for testing and QA purposes only"
+  },
+
+  "QA": {
+    "header": "QA Landing Page"
   }
-
-
 }

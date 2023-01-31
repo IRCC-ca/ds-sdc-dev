@@ -1,0 +1,119 @@
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as token-size;
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+    lib-banner#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin types($category: information){
+    .#{$category}{
+        background-color: var(--#{$category}-alert-background);
+        .banner-left{
+            .banner-line{
+                background-color: var(--#{$category}-alert-border);
+            }
+            .banner-icon{
+                color: var(--#{$category}-alert-icon);
+            }
+        }
+    }
+}
+
+@mixin layout {
+
+    .banner-component{
+        width: 100%;
+        height: auto;
+        background-color: var(--neutral-alert-background);
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .banner-container{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 16px; 
+        gap: 12px;
+        width: 100%;      
+    }
+
+    .banner-right{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .banner-body{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+
+
+    .banner-left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        height: 100%;
+        gap: 5%;
+    }
+
+    .banner-line{
+        min-height: 20px;
+        height: 90%;
+        width: 4px;
+        border-radius: 4px;
+    }
+
+    .banner-icon{
+        height: 24px;
+        width: 24px;
+    }
+
+    .banner-text{
+        width: 95%
+    }
+
+    .banner-title{
+        margin-bottom: 8px;
+    }
+
+    .banner-content > *{
+        margin-top: 0;
+    }
+
+    .banner-ctas{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 5px;
+    }
+
+    @include types(information);
+    @include types(critical);
+    @include types(warning);
+    @include types(success);
+
+
+}
