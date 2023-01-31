@@ -5,7 +5,6 @@ import {DSSizes} from "../../shared/constants/jl-components/jl-components.consta
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
   size?: keyof typeof DSSizes | DSSizes;
-  error?: true;
   mixed?: true;
   disableFocus?: boolean; //Default is true
   label?: string;
@@ -74,5 +73,10 @@ export class JLCheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
+  }
+
+  getErrorState(): boolean {
+    return (this.config.formGroup.get(this.config.id)?.touched &&
+      this.config.formGroup.get(this.config.id)?.invalid) ?? false;
   }
 }

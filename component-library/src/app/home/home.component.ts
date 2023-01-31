@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
       id: 'checkbox_error_test',
       formGroup: this.form,
       label: 'Error Test',
-      error: true,
       customErrorText: 'Error Message',
       helpText: 'Test help text',
       desc: 'Description line of text',
@@ -69,10 +68,9 @@ export class HomeComponent implements OnInit {
       label: 'Form Mixed Test',
     },
     {
-      id: 'checkbox_mixed_test',
+      id: 'checkbox_mixed_error_test',
       formGroup: this.form,
       mixed: true,
-      error: true,
       label: 'Form Mixed Error Test',
     },
   ];
@@ -234,11 +232,10 @@ export class HomeComponent implements OnInit {
     this.form.addControl(this.radioErrorTestConfig.id, new FormControl('', [Validators.maxLength(6)]));
     this.form.addControl(this.selectDropDownConfig.id, new FormControl('', [Validators.required, Validators.maxLength(6)]));
     // Checkbox
-    for (let i in [0,1,2,3,4,6,7]) {
+    [0,1,2,3,4,6,7].forEach(i => {
       this.form.addControl(this.checkboxesConfigs[i].id, new FormControl());
-
-    }
-    this.form.addControl(this.checkboxesConfigs[5].id, new FormControl('', [Validators.required]));
+    })
+    this.form.addControl(this.checkboxesConfigs[5]?.id, new FormControl('', [Validators.required]));
   }
 
   valueChange(event: any) {
@@ -286,9 +283,12 @@ export class HomeComponent implements OnInit {
         break;
 
       case HomeButtonActionTypes.checkboxError:
-        this.form.get('checkbox_form_error_test')?.valid ?
-        this.form.get('checkbox_form_error_test')?.setErrors({ 'invalid': true }) :
-        this.form.get('checkbox_form_error_test')?.reset();
+        ['checkbox_form_error_test', this.checkboxesConfigs[2].id, this.checkboxesConfigs[7].id].forEach((id) => {
+          this.form.get(id)?.valid ?
+            this.form.get(id)?.setErrors({ 'invalid': true }) :
+            this.form.get(id)?.reset();
+        })
+
         this.form.updateValueAndValidity();
         break;
 
