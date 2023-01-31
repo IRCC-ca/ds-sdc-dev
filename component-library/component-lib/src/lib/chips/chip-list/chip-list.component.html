@@ -1,8 +1,8 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
-  <jl-pr-sclp-input name="chipContentText" [(ngModel)]="chipContentText" placeholder="Add Chip">
-  </jl-pr-sclp-input>
+  <lib-input name="chipContentText" [(ngModel)]="chipContentText" placeholder="Add Chip">
+  </lib-input>
 </form>
 <div class="chip-list">
-  <jl-pr-sclp-jl-chip-item *ngFor="let chip of chipList; let idx = index" [chipContent]="chip"
-    (iconClickEvent)="removeChipItem(idx)"></jl-pr-sclp-jl-chip-item>
+  <lib-chip-item *ngFor="let chip of chipList; let idx = index" [chipContent]="chip"
+    (iconClickEvent)="removeChipItem(idx)"></lib-chip-item>
 </div>

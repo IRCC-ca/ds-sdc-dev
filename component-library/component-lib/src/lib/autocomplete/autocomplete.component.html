@@ -7,11 +7,11 @@
       [error]="error"
       (valueChange)="valueChange($event)"
     > -->
-      <jl-pr-sclp-jl-chip-item
+      <lib-chip-item
         *ngFor="let option of selectedOptions; let index = index"
         [chipContent]="option['text']"
         (iconClickEvent)="removeChipItem(index)"
-      ></jl-pr-sclp-jl-chip-item
+      ></lib-chip-item
     >
   <!-- </jl-pr-sclp-input> -->
   </div>
@@ -22,7 +22,7 @@
     (mouseenter)="onMouseEnter()"
   >
     <div
-      *ngIf="limit === 0" 
+      *ngIf="limit === 0"
       class="option autocomplete-target all-results"
       (click)="selectAll()"
       [tabindex]="0"
