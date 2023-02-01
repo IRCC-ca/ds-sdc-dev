@@ -21,17 +21,19 @@ export class MikeComponent implements OnInit {
   form = new FormGroup({});
 
   testerConfig: IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'title',
+        formGroup: this.form,
+        label: 'title'
+      },
+      {
+        id: 'content',
+        formGroup: this.form,
+        label: 'content'
+      }
+    ],
     checkboxes: [
-        {
-          id: 'title',
-          formGroup: this.form,
-          label: 'title'
-        },
-        {
-          id: 'content',
-          formGroup: this.form,
-          label: 'content'
-        },
         {
           id: 'rounded',
           formGroup: this.form,
@@ -89,6 +91,9 @@ export class MikeComponent implements OnInit {
     this.testerConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
+    this.testerConfig.inputs?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
 
     this.form.valueChanges.subscribe(x => {
 
@@ -110,19 +115,13 @@ export class MikeComponent implements OnInit {
 
       for(var param in x){
 
-        if(x[param]){
           console.log(param);
           console.log(x[param]);
-          if(param == 'title'){
-            x[param] = 'This is the test title'
-          }
-          if(param == 'content'){
-            x[param] = 'This is some content for us to test'
-          }
+
           updatedConfig = {...updatedConfig, [param] : x[param]}
           console.log('updatedConfig: ', updatedConfig);
           this.qaBanner = updatedConfig;
-        }
+
       }
   })
 
