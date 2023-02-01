@@ -1,4 +1,4 @@
-<div>
+<div [class]="config?.category">
     <label *ngIf="config.label" 
         [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty

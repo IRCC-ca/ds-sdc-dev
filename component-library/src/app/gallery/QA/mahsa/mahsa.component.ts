@@ -19,62 +19,28 @@ export class MahsaComponent implements OnInit {
     formGroup: this.form,
   };
 
-  
-  // selectConfig: IDropdownInputConfig = {
-  //   id: 'select-dropdown-test',
-  //   formGroup: this.form,
-  //   label: "Dropdown test",
-  //   category: 'secondary',
-  //   options: [
-  //     {
-  //       text: "One",
-  //       value: 'First'
-  //     },
-  //     {
-  //       text: "Two",
-  //       value: 'Second'
-  //     }
-  //   ],
-  //   required: true,
-  //   hint: "Hint Text",
-  //   desc: "Description text",
-  // };
-
   testerConfig: IAutoTestConfigObject = {
     dropdowns: [
       {
-        id: 'type',
+        id: 'category', //should be same as config property that we target
         formGroup: this.form,
-        label: 'Type',
+        label: 'Category',
         options: [
           {
-            text: 'Primary'
+            text: 'secondary'
           },
           {
-            text: 'Secondary',
+            text: 'primary'
           },
           {
-            text: 'Plain'
-          }
-        ]
-      },
-      {
-        id: 'language-toggle',
-        label: 'Language Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'English'
-          },
-          {
-            text: 'French'
+            text: 'plain'
           }
         ]
       },
     ],
     checkboxes: [
       {
-        id: 'required', //boolean
+        id: 'required',
         formGroup: this.form,
         label: 'required',
       },
@@ -86,15 +52,15 @@ export class MahsaComponent implements OnInit {
         label: 'label'
       },
       {
+        id: 'desc',
+        formGroup: this.form,
+        label: 'desc'
+      },
+      {
         id: 'hint',
         formGroup: this.form,
         label: 'hint'
       },
-      {
-        id: 'desc',
-        formGroup: this.form,
-        label: 'desc'
-      }
     ]
   };
 
@@ -108,7 +74,6 @@ export class MahsaComponent implements OnInit {
 
   ngOnInit() {
     this.altLang.setAltLangLink('Mahsa-alt');
-    // this.form.addControl(this.selectConfig.id, new FormControl());
 
     this.testerConfig.dropdowns?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
@@ -122,7 +87,6 @@ export class MahsaComponent implements OnInit {
     this.form.addControl(this.qaSelect.id, new FormControl());
     
     this.form.valueChanges.subscribe(value => {
-      // console.log("value: ", value);
 
       let updatedConfig: IDropdownInputConfig = {
         id: this.SELECT_ID,
@@ -130,9 +94,6 @@ export class MahsaComponent implements OnInit {
       };
 
       for(let param in value) {
-        // console.log('param: ', param);
-        // console.log('value[param]: ', value[param]);
-
         updatedConfig = { ...updatedConfig, [param]: value[param] }
         console.log('updatedConfig: ', updatedConfig);
         this.qaSelect = updatedConfig;
