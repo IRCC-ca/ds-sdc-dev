@@ -10,7 +10,7 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
   styleUrls: ['./mahsa.component.scss']
 })
 export class MahsaComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
+  form = new FormGroup({});
 
   SELECT_ID = 'qa_test_select';
 
@@ -119,6 +119,8 @@ export class MahsaComponent implements OnInit {
     this.testerConfig.inputs?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
+    this.form.addControl(this.qaSelect.id, new FormControl());
+    
     this.form.valueChanges.subscribe(value => {
       // console.log("value: ", value);
 
