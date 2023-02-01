@@ -105,13 +105,17 @@
       .input-hint {
         color: #6F6F71;
       }
-      .required-star {
-        color: var(--critical-text);
-        font-weight: 400;
-        line-height: 16px;
-        justify-self:flex-start;
-        margin-right: 5px;
+      .required-field-container {
+        display: flex;
+        .required-star {
+          color: var(--critical-text);
+          font-weight: 400;
+          line-height: 16px;
+          justify-self:flex-start;
+          margin-right: 5px;
+        }
       }
+      
     }
   }
 
@@ -153,10 +157,10 @@
       z-index: 1;
       padding-right: 10px;
     
-      &:focus{
-        box-shadow: none;
-        outline: none;
-      }
+      // &:focus{
+      //   // box-shadow: none;
+      //   // outline: none;
+      // }
     }
   }
 }
