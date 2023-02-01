@@ -1,8 +1,7 @@
 <div class="banner-component" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
     <div class="banner-container">
     <div class="banner-left" *ngIf="config?.type != 'generic'">
-    <lib-icon class="banner-icon" [fontFamily]="'fa-regular'" [class]="
-      config?.type == 'info' ? 'fa-circle-info' : 'success' ? 'fa-circle-check' : 'warning' ? 'fa-triangle-exclamation' : 'critical' ? 'fa-circle-exclamation' : ''"></lib-icon>
+    <lib-icon class="banner-icon" [fontFamily]="'fa-regular'" [unicode]="iconName"></lib-icon>
     <div class="banner-line"></div>
     </div>
     <div class="banner-right">
