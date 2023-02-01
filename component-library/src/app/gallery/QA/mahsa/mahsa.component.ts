@@ -10,35 +10,42 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
   styleUrls: ['./mahsa.component.scss']
 })
 export class MahsaComponent implements OnInit {
-
   form: FormGroup = new FormGroup({});
-  
-  selectConfig: IDropdownInputConfig = {
-    id: 'select-dropdown-test',
+
+  SELECT_ID = 'select-dropdown-test';
+
+  qaSelect: IDropdownInputConfig = {
+    id: this.SELECT_ID,
     formGroup: this.form,
-    label: "Dropdown test",
-    category: 'secondary',
-    options: [
-      {
-        text: "One",
-        value: 'First'
-      },
-      {
-        text: "Two",
-        value: 'Second'
-      }
-    ],
-    required: true,
-    hint: "Hint Text",
-    desc: "Description text",
   };
 
-  autoConfigConfig: IAutoTestConfigObject = {
+  
+  // selectConfig: IDropdownInputConfig = {
+  //   id: 'select-dropdown-test',
+  //   formGroup: this.form,
+  //   label: "Dropdown test",
+  //   category: 'secondary',
+  //   options: [
+  //     {
+  //       text: "One",
+  //       value: 'First'
+  //     },
+  //     {
+  //       text: "Two",
+  //       value: 'Second'
+  //     }
+  //   ],
+  //   required: true,
+  //   hint: "Hint Text",
+  //   desc: "Description text",
+  // };
+
+  testerConfig: IAutoTestConfigObject = {
     dropdowns: [
       {
-        id: 'autoConfig_category',
+        id: 'type',
         formGroup: this.form,
-        label: 'Category Test',
+        label: 'Type',
         options: [
           {
             text: 'Primary'
@@ -51,154 +58,124 @@ export class MahsaComponent implements OnInit {
           }
         ]
       },
-      {
-        id: 'autoConfig_disabled',
-        label: 'Disable Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'Disable all'
-          },
-          {
-            text: 'Disable single' // ?
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_size',
-        label: 'Size Test',
-        formGroup: this.form,
-        options: [ // all & single?
-          {
-            text: 'All large'
-          },
-          {
-            text: 'Single large'
-          },
-          {
-            text: 'All small'
-          },
-          {
-            text: 'Single small'
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_error',
-        label: 'Error Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'clear all errors' // did we setup err yet?
-          },
-          {
-            text: 'all error'
-          },
-          {
-            text: 'single error'
-          },
-          {
-            text: 'custom error icon'
-          },
-          {
-            text: 'multiple error banners'
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_options_change',
-        label: 'Options Change Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'options v.1'
-          },
-          {
-            text: 'options v.2'
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_validators',
-        label: 'Validators Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'required validator'
-          },
-          {
-            text: 'max length of 3'
-          },
-          {
-            text: 'all the above'
-          },
-          {
-            text: 'remove all'
-          }
-        ]
-      }
+      // {
+      //   id: 'autoConfig_disabled',
+      //   label: 'Disable Test',
+      //   formGroup: this.form,
+      //   options: [
+      //     {
+      //       text: 'Disable all'
+      //     },
+      //   ]
+      // },
+      // {
+      //   id: 'autoConfig_size',
+      //   label: 'Size Test',
+      //   formGroup: this.form,
+      //   options: [ // all & single?
+      //     {
+      //       text: 'All large'
+      //     },
+      //     {
+      //       text: 'Single large'
+      //     },
+      //     {
+      //       text: 'All small'
+      //     },
+      //     {
+      //       text: 'Single small'
+      //     }
+      //   ]
+      // },
     ],
     checkboxes: [
       {
-        id: 'autoConfig_checkbox_title',
-        formGroup: this.form,
-        label: 'title'
-      },
-      {
-        id: 'autoConfig_checkbox_required',
+        id: 'required', //boolean
         formGroup: this.form,
         label: 'required',
       },
+      // {
+      //   id: 'label',
+      //   formGroup: this.form,
+      //   label: 'label'
+      // },
+      // {
+      //   id: 'hint',
+      //   formGroup: this.form,
+      //   label: 'hint'
+      // },
+      // {
+      //   id: 'desc',
+      //   formGroup: this.form,
+      //   label: 'desc'
+      // }
+    ],
+    inputs: [
       {
-        id: 'autoConfig_checkbox_description',
+        id: 'label',
         formGroup: this.form,
-        label: 'description'
+        label: 'label'
       },
       {
-        id: 'autoConfig_checkbox_hint',
+        id: 'hint',
         formGroup: this.form,
         label: 'hint'
       },
       {
-        id: 'autoConfig_checkbox_label',
+        id: 'desc',
         formGroup: this.form,
-        label: 'label'
-      }
-    ],
-    header : [
-      {
-        id: 'header-toggle-test',
-        formGroup: this.form,
-        lang: 'French'
+        label: 'desc'
       }
     ]
+    // header : [
+    //   {
+    //     id: 'header-toggle-test',
+    //     formGroup: this.form,
+    //     lang: 'French'
+    //   }
+    // ]
   };
 
   autoTestConfig: IAutoTestComponentConfig = {
     id: 'mahsa_autocomplete',
     formGroup: this.form,
-    testFields: this.autoConfigConfig
+    testFields: this.testerConfig
   }
 
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
     this.altLang.setAltLangLink('Mahsa-alt');
-    this.form.addControl(this.selectConfig.id, new FormControl());
+    // this.form.addControl(this.selectConfig.id, new FormControl());
 
-    this.autoConfigConfig.dropdowns?.forEach(i => {
+    this.testerConfig.dropdowns?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.autoConfigConfig.checkboxes?.forEach(i => {
+    this.testerConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.autoConfigConfig.header?.forEach(i => {
+    this.testerConfig.inputs?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
+    this.testerConfig.header?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
     this.form.valueChanges.subscribe(value => {
       console.log(value);
 
-      // let updatedConfig: 
+      let updatedConfig: IDropdownInputConfig = {
+        id: this.SELECT_ID,
+        formGroup: this.form
+      };
+
+      for(let param in value) {
+        console.log('param: ', param);
+        console.log('value[param]: ', value[param]);
+
+        updatedConfig = { ...updatedConfig, [param]: value[param] }
+        console.log('updatedConfig: ', updatedConfig);
+        this.qaSelect = updatedConfig;
+      }
     });
   }
 
