@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators, NG_VALUE_ACCESSOR, FormControl } fr
 @Component({
   selector: 'lib-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -72,7 +71,7 @@ export class DatePickerComponent implements OnInit {
   /**
    * Get the number of days in the month based on the month and year
    * @param month string of the month selected
-   * @param year number selected 
+   * @param year number selected
    * @returns number representing the number of days in the month
    */
   private getNumDaysInMonth(month: string, year: number): number {
@@ -134,7 +133,7 @@ export class DatePickerComponent implements OnInit {
           return 12;
         default:
           return 0;
-    }   
+    }
   }
 
   writeValue(obj: any): void {
