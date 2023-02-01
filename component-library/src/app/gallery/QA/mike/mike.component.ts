@@ -101,10 +101,7 @@ export class MikeComponent implements OnInit {
       };
 
       for(let param in x){
-          console.log(param);
-          console.log(x[param]);
           updatedConfig = {...updatedConfig, [param] : x[param]}
-          console.log('updatedConfig: ', updatedConfig);
           this.qaBanner = updatedConfig;
 
       }
