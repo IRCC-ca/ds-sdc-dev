@@ -11,7 +11,7 @@ export interface IAutoTestComponentConfig {
 export interface IAutoTestConfigObject {
   dropdowns?: IDropdownInputConfig[];
   checkboxes?: ICheckBoxComponentConfig[];
-  inputs? : IInputComponentConfig[];
+  inputs?: IInputComponentConfig[];
 }
 
 @Component({
