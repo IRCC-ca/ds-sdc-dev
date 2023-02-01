@@ -16,6 +16,7 @@ $input-types : (
 @mixin input-text-selector  {
     @each $type in $input-types{
         input#{template-const.$escape} {
+            @content;
             @include theme.select-attribute($type, type, text) {
                 @content;
             }
