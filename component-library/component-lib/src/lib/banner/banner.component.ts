@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 //import { ButtonCategories, ButtonColor } from 'dist/ircc-ds-angular-component-library/public-api';
 
 export enum BannerType {
+  '' = '',
   generic = 'generic',
   info = 'info',
   critical = 'critical',
