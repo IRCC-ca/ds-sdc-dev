@@ -1,14 +1,27 @@
 <div class="banner-component" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
     <div class="banner-container">
-    <div class="banner-left" *ngIf="config?.type != 'generic'">
-    <lib-icon class="banner-icon" [fontFamily]="'fa-regular'" [unicode]="iconName"></lib-icon>
+    <div class="banner-left" *ngIf="config?.type != 'generic' && config?.type">
+      <ng-container [ngSwitch]="config?.type">
+        <div *ngSwitchCase="'critical'">
+          <i class="fa-circle-exclamation fa-regular banner-icon"></i>
+        </div>
+        <div *ngSwitchCase="'success'">
+          <i class="fa-circle-check fa-regular banner-icon"></i>
+        </div>
+        <div *ngSwitchCase="'info'">
+          <i class="fa-circle-info fa-regular banner-icon"></i>
+        </div>
+        <div *ngSwitchCase="'warning'">
+          <i class="fa-triangle-exclamation fa-regular banner-icon"></i>
+        </div>
+      </ng-container>
     <div class="banner-line"></div>
     </div>
     <div class="banner-right">
     <div class="banner-body">
     <div class="banner-text">
         <div class="banner-title h6 emphasis" *ngIf="config?.title">{{(config?.title || '') | translate}}</div>
-        <div class="banner-content" [innerHTML]="config?.content" *ngIf="config?.content"></div>
+        <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div>
     </div>
     <div class="banner-btn">
     <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
