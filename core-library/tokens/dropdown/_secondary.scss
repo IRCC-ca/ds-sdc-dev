@@ -35,15 +35,13 @@ $default-color: null;
     )
 ) {
     @include dropdown.selectors {
-        &:where([category='#{$secondary}'], :not([category])) {
-            @each $key in $palette {
-                @if not $default-color {
-                    $default-color: $key !global;
-                }
-                @include tokens($key);
+        @each $key in $palette {
+            @if not $default-color {
+                $default-color: $key !global;
             }
-            @include layout();
+            @include tokens($key);
         }
+        @include layout();
     }
 }
 

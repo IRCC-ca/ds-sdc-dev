@@ -40,7 +40,7 @@ $default-color: null;
     )
 ) {
     @include dropdown.selectors() {
-        &:where(lib-dropdown-input[category='#{$primary}']) {
+        .primary {
             @each $map in $palette {
                 @if not $default-color {
                     $default-color: map.get($map, role) !global;
@@ -68,6 +68,9 @@ $default-color: null;
         &:disabled {
             background-color: var(--primary-background-disabled);
             --text: var(--primary-text-disabled);
+            @include device.if-hover {
+                background-color: var(--primary-background-disabled);
+            }
         }
     }
 }

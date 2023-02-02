@@ -1,0 +1,11 @@
+<h2>Checkbox</h2>
+<!-- Checkbox Test -->
+<form [formGroup]="form">
+  <div class="demoCheckboxContainer">
+    <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
+      <lib-checkbox [config]="checkbox" [formControlName]="checkbox.id"></lib-checkbox>
+    </div>
+    <button (click)="buttonActions('disableCheckbox')">Toggle Disable Checkbox</button>
+    <button (click)="buttonActions('checkboxError')">Toggle Error Checkbox</button>
+  </div>
+</form>

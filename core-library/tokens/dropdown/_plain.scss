@@ -57,7 +57,7 @@ $default-color: null;
     )
 ) {
     @include dropdown.selectors() {
-        &:where([category='#{$plain}']) {
+        .plain {
             @each $key in $palette {
                 @if not $default-color{
                     $default-color: $key !global;

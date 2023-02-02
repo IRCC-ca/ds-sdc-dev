@@ -1,13 +1,18 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+export declare enum DropdownType {
+  secondary = "secondary",
+  primary = "primary",
+  plain = "plain",
+}
 export interface IDropdownInputConfig {
   id: string;
   formGroup: FormGroup;
   small?: boolean;
   label?: string;
-  options?: IDropdownInputOptionsConfig[]
-  category?: string;
+  options?: IDropdownInputOptionsConfig[];
+  category?: keyof typeof DropdownType;
   required?: boolean;
   hint?: string;
   desc?: string;
@@ -21,7 +26,6 @@ export interface IDropdownInputOptionsConfig {
 @Component({
   selector: 'lib-dropdown-input',
   templateUrl: './dropdown-input.component.html',
-  styleUrls: ['./dropdown-input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

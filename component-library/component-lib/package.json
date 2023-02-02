@@ -1,14 +1,15 @@
 {
   "name": "ircc-ds-angular-component-library",
-  "version": "0.0.7-beta.3",
+  "version": "0.0.7-beta.6",
   "assets": [
     "./src/assets"
   ],
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
+    "@ircc-ca/ds-sdc-core": "file:../../core-library",
     "@ngx-translate/core": "^14.0.0",
-    "@ircc-ca/ds-sdc-core": "file:../../core-library"
+    "@angular/forms": "^14.2.12"
   },
   "dependencies": {
     "tslib": "^2.3.0"
