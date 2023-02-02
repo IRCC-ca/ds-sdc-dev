@@ -167,5 +167,9 @@ export class KrisComponent implements OnInit {
     this.autoConfigConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
+
+    this.form.valueChanges.subscribe(value=>{
+        console.log(value);
+    });
   }
 }
