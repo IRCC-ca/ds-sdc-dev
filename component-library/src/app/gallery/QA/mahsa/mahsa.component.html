@@ -1,8 +1,7 @@
-<p>Mahsa works!</p>
-<app-auto-tester [config]="autoTestConfig"></app-auto-tester>
-
-<!-- <lib-header [id]="'header'"></lib-header> -->
-
+<div class="qa-mahsa">
+  <app-auto-tester [config]="autoTestConfig"></app-auto-tester>
+  <button class="disable-click" (click)="click()">Disable</button>
+</div>
 <br>
-
 <lib-dropdown-input [config]="qaSelect"></lib-dropdown-input>
+  

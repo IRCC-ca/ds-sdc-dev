@@ -68,6 +68,9 @@ $default-color: null;
         &:disabled {
             background-color: var(--primary-background-disabled);
             --text: var(--primary-text-disabled);
+            @include device.if-hover {
+                background-color: var(--primary-background-disabled);
+            }
         }
     }
 }

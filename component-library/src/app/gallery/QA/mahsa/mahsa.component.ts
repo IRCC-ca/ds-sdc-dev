@@ -42,24 +42,24 @@ export class MahsaComponent implements OnInit {
       {
         id: 'required',
         formGroup: this.form,
-        label: 'required',
+        label: 'Required/Optional',
       },
     ],
     inputs: [
       {
         id: 'label',
         formGroup: this.form,
-        label: 'label'
+        label: 'Label'
       },
       {
         id: 'desc',
         formGroup: this.form,
-        label: 'desc'
+        label: 'Description'
       },
       {
         id: 'hint',
         formGroup: this.form,
-        label: 'hint'
+        label: 'Hint'
       },
     ]
   };
@@ -99,6 +99,12 @@ export class MahsaComponent implements OnInit {
         this.qaSelect = updatedConfig;
       }
     });
+  }
+
+  click() {
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.disabled ?
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.enable() :
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
 
 }
