@@ -20,6 +20,71 @@
   }
 }
 
+@mixin size-large() {
+  .input-label {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .input-desc {
+    font-size: 16px;
+  }
+
+  .input-hint {
+    font-size: 16px;
+    margin: 12px 0px 0px 0px;
+  }
+
+  .required-star {
+    font-size: 16px;
+  }
+
+  .input-password-field {
+    height: 52px;
+  }
+
+  .input-text-field {
+    height: 52px;
+  }
+
+  .passwordIcon {
+    font-size: 20px
+  }
+}
+
+@mixin size-small() {
+
+  .input-label {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .input-desc {
+    font-size: 14px;
+  }
+
+  .input-hint {
+    font-size: 14px;
+    margin: 8px 0px 0px 0px;
+  }
+
+  .required-star {
+    font-size: 12px;
+  }
+
+  .input-password-field {
+    height: 40px;
+  }
+
+  .input-text-field {
+    height: 40px;
+  }
+
+  .passwordIcon {
+    font-size: 16px
+  }
+}
+
 @mixin layout {
 
   .input-container {
@@ -32,72 +97,55 @@
       
       .input-label {
         display: flex;
-        font-size: 16px;
-        font-weight: 700;
       }
       .input-desc {
-        font-size: 14px;
         margin: 4px 0px 0px 0px;
       }
 
       .input-hint {
-        font-size: 14px;
         color: #6F6F71;
-        margin: 8px 0px 0px 0px;
       }
       .required-star {
-        font-size: 12px;
         color: var(--critical-text);
         font-weight: 400;
         line-height: 16px;
         justify-self:flex-start;
-        margin-right: 4px;
-      }
-      
-
-      @include size.selector(large) {
-
-        .input-label {
-          font-size: 20px;
-          font-weight: 700;
-        }
-
-        .input-desc {
-          font-size: 16px;
-          margin: 4px 0px 0px 0px;
-        }
-
-        .input-hint {
-          font-size: 16px;
-          color: #6F6F71;
-          margin: 12px 0px 0px 0px;
-        }
-
-        .required-star {
-          font-size: 16px;
-          color: var(--critical-text);
-          font-weight: 400;
-          line-height: 16px;
-          justify-self: flex-start;
-          margin-right: 5px;
-        }
+        margin-right: 5px;
       }
     }
   }
 
+  @include size.selector(large) {
+    @include size-large();
+    .small {
+      @include size-small()
+    }  
+  }
+
+  @include size.selector(small) {
+    @include size-small();
+    .large {
+      @include size-large()
+    }  
+  }
+
   .input-content-area{
     position: relative;
-    .input-field{
+    .input-password-field {
       box-sizing: border-box;
       padding-right: 50px;
-      height: 40px;
-      margin-top: 4px;
+    }
+
+    .input-text-field {
+      box-sizing: border-box;
+      resize: none;
     }
 
     .passwordIcon {
-      top: 4px;
-      right: 0px;
       position: absolute;
+      top: 50%;
+      right: 0px;
+      transform: translate(0%, -50%);
       justify-self: flex-end;
       align-self: flex-end;
       margin-bottom: 0px;
@@ -108,12 +156,6 @@
       &:focus{
         box-shadow: none;
         outline: none;
-      }
-    }
-
-    @include size.selector(large) {
-      .input-field{
-        height: 52px;
       }
     }
   }

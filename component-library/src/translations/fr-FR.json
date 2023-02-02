@@ -42,6 +42,13 @@
   "Home": "Accueil",
   "Version": "Version",
 
+  "Input_Component": {
+    "Password-icon" : {
+      "show_password_aria-label": "afficher le texte du mot de passe",
+      "hide_password_aria-label": "masquer le texte du mot de passe"
+    }
+  },
+  
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
   },
