@@ -1,0 +1,34 @@
+@use '../../util/theme' as theme;
+@use '../../util/size' as size;
+@use '../../tokens/sizes' as token-size;
+@use '../../tokens/template-const';
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+$selectors: 'lib-error';
+
+@mixin selectors {
+	#{$selectors}#{template-const.$escape} {
+		@content;
+	}
+}
+
+@mixin create {
+	@include selectors() {
+	  @include layout();
+	}
+}
+
+@mixin layout {
+
+    .errorContainer {
+        display: flex;
+        color: var(--critical-text);
+        height: 20px;
+        align-items: center;
+    }
+    .errorIcon {
+        margin-right: 4px;
+    }
+	
+	}
