@@ -30,6 +30,7 @@
     vertical-align: middle;
     cursor: pointer;
     display: inline-flex;
+    padding: 0;
 
     @include checkbox-size();
 
@@ -81,10 +82,6 @@
         &:disabled {
             background-color: var(--formcontrol-disabled);
         }
-    }
-    &:focus {
-        outline: 3px solid var(--formcontrol);
-        outline-offset: 3px;
     }
 
     @include checked();

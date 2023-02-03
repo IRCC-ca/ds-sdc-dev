@@ -44,37 +44,8 @@ export class BannerComponent implements OnInit {
     this.btnEvent?.emit(emitValue);
   }
 
-  checkIcon(type : string){
-    switch (type) {
-      case 'success':
-        this.iconName = 'fa-circle-check';
-        break;
-      case 'info':
-        this.iconName = 'fa-circle-info';
-        break;
-      case 'warning':
-        this.iconName = 'fa-triangle-exclamation';
-        break;
-      case 'critical':
-        this.iconName = 'fa-circle-exclamation';
-        break;
-      default:
-        this.iconName = '';
-        break;
-    }
-  }
-
   ngOnInit(){
     this.closeButtonId = this.config?.id + '_closeBtn';
-    if(this.config?.type){
-      this.checkIcon(this.config.type);
-    }
-  }
-
-  ngOnChanges(){
-    if(this.config?.type){
-      this.checkIcon(this.config.type);
-    }
   }
 
 }
