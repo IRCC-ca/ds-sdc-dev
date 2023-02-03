@@ -46,10 +46,9 @@
             margin-bottom: token-size.$fixed-8;
             margin-top: 0;
         }
-        &.check-error {
-            color: var(--critical-text);
-            margin-top: token-size.$fixed-8;
-        }
+    }
+    div.check-error {
+        margin-top: token-size.$fixed-8;
     }
     @include size.selector(small) {
         label, p {

@@ -46,7 +46,8 @@ export class MichaelComponent implements OnInit {
     {
       id: 'checkbox_form_error_test',
       formGroup: this.form,
-      label: 'Form Error Test'
+      label: 'Form Error Test',
+      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}]
     },
     {
       id: 'checkbox_validators_test',
@@ -65,6 +66,7 @@ export class MichaelComponent implements OnInit {
       mixed: true,
       label: 'Form Mixed Error Test',
       customErrorText: 'Error Message for Mixed Error Test',
+      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}]
     },
   ];
   constructor(private altLang: LanguageSwitchService) { }

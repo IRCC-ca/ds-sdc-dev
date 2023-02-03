@@ -19,8 +19,11 @@
   " [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{
       config.label || '' }}</label>
   </div>
-  <p *ngIf="getErrorState() && config?.customErrorText" class="check-error">
-    <lib-icon [class]="'fa-regular fa-circle-exclamation'"></lib-icon>
-    {{(config.customErrorText || '') | translate}}
-  </p>
+  <div *ngIf="getErrorState()" class="check-error">
+    <ng-container *ngFor="let error of config.errorMessages; index as i">
+      <div *ngIf="config.formGroup.get(config.id)?.errors?.[error.key]">
+        <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon"></lib-error>
+      </div>
+    </ng-container>
+  </div>
 </form>
