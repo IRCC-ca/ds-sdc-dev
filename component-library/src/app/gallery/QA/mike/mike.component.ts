@@ -17,7 +17,6 @@ export class MikeComponent implements OnInit {
     id: this.BANNER_ID
   };
 
-
   form = new FormGroup({});
 
   testerConfig: IAutoTestConfigObject = {
@@ -97,26 +96,13 @@ export class MikeComponent implements OnInit {
 
     this.form.valueChanges.subscribe(x => {
 
-      var updatedConfig : IBannerConfig = {
+      let updatedConfig : IBannerConfig = {
         id: this.BANNER_ID
       };
-
-      // console.log(x);
-
-      // updatedConfig = {...updatedConfig, type: x['autoConfig_type']}
-
-      // if(x['autoConfig_checkbox_title']){
-      //   updatedConfig = {...updatedConfig, title: 'This is the test title'}
-      // }
-
-      // console.log(updatedConfig);
-
-      // this.qaBanner = updatedConfig;
 
       for(let param in x){
           console.log(param);
           console.log(x[param]);
-
           updatedConfig = {...updatedConfig, [param] : x[param]}
           console.log('updatedConfig: ', updatedConfig);
           this.qaBanner = updatedConfig;

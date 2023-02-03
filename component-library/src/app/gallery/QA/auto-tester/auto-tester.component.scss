@@ -1,7 +1,15 @@
-.dropdowns {
-    display: flex;
-    justify-content: space-evenly;
-    .dropdown {
-        width: 212px;
-    }
+.autoTestContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  gap: 10px;
+}
+.dropdowns{
+  width: 100%;
+}
+.inputs{
+  width: 100%;
+}
+.checkboxes{
+  width: 40%;
 }
