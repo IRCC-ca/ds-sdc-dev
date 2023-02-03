@@ -34,11 +34,18 @@
                 <lib-error [id]="config.id + '_error'" [errorLOV]="config.errorMsg"></lib-error>
             </div>
         </ng-container> -->
-        <p *ngIf="getErrorState() && config?.errorMsg" class="select-error">
-            <lib-icon [class]="'fa-regular fa-circle-exclamation'"></lib-icon>
-            {{(config.errorMsg || '') | translate}}
-            <lib-error [id]="config.id + '_error'" [errorLOV]="config.errorMsg"></lib-error>
-        </p>
-        
+        <!-- <p *ngIf="getErrorState() && config?.errorMsg" class="select-error">
+            <ng-container *ngIf="config.error">
+                <lib-error [id]="config.id + '_error'" [errorLOV]="config.errorMsg"></lib-error>
+            </ng-container>
+        </p> -->
+
+        <ng-container *ngIf="getErrorState() && config?.errorMsg" class="select-error">
+            <div>
+                {{(config.errorMsg || '') | translate}}
+                <lib-error [id]="config.id + '_error'" [errorLOV]="config.errorMsg"></lib-error>
+            </div>
+        </ng-container>
+
     </form>
 </div>

@@ -17,7 +17,6 @@ export interface IDropdownInputConfig {
   hint?: string;
   desc?: string;
   errorMsg?: string;
-  error?: boolean;
 };
 
 export interface IDropdownInputOptionsConfig {

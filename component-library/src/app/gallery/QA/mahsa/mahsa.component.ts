@@ -17,6 +17,7 @@ export class MahsaComponent implements OnInit {
   qaSelect: IDropdownInputConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
+    errorMsg: 'Error Message'
   };
 
   testerConfig: IAutoTestConfigObject = {
@@ -67,10 +68,10 @@ export class MahsaComponent implements OnInit {
         label: 'Hint'
       },
       {
-        id: 'customErrorText',
+        id: 'errorMsg',
         formGroup: this.form,
-        label: 'customErrorText'
-      }
+        label: 'Error'
+      },
     ]
   };
 
@@ -115,6 +116,11 @@ export class MahsaComponent implements OnInit {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disabled ?
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.enable() :
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
+  }
+  clickError() {
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.valid ?
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'invalid': true }) :
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.reset();
   }
 
 }
