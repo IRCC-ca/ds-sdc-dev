@@ -38,6 +38,14 @@ $selectors: 'lib-dropdown-input';
 	.select-exclamation {
 		margin-right: 4px;
 	}
+	.select-error {
+    color: var(--critical-text);
+    margin-top: 0;
+  }
+
+  .select-error i {
+    margin-right: 4px;
+  }
 
 	@include size.selector(small) {
 		.required-star {

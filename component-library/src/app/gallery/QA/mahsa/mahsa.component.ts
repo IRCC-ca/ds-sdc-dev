@@ -44,6 +44,11 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Required/Optional',
       },
+      {
+        id: 'error',
+        formGroup: this.form,
+        label: 'Error',
+      },
     ],
     inputs: [
       {
@@ -61,6 +66,11 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Hint'
       },
+      {
+        id: 'customErrorText',
+        formGroup: this.form,
+        label: 'customErrorText'
+      }
     ]
   };
 
@@ -95,6 +105,7 @@ export class MahsaComponent implements OnInit {
 
       for(let param in value) {
         updatedConfig = { ...updatedConfig, [param]: value[param] }
+        console.log('updatedConfig: ', updatedConfig);
         this.qaSelect = updatedConfig;
       }
     });

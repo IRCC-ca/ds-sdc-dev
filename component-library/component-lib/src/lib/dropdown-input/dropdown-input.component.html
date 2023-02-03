@@ -27,5 +27,17 @@
             </select>
             <i class="fa-thin fa-chevron-down custom-chevron"></i>
         </div>
+        <!-- <p *ngIf="config.error" class="select-error"><i class="fa-regular fa-circle-exclamation"></i>{{(config.customErrorText || '') | translate}}</p> -->
+        <!-- <ng-container *ngIf="config.formGroup.get(config.id)?.touched && config.formGroup.get(config.id)?.invalid">
+            <div *ngIf="config.error" class="select-error">
+                {{(config.errorMsg || '') | translate}}
+                <lib-error [id]="config.id + '_error'" [errorLOV]="config.errorMsg"></lib-error>
+            </div>
+        </ng-container> -->
+        <p *ngIf="getErrorState() && config?.errorMsg" class="select-error">
+            <lib-icon [class]="'fa-regular fa-circle-exclamation'"></lib-icon>
+            {{(config.errorMsg || '') | translate}}
+            <lib-error [id]="config.id + '_error'" [errorLOV]="config.errorMsg"></lib-error>
+        </p>
     </form>
 </div>

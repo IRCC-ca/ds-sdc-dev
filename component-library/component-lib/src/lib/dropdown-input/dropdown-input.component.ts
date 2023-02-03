@@ -16,6 +16,8 @@ export interface IDropdownInputConfig {
   required?: boolean;
   hint?: string;
   desc?: string;
+  errorMsg?: string;
+  error?: boolean;
 };
 
 export interface IDropdownInputOptionsConfig {
@@ -66,5 +68,10 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
   }
+
+  getErrorState(): boolean {
+    return (this.config.formGroup.get(this.config.id)?.touched &&
+      this.config.formGroup.get(this.config.id)?.invalid) ?? false;
+  };
 
 }
