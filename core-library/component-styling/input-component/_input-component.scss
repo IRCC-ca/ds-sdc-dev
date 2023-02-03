@@ -32,7 +32,7 @@
 
   .input-hint {
     font-size: 16px;
-    margin: 12px 0px 0px 0px;
+    margin: 12px 0px 8px 0px;
   }
 
   .required-star {
@@ -65,7 +65,7 @@
 
   .input-hint {
     font-size: 14px;
-    margin: 8px 0px 0px 0px;
+    margin: 8px 0px 4px 0px;
   }
 
   .required-star {
@@ -97,6 +97,7 @@
       
       .input-label {
         display: flex;
+        font-family: 'Lato'
       }
       .input-desc {
         margin: 4px 0px 0px 0px;
