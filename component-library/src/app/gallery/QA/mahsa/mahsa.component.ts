@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
@@ -17,7 +17,7 @@ export class MahsaComponent implements OnInit {
   qaSelect: IDropdownInputConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
-    errorMsg: 'Error Message'
+    size: 'large'
   };
 
   testerConfig: IAutoTestConfigObject = {
@@ -36,12 +36,19 @@ export class MahsaComponent implements OnInit {
           {
             text: 'plain'
           }
-        ]
+        ],
+      },
+      {
+        id: 'errorMessages',
+        formGroup: this.form,
+        label: 'Error',
+        errorMessages: [{ key:'maxLength' , errorLOV:'Error message' }],
+        options: [{ text: 'error' }]
       },
       {
         id: 'size',
         formGroup: this.form,
-        label: "Size",
+        label: 'Size',
         options: [
           { text: 'small' },
           { text: 'large' }
@@ -53,11 +60,6 @@ export class MahsaComponent implements OnInit {
         id: 'required',
         formGroup: this.form,
         label: 'Required/Optional',
-      },
-      {
-        id: 'error',
-        formGroup: this.form,
-        label: 'Error',
       },
     ],
     inputs: [
@@ -75,11 +77,6 @@ export class MahsaComponent implements OnInit {
         id: 'hint',
         formGroup: this.form,
         label: 'Hint'
-      },
-      {
-        id: 'errorMsg',
-        formGroup: this.form,
-        label: 'Error'
       },
     ]
   };
@@ -104,7 +101,7 @@ export class MahsaComponent implements OnInit {
     this.testerConfig.inputs?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.form.addControl(this.qaSelect.id, new FormControl());
+    this.form.addControl(this.qaSelect.id, new FormControl(Validators.maxLength(3)));
     
     this.form.valueChanges.subscribe(value => {
 
@@ -127,9 +124,13 @@ export class MahsaComponent implements OnInit {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
   clickError() {
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.valid ?
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'invalid': true }) :
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.reset();
+    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.valid && this.qaSelect?.formGroup.get(this.qaSelect.id)?.touched ?
+    // // this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'maxLength': true }) :
+    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.reset();
+
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.markAsTouched();
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'maxLength': true });
+
   }
 
 }

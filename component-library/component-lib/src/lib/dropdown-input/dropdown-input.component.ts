@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { IErrorPairs } from 'component-lib/src/shared/interfaces/component-configs';
 
 export declare enum DropdownType {
   secondary = "secondary",
@@ -19,8 +20,8 @@ export interface IDropdownInputConfig {
   desc?: string;
   errorMsg?: string;
   size?: keyof typeof DSSizes;
+  errorMessages?: IErrorPairs[]; 
 };
-
 export interface IDropdownInputOptionsConfig {
   text: string;
   value?: string;
@@ -69,10 +70,5 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
   }
-
-  getErrorState(): boolean {
-    return (this.config.formGroup.get(this.config.id)?.touched &&
-      this.config.formGroup.get(this.config.id)?.invalid) ?? false;
-  };
 
 }

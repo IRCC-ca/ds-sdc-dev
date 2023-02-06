@@ -19,7 +19,80 @@ $selectors: 'lib-dropdown-input';
 	}
 }
 
+@mixin size-large() {
+	outline: 4px solid rebeccapurple;
+	.required-star {
+		font-size: 16px;
+		line-height: 16px;
+		justify-self: flex-start;
+		margin-right: 5px;
+	}
+	.select-label {
+		@include typography.fontSize(map.get(text.$heading, level), 5);
+		font-weight: 700;
+	}
+	.select-hint {
+		margin: 12px 0 8px 0;
+	}
+	.select-error {
+		color: var(--critical-text);
+		margin-top: 8px;
+	}
+
+	.custom-select {
+		padding: 12px 16px 12px 20px;
+		font-size: 20px;
+		height: 52px;
+	}
+	.custom-chevron {
+		margin-left: -34px;
+	}
+}
+
+@mixin size-small() {
+	outline: 4px solid red;
+	.required-star {
+		font-size: 12px;
+		line-height: 16px;
+		justify-self: flex-start;
+		margin-right: 4px;
+	}
+	.select-label {
+		@include typography.fontSize(map.get(text.$heading, level), 6);
+		font-weight: 700;
+	}
+	.select-hint {
+		margin: 8px 0 4px 0;
+	}
+	.select-error {
+		color: var(--critical-text);
+		margin-top: 4px;
+	}
+	.custom-select {
+		padding: 8px 10px 8px 16px;
+		font-size: 16px;
+	}
+	.custom-chevron {
+		margin-left: -29px;
+	}
+}
+
 @mixin layout {
+	
+	@include size.selector(large) {
+    @include size-large();
+    .small {
+      @include size-small()
+    }  
+  }
+
+  @include size.selector(small) {
+    @include size-small();
+    .large {
+      @include size-large()
+    }  
+  }
+
 	.required-star {
     color: var(--critical-text);
     font-weight: 400;
@@ -42,67 +115,10 @@ $selectors: 'lib-dropdown-input';
     color: var(--critical-text);
     margin-top: 0;
   }
-
   .select-error i {
     margin-right: 4px;
   }
 
-	@include size.selector(small) {
-		.required-star {
-			font-size: 12px;
-			line-height: 16px;
-			justify-self: flex-start;
-			margin-right: 4px;
-		}
-		.select-label {
-      @include typography.fontSize(map.get(text.$heading, level), 6);
-      font-weight: 700;
-    }
-		.select-hint {
-      margin: 8px 0 4px 0;
-    }
-		.select-error {
-			color: var(--critical-text);
-			margin-top: 4px;
-		}
-
-		.custom-select {
-			padding: 8px 10px 8px 16px;
-			font-size: 16px;
-		}
-		.custom-chevron {
-			margin-left: -29px;
-		}
-	}
-
-	@include size.selector(large) {
-		.required-star {
-			font-size: 16px;
-			line-height: 16px;
-			justify-self: flex-start;
-			margin-right: 5px;
-		}
-		.select-label {
-      @include typography.fontSize(map.get(text.$heading, level), 5);
-      font-weight: 700;
-    }
-    .select-hint {
-      margin: 12px 0 8px 0;
-    }
-		.select-error {
-			color: var(--critical-text);
-			margin-top: 8px;
-		}
-
-		.custom-select {
-			padding: 12px 16px 12px 20px;
-			font-size: 20px;
-			height: 52px;
-		}
-		.custom-chevron {
-			margin-left: -34px;
-		}
-	}
 	select {
 		line-height: 24px;
 		color: var(--text);
