@@ -13,7 +13,13 @@
             (config.hint || '' | translate)
        "
         >
-          <i *ngIf="config.required" class="fa-regular fa-asterisk required-star">*</i>{{(config.label || '') | translate}}<span *ngIf="config.required">&nbsp;(required)</span>
+          <div class="required-field-container" *ngIf="config.required">
+            <i class="fa-regular fa-asterisk required-star">*</i>{{(config.label || '') | translate}}
+            <span *ngIf="config.required">&nbsp;(required)</span>
+          </div>
+          <div *ngIf="!config.required">
+            {{(config.label || '') | translate}}
+          </div>
         </label>
         <p *ngIf="config.desc" class="input-desc">{{(config.desc || '') | translate}}</p>
         <p *ngIf="config.hint" class="input-hint">{{ config.hint | translate }}</p>
@@ -32,7 +38,7 @@
             "/>
 
           <button *ngIf="config.type === 'password' || showPassword" role="switch" category="plain"
-            class="passwordIcon" (click)="hideShow()" [disabled]="disabled" aria-label="Password eye Icon">
+          tabindex="0" class="passwordIcon" (click)="hideShow()" [disabled]="disabled" aria-label="Password eye Icon">
             <div *ngIf="showPassword" attr.aria-label="{{ 'Input_Component.Password-icon.hide_password_aria-label' | translate }}"><i class="fa-solid fa-eye-slash"></i></div>
             <div *ngIf="!showPassword" attr.aria-label="{{ 'Input_Component.Password-icon.show_password_aria-label' | translate }}"><i class="fa-solid fa-eye"></i></div>
           </button>

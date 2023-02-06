@@ -110,6 +110,10 @@
         gap: 5px;
     }
 
+    .rounded{
+        border-radius: 4px;
+    }
+
     @include types(information);
     @include types(critical);
     @include types(warning);
