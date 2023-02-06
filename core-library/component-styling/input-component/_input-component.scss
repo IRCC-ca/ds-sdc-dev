@@ -32,7 +32,7 @@
 
   .input-hint {
     font-size: 16px;
-    margin: 12px 0px 0px 0px;
+    margin: 12px 0px 8px 0px;
   }
 
   .required-star {
@@ -65,7 +65,7 @@
 
   .input-hint {
     font-size: 14px;
-    margin: 8px 0px 0px 0px;
+    margin: 8px 0px 4px 0px;
   }
 
   .required-star {
@@ -97,6 +97,7 @@
       
       .input-label {
         display: flex;
+        font-family: 'Lato'
       }
       .input-desc {
         margin: 4px 0px 0px 0px;
@@ -105,13 +106,17 @@
       .input-hint {
         color: #6F6F71;
       }
-      .required-star {
-        color: var(--critical-text);
-        font-weight: 400;
-        line-height: 16px;
-        justify-self:flex-start;
-        margin-right: 5px;
+      .required-field-container {
+        display: flex;
+        .required-star {
+          color: var(--critical-text);
+          font-weight: 400;
+          line-height: 16px;
+          justify-self:flex-start;
+          margin-right: 5px;
+        }
       }
+      
     }
   }
 
@@ -152,11 +157,6 @@
       background: transparent;
       z-index: 1;
       padding-right: 10px;
-    
-      &:focus{
-        box-shadow: none;
-        outline: none;
-      }
     }
   }
 }
