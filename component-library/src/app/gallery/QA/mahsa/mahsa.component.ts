@@ -3,10 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
-
-export const EMAIL_REGEX =
-  /^([A-Za-z0-9\.\-_]+@{1}([A-Za-z0-9]+([\-\.]{0,1}[A-Za-z0-9]+)*)\.{1}[A-Za-z0-9]{2,6})$/;
-
 @Component({
   selector: 'app-mahsa',
   templateUrl: './mahsa.component.html',
@@ -20,6 +16,10 @@ export class MahsaComponent implements OnInit {
   qaSelect: IDropdownInputConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
+    options: [
+      { text: 'Option 1'},
+      { text: 'Option 2'},
+    ],
   };
 
   testerConfig: IAutoTestConfigObject = {
@@ -44,8 +44,10 @@ export class MahsaComponent implements OnInit {
         id: 'errorMessages',
         formGroup: this.form,
         label: 'Error',
-        errorMessages: [{ key:'maxlength' , errorLOV:'Error message' }, {key: 'pattern', errorLOV: 'Testing Error Message'}, 
-      {key: 'testingError', errorLOV: 'Testing error message thing take 1000'}],
+        errorMessages: [
+          { key:'maxlength' , errorLOV:'Error message' }, 
+          { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+        ],
         options: [{ text: 'error' }]
       },
       {
@@ -53,8 +55,8 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Size',
         options: [
-          { text: 'small' },
-          { text: 'large' }
+          { text: 'large' },
+          { text: 'small' }
         ]
       }
     ],
@@ -105,8 +107,6 @@ export class MahsaComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
     this.form.addControl(this.qaSelect.id, new FormControl());
-
-    this.form.get('errorMessages')?.addValidators([Validators.pattern(EMAIL_REGEX)]);
     
     this.form.valueChanges.subscribe(value => {
 
@@ -123,20 +123,19 @@ export class MahsaComponent implements OnInit {
     });
   }
 
-  click() {
+  disable() {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disabled ?
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.enable() :
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
-  clickError() {
-    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.valid && this.qaSelect?.formGroup.get(this.qaSelect.id)?.touched ?
-    // // this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'maxLength': true }) :
-    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.reset();
 
-    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.markAsTouched();
-    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'testingError': true });
-    this.qaSelect?.formGroup.get('errorMessages')?.setErrors({ 'testingError': true, 'maxlength': {requiredLength: 3, actualLength: 5}});
-    console.log(this.form.get('errorMessages')?.errors);
+  setError() {
+    this.qaSelect?.formGroup.get('errorMessages')?.
+      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
+  }
+
+  removeError() {
+    this.form.get('errorMessages')?.setErrors({errors: null});
   }
 
 }
