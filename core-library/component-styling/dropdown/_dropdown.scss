@@ -20,7 +20,6 @@ $selectors: 'lib-dropdown-input';
 }
 
 @mixin size-large() {
-	outline: 4px solid rebeccapurple;
 	.required-star {
 		font-size: 16px;
 		line-height: 16px;
@@ -40,17 +39,16 @@ $selectors: 'lib-dropdown-input';
 	}
 
 	.custom-select {
-		padding: 12px 16px 12px 20px;
+		padding: 12px 21px 12px 20px;
 		font-size: 20px;
 		height: 52px;
 	}
 	.custom-chevron {
-		margin-left: -34px;
+		margin-left: -40px;
 	}
 }
 
 @mixin size-small() {
-	outline: 4px solid red;
 	.required-star {
 		font-size: 12px;
 		line-height: 16px;
@@ -69,8 +67,9 @@ $selectors: 'lib-dropdown-input';
 		margin-top: 4px;
 	}
 	.custom-select {
-		padding: 8px 10px 8px 16px;
+		padding: 8px 10px 8px 17px;
 		font-size: 16px;
+		height: 40px;
 	}
 	.custom-chevron {
 		margin-left: -29px;

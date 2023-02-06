@@ -17,7 +17,6 @@ export class MahsaComponent implements OnInit {
   qaSelect: IDropdownInputConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
-    size: 'large'
   };
 
   testerConfig: IAutoTestConfigObject = {
@@ -93,7 +92,7 @@ export class MahsaComponent implements OnInit {
     this.altLang.setAltLangLink('Mahsa-alt');
 
     this.testerConfig.dropdowns?.forEach(i => {
-      this.form.addControl(i.id, new FormControl());
+      this.form.addControl(i.id, new FormControl(Validators.maxLength(3)));
     });
     this.testerConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
@@ -101,7 +100,7 @@ export class MahsaComponent implements OnInit {
     this.testerConfig.inputs?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.form.addControl(this.qaSelect.id, new FormControl(Validators.maxLength(3)));
+    this.form.addControl(this.qaSelect.id, new FormControl());
     
     this.form.valueChanges.subscribe(value => {
 

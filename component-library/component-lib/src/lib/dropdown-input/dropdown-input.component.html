@@ -1,4 +1,4 @@
-<div [ngClass]="config.size + ' ' + config.category">
+<div [ngClass]="config.category" class="{{config.size}}">
     <label *ngIf="config.label" 
         [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
