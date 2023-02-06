@@ -66,7 +66,8 @@ export class MichaelComponent implements OnInit {
       mixed: true,
       label: 'Form Mixed Error Test',
       customErrorText: 'Error Message for Mixed Error Test',
-      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}]
+      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}],
+      errorIcon: {class: 'fa-solid fa-circle-xmark'}
     },
   ];
   constructor(private altLang: LanguageSwitchService) { }
