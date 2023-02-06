@@ -38,6 +38,15 @@ export class MahsaComponent implements OnInit {
           }
         ]
       },
+      {
+        id: 'size',
+        formGroup: this.form,
+        label: "Size",
+        options: [
+          { text: 'small' },
+          { text: 'large' }
+        ]
+      }
     ],
     checkboxes: [
       {
