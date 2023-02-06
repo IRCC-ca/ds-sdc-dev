@@ -4,6 +4,9 @@ import { LanguageSwitchService } from '@app/@shared/language-switch/language-swi
 import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 
+export const EMAIL_REGEX =
+  /^([A-Za-z0-9\.\-_]+@{1}([A-Za-z0-9]+([\-\.]{0,1}[A-Za-z0-9]+)*)\.{1}[A-Za-z0-9]{2,6})$/;
+
 @Component({
   selector: 'app-mahsa',
   templateUrl: './mahsa.component.html',
@@ -41,7 +44,8 @@ export class MahsaComponent implements OnInit {
         id: 'errorMessages',
         formGroup: this.form,
         label: 'Error',
-        errorMessages: [{ key:'maxLength' , errorLOV:'Error message' }],
+        errorMessages: [{ key:'maxlength' , errorLOV:'Error message' }, {key: 'pattern', errorLOV: 'Testing Error Message'}, 
+      {key: 'testingError', errorLOV: 'Testing error message thing take 1000'}],
         options: [{ text: 'error' }]
       },
       {
@@ -92,7 +96,7 @@ export class MahsaComponent implements OnInit {
     this.altLang.setAltLangLink('Mahsa-alt');
 
     this.testerConfig.dropdowns?.forEach(i => {
-      this.form.addControl(i.id, new FormControl(Validators.maxLength(3)));
+      this.form.addControl(i.id, new FormControl());
     });
     this.testerConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
@@ -101,6 +105,8 @@ export class MahsaComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
     this.form.addControl(this.qaSelect.id, new FormControl());
+
+    this.form.get('errorMessages')?.addValidators([Validators.pattern(EMAIL_REGEX)]);
     
     this.form.valueChanges.subscribe(value => {
 
@@ -127,9 +133,10 @@ export class MahsaComponent implements OnInit {
     // // this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'maxLength': true }) :
     // this.qaSelect?.formGroup.get(this.qaSelect.id)?.reset();
 
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.markAsTouched();
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'maxLength': true });
-
+    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.markAsTouched();
+    // this.qaSelect?.formGroup.get(this.qaSelect.id)?.setErrors({ 'testingError': true });
+    this.qaSelect?.formGroup.get('errorMessages')?.setErrors({ 'testingError': true, 'maxlength': {requiredLength: 3, actualLength: 5}});
+    console.log(this.form.get('errorMessages')?.errors);
   }
 
 }
