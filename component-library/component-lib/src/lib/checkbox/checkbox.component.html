@@ -19,7 +19,7 @@
   " [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{
       config.label || '' }}</label>
   </div>
-  <div *ngIf="getErrorState()" class="check-error">
+  <div *ngIf="getErrorState()" class="check-error" [ngClass]="{'small': config.size === 'small' }">
     <ng-container *ngFor="let error of config.errorMessages; index as i">
       <div *ngIf="config.formGroup.get(config.id)?.errors?.[error.key]">
         <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon"></lib-error>

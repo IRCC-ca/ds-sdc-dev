@@ -49,6 +49,9 @@
     }
     div.check-error {
         margin-top: token-size.$fixed-8;
+        &.small {
+            font-size: 14px;
+        }
     }
     @include size.selector(small) {
         label, p {
