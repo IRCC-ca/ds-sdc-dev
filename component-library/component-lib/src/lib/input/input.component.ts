@@ -93,4 +93,12 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
   }
+
+  /**
+   * Return error state from FormGroup, must be touched & invalid
+   */
+  getErrorState(): boolean {
+    return (this.config.formGroup.get(this.config.id)?.touched &&
+      this.config.formGroup.get(this.config.id)?.invalid) ?? false;
+  }
 }
