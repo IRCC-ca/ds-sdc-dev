@@ -76,7 +76,8 @@ export class BannerComponent implements OnInit {
     let containerHeight = document.getElementById(this.config?.id || '')?.offsetHeight;
     console.log('height ', containerHeight);
     if(containerHeight && containerHeight <= 10){
-      //this.lineVisible = false;
+      let el : any = document.querySelector(`#${this.config?.id} .banner-line`);
+      el.style.display = 'none';
     }
   }
 
