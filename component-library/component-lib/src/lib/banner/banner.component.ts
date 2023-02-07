@@ -64,6 +64,17 @@ export class BannerComponent implements OnInit {
 
   // }
 
+  onResize(){
+    console.log('resize!');
+    let containerHeight = document.getElementById(this.config?.id || '')?.offsetHeight;
+    console.log('height ', containerHeight);
+    if(containerHeight && containerHeight <= 70){
+      console.log('getting here');
+      let el : any = document.querySelector(`#${this.config?.id} .banner-line`);
+      el.style.display = 'none';
+    }
+  }
+
   ngOnInit(){
     this.closeButtonId = this.config?.id + '_closeBtn';
   }
@@ -73,9 +84,9 @@ export class BannerComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    let containerHeight = document.getElementById(this.config?.id || '')?.offsetHeight;
+    let containerHeight = document.getElementById(`#${this.config?.id}`)?.offsetHeight;
     console.log('height ', containerHeight);
-    if(containerHeight && containerHeight <= 10){
+    if(containerHeight && containerHeight <= 70){
       let el : any = document.querySelector(`#${this.config?.id} .banner-line`);
       el.style.display = 'none';
     }

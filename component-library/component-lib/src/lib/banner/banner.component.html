@@ -1,4 +1,4 @@
-<div class="banner-component" class="{{config?.size}}" id="{{config?.id}}" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
+<div (window:resize)="onResize()" class="banner-component" class="{{config?.size}}" id="{{config?.id}}" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
     <div class="banner-container">
     <div class="banner-left" *ngIf="config?.type != 'generic' && config?.type">
       <ng-container [ngSwitch]="config?.type">
@@ -19,12 +19,12 @@
     </div>
     <div class="banner-right">
     <div class="banner-body">
-    <div class="banner-text">
+    <div class="banner-text" id="test">
         <div class="banner-title h6 emphasis" *ngIf="config?.title">{{(config?.title || '') | translate}}</div>
         <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div>
     </div>
     <div class="banner-btn">
-    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [id]="closeButtonId" [customIcon]="closeIcon" [category]="'custom'" (clickEvent)="eventHandler($event)"></lib-icon-button>
+    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
     </div>
     </div>
     <div class="banner-ctas">
