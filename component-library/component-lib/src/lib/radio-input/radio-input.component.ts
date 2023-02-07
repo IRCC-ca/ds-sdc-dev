@@ -6,6 +6,7 @@ import {
   NG_VALUE_ACCESSOR,
   ValidatorFn
 } from '@angular/forms';
+import { IErrorPairs } from 'component-lib/src/shared/interfaces/component-configs';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 
 export interface IRadioInputComponentConfig {
@@ -22,6 +23,7 @@ export interface IRadioInputComponentConfig {
   validators?: ValidatorFn[];
   helpText?: string;
   customErrorText?: string; //TODO: move to it's own component
+  errorMessages?: IErrorPairs[];
 }
 
 export interface IRadioInputOption {

@@ -42,6 +42,15 @@ export class MikeComponent implements OnInit {
           id: 'dismissible',
           formGroup: this.form,
           label: 'dismissible'
+        },
+        {
+          id: 'errorMessages',
+          formGroup: this.form,
+          label: 'error',
+          errorMessages: [
+            { key:'maxlength' , errorLOV:'Error message' }, 
+            { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+          ],
         }
     ],
     dropdowns: [
@@ -85,7 +94,6 @@ export class MikeComponent implements OnInit {
 
     this.testerConfig.dropdowns?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
-
     });
     this.testerConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
@@ -95,21 +103,27 @@ export class MikeComponent implements OnInit {
     });
 
     this.form.valueChanges.subscribe(x => {
-
       let updatedConfig : IBannerConfig = {
         id: this.BANNER_ID
       };
 
       for(let param in x){
-          console.log(param);
-          console.log(x[param]);
-          updatedConfig = {...updatedConfig, [param] : x[param]}
-          console.log('updatedConfig: ', updatedConfig);
-          this.qaBanner = updatedConfig;
+        console.log(param);
+        console.log(x[param]);
+        updatedConfig = {...updatedConfig, [param] : x[param]}
+        console.log('updatedConfig: ', updatedConfig);
+        this.qaBanner = updatedConfig;
 
       }
-  })
+    });
+  }
+  setError() {
+    this.form.get('errorMessages')?.
+      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
+  }
 
+  removeError() {
+    this.form.get('errorMessages')?.setErrors({errors: null});
   }
 
 }
