@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { ICheckBoxComponentConfig } from 'ircc-ds-angular-component-library';
+import {ICheckBoxComponentConfig, IInputComponentConfig} from 'ircc-ds-angular-component-library';
+import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/auto-tester/auto-tester.component";
 
 @Component({
   selector: 'app-michael',
@@ -11,6 +12,7 @@ import { ICheckBoxComponentConfig } from 'ircc-ds-angular-component-library';
 export class MichaelComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
+  INPUT_ID = 'qa_test_input';
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
       id: 'checkbox_label_test',
@@ -80,6 +82,75 @@ export class MichaelComponent implements OnInit {
       errorIcon: {class: 'fa-solid fa-circle-xmark'}
     },
   ];
+
+  qaConfig : IInputComponentConfig = {
+    id: this.INPUT_ID,
+    formGroup: this.form
+  };
+  testerConfig: IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'label',
+        formGroup: this.form,
+        label: 'label/Title'
+      },
+      {
+        id: 'desc',
+        formGroup: this.form,
+        label: 'description'
+      },
+      {
+        id: 'hint',
+        formGroup: this.form,
+        label: 'hint'
+      },
+      {
+        id: 'placeholder',
+        formGroup: this.form,
+        label: 'Placeholder text'
+      },
+    ],
+    checkboxes: [
+      {
+        id: 'required',
+        formGroup: this.form,
+        label: 'required'
+      },
+    ],
+    dropdowns: [
+      {
+        id: 'type',
+        label: 'Type',
+        formGroup: this.form,
+        options: [
+          {
+            text: 'text'
+          },
+          {
+            text: 'password'
+          }
+        ]
+      },
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form,
+        options: [
+          {
+            text: 'small'
+          },
+          {
+            text: 'large'
+          }
+        ]
+      }
+    ]
+  }
+  testComponentConfig: IAutoTestComponentConfig = {
+    id: 'michael_tester',
+    formGroup: this.form,
+    testFields: this.testerConfig
+  }
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
@@ -91,6 +162,32 @@ export class MichaelComponent implements OnInit {
       }
     })
     this.form.addControl(this.checkboxesConfigs[5]?.id, new FormControl('', [Validators.required]));
+
+    // Auto tester component configs
+    this.testerConfig.dropdowns?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
+    this.testerConfig.checkboxes?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
+    this.testerConfig.inputs?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
+
+    this.form.addControl(this.qaConfig.id, new FormControl())
+
+    this.form.valueChanges.subscribe(x => {
+      var updatedConfig : IInputComponentConfig = {
+        id: this.INPUT_ID,
+        formGroup: this.form
+      };
+
+      for(let param in x){
+        updatedConfig = {...updatedConfig, [param] : x[param]}
+        // console.log('updatedConfig: ', updatedConfig);
+        this.qaConfig = updatedConfig;
+      }
+    })
   }
 
   buttonActions(actionType: string) {
