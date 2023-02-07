@@ -42,6 +42,7 @@ export class IconButtonComponent implements OnInit {
   @Input() size?: keyof typeof IconButtonSize | IconButtonSize;
   @Input() ariaLabel?: string;
   @Input() disabled?: boolean;
+  @Input() customIcon? : IIconButtonIconConfig;
   @Output() clickEvent = new EventEmitter<string>();
   icon?: IIconButtonIconConfig;
   // Mapping of icons to category
@@ -62,7 +63,8 @@ export class IconButtonComponent implements OnInit {
     if (this.size) this.config.size = this.size;
     if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
     if (this.disabled) this.config.disabled = this.disabled;
-    this.icon = this.config.category === IconButtonCategories.custom ? this.config.customIcon : this.iconConfigs[this.config.category];
+    this.icon = this.config.category == 'custom' ? this.config.customIcon : this.iconConfigs[this.config.category];
+    console.log('THIS DOT ICON', this.icon);
   }
 
   buttonClick(id = this.config.id) {

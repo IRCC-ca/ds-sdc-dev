@@ -34,7 +34,60 @@
     }
 }
 
+@mixin large-styles(){
+    .banner-icon{
+        height: 24px;
+        width: 24px;
+    }
+    .banner-title{
+        font-size: 20px;
+    }
+    .banner-content{
+        font-size: 16px;
+    }
+    .banner-container{
+        padding: 16px; 
+    }
+    
+}
+
+@mixin small-styles(){
+    .banner-icon{
+        height: 20px;
+        width: 20px;
+    }
+    .banner-title{
+        font-size: 16px;
+    }   
+    .banner-content{
+        font-size: 14px;
+    }
+    .banner-container{
+        padding: 12px; 
+    }
+}
+
 @mixin layout {
+
+    @include size.selector(large){
+        @include large-styles();
+        .small{
+            @include small-styles();
+        }
+    }
+
+    @include size.selector(small){
+        @include small-styles();
+        .large{
+            @include large-styles();
+        }
+    }
+
+    lib-icon-button {
+        button.primary {
+        padding: 0px 7px;
+        }
+    }
 
     .banner-component{
         width: 100%;
@@ -42,16 +95,14 @@
         background-color: var(--neutral-alert-background);
         display: flex;
         flex-direction: row;
-        overflow: hidden;
     }
 
     .banner-container{
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        padding: 16px; 
         gap: 12px;
-        width: 100%;      
+        width: 100%;     
     }
 
     .banner-right{
@@ -67,8 +118,6 @@
         justify-content: space-between;
     }
 
-
-
     .banner-left{
         display: flex;
         flex-direction: column;
@@ -83,11 +132,6 @@
         height: 90%;
         width: 4px;
         border-radius: 4px;
-    }
-
-    .banner-icon{
-        height: 24px;
-        width: 24px;
     }
 
     .banner-text{

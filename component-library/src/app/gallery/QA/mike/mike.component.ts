@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormGroup, FormControl} from '@angular/forms';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
-import { IBannerConfig } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICTAConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-mike',
@@ -18,6 +18,17 @@ export class MikeComponent implements OnInit {
   };
 
   form = new FormGroup({});
+  form2 = new FormGroup({});
+
+  ctaTestConfigObj : IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'text',
+        formGroup: this.form2,
+        label: 'Text'
+      }
+    ]
+  }
 
   testerConfig: IAutoTestConfigObject = {
     inputs: [
@@ -66,6 +77,19 @@ export class MikeComponent implements OnInit {
             text: 'success'
           }
         ]
+      },
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form,
+        options: [
+          {
+            text: 'large'
+          },
+          {
+            text: 'small'
+          }
+        ]
       }
     ]
   }
@@ -75,6 +99,13 @@ export class MikeComponent implements OnInit {
     formGroup: this.form,
     testFields: this.testerConfig
   }
+
+  ctaTestConfig: IAutoTestComponentConfig = {
+    id: 'cta_tester',
+    formGroup: this.form2,
+    testFields: this.ctaTestConfigObj
+  }
+
 
 
 
@@ -94,6 +125,18 @@ export class MikeComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
 
+    this.ctaTestConfigObj.dropdowns?.forEach(i => {
+      this.form2.addControl(i.id, new FormControl());
+
+    });
+    this.ctaTestConfigObj.checkboxes?.forEach(i => {
+      this.form2.addControl(i.id, new FormControl());
+    });
+    this.ctaTestConfigObj.inputs?.forEach(i => {
+      this.form2.addControl(i.id, new FormControl());
+    });
+
+
     this.form.valueChanges.subscribe(x => {
 
       let updatedConfig : IBannerConfig = {
@@ -108,7 +151,7 @@ export class MikeComponent implements OnInit {
           this.qaBanner = updatedConfig;
 
       }
-  })
+  });
 
   }
 

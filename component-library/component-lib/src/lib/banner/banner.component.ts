@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-//import { ButtonCategories, ButtonColor } from 'dist/ircc-ds-angular-component-library/public-api';
+import { ButtonCategories, ButtonColor, ButtonIconDirection } from '../button/button.component';
+import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
+;
 
 export enum BannerType {
   '' = '',
@@ -10,11 +12,21 @@ export enum BannerType {
   warning = 'warning'
 };
 
-// export interface ICTAConfig {
-//   text: string,
-//   category: ButtonCategories,
-//   color: ButtonColor
-// }
+export enum BannerSize {
+  large = 'large',
+  small = 'small'
+}
+
+ export interface ICTAConfig {
+   text: string,
+   category?: keyof typeof ButtonCategories,
+   color?: keyof typeof ButtonColor,
+   ariaLabel?: string,
+   disabled?: boolean,
+   icon?: string,
+   iconDirection?: keyof typeof ButtonIconDirection,
+   link?: boolean
+ }
 
 export interface IBannerConfig {
   id: string,
@@ -23,7 +35,8 @@ export interface IBannerConfig {
   type?: keyof typeof BannerType,
   rounded?: boolean,
   dismissible?: boolean,
-  //cta?: ICTAConfig[]
+  cta?: ICTAConfig[],
+  size?: keyof typeof BannerSize
 }
 
 @Component({
@@ -32,8 +45,11 @@ export interface IBannerConfig {
 })
 export class BannerComponent implements OnInit {
 
+  closeIcon : IIconButtonIconConfig = {class: 'fa-solid fa-xmark'}
+
   closeButtonId = '';
   iconName = '';
+  lineVisible = true;
 
   @Input() config?: IBannerConfig;
   @Input() id?: string;
@@ -44,8 +60,24 @@ export class BannerComponent implements OnInit {
     this.btnEvent?.emit(emitValue);
   }
 
+  // getElement(){
+
+  // }
+
   ngOnInit(){
     this.closeButtonId = this.config?.id + '_closeBtn';
+  }
+
+  ngOnCheck(){
+
+  }
+
+  ngAfterViewInit(){
+    let containerHeight = document.getElementById(this.config?.id || '')?.offsetHeight;
+    console.log('height ', containerHeight);
+    if(containerHeight && containerHeight <= 10){
+      //this.lineVisible = false;
+    }
   }
 
 }
