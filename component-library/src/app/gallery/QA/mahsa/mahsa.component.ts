@@ -117,7 +117,6 @@ export class MahsaComponent implements OnInit {
 
       for(let param in value) {
         updatedConfig = { ...updatedConfig, [param]: value[param] }
-        console.log('updatedConfig: ', updatedConfig);
         this.qaSelect = updatedConfig;
       }
     });

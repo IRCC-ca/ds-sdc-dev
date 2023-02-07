@@ -18,7 +18,6 @@ export interface IDropdownInputConfig {
   required?: boolean;
   hint?: string;
   desc?: string;
-  errorMsg?: string;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[]; 
 };
