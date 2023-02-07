@@ -128,13 +128,11 @@ export class MahsaComponent implements OnInit {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
 
-  setError() {
+  setResetError() {
+    this.qaSelect?.formGroup.get('errorMessages')?.valid ?
     this.qaSelect?.formGroup.get('errorMessages')?.
-      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
-  }
-
-  removeError() {
-    this.form.get('errorMessages')?.setErrors({errors: null});
+      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }}) :
+    this.qaSelect?.formGroup.get('errorMessages')?.reset();
   }
 
 }

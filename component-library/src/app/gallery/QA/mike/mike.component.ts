@@ -117,13 +117,11 @@ export class MikeComponent implements OnInit {
       }
     });
   }
-  setError() {
+  setResetError() {
+    this.form.get('errorMessages')?.valid ?
     this.form.get('errorMessages')?.
-      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
-  }
-
-  removeError() {
-    this.form.get('errorMessages')?.setErrors({errors: null});
+      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }}) :
+    this.form.get('errorMessages')?.reset();
   }
 
 }
