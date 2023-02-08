@@ -1,4 +1,4 @@
-<div (window:resize)="onResize()" class="banner-component" class="{{config?.size}}" id="{{config?.id}}" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
+<div (window:resize)="toggleLine()" class="banner-component" class="{{config?.size}}" id="{{config?.id}}" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
     <div class="banner-container">
     <div class="banner-left" *ngIf="config?.type != 'generic' && config?.type">
       <ng-container [ngSwitch]="config?.type">
@@ -19,25 +19,27 @@
     </div>
     <div class="banner-right">
     <div class="banner-body">
-    <div class="banner-text" id="test">
+    <div class="banner-text" id={{textId}}>
         <div class="banner-title h6 emphasis" *ngIf="config?.title">{{(config?.title || '') | translate}}</div>
         <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div>
     </div>
     <div class="banner-btn">
-    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
+    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [category]="'custom'" [customIcon]="customIcon" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
     </div>
     </div>
     <div class="banner-ctas">
-        <lib-button *ngFor="let cta of config?.cta; let index = index"
+      <ng-container *ngFor="let cta of config?.cta; let index = index">
+        <lib-button *ngIf="cta?.type === 'button'"
         [id]="'cta_' + index"
-        [category]='cta?.category'
-        [color]='cta?.color'
-        [ariaLabel]='cta?.ariaLabel'
-        [disabled]='cta?.disabled'
-        [icon]='cta?.icon'
-        [iconDirection]='cta?.iconDirection'
-        [ngClass]="{'link' : cta?.link}">{{cta.text}}</lib-button>
+        [category]='cta?.btnConfig?.category'
+        [color]='cta?.btnConfig?.color'
+        [ariaLabel]='cta?.btnConfig?.ariaLabel'
+        [disabled]='cta?.btnConfig?.disabled'
+        [icon]='cta?.btnConfig?.icon'
+        [iconDirection]='cta?.btnConfig?.iconDirection'
+        [ngClass]="{'link' : cta?.btnConfig?.link}">{{cta.text | translate}}</lib-button>
+        <a *ngIf="cta?.type === 'link'" [routerLink]="cta?.linkConfig  | translate">{{cta.text | translate}}</a>
+      </ng-container>
     </div>
     </div></div>
 </div>
-<!-- <button (click)="getElement()">Click</button> -->

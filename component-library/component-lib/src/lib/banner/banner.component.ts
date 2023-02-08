@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ButtonCategories, ButtonColor, ButtonIconDirection } from '../button/button.component';
 import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
-;
+import { ButtonCategories, ButtonColor, ButtonIconDirection, IButtonConfig } from '../button/button.component';
 
 export enum BannerType {
   '' = '',
@@ -17,16 +16,17 @@ export enum BannerSize {
   small = 'small'
 }
 
- export interface ICTAConfig {
-   text: string,
-   category?: keyof typeof ButtonCategories,
-   color?: keyof typeof ButtonColor,
-   ariaLabel?: string,
-   disabled?: boolean,
-   icon?: string,
-   iconDirection?: keyof typeof ButtonIconDirection,
-   link?: boolean
- }
+export enum CTAType {
+  link = 'link',
+  button = 'button'
+}
+
+export interface ICTAConfig {
+  text: string,
+  type: keyof typeof CTAType,
+  linkConfig?: any, //TO-DO: build link component and replace type any with ILinkConfig interface. For now will take url.
+  btnConfig?: IButtonConfig
+}
 
 export interface IBannerConfig {
   id: string,
@@ -45,11 +45,16 @@ export interface IBannerConfig {
 })
 export class BannerComponent implements OnInit {
 
-  closeIcon : IIconButtonIconConfig = {class: 'fa-solid fa-xmark'}
-
   closeButtonId = '';
   iconName = '';
   lineVisible = true;
+  textId = '';
+
+
+  customIcon : IIconButtonIconConfig = {
+    class: 'fa-solid fa-xmark'
+  }
+
 
   @Input() config?: IBannerConfig;
   @Input() id?: string;
@@ -60,36 +65,27 @@ export class BannerComponent implements OnInit {
     this.btnEvent?.emit(emitValue);
   }
 
-  // getElement(){
-
-  // }
-
-  onResize(){
-    console.log('resize!');
-    let containerHeight = document.getElementById(this.config?.id || '')?.offsetHeight;
-    console.log('height ', containerHeight);
-    if(containerHeight && containerHeight <= 70){
-      console.log('getting here');
-      let el : any = document.querySelector(`#${this.config?.id} .banner-line`);
+  toggleLine(){
+    let containerHeight = document.getElementById(this.textId)?.offsetHeight;
+    let el : any = document.querySelector(`#${this.config?.id} .banner-line`);
+    if(containerHeight && el && containerHeight > 48){
+      el.style.display = 'block';
+    }else if(el){
       el.style.display = 'none';
     }
   }
 
   ngOnInit(){
     this.closeButtonId = this.config?.id + '_closeBtn';
-  }
-
-  ngOnCheck(){
-
+    this.textId = this.config?.id + '_text';
   }
 
   ngAfterViewInit(){
-    let containerHeight = document.getElementById(`#${this.config?.id}`)?.offsetHeight;
-    console.log('height ', containerHeight);
-    if(containerHeight && containerHeight <= 70){
-      let el : any = document.querySelector(`#${this.config?.id} .banner-line`);
-      el.style.display = 'none';
-    }
+    this.toggleLine();
+  }
+
+  ngAfterViewChecked(){
+    this.toggleLine();
   }
 
 }
