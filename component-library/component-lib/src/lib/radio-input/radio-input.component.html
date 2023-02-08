@@ -8,7 +8,7 @@
           : (config.label || '' | translate) + ' ' + (config?.helpText || '' | translate)
        "
        [for]="config.id"
-       class="radio-label"><i *ngIf="config.required" class="fa-regular fa-asterisk required-star">*</i> {{(config.label || '') | translate}} <span *ngIf="config.required">&nbsp;(required)</span></label>
+       class="radio-label"><i *ngIf="config.required" class="fa-regular fa-asterisk required-star"></i> {{(config.label || '') | translate}}</label>
        <p *ngIf="config.desc" class="radio-desc">{{(config.desc || '') | translate}}</p>
        <p *ngIf="config.hint" class="radio-hint">{{(config.hint || '') | translate}}</p>
     <div *ngFor="let option of config.options; let index = index" class="radio">

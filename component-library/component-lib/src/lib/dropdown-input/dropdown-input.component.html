@@ -14,7 +14,6 @@
             <i class="fa-regular fa-asterisk required-star"></i> 
         </span>
         {{(config.label || '') | translate}} 
-        <span *ngIf="config.required">&nbsp;(required)</span>
     </label>
     <p *ngIf="config.desc" class="select-desc">{{(config.desc || '') | translate}}</p>
     <p *ngIf="config.hint" class="select-hint">{{(config.hint || '') | translate}}</p>
