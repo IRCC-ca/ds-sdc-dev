@@ -48,7 +48,11 @@ export class MahsaComponent implements OnInit {
           { key:'maxlength' , errorLOV:'Error message' }, 
           { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
         ],
-        options: [{ text: 'error' }]
+        options: [
+          { text: 'Maxlength' }, 
+          { text: 'TestingError' }, 
+          { text: 'Both Errors' }
+        ]
       },
       {
         id: 'size',
@@ -109,7 +113,6 @@ export class MahsaComponent implements OnInit {
     this.form.addControl(this.qaSelect.id, new FormControl());
     
     this.form.valueChanges.subscribe(value => {
-
       let updatedConfig: IDropdownInputConfig = {
         id: this.SELECT_ID,
         formGroup: this.form
@@ -128,11 +131,17 @@ export class MahsaComponent implements OnInit {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
 
-  setResetError() {
-    this.qaSelect?.formGroup.get('errorMessages')?.valid ?
-    this.qaSelect?.formGroup.get('errorMessages')?.
-      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }}) :
+  setError() {
+    if (this.qaSelect?.formGroup.get('errorMessages')?.value === 'Maxlength')  {
+      this.qaSelect?.formGroup.get('errorMessages')?.setErrors({'maxlength': { requiredLength: 3, actualLength: 5 }});
+    } else if (this.qaSelect?.formGroup.get('errorMessages')?.value === 'TestingError') {
+      this.qaSelect?.formGroup.get('errorMessages')?.setErrors({'testingError': true});
+    } else {
+      this.qaSelect?.formGroup.get('errorMessages')?.
+      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
+    }
+  };
+  resetError() {
     this.qaSelect?.formGroup.get('errorMessages')?.reset();
-  }
-
+  };
 }

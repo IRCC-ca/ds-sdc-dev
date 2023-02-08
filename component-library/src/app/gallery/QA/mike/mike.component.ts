@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn, Validators} from '@angular/forms';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
 
@@ -48,8 +48,7 @@ export class MikeComponent implements OnInit {
           formGroup: this.form,
           label: 'error',
           errorMessages: [
-            { key:'maxlength' , errorLOV:'Error message' }, 
-            { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+            { key:'required' , errorLOV:'Required Error message' }
           ],
         }
     ],
@@ -113,15 +112,13 @@ export class MikeComponent implements OnInit {
         updatedConfig = {...updatedConfig, [param] : x[param]}
         console.log('updatedConfig: ', updatedConfig);
         this.qaBanner = updatedConfig;
-
       }
     });
   }
   setResetError() {
     this.form.get('errorMessages')?.valid ?
-    this.form.get('errorMessages')?.
-      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }}) :
-    this.form.get('errorMessages')?.reset();
+      this.form.get('errorMessages')?.setErrors({ 'required': true }) :
+      this.form.get('errorMessages')?.reset();
   }
 
 }
