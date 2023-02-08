@@ -116,14 +116,6 @@ export class MikeComponent implements OnInit {
           id: 'dismissible',
           formGroup: this.form,
           label: 'dismissible'
-        },
-        {
-          id: 'errorMessages',
-          formGroup: this.form,
-          label: 'error',
-          errorMessages: [
-            { key:'required' , errorLOV:'Required Error message' }
-          ],
         }
     ],
     dropdowns: [
@@ -171,18 +163,12 @@ export class MikeComponent implements OnInit {
     testFields: this.testerConfig
   }
 
-<<<<<<< HEAD
   ctaTestConfig: IAutoTestComponentConfig = {
     id: 'cta_tester',
     formGroup: this.ctaForm1,
     testFields: this.ctaTestConfigObj
   }
 
-
-
-
-=======
->>>>>>> dev
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
@@ -219,7 +205,6 @@ export class MikeComponent implements OnInit {
         updatedConfig = {...updatedConfig, [param] : x[param]}
         this.qaBanner = updatedConfig;
       }
-<<<<<<< HEAD
   });
 
   // code for CTA1:
@@ -276,13 +261,5 @@ export class MikeComponent implements OnInit {
           }
         }
     });
-=======
-    });
-  }
-  setResetError() {
-    this.form.get('errorMessages')?.valid ?
-      this.form.get('errorMessages')?.setErrors({ 'required': true }) :
-      this.form.get('errorMessages')?.reset();
->>>>>>> dev
   }
 }

@@ -27,7 +27,7 @@
     <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [category]="'custom'" [customIcon]="customIcon" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
     </div>
     </div>
-    <div class="banner-ctas">
+    <div class="banner-ctas" *ngIf="config?.cta">
       <ng-container *ngFor="let cta of config?.cta; let index = index">
         <lib-button *ngIf="cta?.type === 'button'"
         [id]="'cta_' + index"
@@ -37,7 +37,7 @@
         [disabled]='cta?.btnConfig?.disabled'
         [icon]='cta?.btnConfig?.icon'
         [iconDirection]='cta?.btnConfig?.iconDirection'
-        [ngClass]="{'link' : cta?.btnConfig?.link}">{{cta.text | translate}}</lib-button>
+        >{{cta.text | translate}}</lib-button>
         <a *ngIf="cta?.type === 'link'" [routerLink]="cta?.linkConfig  | translate">{{cta.text | translate}}</a>
       </ng-container>
     </div>

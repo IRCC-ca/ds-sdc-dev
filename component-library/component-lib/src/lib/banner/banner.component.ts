@@ -68,7 +68,8 @@ export class BannerComponent implements OnInit {
   toggleLine(){
     let containerHeight = document.getElementById(this.textId)?.offsetHeight;
     let el : any = document.querySelector(`#${this.config?.id} .banner-line`);
-    if(containerHeight && el && containerHeight > 48){
+    let ctas : any = document.querySelector(`#${this.config?.id} .banner-ctas`)
+    if(containerHeight && el && containerHeight > 48 || el && containerHeight && containerHeight > 24 && ctas){
       el.style.display = 'block';
     }else if(el){
       el.style.display = 'none';
