@@ -85,7 +85,12 @@ export class MichaelComponent implements OnInit {
 
   qaInputConfig : IInputComponentConfig = {
     id: this.INPUT_ID,
-    formGroup: this.form
+    formGroup: this.form,
+    errorMessages: [
+      {key: 'invalid', errorLOV: 'This field is invalid.'},
+      {key: 'testingError', errorLOV: 'Test error message.'},
+      {key: 'maxlength' , errorLOV:'This field has exceeded max length.'},
+    ]
   };
   testerConfig: IAutoTestConfigObject = {
     inputs: [
@@ -108,11 +113,6 @@ export class MichaelComponent implements OnInit {
         id: 'placeholder',
         formGroup: this.form,
         label: 'Placeholder text'
-      },
-      {
-        id: 'errorMessages',
-        formGroup: this.form,
-        label: 'Error message'
       },
     ],
     checkboxes: [
@@ -199,18 +199,14 @@ export class MichaelComponent implements OnInit {
     this.form.valueChanges.subscribe(x => {
       var updatedConfig : IInputComponentConfig = {
         id: this.INPUT_ID,
-        formGroup: this.form
+        formGroup: this.form,
+        errorMessages: this.qaInputConfig.errorMessages
       };
       for(let param in x){
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
-        if (param === 'errorMessages') {
-          updatedConfig = {...updatedConfig, [param] : [{
-              key: 'invalid',
-              errorLOV: x[param]
-            }]}
-        } else if (param === 'errorIcon') {
+        if (param === 'errorIcon') {
           updatedConfig = {...updatedConfig, ['errorIcon'] : {
               class: x[param]
             }}
@@ -249,6 +245,18 @@ export class MichaelComponent implements OnInit {
           this.form.get(this.qaInputConfig.id)?.setErrors({ 'invalid': true }) :
           this.form.get(this.qaInputConfig.id)?.reset();
 
+        this.form.updateValueAndValidity();
+        break;
+      case 'setInputError':
+        this.form.get(this.qaInputConfig.id)?.
+          setErrors({
+            'invalid': true,
+            'testingError': true,
+            'maxlength': { requiredLength: 3, actualLength: 5 }});
+        this.form.updateValueAndValidity();
+        break;
+      case 'removeInputError':
+        this.form.get(this.qaInputConfig.id)?.setErrors({errors: null});
         this.form.updateValueAndValidity();
         break;
     }
