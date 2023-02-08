@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { ButtonColor, ButtonIconDirection, IButtonConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 
 @Component({
@@ -18,6 +18,21 @@ export class NaseerComponent implements OnInit {
     id: this.INPUT_ID,
     formGroup: this.form
   };
+
+  qaButton : IIconButtonComponentConfig = {
+    id: "qa_test_button",
+    size: 'extraSmall',
+    category: 'custom',
+    icon:  {
+      class: 'fa-solid fa-mustache',
+      color: 'var(--primary-text)'
+    }
+  };
+
+  customIconConfigTest : IIconButtonIconConfig = {
+    class: 'fa-regular fa-igloo',
+    color: 'var(--critical-text)'
+  }
 
   testerConfig: IAutoTestConfigObject = {
     inputs: [
@@ -43,11 +58,11 @@ export class NaseerComponent implements OnInit {
       },
     ],
     checkboxes: [
-        {
-          id: 'required',
-          formGroup: this.form,
-          label: 'required'
-        },
+      {
+        id: 'required',
+        formGroup: this.form,
+        label: 'required'
+      },
     ],
     dropdowns: [
       {
@@ -102,6 +117,7 @@ export class NaseerComponent implements OnInit {
     });
 
     this.form.addControl(this.qaInput.id, new FormControl())
+    // this.form.addControl(this.qaButton.id, new FormControl())
     this.form.valueChanges.subscribe(x => {
 
       var updatedConfig : IInputComponentConfig = {
