@@ -83,7 +83,7 @@ export class MichaelComponent implements OnInit {
     },
   ];
 
-  qaConfig : IInputComponentConfig = {
+  qaInputConfig : IInputComponentConfig = {
     id: this.INPUT_ID,
     formGroup: this.form
   };
@@ -108,6 +108,11 @@ export class MichaelComponent implements OnInit {
         id: 'placeholder',
         formGroup: this.form,
         label: 'Placeholder text'
+      },
+      {
+        id: 'errorMessages',
+        formGroup: this.form,
+        label: 'Error message'
       },
     ],
     checkboxes: [
@@ -174,18 +179,24 @@ export class MichaelComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
 
-    this.form.addControl(this.qaConfig.id, new FormControl())
+    this.form.addControl(this.qaInputConfig.id, new FormControl())
 
     this.form.valueChanges.subscribe(x => {
       var updatedConfig : IInputComponentConfig = {
         id: this.INPUT_ID,
         formGroup: this.form
       };
-
       for(let param in x){
+        if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
-        this.qaConfig = updatedConfig;
+        if (param === 'errorMessages') {
+          updatedConfig = {...updatedConfig, [param] : [{
+              key: 'invalid',
+              errorLOV: x[param]
+            }]}
+        }
+        this.qaInputConfig = updatedConfig;
       }
     })
   }
@@ -210,6 +221,14 @@ export class MichaelComponent implements OnInit {
             this.form.get(id)?.setErrors({ 'invalid': true }) :
             this.form.get(id)?.reset();
         })
+
+        this.form.updateValueAndValidity();
+        break;
+
+      case 'inputError':
+        this.form.get(this.qaInputConfig.id)?.valid ?
+          this.form.get(this.qaInputConfig.id)?.setErrors({ 'invalid': true }) :
+          this.form.get(this.qaInputConfig.id)?.reset();
 
         this.form.updateValueAndValidity();
         break;
