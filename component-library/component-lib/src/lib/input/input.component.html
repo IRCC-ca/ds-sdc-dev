@@ -14,8 +14,7 @@
        "
         >
           <div class="required-field-container" *ngIf="config.required">
-            <i class="fa-regular fa-asterisk required-star">*</i>{{(config.label || '') | translate}}
-            <span *ngIf="config.required">&nbsp;(required)</span>
+            <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}
           </div>
           <div *ngIf="!config.required">
             {{(config.label || '') | translate}}

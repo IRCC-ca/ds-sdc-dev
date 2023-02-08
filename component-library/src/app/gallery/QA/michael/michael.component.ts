@@ -46,7 +46,8 @@ export class MichaelComponent implements OnInit {
     {
       id: 'checkbox_form_error_test',
       formGroup: this.form,
-      label: 'Form Error Test'
+      label: 'Form Error Test',
+      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}]
     },
     {
       id: 'checkbox_validators_test',
@@ -65,6 +66,18 @@ export class MichaelComponent implements OnInit {
       mixed: true,
       label: 'Form Mixed Error Test',
       customErrorText: 'Error Message for Mixed Error Test',
+      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}],
+      errorIcon: {class: 'fa-solid fa-circle-xmark'}
+    },
+    {
+      id: 'checkbox_mixed_error_test2',
+      formGroup: this.form,
+      mixed: true,
+      size: 'small',
+      label: 'Form Mixed Error Small Test',
+      customErrorText: 'Error Message for Mixed Error Small Test',
+      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}],
+      errorIcon: {class: 'fa-solid fa-circle-xmark'}
     },
   ];
   constructor(private altLang: LanguageSwitchService) { }
@@ -72,8 +85,10 @@ export class MichaelComponent implements OnInit {
   ngOnInit() {
     this.altLang.setAltLangLink('michael-alt');
 
-    [0,1,2,3,4,6,7].forEach(i => {
-      this.form.addControl(this.checkboxesConfigs[i].id, new FormControl());
+    this.checkboxesConfigs.forEach(i => {
+      if (i.id !== 'checkbox_validators_test') {
+        this.form.addControl(i.id, new FormControl());
+      }
     })
     this.form.addControl(this.checkboxesConfigs[5]?.id, new FormControl('', [Validators.required]));
   }
@@ -88,7 +103,12 @@ export class MichaelComponent implements OnInit {
           this.form.get('checkbox_form_error_test')?.enable() : this.form.get('checkbox_form_error_test')?.disable();
         break;
       case 'checkboxError':
-        ['checkbox_form_error_test', this.checkboxesConfigs[2].id, this.checkboxesConfigs[7].id].forEach((id) => {
+        [
+          'checkbox_form_error_test',
+          this.checkboxesConfigs[2].id,
+          this.checkboxesConfigs[7].id,
+          this.checkboxesConfigs[8].id
+        ].forEach((id) => {
           this.form.get(id)?.valid ?
             this.form.get(id)?.setErrors({ 'invalid': true }) :
             this.form.get(id)?.reset();

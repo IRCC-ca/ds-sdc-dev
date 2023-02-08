@@ -1,4 +1,4 @@
-<div [class]="config?.category">
+<div [ngClass]="config.category" class="{{config.size}}">
     <label *ngIf="config.label" 
         [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
@@ -14,7 +14,6 @@
             <i class="fa-regular fa-asterisk required-star"></i> 
         </span>
         {{(config.label || '') | translate}} 
-        <span *ngIf="config.required">&nbsp;(required)</span>
     </label>
     <p *ngIf="config.desc" class="select-desc">{{(config.desc || '') | translate}}</p>
     <p *ngIf="config.hint" class="select-hint">{{(config.hint || '') | translate}}</p>
@@ -27,5 +26,12 @@
             </select>
             <i class="fa-thin fa-chevron-down custom-chevron"></i>
         </div>
+        <ng-container *ngIf="config.formGroup.get(config.id)?.touched && config.formGroup.get(config.id)?.invalid">
+            <ng-container *ngFor="let errors of config.errorMessages; let i = index">
+              <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]">
+                <lib-error [id]="config.id + '_error' + i" [errorLOV]="errors.errorLOV"></lib-error>
+              </div>
+            </ng-container>
+        </ng-container>
     </form>
 </div>

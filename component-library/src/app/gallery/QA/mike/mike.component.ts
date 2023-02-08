@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn, Validators} from '@angular/forms';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 import { IBannerConfig, ICTAConfig, IButtonConfig } from 'ircc-ds-angular-component-library';
 
@@ -116,6 +116,14 @@ export class MikeComponent implements OnInit {
           id: 'dismissible',
           formGroup: this.form,
           label: 'dismissible'
+        },
+        {
+          id: 'errorMessages',
+          formGroup: this.form,
+          label: 'error',
+          errorMessages: [
+            { key:'required' , errorLOV:'Required Error message' }
+          ],
         }
     ],
     dropdowns: [
@@ -163,6 +171,7 @@ export class MikeComponent implements OnInit {
     testFields: this.testerConfig
   }
 
+<<<<<<< HEAD
   ctaTestConfig: IAutoTestComponentConfig = {
     id: 'cta_tester',
     formGroup: this.ctaForm1,
@@ -172,6 +181,8 @@ export class MikeComponent implements OnInit {
 
 
 
+=======
+>>>>>>> dev
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
@@ -179,7 +190,6 @@ export class MikeComponent implements OnInit {
 
     this.testerConfig.dropdowns?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
-
     });
     this.testerConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
@@ -201,19 +211,15 @@ export class MikeComponent implements OnInit {
 
 
     this.form.valueChanges.subscribe(x => {
-
       let updatedConfig : IBannerConfig = {
         id: this.BANNER_ID
       };
 
       for(let param in x){
-          console.log(param);
-          console.log(x[param]);
-          updatedConfig = {...updatedConfig, [param] : x[param]}
-          console.log('updatedConfig: ', updatedConfig);
-          this.qaBanner = updatedConfig;
-
+        updatedConfig = {...updatedConfig, [param] : x[param]}
+        this.qaBanner = updatedConfig;
       }
+<<<<<<< HEAD
   });
 
   // code for CTA1:
@@ -270,6 +276,13 @@ export class MikeComponent implements OnInit {
           }
         }
     });
+=======
+    });
   }
-
+  setResetError() {
+    this.form.get('errorMessages')?.valid ?
+      this.form.get('errorMessages')?.setErrors({ 'required': true }) :
+      this.form.get('errorMessages')?.reset();
+>>>>>>> dev
+  }
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
-
 @Component({
   selector: 'app-mahsa',
   templateUrl: './mahsa.component.html',
@@ -17,6 +16,10 @@ export class MahsaComponent implements OnInit {
   qaSelect: IDropdownInputConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
+    options: [
+      { text: 'Option 1'},
+      { text: 'Option 2'},
+    ],
   };
 
   testerConfig: IAutoTestConfigObject = {
@@ -35,8 +38,31 @@ export class MahsaComponent implements OnInit {
           {
             text: 'plain'
           }
+        ],
+      },
+      {
+        id: 'errorMessages',
+        formGroup: this.form,
+        label: 'Error',
+        errorMessages: [
+          { key:'maxlength' , errorLOV:'Error message' }, 
+          { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+        ],
+        options: [
+          { text: 'Maxlength' }, 
+          { text: 'TestingError' }, 
+          { text: 'Both Errors' }
         ]
       },
+      {
+        id: 'size',
+        formGroup: this.form,
+        label: 'Size',
+        options: [
+          { text: 'large' },
+          { text: 'small' }
+        ]
+      }
     ],
     checkboxes: [
       {
@@ -87,7 +113,6 @@ export class MahsaComponent implements OnInit {
     this.form.addControl(this.qaSelect.id, new FormControl());
     
     this.form.valueChanges.subscribe(value => {
-
       let updatedConfig: IDropdownInputConfig = {
         id: this.SELECT_ID,
         formGroup: this.form
@@ -100,10 +125,23 @@ export class MahsaComponent implements OnInit {
     });
   }
 
-  click() {
+  disable() {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disabled ?
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.enable() :
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
 
+  setError() {
+    if (this.qaSelect?.formGroup.get('errorMessages')?.value === 'Maxlength')  {
+      this.qaSelect?.formGroup.get('errorMessages')?.setErrors({'maxlength': { requiredLength: 3, actualLength: 5 }});
+    } else if (this.qaSelect?.formGroup.get('errorMessages')?.value === 'TestingError') {
+      this.qaSelect?.formGroup.get('errorMessages')?.setErrors({'testingError': true});
+    } else {
+      this.qaSelect?.formGroup.get('errorMessages')?.
+      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
+    }
+  };
+  resetError() {
+    this.qaSelect?.formGroup.get('errorMessages')?.reset();
+  };
 }
