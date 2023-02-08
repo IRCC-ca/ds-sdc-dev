@@ -148,6 +148,21 @@ export class MichaelComponent implements OnInit {
             text: 'large'
           }
         ]
+      },
+      {
+        id: 'errorIcon',
+        label: 'Error Icon',
+        formGroup: this.form,
+        options: [
+          {
+            text: 'X mark',
+            value: 'fa-solid fa-circle-xmark'
+          },
+          {
+            text: 'Skull crossbones',
+            value: 'fa-solid fa-skull-crossbones'
+          }
+        ]
       }
     ]
   }
@@ -195,6 +210,10 @@ export class MichaelComponent implements OnInit {
               key: 'invalid',
               errorLOV: x[param]
             }]}
+        } else if (param === 'errorIcon') {
+          updatedConfig = {...updatedConfig, ['errorIcon'] : {
+              class: x[param]
+            }}
         }
         this.qaInputConfig = updatedConfig;
       }
