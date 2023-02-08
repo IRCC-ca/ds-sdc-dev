@@ -117,7 +117,6 @@ export class NaseerComponent implements OnInit {
     });
 
     this.form.addControl(this.qaInput.id, new FormControl())
-    // this.form.addControl(this.qaButton.id, new FormControl())
     this.form.valueChanges.subscribe(x => {
 
       var updatedConfig : IInputComponentConfig = {
