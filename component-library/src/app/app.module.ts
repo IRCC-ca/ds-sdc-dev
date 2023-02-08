@@ -23,8 +23,6 @@ import { QaModule } from './gallery/QA/qa.module';
     NgbModule,
     SharedModule,
     ShellModule,
-    GalleryModule,
-    QaModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],
