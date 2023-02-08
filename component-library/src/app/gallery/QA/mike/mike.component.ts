@@ -84,8 +84,6 @@ export class MikeComponent implements OnInit {
     testFields: this.testerConfig
   }
 
-
-
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
@@ -107,10 +105,7 @@ export class MikeComponent implements OnInit {
       };
 
       for(let param in x){
-        console.log(param);
-        console.log(x[param]);
         updatedConfig = {...updatedConfig, [param] : x[param]}
-        console.log('updatedConfig: ', updatedConfig);
         this.qaBanner = updatedConfig;
       }
     });
@@ -120,5 +115,4 @@ export class MikeComponent implements OnInit {
       this.form.get('errorMessages')?.setErrors({ 'required': true }) :
       this.form.get('errorMessages')?.reset();
   }
-
 }
