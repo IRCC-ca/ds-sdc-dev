@@ -24,7 +24,7 @@
         <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div>
     </div>
     <div class="banner-btn">
-    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [category]="'custom'" [customIcon]="customIcon" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
+    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [category]="'custom'" [icon]="customIcon" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
     </div>
     </div>
     <div class="banner-ctas" *ngIf="config?.cta">
