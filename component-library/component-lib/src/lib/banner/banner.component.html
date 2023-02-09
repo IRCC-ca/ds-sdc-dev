@@ -1,4 +1,4 @@
-<div class="banner-component" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
+<div (window:resize)="toggleLine()" class="banner-component" class="{{config?.size}}" id="{{config?.id}}" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
     <div class="banner-container">
     <div class="banner-left" *ngIf="config?.type != 'generic' && config?.type">
       <ng-container [ngSwitch]="config?.type">
@@ -15,20 +15,31 @@
           <i class="fa-triangle-exclamation fa-regular banner-icon"></i>
         </div>
       </ng-container>
-    <div class="banner-line"></div>
+    <div class="banner-line" [ngClass]="{'hidden' : !lineVisible}"></div>
     </div>
     <div class="banner-right">
     <div class="banner-body">
-    <div class="banner-text">
+    <div class="banner-text" id={{textId}}>
         <div class="banner-title h6 emphasis" *ngIf="config?.title">{{(config?.title || '') | translate}}</div>
         <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div>
     </div>
     <div class="banner-btn">
-    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
+    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [category]="'custom'" [customIcon]="customIcon" [id]="closeButtonId" (clickEvent)="eventHandler($event)"></lib-icon-button>
     </div>
     </div>
-    <!-- <div class="banner-ctas">
-        <lib-button *ngFor="let cta of config?.cta; let index = index" [config]="cta">{{cta.text}}</lib-button>
-    </div> -->
+    <div class="banner-ctas" *ngIf="config?.cta">
+      <ng-container *ngFor="let cta of config?.cta; let index = index">
+        <lib-button *ngIf="cta?.type === 'button'"
+        [id]="'cta_' + index"
+        [category]='cta?.btnConfig?.category'
+        [color]='cta?.btnConfig?.color'
+        [ariaLabel]='cta?.btnConfig?.ariaLabel'
+        [disabled]='cta?.btnConfig?.disabled'
+        [icon]='cta?.btnConfig?.icon'
+        [iconDirection]='cta?.btnConfig?.iconDirection'
+        >{{cta.text | translate}}</lib-button>
+        <a *ngIf="cta?.type === 'link'" [routerLink]="cta?.linkConfig  | translate">{{cta.text | translate}}</a>
+      </ng-container>
+    </div>
     </div></div>
 </div>

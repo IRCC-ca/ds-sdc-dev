@@ -7,8 +7,8 @@
     [ngClass]="config.iconDirection === 'right' ? 'icon-right' : ''"
     (click)="buttonClick(config.id)"
 >
-<div class="icon">
-    <lib-icon *ngIf="icon != ''" [class]="icon"></lib-icon>
+<div class="icon" *ngIf="config.icon != '' && config.icon">
+    <lib-icon [class]="config.icon"></lib-icon>
 </div>
     <ng-content></ng-content>
 </button>
