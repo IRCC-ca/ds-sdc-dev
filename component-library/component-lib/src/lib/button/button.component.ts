@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export enum ButtonCategories {
-    primary = "primary",
-    secondary = "secondary",
-    plain = "plain"
+    primary = 'primary',
+    secondary = 'secondary',
+    plain = 'plain'
 };
 
 export enum ButtonSize {
-    small = "small",
-    large = "large"
+    small = 'small',
+    large = 'large'
 };
 
 export enum ButtonColor {
@@ -29,13 +29,13 @@ export enum ButtonIconDirection {
 
 export interface IButtonConfig {
     id: string;
-    category?: ButtonCategories;
-    size?: ButtonSize;
-    color?: ButtonColor;
+    category?: keyof typeof ButtonCategories;
+    size?: keyof typeof ButtonSize;
+    color?: keyof typeof ButtonColor;
     ariaLabel?: string;
     disabled?: boolean;
     icon?: string;
-    iconDirection?: ButtonIconDirection;
+    iconDirection?: keyof typeof ButtonIconDirection;
 };
 
 @Component({
@@ -49,14 +49,14 @@ export class ButtonComponent {
 
 };
     @Input() id = '';
-    @Input() category?: ButtonCategories;
-    @Input() size?: ButtonSize;
-    @Input() color?: ButtonColor;
+    @Input() category?: keyof typeof ButtonCategories;
+    @Input() size?: keyof typeof ButtonSize;
+    @Input() color?: keyof typeof ButtonColor;
     // @Input() type?: 'button' | 'submit' | 'reset';
     @Input() ariaLabel?: string;
     @Input() disabled?: boolean;
     @Input() icon?: string;
-    @Input() iconDirection?: ButtonIconDirection;
+    @Input() iconDirection?: keyof typeof ButtonIconDirection;
 
     @Output() click: EventEmitter<any> = new EventEmitter();
 

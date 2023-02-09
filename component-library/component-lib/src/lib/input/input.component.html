@@ -2,7 +2,7 @@
   <form [formGroup]="config.formGroup">
     <div class="input-container" [ngClass]="config.size">
       <div class="input-text">
-        <label *ngIf="config.label" class="input-label" 
+        <label *ngIf="config.label" class="input-label"
         [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
           ? (config.label || '' | translate) + ' ' +
@@ -42,6 +42,13 @@
             <div *ngIf="!showPassword" attr.aria-label="{{ 'Input_Component.Password-icon.show_password_aria-label' | translate }}"><i class="fa-solid fa-eye"></i></div>
           </button>
         </div>
+      </div>
+      <div *ngIf="getErrorState()" class="check-error">
+        <ng-container *ngFor="let error of config.errorMessages; index as i">
+          <div *ngIf="config.formGroup.get(config.id)?.errors?.[error.key]">
+            <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon"></lib-error>
+          </div>
+        </ng-container>
       </div>
     </div>
   </form>

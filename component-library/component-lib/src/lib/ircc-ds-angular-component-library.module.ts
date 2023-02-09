@@ -20,6 +20,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
 import { LanguageSwitchComponent } from './language-switch/language-switch.component';
 import { BannerComponent } from './banner/banner.component';
 import { ErrorComponent } from './error/error.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -48,7 +49,8 @@ import { ErrorComponent } from './error/error.component';
     CommonModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     IrccDsAngularComponentLibraryComponent,

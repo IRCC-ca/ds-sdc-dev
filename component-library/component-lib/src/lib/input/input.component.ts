@@ -6,6 +6,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import {IErrorPairs} from "../../shared/interfaces/component-configs";
+import {IErrorIconConfig} from "../error/error.component";
 
 export interface IInputComponentConfig {
   label?: string;
@@ -17,6 +19,8 @@ export interface IInputComponentConfig {
   id: string;
   size?: keyof typeof DSSizes;
   formGroup: FormGroup;
+  errorMessages?: IErrorPairs[];
+  errorIcon?: IErrorIconConfig;
 }
 
 export enum InputTypes {
@@ -88,5 +92,13 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   }
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
+  }
+
+  /**
+   * Return error state from FormGroup, must be touched & invalid
+   */
+  getErrorState(): boolean {
+    return (this.config.formGroup.get(this.config.id)?.touched &&
+      this.config.formGroup.get(this.config.id)?.invalid) ?? false;
   }
 }
