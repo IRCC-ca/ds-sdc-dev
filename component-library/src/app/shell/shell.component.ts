@@ -32,11 +32,14 @@ isMobile = false;
     this.altLang.getAltLangLink().subscribe((altLang: string) => {
       this.altPathKey = altLang;
       this.setAltLangURL();
+      console.log(this.altLangURL);
     });
   
     this.languageSwitchButton.languageClickObs$.subscribe(response => {
       if (response) this.changeLang(); //Has to ignore the first response. 
     });
+
+
   }
   
   /** Toggles language without reloading component */

@@ -28,7 +28,8 @@
     "HeaderFooter": "Header/Footer",
     "Miscellaneous": "Miscellaneous",
     "DevTestPage": "Dev Test Page",
-    "QATesting": "QA Testing Page"
+    "QATesting": "QA Testing Page",
+    "HomeURLOverride": "/en/landing-page"
   },
   "OPPOSITE_LANGUAGE": "Français",
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",

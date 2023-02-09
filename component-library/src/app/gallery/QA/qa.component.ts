@@ -11,6 +11,7 @@ export class QaComponent implements OnInit {
 
   navConfig: INavButtonComponentConfig = {
     id: 'qa_page_buttons',
+    baseUrlKey: 'ROUTES.QATesting',
     buttons: [
       {
         name: 'Kris',
@@ -39,7 +40,8 @@ export class QaComponent implements OnInit {
       },
       {
         name: 'Home',
-        url: 'LandingPage'
+        url: 'LandingPage',
+        baseUrlOverride: 'BUTTONS.HomeURLOverride'
       }
     ]
   };

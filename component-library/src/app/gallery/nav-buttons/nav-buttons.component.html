@@ -6,23 +6,26 @@
             <ng-container [ngSwitch]="button.category">
                 <ng-container *ngSwitchCase="'plain'">
                     <button class="button" category="plain" id="{{button.id}}"
-                        [routerLink]="'ROUTES.' + button.url | translate">{{button.name
-                        |
-                        translate}}</button>
+                    [routerLink]="config?.globalBaseUrlOverride || button.baseUrlOverride || currentBaseUrl 
+                    + ('ROUTES.' + button.url | translate)">{{button.name
+                    |
+                    translate}}</button>
                 </ng-container>
 
                 <ng-container *ngSwitchCase="'secondary'">
                     <button class="button" category="secondary" id="{{button.id}}"
-                        [routerLink]="[('ROUTES.' + button.url | translate)]">{{button.name
+                        [routerLink]="config?.globalBaseUrlOverride || button.baseUrlOverride || currentBaseUrl 
+                        + ('ROUTES.' + button.url | translate)">{{button.name
                         |
                         translate}}</button>
                 </ng-container>
 
                 <ng-container *ngSwitchDefault>
                     <button class="button" category="primary" id="{{button.id}}"
-                        [routerLink]="'ROUTES.' + button.url | translate">{{button.name
-                        |
-                        translate}}</button>
+                    [routerLink]="config?.globalBaseUrlOverride || button.baseUrlOverride || currentBaseUrl 
+                    + ('ROUTES.' + button.url | translate)">{{button.name
+                    |
+                    translate}}</button>
                 </ng-container>
             </ng-container>
         </ng-container>
