@@ -50,13 +50,40 @@ isMobile = false;
     // Pushes page into history to allow the use of the 'Back' button on browser
     window.history.pushState('', '', this.altLangURL);
     this.setAltLangURL();
+    console.log(this.altLangURL, this.altPathKey);
   }
   
   //Alt-language url key must be in the corresponding language, but have the french work
   setAltLangURL() {
     console.log(this.translate.currentLang);
     this.altLangURL = ((this.translate.currentLang === "en-US") || (this.translate.currentLang === 'en') ? 'fr' : 'en');
+    this.getAltLanguageValues();
+    
     if (this.altPathKey) this.altLangURL += '/' + this.translate.instant('ROUTES.' + this.altPathKey);
+  }
+
+  /**
+   * Generates an alt-language path based on the current url and the translate values. Currently not the best
+   * code in the world and should likely be refactored.
+   */
+  getAltLanguageValues() {
+    const urlParts = this.router.url.split('/');
+    const translateIndex = Object.keys(this.translate.translations).indexOf(urlParts[1]);
+    const translateValues = (Object.values(this.translate.translations)[translateIndex] as any).ROUTES;
+    let translatedURLPieces: string[] = [];
+    urlParts.forEach((val: string, index: number) => {
+      if (index > 1) {
+        let i = Object.values((translateValues as any)).indexOf(val);
+        translatedURLPieces.push(Object.keys(translateValues as any)[i]);
+      }
+    });
+    translatedURLPieces.forEach(piece => {
+      //Operates on the assumption that the alt route is the same as the route, but with '-alt' appended
+      let k = this.translate.instant('ROUTES.' + piece + '-alt');
+      if (this.translate.instant('ROUTES.' + this.altPathKey) !== k) {
+        this.altLangURL += ('/' + k);
+      }
+    });
   }
   
   /** Required to implement OnDestroy, which triggers the UnitDestroyed function */

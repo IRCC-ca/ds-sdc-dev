@@ -13,7 +13,7 @@
 
                 <ng-container *ngSwitchCase="'secondary'">
                     <button class="button" category="secondary" id="{{button.id}}"
-                        [routerLink]="'ROUTES.' + button.url | translate">{{button.name
+                        [routerLink]="[('ROUTES.' + button.url | translate)]">{{button.name
                         |
                         translate}}</button>
                 </ng-container>
