@@ -19,6 +19,7 @@ export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
 export * from './lib/banner/banner.component';
 export * from './lib/error/error.component';
+export * from './lib/tabs/tabs.component';
 
 export * from './lib/header/header.component';
 export * from './lib/footer/footer.component';
