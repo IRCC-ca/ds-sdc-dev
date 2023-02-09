@@ -83,18 +83,22 @@
   .passwordIcon {
     font-size: 16px
   }
+
+  lib-error {
+    font-size: 14px;
+  }
 }
 
 @mixin layout {
 
   .input-container {
     user-select: none;
-  
+
     .input-text {
       width: 100%;
       display: grid;
       position: relative;
-      
+
       .input-label {
         display: flex;
         font-family: 'Lato'
@@ -116,7 +120,6 @@
           margin-right: 5px;
         }
       }
-      
     }
   }
 
@@ -124,14 +127,14 @@
     @include size-large();
     .small {
       @include size-small()
-    }  
+    }
   }
 
   @include size.selector(small) {
     @include size-small();
     .large {
       @include size-large()
-    }  
+    }
   }
 
   .input-content-area{
@@ -158,5 +161,9 @@
       z-index: 1;
       padding-right: 10px;
     }
+  }
+
+  .check-error {
+    padding: 8px 0;
   }
 }
