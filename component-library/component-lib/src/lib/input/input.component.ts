@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorPairs} from "../../shared/interfaces/component-configs";
 import {IErrorIconConfig} from "../error/error.component";
 
