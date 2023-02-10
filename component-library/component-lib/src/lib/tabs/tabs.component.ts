@@ -1,19 +1,21 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup } from '@angular/forms';
-
+import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
 export interface ITabNavConfig {
   id: string;
   formGroup: FormGroup;
   url?: string,
   tab?: ITabConfig[];
-  selected?: boolean;
-  contentt?: string
+  title?: string;
+  selected?: string;
+  contentt?: string;
+  size?: keyof typeof DSSizes;
 };
 
 export interface ITabConfig {
-  title?: 'string',
-  content?: 'string'
+  title: string,
+  value?: string
 }
 
 @Component({
@@ -51,7 +53,10 @@ export class TabsComponent implements OnInit, ControlValueAccessor {
 
   goTo(paramTxt: string) {
     this.selectedMenu = paramTxt;
-    this.config.selected = true;
+    // this.config?.tab?.forEach(x => {
+    //   console.log("X: ", x)
+    //   x.title = paramTxt
+    // })
   }
 
 }

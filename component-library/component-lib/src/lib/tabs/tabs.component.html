@@ -1,28 +1,47 @@
-<nav class="page-nav" [ngClass]="config.selected">  
-  <button id="tab1" (click)="goTo('Home')">Home</button>  
-  <button id="tab2" (click)="goTo('Profile')">Profile</button>  
-  <button id="tab3"(click)="goTo('Contact')">Contact</button>  
-  <button id="tab4"(click)="goTo('Products')">Products</button>  
-  <button id="tab5" (click)="goTo('Login')">Login</button>  
-</nav>
-
-<div class="col-lg-10">
-  <div class="side-menu-content">
-    <div class="tabs" *ngIf="selectedMenu === 'Home'">
-      This is Home!
+<!-- <nav class="page-nav">
+  <button id="selected">Home</button>
+  <button id="instructions" >Instructions</button>
+  <button id="core-qa">Core - QA</button>
+  <button id="stencil-qa">Stencil - QA</button>
+  <button id="qa-blank" selected>Blank - QA</button>
+  <button id="dev-blank">Dev</button>
+  <button id="colours">Colours</button>
+</nav> -->
+<div class="{{config.size}}">
+  <nav class="page-nav" >
+    <div *ngFor="let val of config.tab;">
+      <button id="tab1" (click)="goTo(val.title)" selected>{{ val.title }}</button>
     </div>
-    <div class="tabs" *ngIf="selectedMenu === 'Profile'">
-      This is Profile!
-    </div>
-    <div class="tabs" *ngIf="selectedMenu === 'Contact'">
-      This is Contact!
-    </div>
-    <div class="tabs" *ngIf="selectedMenu === 'Products'">
-      This is Products!
-    </div><div class="tabs" *ngIf="selectedMenu === 'Login'">
-      This is Login!
+    <!-- <button id="tab4"(click)="goTo('Products')" selected>Products</button>   -->
+    <!--  <button id="tab1" (click)="goTo('Home')">Home</button> 
+    <button id="tab2" (click)="goTo('Profile')">Profile</button>  
+    <button id="tab3"(click)="goTo('Contact')">Contact</button>  
+    <button id="tab4"(click)="goTo('Products')">Products</button>  
+    <button id="tab5" (click)="goTo('Login')">Login</button> -->
+  </nav>
+  
+  <div class="col-lg-10">
+    <div class="side-menu-content" *ngIf="config?.tab">
+      <div *ngFor="let cont of config.tab">
+        {{ cont.value }}
+      </div>
+      <!-- <div class="tabs" *ngIf="selectedMenu === 'Home'">
+        This is Home!
+      </div>
+      <div class="tabs" *ngIf="selectedMenu === 'Profile'">
+        This is Profile!
+      </div>
+      <div class="tabs" *ngIf="selectedMenu === 'Contact'">
+        This is Contact!
+      </div>
+      <div class="tabs" *ngIf="selectedMenu === 'Products'">
+        This is Products!
+      </div><div class="tabs" *ngIf="selectedMenu === 'Login'">
+        This is Login!
+      </div> -->
     </div>
   </div>
+  <!-- <div [innerHTML]="config?.contentt"></div> -->
+  <!-- <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div> -->
 </div>
-<!-- <div [innerHTML]="config?.contentt"></div> -->
 
