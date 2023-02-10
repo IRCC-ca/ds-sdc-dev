@@ -32,7 +32,7 @@
 
   .input-hint {
     font-size: 16px;
-    margin: 12px 0px 8px 0px;
+    margin: 12px 0px 0px 0px;
   }
 
   .required-star {
@@ -40,10 +40,12 @@
   }
 
   .input-password-field {
+    margin-top: 8px;
     height: 52px;
   }
 
   .input-text-field {
+    margin-top: 8px;
     height: 52px;
   }
 
@@ -65,7 +67,7 @@
 
   .input-hint {
     font-size: 14px;
-    margin: 8px 0px 4px 0px;
+    margin: 8px 0px 0px 0px;
   }
 
   .required-star {
@@ -73,10 +75,12 @@
   }
 
   .input-password-field {
+    margin-top: 4px;
     height: 40px;
   }
 
   .input-text-field {
+    margin-top: 4px;
     height: 40px;
   }
 

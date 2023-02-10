@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
-import { ButtonCategories, ButtonColor, ButtonIconDirection, IButtonConfig } from '../button/button.component';
+import { IIconButtonComponentConfig, IIconButtonIconConfig } from '../icon-button/icon-button.component';
+import { IButtonConfig } from '../button/button.component';
 
 export enum BannerType {
   '' = '',
@@ -45,21 +45,21 @@ export interface IBannerConfig {
 })
 export class BannerComponent implements OnInit {
 
-  closeButtonId = '';
-  iconName = '';
   lineVisible = true;
   textId = '';
-
-
-  customIcon : IIconButtonIconConfig = {
-    class: 'fa-solid fa-xmark'
-  }
-
 
   @Input() config?: IBannerConfig;
   @Input() id?: string;
 
   @Output() btnEvent? = new EventEmitter();
+
+  iconConfig : IIconButtonComponentConfig = {
+    id: '', //id is set in ngOnInit
+    category: 'custom',
+    icon:  {
+      class: 'fa-solid fa-xmark'
+    }
+  };
 
   eventHandler(emitValue: string){
     this.btnEvent?.emit(emitValue);
@@ -77,7 +77,7 @@ export class BannerComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.closeButtonId = this.config?.id + '_closeBtn';
+    this.iconConfig.id = this.config?.id + '_closeBtn';
     this.textId = this.config?.id + '_text';
   }
 

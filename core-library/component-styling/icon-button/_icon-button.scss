@@ -95,5 +95,25 @@
         @include critical-sm;
       }
     }
+    &.custom {
+      &.large {
+        @include primary-lg;
+      }
+      &.small {
+        @include primary-sm;
+      }
+      &.extraSmall {
+        padding: 0 9px;
+        svg {
+          width: 10px;
+        }
+      }
+      @include size.selector(large) {
+        @include primary-lg;
+      }
+      @include size.selector(small) {
+        @include primary-sm;
+      }
+    }
   }
 }
