@@ -136,5 +136,10 @@ export class NaseerComponent implements OnInit {
   })
 
   }
+  disable() {
+    this.qaInput?.formGroup.get(this.qaInput.id)?.disabled ?
+    this.qaInput?.formGroup.get(this.qaInput.id)?.enable() :
+    this.qaInput?.formGroup.get(this.qaInput.id)?.disable();
+  }
 
 }
