@@ -99,7 +99,7 @@ export class MahsaComponent implements OnInit {
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
-    this.altLang.setAltLangLink('Mahsa-alt');
+    this.altLang.setAltLangLink('mahsa-alt');
 
     this.testerConfig.dropdowns?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
