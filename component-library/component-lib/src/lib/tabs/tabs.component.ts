@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup } from '@angular/forms';
 import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
@@ -9,11 +9,13 @@ export interface ITabNavConfig {
   tab?: ITabConfig[];
   title?: string;
   selected?: string;
-  contentt?: string;
+  addContent?: string;
   size?: keyof typeof DSSizes;
 };
 
 export interface ITabConfig {
+  // [title: string] : string
+  id?: string,
   title: string,
   value?: string
 }
@@ -23,10 +25,10 @@ export interface ITabConfig {
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent implements OnInit, ControlValueAccessor {
+export class TabsComponent implements OnInit {
 
-  title = 'my-app';
   selectedMenu: any = 'Home';
+  previousID = 0;
 
   @Input() config: ITabNavConfig = {
     id: '',
@@ -34,29 +36,40 @@ export class TabsComponent implements OnInit, ControlValueAccessor {
     // selected: false
   }
 
-  onChange = (formValue: string) => { };
-  onTouched = () => { };
-  writeValue(formValue: any) {
-    // this.form.get('formControl')?.setValue(formValue);
-  }
-  registerOnChange(onChange: any) {
-    this.onChange = onChange;
-  }
-  registerOnTouched(onTouched: any) {
-    this.onTouched = onTouched;
+  @Output() click: EventEmitter<any> = new EventEmitter();
+
+  buttonClick(id: any) {
+    id ? this.click.emit(id) : '';
+    console.log("here", id);
+    document.getElementById(id)?.setAttribute("selected", '');
+    document.getElementById(id)?.remove()
   }
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    let tab = this.config?.tab?.length;
+    // this.config?.tab?.forEach(x => {
+    //   if(!x.id) {
+    //     x.id = this.config.id + '_' + x.title
+    //   } 
+    // });
+
+    // 1. index 0 is set to selected
   }
 
-  goTo(paramTxt: string) {
+  goTo(paramTxt?: string) {
     this.selectedMenu = paramTxt;
     // this.config?.tab?.forEach(x => {
     //   console.log("X: ", x)
     //   x.title = paramTxt
     // })
-  }
+
+    // this.config?.tab?.forEach(x => {
+    //   // console.log("X key:", Object.keys(x));
+    //   // console.log("X val:", Object.values(x));
+    //   Object.keys(x) = paramTxt;
+    // });
+  };
 
 }

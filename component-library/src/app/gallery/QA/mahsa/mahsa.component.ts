@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ITabNavConfig } from 'component-lib/src/lib/tabs/tabs.component';
 import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 @Component({
@@ -11,15 +10,6 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
 })
 export class MahsaComponent implements OnInit {
   form = new FormGroup({});
-
-  tabsConfig: ITabNavConfig = {
-    id: 'testTabs',
-    formGroup: this.form,
-    tab: [
-      { title: 'Home', value: 'This is Home' },
-      { title: 'Profile', value: 'This is Profile' },
-    ]
-  }
 
   SELECT_ID = 'qa_test_select';
 

@@ -7,40 +7,42 @@
   <button id="dev-blank">Dev</button>
   <button id="colours">Colours</button>
 </nav> -->
-<div class="{{config.size}}">
+<div>
   <nav class="page-nav" >
+    <!-- <div *ngFor="let val of config.tab | keyvalue"> -->
     <div *ngFor="let val of config.tab;">
-      <button id="tab1" (click)="goTo(val.title)" selected>{{ val.title }}</button>
+      <button [id]="val.id" (click)="buttonClick(val.id)">{{ val.title }}</button>
+      <!-- <button id="tab1" (click)="buttonClick(val.id)">{{ val.title }}</button> -->
+      <!-- <button id="tab1" (click)="goTo(val.title)" selected>{{ val.title }}</button> -->
+      <!-- <button id="tab1" (click)="goTo(val[title])">{{ val[title] }}</button> -->
+      <!-- <p>{{val.title}} </p> -->
     </div>
-    <!-- <button id="tab4"(click)="goTo('Products')" selected>Products</button>   -->
-    <!--  <button id="tab1" (click)="goTo('Home')">Home</button> 
-    <button id="tab2" (click)="goTo('Profile')">Profile</button>  
-    <button id="tab3"(click)="goTo('Contact')">Contact</button>  
-    <button id="tab4"(click)="goTo('Products')">Products</button>  
-    <button id="tab5" (click)="goTo('Login')">Login</button> -->
+    <!-- <input type="text" name="" id="" [(ngModel)] ='config.addContent'> -->
   </nav>
+  <!-- <button (click)="goTo()">GO</button> -->
   
   <div class="col-lg-10">
-    <div class="side-menu-content" *ngIf="config?.tab">
+    <div class="side-menu-content">
       <div *ngFor="let cont of config.tab">
         {{ cont.value }}
+        <!-- <div class="tabs" *ngIf="selectedMenu === 'Home'">
+          This is Home!
+        </div>
+        <div class="tabs" *ngIf="selectedMenu === 'Profile'">
+          This is Profile!
+        </div>
+        <div class="tabs" *ngIf="selectedMenu === 'Contact'">
+          This is Contact!
+        </div>
+        <div class="tabs" *ngIf="selectedMenu === 'Products'">
+          This is Products!
+        </div>
+        <div class="tabs" *ngIf="selectedMenu === 'Login'">
+          This is Login!
+        </div> -->
       </div>
-      <!-- <div class="tabs" *ngIf="selectedMenu === 'Home'">
-        This is Home!
-      </div>
-      <div class="tabs" *ngIf="selectedMenu === 'Profile'">
-        This is Profile!
-      </div>
-      <div class="tabs" *ngIf="selectedMenu === 'Contact'">
-        This is Contact!
-      </div>
-      <div class="tabs" *ngIf="selectedMenu === 'Products'">
-        This is Products!
-      </div><div class="tabs" *ngIf="selectedMenu === 'Login'">
-        This is Login!
-      </div> -->
     </div>
-  </div>
+  <!-- </div> -->
   <!-- <div [innerHTML]="config?.contentt"></div> -->
   <!-- <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div> -->
 </div>
