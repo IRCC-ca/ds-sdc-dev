@@ -38,6 +38,8 @@
     .banner-icon{
         height: 24px;
         width: 24px;
+        line-height: 24px;
+        font-weight: 300;
     }
     .banner-title{
         font-size: 20px;
@@ -55,6 +57,8 @@
     .banner-icon{
         height: 20px;
         width: 20px;
+        line-height: 20px;
+        font-weight: 300;
     }
     .banner-title{
         font-size: 16px;
@@ -80,12 +84,6 @@
         @include small-styles();
         .large{
             @include large-styles();
-        }
-    }
-
-    lib-icon-button {
-        button.primary {
-        padding: 0px 7px;
         }
     }
 
@@ -151,8 +149,11 @@
         margin-bottom: 8px;
     }
 
-    .banner-content > *{
-        margin-top: 0;
+    .banner-content{
+        align-self: center;
+        * {
+            margin: 2px 0;
+        }
     }
 
     .banner-ctas{
