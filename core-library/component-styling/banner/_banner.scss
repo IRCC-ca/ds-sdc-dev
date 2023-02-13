@@ -95,6 +95,13 @@
         background-color: var(--neutral-alert-background);
         display: flex;
         flex-direction: row;
+        position: relative;
+    }
+
+    .banner-btn {
+        position: absolute;
+        top: 0px;
+        right: 0px;
     }
 
     .banner-container{
