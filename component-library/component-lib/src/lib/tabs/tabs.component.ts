@@ -1,75 +1,65 @@
 import { EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
 export interface ITabNavConfig {
   id: string;
   formGroup: FormGroup;
-  url?: string,
   tab?: ITabConfig[];
-  title?: string;
-  selected?: string;
-  addContent?: string;
   size?: keyof typeof DSSizes;
 };
-
 export interface ITabConfig {
-  // [title: string] : string
   id?: string,
   title: string,
   value?: string
 }
-
 @Component({
   selector: 'lib-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css']
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent implements OnInit, AfterViewInit {
 
-  selectedMenu: any = 'Home';
-  previousID = 0;
+  previousID = '';
 
   @Input() config: ITabNavConfig = {
     id: '',
     formGroup: new FormGroup({}),
-    // selected: false
   }
 
   @Output() click: EventEmitter<any> = new EventEmitter();
 
+  constructor(private cd: ChangeDetectorRef) { }
+
+  ngOnInit() {}
+
+  ngAfterViewInit(){
+    // setTimeout(() => { // to make the update async
+      this.config?.tab?.forEach((item, index) => {
+        if(!item.id) {
+          item.id = this.config.id + '_' + item.id
+        }
+        if (index === 0) {
+          document.getElementById(item.id)?.setAttribute("selected", '');
+          this.previousID = item.id;
+        }
+      });
+      // Tells Angular to check the view and it's children in which case
+      // it will notice our loading state has changed
+      this.cd.detectChanges();
+    // }, 0);
+  }
+
   buttonClick(id: any) {
-    id ? this.click.emit(id) : '';
-    console.log("here", id);
-    document.getElementById(id)?.setAttribute("selected", '');
-    document.getElementById(id)?.remove()
-  }
-
-  constructor() { }
-
-  ngOnInit() {
-    let tab = this.config?.tab?.length;
-    // this.config?.tab?.forEach(x => {
-    //   if(!x.id) {
-    //     x.id = this.config.id + '_' + x.title
-    //   } 
-    // });
-
-    // 1. index 0 is set to selected
-  }
-
-  goTo(paramTxt?: string) {
-    this.selectedMenu = paramTxt;
-    // this.config?.tab?.forEach(x => {
-    //   console.log("X: ", x)
-    //   x.title = paramTxt
-    // })
-
-    // this.config?.tab?.forEach(x => {
-    //   // console.log("X key:", Object.keys(x));
-    //   // console.log("X val:", Object.values(x));
-    //   Object.keys(x) = paramTxt;
-    // });
+    if (id !== this.previousID) {
+      // add "selected" to new id
+      document.getElementById(id)?.setAttribute("selected", '');
+      //remove "selected" from prev id
+      document.getElementById(this.previousID)?.removeAttribute("selected");
+      this.click.emit(id);
+      this.previousID = id;
+    }
   };
-
 }

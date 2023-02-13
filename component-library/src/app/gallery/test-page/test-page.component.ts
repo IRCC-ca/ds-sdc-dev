@@ -18,11 +18,11 @@ export class TestPageComponent implements OnInit {
     tab: [
       // { 'Home': 'Home' },
       // { 'Profile': 'Profile' },
-      { title: 'Home', value: 'This is Home' },
-      { title: 'Profile', value: 'This is Profile' },
-      { title: 'Contact', value: 'This is Contact' },
-      { title: 'Products', value: 'This is Products' },
-      { title: 'Login', value: 'This is Login' },
+      { id: 'home', title: 'Home', value: 'This is Home' },
+      { id: 'profile', title: 'Profile', value: 'This is Profile' },
+      { id: 'contact', title: 'Contact', value: 'This is Contact' },
+      { id: 'products', title: 'Products', value: 'This is Products' },
+      { id: 'login', title: 'Login', value: 'This is Login' },
     ]
   }
 
