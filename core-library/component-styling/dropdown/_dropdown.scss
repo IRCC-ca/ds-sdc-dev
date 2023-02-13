@@ -59,8 +59,12 @@ $selectors: 'lib-dropdown-input';
 		@include typography.fontSize(map.get(text.$heading, level), 6);
 		font-weight: 700;
 	}
+	.select-desc {
+		font-size: 14px;
+	}
 	.select-hint {
 		margin: 8px 0 4px 0;
+		font-size: 14px;
 	}
 	.select-error {
 		color: var(--critical-text);
