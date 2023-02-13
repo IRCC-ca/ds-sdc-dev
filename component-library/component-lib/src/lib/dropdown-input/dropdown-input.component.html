@@ -10,9 +10,9 @@
             (config.hint || '' | translate)
         "
         [for]="config.id" class="select-label">
-        <span *ngIf="config.required">
+        <div class="required-div" *ngIf="config.required">
             <i class="fa-regular fa-asterisk required-star"></i> 
-        </span>
+        </div>
         {{(config.label || '') | translate}} 
     </label>
     <p *ngIf="config.desc" class="select-desc">{{(config.desc || '') | translate}}</p>
