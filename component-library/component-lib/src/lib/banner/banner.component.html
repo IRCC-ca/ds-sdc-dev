@@ -23,9 +23,6 @@
         <div class="banner-title h6 emphasis" *ngIf="config?.title">{{(config?.title || '') | translate}}</div>
         <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div>
     </div>
-    <div class="banner-btn">
-    <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [config]="iconConfig" (clickEvent)="eventHandler($event)"></lib-icon-button>
-    </div>
     </div>
     <div class="banner-ctas" *ngIf="config?.cta">
       <ng-container *ngFor="let cta of config?.cta; let index = index">
@@ -42,4 +39,7 @@
       </ng-container>
     </div>
     </div></div>
+    <div class="banner-btn">
+      <lib-icon-button class="banner-close" *ngIf="config?.dismissible" [config]="iconConfig" (clickEvent)="eventHandler($event)"></lib-icon-button>
+      </div>
 </div>
