@@ -42,9 +42,8 @@
         content: '';
         height:sizes.$fixed-4;
         background: var(--navigation);
-        border-radius: sizes.$fixed-4;
         display: block;
-
+        margin-top: -8px;
     }
     &:where([selected]){
         --text: var(--text-primary);
