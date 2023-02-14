@@ -23,7 +23,8 @@ export class TestPageComponent implements OnInit {
       { id: 'contact', title: 'Contact', value: 'This is Contact' },
       { id: 'products', title: 'Products', value: 'This is Products' },
       { id: 'login', title: 'Login', value: 'This is Login' },
-    ]
+    ],
+    size: 'large'
   }
 
   constructor(private altLang: LanguageSwitchService) { }

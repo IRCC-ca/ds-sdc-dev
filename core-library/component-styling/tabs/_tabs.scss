@@ -1,0 +1,32 @@
+@use '../../util/theme' as theme;
+@use '../../util/size' as size;
+@use '../../tokens/sizes' as token-size;
+@use '../../tokens/template-const';
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+$selectors: 'lib-tabs';
+
+@mixin selectors {
+	#{$selectors}#{template-const.$escape} {
+		@content;
+	}
+}
+
+@mixin create {
+	@include selectors() {
+	  @include layout();
+	}
+}
+
+@mixin layout {
+
+	.page-nav {
+		display: flex;
+	}
+	
+	.tabs-btn {
+		font-size: 16px;
+	}
+	
+}

@@ -46,6 +46,7 @@
 @use './component-styling/chips/list' as chip-list;
 @use './component-styling/chips/secondary' as chip-secondary;
 @use './component-styling/error/error' as error-component;
+@use './component-styling/tabs/tabs' as tabs-component;
 
 @use './typography/fa-wrapper';
 
@@ -105,7 +106,7 @@
         @include element(chip-secondary);
         @include element(date-picker);
         @include element(icon);
-
+        @include element(tabs-component);
         @include element(error-component)
     } @else {
         @each $key in $include {
@@ -179,6 +180,7 @@
         @include icon.create();
     } @else if $key == error-component {
         @include error-component.create();
+    } @else if $key == tabs-component {
+        @include tabs-component.create();
     }
-
 }

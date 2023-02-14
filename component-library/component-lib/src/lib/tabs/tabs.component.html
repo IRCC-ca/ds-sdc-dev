@@ -1,6 +1,6 @@
-<nav class="page-nav" >
+<nav class="page-nav" class="{{config.size}}">
   <div *ngFor="let val of config.tab;">
-    <button [id]="val.id" (click)="buttonClick(val.id)">{{ val.title }}</button>
+    <button class="tabs-btn" [id]="val.id" (click)="buttonClick(val.id)">{{ val.title }}</button>
   </div>
 </nav>
 <br>
