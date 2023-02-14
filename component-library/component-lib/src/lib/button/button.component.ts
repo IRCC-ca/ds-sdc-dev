@@ -45,8 +45,6 @@ export interface IButtonConfig {
 export class ButtonComponent {
 @Input() config: IButtonConfig = {
     id: '',
-    iconDirection: ButtonIconDirection.left
-
 };
     @Input() id = '';
     @Input() category?: keyof typeof ButtonCategories;
@@ -67,8 +65,14 @@ export class ButtonComponent {
         (this.color === undefined) ? undefined : this.config.color = this.color;
         (this.ariaLabel !== undefined) ? this.config.ariaLabel = this.ariaLabel : undefined;
         (this.disabled !== undefined) ? this.config.disabled = this.disabled : undefined;
-        (this.icon !== undefined) ? this.config.icon = this.icon : undefined;
-        (this.iconDirection !== undefined) ? this.config.iconDirection = this.iconDirection : undefined;
+        if (this.icon || this.config.icon) {
+            this.config.icon = this.icon ? this.icon : this.config.icon;
+            this.config.iconDirection = this.iconDirection? this.iconDirection : this.config.iconDirection;
+            this.config.iconDirection = this.config.iconDirection ? this.config.iconDirection : 'left'
+        } else {
+            this.config.icon = undefined;
+            this.config.iconDirection = undefined;
+        }
     }
 
     buttonClick(id: string) {
