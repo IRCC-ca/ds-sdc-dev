@@ -29,6 +29,12 @@ export class NaseerComponent implements OnInit {
     }
   };
 
+  testButtonConfig : IButtonConfig = {
+    id: "qa_button",
+    icon: 'fa-solid fa-mustache',
+    iconDirection: 'right'
+  };
+
   customIconConfigTest : IIconButtonIconConfig = {
     class: 'fa-regular fa-igloo',
     color: 'var(--critical-text)'
