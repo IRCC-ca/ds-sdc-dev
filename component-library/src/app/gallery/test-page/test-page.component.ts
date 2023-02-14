@@ -24,7 +24,7 @@ export class TestPageComponent implements OnInit {
       { id: 'products', title: 'Products', value: 'This is Products' },
       { id: 'login', title: 'Login', value: 'This is Login' },
     ],
-    size: 'large'
+    // size: 'small'
   }
 
   constructor(private altLang: LanguageSwitchService) { }
@@ -33,5 +33,13 @@ export class TestPageComponent implements OnInit {
     this.form.addControl(this.tabsConfig.id, new FormControl());
   }
 
-
+  disableSelectedBtn() {
+    this.tabsConfig?.tab?.forEach((item: any) => {
+      if (document.getElementById(item.id)?.hasAttribute("selected")) {
+        document.getElementById(item.id)?.setAttribute("disabled", '');
+      } else {
+        document.getElementById(item.id)?.removeAttribute("disabled");
+      }
+    })
+  };
 }

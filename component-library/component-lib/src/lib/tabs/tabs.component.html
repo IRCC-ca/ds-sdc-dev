@@ -1,14 +1,16 @@
-<nav class="page-nav" class="{{config.size}}">
-  <div *ngFor="let val of config.tab;">
-    <button class="tabs-btn" [id]="val.id" (click)="buttonClick(val.id)">{{ val.title }}</button>
-  </div>
-</nav>
-<br>
-<div class="col-lg-10">
-  <div class="side-menu-content">
-    <div *ngFor="let cont of config.tab">
-      <div *ngIf="previousID === cont.id">
-        {{ cont.value }}
+<div class="{{config.size}}">
+  <nav class="page-nav">
+    <div *ngFor="let val of config.tab;">
+      <button class="tabs-btn" [id]="val.id" (click)="buttonClick(val.id)">{{ val.title }}</button>
+    </div>
+  </nav>
+  <br>
+  <div class="col-lg-10">
+    <div class="side-menu-content">
+      <div *ngFor="let cont of config.tab">
+        <div *ngIf="previousID === cont.id">
+          {{ cont.value }}
+        </div>
       </div>
     </div>
   </div>

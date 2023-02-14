@@ -27,6 +27,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   @Input() config: ITabNavConfig = {
     id: '',
     formGroup: new FormGroup({}),
+    size: 'large'
   }
 
   @Output() click: EventEmitter<any> = new EventEmitter();
