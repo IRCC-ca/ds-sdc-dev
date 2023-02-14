@@ -23,15 +23,15 @@ export class ErrorComponent implements OnInit {
   @Input() id?: string;
   @Input() errorLOV?: string;
   @Input() icon?: IErrorIconConfig;
+  @Input() size?: keyof typeof DSSizes;
 
   constructor() { }
-
   ngOnInit() {
     //Initial null and override check:
     if (!this.config) this.config = {id: '', errorLOV: ''};
     if (this.id) this.config.id = this.id;
     if (this.errorLOV) this.config.errorLOV = this.errorLOV;
     if (this.icon) this.config.icon = this.icon;
+    if (this.size) this.config.size = this.size;
   }
-
 }
