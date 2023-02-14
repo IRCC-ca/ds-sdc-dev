@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
 
 
 export interface IErrorIconConfig {
@@ -9,6 +10,7 @@ export interface IErrorIconConfig {
 export interface IErrorComponentConfig {
   id: string;
   errorLOV: string;
+  size?: keyof typeof DSSizes;
   icon?: IErrorIconConfig;
 }
 
