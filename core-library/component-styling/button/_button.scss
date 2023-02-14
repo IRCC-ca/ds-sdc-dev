@@ -23,6 +23,7 @@
 @mixin layout {
 
   > button {
+    max-width: inherit;
     .icon, .text {
       display: inline-block
     }
