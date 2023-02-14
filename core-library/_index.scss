@@ -40,6 +40,7 @@
 @use './component-styling/date-picker/date-picker';
 @use './component-styling/footer/footer';
 @use './component-styling/icon/icon';
+@use './component-styling/button/button' as button-component;
 
 
 @use './component-styling/chips/item' as chip-item;
@@ -105,7 +106,7 @@
         @include element(chip-secondary);
         @include element(date-picker);
         @include element(icon);
-
+        @include element(button-component);
         @include element(error-component)
     } @else {
         @each $key in $include {
@@ -179,6 +180,8 @@
         @include icon.create();
     } @else if $key == error-component {
         @include error-component.create();
+    } @else if $key == button-component {
+        @include button-component.create();
     }
 
 }
