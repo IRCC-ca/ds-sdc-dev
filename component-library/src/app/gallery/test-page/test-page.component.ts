@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ITabNavConfig } from 'dist/ircc-ds-angular-component-library/lib/tabs/tabs.component';
 
 @Component({
   selector: 'app-test-page',
@@ -10,36 +8,7 @@ import { ITabNavConfig } from 'dist/ircc-ds-angular-component-library/lib/tabs/t
 })
 export class TestPageComponent implements OnInit {
 
-  form = new FormGroup({});
-
-  tabsConfig: ITabNavConfig = {
-    id: 'testTabs',
-    formGroup: this.form,
-    tab: [
-      // { 'Home': 'Home' },
-      // { 'Profile': 'Profile' },
-      { id: 'home', title: 'Home', value: 'This is Home' },
-      { id: 'profile', title: 'Profile', value: 'This is Profile' },
-      { id: 'contact', title: 'Contact', value: 'This is Contact' },
-      { id: 'products', title: 'Products', value: 'This is Products' },
-      { id: 'login', title: 'Login', value: 'This is Login' },
-    ],
-    // size: 'small'
-  }
-
   constructor(private altLang: LanguageSwitchService) { }
 
-  ngOnInit() {
-    this.form.addControl(this.tabsConfig.id, new FormControl());
-  }
-
-  disableSelectedBtn() {
-    this.tabsConfig?.tab?.forEach((item: any) => {
-      if (document.getElementById(item.id)?.hasAttribute("selected")) {
-        document.getElementById(item.id)?.setAttribute("disabled", '');
-      } else {
-        document.getElementById(item.id)?.removeAttribute("disabled");
-      }
-    })
-  };
+  ngOnInit() {}
 }
