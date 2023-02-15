@@ -1,12 +1,11 @@
 import { EventEmitter, Input, Output } from '@angular/core';
-import { AfterViewInit } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
 export interface ITabNavConfig {
   id: string;
   tab?: ITabConfig[];
   size?: keyof typeof DSSizes;
+  selected?: string;
 };
 export interface ITabConfig {
   id?: string,
@@ -15,12 +14,9 @@ export interface ITabConfig {
 }
 @Component({
   selector: 'lib-tabs',
-  templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.css']
+  templateUrl: './tabs.component.html'
 })
-export class TabsComponent implements OnInit, AfterViewInit {
-
-  previousID = '';
+export class TabsComponent implements OnInit {
 
   @Input() config: ITabNavConfig = {
     id: '',
@@ -29,29 +25,15 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
   @Output() click: EventEmitter<any> = new EventEmitter();
 
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor() { }
 
-  ngOnInit() {}
-
-  ngAfterViewInit(){
-    this.config?.tab?.forEach((item, index) => {
-      if(!item.id) {
-        item.id = this.config.id + '_' + item.id
-      }
-      if (index === 0) {
-        document.getElementById(item.id)?.setAttribute("selected", '');
-        this.previousID = item.id;
-      }
-    });
-    this.cd.detectChanges();
+  ngOnInit() {
+    if (this.config.selected === undefined && this.config.tab) {
+      this.config.selected = (this.config.tab[0].id);
+    }
   }
 
-  buttonClick(id: any) {
-    if (id !== this.previousID) {
-      document.getElementById(id)?.setAttribute("selected", '');
-      document.getElementById(this.previousID)?.removeAttribute("selected");
-      this.click.emit(id);
-      this.previousID = id;
-    }
-  };
+  setSelected(selectedID: any) {
+    if (selectedID) this.config.selected = selectedID //set the selected tab
+  }
 }
