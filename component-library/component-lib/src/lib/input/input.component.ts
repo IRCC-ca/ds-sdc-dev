@@ -57,7 +57,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   private onTouch?: () => void;
   private onChange?: (value: any) => void;
 
-
   ngOnInit() {
     if (this.id !== '') {
       this.config.id = this.id;
@@ -66,6 +65,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
+
+    if (!this.config.type){
+      this.config.type = 'text';
+    }
+    console.log(this.config.type);
   }
 
   public focusInput(focusValue: boolean): void {
@@ -85,6 +89,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   writeValue(value: string): void {
   }
   registerOnChange(fn: any): void {
+    console.log('type', this.config.type);
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
