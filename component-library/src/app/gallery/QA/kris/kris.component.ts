@@ -124,27 +124,27 @@ export class KrisComponent implements OnInit {
       {
         id: 'autoConfig_checkbox_title',
         formGroup: this.form,
-        label: 'title'
+        inlineLabel: 'title'
       },
       {
         id: 'autoConfig_checkbox_required',
         formGroup: this.form,
-        label: 'required',
+        inlineLabel: 'required',
       },
       {
         id: 'autoConfig_checkbox_description',
         formGroup: this.form,
-        label: 'description'
+        inlineLabel: 'description'
       },
       {
         id: 'autoConfig_checkbox_hint',
         formGroup: this.form,
-        label: 'hint'
+        inlineLabel: 'hint'
       },
       {
         id: 'autoConfig_checkbox_label',
         formGroup: this.form,
-        label: 'label'
+        inlineLabel: 'label'
       }
     ]
   };

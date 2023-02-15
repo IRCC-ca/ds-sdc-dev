@@ -67,7 +67,7 @@ export class NaseerComponent implements OnInit {
       {
         id: 'required',
         formGroup: this.form,
-        label: 'required'
+        inlineLabel: 'required'
       },
     ],
     dropdowns: [

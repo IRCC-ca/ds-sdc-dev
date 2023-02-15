@@ -17,7 +17,7 @@ export class MichaelComponent implements OnInit {
     { //checkbox1
       id: 'checkbox_label_test',
       formGroup: this.form,
-      label: 'Testing Label',
+      inlineLabel: 'Testing Label',
       helpText: 'Hint text',
       desc: 'Description line of text',
       disableFocus: true, //TODO: Not working,
@@ -25,7 +25,7 @@ export class MichaelComponent implements OnInit {
     { //checkbox2
       id: 'checkbox_small_test',
       formGroup: this.form,
-      label: 'Small Test',
+      inlineLabel: 'Small Test',
       size: 'small',
       helpText: 'Hint text',
       desc: 'Description line of small test',
@@ -33,7 +33,7 @@ export class MichaelComponent implements OnInit {
     { //checkbox3
       id: 'checkbox_error_test',
       formGroup: this.form,
-      label: 'Error Test',
+      inlineLabel: 'Error Test',
       customErrorText: 'Error Message',
       helpText: 'Test help text',
       desc: 'Description line of error test',
@@ -41,32 +41,32 @@ export class MichaelComponent implements OnInit {
     {
       id: 'checkbox_form_disabled_test',
       formGroup: this.form,
-      label: 'Form Disabled Test',
+      inlineLabel: 'Form Disabled Test',
       helpText: 'Test help text',
       desc: 'Description line of disabled test',
     },
     {
       id: 'checkbox_form_error_test',
       formGroup: this.form,
-      label: 'Form Error Test',
+      inlineLabel: 'Form Error Test',
       errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}]
     },
     {
       id: 'checkbox_validators_test',
       formGroup: this.form,
-      label: 'Form Validators Test',
+      inlineLabel: 'Form Validators Test',
     },
     {
       id: 'checkbox_mixed_test',
       formGroup: this.form,
       mixed: true,
-      label: 'Form Mixed Test',
+      inlineLabel: 'Form Mixed Test',
     },
     {
       id: 'checkbox_mixed_error_test',
       formGroup: this.form,
       mixed: true,
-      label: 'Form Mixed Error Test',
+      inlineLabel: 'Form Mixed Error Test',
       customErrorText: 'Error Message for Mixed Error Test',
       errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}],
       errorIcon: {class: 'fa-solid fa-circle-xmark'}
@@ -76,7 +76,7 @@ export class MichaelComponent implements OnInit {
       formGroup: this.form,
       mixed: true,
       size: 'small',
-      label: 'Form Mixed Error Small Test',
+      inlineLabel: 'Form Mixed Error Small Test',
       customErrorText: 'Error Message for Mixed Error Small Test',
       errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}],
       errorIcon: {class: 'fa-solid fa-circle-xmark'}
@@ -119,7 +119,7 @@ export class MichaelComponent implements OnInit {
       {
         id: 'required',
         formGroup: this.form,
-        label: 'required'
+        inlineLabel: 'required'
       },
     ],
     dropdowns: [
