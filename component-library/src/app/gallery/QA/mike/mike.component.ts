@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormGroup, FormControl, ValidatorFn, Validators} from '@angular/forms';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
-import { IBannerConfig, ICTAConfig, IButtonConfig } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICTAConfig, IButtonConfig, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-mike',
@@ -19,13 +19,92 @@ export class MikeComponent implements OnInit {
 
   form = new FormGroup({});
   ctaForm1 = new FormGroup({});
+  radioForm = new FormGroup({});
+  radioTesterForm = new FormGroup({});
 
-    // [category]='cta?.btnConfig?.category'
-  // [color]='cta?.btnConfig?.color'
-  // [ariaLabel]='cta?.btnConfig?.ariaLabel'
-  // [disabled]='cta?.btnConfig?.disabled'
-  // [icon]='cta?.btnConfig?.icon'
-  // [iconDirection]='cta?.btnConfig?.iconDirection'
+  radioConfig : IRadioInputComponentConfig = {
+    id: 'radio_1',
+    formGroup: this.radioForm,
+    options: [
+    {
+      text: 'radio 1'
+    },
+    {
+      text: 'radio 2',
+      disabled: true
+    },
+    {
+      text: 'small override radio',
+      sizeOverride: 'small'
+    },
+    {
+      text: 'small disabled radio',
+      disabled: true,
+      sizeOverride: 'small'
+    }
+    ],
+    errorMessages: [
+      { key: 'required', errorLOV: 'This field is required' },
+      { key: 'otherError', errorLOV: 'And another error'}
+    ]
+  }
+
+  radioOptions : IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'label',
+        formGroup: this.radioTesterForm,
+        label: 'Label'
+      },
+      { id: 'desc',
+        formGroup: this.radioTesterForm,
+        label: 'Description'
+      },
+      {
+        id: 'hint',
+        formGroup: this.radioTesterForm,
+        label: 'Hint'
+      },
+      {
+        id:'helpText',
+        formGroup: this.radioTesterForm,
+        label: 'Help text (accessibility only)'
+      }
+    ],
+    dropdowns:[
+      {
+        id:'size',
+        formGroup: this.radioTesterForm,
+        label: 'Size',
+        options:[
+          {
+            text:'small'
+          },
+          {
+            text:'large'
+          }
+        ]
+      }
+    ],
+    checkboxes: [
+      {
+        id:'disabled',
+        formGroup: this.radioTesterForm,
+        label: 'disabled'
+      },
+      {
+        id:'required',
+        formGroup: this.radioTesterForm,
+        label: 'required'
+      }
+    ]
+  }
+
+  radioTestConfig : IAutoTestComponentConfig = {
+    id: 'auto_test_radio',
+    formGroup: this.radioTesterForm,
+    testFields: this.radioOptions
+  }
 
   ctaTestConfigObj : IAutoTestConfigObject = {
     inputs: [
@@ -169,6 +248,19 @@ export class MikeComponent implements OnInit {
     testFields: this.ctaTestConfigObj
   }
 
+  triggerError(){
+    if(!this.radioConfig.formGroup.get('radio_1')?.hasError('otherError')){
+    this.radioConfig.formGroup.get('radio_1')?.hasError('required') ? this.radioConfig.formGroup.get('radio_1')?.setErrors({'required': true, 'otherError': true}) : this.radioConfig.formGroup.get('radio_1')?.setErrors({'required': true});
+    } else {
+      this.radioConfig.formGroup.get('radio_1')?.reset();
+    }
+  }
+
+  toggleDisable(){
+    document.getElementById('radio_10')?.hasAttribute('disabled') ? document.getElementById('radio_10')?.removeAttribute('disabled') : document.getElementById('radio_10')?.setAttribute('disabled','');
+  }
+
+
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
@@ -195,6 +287,19 @@ export class MikeComponent implements OnInit {
       this.ctaForm1.addControl(i.id, new FormControl());
     });
 
+    this.radioForm.addControl(this.radioConfig.id, new FormControl());
+
+    this.radioOptions.inputs?.forEach(i => {
+      this.radioTesterForm.addControl(i.id, new FormControl());
+    });
+
+    this.radioOptions.dropdowns?.forEach(i => {
+      this.radioTesterForm.addControl(i.id, new FormControl());
+    });
+
+    this.radioOptions.checkboxes?.forEach(i => {
+      this.radioTesterForm.addControl(i.id, new FormControl());
+    });
 
     this.form.valueChanges.subscribe(x => {
       let updatedConfig : IBannerConfig = {
@@ -260,6 +365,14 @@ export class MikeComponent implements OnInit {
             delete this.qaBanner.cta;
           }
         }
+    });
+
+    this.radioTesterForm.valueChanges.subscribe(x => {
+      console.log(x);
+      for(let param in x){
+        console.log(x[param])
+        this.radioConfig = {...this.radioConfig, [param]:x[param]}
+      }
     });
   }
 }

@@ -17,19 +17,18 @@ export interface IRadioInputComponentConfig {
   hint?: string;
   required?: boolean;
   options?: IRadioInputOption[];
-  small?: true; //Default is large in the DS, so this is to keep things consistent.
+  size?: keyof typeof DSSizes;
   disabled?: boolean;
   error?: true;
   validators?: ValidatorFn[];
   helpText?: string;
-  customErrorText?: string; //TODO: move to it's own component
   errorMessages?: IErrorPairs[];
 }
 
 export interface IRadioInputOption {
   text: string;
   value?: string;
-  sizeOverride?: DSSizes;
+  sizeOverride?: keyof typeof DSSizes;
   disabled?: true;
   error?: true;
 }
@@ -47,8 +46,6 @@ export interface IRadioInputOption {
 })
 export class RadioInputComponent implements OnInit, ControlValueAccessor {
   formGroupEmpty = new FormGroup({});
-  size = DSSizes.large;
-  sizes = DSSizes;
   touched = false;
 
   @Input() config: IRadioInputComponentConfig = {
@@ -78,25 +75,9 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    if (this.config?.small) this.size = DSSizes.small;
     if (this.id !== '') this.config.id = this.id;
     if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
 
-  }
-
-  /**
-   *
-   * @param override
-   * @returns
-   */
-  getSize(override: DSSizes | undefined) {
-    if (override) {
-      return override;
-    }
-    if (this.config?.small) {
-      return DSSizes.small;
-    }
-    return DSSizes.large;
   }
 
   /**
@@ -106,7 +87,7 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
    */
   getDisabled(index: number) {
     if (this.config.options) {
-      if (this.config.options[index].disabled === undefined) {
+      if (this.config.options[index].disabled === undefined && !this.config.disabled) {
         return null;
       }
     }
