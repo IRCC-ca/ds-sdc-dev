@@ -249,7 +249,6 @@ export class MikeComponent implements OnInit {
   }
 
   triggerError(){
-    console.log(this.radioConfig.formGroup.get('radio_1'));
     if(!this.radioConfig.formGroup.get('radio_1')?.hasError('otherError')){
     this.radioConfig.formGroup.get('radio_1')?.hasError('required') ? this.radioConfig.formGroup.get('radio_1')?.setErrors({'required': true, 'otherError': true}) : this.radioConfig.formGroup.get('radio_1')?.setErrors({'required': true});
     } else {
@@ -258,7 +257,6 @@ export class MikeComponent implements OnInit {
   }
 
   toggleDisable(){
-    console.log(document.getElementById('radio_10')?.hasAttribute('disabled'));
     document.getElementById('radio_10')?.hasAttribute('disabled') ? document.getElementById('radio_10')?.removeAttribute('disabled') : document.getElementById('radio_10')?.setAttribute('disabled','');
   }
 
