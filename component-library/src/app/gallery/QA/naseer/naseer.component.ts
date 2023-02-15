@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { ButtonColor, ButtonIconDirection, IButtonConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 
 @Component({
@@ -18,6 +18,27 @@ export class NaseerComponent implements OnInit {
     id: this.INPUT_ID,
     formGroup: this.form
   };
+
+  qaButton : IIconButtonComponentConfig = {
+    id: "qa_test_button",
+    size: 'extraSmall',
+    category: 'custom',
+    icon:  {
+      class: 'fa-solid fa-mustache',
+      color: 'var(--primary-text)'
+    }
+  };
+
+  testButtonConfig : IButtonConfig = {
+    id: "qa_button",
+    icon: 'fa-solid fa-mustache',
+    iconDirection: 'right'
+  };
+
+  customIconConfigTest : IIconButtonIconConfig = {
+    class: 'fa-regular fa-igloo',
+    color: 'var(--critical-text)'
+  }
 
   testerConfig: IAutoTestConfigObject = {
     inputs: [
@@ -43,11 +64,11 @@ export class NaseerComponent implements OnInit {
       },
     ],
     checkboxes: [
-        {
-          id: 'required',
-          formGroup: this.form,
-          label: 'required'
-        },
+      {
+        id: 'required',
+        formGroup: this.form,
+        label: 'required'
+      },
     ],
     dropdowns: [
       {
@@ -120,6 +141,11 @@ export class NaseerComponent implements OnInit {
       }
   })
 
+  }
+  disable() {
+    this.qaInput?.formGroup.get(this.qaInput.id)?.disabled ?
+    this.qaInput?.formGroup.get(this.qaInput.id)?.enable() :
+    this.qaInput?.formGroup.get(this.qaInput.id)?.disable();
   }
 
 }

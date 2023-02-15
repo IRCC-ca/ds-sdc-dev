@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export enum ButtonCategories {
-    primary = "primary",
-    secondary = "secondary",
-    plain = "plain"
+    primary = 'primary',
+    secondary = 'secondary',
+    plain = 'plain'
 };
 
 export enum ButtonSize {
-    small = "small",
-    large = "large"
+    small = 'small',
+    large = 'large'
 };
 
 export enum ButtonColor {
@@ -29,13 +29,13 @@ export enum ButtonIconDirection {
 
 export interface IButtonConfig {
     id: string;
-    category?: ButtonCategories;
-    size?: ButtonSize;
-    color?: ButtonColor;
+    category?: keyof typeof ButtonCategories;
+    size?: keyof typeof ButtonSize;
+    color?: keyof typeof ButtonColor;
     ariaLabel?: string;
     disabled?: boolean;
     icon?: string;
-    iconDirection?: ButtonIconDirection;
+    iconDirection?: keyof typeof ButtonIconDirection;
 };
 
 @Component({
@@ -45,18 +45,16 @@ export interface IButtonConfig {
 export class ButtonComponent {
 @Input() config: IButtonConfig = {
     id: '',
-    iconDirection: ButtonIconDirection.left
-
 };
     @Input() id = '';
-    @Input() category?: ButtonCategories;
-    @Input() size?: ButtonSize;
-    @Input() color?: ButtonColor;
+    @Input() category?: keyof typeof ButtonCategories;
+    @Input() size?: keyof typeof ButtonSize;
+    @Input() color?: keyof typeof ButtonColor;
     // @Input() type?: 'button' | 'submit' | 'reset';
     @Input() ariaLabel?: string;
     @Input() disabled?: boolean;
     @Input() icon?: string;
-    @Input() iconDirection?: ButtonIconDirection;
+    @Input() iconDirection?: keyof typeof ButtonIconDirection;
 
     @Output() click: EventEmitter<any> = new EventEmitter();
 
@@ -67,8 +65,14 @@ export class ButtonComponent {
         (this.color === undefined) ? undefined : this.config.color = this.color;
         (this.ariaLabel !== undefined) ? this.config.ariaLabel = this.ariaLabel : undefined;
         (this.disabled !== undefined) ? this.config.disabled = this.disabled : undefined;
-        (this.icon !== undefined) ? this.config.icon = this.icon : undefined;
-        (this.iconDirection !== undefined) ? this.config.iconDirection = this.iconDirection : undefined;
+        if (this.icon || this.config.icon) {
+            this.config.icon = this.icon ? this.icon : this.config.icon;
+            this.config.iconDirection = this.iconDirection? this.iconDirection : this.config.iconDirection;
+            this.config.iconDirection = this.config.iconDirection ? this.config.iconDirection : 'left'
+        } else {
+            this.config.icon = undefined;
+            this.config.iconDirection = undefined;
+        }
     }
 
     buttonClick(id: string) {

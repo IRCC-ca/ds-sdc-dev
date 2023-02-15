@@ -29,7 +29,9 @@
     "HeaderFooter": "En tête / pied de page",
     "Miscellaneous": "Divers",
     "DevTestPage": "Page de teste",
-    "QATesting": "Page de teste pour AQ"
+    "QATesting": "Page de teste pour AQ",
+    "HomeURLOverride": "/fr/page-general"
+
   },
 
   "OPPOSITE_LANGUAGE": "English",

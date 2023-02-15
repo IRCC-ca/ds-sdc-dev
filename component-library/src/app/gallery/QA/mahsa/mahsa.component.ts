@@ -55,9 +55,9 @@ export class MahsaComponent implements OnInit {
         ],
       },
       {
-        id: 'errorMessages',
+        id: 'smallErrorMessages',
         formGroup: this.form,
-        label: 'Error',
+        label: 'Small Error',
         errorMessages: [
           { key:'maxlength' , errorLOV:'Error message' }, 
           { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
@@ -66,7 +66,23 @@ export class MahsaComponent implements OnInit {
           { text: 'Maxlength' }, 
           { text: 'TestingError' }, 
           { text: 'Both Errors' }
-        ]
+        ],
+        size: 'small'
+      },
+      {
+        id: 'largeErrorMessages',
+        formGroup: this.form,
+        label: 'Large Error',
+        errorMessages: [
+          { key:'maxlength' , errorLOV:'Error message' }, 
+          { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+        ],
+        options: [
+          { text: 'Maxlength' }, 
+          { text: 'TestingError' }, 
+          { text: 'Both Errors' }
+        ],
+        size: 'large'
       },
       {
         id: 'size',
@@ -113,7 +129,7 @@ export class MahsaComponent implements OnInit {
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
-    this.altLang.setAltLangLink('Mahsa-alt');
+    this.altLang.setAltLangLink('mahsa-alt');
 
     this.testerConfig.dropdowns?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
@@ -151,18 +167,29 @@ export class MahsaComponent implements OnInit {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
 
-  setError() {
-    if (this.qaSelect?.formGroup.get('errorMessages')?.value === 'Maxlength')  {
-      this.qaSelect?.formGroup.get('errorMessages')?.setErrors({'maxlength': { requiredLength: 3, actualLength: 5 }});
-    } else if (this.qaSelect?.formGroup.get('errorMessages')?.value === 'TestingError') {
-      this.qaSelect?.formGroup.get('errorMessages')?.setErrors({'testingError': true});
+  setSamllError() {
+    if (this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'Maxlength')  {
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({'maxlength': { requiredLength: 3, actualLength: 5 }});
+    } else if (this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'TestingError') {
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({'testingError': true});
     } else {
-      this.qaSelect?.formGroup.get('errorMessages')?.
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.
+      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
+    }
+  };
+  setLargeError() {
+    if (this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'Maxlength')  {
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({'maxlength': { requiredLength: 3, actualLength: 5 }});
+    } else if (this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'TestingError') {
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({'testingError': true});
+    } else {
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.
       setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
     }
   };
   resetError() {
-    this.qaSelect?.formGroup.get('errorMessages')?.reset();
+    this.qaSelect?.formGroup.get('smallErrorMessages')?.reset();
+    this.qaSelect?.formGroup.get('largeErrorMessages')?.reset();
   };
 
   disableSelectedBtn() {

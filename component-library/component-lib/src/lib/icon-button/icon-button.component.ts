@@ -22,7 +22,7 @@ export interface IIconButtonComponentConfig {
   size?: keyof typeof IconButtonSize,
   ariaLabel?: string,
   disabled?: boolean,
-  customIcon?: IIconButtonIconConfig
+  icon?: IIconButtonIconConfig
 }
 
 export const CLASS_X_MARK = 'fa-thin fa-xmark';
@@ -42,8 +42,8 @@ export class IconButtonComponent implements OnInit {
   @Input() size?: keyof typeof IconButtonSize | IconButtonSize;
   @Input() ariaLabel?: string;
   @Input() disabled?: boolean;
+  @Input() icon? : IIconButtonIconConfig;
   @Output() clickEvent = new EventEmitter<string>();
-  icon?: IIconButtonIconConfig;
   // Mapping of icons to category
   iconConfigs: { [key: string]: IIconButtonIconConfig } = {
     primary: {
@@ -62,7 +62,9 @@ export class IconButtonComponent implements OnInit {
     if (this.size) this.config.size = this.size;
     if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
     if (this.disabled) this.config.disabled = this.disabled;
-    this.icon = this.config.category === IconButtonCategories.custom ? this.config.customIcon : this.iconConfigs[this.config.category];
+    if (this.icon) this.config.icon = this.config.category === IconButtonCategories.custom ? this.icon : this.iconConfigs[this.config.category];
+    else if (!this.icon && this.config.icon) this.config.icon = this.config.category === IconButtonCategories.custom ? this.config.icon : this.iconConfigs[this.config.category]
+    else this.config.icon = this.iconConfigs[this.config.category]
   }
 
   buttonClick(id = this.config.id) {

@@ -15,6 +15,7 @@ export class LandingPageComponent implements OnInit {
 
    navConfig: INavButtonComponentConfig = {
     id: 'landingPage_buttons',
+    baseUrlKey: 'ROUTES.LandingPage',
     buttons: [
     {
       name: 'BUTTONS.FormInputs',

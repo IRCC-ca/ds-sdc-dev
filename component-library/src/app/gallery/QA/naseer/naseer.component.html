@@ -1,2 +1,8 @@
 <lib-input [config]="qaInput"></lib-input>
 <app-auto-tester [config]="testComponentConfig"></app-auto-tester>
+<button (click)="disable()">Disable</button>
+<lib-icon-button [config]="qaButton"> Hello </lib-icon-button>
+<lib-icon-button class="banner-close" [category]="'custom'" [icon]="customIconConfigTest" [size]="'large'"></lib-icon-button>
+<lib-icon-button class="banner-close" [category]="'primary'"  [size]="'large'"></lib-icon-button>
+<lib-button [config]="testButtonConfig">Test</lib-button>
+<lib-button id="test-button" icon="fa-regular fa-igloo" iconDirection="right">Supeeeeeeeeeeeeeeeeeeeeeeeeer long Buttooooooooooooooon labeeeeeeeeeeeeeel</lib-button>

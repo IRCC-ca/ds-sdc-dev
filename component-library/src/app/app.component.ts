@@ -40,6 +40,10 @@ export class AppComponent implements OnInit, OnDestroy {
     if (environment.production) {
       Logger.enableProductionMode();
     }
+    // this.router.events.subscribe(event => {
+    //   console.log(this.router.url)
+    //   console.log(event);
+    // });
   }
 
   ngOnDestroy() {

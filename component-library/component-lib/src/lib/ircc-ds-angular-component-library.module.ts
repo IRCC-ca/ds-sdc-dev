@@ -21,6 +21,7 @@ import { LanguageSwitchComponent } from './language-switch/language-switch.compo
 import { BannerComponent } from './banner/banner.component';
 import { ErrorComponent } from './error/error.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -50,7 +51,8 @@ import { TabsComponent } from './tabs/tabs.component';
     CommonModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     IrccDsAngularComponentLibraryComponent,
