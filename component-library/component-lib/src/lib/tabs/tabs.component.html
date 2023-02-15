@@ -8,7 +8,7 @@
   <div class="col-lg-10">
     <div class="side-menu-content">
       <div *ngFor="let cont of config.tab">
-        <div *ngIf="previousID === cont.id">
+        <div *ngIf="previousID === cont.id" class="content">
           {{ cont.value }}
         </div>
       </div>

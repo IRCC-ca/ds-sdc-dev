@@ -25,7 +25,7 @@ $selectors: 'lib-tabs';
 		font-size: 20px;
 		line-height: 28px;
 	}
-	&:where([selected])::after {
+	button:where([selected])::after {
 		transform: translateY(sizes.$fixed-12);
 	}
 }
@@ -35,8 +35,11 @@ $selectors: 'lib-tabs';
 		line-height: 24px;
 		padding: 8px 16px;
 	}
-	&:where([selected])::after {
+	button:where([selected])::after {
 		transform: translateY(sizes.$fixed-8);
+	}
+	.content {
+		font-size: 14px;
 	}
 }
 
@@ -69,5 +72,9 @@ $selectors: 'lib-tabs';
 
 	.tabs-btn {
 		margin-right: 7px;
+		font-weight: 400;
+		&:where([selected]) {
+			font-weight: 700;
+		}
 	}
 }

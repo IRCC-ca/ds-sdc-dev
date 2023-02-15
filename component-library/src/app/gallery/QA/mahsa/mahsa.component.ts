@@ -25,7 +25,6 @@ export class MahsaComponent implements OnInit {
 
   qaTabs: ITabNavConfig = {
     id: this.TAB_ID,
-    formGroup: this.form,
     tab: [
       { id: 'home', title: 'Home', value: 'This is Home' },
       { id: 'profile', title: 'Profile', value: 'This is Profile' },
@@ -33,7 +32,6 @@ export class MahsaComponent implements OnInit {
       { id: 'products', title: 'Products', value: 'This is Products' },
       { id: 'login', title: 'Login', value: 'This is Login' },
     ],
-    // size: 'small'
   }
 
   testerConfig: IAutoTestConfigObject = {
@@ -149,14 +147,13 @@ export class MahsaComponent implements OnInit {
       };
       let tabUpdatedConfig: ITabNavConfig = {
         id: this.TAB_ID,
-        formGroup: this.form
       };
 
       for(let param in value) {
         updatedConfig = { ...updatedConfig, [param]: value[param] }
         tabUpdatedConfig = { ...tabUpdatedConfig, [param]: value[param] }
         this.qaSelect = updatedConfig;
-        this.qaSelect = tabUpdatedConfig;
+        this.qaTabs = tabUpdatedConfig;
       }
     });
   }
@@ -200,5 +197,9 @@ export class MahsaComponent implements OnInit {
         document.getElementById(item.id)?.removeAttribute("disabled");
       }
     });
+  };
+
+  size() {
+    this.qaTabs.size = 'small';
   };
 }

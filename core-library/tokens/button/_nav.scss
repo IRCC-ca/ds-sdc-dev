@@ -43,7 +43,6 @@
         height:sizes.$fixed-4;
         background: var(--navigation);
         display: block;
-        margin-top: -8px;
     }
     &:where([selected]){
         --text: var(--text-primary);
