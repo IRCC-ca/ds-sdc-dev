@@ -83,12 +83,12 @@ export class MikeComponent implements OnInit {
       {
         id:'disabled',
         formGroup: this.ctaForm1,
-        label: 'disabled'
+        inlineLabel: 'disabled'
       },
       {
         id:'noCta',
         formGroup: this.ctaForm1,
-        label: 'Turn off cta'
+        inlineLabel: 'Turn off cta'
       }
     ]
   }
@@ -110,12 +110,12 @@ export class MikeComponent implements OnInit {
         {
           id: 'rounded',
           formGroup: this.form,
-          label: 'rounded'
+          inlineLabel: 'rounded'
         },
         {
           id: 'dismissible',
           formGroup: this.form,
-          label: 'dismissible'
+          inlineLabel: 'dismissible'
         }
     ],
     dropdowns: [

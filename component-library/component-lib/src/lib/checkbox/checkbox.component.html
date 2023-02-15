@@ -11,13 +11,13 @@
     </div>
     <label class="label" for="{{config.id}}" [attr.aria-label]="
     config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-      ? (config.label || '' | translate) + ' ' +
+      ? (config.inlineLabel || '' | translate) + ' ' +
         (config.helpText || '' | translate) + ' ' +
         ('INPUT.ERROR' | translate) + ' ' +
         (config.customErrorText || '' | translate) :
-        (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
+        (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
   " [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{
-      config.label || '' }}</label>
+      config.inlineLabel || '' }}</label>
   </div>
   <div *ngIf="getErrorState()" class="check-error" [ngClass]="{'small': config.size === 'small' }">
     <ng-container *ngFor="let error of config.errorMessages; index as i">
