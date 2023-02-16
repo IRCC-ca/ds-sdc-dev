@@ -32,7 +32,7 @@ export class LanguageSwitchComponent implements OnInit {
       this.isMobile = window.innerWidth <= 768;
     }
 
-  /** Listens for screen resizes and sets mobile boolean */
+  /** Listens for screen resizes and sets mobile-tablet boolean */
   @HostListener('window:resize', ['$event'])
   handleResize(e: any) {
     if (isPlatformBrowser(this.platformId)) {
