@@ -90,12 +90,12 @@ export class MikeComponent implements OnInit {
       {
         id:'disabled',
         formGroup: this.radioTesterForm,
-        label: 'disabled'
+        inlineLabel: 'disabled'
       },
       {
         id:'required',
         formGroup: this.radioTesterForm,
-        label: 'required'
+        inlineLabel: 'required'
       }
     ]
   }
