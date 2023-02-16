@@ -20,6 +20,7 @@
     }
 }
 
+// For size small overwrite
 @mixin size-sm {
     label, p {
         font-size: token-size.$fixed-14;
@@ -36,6 +37,9 @@
     }
     div.check-error {
         font-size: 14px;
+    }
+    .required-star {
+        font-size: 12px;
     }
 }
 
@@ -66,6 +70,17 @@
     }
     div.check-error {
         margin-top: token-size.$fixed-8;
+    }
+    .required-field-container {
+        display: flex;
+    }
+    .required-star {
+        color: var(--critical-text);
+        font-weight: 400;
+        line-height: 16px;
+        justify-self: flex-start;
+        margin-right: 5px;
+        font-size: 16px;
     }
 
     @include size.selector(small) {
