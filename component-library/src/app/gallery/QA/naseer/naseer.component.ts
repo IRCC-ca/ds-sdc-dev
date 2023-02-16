@@ -16,12 +16,12 @@ export class NaseerComponent implements OnInit {
 
   qaInput : IInputComponentConfig = {
     id: this.INPUT_ID,
-    formGroup: this.form
+    formGroup: this.form,
   };
 
   qaButton : IIconButtonComponentConfig = {
     id: "qa_test_button",
-    size: 'extraSmall',
+    size: 'large',
     category: 'custom',
     icon:  {
       class: 'fa-solid fa-mustache',
@@ -32,7 +32,7 @@ export class NaseerComponent implements OnInit {
   testButtonConfig : IButtonConfig = {
     id: "qa_button",
     icon: 'fa-solid fa-mustache',
-    iconDirection: 'right'
+    iconDirection: 'right',
   };
 
   customIconConfigTest : IIconButtonIconConfig = {
@@ -73,7 +73,7 @@ export class NaseerComponent implements OnInit {
     dropdowns: [
       {
         id: 'type',
-        label: 'Type',
+        label: 'Type',  
         formGroup: this.form,
         options: [
           {
@@ -129,15 +129,13 @@ export class NaseerComponent implements OnInit {
         id: this.INPUT_ID,
         formGroup: this.form
       };
-
+      if (!x['type']) x['type'] = 'text';
       for(let param in x){
           console.log(param);
           console.log(x[param]);
-
           updatedConfig = {...updatedConfig, [param] : x[param]}
           console.log('updatedConfig: ', updatedConfig);
           this.qaInput = updatedConfig;
-
       }
   })
 
@@ -146,6 +144,7 @@ export class NaseerComponent implements OnInit {
     this.qaInput?.formGroup.get(this.qaInput.id)?.disabled ?
     this.qaInput?.formGroup.get(this.qaInput.id)?.enable() :
     this.qaInput?.formGroup.get(this.qaInput.id)?.disable();
+    if(!this.testButtonConfig?.disabled) this.testButtonConfig.disabled = true;
+    else this.testButtonConfig.disabled = false;
   }
-
 }
