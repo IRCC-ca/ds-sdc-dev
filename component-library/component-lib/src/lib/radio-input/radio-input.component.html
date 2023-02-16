@@ -1,55 +1,29 @@
-<form [formGroup]="config.formGroup">
+<form [formGroup]="config.formGroup" [ngClass]="config?.size">
     <label *ngIf="config.label"
        [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
           ? (config.label || '' | translate) + ' ' +
-            (config.helpText || '' | translate) + ' ' + ('INPUT.ERROR' | translate) + ' ' +
-            (config.customErrorText || '' | translate)
+            (config.helpText || '' | translate)
           : (config.label || '' | translate) + ' ' + (config?.helpText || '' | translate)
        "
        [for]="config.id"
-       class="radio-label"><i *ngIf="config.required" class="fa-regular fa-asterisk required-star"></i> {{(config.label || '') | translate}}</label>
+       class="radio-label"><i *ngIf="config?.required" class="fa-regular fa-asterisk required-star"></i> {{(config.label || '') | translate}}</label>
        <p *ngIf="config.desc" class="radio-desc">{{(config.desc || '') | translate}}</p>
        <p *ngIf="config.hint" class="radio-hint">{{(config.hint || '') | translate}}</p>
+    <div class="radio-buttons">
     <div *ngFor="let option of config.options; let index = index" class="radio">
-        <ng-container [ngSwitch]="getSize(option.sizeOverride)">
-            <ng-container *ngSwitchCase="sizes.small">
-                <ng-container *ngIf="config.error || option.error">
-                    <input type="radio" value="{{option.value || option.text}}"
-                         [id]="config.id + index" size="small" class="ng-invalid"
-                         [formControlName]="config.id ?? 'formControl'"
-                         [attr.disabled]='getDisabled(index)'>
-                </ng-container>
-                <ng-container *ngIf="!config.error && !option.error">
-                    <input type="radio" value="{{option.value || option.text}}"
-                        [id]="config.id + index" size="small"
-                        [formControlName]="config.id ?? 'formControl'"
-                        [attr.disabled]='getDisabled(index)'>
-                </ng-container>
-            </ng-container>
-
             <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
-            <ng-container *ngSwitchDefault>
-                <ng-container *ngIf="config.error || option.error">
                     <input type="radio" value="{{option.value || option.text}}"
-                        [id]="config.id + index" size="large" class="ng-invalid"
+                        [id]="config.id + index"
                         [formControlName]="config.id ?? 'formControl'"
-                        [attr.disabled]='getDisabled(index)'>
-                </ng-container>
-                <ng-container *ngIf="!config.error && !option.error">
-                    <input type="radio" value="{{option.value || option.text}}"
-                        [id]="config.id + index" size="large"
-                        [formControlName]="config.id ?? 'formControl'"
-                        [attr.disabled]='getDisabled(index)'>
-                </ng-container>
-            </ng-container>
-        </ng-container>
-
-        <label for="{{config.id}}">{{(option.text || '') | translate}}</label>
+                        [attr.disabled]='getDisabled(index)'
+                        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config?.size" >
+        <label for="{{config.id}}" [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config?.size + '_label'">{{(option.text || '') | translate}}</label>
     </div>
+   </div>
     <ng-container *ngIf="config.formGroup.get(config.id)?.touched && config.formGroup.get(config.id)?.invalid">
         <ng-container *ngFor="let errors of config.errorMessages; let i = index">
-          <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]">
+          <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
             <lib-error [id]="config.id + '_error' + i" [errorLOV]="errors.errorLOV"></lib-error>
           </div>
         </ng-container>

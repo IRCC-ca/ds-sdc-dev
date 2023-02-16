@@ -9,7 +9,7 @@ export interface ICheckBoxComponentConfig {
   size?: keyof typeof DSSizes | DSSizes;
   mixed?: true;
   disableFocus?: boolean; //Default is true
-  label?: string;
+  inlineLabel?: string;
   id: string; //used for identifying the component everywhere and should NEVER be missing
   helpText?: string;
   customErrorText?: string;

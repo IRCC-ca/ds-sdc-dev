@@ -57,7 +57,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   private onTouch?: () => void;
   private onChange?: (value: any) => void;
 
-
   ngOnInit() {
     if (this.id !== '') {
       this.config.id = this.id;
@@ -87,6 +86,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   writeValue(value: string): void {
   }
   registerOnChange(fn: any): void {
+    console.log('type', this.config.type);
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
