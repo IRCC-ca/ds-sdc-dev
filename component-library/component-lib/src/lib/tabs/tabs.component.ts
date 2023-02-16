@@ -22,9 +22,7 @@ export class TabsComponent implements OnInit {
     id: '',
     size: 'large'
   }
-
-  @Output() click: EventEmitter<any> = new EventEmitter();
-
+  
   constructor() { }
 
   ngOnInit() {
