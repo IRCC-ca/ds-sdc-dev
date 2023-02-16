@@ -96,7 +96,7 @@ export class MahsaComponent implements OnInit {
       {
         id: 'required',
         formGroup: this.form,
-        label: 'Required/Optional',
+        inlineLabel: 'Required/Optional',
       },
     ],
     inputs: [
@@ -139,7 +139,7 @@ export class MahsaComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
     this.form.addControl(this.qaSelect.id, new FormControl());
-    
+
     this.form.valueChanges.subscribe(value => {
       let updatedConfig: IDropdownInputConfig = {
         id: this.SELECT_ID,

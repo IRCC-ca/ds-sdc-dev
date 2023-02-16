@@ -17,6 +17,23 @@
     }
 }
 
+@mixin small-styles(){
+    height: token-size.$relative-1-25;
+    width: token-size.$relative-1-25;
+    @include checked-circle-size(
+        token-size.$radio-selected-border-radius-small
+    );
+}
+
+@mixin large-styles(){
+    height: token-size.$relative-1-5;
+    width: token-size.$relative-1-5;
+    @include checked-circle-size(
+        token-size.$radio-selected-border-radius-large
+    );
+}
+
+
 @mixin layout {
     border-radius: token-size.$border-radius-circle;
     appearance: none;
@@ -27,10 +44,22 @@
     vertical-align: top;
     cursor: pointer;
 
-    @include size();
+    @include size.selector(small) {
+        @include small-styles();
+        &.large {
+            @include large-styles();
+        }
+    }
+
+    @include size.selector(large) {
+        @include large-styles();
+        &.small {
+            @include small-styles();
+        }
+    }
 
     @include device.if-hover {
-        color: var(--formcontrol-hover);
+            color: var(--formcontrol-hover);
     }
 
     &:disabled {
@@ -71,8 +100,8 @@
     }
 }
 
-@mixin invalid {
-    &:invalid, &.ng-invalid.ng-touched{
+@mixin invalid {  
+    &:invalid:not(:disabled), &.ng-invalid.ng-touched:not(:disabled){
         --border: var(--critical-background);
         background-color: var(--critical-background-weak);
 
@@ -103,25 +132,5 @@
 @mixin checked-circle-size($border-size) {
     &:checked {
         box-shadow: $border-size;
-    }
-}
-
-@mixin size {
-    @include size.selector(small) {
-        height: token-size.$relative-1-25;
-        width: token-size.$relative-1-25;
-
-        @include checked-circle-size(
-            token-size.$radio-selected-border-radius-small
-        );
-    }
-
-    @include size.selector(large) {
-        height: token-size.$relative-1-5;
-        width: token-size.$relative-1-5;
-
-        @include checked-circle-size(
-            token-size.$radio-selected-border-radius-large
-        );
     }
 }
