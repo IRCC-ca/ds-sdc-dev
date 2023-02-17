@@ -69,7 +69,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     if (!this.config.type){
       this.config.type = 'text';
     }
-    console.log(this.config.type);
   }
 
   public focusInput(focusValue: boolean): void {
