@@ -1,4 +1,4 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
 export interface ITabNavConfig {
@@ -20,10 +20,7 @@ export class TabsComponent implements OnInit {
 
   @Input() config: ITabNavConfig = {
     id: '',
-    size: 'large'
   }
-  
-  constructor() { }
 
   ngOnInit() {
     if (this.config.selected === undefined && this.config.tab) {
