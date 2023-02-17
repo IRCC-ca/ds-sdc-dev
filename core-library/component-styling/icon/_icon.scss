@@ -14,11 +14,10 @@
 }
 
 @mixin layout {
-.font-icon {
-    &::before {
-        --font-unicode: inherit;
-        @include typography.fonts-FA-variable-icon(--font-unicode);
+    .font-icon {
+        &::before {
+            --font-unicode: inherit;
+            @include typography.fonts-FA-variable-icon(--font-unicode);
+        }
     }
-}
-
 }
