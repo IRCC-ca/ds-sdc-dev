@@ -2,6 +2,8 @@
  * Public API Surface of ircc-ds-angular-component-library
  */
 
+export * from './shared/functions/stand-alone.functions'
+
 export * from './lib/ircc-ds-angular-component-library.service';
 export * from './lib/ircc-ds-angular-component-library.component';
 export * from './lib/ircc-ds-angular-component-library.module';

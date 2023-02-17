@@ -2,6 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorPairs } from '../../shared/interfaces/component-configs';
+import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export declare enum DropdownType {
   secondary = "secondary",
@@ -65,9 +66,8 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  constructor() { }
+  constructor(public standAloneFunctions: StandAloneFunctions) { }
 
   ngOnInit(): void {
   }
-
 }
