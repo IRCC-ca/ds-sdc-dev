@@ -1,0 +1,80 @@
+@use '../../util/theme' as theme;
+@use '../../util/size' as size;
+@use '../../tokens/template-const';
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use '../../util/device' as device;
+@use '../../tokens/sizes';
+@use 'sass:map';
+$selectors: 'lib-tabs';
+
+@mixin selectors {
+	#{$selectors}#{template-const.$escape} {
+		@content;
+	}
+}
+
+@mixin create {
+	@include selectors() {
+	  @include layout();
+	}
+}
+
+@mixin size-large() {
+	.tabs-btn {
+		font-size: 20px;
+		line-height: 28px;
+	}
+	button:where([selected])::after {
+		transform: translateY(sizes.$fixed-12);
+	}
+}
+@mixin size-small() {
+	.tabs-btn {
+		font-size: 16px;
+		line-height: 24px;
+		padding: 8px 16px;
+	}
+	button:where([selected])::after {
+		transform: translateY(sizes.$fixed-8);
+	}
+	.content {
+		font-size: 14px;
+	}
+}
+
+@mixin layout {
+	
+	@include device.in-phone-layout {
+		.page-nav {
+			overflow: auto;
+			white-space: nowrap;
+		}
+	}
+
+	@include size.selector(large) {
+    @include size-large();
+    .small {
+      @include size-small()
+    }  
+  }
+
+  @include size.selector(small) {
+    @include size-small();
+    .large {
+      @include size-large()
+    }  
+  }
+
+	.page-nav {
+		display: flex;
+	}
+
+	.tabs-btn {
+		margin-right: 4px;
+		font-weight: 400;
+		&:where([selected]) {
+			font-weight: 700;
+		}
+	}
+}
