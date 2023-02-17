@@ -29,14 +29,14 @@ export class LanguageSwitchComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: object,
     private langToggle: LanguageSwitchButtonService,
     private translate: TranslateService) { 
-      this.isMobile = window.innerWidth <= 768;
+      this.isMobile = window.innerWidth <= 768; //tablet breakpoint
     }
 
   /** Listens for screen resizes and sets mobile-tablet boolean */
   @HostListener('window:resize', ['$event'])
   handleResize(e: any) {
     if (isPlatformBrowser(this.platformId)) {
-      this.isMobile = window.innerWidth <= 768;
+      this.isMobile = window.innerWidth <= 768; //tablet breakpoint
       this.setText(this.translate.currentLang);
     }
   }
