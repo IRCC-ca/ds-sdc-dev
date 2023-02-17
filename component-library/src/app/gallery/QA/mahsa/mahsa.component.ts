@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDropdownInputConfig } from 'ircc-ds-angular-component-library';
+import { IDropdownInputConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 @Component({
   selector: 'app-mahsa',
@@ -12,6 +12,7 @@ export class MahsaComponent implements OnInit {
   form = new FormGroup({});
 
   SELECT_ID = 'qa_test_select';
+  TAB_ID = 'qa-test-tabs';
 
   qaSelect: IDropdownInputConfig = {
     id: this.SELECT_ID,
@@ -21,6 +22,17 @@ export class MahsaComponent implements OnInit {
       { text: 'Option 2'},
     ],
   };
+
+  qaTabs: ITabNavConfig = {
+    id: this.TAB_ID,
+    tab: [
+      { id: 'home', title: 'Home', value: 'This is Home' },
+      { id: 'profile', title: 'Profile', value: 'This is Profile' },
+      { id: 'contact', title: 'Contact', value: 'This is Contact' },
+      { id: 'products', title: 'Products', value: 'This is Products' },
+      { id: 'login', title: 'Login', value: 'This is Login' },
+    ],
+  }
 
   testerConfig: IAutoTestConfigObject = {
     dropdowns: [
@@ -84,7 +96,7 @@ export class MahsaComponent implements OnInit {
       {
         id: 'required',
         formGroup: this.form,
-        label: 'Required/Optional',
+        inlineLabel: 'Required/Optional',
       },
     ],
     inputs: [
@@ -127,16 +139,21 @@ export class MahsaComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
     this.form.addControl(this.qaSelect.id, new FormControl());
-    
+
     this.form.valueChanges.subscribe(value => {
       let updatedConfig: IDropdownInputConfig = {
         id: this.SELECT_ID,
         formGroup: this.form
       };
+      let tabUpdatedConfig: ITabNavConfig = {
+        id: this.TAB_ID,
+      };
 
       for(let param in value) {
         updatedConfig = { ...updatedConfig, [param]: value[param] }
+        tabUpdatedConfig = { ...tabUpdatedConfig, [param]: value[param] }
         this.qaSelect = updatedConfig;
+        this.qaTabs = tabUpdatedConfig;
       }
     });
   }
@@ -170,5 +187,19 @@ export class MahsaComponent implements OnInit {
   resetError() {
     this.qaSelect?.formGroup.get('smallErrorMessages')?.reset();
     this.qaSelect?.formGroup.get('largeErrorMessages')?.reset();
+  };
+
+  disableSelectedBtn() {
+    this.qaTabs?.tab?.forEach((item: any) => {
+      if (document.getElementById(item.id)?.hasAttribute("selected")) {
+        document.getElementById(item.id)?.setAttribute("disabled", '');
+      } else {
+        document.getElementById(item.id)?.removeAttribute("disabled");
+      }
+    });
+  };
+
+  size() {
+    this.qaTabs.size = 'small';
   };
 }

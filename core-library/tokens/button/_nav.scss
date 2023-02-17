@@ -42,9 +42,7 @@
         content: '';
         height:sizes.$fixed-4;
         background: var(--navigation);
-        border-radius: sizes.$fixed-4;
         display: block;
-
     }
     &:where([selected]){
         --text: var(--text-primary);

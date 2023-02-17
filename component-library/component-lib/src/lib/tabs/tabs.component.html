@@ -1,0 +1,30 @@
+<div class="{{config.size}}">
+  <nav class="page-nav">
+    <div *ngFor="let val of config.tab;">
+      <button 
+        *ngIf="val.id === config.selected" selected 
+        class="tabs-btn" 
+        [id]="val.id" 
+        (click)=setSelected(val.id)
+        [attr.aria-label]="val.title + ' selected'">
+        {{ val.title }}
+      </button>
+      <button 
+        *ngIf="val.id !== config.selected" 
+        class="tabs-btn" [id]="val.id" 
+        (click)=setSelected(val.id)>
+        {{ val.title }}
+      </button>
+    </div>
+  </nav>
+  <br>
+  <div class="col-lg-10">
+    <div class="side-menu-content">
+      <div *ngFor="let cont of config.tab">
+        <div *ngIf="cont.id === config.selected" class="content">
+          {{ cont.value }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
