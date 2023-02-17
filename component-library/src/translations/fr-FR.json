@@ -44,6 +44,10 @@
   "Home": "Accueil",
   "Version": "Version",
 
+  "Header": {
+    "header-img-alt-text": "Gouvernement du Canada"
+  },
+
   "Input_Component": {
     "Password-icon" : {
       "show_password_aria-label": "afficher le texte du mot de passe",
