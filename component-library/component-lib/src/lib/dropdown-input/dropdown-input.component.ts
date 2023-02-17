@@ -38,7 +38,7 @@ export interface IDropdownInputOptionsConfig {
     }
   ]
 })
-export class DropdownInputComponent implements OnInit, ControlValueAccessor {
+export class DropdownInputComponent implements ControlValueAccessor {
   touched = false;
 
   @Input() config: IDropdownInputConfig = {
@@ -46,6 +46,8 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
     formGroup: new FormGroup({}),
     category: 'secondary',
   }
+
+  constructor(public standAloneFunctions: StandAloneFunctions) { }
 
   onChange = (formValue: string) => { };
   onTouched = () => { };
@@ -64,10 +66,5 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
       this.onTouched();
       this.touched = true;
     }
-  }
-
-  constructor(public standAloneFunctions: StandAloneFunctions) { }
-
-  ngOnInit(): void {
   }
 }
