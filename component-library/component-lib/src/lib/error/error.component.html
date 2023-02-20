@@ -1,4 +1,4 @@
 <div id="{{config?.id}}" class="errorContainer" [ngClass]="config?.size">
     <i [ngClass]="(config?.icon !== undefined) ? config?.icon?.class : 'fa-light fa-circle-exclamation'" class="errorIcon"></i>
-    <p class="errorText">{{config?.errorLOV || '' | translate}}</p>
+    <p class="errorText">{{(config?.errorLOV || '') | translate}}</p>
 </div>
