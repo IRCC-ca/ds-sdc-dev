@@ -6,6 +6,8 @@ import {IErrorPairs} from "../../shared/interfaces/component-configs";
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
+  label?: string;
+  required?: boolean;
   size?: keyof typeof DSSizes | DSSizes;
   mixed?: true;
   disableFocus?: boolean; //Default is true

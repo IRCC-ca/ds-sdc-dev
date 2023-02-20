@@ -11,12 +11,95 @@ import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/a
 })
 export class MichaelComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({});
-  INPUT_ID = 'qa_test_input';
+  form_0: FormGroup = new FormGroup({});
+  CHECKBOX_ID = 'qa_test_checkbox';
+  qaCheckboxConfig : IInputComponentConfig = {
+    id: this.CHECKBOX_ID,
+    formGroup: this.form_0,
+    errorMessages: [
+      {key: 'invalid', errorLOV: 'This field is invalid.'},
+      {key: 'testingError', errorLOV: 'Test error message.'},
+      {key: 'maxlength' , errorLOV:'This field has exceeded max length.'},
+    ]
+  };
+  testerCheckboxConfig: IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'label',
+        formGroup: this.form_0,
+        label: 'Label/ Title'
+      },
+      {
+        id: 'desc',
+        formGroup: this.form_0,
+        label: 'Description'
+      },
+      {
+        id: 'helpText',
+        formGroup: this.form_0,
+        label: 'Help Text'
+      },
+      {
+        id: 'inlineLabel',
+        formGroup: this.form_0,
+        label: 'Inline Label'
+      },
+    ],
+    checkboxes: [
+      {
+        id: 'required',
+        formGroup: this.form_0,
+        inlineLabel: 'Required',
+      },
+      {
+        id: 'mixed',
+        formGroup: this.form_0,
+        inlineLabel: 'Mixed',
+      },
+    ],
+    dropdowns: [
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form_0,
+        options: [
+          {
+            text: 'small'
+          },
+          {
+            text: 'large'
+          }
+        ]
+      },
+      {
+        id: 'errorIcon',
+        label: 'Error Icon',
+        formGroup: this.form_0,
+        options: [
+          {
+            text: 'X mark',
+            value: 'fa-solid fa-circle-xmark'
+          },
+          {
+            text: 'Skull crossbones',
+            value: 'fa-solid fa-skull-crossbones'
+          }
+        ]
+      }
+    ]
+  }
+  testCheckboxComponentConfig: IAutoTestComponentConfig = {
+    id: 'michael_checkbox_tester',
+    formGroup: this.form_0,
+    testFields: this.testerCheckboxConfig
+  }
+
   checkboxesConfigs: ICheckBoxComponentConfig[] = [
     { //checkbox1
       id: 'checkbox_label_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
+      label: 'Label text',
+      required: true,
       inlineLabel: 'Testing Label',
       helpText: 'Hint text',
       desc: 'Description line of text',
@@ -24,7 +107,9 @@ export class MichaelComponent implements OnInit {
     },
     { //checkbox2
       id: 'checkbox_small_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
+      label: 'Label text',
+      required: true,
       inlineLabel: 'Small Test',
       size: 'small',
       helpText: 'Hint text',
@@ -32,7 +117,7 @@ export class MichaelComponent implements OnInit {
     },
     { //checkbox3
       id: 'checkbox_error_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
       inlineLabel: 'Error Test',
       customErrorText: 'Error Message',
       helpText: 'Test help text',
@@ -40,31 +125,31 @@ export class MichaelComponent implements OnInit {
     },
     {
       id: 'checkbox_form_disabled_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
       inlineLabel: 'Form Disabled Test',
       helpText: 'Test help text',
       desc: 'Description line of disabled test',
     },
     {
       id: 'checkbox_form_error_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
       inlineLabel: 'Form Error Test',
       errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}]
     },
     {
       id: 'checkbox_validators_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
       inlineLabel: 'Form Validators Test',
     },
     {
       id: 'checkbox_mixed_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
       mixed: true,
       inlineLabel: 'Form Mixed Test',
     },
     {
       id: 'checkbox_mixed_error_test',
-      formGroup: this.form,
+      formGroup: this.form_0,
       mixed: true,
       inlineLabel: 'Form Mixed Error Test',
       customErrorText: 'Error Message for Mixed Error Test',
@@ -73,7 +158,7 @@ export class MichaelComponent implements OnInit {
     },
     {
       id: 'checkbox_mixed_error_test2',
-      formGroup: this.form,
+      formGroup: this.form_0,
       mixed: true,
       size: 'small',
       inlineLabel: 'Form Mixed Error Small Test',
@@ -83,6 +168,8 @@ export class MichaelComponent implements OnInit {
     },
   ];
 
+  form: FormGroup = new FormGroup({});
+  INPUT_ID = 'qa_test_input';
   qaInputConfig : IInputComponentConfig = {
     id: this.INPUT_ID,
     formGroup: this.form,
@@ -92,7 +179,7 @@ export class MichaelComponent implements OnInit {
       {key: 'maxlength' , errorLOV:'This field has exceeded max length.'},
     ]
   };
-  testerConfig: IAutoTestConfigObject = {
+  testerInputConfig: IAutoTestConfigObject = {
     inputs: [
       {
         id: 'label',
@@ -166,10 +253,10 @@ export class MichaelComponent implements OnInit {
       }
     ]
   }
-  testComponentConfig: IAutoTestComponentConfig = {
-    id: 'michael_tester',
+  testInputComponentConfig: IAutoTestComponentConfig = {
+    id: 'michael_input_tester',
     formGroup: this.form,
-    testFields: this.testerConfig
+    testFields: this.testerInputConfig
   }
   constructor(private altLang: LanguageSwitchService) { }
 
@@ -178,19 +265,19 @@ export class MichaelComponent implements OnInit {
 
     this.checkboxesConfigs.forEach(i => {
       if (i.id !== 'checkbox_validators_test') {
-        this.form.addControl(i.id, new FormControl());
+        this.form_0.addControl(i.id, new FormControl());
       }
     })
-    this.form.addControl(this.checkboxesConfigs[5]?.id, new FormControl('', [Validators.required]));
+    this.form_0.addControl(this.checkboxesConfigs[5]?.id, new FormControl('', [Validators.required]));
 
-    // Auto tester component configs
-    this.testerConfig.dropdowns?.forEach(i => {
+    // Auto tester component configs - Input
+    this.testerInputConfig.dropdowns?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.testerConfig.checkboxes?.forEach(i => {
+    this.testerInputConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.testerConfig.inputs?.forEach(i => {
+    this.testerInputConfig.inputs?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
 
@@ -214,28 +301,56 @@ export class MichaelComponent implements OnInit {
         this.qaInputConfig = updatedConfig;
       }
     })
+
+    // Auto tester component configs - Checkbox
+    this.testerCheckboxConfig.dropdowns?.forEach(i => {
+      this.form_0.addControl(i.id, new FormControl());
+    });
+    this.testerCheckboxConfig.checkboxes?.forEach(i => {
+      this.form_0.addControl(i.id, new FormControl());
+    });
+    this.testerCheckboxConfig.inputs?.forEach(i => {
+      this.form_0.addControl(i.id, new FormControl());
+    });
+
+    this.form_0.addControl(this.qaCheckboxConfig.id, new FormControl());
+    this.form_0.valueChanges.subscribe(x => {
+      let updatedConfig: ICheckBoxComponentConfig = {
+        id: this.CHECKBOX_ID,
+        formGroup: this.form_0,
+        errorMessages: this.qaCheckboxConfig.errorMessages
+      };
+      for(let param in x){
+        if (x[param] === null) continue;
+        updatedConfig = {...updatedConfig, [param] : x[param]}
+        // console.log('updatedConfig: ', updatedConfig);
+        if (param === 'errorIcon') {
+          updatedConfig = {...updatedConfig, ['errorIcon'] : {
+              class: x[param]
+            }}
+        }
+        this.qaCheckboxConfig = updatedConfig;
+      }
+    })
+    // Set default values for Checkbox
+    this.form_0.patchValue({
+      'label': 'Test label',
+      'inlineLabel': 'Test inline label',
+      'desc': 'Description line of text',
+      'helpText': 'Test help text'
+    });
   }
 
   buttonActions(actionType: string) {
     switch (actionType) {
       case 'disableCheckbox':
-        this.form.get('checkbox_form_disabled_test')?.disabled ?
-          this.form.get('checkbox_form_disabled_test')?.enable() : this.form.get('checkbox_form_disabled_test')?.disable();
-
-        this.form.get('checkbox_form_error_test')?.disabled ?
-          this.form.get('checkbox_form_error_test')?.enable() : this.form.get('checkbox_form_error_test')?.disable();
+        this.form_0.get(this.CHECKBOX_ID)?.disabled ?
+          this.form_0.get(this.CHECKBOX_ID)?.enable() : this.form_0.get(this.CHECKBOX_ID)?.disable();
         break;
       case 'checkboxError':
-        [
-          'checkbox_form_error_test',
-          this.checkboxesConfigs[2].id,
-          this.checkboxesConfigs[7].id,
-          this.checkboxesConfigs[8].id
-        ].forEach((id) => {
-          this.form.get(id)?.valid ?
-            this.form.get(id)?.setErrors({ 'invalid': true }) :
-            this.form.get(id)?.reset();
-        })
+        this.form_0.get(this.CHECKBOX_ID)?.valid ?
+          this.form_0.get(this.CHECKBOX_ID)?.setErrors({ 'invalid': true }) :
+          this.form_0.get(this.CHECKBOX_ID)?.reset();
 
         this.form.updateValueAndValidity();
         break;
