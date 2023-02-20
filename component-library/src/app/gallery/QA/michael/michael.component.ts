@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import {ICheckBoxComponentConfig, IInputComponentConfig} from 'ircc-ds-angular-component-library';
 import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/auto-tester/auto-tester.component";
 
@@ -17,9 +17,9 @@ export class MichaelComponent implements OnInit {
     id: this.CHECKBOX_ID,
     formGroup: this.form_0,
     errorMessages: [
-      {key: 'invalid', errorLOV: 'This field is invalid.'},
-      {key: 'testingError', errorLOV: 'Test error message.'},
-      {key: 'maxlength' , errorLOV:'This field has exceeded max length.'},
+      {key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid'},
+      {key: 'testingError', errorLOV: 'ERROR.testErrorMessage'},
+      {key: 'maxlength' , errorLOV:'ERROR.fieldExceededMaxLength'},
     ]
   };
   testerCheckboxConfig: IAutoTestConfigObject = {
@@ -94,89 +94,15 @@ export class MichaelComponent implements OnInit {
     testFields: this.testerCheckboxConfig
   }
 
-  checkboxesConfigs: ICheckBoxComponentConfig[] = [
-    { //checkbox1
-      id: 'checkbox_label_test',
-      formGroup: this.form_0,
-      label: 'Label text',
-      required: true,
-      inlineLabel: 'Testing Label',
-      helpText: 'Hint text',
-      desc: 'Description line of text',
-      disableFocus: true, //TODO: Not working,
-    },
-    { //checkbox2
-      id: 'checkbox_small_test',
-      formGroup: this.form_0,
-      label: 'Label text',
-      required: true,
-      inlineLabel: 'Small Test',
-      size: 'small',
-      helpText: 'Hint text',
-      desc: 'Description line of small test',
-    },
-    { //checkbox3
-      id: 'checkbox_error_test',
-      formGroup: this.form_0,
-      inlineLabel: 'Error Test',
-      customErrorText: 'Error Message',
-      helpText: 'Test help text',
-      desc: 'Description line of error test',
-    },
-    {
-      id: 'checkbox_form_disabled_test',
-      formGroup: this.form_0,
-      inlineLabel: 'Form Disabled Test',
-      helpText: 'Test help text',
-      desc: 'Description line of disabled test',
-    },
-    {
-      id: 'checkbox_form_error_test',
-      formGroup: this.form_0,
-      inlineLabel: 'Form Error Test',
-      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}]
-    },
-    {
-      id: 'checkbox_validators_test',
-      formGroup: this.form_0,
-      inlineLabel: 'Form Validators Test',
-    },
-    {
-      id: 'checkbox_mixed_test',
-      formGroup: this.form_0,
-      mixed: true,
-      inlineLabel: 'Form Mixed Test',
-    },
-    {
-      id: 'checkbox_mixed_error_test',
-      formGroup: this.form_0,
-      mixed: true,
-      inlineLabel: 'Form Mixed Error Test',
-      customErrorText: 'Error Message for Mixed Error Test',
-      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}],
-      errorIcon: {class: 'fa-solid fa-circle-xmark'}
-    },
-    {
-      id: 'checkbox_mixed_error_test2',
-      formGroup: this.form_0,
-      mixed: true,
-      size: 'small',
-      inlineLabel: 'Form Mixed Error Small Test',
-      customErrorText: 'Error Message for Mixed Error Small Test',
-      errorMessages: [{key: 'invalid', errorLOV: 'This field is invalid.'}],
-      errorIcon: {class: 'fa-solid fa-circle-xmark'}
-    },
-  ];
-
   form: FormGroup = new FormGroup({});
   INPUT_ID = 'qa_test_input';
   qaInputConfig : IInputComponentConfig = {
     id: this.INPUT_ID,
     formGroup: this.form,
     errorMessages: [
-      {key: 'invalid', errorLOV: 'This field is invalid.'},
-      {key: 'testingError', errorLOV: 'Test error message.'},
-      {key: 'maxlength' , errorLOV:'This field has exceeded max length.'},
+      {key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid'},
+      {key: 'testingError', errorLOV: 'ERROR.testErrorMessage'},
+      {key: 'maxlength' , errorLOV: 'ERROR.fieldExceededMaxLength'},
     ]
   };
   testerInputConfig: IAutoTestConfigObject = {
@@ -262,13 +188,6 @@ export class MichaelComponent implements OnInit {
 
   ngOnInit() {
     this.altLang.setAltLangLink('michael-alt');
-
-    this.checkboxesConfigs.forEach(i => {
-      if (i.id !== 'checkbox_validators_test') {
-        this.form_0.addControl(i.id, new FormControl());
-      }
-    })
-    this.form_0.addControl(this.checkboxesConfigs[5]?.id, new FormControl('', [Validators.required]));
 
     // Auto tester component configs - Input
     this.testerInputConfig.dropdowns?.forEach(i => {
