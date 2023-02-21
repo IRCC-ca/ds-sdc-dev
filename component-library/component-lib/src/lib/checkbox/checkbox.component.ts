@@ -3,6 +3,7 @@ import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms
 import {DSSizes} from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import {IErrorIconConfig} from "../error/error.component";
 import {IErrorPairs} from "../../shared/interfaces/component-configs";
+import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
@@ -46,6 +47,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() id = '';
 
   isDisabled = false;
+
+  constructor(public standAloneFunctions: StandAloneFunctions) { }
 
   onTouch = () => {};
   onChange = () => {};

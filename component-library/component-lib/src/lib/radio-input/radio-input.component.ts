@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { IErrorPairs } from '../../shared/interfaces/component-configs';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export interface IRadioInputComponentConfig {
   id: string;
@@ -54,6 +55,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   };
   @Input() id = '';
   @Input() formGroup = this.formGroupEmpty;
+
+  constructor(public standAloneFunctions: StandAloneFunctions) { }
 
   onChange = (formValue: string) => { };
   onTouched = () => { };
