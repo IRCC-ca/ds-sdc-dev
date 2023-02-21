@@ -57,12 +57,12 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Small Error',
         errorMessages: [
-          { key:'maxlength' , errorLOV:'Error message' }, 
-          { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+          { key: 'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
-          { text: 'Maxlength' }, 
-          { text: 'TestingError' }, 
+          { text: 'Maxlength' },
+          { text: 'TestingError' },
           { text: 'Both Errors' }
         ],
         size: 'small'
@@ -72,12 +72,12 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Large Error',
         errorMessages: [
-          { key:'maxlength' , errorLOV:'Error message' }, 
-          { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+          { key:'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
-          { text: 'Maxlength' }, 
-          { text: 'TestingError' }, 
+          { text: 'Maxlength' },
+          { text: 'TestingError' },
           { text: 'Both Errors' }
         ],
         size: 'large'

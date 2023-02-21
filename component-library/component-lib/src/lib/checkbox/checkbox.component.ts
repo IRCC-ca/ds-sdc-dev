@@ -7,6 +7,8 @@ import { StandAloneFunctions } from '../../shared/functions/stand-alone.function
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
+  label?: string;
+  required?: boolean;
   size?: keyof typeof DSSizes | DSSizes;
   mixed?: true;
   disableFocus?: boolean; //Default is true
