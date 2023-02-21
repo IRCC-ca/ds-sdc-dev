@@ -57,7 +57,8 @@ export class BannerComponent implements OnInit {
     id: '', //id is set in ngOnInit
     category: 'custom',
     icon:  {
-      class: 'fa-solid fa-xmark'
+      class: 'fa-solid fa-xmark',
+      color: 'var(--text-primary)'
     }
   };
 

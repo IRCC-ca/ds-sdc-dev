@@ -50,6 +50,9 @@
     .banner-container{
         padding: 16px; 
     }
+    .banner-text{
+        gap: 8px;
+    }
     
 }
 
@@ -68,6 +71,9 @@
     }
     .banner-container{
         padding: 12px; 
+    }
+    .banner-text{
+        gap: 4px;
     }
 }
 
@@ -105,7 +111,7 @@
     .banner-container{
         display: flex;
         flex-direction: row;
-        align-items: flex-start;
+        align-items: center;
         gap: 12px;
         width: 100%;     
     }
@@ -130,6 +136,11 @@
         justify-items: center;
         height: 100%;
         gap: 12px;
+
+        div {
+            align-items: center;
+            display: flex;
+        }
     }
 
     .banner-line{
@@ -142,14 +153,12 @@
         width: 95%;
         overflow-wrap: break-word;
         align-self: center;
-    }
-
-    .banner-title{
-        margin-bottom: 8px;
+        display: flex;
+        flex-direction: column;
     }
 
     .banner-content{
-        align-self: center;
+        align-self: flex-start;
         * {
             margin: 2px 0;
         }
