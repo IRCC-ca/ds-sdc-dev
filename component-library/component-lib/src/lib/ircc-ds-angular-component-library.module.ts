@@ -18,7 +18,6 @@ import { ButtonComponent } from './button/button.component';
 import { IconComponent } from './icon/icon.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { LanguageSwitchComponent } from './language-switch/language-switch.component';
-import { BannerComponent } from './banner/banner.component';
 import { ErrorComponent } from './error/error.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { RouterModule } from '@angular/router';
@@ -43,7 +42,6 @@ import { RouterModule } from '@angular/router';
     IconComponent,
     IconButtonComponent,
     LanguageSwitchComponent,
-    BannerComponent,
     ErrorComponent,
     TabsComponent
   ],
@@ -52,7 +50,7 @@ import { RouterModule } from '@angular/router';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     IrccDsAngularComponentLibraryComponent,
@@ -71,7 +69,6 @@ import { RouterModule } from '@angular/router';
     IconComponent,
     IconButtonComponent,
     LanguageSwitchComponent,
-    BannerComponent,
     ErrorComponent,
     TabsComponent
   ]
