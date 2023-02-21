@@ -9,20 +9,22 @@
         [formControlName]="config.id" />
       <span class="checkmark"></span>
     </div>
-    <label class="label" for="{{config.id}}" [attr.aria-label]="
-    config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-      ? (config.inlineLabel || '' | translate) + ' ' +
-        (config.helpText || '' | translate) + ' ' +
-        ('INPUT.ERROR' | translate) + ' ' +
-        (config.customErrorText || '' | translate) :
-        (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
-  " [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{
-      config.inlineLabel || '' }}</label>
+    <label class="label" for="{{config.id}}" 
+      [attr.aria-label]="
+        config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty 
+        ? (config.inlineLabel || '' | translate) + ' ' +
+          (config.helpText || '' | translate) + ' ' + 
+          ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) 
+        :
+          (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
+      " 
+      [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{config.inlineLabel || '' }}
+    </label>
   </div>
   <div *ngIf="getErrorState()" class="check-error" [ngClass]="{'small': config.size === 'small' }">
     <ng-container *ngFor="let error of config.errorMessages; index as i">
       <div *ngIf="config.formGroup.get(config.id)?.errors?.[error.key]">
-        <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon"></lib-error>
+        <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon" aria-live="polite"></lib-error>
       </div>
     </ng-container>
   </div>
