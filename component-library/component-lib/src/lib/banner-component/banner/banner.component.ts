@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IIconButtonComponentConfig, IIconButtonIconConfig } from '../icon-button/icon-button.component';
-import { IButtonConfig } from '../button/button.component';
+import { IIconButtonComponentConfig, IIconButtonIconConfig } from '../../shared/icon-button/icon-button.component';
+import { IButtonConfig } from '../../shared/button/button.component';
 
 export enum BannerType {
   '' = '',
