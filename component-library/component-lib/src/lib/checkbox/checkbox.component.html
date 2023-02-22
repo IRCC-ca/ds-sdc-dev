@@ -1,7 +1,7 @@
 <form class="checkbox-container" [formGroup]="config.formGroup">
   <div class="checkbox-container" [ngClass]="config.size">
     <label *ngIf="config.label" class="checkbox-label"
-           [attr.aria-label]="
+       [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
           ? (config.label || '' | translate) + ' ' +
             (config.desc || '' | translate) + ' ' + ('INPUT.ERROR' | translate) + ' ' +
@@ -19,30 +19,32 @@
         {{(config.label || '') | translate}}
       </div>
     </label>
-    <p *ngIf="config?.desc" class="check-desc">{{(config.desc || '') | translate}}</p>
-    <p *ngIf="config?.helpText" class="check-hint">{{(config.helpText || '') | translate}}</p>
+    <p *ngIf="config?.desc" class="check-desc" [ngClass]="config.size">{{(config.desc || '') | translate}}</p>
+    <p *ngIf="config?.helpText" class="check-hint" [ngClass]="config.size">{{(config.helpText || '') | translate}}</p>
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
       <div class="checkbox">
         <input id="{{config.id}}" class="check"
-               [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus, error: getErrorState()}"
-               [attr.size]="config.size" type="checkbox"
-               [formControlName]="config.id" />
+          [ngClass]="{ mixed: config?.mixed, focus: !config.disableFocus, error: getErrorState()}"
+          [attr.size]="config.size" type="checkbox"
+          [formControlName]="config.id" />
         <span class="checkmark"></span>
       </div>
-      <label class="label" for="{{config.id}}" [attr.aria-label]="
-    config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-      ? (config.inlineLabel || '' | translate) + ' ' +
-        (config.helpText || '' | translate) + ' ' +
-        ('INPUT.ERROR' | translate) + ' ' +
-        (config.customErrorText || '' | translate) :
-        (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
-  " [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{
-        config.inlineLabel || '' }}</label>
+      <label class="label" for="{{config.id}}"
+        [attr.aria-label]="
+          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+          ? (config.inlineLabel || '' | translate) + ' ' +
+            (config.helpText || '' | translate) + ' ' +
+            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
+          :
+            (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
+        "
+        [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small' }">{{config.inlineLabel || '' }}
+      </label>
     </div>
-    <div *ngIf="getErrorState()" class="check-error">
+    <div *ngIf="getErrorState()" class="check-error" [ngClass]="{'small': config.size === 'small' }">
       <ng-container *ngFor="let error of config.errorMessages; index as i">
         <div *ngIf="config.formGroup.get(config.id)?.errors?.[error.key]">
-          <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon"></lib-error>
+          <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon" aria-live="polite"></lib-error>
         </div>
       </ng-container>
     </div>
