@@ -64,6 +64,13 @@ export class BannerComponent implements OnInit {
 
   eventHandler(emitValue: string){
     console.log(emitValue);
+    if(this.config?.id) {
+      let banner = document.getElementById(this.config?.id);
+      banner?.classList.add('bannerDismissed');
+      setTimeout(function () {
+        banner?.classList.add('noDisplay');
+      }, 300)
+    }
     this.btnEvent?.emit(emitValue);
   }
 

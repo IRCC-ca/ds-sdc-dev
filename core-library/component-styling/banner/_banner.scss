@@ -100,12 +100,26 @@
         display: flex;
         flex-direction: row;
         position: relative;
+        transition: opacity 0.2s linear;
     }
 
     .banner-btn {
         position: absolute;
-        top: 0px;
-        right: 0px;
+        top: 16px;
+        right: 16px;
+        .banner-close {
+            height: 24px;
+            width: 24px;
+            button {
+                padding: 4px 7px;
+                display: flex;
+                align-items: center;
+            }
+            svg {
+                height: 16px;
+                width: 10px;
+            }
+        }
     }
 
     .banner-container{
@@ -174,6 +188,14 @@
 
     .rounded{
         border-radius: 4px;
+    }
+
+    .bannerDismissed {
+        opacity: 0;
+    }
+
+    .noDisplay {
+        display: none;
     }
 
     @include types(information);
