@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     TranslateModule,
     CommonModule,
-    IrccDsAngularComponentsSharedModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,

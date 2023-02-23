@@ -19,6 +19,7 @@ import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-libra
     RouterModule,
     SharedModule,
     IrccDsAngularHeaderFooterModule
+
   ],
   declarations: [
     HeaderComponent,
