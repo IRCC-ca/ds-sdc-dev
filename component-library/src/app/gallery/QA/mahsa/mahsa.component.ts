@@ -57,12 +57,12 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Small Error',
         errorMessages: [
-          { key:'maxlength' , errorLOV:'Error message' }, 
-          { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+          { key: 'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
-          { text: 'Maxlength' }, 
-          { text: 'TestingError' }, 
+          { text: 'Maxlength' },
+          { text: 'TestingError' },
           { text: 'Both Errors' }
         ],
         size: 'small'
@@ -72,12 +72,12 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Large Error',
         errorMessages: [
-          { key:'maxlength' , errorLOV:'Error message' }, 
-          { key: 'testingError', errorLOV: 'Testing error message thing take 1000' }
+          { key:'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
-          { text: 'Maxlength' }, 
-          { text: 'TestingError' }, 
+          { text: 'Maxlength' },
+          { text: 'TestingError' },
           { text: 'Both Errors' }
         ],
         size: 'large'
@@ -145,15 +145,10 @@ export class MahsaComponent implements OnInit {
         id: this.SELECT_ID,
         formGroup: this.form
       };
-      let tabUpdatedConfig: ITabNavConfig = {
-        id: this.TAB_ID,
-      };
 
       for(let param in value) {
-        updatedConfig = { ...updatedConfig, [param]: value[param] }
-        tabUpdatedConfig = { ...tabUpdatedConfig, [param]: value[param] }
+        updatedConfig = { ...updatedConfig, [param]: value[param] };
         this.qaSelect = updatedConfig;
-        this.qaTabs = tabUpdatedConfig;
       }
     });
   }
@@ -200,6 +195,6 @@ export class MahsaComponent implements OnInit {
   };
 
   size() {
-    this.qaTabs.size = 'small';
+    this.qaTabs.size ? this.qaTabs.size = 'large' : this.qaTabs.size = 'small';
   };
 }

@@ -20,25 +20,50 @@
     }
 }
 
+// For size small overwrite
+@mixin size-sm {
+    label, p {
+        font-size: token-size.$fixed-14;
+    }
+    p {
+        margin-bottom: token-size.$fixed-8;
+        font-size: 14px;
+    }
+    label {
+        font-size: 14px;
+        &.checkbox-label {
+            font-size: 16px;
+        }
+    }
+    div.check-error {
+        font-size: 14px;
+        p {
+            margin-top: token-size.$fixed-8;
+        }
+    }
+    .required-star {
+        font-size: 12px;
+        margin-right: 4px;
+    }
+}
+
 @mixin layout {
     .checkbox-layout {
         display: flex;
         align-items: baseline;
     }
     label {
-        &.small {
-            font-size: 14px;
-        }
         &.disabled-label {
             color: var(--text-disabled);
         }
+        &.checkbox-label {
+            font-size: 20px;
+            font-weight: 700;
+        }
     }
     p {
-        &.small {
-            font-size: 14px;
-            margin-bottom: 8px !important;
-        }
         &.check-desc {
+            margin-top: token-size.$fixed-4;
             margin-bottom: token-size.$fixed-12;
         }
         &.check-hint {
@@ -49,16 +74,26 @@
     }
     div.check-error {
         margin-top: token-size.$fixed-8;
-        &.small {
-            font-size: 14px;
+    }
+    .required-field-container {
+        display: flex;
+    }
+    .required-star {
+        color: var(--critical-text);
+        font-weight: 400;
+        line-height: 16px;
+        justify-self: flex-start;
+        margin-right: 5px;
+        font-size: 16px;
+    }
+
+    @include size.selector(small) {
+        @include size-sm();
+    };
+
+    @include size.selector(large) {
+        .small {
+            @include size-sm()
         }
     }
-    @include size.selector(small) {
-        label, p {
-            font-size: token-size.$fixed-14;
-        }
-        p {
-            margin-bottom: token-size.$fixed-8;
-        }
-    };
 }

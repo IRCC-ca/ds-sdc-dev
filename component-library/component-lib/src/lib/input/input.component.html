@@ -3,16 +3,16 @@
     <div class="input-container" [ngClass]="config.size">
       <div class="input-text">
         <label *ngIf="config.label" class="input-label"
-        [attr.aria-label]="
-          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-          ? (config.label || '' | translate) + ' ' +
-            (config.desc || '' | translate) + ' ' + ('INPUT.ERROR' | translate) + ' ' +
-            (config.hint || '' | translate)
-          : (config.label || '' | translate)  + ' ' +
-            (config.desc || '' | translate) + ' ' +
-            (config.hint || '' | translate)
-       "
-        >
+          [attr.aria-label]="
+            config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+            ? (config.label || '' | translate) + ' ' +
+              (config.desc || '' | translate) + ' ' + 
+              ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) + ' ' +
+              (config.hint || '' | translate)
+            : (config.label || '' | translate)  + ' ' +
+              (config.desc || '' | translate) + ' ' +
+              (config.hint || '' | translate)
+          ">
           <div class="required-field-container" *ngIf="config.required">
             <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}
           </div>
@@ -46,7 +46,7 @@
       <div *ngIf="getErrorState()" class="check-error">
         <ng-container *ngFor="let error of config.errorMessages; index as i">
           <div *ngIf="config.formGroup.get(config.id)?.errors?.[error.key]">
-            <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon"></lib-error>
+            <lib-error [id]="config.id + '_error'" [errorLOV]="error.errorLOV" [icon]="config?.errorIcon" aria-live="polite"></lib-error>
           </div>
         </ng-container>
       </div>

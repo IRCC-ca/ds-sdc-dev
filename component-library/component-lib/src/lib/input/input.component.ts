@@ -7,8 +7,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
-import { IErrorPairs } from "../../shared/interfaces/component-configs";
-import { IErrorIconConfig } from "../error/error.component";
+import {IErrorPairs} from "../../shared/interfaces/component-configs";
+import {IErrorIconConfig} from "../error/error.component";
+import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -55,6 +56,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   currentDisabledState: boolean = false;
   focusState = false;
   showPassword = false;
+
+  constructor(public standAloneFunctions: StandAloneFunctions) { }
+
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
   private onChange?: (value: any) => void;

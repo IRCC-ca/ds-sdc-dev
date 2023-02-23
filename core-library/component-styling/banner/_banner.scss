@@ -50,6 +50,9 @@
     .banner-container{
         padding: 16px; 
     }
+    .banner-text{
+        gap: 8px;
+    }
     
 }
 
@@ -68,6 +71,9 @@
     }
     .banner-container{
         padding: 12px; 
+    }
+    .banner-text{
+        gap: 4px;
     }
 }
 
@@ -94,18 +100,32 @@
         display: flex;
         flex-direction: row;
         position: relative;
+        transition: opacity 0.2s linear;
     }
 
     .banner-btn {
         position: absolute;
-        top: 0px;
-        right: 0px;
+        top: 16px;
+        right: 16px;
+        .banner-close {
+            height: 24px;
+            width: 24px;
+            button {
+                padding: 4px 7px;
+                display: flex;
+                align-items: center;
+            }
+            svg {
+                height: 16px;
+                width: 10px;
+            }
+        }
     }
 
     .banner-container{
         display: flex;
         flex-direction: row;
-        align-items: flex-start;
+        align-items: center;
         gap: 12px;
         width: 100%;     
     }
@@ -130,6 +150,11 @@
         justify-items: center;
         height: 100%;
         gap: 12px;
+
+        div {
+            align-items: center;
+            display: flex;
+        }
     }
 
     .banner-line{
@@ -142,14 +167,12 @@
         width: 95%;
         overflow-wrap: break-word;
         align-self: center;
-    }
-
-    .banner-title{
-        margin-bottom: 8px;
+        display: flex;
+        flex-direction: column;
     }
 
     .banner-content{
-        align-self: center;
+        align-self: flex-start;
         * {
             margin: 2px 0;
         }
@@ -165,6 +188,14 @@
 
     .rounded{
         border-radius: 4px;
+    }
+
+    .bannerDismissed {
+        opacity: 0;
+    }
+
+    .noDisplay {
+        display: none;
     }
 
     @include types(information);

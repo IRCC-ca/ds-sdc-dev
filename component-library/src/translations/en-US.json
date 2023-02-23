@@ -59,5 +59,13 @@
 
   "QA": {
     "header": "QA Landing Page"
+  },
+
+  "ERROR": {
+    "fieldIsInvalid": "This field is invalid.",
+    "fieldExceededMaxLength": "This field has exceeded max length.",
+    "testErrorMessage": "Test error message.",
+    "errorMessage": "Error message",
+    "errorMessageMahsa": "Testing error message thing take 1000"
   }
 }
