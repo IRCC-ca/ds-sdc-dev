@@ -131,10 +131,7 @@ export class NaseerComponent implements OnInit {
       };
       if (!x['type']) x['type'] = 'text';
       for(let param in x){
-          console.log(param);
-          console.log(x[param]);
           updatedConfig = {...updatedConfig, [param] : x[param]}
-          console.log('updatedConfig: ', updatedConfig);
           this.qaInput = updatedConfig;
       }
   })
@@ -144,6 +141,7 @@ export class NaseerComponent implements OnInit {
     this.qaInput?.formGroup.get(this.qaInput.id)?.disabled ?
     this.qaInput?.formGroup.get(this.qaInput.id)?.enable() :
     this.qaInput?.formGroup.get(this.qaInput.id)?.disable();
+
     if(!this.testButtonConfig?.disabled) this.testButtonConfig.disabled = true;
     else this.testButtonConfig.disabled = false;
   }

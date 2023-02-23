@@ -70,7 +70,16 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.formGroup = this.formGroup;
     }
 
-    if (!this.config.type) this.config.type='text';
+    if (!this.config.type) this.config.type = 'text';
+
+    //set disable to true when form is disabled
+    this.config.formGroup.valueChanges.subscribe(change => {
+      if (change[this.config.id] === undefined) {
+        this.disabled = true;
+      } else {
+        this.disabled = false;
+      }
+    });
   }
 
   public focusInput(focusValue: boolean): void {
@@ -90,7 +99,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   writeValue(value: string): void {
   }
   registerOnChange(fn: any): void {
-    console.log('type', this.config.type);
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {

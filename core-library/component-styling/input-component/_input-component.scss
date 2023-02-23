@@ -155,7 +155,7 @@
 
     .passwordIcon {
       position: absolute;
-      top: 50%;
+      top: 56%;
       right: 0px;
       transform: translate(0%, -50%);
       justify-self: flex-end;
@@ -164,7 +164,13 @@
       background: transparent;
       z-index: 1;
       padding-right: 10px;
+      color: var(--text-primary);
     }
+
+    button:disabled {
+      color: var(--text-disabled);
+    }
+
   }
 
   .check-error {
