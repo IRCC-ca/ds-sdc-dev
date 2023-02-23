@@ -53,7 +53,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() formGroup = this.formGroupEmpty;
 
   disabled = false;
-  currentDisabledState: boolean = false;
   focusState = false;
   showPassword = false;
 
