@@ -164,11 +164,12 @@
       background: transparent;
       z-index: 1;
       padding-right: 10px;
-      color: #161617;
+      color: var(--text-primary);
     }
 
     button:disabled {
       color: #B2B2B4;
+      color: var(--text-disabled);
     }
 
   }
