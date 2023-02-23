@@ -220,6 +220,9 @@ export class MichaelComponent implements OnInit {
         this.qaInputConfig = updatedConfig;
       }
     })
+    this.form.patchValue({
+      'type': 'text'
+    });
 
     // Auto tester component configs - Checkbox
     this.testerCheckboxConfig.dropdowns?.forEach(i => {
