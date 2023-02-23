@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControlDirective, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
-import {IErrorPairs} from "../../shared/interfaces/component-configs";
-import {IErrorIconConfig} from "../error/error.component";
+import { IErrorPairs } from "../../shared/interfaces/component-configs";
+import { IErrorIconConfig } from "../error/error.component";
 
 export interface IInputComponentConfig {
   label?: string;
@@ -43,7 +43,7 @@ export enum InputTypes {
 export class InputComponent implements ControlValueAccessor, OnInit {
   // @ViewChild(FormControlDirective, {static: true})
   // formControlDirective: FormControlDirective;
-  
+
   formGroupEmpty: FormGroup = new FormGroup({});
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: IInputComponentConfig = {
@@ -55,7 +55,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() formGroup = this.formGroupEmpty;
 
   disabled = false;
-  currentDisabledState : boolean = false;
+  currentDisabledState: boolean = false;
   focusState = false;
   showPassword = false;
   //Removed '!' and added null case in onChange
@@ -71,21 +71,16 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.formGroup = this.formGroup;
     }
 
-    if (!this.config.type) this.config.type='text';
+    if (!this.config.type) this.config.type = 'text';
 
-    // this.currentDisabledState = this.config.formGroup.get(this.config.id)?.disabled;
+    this.config.formGroup.valueChanges.subscribe(change => {
+      if (change[this.config.id] === undefined) {
+        this.disabled = true;
+      } else {
+        this.disabled = false;
+      }
+    });
   }
-
-  // ngOnChanges() {
-  //   console.log("---------------------> NGONINIT ------------------------------>")
-  //   // if (this.disabledVar) {
-  //     console.log( 'latest state', this.config.formGroup.get(this.config.id)?.disabled)
-  //     console.log('DISABLED VAR', this.disabledVar)
-
-  //         // } else {
-
-  //   // }
-  // }
 
   public focusInput(focusValue: boolean): void {
     this.focusState = !focusValue;
@@ -113,11 +108,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   setDisabledState(isDisabled: boolean) {
     console.log("------------------------------------->disabled function", isDisabled)
     this.disabled = isDisabled;
-    if(isDisabled) {
+    if (isDisabled) {
       this.formGroup.controls['id'].disable();
-     } else {
-        this.formGroup.controls['id'].enable();
-      }
+    } else {
+      this.formGroup.controls['id'].enable();
+    }
     // this.formControlDirective?.valueAccessor?.setDisabledState?.(isDisabled);
     // this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
   }
