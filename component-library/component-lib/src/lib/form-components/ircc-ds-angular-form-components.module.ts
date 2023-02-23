@@ -9,15 +9,17 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+const IrccDsAngularFormComponents = [
+  CheckboxComponent,
+  DropdownInputComponent,
+  ErrorComponent,
+  InputComponent,
+  RadioInputComponent
+];
 
 @NgModule({
   declarations: [
-    CheckboxComponent,
-    DropdownInputComponent,
-    ErrorComponent,
-    InputComponent,
-    RadioInputComponent
+    ...IrccDsAngularFormComponents
   ],
   imports: [
     CommonModule,
@@ -27,11 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [
-    CheckboxComponent,
-    DropdownInputComponent,
-    ErrorComponent,
-    InputComponent,
-    RadioInputComponent
+    ...IrccDsAngularFormComponents
   ]
 })
 export class IrccDsAngularFormComponentsModule { }

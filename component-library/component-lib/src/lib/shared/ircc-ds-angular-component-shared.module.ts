@@ -7,13 +7,16 @@ import { IconComponent } from './icon/icon.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { TabsComponent } from './tabs/tabs.component';
 
+const IrccDsSharedComponents = [
+  ButtonComponent,
+  IconComponent,
+  IconButtonComponent,
+  TabsComponent
+];
 
 @NgModule({
   declarations: [
-    ButtonComponent,
-    IconComponent,
-    IconButtonComponent,
-    TabsComponent
+    ...IrccDsSharedComponents
   ],
   imports: [
     CommonModule,
@@ -24,10 +27,7 @@ import { TabsComponent } from './tabs/tabs.component';
     CommonModule,
     TranslateModule,
     RouterModule,
-    ButtonComponent,
-    IconComponent,
-    IconButtonComponent,
-    TabsComponent
+    ...IrccDsSharedComponents
   ]
 })
 export class IrccDsAngularComponentsSharedModule { }

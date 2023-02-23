@@ -10,16 +10,18 @@ import { IrccDsAngularComponentsSharedModule } from '../shared/ircc-ds-angular-c
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+const IrccDsLegacyOldComponents = [
+  AutocompleteComponent,
+  ChipListComponent,
+  SecondaryChipsComponent,
+  ChipItemComponent,
+  DatePickerComponent,
+  SearchInputComponent
+];
 
 @NgModule({
   declarations: [
-    AutocompleteComponent,
-    ChipListComponent,
-    SecondaryChipsComponent,
-    ChipItemComponent,
-    DatePickerComponent,
-    SearchInputComponent
+    ...IrccDsLegacyOldComponents
   ],
   imports: [
     CommonModule,
@@ -29,12 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [
-    AutocompleteComponent,
-    ChipListComponent,
-    SecondaryChipsComponent,
-    ChipItemComponent,
-    DatePickerComponent,
-    SearchInputComponent
+    ...IrccDsLegacyOldComponents
   ]
 })
 export class IrccDsAngularLegacyOldModule { }
