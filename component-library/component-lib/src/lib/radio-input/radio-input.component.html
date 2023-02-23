@@ -32,7 +32,7 @@
       >{{(option.text || '') | translate}}</label>
     </div>
   </div>
-  <ng-container *ngIf="(config.formGroup.get(config.id)?.touched || touched) && config.formGroup.get(config.id)?.invalid">
+  <ng-container *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid">
     <ng-container *ngFor="let errors of config.errorMessages; let i = index">
       <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
         <lib-error [id]="config.id + '_error' + i" [errorLOV]="errors.errorLOV" aria-live="polite"></lib-error>

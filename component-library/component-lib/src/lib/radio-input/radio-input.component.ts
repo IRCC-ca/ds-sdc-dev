@@ -99,6 +99,6 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   }
 
   wasTouched() {
-    this.touched = true;
+    this.config.formGroup.get(this.config.id)?.markAsTouched();
   }
 }
