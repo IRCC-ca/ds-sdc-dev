@@ -28,6 +28,15 @@ export class StandAloneFunctions {
         return returnError;
     }
 
+    /**
+     * When run, returns an IErrorIds object. It generates IDs based on the errorMessages object
+     * and which errors are currently in effect, thereby ensuring that the first element is given 
+     * an id ending in _error0
+     * @param formGroup 
+     * @param id of the parent (input) component
+     * @param errorMessages: IErrorPairs[]
+     * @returns errorIds: IErrorIDs[]
+     */
     getErrorIds(formGroup: FormGroup, id: string, errorMessages: IErrorPairs[]) {
         let errorIds: IErrorIDs[] = [];
         errorMessages?.forEach(message => {
