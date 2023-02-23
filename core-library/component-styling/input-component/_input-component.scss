@@ -164,7 +164,13 @@
       background: transparent;
       z-index: 1;
       padding-right: 10px;
+      color: #161617;
     }
+
+    button:disabled {
+      color: #B2B2B4;
+    }
+
   }
 
   .check-error {
