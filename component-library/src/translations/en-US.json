@@ -42,10 +42,6 @@
     "ERROR": "Input error"
   },
 
-  "Header": {
-    "header-img-alt-text": "Government of Canada"
-  },
-
   "Input_Component": {
     "Password-icon" : {
       "show_password_aria-label": "display password text",
