@@ -31,6 +31,9 @@ $selectors: 'lib-error';
         height: 16px;
         margin: 4px 0;
     }
+    .additionalError {
+        margin-left: 20px;
+    }
 }
 
 @mixin large-styles {
@@ -44,6 +47,9 @@ $selectors: 'lib-error';
     .errorContainer {
         height: 20px;
         margin: 8px 0;
+    }
+    .additionalError {
+        margin-left: 24px;
     }
 }
 

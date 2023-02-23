@@ -57,12 +57,20 @@ export class BannerComponent implements OnInit {
     id: '', //id is set in ngOnInit
     category: 'custom',
     icon:  {
-      class: 'fa-solid fa-xmark'
+      class: 'fa-solid fa-xmark',
+      color: 'var(--text-primary)'
     }
   };
 
   eventHandler(emitValue: string){
     console.log(emitValue);
+    if(this.config?.id) {
+      let banner = document.getElementById(this.config?.id);
+      banner?.classList.add('bannerDismissed');
+      setTimeout(function () {
+        banner?.classList.add('noDisplay');
+      }, 300)
+    }
     this.btnEvent?.emit(emitValue);
   }
 
