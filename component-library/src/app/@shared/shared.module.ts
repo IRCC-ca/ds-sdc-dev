@@ -5,7 +5,6 @@ import { IrccDsAngularBannerModule, IrccDsAngularComponentsSharedModule, IrccDsA
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavButtonsComponent } from '@app/gallery/nav-buttons/nav-buttons.component';
 import { RouterModule } from '@angular/router';
-import { IrccDsAngularHeaderFooterModule } from 'component-lib/src/public-api';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { IrccDsAngularHeaderFooterModule } from 'component-lib/src/public-api';
     IrccDsAngularBannerModule,
     IrccDsAngularFormComponentsModule,
     IrccDsAngularLegacyOldModule,
-    IrccDsAngularHeaderFooterModule
   ],
   declarations: [
     NavButtonsComponent
@@ -29,7 +27,6 @@ import { IrccDsAngularHeaderFooterModule } from 'component-lib/src/public-api';
     IrccDsAngularFormComponentsModule,
     IrccDsAngularLegacyOldModule,
     IrccDsAngularComponentsSharedModule,
-    IrccDsAngularHeaderFooterModule,
     ReactiveFormsModule,
     FormsModule,
     NavButtonsComponent

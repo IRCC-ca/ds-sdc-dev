@@ -5,7 +5,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LanguageSwitchComponent } from './language-switch/language-switch.component';
 import { IrccDsAngularComponentsSharedModule } from '../shared/ircc-ds-angular-component-shared.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterModule } from '@angular/router';
+// import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,18 +14,20 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    LanguageSwitchComponent
+    LanguageSwitchComponent,
   ],
   imports: [
     CommonModule,
     IrccDsAngularComponentsSharedModule,
     TranslateModule,
-    RouterModule
+    // RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    LanguageSwitchComponent
+    LanguageSwitchComponent,
   ]
 })
 export class IrccDsAngularHeaderFooterModule { }
