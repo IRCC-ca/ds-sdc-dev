@@ -3,8 +3,9 @@ import {
   forwardRef,
   Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControlDirective, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorPairs} from "../../shared/interfaces/component-configs";
 import {IErrorIconConfig} from "../error/error.component";
@@ -40,6 +41,9 @@ export enum InputTypes {
   ]
 })
 export class InputComponent implements ControlValueAccessor, OnInit {
+  // @ViewChild(FormControlDirective, {static: true})
+  // formControlDirective: FormControlDirective;
+  
   formGroupEmpty: FormGroup = new FormGroup({});
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: IInputComponentConfig = {
@@ -51,6 +55,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() formGroup = this.formGroupEmpty;
 
   disabled = false;
+  currentDisabledState : boolean = false;
   focusState = false;
   showPassword = false;
   //Removed '!' and added null case in onChange
@@ -67,7 +72,20 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
 
     if (!this.config.type) this.config.type='text';
+
+    // this.currentDisabledState = this.config.formGroup.get(this.config.id)?.disabled;
   }
+
+  // ngOnChanges() {
+  //   console.log("---------------------> NGONINIT ------------------------------>")
+  //   // if (this.disabledVar) {
+  //     console.log( 'latest state', this.config.formGroup.get(this.config.id)?.disabled)
+  //     console.log('DISABLED VAR', this.disabledVar)
+
+  //         // } else {
+
+  //   // }
+  // }
 
   public focusInput(focusValue: boolean): void {
     this.focusState = !focusValue;
@@ -86,14 +104,22 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   writeValue(value: string): void {
   }
   registerOnChange(fn: any): void {
-    console.log('type', this.config.type);
+    console.log('--------->type<----------------', this.config.type);
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
   setDisabledState(isDisabled: boolean) {
+    console.log("------------------------------------->disabled function", isDisabled)
     this.disabled = isDisabled;
+    if(isDisabled) {
+      this.formGroup.controls['id'].disable();
+     } else {
+        this.formGroup.controls['id'].enable();
+      }
+    // this.formControlDirective?.valueAccessor?.setDisabledState?.(isDisabled);
+    // this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
   }
 
   /**
