@@ -76,8 +76,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     this.config.formGroup.valueChanges.subscribe(change => {
       if (change[this.config.id] === undefined) {
         this.disabled = true;
+        // this.config.formGroup.disable()
       } else {
         this.disabled = false;
+        // this.config.formGroup.enable()
       }
     });
   }
