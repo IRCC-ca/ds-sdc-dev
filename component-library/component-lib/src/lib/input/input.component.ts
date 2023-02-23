@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControlDirective, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorPairs } from "../../shared/interfaces/component-configs";
 import { IErrorIconConfig } from "../error/error.component";
@@ -41,9 +41,6 @@ export enum InputTypes {
   ]
 })
 export class InputComponent implements ControlValueAccessor, OnInit {
-  // @ViewChild(FormControlDirective, {static: true})
-  // formControlDirective: FormControlDirective;
-
   formGroupEmpty: FormGroup = new FormGroup({});
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: IInputComponentConfig = {
@@ -73,6 +70,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (!this.config.type) this.config.type = 'text';
 
+    //set disable to true when form is disabled
     this.config.formGroup.valueChanges.subscribe(change => {
       if (change[this.config.id] === undefined) {
         this.disabled = true;
@@ -99,22 +97,13 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   writeValue(value: string): void {
   }
   registerOnChange(fn: any): void {
-    console.log('--------->type<----------------', this.config.type);
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
   setDisabledState(isDisabled: boolean) {
-    console.log("------------------------------------->disabled function", isDisabled)
     this.disabled = isDisabled;
-    if (isDisabled) {
-      this.formGroup.controls['id'].disable();
-    } else {
-      this.formGroup.controls['id'].enable();
-    }
-    // this.formControlDirective?.valueAccessor?.setDisabledState?.(isDisabled);
-    // this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
   }
 
   /**
