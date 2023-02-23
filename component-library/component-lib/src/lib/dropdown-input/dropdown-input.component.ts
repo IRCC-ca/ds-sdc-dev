@@ -2,6 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorPairs } from '../../shared/interfaces/component-configs';
+import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export declare enum DropdownType {
   secondary = "secondary",
@@ -37,7 +38,7 @@ export interface IDropdownInputOptionsConfig {
     }
   ]
 })
-export class DropdownInputComponent implements OnInit, ControlValueAccessor {
+export class DropdownInputComponent implements ControlValueAccessor {
   touched = false;
 
   @Input() config: IDropdownInputConfig = {
@@ -45,6 +46,8 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
     formGroup: new FormGroup({}),
     category: 'secondary',
   }
+
+  constructor(public standAloneFunctions: StandAloneFunctions) { }
 
   onChange = (formValue: string) => { };
   onTouched = () => { };
@@ -64,10 +67,4 @@ export class DropdownInputComponent implements OnInit, ControlValueAccessor {
       this.touched = true;
     }
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
