@@ -1,11 +1,11 @@
-<form [formGroup]="config.formGroup" [ngClass]="config?.size">
+<form [formGroup]="config.formGroup" [ngClass]="config.size" (click)="wasTouched()">
   <label *ngIf="config.label"
     [attr.aria-label]="
       config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
       ? (config.label || '' | translate) + ' ' +
         (config.helpText || '' | translate) + ' ' + 
         ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
-      : (config.label || '' | translate) + ' ' + (config?.helpText || '' | translate)
+      : (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
     "
     [for]="config.id" class="radio-label">
     <i *ngIf="config?.required" class="fa-regular fa-asterisk required-star"></i> {{(config.label || '') | translate}}
@@ -20,9 +20,9 @@
         [id]="config.id + index"
         [formControlName]="config.id ?? 'formControl'"
         [attr.disabled]='getDisabled(index)'
-        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config?.size" >
+        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size" >
       <label for="{{config.id}}" 
-        [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config?.size + '_label'"
+        [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'"
         [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
           ? (option.text || '' | translate) + ' ' +
@@ -32,7 +32,7 @@
       >{{(option.text || '') | translate}}</label>
     </div>
   </div>
-  <ng-container *ngIf="config.formGroup.get(config.id)?.touched && config.formGroup.get(config.id)?.invalid">
+  <ng-container *ngIf="(config.formGroup.get(config.id)?.touched || touched) && config.formGroup.get(config.id)?.invalid">
     <ng-container *ngFor="let errors of config.errorMessages; let i = index">
       <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
         <lib-error [id]="config.id + '_error' + i" [errorLOV]="errors.errorLOV" aria-live="polite"></lib-error>

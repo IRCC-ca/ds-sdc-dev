@@ -83,6 +83,7 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
 
   }
 
+
   /**
    * used to disable individual fields (from the config under 'options')
    * @param index of the option field to be disabled
@@ -95,5 +96,9 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       }
     }
     return '';
+  }
+
+  wasTouched() {
+    this.touched = true;
   }
 }
