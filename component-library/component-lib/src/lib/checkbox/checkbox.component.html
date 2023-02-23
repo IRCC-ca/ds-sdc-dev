@@ -15,7 +15,7 @@
          ? (config.label || '' | translate) + ' ' +
            (config.helpText || '' | translate) + ' ' + 
            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
-         : (config.label || '' | translate) + ' ' + (config?.helpText || '' | translate)
+         : (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
        "
        [for]="config.id">
       <div class="required-field-container" *ngIf="config.required">
