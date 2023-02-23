@@ -1,1 +1,20 @@
-<p>progress-tags works!</p>
+<div class="{{config?.size}}" id="{{config?.id}}" 
+  [ngClass]="{'information': config?.type === 'info', 'success': config?.type === 'success','critical': config?.type === 'critical'}">
+
+  <div class="tag-container">
+    <div class="tag-left" *ngIf="config?.type">
+      <ng-container [ngSwitch]="config?.type">
+        <div *ngSwitchCase="'info'">
+          <i class="fa-regular fa-circle-half-stroke"></i>
+        </div>
+        <div *ngSwitchCase="'success'">
+          <i class="fa-circle-check fa-regular tag-icon"></i>
+        </div>
+        <div *ngSwitchCase="'critical'">
+          <i class="fa-circle-exclamation fa-regular tag-icon"></i>
+        </div>
+      </ng-container>
+    <!-- <div class="tag-line" [ngClass]="{'hidden' : !lineVisible}"></div> -->
+    <div class="tag-line"></div>
+  </div>
+</div>
