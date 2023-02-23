@@ -3,7 +3,6 @@ import {
   forwardRef,
   Input,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
