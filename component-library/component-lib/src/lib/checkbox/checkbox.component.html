@@ -1,4 +1,4 @@
-<form class="checkbox-container" [formGroup]="config.formGroup">
+<form class="checkbox-container" [formGroup]="config.formGroup" (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <div class="checkbox-container" [ngClass]="config.size">
        <label *ngIf="config.label"
        [attr.aria-label]="

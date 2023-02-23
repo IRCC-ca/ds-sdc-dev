@@ -53,4 +53,15 @@ export class StandAloneFunctions {
         });
         return errorIds;
     }
+
+
+    /**
+     * A function designed to deal with how AWFUL Safari is. Safari does not consider touched to be a valid state in <body>,
+     * therefore this is needed to force it to acknowledge the state.
+     * @param formGroup 
+     * @param id of the parent (input) component
+     */
+    wasTouched(formGroup: FormGroup, id: string) {
+        formGroup.get(id)?.markAsTouched();
+      }
 }

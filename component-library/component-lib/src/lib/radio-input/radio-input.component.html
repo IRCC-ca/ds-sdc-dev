@@ -1,4 +1,4 @@
-<form [formGroup]="config.formGroup" [ngClass]="config.size" (click)="wasTouched()">
+<form [formGroup]="config.formGroup" [ngClass]="config.size" (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <label *ngIf="config.label"
     [attr.aria-label]="
       config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
