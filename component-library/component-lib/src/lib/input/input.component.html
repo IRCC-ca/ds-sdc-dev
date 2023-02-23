@@ -37,7 +37,7 @@
             "/>
 
           <button *ngIf="config.type === 'password' || showPassword" role="button" category="plain"
-          tabindex="0" class="passwordIcon" (click)="hideShow()" [disabled]="disabled" aria-label="Password eye Icon" [id]="config.id" aria-live="polite">
+          tabindex="0" class="passwordIcon" (click)="hideShow()" [disabled]="disabled" aria-label="Password eye Icon" aria-live="polite">
             <div *ngIf="showPassword" role="img" attr.aria-label="{{ 'Input_Component.Password-icon.hide_password_aria-label' | translate }}"><i class="fa-solid fa-eye-slash"></i></div>
             <div *ngIf="!showPassword" role="img" attr.aria-label="{{ 'Input_Component.Password-icon.show_password_aria-label' | translate }}"><i class="fa-solid fa-eye"></i></div>
           </button>
