@@ -31,4 +31,5 @@ export * from './lib/language-switch/language-switch-button.service';
 
 
 export * from './shared/interfaces/component-configs';
+export * from './shared/interfaces/form-component-config';
 export * from './shared/constants/jl-components/jl-components.constants/jl-components.constants'
