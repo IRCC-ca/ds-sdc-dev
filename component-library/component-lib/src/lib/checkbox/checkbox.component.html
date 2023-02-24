@@ -7,8 +7,7 @@
            (config.helpText || '' | translate) + ' ' +
            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
          : (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
-       "
-       [for]="config.id">
+       ">
       <span class="required-field-container" *ngIf="config.required">
         <lib-icon [class]="'fa-regular fa-asterisk required-star'"></lib-icon>
         {{(config.label || '') | translate}}
