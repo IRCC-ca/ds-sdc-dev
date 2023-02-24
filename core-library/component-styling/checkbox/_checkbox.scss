@@ -1,99 +1,116 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
 
 @mixin selector {
-    lib-checkbox#{template-const.$escape} {
-        @content;
-    }
+  lib-checkbox#{template-const.$escape} {
+    @content;
+  }
 }
 
 @mixin create {
-    @include selector() {
-        @include layout();
-    }
+  @include selector() {
+    @include layout();
+  }
 }
 
 // For size small overwrite
 @mixin size-sm {
-    label, p {
-        font-size: token-size.$fixed-14;
+  label,
+  p {
+    font-size: token-size.$fixed-14;
+  }
+
+  p {
+    margin-bottom: token-size.$fixed-8;
+    font-size: 14px;
+  }
+
+  label {
+    font-size: 14px;
+
+    &.checkbox-label {
+      font-size: 16px;
     }
+  }
+
+  div.check-error {
+    font-size: 14px;
+
     p {
-        margin-bottom: token-size.$fixed-8;
-        font-size: 14px;
+      margin-top: token-size.$fixed-8;
     }
-    label {
-        font-size: 14px;
-        &.checkbox-label {
-            font-size: 16px;
-        }
-    }
-    div.check-error {
-        font-size: 14px;
-        p {
-            margin-top: token-size.$fixed-8;
-        }
-    }
-    .required-star {
-        font-size: 12px;
-        margin-right: 4px;
-    }
+  }
+
+  .required-star {
+    font-size: 12px;
+    margin-right: 4px;
+  }
 }
 
 @mixin layout {
-    .checkbox-layout {
-        display: flex;
-        align-items: baseline;
-    }
-    label {
-        &.disabled-label {
-            color: var(--text-disabled);
-        }
-        &.checkbox-label {
-            font-size: 20px;
-            font-weight: 700;
-        }
-    }
-    p {
-        &.check-desc {
-            margin-top: token-size.$fixed-4;
-            margin-bottom: token-size.$fixed-12;
-        }
-        &.check-hint {
-            color: var(--text-placeholder);
-            margin-bottom: token-size.$fixed-8;
-            margin-top: 0;
-        }
-    }
-    div.check-error {
-        margin-top: token-size.$fixed-8;
-    }
-    .required-field-container {
-        display: flex;
-    }
-    .required-star {
-        color: var(--critical-text);
-        font-weight: 400;
-        line-height: 16px;
-        justify-self: flex-start;
-        margin-right: 5px;
-        font-size: 16px;
+  .checkbox-layout {
+    display: flex;
+    align-items: baseline;
+  }
+
+  label {
+    &.disabled-label {
+      color: var(--text-disabled);
     }
 
-    @include size.selector(small) {
-        @include size-sm();
-    };
-
-    @include size.selector(large) {
-        .small {
-            @include size-sm()
-        }
+    &.checkbox-label {
+      font-family: 'Lato', sans-serif;
+      color: var(--text-primary);
+      font-size: 20px;
+      font-weight: 700;
     }
+  }
+
+  p {
+    &.check-desc {
+      color: var(--text-primary);
+      margin-top: token-size.$fixed-4;
+      margin-bottom: token-size.$fixed-12;
+    }
+
+    &.check-hint {
+      color: var(--text-placeholder);
+      margin-bottom: token-size.$fixed-8;
+      margin-top: 0;
+    }
+  }
+
+  div.check-error {
+    margin-top: token-size.$fixed-8;
+  }
+
+  .required-field-container {
+    display: flex;
+  }
+
+  .required-star {
+    color: var(--critical-text);
+    font-weight: 400;
+    line-height: 16px;
+    justify-self: flex-start;
+    margin-right: 5px;
+    font-size: 16px;
+  }
+
+  @include size.selector(small) {
+    @include size-sm();
+  }
+
+  @include size.selector(large) {
+    .small {
+      @include size-sm();
+    }
+  }
 }

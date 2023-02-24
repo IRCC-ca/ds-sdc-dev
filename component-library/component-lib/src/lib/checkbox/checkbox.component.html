@@ -1,21 +1,20 @@
 <form class="checkbox-container" [formGroup]="config.formGroup" (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <div class="checkbox-container" [ngClass]="config.size">
-       <label *ngIf="config.label"
+     <label *ngIf="config.label" class="checkbox-label"
        [attr.aria-label]="
          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
          ? (config.label || '' | translate) + ' ' +
-           (config.helpText || '' | translate) + ' ' + 
+           (config.helpText || '' | translate) + ' ' +
            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
          : (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
-       "
-       [for]="config.id">
-      <div class="required-field-container" *ngIf="config.required">
+       ">
+      <span class="required-field-container" *ngIf="config.required">
         <lib-icon [class]="'fa-regular fa-asterisk required-star'"></lib-icon>
         {{(config.label || '') | translate}}
-      </div>
-      <div *ngIf="!config.required">
+      </span>
+      <span *ngIf="!config.required">
         {{(config.label || '') | translate}}
-      </div>
+      </span>
     </label>
     <p *ngIf="config?.desc" class="check-desc" [ngClass]="config.size">{{(config.desc || '') | translate}}</p>
     <p *ngIf="config?.helpText" class="check-hint" [ngClass]="config.size">{{(config.helpText || '') | translate}}</p>
