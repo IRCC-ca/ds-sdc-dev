@@ -4,8 +4,9 @@ import {DSSizes} from "../../shared/constants/jl-components/jl-components.consta
 import {IErrorIconConfig} from "../error/error.component";
 import {IErrorPairs} from "../../shared/interfaces/component-configs";
 import { IErrorIDs, StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
+import { FormComponentConfig } from "../../shared/interfaces/form-component-config";
 
-export interface ICheckBoxComponentConfig {
+export interface ICheckBoxComponentConfig extends FormComponentConfig{
   formGroup: FormGroup;
   label?: string;
   required?: boolean;
