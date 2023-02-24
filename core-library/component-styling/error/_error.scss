@@ -30,12 +30,15 @@ $selectors: "lib-error";
   }
 
   .errorContainer {
-    height: 16px;
-    margin: 4px 0;
+    max-height: 16px;
+    padding-top: 4px;
+    background-color: rgb(0, 255, 119);
   }
 
   .additionalError {
     margin-left: 20px;
+    font-size: 14px;
+    padding-top: 8px;
   }
 }
 
@@ -47,16 +50,19 @@ $selectors: "lib-error";
 
   .errorText {
     font-size: 16px;
-    margin: 12px 0;
+    // margin: 12px 0;
   }
 
   .errorContainer {
-    height: 20px;
-    margin: 12px 0;
+    max-height: 20px;
+    // margin-top: 12px;
+    background-color: yellow;
   }
 
   .additionalError {
     margin-left: 24px;
+    font-size: 16px;
+    padding-top: 12px;
   }
 }
 
