@@ -17,8 +17,8 @@
     <form [formGroup]="config.formGroup">
         <div class="select-container">
             <div class="label-year">Year YYYY</div>
-            <label for="year" class="sr-only">Year:</label>
-            <select id="year" aria-label="Select a year" [formControlName]="id + '_yearControl'" class="date-input">
+            <label for="{{config.id + '_dayControl'}}" class="sr-only">Year:</label>
+            <select id="{{config.id + '_dayControl'}}" aria-label="Select a year" [formControlName]="id + '_yearControl'" class="date-input">
                 <option *ngFor="let year of years" [value]="year">{{ year }}</option>
             </select>
         </div>
