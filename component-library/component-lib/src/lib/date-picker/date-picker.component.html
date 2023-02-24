@@ -1,6 +1,20 @@
-<div class="date-title" [attr.aria-label]="title">{{ title }}</div>
-<div class="date-form">
-    <form [formGroup]="dateForm">
+<div [ngClass]="config.category" class="{{config.size}}">
+    <label *ngIf="config.label" [attr.aria-label]="
+        config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+        ? (config.label || '' | translate) + ' ' +
+          (config.desc || '' | translate) + ' ' + 
+          ('Error: ' ) + ' ' +
+          (config.hint || '' | translate)
+        : (config.label || '' | translate) + ' ' +
+          (config.desc || '' | translate) + ' ' +
+          (config.hint || '' | translate)
+      " [for]="config.id" class="select-label">
+        <div class="required-div" *ngIf="config.required">
+            <i class="fa-regular fa-asterisk required-star"></i>
+        </div>
+        {{(config.label || '') | translate}}
+    </label>
+    <form [formGroup]="config.formGroup">
         <div class="select-container">
             <div class="label-year">Year YYYY</div>
             <label for="year" class="sr-only">Year:</label>
