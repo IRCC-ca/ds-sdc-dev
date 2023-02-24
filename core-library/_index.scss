@@ -48,6 +48,7 @@
 @use './component-styling/chips/secondary' as chip-secondary;
 @use './component-styling/error/error' as error-component;
 @use './component-styling/tabs/tabs' as tabs-component;
+@use './component-styling/progress-tags/progress-tags' as tags-component;
 
 @use './typography/fa-wrapper';
 
@@ -109,7 +110,8 @@
         @include element(icon);
         @include element(tabs-component);
         @include element(button-component);
-        @include element(error-component)
+        @include element(error-component);
+        @include element(tags-component);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -186,5 +188,7 @@
         @include tabs-component.create();
     } @else if $key == button-component {
         @include button-component.create();
+    } @else if $key == tags-component {
+        @include tags-component.create();
     }
 }

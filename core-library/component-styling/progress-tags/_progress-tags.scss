@@ -20,186 +20,127 @@
     }
 }
 
-// @mixin types($category: information){
-//     .#{$category}{
-//         background-color: var(--#{$category}-alert-background);
-//         .banner-left{
-//             .banner-line{
-//                 background-color: var(--#{$category}-alert-border);
-//             }
-//             .banner-icon{
-//                 color: var(--#{$category}-alert-icon);
-//             }
-//         }
-//     }
-// }
+@mixin types($category: information){
+    .#{$category}{
+        background-color: var(--#{$category}-alert-background);
+        .tag-left{
+            .tag-icon {
+                color: var(--#{$category}-alert-icon);
+            }
+            .content {
+                --text: var(--#{$category}-alert-text);
+            }
+        }
+    }
+}
 
-// @mixin large-styles(){
-//     .banner-icon{
-//         height: 24px;
-//         width: 24px;
-//         line-height: 24px;
-//         font-weight: 300;
-//     }
-//     .banner-title{
-//         font-size: 20px;
-//     }
-//     .banner-content{
-//         font-size: 16px;
-//     }
-//     .banner-container{
-//         padding: 16px; 
-//     }
-//     .banner-text{
-//         gap: 8px;
-//     }
-    
-// }
+@mixin large-styles(){
+    .tag-container {
+        padding: 4px 8px;
+    }
+    .tag-icon {
+        height: 16px;
+        width: 16px;
+        line-height: 16px;
+        font-weight: 400;
+    }
+    .content {
+        margin-left: 6px;
+        font-size: 14px;
+    }
+    // .tag-title {
+    //     font-size: 20px;
+    // }
+    // .banner-content{
+    //     font-size: 16px;
+    // }
+    // .banner-text{
+    //     gap: 8px;
+    // } 
+}
 
-// @mixin small-styles(){
-//     .banner-icon{
-//         height: 20px;
-//         width: 20px;
-//         line-height: 20px;
-//         font-weight: 300;
-//     }
-//     .banner-title{
-//         font-size: 16px;
-//     }   
-//     .banner-content{
-//         font-size: 14px;
-//     }
-//     .banner-container{
-//         padding: 12px; 
-//     }
-//     .banner-text{
-//         gap: 4px;
-//     }
-// }
+@mixin small-styles(){
+    .tag-container{
+        padding: 2px 8px; 
+    }
+    .tag-icon{
+        height: 12px;
+        width: 12px;
+        line-height: 16px;
+        font-weight: 400;
+    }
+    .content {
+        margin-left: 5px;
+        font-size: 12px;
+    }
+    // .tag-title{
+    //     font-size: 16px;
+    // }   
+    // .tag-content{
+    //     font-size: 14px;
+    // }
+    // .tag-text{
+    //     gap: 4px;
+    // }
+}
 
-// @mixin layout {
+@mixin layout {
 
-//     @include size.selector(large){
-//         @include large-styles();
-//         .small{
-//             @include small-styles();
-//         }
-//     }
+    @include size.selector(large){
+        @include large-styles();
+        .small{
+            @include small-styles();
+        }
+    }
 
-//     @include size.selector(small){
-//         @include small-styles();
-//         .large{
-//             @include large-styles();
-//         }
-//     }
+    @include size.selector(small){
+        @include small-styles();
+        .large{
+            @include large-styles();
+        }
+    }
 
-//     .banner-component{
-//         width: 100%;
-//         height: auto;
-//         background-color: var(--neutral-alert-background);
-//         display: flex;
-//         flex-direction: row;
-//         position: relative;
-//         transition: opacity 0.2s linear;
-//     }
+    .tag-component {
+        width: 100%;
+        height: auto;
+        background-color: var(--neutral-alert-background);
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        transition: opacity 0.2s linear;
+        border-radius: 100px;
+    }
 
-//     .banner-btn {
-//         position: absolute;
-//         top: 16px;
-//         right: 16px;
-//         .banner-close {
-//             height: 24px;
-//             width: 24px;
-//             button {
-//                 padding: 4px 7px;
-//                 display: flex;
-//                 align-items: center;
-//             }
-//             svg {
-//                 height: 16px;
-//                 width: 10px;
-//             }
-//         }
-//     }
+    .tag-container {
+        display: flex;
+        // flex-direction: row;
+        // align-items: center;
+        // gap: 12px;
+        width: 100%;
+    }
 
-//     .banner-container{
-//         display: flex;
-//         flex-direction: row;
-//         align-items: center;
-//         gap: 12px;
-//         width: 100%;     
-//     }
+    .tag-left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        height: 100%;
+        gap: 12px;
 
-//     .banner-right{
-//         display: flex;
-//         flex-direction: column;
-//         width: 100%;
-//     }
+        div {
+            align-items: center;
+            display: flex;
+        }
+    }
 
-//     .banner-body{
-//         display: flex;
-//         flex-direction: row;
-//         width: 100%;
-//         justify-content: space-between;
-//     }
+    .tag-content {
+        align-self: flex-start;
+        * {
+            margin: 2px 0;
+        }
+    }
 
-//     .banner-left{
-//         display: flex;
-//         flex-direction: column;
-//         align-items: center;
-//         justify-items: center;
-//         height: 100%;
-//         gap: 12px;
-
-//         div {
-//             align-items: center;
-//             display: flex;
-//         }
-//     }
-
-//     .banner-line{
-//         height: 90%;
-//         width: 4px;
-//         border-radius: 4px;
-//     }
-
-//     .banner-text{
-//         width: 95%;
-//         overflow-wrap: break-word;
-//         align-self: center;
-//         display: flex;
-//         flex-direction: column;
-//     }
-
-//     .banner-content{
-//         align-self: flex-start;
-//         * {
-//             margin: 2px 0;
-//         }
-//     }
-
-//     .banner-ctas{
-//         display: flex;
-//         flex-direction: row;
-//         flex-wrap: wrap;
-//         width: 100%;
-//         gap: 5px;
-//     }
-
-//     .rounded{
-//         border-radius: 4px;
-//     }
-
-//     .bannerDismissed {
-//         opacity: 0;
-//     }
-
-//     .noDisplay {
-//         display: none;
-//     }
-
-//     @include types(information);
-//     @include types(critical);
-//     @include types(warning);
-//     @include types(success);
-// }
+    @include types(information);
+    @include types(success);
+    @include types(critical);
+}

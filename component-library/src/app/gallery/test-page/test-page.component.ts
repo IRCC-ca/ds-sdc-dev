@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IBannerConfig } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, IProgressTagsConfig } from 'ircc-ds-angular-component-library';
 
 
 @Component({
@@ -9,6 +9,13 @@ import { IBannerConfig } from 'ircc-ds-angular-component-library';
   styleUrls: ['./test-page.component.scss']
 })
 export class TestPageComponent implements OnInit {
+
+  tagConfig: IProgressTagsConfig = {
+    id: 'tag-test',
+    title: 'success',
+    type: 'success',
+    size: 'large'
+  }
 
   constructor(private altLang: LanguageSwitchService) { }
 

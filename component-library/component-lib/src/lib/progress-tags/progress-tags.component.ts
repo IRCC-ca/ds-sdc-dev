@@ -3,11 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export enum TagType {
   '' = '',
   // generic = 'generic',
-  info = 'info',
+  info = 'info', // In progress
   success = 'success', //completed
   critical = 'critical', //err
-  // primary generic (In progress)
-  // passive generic (Locked/Not started)
+  locked = 'locked', // primary generic (In progress)
+  notStarted = 'notStarted'  // passive generic (Locked/Not started)
 };
 
 export enum TagSize {
@@ -24,7 +24,6 @@ export interface IProgressTagsConfig {
 @Component({
   selector: 'lib-progress-tags',
   templateUrl: './progress-tags.component.html',
-  styleUrls: ['./progress-tags.component.css']
 })
 export class ProgressTagsComponent implements OnInit {
 
