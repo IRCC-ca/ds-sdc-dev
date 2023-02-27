@@ -50,6 +50,7 @@ export class MichaelComponent implements OnInit {
         id: 'required',
         formGroup: this.form_0,
         inlineLabel: 'Required',
+        inlineLabelBold: true
       },
       {
         id: 'mixed',

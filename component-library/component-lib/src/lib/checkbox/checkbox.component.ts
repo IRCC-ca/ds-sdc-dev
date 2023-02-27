@@ -13,6 +13,7 @@ export interface ICheckBoxComponentConfig {
   mixed?: true;
   disableFocus?: boolean; //Default is true
   inlineLabel?: string;
+  inlineLabelBold?: boolean;
   id: string; //used for identifying the component everywhere and should NEVER be missing
   helpText?: string;
   customErrorText?: string;
