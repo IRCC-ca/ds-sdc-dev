@@ -1,11 +1,14 @@
 <div class="{{config?.size}}" id="{{config?.id}}" 
-  [ngClass]="{'information': config?.type === 'info', 'success': config?.type === 'success','critical': config?.type === 'critical'}"
-  class="tag-component"
-  >
+  [ngClass]="{'generic': config?.type === 'generic', 'information': config?.type === 'info', 'success': config?.type === 'success','critical': config?.type === 'critical'}"
+  class="tag-component">
 
   <div class="tag-container">
     <div class="tag-left" *ngIf="config?.type">
       <ng-container [ngSwitch]="config?.type">
+        <div *ngSwitchCase="'generic'">
+          <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
+          <div class="content">In progress generic</div>
+        </div>
         <div *ngSwitchCase="'info'">
           <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
           <div class="content">In progress</div>
@@ -30,3 +33,5 @@
     <!-- <div class="tag-line" [ngClass]="{'hidden' : !lineVisible}"></div> -->
   </div>
 </div>
+<hr>
+<button (click)="click()">Click</button>

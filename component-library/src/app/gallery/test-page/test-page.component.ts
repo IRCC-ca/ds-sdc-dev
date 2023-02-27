@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IBannerConfig, IProgressTagsConfig } from 'ircc-ds-angular-component-library';
+import { IProgressTagsConfig } from 'ircc-ds-angular-component-library';
 
 
 @Component({
