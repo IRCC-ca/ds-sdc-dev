@@ -1,4 +1,4 @@
-<form [formGroup]="config.formGroup" [ngClass]="config.size" (click)="wasTouched()">
+<form [formGroup]="config.formGroup" [ngClass]="config.size" (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <label *ngIf="config.label"
     [attr.aria-label]="
       config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
@@ -33,9 +33,9 @@
     </div>
   </div>
   <ng-container *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid">
-    <ng-container *ngFor="let errors of config.errorMessages; let i = index">
+    <ng-container *ngFor="let errors of errorIds; let i = index">
       <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
-        <lib-error [id]="config.id + '_error' + i" [errorLOV]="errors.errorLOV" aria-live="polite"></lib-error>
+        <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV" aria-live="polite"></lib-error>
       </div>
     </ng-container>
   </ng-container>

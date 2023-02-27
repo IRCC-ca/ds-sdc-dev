@@ -8,7 +8,7 @@ import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/for
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorPairs} from "../../shared/interfaces/component-configs";
 import {IErrorIconConfig} from "../error/error.component";
-import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
+import { IErrorIDs, StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -56,6 +56,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   showPassword? : boolean;
   typeControl : keyof typeof InputTypes = InputTypes.text;
   ariaText = 'Text Input';
+  errorIds: IErrorIDs[] = []
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -92,6 +93,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
         this.disabled = false;
       }
     });
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+    }
   }
 
   public focusInput(focusValue: boolean): void {
