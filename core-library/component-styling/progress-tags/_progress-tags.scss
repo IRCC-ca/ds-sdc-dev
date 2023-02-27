@@ -20,7 +20,7 @@
     }
 }
 
-@mixin types($category: information){
+@mixin types($category: generic){
     .#{$category}{
         background-color: var(--#{$category}-alert-background);
         .tag-left{
@@ -140,7 +140,9 @@
         }
     }
 
-    @include types(information);
+    @include types(generic);
     @include types(success);
     @include types(critical);
+    @include types(locked);
+    @include types(notStarted);
 }

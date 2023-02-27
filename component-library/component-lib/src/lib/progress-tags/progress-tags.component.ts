@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export enum TagType {
   '' = '',
-  generic = 'generic',
-  info = 'info', // In progress
+  generic = 'generic',// In progress
+  primaryGeneric = 'primaryGeneric',
   success = 'success', //completed
   critical = 'critical', //err
-  locked = 'locked', // primary generic (In progress)
-  notStarted = 'notStarted'  // passive generic (Locked/Not started)
+  locked = 'locked', // passive generic
+  notStarted = 'notStarted'  // passive generic
 };
 
 export enum TagSize {
@@ -16,7 +16,7 @@ export enum TagSize {
 }
 export interface IProgressTagsConfig {
   id: string,
-  title?: ITagConfig[],
+  title?: string,
   type?: keyof typeof TagType,
   size?: keyof typeof TagSize
 }

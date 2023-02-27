@@ -1,5 +1,5 @@
 <div class="{{config?.size}}" id="{{config?.id}}" 
-  [ngClass]="{'generic': config?.type === 'generic', 'information': config?.type === 'info', 'success': config?.type === 'success','critical': config?.type === 'critical'}"
+  [ngClass]="{'generic': config?.type === 'generic', 'success': config?.type === 'success','critical': config?.type === 'critical'}"
   class="tag-component">
 
   <div class="tag-container">
@@ -8,10 +8,6 @@
         <div *ngSwitchCase="'generic'">
           <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
           <div class="content">In progress generic</div>
-        </div>
-        <div *ngSwitchCase="'info'">
-          <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
-          <div class="content">In progress</div>
         </div>
         <div *ngSwitchCase="'success'">
           <i class="fa-circle-check fa-regular tag-icon"></i>
@@ -34,4 +30,4 @@
   </div>
 </div>
 <hr>
-<button (click)="click()">Click</button>
+<!-- <button (click)="click()">Click</button> -->
