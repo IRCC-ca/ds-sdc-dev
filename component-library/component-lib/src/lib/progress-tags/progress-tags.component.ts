@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export enum TagType {
   '' = '',
-  // generic = 'generic',
+  generic = 'generic',
   info = 'info', // In progress
   success = 'success', //completed
   critical = 'critical', //err
@@ -14,12 +14,15 @@ export enum TagSize {
   large = 'large',
   small = 'small'
 }
-
 export interface IProgressTagsConfig {
   id: string,
-  title?: string,
+  title?: ITagConfig[],
   type?: keyof typeof TagType,
   size?: keyof typeof TagSize
+}
+export interface ITagConfig {
+  id?: string,
+  value?: string
 }
 @Component({
   selector: 'lib-progress-tags',
@@ -33,6 +36,9 @@ export class ProgressTagsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // this.config?.title?.forEach(x => {
+    //   this.config?.type
+    // }) 
   }
 
 }
