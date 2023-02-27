@@ -5,30 +5,35 @@
 %fa-regular {
     font-family: 'Font Awesome 6 Pro', serif;
     font-weight: 400;
+    font-style: normal;
 }
 
 %fab,
 %fa-brands {
     font-family: 'Font Awesome 6 Brands', serif;
     font-weight: 400;
+    font-style: normal;
 }
 
 %fas,
 %fa-solid {
     font-family: 'Font Awesome 6 Pro', serif;
     font-weight: 900;
+    font-style: normal;
 }
 
 %fal,
 %fa-light {
     font-family: 'Font Awesome 6 Pro', serif;
     font-weight: 300;
+    font-style: normal;
 }
 
 %fat,
 %fa-thin {
     font-family: 'Font Awesome 6 Pro', serif;
     font-weight: 100;
+    font-style: normal;
 }
 /// Mixin to include to define all fontawesome fonts used in the design system
 @mixin create() {
