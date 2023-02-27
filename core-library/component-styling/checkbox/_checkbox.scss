@@ -60,10 +60,16 @@
     align-items: baseline;
   }
 
+  .makeBold {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      font-weight: bold; 
+  }
+
   label {
     margin-top: auto;
     margin-bottom: auto;
-    
+
     &.disabled-label {
       color: var(--text-disabled);
     }
@@ -75,12 +81,6 @@
       font-weight: 700;
     }
 
-    &.bold {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-primary);
-      // font-size: 20px;
-      font-weight: 700;    
-    }
   }
 
   p {
