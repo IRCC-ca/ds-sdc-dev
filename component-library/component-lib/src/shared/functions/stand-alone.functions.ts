@@ -42,7 +42,17 @@ export class StandAloneFunctions {
         errorMessages?.forEach(message => {
             errorIds.push({ key: message.key, errorLOV: message.errorLOV });
         });
-        formGroup.get(id)?.statusChanges.subscribe(() => {
+
+        //Code block to get errors that have occurred before the statusChange obs is activated
+        let i = 0;
+        errorIds.forEach(error => {
+            if (formGroup.get(id)?.errors?.[error.key]) {
+                error.id = (id + '_error' + i);
+                i++;
+            }
+        });
+
+        formGroup.get(id)?.statusChanges.subscribe((change) => {
             let i = 0;
             errorIds.forEach(error => {
                 if (formGroup.get(id)?.errors?.[error.key]) {
@@ -52,6 +62,7 @@ export class StandAloneFunctions {
             });
         });
         return errorIds;
+
     }
 
 
