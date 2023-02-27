@@ -1,12 +1,12 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
 
 @mixin selector {
   lib-icon-button#{template-const.$escape} {
@@ -22,6 +22,7 @@
 
 @mixin primary-lg {
   padding: 8px 15px;
+
   svg {
     width: 15px;
   }
@@ -29,6 +30,7 @@
 
 @mixin primary-sm {
   padding: 6px 14px;
+
   svg {
     width: 13px;
   }
@@ -36,6 +38,7 @@
 
 @mixin critical-lg {
   padding: 8px 12px;
+
   svg {
     width: 21px;
   }
@@ -43,6 +46,7 @@
 
 @mixin critical-sm {
   padding: 6px 11px;
+
   svg {
     width: 18px;
   }
@@ -51,66 +55,85 @@
 @mixin layout {
   > button {
     border-radius: 50%;
+
     &:focus {
       outline-offset: -3px;
     }
+
     &:disabled {
       svg {
         color: var(--text-disabled) !important;
       }
     }
+
     &.primary {
       &.large {
         @include primary-lg;
       }
+
       &.small {
         @include primary-sm;
       }
+
       &.extraSmall {
         padding: 0 9px;
+
         svg {
           width: 10px;
         }
       }
+
       @include size.selector(large) {
         @include primary-lg;
       }
+
       @include size.selector(small) {
         @include primary-sm;
       }
     }
+
     &.critical {
       padding-top: 14px;
       padding-bottom: 14px;
+
       &.large {
         @include critical-lg;
       }
+
       &.small {
         @include critical-sm;
       }
+
       @include size.selector(large) {
         @include critical-lg;
       }
+
       @include size.selector(small) {
         @include critical-sm;
       }
     }
+
     &.custom {
       &.large {
         @include primary-lg;
       }
+
       &.small {
         @include primary-sm;
       }
+
       &.extraSmall {
         padding: 0 9px;
+
         svg {
           width: 10px;
         }
       }
+
       @include size.selector(large) {
         @include primary-lg;
       }
+
       @include size.selector(small) {
         @include primary-sm;
       }
