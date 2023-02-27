@@ -44,6 +44,11 @@
     font-weight: 300;
   }
 
+  .banner-btn {
+    top: 11px;
+    right: 13px;
+  }
+
   .banner-title {
     font-size: 20px;
   }
@@ -53,8 +58,7 @@
   }
 
   .banner-container {
-    padding: 16px 16px 16px 20px;
-  }
+    padding: 16px 19px 16px 16px;  }
 
   .banner-text {
     gap: 8px;
@@ -67,6 +71,11 @@
     width: 20px;
     line-height: 20px;
     font-weight: 300;
+  }
+
+  .banner-btn {
+    top: 8px;
+    right: 7px;
   }
 
   .banner-title {
@@ -115,24 +124,6 @@
 
   .banner-btn {
     position: absolute;
-    top: 16px;
-    right: 16px;
-
-    .banner-close {
-      height: 24px;
-      width: 24px;
-
-      button {
-        padding: 4px 7px;
-        display: flex;
-        align-items: center;
-      }
-
-      svg {
-        height: 16px;
-        width: 10px;
-      }
-    }
   }
 
   .banner-container {
