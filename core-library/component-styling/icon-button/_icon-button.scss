@@ -21,32 +21,24 @@
 }
 
 @mixin primary-lg {
-  padding: 8px 15px;
-
   svg {
     width: 15px;
   }
 }
 
 @mixin primary-sm {
-  padding: 6px 14px;
-
   svg {
     width: 13px;
   }
 }
 
 @mixin critical-lg {
-  padding: 8px 12px;
-
   svg {
     width: 21px;
   }
 }
 
 @mixin critical-sm {
-  padding: 6px 11px;
-
   svg {
     width: 18px;
   }
@@ -66,6 +58,39 @@
       }
     }
 
+    > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.large {
+      padding: 10px;
+
+      > span {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &.small {
+      padding: 10px;
+
+      > span {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &.extraSmall {
+      padding: 4px;
+
+      > span {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
     &.primary {
       &.large {
         @include primary-lg;
@@ -76,8 +101,6 @@
       }
 
       &.extraSmall {
-        padding: 0 9px;
-
         svg {
           width: 10px;
         }
@@ -93,9 +116,6 @@
     }
 
     &.critical {
-      padding-top: 14px;
-      padding-bottom: 14px;
-
       &.large {
         @include critical-lg;
       }
@@ -123,8 +143,6 @@
       }
 
       &.extraSmall {
-        padding: 0 9px;
-
         svg {
           width: 10px;
         }
