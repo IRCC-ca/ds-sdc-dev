@@ -42,6 +42,7 @@
   .input-password-field {
     margin-top: 8px;
     height: 52px;
+    padding-right: 38px;
   }
 
   .input-text-field {
@@ -50,7 +51,8 @@
   }
 
   .passwordIcon {
-    font-size: 20px
+    font-size: 20px;
+    padding: 12px 10px 12px 0px;
   }
 }
 
@@ -74,18 +76,22 @@
     font-size: 12px;
   }
 
+
   .input-password-field {
+    padding: 10px 36px 10px 12px; 
     margin-top: 4px;
     height: 40px;
   }
 
   .input-text-field {
+    padding: 10px 12px 10px 12px; 
     margin-top: 4px;
     height: 40px;
   }
 
   .passwordIcon {
-    font-size: 16px
+    font-size: 16px;
+    padding: 6px 11px 6px 0px;
   }
 
   lib-error {
@@ -145,7 +151,6 @@
     position: relative;
     .input-password-field {
       box-sizing: border-box;
-      padding-right: 50px;
     }
 
     .input-text-field {
@@ -165,6 +170,7 @@
       z-index: 1;
       padding-right: 10px;
       color: var(--text-primary);
+      padding-left: 0px;
     }
 
     button:disabled {
