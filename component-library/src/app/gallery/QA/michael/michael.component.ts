@@ -50,6 +50,7 @@ export class MichaelComponent implements OnInit {
         id: 'required',
         formGroup: this.form_0,
         inlineLabel: 'Required',
+        inlineLabelBold: true
       },
       {
         id: 'mixed',
@@ -220,6 +221,9 @@ export class MichaelComponent implements OnInit {
         this.qaInputConfig = updatedConfig;
       }
     })
+    this.form.patchValue({
+      'type': 'text'
+    });
 
     // Auto tester component configs - Checkbox
     this.testerCheckboxConfig.dropdowns?.forEach(i => {

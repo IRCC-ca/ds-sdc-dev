@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
-import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 
 export interface IRadioInputComponentConfig {
   id: string;
@@ -34,6 +34,8 @@ export interface IRadioInputOption {
   error?: true;
 }
 
+
+
 @Component({
   selector: 'lib-radio-input',
   templateUrl: './radio-input.component.html',
@@ -48,6 +50,7 @@ export interface IRadioInputOption {
 export class RadioInputComponent implements OnInit, ControlValueAccessor {
   formGroupEmpty = new FormGroup({});
   touched = false;
+  errorIds: IErrorIDs[] = [];
 
   @Input() config: IRadioInputComponentConfig = {
     id: '',
@@ -80,8 +83,11 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
     if (this.id !== '') this.config.id = this.id;
     if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
-
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+    }
   }
+
 
   /**
    * used to disable individual fields (from the config under 'options')
@@ -96,4 +102,5 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     }
     return '';
   }
+
 }
