@@ -8,7 +8,7 @@ import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/for
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorPairs} from "../../shared/interfaces/component-configs";
 import {IErrorIconConfig} from "../error/error.component";
-import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
+import { IErrorIDs, StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -28,7 +28,6 @@ export enum InputTypes {
   text = 'text',
   password = 'password'
 }
-
 @Component({
   selector: 'lib-input',
   templateUrl: './input.component.html',
@@ -45,15 +44,19 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: IInputComponentConfig = {
     id: '',
-    formGroup: new FormGroup({})
+    formGroup: new FormGroup({}),
   };
 
   @Input() id = '';
   @Input() formGroup = this.formGroupEmpty;
+  @Input() type : keyof typeof InputTypes = InputTypes.password;
 
   disabled = false;
   focusState = false;
-  showPassword = false;
+  showPassword? : boolean;
+  typeControl : keyof typeof InputTypes = InputTypes.text;
+  ariaText = 'Text Input';
+  errorIds: IErrorIDs[] = []
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -70,7 +73,29 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.formGroup = this.formGroup;
     }
 
-    if (!this.config.type) this.config.type='text';
+    if (!this.config.type) {
+      this.config.type = InputTypes.text;
+    }
+
+    else if (this.config.type === InputTypes.password) {
+      this.showPassword = false;
+      this.typeControl = InputTypes.password;
+      this.ariaText = "Password Input";
+    }
+
+    (this.type === InputTypes.text) ? (this.showPassword = false) : (this.showPassword = true);
+
+    //set disable to true when form is disabled
+    this.config.formGroup.valueChanges.subscribe(change => {
+      if (change[this.config.id] === undefined) {
+        this.disabled = true;
+      } else {
+        this.disabled = false;
+      }
+    });
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+    }
   }
 
   public focusInput(focusValue: boolean): void {
@@ -82,7 +107,15 @@ export class InputComponent implements ControlValueAccessor, OnInit {
    */
   hideShow() {
     this.showPassword = !this.showPassword;
-    this.config.type === InputTypes.password ? (this.config.type = InputTypes.text) : (this.config.type = InputTypes.password);
+
+    if (this.showPassword) {
+      this.typeControl = InputTypes.text;
+      this.ariaText= 'Text Input';
+    } 
+    else {
+      this.typeControl = InputTypes.password;
+      this.ariaText= 'Password Input';
+    }
   }
 
   public clearvalue() {
@@ -90,7 +123,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   writeValue(value: string): void {
   }
   registerOnChange(fn: any): void {
-    console.log('type', this.config.type);
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {

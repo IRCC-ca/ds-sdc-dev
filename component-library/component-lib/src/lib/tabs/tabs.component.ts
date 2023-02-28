@@ -1,6 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { DSSizes } from 'component-lib/src/shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 export interface ITabNavConfig {
   id: string;
   tab?: ITabConfig[];
@@ -30,5 +30,14 @@ export class TabsComponent implements OnInit {
 
   setSelected(selectedID: any) {
     if (selectedID) this.config.selected = selectedID //set the selected tab
+    
+    if (this.config?.selected) {
+      let tab = document.getElementById(this.config?.selected)
+      let x = tab?.getBoundingClientRect().left;
+      if (document.querySelector('.page-nav')) {
+        let nav = document.querySelector('.page-nav');
+        nav && x ? nav.scrollLeft = x : null;
+      }
+    }
   }
 }

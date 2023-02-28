@@ -28,6 +28,16 @@
     );
 }
 
+// @mixin create-body() {
+//     @include Inter.fontFace(
+//         $weight: map-get(text.$body, weight, bold),
+//         $display: auto,
+//         $style: normal,
+//         $fontDir: '~@fontsource/inter/files',
+//         $fontName: map-get(text.$body, family)
+//     );
+// }
+
 /// Creates fonts used in design system
 @mixin create() {
     @include create-body();

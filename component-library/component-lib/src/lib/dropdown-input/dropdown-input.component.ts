@@ -1,8 +1,8 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorPairs } from '../../shared/interfaces/component-configs';
-import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
+import { IErrorIDs, StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export declare enum DropdownType {
   secondary = "secondary",
@@ -12,7 +12,6 @@ export declare enum DropdownType {
 export interface IDropdownInputConfig {
   id: string;
   formGroup: FormGroup;
-  small?: boolean;
   label?: string;
   options?: IDropdownInputOptionsConfig[];
   category?: keyof typeof DropdownType;
@@ -38,8 +37,9 @@ export interface IDropdownInputOptionsConfig {
     }
   ]
 })
-export class DropdownInputComponent implements ControlValueAccessor {
+export class DropdownInputComponent implements ControlValueAccessor, OnInit {
   touched = false;
+  errorIds: IErrorIDs[] = [];
 
   @Input() config: IDropdownInputConfig = {
     id: '',
@@ -65,6 +65,12 @@ export class DropdownInputComponent implements ControlValueAccessor {
     if (!this.touched) {
       this.onTouched();
       this.touched = true;
+    }
+  }
+
+  ngOnInit() {
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
     }
   }
 }

@@ -3,7 +3,7 @@ import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms
 import {DSSizes} from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import {IErrorIconConfig} from "../error/error.component";
 import {IErrorPairs} from "../../shared/interfaces/component-configs";
-import { StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
+import { IErrorIDs, StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
@@ -13,6 +13,7 @@ export interface ICheckBoxComponentConfig {
   mixed?: true;
   disableFocus?: boolean; //Default is true
   inlineLabel?: string;
+  inlineLabelBold?: boolean;
   id: string; //used for identifying the component everywhere and should NEVER be missing
   helpText?: string;
   customErrorText?: string;
@@ -47,6 +48,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() id = '';
 
   isDisabled = false;
+  errorIds: IErrorIDs[] = [];
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -79,6 +81,10 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
+    }
+
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
     }
   }
 

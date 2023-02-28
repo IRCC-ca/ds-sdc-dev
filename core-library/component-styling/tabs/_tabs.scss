@@ -47,8 +47,7 @@ $selectors: 'lib-tabs';
 	
 	@include device.in-phone-layout {
 		.page-nav {
-			overflow: auto;
-			white-space: nowrap;
+			overflow-x: scroll;
 		}
 	}
 

@@ -4,5 +4,7 @@
         [disabled]="config?.disabled"
         (click)="buttonClick()"
         [class]="config.category+' '+config.size">
-  <lib-icon [class]="config.icon?.class" [style.color]="config.icon?.color"></lib-icon>
+  <span>
+    <lib-icon [class]="config.icon?.class" [style.color]="config.icon?.color"></lib-icon>
+  </span>
 </button>
