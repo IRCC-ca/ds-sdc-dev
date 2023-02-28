@@ -1,33 +1,30 @@
-<div class="{{config?.size}}" id="{{config?.id}}" 
-  [ngClass]="{'generic': config?.type === 'generic', 'success': config?.type === 'success','critical': config?.type === 'critical'}"
-  class="tag-component">
+<div class="{{config?.size}}" id="{{config?.id}}" class="tag-component"
+  [ngClass]="{'success': config?.type === 'success','critical': config?.type === 'critical', 'neutral': (config?.type === 'locked') || (config?.type === 'notStarted')}">
 
   <div class="tag-container">
-    <div class="tag-left" *ngIf="config?.type">
+    <div class="tag-left">
       <ng-container [ngSwitch]="config?.type">
-        <div *ngSwitchCase="'generic'">
-          <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
-          <div class="content">In progress generic</div>
-        </div>
         <div *ngSwitchCase="'success'">
           <i class="fa-circle-check fa-regular tag-icon"></i>
-          <div class="content">Completed</div>
+          <span class="content">{{'TAG.completed' | translate}}</span>
         </div>
         <div *ngSwitchCase="'critical'">
           <i class="fa-circle-exclamation fa-regular tag-icon"></i>
-          <div class="content">Error</div>
+          <span class="content">{{'TAG.error' | translate}}</span>
         </div>
         <div *ngSwitchCase="'locked'">
           <i class="fa-light fa-lock tag-icon"></i>
-          <div class="content">Locked</div>
+          <span class="content">{{'TAG.locked' | translate}}</span>
         </div>
         <div *ngSwitchCase="'notStarted'">
           <i class="fa-light fa-circle tag-icon"></i>
-          <div class="content">Not started</div>
+          <span class="content">{{'TAG.notStarted' | translate}}</span>
+        </div>
+        <div *ngSwitchDefault>
+          <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
+          <span class="content">{{'TAG.progress' | translate}}</span>
         </div>
       </ng-container>
-    <!-- <div class="tag-line" [ngClass]="{'hidden' : !lineVisible}"></div> -->
+    </div>
   </div>
 </div>
-<hr>
-<!-- <button (click)="click()">Click</button> -->
