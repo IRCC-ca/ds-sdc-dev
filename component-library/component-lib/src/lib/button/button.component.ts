@@ -56,7 +56,7 @@ export class ButtonComponent {
     @Input() icon?: string;
     @Input() iconDirection?: keyof typeof ButtonIconDirection;
 
-    @Output() click: EventEmitter<any> = new EventEmitter();
+    @Output() btnAction : EventEmitter<any> = new EventEmitter();
 
     ngOnInit() {
         (this.id !== '') ? this.config.id = this.id : undefined;
@@ -75,7 +75,7 @@ export class ButtonComponent {
         }
     }
 
-    buttonClick(id: string) {
-        this.click.emit(id);
+    clickEvent(id: string) {
+        this.btnAction.emit(id);
     }
 }
