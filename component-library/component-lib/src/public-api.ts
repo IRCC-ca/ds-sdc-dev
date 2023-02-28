@@ -20,6 +20,7 @@ export * from './lib/form-components/dropdown-input/dropdown-input.component';
 export * from './lib/form-components/error/error.component';
 export * from './lib/form-components/input/input.component';
 export * from './lib/form-components/radio-input/radio-input.component';
+export * from './lib/form-components/date-picker/date-picker.component';
 
 
 /** Header/Footer Components **/
@@ -36,7 +37,6 @@ export * from './lib/legacy-old/autocomplete/autocomplete.component';
 export * from './lib/legacy-old/chips/chip-item/chip-item.component';
 export * from './lib/legacy-old/chips/chip-list/chip-list.component';
 export * from './lib/legacy-old/chips/secondary-chips/secondary-chips.component';
-export * from './lib/legacy-old/date-picker/date-picker.component';
 export * from './lib/legacy-old/search-input/search-input.component';
 
 

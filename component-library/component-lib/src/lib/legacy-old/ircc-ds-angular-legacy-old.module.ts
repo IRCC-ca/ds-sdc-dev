@@ -4,7 +4,6 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { ChipListComponent } from './chips/chip-list/chip-list.component';
 import { SecondaryChipsComponent } from './chips/secondary-chips/secondary-chips.component';
 import { ChipItemComponent } from './chips/chip-item/chip-item.component';
-import { DatePickerComponent } from './date-picker/date-picker.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { IrccDsAngularComponentsSharedModule } from '../shared/ircc-ds-angular-component-shared.module';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,7 +14,6 @@ const IrccDsLegacyOldComponents = [
   ChipListComponent,
   SecondaryChipsComponent,
   ChipItemComponent,
-  DatePickerComponent,
   SearchInputComponent
 ];
 

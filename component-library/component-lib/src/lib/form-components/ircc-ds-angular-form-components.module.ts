@@ -8,13 +8,15 @@ import { IrccDsAngularComponentsSharedModule } from '../shared/ircc-ds-angular-c
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePickerComponent } from "./date-picker/date-picker.component";
 
 const IrccDsAngularFormComponents = [
   CheckboxComponent,
   DropdownInputComponent,
   ErrorComponent,
   InputComponent,
-  RadioInputComponent
+  RadioInputComponent,
+  DatePickerComponent
 ];
 
 @NgModule({
