@@ -16,6 +16,10 @@ export const DATE_PICKER_DAY_CONTROL_ID_EXTENSION = '_dayControl';
 export const DATE_PICKER_MONTH_CONTROL_ID_EXTENSION = '_monthControl';
 export const DATE_PICKER_YEAR_CONTROL_ID_EXTENSION = '_yearControl';
 
+export const DATE_PICKER_LABELS_EN = ["Day", "Month", "Year"];
+export const DATE_PICKER_LABELS_FR = ["Jour", "Moi", "Année"];
+
+
 
 
 export interface IDatePickerConfig {
@@ -63,7 +67,7 @@ export class DatePickerComponent implements OnInit {
     category: 'secondary'
   }
 
-  @Input() formGroup: FormGroup = new FormGroup({});
+  @Input() formGroup?: FormGroup;
   @Input() id?: string;
   @Input() size?: keyof typeof DSSizes;
   @Input() label?: string;
@@ -79,19 +83,25 @@ export class DatePickerComponent implements OnInit {
 
   dropDownConfigs: IDatePickerDropDownConfigs = {
     day: {
-      id: this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION,
+      id: '',
       formGroup: this.config.formGroup,
-      label: ''
+      label: '',
+      options: [],
+      size: 'large',
     },
     month : {
-      id: this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION,
+      id: '',
       formGroup: this.config.formGroup,
-      label: ''
+      label: '',
+      options: [],
+      size: 'large',
     },
     year : {
-      id: this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION,
+      id: '',
       formGroup: this.config.formGroup,
-      label: ''
+      label: '',
+      options: [],
+      size: 'large',
     },
   }
 
@@ -99,9 +109,10 @@ export class DatePickerComponent implements OnInit {
   private currentYear = new Date().getFullYear();
 
   constructor(private translate: TranslateService,
-    public standAloneFunctions: StandAloneFunctions) { }
+    public standAloneFunctions: StandAloneFunctions) {}
 
-  ngOnInit() {
+  ngOnInit() {  
+    console.log(this.config);
     //set config from individual options, if present
     if (this.formGroup) this.config.formGroup = this.formGroup;
     if (this.id) this.config.id = this.id;
@@ -113,35 +124,75 @@ export class DatePickerComponent implements OnInit {
     if (this.desc) this.config.desc = this.desc;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
 
+    //Set the ids for the dropdowns
+    this.dropDownConfigs.day.id = this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION;
+    this.dropDownConfigs.month.id = this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION;
+    this.dropDownConfigs.year.id = this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION;
+
+    this.dropDownConfigs.day.formGroup = this.config.formGroup;
+    this.dropDownConfigs.month.formGroup = this.config.formGroup;
+    this.dropDownConfigs.year.formGroup = this.config.formGroup;
+
+    this.dropDownConfigs.day.size = this.config.size;
+    this.dropDownConfigs.month.size = this.config.size;
+    this.dropDownConfigs.year.size = this.config.size;
+
     // Populate the months and years arrays
     this.setMonthsLanguage();
+    this.setLabelLanguage();
     this.translate.onLangChange.subscribe(() => {
       this.setMonthsLanguage();
+      this.setLabelLanguage();
     });
     for (let i = 1900; i <= this.currentYear; i++) {
-      this.dropDownConfigs.year.options.push();
+      this.dropDownConfigs.year.options?.push({text: i.toString()});
     }
 
     // Populate the days array based on the selected month and year
-    this.config.formGroup.get((this.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION))?.valueChanges.subscribe(month => {
+    this.config.formGroup.get((this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION))?.valueChanges.subscribe(month => {
       //add if statement here - the value of year can be empty, since it may not have been selected yet.
-      const numDays = this.updateDaysArray(month, this.config.formGroup.get((this.id + '_yearControl'))?.value);
+      const numDays = this.updateDaysArray(month, this.config.formGroup.get((this.config.id + '_yearControl'))?.value);
       console.log(month, numDays);
-      console.log(this.config.formGroup.get((this.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION))?.value);
+      console.log(this.config.formGroup.get((this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION))?.value);
     });
-    this.config.formGroup.get((this.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION))?.valueChanges.subscribe(year => {
-      const numDays = this.updateDaysArray(this.config.formGroup.get((this.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION))?.value, year);
+    this.config.formGroup.get((this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION))?.valueChanges.subscribe(year => {
+      const numDays = this.updateDaysArray(this.config.formGroup.get((this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION))?.value, year);
     });
-    if (this.days.length === 0) {
+    if (this.dropDownConfigs.day.options?.length === 0) {
       for (let i = 1; i <= 31; i++) {
-        this.days.push(i);
+        this.dropDownConfigs.day.options?.push({text: i.toString()});
       }
     }
   }
 
+  /**
+   * Set the language for the month dropdown
+   */
   setMonthsLanguage() {
+    this.dropDownConfigs.month.options = [];
     (this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US') ?
       this.months = DATE_PICKER_MONTHS_EN : this.months = DATE_PICKER_MONTHS_FR;
+      this.months.forEach((month: string, index: number) => {
+        this.dropDownConfigs.month.options?.push({text: month, value: DATE_PICKER_MONTHS_EN[index]});
+      });
+  }
+
+  /**
+   * Set the language for the labels of each dropdown
+   */
+  setLabelLanguage() {
+    console.log(this.dropDownConfigs);
+    if ((this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US')) {
+      this.dropDownConfigs.day.label = DATE_PICKER_LABELS_EN[0];
+      this.dropDownConfigs.month.label = DATE_PICKER_LABELS_EN[1];
+      this.dropDownConfigs.year.label = DATE_PICKER_LABELS_EN[2];
+    } else {
+      this.dropDownConfigs.day.label = DATE_PICKER_LABELS_FR[0];
+      this.dropDownConfigs.month.label = DATE_PICKER_LABELS_FR[1];
+      this.dropDownConfigs.year.label = DATE_PICKER_LABELS_FR[2];
+    }
+    console.log(this.dropDownConfigs);
+
   }
 
   /**
@@ -151,11 +202,15 @@ export class DatePickerComponent implements OnInit {
    */
   private updateDaysArray(month: string, year: number): void {
     this.days = [];
+    this.dropDownConfigs.day.options = [];
     const numDays = this.getNumDaysInMonth(month, year);
     for (let i = 1; i <= numDays; i++) {
       this.days.push(i);
     }
-    this.config.formGroup.get((this.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION))?.setValue('');
+    this.config.formGroup.get((this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION))?.setValue('');
+    this.days.forEach(day => {
+      this.dropDownConfigs.day.options?.push({text: day.toString()});
+    });
   }
 
   /**
