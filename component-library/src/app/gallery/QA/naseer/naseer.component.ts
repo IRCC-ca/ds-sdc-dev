@@ -16,7 +16,7 @@ export class NaseerComponent implements OnInit {
 
   qaInput : IInputComponentConfig = {
     id: this.INPUT_ID,
-    formGroup: this.form,
+    formGroup: this.form
   };
 
   qaButton : IIconButtonComponentConfig = {

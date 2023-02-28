@@ -28,7 +28,6 @@ export enum InputTypes {
   text = 'text',
   password = 'password'
 }
-
 @Component({
   selector: 'lib-input',
   templateUrl: './input.component.html',
@@ -45,15 +44,18 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: IInputComponentConfig = {
     id: '',
-    formGroup: new FormGroup({})
+    formGroup: new FormGroup({}),
   };
 
   @Input() id = '';
   @Input() formGroup = this.formGroupEmpty;
+  @Input() type : keyof typeof InputTypes = InputTypes.password;
 
   disabled = false;
   focusState = false;
-  showPassword = false;
+  showPassword? : boolean;
+  typeControl : keyof typeof InputTypes = InputTypes.text;
+  ariaText = 'Text Input';
   errorIds: IErrorIDs[] = []
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
@@ -71,7 +73,17 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.formGroup = this.formGroup;
     }
 
-    if (!this.config.type) this.config.type = 'text';
+    if (!this.config.type) {
+      this.config.type = InputTypes.text;
+    }
+
+    else if (this.config.type === InputTypes.password) {
+      this.showPassword = false;
+      this.typeControl = InputTypes.password;
+      this.ariaText = "Password Input";
+    }
+
+    (this.type === InputTypes.text) ? (this.showPassword = false) : (this.showPassword = true);
 
     //set disable to true when form is disabled
     this.config.formGroup.valueChanges.subscribe(change => {
@@ -95,7 +107,15 @@ export class InputComponent implements ControlValueAccessor, OnInit {
    */
   hideShow() {
     this.showPassword = !this.showPassword;
-    this.config.type === InputTypes.password ? (this.config.type = InputTypes.text) : (this.config.type = InputTypes.password);
+
+    if (this.showPassword) {
+      this.typeControl = InputTypes.text;
+      this.ariaText= 'Text Input';
+    } 
+    else {
+      this.typeControl = InputTypes.password;
+      this.ariaText= 'Password Input';
+    }
   }
 
   public clearvalue() {
