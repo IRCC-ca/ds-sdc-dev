@@ -32,6 +32,7 @@ export interface IDatePickerConfig {
   hint?: string;
   desc?: string;
   errorMessages?: IDatePickerErrorMessages;
+  //TODO: Add max and min year for date picker
 }
 
 export interface IDatePickerErrorMessages {
