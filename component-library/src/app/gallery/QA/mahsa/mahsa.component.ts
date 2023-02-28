@@ -153,10 +153,10 @@ export class MahsaComponent implements OnInit {
         formGroup: this.tagForm,
         options: [
           {
-            text: 'small'
+            text: 'large'
           },
           {
-            text: 'large'
+            text: 'small'
           }
         ]
       }
@@ -216,7 +216,6 @@ export class MahsaComponent implements OnInit {
         tagConf = { ...tagConf, [param]: value[param] };
         this.qaTags = tagConf;
       }
-      console.log(this.qaTags);
     });
   }
 
