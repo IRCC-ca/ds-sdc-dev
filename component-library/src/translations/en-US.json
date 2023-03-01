@@ -63,5 +63,13 @@
     "testErrorMessage": "Test error message.",
     "errorMessage": "Error message",
     "errorMessageMahsa": "Testing error message thing take 1000"
+  },
+
+  "TAG": {
+    "progress": "In progress",
+    "completed": "Completed",
+    "error": "Error",
+    "locked": "Locked",
+    "notStarted": "Not started"
   }
 }

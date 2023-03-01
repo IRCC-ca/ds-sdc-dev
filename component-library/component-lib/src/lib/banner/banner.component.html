@@ -1,5 +1,5 @@
 <div (window:resize)="toggleLine()" class="banner-component" class="{{config?.size}}" id="{{config?.id}}" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
-    <div class="banner-container">
+  <div class="banner-container">
     <div class="banner-left" *ngIf="config?.type != 'generic' && config?.type">
       <ng-container [ngSwitch]="config?.type">
         <div *ngSwitchCase="'critical'">
@@ -16,13 +16,13 @@
         </div>
       </ng-container>
     <div class="banner-line" [ngClass]="{'hidden' : !lineVisible}"></div>
-    </div>
-    <div class="banner-right">
+  </div>
+  <div class="banner-right">
     <div class="banner-body">
-    <div class="banner-text" id={{textId}}>
+      <div class="banner-text" id={{textId}}>
         <div class="banner-title h6 emphasis" *ngIf="config?.title">{{(config?.title || '') | translate}}</div>
         <div class="banner-content" [innerHTML]="(config?.content || '') | translate" *ngIf="config?.content"></div>
-    </div>
+      </div>
     </div>
     <div class="banner-ctas" *ngIf="config?.cta">
       <ng-container *ngFor="let cta of config?.cta; let index = index">

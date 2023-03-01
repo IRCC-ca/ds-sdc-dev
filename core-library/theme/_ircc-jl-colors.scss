@@ -515,6 +515,7 @@ $purple: (
             success: $green,
             focus: $blue,
             visited: $purple,
+            primary: $blue
         ),
         greyscale: (
             neutral: $grey,
@@ -526,6 +527,7 @@ $purple: (
             success: $grey,
             focus: $grey,
             visited: $grey,
+            primary: $grey
         )
     );
 }
@@ -542,6 +544,7 @@ $purple: (
             success: $purple,
             focus: $purple,
             visited: $purple,
+            primary: $purple
         )
     );
 }

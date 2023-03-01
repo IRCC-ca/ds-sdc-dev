@@ -22,6 +22,7 @@ import { BannerComponent } from './banner/banner.component';
 import { ErrorComponent } from './error/error.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { RouterModule } from '@angular/router';
+import { ProgressTagsComponent } from './progress-tags/progress-tags.component';
 import { ProgressIndicatorComponent } from './progress-indicator/progress-indicator.component';
 
 
@@ -47,6 +48,7 @@ import { ProgressIndicatorComponent } from './progress-indicator/progress-indica
     BannerComponent,
     ErrorComponent,
     TabsComponent,
+    ProgressTagsComponent,
     ProgressIndicatorComponent
   ],
   imports: [
@@ -76,6 +78,7 @@ import { ProgressIndicatorComponent } from './progress-indicator/progress-indica
     BannerComponent,
     ErrorComponent,
     TabsComponent,
+    ProgressTagsComponent,
     ProgressIndicatorComponent
   ]
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDropdownInputConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import { IDropdownInputConfig, IProgressTagsConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 @Component({
   selector: 'app-mahsa',
@@ -10,6 +10,7 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
 })
 export class MahsaComponent implements OnInit {
   form = new FormGroup({});
+  tagForm = new FormGroup({});
 
   SELECT_ID = 'qa_test_select';
   TAB_ID = 'qa-test-tabs';
@@ -32,6 +33,10 @@ export class MahsaComponent implements OnInit {
       { id: 'products', title: 'Products', value: 'This is Products' },
       { id: 'login', title: 'Login', value: 'This is Login' },
     ],
+  };
+
+  qaTags: IProgressTagsConfig = {
+    id: 'tag-test',
   }
 
   testerConfig: IAutoTestConfigObject = {
@@ -118,11 +123,57 @@ export class MahsaComponent implements OnInit {
     ]
   };
 
+  tagTestConfigObj: IAutoTestConfigObject = {
+    dropdowns: [
+      {
+        id: 'type',
+        label: 'Type',
+        formGroup: this.tagForm,
+        options: [
+          {
+            text: 'primary'
+          },
+          {
+            text: 'success'
+          },
+          {
+            text: 'critical'
+          },
+          {
+            text: 'locked'
+          },
+          {
+            text: 'notStarted'
+          }
+        ]
+      },
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.tagForm,
+        options: [
+          {
+            text: 'large'
+          },
+          {
+            text: 'small'
+          }
+        ]
+      }
+    ]
+  };
+
   autoTestConfig: IAutoTestComponentConfig = {
     id: 'mahsa_tester',
     formGroup: this.form,
     testFields: this.testerConfig
-  }
+  };
+
+  tagTestConfig: IAutoTestComponentConfig = {
+    id: 'tag_tester',
+    formGroup: this.tagForm,
+    testFields: this.tagTestConfigObj
+  };
 
   constructor(private altLang: LanguageSwitchService) { }
 
@@ -140,6 +191,10 @@ export class MahsaComponent implements OnInit {
     });
     this.form.addControl(this.qaSelect.id, new FormControl());
 
+    this.tagTestConfigObj.dropdowns?.forEach(i => {
+      this.tagForm.addControl(i.id, new FormControl());
+    });
+
     this.form.valueChanges.subscribe(value => {
       let updatedConfig: IDropdownInputConfig = {
         id: this.SELECT_ID,
@@ -149,6 +204,17 @@ export class MahsaComponent implements OnInit {
       for(let param in value) {
         updatedConfig = { ...updatedConfig, [param]: value[param] };
         this.qaSelect = updatedConfig;
+      }
+    });
+
+    this.tagForm.valueChanges.subscribe(value => {
+      let tagConf: IDropdownInputConfig = {
+        id: 'tag1',
+        formGroup: this.tagForm
+      };
+      for (let param in value) {
+        tagConf = { ...tagConf, [param]: value[param] };
+        this.qaTags = tagConf;
       }
     });
   }

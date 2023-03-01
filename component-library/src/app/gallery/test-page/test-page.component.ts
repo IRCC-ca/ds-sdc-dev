@@ -24,6 +24,7 @@ export class TestPageComponent implements OnInit {
     // size: 'small'
   }
 
+
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
