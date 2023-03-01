@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDropdownInputConfig, IProgressTagsConfig, ITabNavConfig, ITagConfig } from 'ircc-ds-angular-component-library';
+import { IDropdownInputConfig, IProgressTagsConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 @Component({
   selector: 'app-mahsa',
