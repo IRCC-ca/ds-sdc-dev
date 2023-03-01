@@ -1,0 +1,115 @@
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as token-size;
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+    lib-progress-tags#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin types($category: generic) {
+    .#{$category}{
+        background-color: var(--#{$category}-alert-background);
+        .tag-left {
+            --text: var(--#{$category}-alert-text);
+        }
+    }
+}
+
+@mixin large-styles() {
+    .tag-container {
+        padding: 4px 8px;
+    }
+    .tag-icon {
+        height: 16px;
+        width: 16px;
+        line-height: 16px;
+        font-weight: 400;
+    }
+    .content {
+        margin-left: 6px;
+        @include typography.fontSize(map.get(text.$body, level), 3);
+    }
+}
+
+@mixin small-styles() {
+    .tag-container {
+        padding: 2px 8px;
+    }
+    .tag-icon {
+        height: 12px;
+        width: 12px;
+        line-height: 16px;
+        font-weight: 400;
+    }
+    .content {
+        margin-left: 5px;
+        @include typography.fontSize(map.get(text.$body, level), 4);
+    }
+}
+
+@mixin layout {
+
+    @include size.selector(large) {
+        @include large-styles();
+        .small {
+            @include small-styles();
+        }
+    }
+
+    @include size.selector(small) {
+        @include small-styles();
+        .large {
+            @include large-styles();
+        }
+    }
+
+    .tag-component {
+        width: 100%;
+        height: auto;
+        background-color: var(--primary-alert-background);
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        transition: opacity 0.2s linear;
+        border-radius: 100px;
+    }
+
+    .tag-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .tag-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        height: 100%;
+        gap: 12px;
+        --text: var(--primary-alert-text);
+        color: var(--text);
+
+        div {
+            align-items: center;
+            display: flex;
+        }
+    }
+
+    @include types(neutral);
+    @include types(success);
+    @include types(critical);
+}

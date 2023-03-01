@@ -57,5 +57,21 @@
 
   "QA": {
     "header": "Page de AQ"
+  },
+
+  "ERROR": {
+    "fieldIsInvalid": "FR This field is invalid.",
+    "fieldExceededMaxLength": "FR This field has exceeded max length.",
+    "testErrorMessage": "FR Test error message.",
+    "errorMessage": "FR Error message",
+    "errorMessageMahsa": "FR Testing error message thing take 1000"
+  },
+
+  "TAG": {
+    "progress": "FR In progress",
+    "completed": "FR Completed",
+    "error": "FR Error",
+    "locked": "FR Locked",
+    "notStarted": "FR Not started"
   }
 }
