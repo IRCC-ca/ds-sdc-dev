@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DSSizes } from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 
 export const TAG_LABELS_EN = ["In Progress", "Completed", "Error", "Locked", "Not started"];
-export const TAG_LABELS_FR = ["En cours", "Complété", "Erreur", "Fermé à clé", "Pas commencé"];
+export const TAG_LABELS_FR = ["En cours", "Complété", "Erreur", "Verrouillé", "Pas commencé"];
 
 export enum TagType {
   primary = 'primary',
