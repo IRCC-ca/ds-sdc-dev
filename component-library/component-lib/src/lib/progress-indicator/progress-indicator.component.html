@@ -1,5 +1,23 @@
 <div class="container">
-  <span class="stepNumber">{{ config.stepNumber }}</span>
+  <!-- <span class="stepNumber">{{ config.stepNumber }}</span> -->
+  <nav class="stepNumber">
+    <div *ngFor="let val of config.tab;">
+      <button 
+        *ngIf="val.id === config.selected" selected 
+        class="tabs-btn" 
+        [id]="val.id" 
+        (click)=setSelected(val.id)
+        [attr.aria-label]="val.title + ' selected'">
+        {{ val.title }}
+      </button>
+      <button 
+        *ngIf="val.id !== config.selected" 
+        class="tabs-btn" [id]="val.id" 
+        (click)=setSelected(val.id)>
+        {{ val.title }}
+      </button>
+    </div>
+  </nav>
   <span class="stepTitle">{{ config.stepTitle }}</span>
   <lib-progress-tags></lib-progress-tags>
 </div>

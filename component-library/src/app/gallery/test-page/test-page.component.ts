@@ -13,7 +13,10 @@ export class TestPageComponent implements OnInit {
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress-indicator',
-    stepNumber: "Step 1",
+    // stepNumber: "Step 1",
+    tab: [
+      { id: 'step1', title: 'Step 1' },
+    ],
     stepTitle: 'Step title'
   }
 
