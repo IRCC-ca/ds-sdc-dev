@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DSSizes } from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 
 export const TAG_LABELS_EN = ["In Progress", "Completed", "Error", "Locked", "Not started"];
-export const TAG_LABELS_FR = ["In Progress FR", "Completed FR", "Error FR", "Locked FR", "Not started FR"];
+export const TAG_LABELS_FR = ["En cours", "Complété", "Erreur", "Fermé à clé", "Pas commencé"];
 
 export enum TagType {
   primary = 'primary',
@@ -27,15 +27,10 @@ export class ProgressTagsComponent implements OnInit {
   @Input() config: IProgressTagsConfig = {
     id: '',
   };
-  @Input() type?: keyof typeof TagType = 'primary';
-  @Input() text? = TAG_LABELS_EN[0];
 
   constructor(private translate: TranslateService) { }
 
   ngOnInit(): void {
-    if (this.type) this.config.type = this.type;
-    if (this.text) this.config.text = this.text;
-
     this.setTypeTitle();
     this.translate.onLangChange.subscribe(() => {
       this.setTypeTitle();
