@@ -6,23 +6,23 @@
       <ng-container [ngSwitch]="config?.type">
         <div *ngSwitchCase="'success'">
           <i class="fa-circle-check fa-regular tag-icon"></i>
-          <span class="content">{{config.text}}</span>
+          <span class="content">{{text}}</span>
         </div>
         <div *ngSwitchCase="'critical'">
           <i class="fa-circle-exclamation fa-regular tag-icon"></i>
-          <span class="content">{{config.text}}</span>
+          <span class="content">{{text}}</span>
         </div>
         <div *ngSwitchCase="'locked'">
           <i class="fa-light fa-lock tag-icon"></i>
-          <span class="content">{{config.text}}</span>
+          <span class="content">{{text}}</span>
         </div>
         <div *ngSwitchCase="'notStarted'">
           <i class="fa-light fa-circle tag-icon"></i>
-          <span class="content">{{config.text}}</span>
+          <span class="content">{{text}}</span>
         </div>
         <div *ngSwitchDefault>
           <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
-          <span class="content">{{config.text}}</span>
+          <span class="content">{{text}}</span>
         </div>
       </ng-container>
     </div>

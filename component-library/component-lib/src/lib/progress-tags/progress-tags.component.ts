@@ -15,7 +15,6 @@ export enum TagType {
 export interface IProgressTagsConfig {
   id: string,
   type?: keyof typeof TagType,
-  text?: string,
   size?: keyof typeof DSSizes
 }
 @Component({
@@ -24,6 +23,8 @@ export interface IProgressTagsConfig {
 })
 export class ProgressTagsComponent implements OnInit {
 
+  text: string = '';
+  
   @Input() config: IProgressTagsConfig = {
     id: '',
   };
@@ -45,36 +46,36 @@ export class ProgressTagsComponent implements OnInit {
     if ((this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US')) {
       switch(this.config.type) {
         case TagType.success:
-          this.config.text = TAG_LABELS_EN[1];
+          this.text = TAG_LABELS_EN[1];
         break;
         case TagType.critical:
-          this.config.text = TAG_LABELS_EN[2];
+          this.text = TAG_LABELS_EN[2];
         break;
         case TagType.locked:
-        this.config.text = TAG_LABELS_EN[3];
+          this.text = TAG_LABELS_EN[3];
         break;
         case TagType.notStarted:
-        this.config.text = TAG_LABELS_EN[4];
+          this.text = TAG_LABELS_EN[4];
         break;
         default: 
-        this.config.text = TAG_LABELS_EN[0];
+          this.text = TAG_LABELS_EN[0];
       }
     } else {
       switch(this.config.type) {
         case TagType.success:
-          this.config.text = TAG_LABELS_FR[1];
+          this.text = TAG_LABELS_FR[1];
         break;
         case TagType.critical:
-          this.config.text = TAG_LABELS_FR[2];
+          this.text = TAG_LABELS_FR[2];
         break;
         case TagType.locked:
-        this.config.text = TAG_LABELS_FR[3];
+          this.text = TAG_LABELS_FR[3];
         break;
         case TagType.notStarted:
-        this.config.text = TAG_LABELS_FR[4];
+          this.text = TAG_LABELS_FR[4];
         break;
         default: 
-        this.config.text = TAG_LABELS_FR[0];
+          this.text = TAG_LABELS_FR[0];
       }
     }
   };
