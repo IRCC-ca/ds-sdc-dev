@@ -6,6 +6,7 @@
 @use '../../tokens/sizes' as token-size;
 @use '../../typography/typography' as typography;
 @use '../../tokens/text' as text;
+@use '../../tokens/sizes';
 @use 'sass:map';
 
 @mixin selector {
@@ -21,6 +22,9 @@
 }
 
 @mixin large-styles() {
+    button:where([selected])::after {
+        transform: translateY(sizes.$fixed-0);
+    }
     .stepNumber {
         button {
             @include typography.fontSize(map.get(text.$body, level), 3);
@@ -33,6 +37,9 @@
 }
 
 @mixin small-styles() {
+    button:where([selected])::after {
+        transform: translateY(sizes.$fixed-0);
+    }
     .stepNumber {
         button {
             @include typography.fontSize(map.get(text.$body, level), 4);
@@ -49,42 +56,48 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+
         @include device.if-hover {
             background: var(--generic-hover);
             border-radius: 4px;
-            // &:where([selected])::after {
-            //     background: var(--navigation-hover);
+            // .stepNumber {
+            //     button {
+            //         background: red;
+            //     }
             // }
-        }
-    
-        &:active {
+            &:where([selected])::after {
+                // background: var(--navigation-hover);
+                background: var(--generic-hover);
+            }
+        } &:active {
             background: var(--generic-active);
             border-radius: 4px;
-            // &:where([selected])::after {
-            //     background: var(--navigation-hover);
-            // }
-        }
-    
-        &:disabled {
+            &:where([selected])::after {
+                background: var(--generic-hover);
+            }
+        } &:disabled {
             background: var(--surface1);
             color: var(--text-disabled);
-            // &:where([selected])::after {
-            //     background: var(--navigation-disabled);
-            // }
-        }
-        &:focus {
+            &:where([selected])::after {
+                background: var(--generic-disabled);
+            }
+        } &:focus {
             border-radius: 4px;
         }
     }
     .stepNumber {
         button {
+            font-family: "Inter";
             color: var(--text-secondary);
-            margin-bottom: 4px;
-            padding-left: 2px;
+            // margin-bottom: 4px;
+            padding: 0 0 0 2px;
+            background-color: transparent;
         }
     }
     .stepTitle {
+        font-family: "Lato";
         padding-left: 2px;
+        margin-top: 4px;
     }
 
     @include size.selector(large) {

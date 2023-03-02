@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { DSSizes } from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { ITabConfig } from '../tabs/tabs.component';
 export interface IProgressIndicatorConfig {
   id: string,
+  formGroup: FormGroup;
   tab?: ITabConfig[];
   stepNumber?: string,
   stepTitle?: string,
@@ -17,6 +19,7 @@ export class ProgressIndicatorComponent implements OnInit {
 
   @Input() config: IProgressIndicatorConfig = {
     id: '',
+    formGroup: new FormGroup({}),
   };
   constructor() { }
 
@@ -29,5 +32,4 @@ export class ProgressIndicatorComponent implements OnInit {
   setSelected(selectedID: any) {
     if (selectedID) this.config.selected = selectedID; //set the selected tab
   };
-
 }
