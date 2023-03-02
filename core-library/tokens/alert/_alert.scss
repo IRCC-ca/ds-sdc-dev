@@ -3,7 +3,7 @@
 @use '../../util/color';
 @use '../template-const';
 
-@mixin create($palette: (neutral, critical, success, information, warning)) {
+@mixin create($palette: (neutral, critical, success, information, warning, primary)) {
     @at-root {
         #{template-const.$root-selectors} {
             @each $key in $palette {
@@ -22,6 +22,7 @@
         }
         --#{$palette}-alert-border: #{color.mix-token($palette, 700)};
         --#{$palette}-alert-icon: #{color.mix-token($palette, 800)};
+        --#{$palette}-alert-text: #{color.mix-token($palette, 900)};
     }
 
     @include theme.dark() {
@@ -32,6 +33,7 @@
         }
         --#{$palette}-alert-border: #{color.mix-token($palette, 700)};
         --#{$palette}-alert-icon: #{color.mix-token($palette, 800)};
+        --#{$palette}-alert-text: #{color.mix-token($palette, 900)};
     }
 
 }

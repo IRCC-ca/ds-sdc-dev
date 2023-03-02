@@ -6,12 +6,14 @@ import { ButtonComponent } from './button/button.component';
 import { IconComponent } from './icon/icon.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { ProgressTagsComponent } from "./progress-tags/progress-tags.component";
 
 const IrccDsSharedComponents = [
   ButtonComponent,
   IconComponent,
   IconButtonComponent,
-  TabsComponent
+  TabsComponent,
+  ProgressTagsComponent
 ];
 
 @NgModule({

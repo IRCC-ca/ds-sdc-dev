@@ -46,3 +46,4 @@ export * from './lib/shared/button/button.component';
 export * from './lib/shared/icon/icon.component';
 export * from './lib/shared/icon-button/icon-button.component';
 export * from './lib/shared/tabs/tabs.component';
+export * from './lib/shared/progress-tags/progress-tags.component'
