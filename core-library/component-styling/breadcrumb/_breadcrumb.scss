@@ -1,0 +1,38 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selector {
+  lib-breadcrumb#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+// For size small overwrite
+@mixin size-sm {
+}
+
+@mixin layout {
+
+  @include size.selector(small) {
+    @include size-sm();
+  }
+
+  @include size.selector(large) {
+    .small {
+      @include size-sm();
+    }
+  }
+}
