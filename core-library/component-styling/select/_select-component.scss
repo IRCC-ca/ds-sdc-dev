@@ -19,15 +19,75 @@
     @include layout();
   }
 }
+@mixin size-large() {
+  .select-dropdown {
+    padding: 14px 13px 14px 12px;
+    font-size: 16px;
+    height: 54px;
+    line-height: 24px;
+  }
+  .custom-chevron {
+    font-size: 20px;
+  }
+}
+
+@mixin size-small() {
+  .select-dropdown {
+    padding: 10px;
+    padding: 10px 13px 10px 12px;
+    height: 42px;
+    line-height: 20px;
+  }
+
+  .custom-chevron {
+    font-size: 16px;
+  }
+}
 
 @mixin layout {
-  button.select-dropdown {
-    background-color: white;
-    color: #161617;
-    border-style: solid;
-    border: 1px solid #868687;
-    border-radius: 4px;
-    width: inherit;
+
+  @include size.selector(large) {
+    @include size-large();
+    .small {
+      @include size-small()
+    }
+  }
+
+  @include size.selector(small) {
+    @include size-small();
+    .large {
+      @include size-large()
+    }
+  }
+
+  .content-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    > button {
+      &.select-dropdown {
+        background-color: white;
+        border-style: solid;
+        border: 1px solid #868687;
+        color: var(--text-primary);
+        border-radius: token-size.$border-radius;
+        width: 100%;
+        
+        display: flex;
+        justify-content: space-between;
+        
+      }
+
+      .custom-chevron {
+        cursor: pointer;
+        pointer-events: none;
+        font-weight: 300;
+        color: var(--text-primary);
+      }
+
+      &:active {
+        background-color: var(--generic-active);
+      }
+    }
   }
 }
 
