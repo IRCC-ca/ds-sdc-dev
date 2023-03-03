@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { ICheckBoxComponentConfig, IDropdownInputConfig, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
@@ -13,163 +13,43 @@ export class KrisComponent implements OnInit {
 
   form = new FormGroup({});
 
-  /** DEFAULTS */
-  //TODO: Move to a const at some point
-  autoConfigConfig: IAutoTestConfigObject = {
-    dropdowns: [
+  selectConfig: IDropdownInputConfig = {
+    id: 'select',
+    formGroup: this.form,
+    label: "Testing input select",
+    hint: "Try clicking into the select, but not selecting anything on first load to trigger the 'required' error",
+    desc: 'Email regex and minLength of 7 - email should be valid, "short" should trigger two errors',
+    options: [
       {
-        id: 'autoConfig_category',
-        formGroup: this.form,
-        label: 'Category Test',
-        options: [
-          {
-            text: 'primary'
-          },
-          {
-            text: 'secondary',
-          },
-          {
-            text: 'plain'
-          }
-        ]
+        text: 'email@email.com'
       },
       {
-        id: 'autoConfig_disabled',
-        label: 'Disable Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'disable all'
-          },
-          {
-            text: 'disable single'
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_size',
-        label: 'Size Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'all large'
-          },
-          {
-            text: 'single large'
-          },
-          {
-            text: 'all small'
-          },
-          {
-            text: 'single small'
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_error',
-        label: 'Error Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'clear all errors'
-          },
-          {
-            text: 'all error'
-          },
-          {
-            text: 'single error'
-          },
-          {
-            text: 'custom error icon'
-          },
-          {
-            text: 'multiple error banners'
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_options_change',
-        label: 'Options Change Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'options v.1'
-          },
-          {
-            text: 'options v.2'
-          }
-        ]
-      },
-      {
-        id: 'autoConfig_validators',
-        label: 'Validators Test',
-        formGroup: this.form,
-        options: [
-          {
-            text: 'required validator'
-          },
-          {
-            text: 'max length of 3'
-          },
-          {
-            text: 'all the above'
-          },
-          {
-            text: 'remove all'
-          }
-        ]
+        text: 'short'
       }
     ],
-    checkboxes: [
+    errorMessages: [
       {
-        id: 'autoConfig_checkbox_title',
-        formGroup: this.form,
-        inlineLabel: 'title'
+        key: 'required',
+        errorLOV: 'Required Error'
       },
       {
-        id: 'autoConfig_checkbox_required',
-        formGroup: this.form,
-        inlineLabel: 'required',
+        key: 'minlength',
+        errorLOV: 'Minlength Error'
       },
       {
-        id: 'autoConfig_checkbox_description',
-        formGroup: this.form,
-        inlineLabel: 'description'
-      },
-      {
-        id: 'autoConfig_checkbox_hint',
-        formGroup: this.form,
-        inlineLabel: 'hint'
-      },
-      {
-        id: 'autoConfig_checkbox_label',
-        formGroup: this.form,
-        inlineLabel: 'label'
+        key: 'pattern',
+        errorLOV: 'Pattern Error'
       }
     ]
   };
 
-  autoTestConfig: IAutoTestComponentConfig = {
-    id: 'kris_autocomplete',
-    formGroup: this.form,
-    testFields: this.autoConfigConfig
-  }
 
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
     this.altLang.setAltLangLink('kris-alt');
 
-    this.autoConfigConfig.dropdowns?.forEach(i => {
-      this.form.addControl(i.id, new FormControl());
-
-    });
-    this.autoConfigConfig.checkboxes?.forEach(i => {
-      this.form.addControl(i.id, new FormControl());
-    });
-
-    this.form.valueChanges.subscribe(value=>{
-        console.log(value);
-    });
+    this.form.addControl(this.selectConfig.id, new FormControl('',
+      [Validators.required, Validators.minLength(7), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]));
   }
 }
