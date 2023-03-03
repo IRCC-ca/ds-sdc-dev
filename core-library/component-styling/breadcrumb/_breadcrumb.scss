@@ -22,15 +22,89 @@
 
 // For size small overwrite
 @mixin size-sm {
+  lib-breadcrumb-link {
+    padding-right: 8px;
+
+    a {
+      @include typography.fontSize(map.get(text.$body, level), 3);
+    }
+
+    &.breadcrumb-item {
+      padding-left: 16px;
+    }
+  }
+
+  p {
+    @include typography.fontSize(map.get(text.$body, level), 3);
+
+    &.breadcrumb-child {
+      margin-left: 12px;
+    }
+  }
+
+  svg.fa-chevron-right {
+    font-size: 12px;
+    bottom: 0;
+  }
+}
+
+@mixin size-lg {
+  lib-breadcrumb-link {
+    padding-right: 12px;
+
+    a {
+      @include typography.fontSize(map.get(text.$body, level), 2);
+    }
+
+    &.breadcrumb-item {
+      padding-left: 19px;
+    }
+  }
+
+  p {
+    @include typography.fontSize(map.get(text.$body, level), 2);
+
+    margin: 0;
+
+    &.breadcrumb-child {
+      margin-left: 15px;
+    }
+  }
+
+  svg.fa-chevron-right {
+    font-size: 20px;
+    bottom: -2px;
+  }
 }
 
 @mixin layout {
+  lib-breadcrumb-link {
+    a {
+      text-decoration: none;
+      padding-left: 0;
+    }
+  }
+
+  p {
+    display: inline-block;
+  }
+
+  svg.fa-chevron-right {
+    color: color.mix-token(neutral, 500);
+    position: relative;
+  }
 
   @include size.selector(small) {
     @include size-sm();
+
+    .large {
+      @include size-lg();
+    }
   }
 
   @include size.selector(large) {
+    @include size-lg();
+
     .small {
       @include size-sm();
     }

@@ -24,6 +24,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { RouterModule } from '@angular/router';
 import { ProgressTagsComponent } from './progress-tags/progress-tags.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { LinkComponent } from './breadcrumb/link/link.component';
 
 
 
@@ -49,7 +50,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     ErrorComponent,
     TabsComponent,
     ProgressTagsComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    LinkComponent
   ],
   imports: [
     CommonModule,

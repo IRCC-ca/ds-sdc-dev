@@ -1,0 +1,7 @@
+<ng-container *ngIf="config?.href">
+  <a [href]="config?.href">{{config?.text}}</a>
+</ng-container>
+<ng-container *ngIf="config?.routerLink">
+  <a [routerLink]="config?.routerLink">{{config?.text}}</a>
+</ng-container>
+

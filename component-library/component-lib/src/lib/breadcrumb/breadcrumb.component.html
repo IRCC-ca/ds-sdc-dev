@@ -1,1 +1,11 @@
-<p>breadcrumb works!</p>
+<div class="{{config?.size}}">
+  <lib-breadcrumb-link class="breadcrumb-root" [config]="config.root"></lib-breadcrumb-link>
+  <ng-container *ngFor="let link of config?.links">
+    <lib-icon class="fa-solid fa-chevron-right"></lib-icon>
+    <lib-breadcrumb-link class="breadcrumb-item" [config]="link"></lib-breadcrumb-link>
+  </ng-container>
+  <ng-container *ngIf="config?.chilePage">
+    <lib-icon class="fa-solid fa-chevron-right"></lib-icon>
+    <p class="breadcrumb-child">{{config.chilePage}}</p>
+  </ng-container>
+</div>

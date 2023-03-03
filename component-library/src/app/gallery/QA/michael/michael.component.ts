@@ -3,6 +3,7 @@ import { LanguageSwitchService } from '@app/@shared/language-switch/language-swi
 import { FormControl, FormGroup } from "@angular/forms";
 import {ICheckBoxComponentConfig, IInputComponentConfig} from 'ircc-ds-angular-component-library';
 import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/auto-tester/auto-tester.component";
+import { IBreadcrumbConfig } from "../../../../../component-lib/src/lib/breadcrumb/breadcrumb.component";
 
 @Component({
   selector: 'app-michael',
@@ -185,6 +186,14 @@ export class MichaelComponent implements OnInit {
     formGroup: this.form,
     testFields: this.testerInputConfig
   }
+  breadCrumbConfig: IBreadcrumbConfig = {
+    id: "breadcrumb0",
+    root: {
+      text: 'Home',
+      href: '/en/landing-page'
+    }
+  };
+
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
