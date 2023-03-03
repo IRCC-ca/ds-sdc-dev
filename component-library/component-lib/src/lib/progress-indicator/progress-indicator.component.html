@@ -1,5 +1,6 @@
 <!-- <div class="{{config.size}}"> -->
-  <div class="container" [ngClass]="config.size">
+  <button class="container" [ngClass]="config.size" category="plain">
+    <div class="vl"></div>
     <!-- <span class="stepNumber">{{ config.stepNumber }}</span> -->
     <nav class="stepNumber">
       <div *ngFor="let val of config.tab; let i = index">
@@ -28,8 +29,8 @@
       </div>
     </nav>
     <span class="stepTitle">{{ config.stepTitle }}</span>
-    <div [ngClass]="{'small': config.size === 'small' }">
-      <lib-progress-tags [id]="config.id"></lib-progress-tags>
+    <div [ngClass]="{'small': config.size === 'small' }" >
+      <lib-progress-tags [config]="tagConfig"></lib-progress-tags>
     </div>
-  </div>
+  </button>
 <!-- </div> -->

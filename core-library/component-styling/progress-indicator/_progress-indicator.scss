@@ -52,10 +52,16 @@
 }
 
 @mixin layout {
+    .vl {
+        border-left: 1px solid green;
+        height: 5px;
+    }
     .container {
         display: flex;
         flex-direction: column;
         width: 100%;
+        padding: 0;
+        margin: 0;
 
         @include device.if-hover {
             background: var(--generic-hover);
@@ -98,6 +104,7 @@
         font-family: "Lato";
         padding-left: 2px;
         margin-top: 4px;
+        color: var(--text-primary);
     }
 
     @include size.selector(large) {
