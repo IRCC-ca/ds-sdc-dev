@@ -23,6 +23,7 @@ import { ErrorComponent } from './error/error.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { RouterModule } from '@angular/router';
 import { ProgressTagsComponent } from './progress-tags/progress-tags.component';
+import { SelectComponent } from './select/select.component';
 
 
 
@@ -47,7 +48,8 @@ import { ProgressTagsComponent } from './progress-tags/progress-tags.component';
     BannerComponent,
     ErrorComponent,
     TabsComponent,
-    ProgressTagsComponent
+    ProgressTagsComponent,
+    SelectComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +78,8 @@ import { ProgressTagsComponent } from './progress-tags/progress-tags.component';
     BannerComponent,
     ErrorComponent,
     TabsComponent,
-    ProgressTagsComponent
+    ProgressTagsComponent,
+    SelectComponent
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }
