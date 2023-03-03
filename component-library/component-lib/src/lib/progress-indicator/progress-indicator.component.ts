@@ -3,10 +3,16 @@ import { FormGroup } from '@angular/forms';
 import { DSSizes } from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IProgressTagsConfig } from '../progress-tags/progress-tags.component';
 import { ITabConfig } from '../tabs/tabs.component';
+
+export enum IStates {
+  completed = 'completed',
+  inProgress = 'inProgress'
+}
 export interface IProgressIndicatorConfig {
   id: string,
   formGroup: FormGroup;
   tab?: ITabConfig[];
+  states?: IStates[];
   stepNumber?: string,
   stepTitle?: string,
   size?: keyof typeof DSSizes,
@@ -24,13 +30,19 @@ export class ProgressIndicatorComponent implements OnInit {
   };
 
   tagConfig: IProgressTagsConfig = {
-    id: this.config.id,
-    size: this.config.size
+    id: '',
+    type: 'primary',
+    size: "large" 
   };
   
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.tagConfig.id = this.config?.id + '_tagConfig';
+    // this.tagConfig.type = this.config?.type
+    // this.tagConfig.size = this.config?.size + '-size';
+    this.tagConfig.size = this.config.size;
+
     if (this.config.selected === undefined && this.config.tab) {
       this.config.selected = (this.config.tab[0].id);
     };

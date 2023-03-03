@@ -22,11 +22,11 @@
 }
 
 @mixin large-styles() {
-    button:where([selected])::after {
+    button.tags-btn:where([selected])::after {
         transform: translateY(sizes.$fixed-0);
     }
     .stepNumber {
-        button {
+        button.tags-btn {
             @include typography.fontSize(map.get(text.$body, level), 3);
         }
     }
@@ -37,11 +37,11 @@
 }
 
 @mixin small-styles() {
-    button:where([selected])::after {
+    button.tags-btn:where([selected])::after {
         transform: translateY(sizes.$fixed-0);
     }
     .stepNumber {
-        button {
+        button.tags-btn {
             @include typography.fontSize(map.get(text.$body, level), 4);
         }
     }
@@ -52,25 +52,33 @@
 }
 
 @mixin layout {
-    .vl {
-        border-left: 1px solid green;
-        height: 5px;
+    .line {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: var(--global-divider);
+        margin-top: 16px;
+        width: 128px;
+    }
+    .green-line {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: var(--success-border);
+        margin-top: 16px;
     }
     .container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+        .progress-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
         padding: 0;
         margin: 0;
+        // width: 100%;
 
         @include device.if-hover {
+            padding: 1px;
             background: var(--generic-hover);
             border-radius: 4px;
-            // .stepNumber {
-            //     button {
-            //         background: red;
-            //     }
-            // }
             &:where([selected])::after {
                 // background: var(--navigation-hover);
                 background: var(--generic-hover);
@@ -92,12 +100,13 @@
         }
     }
     .stepNumber {
-        button {
+        button.tags-btn {
             font-family: "Inter";
             color: var(--text-secondary);
             // margin-bottom: 4px;
             padding: 0 0 0 2px;
             background-color: transparent;
+            pointer-events: none;
         }
     }
     .stepTitle {
