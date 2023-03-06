@@ -188,10 +188,22 @@ export class MichaelComponent implements OnInit {
   }
   breadCrumbConfig: IBreadcrumbConfig = {
     id: "breadcrumb0",
+    size: 'large',
     root: {
       text: 'Home',
-      href: '/en/landing-page'
-    }
+      routerLink: '/en/landing-page'
+    },
+    links: [
+      {
+        text: 'QA Landing Page',
+        href: '/en/landing-page/qa'
+      },
+      {
+        text: 'Michael',
+        href: '/en/landing-page/qa/michael-en'
+      },
+    ],
+    chilePage: 'Child Page Title'
   };
 
   constructor(private altLang: LanguageSwitchService) { }
