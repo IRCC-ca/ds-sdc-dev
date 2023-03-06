@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AccessibilityDemoRoutingModule } from './accessibility-demo-routing';
 import { SharedModule } from '@app/@shared';
 import { AccessibilityDemoComponent } from './accessibility-demo.component';
+import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-library';
 
 
 
@@ -13,7 +14,8 @@ import { AccessibilityDemoComponent } from './accessibility-demo.component';
   imports: [
     CommonModule,
     AccessibilityDemoRoutingModule,
-    SharedModule
+    SharedModule,
+    IrccDsAngularHeaderFooterModule
   ]
 })
 export class AccessibilityDemoModule { }

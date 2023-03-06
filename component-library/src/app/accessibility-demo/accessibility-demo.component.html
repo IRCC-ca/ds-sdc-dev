@@ -1,1 +1,41 @@
-<p>accessibility-demo works!</p>
+<div class="page_container">
+    <lib-header [id]="'header'"></lib-header>
+    <div class="stepper">BOX FOR THE STEPPER</div>
+    <div class="form_container">
+        <div>
+            <h1>{{'ACC_DEMO.PERSONAL_INFO.H1' | translate}}</h1>
+            <p>{{'ACC_DEMO.PERSONAL_INFO.BODY' | translate}}</p>
+        </div>
+        <div class="family_name_container">
+            <lib-input [config]="familyNameInputConfig"></lib-input>
+            <div class="banner_container">
+                <lib-banner [config]="familyNameInputBannerConfig"></lib-banner>
+            </div>
+        </div>
+        <div class="given_name_container">
+            <lib-input [config]="givenNameInputConfig"></lib-input>
+        </div>
+        <div class="sex_at_birth_container">
+            <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
+        </div>
+        <div class="date_of_birth_container">
+            <lib-date-picker [config]="dateOfBirthDatePickerConfig"></lib-date-picker>
+        </div>
+        <div class="country_of_birth_container">
+            <lib-dropdown-input [config]="countryOfBirthSelectConfig"></lib-dropdown-input>
+        </div>
+        <div class="city_of_birth_container">
+            <lib-dropdown-input [config]="cityOfBirthSelectConfig"></lib-dropdown-input>
+        </div>
+        <div class="declaration_checkbox_container">
+            <lib-checkbox [config]="declarationCheckboxConfig"></lib-checkbox>
+        </div>
+        <div class="buttons_container">
+            <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'">
+                {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
+            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'">
+                {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>
+        </div>
+    </div>
+    <div class="footer">BOX FOR THE FOOTER</div>
+</div>
