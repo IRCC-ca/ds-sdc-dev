@@ -2,6 +2,8 @@
   "ROUTES": {
     "LandingPage": "page-general",
     "LandingPage-alt": "landing-page",
+    "AccessibilityDemo": "démo-d'accessibilité",  
+    "AccessibilityDemo-alt": "accessibility-demo",
     "DevTest": "test-dev",
     "DevTest-alt": "dev-test",
     "HeaderFooter": "en-tête-pied-de-page",
