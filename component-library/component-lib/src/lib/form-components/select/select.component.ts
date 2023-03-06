@@ -1,8 +1,8 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
-import { IErrorPairs } from '../../shared/interfaces/component-configs';
-import { IErrorIDs, StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
+import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { IErrorPairs } from '../../../shared/interfaces/component-configs';
+import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 
 // export declare enum SelectType {
 //   secondary = "secondary",
@@ -19,12 +19,12 @@ export interface ISelectConfig {
   hint?: string;
   desc?: string;
   size?: keyof typeof DSSizes;
-  errorMessages?: IErrorPairs[]; 
-};
+  errorMessages?: IErrorPairs[];
+}
 export interface ISelectOptionsConfig {
   text: string;
   value?: string;
-};
+}
 
 @Component({
   selector: 'lib-select',

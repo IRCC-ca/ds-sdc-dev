@@ -16,9 +16,9 @@ import {
   KeyValueDiffer,
   ViewChild
 } from '@angular/core';
+import { InputComponent } from '../../form-components/input/input.component';
 //TODO: This should be changed. Ideally the component doesn't need to know about these, and can just
 //add them in using the template.
-import { InputComponent } from '../input/input.component';
 import { ChipItemComponent } from '../chips/chip-item/chip-item.component';
 
 interface IOption { //Changed: Interfaces should ALWAYS start with 'I'.

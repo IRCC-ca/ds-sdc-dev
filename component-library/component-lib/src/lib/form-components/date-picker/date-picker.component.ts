@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { DSSizes, IErrorPairs, StandAloneFunctions } from '../../public-api';
+import { DSSizes, IErrorPairs, StandAloneFunctions } from '../../../public-api';
 import { ISelectConfig } from '../select/select.component';
 
 export const DATE_PICKER_MONTHS_EN = [
@@ -109,7 +109,7 @@ export class DatePickerComponent implements OnInit {
   constructor(private translate: TranslateService,
     public standAloneFunctions: StandAloneFunctions) {}
 
-  ngOnInit() {  
+  ngOnInit() {
     console.log(this.config);
     //set config from individual options, if present
     if (this.formGroup) this.config.formGroup = this.formGroup;
