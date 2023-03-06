@@ -6,9 +6,9 @@ import {
   NG_VALUE_ACCESSOR,
   ValidatorFn
 } from '@angular/forms';
-import { IErrorPairs } from '../../shared/interfaces/component-configs';
-import { DSSizes } from '../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
-import { IErrorIDs, StandAloneFunctions } from '../../shared/functions/stand-alone.functions';
+import { IErrorPairs } from '../../../shared/interfaces/component-configs';
+import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 
 export interface IRadioInputComponentConfig {
   id: string;

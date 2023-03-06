@@ -3,7 +3,7 @@
     [attr.aria-label]="
       config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
       ? (config.label || '' | translate) + ' ' +
-        (config.helpText || '' | translate) + ' ' + 
+        (config.helpText || '' | translate) + ' ' +
         ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
       : (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
     "
@@ -17,11 +17,11 @@
     <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
       <input type="radio"
         value="{{option.value || option.text}}"
-        [id]="config.id + index"
+        id="{{config.id + index}}"
         [formControlName]="config.id ?? 'formControl'"
         [attr.disabled]='getDisabled(index)'
         [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size" >
-      <label for="{{config.id}}" 
+      <label for="{{config.id + index}}"
         [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'"
         [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { DSSizes } from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IProgressTagsConfig } from '../progress-tags/progress-tags.component';
 import { ITabConfig, ITabNavConfig } from '../tabs/tabs.component';
 export interface IStepConfig {
@@ -12,7 +12,7 @@ export interface IProgressIndicatorConfig {
   formGroup: FormGroup;
   size?: keyof typeof DSSizes,
   orientation?: keyof typeof Orientations,
-  steps?: IStepConfig[]; 
+  steps?: IStepConfig[];
   selected?: string;
 }
 export enum Orientations {
@@ -46,7 +46,7 @@ export class ProgressIndicatorComponent implements OnInit {
     id: '',
     tab: [{id: '', title: ''}]
   }
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class ProgressIndicatorComponent implements OnInit {
     //   this.config.selected = (this.config.tab[0].id);
     // }    UPDATE:
 
-    
+
     this.config?.steps?.forEach((step, index) => {
     this.stepIDs.push(`${this.config?.id}_step${index + 1}`);
       // console.log(this.stepIDs);
@@ -67,7 +67,7 @@ export class ProgressIndicatorComponent implements OnInit {
 
     if (this.config.selected === undefined) {
       this.config.selected = (this.stepIDs[0]);
-    };
+    }
   };
 
   setSelected(selectedID: any) {

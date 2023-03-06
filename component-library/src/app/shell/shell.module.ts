@@ -8,6 +8,7 @@ import { I18nModule } from '@app/i18n';
 import { ShellComponent } from './shell.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '@app/@shared';
+import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-library';
 
 @NgModule({
   imports: [
@@ -16,7 +17,9 @@ import { SharedModule } from '@app/@shared';
     NgbModule,
     I18nModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    IrccDsAngularHeaderFooterModule
+
   ],
   declarations: [
     HeaderComponent,
