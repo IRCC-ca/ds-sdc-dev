@@ -38,7 +38,7 @@
     <div *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid" class="check-error" [ngClass]="{'small': config.size === 'small' }">
       <ng-container *ngFor="let errors of errorIds; let i = index">
         <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
-          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV" aria-live="polite"></lib-error>
+          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
         </div>
       </ng-container>
     </div>
