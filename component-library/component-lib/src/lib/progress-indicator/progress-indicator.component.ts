@@ -2,21 +2,22 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DSSizes } from "../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IProgressTagsConfig } from '../progress-tags/progress-tags.component';
-import { ITabConfig } from '../tabs/tabs.component';
-
-export enum IStates {
-  completed = 'completed',
-  inProgress = 'inProgress'
+import { ITabConfig, ITabNavConfig } from '../tabs/tabs.component';
+export interface IStepConfig {
+  title?: string,
+  tagConfig: IProgressTagsConfig,
 }
 export interface IProgressIndicatorConfig {
   id: string,
   formGroup: FormGroup;
-  tab?: ITabConfig[];
-  states?: IStates[];
-  stepNumber?: string,
-  stepTitle?: string,
   size?: keyof typeof DSSizes,
+  orientation?: keyof typeof Orientations,
+  steps?: IStepConfig[]; 
   selected?: string;
+}
+export enum Orientations {
+  horizontal = 'horizontal',
+  vertical = 'vertical'
 }
 @Component({
   selector: 'lib-progress-indicator',
@@ -24,27 +25,48 @@ export interface IProgressIndicatorConfig {
 })
 export class ProgressIndicatorComponent implements OnInit {
 
+  stepIDs: any = [];
   @Input() config: IProgressIndicatorConfig = {
     id: '',
     formGroup: new FormGroup({}),
+    steps: [{tagConfig: {id: ''}}],
+    orientation: 'horizontal'
   };
 
   tagConfig: IProgressTagsConfig = {
     id: '',
     type: 'primary',
-    size: "large" 
+    size: "large",
   };
+  tabConfig: ITabConfig = {
+    id: '',
+    title: '',
+  }
+  tabNavConfig: ITabNavConfig = {
+    id: '',
+    tab: [{id: '', title: ''}]
+  }
   
   constructor() { }
 
   ngOnInit() {
-    this.tagConfig.id = this.config?.id + '_tagConfig';
-    // this.tagConfig.type = this.config?.type
-    // this.tagConfig.size = this.config?.size + '-size';
-    this.tagConfig.size = this.config.size;
+    if(!this.config.orientation) this.config.orientation = 'horizontal';
+    // this.tagConfig.id = this.config?.id + '_tagConfig';
+    // this.tagConfig.size = this.config.size;
+    // this.tabConfig.id = this.config?.id + '_tabConfig';
 
-    if (this.config.selected === undefined && this.config.tab) {
-      this.config.selected = (this.config.tab[0].id);
+    // if (this.config.selected === undefined && this.config.tab) {
+    //   this.config.selected = (this.config.tab[0].id);
+    // }    UPDATE:
+
+    
+    this.config?.steps?.forEach((step, index) => {
+    this.stepIDs.push(`${this.config?.id}_step${index + 1}`);
+      // console.log(this.stepIDs);
+    })
+
+    if (this.config.selected === undefined) {
+      this.config.selected = (this.stepIDs[0]);
     };
   };
 

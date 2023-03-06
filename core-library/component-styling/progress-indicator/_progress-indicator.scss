@@ -21,6 +21,13 @@
     }
 }
 
+// @mixin horizontal-styles {
+//     background-color: red;
+// }
+// @mixin vartical-styles {
+//     background-color: yellow;
+// }
+
 @mixin large-styles() {
     button.tags-btn:where([selected])::after {
         transform: translateY(sizes.$fixed-0);
@@ -52,31 +59,59 @@
 }
 
 @mixin layout {
-    .line {
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--global-divider);
-        margin-top: 16px;
-        width: 128px;
+    .horizontal {
+        display: flex;
+        .line {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: var(--divider);
+            margin-top: 16px;
+            // width: 128px;
+            width: 100%;
+            // position: absolute;
+        }
+        .green-line {
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: var(--success-border);
+            margin-top: 16px;
+            position: absolute;
+        }
     }
-    .green-line {
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--success-border);
-        margin-top: 16px;
+    .vertical {
+        background-color: yellow;
+        // .line {
+        //     border-left-style: solid;
+        //     border-left-width: 1px;
+        //     border-left-color: var(--divider);
+        //     margin-right: 16px;
+        //     // width: 128px;
+        //     height: 104px;
+        //     // position: absolute;
+        // }
+        // .green-line {
+        //     border-left-style: solid;
+        //     border-left-width: 1px;
+        //     border-left-color: var(--success-border);
+        //     margin-right: 16px;
+        //     // position: absolute;
+        // }
     }
     .container {
-        .progress-indicator {
+        // display: flex;
+        // flex-direction: row-reverse;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        .except-line {
             display: flex;
             flex-direction: column;
             align-items: start;
         }
-        padding: 0;
-        margin: 0;
-        // width: 100%;
 
         @include device.if-hover {
-            padding: 1px;
+            // padding: 1px;
             background: var(--generic-hover);
             border-radius: 4px;
             &:where([selected])::after {
@@ -108,6 +143,14 @@
             background-color: transparent;
             pointer-events: none;
         }
+        // button.tags-btn-plus {
+        //     font-family: "Inter";
+        //     color: var(--text-secondary);
+        //     // margin-bottom: 4px;
+        //     padding: 0 0 0 2px;
+        //     background-color: transparent;
+        //     pointer-events: none;
+        // }
     }
     .stepTitle {
         font-family: "Lato";
@@ -129,4 +172,6 @@
             @include large-styles();
         }
     }
+    // @include horizontal-styles();
+    // @include vartical-styles();
 }

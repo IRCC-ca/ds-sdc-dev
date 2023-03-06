@@ -1,40 +1,38 @@
-<!-- <div class=progress-container> -->
-  <button class="container" [ngClass]="config.size" category="plain">
-    <!-- <span class="stepNumber">{{ config.stepNumber }}</span> -->
-    <div class="progress-indicator">
-      <nav class="stepNumber" *ngFor="let val of config.tab; let i = index">
-          <button
-            tabindex="-1"
-            *ngIf="val.id === config.selected" selected 
-            class="tags-btn" 
-            [id]="val.id" 
-            (click)=setSelected(val.id)
-            [attr.aria-label]="val.title + ' selected'">
-            Step {{ i + 1 }}
-          </button>
-          <button
-            tabindex="-1"
-            *ngIf="val.id !== config.selected" 
-            class="tags-btn" [id]="val.id" 
-            (click)=setSelected(val.id)>
-            Step {{ i + 1 }}
-          </button>
-          <button 
-            *ngIf="val.id !== config.selected && tagConfig.type === 'locked'" 
-            class="tags-btn" [id]="val.id" 
-            (click)=setSelected(val.id)
-            disabled
-            >
-            Step {{ i + 1 }}
-          </button>
-      </nav>
-      <span class="stepTitle">{{ config.stepTitle }}</span>
-      <div [ngClass]="{'small': config.size === 'small' }" >
-        <lib-progress-tags [config]="tagConfig"></lib-progress-tags>
+<div [class]="config.orientation">
+<!-- <div [ngClass]="config.orientation === 'horizontal' ? 'vertical' : 'horizontal' "> -->
+  <nav class="stepNumber" *ngFor="let step of config.steps; let i = index">
+    <button class="container" [ngClass]="config.size" category="plain">
+      <div class="except-line">
+        <button
+          tabindex="-1"
+          *ngIf="stepIDs[i] === config.selected" selected 
+          class="tags-btn" 
+          [id]="stepIDs[i]" 
+          (click)=setSelected(stepIDs[i])
+          [attr.aria-label]="step.title + ' selected'">
+          Step {{ i + 1 }}
+        </button>
+        <button
+          tabindex="-1"
+          *ngIf="stepIDs[i] !== config.selected" 
+          class="tags-btn-plus" [id]="stepIDs[i]" 
+          (click)=setSelected(stepIDs[i])>
+           Step {{ i + 1 }}
+        </button>
+        <button 
+          *ngIf="stepIDs[i] !== config.selected && tagConfig.type === 'locked'" 
+          class="tags-btn" [id]="stepIDs[i]" 
+          (click)=setSelected(stepIDs[i])
+          disabled>
+          Step {{ i + 1 }}
+        </button>
+        <span class="stepTitle">{{ step.title }}</span>
+        <div [ngClass]="{'small': config.size === 'small' }" >
+          <lib-progress-tags [config]="step.tagConfig"></lib-progress-tags>
+        </div>
       </div>
-    </div>
-    <!-- <div class="line"></div>
-      <div class="green-line"></div> -->
     </button>
-    <div [ngClass]="{'green-line': tagConfig.type === 'success'}" class="line"></div>
-<!-- </div> -->
+    <div tabindex="-1" [ngClass]="{'green-line': tagConfig.type === 'success'}" class="line"></div>
+  </nav>
+</div>
+
