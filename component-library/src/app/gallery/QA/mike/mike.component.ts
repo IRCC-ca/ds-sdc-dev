@@ -71,7 +71,7 @@ export class MikeComponent implements OnInit {
         label: 'Help text (accessibility only)'
       }
     ],
-    dropdowns:[
+    selects:[
       {
         id:'size',
         formGroup: this.radioTesterForm,
@@ -114,7 +114,7 @@ export class MikeComponent implements OnInit {
         label: 'Text'
       }
     ],
-    dropdowns: [
+    selects: [
       {
         id: 'type',
         formGroup: this.ctaForm1,
@@ -197,7 +197,7 @@ export class MikeComponent implements OnInit {
           inlineLabel: 'dismissible'
         }
     ],
-    dropdowns: [
+    selects: [
       {
         id: 'type',
         label: 'Type',
@@ -266,7 +266,7 @@ export class MikeComponent implements OnInit {
   ngOnInit() {
     this.altLang.setAltLangLink('mike-alt');
 
-    this.testerConfig.dropdowns?.forEach(i => {
+    this.testerConfig.selects?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
     this.testerConfig.checkboxes?.forEach(i => {
@@ -276,7 +276,7 @@ export class MikeComponent implements OnInit {
       this.form.addControl(i.id, new FormControl());
     });
 
-    this.ctaTestConfigObj.dropdowns?.forEach(i => {
+    this.ctaTestConfigObj.selects?.forEach(i => {
       this.ctaForm1.addControl(i.id, new FormControl());
 
     });
@@ -293,7 +293,7 @@ export class MikeComponent implements OnInit {
       this.radioTesterForm.addControl(i.id, new FormControl());
     });
 
-    this.radioOptions.dropdowns?.forEach(i => {
+    this.radioOptions.selects?.forEach(i => {
       this.radioTesterForm.addControl(i.id, new FormControl());
     });
 

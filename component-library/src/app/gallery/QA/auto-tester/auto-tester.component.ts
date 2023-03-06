@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ICheckBoxComponentConfig, IDropdownInputConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { ICheckBoxComponentConfig, ISelectConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 export interface IAutoTestComponentConfig {
   id: string;
@@ -9,7 +9,7 @@ export interface IAutoTestComponentConfig {
 }
 
 export interface IAutoTestConfigObject {
-  dropdowns?: IDropdownInputConfig[];
+  selects?: ISelectConfig[];
   checkboxes?: ICheckBoxComponentConfig[];
   inputs?: IInputComponentConfig[];
 }

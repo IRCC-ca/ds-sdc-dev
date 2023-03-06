@@ -22,9 +22,9 @@
 @use './tokens/global/validation';
 @use './tokens/alert/alert';
 
-@use './tokens/dropdown/plain' as dd-plain;
-@use './tokens/dropdown/primary' as dd-primary;
-@use './tokens/dropdown/secondary' as dd-secondary;
+// @use './tokens/dropdown/plain' as dd-plain;
+// @use './tokens/dropdown/primary' as dd-primary;
+// @use './tokens/dropdown/secondary' as dd-secondary;
 
 @use './tokens/partial/focus';
 @use './tokens/partial/disable';
@@ -82,9 +82,9 @@
         @include element(primary);
         @include element(secondary);
         @include element(plain);
-        @include element(dd-plain);
-        @include element(dd-primary);
-        @include element(dd-secondary);
+        // @include element(dd-plain);
+        // @include element(dd-primary);
+        // @include element(dd-secondary);
         @include element(dropdown);
         @include element(nav);
         @include element(round);
@@ -130,13 +130,15 @@
         @include secondary.create();
     } @else if $key == plain {
         @include plain.create();
-    } @else if $key == dd-primary {
-        @include dd-primary.create();
-    } @else if $key == dd-secondary {
-        @include dd-secondary.create();
-    } @else if $key == dd-plain {
-        @include dd-plain.create();
-    } @else if $key == dropdown {
+    } 
+    // @else if $key == dd-primary {
+    //     @include dd-primary.create();
+    // } @else if $key == dd-secondary {
+    //     @include dd-secondary.create();
+    // } @else if $key == dd-plain {
+    //     @include dd-plain.create();
+    // } 
+    @else if $key == dropdown {
         @include dropdown.create();
     } @else if $key == nav {
         @include nav.create();

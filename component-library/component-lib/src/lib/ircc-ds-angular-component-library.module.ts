@@ -10,7 +10,7 @@ import { ChipListComponent } from './chips/chip-list/chip-list.component';
 import { SecondaryChipsComponent } from './chips/secondary-chips/secondary-chips.component';
 import { InputComponent } from './input/input.component';
 import { RadioInputComponent } from './radio-input/radio-input.component';
-import { DropdownInputComponent } from './dropdown-input/dropdown-input.component';
+import { SelectComponent } from './select/select.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,7 +23,7 @@ import { ErrorComponent } from './error/error.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { RouterModule } from '@angular/router';
 import { ProgressTagsComponent } from './progress-tags/progress-tags.component';
-import { SelectComponent } from './select/select.component';
+import { DropdownComponent } from './dropdown/drop-down.component';
 
 
 
@@ -37,7 +37,7 @@ import { SelectComponent } from './select/select.component';
     InputComponent,
     AutocompleteComponent,
     RadioInputComponent,
-    DropdownInputComponent,
+    SelectComponent,
     DatePickerComponent,
     HeaderComponent,
     FooterComponent,
@@ -49,7 +49,7 @@ import { SelectComponent } from './select/select.component';
     ErrorComponent,
     TabsComponent,
     ProgressTagsComponent,
-    SelectComponent
+    DropdownComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +67,7 @@ import { SelectComponent } from './select/select.component';
     InputComponent,
     AutocompleteComponent,
     RadioInputComponent,
-    DropdownInputComponent,
+    SelectComponent,
     DatePickerComponent,
     HeaderComponent,
     FooterComponent,
@@ -79,7 +79,7 @@ import { SelectComponent } from './select/select.component';
     ErrorComponent,
     TabsComponent,
     ProgressTagsComponent,
-    SelectComponent
+    DropdownComponent
   ]
 })
 export class IrccDsAngularComponentLibraryModule { }

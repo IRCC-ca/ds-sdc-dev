@@ -1,109 +1,168 @@
-@use '../../util/color' as color;
 @use '../../util/theme' as theme;
-@use '../../util/device' as device;
 @use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
 @use '../../tokens/sizes' as token-size;
+@use '../../tokens/template-const';
 @use '../../typography/typography' as typography;
 @use '../../tokens/text' as text;
 @use 'sass:map';
+$selectors: 'lib-select';
 
-@mixin selector {
-  lib-select#{template-const.$escape} {
-    @content;
-  }
+@mixin selectors {
+	#{$selectors}#{template-const.$escape} {
+		@content;
+	}
 }
 
 @mixin create {
-  @include selector() {
-    @include layout();
-  }
+	@include selectors() {
+	  @include layout();
+	}
 }
+
 @mixin size-large() {
-  .select-dropdown {
-    padding: 14px 13px 14px 12px;
-    font-size: 16px;
-    height: 54px;
-    line-height: 24px;
-  }
-  .custom-chevron {
-    font-size: 20px;
-  }
-  .placholder-text {
-    font-size: 16px;
-  }
+	.required-star {
+		font-size: 16px;
+		line-height: 16px;
+		justify-self: flex-start;
+		margin-right: 5px;
+	}
+	.select-label {
+		@include typography.fontSize(map.get(text.$heading, level), 5);
+		font-weight: 700;
+		font-family: 'Lato';
+	}
+	.select-hint {
+		margin: 12px 0 8px 0;
+	}
+	.select-error {
+		color: var(--critical-text);
+		margin-top: 8px;
+	}
+
+	.custom-select {
+		padding: 12px 21px 12px 20px;
+		font-size: 20px;
+		height: 52px;
+	}
+	.custom-chevron {
+		margin-left: -40px;
+	}
 }
 
 @mixin size-small() {
-  .select-dropdown {
-    padding: 10px;
-    padding: 10px 13px 10px 12px;
-    height: 42px;
-    line-height: 20px;
-    font-size: 14px;
-  }
-
-  .custom-chevron {
-    font-size: 16px;
-  }
-
-  .placholder-text {
-    font-size: 14px;
-  }
+	.required-star {
+		font-size: 12px;
+		line-height: 16px;
+		justify-self: flex-start;
+		margin-right: 4px;
+	}
+	.select-label {
+		@include typography.fontSize(map.get(text.$heading, level), 6);
+		font-weight: 700;
+		font-family: 'Lato';
+	}
+	.select-desc {
+		font-size: 14px;
+		line-height: 20px;
+	}
+	.select-hint {
+		margin: 8px 0 4px 0;
+		font-size: 14px;
+	}
+	.select-error {
+		color: var(--critical-text);
+		margin-top: 4px;
+	}
+	.custom-select {
+		padding: 8px 10px 8px 17px;
+		font-size: 16px;
+		height: 40px;
+	}
+	.custom-chevron {
+		margin-left: -29px;
+	}
 }
 
 @mixin layout {
-
-  @include size.selector(large) {
+	
+	@include size.selector(large) {
     @include size-large();
     .small {
       @include size-small()
-    }
+    }  
   }
 
   @include size.selector(small) {
     @include size-small();
     .large {
       @include size-large()
-    }
+    }  
   }
 
-  .content-container {
-    > button {
-      &.select-dropdown {
-        background-color: white;
-        border-style: solid;
-        border: 1px solid #868687;
-        color: var(--text-primary);
-        border-radius: token-size.$border-radius;
-        width: 100%;
-        
-        display: flex;
-        justify-content: space-between;
-        
-      }
-
-      .custom-chevron {
-        cursor: pointer;
-        pointer-events: none;
-        font-weight: 300;
-        color: var(--text-primary);
-      }
-
-      .label-text {
-        color: var(--text-primary);
-        margin: 0px;
-      }
-
-      .placholder-text {
-        color: var(--text-placeholder);
-        margin: 0px;
-      }
-
-      &:active {
-        background-color: var(--generic-active);
-      }
-    }
+	.required-div {
+		display: flex;
+		.required-star {
+			color: var(--critical-text);
+			font-weight: 400;
+			line-height: 16px;
+			justify-self:flex-start;
+		}
+	}
+	.select-label {
+		display: flex;
+		margin-bottom: 0;
+	}
+	.select-desc {
+		margin-top: 4px;
+		margin-bottom: 0;
+	}
+	.select-hint {
+    color: var(--text-placeholder);
   }
+	.select-exclamation {
+		margin-right: 4px;
+	}
+	.select-error {
+    color: var(--critical-text);
+    margin-top: 0;
+  }
+  .select-error i {
+    margin-right: 4px;
+  }
+
+	select {
+		line-height: 24px;
+		color: var(--text);
+		border-radius: token-size.$border-radius;
+		width: 100%;
+		-webkit-appearance: none;
+  	-moz-appearance: none;
+  	appearance: none;
+
+		// @include dropdown-size();
+	}
+
+	.custom-chevron {
+		cursor: pointer;
+		pointer-events: none;
+		font-weight: 300;
+		font-size: 20px;
+		color: var(--text);
+	}
+
+	.dropdown {
+		display: flex;
+		align-items: center;
+	}
 }
 
+
+// @mixin dropdown-size {
+//     @include size.selector(small) {
+//         @extend .h6;
+//     }
+
+//     @include size.selector(large) {
+//         @extend .h5;
+//     }
+// }

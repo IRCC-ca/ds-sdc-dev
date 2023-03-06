@@ -15,7 +15,7 @@ export * from './lib/chips/secondary-chips/secondary-chips.component';
 export * from './lib/input/input.component';
 export * from './lib/autocomplete/autocomplete.component';
 export * from './lib/radio-input/radio-input.component';
-export * from './lib/dropdown-input/dropdown-input.component';
+export * from './lib/select/select.component';
 export * from './lib/date-picker/date-picker.component';
 export * from './lib/button/button.component';
 export * from './lib/icon/icon.component';
@@ -23,7 +23,7 @@ export * from './lib/banner/banner.component';
 export * from './lib/error/error.component';
 export * from './lib/tabs/tabs.component';
 export * from './lib/progress-tags/progress-tags.component'
-export * from './lib/select/select.component'
+export * from './lib/dropdown/drop-down.component'
 
 export * from './lib/header/header.component';
 export * from './lib/footer/footer.component';
