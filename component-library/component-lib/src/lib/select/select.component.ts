@@ -8,11 +8,19 @@ import { DSSizes } from '../../shared/constants/jl-components/jl-components.cons
 export class SelectComponent implements OnInit {
 
   @Input() size? : keyof typeof DSSizes;
+  @Input() labelText? : string;
+  @Input() placeholderText? : string;
+
+  showPlaceholder : boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log("------------------SELECT--------------------");
+    if (!this.labelText || this.labelText.trim().length == 0) {
+      if (!this.placeholderText) {
+        this.placeholderText = "Default";
+      }
+      this.showPlaceholder = true;
+    }
   }
-
 }

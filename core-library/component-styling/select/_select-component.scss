@@ -29,6 +29,9 @@
   .custom-chevron {
     font-size: 20px;
   }
+  .placholder-text {
+    font-size: 16px;
+  }
 }
 
 @mixin size-small() {
@@ -37,10 +40,15 @@
     padding: 10px 13px 10px 12px;
     height: 42px;
     line-height: 20px;
+    font-size: 14px;
   }
 
   .custom-chevron {
     font-size: 16px;
+  }
+
+  .placholder-text {
+    font-size: 14px;
   }
 }
 
@@ -82,6 +90,16 @@
         pointer-events: none;
         font-weight: 300;
         color: var(--text-primary);
+      }
+
+      .label-text {
+        color: var(--text-primary);
+        margin: 0px;
+      }
+
+      .placholder-text {
+        color: var(--text-placeholder);
+        margin: 0px;
       }
 
       &:active {
