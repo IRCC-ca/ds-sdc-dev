@@ -3,6 +3,9 @@
         <lib-header [id]="'header'"></lib-header>
         <div class="stepper">BOX FOR THE STEPPER</div>
     </div>
+    <div class="error_banner" *ngIf="showErrorBanner">
+        <lib-banner [config]="errorBannerConfig"></lib-banner>
+    </div>
     <div class="form_container">
         <div>
             <h1>{{'ACC_DEMO.PERSONAL_INFO.H1' | translate}}</h1>
@@ -35,7 +38,7 @@
         <div class="buttons_container">
             <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'">
                 {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
-            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'">
+            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()">
                 {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>
         </div>
     </div>

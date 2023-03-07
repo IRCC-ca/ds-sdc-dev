@@ -37,6 +37,16 @@ export class AccessibilityDemoComponent implements OnInit {
   altPathKey = '';
   altLangURL = ''
   form = new FormGroup({});
+  nextClicked = false;
+  showErrorBanner = false;
+
+  errorBannerConfig: IBannerConfig = {
+    id: 'error_banner',
+    type: 'critical',
+    title: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.TITLE',
+    content: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.CONTENT',
+    rounded: true
+  }
 
   familyNameInputConfig: IInputComponentConfig = {
     id: 'family_name_input',
@@ -230,6 +240,21 @@ export class AccessibilityDemoComponent implements OnInit {
       )
     });
     this.cityOfBirthSelectConfig.options = temp;
+  }
+
+  /**
+   * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
+   */
+  navButton() {
+    this.nextClicked = true;
+    this.form.markAllAsTouched();
+    if (!this.form.valid) {
+      this.showErrorBanner = true;
+      this.form.valueChanges.subscribe(() => {
+        this.showErrorBanner = !this.form.valid;
+        console.log(this.form.valid, this.showErrorBanner)
+      });
+    }
   }
 
 
