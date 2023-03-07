@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IDropdownInputConfig, IDropdownInputOptionsConfig, IInputComponentConfig, IRadioInputComponentConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { Router } from '@angular/router';
@@ -100,7 +100,7 @@ export class AccessibilityDemoComponent implements OnInit {
     required: true
   };
 
-  countryOfBirthSelectConfig: IDropdownInputConfig = {
+  countryOfBirthSelectConfig: ISelectConfig = {
     id: 'contry_of_birth_select',
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.LABEL',
@@ -127,7 +127,7 @@ export class AccessibilityDemoComponent implements OnInit {
     ]
   };
 
-  cityOfBirthSelectConfig: IDropdownInputConfig = {
+  cityOfBirthSelectConfig: ISelectConfig = {
     id: 'city_of_birth_select',
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.LABEL',
@@ -207,7 +207,7 @@ export class AccessibilityDemoComponent implements OnInit {
    */
   setCities(cityList: ICityOfBirth[]) {
     // this.cityOfBirthSelectConfig.options = [];
-    let temp: IDropdownInputOptionsConfig[] = [];
+    let temp: ISelectOptionsConfig[] = [];
     cityList.forEach(city => {
       temp.push({ text: city.lov, value: city.val });
     });
