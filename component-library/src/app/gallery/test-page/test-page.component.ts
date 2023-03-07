@@ -16,7 +16,6 @@ export class TestPageComponent implements OnInit {
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
     label: 'test label',
-    category: 'secondary',
     formGroup: this.form,
     hint: 'Test hint',
     required: true,

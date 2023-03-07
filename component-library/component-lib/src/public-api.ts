@@ -2,34 +2,48 @@
  * Public API Surface of ircc-ds-angular-component-library
  */
 
+/** Non-Components - Shared **/
 export * from './shared/functions/stand-alone.functions'
-
-export * from './lib/ircc-ds-angular-component-library.service';
-export * from './lib/ircc-ds-angular-component-library.component';
-export * from './lib/ircc-ds-angular-component-library.module';
-
-export * from './lib/checkbox/checkbox.component';
-export * from './lib/chips/chip-item/chip-item.component';
-export * from './lib/chips/chip-list/chip-list.component';
-export * from './lib/chips/secondary-chips/secondary-chips.component';
-export * from './lib/input/input.component';
-export * from './lib/autocomplete/autocomplete.component';
-export * from './lib/radio-input/radio-input.component';
-export * from './lib/dropdown-input/dropdown-input.component';
-export * from './lib/date-picker/date-picker.component';
-export * from './lib/button/button.component';
-export * from './lib/icon/icon.component';
-export * from './lib/banner/banner.component';
-export * from './lib/error/error.component';
-export * from './lib/tabs/tabs.component';
-export * from './lib/progress-tags/progress-tags.component'
-
-export * from './lib/header/header.component';
-export * from './lib/footer/footer.component';
-export * from './lib/icon-button/icon-button.component';
-export * from './lib/language-switch/language-switch.component';
-export * from './lib/language-switch/language-switch-button.service';
-
-
 export * from './shared/interfaces/component-configs';
 export * from './shared/constants/jl-components/jl-components.constants/jl-components.constants'
+
+
+/** Banner Component **/
+export * from './lib/banner-component/ircc-ds-angular-banner.module';
+export * from './lib/banner-component/banner/banner.component';
+
+
+/** Form Input Components **/
+export * from './lib/form-components/ircc-ds-angular-form-components.module';
+export * from './lib/form-components/checkbox/checkbox.component';
+export * from './lib/form-components/error/error.component';
+export * from './lib/form-components/input/input.component';
+export * from './lib/form-components/radio-input/radio-input.component';
+export * from './lib/form-components/date-picker/date-picker.component';
+export * from './lib/form-components/select/select.component';
+
+/** Header/Footer Components **/
+export * from './lib/header-footer/ircc-ds-angular-header-footer.module';
+export * from './lib/header-footer/footer/footer.component';
+export * from './lib/header-footer/header/header.component';
+export * from './lib/header-footer/language-switch/language-switch.component';
+export * from './lib/header-footer/language-switch/language-switch-button.service';
+
+
+/** Legacy/Old Components **/
+export * from './lib/legacy-old/ircc-ds-angular-legacy-old.module';
+export * from './lib/legacy-old/autocomplete/autocomplete.component';
+export * from './lib/legacy-old/chips/chip-item/chip-item.component';
+export * from './lib/legacy-old/chips/chip-list/chip-list.component';
+export * from './lib/legacy-old/chips/secondary-chips/secondary-chips.component';
+export * from './lib/legacy-old/search-input/search-input.component';
+
+
+/** Shared Components **/
+export * from './lib/shared/ircc-ds-angular-component-shared.module';
+export * from './lib/shared/button/button.component';
+export * from './lib/shared/icon/icon.component';
+export * from './lib/shared/icon-button/icon-button.component';
+export * from './lib/shared/tabs/tabs.component';
+export * from './lib/shared/progress-tags/progress-tags.component'
+export * from './lib/shared/dropdown/drop-down.component'

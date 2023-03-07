@@ -23,12 +23,6 @@
                 <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">Toggle Error Checkbox</button>
             </div>
 
-            <!-- Dropdown Test -->
-            <div class="demoDropdownContainer">
-                <lib-dropdown [config]="dropdownConfig"
-                    [formControlName]="dropdownConfig.id"></lib-dropdown>
-            </div>
-
             <!-- Radio Input Test -->
             <br>
             <div>
@@ -57,7 +51,7 @@
             </div>
 
             <div class="selectDropDown">
-                <lib-dropdown-input [config]="selectDropDownConfig" [formControlName]="selectDropDownConfig.id"></lib-dropdown-input>
+                <lib-select [config]="selectDropDownConfig" [formControlName]="selectDropDownConfig.id"></lib-select>
             </div>
         </form>
         <lib-date-picker [title]="'Testing'" [dateForm]="form" [id]="datePickerID"></lib-date-picker>
