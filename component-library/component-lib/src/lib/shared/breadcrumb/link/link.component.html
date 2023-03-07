@@ -2,6 +2,9 @@
   <a [href]="config?.href">{{config?.text}}</a>
 </ng-container>
 <ng-container *ngIf="config?.routerLink">
-  <a [routerLink]="config?.routerLink">{{config?.text}}</a>
+  <a type="button" [routerLink]="config?.routerLink">{{config?.text}}</a>
+</ng-container>
+<ng-container *ngIf="config?.routerLink">
+  <button type="button" (click)="jumpTo()">{{config?.text}}</button>
 </ng-container>
 

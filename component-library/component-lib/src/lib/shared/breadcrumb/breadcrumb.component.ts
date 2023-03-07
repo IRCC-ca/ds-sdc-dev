@@ -3,6 +3,7 @@ import { DSSizes } from "../../../shared/constants/jl-components/jl-components.c
 import { ILinkComponentConfig } from "./link/link.component";
 
 export interface IBreadcrumbConfig {
+  //TODO: Make an enum for type (i.e. HREF, RouterLink, anchor)
   id: string,
   size?: keyof typeof DSSizes,
   // The first link always links back to homepage, or in some use case, the original starting point
@@ -24,9 +25,21 @@ export class BreadcrumbComponent implements OnInit {
       text: 'Home'
     }
   };
-  constructor() {}
+  constructor(private translate TranslateService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (this.config.type !== 'anchor') {
+      this.createLinks();
+    }
+
+
+  }
+
+  createLinks() {
+    let i = '';
+    this.config.links.forEach(link => {
+      link.linkKey = (i += '/' + this.trans)
+    })
   }
 
 }

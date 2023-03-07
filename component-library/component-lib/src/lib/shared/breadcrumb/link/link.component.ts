@@ -2,8 +2,12 @@ import { Component, Input } from '@angular/core';
 
 export interface ILinkComponentConfig {
   text: string,
-  href?: string,
-  routerLink?: string
+  //TODO: Delete below and make input field "linkKey"
+  linkKey?: string;
+  
+
+  // href?: string,
+  // routerLink?: string
 }
 
 @Component({

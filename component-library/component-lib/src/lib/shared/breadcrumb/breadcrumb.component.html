@@ -9,3 +9,7 @@
     <p class="breadcrumb-child">{{config.chilePage}}</p>
   </ng-container>
 </div>
+
+<div class="{{config?.size}}">
+  <ng-container *ngFor="let link of config?.links; let index = i;"></ng-container>
+</div>
