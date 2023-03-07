@@ -41,6 +41,7 @@
 @use './component-styling/footer/footer';
 @use './component-styling/icon/icon';
 @use './component-styling/button/button' as button-component;
+@use './component-styling/textarea/textarea' as textarea-component;
 
 
 @use './component-styling/chips/item' as chip-item;
@@ -112,6 +113,7 @@
         @include element(button-component);
         @include element(error-component);
         @include element(tags-component);
+        @include element(textarea-component);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -190,5 +192,7 @@
         @include button-component.create();
     } @else if $key == tags-component {
         @include tags-component.create();
+    } @else if $key == textarea-component {
+        @include textarea-component.create();
     }
 }

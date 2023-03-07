@@ -9,6 +9,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from "./date-picker/date-picker.component";
+import { TextareaComponent } from './textarea/textarea.component';
 
 const IrccDsAngularFormComponents = [
   CheckboxComponent,
@@ -16,12 +17,13 @@ const IrccDsAngularFormComponents = [
   ErrorComponent,
   InputComponent,
   RadioInputComponent,
-  DatePickerComponent
+  DatePickerComponent,
+  TextareaComponent
 ];
 
 @NgModule({
   declarations: [
-    ...IrccDsAngularFormComponents
+    ...IrccDsAngularFormComponents,
   ],
   imports: [
     CommonModule,
