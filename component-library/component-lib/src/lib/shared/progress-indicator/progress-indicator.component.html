@@ -6,17 +6,17 @@
         <div class="except-line">
           <button
             tabindex="-1"
-            *ngIf="stepIDs[i] === config.selected" selected 
-            class="tags-btn" 
-            [id]="stepIDs[i]" 
+            *ngIf="stepIDs[i] === config.selected" selected
+            class="tags-btn"
+            [id]="stepIDs[i]"
             (click)=setSelected(stepIDs[i])
             [attr.aria-label]="step.title + ' selected'">
             Step {{ i + 1 }}
           </button>
           <button
             tabindex="-1"
-            *ngIf="stepIDs[i] !== config.selected" 
-            class="tags-btn-plus" [id]="stepIDs[i]" 
+            *ngIf="stepIDs[i] !== config.selected"
+            class="tags-btn-plus" [id]="stepIDs[i]"
             (click)=setSelected(stepIDs[i])>
              Step {{ i + 1 }}
           </button>
