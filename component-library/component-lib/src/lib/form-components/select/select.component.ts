@@ -4,6 +4,7 @@ import { DSSizes } from "../../../shared/constants/jl-components/jl-components.c
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { ILabelConfig } from '../../shared/label/label.component';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 // export declare enum SelectType {
 //   secondary = "secondary",
@@ -21,6 +22,7 @@ export interface ISelectConfig {
   desc?: string;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
+  labelIconConfig?: IIconButtonComponentConfig;
 }
 export interface ISelectOptionsConfig {
   text: string;
@@ -82,7 +84,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
 
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
@@ -97,6 +100,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
   }
 }

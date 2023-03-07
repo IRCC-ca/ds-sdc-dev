@@ -1,9 +1,12 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { DSSizes, IErrorPairs, StandAloneFunctions } from '../../../public-api';
 import { ISelectConfig } from '../select/select.component';
 import { ILabelConfig } from '../../shared/label/label.component';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
+import { IErrorPairs } from '../../../shared/interfaces/component-configs';
+import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 
 export const DATE_PICKER_MONTHS_EN = [
   'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
@@ -32,6 +35,7 @@ export interface IDatePickerConfig {
   hint?: string;
   desc?: string;
   errorMessages?: IDatePickerErrorMessages;
+  labelIconConfig?: IIconButtonComponentConfig;
   //TODO: Add max and min year for date picker
 }
 
@@ -123,7 +127,8 @@ export class DatePickerComponent implements OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
 
     console.log(this.config);
     //set config from individual options, if present
@@ -187,7 +192,8 @@ export class DatePickerComponent implements OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
   }
 
 

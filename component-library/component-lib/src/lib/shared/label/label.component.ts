@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
+import { IIconButtonComponentConfig } from '../icon-button/icon-button.component';
 
 export interface ILabelConfig {
   formGroup: FormGroup;
@@ -12,6 +13,7 @@ export interface ILabelConfig {
   desc?: string;
   hint?: string;
   required?: boolean; 
+  iconButton?: IIconButtonComponentConfig;
 }
 
 export const ERROR_TEXT_STUB_EN = 'Error';

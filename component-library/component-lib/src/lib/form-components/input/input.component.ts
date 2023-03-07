@@ -7,9 +7,9 @@ import {
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
-import { IErrorIconConfig } from "../error/error.component";
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ILabelConfig } from '../../../public-api';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
+import { ILabelConfig } from '../../shared/label/label.component';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -22,7 +22,7 @@ export interface IInputComponentConfig {
   size?: keyof typeof DSSizes;
   formGroup: FormGroup;
   errorMessages?: IErrorPairs[];
-  errorIcon?: IErrorIconConfig;
+  labelIconConfig?: IIconButtonComponentConfig;
 }
 
 export enum InputTypes {
@@ -77,7 +77,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
 
     if (this.id !== '') {
       this.config.id = this.id;
@@ -120,7 +121,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
   }
 
   public focusInput(focusValue: boolean): void {

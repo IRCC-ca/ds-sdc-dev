@@ -10,6 +10,7 @@ import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { ILabelConfig } from '../../shared/label/label.component';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 export interface IRadioInputComponentConfig {
   id: string;
@@ -25,6 +26,7 @@ export interface IRadioInputComponentConfig {
   validators?: ValidatorFn[];
   helpText?: string;
   errorMessages?: IErrorPairs[];
+  labelIconConfig?: IIconButtonComponentConfig;
 }
 
 export interface IRadioInputOption {
@@ -94,7 +96,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
 
     if (this.id !== '') this.config.id = this.id;
     if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
@@ -111,7 +114,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
   }
 
   /**

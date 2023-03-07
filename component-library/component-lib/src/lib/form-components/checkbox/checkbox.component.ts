@@ -5,6 +5,7 @@ import { DSSizes } from '../../../shared/constants/jl-components/jl-components.c
 import {IErrorIconConfig} from "../error/error.component";
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { ILabelConfig } from '../../shared/label/label.component';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 
 export interface ICheckBoxComponentConfig {
@@ -22,7 +23,7 @@ export interface ICheckBoxComponentConfig {
   desc?: string;
   hint?: string;
   errorMessages?: IErrorPairs[];
-  errorIcon?: IErrorIconConfig;
+  labelIconConfig?: IIconButtonComponentConfig;
 }
 
 @Component({
@@ -88,7 +89,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
 
     if (this.id !== '') {
       this.config.id = this.id;
@@ -112,7 +114,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       this.config.label,
       this.config.desc,
       this.config.hint,
-      this.config.required);
+      this.config.required,
+      this.config.labelIconConfig);
   }
 
   /**
