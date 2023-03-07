@@ -33,19 +33,14 @@ export class ProgressIndicatorComponent implements OnInit {
     orientation: 'horizontal'
   };
 
-  tagConfig: IProgressTagsConfig = {
-    id: '',
-    type: 'primary',
-    size: "large",
-  };
   tabConfig: ITabConfig = {
     id: '',
     title: '',
-  }
+  };
   tabNavConfig: ITabNavConfig = {
     id: '',
     tab: [{id: '', title: ''}]
-  }
+  };
 
   constructor() { }
 
