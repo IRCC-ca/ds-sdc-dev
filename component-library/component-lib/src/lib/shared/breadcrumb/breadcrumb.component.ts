@@ -1,13 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { ILinkComponentConfig } from "./link/link.component";
+import { TranslateService } from "@ngx-translate/core";
+
+export enum LinkType {
+  href = 'href',
+  routerLink = 'routerLink',
+  anchor = 'anchor'
+}
 
 export interface IBreadcrumbConfig {
   //TODO: Make an enum for type (i.e. HREF, RouterLink, anchor)
   id: string,
   size?: keyof typeof DSSizes,
-  // The first link always links back to homepage, or in some use case, the original starting point
-  root: ILinkComponentConfig,
+  type?: keyof typeof LinkType;
   // The mid-layer navigation to the ancestor links, the previous pages that lead to users to the child page
   links?: ILinkComponentConfig[],
   // Child page title
@@ -21,25 +27,20 @@ export interface IBreadcrumbConfig {
 export class BreadcrumbComponent implements OnInit {
   @Input() config: IBreadcrumbConfig = {
     id: '',
-    root: {
-      text: 'Home'
-    }
   };
-  constructor(private translate TranslateService) {}
+  constructor(private translate: TranslateService) {}
 
   ngOnInit() {
-    if (this.config.type !== 'anchor') {
+    if (this.config?.type !== 'anchor') {
       this.createLinks();
     }
-
-
   }
 
   createLinks() {
     let i = '';
-    this.config.links.forEach(link => {
-      link.linkKey = (i += '/' + this.trans)
-    })
+    // this.config?.links.forEach(link => {
+      // link.linkKey = (i += '/' + this.trans)
+    // })
   }
 
 }
