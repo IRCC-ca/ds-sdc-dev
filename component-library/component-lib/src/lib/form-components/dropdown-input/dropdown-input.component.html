@@ -22,7 +22,7 @@
     <div class="dropdown">
       <select class="custom-select h6"
         [name]="config.id" [id]="config.id" [formControlName]="config.id">
-        <option *ngFor="let option of config.options" [value]="option.value || option.text">{{option.text}}
+        <option *ngFor="let option of config.options" [value]="option.value || option.text">{{option.text | translate}}
         </option>
       </select>
       <i class="fa-thin fa-chevron-down custom-chevron"></i>
