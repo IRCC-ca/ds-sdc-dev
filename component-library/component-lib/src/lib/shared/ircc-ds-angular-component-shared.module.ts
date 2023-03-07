@@ -7,6 +7,7 @@ import { IconComponent } from './icon/icon.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ProgressTagsComponent } from "./progress-tags/progress-tags.component";
+import { DropdownComponent } from "./dropdown/drop-down.component";
 import { ProgressIndicatorComponent } from "./progress-indicator/progress-indicator.component";
 
 const IrccDsSharedComponents = [
@@ -14,6 +15,8 @@ const IrccDsSharedComponents = [
   IconComponent,
   IconButtonComponent,
   TabsComponent,
+  ProgressTagsComponent,
+  DropdownComponent,
   ProgressTagsComponent,
   ProgressIndicatorComponent
 ];

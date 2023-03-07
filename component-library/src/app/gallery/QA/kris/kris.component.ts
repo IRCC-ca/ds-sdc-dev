@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ICheckBoxComponentConfig, IDropdownInputConfig, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { ICheckBoxComponentConfig, ISelectConfig, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 
 @Component({
@@ -13,7 +13,7 @@ export class KrisComponent implements OnInit {
 
   form = new FormGroup({});
 
-  selectConfig: IDropdownInputConfig = {
+  selectConfig:  ISelectConfig = {
     id: 'select',
     formGroup: this.form,
     label: "Testing input select",

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
+import { IDatePickerConfig, IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-test-page',
@@ -10,6 +10,15 @@ import { IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
 })
 export class TestPageComponent implements OnInit {
   form = new FormGroup({});
+
+  datePickerConfig: IDatePickerConfig = {
+    id: 'datePicker',
+    label: 'test label',
+    formGroup: this.form,
+    hint: 'Test hint',
+    required: true,
+    desc: 'Test description',
+  }
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress-indicator',

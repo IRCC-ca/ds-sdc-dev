@@ -1,50 +1,50 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
-import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 
-export declare enum DropdownType {
-  secondary = "secondary",
-  primary = "primary",
-  plain = "plain",
-}
-export interface IDropdownInputConfig {
+// export declare enum SelectType {
+//   secondary = "secondary",
+//   primary = "primary",
+//   plain = "plain",
+// }
+export interface ISelectConfig {
   id: string;
   formGroup: FormGroup;
   label?: string;
-  options?: IDropdownInputOptionsConfig[];
-  category?: keyof typeof DropdownType;
+  options?: ISelectOptionsConfig[];
+  // category?: keyof typeof SelectType;
   required?: boolean;
   hint?: string;
   desc?: string;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
 }
-export interface IDropdownInputOptionsConfig {
+export interface ISelectOptionsConfig {
   text: string;
   value?: string;
 }
 
 @Component({
-  selector: 'lib-dropdown-input',
-  templateUrl: './dropdown-input.component.html',
+  selector: 'lib-select',
+  templateUrl: './select.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => DropdownInputComponent) //This allows the error state to be turned off and on again
+      useExisting: forwardRef(() => SelectComponent) //This allows the error state to be turned off and on again
     }
   ]
 })
-export class DropdownInputComponent implements ControlValueAccessor, OnInit {
+export class SelectComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorIds: IErrorIDs[] = [];
 
-  @Input() config: IDropdownInputConfig = {
+  @Input() config: ISelectConfig = {
     id: '',
     formGroup: new FormGroup({}),
-    category: 'secondary',
+    // category: 'secondary',
   }
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
