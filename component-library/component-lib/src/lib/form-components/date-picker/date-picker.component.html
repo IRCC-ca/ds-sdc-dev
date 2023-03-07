@@ -1,21 +1,5 @@
 <div class="{{config.size}}">
-    <label *ngIf="config.label" [attr.aria-label]="
-        config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-        ? (config.label || '' | translate) + ' ' +
-          (config.desc || '' | translate) + ' ' + 
-          ('Error: ' ) + ' ' +
-          (config.hint || '' | translate)
-        : (config.label || '' | translate) + ' ' +
-          (config.desc || '' | translate) + ' ' +
-          (config.hint || '' | translate)
-      " [for]="config.id" class="date-label">
-        <div class="required-div" *ngIf="config.required">
-            <i class="fa-regular fa-asterisk required-star"></i>
-        </div>
-        {{(config.label || '') | translate}}
-    </label>
-    <p *ngIf="config.desc" class="date-desc">{{(config.desc || '') | translate}}</p>
-    <p *ngIf="config.hint" class="date-hint">{{(config.hint || '') | translate}}</p>
+    <lib-label [config]="labelConfig"></lib-label>
     <div class="all-select-container">
         <div class="select-container">
             <lib-select [config]="dropDownConfigs.year"></lib-select>

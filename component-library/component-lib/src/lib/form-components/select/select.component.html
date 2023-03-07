@@ -1,50 +1,17 @@
-<form [formGroup]="config.formGroup">
-  <div class="{{ config.size }}">
-    <label
-      *ngIf="config.label"
-      [attr.aria-label]="
-        config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-          ? (config.label || '' | translate) +
-            ' ' +
-            (config.desc || '' | translate) +
-            ' ' +
-            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, config.errorMessages || [])) +
-            ' ' +
-            (config.hint || '' | translate)
-          : (config.label || '' | translate) +
-            ' ' +
-            (config.desc || '' | translate) +
-            ' ' +
-            (config.hint || '' | translate)
-      "
-      [for]="config.id"
-      class="select-label"
-    >
-      <div class="required-div" *ngIf="config.required">
-        <i class="fa-regular fa-asterisk required-star"></i>
-      </div>
-      {{ config.label || "" | translate }}
-    </label>
-    <p *ngIf="config.desc" class="select-desc">{{ config.desc || "" | translate }}</p>
-    <p *ngIf="config.hint" class="select-hint">{{ config.hint || "" | translate }}</p>
-
+<div class="{{ config.size }}">
+  <lib-label [config]="labelConfig"></lib-label>
+  <form [formGroup]="config.formGroup">
     <div class="lib-select">
       <select
         class="custom-select h6 select-placeholder"
         [name]="config.id"
         [id]="config.id"
         [formControlName]="config.id"
-        [attr.aria-label]="config.label ? (config.label | translate) + ' ' : ''"
       >
         <option [value]="''" [disabled]="true" [selected]="true" [hidden]="true">
           {{ config.placeholder || "" | translate }}
         </option>
-        <option
-          class="select-option"
-          *ngFor="let option of config.options"
-          [value]="option.value || option.text"
-          tabindex="-1"
-        >
+        <option *ngFor="let option of config.options" [value]="option.value || option.text" class="select-option">
           {{ option.text | translate }}
         </option>
       </select>
@@ -57,5 +24,5 @@
         </div>
       </ng-container>
     </div>
-  </div>
-</form>
+  </form>
+</div>

@@ -8,6 +8,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ProgressTagsComponent } from "./progress-tags/progress-tags.component";
 import { DropdownComponent } from "./dropdown/drop-down.component";
+import { LabelComponent } from './label/label.component';
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -15,7 +16,8 @@ const IrccDsSharedComponents = [
   IconButtonComponent,
   TabsComponent,
   ProgressTagsComponent,
-  DropdownComponent
+  DropdownComponent,
+  LabelComponent
 ];
 
 @NgModule({
