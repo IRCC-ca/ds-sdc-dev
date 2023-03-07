@@ -47,6 +47,14 @@ $selectors: 'lib-select';
 	.custom-chevron {
 		margin-left: -40px;
 	}
+
+	.select-placeholder {
+		font-size: 16px;
+		color: var(--text-placeholder)
+  	}
+	.select-option {
+		color: black
+	}
 }
 
 @mixin size-small() {
@@ -81,12 +89,20 @@ $selectors: 'lib-select';
 	.custom-chevron {
 		margin-left: -29px;
 	}
+
+	.select-placeholder {
+		font-size: 14px;
+		color: var(--text-placeholder)
+	}
+	.select-option {
+		color: black
+	}
 }
 
 @mixin layout {
-	
 	@include size.selector(large) {
     @include size-large();
+	
     .small {
       @include size-small()
     }  
@@ -94,6 +110,7 @@ $selectors: 'lib-select';
 
   @include size.selector(small) {
     @include size-small();
+	
     .large {
       @include size-large()
     }  
@@ -134,10 +151,12 @@ $selectors: 'lib-select';
 		line-height: 24px;
 		color: var(--text);
 		border-radius: token-size.$border-radius;
+		// showing but not
+		border-color: var(--border);
 		width: 100%;
 		-webkit-appearance: none;
-  	-moz-appearance: none;
-  	appearance: none;
+		-moz-appearance: none;
+		appearance: none;
 
 		// @include dropdown-size();
 	}
@@ -150,10 +169,26 @@ $selectors: 'lib-select';
 		color: var(--text);
 	}
 
-	.dropdown {
+	.lib-select {
 		display: flex;
 		align-items: center;
 	}
+	
+	.select-placeholder {
+		color:var(--text-placeholder);
+		font-weight: 400;
+		font-family: 'Inter';
+	}
+
+	.select-option{
+		color: black;
+	}
+
+	select:invalid, select.ng-invalid.ng-touched {
+		border-color: var(--critical-border);
+		background-color: var(--critical-background-weak);
+	}
+	
 }
 
 
@@ -166,3 +201,6 @@ $selectors: 'lib-select';
 //         @extend .h5;
 //     }
 // }
+
+
+

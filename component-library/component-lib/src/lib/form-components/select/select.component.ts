@@ -18,6 +18,7 @@ export interface ISelectConfig {
   required?: boolean;
   hint?: string;
   desc?: string;
+  placeholder?: string;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
 }

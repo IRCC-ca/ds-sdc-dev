@@ -86,20 +86,23 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
+      placeholder: 'DD'
     },
-    month : {
+    month: {
       id: '',
       formGroup: this.config.formGroup,
       label: '',
       options: [],
       size: 'large',
+      placeholder: 'Month'
     },
-    year : {
+    year: {
       id: '',
       formGroup: this.config.formGroup,
       label: '',
       options: [],
       size: 'large',
+      placeholder: 'YYYY'
     },
   }
 
@@ -107,7 +110,7 @@ export class DatePickerComponent implements OnInit {
   private currentYear = new Date().getFullYear();
 
   constructor(private translate: TranslateService,
-    public standAloneFunctions: StandAloneFunctions) {}
+    public standAloneFunctions: StandAloneFunctions) { }
 
   ngOnInit() {
     console.log(this.config);
@@ -143,7 +146,7 @@ export class DatePickerComponent implements OnInit {
       this.setLabelLanguage();
     });
     for (let i = 1900; i <= this.currentYear; i++) {
-      this.dropDownConfigs.year.options?.push({text: i.toString()});
+      this.dropDownConfigs.year.options?.push({ text: i.toString() });
     }
 
     // Populate the days array based on the selected month and year
@@ -158,7 +161,7 @@ export class DatePickerComponent implements OnInit {
     });
     if (this.dropDownConfigs.day.options?.length === 0) {
       for (let i = 1; i <= 31; i++) {
-        this.dropDownConfigs.day.options?.push({text: i.toString()});
+        this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
     }
   }
@@ -170,9 +173,9 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.month.options = [];
     (this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US') ?
       this.months = DATE_PICKER_MONTHS_EN : this.months = DATE_PICKER_MONTHS_FR;
-      this.months.forEach((month: string, index: number) => {
-        this.dropDownConfigs.month.options?.push({text: month, value: DATE_PICKER_MONTHS_EN[index]});
-      });
+    this.months.forEach((month: string, index: number) => {
+      this.dropDownConfigs.month.options?.push({ text: month, value: DATE_PICKER_MONTHS_EN[index] });
+    });
   }
 
   /**
@@ -207,7 +210,7 @@ export class DatePickerComponent implements OnInit {
     }
     this.config.formGroup.get((this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION))?.setValue('');
     this.days.forEach(day => {
-      this.dropDownConfigs.day.options?.push({text: day.toString()});
+      this.dropDownConfigs.day.options?.push({ text: day.toString() });
     });
   }
 
