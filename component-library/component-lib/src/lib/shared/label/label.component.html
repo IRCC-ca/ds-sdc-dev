@@ -1,0 +1,21 @@
+<div class="label_container">
+<label *ngIf="config.label" class="label" [attr.aria-label]="
+config.formGroup.get(config.parentID)?.invalid && config.formGroup.get(config.parentID)?.dirty
+? (config.label || '' | translate) + ' ' +
+  (config.desc || '' | translate) + ' ' +
+  (errorStubText + standAloneFunctions.getErrorAria(config.formGroup, config.parentID, (config.errorMessages || []))) + ' ' +
+  (config.hint || '' | translate)
+: (config.label || '' | translate)  + ' ' +
+  (config.desc || '' | translate) + ' ' +
+  (config.hint || '' | translate)
+">
+    <div class="required-field-container" *ngIf="config.required">
+        <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}
+    </div>
+    <div *ngIf="!config.required">
+        {{(config.label || '') | translate}}
+    </div>
+</label>
+<p *ngIf="config.desc" class="input-desc">{{(config.desc || '') | translate}}</p>
+<p *ngIf="config.hint" class="input-hint">{{ config.hint | translate }}</p>
+</div>

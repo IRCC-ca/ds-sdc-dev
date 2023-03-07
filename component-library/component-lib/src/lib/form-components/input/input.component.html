@@ -1,26 +1,8 @@
-<div>
+<div id="{{config.id}}">
   <form [formGroup]="config.formGroup">
     <div class="input-container" [ngClass]="config.size">
       <div class="input-text">
-        <label *ngIf="config.label" class="input-label" [attr.aria-label]="
-            config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-            ? (config.label || '' | translate) + ' ' +
-              (config.desc || '' | translate) + ' ' +
-              ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) + ' ' +
-              (config.hint || '' | translate)
-            : (config.label || '' | translate)  + ' ' +
-              (config.desc || '' | translate) + ' ' +
-              (config.hint || '' | translate)
-          ">
-          <div class="required-field-container" *ngIf="config.required">
-            <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}
-          </div>
-          <div *ngIf="!config.required">
-            {{(config.label || '') | translate}}
-          </div>
-        </label>
-        <p *ngIf="config.desc" class="input-desc">{{(config.desc || '') | translate}}</p>
-        <p *ngIf="config.hint" class="input-hint">{{ config.hint | translate }}</p>
+        <lib-label [config]="labelConfig"></lib-label>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
           TODO: Should probably change the (keyup) to (onblur) -->
