@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDropdownInputConfig, IProgressTagsConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import {  ISelectConfig, IProgressTagsConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 @Component({
   selector: 'app-mahsa',
@@ -15,7 +15,7 @@ export class MahsaComponent implements OnInit {
   SELECT_ID = 'qa_test_select';
   TAB_ID = 'qa-test-tabs';
 
-  qaSelect: IDropdownInputConfig = {
+  qaSelect:  ISelectConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
     options: [
@@ -40,7 +40,7 @@ export class MahsaComponent implements OnInit {
   }
 
   testerConfig: IAutoTestConfigObject = {
-    dropdowns: [
+    selects: [
       {
         id: 'category', //should be same as config property that we target
         formGroup: this.form,
@@ -124,7 +124,7 @@ export class MahsaComponent implements OnInit {
   };
 
   tagTestConfigObj: IAutoTestConfigObject = {
-    dropdowns: [
+    selects: [
       {
         id: 'type',
         label: 'Type',
@@ -180,7 +180,7 @@ export class MahsaComponent implements OnInit {
   ngOnInit() {
     this.altLang.setAltLangLink('mahsa-alt');
 
-    this.testerConfig.dropdowns?.forEach(i => {
+    this.testerConfig.selects?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
     this.testerConfig.checkboxes?.forEach(i => {
@@ -191,12 +191,12 @@ export class MahsaComponent implements OnInit {
     });
     this.form.addControl(this.qaSelect.id, new FormControl());
 
-    this.tagTestConfigObj.dropdowns?.forEach(i => {
+    this.tagTestConfigObj.selects?.forEach(i => {
       this.tagForm.addControl(i.id, new FormControl());
     });
 
     this.form.valueChanges.subscribe(value => {
-      let updatedConfig: IDropdownInputConfig = {
+      let updatedConfig: ISelectConfig = {
         id: this.SELECT_ID,
         formGroup: this.form
       };
@@ -208,7 +208,7 @@ export class MahsaComponent implements OnInit {
     });
 
     this.tagForm.valueChanges.subscribe(value => {
-      let tagConf: IDropdownInputConfig = {
+      let tagConf: ISelectConfig = {
         id: 'tag1',
         formGroup: this.tagForm
       };

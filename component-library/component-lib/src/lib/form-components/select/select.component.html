@@ -1,9 +1,9 @@
-<div [ngClass]="config.category" class="{{config.size}}">
+<div class="{{config.size}}">
   <label *ngIf="config.label"
     [attr.aria-label]="
       config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
       ? (config.label || '' | translate) + ' ' +
-        (config.desc || '' | translate) + ' ' + 
+        (config.desc || '' | translate) + ' ' +
         ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) + ' ' +
         (config.hint || '' | translate)
       : (config.label || '' | translate) + ' ' +
@@ -30,7 +30,7 @@
     <ng-container *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid">
       <ng-container *ngFor="let errors of errorIds; let i = index">
         <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
-          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV" aria-live="polite"></lib-error>
+          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
         </div>
       </ng-container>
     </ng-container>
