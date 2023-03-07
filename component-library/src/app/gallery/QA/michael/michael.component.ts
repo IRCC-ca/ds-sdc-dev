@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormControl, FormGroup } from "@angular/forms";
-import {ICheckBoxComponentConfig, IInputComponentConfig} from 'ircc-ds-angular-component-library';
+import { IBreadcrumbConfig, ICheckBoxComponentConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
 import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/auto-tester/auto-tester.component";
-import { IBreadcrumbConfig } from "../../../../../component-lib/src/lib/breadcrumb/breadcrumb.component";
 
 @Component({
   selector: 'app-michael',
@@ -59,7 +58,7 @@ export class MichaelComponent implements OnInit {
         inlineLabel: 'Mixed',
       },
     ],
-    dropdowns: [
+    selects: [
       {
         id: 'size',
         label: 'Size',
@@ -137,7 +136,7 @@ export class MichaelComponent implements OnInit {
         inlineLabel: 'required'
       },
     ],
-    dropdowns: [
+    selects: [
       {
         id: 'type',
         label: 'Type',
@@ -212,7 +211,7 @@ export class MichaelComponent implements OnInit {
     this.altLang.setAltLangLink('michael-alt');
 
     // Auto tester component configs - Input
-    this.testerInputConfig.dropdowns?.forEach(i => {
+    this.testerInputConfig.selects?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
     this.testerInputConfig.checkboxes?.forEach(i => {
@@ -247,7 +246,7 @@ export class MichaelComponent implements OnInit {
     });
 
     // Auto tester component configs - Checkbox
-    this.testerCheckboxConfig.dropdowns?.forEach(i => {
+    this.testerCheckboxConfig.selects?.forEach(i => {
       this.form_0.addControl(i.id, new FormControl());
     });
     this.testerCheckboxConfig.checkboxes?.forEach(i => {
