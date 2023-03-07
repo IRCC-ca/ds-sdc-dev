@@ -1,6 +1,5 @@
 <div [class]="config.orientation">
-<!-- <div [ngClass]="config.orientation === 'horizontal' ? 'vertical' : 'horizontal' "> -->
-  <nav class="stepNumber" *ngFor="let step of config.steps; let i = index">
+  <nav class="container-plus-line" *ngFor="let step of config.steps; let i = index">
     <button class="container" [ngClass]="config.size" category="plain">
       <div class="except-line">
         <button
