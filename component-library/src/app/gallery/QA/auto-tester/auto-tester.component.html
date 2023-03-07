@@ -7,9 +7,9 @@
         </ng-container>
     </div>
     <div class="dropdowns">
-        <ng-container *ngFor="let input of config.testFields?.dropdowns">
+        <ng-container *ngFor="let input of config.testFields?.selects">
             <div class="dropdown">
-                <lib-dropdown-input [config]="input"></lib-dropdown-input>
+                <lib-select [config]="input"></lib-select>
             </div>
         </ng-container>
     </div>
