@@ -38,7 +38,7 @@ export class TestPageComponent implements OnInit {
       },
     ],
     // size: 'small',
-    orientation: 'vertical'
+    // orientation: 'vertical'
   }
 
 
