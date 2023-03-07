@@ -80,7 +80,6 @@ export class DatePickerComponent implements OnInit {
   days: number[] = [];
   months: string[] = [];
   labelConfig: ILabelConfig = {
-    id: '',
     formGroup: this.config.formGroup,
     parentID: ''
   }
@@ -118,7 +117,6 @@ export class DatePickerComponent implements OnInit {
   ngOnInit() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       [],
       // this.config.errorMessages,
@@ -183,7 +181,6 @@ export class DatePickerComponent implements OnInit {
   ngOnChanges(){
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       [],
       // this.config.errorMessages,

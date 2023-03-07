@@ -53,7 +53,6 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   isDisabled = false;
   errorIds: IErrorIDs[] = [];
   labelConfig: ILabelConfig = {
-    id: '',
     formGroup: this.config.formGroup,
     parentID: ''
   }
@@ -84,7 +83,6 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   ngOnInit() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,
@@ -109,7 +107,6 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   ngOnChanges(){
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,

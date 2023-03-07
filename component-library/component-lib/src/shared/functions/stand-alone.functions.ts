@@ -77,10 +77,9 @@ export class StandAloneFunctions {
      * @param hint 
      * @param required 
      */
-        makeLabelConfig(formGroup: FormGroup, id: string, parentID: string, errorMessages?: IErrorPairs[], label?: string, desc?: string, hint?: string, required?: boolean) {
+        makeLabelConfig(formGroup: FormGroup, parentID: string, errorMessages?: IErrorPairs[], label?: string, desc?: string, hint?: string, required?: boolean) {
             const config: ILabelConfig = {
                 formGroup: formGroup,
-                id: id,
                 parentID: parentID,
                 errorMessages: errorMessages,
                 label: label,

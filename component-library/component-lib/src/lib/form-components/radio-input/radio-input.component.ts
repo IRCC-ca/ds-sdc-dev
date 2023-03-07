@@ -61,7 +61,6 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   @Input() formGroup = this.formGroupEmpty;
 
   labelConfig: ILabelConfig = {
-    id: '',
     formGroup: this.config.formGroup,
     parentID: ''
   }
@@ -90,7 +89,6 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,
@@ -108,7 +106,6 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   ngOnChanges(){
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,

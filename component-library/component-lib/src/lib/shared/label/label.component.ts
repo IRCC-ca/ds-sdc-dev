@@ -5,7 +5,6 @@ import { StandAloneFunctions } from '../../../shared/functions/stand-alone.funct
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 
 export interface ILabelConfig {
-  id: string,
   formGroup: FormGroup;
   errorMessages?: IErrorPairs[];
   parentID: string;
@@ -25,7 +24,6 @@ export const ERROR_TEXT_STUB_FR = 'Erreur';
 export class LabelComponent implements OnInit {
 
   @Input() config: ILabelConfig = {
-    id: '',
     formGroup: new FormGroup({}),
     parentID: ''
   } 

@@ -49,7 +49,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   };
 
   labelConfig: ILabelConfig = {
-    id: '',
     formGroup: this.config.formGroup,
     parentID: ''
   }
@@ -78,7 +77,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   ngOnInit() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,
@@ -94,7 +92,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   ngOnChanges(){
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,

@@ -59,7 +59,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   ariaText = 'Text Input';
   errorIds: IErrorIDs[] = [];
   labelConfig: ILabelConfig = {
-    id: '',
     formGroup: this.config.formGroup,
     parentID: ''
   }
@@ -73,7 +72,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   ngOnInit() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,
@@ -117,7 +115,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   ngOnChanges(){
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
-      (this.config.id + '_label'),
       this.config.id,
       this.config.errorMessages,
       this.config.label,
