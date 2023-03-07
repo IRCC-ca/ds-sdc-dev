@@ -16,16 +16,20 @@ export class TestPageComponent implements OnInit {
     formGroup: this.form,
     steps: [
       {
-      tagConfig: { id: 'tags', type: 'primary' },
-      title: 'Step title'
-    },
-    {
-      tagConfig: { id: 'tags1', type: 'success' },
-      title: 'Step title1'
-    }
+        tagConfig: { id: 'tags', type: 'primary' },
+        title: 'Step title'
+      },
+      {
+        tagConfig: { id: 'tags1', type: 'success' },
+        title: 'Step title1'
+      },
+      {
+        tagConfig: { id: 'tags2', type: 'locked' },
+        title: 'Step title2'
+      },
     ],
-    // size: 'small'
-    // orientation: 'vertical'
+    // size: 'small',
+    orientation: 'vertical'
   }
 
 
