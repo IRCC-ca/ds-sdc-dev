@@ -28,16 +28,10 @@ export class ProgressTagsComponent implements OnInit {
   @Input() config: IProgressTagsConfig = {
     id: '',
   };
-  @Input() id = '';
-  @Input() type?: keyof typeof TagType | TagType;
-  @Input() size?: keyof typeof DSSizes | DSSizes;
 
   constructor(private translate: TranslateService) { }
 
   ngOnInit(): void {
-    if (this.id) this.config.id = this.id;
-    if (this.type) this.config.type = this.type;
-    if (this.size) this.config.size = this.size;
     this.setTypeTitle();
     this.translate.onLangChange.subscribe(() => {
       this.setTypeTitle();

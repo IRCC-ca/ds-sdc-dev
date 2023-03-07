@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDatePickerConfig, IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
+import { IDatePickerConfig } from 'component-lib/src/public-api';
+import { IBannerConfig } from 'ircc-ds-angular-component-library';
+
 
 @Component({
   selector: 'app-test-page',
@@ -18,27 +20,20 @@ export class TestPageComponent implements OnInit {
     hint: 'Test hint',
     required: true,
     desc: 'Test description',
-  }
-
-  progressIndicatorConfig: IProgressIndicatorConfig = {
-    id: 'progress-indicator',
-    formGroup: this.form,
-    steps: [
-      {
-        tagConfig: { id: 'tags', type: 'primary' },
-        title: 'Step title'
-      },
-      {
-        tagConfig: { id: 'tags1', type: 'success' },
-        title: 'Step title1'
-      }
-    ],
+    // size: 'small'
   }
 
 
   constructor(private altLang: LanguageSwitchService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form.addControl((this.datePickerConfig.id + '_dayControl'), new FormControl());
+    this.form.addControl((this.datePickerConfig.id + '_monthControl'), new FormControl());
+    this.form.addControl((this.datePickerConfig.id + '_yearControl'), new FormControl());
+    console.log(this.form.controls, this.datePickerConfig.formGroup.controls);
+
+
+  }
 }
 
 
