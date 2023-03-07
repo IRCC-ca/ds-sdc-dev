@@ -1,23 +1,5 @@
 <div class="{{config.size}}">
-  <label *ngIf="config.label"
-    [attr.aria-label]="
-      config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-      ? (config.label || '' | translate) + ' ' +
-        (config.desc || '' | translate) + ' ' +
-        ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) + ' ' +
-        (config.hint || '' | translate)
-      : (config.label || '' | translate) + ' ' +
-        (config.desc || '' | translate) + ' ' +
-        (config.hint || '' | translate)
-    "
-    [for]="config.id" class="select-label">
-    <div class="required-div" *ngIf="config.required">
-      <i class="fa-regular fa-asterisk required-star"></i>
-    </div>
-    {{(config.label || '') | translate}}
-  </label>
-  <p *ngIf="config.desc" class="select-desc">{{(config.desc || '') | translate}}</p>
-  <p *ngIf="config.hint" class="select-hint">{{(config.hint || '') | translate}}</p>
+  <lib-label [config]="labelConfig"></lib-label>
   <form [formGroup]="config.formGroup">
     <div class="dropdown">
       <select class="custom-select h6"

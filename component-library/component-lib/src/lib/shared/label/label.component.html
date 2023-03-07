@@ -1,0 +1,27 @@
+<div id="{{config.parentID + '_label'}}" class="label_container"
+  [ngClass]="{'extra_padding' : (config.label && (!config.desc && !config.hint))}">
+  <label for="{{config.parentID}}" *ngIf="config.label" class="label" [attr.aria-label]="
+config.formGroup.get(config.parentID)?.invalid && config.formGroup.get(config.parentID)?.dirty
+? (config.label || '' | translate) + ' ' +
+  (config.desc || '' | translate) + ' ' +
+  (errorStubText + standAloneFunctions.getErrorAria(config.formGroup, config.parentID, (config.errorMessages || []))) + ' ' +
+  (config.hint || '' | translate)
+: (config.label || '' | translate)  + ' ' +
+  (config.desc || '' | translate) + ' ' +
+  (config.hint || '' | translate)
+">
+    <span class="label_field_container">
+      <div class="required-field-container" *ngIf="config.required">
+        <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}
+      </div>
+      <div *ngIf="!config.required">
+        {{(config.label || '') | translate}}
+      </div>
+      <div *ngIf="config.iconButton" class="icon_container">
+        <lib-icon-button [config]="config.iconButton"></lib-icon-button>
+      </div>
+    </span>
+  </label>
+  <p *ngIf="config.desc" class="input-desc">{{(config.desc || '') | translate}}</p>
+  <p *ngIf="config.hint" class="input-hint">{{ config.hint | translate }}</p>
+</div>

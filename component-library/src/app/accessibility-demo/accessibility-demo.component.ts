@@ -71,6 +71,16 @@ export class AccessibilityDemoComponent implements OnInit {
     formGroup: this.form,
     required: true,
     label: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL',
+    // labelIconConfig: {
+    //   id: 'sex_at_birth_radio_info_button',
+    //   category: 'custom',
+    //   ariaLabel: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.INFO_BUTTON',
+    //   size: 'small',
+    //   icon: {
+    //     class: 'fa-regular fa-circle-info',
+    //     // color: ''
+    //   }
+    // },
     options: [
       {
         text: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.FEMALE',

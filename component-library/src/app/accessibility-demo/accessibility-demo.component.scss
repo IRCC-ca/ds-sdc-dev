@@ -1,6 +1,14 @@
 .page_container {
     margin-left: 164px;
     max-width: 1036px;
+
+    .header_stepper_container {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 10000;
+        width: 100%;
+    }
     
     .form_container {
         max-width: 628px;
