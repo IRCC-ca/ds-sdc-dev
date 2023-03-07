@@ -18,7 +18,6 @@ export class TestPageComponent implements OnInit {
     hint: 'Test hint',
     required: true,
     desc: 'Test description',
-    // size: 'small'
   }
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
@@ -26,16 +25,14 @@ export class TestPageComponent implements OnInit {
     formGroup: this.form,
     steps: [
       {
-      tagConfig: { id: 'tags', type: 'primary' },
-      title: 'Step title'
-    },
-    {
-      tagConfig: { id: 'tags1', type: 'success' },
-      title: 'Step title1'
-    }
+        tagConfig: { id: 'tags', type: 'primary' },
+        title: 'Step title'
+      },
+      {
+        tagConfig: { id: 'tags1', type: 'success' },
+        title: 'Step title1'
+      }
     ],
-    // size: 'small'
-    // orientation: 'vertical'
   }
 
 

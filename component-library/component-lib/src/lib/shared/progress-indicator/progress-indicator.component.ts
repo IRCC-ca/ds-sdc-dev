@@ -51,18 +51,9 @@ export class ProgressIndicatorComponent implements OnInit {
 
   ngOnInit() {
     if(!this.config.orientation) this.config.orientation = 'horizontal';
-    // this.tagConfig.id = this.config?.id + '_tagConfig';
-    // this.tagConfig.size = this.config.size;
-    // this.tabConfig.id = this.config?.id + '_tabConfig';
-
-    // if (this.config.selected === undefined && this.config.tab) {
-    //   this.config.selected = (this.config.tab[0].id);
-    // }    UPDATE:
-
 
     this.config?.steps?.forEach((step, index) => {
     this.stepIDs.push(`${this.config?.id}_step${index + 1}`);
-      // console.log(this.stepIDs);
     })
 
     if (this.config.selected === undefined) {
