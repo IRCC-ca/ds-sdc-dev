@@ -59,8 +59,8 @@
 
     .horizontal {
         display: flex;
-        //overflow-y: scroll;
-        justify-content: space-evenly;
+        overflow-y: scroll;
+        justify-content: space-between;
         .container-plus-line {
             width: 100%;
         }
@@ -78,10 +78,10 @@
         }
     }
     .vertical {
-        //overflow-x: scroll;
+        overflow-x: scroll;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
         height: 100%;
         .container-plus-line {
             height: 100%;
