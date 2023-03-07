@@ -58,7 +58,7 @@ export class MichaelComponent implements OnInit {
         inlineLabel: 'Mixed',
       },
     ],
-    dropdowns: [
+    selects: [
       {
         id: 'size',
         label: 'Size',
@@ -136,7 +136,7 @@ export class MichaelComponent implements OnInit {
         inlineLabel: 'required'
       },
     ],
-    dropdowns: [
+    selects: [
       {
         id: 'type',
         label: 'Type',
@@ -191,7 +191,7 @@ export class MichaelComponent implements OnInit {
     this.altLang.setAltLangLink('michael-alt');
 
     // Auto tester component configs - Input
-    this.testerInputConfig.dropdowns?.forEach(i => {
+    this.testerInputConfig.selects?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
     this.testerInputConfig.checkboxes?.forEach(i => {
@@ -226,7 +226,7 @@ export class MichaelComponent implements OnInit {
     });
 
     // Auto tester component configs - Checkbox
-    this.testerCheckboxConfig.dropdowns?.forEach(i => {
+    this.testerCheckboxConfig.selects?.forEach(i => {
       this.form_0.addControl(i.id, new FormControl());
     });
     this.testerCheckboxConfig.checkboxes?.forEach(i => {

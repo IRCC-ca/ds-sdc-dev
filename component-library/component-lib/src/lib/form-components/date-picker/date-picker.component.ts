@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { DSSizes, IErrorPairs, StandAloneFunctions } from '../../../public-api';
-import { DropdownType, IDropdownInputConfig } from '../dropdown-input/dropdown-input.component';
+import { ISelectConfig } from '../select/select.component';
 
 export const DATE_PICKER_MONTHS_EN = [
   'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
@@ -27,7 +27,6 @@ export interface IDatePickerConfig {
   formGroup: FormGroup;
   size?: keyof typeof DSSizes;
   label?: string;
-  category?: keyof typeof DropdownType
   required?: boolean;
   hint?: string;
   desc?: string;
@@ -43,9 +42,9 @@ export interface IDatePickerErrorMessages {
 }
 
 export interface IDatePickerDropDownConfigs {
-  day: IDropdownInputConfig;
-  month: IDropdownInputConfig;
-  year: IDropdownInputConfig;
+  day: ISelectConfig;
+  month: ISelectConfig;
+  year: ISelectConfig;
 }
 
 
@@ -65,14 +64,12 @@ export class DatePickerComponent implements OnInit {
   @Input() config: IDatePickerConfig = {
     id: '',
     formGroup: new FormGroup({}),
-    category: 'secondary'
   }
 
   @Input() formGroup?: FormGroup;
   @Input() id?: string;
   @Input() size?: keyof typeof DSSizes;
   @Input() label?: string;
-  @Input() category?: keyof typeof DropdownType
   @Input() required?: boolean;
   @Input() hint?: string;
   @Input() desc?: string;
@@ -119,7 +116,7 @@ export class DatePickerComponent implements OnInit {
     if (this.id) this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
-    if (this.category) this.config.category = this.category;
+    // if (this.category) this.config.category = this.category;
     if (this.required) this.config.required = this.required;
     if (this.hint) this.config.hint = this.hint;
     if (this.desc) this.config.desc = this.desc;

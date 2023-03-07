@@ -22,9 +22,9 @@
 @use './tokens/global/validation';
 @use './tokens/alert/alert';
 
-@use './tokens/dropdown/plain' as dd-plain;
-@use './tokens/dropdown/primary' as dd-primary;
-@use './tokens/dropdown/secondary' as dd-secondary;
+// @use './tokens/dropdown/plain' as dd-plain;
+// @use './tokens/dropdown/primary' as dd-primary;
+// @use './tokens/dropdown/secondary' as dd-secondary;
 
 @use './tokens/partial/focus';
 @use './tokens/partial/disable';
@@ -41,6 +41,7 @@
 @use './component-styling/footer/footer';
 @use './component-styling/icon/icon';
 @use './component-styling/button/button' as button-component;
+@use './component-styling/select/select-component' as select-component;
 
 
 @use './component-styling/chips/item' as chip-item;
@@ -81,9 +82,9 @@
         @include element(primary);
         @include element(secondary);
         @include element(plain);
-        @include element(dd-plain);
-        @include element(dd-primary);
-        @include element(dd-secondary);
+        // @include element(dd-plain);
+        // @include element(dd-primary);
+        // @include element(dd-secondary);
         @include element(dropdown);
         @include element(nav);
         @include element(round);
@@ -112,6 +113,7 @@
         @include element(button-component);
         @include element(error-component);
         @include element(tags-component);
+        @include element(select-component);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -128,13 +130,15 @@
         @include secondary.create();
     } @else if $key == plain {
         @include plain.create();
-    } @else if $key == dd-primary {
-        @include dd-primary.create();
-    } @else if $key == dd-secondary {
-        @include dd-secondary.create();
-    } @else if $key == dd-plain {
-        @include dd-plain.create();
-    } @else if $key == dropdown {
+    } 
+    // @else if $key == dd-primary {
+    //     @include dd-primary.create();
+    // } @else if $key == dd-secondary {
+    //     @include dd-secondary.create();
+    // } @else if $key == dd-plain {
+    //     @include dd-plain.create();
+    // } 
+    @else if $key == dropdown {
         @include dropdown.create();
     } @else if $key == nav {
         @include nav.create();
@@ -190,5 +194,7 @@
         @include button-component.create();
     } @else if $key == tags-component {
         @include tags-component.create();
+    } @else if $key == select-component {
+        @include select-component.create();
     }
 }
