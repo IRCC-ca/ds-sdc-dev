@@ -87,7 +87,7 @@ export class NaseerComponent implements OnInit {
         inlineLabel: 'required'
       },
     ],
-    dropdowns: [
+    selects: [
       {
         id: 'type',
         label: 'Type',  
@@ -147,7 +147,7 @@ export class NaseerComponent implements OnInit {
   ngOnInit() {
     this.altLang.setAltLangLink('naseer-alt');
 
-    this.testerConfig.dropdowns?.forEach(i => {
+    this.testerConfig.selects?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
 
     });

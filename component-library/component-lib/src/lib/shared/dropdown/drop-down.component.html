@@ -1,0 +1,8 @@
+<!-- [ngClass]="config.category" -->
+<div class="content-container" [ngClass]="size">
+    <button class="select-dropdown">
+        <p *ngIf="showPlaceholder" class="placholder-text">{{placeholderText}}</p>
+        <p class="label-text">{{labelText}}</p>
+        <i class="fa-thin fa-chevron-down custom-chevron"></i>
+    </button>
+</div>
