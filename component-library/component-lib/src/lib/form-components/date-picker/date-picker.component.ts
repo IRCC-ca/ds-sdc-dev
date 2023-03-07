@@ -3,6 +3,7 @@ import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { DSSizes, IErrorPairs, StandAloneFunctions } from '../../../public-api';
 import { ISelectConfig } from '../select/select.component';
+import { ILabelConfig } from '../../shared/label/label.component';
 
 export const DATE_PICKER_MONTHS_EN = [
   'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
@@ -78,6 +79,11 @@ export class DatePickerComponent implements OnInit {
 
   days: number[] = [];
   months: string[] = [];
+  labelConfig: ILabelConfig = {
+    id: '',
+    formGroup: this.config.formGroup,
+    parentID: ''
+  }
 
   dropDownConfigs: IDatePickerDropDownConfigs = {
     day: {
@@ -110,6 +116,17 @@ export class DatePickerComponent implements OnInit {
     public standAloneFunctions: StandAloneFunctions) {}
 
   ngOnInit() {
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      (this.config.id + '_label'),
+      this.config.id,
+      [],
+      // this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required);
+
     console.log(this.config);
     //set config from individual options, if present
     if (this.formGroup) this.config.formGroup = this.formGroup;
@@ -162,6 +179,20 @@ export class DatePickerComponent implements OnInit {
       }
     }
   }
+
+  ngOnChanges(){
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      (this.config.id + '_label'),
+      this.config.id,
+      [],
+      // this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required);
+  }
+
 
   /**
    * Set the language for the month dropdown

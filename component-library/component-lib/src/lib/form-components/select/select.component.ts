@@ -3,6 +3,7 @@ import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/for
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { ILabelConfig } from '../../shared/label/label.component';
 
 // export declare enum SelectType {
 //   secondary = "secondary",
@@ -45,6 +46,12 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     id: '',
     formGroup: new FormGroup({}),
     // category: 'secondary',
+  };
+
+  labelConfig: ILabelConfig = {
+    id: '',
+    formGroup: this.config.formGroup,
+    parentID: ''
   }
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
@@ -69,8 +76,30 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      (this.config.id + '_label'),
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required);
+
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
     }
+  }
+
+  ngOnChanges(){
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      (this.config.id + '_label'),
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required);
   }
 }

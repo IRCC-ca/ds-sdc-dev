@@ -4,6 +4,7 @@ import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorIconConfig} from "../error/error.component";
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { ILabelConfig } from '../../shared/label/label.component';
 
 
 export interface ICheckBoxComponentConfig {
@@ -19,6 +20,7 @@ export interface ICheckBoxComponentConfig {
   helpText?: string;
   customErrorText?: string;
   desc?: string;
+  hint?: string;
   errorMessages?: IErrorPairs[];
   errorIcon?: IErrorIconConfig;
 }
@@ -50,6 +52,11 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   isDisabled = false;
   errorIds: IErrorIDs[] = [];
+  labelConfig: ILabelConfig = {
+    id: '',
+    formGroup: this.config.formGroup,
+    parentID: ''
+  }
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -75,6 +82,16 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      (this.config.id + '_label'),
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required);
+
     if (this.id !== '') {
       this.config.id = this.id;
     }
@@ -87,6 +104,18 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
     }
+  }
+
+  ngOnChanges(){
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      (this.config.id + '_label'),
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required);
   }
 
   /**

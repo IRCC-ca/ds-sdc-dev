@@ -43,5 +43,4 @@ export class LabelComponent implements OnInit {
     (curLang === 'en' || curLang === 'en-US') ? this.errorStubText = ERROR_TEXT_STUB_EN : this.errorStubText = ERROR_TEXT_STUB_FR;
     });
   }
-
 }

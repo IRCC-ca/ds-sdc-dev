@@ -114,7 +114,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  ngOnChange(){
+  ngOnChanges(){
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       (this.config.id + '_label'),

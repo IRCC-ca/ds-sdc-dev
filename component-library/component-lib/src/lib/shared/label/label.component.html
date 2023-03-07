@@ -1,4 +1,4 @@
-<div class="label_container">
+<div class="label_container" [ngClass]="{'extra_padding' : (config.label && (!config.desc && !config.hint))}">
 <label *ngIf="config.label" class="label" [attr.aria-label]="
 config.formGroup.get(config.parentID)?.invalid && config.formGroup.get(config.parentID)?.dirty
 ? (config.label || '' | translate) + ' ' +
