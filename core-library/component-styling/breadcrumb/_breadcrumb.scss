@@ -6,6 +6,7 @@
 @use "../../tokens/sizes" as token-size;
 @use "../../typography/typography" as typography;
 @use "../../tokens/text" as text;
+@use "../../tokens/partial/focus" as focus;
 @use "sass:map";
 
 @mixin selector {
@@ -86,9 +87,36 @@
 
 @mixin layout {
   lib-breadcrumb-link {
+    border-radius: 4px;
+
+    &:focus,
+    &:focus-visible {
+      @include focus.layout();
+    }
+
     a {
       text-decoration: none;
       padding: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    lib-button {
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
+
+      button {
+        line-height: 1rem !important;
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
     }
   }
 
@@ -104,10 +132,22 @@
   lib-button {
     button {
       padding: 0;
-    }
 
-    .text {
-      font-family: Inter, serif;
+      .text {
+        font-family: Inter, serif;
+      }
+
+      &:hover {
+        color: var(--link-text-hover);
+      }
+
+      &:visited {
+        color: var(--link-text-visited);
+      }
+
+      &:active {
+        color: var(--link-text-active);
+      }
     }
   }
 
