@@ -7,6 +7,8 @@
         [name]="config.id"
         [id]="config.id"
         [formControlName]="config.id"
+        (change)="valueChange($event)"
+        [class.activited-select] = "activiatedSelect"
       >
         <option [value]="''" [disabled]="true" [selected]="true" [hidden]="true">
           {{ config.placeholder || "" | translate }}

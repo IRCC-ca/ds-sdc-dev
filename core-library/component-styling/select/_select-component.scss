@@ -189,6 +189,9 @@ $selectors: 'lib-select';
 		background-color: var(--critical-background-weak);
 	}
 	
+	.activited-select{
+		color: var(--text-primary);
+	}
 }
 
 
