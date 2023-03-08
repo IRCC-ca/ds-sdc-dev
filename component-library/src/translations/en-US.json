@@ -127,9 +127,6 @@
     "BUTTONS": {
       "PREVIOUS": "Previous",
       "NEXT": "Next"
-    },
-    "FOOTER": {
-      "VERSION": "Version number"
     }
   }
 }
