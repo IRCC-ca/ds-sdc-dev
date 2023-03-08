@@ -4,7 +4,6 @@
 <ng-container *ngIf="config?.routerLink">
   <a type="button" [routerLink]="config?.routerLink">{{config?.text}}</a>
 </ng-container>
-<ng-container *ngIf="config?.routerLink">
-  <button type="button" (click)="jumpTo()">{{config?.text}}</button>
+<ng-container *ngIf="config?.anchor">
+  <lib-button category='plain' (click)="anchorClicked(config?.anchor)">{{config?.text}}</lib-button>
 </ng-container>
-
