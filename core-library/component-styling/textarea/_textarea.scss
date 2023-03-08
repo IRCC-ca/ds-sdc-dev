@@ -48,7 +48,7 @@
   //   height: 78px;
 
     .textarea-field {
-      height: 78px;
+      min-height: 78px;
       padding: 14px 16px 14px 20px; 
       margin-top: 8px;
       font-size: 16px;
@@ -79,7 +79,7 @@
 
 
   .textarea-field {
-    height: 62px;
+    min-height: 62px;
     padding: 10px 16px 10px 14px; 
     margin-top: 4px;
     font-size: 14px;
@@ -142,14 +142,18 @@
       // flex-direction: row-reverse;
       display: inline-block;
       
-      p {
+      span {
+        text-align: right;
+        display: inline-block;
         // display: flex;
         // justify-content: flex-end;
+        // display: block;
       }
       
       textarea {
         display: block;
-        max-width: 100%;
+        // width:calc(100vw - 30px);
+        // max-width: 100%;
         box-sizing: border-box;
       }
     }

@@ -24,7 +24,7 @@
             <textarea class="textarea-field" maxlength="{{config.charLimit}}" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0"
               [id]="config.id" [formControlName]="config.id" #textareaInput>
             </textarea>
-            <p *ngIf="config.charLimit">{{textareaInput.value.length}}/{{config.charLimit}}</p>
+            <span *ngIf="config.charLimit">{{textareaInput.value.length}}/{{config.charLimit}}</span>
           </div>
     </div>
   </form>
