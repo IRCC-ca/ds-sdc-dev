@@ -14,14 +14,14 @@
             [id]="(config.id + '_step_' + i)"
             
             [attr.aria-label]="step.title + ' selected'">
-            Step {{ i + 1 }}
+            {{(stepText + ' ' + (i + 1))}}
           </button>
           <button
             tabindex="-1"
             *ngIf="i !== config.selected" 
             class="tags-btn-plus" [id]="(config.id + '_step_' + i)"
             >
-             Step {{ i + 1 }}
+            {{(stepText + ' ' + (i + 1))}}
           </button>
           <span class="stepTitle" [innerHTML]="step.title || '' | translate"></span>
           <div [ngClass]="{'small': config.size === 'small' }" >

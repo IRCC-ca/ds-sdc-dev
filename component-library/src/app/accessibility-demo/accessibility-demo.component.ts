@@ -283,12 +283,27 @@ export class AccessibilityDemoComponent implements OnInit {
   navButton() {
     this.nextClicked = true;
     this.form.markAllAsTouched();
+    this.updateProgressIndicator();
     if (!this.form.valid) {
       this.showErrorBanner = true;
       this.form.valueChanges.subscribe(() => {
         this.showErrorBanner = !this.form.valid;
-        console.log(this.form.valid, this.showErrorBanner)
+        this.updateProgressIndicator();
+        console.log(this.form.valid, this.showErrorBanner);
       });
+    } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
+  }
+
+  /**
+   * Update the progress indicator status (unlock/lock the next element)
+   */
+  updateProgressIndicator() {
+    if (this.progressIndicatorConfig.steps && ((this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked') || (this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted'))) {
+      if (this.form.valid) {
+        this.progressIndicatorConfig.steps[2].tagConfig.type = 'notStarted';
+      } else {
+        this.progressIndicatorConfig.steps[2].tagConfig.type = 'locked';
+      }
     }
   }
 

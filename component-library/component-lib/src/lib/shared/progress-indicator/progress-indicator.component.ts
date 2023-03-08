@@ -2,6 +2,10 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IProgressTagsConfig } from '../progress-tags/progress-tags.component';
 import { ITabConfig, ITabNavConfig } from '../tabs/tabs.component';
+import { TranslateService } from '@ngx-translate/core';
+
+export const PROGRESS_INDICATOR_STEP_EN = "Step";
+export const PROGRESS_INDICATOR_STEP_FR = "Étap";
 
 
 export interface IStepConfig {
@@ -27,7 +31,7 @@ export class ProgressIndicatorComponent implements OnInit {
 
   @Input() config: IProgressIndicatorConfig = {
     id: '',
-    steps: [{tagConfig: {id: ''}}],
+    steps: [{ tagConfig: { id: '' } }],
     orientation: 'horizontal'
   };
 
@@ -39,15 +43,20 @@ export class ProgressIndicatorComponent implements OnInit {
   };
   tabNavConfig: ITabNavConfig = {
     id: '',
-    tab: [{id: '', title: ''}]
+    tab: [{ id: '', title: '' }]
   };
 
-  ngOnInit() {
-    if(!this.config.orientation) this.config.orientation = 'horizontal';
+  stepText = '';
 
-    // this.config?.steps?.forEach((step, index) => {
-    // this.stepIDs.push(`${this.config?.id}_step${index + 1}`);
-    // });
+  constructor(private translate: TranslateService) { }
+
+  ngOnInit() {
+    if (!this.config.orientation) this.config.orientation = 'horizontal';
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe(change => {
+      this.setLang(change.lang);
+    });
+
     if (this.config.selected === undefined) {
       this.config.selected = 0;
     }
@@ -55,5 +64,13 @@ export class ProgressIndicatorComponent implements OnInit {
 
   tabClickFn(selected: number) {
     this.tabClick.emit(selected);
+  }
+
+  setLang(lang: string) {
+    if ((lang === 'en') || (lang === 'en-US')) {
+      this.stepText = PROGRESS_INDICATOR_STEP_EN;
+    } else {
+      this.stepText = PROGRESS_INDICATOR_STEP_FR;
+    }
   }
 }
