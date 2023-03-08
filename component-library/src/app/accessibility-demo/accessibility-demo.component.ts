@@ -42,7 +42,7 @@ export class AccessibilityDemoComponent implements OnInit {
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress_indicator',
-    selected: '(this.stepIDs[1])',
+    selected: 1,
     steps: [
       {
         title: 'ACC_DEMO.STEPPER.STEP1',
@@ -289,6 +289,14 @@ export class AccessibilityDemoComponent implements OnInit {
         this.showErrorBanner = !this.form.valid;
         console.log(this.form.valid, this.showErrorBanner)
       });
+    }
+  }
+
+  progressTabButtonEvent(event: Event) {
+    if (this.progressIndicatorConfig.selected) {
+      if (event.toString() !== this.progressIndicatorConfig.selected.toString()) {
+        console.log('MOVE')
+      }
     }
   }
 

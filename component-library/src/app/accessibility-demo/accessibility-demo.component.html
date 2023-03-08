@@ -2,7 +2,7 @@
     <div class="header_stepper_container">
         <lib-header [id]="'header'"></lib-header>
         <div class="stepper">
-          <lib-progress-indicator [config]="progressIndicatorConfig"></lib-progress-indicator>
+          <lib-progress-indicator [config]="progressIndicatorConfig" (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
         </div>
     </div>
     <div class="error_banner" *ngIf="showErrorBanner">

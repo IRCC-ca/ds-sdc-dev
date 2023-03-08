@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IProgressTagsConfig } from '../progress-tags/progress-tags.component';
 import { ITabConfig, ITabNavConfig } from '../tabs/tabs.component';
+
+
 export interface IStepConfig {
   title?: string,
   tagConfig: IProgressTagsConfig,
@@ -12,7 +13,7 @@ export interface IProgressIndicatorConfig {
   size?: keyof typeof DSSizes,
   orientation?: keyof typeof Orientations,
   steps?: IStepConfig[];
-  selected?: string;
+  selected?: number;
 }
 export enum Orientations {
   horizontal = 'horizontal',
@@ -24,12 +25,13 @@ export enum Orientations {
 })
 export class ProgressIndicatorComponent implements OnInit {
 
-  stepIDs: any = [];
   @Input() config: IProgressIndicatorConfig = {
     id: '',
     steps: [{tagConfig: {id: ''}}],
     orientation: 'horizontal'
   };
+
+  @Output() tabClick: EventEmitter<any> = new EventEmitter();
 
   tabConfig: ITabConfig = {
     id: '',
@@ -43,16 +45,15 @@ export class ProgressIndicatorComponent implements OnInit {
   ngOnInit() {
     if(!this.config.orientation) this.config.orientation = 'horizontal';
 
-    this.config?.steps?.forEach((step, index) => {
-    this.stepIDs.push(`${this.config?.id}_step${index + 1}`);
-    });
-
+    // this.config?.steps?.forEach((step, index) => {
+    // this.stepIDs.push(`${this.config?.id}_step${index + 1}`);
+    // });
     if (this.config.selected === undefined) {
-      this.config.selected = (this.stepIDs[0]);
+      this.config.selected = 0;
     }
   }
 
-  setSelected(selectedID: any) {
-    if (selectedID) this.config.selected = selectedID; //set the selected tab
+  tabClickFn(selected: number) {
+    this.tabClick.emit(selected);
   }
 }

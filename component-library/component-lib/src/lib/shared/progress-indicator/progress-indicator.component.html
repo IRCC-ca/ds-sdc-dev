@@ -2,22 +2,25 @@
   <div class="container-plus-line" *ngFor="let step of config.steps; let i = index">
     <nav class="progress-nav" >
       <button class="container" [ngClass]="config.size" category="plain"
-      [attr.disabled] = "step.tagConfig.type === 'locked' ? 'disabled' : null">
+      [attr.disabled] = "step.tagConfig.type === 'locked' ? 'disabled' : null"
+      (click)="tabClickFn(i)"
+      >
         <div class="except-line">
+          <!-- TODO: Does making an unclickable button have accessibility implications?? -->
           <button
             tabindex="-1"
-            *ngIf="stepIDs[i] === config.selected" selected 
+            *ngIf="i === config.selected" selected 
             class="tags-btn" 
-            [id]="stepIDs[i]" 
-            (click)=setSelected(stepIDs[i])
+            [id]="(config.id + '_step_' + i)"
+            
             [attr.aria-label]="step.title + ' selected'">
             Step {{ i + 1 }}
           </button>
           <button
             tabindex="-1"
-            *ngIf="stepIDs[i] !== config.selected" 
-            class="tags-btn-plus" [id]="stepIDs[i]" 
-            (click)=setSelected(stepIDs[i])>
+            *ngIf="i !== config.selected" 
+            class="tags-btn-plus" [id]="(config.id + '_step_' + i)"
+            >
              Step {{ i + 1 }}
           </button>
           <span class="stepTitle" [innerHTML]="step.title || '' | translate"></span>
