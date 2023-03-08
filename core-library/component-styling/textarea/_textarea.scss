@@ -48,7 +48,7 @@
   //   height: 78px;
 
     .textarea-field {
-      height: 48px;
+      height: 78px;
       padding: 14px 16px 14px 20px; 
       margin-top: 8px;
       font-size: 16px;
@@ -79,7 +79,7 @@
 
 
   .textarea-field {
-    height: 40px;
+    height: 62px;
     padding: 10px 16px 10px 14px; 
     margin-top: 4px;
     font-size: 14px;
@@ -138,14 +138,19 @@
     }
 
     .content-area {
+      // display: flex;
+      // flex-direction: row-reverse;
       display: inline-block;
       
       p {
-        text-align: right;
+        // display: flex;
+        // justify-content: flex-end;
       }
       
       textarea {
-        width: 100%;
+        display: block;
+        max-width: 100%;
+        box-sizing: border-box;
       }
     }
   }
