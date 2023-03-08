@@ -116,8 +116,6 @@
   }
 
   .textarea-container {
-    width: 50%;
-
     .textarea-label {
       display: flex;
       font-family: 'Lato'
@@ -136,6 +134,18 @@
           line-height: 16px;
           justify-self:flex-start;
           margin-right: 5px;
+      }
+    }
+
+    .content-area {
+      display: inline-block;
+      
+      p {
+        text-align: right;
+      }
+      
+      textarea {
+        width: 100%;
       }
     }
   }
