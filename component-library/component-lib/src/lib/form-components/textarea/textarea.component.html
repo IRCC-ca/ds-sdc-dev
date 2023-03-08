@@ -22,8 +22,9 @@
           <p *ngIf="config.hint" class="textarea-hint">{{ config.hint | translate }}</p>
           <div class="content-area" [ngClass]="focusState === true ? 'focus' : ''">
             <textarea class="textarea-field" maxlength="{{config.charLimit}}" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0"
-              [id]="config.id" [formControlName]="config.id">
+              [id]="config.id" [formControlName]="config.id" #textareaInput>
             </textarea>
+            <p *ngIf="config.charLimit">{{textareaInput.value.length}}/{{config.charLimit}}</p>
           </div>
     </div>
   </form>
