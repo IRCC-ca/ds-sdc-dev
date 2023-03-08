@@ -113,8 +113,7 @@ export class AccessibilityDemoComponent implements OnInit {
   countryOfBirthSelectConfig: ISelectConfig = {
     id: 'contry_of_birth_select',
     formGroup: this.form,
-    // hint: 'Select an option',
-    placeholder: 'Select an option',
+    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
     label: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.LABEL',
     required: true,
     options: [
@@ -144,8 +143,7 @@ export class AccessibilityDemoComponent implements OnInit {
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.LABEL',
     required: true,
-    placeholder: 'Select an option',
-    // desc: 'Description',
+    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
     options: [], //Set in init
     errorMessages: [
       {
