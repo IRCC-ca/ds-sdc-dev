@@ -24,14 +24,13 @@
 // For size small overwrite
 @mixin size-sm {
   lib-breadcrumb-link {
-    padding-right: 8px;
-
-    a {
+    a,
+    lib-button .text {
       @include typography.fontSize(map.get(text.$body, level), 3);
     }
 
     &.breadcrumb-item {
-      padding-left: 16px;
+      margin-left: 8px;
     }
   }
 
@@ -39,7 +38,7 @@
     @include typography.fontSize(map.get(text.$body, level), 3);
 
     &.breadcrumb-child {
-      margin-left: 12px;
+      margin-left: 8px;
     }
   }
 
@@ -60,7 +59,6 @@
 
     &.breadcrumb-item {
       margin-left: 11px;
-      padding: 4px 8px;
     }
 
     &.breadcrumb-root {
@@ -92,6 +90,9 @@
     &:focus,
     &:focus-visible {
       @include focus.layout();
+    }
+    &.breadcrumb-item {
+      padding: 4px 8px;
     }
 
     a {
