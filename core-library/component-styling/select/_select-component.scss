@@ -188,6 +188,10 @@ $selectors: 'lib-select';
 		border-color: var(--critical-border);
 		background-color: var(--critical-background-weak);
 	}
+
+	select:disabled {
+		--border: var(--border-disabled);
+	}
 	
 	.activited-select{
 		color: var(--text-primary);
