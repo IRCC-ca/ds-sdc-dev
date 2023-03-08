@@ -7,7 +7,16 @@
         top: 0;
         background-color: white;
         z-index: 10000;
-        width: 100%;
+        width: 100%;     
+    }
+
+    .header_stepper_container+.shadow {
+        box-shadow: 0px 16px 28px rgba(0,0,0,0.06);
+    }
+
+    .error_banner {
+        margin-top: 40px;
+        max-width: 628px;
     }
     
     .form_container {

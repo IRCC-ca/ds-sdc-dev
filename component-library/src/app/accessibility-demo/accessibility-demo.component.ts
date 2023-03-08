@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { Router } from '@angular/router';
@@ -37,6 +37,51 @@ export class AccessibilityDemoComponent implements OnInit {
   altPathKey = '';
   altLangURL = ''
   form = new FormGroup({});
+  nextClicked = false;
+  showErrorBanner = false;
+
+  progressIndicatorConfig: IProgressIndicatorConfig = {
+    id: 'progress_indicator',
+    selected: 1,
+    steps: [
+      {
+        title: 'ACC_DEMO.STEPPER.STEP1',
+        tagConfig: {
+          id: 'progress_indicator_step1',
+          type: 'success'
+        }
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP2',
+        tagConfig: {
+          id: 'progress_indicator_step2',
+          type: 'primary'
+        }
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP3',
+        tagConfig: {
+          id: 'progress_indicator_step3',
+          type: 'locked'
+        }
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP4',
+        tagConfig: {
+          id: 'progress_indicator_step4',
+          type: 'locked'
+        }
+      },
+    ]
+  }
+
+  errorBannerConfig: IBannerConfig = {
+    id: 'error_banner',
+    type: 'critical',
+    title: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.TITLE',
+    content: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.CONTENT',
+    rounded: true
+  }
 
   familyNameInputConfig: IInputComponentConfig = {
     id: 'family_name_input',
@@ -230,6 +275,44 @@ export class AccessibilityDemoComponent implements OnInit {
       )
     });
     this.cityOfBirthSelectConfig.options = temp;
+  }
+
+  /**
+   * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
+   */
+  navButton() {
+    this.nextClicked = true;
+    this.form.markAllAsTouched();
+    this.updateProgressIndicator();
+    if (!this.form.valid) {
+      this.showErrorBanner = true;
+      this.form.valueChanges.subscribe(() => {
+        this.showErrorBanner = !this.form.valid;
+        this.updateProgressIndicator();
+        console.log(this.form.valid, this.showErrorBanner);
+      });
+    } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
+  }
+
+  /**
+   * Update the progress indicator status (unlock/lock the next element)
+   */
+  updateProgressIndicator() {
+    if (this.progressIndicatorConfig.steps && ((this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked') || (this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted'))) {
+      if (this.form.valid) {
+        this.progressIndicatorConfig.steps[2].tagConfig.type = 'notStarted';
+      } else {
+        this.progressIndicatorConfig.steps[2].tagConfig.type = 'locked';
+      }
+    }
+  }
+
+  progressTabButtonEvent(event: Event) {
+    if (this.progressIndicatorConfig.selected) {
+      if (event.toString() !== this.progressIndicatorConfig.selected.toString()) {
+        console.log('MOVE')
+      }
+    }
   }
 
 
