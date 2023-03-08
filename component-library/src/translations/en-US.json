@@ -36,6 +36,7 @@
   "OPPOSITE_LANGUAGE": "Français",
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",
   "HEADER_IMG_LINK": "https://www.canada.ca/en.html",
+  "HEADER_LINK_ALT": "Government of Canada website",
   "APP_NAME": "component-library",
   "About": "About",
   "Hello world !": "Hello world !",
