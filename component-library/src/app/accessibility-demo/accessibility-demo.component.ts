@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { Router } from '@angular/router';
@@ -39,6 +39,41 @@ export class AccessibilityDemoComponent implements OnInit {
   form = new FormGroup({});
   nextClicked = false;
   showErrorBanner = false;
+
+  progressIndicatorConfig: IProgressIndicatorConfig = {
+    id: 'progress_indicator',
+    selected: '(this.stepIDs[1])',
+    steps: [
+      {
+        title: 'ACC_DEMO.STEPPER.STEP1',
+        tagConfig: {
+          id: 'progress_indicator_step1',
+          type: 'success'
+        }
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP2',
+        tagConfig: {
+          id: 'progress_indicator_step2',
+          type: 'primary'
+        }
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP3',
+        tagConfig: {
+          id: 'progress_indicator_step3',
+          type: 'locked'
+        }
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP4',
+        tagConfig: {
+          id: 'progress_indicator_step4',
+          type: 'locked'
+        }
+      },
+    ]
+  }
 
   errorBannerConfig: IBannerConfig = {
     id: 'error_banner',

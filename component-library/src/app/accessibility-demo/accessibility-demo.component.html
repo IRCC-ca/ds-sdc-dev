@@ -1,7 +1,9 @@
 <div class="page_container">
     <div class="header_stepper_container">
         <lib-header [id]="'header'"></lib-header>
-        <div class="stepper">BOX FOR THE STEPPER</div>
+        <div class="stepper">
+          <lib-progress-indicator [config]="progressIndicatorConfig"></lib-progress-indicator>
+        </div>
     </div>
     <div class="error_banner" *ngIf="showErrorBanner">
         <lib-banner [config]="errorBannerConfig"></lib-banner>

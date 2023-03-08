@@ -20,7 +20,7 @@
             (click)=setSelected(stepIDs[i])>
              Step {{ i + 1 }}
           </button>
-          <span class="stepTitle" [innerHTML]="step.title"></span>
+          <span class="stepTitle" [innerHTML]="step.title || '' | translate"></span>
           <div [ngClass]="{'small': config.size === 'small' }" >
             <lib-progress-tags [config]="step.tagConfig"></lib-progress-tags>
           </div>

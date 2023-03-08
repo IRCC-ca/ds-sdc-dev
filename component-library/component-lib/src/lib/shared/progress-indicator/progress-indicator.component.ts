@@ -9,7 +9,6 @@ export interface IStepConfig {
 }
 export interface IProgressIndicatorConfig {
   id: string,
-  formGroup: FormGroup;
   size?: keyof typeof DSSizes,
   orientation?: keyof typeof Orientations,
   steps?: IStepConfig[];
@@ -28,7 +27,6 @@ export class ProgressIndicatorComponent implements OnInit {
   stepIDs: any = [];
   @Input() config: IProgressIndicatorConfig = {
     id: '',
-    formGroup: new FormGroup({}),
     steps: [{tagConfig: {id: ''}}],
     orientation: 'horizontal'
   };
@@ -42,21 +40,19 @@ export class ProgressIndicatorComponent implements OnInit {
     tab: [{id: '', title: ''}]
   };
 
-  constructor() { }
-
   ngOnInit() {
     if(!this.config.orientation) this.config.orientation = 'horizontal';
 
     this.config?.steps?.forEach((step, index) => {
     this.stepIDs.push(`${this.config?.id}_step${index + 1}`);
-    })
+    });
 
     if (this.config.selected === undefined) {
       this.config.selected = (this.stepIDs[0]);
     }
-  };
+  }
 
   setSelected(selectedID: any) {
     if (selectedID) this.config.selected = selectedID; //set the selected tab
-  };
+  }
 }

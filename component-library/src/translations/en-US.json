@@ -73,6 +73,12 @@
     "ERRORS": {
       "REQUIRED": "This field is required."
     },
+    "STEPPER": {
+      "STEP1": "Background information",
+      "STEP2": "Personal information",
+      "STEP3": "Work information",
+      "STEP4": "Review & submit"
+    },
     "PERSONAL_INFO": {
       "ERROR_BANNER": {
         "TITLE": "Missing information",
