@@ -1,52 +1,57 @@
 <div class="page_container">
-    <div class="header_stepper_container">
-        <lib-header [id]="'header'"></lib-header>
-        <div class="stepper">
-          <lib-progress-indicator [config]="progressIndicatorConfig" (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
-        </div>
-    </div>
-    <div class="error_banner" *ngIf="showErrorBanner">
-        <lib-banner [config]="errorBannerConfig"></lib-banner>
-    </div>
-    <div class="form_container">
-        <div>
-            <h1>{{'ACC_DEMO.PERSONAL_INFO.H1' | translate}}</h1>
-            <p>{{'ACC_DEMO.PERSONAL_INFO.BODY' | translate}}</p>
-        </div>
-        <div class="family_name_container">
-            <lib-input [config]="familyNameInputConfig"></lib-input>
-            <div class="banner_container">
-                <lib-banner [config]="familyNameInputBannerConfig"></lib-banner>
+    <div class="outer_header_stepper_container" id="outer_header_stepper_container">
+        <div class="header_stepper_container" id="header_stepper_inner_container">
+            <lib-header [id]="'header'"></lib-header>
+            <div class="stepper">
+                <lib-progress-indicator [config]="progressIndicatorConfig"
+                    (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
             </div>
         </div>
-        <div class="given_name_container">
-            <lib-input [config]="givenNameInputConfig"></lib-input>
-        </div>
-        <div class="sex_at_birth_container">
-            <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
-        </div>
-        <div class="date_of_birth_container">
-            <lib-date-picker [config]="dateOfBirthDatePickerConfig"></lib-date-picker>
-        </div>
-        <div class="country_of_birth_container">
-            <lib-select [config]="countryOfBirthSelectConfig"></lib-select>
-        </div>
-        <div class="city_of_birth_container">
-            <lib-select [config]="cityOfBirthSelectConfig"></lib-select>
-        </div>
-        <div class="declaration_checkbox_container">
-            <lib-checkbox [config]="declarationCheckboxConfig"></lib-checkbox>
-        </div>
-        <div class="buttons_container">
-            <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'" [type]="'button'">
-                {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
-            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()"[type]="'submit'">
-                {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>
-        </div>
     </div>
-    <div class="footer">
-      <lib-footer [id]="'footer'">
-        <span>{{ "Version" | translate }}</span>
-      </lib-footer>
+    <div class="content_container">
+        <div class="error_banner" *ngIf="showErrorBanner">
+            <lib-banner [config]="errorBannerConfig"></lib-banner>
+        </div>
+        <div class="form_container">
+            <div>
+                <h1>{{'ACC_DEMO.PERSONAL_INFO.H1' | translate}}</h1>
+                <p>{{'ACC_DEMO.PERSONAL_INFO.BODY' | translate}}</p>
+            </div>
+            <div class="family_name_container">
+                <lib-input [config]="familyNameInputConfig"></lib-input>
+                <div class="banner_container">
+                    <lib-banner [config]="familyNameInputBannerConfig"></lib-banner>
+                </div>
+            </div>
+            <div class="given_name_container">
+                <lib-input [config]="givenNameInputConfig"></lib-input>
+            </div>
+            <div class="sex_at_birth_container">
+                <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
+            </div>
+            <div class="date_of_birth_container">
+                <lib-date-picker [config]="dateOfBirthDatePickerConfig"></lib-date-picker>
+            </div>
+            <div class="country_of_birth_container">
+                <lib-select [config]="countryOfBirthSelectConfig"></lib-select>
+            </div>
+            <div class="city_of_birth_container">
+                <lib-select [config]="cityOfBirthSelectConfig"></lib-select>
+            </div>
+            <div class="declaration_checkbox_container">
+                <lib-checkbox [config]="declarationCheckboxConfig"></lib-checkbox>
+            </div>
+            <div class="buttons_container">
+                <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'" [routerLink]="getPreviousButtonLink">
+                    {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
+                <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()">
+                    {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>
+            </div>
+        </div>
+        <div class="footer">
+            <lib-footer [id]="'footer'">
+                <span>{{ "Version" | translate }}</span>
+            </lib-footer>
+        </div>
     </div>
 </div>
