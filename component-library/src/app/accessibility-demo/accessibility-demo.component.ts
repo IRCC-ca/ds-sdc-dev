@@ -196,7 +196,7 @@ export class AccessibilityDemoComponent implements OnInit {
     private altLang: LanguageSwitchService,
     private languageSwitchButton: LanguageSwitchButtonService,
     private router: Router,
-    private progressIndicator: AccessbilityDemoFormStateService
+    private progressIndicator: AccessbilityDemoFormStateService,
   ) { }
 
   ngOnInit() {
@@ -377,6 +377,10 @@ export class AccessibilityDemoComponent implements OnInit {
   }
 
 
+  // scrollTo(element: string) {
+  //   scrollToElementByID(element, true, true);
+  // }
+
   /*************** LANGUAGE FUNCTIONS ********************/
 
 
@@ -442,3 +446,22 @@ export class AccessibilityDemoComponent implements OnInit {
 export function compare(a: number | string, b: number | string, isAsc: boolean) {
   return (isAsc ? (a < b ? 1 : -1) : (a > b ? 1 : -1));
 }
+
+// /** Given an element, scroll to it with an optional delay */
+// export function scrollToElement(element: HTMLElement | null, delay: boolean, smooth: boolean = true, focusTo: boolean = false) {
+//   if (element) { // Timeout ensures scroll occurs after the view is updated        
+//     if (delay) {
+//       setTimeout(() => { element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' }); if (focusTo) { element.focus(); } }, 2);
+//     } else {
+//       element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+//       if (focusTo) { element.focus(); }
+//     }
+//   }
+// }
+
+// /** Finds an element by ID (platformID is used to find document in universal apps) * If document and the elementID are available, scroll to the element */
+// export function scrollToElementByID(elementID: string, delay: boolean, smooth: boolean = true, focusTo: boolean = false) {
+//   if (elementID) {
+//     scrollToElement(document.getElementById(elementID), delay, smooth, focusTo);
+//   }
+// }
