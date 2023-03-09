@@ -1,0 +1,12 @@
+<div class="page_container">
+    <div class="outer_header_stepper_container" id="outer_header_stepper_container">
+        <div class="header_stepper_container" id="header_stepper_inner_container">
+            <lib-header [id]="'header'"></lib-header>
+            <div class="stepper">
+                <lib-progress-indicator [config]="progressIndicatorConfig"
+                    (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+            </div>
+        </div>
+    </div>
+    <p>{{'ACC_DEMO.PREVIOUS_PAGE' | translate}}</p>
+</div>
