@@ -20,6 +20,7 @@ export interface ISelectConfig {
   required?: boolean;
   hint?: string;
   desc?: string;
+  placeholder?: string;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
   labelIconConfig?: IIconButtonComponentConfig;
@@ -43,6 +44,7 @@ export interface ISelectOptionsConfig {
 export class SelectComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorIds: IErrorIDs[] = [];
+  activiatedSelect : boolean = false
 
   @Input() config: ISelectConfig = {
     id: '',
@@ -74,6 +76,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.onTouched();
       this.touched = true;
     }
+  }
+
+  valueChange($event : any) {
+    this.activiatedSelect = true;
   }
 
   ngOnInit() {

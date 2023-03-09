@@ -23,15 +23,21 @@ export interface IProgressTagsConfig {
 })
 export class ProgressTagsComponent implements OnInit {
 
-  text: string = '';
+  text: string[] = [];
 
   @Input() config: IProgressTagsConfig = {
     id: '',
   };
+  @Input() id = '';
+  @Input() type?: keyof typeof TagType | TagType;
+  @Input() size?: keyof typeof DSSizes | DSSizes;
 
   constructor(private translate: TranslateService) { }
 
   ngOnInit(): void {
+    if (this.id) this.config.id = this.id;
+    if (this.type) this.config.type = this.type;
+    if (this.size) this.config.size = this.size;
     this.setTypeTitle();
     this.translate.onLangChange.subscribe(() => {
       this.setTypeTitle();
@@ -40,43 +46,14 @@ export class ProgressTagsComponent implements OnInit {
 
   ngOnChanges() {
     this.setTypeTitle();
+    console.log('test', this.text);
   };
 
   setTypeTitle() {
     if ((this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US')) {
-      switch(this.config.type) {
-        case TagType.success:
-          this.text = TAG_LABELS_EN[1];
-        break;
-        case TagType.critical:
-          this.text = TAG_LABELS_EN[2];
-        break;
-        case TagType.locked:
-          this.text = TAG_LABELS_EN[3];
-        break;
-        case TagType.notStarted:
-          this.text = TAG_LABELS_EN[4];
-        break;
-        default:
-          this.text = TAG_LABELS_EN[0];
-      }
+      this.text = TAG_LABELS_EN;
     } else {
-      switch(this.config.type) {
-        case TagType.success:
-          this.text = TAG_LABELS_FR[1];
-        break;
-        case TagType.critical:
-          this.text = TAG_LABELS_FR[2];
-        break;
-        case TagType.locked:
-          this.text = TAG_LABELS_FR[3];
-        break;
-        case TagType.notStarted:
-          this.text = TAG_LABELS_FR[4];
-        break;
-        default:
-          this.text = TAG_LABELS_FR[0];
-      }
+      this.text = TAG_LABELS_FR;
     }
   };
 };

@@ -1,34 +1,26 @@
-@use './typography/fonts' as fonts;
-@use './typography/typography' as typography;
-@use './paint/paint' as paint;
-
-@use './tokens/button/plain';
-@use './tokens/button/nav';
-@use './tokens/button/primary';
-@use './tokens/button/secondary';
-@use './tokens/button/round';
-
-@use './tokens/checkbox/checkbox';
-@use './tokens/radio/radio';
-@use './tokens/link/link';
-
-
-@use './tokens/input/input';
-@use './tokens/input/textarea';
-
-@use './tokens/global/global';
-@use './tokens/global/selected';
-@use './tokens/global/text-global';
-@use './tokens/global/validation';
-@use './tokens/alert/alert';
-
+@use "./typography/fonts" as fonts;
+@use "./typography/typography" as typography;
+@use "./paint/paint" as paint;
+@use "./tokens/button/plain";
+@use "./tokens/button/nav";
+@use "./tokens/button/primary";
+@use "./tokens/button/secondary";
+@use "./tokens/button/round";
+@use "./tokens/checkbox/checkbox";
+@use "./tokens/radio/radio";
+@use "./tokens/link/link";
+@use "./tokens/input/input";
+@use "./tokens/input/textarea";
+@use "./tokens/global/global";
+@use "./tokens/global/selected";
+@use "./tokens/global/text-global";
+@use "./tokens/global/validation";
+@use "./tokens/alert/alert";
+@use "./tokens/partial/focus";
+@use "./tokens/partial/disable";
 // @use './tokens/dropdown/plain' as dd-plain;
 // @use './tokens/dropdown/primary' as dd-primary;
 // @use './tokens/dropdown/secondary' as dd-secondary;
-
-@use './tokens/partial/focus';
-@use './tokens/partial/disable';
-
 @use './component-styling/checkbox/checkbox' as checkbox-component;
 @use './component-styling/input-component/input-component';
 @use './component-styling/banner/banner';
@@ -42,17 +34,14 @@
 @use './component-styling/icon/icon';
 @use './component-styling/button/button' as button-component;
 @use './component-styling/select/select-component' as select-component;
-
-
 @use './component-styling/chips/item' as chip-item;
 @use './component-styling/chips/list' as chip-list;
 @use './component-styling/chips/secondary' as chip-secondary;
 @use './component-styling/error/error' as error-component;
 @use './component-styling/tabs/tabs' as tabs-component;
 @use './component-styling/progress-tags/progress-tags' as tags-component;
-
+@use './component-styling/progress-indicator/progress-indicator';
 @use './component-styling/label/label-component' as label-component;
-
 @use './typography/fa-wrapper';
 
 @forward './theme/theme' as theme-*;
@@ -68,18 +57,29 @@
 @forward './tokens/checkbox/checkbox' as checkbox-*;
 @forward './tokens/input/input' as input-text-*;
 @forward './tokens/input/textarea' as input-textarea-*;
+@forward "./theme/theme" as theme-*;
+@forward "./theme/ircc-jl-colors" as palette-*;
+@forward "./typography/fonts" as fonts-*;
+@forward "./typography/typography" as typography-*;
+@forward "./paint/paint" as paint-*;
+@forward "./tokens/link/link" as link-*;
+@forward "./tokens/radio/radio" as radio-*;
+@forward "./tokens/partial/focus" as focus-*;
+@forward "./tokens/partial/disable" as disable-*;
+@forward "./tokens/checkbox/checkbox" as checkbox-*;
+@forward "./tokens/input/input" as input-text-*;
+@forward "./tokens/input/textarea" as input-textarea-*;
 
 
 @mixin element-styles($include: null) {
-    @include global.create();
-    @include selected.create();
-    @include text-global.create();
-    @include validation.create();
-    @include paint.create();
-
-    @include fonts.create();
-    @include typography.create();
-    @include fa-wrapper.create();
+  @include global.create();
+  @include selected.create();
+  @include text-global.create();
+  @include validation.create();
+  @include paint.create();
+  @include fonts.create();
+  @include typography.create();
+  @include fa-wrapper.create();
     @if not $include {
         @include element(primary);
         @include element(secondary);
@@ -115,6 +115,7 @@
         @include element(button-component);
         @include element(error-component);
         @include element(tags-component);
+        @include element(progress-indicator);
         @include element(select-component);
         @include element(label-component);
     } @else {
@@ -122,8 +123,6 @@
             @include element($key);
         }
     }
-
-
 }
 
 @mixin element($key) {
@@ -133,15 +132,7 @@
         @include secondary.create();
     } @else if $key == plain {
         @include plain.create();
-    } 
-    // @else if $key == dd-primary {
-    //     @include dd-primary.create();
-    // } @else if $key == dd-secondary {
-    //     @include dd-secondary.create();
-    // } @else if $key == dd-plain {
-    //     @include dd-plain.create();
-    // } 
-    @else if $key == dropdown {
+    } @else if $key == dropdown {
         @include dropdown.create();
     } @else if $key == nav {
         @include nav.create();
@@ -197,9 +188,18 @@
         @include button-component.create();
     } @else if $key == tags-component {
         @include tags-component.create();
+    }  @else if $key == progress-indicator {
+      @include progress-indicator.create();
     } @else if $key == select-component {
         @include select-component.create();
     } @else if $key == label-component {
         @include label-component.create();
     }
+// @else if $key == dd-primary {
+//     @include dd-primary.create();
+// } @else if $key == dd-secondary {
+//     @include dd-secondary.create();
+// } @else if $key == dd-plain {
+//     @include dd-plain.create();
+// } 
 }

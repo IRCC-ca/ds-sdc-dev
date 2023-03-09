@@ -1,7 +1,12 @@
 <div class="page_container">
     <div class="header_stepper_container">
         <lib-header [id]="'header'"></lib-header>
-        <div class="stepper">BOX FOR THE STEPPER</div>
+        <div class="stepper">
+          <lib-progress-indicator [config]="progressIndicatorConfig" (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+        </div>
+    </div>
+    <div class="error_banner" *ngIf="showErrorBanner">
+        <lib-banner [config]="errorBannerConfig"></lib-banner>
     </div>
     <div class="form_container">
         <div>
@@ -35,9 +40,13 @@
         <div class="buttons_container">
             <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'">
                 {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
-            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'">
+            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()">
                 {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>
         </div>
     </div>
-    <div class="footer">BOX FOR THE FOOTER</div>
+    <div class="footer">
+      <lib-footer [id]="'footer'">
+        <span>{{ "Version" | translate }}</span>
+      </lib-footer>
+    </div>
 </div>

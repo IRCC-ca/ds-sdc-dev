@@ -69,11 +69,24 @@
     "locked": "Locked",
     "notStarted": "Not started"
   },
+  "SELECT": {
+    "GENERIC_PLACEHOLDER": "Select an option"
+  },
   "ACC_DEMO": {
     "ERRORS": {
       "REQUIRED": "This field is required."
     },
+    "STEPPER": {
+      "STEP1": "Background information",
+      "STEP2": "Personal information",
+      "STEP3": "Work information",
+      "STEP4": "Review & submit"
+    },
     "PERSONAL_INFO": {
+      "ERROR_BANNER": {
+        "TITLE": "Missing information",
+        "CONTENT": "There are unresolved errors below."
+      },
       "H1": "Personal information",
       "BODY": "Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
       "FAMILY_NAME_INPUT": {

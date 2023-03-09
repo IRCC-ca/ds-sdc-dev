@@ -5,6 +5,7 @@ import {
   ICheckBoxComponentConfig,
   IDatePickerConfig,
   IInputComponentConfig,
+  IProgressIndicatorConfig,
   IRadioInputComponentConfig,
   ISelectConfig,
   ISelectOptionsConfig,
@@ -50,6 +51,51 @@ export class AccessibilityDemoComponent implements OnInit {
   altPathKey = '';
   altLangURL = '';
   form = new FormGroup({});
+  nextClicked = false;
+  showErrorBanner = false;
+
+  progressIndicatorConfig: IProgressIndicatorConfig = {
+    id: 'progress_indicator',
+    selected: 1,
+    steps: [
+      {
+        title: 'ACC_DEMO.STEPPER.STEP1',
+        tagConfig: {
+          id: 'progress_indicator_step1',
+          type: 'success',
+        },
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP2',
+        tagConfig: {
+          id: 'progress_indicator_step2',
+          type: 'primary',
+        },
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP3',
+        tagConfig: {
+          id: 'progress_indicator_step3',
+          type: 'locked',
+        },
+      },
+      {
+        title: 'ACC_DEMO.STEPPER.STEP4',
+        tagConfig: {
+          id: 'progress_indicator_step4',
+          type: 'locked',
+        },
+      },
+    ],
+  };
+
+  errorBannerConfig: IBannerConfig = {
+    id: 'error_banner',
+    type: 'critical',
+    title: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.TITLE',
+    content: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.CONTENT',
+    rounded: true,
+  };
 
   familyNameInputConfig: IInputComponentConfig = {
     id: 'family_name_input',
@@ -136,6 +182,7 @@ export class AccessibilityDemoComponent implements OnInit {
   countryOfBirthSelectConfig: ISelectConfig = {
     id: 'contry_of_birth_select',
     formGroup: this.form,
+    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
     label: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.LABEL',
     required: true,
     options: [
@@ -165,6 +212,7 @@ export class AccessibilityDemoComponent implements OnInit {
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.LABEL',
     required: true,
+    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
     options: [], //Set in init
     errorMessages: [
       {
@@ -256,6 +304,48 @@ export class AccessibilityDemoComponent implements OnInit {
       return compare(this.translate.instant(a.text), this.translate.instant(b.text), false);
     });
     this.cityOfBirthSelectConfig.options = temp;
+  }
+
+  /**
+   * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
+   */
+  navButton() {
+    this.nextClicked = true;
+    this.form.markAllAsTouched();
+    this.updateProgressIndicator();
+    if (!this.form.valid) {
+      this.showErrorBanner = true;
+      this.form.valueChanges.subscribe(() => {
+        this.showErrorBanner = !this.form.valid;
+        this.updateProgressIndicator();
+        console.log(this.form.valid, this.showErrorBanner);
+      });
+    } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
+  }
+
+  /**
+   * Update the progress indicator status (unlock/lock the next element)
+   */
+  updateProgressIndicator() {
+    if (
+      this.progressIndicatorConfig.steps &&
+      (this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked' ||
+        this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted')
+    ) {
+      if (this.form.valid) {
+        this.progressIndicatorConfig.steps[2].tagConfig.type = 'notStarted';
+      } else {
+        this.progressIndicatorConfig.steps[2].tagConfig.type = 'locked';
+      }
+    }
+  }
+
+  progressTabButtonEvent(event: Event) {
+    if (this.progressIndicatorConfig.selected) {
+      if (event.toString() !== this.progressIndicatorConfig.selected.toString()) {
+        console.log('MOVE');
+      }
+    }
   }
 
   /*************** LANGUAGE FUNCTIONS ********************/
