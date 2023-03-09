@@ -259,6 +259,29 @@ export class AccessibilityDemoComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    // const header = document.getElementById("header_container")?.offsetHeight;
+    window.onscroll = function () { navbarScroll() };
+
+    let header = document.getElementById("outer_header_stepper_container");
+
+    function navbarScroll() {
+      // console.log(header);
+      console.log(document.documentElement?.scrollTop);
+      (document.documentElement?.scrollTop > 0) ? header?.classList.add('shadow') : header?.classList.remove('shadow');
+      console.log(header?.classList.contains('shadow'));
+      // if (header) {
+      //   // if (document.documentElement. > 166) {
+      //     if (window.pageYOffset >= header) {
+      //       headerContainer?.classList.add("sticky")
+      //     } else {
+      //       headerContainer?.classList.remove("sticky");
+      //     }
+        // }
+      // }
+    }
+  }
+
   /**
    * Set the cities option in the cities dropdown
    * @param cityList list of cities to insert into the dropdown
