@@ -9,9 +9,13 @@ import { TabsComponent } from './tabs/tabs.component';
 import { ProgressTagsComponent } from "./progress-tags/progress-tags.component";
 import { DropdownComponent } from "./dropdown/drop-down.component";
 import { ProgressIndicatorComponent } from "./progress-indicator/progress-indicator.component";
+import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
+import { BreadcrumbLinkComponent } from "./breadcrumb/link/link.component";
 
 const IrccDsSharedComponents = [
   ButtonComponent,
+  BreadcrumbComponent,
+  BreadcrumbLinkComponent,
   IconComponent,
   IconButtonComponent,
   TabsComponent,

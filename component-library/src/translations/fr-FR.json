@@ -50,13 +50,15 @@
       "hide_password_aria-label": "masquer le texte du mot de passe"
     }
   },
-  
+
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
   },
 
   "QA": {
-    "header": "Page de AQ"
+    "header": "Page de AQ",
+    "michael": "Michael",
+    "michael-input": "saisir"
   },
 
   "ERROR": {
