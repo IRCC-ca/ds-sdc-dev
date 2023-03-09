@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDatePickerConfig, IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
-import { IDatePickerConfig, IDatePickerErrorMessages } from 'component-lib/src/public-api';
-import { IBannerConfig } from 'ircc-ds-angular-component-library';
+import {
+  IDatePickerConfig,
+  IProgressIndicatorConfig,
+  IDatePickerErrorMessages,
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-test-page',
