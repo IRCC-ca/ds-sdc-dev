@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import {
-  IDatePickerConfig,
-  IProgressIndicatorConfig,
-  IDatePickerErrorMessages,
-} from 'ircc-ds-angular-component-library';
+import { IDatePickerConfig, IProgressIndicatorConfig, ISelectConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-test-page',
@@ -15,25 +11,21 @@ import {
 export class TestPageComponent implements OnInit {
   form = new FormGroup({});
 
-  datePickerErrorMessages: IDatePickerErrorMessages = {
-    general: [
+  selectConfig: ISelectConfig = {
+    id: 'select',
+    label: 'Select label',
+    desc: 'Select description',
+    hint: 'Select hint',
+    formGroup: this.form,
+    options: [
       {
-        key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED',
+        text: 'text 1',
+      },
+      {
+        text: 'text 2',
       },
     ],
   };
-
-  datePickerConfig: IDatePickerConfig = {
-    id: 'datePicker',
-    label: 'test label',
-    formGroup: this.form,
-    hint: 'Test hint',
-    required: true,
-    desc: 'Test description',
-    errorMessages: this.datePickerErrorMessages,
-  };
-
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress-indicator',
     steps: [
@@ -57,9 +49,6 @@ export class TestPageComponent implements OnInit {
   constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
-    this.form.addControl(this.datePickerConfig.id + '_dayControl', new FormControl('', Validators.required));
-    this.form.addControl(this.datePickerConfig.id + '_monthControl', new FormControl('', Validators.required));
-    this.form.addControl(this.datePickerConfig.id + '_yearControl', new FormControl('', Validators.required));
-    console.log(this.form.controls, this.datePickerConfig.formGroup.controls);
+    this.form.addControl(this.selectConfig.id, new FormControl());
   }
 }
