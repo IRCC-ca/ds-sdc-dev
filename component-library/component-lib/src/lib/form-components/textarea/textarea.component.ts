@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
-import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { IErrorIconConfig } from '../error/error.component';
 
@@ -49,6 +49,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   };
   disabled = false;
   focusState = false;
+  errorIds: IErrorIDs[] = []
+  
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -59,6 +61,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   ngOnInit(): void {
 
     // if (!this.config.resizable) this.config.resizable = ResizableTypes.both;
+
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+    }
   }
 
   public focusInput(focusValue: boolean): void {
