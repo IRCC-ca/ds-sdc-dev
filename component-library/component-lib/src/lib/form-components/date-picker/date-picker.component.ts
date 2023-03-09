@@ -147,8 +147,7 @@ export class DatePickerComponent implements OnInit {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
-      [],
-      // this.config.errorMessages,
+      this.config.errorMessages?.general,
       this.config.label,
       this.config.desc,
       this.config.hint,
