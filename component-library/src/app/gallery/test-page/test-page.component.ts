@@ -22,7 +22,6 @@ export class TestPageComponent implements OnInit {
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress-indicator',
-    formGroup: this.form,
     steps: [
       {
         tagConfig: { id: 'tags', type: 'primary' },
@@ -31,8 +30,14 @@ export class TestPageComponent implements OnInit {
       {
         tagConfig: { id: 'tags1', type: 'success' },
         title: 'Step title1'
-      }
+      },
+      {
+        tagConfig: { id: 'tags2', type: 'locked' },
+        title: 'Step title2'
+      },
     ],
+    // size: 'small',
+    orientation: 'vertical'
   }
 
 
