@@ -27,6 +27,7 @@ export class AccessibilityDemoNextPageComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.altLang.setAltLangLink('AccessibilityDemoNext-alt');
     this.altLang.getAltLangLink().subscribe((altLang: string) => {
       this.altPathKey = altLang;
       this.setAltLangURL();
@@ -143,5 +144,10 @@ export class AccessibilityDemoNextPageComponent implements OnInit {
         this.altLangURL += ('/' + k);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.routerSub?.unsubscribe();
+    this.progressIndicatorSub?.unsubscribe();
   }
 }

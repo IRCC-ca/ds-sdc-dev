@@ -208,13 +208,15 @@ export class AccessibilityDemoComponent implements OnInit {
         this.progressIndicator.updateProgressIndicator(tempConfig);
       }
     });
-    
+
+    this.altLang.setAltLangLink('AccessibilityDemo-alt');
     this.altLang.getAltLangLink().subscribe((altLang: string) => {
       this.altPathKey = altLang;
       this.setAltLangURL();
       console.log(this.altLangURL);
     });
     this.languageSwitchButton.languageClickObs$.subscribe(response => {
+      console.log(response);
       if (response) this.changeLang(); //Has to ignore the first response. 
     });
 
@@ -344,9 +346,9 @@ export class AccessibilityDemoComponent implements OnInit {
             // if (this.router.url !== this.getMainPageLink) this.router.navigateByUrl(this.getMainPageLink);
             break;
 
-          case 2: 
-          if (this.router.url !== this.getNextButtonLink) this.router.navigateByUrl(this.getNextButtonLink);
-          break;
+          case 2:
+            if (this.router.url !== this.getNextButtonLink) this.router.navigateByUrl(this.getNextButtonLink);
+            break;
         }
       }
     }
@@ -423,6 +425,11 @@ export class AccessibilityDemoComponent implements OnInit {
         this.altLangURL += ('/' + k);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.routerSub?.unsubscribe();
+    this.progressIndicatorSub?.unsubscribe();
   }
 }
 

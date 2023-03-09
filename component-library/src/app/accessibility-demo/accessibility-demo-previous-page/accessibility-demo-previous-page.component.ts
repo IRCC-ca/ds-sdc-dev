@@ -25,9 +25,10 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
     private progressIndicator: AccessbilityDemoFormStateService,
     private translate: TranslateService,
     private altLang: LanguageSwitchService,
-    ) { }
+  ) { }
 
   ngOnInit() {
+    this.altLang.setAltLangLink('AccessibilityDemoPrevious-alt');
     this.altLang.getAltLangLink().subscribe((altLang: string) => {
       this.altPathKey = altLang;
       this.setAltLangURL();
@@ -96,7 +97,7 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
   }
 
 
-    /*************** LANGUAGE FUNCTIONS ********************/
+  /*************** LANGUAGE FUNCTIONS ********************/
 
 
   /** Toggles language without reloading component */
@@ -146,5 +147,8 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
     });
   }
 
-
+  ngOnDestroy() {
+    this.routerSub?.unsubscribe();
+    this.progressIndicatorSub?.unsubscribe();
+  }
 }
