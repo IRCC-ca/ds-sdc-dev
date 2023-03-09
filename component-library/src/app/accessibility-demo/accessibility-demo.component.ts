@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LabelButtonService, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { requiredTrueValidator } from '@app/@shared/shared-functions/shared-validators';
 import { AccessbilityDemoFormStateService } from './accessbility-demo-form-state.service';
 import { Subscription } from 'rxjs';
-
 
 
 export interface ICityOfBirth {
@@ -43,8 +42,11 @@ export class AccessibilityDemoComponent implements OnInit {
   form = new FormGroup({});
   nextClicked = false;
   showErrorBanner = false;
+  showFamilyNameBanner = false;
+  showSexAtBirthBanner = false;
 
   routerSub?: Subscription;
+  labelButtonSub?: Subscription;
 
   progressIndicatorSub?: Subscription;
   progressIndicatorConfig: IProgressIndicatorConfig = {
@@ -65,6 +67,9 @@ export class AccessibilityDemoComponent implements OnInit {
     required: true,
     label: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.LABEL',
     desc: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.DESC',
+    labelIconConfig: {
+      iconClass: 'fa-regular fa-circle-info'
+    },
     errorMessages: [
       {
         key: 'required',
@@ -92,16 +97,9 @@ export class AccessibilityDemoComponent implements OnInit {
     formGroup: this.form,
     required: true,
     label: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL',
-    // labelIconConfig: {
-    //   id: 'sex_at_birth_radio_info_button',
-    //   category: 'custom',
-    //   ariaLabel: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.INFO_BUTTON',
-    //   size: 'small',
-    //   icon: {
-    //     class: 'fa-regular fa-circle-info',
-    //     // color: ''
-    //   }
-    // },
+    labelIconConfig: {
+      iconClass: 'fa-regular fa-circle-info'
+    },
     options: [
       {
         text: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.FEMALE',
@@ -122,6 +120,14 @@ export class AccessibilityDemoComponent implements OnInit {
         errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
       }
     ]
+  };
+
+  sexAtBirthRadioBannerConfig: IBannerConfig = {
+    id: 'sex_at_birth_info_banner',
+    dismissible: true,
+    type: 'info',
+    // title: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER.TITLE',
+    content: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER'
   };
 
   dateOfBirthDatePickerConfig: IDatePickerConfig = {
@@ -197,15 +203,16 @@ export class AccessibilityDemoComponent implements OnInit {
     private languageSwitchButton: LanguageSwitchButtonService,
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
+    private labelButton: LabelButtonService
   ) { }
 
   ngOnInit() {
+
     //if the page has moved to this one via a back or forward browser button, this detects the move and updates the page.
+    this.progressIndicator.updateSelected(1);
     this.routerSub = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        let tempConfig = this.progressIndicatorConfig;
-        tempConfig.selected = 1;
-        this.progressIndicator.updateProgressIndicator(tempConfig);
+        this.progressIndicator.updateSelected(1);
       }
     });
 
@@ -222,6 +229,11 @@ export class AccessibilityDemoComponent implements OnInit {
 
     this.progressIndicatorSub = this.progressIndicator.progressIndicatorObs$.subscribe(response => {
       this.progressIndicatorConfig = response;
+    });
+
+    //Handle label button presses
+    this.labelButtonSub = this.labelButton.labelButtonClickObs$.subscribe(response => {
+      this.iconButtonHandler(response);
     });
 
     //Initial pop of cities is all values
@@ -259,15 +271,15 @@ export class AccessibilityDemoComponent implements OnInit {
   /**
    * Used to add a shadow class to the header when it's moved off the very top of the page
    */
-  ngAfterViewInit() {
-    window.onscroll = function () { navbarScroll() };
+  // ngAfterViewInit() {
+  //   window.onscroll = function () { navbarScroll() };
 
-    let header = document.getElementById("outer_header_stepper_container");
+  //   let header = document.getElementById("outer_header_stepper_container");
 
-    function navbarScroll() {
-      (document.documentElement?.scrollTop > 0) ? header?.classList.add('shadow') : header?.classList.remove('shadow');
-    }
-  }
+  //   function navbarScroll() {
+  //     (document.documentElement?.scrollTop > 0) ? header?.classList.add('shadow') : header?.classList.remove('shadow');
+  //   }
+  // }
 
   /**
    * Set the cities option in the cities dropdown
@@ -301,7 +313,6 @@ export class AccessibilityDemoComponent implements OnInit {
       this.form.valueChanges.subscribe(() => {
         this.showErrorBanner = !this.form.valid;
         this.updateProgressIndicator();
-        console.log(this.form.valid, this.showErrorBanner);
       });
     } else {
       let tempConfig = this.progressIndicatorConfig;
@@ -332,6 +343,10 @@ export class AccessibilityDemoComponent implements OnInit {
     }
   }
 
+  /**
+   * Event handler for progress tabs button events
+   * @param event number (index of tab pressed)
+   */
   progressTabButtonEvent(event: Event) {
     const eventInt = parseInt(event.toString());
     if (this.progressIndicatorConfig.selected !== undefined) {
@@ -342,17 +357,63 @@ export class AccessibilityDemoComponent implements OnInit {
             break;
 
           case 1:
-            console.log(this.router.url, this.getMainPageLink);
-            // if (this.router.url !== this.getMainPageLink) this.router.navigateByUrl(this.getMainPageLink);
+            // console.log(this.router.url, this.getMainPageLink);
+            if (this.router.url !== this.getMainPageLink) this.router.navigateByUrl(this.getMainPageLink);
             break;
 
           case 2:
             if (this.router.url !== this.getNextButtonLink) this.router.navigateByUrl(this.getNextButtonLink);
             break;
+
+          default:
+            break;
         }
       }
     }
   }
+
+  /**
+   * Event handler for icon button press events
+   * @param event string (id of button pressed)
+   */
+  iconButtonHandler(id: string) {
+    switch (id) {
+      case this.familyNameInputConfig.id:
+        this.showFamilyNameBanner = true;
+        break;
+
+      case this.sexAtBirthRadioConfig.id:
+        this.showSexAtBirthBanner = true;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  /**
+   * Event handler for banner close button events
+   * @param id 
+   */
+  bannerCloseHandler(id: string) {
+    switch (id) {
+      case this.familyNameInputBannerConfig.id:
+        this.showFamilyNameBanner = false;
+        break;
+
+      case this.sexAtBirthRadioBannerConfig.id:
+        this.showSexAtBirthBanner = false;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+
+
+
+  /************************************Getters for Navigation**************************************/
 
 
   /**
@@ -449,7 +510,7 @@ export function compare(a: number | string, b: number | string, isAsc: boolean) 
 
 // /** Given an element, scroll to it with an optional delay */
 // export function scrollToElement(element: HTMLElement | null, delay: boolean, smooth: boolean = true, focusTo: boolean = false) {
-//   if (element) { // Timeout ensures scroll occurs after the view is updated        
+//   if (element) { // Timeout ensures scroll occurs after the view is updated
 //     if (delay) {
 //       setTimeout(() => { element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' }); if (focusTo) { element.focus(); } }, 2);
 //     } else {

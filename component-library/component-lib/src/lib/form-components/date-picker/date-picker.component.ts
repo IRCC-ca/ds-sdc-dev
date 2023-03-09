@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ISelectConfig } from '../select/select.component';
-import { ILabelConfig } from '../../shared/label/label.component';
+import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
@@ -43,7 +43,7 @@ export interface IDatePickerConfig {
   hint?: string;
   desc?: string;
   errorMessages?: IDatePickerErrorMessages;
-  labelIconConfig?: IIconButtonComponentConfig;
+  labelIconConfig?: ILabelIconConfig;
   //TODO: Add max and min year for date picker
 }
 

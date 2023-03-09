@@ -18,7 +18,8 @@ config.formGroup.get(config.parentID)?.invalid && config.formGroup.get(config.pa
         {{(config.label || '') | translate}}
       </div>
       <div *ngIf="config.iconButton" class="icon_container">
-        <lib-icon-button [config]="config.iconButton"></lib-icon-button>
+        <button class="touch_button" category="plain" (click)="iconButtonClick()"></button>
+        <i [class]="config.iconButton.iconClass"></i>
       </div>
     </span>
   </label>

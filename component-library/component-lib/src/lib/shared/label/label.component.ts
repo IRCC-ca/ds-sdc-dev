@@ -1,9 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
-import { IIconButtonComponentConfig } from '../icon-button/icon-button.component';
+import { LabelButtonService } from './label-button.service';
+
+export interface ILabelIconConfig {
+  iconClass: string;
+  colour?: string; //Default is text primary token
+}
 
 export interface ILabelConfig {
   formGroup: FormGroup;
@@ -13,7 +18,7 @@ export interface ILabelConfig {
   desc?: string;
   hint?: string;
   required?: boolean; 
-  iconButton?: IIconButtonComponentConfig;
+  iconButton?: ILabelIconConfig;
 }
 
 export const ERROR_TEXT_STUB_EN = 'Error';
@@ -33,7 +38,8 @@ export class LabelComponent implements OnInit {
   errorStubText = '';
 
   constructor(private translate: TranslateService,
-              public standAloneFunctions: StandAloneFunctions) { }
+              public standAloneFunctions: StandAloneFunctions,
+              private labelButton: LabelButtonService) { }
 
   ngOnInit() {
     (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') ? this.errorStubText = ERROR_TEXT_STUB_EN : this.errorStubText = ERROR_TEXT_STUB_FR;
@@ -42,5 +48,13 @@ export class LabelComponent implements OnInit {
     const curLang = this.translate.currentLang;
     (curLang === 'en' || curLang === 'en-US') ? this.errorStubText = ERROR_TEXT_STUB_EN : this.errorStubText = ERROR_TEXT_STUB_FR;
     });
+  }
+
+  /**
+   * Output the button press 
+   * @param id of the button being pressed (same as component ID)
+   */
+  iconButtonClick() {
+    this.labelButton.buttonPress(this.config.parentID);
   }
 }
