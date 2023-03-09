@@ -1,14 +1,24 @@
-<div class="{{config.size}}">
-    <lib-label [config]="labelConfig"></lib-label>
-    <div class="all-select-container">
-        <div class="select-container">
-            <lib-select [config]="dropDownConfigs.year"></lib-select>
-        </div>
-        <div class="select-container">
-            <lib-select [config]="dropDownConfigs.month"></lib-select>
-        </div>
-        <div class="select-container">
-            <lib-select [config]="dropDownConfigs.day"></lib-select>
-        </div>
+<div class="{{ config.size }}">
+  <lib-label [config]="labelConfig"></lib-label>
+  <div class="all-select-container">
+    <div class="select-container">
+      <lib-select [config]="dropDownConfigs.year"></lib-select>
     </div>
+    <div class="select-container">
+      <lib-select [config]="dropDownConfigs.month"></lib-select>
+    </div>
+    <div class="select-container">
+      <lib-select [config]="dropDownConfigs.day"></lib-select>
+    </div>
+  </div>
+  <ng-container *ngIf="datePickerTouchedOrInvalid()">
+    <ng-container *ngFor="let errors of errorIds; let i = index">
+      <div
+        *ngIf="config.formGroup.get(dropDownConfigs.year.id)?.errors?.[errors.key] || config.formGroup.get(dropDownConfigs.month.id)?.errors?.[errors.key] || config.formGroup.get(dropDownConfigs.day.id)?.errors?.[errors.key]"
+        class="radio-errors"
+      >
+        <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>
