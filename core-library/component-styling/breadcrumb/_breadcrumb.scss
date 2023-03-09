@@ -84,6 +84,8 @@
 }
 
 @mixin layout {
+  padding: 6px 0;
+
   lib-breadcrumb-link {
     border-radius: 4px;
 
