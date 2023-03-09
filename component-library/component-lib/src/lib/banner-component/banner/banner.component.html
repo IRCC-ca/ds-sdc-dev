@@ -1,5 +1,5 @@
 <div (window:resize)="toggleLine()" class="banner-component" class="{{config?.size}}" id="{{config?.id}}" [ngClass]="{'rounded': config?.rounded, 'information': config?.type == 'info', 'success': config?.type == 'success', 'warning': config?.type == 'warning', 'critical': config?.type == 'critical'}">
-  <div class="banner-container">
+  <div class="banner-container" role="alert">
     <div class="banner-left" *ngIf="config?.type != 'generic' && config?.type">
       <ng-container [ngSwitch]="config?.type">
         <div *ngSwitchCase="'critical'">
