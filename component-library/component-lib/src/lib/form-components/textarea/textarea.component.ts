@@ -50,6 +50,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   disabled = false;
   focusState = false;
   errorIds: IErrorIDs[] = []
+  charLimitStatus = '';
   
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
@@ -59,9 +60,6 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   private onChange?: (value: any) => void;
 
   ngOnInit(): void {
-
-    // if (!this.config.resizable) this.config.resizable = ResizableTypes.both;
-
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
     }
@@ -69,6 +67,18 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
 
   public focusInput(focusValue: boolean): void {
     this.focusState = !focusValue;
+  }
+
+  valueChange($event : any) {
+    if(this.config.charLimit) {
+      console.log("Value changed:", $event , this.config.charLimit)
+      if (this.config.charLimit == $event) {
+        this.charLimitStatus="maxLimit"
+      }
+      else if (this.config.charLimit - $event <= 15) {
+        this.charLimitStatus="warningLimit"
+      }
+    }
   }
 
 

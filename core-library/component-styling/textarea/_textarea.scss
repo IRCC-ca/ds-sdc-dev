@@ -39,21 +39,20 @@
     font-size: 16px;
   }
 
-  // .textarea-field {
-  //   margin-top: 8px;
-  //   // height: 54px;
-  // }
+  .textarea-field {
+    min-height: 78px;
+    padding: 14px 16px 14px 20px; 
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 24px;
+  }
 
-  // .content-area {
-  //   height: 78px;
+  .character-count {
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
 
-    .textarea-field {
-      min-height: 78px;
-      padding: 14px 16px 14px 20px; 
-      margin-top: 8px;
-      font-size: 16px;
-      line-height: 24px;
-    }
   // }
 }
 
@@ -84,6 +83,12 @@
     margin-top: 4px;
     font-size: 14px;
     line-height: 20px;
+  }
+
+  .character-count {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 0px;
   }
 
   lib-error {
@@ -138,22 +143,24 @@
     }
 
     .content-area {
-      // display: flex;
-      // flex-direction: row-reverse;
-      display: inline-block;
-      
-      span {
-        text-align: right;
-        display: inline-block;
-        // display: flex;
-        // justify-content: flex-end;
-        // display: block;
+      display: block;
+
+      .character-count {
+        text-align: left;
+        color: var(--text-placeholder);
       }
-      
+
+      .character-count.maxLimit {
+        color: var(--critical-text);
+      }
+
+      .character-count.warningLimit {
+        color: var(--warning-text);
+      }
+
+
       textarea {
         display: block;
-        // width:calc(100vw - 30px);
-        // max-width: 100%;
         box-sizing: border-box;
       }
     }

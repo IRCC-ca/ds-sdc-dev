@@ -28,7 +28,12 @@ export class NaseerComponent implements OnInit {
 
   qaTextareaInput : ITextareaComponentConfig = {
     id: this.INPUT_ID,
-    formGroup: this.form
+    formGroup: this.form,
+    errorMessages: [
+      {key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid'},
+      {key: 'testingError', errorLOV: 'ERROR.testErrorMessage'},
+      {key: 'maxlength' , errorLOV: 'ERROR.fieldExceededMaxLength'},
+    ]
   };
 
   qaButton : IIconButtonComponentConfig = {
@@ -164,7 +169,8 @@ export class NaseerComponent implements OnInit {
 
       var updatedConfig : IInputComponentConfig = {
         id: this.INPUT_ID,
-        formGroup: this.form
+        formGroup: this.form,
+        errorMessages: this.qaTextareaInput.errorMessages
       };
       if (!x['type']) x['type'] = 'text';
       // if (!x['resizable']) x['resizable'] = 'both';
@@ -175,6 +181,35 @@ export class NaseerComponent implements OnInit {
   })
 
   }
+
+  buttonActions(actionType: string) {
+    switch (actionType) {
+      // case 'disableCheckbox':
+      //   this.form_0.get(this.CHECKBOX_ID)?.disabled ?
+      //     this.form_0.get(this.CHECKBOX_ID)?.enable() : this.form_0.get(this.CHECKBOX_ID)?.disable();
+      //   break;
+      case 'inputError':
+        this.form.get(this.qaTextareaInput.id)?.valid ?
+          this.form.get(this.qaTextareaInput.id)?.setErrors({ 'invalid': true }) :
+          this.form.get(this.qaTextareaInput.id)?.reset();
+
+        this.form.updateValueAndValidity();
+        break;
+      case 'setInputError':
+        this.form.get(this.qaTextareaInput.id)?.
+          setErrors({
+            'invalid': true,
+            'testingError': true,
+            'maxlength': { requiredLength: 3, actualLength: 5 }});
+        this.form.updateValueAndValidity();
+        break;
+      case 'removeInputError':
+        this.form.get(this.qaTextareaInput.id)?.setErrors({errors: null});
+        this.form.updateValueAndValidity();
+        break;
+    }
+  }
+
   disable() {
     this.qaInput?.formGroup.get(this.qaInput.id)?.disabled ?
     this.qaInput?.formGroup.get(this.qaInput.id)?.enable() :

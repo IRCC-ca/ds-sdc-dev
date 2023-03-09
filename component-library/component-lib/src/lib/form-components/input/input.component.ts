@@ -94,7 +94,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       }
     });
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
     }
   }
 
