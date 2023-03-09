@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { ILinkComponentConfig } from "./link/link.component";
 import { TranslateService } from "@ngx-translate/core";
@@ -26,7 +26,7 @@ export interface IBreadcrumbConfig {
   selector: 'lib-breadcrumb',
   templateUrl: './breadcrumb.component.html'
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent implements OnInit, OnChanges {
   @Input() config: IBreadcrumbConfig = {
     id: '',
     baseUrlKey: '',
@@ -39,11 +39,26 @@ export class BreadcrumbComponent implements OnInit {
     this.createLinks();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.config?.links && this.config?.links.length > 0) {
+      if (this.config.type == 'routerLink') {
+        this.config?.links.forEach(link => {
+          delete link.href;
+        })
+      } else {
+        this.config?.links.forEach(link => {
+          delete link.routerLink;
+        })
+      }
+    }
+    this.createLinks();
+  }
+
   /**
    * Create href or routerLinks
    */
   createLinks() {
-    this.baseUrl = this.standalone.getBaseUrl(this.baseUrl, this.config.baseUrlKey);
+    this.baseUrl = this.standalone.getBaseUrl('', this.config.baseUrlKey);
     if (this.config.links && this.config.links.length > 1) {
       let prev: string | undefined;
       this.config?.links.forEach((link, i) => {
