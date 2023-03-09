@@ -1,0 +1,30 @@
+<div class="{{ config.size }}">
+  <lib-label [config]="labelConfig"></lib-label>
+  <form [formGroup]="config.formGroup">
+    <div class="lib-select">
+      <select
+        class="custom-select h6 select-placeholder"
+        [name]="config.id"
+        [id]="config.id"
+        [formControlName]="config.id"
+        (change)="valueChange($event)"
+        [class.activited-select] = "activiatedSelect"
+      >
+        <option [value]="''" [disabled]="true" [selected]="true" [hidden]="true">
+          {{ config.placeholder || "" | translate }}
+        </option>
+        <option *ngFor="let option of config.options" [value]="option.value || option.text" class="select-option">
+          {{ option.text | translate }}
+        </option>
+      </select>
+      <i class="fa-thin fa-chevron-down custom-chevron"></i>
+    </div>
+    <div *ngIf="config.formGroup.get(config.id)?.touched && config.formGroup.get(config.id)?.invalid">
+      <ng-container *ngFor="let errors of errorIds; let i = index">
+        <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
+          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+</div>

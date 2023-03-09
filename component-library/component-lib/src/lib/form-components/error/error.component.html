@@ -1,0 +1,4 @@
+<div id="{{config?.id}}" class="errorContainer" [ngClass]="config?.size"  aria-live="polite">
+    <i *ngIf="config?.id?.endsWith('error0')" [ngClass]="(config?.icon !== undefined) ? config?.icon?.class : 'fa-light fa-circle-exclamation'" class="errorIcon"></i>
+    <p [ngClass]="{'additionalError' : !config?.id?.endsWith('error0')}" class="errorText">{{(config?.errorLOV || '') | translate}}</p>
+</div>

@@ -1,0 +1,84 @@
+@use '../../tokens/template-const' as template-const;
+
+@mixin selector {
+    lib-chip-item#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+//copied from chip-tem scss file - can likely be leveraged
+
+
+// @import '../../../assets/scss/partials/variables';
+
+// .chip-item {
+//   background: $ircc-ca-global-neutral-surface;
+//   border-radius: 4px;
+//   display: flex;
+//   align-items: center;
+//   height: 28px;
+//   width: fit-content;
+//   padding: 4px 6px 4px 8px;
+//   border-radius: 4px;
+//   border: solid 1px $ircc-chip-icon-hover;
+
+//   &:hover {
+//     .clickable-icon {
+//       color: $ircc-chip-icon-hover;
+//     }
+//   }
+
+//   &:focus {
+//     outline: none;
+
+//     .clickable-icon {
+//       color: $ircc-chip-icon-focus;
+//       border-radius: 50%;
+//       box-shadow: 0 0 0 3px $ircc-ca-white;
+//       outline: $ircc-ca-focus solid 3px;
+//       outline-offset: 3px;
+//     }
+//   }
+
+//   .chip-text {
+//     font-family: 'Inter';
+//     font-weight: 400;
+//     size: 12px;
+//     line-height: 20px;
+//     color: $ircc-ca-black;
+//   }
+
+//   .icon-container {
+//     display: flex;
+//     cursor: pointer;
+//   }
+
+//   .clickable-icon {
+//     margin-left: 8px;
+//     color: $ircc-chip-icon-default;
+//     font-weight: 900;
+//     font-size: 16px;
+//     line-height: 16px;
+
+//     &:hover {
+//       color: $ircc-chip-icon-hover;
+//     }
+
+//     &:active {
+//       color: $ircc-chip-icon-active;
+//     }
+
+//     &:focus {
+//       color: $ircc-chip-icon-focus;
+//       border-radius: 50%;
+//     }
+//   }
+// }
+}

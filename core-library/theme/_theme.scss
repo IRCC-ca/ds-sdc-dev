@@ -1,0 +1,14 @@
+@use '../util/color' as color;
+@use '../util/size' as size;
+
+/// This mixin is used to define the required common variables used in all themes.
+/// @param {Map} $root-palette - the palette map to be used for the construction of the theme
+/// @param {String} $palette-key - the palette key to construct from the palette theme
+/// @param {String} $size - the size key to construct default sizes for elements
+/// @param {String} $color-scheme - the color scheme to follow, align to prefers-color-scheme for best results
+@mixin init-required($root-palette, $palette-key: default, $size: large, $color-scheme: light) {
+    @include color.set-palette($root-palette);
+    @include color.set-mode($palette-key);
+    @include color.set-scheme($color-scheme);
+    @include size.set-mode($size);
+}

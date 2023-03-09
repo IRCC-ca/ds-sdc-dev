@@ -1,0 +1,89 @@
+@use "../../util/theme" as theme;
+@use "../../util/size" as size;
+@use "../../tokens/sizes" as token-size;
+@use "../../tokens/template-const";
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+$selectors: "lib-error";
+
+@mixin selectors {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selectors() {
+    @include layout();
+  }
+}
+
+@mixin small-styles {
+  .errorIcon {
+    height: 16px;
+    width: 16px;
+  }
+
+  .errorText {
+    font-size: 14px;
+  }
+
+  .errorContainer {
+    height: 16px;
+    margin: 4px 0;
+  }
+
+  .additionalError {
+    margin-left: 20px;
+  }
+}
+
+@mixin large-styles {
+  .errorIcon {
+    height: 20px;
+    width: 20px;
+  }
+
+  .errorText {
+    font-size: 16px;
+    margin: 12px 0;
+  }
+
+  .errorContainer {
+    height: 20px;
+    margin: 12px 0;
+  }
+
+  .additionalError {
+    margin-left: 24px;
+  }
+}
+
+@mixin layout {
+  @include size.selector(large) {
+    @include large-styles;
+
+    .small {
+      @include small-styles;
+    }
+  }
+
+  @include size.selector(small) {
+    @include small-styles;
+
+    .large {
+      @include large-styles;
+    }
+  }
+
+  .errorContainer {
+    display: flex;
+    color: var(--critical-text);
+    align-items: center;
+  }
+
+  .errorIcon {
+    margin-right: 4px;
+  }
+}

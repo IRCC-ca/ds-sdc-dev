@@ -1,0 +1,142 @@
+{
+  "ROUTES": {
+    "LandingPage": "page-general",
+    "LandingPage-alt": "landing-page",
+    "AccessibilityDemo": "démo-d'accessibilité",  
+    "AccessibilityDemo-alt": "accessibility-demo",
+    "DevTest": "test-dev",
+    "DevTest-alt": "dev-test",
+    "HeaderFooter": "en-tête-pied-de-page",
+    "HeaderFooter-alt": "header-footer",
+    "Miscellaneous": "divers",
+    "Miscellaneous-alt": "miscellaneous",
+    "FormComponents": "form-components",
+    "QATesting": "aq",
+    "QATesting-alt": "qa",
+    "kris": "kris-fr",
+    "kris-alt": "kris-en",
+    "mahsa": "mahsa-fr",
+    "mahsa-alt": "mahsa-en",
+    "naseer": "naseer-fr",
+    "naseer-alt": "naseer-en",
+    "mike": "mike-fr",
+    "mike-alt": "mike-en",
+    "michael": "michael-fr",
+    "michael-alt": "michael-en"
+  },
+
+  "BUTTONS": {
+    "Back": "Retour",
+    "FormInputs": "Components formulaire",
+    "HeaderFooter": "En tête / pied de page",
+    "Miscellaneous": "Divers",
+    "DevTestPage": "Page de teste",
+    "QATesting": "Page de teste pour AQ",
+    "HomeURLOverride": "/fr/page-general"
+
+  },
+
+  "OPPOSITE_LANGUAGE": "English",
+
+  "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
+  
+  "APP_NAME": "component-library",
+  "About": "A propos",
+  "Hello world !": "Bonjour le monde !",
+  "Home": "Accueil",
+  "Version": "Version",
+
+  "Input_Component": {
+    "Password-icon" : {
+      "show_password_aria-label": "afficher le texte du mot de passe",
+      "hide_password_aria-label": "masquer le texte du mot de passe"
+    }
+  },
+  
+  "LandingPage": {
+    "header": "Ce page est pour les tests et assurance du qualité seulment"
+  },
+
+  "QA": {
+    "header": "Page de AQ"
+  },
+
+  "ERROR": {
+    "fieldIsInvalid": "FR This field is invalid.",
+    "fieldExceededMaxLength": "FR This field has exceeded max length.",
+    "testErrorMessage": "FR Test error message.",
+    "errorMessage": "FR Error message",
+    "errorMessageMahsa": "FR Testing error message thing take 1000"
+  },
+
+  "TAG": {
+    "progress": "FR In progress",
+    "completed": "FR Completed",
+    "error": "FR Error",
+    "locked": "FR Locked",
+    "notStarted": "FR Not started"
+  },
+  "SELECT": {
+    "GENERIC_PLACEHOLDER": "Veuillez slectionner"
+  },
+  "ACC_DEMO": {
+    "ERRORS": {
+      "REQUIRED": "FR This field is required."
+    },
+    "PERSONAL_INFO": {
+      "H1": "FR Personal information",
+      "BODY": "FR Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
+      "FAMILY_NAME_INPUT": {
+        "LABEL": "FR Prénom (required)",
+        "DESC": "FR This is your surname or last name",
+        "BANNER": "FR If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
+      },
+      "GIVEN_NAME_INPUT": {
+        "LABEL": "Nom de famille",
+        "DESC": "FR This is your first name and middle name, if applicable"
+      },
+      "SEX_AT_BIRTH_RADIO": {
+        "LABEL": "FR Sex at birth (required)",
+        "FEMALE": "F - Female",
+        "MALE": "M - Male",
+        "OTHER": "X - Another sex"
+      },
+      "DATE_OF_BIRTH": {
+        "LABEL": "Date de naissance (required)"
+      },
+      "COUNTRY_OF_BIRTH": {
+        "LABEL": "FR Country/territory of birth (required)",
+        "OPTIONS": {
+          "CANADA": "Canada",
+          "USA": "United States of America",
+          "MEXICO": "Mexico"
+        }
+      },
+      "CITY_OF_BIRTH": {
+        "LABEL": "FR City or town of birth (required)",
+        "OPTIONS": {
+          "CANADA": {
+            "OTTAWA": "Ottawa",
+            "ST_JOHNS": "St. John's",
+            "VICTORIA": "Victoria",
+            "CALGARY": "Calgary"
+          },
+          "USA": {
+            "TAMPA": "Tampa Bay",
+            "WASHINGTON": "Washington",
+            "NEW_YORK": "New York",
+            "OAKLAND": "Oakland"
+          },
+          "MEXICO": {
+            "MEXICO": "Mexico City"
+          }
+        }
+      },
+      "DECLARATION": "FR I declare that the above information is true and accurate."
+    },
+    "BUTTONS": {
+      "PREVIOUS": "FR Previous",
+      "NEXT": "Prochaine étape"
+    }
+  }
+}

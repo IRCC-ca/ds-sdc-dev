@@ -1,0 +1,54 @@
+.page_container {
+    margin-left: 164px;
+    max-width: 1036px;
+
+    .header_stepper_container {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 10000;
+        width: 100%;     
+    }
+
+    .header_stepper_container+.shadow {
+        box-shadow: 0px 16px 28px rgba(0,0,0,0.06);
+    }
+
+    .error_banner {
+        margin-top: 40px;
+        max-width: 628px;
+    }
+    
+    .form_container {
+        max-width: 628px;
+        //Margin above inputs:
+        .family_name_container,
+        .given_name_container,
+        .sex_at_birth_container,
+        .date_of_birth_container,
+        .country_of_birth_container,
+        .city_of_birth_container,
+        .declaration_checkbox_container {
+            margin-top: 44px;
+        }
+
+        .banner_container {
+            margin-top: 16px;
+        }
+
+        .buttons_container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 64px;
+        }
+    }
+
+    .footer {
+        margin-top: 88px;
+    }
+
+    .stepper,
+    .form_container {
+        margin-top: 40px;
+    }
+}

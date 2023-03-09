@@ -1,0 +1,20 @@
+/// @param {List} $list The source list
+/// @param {List or Item} $filter The items to remove from the list
+/// @returns The filtered list
+@function filter($list, $filter) {
+    $returnList: ();
+    $bracketed: is-bracketed($list);
+    $separator: list.separator($list);
+    @each $item in $list {
+        @if type-of($filter) == 'list' {
+            @if not index($filter, $item) {
+                $returnList: list.append($returnList, $item);
+            }
+        } @else {
+            @if $item != $filter {
+                $returnList: list.append($returnList, $item);
+            }
+        }
+    }
+    @return join((), $returnList, $separator, $bracketed);
+}

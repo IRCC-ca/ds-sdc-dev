@@ -1,0 +1,49 @@
+<div class="autocomplete-container" [ngClass]="{ error: error }">
+  <div>
+    <!-- <jl-pr-sclp-input
+      [label]="title"
+      [hintText]="hintText"
+      [placeholder]="'+ ' + (name | translate)"
+      [error]="error"
+      (valueChange)="valueChange($event)"
+    > -->
+      <lib-chip-item
+        *ngFor="let option of selectedOptions; let index = index"
+        [chipContent]="option['text']"
+        (iconClickEvent)="removeChipItem(index)"
+      ></lib-chip-item
+    >
+  <!-- </jl-pr-sclp-input> -->
+  </div>
+
+  <div
+    class="autocomplete-options"
+    [ngClass]="hideDropdown === false ? '' : 'hide'"
+    (mouseenter)="onMouseEnter()"
+  >
+    <div
+      *ngIf="limit === 0"
+      class="option autocomplete-target all-results"
+      (click)="selectAll()"
+      [tabindex]="0"
+      [ngClass]="emptyResults === false ? '' : 'hide-option'"
+    >
+      <p class="select-target">{{ 'AllOptionsForAutocomplete' | translate}} {{ title | translate }}s</p>
+    </div>
+    <div
+      class="option autocomplete-target"
+      *ngFor="let option of options; let index = index; first as isFirst"
+      (click)="selectIndex(index)"
+      [tabindex]="index + 1"
+      [ngClass]="checkActive(option['value']) ? 'active' : ''"
+    >
+      <p class="select-target">{{ option['text'] }}</p>
+    </div>
+    <div
+      class="option autocomplete-target"
+      [ngClass]="emptyResults === false ? 'hide-option' : ''"
+    >
+      <p>{{ 'NoResults' | translate }}</p>
+    </div>
+  </div>
+</div>

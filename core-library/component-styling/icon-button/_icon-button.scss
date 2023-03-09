@@ -1,0 +1,160 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selector {
+  lib-icon-button#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin primary-lg {
+  svg {
+    width: 15px;
+  }
+}
+
+@mixin primary-sm {
+  svg {
+    width: 13px;
+  }
+}
+
+@mixin critical-lg {
+  svg {
+    width: 21px;
+  }
+}
+
+@mixin critical-sm {
+  svg {
+    width: 18px;
+  }
+}
+
+@mixin layout {
+  > button {
+    border-radius: 50%;
+
+    &:focus {
+      outline-offset: -3px;
+    }
+
+    &:disabled {
+      svg {
+        color: var(--text-disabled) !important;
+      }
+    }
+
+    > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.large {
+      padding: 10px;
+
+      > span {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &.small {
+      padding: 10px;
+
+      > span {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &.extraSmall {
+      padding: 4px;
+
+      > span {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &.primary {
+      &.large {
+        @include primary-lg;
+      }
+
+      &.small {
+        @include primary-sm;
+      }
+
+      &.extraSmall {
+        svg {
+          width: 10px;
+        }
+      }
+
+      @include size.selector(large) {
+        @include primary-lg;
+      }
+
+      @include size.selector(small) {
+        @include primary-sm;
+      }
+    }
+
+    &.critical {
+      &.large {
+        @include critical-lg;
+      }
+
+      &.small {
+        @include critical-sm;
+      }
+
+      @include size.selector(large) {
+        @include critical-lg;
+      }
+
+      @include size.selector(small) {
+        @include critical-sm;
+      }
+    }
+
+    &.custom {
+      &.large {
+        @include primary-lg;
+      }
+
+      &.small {
+        @include primary-sm;
+      }
+
+      &.extraSmall {
+        svg {
+          width: 10px;
+        }
+      }
+
+      @include size.selector(large) {
+        @include primary-lg;
+      }
+
+      @include size.selector(small) {
+        @include primary-sm;
+      }
+    }
+  }
+}

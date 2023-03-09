@@ -1,0 +1,30 @@
+<div class="{{config?.size}}" id="{{config?.id}}" class="tag-component"
+  [ngClass]="{'success': config?.type === 'success','critical': config?.type === 'critical', 'neutral': (config?.type === 'locked') || (config?.type === 'notStarted')}">
+
+  <div class="tag-container">
+    <div class="tag-left">
+      <ng-container [ngSwitch]="config?.type">
+        <div *ngSwitchCase="'success'">
+          <i class="fa-circle-check fa-regular tag-icon"></i>
+          <span class="content">{{text[1]}}</span>
+        </div>
+        <div *ngSwitchCase="'critical'">
+          <i class="fa-circle-exclamation fa-regular tag-icon"></i>
+          <span class="content">{{text[2]}}</span>
+        </div>
+        <div *ngSwitchCase="'locked'">
+          <i class="fa-light fa-lock tag-icon"></i>
+          <span class="content">{{text[3]}}</span>
+        </div>
+        <div *ngSwitchCase="'notStarted'">
+          <i class="fa-light fa-circle tag-icon"></i>
+          <span class="content">{{text[4]}}</span>
+        </div>
+        <div *ngSwitchDefault>
+          <i class="fa-regular fa-circle-half-stroke tag-icon"></i>
+          <span class="content">{{text[0]}}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

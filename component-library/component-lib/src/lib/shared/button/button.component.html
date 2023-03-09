@@ -1,0 +1,18 @@
+<button
+    [attr.aria-label]="config.ariaLabel"
+    [attr.color]="config.color"
+    [attr.category]="config.category"
+    [attr.size]="config.size"
+    [disabled]="config.disabled"
+    [ngClass]="config.iconDirection"
+    (click)="clickEvent(config.id)"
+
+>
+    <span class="icon" *ngIf="config.iconDirection === 'left'">
+        <lib-icon [class]="config.icon"></lib-icon>
+    </span>
+    <span class="text"><ng-content></ng-content></span>
+    <span class="icon" *ngIf="config.iconDirection === 'right'">
+        <lib-icon [class]="config.icon"></lib-icon>
+    </span>
+</button>

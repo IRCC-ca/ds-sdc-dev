@@ -1,0 +1,145 @@
+{
+  "ROUTES": {
+    "LandingPage": "landing-page",
+    "LandingPage-alt": "page-general",
+    "AccessibilityDemo": "accessibility-demo",
+    "AccessibilityDemo-alt": "démo-d'accessibilité",
+    "DevTest": "dev-test",
+    "DevTest-alt": "test-dev",
+    "HeaderFooter": "header-footer",
+    "HeaderFooter-alt": "en-tête-pied-de-page",
+    "Miscellaneous": "miscellaneous",
+    "Miscellaneous-alt": "divers",
+    "FormComponents": "components-formulaire",
+    "QATesting": "qa",
+    "QATesting-alt": "aq",
+    "kris": "kris-en",
+    "kris-alt": "kris-fr",
+    "mahsa": "mahsa-en",
+    "mahsa-alt": "mahsa-fr",
+    "naseer": "naseer-en",
+    "naseer-alt": "naseer-fr",
+    "mike": "mike-en",
+    "mike-alt": "mike-fr",
+    "michael": "michael-en",
+    "michael-alt": "michael-fr"
+  },
+  "BUTTONS": {
+    "Back": "Back",
+    "FormInputs": "Form Inputs",
+    "HeaderFooter": "Header/Footer",
+    "Miscellaneous": "Miscellaneous",
+    "DevTestPage": "Dev Test Page",
+    "QATesting": "QA Testing Page",
+    "HomeURLOverride": "/en/landing-page"
+  },
+  "OPPOSITE_LANGUAGE": "Français",
+  "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg",
+  "APP_NAME": "component-library",
+  "About": "About",
+  "Hello world !": "Hello world !",
+  "Home": "Home",
+  "Version": "Version",
+  "INPUT": {
+    "ERROR": "Input error"
+  },
+  "Input_Component": {
+    "Password-icon": {
+      "show_password_aria-label": "display password text",
+      "hide_password_aria-label": "mask password text"
+    }
+  },
+  "LandingPage": {
+    "header": "This page is for testing and QA purposes only"
+  },
+  "QA": {
+    "header": "QA Landing Page"
+  },
+  "ERROR": {
+    "fieldIsInvalid": "This field is invalid.",
+    "fieldExceededMaxLength": "This field has exceeded max length.",
+    "testErrorMessage": "Test error message.",
+    "errorMessage": "Error message",
+    "errorMessageMahsa": "Testing error message thing take 1000"
+  },
+  "TAG": {
+    "progress": "In progress",
+    "completed": "Completed",
+    "error": "Error",
+    "locked": "Locked",
+    "notStarted": "Not started"
+  },
+  "SELECT": {
+    "GENERIC_PLACEHOLDER": "Select an option"
+  },
+  "ACC_DEMO": {
+    "ERRORS": {
+      "REQUIRED": "This field is required."
+    },
+    "STEPPER": {
+      "STEP1": "Background information",
+      "STEP2": "Personal information",
+      "STEP3": "Work information",
+      "STEP4": "Review & submit"
+    },
+    "PERSONAL_INFO": {
+      "ERROR_BANNER": {
+        "TITLE": "Missing information",
+        "CONTENT": "There are unresolved errors below."
+      },
+      "H1": "Personal information",
+      "BODY": "Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
+      "FAMILY_NAME_INPUT": {
+        "LABEL": "Family name (required)",
+        "DESC": "This is your surname or last name",
+        "BANNER": "If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
+      },
+      "GIVEN_NAME_INPUT": {
+        "LABEL": "Given name",
+        "DESC": "This is your first name and middle name, if applicable"
+      },
+      "SEX_AT_BIRTH_RADIO": {
+        "LABEL": "Sex at birth (required)",
+        "FEMALE": "F - Female",
+        "MALE": "M - Male",
+        "OTHER": "X - Another sex"
+      },
+      "DATE_OF_BIRTH": {
+        "LABEL": "Date of birth (required)"
+      },
+      "COUNTRY_OF_BIRTH": {
+        "LABEL": "Country/territory of birth (required)",
+        "OPTIONS": {
+          "CANADA": "Canada",
+          "USA": "United States of America",
+          "MEXICO": "Mexico"
+        }
+      },
+      "CITY_OF_BIRTH": {
+        "LABEL": "City or town of birth (required)",
+        "OPTIONS": {
+          "CANADA": {
+            "OTTAWA": "Ottawa",
+            "ST_JOHNS": "St. John's",
+            "VICTORIA": "Victoria",
+            "CALGARY": "Calgary"
+          },
+          "USA": {
+            "TAMPA": "Tampa Bay",
+            "WASHINGTON": "Washington",
+            "NEW_YORK": "New York",
+            "OAKLAND": "Oakland"
+          },
+          "MEXICO": {
+            "MEXICO": "Mexico City"
+          }
+        }
+      },
+      "DECLARATION": "I declare that the above information is true and accurate."
+    },
+    "BUTTONS": {
+      "PREVIOUS": "Previous",
+      "NEXT": "Next"
+    }
+  }
+}

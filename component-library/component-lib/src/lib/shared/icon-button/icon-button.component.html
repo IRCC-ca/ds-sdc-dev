@@ -1,0 +1,10 @@
+<button category="plain"
+        [id]="config.id"
+        [attr.aria-label]="config?.ariaLabel"
+        [disabled]="config?.disabled"
+        (click)="buttonClick()"
+        [class]="config.category+' '+config.size">
+  <span>
+    <lib-icon [class]="config.icon?.class" [style.color]="config.icon?.color"></lib-icon>
+  </span>
+</button>

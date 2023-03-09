@@ -1,0 +1,17 @@
+/* stylelint-disable selector-max-universal */
+@use '../template-const' as template-const;
+
+@mixin layout {
+    cursor: not-allowed;
+}
+@mixin selector {
+    *:disabled#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector {
+        @include layout();
+    }
+}

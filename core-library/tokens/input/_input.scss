@@ -1,0 +1,49 @@
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../template-const' as template-const;
+@use '../sizes' as sizes;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use './input-const' as input-const;
+
+$input-types : (
+    text,
+    password,
+    //search,
+    //file
+);
+
+@mixin input-text-selector  {
+    @each $type in $input-types{
+        input#{template-const.$escape} {
+            @include theme.select-attribute($type, type, text) {
+                @content;
+            }
+            &:where([type="password"]){
+                // any future file type styles (duplicate for all types with seperate styles)
+                @content;
+            }
+        }
+    }
+}
+
+@mixin create {
+         @include input-text-selector() {
+                @include input-const.common();
+                @include input-const.valid();
+                @include input-const.invalid();
+                @include textPadding();
+         }
+}
+
+@mixin textPadding {
+
+    @include size.selector(small) {
+        padding: sizes.$fixed-10 sizes.$fixed-12;
+    }
+
+    @include size.selector(large) {
+        padding: sizes.$fixed-14 sizes.$fixed-12;
+    }
+
+}
