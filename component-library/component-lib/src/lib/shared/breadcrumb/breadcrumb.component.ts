@@ -18,8 +18,6 @@ export interface IBreadcrumbConfig {
   baseUrlKey: string;
   // The mid-layer navigation to the ancestor links, the previous pages that lead to users to the child page
   links?: ILinkComponentConfig[],
-  // Child page title
-  chilePage?: string,
 }
 
 @Component({
