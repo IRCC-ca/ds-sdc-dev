@@ -4,6 +4,10 @@
     "LandingPage-alt": "page-general",
     "AccessibilityDemo": "accessibility-demo",
     "AccessibilityDemo-alt": "démo-d'accessibilité",
+    "AccessibilityDemoPrevious": "previous",
+    "AccessibilityDemoPrevious-alt": "précédent",
+    "AccessibilityDemoNext": "next",
+    "AccessibilityDemoNext-alt": "prochaine",
     "DevTest": "dev-test",
     "DevTest-alt": "test-dev",
     "HeaderFooter": "header-footer",
@@ -73,6 +77,8 @@
     "GENERIC_PLACEHOLDER": "Select an option"
   },
   "ACC_DEMO": {
+    "PREVIOUS_PAGE": "This is an example of a previous page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
+    "NEXT_PAGE": "This is an example of a next page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
     "ERRORS": {
       "REQUIRED": "This field is required.",
       "FAMILY_NAME_REQUIRED": "This field is blank. Please enter a family name",

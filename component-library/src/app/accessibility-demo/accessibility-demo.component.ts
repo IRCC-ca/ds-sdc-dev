@@ -3,8 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { requiredTrueValidator } from '@app/@shared/shared-functions/shared-validators';
+import { AccessbilityDemoFormStateService } from './accessbility-demo-form-state.service';
+import { Subscription } from 'rxjs';
+
 
 
 export interface ICityOfBirth {
@@ -41,39 +44,11 @@ export class AccessibilityDemoComponent implements OnInit {
   nextClicked = false;
   showErrorBanner = false;
 
+  routerSub?: Subscription;
+
+  progressIndicatorSub?: Subscription;
   progressIndicatorConfig: IProgressIndicatorConfig = {
-    id: 'progress_indicator',
-    selected: 1,
-    steps: [
-      {
-        title: 'ACC_DEMO.STEPPER.STEP1',
-        tagConfig: {
-          id: 'progress_indicator_step1',
-          type: 'success'
-        }
-      },
-      {
-        title: 'ACC_DEMO.STEPPER.STEP2',
-        tagConfig: {
-          id: 'progress_indicator_step2',
-          type: 'primary'
-        }
-      },
-      {
-        title: 'ACC_DEMO.STEPPER.STEP3',
-        tagConfig: {
-          id: 'progress_indicator_step3',
-          type: 'locked'
-        }
-      },
-      {
-        title: 'ACC_DEMO.STEPPER.STEP4',
-        tagConfig: {
-          id: 'progress_indicator_step4',
-          type: 'locked'
-        }
-      },
-    ]
+    id: '',
   }
 
   errorBannerConfig: IBannerConfig = {
@@ -220,10 +195,20 @@ export class AccessibilityDemoComponent implements OnInit {
   constructor(private translate: TranslateService,
     private altLang: LanguageSwitchService,
     private languageSwitchButton: LanguageSwitchButtonService,
-    private router: Router
+    private router: Router,
+    private progressIndicator: AccessbilityDemoFormStateService
   ) { }
 
   ngOnInit() {
+    //if the page has moved to this one via a back or forward browser button, this detects the move and updates the page.
+    this.routerSub = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        let tempConfig = this.progressIndicatorConfig;
+        tempConfig.selected = 1;
+        this.progressIndicator.updateProgressIndicator(tempConfig);
+      }
+    });
+    
     this.altLang.getAltLangLink().subscribe((altLang: string) => {
       this.altPathKey = altLang;
       this.setAltLangURL();
@@ -231,6 +216,10 @@ export class AccessibilityDemoComponent implements OnInit {
     });
     this.languageSwitchButton.languageClickObs$.subscribe(response => {
       if (response) this.changeLang(); //Has to ignore the first response. 
+    });
+
+    this.progressIndicatorSub = this.progressIndicator.progressIndicatorObs$.subscribe(response => {
+      this.progressIndicatorConfig = response;
     });
 
     //Initial pop of cities is all values
@@ -274,7 +263,6 @@ export class AccessibilityDemoComponent implements OnInit {
     let header = document.getElementById("outer_header_stepper_container");
 
     function navbarScroll() {
-      console.log(document.documentElement?.scrollTop);
       (document.documentElement?.scrollTop > 0) ? header?.classList.add('shadow') : header?.classList.remove('shadow');
     }
   }
@@ -313,6 +301,14 @@ export class AccessibilityDemoComponent implements OnInit {
         this.updateProgressIndicator();
         console.log(this.form.valid, this.showErrorBanner);
       });
+    } else {
+      let tempConfig = this.progressIndicatorConfig;
+      if (tempConfig.steps) {
+        tempConfig.steps[1].tagConfig.type = 'success';
+        tempConfig.steps[2].tagConfig.type = 'primary';
+      }
+      this.progressIndicator.updateProgressIndicator(tempConfig);
+      this.router.navigateByUrl(this.getNextButtonLink);
     } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
   }
 
@@ -321,20 +317,61 @@ export class AccessibilityDemoComponent implements OnInit {
    */
   updateProgressIndicator() {
     if (this.progressIndicatorConfig.steps && ((this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked') || (this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted'))) {
-      if (this.form.valid) {
-        this.progressIndicatorConfig.steps[2].tagConfig.type = 'notStarted';
-      } else {
-        this.progressIndicatorConfig.steps[2].tagConfig.type = 'locked';
+      let tempConfig = this.progressIndicatorConfig;
+      if (tempConfig.steps) {
+        if (this.form.valid) {
+          tempConfig.steps[2].tagConfig.type = 'notStarted';
+          this.progressIndicator.updateProgressIndicator(tempConfig);
+        } else {
+          tempConfig.steps[2].tagConfig.type = 'locked';
+          this.progressIndicator.updateProgressIndicator(tempConfig);
+        }
       }
     }
   }
 
   progressTabButtonEvent(event: Event) {
-    if (this.progressIndicatorConfig.selected) {
-      if (event.toString() !== this.progressIndicatorConfig.selected.toString()) {
-        console.log('MOVE')
+    const eventInt = parseInt(event.toString());
+    if (this.progressIndicatorConfig.selected !== undefined) {
+      if (eventInt !== this.progressIndicatorConfig.selected) {
+        switch (eventInt) {
+          case 0:
+            if (this.router.url !== this.getPreviousButtonLink) this.router.navigateByUrl(this.getPreviousButtonLink);
+            break;
+
+          case 1:
+            console.log(this.router.url, this.getMainPageLink);
+            // if (this.router.url !== this.getMainPageLink) this.router.navigateByUrl(this.getMainPageLink);
+            break;
+
+          case 2: 
+          if (this.router.url !== this.getNextButtonLink) this.router.navigateByUrl(this.getNextButtonLink);
+          break;
+        }
       }
     }
+  }
+
+
+  /**
+   * Getter for the previous page button
+   */
+  get getPreviousButtonLink() {
+    return (this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoPrevious'));
+  }
+
+  get getNextButtonLink() {
+    return (this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoNext'));
+  }
+
+  /**
+   * Getter for the main page link
+   */
+  get getMainPageLink() {
+    const curLang = this.translate.currentLang;
+    this.translate.use((curLang === 'en-US') || (curLang === 'en') ? 'en-US' : 'fr-FR');
+    const lang = ((curLang === 'en-US') || (curLang === 'en') ? 'en' : 'fr');
+    return ('/' + lang + '/' + this.translate.instant('ROUTES.AccessibilityDemo'));
   }
 
 
@@ -347,7 +384,7 @@ export class AccessibilityDemoComponent implements OnInit {
     const curLang = this.translate.currentLang;
     this.translate.use((curLang === 'en-US') || (curLang === 'en') ? 'fr-FR' : 'en-US');
     // Changes the html lang attribute
-    console.log((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
+    // console.log((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
     document.documentElement.lang = ((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
     // Pushes page into history to allow the use of the 'Back' button on browser
     window.history.pushState('', '', this.altLangURL);
