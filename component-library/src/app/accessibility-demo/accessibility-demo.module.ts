@@ -4,12 +4,16 @@ import { AccessibilityDemoRoutingModule } from './accessibility-demo-routing';
 import { SharedModule } from '@app/@shared';
 import { AccessibilityDemoComponent } from './accessibility-demo.component';
 import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-library';
+import { AccessibilityDemoPreviousPageComponent } from './accessibility-demo-previous-page/accessibility-demo-previous-page.component';
+import { AccessibilityDemoNextPageComponent } from './accessibility-demo-next-page/accessibility-demo-next-page.component';
 
 
 
 @NgModule({
   declarations: [
-    AccessibilityDemoComponent
+    AccessibilityDemoComponent,
+    AccessibilityDemoPreviousPageComponent,
+    AccessibilityDemoNextPageComponent
   ],
   imports: [
     CommonModule,
