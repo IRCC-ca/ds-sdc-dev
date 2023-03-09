@@ -50,6 +50,10 @@
       "hide_password_aria-label": "masquer le texte du mot de passe"
     }
   },
+
+  "TEXTAREA_COMPONENT": {
+    "characters-used-aria-label": "{{currentCharacterCount}} de {{characterLimit}} caractères utilisés"
+  },
   
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
