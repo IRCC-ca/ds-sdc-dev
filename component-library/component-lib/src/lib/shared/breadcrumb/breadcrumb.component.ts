@@ -10,7 +10,6 @@ export enum LinkType {
 }
 
 export interface IBreadcrumbConfig {
-  //TODO: Make an enum for type (i.e. HREF, RouterLink, anchor)
   id: string,
   size?: keyof typeof DSSizes,
   type: keyof typeof LinkType;
