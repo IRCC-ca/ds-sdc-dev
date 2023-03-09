@@ -1,49 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDatePickerConfig, IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
+import { IDatePickerConfig, IProgressIndicatorConfig, ISelectConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-test-page',
   templateUrl: './test-page.component.html',
-  styleUrls: ['./test-page.component.scss']
+  styleUrls: ['./test-page.component.scss'],
 })
 export class TestPageComponent implements OnInit {
   form = new FormGroup({});
 
-  datePickerConfig: IDatePickerConfig = {
-    id: 'datePicker',
-    label: 'test label',
+  selectConfig: ISelectConfig = {
+    id: 'select',
+    label: 'Select label',
+    desc: 'Select description',
+    hint: 'Select hint',
     formGroup: this.form,
-    hint: 'Test hint',
-    required: true,
-    desc: 'Test description',
-  }
-
+    options: [
+      {
+        text: 'text 1',
+      },
+      {
+        text: 'text 2',
+      },
+    ],
+  };
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress-indicator',
     steps: [
       {
         tagConfig: { id: 'tags', type: 'primary' },
-        title: 'Step title'
+        title: 'Step title',
       },
       {
         tagConfig: { id: 'tags1', type: 'success' },
-        title: 'Step title1'
+        title: 'Step title1',
       },
       {
         tagConfig: { id: 'tags2', type: 'locked' },
-        title: 'Step title2'
+        title: 'Step title2',
       },
     ],
     // size: 'small',
     // orientation: 'vertical'
+  };
+
+  constructor(private altLang: LanguageSwitchService) {}
+
+  ngOnInit() {
+    this.form.addControl(this.selectConfig.id, new FormControl());
   }
-
-
-  constructor(private altLang: LanguageSwitchService) { }
-
-  ngOnInit() {}
 }
-
-
