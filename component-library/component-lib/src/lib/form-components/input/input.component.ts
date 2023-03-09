@@ -54,6 +54,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
   disabled = false;
   focusState = false;
+  required = false;
   showPassword?: boolean;
   typeControl: keyof typeof InputTypes = InputTypes.text;
   ariaText = 'Text Input';
@@ -86,6 +87,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
+    }
+
+    if(!this.config.required) {
+      this.config.required = this.required
     }
 
     if (!this.config.type) {

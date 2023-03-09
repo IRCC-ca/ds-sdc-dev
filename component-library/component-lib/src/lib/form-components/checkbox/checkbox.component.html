@@ -4,8 +4,11 @@
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
       <div class="checkbox">
         <input id="{{config.id}}" class="check"
+          type="checkbox"
           [ngClass]="{ mixed: config.mixed, focus: !config.disableFocus, error: getErrorState()}"
-          [attr.size]="config.size" type="checkbox" [formControlName]="config.id" />
+          [attr.size]="config.size" type="checkbox" [formControlName]="config.id"
+          (change)="getCheckedValue($event)"
+          [attr.aria-checked]="isChecked" />
         <span class="checkmark"></span>
       </div>
       <label class="label" for="{{config.id}}" [attr.aria-label]="

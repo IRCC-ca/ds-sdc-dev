@@ -51,13 +51,13 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() formGroup = this.formGroupEmpty;
   @Input() id = '';
 
+  isChecked = false;
   isDisabled = false;
   errorIds: IErrorIDs[] = [];
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
   }
-
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
   onTouch = () => {};
@@ -124,5 +124,9 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   getErrorState(): boolean {
     return (this.config.formGroup.get(this.config.id)?.touched &&
       this.config.formGroup.get(this.config.id)?.invalid) ?? false;
+  }
+
+  getCheckedValue(event: Event) {
+    this.isChecked= (<HTMLInputElement>event.target).checked;
   }
 }

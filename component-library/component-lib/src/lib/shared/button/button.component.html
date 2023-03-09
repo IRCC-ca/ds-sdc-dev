@@ -6,7 +6,8 @@
     [disabled]="config.disabled"
     [ngClass]="config.iconDirection"
     (click)="clickEvent(config.id)"
-
+    role="button"
+    [type]="config.type"
 >
     <span class="icon" *ngIf="config.iconDirection === 'left'">
         <lib-icon [class]="config.icon"></lib-icon>

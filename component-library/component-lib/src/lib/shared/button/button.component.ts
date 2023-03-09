@@ -16,11 +16,11 @@ export enum ButtonColor {
     CTA = 'CTA'
 };
 
-// export enum ButtonType {
-//     button = 'button',
-//     submit = 'submit',
-//     reset = 'reset'
-// }
+export enum ButtonType {
+    button = 'button',
+    submit = 'submit',
+    reset = 'reset'
+}
 
 export enum ButtonIconDirection {
     left = 'left',
@@ -35,6 +35,7 @@ export interface IButtonConfig {
     ariaLabel?: string;
     disabled?: boolean;
     icon?: string;
+    type?: keyof typeof ButtonType;
     iconDirection?: keyof typeof ButtonIconDirection;
 };
 
@@ -50,7 +51,7 @@ export class ButtonComponent {
     @Input() category?: keyof typeof ButtonCategories;
     @Input() size?: keyof typeof ButtonSize;
     @Input() color?: keyof typeof ButtonColor;
-    // @Input() type?: 'button' | 'submit' | 'reset';
+    @Input() type?: keyof typeof ButtonType;
     @Input() ariaLabel?: string;
     @Input() disabled?: boolean;
     @Input() icon?: string;
@@ -61,6 +62,7 @@ export class ButtonComponent {
     ngOnInit() {
         (this.id !== '') ? this.config.id = this.id : undefined;
         (this.category === undefined) ? undefined : this.config.category = this.category;
+        (this.type === undefined) ? undefined : this.config.type = this.type;
         (this.size === undefined) ? undefined : this.config.size = this.size;
         (this.color === undefined) ? undefined : this.config.color = this.color;
         (this.ariaLabel !== undefined) ? this.config.ariaLabel = this.ariaLabel : undefined;

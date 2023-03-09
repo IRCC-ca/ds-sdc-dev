@@ -8,8 +8,9 @@
           TODO: Should probably change the (keyup) to (onblur) -->
           <input name="{{config.id}}" class="input-field" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0"
             [ngClass]="(config.type === 'password') ? 'input-password-field' : 'input-text-field'" [type]="typeControl"
-            [id]="config.id" [formControlName]="config.id" [attr.aria-label]="ariaText + ' ' + (config.placeholder || '' | translate)
-          "/>
+            [id]="config.id" [formControlName]="config.id" [attr.aria-label]="ariaText + ' ' + (config.placeholder || '' | translate)"
+            [attr.aria-required]="config.required ?? !config.required "
+          />
 
           <button *ngIf="config.type === 'password'" role="button" category="plain" tabindex="0"
             class="passwordIcon" (click)="hideShow()" [disabled]="disabled" aria-label="Password eye Icon"

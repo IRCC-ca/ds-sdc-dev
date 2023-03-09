@@ -38,9 +38,9 @@
             <lib-checkbox [config]="declarationCheckboxConfig"></lib-checkbox>
         </div>
         <div class="buttons_container">
-            <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'">
+            <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'" [type]="'button'">
                 {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
-            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()">
+            <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()"[type]="'submit'">
                 {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>
         </div>
     </div>
