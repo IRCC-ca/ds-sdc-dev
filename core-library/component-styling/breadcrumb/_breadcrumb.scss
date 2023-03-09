@@ -91,6 +91,7 @@
     &:focus-visible {
       @include focus.layout();
     }
+
     &.breadcrumb-item {
       padding: 4px 8px;
     }

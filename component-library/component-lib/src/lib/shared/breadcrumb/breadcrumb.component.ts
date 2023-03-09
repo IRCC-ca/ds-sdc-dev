@@ -7,7 +7,6 @@ import { StandAloneFunctions } from "../../../shared/functions/stand-alone.funct
 export enum LinkType {
   href = 'href',
   routerLink = 'routerLink',
-  anchor = 'anchor'
 }
 
 export interface IBreadcrumbConfig {
@@ -37,11 +36,7 @@ export class BreadcrumbComponent implements OnInit {
   constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
 
   ngOnInit() {
-    if (this.config?.type !== 'anchor') {
-      this.createLinks();
-    } else {
-      this.createAnchor();
-    }
+    this.createLinks();
   }
 
   /**
@@ -58,27 +53,6 @@ export class BreadcrumbComponent implements OnInit {
         } else if (link.linkKey) {
           link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/'
           prev = link[this.config.type]
-        }
-      })
-    }
-  }
-
-  /**
-   * Create mid-level navigations then anchor link at last
-   */
-  createAnchor() {
-    this.baseUrl = this.standalone.getBaseUrl(this.baseUrl, this.config.baseUrlKey);
-    if (this.config.links && this.config.links.length > 1) {
-      let prev: string | undefined;
-      this.config?.links.forEach((link, i) => {
-        if (i === 0) {
-          link.href = this.baseUrl;
-          prev = link.href
-        } else if (link.linkKey) {
-          link.href = prev + this.translate.instant(link.linkKey) + '/'
-          prev = link.href
-        } else if (link.anchor) {
-          link.anchor = this.translate.instant(link.anchor)
         }
       })
     }

@@ -4,6 +4,3 @@
 <ng-container *ngIf="config?.routerLink">
   <a type="button" [routerLink]="config?.routerLink">{{config.text | translate}}</a>
 </ng-container>
-<ng-container *ngIf="config?.anchor">
-  <lib-button category='plain' (click)="anchorClicked(config?.anchor)">{{config.text | translate}}</lib-button>
-</ng-container>
