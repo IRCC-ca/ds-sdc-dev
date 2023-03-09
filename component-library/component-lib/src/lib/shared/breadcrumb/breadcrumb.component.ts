@@ -39,6 +39,8 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit() {
     if (this.config?.type !== 'anchor') {
       this.createLinks();
+    } else {
+      this.createAnchor();
     }
   }
 
@@ -61,4 +63,24 @@ export class BreadcrumbComponent implements OnInit {
     }
   }
 
+  /**
+   * Create mid-level navigations then anchor link at last
+   */
+  createAnchor() {
+    this.baseUrl = this.standalone.getBaseUrl(this.baseUrl, this.config.baseUrlKey);
+    if (this.config.links && this.config.links.length > 1) {
+      let prev: string | undefined;
+      this.config?.links.forEach((link, i) => {
+        if (i === 0) {
+          link.href = this.baseUrl;
+          prev = link.href
+        } else if (link.linkKey) {
+          link.href = prev + this.translate.instant(link.linkKey) + '/'
+          prev = link.href
+        } else if (link.anchor) {
+          link.anchor = this.translate.instant(link.anchor)
+        }
+      })
+    }
+  }
 }
