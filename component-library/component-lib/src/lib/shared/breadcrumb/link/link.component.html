@@ -1,9 +1,9 @@
 <ng-container *ngIf="config?.href">
-  <a [href]="config?.href">{{config?.text}}</a>
+  <a [href]="config?.href">{{config.text | translate}}</a>
 </ng-container>
 <ng-container *ngIf="config?.routerLink">
-  <a type="button" [routerLink]="config?.routerLink">{{config?.text}}</a>
+  <a type="button" [routerLink]="config?.routerLink">{{config.text | translate}}</a>
 </ng-container>
 <ng-container *ngIf="config?.anchor">
-  <lib-button category='plain' (click)="anchorClicked(config?.anchor)">{{config?.text}}</lib-button>
+  <lib-button category='plain' (click)="anchorClicked(config?.anchor)">{{config.text | translate}}</lib-button>
 </ng-container>
