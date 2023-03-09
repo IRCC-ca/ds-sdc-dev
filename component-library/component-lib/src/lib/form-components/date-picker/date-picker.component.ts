@@ -21,8 +21,16 @@ export const DATE_PICKER_MONTH_CONTROL_ID_EXTENSION = '_monthControl';
 export const DATE_PICKER_YEAR_CONTROL_ID_EXTENSION = '_yearControl';
 
 export const DATE_PICKER_LABELS_EN = ["Day", "Month", "Year"];
-export const DATE_PICKER_LABELS_FR = ["Jour", "Moi", "Année"];
+export const DATE_PICKER_LABELS_FR = ["Jour", "Mois", "Année"];
 
+export const DATE_PICKER_PLACEHOLDER_YEAR_EN = "YYYY"
+export const DATE_PICKER_PLACEHOLDER_YEAR_FR = "Année"
+
+export const DATE_PICKER_PLACEHOLDER_MONTH_EN = "Month"
+export const DATE_PICKER_PLACEHOLDER_MONTH_FR = "Mois"
+
+export const DATE_PICKER_PLACEHOLDER_DAY_EN = "DD"
+export const DATE_PICKER_PLACEHOLDER_DAY_FR = "Jour"
 
 
 
@@ -94,21 +102,21 @@ export class DatePickerComponent implements OnInit {
       formGroup: this.config.formGroup,
       label: '',
       options: [],
-      size: 'large',
+      size: 'large'
     },
-    month : {
+    month: {
       id: '',
       formGroup: this.config.formGroup,
       label: '',
       options: [],
-      size: 'large',
+      size: 'large'
     },
-    year : {
+    year: {
       id: '',
       formGroup: this.config.formGroup,
       label: '',
       options: [],
-      size: 'large',
+      size: 'large'
     },
   }
 
@@ -116,7 +124,7 @@ export class DatePickerComponent implements OnInit {
   private currentYear = new Date().getFullYear();
 
   constructor(private translate: TranslateService,
-    public standAloneFunctions: StandAloneFunctions) {}
+    public standAloneFunctions: StandAloneFunctions) { }
 
   ngOnInit() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -163,7 +171,7 @@ export class DatePickerComponent implements OnInit {
       this.setLabelLanguage();
     });
     for (let i = 1900; i <= this.currentYear; i++) {
-      this.dropDownConfigs.year.options?.push({text: i.toString()});
+      this.dropDownConfigs.year.options?.push({ text: i.toString() });
     }
 
     // Populate the days array based on the selected month and year
@@ -178,7 +186,7 @@ export class DatePickerComponent implements OnInit {
     });
     if (this.dropDownConfigs.day.options?.length === 0) {
       for (let i = 1; i <= 31; i++) {
-        this.dropDownConfigs.day.options?.push({text: i.toString()});
+        this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
     }
   }
@@ -204,9 +212,9 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.month.options = [];
     (this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US') ?
       this.months = DATE_PICKER_MONTHS_EN : this.months = DATE_PICKER_MONTHS_FR;
-      this.months.forEach((month: string, index: number) => {
-        this.dropDownConfigs.month.options?.push({text: month, value: DATE_PICKER_MONTHS_EN[index]});
-      });
+    this.months.forEach((month: string, index: number) => {
+      this.dropDownConfigs.month.options?.push({ text: month, value: DATE_PICKER_MONTHS_EN[index] });
+    });
   }
 
   /**
@@ -218,10 +226,19 @@ export class DatePickerComponent implements OnInit {
       this.dropDownConfigs.day.label = DATE_PICKER_LABELS_EN[0];
       this.dropDownConfigs.month.label = DATE_PICKER_LABELS_EN[1];
       this.dropDownConfigs.year.label = DATE_PICKER_LABELS_EN[2];
+      
+      this.dropDownConfigs.day.placeholder = DATE_PICKER_PLACEHOLDER_DAY_EN;
+      this.dropDownConfigs.month.placeholder = DATE_PICKER_PLACEHOLDER_MONTH_EN;
+      this.dropDownConfigs.year.placeholder = DATE_PICKER_PLACEHOLDER_YEAR_EN;
+
     } else {
       this.dropDownConfigs.day.label = DATE_PICKER_LABELS_FR[0];
       this.dropDownConfigs.month.label = DATE_PICKER_LABELS_FR[1];
       this.dropDownConfigs.year.label = DATE_PICKER_LABELS_FR[2];
+
+      this.dropDownConfigs.day.placeholder = DATE_PICKER_PLACEHOLDER_DAY_FR;
+      this.dropDownConfigs.month.placeholder = DATE_PICKER_PLACEHOLDER_MONTH_FR;
+      this.dropDownConfigs.year.placeholder = DATE_PICKER_PLACEHOLDER_YEAR_FR;
     }
     console.log(this.dropDownConfigs);
 
@@ -241,7 +258,7 @@ export class DatePickerComponent implements OnInit {
     }
     this.config.formGroup.get((this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION))?.setValue('');
     this.days.forEach(day => {
-      this.dropDownConfigs.day.options?.push({text: day.toString()});
+      this.dropDownConfigs.day.options?.push({ text: day.toString() });
     });
   }
 
