@@ -4,6 +4,7 @@ import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputCompo
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { Router } from '@angular/router';
+import { requiredTrueValidator } from '@app/@shared/shared-functions/shared-validators';
 
 
 export interface ICityOfBirth {
@@ -92,7 +93,7 @@ export class AccessibilityDemoComponent implements OnInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED'
+        errorLOV: 'ACC_DEMO.ERRORS.FAMILY_NAME_REQUIRED'
       }
     ]
   };
@@ -143,7 +144,7 @@ export class AccessibilityDemoComponent implements OnInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED'
+        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
       }
     ]
   };
@@ -178,7 +179,7 @@ export class AccessibilityDemoComponent implements OnInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED'
+        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
       }
     ]
   };
@@ -193,7 +194,7 @@ export class AccessibilityDemoComponent implements OnInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED'
+        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
       }
     ]
   };
@@ -202,11 +203,16 @@ export class AccessibilityDemoComponent implements OnInit {
     id: 'declaration_checkbox',
     formGroup: this.form,
     required: true,
-    inlineLabel: 'ACC_DEMO.PERSONAL_INFO.DECLARATION',
+    label: 'ACC_DEMO.PERSONAL_INFO.DECLARATION.LABEL',
+    inlineLabel: 'ACC_DEMO.PERSONAL_INFO.DECLARATION.INLINE_LABEL',
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED'
+        errorLOV: 'ACC_DEMO.ERRORS.DECLARATION_REQUIRED'
+      },
+      {
+        key: 'requiredTrue',
+        errorLOV: 'ACC_DEMO.ERRORS.DECLARATION_REQUIRED'
       }
     ]
   }
@@ -238,7 +244,7 @@ export class AccessibilityDemoComponent implements OnInit {
     this.form.addControl((this.dateOfBirthDatePickerConfig.id + '_yearControl'), new FormControl('', Validators.required));
     this.form.addControl(this.countryOfBirthSelectConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.cityOfBirthSelectConfig.id, new FormControl('', Validators.required));
-    this.form.addControl(this.declarationCheckboxConfig.id, new FormControl('', Validators.required));
+    this.form.addControl(this.declarationCheckboxConfig.id, new FormControl('', [requiredTrueValidator()]));
 
     //Watch for changes in the country of birth select:
     this.form.get(this.countryOfBirthSelectConfig.id)?.valueChanges.subscribe(change => {
@@ -259,26 +265,17 @@ export class AccessibilityDemoComponent implements OnInit {
     });
   }
 
+  /**
+   * Used to add a shadow class to the header when it's moved off the very top of the page
+   */
   ngAfterViewInit() {
-    // const header = document.getElementById("header_container")?.offsetHeight;
     window.onscroll = function () { navbarScroll() };
 
     let header = document.getElementById("outer_header_stepper_container");
 
     function navbarScroll() {
-      // console.log(header);
       console.log(document.documentElement?.scrollTop);
       (document.documentElement?.scrollTop > 0) ? header?.classList.add('shadow') : header?.classList.remove('shadow');
-      console.log(header?.classList.contains('shadow'));
-      // if (header) {
-      //   // if (document.documentElement. > 166) {
-      //     if (window.pageYOffset >= header) {
-      //       headerContainer?.classList.add("sticky")
-      //     } else {
-      //       headerContainer?.classList.remove("sticky");
-      //     }
-        // }
-      // }
     }
   }
 
