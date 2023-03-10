@@ -24,6 +24,9 @@ export interface ILabelConfig {
 export const ERROR_TEXT_STUB_EN = 'Error';
 export const ERROR_TEXT_STUB_FR = 'Erreur';
 
+export const HELP_ICON_ALT_EN = ', more information';
+export const HELP_ICON_ALT_FR = ', plus d’information';
+
 @Component({
   selector: 'lib-label',
   templateUrl: './label.component.html',
@@ -36,18 +39,28 @@ export class LabelComponent implements OnInit {
   } 
 
   errorStubText = '';
+  labelIconText = '';
 
   constructor(private translate: TranslateService,
               public standAloneFunctions: StandAloneFunctions,
               private labelButton: LabelButtonService) { }
 
   ngOnInit() {
-    (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') ? this.errorStubText = ERROR_TEXT_STUB_EN : this.errorStubText = ERROR_TEXT_STUB_FR;
-
-    this.translate.onLangChange.subscribe(() => {
-    const curLang = this.translate.currentLang;
-    (curLang === 'en' || curLang === 'en-US') ? this.errorStubText = ERROR_TEXT_STUB_EN : this.errorStubText = ERROR_TEXT_STUB_FR;
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe(change => {
+        this.setLang(change.lang);
     });
+  }
+
+  setLang(lang: string) {
+    if((lang === 'en') || (lang === 'en-US')) {
+      this.errorStubText = ERROR_TEXT_STUB_EN;
+      this.labelIconText = HELP_ICON_ALT_EN;
+      
+    } else {
+      this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.labelIconText = HELP_ICON_ALT_FR;
+    }
   }
 
   /**

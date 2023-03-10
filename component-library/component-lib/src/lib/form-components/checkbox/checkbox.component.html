@@ -2,13 +2,13 @@
   <div class="checkbox-container" [ngClass]="config.size">
     <lib-label [config]="labelConfig"></lib-label>
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
-      <div class="checkbox">
+      <div class="checkbox" [id]="config.id + ' check'">
         <input id="{{config.id}}" class="check"
           [ngClass]="{ mixed: config.mixed, focus: !config.disableFocus, error: getErrorState()}"
           [attr.size]="config.size" type="checkbox" [formControlName]="config.id" />
         <span class="checkmark"></span>
       </div>
-      <label class="label" for="{{config.id}}" [attr.aria-label]="
+      <label class="label" [for]="config.id + ' check'" [id]="config.id" [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
           ? (config.inlineLabel || '' | translate) + ' ' +
             (config.helpText || '' | translate) + ' ' +

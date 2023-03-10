@@ -1,7 +1,8 @@
 <div [class]="config.orientation" class="main-container">
   <div class="container-plus-line" *ngFor="let step of config.steps; let i = index">
-    <nav class="progress-nav">
-      <button 
+    <nav class="progress-nav" role="navigation">
+      <button
+        role="tab" 
         class="container" 
         [ngClass]="config.size" 
         category="plain"
