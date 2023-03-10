@@ -160,7 +160,8 @@
     "BUTTONS": {
       "PREVIOUS": "Previous step",
       "NEXT": "Save and continue",
-      "PREVIOUS_PAGE_NEXT": "Next"
+      "PREVIOUS_PAGE_NEXT": "Next",
+      "HAMBURGER": "Menu"
     }
   }
 }

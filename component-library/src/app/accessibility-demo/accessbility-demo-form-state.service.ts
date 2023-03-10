@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
+import { IProgressIndicatorConfig, Orientations } from 'ircc-ds-angular-component-library';
 import { BehaviorSubject } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
@@ -45,13 +44,30 @@ export class AccessbilityDemoFormStateService {
   private progressIndicatorSubj = new BehaviorSubject<IProgressIndicatorConfig>(this.progressIndicatorConfig);
   progressIndicatorObs$ = this.progressIndicatorSubj.asObservable();
 
+  /**
+   * Update the entire indicator config
+   * @param config IProgressIndicatorConfig
+   */
   updateProgressIndicator(config: IProgressIndicatorConfig) {
     this.progressIndicatorConfig = config;
     this.progressIndicatorSubj.next(this.progressIndicatorConfig);
   }
 
+  /**
+   * Update which element in the indicator is selected
+   * @param selected number - index number of element to be selected
+   */
   updateSelected(selected: number){
     this.progressIndicatorConfig.selected = selected;
+    this.progressIndicatorSubj.next(this.progressIndicatorConfig);
+  }
+
+ /**
+  * Update the indicator to be vertical or horizontal
+  * @param orientation either 'vertical' or 'horizontal'
+  */
+  updateOrientation(orientation: keyof typeof Orientations) {
+    this.progressIndicatorConfig.orientation = orientation;
     this.progressIndicatorSubj.next(this.progressIndicatorConfig);
   }
 }

@@ -2,9 +2,12 @@
     <div class="outer_header_stepper_container" id="outer_header_stepper_container">
         <div class="header_stepper_container" id="header_stepper_inner_container">
             <lib-header [id]="'header'"></lib-header>
-            <div class="stepper">
+            <div class="stepper" *ngIf="innerWidth > 980">
                 <lib-progress-indicator [config]="progressIndicatorConfig"
                     (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+            </div>
+            <div class="hamburger" *ngIf="innerWidth < 980">
+                <lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'" (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IDatePickerErrorMessages, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LabelButtonService, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
@@ -48,6 +48,9 @@ export class AccessibilityDemoComponent implements OnInit {
   showErrorBanner = false;
   showFamilyNameBanner = false;
   showSexAtBirthBanner = false;
+
+  innerWidth = 0;
+  hamburgerMenuState: boolean | undefined = undefined;
 
   routerSub?: Subscription;
   labelButtonSub?: Subscription;
@@ -104,7 +107,7 @@ export class AccessibilityDemoComponent implements OnInit {
     label: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL',
     labelIconConfig: {
       iconClass: 'fa-light fa-circle-info',
-      ariaText: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL_INFO_BUTTON_ARIA' 
+      ariaText: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL_INFO_BUTTON_ARIA'
     },
     options: [
       {
@@ -223,7 +226,16 @@ export class AccessibilityDemoComponent implements OnInit {
     private labelButton: LabelButtonService
   ) { }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    this.updateProgressBarOrientation();
+  }
+
   ngOnInit() {
+    //Set orientation of the progress bar and get initial window width
+    this.innerWidth = window.innerWidth;
+    this.updateProgressBarOrientation();
 
     //if the page has moved to this one via a back or forward browser button, this detects the move and updates the page.
     this.progressIndicator.updateSelected(1);
@@ -322,30 +334,6 @@ export class AccessibilityDemoComponent implements OnInit {
   }
 
   /**
-   * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
-   */
-  navButton() {
-    this.nextClicked = true;
-    this.form.markAllAsTouched();
-    this.updateProgressIndicator();
-    if (!this.form.valid) {
-      this.showErrorBanner = true;
-      this.form.valueChanges.subscribe(() => {
-        this.showErrorBanner = !this.form.valid;
-        this.updateProgressIndicator();
-      });
-    } else {
-      let tempConfig = this.progressIndicatorConfig;
-      if (tempConfig.steps) {
-        tempConfig.steps[1].tagConfig.type = 'success';
-        tempConfig.steps[2].tagConfig.type = 'primary';
-      }
-      this.progressIndicator.updateProgressIndicator(tempConfig);
-      this.router.navigateByUrl(this.getNextButtonLink);
-    } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
-  }
-
-  /**
    * Update the progress indicator status (unlock/lock the next element)
    */
   updateProgressIndicator() {
@@ -364,6 +352,19 @@ export class AccessibilityDemoComponent implements OnInit {
           this.progressIndicator.updateProgressIndicator(tempConfig);
         }
       }
+    }
+  }
+
+/**
+ * Update the orientation of the progress bar
+ */
+  updateProgressBarOrientation() {
+    if (this.innerWidth < 980 && this.progressIndicatorConfig.orientation === 'horizontal') {
+      this.progressIndicator.updateOrientation('vertical');
+      this.hamburgerMenuState = undefined;
+    } else if (this.innerWidth > 980 && this.progressIndicatorConfig.orientation === 'vertical') {
+      this.progressIndicator.updateOrientation('horizontal');
+      if (this.hamburgerMenuState === undefined) this.hamburgerMenuState = false;
     }
   }
 
@@ -416,6 +417,30 @@ export class AccessibilityDemoComponent implements OnInit {
   }
 
   /**
+   * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
+   */
+    navButton() {
+      this.nextClicked = true;
+      this.form.markAllAsTouched();
+      this.updateProgressIndicator();
+      if (!this.form.valid) {
+        this.showErrorBanner = true;
+        this.form.valueChanges.subscribe(() => {
+          this.showErrorBanner = !this.form.valid;
+          this.updateProgressIndicator();
+        });
+      } else {
+        let tempConfig = this.progressIndicatorConfig;
+        if (tempConfig.steps) {
+          tempConfig.steps[1].tagConfig.type = 'success';
+          tempConfig.steps[2].tagConfig.type = 'primary';
+        }
+        this.progressIndicator.updateProgressIndicator(tempConfig);
+        this.router.navigateByUrl(this.getNextButtonLink);
+      } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
+    }
+  
+  /**
    * Event handler for banner close button events
    * @param id 
    */
@@ -431,6 +456,15 @@ export class AccessibilityDemoComponent implements OnInit {
 
       default:
         break;
+    }
+  }
+
+  /**
+   * Open the hamburger menu progress indicator
+   */
+  menuHamburgerButton() {
+    if (this.hamburgerMenuState !== undefined) {
+      this.hamburgerMenuState = true;
     }
   }
 
