@@ -245,9 +245,9 @@
   }
 
   @else if $key == textarea-component {
-    @include textarea-component.create();+
+    @include textarea-component.create();
   }
-  
+
   @else if $key == breadcrumb {
     @include breadcrumb.create();
   }
