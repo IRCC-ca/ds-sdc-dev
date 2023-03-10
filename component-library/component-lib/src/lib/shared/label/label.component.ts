@@ -20,6 +20,7 @@ export interface ILabelConfig {
   hint?: string;
   required?: boolean; 
   iconButton?: ILabelIconConfig;
+  topLabel?:string;
 }
 
 export const ERROR_TEXT_STUB_EN = 'Error';
@@ -65,4 +66,9 @@ export class LabelComponent implements OnInit {
   //     return aria;
   //   } return '';
   // }
+
+  returnLabel()
+  {
+    return !this.config.topLabel ? this.config.label : this.config.topLabel;
+  }
 }

@@ -7,12 +7,12 @@
       <input type="radio" value="{{option.value || option.text}}" id="{{config.id + index}}"
         [formControlName]="config.id ?? 'formControl'" [attr.disabled]='getDisabled(index)'
         [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size">
-      <label for="{{config.id + index}}"
+      <label for="{{config.id + index}}" 
         [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'" [attr.aria-label]="
           config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-          ? (option.text || '' | translate) + ' ' +
+          ? (config.label || '' | translate) + ' ' + (option.text || '' | translate) + ' ' +
             ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
-          : (option.text || '' | translate)
+          : (config.label || '' | translate) + ' ' + (option.text || '' | translate)
         ">{{(option.text || '') | translate}}</label>
     </div>
   </div>

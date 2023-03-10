@@ -2,11 +2,11 @@
   [ngClass]="{'extra_padding' : (config.label && (!config.desc && !config.hint))}">
   <label for="{{config.parentID}}" *ngIf="config.label" class="label" [attr.aria-label]="
 config.formGroup.get(config.parentID)?.invalid && config.formGroup.get(config.parentID)?.dirty
-? (config.label || '' | translate) + ' ' +
+? (returnLabel() || '' | translate) + ' ' +
   (config.desc || '' | translate) + ' ' +
   (errorStubText + standAloneFunctions.getErrorAria(config.formGroup, config.parentID, (config.errorMessages || []))) + ' ' +
   (config.hint || '' | translate)
-: (config.label || '' | translate)  + ' ' +
+: (returnLabel() || '' | translate)  + ' ' +
   (config.desc || '' | translate) + ' ' +
   (config.hint || '' | translate)
 ">
