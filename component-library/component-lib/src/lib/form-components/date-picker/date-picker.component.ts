@@ -54,7 +54,7 @@ export const DATE_PICKER_PLACEHOLDER_MONTH_FR = 'Mois';
 export const DATE_PICKER_PLACEHOLDER_DAY_EN = 'DD';
 export const DATE_PICKER_PLACEHOLDER_DAY_FR = 'Jour';
 
-export const DATE_PICKER_UNKOWN_EN = "Unkown";
+export const DATE_PICKER_UNKOWN_EN = "Unknown";
 export const DATE_PICKER_UNKOWN_FR = "Inconnu"
 
 export interface IDatePickerConfig {
