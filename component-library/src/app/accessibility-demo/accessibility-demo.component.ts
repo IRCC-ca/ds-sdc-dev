@@ -72,7 +72,7 @@ export class AccessibilityDemoComponent implements OnInit {
     label: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.LABEL',
     desc: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.DESC',
     labelIconConfig: {
-      iconClass: 'fa-regular fa-circle-info',
+      iconClass: 'fa-light fa-circle-info',
       ariaText: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.LABEL_INFO_BUTTON_ARIA'
     },
     errorMessages: [
@@ -103,7 +103,7 @@ export class AccessibilityDemoComponent implements OnInit {
     required: true,
     label: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL',
     labelIconConfig: {
-      iconClass: 'fa-regular fa-circle-info',
+      iconClass: 'fa-light fa-circle-info',
       ariaText: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL_INFO_BUTTON_ARIA' 
     },
     options: [
