@@ -99,6 +99,20 @@
             font-family: 'Inter';
             text-decoration: underline;
             text-underline-offset: 4px; //Adjust space between line & text
+            // Button should act like a text-link
+            @include device.if-hover {
+                color: var(--link-text-hover);
+                background-color: transparent;
+            } &:focus {
+                box-shadow: none;
+                outline-offset: 4px;
+            } &:active {
+                color: var(--link-text-active);
+                background-color: transparent;
+            } &:visited {
+                color: var(--link-text-visited);
+            }
+
             @include device.in-phone-layout {
                 padding-right: 16px;
                 margin-right: 0;
