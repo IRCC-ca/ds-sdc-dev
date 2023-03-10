@@ -7,7 +7,23 @@
                     (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
             </div>
             <div class="hamburger" *ngIf="innerWidth < 980">
-                <lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'" (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
+                <lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'"
+                    (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
+            </div>
+            <div class="modal_container" *ngIf="hamburgerMenuState">
+                <dialog id="progress_dialog" class="dialog" open>
+                    <div class="progress_dialog_content">
+                        <div class="modal_header">
+                            <h5>{{'ACC_DEMO.MODAL_TITLE' | translate}}</h5>
+                            <lib-icon-button [config]="hamburgerDialogXButtonConfig"
+                                (click)="menuHamburgerButton()"></lib-icon-button>
+                        </div>
+                        <div class="progress_container">
+                            <lib-progress-indicator [config]="progressIndicatorConfig"
+                                (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+                        </div>
+                    </div>
+                </dialog>
             </div>
         </div>
     </div>
@@ -23,7 +39,8 @@
             <div class="family_name_container">
                 <lib-input [config]="familyNameInputConfig"></lib-input>
                 <div class="banner_container" *ngIf="showFamilyNameBanner">
-                    <lib-banner [config]="familyNameInputBannerConfig" (btnEvent)="bannerCloseHandler($event)"></lib-banner>
+                    <lib-banner [config]="familyNameInputBannerConfig"
+                        (btnEvent)="bannerCloseHandler($event)"></lib-banner>
                 </div>
             </div>
             <div class="given_name_container">
@@ -32,7 +49,8 @@
             <div class="sex_at_birth_container">
                 <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
                 <div class="banner_container" *ngIf="showSexAtBirthBanner">
-                    <lib-banner [config]="sexAtBirthRadioBannerConfig" (btnEvent)="bannerCloseHandler($event)"></lib-banner>
+                    <lib-banner [config]="sexAtBirthRadioBannerConfig"
+                        (btnEvent)="bannerCloseHandler($event)"></lib-banner>
                 </div>
             </div>
             <div class="date_of_birth_container">
@@ -48,7 +66,8 @@
                 <lib-checkbox [config]="declarationCheckboxConfig"></lib-checkbox>
             </div>
             <div class="buttons_container">
-                <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'" [routerLink]="getPreviousButtonLink">
+                <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'"
+                    [routerLink]="getPreviousButtonLink">
                     {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
                 <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()">
                     {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>

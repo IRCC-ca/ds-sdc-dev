@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IDatePickerErrorMessages, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LabelButtonService, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IDatePickerErrorMessages, IIconButtonComponentConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LabelButtonService, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -217,6 +217,15 @@ export class AccessibilityDemoComponent implements OnInit {
     ],
   };
 
+  hamburgerDialogXButtonConfig: IIconButtonComponentConfig = {
+    id: 'hamburger_dialog_x_button',
+    category: 'custom',
+    size: 'large',
+    icon: {
+      class: 'fa-regular fa-x'
+    }
+  }
+
   constructor(
     private translate: TranslateService,
     private altLang: LanguageSwitchService,
@@ -359,12 +368,12 @@ export class AccessibilityDemoComponent implements OnInit {
  * Update the orientation of the progress bar
  */
   updateProgressBarOrientation() {
-    if (this.innerWidth < 980 && this.progressIndicatorConfig.orientation === 'horizontal') {
+    if (this.innerWidth < 980 && ((this.progressIndicatorConfig.orientation === 'horizontal') || (this.progressIndicatorConfig.orientation === undefined))) {
       this.progressIndicator.updateOrientation('vertical');
-      this.hamburgerMenuState = undefined;
-    } else if (this.innerWidth > 980 && this.progressIndicatorConfig.orientation === 'vertical') {
+      if (this.hamburgerMenuState === undefined) { this.hamburgerMenuState = false; }
+    } else if (this.innerWidth > 980 && ((this.progressIndicatorConfig.orientation === 'vertical') || (this.progressIndicatorConfig.orientation === undefined))) {
       this.progressIndicator.updateOrientation('horizontal');
-      if (this.hamburgerMenuState === undefined) this.hamburgerMenuState = false;
+      this.hamburgerMenuState = undefined;
     }
   }
 
@@ -463,8 +472,11 @@ export class AccessibilityDemoComponent implements OnInit {
    * Open the hamburger menu progress indicator
    */
   menuHamburgerButton() {
-    if (this.hamburgerMenuState !== undefined) {
+    console.log(this.hamburgerMenuState)
+    if (this.hamburgerMenuState !== undefined && !this.hamburgerMenuState) {
       this.hamburgerMenuState = true;
+    } else {
+      this.hamburgerMenuState = false;
     }
   }
 
