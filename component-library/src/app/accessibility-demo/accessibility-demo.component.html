@@ -19,8 +19,8 @@
             </div>
             <div class="family_name_container">
                 <lib-input [config]="familyNameInputConfig"></lib-input>
-                <div class="banner_container">
-                    <lib-banner [config]="familyNameInputBannerConfig"></lib-banner>
+                <div class="banner_container" *ngIf="showFamilyNameBanner">
+                    <lib-banner [config]="familyNameInputBannerConfig" (btnEvent)="bannerCloseHandler($event)"></lib-banner>
                 </div>
             </div>
             <div class="given_name_container">
@@ -28,6 +28,9 @@
             </div>
             <div class="sex_at_birth_container">
                 <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
+                <div class="banner_container" *ngIf="showSexAtBirthBanner">
+                    <lib-banner [config]="sexAtBirthRadioBannerConfig" (btnEvent)="bannerCloseHandler($event)"></lib-banner>
+                </div>
             </div>
             <div class="date_of_birth_container">
                 <lib-date-picker [config]="dateOfBirthDatePickerConfig"></lib-date-picker>

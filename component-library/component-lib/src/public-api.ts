@@ -48,4 +48,5 @@ export * from './lib/shared/tabs/tabs.component';
 export * from './lib/shared/label/label.component';
 export * from './lib/shared/progress-tags/progress-tags.component'
 export * from './lib/shared/progress-indicator/progress-indicator.component';
-export * from './lib/shared/dropdown/drop-down.component'
+export * from './lib/shared/dropdown/drop-down.component';
+export * from './lib/shared/label/label-button.service';
