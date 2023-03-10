@@ -15,6 +15,12 @@
             [type]="typeControl"
             [id]="config.id"
             [formControlName]="config.id"
+            [attr.aria-label]="config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+          ? (config.hint || '' | translate) + ' ' +
+            (config.desc || '' | translate) + ' ' +
+            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
+          :
+            (config.label || '' | translate)"
           />
 
           <button
