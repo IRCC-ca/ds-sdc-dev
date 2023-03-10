@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormControl, FormGroup } from "@angular/forms";
-import {ICheckBoxComponentConfig, IInputComponentConfig} from 'ircc-ds-angular-component-library';
+import { IBreadcrumbConfig, ICheckBoxComponentConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
 import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/auto-tester/auto-tester.component";
 
 @Component({
@@ -12,6 +12,7 @@ import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/a
 export class MichaelComponent implements OnInit {
 
   form_0: FormGroup = new FormGroup({});
+  form_1: FormGroup = new FormGroup({});
   CHECKBOX_ID = 'qa_test_checkbox';
   qaCheckboxConfig : IInputComponentConfig = {
     id: this.CHECKBOX_ID,
@@ -185,6 +186,66 @@ export class MichaelComponent implements OnInit {
     formGroup: this.form,
     testFields: this.testerInputConfig
   }
+  breadCrumbConfig: IBreadcrumbConfig = {
+    id: "breadcrumb0",
+    size: 'large',
+    type: 'routerLink',
+    baseUrlKey: 'ROUTES.LandingPage',
+    links: [
+      {
+        text: 'Home',
+      },
+      {
+        text: 'QA.header',
+        linkKey: 'ROUTES.QATesting'
+      },
+      {
+        text: 'QA.michael',
+        linkKey: 'ROUTES.michael'
+      },
+      {
+        text: 'Child Page Title',
+      }
+    ],
+  };
+
+  testerBreadcrumbConfig: IAutoTestConfigObject = {
+    selects: [
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form_1,
+        options: [
+          {
+            text: 'small'
+          },
+          {
+            text: 'large'
+          }
+        ]
+      },
+      {
+        id: 'type',
+        label: 'Type',
+        formGroup: this.form_1,
+        options: [
+          {
+            text: 'href'
+          },
+          {
+            text: 'routerLink'
+          }
+        ]
+      },
+    ]
+  };
+
+  testBreadCrumbConfig: IAutoTestComponentConfig = {
+    id: 'michael_breadcrumb_tester',
+    formGroup: this.form_1,
+    testFields: this.testerBreadcrumbConfig,
+  };
+
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
@@ -261,6 +322,26 @@ export class MichaelComponent implements OnInit {
       'inlineLabel': 'Test inline label',
       'desc': 'Description line of text',
       'helpText': 'Test help text'
+    });
+
+    // Auto tester component configs - Breadcrumb
+    this.testerBreadcrumbConfig.selects?.forEach(i => {
+      this.form_1.addControl(i.id, new FormControl());
+    });
+    this.form_1.addControl(this.breadCrumbConfig.id, new FormControl());
+    this.form_1.valueChanges.subscribe(x => {
+      let updatedConfig: IBreadcrumbConfig = {...this.breadCrumbConfig};
+      for(let param in x){
+        if (x[param] === null) continue;
+        updatedConfig = {...updatedConfig, [param] : x[param]}
+        // console.log('updatedConfig: ', updatedConfig);
+
+        this.breadCrumbConfig = updatedConfig;
+      }
+    })
+    this.form_1.patchValue({
+      'size': 'large',
+      'type': 'routerLink'
     });
   }
 

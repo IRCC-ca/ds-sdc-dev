@@ -75,4 +75,31 @@ export class StandAloneFunctions {
     wasTouched(formGroup: FormGroup, id: string) {
         formGroup.get(id)?.markAsTouched();
       }
+
+  /**
+   * Get the current base url.
+   * @param baseUrl
+   * @param baseUrlKey Translation key of base url
+   */
+  getBaseUrl(baseUrl: string = '', baseUrlKey?: string): string {
+    const curLang = this.translate.currentLang;
+    const langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
+    let i: string | string[] = window.location.href.slice(window.location.href.indexOf(langKey), window.location.href.length);
+    i = i.split('/');
+
+    let index = 0;
+    for (const j of i) {
+      if (j === this.translate.instant(baseUrlKey ?? '')) {
+        baseUrl += ('/' + j);
+        // Should halt when find the base url segment
+        break;
+      } else if (index !== (i.length - 1)) {
+        baseUrl += ('/' + j);
+        index += 1;
+      }
+    }
+    if (baseUrl[baseUrl.length] !== '/') baseUrl += '/';
+
+    return baseUrl;
+  }
 }

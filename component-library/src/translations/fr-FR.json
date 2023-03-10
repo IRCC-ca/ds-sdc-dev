@@ -60,7 +60,9 @@
   },
 
   "QA": {
-    "header": "Page de AQ"
+    "header": "Page de AQ",
+    "michael": "Michael",
+    "michael-input": "saisir"
   },
 
   "ERROR": {

@@ -9,7 +9,6 @@ export interface IStepConfig {
 }
 export interface IProgressIndicatorConfig {
   id: string,
-  formGroup: FormGroup;
   size?: keyof typeof DSSizes,
   orientation?: keyof typeof Orientations,
   steps?: IStepConfig[];
@@ -28,7 +27,6 @@ export class ProgressIndicatorComponent implements OnInit {
   stepIDs: any = [];
   @Input() config: IProgressIndicatorConfig = {
     id: '',
-    formGroup: new FormGroup({}),
     steps: [{tagConfig: {id: ''}}],
     orientation: 'horizontal'
   };

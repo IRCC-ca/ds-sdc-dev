@@ -58,7 +58,9 @@
   },
 
   "QA": {
-    "header": "QA Landing Page"
+    "header": "QA Landing Page",
+    "michael": "Michael",
+    "michael-input": "input"
   },
 
   "ERROR": {

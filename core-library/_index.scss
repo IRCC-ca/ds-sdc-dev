@@ -21,6 +21,7 @@
 @use "./component-styling/checkbox/checkbox" as checkbox-component;
 @use "./component-styling/input-component/input-component";
 @use "./component-styling/banner/banner";
+@use "./component-styling/breadcrumb/breadcrumb";
 @use "./component-styling/radio/radio" as radio-component;
 @use "./component-styling/icon-button/icon-button";
 @use "./component-styling/header/header" as header-component;
@@ -100,6 +101,7 @@
     @include element(tags-component);
     @include element(select-component);
     @include element(progressIndicator-component);
+    @include element(breadcrumb);
   }
 
   @else {
@@ -243,6 +245,10 @@
   }
 
   @else if $key == textarea-component {
-    @include textarea-component.create();
+    @include textarea-component.create();+
+  }
+  
+  @else if $key == breadcrumb {
+    @include breadcrumb.create();
   }
 }
