@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import {
+  IBannerConfig,
+  ICheckBoxComponentConfig,
+  IDatePickerConfig,
+  IDatePickerErrorMessages,
+  IInputComponentConfig,
+  IProgressIndicatorConfig,
+  IRadioInputComponentConfig,
+  ISelectConfig,
+  ISelectOptionsConfig,
+  LanguageSwitchButtonService,
+} from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -8,38 +19,40 @@ import { requiredTrueValidator } from '@app/@shared/shared-functions/shared-vali
 import { AccessbilityDemoFormStateService } from './accessbility-demo-form-state.service';
 import { Subscription } from 'rxjs';
 
-
-
 export interface ICityOfBirth {
   lov: string;
   val: string;
-};
+}
 
 export const CITIES_OF_BIRTH_LOVS_CANADA: ICityOfBirth[] = [
   { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.CANADA.OTTAWA', val: 'Ottawa' },
   { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.CANADA.ST_JOHNS', val: "St. John's" },
   { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.CANADA.VICTORIA', val: 'Victoria' },
-  { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.CANADA.CALGARY', val: 'Calgary' }
+  { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.CANADA.CALGARY', val: 'Calgary' },
 ];
 export const CITIES_OF_BIRTH_LOVS_MEXICO: ICityOfBirth[] = [
-  { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.MEXICO.MEXICO', val: 'Mexico City' }
+  { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.MEXICO.MEXICO', val: 'Mexico City' },
 ];
 export const CITIES_OF_BIRTH_LOVS_USA: ICityOfBirth[] = [
   { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.USA.TAMPA', val: 'Tampa Bay' },
   { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.USA.WASHINGTON', val: 'Washington' },
   { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.USA.NEW_YORK', val: 'New York' },
-  { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.USA.OAKLAND', val: 'Oakland' }
+  { lov: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.OPTIONS.USA.OAKLAND', val: 'Oakland' },
 ];
-export const CITIES_OF_BIRTH_LOVS_ALL: ICityOfBirth[] = [...CITIES_OF_BIRTH_LOVS_CANADA, ...CITIES_OF_BIRTH_LOVS_MEXICO, ...CITIES_OF_BIRTH_LOVS_USA];
+export const CITIES_OF_BIRTH_LOVS_ALL: ICityOfBirth[] = [
+  ...CITIES_OF_BIRTH_LOVS_CANADA,
+  ...CITIES_OF_BIRTH_LOVS_MEXICO,
+  ...CITIES_OF_BIRTH_LOVS_USA,
+];
 
 @Component({
   selector: 'app-accessibility-demo',
   templateUrl: './accessibility-demo.component.html',
-  styleUrls: ['./accessibility-demo.component.scss']
+  styleUrls: ['./accessibility-demo.component.scss'],
 })
 export class AccessibilityDemoComponent implements OnInit {
   altPathKey = '';
-  altLangURL = ''
+  altLangURL = '';
   form = new FormGroup({});
   nextClicked = false;
   showErrorBanner = false;
@@ -49,15 +62,15 @@ export class AccessibilityDemoComponent implements OnInit {
   progressIndicatorSub?: Subscription;
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: '',
-  }
+  };
 
   errorBannerConfig: IBannerConfig = {
     id: 'error_banner',
     type: 'critical',
     title: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.TITLE',
     content: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.CONTENT',
-    rounded: true
-  }
+    rounded: true,
+  };
 
   familyNameInputConfig: IInputComponentConfig = {
     id: 'family_name_input',
@@ -68,23 +81,23 @@ export class AccessibilityDemoComponent implements OnInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.FAMILY_NAME_REQUIRED'
-      }
-    ]
+        errorLOV: 'ACC_DEMO.ERRORS.FAMILY_NAME_REQUIRED',
+      },
+    ],
   };
 
   familyNameInputBannerConfig: IBannerConfig = {
     id: 'family_name_input_info_banner',
     dismissible: true,
     type: 'info',
-    content: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.BANNER'
+    content: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.BANNER',
   };
 
   givenNameInputConfig: IInputComponentConfig = {
     id: 'given_name_input',
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.GIVEN_NAME_INPUT.LABEL',
-    desc: 'ACC_DEMO.PERSONAL_INFO.GIVEN_NAME_INPUT.DESC'
+    desc: 'ACC_DEMO.PERSONAL_INFO.GIVEN_NAME_INPUT.DESC',
   };
 
   sexAtBirthRadioConfig: IRadioInputComponentConfig = {
@@ -105,30 +118,40 @@ export class AccessibilityDemoComponent implements OnInit {
     options: [
       {
         text: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.FEMALE',
-        value: 'F'
+        value: 'F',
       },
       {
         text: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.MALE',
-        value: 'M'
+        value: 'M',
       },
       {
         text: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.OTHER',
-        value: 'X'
-      }
+        value: 'X',
+      },
     ],
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
-      }
-    ]
+        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED',
+      },
+    ],
+  };
+
+  datePickerErrorMessages: IDatePickerErrorMessages = {
+    general: [
+      {
+        key: 'required',
+        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED',
+      },
+    ],
   };
 
   dateOfBirthDatePickerConfig: IDatePickerConfig = {
     id: 'date_of_birth_date_picker',
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.DATE_OF_BIRTH.LABEL',
-    required: true
+    required: true,
+    errorMessages: this.datePickerErrorMessages,
   };
 
   countryOfBirthSelectConfig: ISelectConfig = {
@@ -140,23 +163,23 @@ export class AccessibilityDemoComponent implements OnInit {
     options: [
       {
         text: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.OPTIONS.CANADA',
-        value: 'Canada'
+        value: 'Canada',
       },
       {
         text: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.OPTIONS.USA',
-        value: 'USA'
+        value: 'USA',
       },
       {
         text: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.OPTIONS.MEXICO',
-        value: 'Mexico'
-      }
+        value: 'Mexico',
+      },
     ],
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
-      }
-    ]
+        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED',
+      },
+    ],
   };
 
   cityOfBirthSelectConfig: ISelectConfig = {
@@ -169,9 +192,9 @@ export class AccessibilityDemoComponent implements OnInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
-      }
-    ]
+        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED',
+      },
+    ],
   };
 
   declarationCheckboxConfig: ICheckBoxComponentConfig = {
@@ -183,21 +206,22 @@ export class AccessibilityDemoComponent implements OnInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.DECLARATION_REQUIRED'
+        errorLOV: 'ACC_DEMO.ERRORS.DECLARATION_REQUIRED',
       },
       {
         key: 'requiredTrue',
-        errorLOV: 'ACC_DEMO.ERRORS.DECLARATION_REQUIRED'
-      }
-    ]
-  }
+        errorLOV: 'ACC_DEMO.ERRORS.DECLARATION_REQUIRED',
+      },
+    ],
+  };
 
-  constructor(private translate: TranslateService,
+  constructor(
+    private translate: TranslateService,
     private altLang: LanguageSwitchService,
     private languageSwitchButton: LanguageSwitchButtonService,
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService
-  ) { }
+  ) {}
 
   ngOnInit() {
     //if the page has moved to this one via a back or forward browser button, this detects the move and updates the page.
@@ -215,12 +239,12 @@ export class AccessibilityDemoComponent implements OnInit {
       this.setAltLangURL();
       console.log(this.altLangURL);
     });
-    this.languageSwitchButton.languageClickObs$.subscribe(response => {
+    this.languageSwitchButton.languageClickObs$.subscribe((response) => {
       console.log(response);
-      if (response) this.changeLang(); //Has to ignore the first response. 
+      if (response) this.changeLang(); //Has to ignore the first response.
     });
 
-    this.progressIndicatorSub = this.progressIndicator.progressIndicatorObs$.subscribe(response => {
+    this.progressIndicatorSub = this.progressIndicator.progressIndicatorObs$.subscribe((response) => {
       this.progressIndicatorConfig = response;
     });
 
@@ -230,15 +254,21 @@ export class AccessibilityDemoComponent implements OnInit {
     this.form.addControl(this.familyNameInputConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.givenNameInputConfig.id, new FormControl());
     this.form.addControl(this.sexAtBirthRadioConfig.id, new FormControl('', Validators.required));
-    this.form.addControl((this.dateOfBirthDatePickerConfig.id + '_dayControl'), new FormControl('', Validators.required));
-    this.form.addControl((this.dateOfBirthDatePickerConfig.id + '_monthControl'), new FormControl('', Validators.required));
-    this.form.addControl((this.dateOfBirthDatePickerConfig.id + '_yearControl'), new FormControl('', Validators.required));
+    this.form.addControl(this.dateOfBirthDatePickerConfig.id + '_dayControl', new FormControl('', Validators.required));
+    this.form.addControl(
+      this.dateOfBirthDatePickerConfig.id + '_monthControl',
+      new FormControl('', Validators.required)
+    );
+    this.form.addControl(
+      this.dateOfBirthDatePickerConfig.id + '_yearControl',
+      new FormControl('', Validators.required)
+    );
     this.form.addControl(this.countryOfBirthSelectConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.cityOfBirthSelectConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.declarationCheckboxConfig.id, new FormControl('', [requiredTrueValidator()]));
 
     //Watch for changes in the country of birth select:
-    this.form.get(this.countryOfBirthSelectConfig.id)?.valueChanges.subscribe(change => {
+    this.form.get(this.countryOfBirthSelectConfig.id)?.valueChanges.subscribe((change) => {
       switch (change.toLowerCase()) {
         case 'canada':
           this.setCities(CITIES_OF_BIRTH_LOVS_CANADA);
@@ -260,12 +290,14 @@ export class AccessibilityDemoComponent implements OnInit {
    * Used to add a shadow class to the header when it's moved off the very top of the page
    */
   ngAfterViewInit() {
-    window.onscroll = function () { navbarScroll() };
+    window.onscroll = function () {
+      navbarScroll();
+    };
 
-    let header = document.getElementById("outer_header_stepper_container");
+    let header = document.getElementById('outer_header_stepper_container');
 
     function navbarScroll() {
-      (document.documentElement?.scrollTop > 0) ? header?.classList.add('shadow') : header?.classList.remove('shadow');
+      document.documentElement?.scrollTop > 0 ? header?.classList.add('shadow') : header?.classList.remove('shadow');
     }
   }
 
@@ -276,15 +308,11 @@ export class AccessibilityDemoComponent implements OnInit {
   setCities(cityList: ICityOfBirth[]) {
     // this.cityOfBirthSelectConfig.options = [];
     let temp: ISelectOptionsConfig[] = [];
-    cityList.forEach(city => {
+    cityList.forEach((city) => {
       temp.push({ text: city.lov, value: city.val });
     });
     temp = temp.sort((a, b) => {
-      return compare(
-        this.translate.instant(a.text),
-        this.translate.instant(b.text),
-        false
-      )
+      return compare(this.translate.instant(a.text), this.translate.instant(b.text), false);
     });
     this.cityOfBirthSelectConfig.options = temp;
   }
@@ -318,7 +346,11 @@ export class AccessibilityDemoComponent implements OnInit {
    * Update the progress indicator status (unlock/lock the next element)
    */
   updateProgressIndicator() {
-    if (this.progressIndicatorConfig.steps && ((this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked') || (this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted'))) {
+    if (
+      this.progressIndicatorConfig.steps &&
+      (this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked' ||
+        this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted')
+    ) {
       let tempConfig = this.progressIndicatorConfig;
       if (tempConfig.steps) {
         if (this.form.valid) {
@@ -354,16 +386,15 @@ export class AccessibilityDemoComponent implements OnInit {
     }
   }
 
-
   /**
    * Getter for the previous page button
    */
   get getPreviousButtonLink() {
-    return (this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoPrevious'));
+    return this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoPrevious');
   }
 
   get getNextButtonLink() {
-    return (this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoNext'));
+    return this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoNext');
   }
 
   /**
@@ -371,23 +402,21 @@ export class AccessibilityDemoComponent implements OnInit {
    */
   get getMainPageLink() {
     const curLang = this.translate.currentLang;
-    this.translate.use((curLang === 'en-US') || (curLang === 'en') ? 'en-US' : 'fr-FR');
-    const lang = ((curLang === 'en-US') || (curLang === 'en') ? 'en' : 'fr');
-    return ('/' + lang + '/' + this.translate.instant('ROUTES.AccessibilityDemo'));
+    this.translate.use(curLang === 'en-US' || curLang === 'en' ? 'en-US' : 'fr-FR');
+    const lang = curLang === 'en-US' || curLang === 'en' ? 'en' : 'fr';
+    return '/' + lang + '/' + this.translate.instant('ROUTES.AccessibilityDemo');
   }
 
-
   /*************** LANGUAGE FUNCTIONS ********************/
-
 
   /** Toggles language without reloading component */
   //This currently uses both 'en' and 'en-US' language values, sine in some cases, en is provided in initial load
   changeLang() {
     const curLang = this.translate.currentLang;
-    this.translate.use((curLang === 'en-US') || (curLang === 'en') ? 'fr-FR' : 'en-US');
+    this.translate.use(curLang === 'en-US' || curLang === 'en' ? 'fr-FR' : 'en-US');
     // Changes the html lang attribute
     // console.log((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
-    document.documentElement.lang = ((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
+    document.documentElement.lang = curLang === 'en-US' || curLang === 'en' ? 'fr' : 'en';
     // Pushes page into history to allow the use of the 'Back' button on browser
     window.history.pushState('', '', this.altLangURL);
     this.setAltLangURL();
@@ -397,16 +426,16 @@ export class AccessibilityDemoComponent implements OnInit {
   //Alt-language url key must be in the corresponding language, but have the french work
   setAltLangURL() {
     console.log(this.translate.currentLang);
-    this.altLangURL = ((this.translate.currentLang === "en-US") || (this.translate.currentLang === 'en') ? 'fr' : 'en');
+    this.altLangURL = this.translate.currentLang === 'en-US' || this.translate.currentLang === 'en' ? 'fr' : 'en';
     this.getAltLanguageValues();
 
     if (this.altPathKey) this.altLangURL += '/' + this.translate.instant('ROUTES.' + this.altPathKey);
   }
 
   /**
-* Generates an alt-language path based on the current url and the translate values. Currently not the best
-* code in the world and should likely be refactored.
-*/
+   * Generates an alt-language path based on the current url and the translate values. Currently not the best
+   * code in the world and should likely be refactored.
+   */
   getAltLanguageValues() {
     const urlParts = this.router.url.split('/');
     const translateIndex = Object.keys(this.translate.translations).indexOf(urlParts[1]);
@@ -414,15 +443,15 @@ export class AccessibilityDemoComponent implements OnInit {
     let translatedURLPieces: string[] = [];
     urlParts.forEach((val: string, index: number) => {
       if (index > 1) {
-        let i = Object.values((translateValues as any)).indexOf(val);
+        let i = Object.values(translateValues as any).indexOf(val);
         translatedURLPieces.push(Object.keys(translateValues as any)[i]);
       }
     });
-    translatedURLPieces.forEach(piece => {
+    translatedURLPieces.forEach((piece) => {
       //Operates on the assumption that the alt route is the same as the route, but with '-alt' appended
       let k = this.translate.instant('ROUTES.' + piece + '-alt');
       if (this.translate.instant('ROUTES.' + this.altPathKey) !== k) {
-        this.altLangURL += ('/' + k);
+        this.altLangURL += '/' + k;
       }
     });
   }
@@ -434,11 +463,11 @@ export class AccessibilityDemoComponent implements OnInit {
 }
 
 /**
-* Compares two items and returns either -1 or 1, depending on which should come first. Used for .sort()
-* @param a Item 1
-* @param b Item 2
-* @returns 1 or -1, depending which value should come first.
-*/
+ * Compares two items and returns either -1 or 1, depending on which should come first. Used for .sort()
+ * @param a Item 1
+ * @param b Item 2
+ * @returns 1 or -1, depending which value should come first.
+ */
 export function compare(a: number | string, b: number | string, isAsc: boolean) {
-  return (isAsc ? (a < b ? 1 : -1) : (a > b ? 1 : -1));
+  return isAsc ? (a < b ? 1 : -1) : a > b ? 1 : -1;
 }
