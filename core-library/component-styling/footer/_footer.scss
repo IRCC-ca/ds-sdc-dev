@@ -31,13 +31,12 @@
     align-items: center;
 
     img {
-        min-width: 100px;
         margin: {
-            right: 20px;
-            top: 24px;
-            bottom: 24px;
+            right: 1.07px;
+            top: 14px;
+            bottom: 14px;
         };
-        height: 27.3px;
+        height: 16px;
 
         @include device.in-phone-layout {
             min-width: 100px;
