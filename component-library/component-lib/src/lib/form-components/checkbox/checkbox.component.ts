@@ -4,7 +4,7 @@ import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorIconConfig} from "../error/error.component";
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ILabelConfig } from '../../shared/label/label.component';
+import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 
@@ -23,7 +23,7 @@ export interface ICheckBoxComponentConfig {
   desc?: string;
   hint?: string;
   errorMessages?: IErrorPairs[];
-  labelIconConfig?: IIconButtonComponentConfig;
+  labelIconConfig?: ILabelIconConfig;
 }
 
 @Component({

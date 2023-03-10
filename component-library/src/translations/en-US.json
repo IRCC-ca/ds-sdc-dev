@@ -113,7 +113,8 @@
         "LABEL": "Sex at birth (required)",
         "FEMALE": "F - Female",
         "MALE": "M - Male",
-        "OTHER": "X - Another sex"
+        "OTHER": "X - Another sex",
+        "BANNER": "<p>This question is asked for identity verification purposes only. <br><br>Sex refers to your status at birth, and may not reflect your precise gender identity.</p>"
       },
       "DATE_OF_BIRTH": {
         "LABEL": "Date of birth (required)"

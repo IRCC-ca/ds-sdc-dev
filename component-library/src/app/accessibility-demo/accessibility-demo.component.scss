@@ -5,7 +5,6 @@
     }
     
     .outer_header_stepper_container {
-        position: sticky;
         top: 0;
         background-color: white;
         z-index: 10000;
@@ -14,6 +13,10 @@
         .header_stepper_container {
             margin-left: 164px;
             max-width: 1036px;
+
+            .stepper {
+                margin-top: 40px;
+            }
         }
     }
 
@@ -55,7 +58,6 @@
             margin-top: 88px;
         }
 
-        .stepper,
         .form_container {
             margin-top: 40px;
         }
