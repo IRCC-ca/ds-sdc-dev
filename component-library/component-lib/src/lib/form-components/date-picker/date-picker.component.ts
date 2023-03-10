@@ -51,8 +51,11 @@ export const DATE_PICKER_PLACEHOLDER_YEAR_FR = 'Année';
 export const DATE_PICKER_PLACEHOLDER_MONTH_EN = 'Month';
 export const DATE_PICKER_PLACEHOLDER_MONTH_FR = 'Mois';
 
-export const DATE_PICKER_PLACEHOLDER_DAY_EN = 'Day';
+export const DATE_PICKER_PLACEHOLDER_DAY_EN = 'DD';
 export const DATE_PICKER_PLACEHOLDER_DAY_FR = 'Jour';
+
+export const DATE_PICKER_UNKOWN_EN = "Unkown";
+export const DATE_PICKER_UNKOWN_FR = "Inconnu"
 
 export interface IDatePickerConfig {
   id: string;
@@ -199,7 +202,14 @@ export class DatePickerComponent implements OnInit {
       this.setMonthsLanguage();
       this.setLabelLanguage();
     });
-    this.dropDownConfigs.year.options?.push({ text: "Unknown" }); 
+    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+      this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_EN, value:"**" }); 
+    }
+    else
+    {
+      this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_FR, value:"**" }); 
+    }
+  
     for (let i = 1900; i <= this.currentYear; i++) {
       this.dropDownConfigs.year.options?.push({ text: i.toString() });
     }
@@ -222,8 +232,15 @@ export class DatePickerComponent implements OnInit {
           year
         );
       });
+
+    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+      this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_PLACEHOLDER_DAY_EN , value:"**" }); 
+    }
+    else{
+      this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_PLACEHOLDER_DAY_FR , value:"**" }); 
+    }
+
     if (this.dropDownConfigs.day.options?.length === 0) {
-      this.dropDownConfigs.day.options?.push({ text: "Unknown" }); 
       for (let i = 1; i <= 31; i++) {
         this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
@@ -249,10 +266,16 @@ export class DatePickerComponent implements OnInit {
    */
   setMonthsLanguage() {
     this.dropDownConfigs.month.options = [];
-    this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US'
-      ? (this.months = DATE_PICKER_MONTHS_EN)
-      : (this.months = DATE_PICKER_MONTHS_FR);
-    this.dropDownConfigs.month.options?.push({ text: "Unknown" }); 
+    if(this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US')
+      {
+        this.months = DATE_PICKER_MONTHS_EN;
+        this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_EN, value:"**" }); 
+      }
+      else
+      { 
+        this.months = DATE_PICKER_MONTHS_FR;
+        this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_FR, value:"**" }); 
+      }
     this.months.forEach((month: string, index: number) => {
       this.dropDownConfigs.month.options?.push({ text: month, value: DATE_PICKER_MONTHS_EN[index] });
     });
