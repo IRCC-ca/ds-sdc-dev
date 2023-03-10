@@ -28,7 +28,10 @@ export class ErrorComponent implements OnInit, OnChanges {
   constructor() { }
   ngOnInit() {
     //Initial null and override check:
-    if (!this.config) this.config = {id: '', errorLOV: ''};
+    if (!this.config) this.config = {
+      id: '',
+      errorLOV: '',
+    };
     this.portInputValues();
   }
 
