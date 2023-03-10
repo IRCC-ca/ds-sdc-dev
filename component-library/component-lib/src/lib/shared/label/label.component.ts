@@ -66,4 +66,9 @@ export class LabelComponent implements OnInit {
   //     return aria;
   //   } return '';
   // }
+
+  returnLabel(): string
+  {
+    return !this.config.topLabel ? this.config.label : this.config.topLabel;
+  }
 }
