@@ -11,6 +11,7 @@ import { DropdownComponent } from "./dropdown/drop-down.component";
 import { ProgressIndicatorComponent } from "./progress-indicator/progress-indicator.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { BreadcrumbLinkComponent } from "./breadcrumb/link/link.component";
+import { IndicatorComponent } from './indicator/indicator.component';
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -18,6 +19,7 @@ const IrccDsSharedComponents = [
   BreadcrumbLinkComponent,
   IconComponent,
   IconButtonComponent,
+  IndicatorComponent,
   TabsComponent,
   ProgressTagsComponent,
   DropdownComponent,
