@@ -8,6 +8,7 @@ import { LabelButtonService } from './label-button.service';
 export interface ILabelIconConfig {
   iconClass: string;
   colour?: string; //Default is text primary token
+  ariaText: string;
 }
 
 export interface ILabelConfig {
@@ -70,4 +71,11 @@ export class LabelComponent implements OnInit {
   iconButtonClick() {
     this.labelButton.buttonPress(this.config.parentID);
   }
+
+  // get getIconButtonAriaLabel() {
+  //   const aria = (this.translate.instant(this.config.label) + ' ' + this.translate.instant(this.config.iconButton.ariaText));
+  //   if (aria) {
+  //     return aria;
+  //   } return '';
+  // }
 }

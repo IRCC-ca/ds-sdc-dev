@@ -8,5 +8,13 @@
             </div>
         </div>
     </div>
-    <p>{{'ACC_DEMO.PREVIOUS_PAGE' | translate}}</p>
+    <div class="body">
+        <h1>{{'ACC_DEMO.PREVIOUS_PAGE.HEADER' | translate}}</h1>
+        <p>{{'ACC_DEMO.PREVIOUS_PAGE.CONTENT' | translate}}</p>
+    </div>
+    <div class="buttons_container">
+        <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" category="secondary"
+            [routerLink]="getMainPageLink">
+            {{'ACC_DEMO.BUTTONS.PREVIOUS_PAGE_NEXT' | translate}}</lib-button>
+    </div>
 </div>

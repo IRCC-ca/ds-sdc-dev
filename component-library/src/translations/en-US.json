@@ -77,7 +77,10 @@
     "GENERIC_PLACEHOLDER": "Select an option"
   },
   "ACC_DEMO": {
-    "PREVIOUS_PAGE": "This is an example of a previous page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
+    "PREVIOUS_PAGE": {
+      "HEADER": "Background information",
+      "CONTENT": "This page is not part of the prototype. Please use the button below to return to the previous screen."
+    },
     "NEXT_PAGE": "This is an example of a next page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
     "ERRORS": {
       "REQUIRED": "This field is required.",
@@ -102,6 +105,7 @@
       "BODY": "Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
       "FAMILY_NAME_INPUT": {
         "LABEL": "Family name (required)",
+        "LABEL_INFO_BUTTON_ARIA": "more information",
         "DESC": "This is your surname or last name",
         "BANNER": "If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
       },
@@ -111,6 +115,7 @@
       },
       "SEX_AT_BIRTH_RADIO": {
         "LABEL": "Sex at birth (required)",
+        "LABEL_INFO_BUTTON_ARIA": "more information",
         "FEMALE": "F - Female",
         "MALE": "M - Male",
         "OTHER": "X - Another sex",
@@ -154,7 +159,8 @@
     },
     "BUTTONS": {
       "PREVIOUS": "Previous step",
-      "NEXT": "Save and continue"
+      "NEXT": "Save and continue",
+      "PREVIOUS_PAGE_NEXT": "Next"
     }
   }
 }

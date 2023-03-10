@@ -1,0 +1,14 @@
+.page_container {
+    margin-left: 164px;
+    max-width: 1036px;
+
+    .body {
+        max-width: 628px;
+    }
+
+    .buttons_container {
+        display: flex;
+        justify-content: end;
+        margin-top: 64px;
+    }
+}

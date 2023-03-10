@@ -18,8 +18,7 @@ config.formGroup.get(config.parentID)?.invalid && config.formGroup.get(config.pa
         {{(config.label || '') | translate}}
       </div>
       <div *ngIf="config.iconButton" class="icon_container">
-        <button class="touch_button" category="plain" (click)="iconButtonClick()"
-        [attr.aria-label]="(config.label | translate) + labelIconText"></button>
+        <button class="touch_button" category="plain" (click)="iconButtonClick()" role="button" [attr.aria-label]="(config.label | translate) + ' ' + (config.iconButton.ariaText | translate)"></button>
         <i [class]="config.iconButton.iconClass"></i>
       </div>
     </span>
