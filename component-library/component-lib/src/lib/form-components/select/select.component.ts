@@ -3,7 +3,7 @@ import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/for
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ILabelConfig } from '../../shared/label/label.component';
+import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 // export declare enum SelectType {
@@ -23,7 +23,7 @@ export interface ISelectConfig {
   placeholder?: string;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
-  labelIconConfig?: IIconButtonComponentConfig;
+  labelIconConfig?: ILabelIconConfig;
   topLabel?:string;
 }
 export interface ISelectOptionsConfig {

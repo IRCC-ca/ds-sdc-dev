@@ -9,7 +9,7 @@ import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
-import { ILabelConfig } from '../../shared/label/label.component';
+import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -22,7 +22,7 @@ export interface IInputComponentConfig {
   size?: keyof typeof DSSizes;
   formGroup: FormGroup;
   errorMessages?: IErrorPairs[];
-  labelIconConfig?: IIconButtonComponentConfig;
+  labelIconConfig?: ILabelIconConfig;
 }
 
 export enum InputTypes {

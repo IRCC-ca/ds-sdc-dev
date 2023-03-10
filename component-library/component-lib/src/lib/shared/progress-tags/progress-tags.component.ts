@@ -46,7 +46,6 @@ export class ProgressTagsComponent implements OnInit {
 
   ngOnChanges() {
     this.setTypeTitle();
-    console.log('test', this.text);
   };
 
   setTypeTitle() {

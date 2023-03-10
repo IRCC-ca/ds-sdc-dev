@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import { IIconButtonComponentConfig } from "../../lib/shared/icon-button/icon-button.component";
-import { ILabelConfig } from "../../lib/shared/label/label.component";
+import { ILabelConfig, ILabelIconConfig } from "../../lib/shared/label/label.component";
 import { IErrorPairs } from "../interfaces/component-configs";
 
 export interface IErrorIDs {
@@ -78,7 +78,7 @@ export class StandAloneFunctions {
      * @param hint 
      * @param required 
      */
-        makeLabelConfig(formGroup: FormGroup, parentID: string, errorMessages?: IErrorPairs[], label?: string, desc?: string, hint?: string, required?: boolean, iconButton?: IIconButtonComponentConfig, topLabel?: string,) {
+        makeLabelConfig(formGroup: FormGroup, parentID: string, errorMessages?: IErrorPairs[], label?: string, desc?: string, hint?: string, required?: boolean, iconButton?: ILabelIconConfig, topLabel?: string,) {
             const config: ILabelConfig = {
                 formGroup: formGroup,
                 parentID: parentID,
