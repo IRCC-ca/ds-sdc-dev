@@ -1,7 +1,7 @@
-<div class="page_container">
+<div class="page_container" [ngClass]="{'no_scroll' : hamburgerMenuState}">
     <div class="outer_header_stepper_container" id="outer_header_stepper_container">
         <div class="header_stepper_container" id="header_stepper_inner_container">
-            <lib-header [id]="'header'"></lib-header>
+            <lib-header [id]="'header'" [ngClass]="{'disable_all' : hamburgerMenuState}"></lib-header>
             <div class="stepper" *ngIf="innerWidth > 980">
                 <lib-progress-indicator [config]="progressIndicatorConfig"
                     (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
@@ -11,7 +11,7 @@
                     (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
             </div>
             <div class="modal_container" *ngIf="hamburgerMenuState">
-                <dialog id="progress_dialog" class="dialog" open>
+                <dialog id="progress_dialog" class="dialog" open preventOutsideClick (preventOutsideClick)="test($event)">
                     <div class="progress_dialog_content">
                         <div class="modal_header">
                             <h5>{{'ACC_DEMO.MODAL_TITLE' | translate}}</h5>
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="content_container">
+    <div class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
         <div class="error_banner" *ngIf="showErrorBanner">
             <lib-banner [config]="errorBannerConfig"></lib-banner>
         </div>

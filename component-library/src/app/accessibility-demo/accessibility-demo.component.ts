@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IDatePickerErrorMessages, IIconButtonComponentConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LabelButtonService, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
@@ -222,7 +222,8 @@ export class AccessibilityDemoComponent implements OnInit {
     category: 'custom',
     size: 'large',
     icon: {
-      class: 'fa-regular fa-x'
+      class: 'fa-regular fa-x',
+      color: 'var(--text-primary)'
     }
   }
 
@@ -232,7 +233,8 @@ export class AccessibilityDemoComponent implements OnInit {
     private languageSwitchButton: LanguageSwitchButtonService,
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
-    private labelButton: LabelButtonService
+    private labelButton: LabelButtonService,
+    private elementRef: ElementRef
   ) { }
 
   @HostListener('window:resize', ['$event'])
@@ -480,7 +482,26 @@ export class AccessibilityDemoComponent implements OnInit {
     }
   }
 
+  test(event: any) {
+    console.log(event);
+  }
 
+  // @HostListener('document:click', ['$event'])
+  // onClick(event: MouseEvent) {
+  //   // console.log('things')
+
+  //   event.stopPropagation();
+  //   event.preventDefault();
+  //   event.stopImmediatePropagation();
+  //   const clickedInside = this.elementRef.getEl.contains(event.target);
+  //   if (!clickedInside) {
+  //     console.log('things')
+
+  //     event.stopPropagation();
+  //     event.preventDefault();
+  //     event.stopImmediatePropagation();
+  //   }
+  // }
 
 
   /************************************Getters for Navigation**************************************/

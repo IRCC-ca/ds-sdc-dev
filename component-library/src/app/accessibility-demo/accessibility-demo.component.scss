@@ -59,6 +59,10 @@
     }
   }
 
+  .disable_all {
+    pointer-events: none;
+  }
+
   .content_container {
     @media (min-width: 980px) {
       margin-left: 164px;
@@ -108,4 +112,9 @@
       margin-top: 40px;
     }
   }
+}
+
+.no_scroll {
+  height: 96vh;
+  overflow: hidden;
 }
