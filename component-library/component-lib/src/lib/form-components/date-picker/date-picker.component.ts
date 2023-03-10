@@ -45,13 +45,13 @@ export const DATE_PICKER_YEAR_CONTROL_ID_EXTENSION = '_yearControl';
 export const DATE_PICKER_LABELS_EN = ['Day', 'Month', 'Year'];
 export const DATE_PICKER_LABELS_FR = ['Jour', 'Mois', 'Année'];
 
-export const DATE_PICKER_PLACEHOLDER_YEAR_EN = 'YYYY';
+export const DATE_PICKER_PLACEHOLDER_YEAR_EN = 'Year';
 export const DATE_PICKER_PLACEHOLDER_YEAR_FR = 'Année';
 
 export const DATE_PICKER_PLACEHOLDER_MONTH_EN = 'Month';
 export const DATE_PICKER_PLACEHOLDER_MONTH_FR = 'Mois';
 
-export const DATE_PICKER_PLACEHOLDER_DAY_EN = 'DD';
+export const DATE_PICKER_PLACEHOLDER_DAY_EN = 'Day';
 export const DATE_PICKER_PLACEHOLDER_DAY_FR = 'Jour';
 
 export interface IDatePickerConfig {
@@ -180,6 +180,10 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.month.size = this.config.size;
     this.dropDownConfigs.year.size = this.config.size;
 
+    this.dropDownConfigs.day.topLabel = this.config.label;
+    this.dropDownConfigs.month.topLabel = this.config.label;
+    this.dropDownConfigs.year.topLabel = this.config.label;
+
     if (this.config.errorMessages?.general) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -195,9 +199,11 @@ export class DatePickerComponent implements OnInit {
       this.setMonthsLanguage();
       this.setLabelLanguage();
     });
+    this.dropDownConfigs.year.options?.push({ text: "Unknown" }); 
     for (let i = 1900; i <= this.currentYear; i++) {
       this.dropDownConfigs.year.options?.push({ text: i.toString() });
     }
+    
 
     // Populate the days array based on the selected month and year
     this.config.formGroup
@@ -217,6 +223,7 @@ export class DatePickerComponent implements OnInit {
         );
       });
     if (this.dropDownConfigs.day.options?.length === 0) {
+      this.dropDownConfigs.day.options?.push({ text: "Unknown" }); 
       for (let i = 1; i <= 31; i++) {
         this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
@@ -245,6 +252,7 @@ export class DatePickerComponent implements OnInit {
     this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US'
       ? (this.months = DATE_PICKER_MONTHS_EN)
       : (this.months = DATE_PICKER_MONTHS_FR);
+    this.dropDownConfigs.month.options?.push({ text: "Unknown" }); 
     this.months.forEach((month: string, index: number) => {
       this.dropDownConfigs.month.options?.push({ text: month, value: DATE_PICKER_MONTHS_EN[index] });
     });

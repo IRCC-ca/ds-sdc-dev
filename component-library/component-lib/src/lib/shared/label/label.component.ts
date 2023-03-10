@@ -14,6 +14,7 @@ export interface ILabelConfig {
   hint?: string;
   required?: boolean; 
   iconButton?: IIconButtonComponentConfig;
+  topLabel?:string;
 }
 
 export const ERROR_TEXT_STUB_EN = 'Error';
