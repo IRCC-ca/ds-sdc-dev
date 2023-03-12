@@ -482,11 +482,12 @@ export class AccessibilityDemoComponent implements OnInit {
     }
   }
 
-  test(event: any) {
-    console.log(event);
-  }
-
-  // @HostListener('document:click', ['$event'])
+  // @HostListener('keydown.tab', ['$event'])
+  // @HostListener('keydown.shift.tab', ['$event'])
+  // onTab(event: KeyboardEvent) {
+  //   // Do something when a tab or shift+tab event occurs
+  //   console.log('Tab or shift+tab event occurred', event);
+  // }
   // onClick(event: MouseEvent) {
   //   // console.log('things')
 

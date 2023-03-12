@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
-import { IIconButtonComponentConfig } from "../../lib/shared/icon-button/icon-button.component";
 import { ILabelConfig, ILabelIconConfig } from "../../lib/shared/label/label.component";
 import { IErrorPairs } from "../interfaces/component-configs";
 
