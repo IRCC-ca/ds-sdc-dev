@@ -6,21 +6,23 @@
       <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
       <input type="radio" value="{{option.value || option.text}}" id="{{config.id + index}}"
         [formControlName]="config.id ?? 'formControl'" [attr.disabled]='getDisabled(index)'
-        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size">
+        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size" [attr.aria-invalid]="formControl?.errors">
       <label for="{{config.id + index}}" 
         [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'" [attr.aria-label]="
-          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
+          formControl?.invalid && formControl?.dirty
           ? (config.label || '' | translate) + ' ' + (option.text || '' | translate) + ' ' +
             ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
           : (config.label || '' | translate) + ' ' + (option.text || '' | translate)
         ">{{(option.text || '') | translate}}</label>
     </div>
   </div>
-  <ng-container *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid">
+  <div aria-live="polite">
+  <ng-container *ngIf="(formControl?.touched) && formControl?.invalid">
     <ng-container *ngFor="let errors of errorIds; let i = index">
-      <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
+      <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
         <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
       </div>
     </ng-container>
   </ng-container>
+</div>
 </form>

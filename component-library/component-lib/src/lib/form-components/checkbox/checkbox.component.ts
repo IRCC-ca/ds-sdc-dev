@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorIconConfig} from "../error/error.component";
@@ -53,6 +53,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   isDisabled = false;
   errorIds: IErrorIDs[] = [];
+  formControl?: AbstractControl;
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
@@ -82,6 +83,10 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if(retControl){
+      this.formControl = retControl;
+    }
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
