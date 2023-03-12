@@ -1,4 +1,12 @@
 .page_container {
+    .dimmer {
+        width: 98.5vw;
+        height: 96vh;
+        position: absolute;
+        background: rgba(44, 44, 45, 0.8);
+        z-index: 10;
+        }
+    
 
     .header_stepper_container {
         @media (min-width: 980px) {
