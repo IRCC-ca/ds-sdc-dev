@@ -12,19 +12,15 @@
         }
     }
 
-    .body {
+    .body, .buttons_container {
         max-width: 628px;
-
         @media (min-width: 980px) {
             margin-left: 164px;
         }
 
         @media (max-width: 979px) {
             margin-left: 40px;
-        }
-
-        max-width: 1036px;
-    }
+        }    }
 
     .buttons_container {
         display: flex;
