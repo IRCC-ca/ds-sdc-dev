@@ -24,6 +24,7 @@ export interface ISelectConfig {
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
+  topLabel?:string;
 }
 export interface ISelectOptionsConfig {
   text: string;
@@ -91,7 +92,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig,
+      this.config.topLabel);
 
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
@@ -107,6 +109,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig,
+      this.config.topLabel);
   }
 }

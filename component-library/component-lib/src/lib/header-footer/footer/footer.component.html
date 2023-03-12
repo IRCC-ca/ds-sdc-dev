@@ -1,10 +1,10 @@
-<footer class="lib-footer footing">
+<footer class="lib-footer footing" role="contentinfo">
   <div class="grid-container" [id]="id">
     <div class="item1 body3">
       <ng-content></ng-content>
     </div>
     <picture class="item2">
-      <img src="{{ imageURL }}" attr.aria-label="{{ aria }}" />
+      <img src="{{ imageURL }}" alt="{{ altImage }}" attr.aria-label="{{ aria }}" />
     </picture>
   </div>
 </footer>

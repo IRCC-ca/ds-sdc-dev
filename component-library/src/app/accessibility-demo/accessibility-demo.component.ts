@@ -135,7 +135,7 @@ export class AccessibilityDemoComponent implements OnInit {
     general: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.REQUIRED',
+        errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED',
       },
     ],
   };

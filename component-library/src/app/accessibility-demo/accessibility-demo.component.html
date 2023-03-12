@@ -1,5 +1,5 @@
-<div class="page_container" [ngClass]="{'no_scroll' : hamburgerMenuState}">
-    <div class="outer_header_stepper_container" id="outer_header_stepper_container">
+<div class="page_container">
+    <nav role="navigation" class="outer_header_stepper_container" id="outer_header_stepper_container">
         <div class="header_stepper_container" id="header_stepper_inner_container">
             <lib-header [id]="'header'" [ngClass]="{'disable_all' : hamburgerMenuState}"></lib-header>
             <div class="stepper" *ngIf="innerWidth > 980">
@@ -27,8 +27,8 @@
                 </dialog>
             </div>
         </div>
-    </div>
-    <div class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
+    </nav>
+    <div class="content_container">
         <div class="error_banner" *ngIf="showErrorBanner">
             <lib-banner [config]="errorBannerConfig"></lib-banner>
         </div>

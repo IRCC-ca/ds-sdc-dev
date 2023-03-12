@@ -87,7 +87,8 @@
       "REQUIRED": "This field is required.",
       "FAMILY_NAME_REQUIRED": "This field is blank. Please enter a family name",
       "SELECTS_RADIO_REQUIRED": "No selection has been made. Please select an option",
-      "DOB_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
+      "DOB_NO_SELECTION_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
+      "DOB_REQUIRED":"Please fill in the missing fields to complete your date of birth.",
       "DECLARATION_REQUIRED": "No selection has been made. Please make a selection to complete your declaration",
       "DECLARATION_CUSTOM": "You must agree to continue" 
     },
