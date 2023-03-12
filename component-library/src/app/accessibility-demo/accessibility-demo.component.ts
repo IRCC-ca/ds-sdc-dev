@@ -225,7 +225,7 @@ export class AccessibilityDemoComponent implements OnInit {
       class: 'fa-regular fa-x',
       color: 'var(--text-primary)'
     }
-  }
+  };
 
   constructor(
     private translate: TranslateService,

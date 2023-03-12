@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
+import { IIconButtonComponentConfig, IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
 import { AccessbilityDemoFormStateService } from '../accessbility-demo-form-state.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -18,8 +18,22 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: '',
   }
+
+  hamburgerDialogXButtonConfig: IIconButtonComponentConfig = {
+    id: 'hamburger_dialog_x_button',
+    category: 'custom',
+    size: 'large',
+    icon: {
+      class: 'fa-regular fa-x',
+      color: 'var(--text-primary)'
+    }
+  };
+  
   altPathKey = '';
-  altLangURL = ''
+  altLangURL = '';
+
+  innerWidth = 0;
+  hamburgerMenuState: boolean | undefined = undefined;
 
   constructor(private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
@@ -27,7 +41,17 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
     private altLang: LanguageSwitchService,
   ) { }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    this.updateProgressBarOrientation();
+  }
+
   ngOnInit() {
+    //Set orientation of the progress bar and get initial window width
+    this.innerWidth = window.innerWidth;
+    this.updateProgressBarOrientation();
+
     this.altLang.setAltLangLink('AccessibilityDemoPrevious-alt');
     this.altLang.getAltLangLink().subscribe((altLang: string) => {
       this.altPathKey = altLang;
@@ -94,6 +118,31 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
 
     // return ''
     return ('/' + lang + '/' + this.translate.instant('ROUTES.AccessibilityDemo'));
+  }
+
+/**
+ * Open the hamburger menu progress indicator
+ */
+  menuHamburgerButton() {
+    console.log(this.hamburgerMenuState)
+    if (this.hamburgerMenuState !== undefined && !this.hamburgerMenuState) {
+      this.hamburgerMenuState = true;
+    } else {
+      this.hamburgerMenuState = false;
+    }
+  }
+
+/**
+ * Update the orientation of the progress bar
+ */
+  updateProgressBarOrientation() {
+    if (this.innerWidth < 980 && ((this.progressIndicatorConfig.orientation === 'horizontal') || (this.progressIndicatorConfig.orientation === undefined))) {
+      this.progressIndicator.updateOrientation('vertical');
+      if (this.hamburgerMenuState === undefined) { this.hamburgerMenuState = false; }
+    } else if (this.innerWidth > 980 && ((this.progressIndicatorConfig.orientation === 'vertical') || (this.progressIndicatorConfig.orientation === undefined))) {
+      this.progressIndicator.updateOrientation('horizontal');
+      this.hamburgerMenuState = undefined;
+    }
   }
 
 
