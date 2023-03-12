@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   ControlValueAccessor,
-  FormControl,
   FormGroup,
   NG_VALUE_ACCESSOR,
   ValidatorFn
@@ -53,6 +53,7 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   formGroupEmpty = new FormGroup({});
   touched = false;
   errorIds: IErrorIDs[] = [];
+  formControl?: AbstractControl;
 
   @Input() config: IRadioInputComponentConfig = {
     id: '',
@@ -88,6 +89,10 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if(retControl){
+      this.formControl = retControl;
+    }
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,

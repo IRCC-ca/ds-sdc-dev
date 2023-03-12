@@ -4,7 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
@@ -58,6 +58,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   typeControl: keyof typeof InputTypes = InputTypes.text;
   ariaText = 'Text Input';
   errorIds: IErrorIDs[] = [];
+  formControl?: AbstractControl;
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
@@ -70,6 +71,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   private onChange?: (value: any) => void;
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if(retControl){
+      this.formControl = retControl;
+    }
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,

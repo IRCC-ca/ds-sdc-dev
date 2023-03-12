@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
@@ -52,6 +52,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     formGroup: new FormGroup({}),
     // category: 'secondary',
   };
+  formControl?: AbstractControl;
+
 
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
@@ -84,6 +86,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if(retControl){
+      this.formControl = retControl;
+    }
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,

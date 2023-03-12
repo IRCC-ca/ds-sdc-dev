@@ -3,20 +3,21 @@
         <div class="header_stepper_container" id="header_stepper_inner_container">
             <lib-header [id]="'header'" [ngClass]="{'disable_all' : hamburgerMenuState}"></lib-header>
             <div class="stepper" *ngIf="innerWidth > 980">
-                <lib-progress-indicator [config]="progressIndicatorConfig"
-                    (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+                <lib-progress-indicator [config]="progressIndicatorConfig" (tabClick)="progressTabButtonEvent($event)">
+                </lib-progress-indicator>
             </div>
             <div class="hamburger" *ngIf="innerWidth < 980">
                 <lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'"
                     (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
             </div>
             <div class="modal_container" *ngIf="hamburgerMenuState">
-                <dialog id="progress_dialog" class="dialog" open preventOutsideClick (preventOutsideClick)="test($event)">
+                <dialog id="progress_dialog" class="dialog" open preventOutsideClick
+                    (preventOutsideClick)="test($event)">
                     <div class="progress_dialog_content">
                         <div class="modal_header">
                             <h5>{{'ACC_DEMO.MODAL_TITLE' | translate}}</h5>
-                            <lib-icon-button [config]="hamburgerDialogXButtonConfig"
-                                (click)="menuHamburgerButton()"></lib-icon-button>
+                            <lib-icon-button [config]="hamburgerDialogXButtonConfig" (click)="menuHamburgerButton()">
+                            </lib-icon-button>
                         </div>
                         <div class="progress_container">
                             <lib-progress-indicator [config]="progressIndicatorConfig"
@@ -28,7 +29,7 @@
             </div>
         </div>
     </nav>
-    <div class="content_container">
+    <div aria-live="polite" class="content_container">
         <div class="error_banner" *ngIf="showErrorBanner">
             <lib-banner [config]="errorBannerConfig"></lib-banner>
         </div>
@@ -39,9 +40,11 @@
             </div>
             <div class="family_name_container">
                 <lib-input [config]="familyNameInputConfig"></lib-input>
-                <div class="banner_container" *ngIf="showFamilyNameBanner">
-                    <lib-banner [config]="familyNameInputBannerConfig"
-                        (btnEvent)="bannerCloseHandler($event)"></lib-banner>
+                <div aria-live="polite">
+                    <div class="banner_container" *ngIf="showFamilyNameBanner">
+                        <lib-banner [config]="familyNameInputBannerConfig" (btnEvent)="bannerCloseHandler($event)">
+                        </lib-banner>
+                    </div>
                 </div>
             </div>
             <div class="given_name_container">
@@ -49,9 +52,11 @@
             </div>
             <div class="sex_at_birth_container">
                 <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
-                <div class="banner_container" *ngIf="showSexAtBirthBanner">
-                    <lib-banner [config]="sexAtBirthRadioBannerConfig"
-                        (btnEvent)="bannerCloseHandler($event)"></lib-banner>
+                <div aria-live="polite">
+                    <div class="banner_container" *ngIf="showSexAtBirthBanner">
+                        <lib-banner [config]="sexAtBirthRadioBannerConfig" (btnEvent)="bannerCloseHandler($event)">
+                        </lib-banner>
+                    </div>
                 </div>
             </div>
             <div class="date_of_birth_container">
