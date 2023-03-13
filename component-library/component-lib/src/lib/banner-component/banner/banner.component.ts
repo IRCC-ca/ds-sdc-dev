@@ -51,7 +51,7 @@ export class BannerComponent implements OnInit {
   @Input() config?: IBannerConfig;
   @Input() id?: string;
 
-  @Output() btnEvent? = new EventEmitter();
+  @Output() btnEvent = new EventEmitter();
 
   iconConfig : IIconButtonComponentConfig = {
     id: '', //id is set in ngOnInit
@@ -70,8 +70,13 @@ export class BannerComponent implements OnInit {
       setTimeout(function () {
         banner?.classList.add('noDisplay');
       }, 300)
+      this.btnEvent?.emit(this.config.id);
+      banner?.classList.remove('bannerDismissed');
+      banner?.classList.remove('noDisplay');
     }
-    this.btnEvent?.emit(emitValue);
+
+
+
   }
 
   toggleLine(){

@@ -1,11 +1,10 @@
-<footer class="footing">
-    <div class="grid-container">
-        <div class="item1 body3">
-            <ng-content></ng-content>
-        </div>
-        <picture class="item2">
-            <source srcset="assets/canada_logo_dark.svg" media="(prefers-color-scheme: dark)">
-            <img src="assets/canada_logo_light.svg">
-        </picture>
+<footer class="lib-footer footing" role="contentinfo">
+  <div class="grid-container" [id]="id">
+    <div class="item1 body3">
+      <ng-content></ng-content>
     </div>
+    <picture class="item2">
+      <img src="{{ imageURL }}" alt="{{ altImage }}" attr.aria-label="{{ aria }}" />
+    </picture>
+  </div>
 </footer>

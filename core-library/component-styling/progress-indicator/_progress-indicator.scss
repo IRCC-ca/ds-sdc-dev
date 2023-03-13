@@ -59,7 +59,7 @@
 
     .horizontal {
         display: flex;
-        overflow-y: scroll;
+        overflow-x: auto;
         justify-content: space-between;
         .container-plus-line {
             width: 100%;
@@ -78,7 +78,7 @@
         }
     }
     .vertical {
-        overflow-x: scroll;
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

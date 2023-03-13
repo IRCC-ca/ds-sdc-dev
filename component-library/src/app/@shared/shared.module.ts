@@ -5,6 +5,7 @@ import { IrccDsAngularBannerModule, IrccDsAngularComponentsSharedModule, IrccDsA
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavButtonsComponent } from '@app/gallery/nav-buttons/nav-buttons.component';
 import { RouterModule } from '@angular/router';
+import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     IrccDsAngularLegacyOldModule,
   ],
   declarations: [
-    NavButtonsComponent
+    NavButtonsComponent,
+    PreventTabOutDirective
   ],
   exports: [
     IrccDsAngularBannerModule,
@@ -28,7 +30,8 @@ import { RouterModule } from '@angular/router';
     IrccDsAngularComponentsSharedModule,
     ReactiveFormsModule,
     FormsModule,
-    NavButtonsComponent
+    NavButtonsComponent,
+    PreventTabOutDirective
   ]
 })
 export class SharedModule { }

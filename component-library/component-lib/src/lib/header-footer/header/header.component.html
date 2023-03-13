@@ -1,6 +1,16 @@
-<header class="heading">
+<header class="heading" role="banner">
     <div class="grid-container" [id]="id">
-        <img src="{{imageURL}}" attr.aria-label="{{aria}}">
+        <a
+        href="{{govCanadaLink}}"    
+        id="canada-home-img-link"
+        target="_blank"
+        property="url"
+        role="link"
+        tabindex="0"
+        attr.aria-label="{{govCanadaAlt}}"
+        >
+            <img src="{{imageURL}}" attr.aria-label="{{aria}}" property="logo">
+        </a>
         <div class="languageSwitch">
             <lib-language-switch [id]="id + '_langToggle'"></lib-language-switch>
         </div>

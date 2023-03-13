@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   ControlValueAccessor,
-  FormControl,
   FormGroup,
   NG_VALUE_ACCESSOR,
   ValidatorFn
@@ -9,6 +9,7 @@ import {
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 
 export interface IRadioInputComponentConfig {
   id: string;
@@ -24,6 +25,7 @@ export interface IRadioInputComponentConfig {
   validators?: ValidatorFn[];
   helpText?: string;
   errorMessages?: IErrorPairs[];
+  labelIconConfig?: ILabelIconConfig;
 }
 
 export interface IRadioInputOption {
@@ -51,6 +53,7 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   formGroupEmpty = new FormGroup({});
   touched = false;
   errorIds: IErrorIDs[] = [];
+  formControl?: AbstractControl;
 
   @Input() config: IRadioInputComponentConfig = {
     id: '',
@@ -58,6 +61,11 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   };
   @Input() id = '';
   @Input() formGroup = this.formGroupEmpty;
+
+  labelConfig: ILabelConfig = {
+    formGroup: this.config.formGroup,
+    parentID: ''
+  }
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -81,6 +89,20 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if(retControl){
+      this.formControl = retControl;
+    }
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig);
+
     if (this.id !== '') this.config.id = this.id;
     if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
     if (this.config.errorMessages) {
@@ -88,6 +110,17 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     }
   }
 
+  ngOnChanges(){
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig);
+  }
 
   /**
    * used to disable individual fields (from the config under 'options')

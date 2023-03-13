@@ -4,6 +4,19 @@ import { Shell } from './shell/shell.service';
 
 const routes: Routes = [
 
+  {
+    path: 'en',
+    children: [
+      { path: 'accessibility-demo', loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
+    ]
+  },
+  {
+    path: 'fr',
+    children: [
+      { path: "démo-d'accessibilité", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
+    ]
+  },
+
   Shell.childRoutes([
     {
       path: 'en',
@@ -19,8 +32,8 @@ const routes: Routes = [
         { path: '**', redirectTo: 'page-general' }
       ]
     },
-      //Must be last, as it contains the fallback route when no prior route is matched
-      //TODO: Check this
+    //Must be last, as it contains the fallback route when no prior route is matched
+    //TODO: Check this
     { path: '**', redirectTo: '/en/landing-page' }
   ])
 ];

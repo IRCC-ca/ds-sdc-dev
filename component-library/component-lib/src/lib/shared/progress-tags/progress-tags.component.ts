@@ -23,7 +23,7 @@ export interface IProgressTagsConfig {
 })
 export class ProgressTagsComponent implements OnInit {
 
-  text: string = '';
+  text: string[] = [];
 
   @Input() config: IProgressTagsConfig = {
     id: '',
@@ -50,39 +50,9 @@ export class ProgressTagsComponent implements OnInit {
 
   setTypeTitle() {
     if ((this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US')) {
-      switch(this.config.type) {
-        case TagType.success:
-          this.text = TAG_LABELS_EN[1];
-        break;
-        case TagType.critical:
-          this.text = TAG_LABELS_EN[2];
-        break;
-        case TagType.locked:
-          this.text = TAG_LABELS_EN[3];
-        break;
-        case TagType.notStarted:
-          this.text = TAG_LABELS_EN[4];
-        break;
-        default:
-          this.text = TAG_LABELS_EN[0];
-      }
+      this.text = TAG_LABELS_EN;
     } else {
-      switch(this.config.type) {
-        case TagType.success:
-          this.text = TAG_LABELS_FR[1];
-        break;
-        case TagType.critical:
-          this.text = TAG_LABELS_FR[2];
-        break;
-        case TagType.locked:
-          this.text = TAG_LABELS_FR[3];
-        break;
-        case TagType.notStarted:
-          this.text = TAG_LABELS_FR[4];
-        break;
-        default:
-          this.text = TAG_LABELS_FR[0];
-      }
+      this.text = TAG_LABELS_FR;
     }
   };
 };

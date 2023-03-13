@@ -123,14 +123,50 @@
     margin-right: 4px;
   }
 
+  @media (max-width: 373px) {
   .all-select-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
 
-    .select-container {
-      min-width: 155px;
+    //Currently only has the large size - TODO: Update to include small
+    // .select-container {
+    //   // min-width: 155px;
+
+      .select-year {
+        width: 100%;
+      }
+      .select-month {
+        width: 100%;
+      }
+      .select-day {
+        width: 100%;
+      }
     }
+  }
+
+  @media (min-width: 372px) {
+    .all-select-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+  
+      //Currently only has the large size - TODO: Update to include small
+      // .select-container {
+      //   // min-width: 155px;
+  
+        .select-year {
+          min-width: 112px;
+        }
+        .select-month {
+          min-width: 144px;
+          margin-left: 12px;
+        }
+        .select-day {
+          min-width: 92px;
+          margin-left: 12px;
+        }
+      }
   }
 
   .date-form {
@@ -149,5 +185,17 @@
       flex: 1;
       min-width: 120px;
     }
+  }
+
+  select::placeholder {
+    text-align: left;
+    margin-left: 0px
+  }
+  ::-webkit-input-placeholder {
+    text-align: left;
+  }
+  
+  :-moz-placeholder {
+    text-align: left;
   }
 }
