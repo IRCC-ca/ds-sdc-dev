@@ -24,15 +24,17 @@
 
 @mixin layout {
 
-    .headerLine {
-        --global-divider: #102242;
-        color: var(--global-divider);
-        border-width: sizes.$fixed-2;
-        border-style: solid;
-        margin-top: 0;
-        margin-bottom: 0;
+    .heading {
+        container-type: inline-size;
+        container-name: header-container;
     }
-
+    // Since we have 8px margin from body, for full width:
+    @container header-container (width: calc(100vw - 16px)) {
+        .grid-container {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
     .grid-container {
         display: flex;
         @include layout-grid.grid(max-content auto, auto);
@@ -75,10 +77,6 @@
         }
     }
 
-    .item2 {
-        justify-self: end;
-    }
-
     .languageSwitch {
         justify-self: end;
         margin: {
@@ -118,6 +116,13 @@
                 margin-right: 0;
             }
         }
+    }
+    .headerLine {
+        color: var(--header-line);
+        border-width: sizes.$fixed-2;
+        border-style: solid;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 
