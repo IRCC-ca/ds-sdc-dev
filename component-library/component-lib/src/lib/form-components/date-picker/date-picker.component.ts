@@ -158,7 +158,6 @@ export class DatePickerComponent implements OnInit {
       this.config.labelIconConfig
     );
 
-    console.log(this.config);
     //set config from individual options, if present
     if (this.formGroup) this.config.formGroup = this.formGroup;
     if (this.id) this.config.id = this.id;
@@ -282,6 +281,9 @@ export class DatePickerComponent implements OnInit {
     });
   }
 
+  /**
+   * Used to set the language of year/day 'unknown' field when langauge changes
+   */
   setYearDayLanguage() {
     this.dropDownConfigs.day.options?.shift();
     this.dropDownConfigs.year.options?.shift();
