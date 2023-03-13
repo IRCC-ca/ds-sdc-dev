@@ -24,7 +24,7 @@
 @mixin size-sm {
   .text {
     padding: 2px 8px;
-    border-radius: 10px;
+    border-radius: 11px;
 
     @include typography.fontSize(map.get(text.$body, level), 4);
   }
@@ -33,63 +33,91 @@
 @mixin size-lg {
   .text {
     padding: 4px 8px;
-    border-radius: 14px;
+    border-radius: 15px;
 
     @include typography.fontSize(map.get(text.$body, level), 2);
   }
 }
 
 @mixin status-color {
-  &.info {
+  &.info,
+  &.teal {
     color: var(--information-text);
   }
 
-  &.warning {
+  &.warning,
+  &.orange {
     color: var(--warning-text);
   }
 
-  &.critical {
+  &.critical,
+  &.red {
     color: var(--critical-text);
   }
 
-  &.generic {
+  &.generic,
+  &.grey {
     color: color.mix-token(neutral, 900);
   }
 
-  &.generic-primary {
+  &.generic-primary,
+  &.blue {
     color: color.mix-token(active, 900);
   }
 
-  &.success {
+  &.success,
+  &.green {
     color: var(--success-text);
+  }
+
+  &.purple {
+    color: color.mix-token(visited, 900);
+  }
+
+  &.navy {
+    color: color.mix-token(cta, 700);
   }
 }
 
 @mixin status-background {
   color: color.mix-token(neutral, 100);
 
-  &.info {
+  &.info,
+  &.teal {
     background: var(--information-text);
   }
 
-  &.warning {
+  &.warning,
+  &.orange {
     background: var(--warning-text);
   }
 
-  &.critical {
+  &.critical,
+  &.red {
     background: var(--critical-text);
   }
 
-  &.generic {
+  &.generic,
+  &.grey {
     background: color.mix-token(neutral, 900);
   }
 
-  &.generic-primary {
+  &.generic-primary,
+  &.blue {
     background: color.mix-token(active, 900);
   }
 
-  &.success {
+  &.success,
+  &.green {
     background: var(--success-text);
+  }
+
+  &.purple {
+    background: color.mix-token(visited, 900);
+  }
+
+  &.navy {
+    background: color.mix-token(cta, 700);
   }
 }
 

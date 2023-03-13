@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 
 export enum IndicatorType {
-  dot = 'dot',
-  text = 'text'
+  dot,
+  text
 }
 
 export enum IndicatorTreatment {
@@ -24,6 +24,17 @@ export enum IndicatorStatus {
   genericPrimary = 'generic-primary',
 }
 
+export enum IndicatorPalette {
+  teal,
+  orange,
+  red,
+  grey,
+  blue,
+  green,
+  purple,
+  navy
+}
+
 export interface IIndicatorConfig {
   label?: string;
   size?: keyof typeof DSSizes;
@@ -31,7 +42,7 @@ export interface IIndicatorConfig {
   treatment: keyof typeof IndicatorTreatment;
   purpose: keyof typeof IndicatorPurpose;
   status?: keyof typeof IndicatorStatus; // Sentiment
-  palette?: string; // Colour
+  palette?: keyof typeof IndicatorPalette; // Colour
 }
 
 @Component({
@@ -40,7 +51,7 @@ export interface IIndicatorConfig {
 })
 export class IndicatorComponent implements OnInit {
   @Input() config: IIndicatorConfig = {
-    type: IndicatorType.text,
+    type: 'text',
     treatment: IndicatorTreatment.weak,
     purpose: IndicatorPurpose.status
   };
