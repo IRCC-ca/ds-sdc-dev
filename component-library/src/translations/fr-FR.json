@@ -62,62 +62,85 @@
   },
 
   "QA": {
-    "header": "Page de AQ"
+    "header": "QA Landing Page"
   },
-
   "ERROR": {
-    "fieldIsInvalid": "FR This field is invalid.",
-    "fieldExceededMaxLength": "FR This field has exceeded max length.",
-    "testErrorMessage": "FR Test error message.",
-    "errorMessage": "FR Error message",
-    "errorMessageMahsa": "FR Testing error message thing take 1000"
+    "fieldIsInvalid": "This field is invalid.",
+    "fieldExceededMaxLength": "This field has exceeded max length.",
+    "testErrorMessage": "Test error message.",
+    "errorMessage": "Error message",
+    "errorMessageMahsa": "Testing error message thing take 1000"
   },
-
   "TAG": {
-    "progress": "FR In progress",
-    "completed": "FR Completed",
-    "error": "FR Error",
-    "locked": "FR Locked",
-    "notStarted": "FR Not started"
+    "progress": "In progress",
+    "completed": "Completed",
+    "error": "Error",
+    "locked": "Locked",
+    "notStarted": "Not started"
   },
   "SELECT": {
-    "GENERIC_PLACEHOLDER": "Veuillez selectionner"
+    "GENERIC_PLACEHOLDER": "Select an option"
   },
   "ACC_DEMO": {
+    "MODAL_TITLE": "Steps",
+    "PREVIOUS_PAGE": {
+      "HEADER": "Background information",
+      "CONTENT": "This page is not part of the prototype. Please use the button below to return to the previous screen."
+    },
+    "NEXT_PAGE": "This is an example of a next page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
     "ERRORS": {
-      "REQUIRED": "FR This field is required."
+      "REQUIRED": "This field is required.",
+      "FAMILY_NAME_REQUIRED": "This field is blank. Please enter a family name",
+      "SELECTS_RADIO_REQUIRED": "No selection has been made. Please select an option",
+      "DOB_NO_SELECTION_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
+      "DOB_REQUIRED":"Please fill in the missing fields to complete your date of birth.",
+      "DECLARATION_REQUIRED": "No selection has been made. Please make a selection to complete your declaration",
+      "DECLARATION_CUSTOM": "You must agree to continue" 
+    },
+    "STEPPER": {
+      "STEP1": "Background information",
+      "STEP2": "Personal information",
+      "STEP3": "Work information",
+      "STEP4": "Review & submit"
     },
     "PERSONAL_INFO": {
-      "H1": "FR Personal information",
-      "BODY": "FR Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
+      "ERROR_BANNER": {
+        "TITLE": "Missing information",
+        "CONTENT": "There are unresolved errors below."
+      },
+      "H1": "Personal information",
+      "BODY": "Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
       "FAMILY_NAME_INPUT": {
-        "LABEL": "FR Prénom (required)",
-        "DESC": "FR This is your surname or last name",
-        "BANNER": "FR If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
+        "LABEL": "Family name (required)",
+        "LABEL_INFO_BUTTON_ARIA": "more information",
+        "DESC": "This is your surname or last name",
+        "BANNER": "If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
       },
       "GIVEN_NAME_INPUT": {
-        "LABEL": "Nom de famille",
-        "DESC": "FR This is your first name and middle name, if applicable"
+        "LABEL": "Given name",
+        "DESC": "This is your first name and middle name, if applicable"
       },
       "SEX_AT_BIRTH_RADIO": {
-        "LABEL": "FR Sex at birth (required)",
-        "FEMALE": "FR F - Female",
-        "MALE": "FR M - Male",
-        "OTHER": "FR X - Another sex"
+        "LABEL": "Sex at birth (required)",
+        "LABEL_INFO_BUTTON_ARIA": "more information",
+        "FEMALE": "F - Female",
+        "MALE": "M - Male",
+        "OTHER": "X - Another sex",
+        "BANNER": "<p>This question is asked for identity verification purposes only. <br><br>Sex refers to your status at birth, and may not reflect your precise gender identity.</p>"
       },
       "DATE_OF_BIRTH": {
-        "LABEL": "Date de naissance (required)"
+        "LABEL": "Date of birth (required)"
       },
       "COUNTRY_OF_BIRTH": {
-        "LABEL": "FR Country or territory of birth (required)",
+        "LABEL": "Country/territory of birth (required)",
         "OPTIONS": {
           "CANADA": "Canada",
-          "USA": "États-Unis d'Amérique",
-          "MEXICO": "Mexique"
+          "USA": "United States of America",
+          "MEXICO": "Mexico"
         }
       },
       "CITY_OF_BIRTH": {
-        "LABEL": "FR City or town of birth (required)",
+        "LABEL": "City or town of birth (required)",
         "OPTIONS": {
           "CANADA": {
             "OTTAWA": "Ottawa",
@@ -136,11 +159,16 @@
           }
         }
       },
-      "DECLARATION": "FR I declare that the above information is true and accurate."
+      "DECLARATION": {
+        "INLINE_LABEL": "I declare that the above information is true and accurate.",
+        "LABEL": "Declaration (required)"
+      }
     },
     "BUTTONS": {
-      "PREVIOUS": "FR Previous",
-      "NEXT": "Prochaine étape"
+      "PREVIOUS": "Previous step",
+      "NEXT": "Save and continue",
+      "PREVIOUS_PAGE_NEXT": "Next",
+      "HAMBURGER": "Menu"
     }
   }
 }

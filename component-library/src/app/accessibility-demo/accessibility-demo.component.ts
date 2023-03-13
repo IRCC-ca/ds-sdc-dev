@@ -477,6 +477,9 @@ export class AccessibilityDemoComponent implements OnInit {
     console.log(this.hamburgerMenuState)
     if (this.hamburgerMenuState !== undefined && !this.hamburgerMenuState) {
       this.hamburgerMenuState = true;
+      setTimeout(() => {const focus = document.getElementById('modal_close_button') as HTMLInputElement;
+      focus.focus();
+    }, 20);
     } else {
       this.hamburgerMenuState = false;
     }

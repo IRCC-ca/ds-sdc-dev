@@ -52,7 +52,7 @@ export const DATE_PICKER_PLACEHOLDER_MONTH_EN = 'Month';
 export const DATE_PICKER_PLACEHOLDER_MONTH_FR = 'Mois';
 
 export const DATE_PICKER_PLACEHOLDER_DAY_EN = 'DD';
-export const DATE_PICKER_PLACEHOLDER_DAY_FR = 'DD';
+export const DATE_PICKER_PLACEHOLDER_DAY_FR = 'JJ';
 
 export const DATE_PICKER_UNKOWN_EN = "Unknown";
 export const DATE_PICKER_UNKOWN_FR = "Inconnu"
@@ -200,6 +200,7 @@ export class DatePickerComponent implements OnInit {
     this.setLabelLanguage();
     this.translate.onLangChange.subscribe(() => {
       this.setMonthsLanguage();
+      this.setYearDayLanguage();
       this.setLabelLanguage();
     });
     if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
@@ -262,7 +263,7 @@ export class DatePickerComponent implements OnInit {
   }
 
   /**
-   * Set the language for the month dropdown
+   * Set the language for dropdown options
    */
   setMonthsLanguage() {
     this.dropDownConfigs.month.options = [];
@@ -279,6 +280,23 @@ export class DatePickerComponent implements OnInit {
     this.months.forEach((month: string, index: number) => {
       this.dropDownConfigs.month.options?.push({ text: month, value: DATE_PICKER_MONTHS_EN[index] });
     });
+  }
+
+  setYearDayLanguage() {
+    this.dropDownConfigs.day.options?.shift();
+    this.dropDownConfigs.year.options?.shift();
+    if(this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US')
+    {
+      this.months = DATE_PICKER_MONTHS_EN;
+      this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value:'**' });
+      this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value:'**' });
+    }
+    else
+    { 
+      this.months = DATE_PICKER_MONTHS_FR;
+      this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value:"**" });
+      this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value:'**' });
+    }
   }
 
   /**

@@ -23,36 +23,43 @@ export class PreventTabOutDirective {
   // @Output() clickOutside = new EventEmitter<string>();
 
   constructor(private elementRef: ElementRef) { }
+  
+  scrollToAnchor() {
+    const anchorEl = this.elementRef.nativeElement.querySelector('target');
+    if (anchorEl) {
+      anchorEl.scrollIntoView({behaviour: 'smooth'});
+    }
+  }
 
-  @HostListener('keydown.tab', ['$event'])
-  @HostListener('keydown.shift.tab', ['$event'])
-  onTab(event: KeyboardEvent) {
-    const dialog = this.elementRef.nativeElement;
+  // @HostListener('keydown.tab', ['$event'])
+  // @HostListener('keydown.shift.tab', ['$event'])
+  // onTab(event: KeyboardEvent) {
+  //   const dialog = this.elementRef.nativeElement;
     
-    console.log(this.getNextTabbableElement(event.target));
-    //   if (dialog.contains(event.target)) {
-    //     console.log('ha!')
-    //   }
-    //   // Do something when a tab or shift+tab event occurs
-    //   console.log('Tab or shift+tab event occurred', event);
-    //   // event.preventDefault();
-    //   console.log(this.getNextTabElement());
-    // }
+  //   console.log(this.getNextTabbableElement(event.target));
+  //   //   if (dialog.contains(event.target)) {
+  //   //     console.log('ha!')
+  //   //   }
+  //   //   // Do something when a tab or shift+tab event occurs
+  //   //   console.log('Tab or shift+tab event occurred', event);
+  //   //   // event.preventDefault();
+  //   //   console.log(this.getNextTabElement());
+  //   // }
 
-    // getNextTabElement(): HTMLElement {
-    //   const currentElement = this.elementRef.nativeElement;
-    //   const nextElement = currentElement.nextTabbable;
+  //   // getNextTabElement(): HTMLElement {
+  //   //   const currentElement = this.elementRef.nativeElement;
+  //   //   const nextElement = currentElement.nextTabbable;
 
-    //   return nextElement as HTMLElement;
-    // }
-  }
-  getNextTabbableElement(element: any): HTMLElement {
-    const elements = Array.from(document.querySelectorAll('a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, *[tabindex]'));
-    const currentElement = this.elementRef.nativeElement;
-    const currentIndex = elements.indexOf(currentElement);
-    const nextIndex = currentIndex === elements.length - 1 ? 0 : currentIndex + 1;
-    const nextElement = elements[nextIndex];
+  //   //   return nextElement as HTMLElement;
+  //   // }
+  // }
+  // getNextTabbableElement(element: any): HTMLElement {
+  //   const elements = Array.from(document.querySelectorAll('a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, *[tabindex]'));
+  //   const currentElement = this.elementRef.nativeElement;
+  //   const currentIndex = elements.indexOf(currentElement);
+  //   const nextIndex = currentIndex === elements.length - 1 ? 0 : currentIndex + 1;
+  //   const nextElement = elements[nextIndex];
 
-    return nextElement as HTMLElement;
-  }
+  //   return nextElement as HTMLElement;
+  // }
 }

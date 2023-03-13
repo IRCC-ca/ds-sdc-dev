@@ -1,10 +1,12 @@
 .page_container {
     .dimmer {
-        width: 98.5vw;
-        height: 96vh;
+        width: 100vw;
+        height: 101vh;
         position: absolute;
         background: rgba(44, 44, 45, 0.8);
         z-index: 10;
+        overflow: hidden;
+        margin-top: -8px;
         }
     
 
@@ -74,9 +76,9 @@
 }
 
 .no_scroll {
-    height: 96vh;
+    height: 100vh;
     overflow: hidden;
-}
+  }
 
 .disable_all {
     pointer-events: none;
