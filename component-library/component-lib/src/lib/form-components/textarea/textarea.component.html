@@ -22,20 +22,21 @@
         <p *ngIf="config.desc" class="textarea-desc">{{(config.desc || '') | translate}}</p>
         <p *ngIf="config.hint" class="textarea-hint">{{ config.hint | translate }}</p>
         <div class="content-area" [ngClass]="focusState === true ? 'focus' : ''">
-          <textarea (input)="valueChange(textareaInput.value.length)" class="textarea-field" maxlength="{{config.charLimit}}" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0"
-            [id]="config.id" [formControlName]="config.id" [attr.aria-label]="'Textarea Input' + ' ' + (config.placeholder || '' | translate)" #textareaInput>
+          <textarea class="textarea-field" maxlength="{{config.charLimit}}" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0"
+            [id]="config.id" [formControlName]="config.id" [attr.aria-label]="'Textarea Input' + ' ' + (config.placeholder || '' | translate)" #textareaInput>123
           </textarea>
-          <p *ngIf="config.charLimit" class="character-count" [ngClass]="charLimitStatus"
-            attr.aria-label="{{ 'TEXTAREA_COMPONENT.characters-used-aria-label' | translate: { currentCharacterCount: textareaInput.value.length, characterLimit: config.charLimit } }}" 
+          <p *ngIf="config.charLimit" class="character-count" [ngClass]="charLimitStatus" aria-live="polite"
+            attr.aria-label=" {{ 'TEXTAREA_COMPONENT.characters-used-aria-label' | translate: { currentCharacterCount: textareaInput.value.length, characterLimit: config.charLimit} }}
+             {{(currentCharacterStatusAria || '') | translate}}"
             tabindex="0" >{{textareaInput.value.length}}/{{config.charLimit}}
-        </p>
+          </p>
         </div>
       </div>
 
       <div *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid" class="check-error">
         <ng-container *ngFor="let errors of errorIds; let i = index">
           <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
-            <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+            <lib-error [size]="config?.size" [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
           </div>
         </ng-container>
       </div>

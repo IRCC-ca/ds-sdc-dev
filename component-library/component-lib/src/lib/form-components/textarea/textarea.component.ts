@@ -14,7 +14,7 @@ export interface ITextareaComponentConfig {
   hint?: string;
   required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
   placeholder?: string;
-  charLimit? : number;
+  charLimit? : string;
   resizable?: keyof typeof ResizableTypes;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
@@ -47,10 +47,16 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     id: '',
     formGroup: new FormGroup({}),
   };
+
+  @Input() id = '';
+  @Input() formGroup = this.formGroupEmpty;
+  @Input() charLimit = '';
+
   disabled = false;
   focusState = false;
   errorIds: IErrorIDs[] = []
   charLimitStatus = '';
+  currentCharacterStatusAria='';
   
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
@@ -60,27 +66,56 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   private onChange?: (value: any) => void;
 
   ngOnInit(): void {
+    if (this.id !== '') {
+      this.config.id = this.id;
+    }
+
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    }
+
+    if (this.charLimit !== '') {
+      this.config.charLimit = this.charLimit;
+    }
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
     }
+
+    if (this.config.formGroup.controls[this.config.id].value) {
+      this.characterCountStatus(this.config.formGroup.controls[this.config.id].value.length)
+    }
+
+    this.config.formGroup.valueChanges.subscribe(change => {
+      this.characterCountStatus(change[this.config.id]?.length)
+    });
   }
 
   public focusInput(focusValue: boolean): void {
     this.focusState = !focusValue;
   }
 
-  valueChange($event : any) {
-    if(this.config.charLimit) {
-      console.log("Value changed:", $event , this.config.charLimit)
-      if (this.config.charLimit == $event) {
+  characterCountStatus (currCharCount : any) {
+    if (this.config?.charLimit) {
+      if (this.config?.charLimit == currCharCount) {
         this.charLimitStatus="maxLimit"
+        this.currentCharacterStatusAria = 'TEXTAREA_COMPONENT.maxLimit'
+
       }
-      else if (this.config.charLimit - $event <= 15) {
-        this.charLimitStatus="warningLimit"
+      else if (Number(this.config?.charLimit) - currCharCount == 15) {
+        this.charLimitStatus="warningLimit";
+        this.currentCharacterStatusAria = "TEXTAREA_COMPONENT.warningLimit";
+      }
+      else if (Number(this.config?.charLimit) - currCharCount < 15) {
+        this.charLimitStatus="warningLimit";
+        this.currentCharacterStatusAria = "";
+      }
+      else {
+        this.charLimitStatus="";
+        this.currentCharacterStatusAria = "";
       }
     }
   }
-
 
   public clearvalue() {
   }
