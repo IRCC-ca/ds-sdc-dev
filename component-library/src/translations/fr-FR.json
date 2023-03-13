@@ -81,7 +81,7 @@
     "notStarted": "FR Not started"
   },
   "SELECT": {
-    "GENERIC_PLACEHOLDER": "Veuillez slectionner"
+    "GENERIC_PLACEHOLDER": "Veuillez selectionner"
   },
   "ACC_DEMO": {
     "ERRORS": {
@@ -101,19 +101,19 @@
       },
       "SEX_AT_BIRTH_RADIO": {
         "LABEL": "FR Sex at birth (required)",
-        "FEMALE": "F - Female",
-        "MALE": "M - Male",
-        "OTHER": "X - Another sex"
+        "FEMALE": "FR F - Female",
+        "MALE": "FR M - Male",
+        "OTHER": "FR X - Another sex"
       },
       "DATE_OF_BIRTH": {
         "LABEL": "Date de naissance (required)"
       },
       "COUNTRY_OF_BIRTH": {
-        "LABEL": "FR Country/territory of birth (required)",
+        "LABEL": "FR Country or territory of birth (required)",
         "OPTIONS": {
           "CANADA": "Canada",
-          "USA": "United States of America",
-          "MEXICO": "Mexico"
+          "USA": "États-Unis d'Amérique",
+          "MEXICO": "Mexique"
         }
       },
       "CITY_OF_BIRTH": {

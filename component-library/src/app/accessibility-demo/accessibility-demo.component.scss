@@ -80,6 +80,10 @@
       margin-left: 40px;
     }
 
+    @media (max-width: 372px) {
+      margin-left: 0;
+    }
+
     max-width: 1036px;
 
     .error_banner {
@@ -109,6 +113,13 @@
         display: flex;
         justify-content: space-between;
         margin-top: 64px;
+
+        @media (max-width: 372px) {
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          height: 116px;
+        }
       }
     }
 

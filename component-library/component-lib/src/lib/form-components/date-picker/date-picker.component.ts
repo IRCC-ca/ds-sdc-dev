@@ -45,14 +45,14 @@ export const DATE_PICKER_YEAR_CONTROL_ID_EXTENSION = '_yearControl';
 export const DATE_PICKER_LABELS_EN = ['Day', 'Month', 'Year'];
 export const DATE_PICKER_LABELS_FR = ['Jour', 'Mois', 'Année'];
 
-export const DATE_PICKER_PLACEHOLDER_YEAR_EN = 'Year';
-export const DATE_PICKER_PLACEHOLDER_YEAR_FR = 'Année';
+export const DATE_PICKER_PLACEHOLDER_YEAR_EN = 'YYYY';
+export const DATE_PICKER_PLACEHOLDER_YEAR_FR = 'AAAA';
 
 export const DATE_PICKER_PLACEHOLDER_MONTH_EN = 'Month';
 export const DATE_PICKER_PLACEHOLDER_MONTH_FR = 'Mois';
 
 export const DATE_PICKER_PLACEHOLDER_DAY_EN = 'DD';
-export const DATE_PICKER_PLACEHOLDER_DAY_FR = 'Jour';
+export const DATE_PICKER_PLACEHOLDER_DAY_FR = 'DD';
 
 export const DATE_PICKER_UNKOWN_EN = "Unknown";
 export const DATE_PICKER_UNKOWN_FR = "Inconnu"
