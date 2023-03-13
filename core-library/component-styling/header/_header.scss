@@ -118,8 +118,7 @@
         }
     }
     .headerLine {
-        --global-divider: #102242;
-        color: var(--global-divider);
+        color: var(--header-line);
         border-width: sizes.$fixed-2;
         border-style: solid;
         margin-top: 0;
