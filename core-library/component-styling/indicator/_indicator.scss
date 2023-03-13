@@ -28,6 +28,17 @@
 
     @include typography.fontSize(map.get(text.$body, level), 4);
   }
+
+  .number {
+    padding: 2px 9px;
+
+    @include typography.fontSize(map.get(text.$body, level), 4);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
 }
 
 @mixin size-lg {
@@ -36,6 +47,17 @@
     border-radius: 15px;
 
     @include typography.fontSize(map.get(text.$body, level), 2);
+  }
+
+  .number {
+    padding: 2px 10px;
+
+    @include typography.fontSize(map.get(text.$body, level), 2);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
   }
 }
 
@@ -124,7 +146,8 @@
 @mixin layout {
   display: inline-block;
 
-  .text {
+  .text,
+  .number {
     &.weak {
       @include status-color;
     }
@@ -132,6 +155,17 @@
     &.strong {
       @include status-background;
     }
+  }
+
+  .number,
+  .dot {
+    border-radius: 50%;
+  }
+
+  .dot {
+    display: block;
+
+    @include status-background;
   }
 
   @include size.selector(small) {

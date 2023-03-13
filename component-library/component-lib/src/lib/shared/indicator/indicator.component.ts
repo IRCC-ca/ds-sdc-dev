@@ -3,7 +3,8 @@ import { DSSizes } from "../../../shared/constants/jl-components/jl-components.c
 
 export enum IndicatorType {
   dot,
-  text
+  text,
+  number
 }
 
 export enum IndicatorTreatment {
@@ -36,7 +37,7 @@ export enum IndicatorPalette {
 }
 
 export interface IIndicatorConfig {
-  label?: string;
+  label?: string | number;
   size?: keyof typeof DSSizes;
   type: keyof typeof IndicatorType;
   category: keyof typeof IndicatorTreatment; // Treatment

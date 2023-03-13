@@ -1,5 +1,5 @@
 <div [ngClass]="['indicator-container', config?.size ?? '']">
-  <div *ngIf="config.type === 'text'"
+  <div *ngIf="config.type === 'text' || config.type === 'number'"
    [ngClass]="[
       config.type,
       config.category,
@@ -7,4 +7,11 @@
       config.purpose === 'palette' ? config.palette : '']">
     <span>{{config?.label}}</span>
   </div>
+  <span *ngIf="config.type === 'dot'"
+   [ngClass]="[
+      config.type,
+      config.category,
+      config.purpose === 'status' ? EIndicatorStatus[config.status ?? 'info'] : '',
+      config.purpose === 'palette' ? config.palette : '']">
+  </span>
 </div>
