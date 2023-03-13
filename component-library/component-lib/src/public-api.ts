@@ -20,6 +20,7 @@ export * from './lib/form-components/error/error.component';
 export * from './lib/form-components/input/input.component';
 export * from './lib/form-components/radio-input/radio-input.component';
 export * from './lib/form-components/date-picker/date-picker.component';
+export * from './lib/form-components/textarea/textarea.component';
 export * from './lib/form-components/select/select.component';
 
 /** Header/Footer Components **/
