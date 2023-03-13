@@ -56,8 +56,9 @@
   }
 
 @mixin layout {
-
     .horizontal {
+        padding-top: 3.5px;
+        padding-left: 5.5px;
         display: flex;
         overflow-x: auto;
         justify-content: space-between;
@@ -78,6 +79,7 @@
         }
     }
     .vertical {
+        padding-top: 3.5px;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
