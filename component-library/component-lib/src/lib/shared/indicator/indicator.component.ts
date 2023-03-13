@@ -39,7 +39,7 @@ export interface IIndicatorConfig {
   label?: string;
   size?: keyof typeof DSSizes;
   type: keyof typeof IndicatorType;
-  treatment: keyof typeof IndicatorTreatment;
+  category: keyof typeof IndicatorTreatment; // Treatment
   purpose: keyof typeof IndicatorPurpose;
   status?: keyof typeof IndicatorStatus; // Sentiment
   palette?: keyof typeof IndicatorPalette; // Colour
@@ -52,7 +52,7 @@ export interface IIndicatorConfig {
 export class IndicatorComponent implements OnInit {
   @Input() config: IIndicatorConfig = {
     type: 'text',
-    treatment: IndicatorTreatment.weak,
+    category: IndicatorTreatment.weak,
     purpose: IndicatorPurpose.status
   };
   EIndicatorStatus = IndicatorStatus;

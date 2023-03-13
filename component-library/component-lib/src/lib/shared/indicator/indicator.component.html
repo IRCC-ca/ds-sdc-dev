@@ -2,7 +2,7 @@
   <div *ngIf="config.type === 'text'"
    [ngClass]="[
       config.type,
-      config.treatment,
+      config.category,
       config.purpose === 'status' ? EIndicatorStatus[config.status ?? 'info'] : '',
       config.purpose === 'palette' ? config.palette : '']">
     <span>{{config?.label}}</span>
