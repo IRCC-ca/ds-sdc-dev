@@ -30,6 +30,7 @@
 @use "./component-styling/date-picker/date-picker";
 @use "./component-styling/footer/footer";
 @use "./component-styling/icon/icon";
+@use "./component-styling/indicator/indicator";
 @use "./component-styling/button/button" as button-component;
 @use "./component-styling/select/select-component" as select-component;
 @use "./component-styling/chips/item" as chip-item;
@@ -100,6 +101,7 @@
     @include element(select-component);
     @include element(progressIndicator-component);
     @include element(breadcrumb);
+    @include element(indicator);
   }
 
   @else {
@@ -244,5 +246,9 @@
 
   @else if $key == breadcrumb {
     @include breadcrumb.create();
+  }
+
+  @else if $key == indicator {
+    @include indicator.create();
   }
 }

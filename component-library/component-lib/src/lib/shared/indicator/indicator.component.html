@@ -1,1 +1,11 @@
-<p>indicator works!</p>
+<div [ngClass]="['indicator-container', config?.size ?? '']">
+  <ng-container *ngIf="config.type === 'text'">
+    <span
+      [ngClass]="[
+        config.type,
+        config.treatment,
+        config.purpose === 'status' && EIndicatorStatus[config.status ?? 'info']]">
+      {{config?.label}}
+    </span>
+  </ng-container>
+</div>

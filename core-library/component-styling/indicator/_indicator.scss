@@ -1,0 +1,124 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "../../tokens/partial/focus" as focus;
+@use "sass:map";
+
+@mixin selector {
+  lib-indicator#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin size-sm {
+  .text {
+    padding: 2px 8px;
+    border-radius: 10px;
+
+    @include typography.fontSize(map.get(text.$body, level), 4);
+  }
+}
+
+@mixin size-lg {
+  .text {
+    padding: 4px 8px;
+    border-radius: 14px;
+
+    @include typography.fontSize(map.get(text.$body, level), 2);
+  }
+}
+
+@mixin status-color {
+  &.info {
+    color: var(--information-text);
+  }
+
+  &.warning {
+    color: var(--warning-text);
+  }
+
+  &.critical {
+    color: var(--critical-text);
+  }
+
+  &.generic {
+    color: color.mix-token(neutral, 900);
+  }
+
+  &.generic-primary {
+    color: color.mix-token(active, 900);
+  }
+
+  &.success {
+    color: var(--success-text);
+  }
+}
+
+@mixin status-background {
+  color: color.mix-token(neutral, 100);
+
+  &.info {
+    background: var(--information-text);
+  }
+
+  &.warning {
+    background: var(--warning-text);
+  }
+
+  &.critical {
+    background: var(--critical-text);
+  }
+
+  &.generic {
+    background: color.mix-token(neutral, 900);
+  }
+
+  &.generic-primary {
+    background: color.mix-token(active, 900);
+  }
+
+  &.success {
+    background: var(--success-text);
+  }
+}
+
+@mixin layout {
+  display: inline-block;
+
+  .text {
+    &.weak {
+      @include status-color;
+    }
+
+    &.strong {
+      @include status-background;
+    }
+  }
+
+  @include size.selector(small) {
+    @include size-sm();
+
+    .large {
+      @include size-lg();
+    }
+  }
+
+  @include size.selector(large) {
+    @include size-lg();
+
+    .small {
+      @include size-sm();
+    }
+  }
+}
