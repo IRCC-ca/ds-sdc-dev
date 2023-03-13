@@ -1,9 +1,11 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import {IErrorIconConfig} from "../error/error.component";
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 
 export interface ICheckBoxComponentConfig {
@@ -19,8 +21,9 @@ export interface ICheckBoxComponentConfig {
   helpText?: string;
   customErrorText?: string;
   desc?: string;
+  hint?: string;
   errorMessages?: IErrorPairs[];
-  errorIcon?: IErrorIconConfig;
+  labelIconConfig?: ILabelIconConfig;
 }
 
 @Component({
@@ -50,6 +53,11 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   isDisabled = false;
   errorIds: IErrorIDs[] = [];
+  formControl?: AbstractControl;
+  labelConfig: ILabelConfig = {
+    formGroup: this.config.formGroup,
+    parentID: ''
+  }
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -75,6 +83,20 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if(retControl){
+      this.formControl = retControl;
+    }
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig);
+
     if (this.id !== '') {
       this.config.id = this.id;
     }
@@ -87,6 +109,18 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
     }
+  }
+
+  ngOnChanges(){
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig);
   }
 
   /**

@@ -26,9 +26,7 @@
 
     .headerLine {
         --global-divider: #102242;
-
         color: var(--global-divider);
-        width: 100%;
         border-width: sizes.$fixed-2;
         border-style: solid;
         margin-top: 0;
@@ -36,7 +34,7 @@
     }
 
     .grid-container {
-        display: grid;
+        display: flex;
         @include layout-grid.grid(max-content auto, auto);
 
         * {
@@ -44,15 +42,24 @@
         }
 
         ;
-
+        justify-content: space-between;
         align-items: center;
+        margin-bottom: 4px;
+        
+        #canada-home-img-link {
+            height: 75px;
+            padding: 0;
+            @include device.if-hover {
+                background-color: transparent;
+            }
+        }
 
         img {
             min-width: 295px;
             margin: {
-                left: 20px;
+                left: 0;
                 top: 24px;
-                bottom: 24px;
+                bottom: 20px;
             };
             height: 27.3px;
 
@@ -76,7 +83,7 @@
         justify-self: end;
         margin: {
             top: 12px;
-            bottom: 14px;
+            bottom: 10px;
         };
 
         @include device.in-phone-layout {
@@ -87,10 +94,25 @@
         }
         
         button {
+            padding: 0;
             font-size: 16px;
             font-family: 'Inter';
             text-decoration: underline;
             text-underline-offset: 4px; //Adjust space between line & text
+            // Button should act like a text-link
+            @include device.if-hover {
+                color: var(--link-text-hover);
+                background-color: transparent;
+            } &:focus {
+                box-shadow: none;
+                outline-offset: 4px;
+            } &:active {
+                color: var(--link-text-active);
+                background-color: transparent;
+            } &:visited {
+                color: var(--link-text-visited);
+            }
+
             @include device.in-phone-layout {
                 padding-right: 16px;
                 margin-right: 0;

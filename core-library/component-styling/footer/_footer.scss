@@ -1,4 +1,7 @@
 @use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as sizes;
+@use '../../layout/layout-grid' as layout-grid;
+@use '../../util/device' as device;
  
 @mixin selector {
     lib-footer#{template-const.$escape} {
@@ -15,32 +18,47 @@
 @mixin layout {
 //copied from component scss file - can be leveraged
 
-// @use '~@ircc-ca/ds-sdc-core/tokens/sizes';
-// @use '~@ircc-ca/ds-sdc-core/layout/layout-grid';
-// @use '~@ircc-ca/ds-sdc-core/util/device';
+  .footing {
+    margin-top: sizes.$fixed-16;
+    margin-bottom: sizes.$fixed-16;
+  }
 
-//   .footing {
-//     margin-top: sizes.$fixed-16;
-//     margin-bottom: sizes.$fixed-16;
-//   }
-
-//   .grid-container {
-//     display: grid;
-//     @include layout-grid.grid(max-content auto, auto);
-//     * {grid-column: auto / span 1};
+  .grid-container {
+    display: grid;
+    @include layout-grid.grid(max-content auto, auto);
+    * {grid-column: auto / span 1};
     
-//     align-items: center;
-//   }
+    align-items: center;
 
-//   .item1 {
-//     align-self: center;
-//       @include device.in-phone-layout () {
-//         margin-left: sizes.$fixed-36;
-//       }
-//   }
+    img {
+        margin: {
+            right: 1.07px;
+            top: 14px;
+            bottom: 14px;
+        };
+        height: 16px;
 
-//   .item2 {
-//     justify-self: end;
-//     align-self: center;
-//   }
+        @include device.in-phone-layout {
+            min-width: 100px;
+            height: 22.93px;
+            margin: {
+                left: 16px;
+                top: 24px;
+                bottom: 28.48px;
+            };
+        }
+    }
+  }
+
+  .item1 {
+    align-self: center;
+      @include device.in-phone-layout () {
+        margin-left: sizes.$fixed-36;
+      }
+  }
+
+  .item2 {
+    justify-self: end;
+    align-self: flex-end;
+  }
 }

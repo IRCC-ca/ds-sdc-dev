@@ -22,6 +22,7 @@ $default-color: null;
         --text: var(--plain-text);
         --link-text-hover: #{color.mix-token(focus, 800)};
         --link-text-active: #{color.mix-token(cta, 900)};
+        --link-text-visited: #{color.mix-token(visited, 500)};
     }
 }
 

@@ -2,6 +2,12 @@
   "ROUTES": {
     "LandingPage": "page-general",
     "LandingPage-alt": "landing-page",
+    "AccessibilityDemo": "démo-d'accessibilité",  
+    "AccessibilityDemo-alt": "accessibility-demo",
+    "AccessibilityDemoPrevious": "précédent",
+    "AccessibilityDemoPrevious-alt": "previous",
+    "AccessibilityDemoNext": "prochaine",
+    "AccessibilityDemoNext-alt": "next",
     "DevTest": "test-dev",
     "DevTest-alt": "dev-test",
     "HeaderFooter": "en-tête-pied-de-page",
@@ -37,7 +43,7 @@
   "OPPOSITE_LANGUAGE": "English",
 
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
-
+  
   "APP_NAME": "component-library",
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
@@ -81,5 +87,68 @@
     "error": "FR Error",
     "locked": "FR Locked",
     "notStarted": "FR Not started"
+  },
+  "SELECT": {
+    "GENERIC_PLACEHOLDER": "Veuillez selectionner"
+  },
+  "ACC_DEMO": {
+    "ERRORS": {
+      "REQUIRED": "FR This field is required."
+    },
+    "PERSONAL_INFO": {
+      "H1": "FR Personal information",
+      "BODY": "FR Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
+      "FAMILY_NAME_INPUT": {
+        "LABEL": "FR Prénom (required)",
+        "DESC": "FR This is your surname or last name",
+        "BANNER": "FR If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
+      },
+      "GIVEN_NAME_INPUT": {
+        "LABEL": "Nom de famille",
+        "DESC": "FR This is your first name and middle name, if applicable"
+      },
+      "SEX_AT_BIRTH_RADIO": {
+        "LABEL": "FR Sex at birth (required)",
+        "FEMALE": "FR F - Female",
+        "MALE": "FR M - Male",
+        "OTHER": "FR X - Another sex"
+      },
+      "DATE_OF_BIRTH": {
+        "LABEL": "Date de naissance (required)"
+      },
+      "COUNTRY_OF_BIRTH": {
+        "LABEL": "FR Country or territory of birth (required)",
+        "OPTIONS": {
+          "CANADA": "Canada",
+          "USA": "États-Unis d'Amérique",
+          "MEXICO": "Mexique"
+        }
+      },
+      "CITY_OF_BIRTH": {
+        "LABEL": "FR City or town of birth (required)",
+        "OPTIONS": {
+          "CANADA": {
+            "OTTAWA": "Ottawa",
+            "ST_JOHNS": "St. John's",
+            "VICTORIA": "Victoria",
+            "CALGARY": "Calgary"
+          },
+          "USA": {
+            "TAMPA": "Tampa Bay",
+            "WASHINGTON": "Washington",
+            "NEW_YORK": "New York",
+            "OAKLAND": "Oakland"
+          },
+          "MEXICO": {
+            "MEXICO": "Mexico City"
+          }
+        }
+      },
+      "DECLARATION": "FR I declare that the above information is true and accurate."
+    },
+    "BUTTONS": {
+      "PREVIOUS": "FR Previous",
+      "NEXT": "Prochaine étape"
+    }
   }
 }
