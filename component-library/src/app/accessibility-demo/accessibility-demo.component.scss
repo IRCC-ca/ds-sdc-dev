@@ -6,7 +6,7 @@
     position: absolute;
     background: rgba(44, 44, 45, 0.8);
     z-index: 10;
-    }
+  }
 
   .shadow {
     box-shadow: 0px 16px 28px rgba(0, 0, 0, 0.06);
@@ -14,8 +14,7 @@
 
   .outer_header_stepper_container {
     top: 0;
-    background-color: white;
-    z-index: 10000;
+    background-color: var(--surface1);
     width: 100%;
 
     .header_stepper_container {
@@ -33,13 +32,13 @@
         height: 68px;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid #DFDFE1;
+        border-bottom: 1px solid var(--divider);
       }
 
       .modal_container {
         z-index: 10;
         position: fixed;
-        background-color: white;
+        background-color: var(--surface1);
         top: 0;
 
         .dialog {
@@ -53,7 +52,7 @@
             height: 68px;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #DFDFE1;
+            border-bottom: 1px solid var(--divider);
           }
           
           .progress_container {

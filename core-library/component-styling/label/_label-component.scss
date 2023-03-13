@@ -102,7 +102,7 @@
       }
 
       .input-hint {
-        color: #6F6F71;
+        color: var(--text-placeholder)
       }
       .required-field-container {
         display: flex;

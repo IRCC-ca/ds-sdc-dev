@@ -40,13 +40,13 @@
         height: 68px;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid #DFDFE1;
+        border-bottom: 1px solid var(--divider);
     }
 
     .modal_container {
         z-index: 10;
         position: fixed;
-        background-color: white;
+        background-color: var(--surface1);
         top: 0;
 
         .dialog {
@@ -60,7 +60,7 @@
                 height: 68px;
                 align-items: center;
                 justify-content: space-between;
-                border-bottom: 1px solid #DFDFE1;
+                border-bottom: 1px solid var(--divider);
             }
 
             .progress_container {
