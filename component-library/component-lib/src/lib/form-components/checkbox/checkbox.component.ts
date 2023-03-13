@@ -57,7 +57,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
-  }
+  };
+  touched = false;
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 

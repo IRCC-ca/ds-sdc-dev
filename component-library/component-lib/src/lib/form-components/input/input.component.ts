@@ -58,11 +58,13 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   typeControl: keyof typeof InputTypes = InputTypes.text;
   ariaText = 'Text Input';
   errorIds: IErrorIDs[] = [];
+  errorAria = '';
   formControl?: AbstractControl;
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
   }
+  touched = false;
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
 
@@ -114,7 +116,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       }
     });
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
     }
   }
 
@@ -170,5 +172,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   getErrorState(): boolean {
     return (this.config.formGroup.get(this.config.id)?.touched &&
       this.config.formGroup.get(this.config.id)?.invalid) ?? false;
+  }
+
+  onTouchedLabel() {
+    this.touched = true;
   }
 }

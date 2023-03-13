@@ -1,10 +1,10 @@
 <form class="checkbox-container" [formGroup]="config.formGroup"
   (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <div class="checkbox-container" [ngClass]="config.size">
-    <lib-label [config]="labelConfig"></lib-label>
+    <lib-label [config]="labelConfig" [touched]="touched"></lib-label>
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
       <div class="checkbox">
-        <input id="{{config.id}}" class="check"
+        <input (blur)="touched = true" id="{{config.id}}" class="check"
           [ngClass]="{ mixed: config.mixed, focus: !config.disableFocus, error: getErrorState()}"
           [attr.size]="config.size" type="checkbox" [formControlName]="config.id"
           [attr.aria-invalid]="formControl?.errors" />
@@ -13,8 +13,7 @@
       <label class="label" [for]="config.id" [id]="config.id" [attr.aria-label]="
           formControl?.invalid && formControl?.dirty
           ? (config.inlineLabel || '' | translate) + ' ' +
-            (config.helpText || '' | translate) + ' ' +
-            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
+            (config.helpText || '' | translate)
           :
             (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
         "

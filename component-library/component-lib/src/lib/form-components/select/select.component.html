@@ -1,8 +1,8 @@
 <div class="{{ config.size }}">
-  <lib-label [config]="labelConfig"></lib-label>
+  <lib-label [config]="labelConfig" [touched]="touched"></lib-label>
   <form [formGroup]="config.formGroup">
     <div class="lib-select">
-      <select class="custom-select h6 select-placeholder" [name]="config.id" [id]="config.id"
+      <select (blur)="touched = true" class="custom-select h6 select-placeholder" [name]="config.id" [id]="config.id"
         [formControlName]="config.id" (change)="valueChange($event)" [class.activited-select]="activiatedSelect"
         [attr.aria-invalid]="formControl?.errors">
         <option [value]="''" [disabled]="true" [selected]="true" [hidden]="true">

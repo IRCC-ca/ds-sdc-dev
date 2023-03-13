@@ -53,6 +53,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     // category: 'secondary',
   };
   formControl?: AbstractControl;
+  errorAria = '';
 
 
   labelConfig: ILabelConfig = {

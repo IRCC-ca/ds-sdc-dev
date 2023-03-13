@@ -18,16 +18,17 @@ export interface ILabelConfig {
   label?: string;
   desc?: string;
   hint?: string;
-  required?: boolean; 
+  required?: boolean;
   iconButton?: ILabelIconConfig;
-  topLabel?:string;
+  topLabel?: string;
+  touched?: boolean;
 }
 
 export const ERROR_TEXT_STUB_EN = 'Error';
 export const ERROR_TEXT_STUB_FR = 'Erreur';
 
 export const HELP_ICON_ALT_EN = ', more information';
-export const HELP_ICON_ALT_FR = ', plus d’information';
+export const HELP_ICON_ALT_FR = ", plus d'information";
 
 @Component({
   selector: 'lib-label',
@@ -38,27 +39,48 @@ export class LabelComponent implements OnInit {
   @Input() config: ILabelConfig = {
     formGroup: new FormGroup({}),
     parentID: ''
-  } 
+  }
+  @Input() touched = false;
 
   errorStubText = '';
   labelIconText = '';
+  errorAria = '';
 
   constructor(private translate: TranslateService,
-              public standAloneFunctions: StandAloneFunctions,
-              private labelButton: LabelButtonService) { }
+    public standAloneFunctions: StandAloneFunctions,
+    private labelButton: LabelButtonService) { }
 
   ngOnInit() {
+    console.log(this.config.touched)
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe(change => {
-        this.setLang(change.lang);
+      this.setLang(change.lang);
+    });
+
+    this.config.formGroup.get(this.config.parentID)?.statusChanges.subscribe(() => {
+      this.getAriaErrorText();
     });
   }
 
+  /**
+   * Get the aria error text for the label
+   */
+  getAriaErrorText() {
+    this.config.formGroup.get(this.config.parentID)?.markAsDirty();
+    if (this.config.errorMessages) {
+      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.parentID, this.config.errorMessages);
+    }
+  }
+
+  ngOnChanges() {
+    this.getAriaErrorText();
+  }
+
   setLang(lang: string) {
-    if((lang === 'en') || (lang === 'en-US')) {
+    if ((lang === 'en') || (lang === 'en-US')) {
       this.errorStubText = ERROR_TEXT_STUB_EN;
       this.labelIconText = HELP_ICON_ALT_EN;
-      
+
     } else {
       this.errorStubText = ERROR_TEXT_STUB_FR;
       this.labelIconText = HELP_ICON_ALT_FR;
@@ -80,8 +102,7 @@ export class LabelComponent implements OnInit {
   //   } return '';
   // }
 
-  returnLabel()
-  {
+  returnLabel() {
     return !this.config.topLabel ? this.config.label : this.config.topLabel;
   }
 }

@@ -2,11 +2,11 @@
   <form [formGroup]="config.formGroup">
     <div class="input-container" [ngClass]="config.size">
       <div class="input-text">
-        <lib-label [config]="labelConfig"></lib-label>
+        <lib-label [config]="labelConfig" [touched]="touched"></lib-label>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
           TODO: Should probably change the (keyup) to (onblur) -->
-          <input name="{{ config.id }}" class="input-field" placeholder="{{ config.placeholder || '' | translate }}"
+          <input (blur)="touched = true" name="{{ config.id }}" class="input-field" placeholder="{{ config.placeholder || '' | translate }}"
             tabindex="0" [ngClass]="config.type === 'password' ? 'input-password-field' : 'input-text-field'"
             [type]="typeControl" [id]="config.id" [formControlName]="config.id"
             [attr.aria-invalid]="formControl?.errors" [attr.aria-label]="formControl?.invalid && formControl?.dirty

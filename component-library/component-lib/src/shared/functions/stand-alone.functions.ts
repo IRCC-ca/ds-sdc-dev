@@ -25,6 +25,7 @@ export class StandAloneFunctions {
                         (returnError += (', ' + this.translate.instant(error.errorLOV)));
                 }
             });
+            returnError += '.';
         }
         return returnError;
     }
@@ -77,7 +78,7 @@ export class StandAloneFunctions {
      * @param hint 
      * @param required 
      */
-        makeLabelConfig(formGroup: FormGroup, parentID: string, errorMessages?: IErrorPairs[], label?: string, desc?: string, hint?: string, required?: boolean, iconButton?: ILabelIconConfig, topLabel?: string,) {
+        makeLabelConfig(formGroup: FormGroup, parentID: string, errorMessages?: IErrorPairs[], label?: string, desc?: string, hint?: string, required?: boolean, iconButton?: ILabelIconConfig, topLabel?: string) {
             const config: ILabelConfig = {
                 formGroup: formGroup,
                 parentID: parentID,

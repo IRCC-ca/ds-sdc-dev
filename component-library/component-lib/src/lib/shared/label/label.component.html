@@ -4,7 +4,7 @@
 config.formGroup.get(config.parentID)?.invalid && config.formGroup.get(config.parentID)?.dirty
 ? (returnLabel() || '' | translate) + ' ' +
   (config.desc || '' | translate) + ' ' +
-  (errorStubText + standAloneFunctions.getErrorAria(config.formGroup, config.parentID, (config.errorMessages || []))) + ' ' +
+  (errorStubText + ' ' + errorAria) + ' ' +
   (config.hint || '' | translate)
 : (returnLabel() || '' | translate)  + ' ' +
   (config.desc || '' | translate) + ' ' +

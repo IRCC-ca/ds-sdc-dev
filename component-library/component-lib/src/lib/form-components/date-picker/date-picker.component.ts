@@ -116,6 +116,7 @@ export class DatePickerComponent implements OnInit {
     formGroup: this.config.formGroup,
     parentID: '',
   };
+  touched = false;
 
   dropDownConfigs: IDatePickerDropDownConfigs = {
     day: {
@@ -391,25 +392,6 @@ export class DatePickerComponent implements OnInit {
     return this.months.findIndex((i) => i === month) + 1;
   }
 
-  //TODO: Getting errors requires some thought
-  getErrorAria(formGroup: FormGroup, id: string, errorMessages: IDatePickerErrorMessages) {
-    let returnError = '';
-    if (
-      formGroup.get(id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION)?.dirty &&
-      formGroup.get(id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION)?.invalid &&
-      errorMessages.general
-    ) {
-      errorMessages?.general?.forEach((error) => {
-        if (formGroup.get(id)?.errors?.[error.key]) {
-          returnError === ''
-            ? (returnError += this.translate.instant(error.errorLOV))
-            : (returnError += ', ' + this.translate.instant(error.errorLOV));
-        }
-      });
-    }
-    return returnError;
-  }
-
   datePickerTouchedOrInvalid(): boolean {
     let datePickerState: boolean | undefined = false;
 
@@ -420,6 +402,9 @@ export class DatePickerComponent implements OnInit {
         this.config.formGroup.get(this.dropDownConfigs.month.id)?.invalid) ||
       (this.config.formGroup.get(this.dropDownConfigs.day.id)?.touched &&
         this.config.formGroup.get(this.dropDownConfigs.day.id)?.invalid);
+      
+      this.touched = datePickerState || false;
+      console.log(this.touched)
 
     return datePickerState ?? false;
     //  return this.config.formGroup?.touched && this.config.formGroup?.invalid;
