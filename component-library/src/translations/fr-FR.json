@@ -52,7 +52,9 @@
   },
 
   "TEXTAREA_COMPONENT": {
-    "characters-used-aria-label": "{{currentCharacterCount}} de {{characterLimit}} caractères utilisés"
+    "characters-used-aria-label": "{{currentCharacterCount}} de {{characterLimit}} caractères utilisés",
+    "maxLimit": "Limite maximale de caractères atteinte.",
+    "warningLimit": "Limite maximale de caractères atteinte en 15 caractères."
   },
   
   "LandingPage": {
