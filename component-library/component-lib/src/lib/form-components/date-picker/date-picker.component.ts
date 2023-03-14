@@ -68,6 +68,7 @@ export interface IDatePickerConfig {
   errorMessages?: IDatePickerErrorMessages;
   labelIconConfig?: ILabelIconConfig;
   //TODO: Add max and min year for date picker
+  //TODO: Add toggle for unknowns (boolean array?)
 }
 
 export interface IDatePickerErrorMessages {
@@ -264,6 +265,7 @@ export class DatePickerComponent implements OnInit {
 
   /**
    * Set the language for dropdown options
+   * TODO: Set value of each month to be the lov and not the text
    */
   setMonthsLanguage() {
     this.dropDownConfigs.month.options = [];
