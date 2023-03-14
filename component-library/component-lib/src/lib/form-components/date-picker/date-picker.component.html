@@ -13,6 +13,8 @@
   </div>
   <div aria-live="polite">
     <ng-container *ngIf="datePickerTouchedOrInvalid()">
+      <p class="sr-only">{{(((config.label || '') | translate) + ': ')}}</p>
+      <!-- TODO: Do something clever here to add which of the dropdowns are in error and put them in the above p tag -->
       <ng-container *ngFor="let errors of errorIds; let i = index">
         <div
           *ngIf="config.formGroup.get(dropDownConfigs.year.id)?.errors?.[errors.key] || config.formGroup.get(dropDownConfigs.month.id)?.errors?.[errors.key] || config.formGroup.get(dropDownConfigs.day.id)?.errors?.[errors.key]"

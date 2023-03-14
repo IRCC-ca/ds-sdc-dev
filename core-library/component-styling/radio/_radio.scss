@@ -1,11 +1,11 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
+@use '../../util/color'as color;
+@use '../../util/theme'as theme;
+@use '../../util/device'as device;
+@use '../../util/size'as size;
+@use '../../tokens/template-const'as template-const;
+@use '../../tokens/sizes'as token-size;
+@use '../../typography/typography'as typography;
+@use '../../tokens/text'as text;
 @use 'sass:map';
 
 @mixin selector {
@@ -20,15 +20,15 @@
   }
 }
 
-@mixin small-styles(){
-  .radio-buttons{
+@mixin small-styles() {
+  .radio-buttons {
     padding: 4px 0 0 0;
   }
 
   .radio-label {
     @include typography.fontSize(map.get(text.$heading, level), 6);
     font-weight: 700;
- 
+
   }
 
   .radio-desc {
@@ -38,9 +38,10 @@
   .required-star {
     font-size: 12px;
     line-height: 16px;
-    justify-self:flex-start;
+    justify-self: flex-start;
     margin-right: 4px;
   }
+
   .radio-hint {
     padding-top: 8px;
     padding-bottom: 0;
@@ -49,8 +50,8 @@
   }
 }
 
-@mixin large-styles(){
-  .radio-buttons{
+@mixin large-styles() {
+  .radio-buttons {
     padding: 8px 0 0 0;
   }
 
@@ -68,8 +69,9 @@
     line-height: 16px;
     justify-self: flex-start;
     margin-right: 5px;
-    
+
   }
+
   .radio-hint {
     padding-top: 12px;
     padding-bottom: 0;
@@ -82,11 +84,13 @@
     display: flex;
     margin-left: -12px;
     margin-bottom: 8px;
+
     input {
       justify-self: center;
       padding: 0;
       align-self: center;
     }
+
     label {
       justify-self: center;
       padding: 0;
@@ -122,27 +126,37 @@
     margin-right: 4px;
   }
 
-  .small_label{
+  .small_label {
     font-size: 14px;
   }
 
-  .large_label{
+  .large_label {
     font-size: 16px;
   }
 
   @include size.selector(small) {
     @include small-styles();
-    .large{
+
+    .large {
       @include large-styles();
     }
   }
-  
+
   @include size.selector(large) {
     @include large-styles();
-    .small{
+
+    .small {
       @include small-styles();
     }
   }
 
-  
+  .sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 }

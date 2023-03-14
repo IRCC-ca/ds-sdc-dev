@@ -1,9 +1,9 @@
-@use '../../util/theme' as theme;
-@use '../../util/size' as size;
-@use '../../tokens/sizes' as token-size;
+@use '../../util/theme'as theme;
+@use '../../util/size'as size;
+@use '../../tokens/sizes'as token-size;
 @use '../../tokens/template-const';
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
+@use '../../typography/typography'as typography;
+@use '../../tokens/text'as text;
 @use 'sass:map';
 
 @mixin selector {
@@ -102,43 +102,50 @@
   }
 
   .date-label {
-		display: flex;
-		margin-bottom: 0;
-	}
-	.date-desc {
-		margin-top: 4px;
-		margin-bottom: 0;
-	}
-	.date-hint {
+    display: flex;
+    margin-bottom: 0;
+  }
+
+  .date-desc {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .date-hint {
     color: var(--text-placeholder);
   }
-	.date-exclamation {
-		margin-right: 4px;
-	}
-	.date-error {
+
+  .date-exclamation {
+    margin-right: 4px;
+  }
+
+  .date-error {
     color: var(--critical-text);
     margin-top: 0;
   }
+
   .date-error i {
     margin-right: 4px;
   }
 
   @media (max-width: 373px) {
-  .all-select-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    .all-select-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
 
-    //Currently only has the large size - TODO: Update to include small
-    // .select-container {
-    //   // min-width: 155px;
+      //Currently only has the large size - TODO: Update to include small
+      // .select-container {
+      //   // min-width: 155px;
 
       .select-year {
         width: 100%;
       }
+
       .select-month {
         width: 100%;
       }
+
       .select-day {
         width: 100%;
       }
@@ -150,23 +157,25 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-  
+
       //Currently only has the large size - TODO: Update to include small
       // .select-container {
       //   // min-width: 155px;
-  
-        .select-year {
-          min-width: 112px;
-        }
-        .select-month {
-          min-width: 144px;
-          margin-left: 12px;
-        }
-        .select-day {
-          min-width: 92px;
-          margin-left: 12px;
-        }
+
+      .select-year {
+        min-width: 112px;
       }
+
+      .select-month {
+        min-width: 144px;
+        margin-left: 12px;
+      }
+
+      .select-day {
+        min-width: 92px;
+        margin-left: 12px;
+      }
+    }
   }
 
   .date-form {
@@ -191,11 +200,22 @@
     text-align: left;
     margin-left: 0px
   }
+
   ::-webkit-input-placeholder {
     text-align: left;
   }
-  
+
   :-moz-placeholder {
     text-align: left;
+  }
+
+  .sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 }
