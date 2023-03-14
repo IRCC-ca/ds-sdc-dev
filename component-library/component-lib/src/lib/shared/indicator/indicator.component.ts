@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 
 export enum IndicatorType {
@@ -50,14 +50,16 @@ export interface IIndicatorConfig {
   selector: 'lib-indicator',
   templateUrl: './indicator.component.html',
 })
-export class IndicatorComponent implements OnInit {
+export class IndicatorComponent implements OnInit, AfterViewInit {
   @Input() config: IIndicatorConfig = {
     type: 'text',
     category: IndicatorTreatment.weak,
     purpose: IndicatorPurpose.status
   };
+  @ViewChild('label') label?: ElementRef<HTMLSpanElement>;
   EIndicatorStatus = IndicatorStatus;
   rounded?: boolean;
+  abbr?: boolean; // Display abbr tag when text is truncated
   constructor() { }
 
   ngOnInit(): void {
@@ -67,4 +69,7 @@ export class IndicatorComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit() {
+    this.abbr = <boolean>(this.label?.nativeElement?.offsetWidth && this.label?.nativeElement?.offsetWidth > 200);
+  }
 }

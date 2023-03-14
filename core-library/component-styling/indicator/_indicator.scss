@@ -169,6 +169,25 @@
     @include status-background;
   }
 
+  .text {
+    span {
+      display: block;
+      max-width: 200px;
+      overflow: hidden;
+      white-space: nowrap;
+      &.abbr {
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .number {
+    span {
+      display: block;
+      overflow: hidden;
+    }
+  }
+
   @include size.selector(small) {
     @include size-sm();
 

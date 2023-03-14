@@ -6,7 +6,12 @@
       config.purpose === 'status' ? EIndicatorStatus[config.status ?? 'info'] : '',
       config.purpose === 'palette' ? config.palette : '',
       rounded ? 'rounded' : '']">
-    <span>{{config?.label}}</span>
+    <ng-container *ngIf="abbr; else nonAbbr" >
+      <span #label class="abbr"><abbr [title]="config?.label">{{config?.label}}</abbr></span>
+    </ng-container>
+    <ng-template #nonAbbr>
+      <span #label>{{config?.label}}</span>
+    </ng-template>
   </div>
   <span *ngIf="config.type === 'dot'"
    [ngClass]="[
