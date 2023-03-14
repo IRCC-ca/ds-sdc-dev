@@ -30,9 +30,18 @@
   }
 
   .number {
-    padding: 2px 9px;
+    padding: 2px 5px;
+
+    > span {
+      min-width: 14px;
+    }
 
     @include typography.fontSize(map.get(text.$body, level), 4);
+
+    &.num-lg {
+      padding: 2px 8px;
+      border-radius: 11px;
+    }
   }
 
   .dot {
@@ -53,6 +62,11 @@
     padding: 2px 10px;
 
     @include typography.fontSize(map.get(text.$body, level), 2);
+
+    &.num-lg {
+      padding: 4px 8px;
+      border-radius: 15px;
+    }
   }
 
   .dot {
@@ -158,7 +172,10 @@
   }
 
   .number,
-  .dot,
+  .dot {
+    border-radius: 50%;
+  }
+
   .rounded {
     border-radius: 50% !important;
   }
@@ -192,6 +209,7 @@
 
   .number {
     display: flex;
+    text-align: center;
 
     span {
       display: block;

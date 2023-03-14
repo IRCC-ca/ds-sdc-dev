@@ -5,7 +5,8 @@
       config.category,
       config.purpose === 'status' ? EIndicatorStatus[config.status ?? 'info'] : '',
       config.purpose === 'palette' ? config.palette : '',
-      rounded ? 'rounded' : '']">
+      rounded ? 'rounded' : '',
+      config.label === '99+' ? 'num-lg' : '']">
     <lib-icon *ngIf="config?.icon" [class]="config.icon"></lib-icon>
     <ng-container *ngIf="abbr; else nonAbbr" >
       <span #label class="abbr"><abbr [title]="config?.label">{{config?.label}}</abbr></span>
