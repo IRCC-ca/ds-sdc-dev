@@ -1,3 +1,7 @@
+<h2>Indicator</h2>
+<ng-container *ngFor="let indicator of indicatorConfigs">
+  <lib-indicator [config]="indicator"></lib-indicator>
+</ng-container>
 <h2>Breadcrumb</h2>
 <lib-breadcrumb [config]="breadCrumbConfig"></lib-breadcrumb>
 <app-auto-tester [config]="testBreadCrumbConfig"></app-auto-tester>

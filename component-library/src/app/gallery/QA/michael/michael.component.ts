@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormControl, FormGroup } from "@angular/forms";
-import { IBreadcrumbConfig, ICheckBoxComponentConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import {
+  IBreadcrumbConfig,
+  ICheckBoxComponentConfig,
+  IIndicatorConfig,
+  IInputComponentConfig
+} from 'ircc-ds-angular-component-library';
 import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/auto-tester/auto-tester.component";
 
 @Component({
@@ -208,6 +213,65 @@ export class MichaelComponent implements OnInit {
       }
     ],
   };
+
+  indicatorConfigs: IIndicatorConfig[] = [
+    {
+      label: 3,
+      category: 'strong',
+      type: 'dot',
+      size: 'small',
+      purpose: 'palette',
+      palette: 'purple'
+    },
+    {
+      label: 'Label',
+      category: 'strong',
+      type: 'text',
+      size: 'small',
+      purpose: 'palette',
+      palette: 'purple'
+    },
+    {
+      label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      category: 'strong',
+      type: 'text',
+      size: 'small',
+      purpose: 'palette',
+      palette: 'purple'
+    },
+    {
+      label: 'L',
+      category: 'strong',
+      type: 'text',
+      size: 'small',
+      purpose: 'palette',
+      palette: 'purple'
+    },
+    {
+      label: 5,
+      category: 'strong',
+      type: 'number',
+      size: 'small',
+      purpose: 'palette',
+      palette: 'purple'
+    },
+    {
+      label: 5,
+      category: 'strong',
+      type: 'number',
+      size: 'small',
+      purpose: 'status',
+      status: 'critical'
+    },
+    {
+      label: 5,
+      category: 'strong',
+      type: 'number',
+      size: 'small',
+      purpose: 'status',
+      status: 'generic'
+    },
+  ]
 
   testerBreadcrumbConfig: IAutoTestConfigObject = {
     selects: [
