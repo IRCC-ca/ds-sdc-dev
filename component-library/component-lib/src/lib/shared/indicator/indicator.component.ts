@@ -67,6 +67,9 @@ export class IndicatorComponent implements OnInit, AfterViewInit {
     if (typeof this.config?.label === 'string') {
       this.rounded = (this.config.label.length == 1);
     }
+    if (this.config.type === 'number' && this.config?.label && this.config.label > 99) {
+      this.config.label = '99+';
+    }
   }
 
   ngAfterViewInit() {
