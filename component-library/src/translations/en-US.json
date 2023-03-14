@@ -78,6 +78,7 @@
   },
   "ACC_DEMO": {
     "MODAL_TITLE": "Steps",
+    "HAMBURGER_ARIA": "Open the progress indicator",
     "PREVIOUS_PAGE": {
       "HEADER": "Background information",
       "CONTENT": "This page is not part of the prototype. Please use the button below to return to the previous screen."

@@ -10,10 +10,11 @@
           [attr.aria-invalid]="formControl?.errors" />
         <span class="checkmark"></span>
       </div>
-      <label class="label" [for]="config.id" [id]="config.id" [attr.aria-label]="
-          formControl?.invalid && formControl?.dirty
-          ? (config.inlineLabel || '' | translate) + ' ' +
-            (config.helpText || '' | translate)
+      <label class="label" [for]="config.id" [id]="config.id + '_label'" [attr.aria-label]="
+          formControl?.invalid && touched
+          ? '!!----------' + (config.inlineLabel || '' | translate) + ' ' +
+            (config.helpText || '' | translate) + ' ' +
+            errorStubText + ' ' + errorAria
           :
             (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
         "
@@ -21,7 +22,7 @@
         || '' | translate}}
       </label>
     </div>
-    <div aria-live="polite">
+    <div >
       <div *ngIf="(formControl?.touched) && formControl?.invalid" class="check-error"
         [ngClass]="{'small': config.size === 'small' }">
         <p class="sr-only">{{(((config.label || '') | translate) + ': ')}}</p>

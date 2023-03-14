@@ -9,7 +9,8 @@ import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
-import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -65,8 +66,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     parentID: ''
   }
   touched = false;
+  errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions) { }
+  constructor(public standAloneFunctions: StandAloneFunctions,
+              private translate: TranslateService,) { }
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -74,9 +77,16 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit() {
     const retControl = this.config.formGroup.get(this.config.id);
-    if(retControl){
+    if (retControl) {
       this.formControl = retControl;
     }
+
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe(change => {
+      this.setLang(change.lang);
+    });
+
+
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -118,9 +128,42 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
     }
+
+    //Get the error text when the formControl value changes
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
+      this.getAriaErrorText();
+    });
   }
 
-  ngOnChanges(){
+/**
+ * Get the aria error text for the label
+ */
+  getAriaErrorText() {
+    if (this.config.errorMessages) {
+      this.formControl?.markAsDirty();
+      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
+    }
+  }
+  
+  /**
+   * Set a boolean representing the touched state to true and trigger getAriaErrorText()
+   */
+  onTouchedLabel() {
+    this.touched = true;
+    this.getAriaErrorText();
+  }
+
+  setLang(lang: string) {
+    this.getAriaErrorText();
+    if ((lang === 'en') || (lang === 'en-US')) {
+      this.errorStubText = ERROR_TEXT_STUB_EN;
+
+    } else {
+      this.errorStubText = ERROR_TEXT_STUB_FR;
+    }
+  }
+
+  ngOnChanges() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -169,12 +212,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   /**
    * Return error state from FormGroup, must be touched & invalid
    */
-  getErrorState(): boolean {
+  get getErrorState(): boolean {
     return (this.config.formGroup.get(this.config.id)?.touched &&
       this.config.formGroup.get(this.config.id)?.invalid) ?? false;
   }
 
-  onTouchedLabel() {
-    this.touched = true;
-  }
 }
