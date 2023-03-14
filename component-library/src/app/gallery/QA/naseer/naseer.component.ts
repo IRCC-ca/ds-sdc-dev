@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ButtonColor, ButtonIconDirection, IButtonConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig, ITextareaComponentConfig } from 'ircc-ds-angular-component-library';
+import { ButtonColor, ButtonIconDirection, IButtonConfig, IDropdownConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig, ITextareaComponentConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 
 export enum InputFieldType {
@@ -57,6 +57,17 @@ export class NaseerComponent implements OnInit {
     icon: 'fa-solid fa-mustache',
     iconDirection: 'right',
   };
+
+  testDropdownConfig : IDropdownConfig = {
+    id: 'qa-dropdown',
+    label: 'Helllllllllllllllllllllllllllllllo',
+    size: 'small',
+    icon:  {
+      class: 'fa-light fa-heart',
+      color: 'var(--text-primary)'
+    }
+
+  }
 
   customIconConfigTest : IIconButtonIconConfig = {
     class: 'fa-regular fa-igloo',
@@ -280,7 +291,7 @@ export class NaseerComponent implements OnInit {
       case 'inputComponent':
         this.showInputComponent = true;
         this.showTextareaComponent = false;
-        this.showDropDownComponent = false;
+    this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
         break;
       case 'textareaComponent':
@@ -329,6 +340,11 @@ export class NaseerComponent implements OnInit {
         this.qaTextareaInput?.formGroup.get(this.qaTextareaInput.id)?.disabled ?
         this.qaTextareaInput?.formGroup.get(this.qaTextareaInput.id)?.enable() :
         this.qaTextareaInput?.formGroup.get(this.qaTextareaInput.id)?.disable();
+        break;
+      case 'disable-dropdown':
+        console.log("Disable dropdown clicked")
+        if(!this.testDropdownConfig?.disabled) this.testDropdownConfig.disabled = true;
+        else this.testDropdownConfig.disabled = false;
         break;
     }
   }
