@@ -40,6 +40,7 @@ export interface IIndicatorConfig {
   label?: string | number;
   size?: keyof typeof DSSizes;
   type: keyof typeof IndicatorType;
+  icon?: string;
   category: keyof typeof IndicatorTreatment; // Treatment
   purpose: keyof typeof IndicatorPurpose;
   status?: keyof typeof IndicatorStatus; // Sentiment
@@ -65,7 +66,7 @@ export class IndicatorComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     // If label only have 1 character, it should be rounded
     if (typeof this.config?.label === 'string') {
-      this.rounded = (this.config.label.length == 1);
+      this.rounded = (this.config.label.length == 1 && !this.config.icon);
     }
     if (this.config.type === 'number' && this.config?.label && this.config.label > 99) {
       this.config.label = '99+';

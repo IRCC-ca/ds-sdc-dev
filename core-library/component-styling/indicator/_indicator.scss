@@ -170,6 +170,14 @@
   }
 
   .text {
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: block;
+      margin-right: 4px;
+    }
+
     span {
       display: block;
       overflow: hidden;
@@ -183,6 +191,8 @@
   }
 
   .number {
+    display: flex;
+
     span {
       display: block;
       overflow: hidden;
