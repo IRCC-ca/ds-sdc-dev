@@ -50,3 +50,4 @@ export * from './lib/shared/progress-tags/progress-tags.component'
 export * from './lib/shared/progress-indicator/progress-indicator.component';
 export * from './lib/shared/dropdown/drop-down.component';
 export * from './lib/shared/label/label-button.service';
+export * from './lib/shared/hidden-nav/hidden-nav.component';
