@@ -28,7 +28,7 @@ export * from './lib/header-footer/footer/footer.component';
 export * from './lib/header-footer/header/header.component';
 export * from './lib/header-footer/language-switch/language-switch.component';
 export * from './lib/header-footer/language-switch/language-switch-button.service';
-
+export * from './lib/header-footer/hidden-nav/hidden-nav.component';
 
 /** Legacy/Old Components **/
 export * from './lib/legacy-old/ircc-ds-angular-legacy-old.module';
