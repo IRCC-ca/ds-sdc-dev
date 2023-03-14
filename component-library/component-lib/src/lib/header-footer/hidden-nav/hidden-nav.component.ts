@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 export interface ISkipLinkConfig {
   title: string,
@@ -15,17 +15,15 @@ export interface IHiddenNavConfig {
   selector: 'lib-hidden-nav',
   templateUrl: './hidden-nav.component.html'
 })
-export class HiddenNavComponent implements OnInit {
+export class HiddenNavComponent {
 
   @Input() config: IHiddenNavConfig = {
     id: ''
   }
 
-  constructor() { }
-
-  keyPress(e : KeyboardEvent, href: string){
-    if (e.key === 'Enter') this.scrollToAnchor(href);
-  }
+   keyPress(e : KeyboardEvent, href: string){
+     if (e.key === 'Enter') this.scrollToAnchor(href);
+   }
 
   scrollToAnchor(id : string){
     if (id) {
@@ -36,16 +34,16 @@ export class HiddenNavComponent implements OnInit {
     }
   }
 
+  @HostListener('keydown',['$event.key'])
+  handleKeyDown(key : string, link? : string){
+    key === 'Tab' ? this.showNav() : null;
+    key === 'Enter' && link ? this.scrollToAnchor(link) : null;
+  }
+
   showNav() {
     const container = document.getElementById('hidden-nav-container');
     const btns = document.getElementsByClassName('hidden-btns');
     container?.classList.add('active-nav');
   }
 
-  ngOnInit(): void {
-
-    document.addEventListener('keydown', event => {
-      event.key === 'Tab' ? this.showNav() : null;
-    })
-  }
 }

@@ -1,5 +1,0 @@
-<div id="hidden-nav-container">
-  <ng-container *ngFor="let link of config?.skipLinks; let i = index">
-    <button class="hidden-btns" role="link" (click)="scrollToAnchor(link.href)" (keydown)="keyPress($event, link.href)" [tabindex]="(i + 1)" [attr.aria-label]="link.ariaLabel">{{link.title}}</button>
-  </ng-container>
-</div>
