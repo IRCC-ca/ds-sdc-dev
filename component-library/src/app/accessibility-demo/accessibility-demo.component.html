@@ -29,7 +29,7 @@
         </div>
     </nav>
     <div aria-live="polite" class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
-        <div class="error_banner" *ngIf="showErrorBanner">
+        <div class="error_banner" aria-live="polite" *ngIf="showErrorBanner">
             <lib-banner [config]="errorBannerConfig"></lib-banner>
         </div>
         <div class="form_container">
@@ -40,7 +40,7 @@
             <div class="family_name_container">
                 <lib-input [config]="familyNameInputConfig"></lib-input>
                 <div aria-live="polite">
-                    <div class="banner_container" *ngIf="showFamilyNameBanner">
+                    <div class="banner_container" *ngIf="showFamilyNameBanner" aria-live="polite">
                         <lib-banner [config]="familyNameInputBannerConfig" (btnEvent)="bannerCloseHandler($event)">
                         </lib-banner>
                     </div>
@@ -52,7 +52,7 @@
             <div class="sex_at_birth_container">
                 <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
                 <div aria-live="polite">
-                    <div class="banner_container" *ngIf="showSexAtBirthBanner">
+                    <div class="banner_container" *ngIf="showSexAtBirthBanner" aria-live="polite">
                         <lib-banner [config]="sexAtBirthRadioBannerConfig" (btnEvent)="bannerCloseHandler($event)">
                         </lib-banner>
                     </div>

@@ -66,7 +66,7 @@ export class LabelComponent implements OnInit {
    * Get the aria error text for the label
    */
   getAriaErrorText() {
-    this.config.formGroup.get(this.config.parentID)?.markAsDirty();
+    // this.config.formGroup.get(this.config.parentID)?.markAsDirty();
     if (this.config.errorMessages) {
       this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.parentID, this.config.errorMessages);
     }
