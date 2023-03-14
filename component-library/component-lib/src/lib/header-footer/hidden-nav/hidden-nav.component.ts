@@ -21,10 +21,6 @@ export class HiddenNavComponent {
     id: ''
   }
 
-   keyPress(e : KeyboardEvent, href: string){
-     if (e.key === 'Enter') this.scrollToAnchor(href);
-   }
-
   scrollToAnchor(id : string){
     if (id) {
       const el = document.getElementById(id);
