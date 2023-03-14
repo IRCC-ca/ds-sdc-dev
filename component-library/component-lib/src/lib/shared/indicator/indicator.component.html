@@ -4,7 +4,8 @@
       config.type,
       config.category,
       config.purpose === 'status' ? EIndicatorStatus[config.status ?? 'info'] : '',
-      config.purpose === 'palette' ? config.palette : '']">
+      config.purpose === 'palette' ? config.palette : '',
+      rounded ? 'rounded' : '']">
     <span>{{config?.label}}</span>
   </div>
   <span *ngIf="config.type === 'dot'"

@@ -57,9 +57,14 @@ export class IndicatorComponent implements OnInit {
     purpose: IndicatorPurpose.status
   };
   EIndicatorStatus = IndicatorStatus;
+  rounded?: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    // If label only have 1 character, it should be rounded
+    if (typeof this.config?.label === 'string') {
+      this.rounded = (this.config.label.length == 1);
+    }
   }
 
 }

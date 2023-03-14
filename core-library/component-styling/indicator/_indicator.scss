@@ -158,8 +158,9 @@
   }
 
   .number,
-  .dot {
-    border-radius: 50%;
+  .dot,
+  .rounded {
+    border-radius: 50% !important;
   }
 
   .dot {
