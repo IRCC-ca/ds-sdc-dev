@@ -59,7 +59,8 @@ export class BannerComponent implements OnInit {
     icon:  {
       class: 'fa-solid fa-xmark',
       color: 'var(--text-primary)'
-    }
+    },
+    ariaLabel: 'close'
   };
 
   eventHandler(emitValue: string){
