@@ -210,6 +210,8 @@
     &.strong {
       @include status-bg;
       @include palette-bg;
+
+      font-weight: 600;
     }
   }
 
@@ -241,6 +243,10 @@
     &.abbr {
       max-width: 184px; // 200 - 8x2
       overflow: hidden;
+    }
+
+    &.weak {
+      background: var(--information-background-weak);
     }
 
     span {
