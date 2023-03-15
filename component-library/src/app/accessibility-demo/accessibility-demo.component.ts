@@ -107,6 +107,7 @@ export class AccessibilityDemoComponent implements OnInit {
   familyNameInputBannerConfig: IBannerConfig = {
     id: 'family_name_input_info_banner',
     dismissible: true,
+    ariaDissmissible: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.BANNER_CLOSE',
     type: 'info',
     content: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.BANNER',
   };
