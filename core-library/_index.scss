@@ -32,6 +32,7 @@
 @use "./component-styling/icon/icon";
 @use "./component-styling/indicator/indicator";
 @use "./component-styling/button/button" as button-component;
+@use "./component-styling/textarea/textarea" as textarea-component;
 @use "./component-styling/select/select-component" as select-component;
 @use "./component-styling/chips/item" as chip-item;
 @use "./component-styling/chips/list" as chip-list;
@@ -96,6 +97,7 @@
     @include element(icon);
     @include element(tabs-component);
     @include element(button-component);
+    @include element(textarea-component);
     @include element(error-component);
     @include element(tags-component);
     @include element(select-component);
@@ -242,6 +244,10 @@
 
   @else if $key == progressIndicator-component {
     @include progressIndicator-component.create();
+  }
+
+  @else if $key == textarea-component {
+    @include textarea-component.create();
   }
 
   @else if $key == breadcrumb {
