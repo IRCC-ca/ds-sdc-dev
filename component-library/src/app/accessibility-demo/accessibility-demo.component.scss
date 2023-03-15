@@ -75,10 +75,12 @@
   .content_container {
     @media (min-width: 980px) {
       margin-left: 164px;
+      margin-right: 164px;
     }
 
     @media (max-width: 979px) {
       margin-left: 40px;
+      margin-right: 40px;
     }
 
     @media (max-width: 412px) { //set here because of the min size of the date picker
@@ -116,10 +118,17 @@
         margin-top: 64px;
 
         @media (max-width: 372px) {
-          flex-direction: column;
+          display: flex;
+          flex-direction: column-reverse;
           align-items: center;
           justify-content: space-between;
           height: 116px;
+          .btn1 {
+            width: 100%;
+          }
+          .btn2 {
+            width: 100%;
+          }
         }
       }
     }
