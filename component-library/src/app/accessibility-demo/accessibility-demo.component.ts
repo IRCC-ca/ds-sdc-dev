@@ -154,6 +154,11 @@ export class AccessibilityDemoComponent implements OnInit {
     label: 'ACC_DEMO.PERSONAL_INFO.DATE_OF_BIRTH.LABEL',
     required: true,
     errorMessages: this.datePickerErrorMessages,
+    unknownDateToggle: {
+      dayUnknown: true,
+      monthUnknown: true,
+      yearUnknown: true
+    }
   };
 
   countryOfBirthSelectConfig: ISelectConfig = {
