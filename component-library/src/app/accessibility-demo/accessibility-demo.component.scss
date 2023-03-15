@@ -75,11 +75,12 @@
   .content_container {
     @media (min-width: 980px) {
       margin-left: 164px;
+      margin-right: 164px;
     }
 
     @media (max-width: 979px) {
       margin-left: 40px;
-      // margin-right: 40px;
+      margin-right: 40px;
     }
 
     @media (max-width: 412px) { //set here because of the min size of the date picker
