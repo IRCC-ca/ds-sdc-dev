@@ -56,7 +56,7 @@
             justify-content: space-between;
             border-bottom: 1px solid var(--divider);
           }
-          
+
           .progress_container {
             // height: 100%
             margin-top: 40px;
@@ -83,6 +83,7 @@
 
     @media (max-width: 412px) { //set here because of the min size of the date picker
       margin-left: 0;
+      margin-right: 0;
     }
 
     max-width: 1036px;
