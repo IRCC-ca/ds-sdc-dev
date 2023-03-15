@@ -42,6 +42,7 @@
 @use './component-styling/progress-tags/progress-tags' as tags-component;
 @use './component-styling/progress-indicator/progress-indicator';
 @use './component-styling/label/label-component' as label-component;
+@use './component-styling/hidden-nav/hidden-nav';
 @use './typography/fa-wrapper';
 
 @forward './theme/theme' as theme-*;
@@ -118,6 +119,7 @@
         @include element(progress-indicator);
         @include element(select-component);
         @include element(label-component);
+        @include element(hidden-nav);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -194,6 +196,8 @@
         @include select-component.create();
     } @else if $key == label-component {
         @include label-component.create();
+    } @else if $key == hidden-nav {
+        @include hidden-nav.create();
     }
 // @else if $key == dd-primary {
 //     @include dd-primary.create();
