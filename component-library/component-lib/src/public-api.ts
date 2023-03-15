@@ -29,7 +29,7 @@ export * from './lib/header-footer/footer/footer.component';
 export * from './lib/header-footer/header/header.component';
 export * from './lib/header-footer/language-switch/language-switch.component';
 export * from './lib/header-footer/language-switch/language-switch-button.service';
-
+export * from './lib/header-footer/hidden-nav/hidden-nav.component';
 
 /** Legacy/Old Components **/
 export * from './lib/legacy-old/ircc-ds-angular-legacy-old.module';
@@ -46,8 +46,10 @@ export * from './lib/shared/button/button.component';
 export * from './lib/shared/icon/icon.component';
 export * from './lib/shared/icon-button/icon-button.component';
 export * from './lib/shared/tabs/tabs.component';
+export * from './lib/shared/label/label.component';
 export * from './lib/shared/progress-tags/progress-tags.component'
 export * from './lib/shared/progress-indicator/progress-indicator.component';
-export * from './lib/shared/dropdown/drop-down.component'
+export * from './lib/shared/dropdown/drop-down.component';
+export * from './lib/shared/label/label-button.service';
 export * from './lib/shared/breadcrumb/breadcrumb.component';
 export * from './lib/shared/breadcrumb/link/link.component';

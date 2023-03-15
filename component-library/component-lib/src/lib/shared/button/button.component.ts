@@ -50,7 +50,6 @@ export class ButtonComponent {
     @Input() category?: keyof typeof ButtonCategories;
     @Input() size?: keyof typeof ButtonSize;
     @Input() color?: keyof typeof ButtonColor;
-    // @Input() type?: 'button' | 'submit' | 'reset';
     @Input() ariaLabel?: string;
     @Input() disabled?: boolean;
     @Input() icon?: string;

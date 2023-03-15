@@ -1,0 +1,92 @@
+<lib-hidden-nav [config]="hiddenNavConfig"></lib-hidden-nav>
+<div class="page_container" [ngClass]="{'no_scroll' : hamburgerMenuState}">
+    <div class="dimmer" *ngIf="hamburgerMenuState"></div>
+    <nav role="navigation" class="outer_header_stepper_container" id="outer_header_stepper_container">
+        <div class="header_stepper_container" id="header_stepper_inner_container">
+            <lib-header [id]="'header'" [ngClass]="{'disable_all' : hamburgerMenuState}"></lib-header>
+            <div class="stepper" *ngIf="innerWidth > 980">
+                <lib-progress-indicator [config]="progressIndicatorConfig" (tabClick)="progressTabButtonEvent($event)">
+                </lib-progress-indicator>
+            </div>
+            <div class="hamburger" *ngIf="innerWidth < 980">
+                <lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'"
+                    (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
+            </div>
+            <div class="modal_container" *ngIf="hamburgerMenuState">
+                <dialog id="progress_dialog" class="dialog" open>
+                    <div class="progress_dialog_content">
+                        <div class="modal_header">
+                            <h5>{{'ACC_DEMO.MODAL_TITLE' | translate}}</h5>
+                            <lib-icon-button [config]="hamburgerDialogXButtonConfig" (click)="menuHamburgerButton()">
+                            </lib-icon-button>
+                        </div>
+                        <div class="progress_container">
+                            <lib-progress-indicator [config]="progressIndicatorConfig"
+                                (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+        </div>
+    </nav>
+    <div  id="ds-cont" aria-live="polite" class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
+        <div class="error_banner" *ngIf="showErrorBanner">
+            <lib-banner [config]="errorBannerConfig"></lib-banner>
+        </div>
+        <div id="ds-form" class="form_container">
+            <div>
+                <h1>{{'ACC_DEMO.PERSONAL_INFO.H1' | translate}}</h1>
+                <p>{{'ACC_DEMO.PERSONAL_INFO.BODY' | translate}}</p>
+            </div>
+            <div class="family_name_container">
+                <lib-input [config]="familyNameInputConfig"></lib-input>
+                <div aria-live="polite">
+                    <div class="banner_container" *ngIf="showFamilyNameBanner" aria-live="polite">
+                        <lib-banner [config]="familyNameInputBannerConfig" (btnEvent)="bannerCloseHandler($event)">
+                        </lib-banner>
+                    </div>
+                </div>
+            </div>
+            <div class="given_name_container">
+                <lib-input [config]="givenNameInputConfig"></lib-input>
+            </div>
+            <div class="sex_at_birth_container">
+                <lib-radio-input [config]="sexAtBirthRadioConfig"></lib-radio-input>
+                <div aria-live="polite">
+                    <div class="banner_container" *ngIf="showSexAtBirthBanner" aria-live="polite">
+                        <lib-banner [config]="sexAtBirthRadioBannerConfig" (btnEvent)="bannerCloseHandler($event)">
+                        </lib-banner>
+                    </div>
+                </div>
+            </div>
+            <div class="date_of_birth_container">
+                <lib-date-picker [config]="dateOfBirthDatePickerConfig"></lib-date-picker>
+            </div>
+            <div class="country_of_birth_container">
+                <lib-select [config]="countryOfBirthSelectConfig"></lib-select>
+            </div>
+            <div class="city_of_birth_container">
+                <lib-select [config]="cityOfBirthSelectConfig"></lib-select>
+            </div>
+            <div class="declaration_checkbox_container">
+                <lib-checkbox [config]="declarationCheckboxConfig"></lib-checkbox>
+            </div>
+            <div class="buttons_container">
+                <div class="btn1">
+                    <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'"
+                        [routerLink]="getPreviousButtonLink">
+                        {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
+                </div>
+                <div class="btn2">
+                    <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()">
+                        {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</lib-button>
+                </div>
+            </div>
+        </div>
+        <div id="ds-footer" class="footer">
+            <lib-footer [id]="'footer'">
+                <span>{{ "Version" | translate }}</span>
+            </lib-footer>
+        </div>
+    </div>
+</div>

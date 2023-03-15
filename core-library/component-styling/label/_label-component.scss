@@ -1,0 +1,136 @@
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as token-size;
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+  lib-label#{template-const.$escape} {
+      @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+      @include layout();
+  }
+}
+
+@mixin size-large() {
+  .label {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .input-desc {
+    font-size: 16px;
+  }
+
+  .input-hint {
+    font-size: 16px;
+    margin: 12px 0px 0px 0px;
+  }
+
+  .required-star {
+    font-size: 16px;
+  }
+
+  .icon_container {
+    font-size: 20px;
+    margin-left: 7px;
+    align-items: center;
+
+    .touch_button {
+      position: absolute;
+      margin-left: -12px;
+      border-radius: 100%;
+      width: 44px;
+      height: 44px;
+    }
+  }
+}
+
+@mixin size-small() {
+
+  .label {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .input-desc {
+    font-size: 14px;
+  }
+
+  .input-hint {
+    font-size: 14px;
+    margin: 8px 0px 0px 0px;
+  }
+
+  .required-star {
+    font-size: 12px;
+  }
+
+}
+
+@mixin layout {
+  .extra_padding {
+    margin-bottom: 8px;
+  }
+
+  .label_container {
+    user-select: none;
+    width: 100%;
+    display: grid;
+    position: relative;
+
+    .label_field_container{
+      display: flex;
+      .icon_container {
+        display: flex;
+      }
+    }
+      .label {
+        display: flex;
+        font-family: 'Lato'
+      }
+      .input-desc {
+        margin: 4px 0px 0px 0px;
+      }
+
+      .input-hint {
+        color: var(--text-placeholder)
+      }
+      .required-field-container {
+        display: flex;
+        .required-star {
+          color: var(--critical-text);
+          font-weight: 400;
+          line-height: 16px;
+          justify-self:flex-start;
+          margin-right: 5px;
+        }
+      }
+  }
+
+  @include size.selector(large) {
+    @include size-large();
+    .small {
+      @include size-small()
+    }
+  }
+
+  @include size.selector(small) {
+    @include size-small();
+    .large {
+      @include size-large()
+    }
+  }
+
+  .check-error {
+    padding: 8px 0;
+  }
+}

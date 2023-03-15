@@ -1,5 +1,7 @@
 <div>
     <app-nav-buttons [config]="navConfig"></app-nav-buttons>
 
+    <!-- Hard coded to be done quickly -->
+    <button [routerLink]="'/' + language +'/' + ('ROUTES.AccessibilityDemo' | translate)">ACCESSIBILITY DEMO</button>
     <router-outlet></router-outlet>
 </div>
