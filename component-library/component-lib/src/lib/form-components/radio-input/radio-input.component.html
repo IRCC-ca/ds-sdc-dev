@@ -1,24 +1,33 @@
 <form [formGroup]="config.formGroup" [ngClass]="config.size"
   (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
-  <lib-label [config]="labelConfig" [touched]="touched"></lib-label>
+  <lib-label [config]="labelConfig"></lib-label>
   <div class="radio-buttons">
     <div *ngFor="let option of config.options; let index = index" class="radio">
       <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
       <input (blur)="touched = true" type="radio" value="{{option.value || option.text}}" id="{{config.id + index}}"
         [formControlName]="config.id ?? 'formControl'" [attr.disabled]='getDisabled(index)'
-        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size" [attr.aria-invalid]="formControl?.errors">
+        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size" [attr.aria-invalid]="formControl?.errors"
+        [attr.aria-live]="'off'"
+        [attr.aria-label]="
+        formControl?.invalid && touched
+        ? (config.label || '' | translate) + ' ' +
+        (config.desc || '' | translate) + ' ' +
+        (config.helpText || '' | translate) + ' ' +
+        (option.text || '' | translate) + ' ' +
+          errorStubText + ' ' + errorAria
+        :
+          (config.label || '' | translate) + ' ' +
+          (config.desc || '' | translate) + ' ' +
+          (config.helpText || '' | translate) + ' ' +
+          (option.text || '' | translate)            
+      ">
       <label for="{{config.id + index}}" 
-        [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'" [attr.aria-label]="
-          formControl?.invalid && formControl?.dirty
-          ? (config.label || '' | translate) + ' ' + (option.text || '' | translate) + ' ' +
-            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
-          : (config.label || '' | translate) + ' ' + (option.text || '' | translate)
-        ">{{(option.text || '') | translate}}</label>
+        [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'">{{(option.text || '') | translate}}</label>
     </div>
   </div>
   <div aria-live="polite">
   <ng-container *ngIf="(formControl?.touched) && formControl?.invalid">
-    <p class="sr-only">{{(((config.label || '') | translate) + ': ')}}</p>
+    <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
     <ng-container *ngFor="let errors of errorIds; let i = index">
       <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
         <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>

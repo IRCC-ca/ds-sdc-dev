@@ -244,6 +244,7 @@ export class AccessibilityDemoComponent implements OnInit {
     id: 'hamburger_dialog_x_button',
     category: 'custom',
     size: 'large',
+    ariaLabel: 'ACC_DEMO.HAMBURGER_ARIA',
     icon: {
       class: 'fa-regular fa-x',
       color: 'var(--text-primary)'
@@ -337,19 +338,6 @@ export class AccessibilityDemoComponent implements OnInit {
       }
     });
   }
-
-  /**
-   * Used to add a shadow class to the header when it's moved off the very top of the page
-   */
-  // ngAfterViewInit() {
-  //   window.onscroll = function () { navbarScroll() };
-
-  //   let header = document.getElementById("outer_header_stepper_container");
-
-  //   function navbarScroll() {
-  //     (document.documentElement?.scrollTop > 0) ? header?.classList.add('shadow') : header?.classList.remove('shadow');
-  //   }
-  // }
 
   /**
    * Set the cities option in the cities dropdown
@@ -500,36 +488,14 @@ export class AccessibilityDemoComponent implements OnInit {
     console.log(this.hamburgerMenuState)
     if (this.hamburgerMenuState !== undefined && !this.hamburgerMenuState) {
       this.hamburgerMenuState = true;
-      setTimeout(() => {const focus = document.getElementById('modal_close_button') as HTMLInputElement;
-      focus.focus();
-    }, 20);
+      setTimeout(() => {const focus = document.getElementById('hamburger_dialog_x_button');
+      focus?.focus();
+      console.log(focus)
+    }, 50);
     } else {
       this.hamburgerMenuState = false;
     }
   }
-
-  // @HostListener('keydown.tab', ['$event'])
-  // @HostListener('keydown.shift.tab', ['$event'])
-  // onTab(event: KeyboardEvent) {
-  //   // Do something when a tab or shift+tab event occurs
-  //   console.log('Tab or shift+tab event occurred', event);
-  // }
-  // onClick(event: MouseEvent) {
-  //   // console.log('things')
-
-  //   event.stopPropagation();
-  //   event.preventDefault();
-  //   event.stopImmediatePropagation();
-  //   const clickedInside = this.elementRef.getEl.contains(event.target);
-  //   if (!clickedInside) {
-  //     console.log('things')
-
-  //     event.stopPropagation();
-  //     event.preventDefault();
-  //     event.stopImmediatePropagation();
-  //   }
-  // }
-
 
   /************************************Getters for Navigation**************************************/
 
@@ -555,10 +521,6 @@ export class AccessibilityDemoComponent implements OnInit {
     return '/' + lang + '/' + this.translate.instant('ROUTES.AccessibilityDemo');
   }
 
-
-  // scrollTo(element: string) {
-  //   scrollToElementByID(element, true, true);
-  // }
 
   /*************** LANGUAGE FUNCTIONS ********************/
 

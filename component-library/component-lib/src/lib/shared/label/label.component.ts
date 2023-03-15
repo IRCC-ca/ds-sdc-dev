@@ -40,49 +40,29 @@ export class LabelComponent implements OnInit {
     formGroup: new FormGroup({}),
     parentID: ''
   }
-  @Input() touched = false;
-
-  errorStubText = '';
   labelIconText = '';
-  errorAria = '';
+
 
   constructor(private translate: TranslateService,
     public standAloneFunctions: StandAloneFunctions,
     private labelButton: LabelButtonService) { }
 
   ngOnInit() {
-    console.log(this.config.touched)
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe(change => {
       this.setLang(change.lang);
     });
 
-    this.config.formGroup.get(this.config.parentID)?.statusChanges.subscribe(() => {
-      this.getAriaErrorText();
-    });
   }
 
-  /**
-   * Get the aria error text for the label
-   */
-  getAriaErrorText() {
-    this.config.formGroup.get(this.config.parentID)?.markAsDirty();
-    if (this.config.errorMessages) {
-      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.parentID, this.config.errorMessages);
-    }
-  }
-
-  ngOnChanges() {
-    this.getAriaErrorText();
-  }
 
   setLang(lang: string) {
     if ((lang === 'en') || (lang === 'en-US')) {
-      this.errorStubText = ERROR_TEXT_STUB_EN;
+      // this.errorStubText = ERROR_TEXT_STUB_EN;
       this.labelIconText = HELP_ICON_ALT_EN;
 
     } else {
-      this.errorStubText = ERROR_TEXT_STUB_FR;
+      // this.errorStubText = ERROR_TEXT_STUB_FR;
       this.labelIconText = HELP_ICON_ALT_FR;
     }
   }
@@ -94,13 +74,6 @@ export class LabelComponent implements OnInit {
   iconButtonClick() {
     this.labelButton.buttonPress(this.config.parentID);
   }
-
-  // get getIconButtonAriaLabel() {
-  //   const aria = (this.translate.instant(this.config.label) + ' ' + this.translate.instant(this.config.iconButton.ariaText));
-  //   if (aria) {
-  //     return aria;
-  //   } return '';
-  // }
 
   returnLabel() {
     return !this.config.topLabel ? this.config.label : this.config.topLabel;
