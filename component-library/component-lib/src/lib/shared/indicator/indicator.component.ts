@@ -82,7 +82,6 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.label?.nativeElement?.offsetWidth)
     this.checkNumber();
     this.checkLabelRounded();
     this.checkLabelLength();
