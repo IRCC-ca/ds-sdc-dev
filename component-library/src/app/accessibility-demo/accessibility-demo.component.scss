@@ -2,7 +2,7 @@
 
   .dimmer {
     width: 100vw;
-    height: 101vh;
+    height: 100vh;
     position: absolute;
     background: rgba(44, 44, 45, 0.8);
     z-index: 10;
@@ -61,7 +61,7 @@
             // height: 100%
             margin-top: 40px;
             overflow-y: auto;
-            height: calc(100vh - 108px);
+            height: calc(95vh - 108px);
           }
         }
       }
