@@ -18,6 +18,7 @@ export class MichaelComponent implements OnInit {
 
   form_0: FormGroup = new FormGroup({});
   form_1: FormGroup = new FormGroup({});
+  form_2: FormGroup = new FormGroup({});
   CHECKBOX_ID = 'qa_test_checkbox';
   qaCheckboxConfig : IInputComponentConfig = {
     id: this.CHECKBOX_ID,
@@ -214,75 +215,13 @@ export class MichaelComponent implements OnInit {
     ],
   };
 
-  indicatorConfigs: IIndicatorConfig[] = [
-    {
-      label: 3,
-      category: 'strong',
-      type: 'dot',
-      size: 'large',
-      purpose: 'palette',
-      palette: 'purple'
-    },
-    {
-      label: 'Label',
-      icon: 'fa-solid fa-code',
-      category: 'strong',
-      type: 'text',
-      size: 'small',
-      purpose: 'palette',
-      palette: 'purple'
-    },
-    {
-      label: 'Label',
-      icon: 'fa-solid fa-code',
-      category: 'weak',
-      type: 'text',
-      size: 'small',
-      purpose: 'palette',
-      palette: 'navy'
-    },
-    {
-      label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      icon: 'fa-solid fa-code',
-      category: 'strong',
-      type: 'text',
-      size: 'large',
-      purpose: 'palette',
-      palette: 'purple'
-    },
-    {
-      label: 'L',
-      category: 'strong',
-      type: 'text',
-      size: 'large',
-      purpose: 'palette',
-      palette: 'purple'
-    },
-    {
-      label: 88,
-      category: 'strong',
-      type: 'number',
-      size: 'large',
-      purpose: 'palette',
-      palette: 'purple'
-    },
-    {
-      label: 1,
-      category: 'strong',
-      type: 'number',
-      size: 'large',
-      purpose: 'status',
-      status: 'warning'
-    },
-    {
-      label: 999,
-      category: 'strong',
-      type: 'number',
-      size: 'large',
-      purpose: 'status',
-      status: 'generic'
-    },
-  ]
+  indicatorConfig: IIndicatorConfig = {
+    category: 'strong',
+    type: 'dot',
+    size: 'large',
+    purpose: 'palette',
+    palette: 'purple'
+  }
 
   testerBreadcrumbConfig: IAutoTestConfigObject = {
     selects: [
@@ -319,6 +258,147 @@ export class MichaelComponent implements OnInit {
     id: 'michael_breadcrumb_tester',
     formGroup: this.form_1,
     testFields: this.testerBreadcrumbConfig,
+  };
+  testerIndicatorFieldConfig: IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'label',
+        formGroup: this.form_2,
+        label: 'Label',
+        type: 'text'
+      },
+    ],
+    selects: [
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'large'
+          },
+          {
+            text: 'small'
+          },
+        ]
+      },
+      {
+        id: 'type',
+        label: 'Type',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'dot'
+          },
+          {
+            text: 'text'
+          },
+          {
+            text: 'number'
+          },
+        ]
+      },
+      {
+        id: 'icon',
+        label: 'Icon',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'Code',
+            value: 'fa-solid fa-code'
+          },
+          {
+            text: 'Maple Leaf',
+            value: 'fa-brands fa-canadian-maple-leaf'
+          }
+        ]
+      },
+      {
+        id: 'category',
+        label: 'Category',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'strong'
+          },
+          {
+            text: 'weak'
+          },
+        ]
+      },
+      {
+        id: 'purpose',
+        label: 'Purpose',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'status'
+          },
+          {
+            text: 'palette'
+          },
+        ]
+      },
+      {
+        id: 'status',
+        label: 'Status',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'info'
+          },
+          {
+            text: 'warning'
+          },
+          {
+            text: 'critical'
+          },
+          {
+            text: 'generic'
+          },
+          {
+            text: 'genericPrimary'
+          },
+        ]
+      },
+      {
+        id: 'palette',
+        label: 'Palette',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'teal'
+          },
+          {
+            text: 'orange'
+          },
+          {
+            text: 'red'
+          },
+          {
+            text: 'grey'
+          },
+          {
+            text: 'blue'
+          },
+          {
+            text: 'green'
+          },
+          {
+            text: 'purple'
+          },
+          {
+            text: 'navy'
+          },
+        ]
+      },
+    ]
+  };
+
+  testIndicatorConfig: IAutoTestComponentConfig = {
+    id: 'michael_indicator_tester',
+    formGroup: this.form_2,
+    testFields: this.testerIndicatorFieldConfig,
   };
 
   constructor(private altLang: LanguageSwitchService) { }
@@ -417,6 +497,36 @@ export class MichaelComponent implements OnInit {
     this.form_1.patchValue({
       'size': 'large',
       'type': 'routerLink'
+    });
+
+    // Auto tester component configs - Indicator
+    this.testerIndicatorFieldConfig.inputs?.forEach(i => {
+      this.form_2.addControl(i.id, new FormControl());
+    });
+    this.testerIndicatorFieldConfig.selects?.forEach(i => {
+      this.form_2.addControl(i.id, new FormControl());
+    });
+
+    this.form_2.addControl(this.testIndicatorConfig.id, new FormControl());
+    this.form_2.valueChanges.subscribe(x => {
+      let updatedConfig: IIndicatorConfig = {...this.indicatorConfig};
+      for(let param in x){
+        if (x[param] === null) continue;
+        updatedConfig = {...updatedConfig, [param] : x[param]}
+        if (updatedConfig?.type === 'number') {
+          updatedConfig = {...updatedConfig,
+            'label' : Number(updatedConfig?.label)
+          }
+        }
+      }
+      this.indicatorConfig = updatedConfig;
+    })
+    this.form_2.patchValue({
+      'category': 'strong',
+      'type': 'dot',
+      'size': 'large',
+      'purpose': 'palette',
+      'palette': 'purple'
     });
   }
 
