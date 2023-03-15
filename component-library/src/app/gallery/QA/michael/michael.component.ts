@@ -219,23 +219,34 @@ export class MichaelComponent implements OnInit {
       label: 3,
       category: 'strong',
       type: 'dot',
+      size: 'large',
+      purpose: 'palette',
+      palette: 'purple'
+    },
+    {
+      label: 'Label',
+      icon: 'fa-solid fa-code',
+      category: 'strong',
+      type: 'text',
       size: 'small',
       purpose: 'palette',
       palette: 'purple'
     },
     {
       label: 'Label',
-      category: 'strong',
+      icon: 'fa-solid fa-code',
+      category: 'weak',
       type: 'text',
       size: 'small',
       purpose: 'palette',
-      palette: 'purple'
+      palette: 'navy'
     },
     {
       label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      icon: 'fa-solid fa-code',
       category: 'strong',
       type: 'text',
-      size: 'small',
+      size: 'large',
       purpose: 'palette',
       palette: 'purple'
     },
@@ -243,31 +254,31 @@ export class MichaelComponent implements OnInit {
       label: 'L',
       category: 'strong',
       type: 'text',
-      size: 'small',
+      size: 'large',
       purpose: 'palette',
       palette: 'purple'
     },
     {
-      label: 5,
+      label: 88,
       category: 'strong',
       type: 'number',
-      size: 'small',
+      size: 'large',
       purpose: 'palette',
       palette: 'purple'
     },
     {
-      label: 5,
+      label: 1,
       category: 'strong',
       type: 'number',
-      size: 'small',
+      size: 'large',
       purpose: 'status',
-      status: 'critical'
+      status: 'warning'
     },
     {
-      label: 5,
+      label: 999,
       category: 'strong',
       type: 'number',
-      size: 'small',
+      size: 'large',
       purpose: 'status',
       status: 'generic'
     },
