@@ -1,3 +1,4 @@
+<lib-hidden-nav [config]="hiddenNavConfig"></lib-hidden-nav>
 <div class="page_container" [ngClass]="{'no_scroll' : hamburgerMenuState}">
     <div class="dimmer" *ngIf="hamburgerMenuState"></div>
     <nav role="navigation" class="outer_header_stepper_container" id="outer_header_stepper_container">
@@ -28,11 +29,11 @@
             </div>
         </div>
     </nav>
-    <div aria-live="polite" class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
+    <div  id="ds-cont" aria-live="polite" class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
         <div class="error_banner" *ngIf="showErrorBanner">
             <lib-banner [config]="errorBannerConfig"></lib-banner>
         </div>
-        <div class="form_container">
+        <div id="ds-form" class="form_container">
             <div>
                 <h1>{{'ACC_DEMO.PERSONAL_INFO.H1' | translate}}</h1>
                 <p>{{'ACC_DEMO.PERSONAL_INFO.BODY' | translate}}</p>
@@ -82,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer">
+        <div id="ds-footer" class="footer">
             <lib-footer [id]="'footer'">
                 <span>{{ "Version" | translate }}</span>
             </lib-footer>
