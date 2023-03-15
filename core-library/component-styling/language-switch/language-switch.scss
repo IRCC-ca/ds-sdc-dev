@@ -1,0 +1,23 @@
+@use '../../tokens/template-const' as template-const;
+@use 'sass:map';
+
+@mixin selector {
+    lib-language-switch#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+    button {
+        background-color: transparent;
+        margin-bottom: 28px;
+        margin-top: 24px;
+        margin-left: 20px;
+    }
+}
