@@ -136,35 +136,55 @@
   }
 }
 
-@mixin status-background {
+@mixin status-bg {
   color: color.mix-token(neutral, 100);
 
-  &.info,
+  &.info {
+    background: var(--information-background);
+  }
+
+  &.warning {
+    background: var(--warning-background);
+  }
+
+  &.critical {
+    background: var(--critical-background);
+  }
+
+  &.generic {
+    background: color.mix-token(neutral, 900);
+  }
+
+  &.generic-primary {
+    background: color.mix-token(active, 900);
+  }
+
+  &.success {
+    background: var(--success-background);
+  }
+}
+
+@mixin palette-bg {
   &.teal {
     background: var(--information-background);
   }
 
-  &.warning,
   &.orange {
     background: var(--warning-background);
   }
 
-  &.critical,
   &.red {
     background: var(--critical-background);
   }
 
-  &.generic,
   &.grey {
     background: color.mix-token(neutral, 900);
   }
 
-  &.generic-primary,
   &.blue {
     background: color.mix-token(active, 900);
   }
 
-  &.success,
   &.green {
     background: var(--success-background);
   }
@@ -188,7 +208,8 @@
     }
 
     &.strong {
-      @include status-background;
+      @include status-bg;
+      @include palette-bg;
     }
   }
 
@@ -204,7 +225,7 @@
   .dot {
     display: block;
 
-    @include status-background;
+    @include status-bg;
   }
 
   .text {
