@@ -23,9 +23,9 @@
 @mixin layout {
 
   > button {
-    max-width: inherit;
+    width: 100%;
     .icon, .text {
-      display: inline-block
+      display: inline-block;
     }
 
     .icon {

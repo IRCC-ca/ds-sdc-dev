@@ -1,11 +1,11 @@
-@use "../../util/color" as color;
-@use "../../util/theme" as theme;
-@use "../../util/device" as device;
-@use "../../util/size" as size;
-@use "../../tokens/template-const" as template-const;
-@use "../../tokens/sizes" as token-size;
-@use "../../typography/typography" as typography;
-@use "../../tokens/text" as text;
+@use "../../util/color"as color;
+@use "../../util/theme"as theme;
+@use "../../util/device"as device;
+@use "../../util/size"as size;
+@use "../../tokens/template-const"as template-const;
+@use "../../tokens/sizes"as token-size;
+@use "../../typography/typography"as typography;
+@use "../../tokens/text"as text;
 @use "sass:map";
 
 @mixin selector {
@@ -22,6 +22,7 @@
 
 // For size small overwrite
 @mixin size-sm {
+
   label,
   p {
     font-size: token-size.$fixed-14;
@@ -61,9 +62,9 @@
   }
 
   .makeBold {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-primary);
-      font-weight: bold; 
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    font-weight: bold;
   }
 
   label {
@@ -122,5 +123,15 @@
     .small {
       @include size-sm();
     }
+  }
+
+  .sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 }

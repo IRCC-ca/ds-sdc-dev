@@ -18,30 +18,47 @@
 @use "./tokens/alert/alert";
 @use "./tokens/partial/focus";
 @use "./tokens/partial/disable";
-@use "./component-styling/checkbox/checkbox" as checkbox-component;
-@use "./component-styling/input-component/input-component";
-@use "./component-styling/banner/banner";
-@use "./component-styling/breadcrumb/breadcrumb";
-@use "./component-styling/radio/radio" as radio-component;
-@use "./component-styling/icon-button/icon-button";
-@use "./component-styling/header/header" as header-component;
-@use "./component-styling/dropdown/dropdown";
-@use "./component-styling/autocomplete/autocomplete";
-@use "./component-styling/date-picker/date-picker";
-@use "./component-styling/footer/footer";
-@use "./component-styling/icon/icon";
-@use "./component-styling/button/button" as button-component;
-@use "./component-styling/textarea/textarea" as textarea-component;
-@use "./component-styling/select/select-component" as select-component;
-@use "./component-styling/chips/item" as chip-item;
-@use "./component-styling/chips/list" as chip-list;
-@use "./component-styling/chips/secondary" as chip-secondary;
-@use "./component-styling/error/error" as error-component;
-@use "./component-styling/tabs/tabs" as tabs-component;
-@use "./component-styling/progress-tags/progress-tags" as tags-component;
-@use "./component-styling/progress-indicator/progress-indicator" as progressIndicator-component;
-@use "./typography/fa-wrapper";
+// @use './tokens/dropdown/plain' as dd-plain;
+// @use './tokens/dropdown/primary' as dd-primary;
+// @use './tokens/dropdown/secondary' as dd-secondary;
+@use './component-styling/checkbox/checkbox' as checkbox-component;
+@use './component-styling/input-component/input-component';
+@use './component-styling/banner/banner';
+@use './component-styling/radio/radio' as radio-component;
+@use './component-styling/icon-button/icon-button';
+@use './component-styling/header/header' as header-component;
+@use './component-styling/dropdown/dropdown';
+@use './component-styling/autocomplete/autocomplete';
+@use './component-styling/date-picker/date-picker';
+@use './component-styling/footer/footer';
+@use './component-styling/icon/icon';
+@use './component-styling/button/button' as button-component;
+@use './component-styling/select/select-component' as select-component;
+@use './component-styling/chips/item' as chip-item;
+@use './component-styling/chips/list' as chip-list;
+@use './component-styling/chips/secondary' as chip-secondary;
+@use './component-styling/error/error' as error-component;
+@use './component-styling/tabs/tabs' as tabs-component;
+@use './component-styling/progress-tags/progress-tags' as tags-component;
+@use './component-styling/progress-indicator/progress-indicator';
+@use './component-styling/label/label-component' as label-component;
+@use './component-styling/hidden-nav/hidden-nav';
+@use './component-styling/language-switch/language-switch';
+@use './typography/fa-wrapper';
 
+@forward './theme/theme' as theme-*;
+@forward './theme/ircc-jl-colors' as palette-*;
+
+@forward './typography/fonts' as fonts-*;
+@forward './typography/typography' as typography-*;
+@forward './paint/paint' as paint-*;
+@forward './tokens/link/link' as link-*;
+@forward './tokens/radio/radio' as radio-*;
+@forward './tokens/partial/focus' as focus-*;
+@forward './tokens/partial/disable' as disable-*;
+@forward './tokens/checkbox/checkbox' as checkbox-*;
+@forward './tokens/input/input' as input-text-*;
+@forward './tokens/input/textarea' as input-textarea-*;
 @forward "./theme/theme" as theme-*;
 @forward "./theme/ircc-jl-colors" as palette-*;
 @forward "./typography/fonts" as fonts-*;
@@ -65,190 +82,136 @@
   @include fonts.create();
   @include typography.create();
   @include fa-wrapper.create();
-
-  @if not $include {
-    @include element(primary);
-    @include element(secondary);
-    @include element(plain);
-    @include element(dropdown);
-    @include element(nav);
-    @include element(round);
-    @include element(checkbox);
-    @include element(radio);
-    @include element(input);
-    @include element(textarea);
-    @include element(link);
-    @include element(focus);
-    @include element(disable);
-    @include element(checkbox-component);
-    @include element(input-component);
-    @include element(alert);
-    @include element(banner);
-    @include element(radio-component);
-    @include element(icon-button);
-    @include element(header-component);
-    @include element(footer);
-    @include element(autocomplete);
-    @include element(chip-item);
-    @include element(chip-list);
-    @include element(chip-secondary);
-    @include element(date-picker);
-    @include element(icon);
-    @include element(tabs-component);
-    @include element(button-component);
-    @include element(textarea-component);
-    @include element(error-component);
-    @include element(tags-component);
-    @include element(select-component);
-    @include element(progressIndicator-component);
-    @include element(breadcrumb);
-  }
-
-  @else {
-    @each $key in $include {
-      @include element($key);
+    @if not $include {
+        @include element(primary);
+        @include element(secondary);
+        @include element(plain);
+        // @include element(dd-plain);
+        // @include element(dd-primary);
+        // @include element(dd-secondary);
+        @include element(dropdown);
+        @include element(nav);
+        @include element(round);
+        @include element(checkbox);
+        @include element(radio);
+        @include element(input);
+        @include element(textarea);
+        @include element(link);
+        @include element(focus);
+        @include element(disable);
+        @include element(checkbox-component);
+        @include element(input-component);
+        @include element(alert);
+        @include element(banner);
+        @include element(radio-component);
+        @include element(icon-button);
+        @include element(header-component);
+        @include element(footer);
+        @include element(autocomplete);
+        @include element(chip-item);
+        @include element(chip-list);
+        @include element(chip-secondary);
+        @include element(date-picker);
+        @include element(icon);
+        @include element(tabs-component);
+        @include element(button-component);
+        @include element(error-component);
+        @include element(tags-component);
+        @include element(progress-indicator);
+        @include element(select-component);
+        @include element(label-component);
+        @include element(hidden-nav);
+        @include element(language-switch);
+    } @else {
+        @each $key in $include {
+            @include element($key);
+        }
     }
-  }
 }
 
 @mixin element($key) {
-  @if $key == primary {
-    @include primary.create();
-  }
-
-  @else if $key == secondary {
-    @include secondary.create();
-  }
-
-  @else if $key == plain {
-    @include plain.create();
-  }
-
-  @else if $key == dropdown {
-    @include dropdown.create();
-  }
-
-  @else if $key == nav {
-    @include nav.create();
-  }
-
-  @else if $key == round {
-    @include round.create();
-  }
-
-  @else if $key == checkbox {
-    @include checkbox.create();
-  }
-
-  @else if $key == radio {
-    @include radio.create();
-  }
-
-  @else if $key == input {
-    @include input.create();
-  }
-
-  @else if $key == textarea {
-    @include textarea.create();
-  }
-
-  @else if $key == link {
-    @include link.create();
-  }
-
-  @else if $key == focus {
-    @include focus.create();
-  }
-
-  @else if $key == disable {
-    @include disable.create();
-  }
-
-  @else if $key == checkbox-component {
-    @include checkbox-component.create();
-  }
-
-  @else if $key == input-component {
-    @include input-component.create();
-  }
-
-  @else if $key == alert {
-    @include alert.create();
-  }
-
-  @else if $key == banner {
-    @include banner.create();
-  }
-
-  @else if $key == radio-component {
-    @include radio-component.create();
-  }
-
-  @else if $key == icon-button {
-    @include icon-button.create();
-  }
-
-  @else if $key == header-component {
-    @include header-component.create();
-  }
-
-  @else if $key == footer {
-    @include footer.create();
-  }
-
-  @else if $key == autocomplete {
-    @include autocomplete.create();
-  }
-
-  @else if $key == chip-item {
-    @include chip-item.create();
-  }
-
-  @else if $key == chip-list {
-    @include chip-list.create();
-  }
-
-  @else if $key == chip-secondary {
-    @include chip-secondary.create();
-  }
-
-  @else if $key == date-picker {
-    @include date-picker.create();
-  }
-
-  @else if $key == icon {
-    @include icon.create();
-  }
-
-  @else if $key == error-component {
-    @include error-component.create();
-  }
-
-  @else if $key == tabs-component {
-    @include tabs-component.create();
-  }
-
-  @else if $key == button-component {
-    @include button-component.create();
-  }
-
-  @else if $key == tags-component {
-    @include tags-component.create();
-  }
-
-  @else if $key == select-component {
-    @include select-component.create();
-  }
-
-  @else if $key == progressIndicator-component {
-    @include progressIndicator-component.create();
-  }
-
-  @else if $key == textarea-component {
-    @include textarea-component.create();
-  }
-
-  @else if $key == breadcrumb {
-    @include breadcrumb.create();
-  }
+    @if $key == primary {
+        @include primary.create();
+    } @else if $key == secondary {
+        @include secondary.create();
+    } @else if $key == plain {
+        @include plain.create();
+    } @else if $key == dropdown {
+        @include dropdown.create();
+    } @else if $key == nav {
+        @include nav.create();
+    } @else if $key == round {
+        @include round.create();
+    } @else if $key == checkbox {
+        @include checkbox.create();
+    } @else if $key == radio {
+        @include radio.create();
+    } @else if $key == input {
+        @include input.create();
+    } @else if $key == textarea {
+        @include textarea.create();
+    } @else if $key == link {
+        @include link.create();
+    } @else if $key == focus {
+        @include focus.create();
+    } @else if $key == disable {
+        @include disable.create();
+    } @else if $key == checkbox-component {
+        @include checkbox-component.create();
+    } @else if $key == input-component {
+        @include input-component.create();
+    } @else if $key == alert {
+        @include alert.create();
+    } @else if $key == banner {
+        @include banner.create();
+    } @else if $key == radio-component {
+        @include radio-component.create();
+    } @else if $key == icon-button {
+        @include icon-button.create();
+    } @else if $key == header-component {
+        @include header-component.create();
+    } @else if $key == footer {
+        @include footer.create();
+    } @else if $key == autocomplete {
+        @include autocomplete.create();
+    } @else if $key == chip-item {
+        @include chip-item.create();
+    } @else if $key == chip-list {
+        @include chip-list.create();
+    } @else if $key == chip-secondary {
+        @include chip-secondary.create();
+    } @else if $key == date-picker {
+        @include date-picker.create();
+    } @else if $key == icon {
+        @include icon.create();
+    } @else if $key == error-component {
+        @include error-component.create();
+    } @else if $key == tabs-component {
+        @include tabs-component.create();
+    } @else if $key == button-component {
+        @include button-component.create();
+    } @else if $key == tags-component {
+        @include tags-component.create();
+    }  @else if $key == progress-indicator {
+      @include progress-indicator.create();
+    } @else if $key == select-component {
+        @include select-component.create();
+    } @else if $key == label-component {
+        @include label-component.create();
+    } @else if $key == hidden-nav {
+        @include hidden-nav.create();
+    } @else if $key == language-switch {
+        @include language-switch.create();
+    } @else if $key == textarea-component {
+        @include textarea-component.create();
+    } @else if $key == breadcrumb {
+        @include breadcrumb.create();
+    }
+// @else if $key == dd-primary {
+//     @include dd-primary.create();
+// } @else if $key == dd-secondary {
+//     @include dd-secondary.create();
+// } @else if $key == dd-plain {
+//     @include dd-plain.create();
+// } 
 }
