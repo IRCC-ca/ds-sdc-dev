@@ -60,6 +60,24 @@ export class AccessibilityDemoComponent implements OnInit {
     id: '',
   };
 
+  hiddenNavConfig = {
+    id: 'hidden_nav',
+    skipLinks: [
+    {
+      title: 'Skip to main content',
+      href: 'ds-cont'
+    },
+    {
+      title: 'Skip to form',
+      href: 'ds-form'
+    },
+    {
+      title: 'Skip to footer',
+      href: 'ds-footer'
+    }
+    ]
+  }
+
   errorBannerConfig: IBannerConfig = {
     id: 'error_banner',
     type: 'critical',
@@ -443,10 +461,10 @@ export class AccessibilityDemoComponent implements OnInit {
         this.router.navigateByUrl(this.getNextButtonLink);
       } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
     }
-  
+
   /**
    * Event handler for banner close button events
-   * @param id 
+   * @param id
    */
   bannerCloseHandler(id: string) {
     switch (id) {

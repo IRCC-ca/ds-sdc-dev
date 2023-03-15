@@ -43,6 +43,7 @@
 @use './component-styling/progress-indicator/progress-indicator';
 @use './component-styling/label/label-component' as label-component;
 @use './component-styling/hidden-nav/hidden-nav';
+@use './component-styling/language-switch/language-switch';
 @use './typography/fa-wrapper';
 
 @forward './theme/theme' as theme-*;
@@ -120,6 +121,7 @@
         @include element(select-component);
         @include element(label-component);
         @include element(hidden-nav);
+        @include element(language-switch);
     } @else {
         @each $key in $include {
             @include element($key);
@@ -198,6 +200,8 @@
         @include label-component.create();
     } @else if $key == hidden-nav {
         @include hidden-nav.create();
+    } @else if $key == language-switch {
+        @include language-switch.create();
     }
 // @else if $key == dd-primary {
 //     @include dd-primary.create();
