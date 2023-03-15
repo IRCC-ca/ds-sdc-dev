@@ -24,6 +24,7 @@
 @use './component-styling/checkbox/checkbox' as checkbox-component;
 @use './component-styling/input-component/input-component';
 @use './component-styling/banner/banner';
+@use './component-styling/breadcrumb/breadcrumb';
 @use './component-styling/radio/radio' as radio-component;
 @use './component-styling/icon-button/icon-button';
 @use './component-styling/header/header' as header-component;
@@ -39,6 +40,7 @@
 @use './component-styling/chips/secondary' as chip-secondary;
 @use './component-styling/error/error' as error-component;
 @use './component-styling/tabs/tabs' as tabs-component;
+@use './component-styling/textarea/textarea' as textarea-component;
 @use './component-styling/progress-tags/progress-tags' as tags-component;
 @use './component-styling/progress-indicator/progress-indicator';
 @use './component-styling/label/label-component' as label-component;
