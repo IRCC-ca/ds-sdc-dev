@@ -57,7 +57,7 @@ export class IndicatorComponent implements OnInit, AfterViewInit {
     category: IndicatorTreatment.weak,
     purpose: IndicatorPurpose.status
   };
-  @ViewChild('label') label?: ElementRef<HTMLSpanElement>;
+  @ViewChild('label') label?: ElementRef<HTMLDivElement>;
   EIndicatorStatus = IndicatorStatus;
   rounded?: boolean;
   abbr?: boolean; // Display abbr tag when text is truncated
@@ -74,6 +74,7 @@ export class IndicatorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.abbr = <boolean>(this.label?.nativeElement?.offsetWidth && this.label?.nativeElement?.offsetWidth > 200);
+    // Max 200px - padding 8px x2
+    this.abbr = <boolean>(this.label?.nativeElement?.offsetWidth && this.label?.nativeElement?.offsetWidth > 184);
   }
 }
