@@ -120,17 +120,17 @@
 
   &.info,
   &.teal {
-    background: var(--information-text);
+    background: var(--information-background);
   }
 
   &.warning,
   &.orange {
-    background: var(--warning-text);
+    background: var(--warning-background);
   }
 
   &.critical,
   &.red {
-    background: var(--critical-text);
+    background: var(--critical-background);
   }
 
   &.generic,
@@ -145,7 +145,7 @@
 
   &.success,
   &.green {
-    background: var(--success-text);
+    background: var(--success-background);
   }
 
   &.purple {
