@@ -162,8 +162,8 @@ export class AccessibilityDemoComponent implements OnInit {
   sexAtBirthRadioBannerConfig: IBannerConfig = {
     id: 'sex_at_birth_info_banner',
     dismissible: true,
+    ariaDissmissible: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER_CLOSE',
     type: 'info',
-    // title: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER.TITLE',
     content: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER'
   };
 
