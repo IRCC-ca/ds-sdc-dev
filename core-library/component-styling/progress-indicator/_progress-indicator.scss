@@ -56,10 +56,11 @@
   }
 
 @mixin layout {
-
     .horizontal {
+        padding-top: 3.5px;
+        padding-left: 5.5px;
         display: flex;
-        overflow-y: scroll;
+        overflow-x: auto;
         justify-content: space-between;
         .container-plus-line {
             width: 100%;
@@ -78,7 +79,8 @@
         }
     }
     .vertical {
-        overflow-x: scroll;
+        padding-top: 3.5px;
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

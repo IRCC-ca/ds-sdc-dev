@@ -429,11 +429,6 @@ export class MichaelComponent implements OnInit {
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
-        if (param === 'errorIcon') {
-          updatedConfig = {...updatedConfig, ['errorIcon'] : {
-              class: x[param]
-            }}
-        }
         this.qaInputConfig = updatedConfig;
       }
     })
@@ -463,11 +458,6 @@ export class MichaelComponent implements OnInit {
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
-        if (param === 'errorIcon') {
-          updatedConfig = {...updatedConfig, ['errorIcon'] : {
-              class: x[param]
-            }}
-        }
         this.qaCheckboxConfig = updatedConfig;
       }
     })

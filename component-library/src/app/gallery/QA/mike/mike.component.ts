@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormGroup, FormControl, ValidatorFn, Validators} from '@angular/forms';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
-import { IBannerConfig, ICTAConfig, IButtonConfig, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICTAConfig, IButtonConfig, IRadioInputComponentConfig, IHiddenNavConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-mike',
@@ -11,11 +11,35 @@ import { IBannerConfig, ICTAConfig, IButtonConfig, IRadioInputComponentConfig } 
 })
 export class MikeComponent implements OnInit {
 
+  toggleComp(comp: string){
+    document.querySelectorAll('section')?.forEach(section => {
+      section.classList.remove('show');
+    });
+    document.getElementById(comp)?.classList.toggle('show');
+
+  }
+
   BANNER_ID = 'qa_test_banner';
 
   qaBanner : IBannerConfig = {
     id: this.BANNER_ID
   };
+
+  hiddenNavConfig : IHiddenNavConfig = {
+    id: 'hidden_nav',
+    skipLinks: [
+    {
+      title: 'skip to this',
+      href: 't1'
+    },
+    {
+      title: 'skip to that',
+      href: 't2',
+      ariaLabel: 'Test Label'
+    }
+    ]
+  }
+
 
   form = new FormGroup({});
   ctaForm1 = new FormGroup({});

@@ -32,6 +32,7 @@ $selectors: "lib-error";
   .errorContainer {
     height: 16px;
     margin: 4px 0;
+    align-items: flex-start;
   }
 
   .additionalError {
@@ -47,7 +48,7 @@ $selectors: "lib-error";
 
   .errorText {
     font-size: 16px;
-    margin: 12px 0;
+    margin: 0px 0;
   }
 
   .errorContainer {
@@ -80,7 +81,7 @@ $selectors: "lib-error";
   .errorContainer {
     display: flex;
     color: var(--critical-text);
-    align-items: center;
+    align-items: flex-start;
   }
 
   .errorIcon {
