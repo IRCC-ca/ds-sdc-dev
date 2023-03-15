@@ -3,8 +3,9 @@ import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } f
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
+import { TranslateService } from '@ngx-translate/core';
 
 // export declare enum SelectType {
 //   secondary = "secondary",
@@ -24,7 +25,7 @@ export interface ISelectConfig {
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
-  topLabel?:string;
+  topLabel?: string;
 }
 export interface ISelectOptionsConfig {
   text: string;
@@ -45,7 +46,7 @@ export interface ISelectOptionsConfig {
 export class SelectComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorIds: IErrorIDs[] = [];
-  activiatedSelect : boolean = false
+  activiatedSelect: boolean = false
 
   @Input() config: ISelectConfig = {
     id: '',
@@ -59,9 +60,11 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
-  }
+  };
+  errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions) { }
+  constructor(public standAloneFunctions: StandAloneFunctions,
+              private translate: TranslateService) { }
 
   onChange = (formValue: string) => { };
   onTouched = () => { };
@@ -82,15 +85,20 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  valueChange($event : any) {
+  valueChange($event: any) {
     this.activiatedSelect = true;
   }
 
   ngOnInit() {
     const retControl = this.config.formGroup.get(this.config.id);
-    if(retControl){
+    if (retControl) {
       this.formControl = retControl;
     }
+
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe(change => {
+      this.setLang(change.lang);
+    });
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -107,7 +115,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -118,5 +126,33 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.required,
       this.config.labelIconConfig,
       this.config.topLabel);
+  }
+
+  /**
+ * Get the aria error text for the label
+ */
+  getAriaErrorText() {
+    if (this.config.errorMessages) {
+      this.formControl?.markAsDirty();
+      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
+    }
+  }
+
+  /**
+   * Set a boolean representing the touched state to true and trigger getAriaErrorText()
+   */
+  onTouchedLabel() {
+    this.touched = true;
+    this.getAriaErrorText();
+  }
+
+  setLang(lang: string) {
+    this.getAriaErrorText();
+    if ((lang === 'en') || (lang === 'en-US')) {
+      this.errorStubText = ERROR_TEXT_STUB_EN;
+
+    } else {
+      this.errorStubText = ERROR_TEXT_STUB_FR;
+    }
   }
 }

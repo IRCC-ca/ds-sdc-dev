@@ -223,8 +223,6 @@ export class DatePickerComponent implements OnInit {
       ?.valueChanges.subscribe((month) => {
         //add if statement here - the value of year can be empty, since it may not have been selected yet.
         const numDays = this.updateDaysArray(month, this.config.formGroup.get(this.config.id + '_yearControl')?.value);
-        console.log(month, numDays);
-        console.log(this.config.formGroup.get(this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION)?.value);
       });
     this.config.formGroup
       .get(this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION)
@@ -308,7 +306,6 @@ export class DatePickerComponent implements OnInit {
    * Set the language for the labels of each dropdown
    */
   setLabelLanguage() {
-    console.log(this.dropDownConfigs);
     if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
       this.dropDownConfigs.day.label = DATE_PICKER_LABELS_EN[0];
       this.dropDownConfigs.month.label = DATE_PICKER_LABELS_EN[1];
@@ -326,7 +323,6 @@ export class DatePickerComponent implements OnInit {
       this.dropDownConfigs.month.placeholder = DATE_PICKER_PLACEHOLDER_MONTH_FR;
       this.dropDownConfigs.year.placeholder = DATE_PICKER_PLACEHOLDER_YEAR_FR;
     }
-    console.log(this.dropDownConfigs);
   }
 
   /**
@@ -406,7 +402,6 @@ export class DatePickerComponent implements OnInit {
         this.config.formGroup.get(this.dropDownConfigs.day.id)?.invalid);
       
       this.touched = datePickerState || false;
-      console.log(this.touched)
 
     return datePickerState ?? false;
     //  return this.config.formGroup?.touched && this.config.formGroup?.invalid;
