@@ -2,7 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ISelectConfig } from '../select/select.component';
-import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
@@ -118,6 +118,7 @@ export class DatePickerComponent implements OnInit {
     parentID: '',
   };
   touched = false;
+  errorStubText = '';
 
   dropDownConfigs: IDatePickerDropDownConfigs = {
     day: {
@@ -314,6 +315,8 @@ export class DatePickerComponent implements OnInit {
       this.dropDownConfigs.day.placeholder = DATE_PICKER_PLACEHOLDER_DAY_EN;
       this.dropDownConfigs.month.placeholder = DATE_PICKER_PLACEHOLDER_MONTH_EN;
       this.dropDownConfigs.year.placeholder = DATE_PICKER_PLACEHOLDER_YEAR_EN;
+
+      this.errorStubText = ERROR_TEXT_STUB_EN;
     } else {
       this.dropDownConfigs.day.label = DATE_PICKER_LABELS_FR[0];
       this.dropDownConfigs.month.label = DATE_PICKER_LABELS_FR[1];
@@ -322,6 +325,8 @@ export class DatePickerComponent implements OnInit {
       this.dropDownConfigs.day.placeholder = DATE_PICKER_PLACEHOLDER_DAY_FR;
       this.dropDownConfigs.month.placeholder = DATE_PICKER_PLACEHOLDER_MONTH_FR;
       this.dropDownConfigs.year.placeholder = DATE_PICKER_PLACEHOLDER_YEAR_FR;
+
+      this.errorStubText = ERROR_TEXT_STUB_FR;
     }
   }
 
