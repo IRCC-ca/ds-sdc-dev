@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,15 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  @Input() id: string = '';
+  @Input() id?: string = 'header';
 
   menuHidden = true;
-
-  constructor() { }
-
-  ngOnInit() { }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
