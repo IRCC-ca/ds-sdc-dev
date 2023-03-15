@@ -1,6 +1,6 @@
 <div id="{{config.parentID + '_label'}}" class="label_container"
   [ngClass]="{'extra_padding' : (config.label && (!config.desc && !config.hint))}">
-  <label for="{{config.parentID}}" *ngIf="config.label" class="label">
+  <label *ngIf="config.label" class="label">
     <span class="label_field_container">
       <div class="required-field-container" *ngIf="config.required">
         <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}

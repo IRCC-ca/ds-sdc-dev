@@ -9,7 +9,8 @@ import {
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface IRadioInputComponentConfig {
   id: string;
@@ -65,9 +66,12 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
-  }
+  };
+  errorStubText = '';
+  errorAria = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions) { }
+  constructor(public standAloneFunctions: StandAloneFunctions,
+              private translate: TranslateService) { }
 
   onChange = (formValue: string) => { };
   onTouched = () => { };
@@ -93,6 +97,13 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     if(retControl){
       this.formControl = retControl;
     }
+
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe(change => {
+      this.setLang(change.lang);
+    });
+
+
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -120,6 +131,34 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       this.config.hint,
       this.config.required,
       this.config.labelIconConfig);
+  }
+
+  /**
+ * Get the aria error text for the label
+ */
+  getAriaErrorText() {
+    if (this.config.errorMessages) {
+      this.formControl?.markAsDirty();
+      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
+    }
+  }
+  
+  /**
+   * Set a boolean representing the touched state to true and trigger getAriaErrorText()
+   */
+  onTouchedLabel() {
+    this.touched = true;
+    this.getAriaErrorText();
+  }
+
+  setLang(lang: string) {
+    this.getAriaErrorText();
+    if ((lang === 'en') || (lang === 'en-US')) {
+      this.errorStubText = ERROR_TEXT_STUB_EN;
+
+    } else {
+      this.errorStubText = ERROR_TEXT_STUB_FR;
+    }
   }
 
   /**

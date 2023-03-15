@@ -69,7 +69,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   errorStubText = '';
 
   constructor(public standAloneFunctions: StandAloneFunctions,
-              private translate: TranslateService,) { }
+    private translate: TranslateService,) { }
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -135,16 +135,16 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     });
   }
 
-/**
- * Get the aria error text for the label
- */
+  /**
+   * Get the aria error text for the label
+   */
   getAriaErrorText() {
     if (this.config.errorMessages) {
       this.formControl?.markAsDirty();
       this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
     }
   }
-  
+
   /**
    * Set a boolean representing the touched state to true and trigger getAriaErrorText()
    */
