@@ -67,8 +67,15 @@ export interface IDatePickerConfig {
   desc?: string;
   errorMessages?: IDatePickerErrorMessages;
   labelIconConfig?: ILabelIconConfig;
-  //TODO: Add max and min year for date picker
-  //TODO: Add toggle for unknowns (boolean array?)
+  maxYear?: number;
+  minYear?: number;
+  unknownDateToggle? : IDatePickerUnknownDateToggleConfig;
+}
+
+export interface IDatePickerUnknownDateToggleConfig {
+  dayUnknown?: boolean;
+  monthUnknown?: boolean;
+  yearUnknown?: boolean;
 }
 
 export interface IDatePickerErrorMessages {
@@ -109,6 +116,9 @@ export class DatePickerComponent implements OnInit {
   @Input() hint?: string;
   @Input() desc?: string;
   @Input() errorMessages?: IDatePickerErrorMessages;
+  @Input() maxYear?: number;
+  @Input() minYear?: number;
+  @Input() unknownDateToggle? : IDatePickerUnknownDateToggleConfig;
 
   errorIds: IErrorIDs[] = [];
   days: number[] = [];
@@ -171,6 +181,9 @@ export class DatePickerComponent implements OnInit {
     if (this.hint) this.config.hint = this.hint;
     if (this.desc) this.config.desc = this.desc;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+    if (this.maxYear) this.config.maxYear = this.maxYear;
+    if (this.minYear) this.config.minYear = this.minYear;
+    if (this.unknownDateToggle) this.config.unknownDateToggle = this.unknownDateToggle;
 
     //Set the ids for the dropdowns
     this.dropDownConfigs.day.id = this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION;
@@ -206,17 +219,35 @@ export class DatePickerComponent implements OnInit {
       this.setLabelLanguage();
     });
     if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
-      this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_EN, value:"**" }); 
+      if(this.config.unknownDateToggle?.yearUnknown) this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_EN, value:"**" }); 
     }
     else
     {
-      this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_FR, value:"**" }); 
-    }
-  
-    for (let i = 1900; i <= this.currentYear; i++) {
-      this.dropDownConfigs.year.options?.push({ text: i.toString() });
+      if(this.config.unknownDateToggle?.yearUnknown) this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_FR, value:"**" }); 
     }
     
+    if (this.config.minYear || this.config.maxYear) {
+      if (this.config.minYear && this.config.maxYear) {
+        for (let i = this.config.minYear; i <= this.config.maxYear; i++) {
+          this.dropDownConfigs.year.options?.push({ text: i.toString() });
+        }
+      }
+      else if (this.config.minYear && !this.config.maxYear) {
+        for (let i = this.config.minYear; i <= this.currentYear; i++) {
+          this.dropDownConfigs.year.options?.push({ text: i.toString() });
+        }
+      }
+      else if (this.config.maxYear && !this.config.minYear) {
+        for (let i = 1900; i <= this.config.maxYear; i++) {
+          this.dropDownConfigs.year.options?.push({ text: i.toString() });
+        }
+      }
+    }
+    else {
+      for (let i = 1900; i <= this.currentYear; i++) {
+        this.dropDownConfigs.year.options?.push({ text: i.toString() });
+      }
+    }
 
     // Populate the days array based on the selected month and year
     this.config.formGroup
@@ -235,13 +266,13 @@ export class DatePickerComponent implements OnInit {
       });
 
     if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
-      this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN , value:"**" }); 
+      if(this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN , value:"**" }); 
     }
     else{
-      this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR , value:"**" }); 
+      if(this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR , value:"**" }); 
     }
 
-    if (this.dropDownConfigs.day.options?.length === 1) {
+    if ((this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 1) || (!this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 0)) {
       for (let i = 1; i <= 31; i++) {
         this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
@@ -271,15 +302,15 @@ export class DatePickerComponent implements OnInit {
     if(this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US')
       {
         this.months = DATE_PICKER_MONTHS_EN;
-        this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_EN, value:"**" }); 
+        if(this.config.unknownDateToggle?.monthUnknown) this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_EN, value:"**" }); 
       }
       else
       { 
         this.months = DATE_PICKER_MONTHS_FR;
-        this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_FR, value:"**" }); 
+        if(this.config.unknownDateToggle?.monthUnknown) this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_FR, value:"**" }); 
       }
     this.months.forEach((month: string, index: number) => {
-      this.dropDownConfigs.month.options?.push({ text: month, value: DATE_PICKER_MONTHS_EN[index] });
+      this.dropDownConfigs.month.options?.push({ text: month, value: ((index + 1)).toString().padStart(2, '0') });
     });
   }
 
@@ -292,14 +323,14 @@ export class DatePickerComponent implements OnInit {
     if(this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US')
     {
       this.months = DATE_PICKER_MONTHS_EN;
-      this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value:'**' });
-      this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value:'**' });
+      if(this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value:'**' });
+      if(this.config.unknownDateToggle?.yearUnknown) this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value:'**' });
     }
     else
     { 
       this.months = DATE_PICKER_MONTHS_FR;
-      this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value:"**" });
-      this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value:'**' });
+      if(this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value:"**" });
+      if(this.config.unknownDateToggle?.yearUnknown) this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value:'**' });
     }
   }
 
@@ -339,15 +370,16 @@ export class DatePickerComponent implements OnInit {
     this.days = [];
     this.dropDownConfigs.day.options = [];
     const numDays = this.getNumDaysInMonth(month, year);
+    console.log(month, year)
     for (let i = 1; i <= numDays; i++) {
       this.days.push(i);
     }
     this.config.formGroup.get(this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION)?.setValue('');
     if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
-      this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN , value:"**" }); 
+      if(this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN , value:"**" }); 
     }
     else{
-      this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR , value:"**" }); 
+      if(this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR , value:"**" }); 
     }
     this.days.forEach((day) => {
       this.dropDownConfigs.day.options?.push({ text: day.toString() });
@@ -361,8 +393,11 @@ export class DatePickerComponent implements OnInit {
    * @returns number representing the number of days in the month
    */
   private getNumDaysInMonth(month: string, year: number): number {
-    const monthNum = this.getMonthNum(month);
+    const monthNum: number= +month;
     if (monthNum === 2) {
+      if(String(year) === "**") { //if year is unknown and month is feb return 29
+        return 29;
+      }
       return this.isLeapYear(year) ? 29 : 28;
     } else if ([4, 6, 9, 11].includes(monthNum)) {
       return 30;
@@ -386,14 +421,6 @@ export class DatePickerComponent implements OnInit {
     return false;
   }
 
-  /**
-   * Function that grabs the month number based on the month name/lov
-   * @param month string representing the month
-   * @returns number representing the month (Jan = 1, etc.)/ or 0, if no match found.
-   */
-  private getMonthNum(month: string) {
-    return this.months.findIndex((i) => i === month) + 1;
-  }
 
   datePickerTouchedOrInvalid(): boolean {
     let datePickerState: boolean | undefined = false;
