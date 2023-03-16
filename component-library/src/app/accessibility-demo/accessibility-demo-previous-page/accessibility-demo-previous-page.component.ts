@@ -34,6 +34,7 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
 
   innerWidth = 0;
   hamburgerMenuState: boolean | undefined = undefined;
+  allowedNavItemIds: string[] = ['progress_indicator_step_0', 'progress_indicator_step_1', 'hamburger_dialog_x_button'];
 
   constructor(private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
@@ -120,13 +121,17 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
     return ('/' + lang + '/' + this.translate.instant('ROUTES.AccessibilityDemo'));
   }
 
-/**
- * Open the hamburger menu progress indicator
- */
+  /**
+   * Open the hamburger menu progress indicator
+   */
   menuHamburgerButton() {
     console.log(this.hamburgerMenuState)
     if (this.hamburgerMenuState !== undefined && !this.hamburgerMenuState) {
       this.hamburgerMenuState = true;
+      setTimeout(() => {const focus = document.getElementById('hamburger_dialog_x_button');
+      focus?.focus();
+      console.log(focus)
+    }, 50);
     } else {
       this.hamburgerMenuState = false;
     }
