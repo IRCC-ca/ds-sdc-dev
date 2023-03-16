@@ -29,8 +29,12 @@
       @include typography.fontSize(map.get(text.$body, level), 3);
     }
 
+    &.breadcrumb-root {
+      margin-right: 4px;
+    }
+
     &.breadcrumb-item {
-      margin-left: 8px;
+      margin: 0 4px;
     }
   }
 
@@ -45,6 +49,7 @@
   svg.fa-chevron-right {
     font-size: 12px;
     bottom: 0;
+    padding: 0 2px;
   }
 }
 
@@ -58,7 +63,7 @@
     }
 
     &.breadcrumb-item {
-      margin-left: 11px;
+      margin-left: 8px;
     }
 
     &.breadcrumb-root {
@@ -80,6 +85,7 @@
   svg.fa-chevron-right {
     font-size: 20px;
     bottom: -2px;
+    padding: 0 3px 0 4px;
   }
 }
 
