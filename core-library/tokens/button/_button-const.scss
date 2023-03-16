@@ -2,7 +2,7 @@
 @use '../../util/size' as size;
 @use '../sizes' as token-size;
 @use '../template-const';
-$selectors: 'button, .button';
+$selectors: 'button';
 
 @mixin button-size-padding {
     @include size.selector(small) {
