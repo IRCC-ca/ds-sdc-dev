@@ -49,6 +49,7 @@
 
             @include device.in-phone-layout(){
                 width: 249px;
+                margin-left: 8px;
             }
             img {
                 width: 100%;
@@ -61,16 +62,19 @@
         .languageSwitch {
             justify-self: end;
             align-self: center;
+            @include device.in-phone-layout(){
+                margin-right: 8px;
+            }
         }
     }
         
         @container header-container (width: calc(100vw - 16px)) {
             .image-container {
-                margin-left: 20px;
+                margin-left: 12px;
             }
 
             .languageSwitch {
-                margin-right: 20px;
+                margin-right: 12px;
             }
         }
     
