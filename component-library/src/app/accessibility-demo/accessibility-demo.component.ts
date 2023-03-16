@@ -252,6 +252,8 @@ export class AccessibilityDemoComponent implements OnInit {
     }
   };
 
+  allowedNavItemIds: string[] = ['progress_indicator_step_0', 'progress_indicator_step_1', 'hamburger_dialog_x_button'];
+
   constructor(
     private translate: TranslateService,
     private altLang: LanguageSwitchService,
