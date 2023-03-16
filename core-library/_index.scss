@@ -118,6 +118,7 @@
     @include element(label-component);
     @include element(hidden-nav);
     @include element(language-switch);
+    @include element(textarea-component);
   }
 
   @else {
