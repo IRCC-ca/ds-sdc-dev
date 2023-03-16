@@ -70,7 +70,6 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges{
   EIndicatorStatus = IndicatorStatus;
   rounded?: boolean;
   abbr?: boolean; // Display abbr tag when text is truncated
-  constructor() { }
 
   ngOnInit(): void {
     this.checkLabelRounded();

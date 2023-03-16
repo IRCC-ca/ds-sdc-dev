@@ -220,10 +220,6 @@
     border-radius: 50%;
   }
 
-  .rounded {
-    border-radius: 50% !important;
-  }
-
   .dot {
     display: block;
 
@@ -285,5 +281,9 @@
     .small {
       @include size-sm();
     }
+  }
+
+  .rounded {
+    border-radius: 50%;
   }
 }

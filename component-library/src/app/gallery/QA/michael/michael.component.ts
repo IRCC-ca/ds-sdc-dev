@@ -219,8 +219,8 @@ export class MichaelComponent implements OnInit {
     category: 'strong',
     type: 'dot',
     size: 'large',
-    purpose: 'palette',
-    palette: 'purple'
+    purpose: 'status',
+    status: 'generic'
   }
 
   testerBreadcrumbConfig: IAutoTestConfigObject = {
@@ -515,8 +515,8 @@ export class MichaelComponent implements OnInit {
       'category': 'strong',
       'type': 'dot',
       'size': 'large',
-      'purpose': 'palette',
-      'palette': 'purple'
+      'purpose': 'status',
+      'palette': 'generic'
     });
   }
 
