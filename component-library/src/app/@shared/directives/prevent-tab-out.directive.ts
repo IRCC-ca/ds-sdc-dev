@@ -1,65 +1,50 @@
-import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, HostListener, Input } from '@angular/core';
+
+
+export enum TabShiftTab {
+  tab = 'tab',
+  shiftTab = 'shiftTab'
+}
 
 @Directive({
   selector: '[preventTabOut]'
 })
 export class PreventTabOutDirective {
-  // constructor(private el: ElementRef) {}
+  @Input() enabled?: string[] = [];
+  constructor(private el: ElementRef) { }
 
-  // @HostListener('keydown.tab', ['$event'])
-  // onTab(event: KeyboardEvent) {
-  //   const dialog = this.el.nativeElement as HTMLDialogElement;
-
-  //   if (dialog && dialog.open && !event.shiftKey) {
-  //     event.preventDefault();
-  //     const focusableElements = dialog.querySelectorAll(
-  //       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  //     );
-  //     const firstElement = focusableElements[0] as HTMLElement;
-  //     firstElement.focus();
-  //   }
-  // }
-
-  // @Output() clickOutside = new EventEmitter<string>();
-
-  constructor(private elementRef: ElementRef) { }
-  
-  scrollToAnchor() {
-    const anchorEl = this.elementRef.nativeElement.querySelector('target');
-    if (anchorEl) {
-      anchorEl.scrollIntoView({behaviour: 'smooth'});
-    }
+  @HostListener('keydown.tab', ['$event'])
+  onTab(event: KeyboardEvent) {
+    this.preventTabs(event, TabShiftTab.tab);
+  }
+  @HostListener('keydown.shift.tab', ['$event'])
+  onShiftTab(event: KeyboardEvent) {
+    this.preventTabs(event, TabShiftTab.shiftTab);
   }
 
-  // @HostListener('keydown.tab', ['$event'])
-  // @HostListener('keydown.shift.tab', ['$event'])
-  // onTab(event: KeyboardEvent) {
-  //   const dialog = this.elementRef.nativeElement;
-    
-  //   console.log(this.getNextTabbableElement(event.target));
-  //   //   if (dialog.contains(event.target)) {
-  //   //     console.log('ha!')
-  //   //   }
-  //   //   // Do something when a tab or shift+tab event occurs
-  //   //   console.log('Tab or shift+tab event occurred', event);
-  //   //   // event.preventDefault();
-  //   //   console.log(this.getNextTabElement());
-  //   // }
-
-  //   // getNextTabElement(): HTMLElement {
-  //   //   const currentElement = this.elementRef.nativeElement;
-  //   //   const nextElement = currentElement.nextTabbable;
-
-  //   //   return nextElement as HTMLElement;
-  //   // }
-  // }
-  // getNextTabbableElement(element: any): HTMLElement {
-  //   const elements = Array.from(document.querySelectorAll('a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, *[tabindex]'));
-  //   const currentElement = this.elementRef.nativeElement;
-  //   const currentIndex = elements.indexOf(currentElement);
-  //   const nextIndex = currentIndex === elements.length - 1 ? 0 : currentIndex + 1;
-  //   const nextElement = elements[nextIndex];
-
-  //   return nextElement as HTMLElement;
-  // }
+  preventTabs(event: KeyboardEvent, type: TabShiftTab) {
+    const focusableEls = document.querySelectorAll('button:not([disabled])');
+    let modalEls: any[] = [];
+    focusableEls.forEach(el => {
+      this.enabled?.forEach(id => {
+        if (el.id === id) {
+          modalEls.push(el);
+        }
+      });
+    });
+    const firstFocusableEl = modalEls[0];
+    const lastFocusableEl = modalEls[modalEls.length - 1];
+    console.log(lastFocusableEl.parentElement.parentElement);
+    if (type === TabShiftTab.tab) {
+      if (document.activeElement?.contains(lastFocusableEl)) {
+        firstFocusableEl.focus();
+        event.preventDefault();
+      }
+    } else if (type === TabShiftTab.shiftTab) {
+      if (document.activeElement?.contains(firstFocusableEl)) {
+        lastFocusableEl.parentElement.parentElement.focus();
+        event.preventDefault();
+      }
+    }
+  }
 }
