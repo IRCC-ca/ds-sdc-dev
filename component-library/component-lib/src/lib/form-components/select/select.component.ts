@@ -116,7 +116,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  ngOnChanges() {
+  //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
+  //TODO: Replace this with something less blunt
+  ngDoCheck() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
