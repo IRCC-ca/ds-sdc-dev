@@ -25,9 +25,9 @@
       </select>
       <i class="fa-thin fa-chevron-down custom-chevron"></i>
     </div>
-    <div aria-live="polite">
+    <div aria-live="polite" *ngIf="!config.disableError">
       <div *ngIf="formControl?.touched && formControl?.invalid">
-        <p class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</p>
+        <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
         <ng-container *ngFor="let errors of errorIds; let i = index">
           <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
             <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
