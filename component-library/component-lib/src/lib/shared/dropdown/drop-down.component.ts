@@ -45,6 +45,8 @@ export class DropdownComponent implements OnInit {
     if (this.disabled !== undefined) this.config.disabled = this.disabled;
     (this.category === undefined) ? undefined : this.config.category = this.category;
 
+    if (!this.config.category) this.config.category = ButtonCategories.primary
+
     if (!this.config.label || this.config.label.trim().length == 0) {
       if (!this.config.placeholderText) {
         this.config.placeholderText = "Default";

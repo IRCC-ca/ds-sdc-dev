@@ -19,6 +19,15 @@
     @include layout();
   }
 }
+
+// @mixin selected-colors($value: none) {
+//   .#{$value}{
+//     textarea {
+//       resize: $value;
+//     }
+//   }
+// }
+
 @mixin size-large() {
   .dropdown {
     padding: 12px 21px 12px 20px;
@@ -81,6 +90,7 @@
   }
 
   .content-container {
+    // > nav {
     > button {
       &.dropdown {
         width: 100%;
@@ -115,14 +125,43 @@
         // height: 24px;
       }
 
-      &:active {
-        background-color: var(--generic-active);
-      }
+      // &:where([selected]) { 
+      //   background-color: var(--navigation-weak);
 
-  //     &:disabled {
-  //       // cursor: not-allowed;
-  //       // pointer-events: none;
-  //     }
+      //   &:hover {
+      //     background-color: var(--navigation-hover);
+      //   }
+      // }
+    }
+    .secondary {
+      &.selected-true {
+        // background-color: var(--formcontrol);
+        background-color: #F0F3FF;
+        &:hover {
+          // background-color: var(--formcontrol-weak-hover);
+          background-color: #D4DEFD;
+        }
+      }
+    }
+
+    .primary {
+      &.selected-true {
+        background-color: var(--formcontrol);
+        &:hover {
+          background-color: var(--formcontrol-hover);
+        }
+      }
+    }
+
+    .plain {
+      &.selected-true {
+        // background-color: var(--formcontrol);
+        background-color: #F0F3FF;
+        &:hover {
+          // background-color: var(--formcontrol-weak-hover);
+          background-color: #D4DEFD;
+        }
+      }
     }
   }
 }
