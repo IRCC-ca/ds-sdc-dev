@@ -111,7 +111,7 @@
         "LABEL_INFO_BUTTON_ARIA": "more information",
         "DESC": "This is your surname or last name",
         "BANNER": "If you do not have a family name, provide all your given names in the family name field and leave the given names field blank.",
-        "BANNER_CLOSE": "Family name info banner. Close. If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
+        "BANNER_CLOSE": "Family name info banner. Close"
       },
       "GIVEN_NAME_INPUT": {
         "LABEL": "Given name",
@@ -124,7 +124,7 @@
         "MALE": "M - Male",
         "OTHER": "X - Another sex",
         "BANNER": "<p>This question is asked for identity verification purposes only. <br><br>Sex refers to your status at birth, and may not reflect your precise gender identity.</p>",
-        "BANNER_CLOSE": "Sex at birth info banner. Close. This question is asked for identity verification purposes only. Sex refers to your status at birth, and may not reflect your precise gender identity."
+        "BANNER_CLOSE": "Sex at birth info banner. Close"
       },
       "DATE_OF_BIRTH": {
         "LABEL": "Date of birth (required)"
