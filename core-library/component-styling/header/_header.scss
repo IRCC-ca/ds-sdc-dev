@@ -1,0 +1,101 @@
+@use '../../tokens/sizes';
+@use '../../layout/layout-grid';
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as token-size;
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+    lib-header#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+
+    .headerLine {
+        --global-divider: #102242;
+
+        color: var(--global-divider);
+        width: 100%;
+        border-width: sizes.$fixed-2;
+        border-style: solid;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .grid-container {
+        display: grid;
+        @include layout-grid.grid(max-content auto, auto);
+
+        * {
+            grid-column: auto / span 1
+        }
+
+        ;
+
+        align-items: center;
+
+        img {
+            min-width: 295px;
+            margin: {
+                left: 20px;
+                top: 24px;
+                bottom: 24px;
+            };
+            height: 27.3px;
+
+            @include device.in-phone-layout {
+                min-width: 249px;
+                height: 22.93px;
+                margin: {
+                    left: 16px;
+                    top: 24px;
+                    bottom: 28.48px;
+                };
+            }
+        }
+    }
+
+    .item2 {
+        justify-self: end;
+    }
+
+    .languageSwitch {
+        justify-self: end;
+        margin: {
+            top: 12px;
+            bottom: 14px;
+        };
+
+        @include device.in-phone-layout {
+            margin: {
+                top: 12px;
+                bottom: 18px;
+            };
+        }
+        
+        button {
+            font-size: 16px;
+            font-family: 'Inter';
+            text-decoration: underline;
+            text-underline-offset: 4px; //Adjust space between line & text
+            @include device.in-phone-layout {
+                padding-right: 16px;
+                margin-right: 0;
+            }
+        }
+    }
+}
+

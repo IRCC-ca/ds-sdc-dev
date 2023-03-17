@@ -1,0 +1,71 @@
+@use '../../util/color' as color;
+@use '../text' as text;
+@use '../../util/theme' as theme;
+@use '../template-const' as template-const;
+@use '../../component-styling/dropdown/dropdown' as dropdown;
+@use '../../util/device' as device;
+@use '../sizes' as sizes;
+
+$plain: 'plain';
+$default-color: null;
+
+@mixin tokens($palette) {
+    @include theme.select-attribute($palette, color, $default-color) {
+        @include theme.light {
+            --plain-text: #{color.mix-token($palette, 700)};
+            --plain-text-disabled: #{color.mix-token($palette, 300)};
+        }
+        @include theme.dark {
+            --plain-text: #{color.mix-token($palette, 400)};
+            --plain-text-disabled: #{color.mix-token($palette, 900)};
+        }
+        --text: var(--plain-text);
+    }
+}
+
+@mixin layout() {
+        @include dropdown.layout();
+
+    select {   
+        background-color: var(--surface1);
+        color: var(--text);
+        border: none;
+        @include device.if-hover {
+            background: var(--generic-hover);
+        }
+        &:focus {
+            box-shadow: none;
+            outline-offset: 1;
+        }
+    
+        &:active {
+            background-color: var(--generic-active);
+        }
+        &:disabled {
+            --text: var(--plain-text-disabled);
+            background-color: var(--surface1);
+            border-color: var(--plain-border-disabled);
+        }
+    }
+}
+/// create the layout and tokens for a plain button
+/// @param {List} $palette: a list of palettes desired, reflective of the role
+@mixin create(
+    $palette: (
+        cta,
+        critical,
+    )
+) {
+    @include dropdown.selectors() {
+        .plain {
+            @each $key in $palette {
+                @if not $default-color{
+                    $default-color: $key !global;
+                }
+                @include tokens($key);
+            }
+            @include layout();
+        }
+        
+    }
+}
