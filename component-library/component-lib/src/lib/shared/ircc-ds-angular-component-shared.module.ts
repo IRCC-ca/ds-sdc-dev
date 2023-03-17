@@ -8,15 +8,21 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ProgressTagsComponent } from "./progress-tags/progress-tags.component";
 import { DropdownComponent } from "./dropdown/drop-down.component";
+import { LabelComponent } from './label/label.component';
 import { ProgressIndicatorComponent } from "./progress-indicator/progress-indicator.component";
+import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
+import { BreadcrumbLinkComponent } from "./breadcrumb/link/link.component";
 
 const IrccDsSharedComponents = [
   ButtonComponent,
+  BreadcrumbComponent,
+  BreadcrumbLinkComponent,
   IconComponent,
   IconButtonComponent,
   TabsComponent,
   ProgressTagsComponent,
   DropdownComponent,
+  LabelComponent,
   ProgressTagsComponent,
   ProgressIndicatorComponent
 ];

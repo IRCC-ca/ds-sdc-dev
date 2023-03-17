@@ -21,6 +21,7 @@
 @use "./component-styling/checkbox/checkbox" as checkbox-component;
 @use "./component-styling/input-component/input-component";
 @use "./component-styling/banner/banner";
+@use "./component-styling/breadcrumb/breadcrumb";
 @use "./component-styling/radio/radio" as radio-component;
 @use "./component-styling/icon-button/icon-button";
 @use "./component-styling/header/header" as header-component;
@@ -36,10 +37,26 @@
 @use "./component-styling/chips/secondary" as chip-secondary;
 @use "./component-styling/error/error" as error-component;
 @use "./component-styling/tabs/tabs" as tabs-component;
+@use "./component-styling/textarea/textarea" as textarea-component;
 @use "./component-styling/progress-tags/progress-tags" as tags-component;
-@use "./component-styling/progress-indicator/progress-indicator" as progressIndicator-component;
+@use "./component-styling/progress-indicator/progress-indicator";
+@use "./component-styling/label/label-component" as label-component;
+@use "./component-styling/hidden-nav/hidden-nav";
+@use "./component-styling/language-switch/language-switch";
 @use "./typography/fa-wrapper";
 
+@forward "./theme/theme" as theme-*;
+@forward "./theme/ircc-jl-colors" as palette-*;
+@forward "./typography/fonts" as fonts-*;
+@forward "./typography/typography" as typography-*;
+@forward "./paint/paint" as paint-*;
+@forward "./tokens/link/link" as link-*;
+@forward "./tokens/radio/radio" as radio-*;
+@forward "./tokens/partial/focus" as focus-*;
+@forward "./tokens/partial/disable" as disable-*;
+@forward "./tokens/checkbox/checkbox" as checkbox-*;
+@forward "./tokens/input/input" as input-text-*;
+@forward "./tokens/input/textarea" as input-textarea-*;
 @forward "./theme/theme" as theme-*;
 @forward "./theme/ircc-jl-colors" as palette-*;
 @forward "./typography/fonts" as fonts-*;
@@ -82,6 +99,7 @@
     @include element(input-component);
     @include element(alert);
     @include element(banner);
+    @include element(breadcrumb);
     @include element(radio-component);
     @include element(icon-button);
     @include element(header-component);
@@ -96,8 +114,12 @@
     @include element(button-component);
     @include element(error-component);
     @include element(tags-component);
+    @include element(progress-indicator);
     @include element(select-component);
-    @include element(progressIndicator-component);
+    @include element(label-component);
+    @include element(hidden-nav);
+    @include element(language-switch);
+    @include element(textarea-component);
   }
 
   @else {
@@ -232,11 +254,31 @@
     @include tags-component.create();
   }
 
+  @else if $key == progress-indicator {
+    @include progress-indicator.create();
+  }
+
   @else if $key == select-component {
     @include select-component.create();
   }
 
-  @else if $key == progressIndicator-component {
-    @include progressIndicator-component.create();
+  @else if $key == label-component {
+    @include label-component.create();
+  }
+
+  @else if $key == hidden-nav {
+    @include hidden-nav.create();
+  }
+
+  @else if $key == language-switch {
+    @include language-switch.create();
+  }
+
+  @else if $key == textarea-component {
+    @include textarea-component.create();
+  }
+
+  @else if $key == breadcrumb {
+    @include breadcrumb.create();
   }
 }

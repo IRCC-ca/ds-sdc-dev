@@ -24,78 +24,65 @@
 
 @mixin layout {
 
-    .headerLine {
-        --global-divider: #102242;
+    .heading {
+        container-type: inline-size;
+        container-name: header-container;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
 
-        color: var(--global-divider);
-        width: 100%;
+        #canada-home-img-link {
+            height: 75px;
+            padding: 0;
+            @include device.if-hover {
+                background-color: transparent;
+            }
+        }
+
+        .image-container {
+            //outline: solid 4px red;
+            align-self: center;
+            width: 296.47px;
+            padding: 0;
+
+            @include device.in-phone-layout(){
+                width: 249px;
+                margin-left: 8px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                // margin-top: 24px;
+                // margin-bottom: 24px;    
+                object-fit: contain;
+            }
+        }
+        .languageSwitch {
+            justify-self: end;
+            align-self: center;
+            @include device.in-phone-layout(){
+                margin-right: 8px;
+            }
+        }
+    }
+        
+        @container header-container (width: calc(100vw - 16px)) {
+            .image-container {
+                margin-left: 12px;
+            }
+
+            .languageSwitch {
+                margin-right: 12px;
+            }
+        }
+    
+    .headerLine {
+        color: var(--header-line);
         border-width: sizes.$fixed-2;
         border-style: solid;
         margin-top: 0;
         margin-bottom: 0;
     }
-
-    .grid-container {
-        display: grid;
-        @include layout-grid.grid(max-content auto, auto);
-
-        * {
-            grid-column: auto / span 1
-        }
-
-        ;
-
-        align-items: center;
-
-        img {
-            min-width: 295px;
-            margin: {
-                left: 20px;
-                top: 24px;
-                bottom: 24px;
-            };
-            height: 27.3px;
-
-            @include device.in-phone-layout {
-                min-width: 249px;
-                height: 22.93px;
-                margin: {
-                    left: 16px;
-                    top: 24px;
-                    bottom: 28.48px;
-                };
-            }
-        }
-    }
-
-    .item2 {
-        justify-self: end;
-    }
-
-    .languageSwitch {
-        justify-self: end;
-        margin: {
-            top: 12px;
-            bottom: 14px;
-        };
-
-        @include device.in-phone-layout {
-            margin: {
-                top: 12px;
-                bottom: 18px;
-            };
-        }
-        
-        button {
-            font-size: 16px;
-            font-family: 'Inter';
-            text-decoration: underline;
-            text-underline-offset: 4px; //Adjust space between line & text
-            @include device.in-phone-layout {
-                padding-right: 16px;
-                margin-right: 0;
-            }
-        }
-    }
 }
-

@@ -1,0 +1,31 @@
+@use '../../util/device' as device;
+@use '../../tokens/template-const' as template-const;
+@use 'sass:map';
+
+@mixin selector {
+    lib-language-switch#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+    .link {
+        font-size: 16px;
+        background-color: transparent;
+        margin-bottom: 28px;
+        margin-top: 24px;
+        margin-left: 20px;
+        font-family: 'Inter';
+        text-decoration: underline;
+        text-underline-offset: 4px; //Adjust space between line & text
+        --text: var(--link-text);
+    }
+
+    
+}

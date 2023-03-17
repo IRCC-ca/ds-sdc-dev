@@ -1,38 +1,39 @@
-<div class="{{config.size}}">
-  <label *ngIf="config.label"
-    [attr.aria-label]="
-      config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-      ? (config.label || '' | translate) + ' ' +
-        (config.desc || '' | translate) + ' ' +
-        ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) + ' ' +
-        (config.hint || '' | translate)
-      : (config.label || '' | translate) + ' ' +
-        (config.desc || '' | translate) + ' ' +
-        (config.hint || '' | translate)
-    "
-    [for]="config.id" class="select-label">
-    <div class="required-div" *ngIf="config.required">
-      <i class="fa-regular fa-asterisk required-star"></i>
-    </div>
-    {{(config.label || '') | translate}}
-  </label>
-  <p *ngIf="config.desc" class="select-desc">{{(config.desc || '') | translate}}</p>
-  <p *ngIf="config.hint" class="select-hint">{{(config.hint || '') | translate}}</p>
+<div class="{{ config.size }}">
+  <lib-label [config]="labelConfig"></lib-label>
   <form [formGroup]="config.formGroup">
-    <div class="dropdown">
-      <select class="custom-select h6"
-        [name]="config.id" [id]="config.id" [formControlName]="config.id">
-        <option *ngFor="let option of config.options" [value]="option.value || option.text">{{option.text}}
+    <div class="lib-select">
+      <select (blur)="touched = true" class="custom-select h6 select-placeholder" [name]="config.id" [id]="config.id"
+        [formControlName]="config.id" (change)="valueChange($event)" [class.activited-select]="activiatedSelect"
+        [attr.aria-invalid]="formControl?.errors"
+        [attr.aria-live]="'off'"
+        [attr.aria-label]="formControl?.invalid && touched
+        ? (config.label || '' | translate) + ' ' + 
+          (config.desc || '' | translate) + ' ' +
+          (config.hint || '' | translate) + ' ' +
+          (errorStubText + ': ' + errorAria)
+        :
+          (config.label || '' | translate) + ' ' + 
+          (config.desc || '' | translate )+ ' ' +
+          (config.hint || '' | translate)">
+          
+        <option [value]="''" [disabled]="true" [selected]="true" [hidden]="true">
+          {{ config.placeholder || "" | translate }}
+        </option>
+        <option *ngFor="let option of config.options" [value]="option.value || option.text" class="select-option">
+          {{ option.text | translate }}
         </option>
       </select>
       <i class="fa-thin fa-chevron-down custom-chevron"></i>
     </div>
-    <ng-container *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid">
-      <ng-container *ngFor="let errors of errorIds; let i = index">
-        <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
-          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
-        </div>
-      </ng-container>
-    </ng-container>
+    <div aria-live="polite">
+      <div *ngIf="formControl?.touched && formControl?.invalid">
+        <p class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</p>
+        <ng-container *ngFor="let errors of errorIds; let i = index">
+          <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
+            <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+          </div>
+        </ng-container>
+      </div>
+    </div>
   </form>
 </div>

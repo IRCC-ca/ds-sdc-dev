@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 
 
@@ -18,7 +18,7 @@ export interface IErrorComponentConfig {
   selector: 'lib-error',
   templateUrl: './error.component.html',
 })
-export class ErrorComponent implements OnInit {
+export class ErrorComponent implements OnInit, OnChanges {
   @Input() config?: IErrorComponentConfig;
   @Input() id?: string;
   @Input() errorLOV?: string;
@@ -28,10 +28,23 @@ export class ErrorComponent implements OnInit {
   constructor() { }
   ngOnInit() {
     //Initial null and override check:
-    if (!this.config) this.config = {id: '', errorLOV: ''};
-    if (this.id) this.config.id = this.id;
-    if (this.errorLOV) this.config.errorLOV = this.errorLOV;
-    if (this.icon) this.config.icon = this.icon;
-    if (this.size) this.config.size = this.size;
+    if (!this.config) this.config = {
+      id: '',
+      errorLOV: '',
+    };
+    this.portInputValues();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.portInputValues();
+  }
+
+  private portInputValues() {
+    if (this.config) {
+      if (this.id) this.config.id = this.id;
+      if (this.errorLOV) this.config.errorLOV = this.errorLOV;
+      if (this.icon) this.config.icon = this.icon;
+      if (this.size) this.config.size = this.size;
+    }
   }
 }

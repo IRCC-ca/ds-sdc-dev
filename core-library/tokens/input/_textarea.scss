@@ -22,7 +22,7 @@
 }
 
 @mixin layout {
-    resize: vertical;
+    resize: both;
 
     @include size.selector(small) {
         padding: sizes.$fixed-10 sizes.$fixed-16 sizes.$fixed-10 sizes.$fixed-14;

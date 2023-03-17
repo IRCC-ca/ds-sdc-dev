@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
+import { ILabelConfig, ILabelIconConfig } from "../../lib/shared/label/label.component";
 import { IErrorPairs } from "../interfaces/component-configs";
 
 export interface IErrorIDs {
@@ -24,6 +25,7 @@ export class StandAloneFunctions {
                         (returnError += (', ' + this.translate.instant(error.errorLOV)));
                 }
             });
+            returnError += '.';
         }
         return returnError;
     }
@@ -65,6 +67,32 @@ export class StandAloneFunctions {
 
     }
 
+        /**
+     * Create a label config - for use inside form input components
+     * @param formGroup 
+     * @param id 
+     * @param parentID 
+     * @param errorMessages 
+     * @param label 
+     * @param desc 
+     * @param hint 
+     * @param required 
+     */
+        makeLabelConfig(formGroup: FormGroup, parentID: string, errorMessages?: IErrorPairs[], label?: string, desc?: string, hint?: string, required?: boolean, iconButton?: ILabelIconConfig, topLabel?: string) {
+            const config: ILabelConfig = {
+                formGroup: formGroup,
+                parentID: parentID,
+                errorMessages: errorMessages,
+                label: label,
+                desc: desc,
+                hint: hint,
+                required: required,
+                iconButton: iconButton,
+                topLabel:topLabel
+            }
+            return config;
+        }
+
 
     /**
      * A function designed to deal with how AWFUL Safari is. Safari does not consider touched to be a valid state in <body>,
@@ -75,4 +103,31 @@ export class StandAloneFunctions {
     wasTouched(formGroup: FormGroup, id: string) {
         formGroup.get(id)?.markAsTouched();
       }
+
+  /**
+   * Get the current base url.
+   * @param baseUrl
+   * @param baseUrlKey Translation key of base url
+   */
+  getBaseUrl(baseUrl: string = '', baseUrlKey?: string): string {
+    const curLang = this.translate.currentLang;
+    const langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
+    let i: string | string[] = window.location.href.slice(window.location.href.indexOf(langKey), window.location.href.length);
+    i = i.split('/');
+
+    let index = 0;
+    for (const j of i) {
+      if (j === this.translate.instant(baseUrlKey ?? '')) {
+        baseUrl += ('/' + j);
+        // Should halt when find the base url segment
+        break;
+      } else if (index !== (i.length - 1)) {
+        baseUrl += ('/' + j);
+        index += 1;
+      }
+    }
+    if (baseUrl[baseUrl.length] !== '/') baseUrl += '/';
+
+    return baseUrl;
+  }
 }
