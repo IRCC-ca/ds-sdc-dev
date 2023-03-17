@@ -66,9 +66,10 @@ export class NaseerComponent implements OnInit {
   testDropdownConfig : IDropdownConfig = {
     id: "qaDropdown",
     category: 'secondary',
+    label: "hello",
+    size: 'large',
     icon:  {
       class: 'fa-light fa-heart',
-      // color: 'var(--text-primary)'
     }
 
   }
