@@ -472,7 +472,7 @@ export class DatePickerComponent implements OnInit {
           this.monthSelect?.setAttribute('aria-label', (this.getLabelCore() +
             this.dropDownConfigs.month.label + ' ' + this.getErrorAria()));
       } else {
-        this.monthSelect?.setAttribute('aria-label', (this.getLabelCore() + this.dropDownConfigs.year.label));
+        this.monthSelect?.setAttribute('aria-label', (this.getLabelCore() + this.dropDownConfigs.month.label));
       }
     }
     if (this.daySelect !== '') {
