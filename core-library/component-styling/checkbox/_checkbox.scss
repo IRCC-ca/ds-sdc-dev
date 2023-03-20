@@ -22,8 +22,6 @@
 
 // For size small overwrite
 @mixin size-sm {
-
-  label,
   p {
     font-size: token-size.$fixed-14;
   }
@@ -33,7 +31,7 @@
     font-size: 14px;
   }
 
-  label {
+  .checkbox-desc-label {
     font-size: 14px;
   }
 
@@ -43,11 +41,6 @@
     p {
       margin-top: token-size.$fixed-8;
     }
-  }
-
-  .required-star {
-    font-size: 12px;
-    margin-right: 4px;
   }
 }
 
@@ -74,10 +67,6 @@
 
   div.check-error {
     margin-top: token-size.$fixed-8;
-  }
-
-  .required-field-container {
-    display: flex;
   }
 
   @include size.selector(small) {
