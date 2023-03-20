@@ -43,13 +43,9 @@ $selectors: 'lib-select';
 	}
 
 	.custom-select {
-		padding: 12px 21px 12px 20px;
+		padding: 14px 12px;
 		font-size: 20px;
 		height: 52px;
-	}
-
-	.custom-chevron {
-		margin-left: -40px;
 	}
 
 	.select-placeholder {
@@ -92,13 +88,9 @@ $selectors: 'lib-select';
 	}
 
 	.custom-select {
-		padding: 8px 10px 8px 17px;
+		padding: 10px 12px;
 		font-size: 16px;
 		height: 40px;
-	}
-
-	.custom-chevron {
-		margin-left: -29px;
 	}
 
 	.select-placeholder {
@@ -176,8 +168,6 @@ $selectors: 'lib-select';
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
-
-		// @include dropdown-size();
 	}
 
 	.custom-chevron {
@@ -186,6 +176,7 @@ $selectors: 'lib-select';
 		font-weight: 300;
 		font-size: 20px;
 		color: var(--text);
+		margin-left: -31px;
 	}
 
 	.lib-select {
@@ -227,14 +218,3 @@ $selectors: 'lib-select';
 		width: 1px;
 	}
 }
-
-
-// @mixin dropdown-size {
-//     @include size.selector(small) {
-//         @extend .h6;
-//     }
-
-//     @include size.selector(large) {
-//         @extend .h5;
-//     }
-// }
