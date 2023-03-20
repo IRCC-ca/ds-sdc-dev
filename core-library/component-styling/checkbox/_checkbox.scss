@@ -35,10 +35,6 @@
 
   label {
     font-size: 14px;
-
-    &.checkbox-label {
-      font-size: 16px;
-    }
   }
 
   div.check-error {
@@ -74,28 +70,6 @@
     &.disabled-label {
       color: var(--text-disabled);
     }
-
-    &.checkbox-label {
-      font-family: 'Lato', sans-serif;
-      color: var(--text-primary);
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-  }
-
-  p {
-    &.check-desc {
-      color: var(--text-primary);
-      margin-top: token-size.$fixed-4;
-      margin-bottom: token-size.$fixed-12;
-    }
-
-    &.check-hint {
-      color: var(--text-placeholder);
-      margin-bottom: token-size.$fixed-8;
-      margin-top: 0;
-    }
   }
 
   div.check-error {
@@ -104,15 +78,6 @@
 
   .required-field-container {
     display: flex;
-  }
-
-  .required-star {
-    color: var(--critical-text);
-    font-weight: 400;
-    line-height: 16px;
-    justify-self: flex-start;
-    margin-right: 5px;
-    font-size: 16px;
   }
 
   @include size.selector(small) {
