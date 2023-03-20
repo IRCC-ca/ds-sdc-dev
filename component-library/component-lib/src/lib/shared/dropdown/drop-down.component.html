@@ -1,8 +1,18 @@
-<!-- [ngClass]="config.category" -->
-<div class="content-container" [ngClass]="size">
-    <button class="select-dropdown">
-        <p *ngIf="showPlaceholder" class="placholder-text">{{placeholderText}}</p>
-        <p class="label-text">{{labelText}}</p>
-        <i class="fa-thin fa-chevron-down custom-chevron"></i>
+<div class="content-container" [ngClass]="config.size">
+
+    <button [id]="config.id" (click)="toggleSelect()" [disabled]="config.disabled"
+    class="dropdown selected-{{selected}} {{config.category}}" attr.category="{{config.category}}"
+    >
+      <div class="icon-text-container">
+        <lib-icon *ngIf="config.icon" class="{{config.icon?.class}} custom-icon" [style.color]="config.icon?.color"></lib-icon>
+        <p *ngIf="showPlaceholder" class="placholder-text">{{config.placeholderText}}</p>
+        <p class="label-text">{{config.label}}</p>
+      </div>
+      <div *ngIf="!selected" role="img">
+        <i class="fa-light fa-chevron-down custom-chevron"></i>
+      </div>
+      <div *ngIf="selected" role="img">
+        <i class="fa-light fa-chevron-up custom-chevron"></i>
+      </div>
     </button>
 </div>

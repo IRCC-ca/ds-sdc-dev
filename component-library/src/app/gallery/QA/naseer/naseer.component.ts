@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ButtonColor, ButtonIconDirection, IButtonConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig, ITextareaComponentConfig } from 'ircc-ds-angular-component-library';
+import { ButtonColor, ButtonIconDirection, IButtonConfig, IDropdownConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig, ITextareaComponentConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 
 export enum InputFieldType {
@@ -61,6 +61,17 @@ export class NaseerComponent implements OnInit {
   customIconConfigTest : IIconButtonIconConfig = {
     class: 'fa-regular fa-igloo',
     color: 'var(--critical-text)'
+  }
+
+  testDropdownConfig : IDropdownConfig = {
+    id: "qaDropdown",
+    category: 'secondary',
+    label: "Secondary",
+    size: 'large',
+    icon:  {
+      class: 'fa-light fa-heart',
+    }
+
   }
 
   testerConfigInput: IAutoTestConfigObject = {

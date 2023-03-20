@@ -25,7 +25,13 @@
 <ng-container *ngIf="showDropDownComponent === true">
   <h2>Dropdown Component</h2>
   <div class="select-component">
-    <lib-dropdown size="small"></lib-dropdown>
+    <lib-dropdown [config]="testDropdownConfig"></lib-dropdown>
+  </div>
+  <div class="select-component">
+    <lib-dropdown category="plain" label="Plain"></lib-dropdown>
+  </div>
+  <div class="select-component">
+    <lib-dropdown label="Primary"></lib-dropdown>
   </div>
 </ng-container>
 
