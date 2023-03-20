@@ -33,7 +33,7 @@ export interface ISelectOptionsConfig {
 }
 
 @Component({
-  selector: 'lib-select',
+  selector: 'ircc-cl-lib-select',
   templateUrl: './select.component.html',
   providers: [
     {

@@ -15,7 +15,7 @@ export interface IIconConfig {
 }
 
 @Component({
-    selector: 'lib-icon',
+    selector: 'ircc-cl-lib-icon',
     templateUrl: './icon.component.html'
 })
 export class IconComponent {

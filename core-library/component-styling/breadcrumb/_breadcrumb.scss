@@ -10,7 +10,7 @@
 @use "sass:map";
 
 @mixin selector {
-  lib-breadcrumb#{template-const.$escape} {
+  ircc-cl-lib-breadcrumb#{template-const.$escape} {
     @content;
   }
 }
@@ -23,9 +23,9 @@
 
 // For size small overwrite
 @mixin size-sm {
-  lib-breadcrumb-link {
+  ircc-cl-lib-breadcrumb-link {
     a,
-    lib-button .text {
+    ircc-cl-lib-button .text {
       @include typography.fontSize(map.get(text.$body, level), 3);
     }
 
@@ -54,11 +54,11 @@
 }
 
 @mixin size-lg {
-  lib-breadcrumb-link {
+  ircc-cl-lib-breadcrumb-link {
     margin-right: 8px;
 
     a,
-    lib-button .text {
+    ircc-cl-lib-button .text {
       @include typography.fontSize(map.get(text.$body, level), 2);
     }
 
@@ -92,7 +92,7 @@
 @mixin layout {
   padding: 6px 0;
 
-  lib-breadcrumb-link {
+  ircc-cl-lib-breadcrumb-link {
     border-radius: 4px;
 
     &:focus,
@@ -113,7 +113,7 @@
       }
     }
 
-    lib-button {
+    ircc-cl-lib-button {
       &:focus,
       &:focus-visible {
         outline: none;
@@ -139,7 +139,7 @@
     position: relative;
   }
 
-  lib-button {
+  ircc-cl-lib-button {
     button {
       padding: 0;
 

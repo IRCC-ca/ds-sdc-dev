@@ -31,7 +31,7 @@ export const HELP_ICON_ALT_EN = ', more information';
 export const HELP_ICON_ALT_FR = ", plus d'information";
 
 @Component({
-  selector: 'lib-label',
+  selector: 'ircc-cl-lib-label',
   templateUrl: './label.component.html',
 })
 export class LabelComponent implements OnInit {

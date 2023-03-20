@@ -10,7 +10,7 @@
 @use "sass:map";
 
 @mixin selector {
-  lib-progress-indicator#{template-const.$escape} {
+  ircc-cl-lib-progress-indicator#{template-const.$escape} {
     @content;
   }
 }

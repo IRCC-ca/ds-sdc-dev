@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-textarea#{template-const.$escape} {
+  ircc-cl-lib-textarea#{template-const.$escape} {
     @content;
   }
 }
@@ -91,7 +91,7 @@
     margin-bottom: 0px;
   }
 
-  lib-error {
+  ircc-cl-lib-error {
     font-size: 14px;
   }
 }

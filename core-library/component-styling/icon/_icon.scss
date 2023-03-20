@@ -2,7 +2,7 @@
 @use '../../typography/typography';
  
 @mixin selector {
-    lib-icon#{template-const.$escape} {
+    ircc-cl-lib-icon#{template-const.$escape} {
         @content;
     }
 }

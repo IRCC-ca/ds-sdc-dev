@@ -26,7 +26,7 @@
     </div>
     <div class="banner-ctas" *ngIf="config?.cta">
       <ng-container *ngFor="let cta of config?.cta; let index = index">
-        <lib-button *ngIf="cta?.type === 'button'"
+        <ircc-cl-lib-button *ngIf="cta?.type === 'button'"
         [id]="'cta_' + index"
         [category]='cta?.btnConfig?.category'
         [color]='cta?.btnConfig?.color'
@@ -34,12 +34,12 @@
         [disabled]='cta?.btnConfig?.disabled'
         [icon]='cta?.btnConfig?.icon'
         [iconDirection]='cta?.btnConfig?.iconDirection'
-        >{{cta.text | translate}}</lib-button>
+        >{{cta.text | translate}}</ircc-cl-lib-button>
         <a *ngIf="cta?.type === 'link'" [routerLink]="cta?.linkConfig  | translate" [attr.aria-label]='cta?.ariaLabel'>{{cta.text | translate}}</a>
       </ng-container>
     </div>
     </div></div>
     <div class="banner-btn">
-      <lib-icon-button [ariaLabel]="(config?.ariaDissmissible || '') | translate" size="extraSmall" class="banner-close" *ngIf="config?.dismissible" [config]="iconConfig" (clickEvent)="eventHandler($event)"></lib-icon-button>
+      <ircc-cl-lib-icon-button [ariaLabel]="(config?.ariaDissmissible || '') | translate" size="extraSmall" class="banner-close" *ngIf="config?.dismissible" [config]="iconConfig" (clickEvent)="eventHandler($event)"></ircc-cl-lib-icon-button>
       </div>
 </div>

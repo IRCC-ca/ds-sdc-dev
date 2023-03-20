@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-input#{template-const.$escape} {
+  ircc-cl-lib-input#{template-const.$escape} {
       @content;
   }
 }
@@ -94,7 +94,7 @@
     padding: 6px 12px 6px 12px;
   }
 
-  lib-error {
+  ircc-cl-lib-error {
     font-size: 14px;
   }
 }

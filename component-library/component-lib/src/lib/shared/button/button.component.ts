@@ -39,7 +39,7 @@ export interface IButtonConfig {
 };
 
 @Component({
-    selector: 'lib-button',
+    selector: 'ircc-cl-lib-button',
     templateUrl: './button.component.html'
 })
 export class ButtonComponent {

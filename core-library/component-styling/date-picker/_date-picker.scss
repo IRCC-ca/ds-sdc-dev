@@ -7,7 +7,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-date-picker#{template-const.$escape} {
+  ircc-cl-lib-date-picker#{template-const.$escape} {
     @content;
   }
 }

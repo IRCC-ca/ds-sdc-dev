@@ -2,21 +2,21 @@
     <div class="checkboxes">
         <ng-container *ngFor="let input of config.testFields?.checkboxes">
             <div class="checkbox">
-                <lib-checkbox [config]="input"></lib-checkbox>
+                <ircc-cl-lib-checkbox [config]="input"></ircc-cl-lib-checkbox>
             </div>
         </ng-container>
     </div>
     <div class="dropdowns">
         <ng-container *ngFor="let input of config.testFields?.selects">
             <div class="dropdown">
-                <lib-select [config]="input"></lib-select>
+                <ircc-cl-lib-select [config]="input"></ircc-cl-lib-select>
             </div>
         </ng-container>
     </div>
     <div class="inputs">
         <ng-container *ngFor="let input of config.testFields?.inputs">
             <div class="text-input">
-                <lib-input [config]="input"></lib-input>
+                <ircc-cl-lib-input [config]="input"></ircc-cl-lib-input>
             </div>
         </ng-container>
     </div>

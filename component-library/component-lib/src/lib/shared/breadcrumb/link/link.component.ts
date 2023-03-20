@@ -8,7 +8,7 @@ export interface ILinkComponentConfig {
 }
 
 @Component({
-  selector: 'lib-breadcrumb-link',
+  selector: 'ircc-cl-lib-breadcrumb-link',
   templateUrl: './link.component.html',
 })
 export class BreadcrumbLinkComponent {

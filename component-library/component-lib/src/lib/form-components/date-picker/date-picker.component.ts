@@ -92,7 +92,7 @@ export interface IDatePickerDropDownConfigs {
 }
 
 @Component({
-  selector: 'lib-date-picker',
+  selector: 'ircc-cl-lib-date-picker',
   templateUrl: './date-picker.component.html',
   providers: [
     {

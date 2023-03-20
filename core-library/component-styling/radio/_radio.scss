@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-radio-input#{template-const.$escape} {
+  ircc-cl-lib-radio-input#{template-const.$escape} {
     @content;
   }
 }

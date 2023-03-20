@@ -40,7 +40,7 @@ export interface IRadioInputOption {
 
 
 @Component({
-  selector: 'lib-radio-input',
+  selector: 'ircc-cl-lib-radio-input',
   templateUrl: './radio-input.component.html',
   providers: [
     {

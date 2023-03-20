@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 
 @Component({
-  selector: 'lib-dropdown',
+  selector: 'ircc-cl-lib-dropdown',
   templateUrl: './drop-down.component.html'
 })
 export class DropdownComponent implements OnInit {

@@ -14,7 +14,7 @@ export const CANADA_LOGO_ARIA_LABEL_ENGLISH = 'Symbol of the Government of Canad
 export const CANADA_LOGO_ARIA_LABEL_FRENCH = 'Symbole du gouvernement du Canada';
 
 @Component({
-    selector: 'lib-header',
+    selector: 'ircc-cl-lib-header',
     templateUrl: './header.component.html',
 })
 export class HeaderComponent {

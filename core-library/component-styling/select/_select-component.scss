@@ -5,7 +5,7 @@
 @use '../../typography/typography'as typography;
 @use '../../tokens/text'as text;
 @use 'sass:map';
-$selectors: 'lib-select';
+$selectors: 'ircc-cl-lib-select';
 
 @mixin selectors {
 	#{$selectors}#{template-const.$escape} {
@@ -179,7 +179,7 @@ $selectors: 'lib-select';
 		margin-left: -31px;
 	}
 
-	.lib-select {
+	.ircc-cl-lib-select {
 		display: flex;
 		align-items: center;
 	}
