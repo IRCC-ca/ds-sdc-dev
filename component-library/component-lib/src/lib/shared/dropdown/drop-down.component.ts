@@ -34,9 +34,7 @@ export class DropdownComponent implements OnInit {
   showPlaceholder : boolean = false;
   selected: boolean = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
 
     if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size =  this.size;
