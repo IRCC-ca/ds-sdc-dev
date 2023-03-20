@@ -42,8 +42,9 @@
         min-width: 100px;
         height: 22.93px;
         margin: {
-          left: 16px;
           top: 24px;
+          right: 9.07px;
+          left: 16px;
           bottom: 28.48px;
         };
       }
@@ -53,7 +54,7 @@
   .item1 {
     align-self: center;
     @include device.in-phone-layout () {
-      margin-left: sizes.$fixed-0;
+      margin-left: sizes.$fixed-8;
     }
   }
 

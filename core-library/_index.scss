@@ -100,6 +100,7 @@
     @include element(input-component);
     @include element(alert);
     @include element(banner);
+    @include element(breadcrumb);
     @include element(radio-component);
     @include element(icon-button);
     @include element(header-component);
@@ -119,6 +120,7 @@
     @include element(label-component);
     @include element(hidden-nav);
     @include element(language-switch);
+    @include element(textarea-component);
     @include element(indicator);
   }
 

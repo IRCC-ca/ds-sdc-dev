@@ -107,6 +107,7 @@ export class AccessibilityDemoComponent implements OnInit {
   familyNameInputBannerConfig: IBannerConfig = {
     id: 'family_name_input_info_banner',
     dismissible: true,
+    ariaDissmissible: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.BANNER_CLOSE',
     type: 'info',
     content: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.BANNER',
   };
@@ -161,8 +162,8 @@ export class AccessibilityDemoComponent implements OnInit {
   sexAtBirthRadioBannerConfig: IBannerConfig = {
     id: 'sex_at_birth_info_banner',
     dismissible: true,
+    ariaDissmissible: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER_CLOSE',
     type: 'info',
-    // title: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER.TITLE',
     content: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.BANNER'
   };
 
@@ -250,6 +251,8 @@ export class AccessibilityDemoComponent implements OnInit {
       color: 'var(--text-primary)'
     }
   };
+
+  allowedNavItemIds: string[] = ['progress_indicator_step_0', 'progress_indicator_step_1', 'hamburger_dialog_x_button'];
 
   constructor(
     private translate: TranslateService,
