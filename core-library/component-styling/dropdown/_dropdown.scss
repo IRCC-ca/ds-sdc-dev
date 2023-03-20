@@ -20,14 +20,6 @@
   }
 }
 
-// @mixin selected-colors($value: none) {
-//   .#{$value}{
-//     textarea {
-//       resize: $value;
-//     }
-//   }
-// }
-
 @mixin size-large() {
   .dropdown {
     padding: 12px 21px 12px 20px;
@@ -90,7 +82,6 @@
   }
 
   .content-container {
-    // > nav {
     > button {
       &.dropdown {
         width: 100%;
@@ -121,25 +112,16 @@
 
       .custom-icon {
         padding-right: 8px;
-        // width: 24px;
-        // height: 24px;
       }
-
-      // &:where([selected]) { 
-      //   background-color: var(--navigation-weak);
-
-      //   &:hover {
-      //     background-color: var(--navigation-hover);
-      //   }
-      // }
     }
-    .secondary {
+    .secondary, .plain{
       &.selected-true {
-        // background-color: var(--formcontrol);
-        background-color: #F0F3FF;
+        background-color: var(--navigation-weak);
         &:hover {
-          // background-color: var(--formcontrol-weak-hover);
-          background-color: #D4DEFD;
+          background-color: var(--navigation-weak-hover);
+        }
+        &:active {
+          background-color: var(--navigation-weak-active);
         }
       }
     }
@@ -150,16 +132,8 @@
         &:hover {
           background-color: var(--formcontrol-hover);
         }
-      }
-    }
-
-    .plain {
-      &.selected-true {
-        // background-color: var(--formcontrol);
-        background-color: #F0F3FF;
-        &:hover {
-          // background-color: var(--formcontrol-weak-hover);
-          background-color: #D4DEFD;
+        &:active {
+          background-color: var(--formcontrol-active);
         }
       }
     }
