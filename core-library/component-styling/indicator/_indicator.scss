@@ -114,12 +114,12 @@
 
   &.generic,
   &.grey {
-    color: var(--neutral-indicator-grey);
+    color: var(--neutral-indicator-text);
   }
 
   &.generic-primary,
   &.blue {
-    color: var(--active-indicator-blue);
+    color: var(--active-indicator-text);
   }
 
   &.success,
@@ -128,11 +128,11 @@
   }
 
   &.purple {
-    color: var(--visited-indicator-purple);
+    color: var(--visited-indicator-text);
   }
 
   &.navy {
-    color: var(--cta-indicator-navy);
+    color: var(--cta-indicator-text);
   }
 }
 
@@ -140,61 +140,61 @@
   color: var(--neutral-indicator-white);
 
   &.info {
-    background: var(--information-background);
+    background: var(--information-indicator-bg);
   }
 
   &.warning {
-    background: var(--warning-background);
+    background: var(--warning-indicator-bg);
   }
 
   &.critical {
-    background: var(--critical-background);
+    background: var(--critical-indicator-bg);
   }
 
   &.generic {
-    background: var(--neutral-indicator-grey);
+    background: var(--neutral-indicator-bg);
   }
 
   &.generic-primary {
-    background: var(--active-indicator-blue);
+    background: var(--active-indicator-bg);
   }
 
   &.success {
-    background: var(--success-background);
+    background: var(--success-indicator-bg);
   }
 }
 
 @mixin palette-bg {
   &.teal {
-    background: var(--information-background);
+    background: var(--information-indicator-bg);
   }
 
   &.orange {
-    background: var(--warning-background);
+    background: var(--warning-indicator-bg);
   }
 
   &.red {
-    background: var(--critical-background);
+    background: var(--critical-indicator-bg);
   }
 
   &.grey {
-    background: var(--neutral-indicator-grey);
+    background: var(--neutral-indicator-bg);
   }
 
   &.blue {
-    background: var(--active-indicator-blue);
+    background: var(--active-indicator-bg);
   }
 
   &.green {
-    background: var(--success-background);
+    background: var(--success-indicator-bg);
   }
 
   &.purple {
-    background: var(--visited-indicator-purple);
+    background: var(--visited-indicator-bg);
   }
 
   &.navy {
-    background: var(--cta-indicator-navy);
+    background: var(--cta-indicator-bg);
   }
 }
 

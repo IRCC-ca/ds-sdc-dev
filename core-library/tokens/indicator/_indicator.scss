@@ -3,7 +3,17 @@
 @use "../../util/color";
 @use "../template-const";
 
-@mixin create($palette: (neutral, active, visited, cta)) {
+@mixin create($palette: (
+  neutral,
+  active,
+  visited,
+  cta,
+  information,
+  warning,
+  critical,
+  neutral,
+  success
+)) {
   @at-root {
     #{template-const.$root-selectors} {
       @each $key in $palette {
@@ -16,39 +26,29 @@
 @mixin tokens($palette) {
   @include theme.light() {
     @if $palette == neutral {
-      --#{$palette}-indicator-grey: #{color.mix-token($palette, 900)};
       --#{$palette}-indicator-white: #{color.mix-token($palette, 100)};
     }
 
-    @else if $palette == active {
-      --#{$palette}-indicator-blue: #{color.mix-token($palette, 900)};
+    @if index((cta information warning critical neutral active success visited), $palette) {
+      --#{$palette}-indicator-bg: #{color.mix-token($palette, 700)};
     }
 
-    @else if $palette == visited {
-      --#{$palette}-indicator-purple: #{color.mix-token($palette, 900)};
-    }
-
-    @else if $palette == cta {
-      --#{$palette}-indicator-navy: #{color.mix-token($palette, 700)};
+    @if index((neutral active visited cta), $palette) {
+      --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
     }
   }
 
   @include theme.dark() {
     @if $palette == neutral {
-      --#{$palette}-indicator-grey: #{color.mix-token($palette, 900)};
       --#{$palette}-indicator-white: #{color.mix-token($palette, 100)};
     }
 
-    @else if $palette == active {
-      --#{$palette}-indicator-blue: #{color.mix-token($palette, 900)};
+    @if index((cta information warning critical neutral active success visited), $palette) {
+      --#{$palette}-indicator-bg: #{color.mix-token($palette, 700)};
     }
 
-    @else if $palette == visited {
-      --#{$palette}-indicator-purple: #{color.mix-token($palette, 900)};
-    }
-
-    @else if $palette == cta {
-      --#{$palette}-indicator-navy: #{color.mix-token($palette, 700)};
+    @if index((neutral active visited cta), $palette) {
+      --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
     }
   }
 }
