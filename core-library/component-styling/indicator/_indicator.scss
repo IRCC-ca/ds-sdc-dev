@@ -114,12 +114,12 @@
 
   &.generic,
   &.grey {
-    color: color.mix-token(neutral, 900);
+    color: var(--neutral-indicator-grey);
   }
 
   &.generic-primary,
   &.blue {
-    color: color.mix-token(active, 900);
+    color: var(--active-indicator-blue);
   }
 
   &.success,
@@ -128,16 +128,16 @@
   }
 
   &.purple {
-    color: color.mix-token(visited, 900);
+    color: var(--visited-indicator-purple);
   }
 
   &.navy {
-    color: color.mix-token(cta, 700);
+    color: var(--cta-indicator-navy);
   }
 }
 
 @mixin status-bg {
-  color: color.mix-token(neutral, 100);
+  color: var(--neutral-indicator-white);
 
   &.info {
     background: var(--information-background);
@@ -152,11 +152,11 @@
   }
 
   &.generic {
-    background: color.mix-token(neutral, 900);
+    background: var(--neutral-indicator-grey);
   }
 
   &.generic-primary {
-    background: color.mix-token(active, 900);
+    background: var(--active-indicator-blue);
   }
 
   &.success {
@@ -178,11 +178,11 @@
   }
 
   &.grey {
-    background: color.mix-token(neutral, 900);
+    background: var(--neutral-indicator-grey);
   }
 
   &.blue {
-    background: color.mix-token(active, 900);
+    background: var(--active-indicator-blue);
   }
 
   &.green {
@@ -190,11 +190,11 @@
   }
 
   &.purple {
-    background: color.mix-token(visited, 900);
+    background: var(--visited-indicator-purple);
   }
 
   &.navy {
-    background: color.mix-token(cta, 700);
+    background: var(--cta-indicator-navy);
   }
 }
 

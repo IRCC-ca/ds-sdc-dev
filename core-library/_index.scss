@@ -18,6 +18,7 @@
 @use "./tokens/alert/alert";
 @use "./tokens/partial/focus";
 @use "./tokens/partial/disable";
+@use "./tokens/indicator/indicator";
 @use "./component-styling/checkbox/checkbox" as checkbox-component;
 @use "./component-styling/input-component/input-component";
 @use "./component-styling/banner/banner";
@@ -30,7 +31,7 @@
 @use "./component-styling/date-picker/date-picker";
 @use "./component-styling/footer/footer";
 @use "./component-styling/icon/icon";
-@use "./component-styling/indicator/indicator";
+@use "./component-styling/indicator/indicator" as indicator-component;
 @use "./component-styling/button/button" as button-component;
 @use "./component-styling/select/select-component" as select-component;
 @use "./component-styling/chips/item" as chip-item;
@@ -286,5 +287,6 @@
 
   @else if $key == indicator {
     @include indicator.create();
+    @include indicator-component.create();
   }
 }
