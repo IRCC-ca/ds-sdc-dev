@@ -3,7 +3,7 @@
   .dimmer {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     background: rgba(44, 44, 45, 0.8);
     z-index: 10;
     overflow: hidden;
