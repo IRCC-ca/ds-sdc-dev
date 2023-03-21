@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDatePickerConfig, IProgressIndicatorConfig, ISelectConfig, IHiddenNavConfig } from 'ircc-ds-angular-component-library';
+import { IDatePickerConfig, IProgressIndicatorConfig, ISelectConfig, IHiddenNavConfig, IBannerConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-test-page',
@@ -11,6 +11,12 @@ import { IDatePickerConfig, IProgressIndicatorConfig, ISelectConfig, IHiddenNavC
 export class TestPageComponent implements OnInit {
   form = new FormGroup({});
 
+  testBannerConfig : IBannerConfig = {
+    id: 'banner_test',
+    title: 'Banner Title',
+    content: 'Content',
+    dismissible: true
+  }
 
   selectConfig: ISelectConfig = {
     id: 'select',
