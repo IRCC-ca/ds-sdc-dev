@@ -24,58 +24,11 @@
   .radio-buttons {
     padding: 4px 0 0 0;
   }
-
-  .radio-label {
-    @include typography.fontSize(map.get(text.$heading, level), 6);
-    font-weight: 700;
-
-  }
-
-  .radio-desc {
-    @include typography.fontSize(map.get(text.$body, level), 3);
-  }
-
-  .required-star {
-    font-size: 12px;
-    line-height: 16px;
-    justify-self: flex-start;
-    margin-right: 4px;
-  }
-
-  .radio-hint {
-    padding-top: 8px;
-    padding-bottom: 0;
-    margin: 0;
-    font-size: 14px;
-  }
 }
 
 @mixin large-styles() {
   .radio-buttons {
     padding: 8px 0 0 0;
-  }
-
-  .radio-label {
-    @include typography.fontSize(map.get(text.$heading, level), 5);
-    font-weight: 700;
-  }
-
-  .radio-desc {
-    @include typography.fontSize(map.get(text.$body, level), 2);
-  }
-
-  .required-star {
-    font-size: 16px;
-    line-height: 16px;
-    justify-self: flex-start;
-    margin-right: 5px;
-
-  }
-
-  .radio-hint {
-    padding-top: 12px;
-    padding-bottom: 0;
-    margin: 0;
   }
 }
 
@@ -95,31 +48,6 @@
       justify-self: center;
       padding: 0;
     }
-  }
-
-  .radio-desc {
-    padding-top: 4px;
-    padding-bottom: 0;
-    margin: 0;
-  }
-
-  .required-star {
-    color: var(--critical-text);
-    font-weight: 400;
-  }
-
-  .radio-label {
-    display: flex;
-    font-family: 'Lato';
-  }
-
-  .radio-hint {
-    color: var(--text-placeholder);
-  }
-
-  .radio-error {
-    color: var(--critical-text);
-    margin-top: 0;
   }
 
   .radio-error i {
