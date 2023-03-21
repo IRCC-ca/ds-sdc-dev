@@ -1,0 +1,253 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "../../tokens/partial/focus" as focus;
+@use "sass:map";
+
+// Mapping of status & palette when category strong
+$status-palettes-strong: (
+  "info": "information",
+  "warning": "warning",
+  "critical": "critical",
+  "generic": "neutral",
+  "generic-primary": "primary",
+  "success": "success"
+);
+// Mapping of status, colour & palette when category strong
+$status-colors: (
+  "teal": "information",
+  "orange": "warning",
+  "red": "critical",
+  "grey": "neutral",
+  "blue": "primary",
+  "green": "success",
+  "purple": "visited",
+  "navy": "cta"
+);
+// Mapping of status, colour & palette when category weak
+$status-colors-weak: (
+  "info": "information",
+  "teal": "information",
+  "warning": "warning",
+  "orange": "warning",
+  "critical": "critical",
+  "red": "critical",
+  "generic": "neutral",
+  "grey": "neutral",
+  "generic-primary": "primary",
+  "blue": "primary",
+  "success": "success",
+  "green": "success",
+  "purple": "visited",
+  "navy": "cta",
+);
+
+@mixin selector {
+  lib-indicator#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin size-sm {
+  .text {
+    padding: 2px 8px;
+    border-radius: 11px;
+
+    @include typography.fontSize(map.get(text.$body, level), 4);
+
+    &.rounded {
+      min-width: 8px;
+    }
+
+    > svg {
+      width: 12px;
+    }
+  }
+
+  .number {
+    padding: 6px 9px;
+
+    > span {
+      min-width: 14px;
+    }
+
+    @include typography.fontSize(map.get(text.$body, level), 4);
+
+    &.num-lg {
+      padding: 2px 8px;
+      border-radius: 11px;
+    }
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@mixin size-lg {
+  .text {
+    padding: 4px 8px;
+    border-radius: 15px;
+
+    @include typography.fontSize(map.get(text.$body, level), 2);
+
+    &.rounded {
+      padding: 2px 8px;
+      min-width: 12px;
+    }
+
+    > svg {
+      width: 16px;
+    }
+  }
+
+  .number {
+    padding: 7px 10px;
+
+    > span {
+      min-width: 18px;
+    }
+
+    @include typography.fontSize(map.get(text.$body, level), 2);
+
+    &.num-lg {
+      padding: 4px 8px;
+      border-radius: 15px;
+    }
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@mixin status-color($status, $palette) {
+  &.#{$status} {
+    color: var(--#{$palette}-indicator-text);
+  }
+}
+
+@mixin status-bg($status, $palette) {
+  &.#{$status} {
+    background: var(--#{$palette}-indicator-strong);
+  }
+}
+
+@mixin palette-bg($palette, $color) {
+  &.#{$color} {
+    background: var(--#{$palette}-indicator-strong);
+  }
+}
+
+@mixin layout {
+  display: inline-block;
+
+  .text,
+  .number {
+    &.weak {
+      @each $status, $palette in $status-colors-weak {
+        @include status-color($status, $palette);
+      }
+    }
+
+    &.strong {
+      color: var(--neutral-indicator-weak);
+
+      @each $status, $palette in $status-palettes-strong {
+        @include status-bg($status, $palette);
+      }
+
+      @each $color, $palette in $status-colors {
+        @include palette-bg($palette, $color);
+      }
+
+      font-weight: 600;
+    }
+  }
+
+  .number,
+  .dot {
+    border-radius: 50%;
+  }
+
+  .dot {
+    display: block;
+
+    @each $status, $palette in $status-palettes-strong {
+      @include status-bg($status, $palette);
+    }
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    svg {
+      display: block;
+      margin-right: 4px;
+    }
+
+    &.abbr {
+      max-width: 184px; // 200 - 8x2
+      overflow: hidden;
+    }
+
+    &.weak {
+      background: var(--information-background-weak);
+    }
+
+    span {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+
+      &.abbr {
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .number {
+    display: flex;
+    text-align: center;
+
+    span {
+      display: block;
+      overflow: hidden;
+    }
+  }
+
+  @include size.selector(small) {
+    @include size-sm();
+
+    .large {
+      @include size-lg();
+    }
+  }
+
+  @include size.selector(large) {
+    @include size-lg();
+
+    .small {
+      @include size-sm();
+    }
+  }
+
+  .rounded {
+    border-radius: 50%;
+  }
+}
