@@ -9,6 +9,44 @@
 @use "../../tokens/partial/focus" as focus;
 @use "sass:map";
 
+// Mapping of status & palette when category strong
+$status-palettes-strong: (
+  "info": "information",
+  "warning": "warning",
+  "critical": "critical",
+  "generic": "neutral",
+  "generic-primary": "primary",
+  "success": "success"
+);
+// Mapping of status, colour & palette when category strong
+$status-colors: (
+  "teal": "information",
+  "orange": "warning",
+  "red": "critical",
+  "grey": "neutral",
+  "blue": "primary",
+  "green": "success",
+  "purple": "visited",
+  "navy": "cta"
+);
+// Mapping of status, colour & palette when category weak
+$status-colors-weak: (
+  "info": "information",
+  "teal": "information",
+  "warning": "warning",
+  "orange": "warning",
+  "critical": "critical",
+  "red": "critical",
+  "generic": "neutral",
+  "grey": "neutral",
+  "generic-primary": "primary",
+  "blue": "primary",
+  "success": "success",
+  "green": "success",
+  "purple": "visited",
+  "navy": "cta",
+);
+
 @mixin selector {
   lib-indicator#{template-const.$escape} {
     @content;
@@ -96,105 +134,21 @@
   }
 }
 
-@mixin status-color {
-  &.info,
-  &.teal {
-    color: var(--information-text);
-  }
-
-  &.warning,
-  &.orange {
-    color: var(--warning-text);
-  }
-
-  &.critical,
-  &.red {
-    color: var(--critical-text);
-  }
-
-  &.generic,
-  &.grey {
-    color: var(--neutral-indicator-text);
-  }
-
-  &.generic-primary,
-  &.blue {
-    color: var(--active-indicator-text);
-  }
-
-  &.success,
-  &.green {
-    color: var(--success-text);
-  }
-
-  &.purple {
-    color: var(--visited-indicator-text);
-  }
-
-  &.navy {
-    color: var(--cta-indicator-text);
+@mixin status-color($status, $palette) {
+  &.#{$status} {
+    color: var(--#{$palette}-indicator-text);
   }
 }
 
-@mixin status-bg {
-  color: var(--neutral-indicator-white);
-
-  &.info {
-    background: var(--information-indicator-bg);
-  }
-
-  &.warning {
-    background: var(--warning-indicator-bg);
-  }
-
-  &.critical {
-    background: var(--critical-indicator-bg);
-  }
-
-  &.generic {
-    background: var(--neutral-indicator-bg);
-  }
-
-  &.generic-primary {
-    background: var(--active-indicator-bg);
-  }
-
-  &.success {
-    background: var(--success-indicator-bg);
+@mixin status-bg($status, $palette) {
+  &.#{$status} {
+    background: var(--#{$palette}-indicator-strong);
   }
 }
 
-@mixin palette-bg {
-  &.teal {
-    background: var(--information-indicator-bg);
-  }
-
-  &.orange {
-    background: var(--warning-indicator-bg);
-  }
-
-  &.red {
-    background: var(--critical-indicator-bg);
-  }
-
-  &.grey {
-    background: var(--neutral-indicator-bg);
-  }
-
-  &.blue {
-    background: var(--active-indicator-bg);
-  }
-
-  &.green {
-    background: var(--success-indicator-bg);
-  }
-
-  &.purple {
-    background: var(--visited-indicator-bg);
-  }
-
-  &.navy {
-    background: var(--cta-indicator-bg);
+@mixin palette-bg($palette, $color) {
+  &.#{$color} {
+    background: var(--#{$palette}-indicator-strong);
   }
 }
 
@@ -204,12 +158,21 @@
   .text,
   .number {
     &.weak {
-      @include status-color;
+      @each $status, $palette in $status-colors-weak {
+        @include status-color($status, $palette);
+      }
     }
 
     &.strong {
-      @include status-bg;
-      @include palette-bg;
+      color: var(--neutral-indicator-weak);
+
+      @each $status, $palette in $status-palettes-strong {
+        @include status-bg($status, $palette);
+      }
+
+      @each $color, $palette in $status-colors {
+        @include palette-bg($palette, $color);
+      }
 
       font-weight: 600;
     }
@@ -223,7 +186,9 @@
   .dot {
     display: block;
 
-    @include status-bg;
+    @each $status, $palette in $status-palettes-strong {
+      @include status-bg($status, $palette);
+    }
   }
 
   .text {

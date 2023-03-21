@@ -4,8 +4,7 @@
 @use "../template-const";
 
 @mixin create($palette: (
-  neutral,
-  active,
+  primary,
   visited,
   cta,
   information,
@@ -25,30 +24,14 @@
 
 @mixin tokens($palette) {
   @include theme.light() {
-    @if $palette == neutral {
-      --#{$palette}-indicator-white: #{color.mix-token($palette, 100)};
-    }
-
-    @if index((cta information warning critical neutral active success visited), $palette) {
-      --#{$palette}-indicator-bg: #{color.mix-token($palette, 700)};
-    }
-
-    @if index((neutral active visited cta), $palette) {
-      --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
-    }
+    --#{$palette}-indicator-weak: #{color.mix-token($palette, 100)};
+    --#{$palette}-indicator-strong: #{color.mix-token($palette, 700)};
+    --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
   }
 
   @include theme.dark() {
-    @if $palette == neutral {
-      --#{$palette}-indicator-white: #{color.mix-token($palette, 100)};
-    }
-
-    @if index((cta information warning critical neutral active success visited), $palette) {
-      --#{$palette}-indicator-bg: #{color.mix-token($palette, 700)};
-    }
-
-    @if index((neutral active visited cta), $palette) {
-      --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
-    }
+    --#{$palette}-indicator-weak: #{color.mix-token($palette, 100)};
+    --#{$palette}-indicator-strong: #{color.mix-token($palette, 700)};
+    --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
   }
 }
