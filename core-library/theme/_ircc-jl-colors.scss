@@ -515,7 +515,14 @@ $purple: (
             success: $green,
             focus: $blue,
             visited: $purple,
-            primary: $blue
+            blue: $blue,
+            red: $red,
+            orange: $orange,
+            green: $green,
+            teal: $teal,
+            purple: $purple,
+            navy: $navy,
+            grey: $grey
         ),
         greyscale: (
             neutral: $grey,
@@ -527,7 +534,14 @@ $purple: (
             success: $grey,
             focus: $grey,
             visited: $grey,
-            primary: $grey
+            blue: $grey,
+            red: $grey,
+            orange: $grey,
+            green: $grey,
+            teal: $grey,
+            purple: $grey,
+            navy: $grey,
+            grey: $grey
         )
     );
 }
@@ -544,7 +558,14 @@ $purple: (
             success: $purple,
             focus: $purple,
             visited: $purple,
-            primary: $purple
+            blue: $blue,
+            red: $red,
+            orange: $orange,
+            green: $green,
+            teal: $teal,
+            purple: $purple,
+            navy: $navy,
+            grey: $grey
         )
     );
 }
