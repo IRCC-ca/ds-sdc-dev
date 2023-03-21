@@ -1,0 +1,37 @@
+@use "../../util/device";
+@use "../../util/theme";
+@use "../../util/color";
+@use "../template-const";
+
+@mixin create($palette: (
+  primary,
+  visited,
+  cta,
+  information,
+  warning,
+  critical,
+  neutral,
+  success
+)) {
+  @at-root {
+    #{template-const.$root-selectors} {
+      @each $key in $palette {
+        @include tokens($key);
+      }
+    }
+  }
+}
+
+@mixin tokens($palette) {
+  @include theme.light() {
+    --#{$palette}-indicator-weak: #{color.mix-token($palette, 100)};
+    --#{$palette}-indicator-strong: #{color.mix-token($palette, 700)};
+    --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
+  }
+
+  @include theme.dark() {
+    --#{$palette}-indicator-weak: #{color.mix-token($palette, 100)};
+    --#{$palette}-indicator-strong: #{color.mix-token($palette, 700)};
+    --#{$palette}-indicator-text: #{color.mix-token($palette, 900)};
+  }
+}
