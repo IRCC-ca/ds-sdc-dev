@@ -32,6 +32,7 @@ export enum IndicatorStatus {
   critical = 'critical',
   generic = 'generic',
   genericPrimary = 'generic-primary',
+  success = 'success',
 }
 
 export enum IndicatorPalette {

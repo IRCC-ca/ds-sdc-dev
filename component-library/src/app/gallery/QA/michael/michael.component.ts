@@ -359,6 +359,9 @@ export class MichaelComponent implements OnInit {
           {
             text: 'genericPrimary'
           },
+          {
+            text: 'success'
+          },
         ]
       },
       {
