@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
-import { DSFullSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { DSFullSizes } from '../../../public-api';
 export enum IconButtonCategories {
   primary = 'primary',
   critical = 'critical',
