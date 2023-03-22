@@ -17,7 +17,7 @@ export interface ICheckBoxComponentConfig {
   inlineLabel?: string;
   inlineLabelBold?: boolean;
   id: string; //used for identifying the component everywhere and should NEVER be missing
-  helpText?: string;
+  hint?: string; // Help text
   customErrorText?: string;
   desc?: string;
   errorMessages?: IErrorPairs[];
@@ -102,7 +102,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       this.config.errorMessages,
       this.config.label,
       this.config.desc,
-      this.config.helpText,
+      this.config.hint,
       this.config.required,
       this.config.labelIconConfig);
 
@@ -132,7 +132,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       this.config.errorMessages,
       this.config.label,
       this.config.desc,
-      this.config.helpText,
+      this.config.hint,
       this.config.required,
       this.config.labelIconConfig);
   }
