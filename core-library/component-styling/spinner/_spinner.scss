@@ -136,9 +136,11 @@ $selectors: 'lib-spinner';
 
   .label {
     font-family: 'Lato';
+    white-space: nowrap;
   }
   .desc {
     color: var(--text-placeholder);
+    white-space: nowrap;
   }
 
 	@include size.selector(large) {
