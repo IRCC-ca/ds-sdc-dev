@@ -80,7 +80,7 @@
     .tag-component {
         width: 100%;
         height: auto;
-        background-color: var(--blue-alert-background);
+        background-color: var(--primary-alert-background);
         display: flex;
         flex-direction: row;
         position: relative;
@@ -100,7 +100,7 @@
         justify-items: center;
         height: 100%;
         gap: 12px;
-        --text: var(--blue-alert-text);
+        --text: var(--primary-alert-text);
         color: var(--text);
 
         div {

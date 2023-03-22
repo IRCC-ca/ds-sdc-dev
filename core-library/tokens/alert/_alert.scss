@@ -3,7 +3,7 @@
 @use '../../util/color';
 @use '../template-const';
 
-@mixin create($palette: (neutral, critical, success, information, warning, blue)) {
+@mixin create($palette: (neutral, critical, success, information, warning, primary)) {
     @at-root {
         #{template-const.$root-selectors} {
             @each $key in $palette {
