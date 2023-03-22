@@ -43,6 +43,7 @@
 @use "./component-styling/progress-tags/progress-tags" as tags-component;
 @use "./component-styling/progress-indicator/progress-indicator";
 @use "./component-styling/label/label-component" as label-component;
+@use "./component-styling/spinner/spinner" as spinner-component;
 @use "./component-styling/hidden-nav/hidden-nav";
 @use "./component-styling/language-switch/language-switch";
 @use "./typography/fa-wrapper";
@@ -123,6 +124,7 @@
     @include element(language-switch);
     @include element(textarea-component);
     @include element(indicator);
+    @include element(spinner-component);
   }
 
   @else {
@@ -283,6 +285,10 @@
 
   @else if $key == breadcrumb {
     @include breadcrumb.create();
+  }
+
+  @else if $key == spinner-component {
+    @include spinner-component.create();
   }
 
   @else if $key == indicator {
