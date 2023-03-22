@@ -42,9 +42,9 @@ export class MichaelComponent implements OnInit {
         label: 'Description'
       },
       {
-        id: 'hint',
+        id: 'helpText',
         formGroup: this.form_0,
-        label: 'Hint Text'
+        label: 'Help Text'
       },
       {
         id: 'inlineLabel',
@@ -469,7 +469,7 @@ export class MichaelComponent implements OnInit {
       'label': 'Test label',
       'inlineLabel': 'Test inline label',
       'desc': 'Description line of text',
-      'hint': 'Test help text'
+      'helpText': 'Test help text'
     });
 
     // Auto tester component configs - Breadcrumb
