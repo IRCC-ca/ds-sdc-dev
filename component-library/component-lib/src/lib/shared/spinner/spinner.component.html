@@ -5,27 +5,24 @@
       <div *ngSwitchCase="'success'" class="container">
         <i class="fa-circle-check fa-regular spinner-icon"></i>
         <div class="text">
-          <div class="label">{{label}}</div>
-          <div *ngIf="config?.size === 'large'" class="desc">{{desc}}</div>
+          <div class="label">{{config.label}}</div>
+          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
         </div>
       </div>
       <div *ngSwitchCase="'critical'" class="container">
         <i class="fa-circle-exclamation fa-regular spinner-icon"></i>
         <div class="text">
-          <div class="label">{{label}}</div>
-          <div *ngIf="config?.size === 'large'" class="desc">{{desc}}</div>
+          <div class="label">{{config.label}}</div>
+          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
         </div>
       </div>
       <div *ngSwitchDefault class="container">
-        <i class="fa-regular fa-circle-half-stroke spinner-icon"></i>
+        <img src="./src/assets/icons/spinner-states.svg" alt="active-spinner" class="spinner-icon animated-icon">
         <div class="text">
-          <div class="label">{{label}}</div>
-          <div *ngIf="config?.size === 'large'" class="desc">{{desc}}</div>
+          <div class="label">{{config.label}}</div>
+          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
         </div>
       </div>
     </ng-container>
   </div>
 </div>
-
-<br>
-<img src="assets/icons/spinner-states.svg" alt="active-spinner">

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { DSFullSizes, DSOrientations } from '../../../public-api';
 
 export enum SpinnerType {
@@ -12,6 +11,8 @@ export interface ISpinnerConfig {
   type?: keyof typeof SpinnerType,
   size?: keyof typeof DSFullSizes,
   orientation?: keyof typeof DSOrientations,
+  label?: string,
+  description?: string
 }
 @Component({
   selector: 'lib-spinner',
@@ -19,8 +20,6 @@ export interface ISpinnerConfig {
 })
 export class SpinnerComponent implements OnInit {
 
-  label: string = 'Label';
-  desc: string = 'Description';
 
   @Input() config: ISpinnerConfig = {
     id: '',
@@ -29,8 +28,6 @@ export class SpinnerComponent implements OnInit {
   @Input() type?: keyof typeof SpinnerType | SpinnerType;
   @Input() size?: keyof typeof DSFullSizes | DSFullSizes;
   @Input() orientation?: keyof typeof DSOrientations | DSOrientations;
-
-  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
     if (!this.config.orientation) this.config.orientation = 'horizontal';
@@ -52,5 +49,4 @@ export class SpinnerComponent implements OnInit {
       id?.classList.replace('vertical', 'horizontal');
     }
   };
-
-}
+};

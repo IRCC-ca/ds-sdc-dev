@@ -49,8 +49,10 @@ export class TestPageComponent implements OnInit {
 
   spinnerConfig: ISpinnerConfig = {
     id: 'spinner',
-    type: 'critical',
-    // size: 'small'
+    type: 'active',
+    label: 'Label',
+    description: 'Description',
+    // size: 'small',
     // orientation: 'vertical'
   }
 
