@@ -111,6 +111,10 @@
       &:focus {
         outline: none;
       }
+
+      &:hover {
+        background: none;
+      }
     }
 
     lib-button {
