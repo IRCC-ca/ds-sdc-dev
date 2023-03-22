@@ -112,7 +112,8 @@
         outline: none;
       }
 
-      &:hover {
+      &:hover,
+      &:active {
         background: none;
       }
     }
