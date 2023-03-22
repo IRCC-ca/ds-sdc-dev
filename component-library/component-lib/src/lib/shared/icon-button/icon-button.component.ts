@@ -1,14 +1,9 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import { DSFullSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 export enum IconButtonCategories {
   primary = 'primary',
   critical = 'critical',
   custom = 'custom'
-}
-
-export enum IconButtonSize {
-  large = 'large',
-  small = 'small',
-  extraSmall = 'extraSmall'
 }
 
 export interface IIconButtonIconConfig {
@@ -19,7 +14,7 @@ export interface IIconButtonIconConfig {
 export interface IIconButtonComponentConfig {
   id: string,
   category: keyof typeof IconButtonCategories,
-  size?: keyof typeof IconButtonSize,
+  size?: keyof typeof DSFullSizes,
   ariaLabel?: string,
   disabled?: boolean,
   icon?: IIconButtonIconConfig
@@ -39,7 +34,7 @@ export class IconButtonComponent implements OnInit {
   };
   @Input() id = '';
   @Input() category?: keyof typeof IconButtonCategories | IconButtonCategories;
-  @Input() size?: keyof typeof IconButtonSize | IconButtonSize;
+  @Input() size?: keyof typeof DSFullSizes | DSFullSizes;
   @Input() ariaLabel?: string;
   @Input() disabled?: boolean;
   @Input() icon? : IIconButtonIconConfig;
