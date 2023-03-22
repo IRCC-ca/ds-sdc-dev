@@ -10,42 +10,9 @@
 @use "sass:map";
 
 // Mapping of status & palette when category strong
-$status-palettes-strong: (
-  "info": "information",
-  "warning": "warning",
-  "critical": "critical",
-  "generic": "neutral",
-  "generic-primary": "primary",
-  "success": "success"
-);
-// Mapping of status, colour & palette when category strong
-$status-colors: (
-  "teal": "information",
-  "orange": "warning",
-  "red": "critical",
-  "grey": "neutral",
-  "blue": "primary",
-  "green": "success",
-  "purple": "visited",
-  "navy": "cta"
-);
-// Mapping of status, colour & palette when category weak
-$status-colors-weak: (
-  "info": "information",
-  "teal": "information",
-  "warning": "warning",
-  "orange": "warning",
-  "critical": "critical",
-  "red": "critical",
-  "generic": "neutral",
-  "grey": "neutral",
-  "generic-primary": "primary",
-  "blue": "primary",
-  "success": "success",
-  "green": "success",
-  "purple": "visited",
-  "navy": "cta",
-);
+$status: critical, success, information, warning, primary, neutral;
+$color: grey,red,orange,blue,green,purple,teal,navy;
+
 
 @mixin selector {
   lib-indicator#{template-const.$escape} {
@@ -134,47 +101,57 @@ $status-colors-weak: (
   }
 }
 
-@mixin status-color($status, $palette) {
-  &.#{$status} {
-    color: var(--#{$palette}-indicator-text);
-  }
-}
-
-@mixin status-bg($status, $palette) {
-  &.#{$status} {
-    background: var(--#{$palette}-indicator-strong);
-  }
-}
-
-@mixin palette-bg($palette, $color) {
-  &.#{$color} {
-    background: var(--#{$palette}-indicator-strong);
+@mixin coloration($palette, $type){
+  @if $type == validation {
+    &.strong{
+      &.#{$palette}{
+        background: var(--#{$palette}-background);
+      }
+    }
+    &.weak{
+      &.#{$palette}{
+        background: var(--#{$palette}-background-weak);
+        color: var(--#{$palette}-text);
+      }
+    }
+  } @if $type == colors {
+    &.strong{
+      &.#{$palette}{
+        background: var(--#{$palette}-category-background);
+      }
+    }
+    &.weak{
+      &.#{$palette}{
+        background: var(--#{$palette}-category-background-weak);
+        color: var(--#{$palette}-category-text);
+      }
+    }
   }
 }
 
 @mixin layout {
   display: inline-block;
 
+  .text{
+    @each $palette in $status {
+      @include coloration($palette, validation);
+    }
+    @each $palette in $color {
+      @include coloration($palette, colors);
+    }
+  }
+
+  .number, .dot{
+    @each $palette in $status {
+      @include coloration($palette, validation);
+    }
+  }
+
   .text,
   .number {
-    &.weak {
-      @each $status, $palette in $status-colors-weak {
-        @include status-color($status, $palette);
-      }
-    }
-
     &.strong {
-      color: var(--neutral-indicator-weak);
-
-      @each $status, $palette in $status-palettes-strong {
-        @include status-bg($status, $palette);
-      }
-
-      @each $color, $palette in $status-colors {
-        @include palette-bg($palette, $color);
-      }
-
       font-weight: 600;
+      color: var(--grey-category-text-weak);
     }
   }
 
@@ -185,10 +162,6 @@ $status-colors-weak: (
 
   .dot {
     display: block;
-
-    @each $status, $palette in $status-palettes-strong {
-      @include status-bg($status, $palette);
-    }
   }
 
   .text {
@@ -204,10 +177,6 @@ $status-colors-weak: (
     &.abbr {
       max-width: 184px; // 200 - 8x2
       overflow: hidden;
-    }
-
-    &.weak {
-      background: var(--information-background-weak);
     }
 
     span {
