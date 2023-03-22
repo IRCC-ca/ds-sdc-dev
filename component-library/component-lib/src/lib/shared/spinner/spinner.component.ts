@@ -20,7 +20,6 @@ export interface ISpinnerConfig {
 })
 export class SpinnerComponent implements OnInit {
 
-
   @Input() config: ISpinnerConfig = {
     id: '',
   };
@@ -28,6 +27,8 @@ export class SpinnerComponent implements OnInit {
   @Input() type?: keyof typeof SpinnerType | SpinnerType;
   @Input() size?: keyof typeof DSFullSizes | DSFullSizes;
   @Input() orientation?: keyof typeof DSOrientations | DSOrientations;
+  @Input() label?: '';
+  @Input() description?: '';
 
   ngOnInit() {
     if (!this.config.orientation) this.config.orientation = 'horizontal';
@@ -37,16 +38,12 @@ export class SpinnerComponent implements OnInit {
     if (this.type) this.config.type = this.type;
     if (this.size) this.config.size = this.size;
     if (this.orientation) this.config.orientation = this.orientation;
-  };
-  
-  ngAfterViewInit() {
     this.removeVertical();
   };
 
   removeVertical() {
     if (this.config.size !== 'large' && this.config.orientation === 'vertical') {
-      let id = document.getElementById(this.config?.id);
-      id?.classList.replace('vertical', 'horizontal');
+      this.config.orientation = 'horizontal';
     }
   };
 };

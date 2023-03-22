@@ -52,8 +52,8 @@ export class TestPageComponent implements OnInit {
     type: 'active',
     label: 'Label',
     description: 'Description',
-    // size: 'small',
-    // orientation: 'vertical'
+    size: 'small',
+    orientation: 'vertical'
   }
 
 
