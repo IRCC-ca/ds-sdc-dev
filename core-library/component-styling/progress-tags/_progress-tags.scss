@@ -41,7 +41,7 @@
     }
     .content {
         margin-left: 6px;
-        @include typography.fontSize(map.get(text.$body, level), 3);
+        @include typography.fontSet(body, 3);
     }
 }
 
@@ -57,7 +57,7 @@
     }
     .content {
         margin-left: 5px;
-        @include typography.fontSize(map.get(text.$body, level), 4);
+        @include typography.fontSet(body, 4);
     }
 }
 

@@ -15,11 +15,11 @@
 }
 
 @mixin fontSet($type, $level) {
-    @if $type == heading{
-        @include typography.fontSize(map.get(text.$heading, level), $level);
+    @if $type == heading {
+        @include fontSize(map.get(text.$heading, level), $level);
         font-family: map.get(text.$heading, family);
-    } @else if $type == body{
-        @include typography.fontSize(map.get(text.$body, level), $level);
+    } @else if $type == body {
+        @include fontSize(map.get(text.$body, level), $level);
         font-family: map.get(text.$body, family);
     }
 }
