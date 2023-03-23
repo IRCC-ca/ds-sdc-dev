@@ -51,10 +51,10 @@ export class MahsaComponent implements OnInit {
         id: 'smallErrorMessages',
         formGroup: this.form,
         label: 'Small Error',
-        errorMessages: [
-          { key: 'maxlength' , errorLOV: 'ERROR.errorMessage' },
-          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
-        ],
+        // errorMessages: [
+        //   { key: 'maxlength' , errorLOV: 'ERROR.errorMessage' },
+        //   { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
+        // ],
         options: [
           { text: 'Maxlength' },
           { text: 'TestingError' },
@@ -66,10 +66,10 @@ export class MahsaComponent implements OnInit {
         id: 'largeErrorMessages',
         formGroup: this.form,
         label: 'Large Error',
-        errorMessages: [
-          { key:'maxlength' , errorLOV: 'ERROR.errorMessage' },
-          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
-        ],
+        // errorMessages: [
+        //   { key:'maxlength' , errorLOV: 'ERROR.errorMessage' },
+        //   { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
+        // ],
         options: [
           { text: 'Maxlength' },
           { text: 'TestingError' },
@@ -237,7 +237,9 @@ export class MahsaComponent implements OnInit {
 
   ngOnInit() {
     this.altLang.setAltLangLink('mahsa-alt');
+    this.form.addControl(this.qaSelect.id, new FormControl());
 
+    /** Select Auto-Testing Controls Init **/
     this.testerConfig.selects?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
@@ -247,7 +249,9 @@ export class MahsaComponent implements OnInit {
     this.testerConfig.inputs?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.form.addControl(this.qaSelect.id, new FormControl());
+
+    console.log(this.form);
+
 
     this.tagTestConfigObj.selects?.forEach(i => {
       this.tagForm.addControl(i.id, new FormControl());
