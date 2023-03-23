@@ -7,7 +7,7 @@
         <input [attr.aria-live]="'off'" (blur)="touched = true" id="{{config.id}}" class="check"
           [ngClass]="{ mixed: config.mixed, focus: !config.disableFocus, error: getErrorState()}"
           [attr.size]="config.size" type="checkbox" [formControlName]="config.id"
-          [attr.aria-invalid]="formControl?.errors" 
+          [attr.aria-invalid]="formControl?.errors"
           [attr.aria-label]="
           formControl?.invalid && touched
           ? (config.label || '' | translate) + ' ' +
@@ -19,7 +19,7 @@
             (config.label || '' | translate) + ' ' +
             (config.desc || '' | translate) + ' ' +
             (config.helpText || '' | translate) + ' ' +
-            (config.inlineLabel || '' | translate)            
+            (config.inlineLabel || '' | translate)
         "/>
         <span class="checkmark"></span>
       </div>
