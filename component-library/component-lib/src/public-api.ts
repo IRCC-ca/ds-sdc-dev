@@ -54,3 +54,4 @@ export * from './lib/shared/dropdown/drop-down.component';
 export * from './lib/shared/label/label-button.service';
 export * from './lib/shared/breadcrumb/breadcrumb.component';
 export * from './lib/shared/breadcrumb/link/link.component';
+export * from './lib/shared/spinner/spinner.component';
