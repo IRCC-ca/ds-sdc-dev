@@ -1,8 +1,9 @@
-<div class="{{config?.size}} {{config.orientation}}" id="{{config?.id}}">
+<div class="{{config?.size}} {{config.orientation}}" id="{{config?.id}}" aria-live="polite">
   <div class="spinner-container"
     [ngClass]="{'active': config?.type === 'active', 'success': config?.type === 'success', 'critical': config?.type === 'critical'}">
     <ng-container [ngSwitch]="config?.type">
       <div *ngSwitchCase="'success'" class="container">
+        <img alt={{text[1]}}>
         <i class="fa-circle-check fa-regular spinner-icon"></i>
         <div class="text">
           <div class="label">{{config.label}}</div>
@@ -10,6 +11,7 @@
         </div>
       </div>
       <div *ngSwitchCase="'critical'" class="container">
+        <img alt={{text[2]}}>
         <i class="fa-circle-exclamation fa-regular spinner-icon"></i>
         <div class="text">
           <div class="label">{{config.label}}</div>
@@ -17,7 +19,7 @@
         </div>
       </div>
       <div *ngSwitchDefault class="container">
-        <img src="./src/assets/icons/spinner-states.svg" alt="active-spinner" class="spinner-icon animated-icon">
+        <img src="./src/assets/icons/spinner-states.svg" alt={{text[0]}} class="spinner-icon animated-icon">
         <div class="text">
           <div class="label">{{config.label}}</div>
           <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>

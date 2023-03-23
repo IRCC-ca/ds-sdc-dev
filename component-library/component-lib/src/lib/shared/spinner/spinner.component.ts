@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DSFullSizes, DSOrientations } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+
+export const SPINNER_LABELS_EN = ["Loading", "Success", "Error"];
+export const SPINNER_LABELS_FR = ["Chargement", "Succès", "Erreur"];
 
 export enum SpinnerType {
   active = 'active',
@@ -20,6 +24,8 @@ export interface ISpinnerConfig {
 })
 export class SpinnerComponent implements OnInit {
 
+  text: string[] = [];
+
   @Input() config: ISpinnerConfig = {
     id: '',
   };
@@ -30,6 +36,8 @@ export class SpinnerComponent implements OnInit {
   @Input() label?: '';
   @Input() description?: '';
 
+  constructor(private translate: TranslateService) { }
+
   ngOnInit() {
     if (!this.config.orientation) this.config.orientation = 'horizontal';
     if (!this.config.size) this.config.size = 'large';
@@ -39,6 +47,23 @@ export class SpinnerComponent implements OnInit {
     if (this.size) this.config.size = this.size;
     if (this.orientation) this.config.orientation = this.orientation;
     this.removeVertical();
+
+    this.setTypeTitle();
+    this.translate.onLangChange.subscribe(() => {
+      this.setTypeTitle();
+    });
+  };
+
+  ngOnChanges() {
+    this.setTypeTitle();
+  };
+
+  setTypeTitle() {
+    if ((this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US')) {
+      this.text = SPINNER_LABELS_EN;
+    } else {
+      this.text = SPINNER_LABELS_FR;
+    }
   };
 
   removeVertical() {
