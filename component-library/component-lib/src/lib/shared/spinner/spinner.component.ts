@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DSFullSizes, DSOrientations } from '../../../public-api';
+import { DSFullSizes, DSOrientations } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
 
 export enum SpinnerType {
   active = 'active',
