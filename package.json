@@ -7,7 +7,9 @@
         "start": "cd component-library && ng serve",
         "publish-beta": "cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish --tag beta",
         "deploy-build": "cd component-library/component-lib && ng build ircc-ds-angular-component-library && cd .. && ng build",
-        "publish-cl": "node increment.version.script.js",
-        "publish-cl-beta": "node increment.version.script.js --beta"
+        "publish-cl": "node ds.core.reference.script.js --cl && node increment.version.script.js --cl && cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish && cd ../../ && node ds.core.reference.script.js --cl",
+        "publish-cl-beta": "node ds.core.reference.script.js --cl && node increment.version.script.js --beta --cl && cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish --tag beta && cd ../../ && node ds.core.reference.script.js --cl",
+        "publish-cl-lab6": "node ds.core.reference.script.js --lab6 --cl && node increment.version.script.js --beta --cl && cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish --tag beta && cd ../../ && node ds.core.reference.script.js --lab6 --cl",
+        "publish-cl-lab6-beta": "node ds.core.reference.script.js --lab6 --cl && node increment.version.script.js --beta --cl && cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish --tag beta && cd ../../ && node ds.core.reference.script.js --lab6 --cl"
     }
 }
