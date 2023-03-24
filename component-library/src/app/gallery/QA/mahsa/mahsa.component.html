@@ -1,27 +1,49 @@
-<h1>Select Dropdown Testing:</h1>
-<lib-select [config]="qaSelect"></lib-select>
-<app-auto-tester [config]="autoTestConfig"></app-auto-tester>
-<!-- <button (click)="disable()">Disable</button>
-<button (click)="setSamllError()">Small Error</button>
-<button (click)="setLargeError()">Large Error</button>
-<button (click)="resetError()">Reset Error</button>
-<hr> -->
-<h1>Tabs Testing:</h1>
-<lib-tabs [config]="qaTabs"></lib-tabs>
-<br>
-<button (click)="disableSelectedBtn()">Disbale Tab</button>
-<button (click)="size()">Size</button>
+<h2>Select component for QA:</h2>
+<div class="btn-cont">
+<button (click)="toggleComp('select')">Select Component</button>
+<button (click)="toggleComp('tab')">Tabs Component</button>
+<button (click)="toggleComp('tag')">Tags Component</button>
+<button (click)="toggleComp('spinner')">Spinner Component</button>
+</div>
 
-<hr>
-<h1>Tags Testing:</h1>
-<lib-progress-tags [config]="qaTags"></lib-progress-tags>
-<br>
-<app-auto-tester [config]="tagTestConfig"></app-auto-tester>
-<br>
-<h1>Spinner Testing:</h1>
-<lib-spinner [config]="qaSpinner"></lib-spinner>
-<br>
-<br>
-<br>
-<app-auto-tester [config]="spinnerTestConfig"></app-auto-tester>
-<br>
+<section id="select">
+  <h1>Select Dropdown Testing:</h1>
+  <lib-select [config]="qaSelect"></lib-select>
+  <app-auto-tester [config]="autoTestConfig"></app-auto-tester>
+  <!-- <button (click)="disable()">Disable</button>
+  <button (click)="setSamllError()">Small Error</button>
+  <button (click)="setLargeError()">Large Error</button>
+  <button (click)="resetError()">Reset Error</button>
+  <hr> -->
+</section>
+
+<section id="tab">
+  <h1>Tabs Testing:</h1>
+  <lib-tabs [config]="qaTabs"></lib-tabs>
+  <br>
+  <button (click)="disableSelectedBtn()">Disbale Tab</button>
+  <button (click)="size()">Size</button>
+  <hr>
+</section>
+
+<section id="tag">
+  <h1>Tags Testing:</h1>
+  <lib-progress-tags [config]="qaTags"></lib-progress-tags>
+  <br>
+  <app-auto-tester [config]="tagTestConfig"></app-auto-tester>
+  <br>
+</section>
+
+<section id="spinner">
+  <h1>Spinner Testing:</h1>
+  <button (click)="hideShow()">Show/Hide</button>
+  <div id="spinner-div">
+    <br>
+    <lib-spinner [config]="qaSpinner"></lib-spinner>
+    <br>
+    <br>
+    <br>
+    <br>  
+  </div>
+  <app-auto-tester [config]="spinnerTestConfig"></app-auto-tester>
+</section>

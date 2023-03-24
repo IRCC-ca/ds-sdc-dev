@@ -9,6 +9,14 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
   styleUrls: ['./mahsa.component.scss']
 })
 export class MahsaComponent implements OnInit {
+
+  toggleComp(comp: string) {
+    document.querySelectorAll('section')?.forEach(section => {
+      section.classList.remove('show');
+    });
+    document.getElementById(comp)?.classList.toggle('show');
+  };
+
   form = new FormGroup({});
   tagForm = new FormGroup({});
   spinnerForm = new FormGroup({});
@@ -343,4 +351,8 @@ export class MahsaComponent implements OnInit {
   size() {
     this.qaTabs.size ? this.qaTabs.size = 'large' : this.qaTabs.size = 'small';
   };
+
+  hideShow() {
+    document.getElementById('spinner-div')?.toggleAttribute('hidden');
+  }
 }
