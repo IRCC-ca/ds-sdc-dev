@@ -352,7 +352,26 @@ export class MahsaComponent implements OnInit {
     this.qaTabs.size ? this.qaTabs.size = 'large' : this.qaTabs.size = 'small';
   };
 
-  hideShow() {
+  hideShowError() {
     document.getElementById('spinner-div')?.toggleAttribute('hidden');
+    this.qaSpinner.type = 'active';
+    this.qaSpinner.label = 'Loading';
+    this.qaSpinner.description = 'This is Loading!';
+    setTimeout(() => {
+      this.qaSpinner.type = 'critical';
+      this.qaSpinner.label = 'Error Label';
+      this.qaSpinner.description = 'Error Description';
+    }, 2000);
+  };
+  hideShowSuccess() {
+    document.getElementById('spinner-div2')?.toggleAttribute('hidden');
+    this.qaSpinner.type = 'active';
+    this.qaSpinner.label = 'Loading';
+    this.qaSpinner.description = 'This is Loading!';
+    setTimeout(() => {
+      this.qaSpinner.type = 'success';
+      this.qaSpinner.label = 'Success Label';
+      this.qaSpinner.description = 'Success Description';
+    }, 2000);
   }
 }
