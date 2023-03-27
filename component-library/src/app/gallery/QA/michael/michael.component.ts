@@ -220,7 +220,7 @@ export class MichaelComponent implements OnInit {
     type: 'dot',
     size: 'large',
     purpose: 'status',
-    status: 'generic'
+    status: 'primary'
   }
 
   testerBreadcrumbConfig: IAutoTestConfigObject = {
@@ -345,7 +345,7 @@ export class MichaelComponent implements OnInit {
         formGroup: this.form_2,
         options: [
           {
-            text: 'info'
+            text: 'information'
           },
           {
             text: 'warning'
@@ -354,10 +354,10 @@ export class MichaelComponent implements OnInit {
             text: 'critical'
           },
           {
-            text: 'generic'
+            text: 'neutral'
           },
           {
-            text: 'genericPrimary'
+            text: 'primary'
           },
           {
             text: 'success'

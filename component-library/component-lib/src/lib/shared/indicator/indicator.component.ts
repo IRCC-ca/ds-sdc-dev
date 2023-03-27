@@ -27,11 +27,11 @@ export enum IndicatorPurpose {
 }
 
 export enum IndicatorStatus {
-  info = 'info',
+  information = 'information',
   warning = 'warning',
   critical = 'critical',
-  generic = 'generic',
-  genericPrimary = 'generic-primary',
+  neutral = 'neutral',
+  primary = 'primary',
   success = 'success',
 }
 
