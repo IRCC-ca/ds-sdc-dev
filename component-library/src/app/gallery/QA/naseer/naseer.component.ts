@@ -53,6 +53,7 @@ export class NaseerComponent implements OnInit {
     size: 'small',
     unknownDateToggle: {
       dayUnknown: true,
+      monthUnknown: true,
       yearUnknown: true
     }
   };
@@ -376,6 +377,7 @@ export class NaseerComponent implements OnInit {
       for(let param in x){
           updatedConfig = {...updatedConfig, [param] : x[param]}
           this.qaDateOfBirthDatePickerConfig = updatedConfig;
+          console.log('param', param)
       }
       console.log(this.qaDateOfBirthDatePickerConfig.maxYear)
     })
