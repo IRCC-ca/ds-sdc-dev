@@ -67,7 +67,6 @@ export class NaseerComponent implements OnInit {
     label: 'label text',
     desc: 'description text',
     hint: 'hint text',
-    minYear: 2010,
     size: 'large',
     unknownDateToggle: {
       dayUnknown: false,
