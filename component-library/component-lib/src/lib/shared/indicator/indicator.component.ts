@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { DSSizes } from "../../../shared/constants/jl-components.constants";
 
 export enum IndicatorType {
   dot,
