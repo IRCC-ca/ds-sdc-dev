@@ -183,7 +183,6 @@ export class DatePickerComponent implements OnInit {
     if (this.id) this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
-    // if (this.category) this.config.category = this.category;
     if (this.required) this.config.required = this.required;
     if (this.hint) this.config.hint = this.hint;
     if (this.desc) this.config.desc = this.desc;
@@ -274,17 +273,14 @@ export class DatePickerComponent implements OnInit {
       });
 
     if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
-      console.log("Add unknown day english - 1")
       if (this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN, value: "**" });
     }
     else {
-      console.log("Add unknown day french - 1")
       if (this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR, value: "**" });
 
     }
 
     if ((this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 1) || (!this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 0)) {
-      console.log("populate day array")
       for (let i = 1; i <= 31; i++) {
         this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
@@ -296,7 +292,6 @@ export class DatePickerComponent implements OnInit {
       this.config.formGroup,
       this.config.id,
       [],
-      // this.config.errorMessages,
       this.config.label,
       this.config.desc,
       this.config.hint,
@@ -387,20 +382,16 @@ export class DatePickerComponent implements OnInit {
     this.days = [];
     this.dropDownConfigs.day.options = [];
     const numDays = this.getNumDaysInMonth(month, year);
-    console.log(month, year)
     for (let i = 1; i <= numDays; i++) {
       this.days.push(i);
     }
     this.config.formGroup.get(this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION)?.setValue('');
     if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
-      console.log("-1-->", this.config.unknownDateToggle)
       if (this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN, value: "**" });
     }
     else {
-      console.log("-2-->", this.config.unknownDateToggle)
       if (this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR, value: "**" });
     }
-    console.log("-3-->", this.config.unknownDateToggle)
     this.days.forEach((day) => {
       this.dropDownConfigs.day.options?.push({ text: day.toString() });
     });
