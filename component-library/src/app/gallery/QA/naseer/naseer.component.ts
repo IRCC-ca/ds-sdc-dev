@@ -48,12 +48,30 @@ export class NaseerComponent implements OnInit {
   qaDateOfBirthDatePickerConfig: IDatePickerConfig = {
     id: this.INPUT_ID,
     formGroup: this.form_date_picker,
+    label: 'label text',
+    desc: 'description text',
+    hint: 'hint text',
     maxYear: 2040,
     minYear: 2010,
     size: 'small',
     unknownDateToggle: {
       dayUnknown: true,
       monthUnknown: true,
+      yearUnknown: true
+    }
+  };
+
+  qaDateOfBirthDatePickerConfig2: IDatePickerConfig = {
+    id: this.INPUT_ID,
+    formGroup: this.form_date_picker,
+    label: 'label text',
+    desc: 'description text',
+    hint: 'hint text',
+    minYear: 2010,
+    size: 'large',
+    unknownDateToggle: {
+      dayUnknown: false,
+      monthUnknown: false,
       yearUnknown: true
     }
   };
@@ -221,48 +239,6 @@ export class NaseerComponent implements OnInit {
     ]
   }
 
-  testerConfigDatePicker: IAutoTestConfigObject = {
-    inputs: [
-      {
-        id: 'label',
-        formGroup: this.form_date_picker,
-        label: 'label/Title'
-      },
-      {
-        id: 'desc',
-        formGroup: this.form_date_picker,
-        label: 'description'
-      },
-      {
-        id: 'hint',
-        formGroup: this.form_date_picker,
-        label: 'hint'
-      },
-    ],
-    checkboxes: [
-      {
-        id: 'required',
-        formGroup: this.form_date_picker,
-        inlineLabel: 'required'
-      },
-    ],
-    selects: [
-      {
-        id: 'size',
-        label: 'Size',
-        formGroup: this.form_date_picker,
-        options: [
-          {
-            text: 'small'
-          },
-          {
-            text: 'large'
-          }
-        ]
-      },
-    ]
-  }
-
   testInputComponentConfig: IAutoTestComponentConfig = {
     id: 'naseer_input_tester',
     formGroup: this.form_input,
@@ -274,15 +250,6 @@ export class NaseerComponent implements OnInit {
     formGroup: this.form_textarea,
     testFields: this.testerConfigTextarea
   }
-
-  testDatePickerComponentConfig: IAutoTestComponentConfig = {
-    id: 'naseer_datepicker_tester',
-    formGroup: this.form_date_picker,
-    testFields: this.testerConfigDatePicker
-  }
-
-
-
 
   constructor(private altLang: LanguageSwitchService) { }
 
@@ -353,35 +320,9 @@ export class NaseerComponent implements OnInit {
     //******************************************************************************************************** */
     //********************************* DatePicker Component Tester *********************************************** */
     //******************************************************************************************************** */
-
-    this.testerConfigDatePicker.selects?.forEach(i => {
-      this.form_date_picker.addControl(i.id, new FormControl());
-
-    });
-    this.testerConfigDatePicker.checkboxes?.forEach(i => {
-      this.form_date_picker.addControl(i.id, new FormControl());
-    });
-    this.testerConfigDatePicker.inputs?.forEach(i => {
-      this.form_date_picker.addControl(i.id, new FormControl());
-    });
-
     this.form_date_picker.addControl(this.qaDateOfBirthDatePickerConfig.id + '_dayControl', new FormControl(''));
     this.form_date_picker.addControl(this.qaDateOfBirthDatePickerConfig.id + '_monthControl',new FormControl(''));
     this.form_date_picker.addControl(this.qaDateOfBirthDatePickerConfig.id + '_yearControl',new FormControl(''));
-    this.form_date_picker.valueChanges.subscribe(x => {
-
-      var updatedConfig : IDatePickerConfig = {
-        id: this.INPUT_ID,
-        formGroup: this.form_date_picker,
-      };
-      for(let param in x){
-          updatedConfig = {...updatedConfig, [param] : x[param]}
-          this.qaDateOfBirthDatePickerConfig = updatedConfig;
-          console.log('param', param)
-      }
-      console.log(this.qaDateOfBirthDatePickerConfig.maxYear)
-    })
-
   }
 
   buttonActions(actionType: string) {

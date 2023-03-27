@@ -56,10 +56,15 @@
 </ng-container>
 
 <ng-container *ngIf="showDatePickerComponent === true">
-  <h2>Datepicker Component</h2>
-  <lib-date-picker [config]="qaDateOfBirthDatePickerConfig"></lib-date-picker>
-  <app-auto-tester [config]="testDatePickerComponentConfig"></app-auto-tester>
-  <!-- <button (click)="buttonActions('disable-input')">Disable</button> -->
+  <div>
+    <h2>Datepicker Component (Small)</h2>
+    <lib-date-picker [config]="qaDateOfBirthDatePickerConfig"></lib-date-picker>
+  </div>
+  <br>
+  <div>
+    <h2>Datepicker Component (Large)</h2>
+    <lib-date-picker [config]="qaDateOfBirthDatePickerConfig2"></lib-date-picker>
+  </div>
 </ng-container>
 
 
