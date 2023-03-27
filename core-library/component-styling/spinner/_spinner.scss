@@ -48,7 +48,7 @@ $selectors: 'lib-spinner';
       left: 16px;
       bottom: 4px;
     }
-    @include typography.fontSize(map.get(text.$heading, level), 4);
+    @include typography.fontSet(heading, 4);
   }
   .desc {
     margin-left: 16px;
@@ -70,7 +70,7 @@ $selectors: 'lib-spinner';
   }
   .label {
     margin-left: 8px;
-    @include typography.fontSize(map.get(text.$body, level), 1);
+    @include typography.fontSet(body, 1);
   }
   .desc {
     margin-left: 8px;
@@ -111,7 +111,7 @@ $selectors: 'lib-spinner';
     }
     .label {
       margin-left: 8px;
-      @include typography.fontSize(map.get(text.$body, level), 3);
+      @include typography.fontSet(body, 3);
     }
   }
 
@@ -135,7 +135,6 @@ $selectors: 'lib-spinner';
   }
 
   .label {
-    font-family: 'Lato';
     white-space: nowrap;
   }
   .desc {
