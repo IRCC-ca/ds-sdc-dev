@@ -9,6 +9,14 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
   styleUrls: ['./mahsa.component.scss']
 })
 export class MahsaComponent implements OnInit {
+
+  toggleComp(comp: string) {
+    document.querySelectorAll('section')?.forEach(section => {
+      section.classList.remove('show');
+    });
+    document.getElementById(comp)?.classList.toggle('show');
+  };
+
   form = new FormGroup({});
   tagForm = new FormGroup({});
   spinnerForm = new FormGroup({});
@@ -343,4 +351,27 @@ export class MahsaComponent implements OnInit {
   size() {
     this.qaTabs.size ? this.qaTabs.size = 'large' : this.qaTabs.size = 'small';
   };
+
+  hideShowError() {
+    document.getElementById('spinner-div')?.toggleAttribute('hidden');
+    this.qaSpinner.type = 'active';
+    this.qaSpinner.label = 'Loading';
+    this.qaSpinner.description = 'This is Loading!';
+    setTimeout(() => {
+      this.qaSpinner.type = 'critical';
+      this.qaSpinner.label = 'Error Label';
+      this.qaSpinner.description = 'Error Description';
+    }, 2000);
+  };
+  hideShowSuccess() {
+    document.getElementById('spinner-div2')?.toggleAttribute('hidden');
+    this.qaSpinner.type = 'active';
+    this.qaSpinner.label = 'Loading';
+    this.qaSpinner.description = 'This is Loading!';
+    setTimeout(() => {
+      this.qaSpinner.type = 'success';
+      this.qaSpinner.label = 'Success Label';
+      this.qaSpinner.description = 'Success Description';
+    }, 2000);
+  }
 }
