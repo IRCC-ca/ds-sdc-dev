@@ -1,0 +1,28 @@
+<div class="{{config?.size}} {{config.orientation}}" id="{{config?.id}}">
+  <div class="spinner-container"
+    [ngClass]="{'active': config?.type === 'active', 'success': config?.type === 'success', 'critical': config?.type === 'critical'}">
+    <ng-container [ngSwitch]="config?.type">
+      <div *ngSwitchCase="'success'" class="container">
+        <i class="fa-circle-check fa-regular spinner-icon"></i>
+        <div class="text">
+          <div class="label">{{config.label}}</div>
+          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'critical'" class="container">
+        <i class="fa-circle-exclamation fa-regular spinner-icon"></i>
+        <div class="text">
+          <div class="label">{{config.label}}</div>
+          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
+        </div>
+      </div>
+      <div *ngSwitchDefault class="container">
+        <img src="./src/assets/icons/spinner-states.svg" alt="active-spinner" class="spinner-icon animated-icon">
+        <div class="text">
+          <div class="label">{{config.label}}</div>
+          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

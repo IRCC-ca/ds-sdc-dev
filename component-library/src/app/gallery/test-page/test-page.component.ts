@@ -9,11 +9,10 @@ import {  } from 'ircc-ds-angular-component-library';
   styleUrls: ['./test-page.component.scss'],
 })
 export class TestPageComponent implements OnInit {
-  form = new FormGroup({});
+
 
   constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
-
   }
 }

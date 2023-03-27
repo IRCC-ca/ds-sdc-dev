@@ -38,11 +38,8 @@
         padding-left: 8px;
         width: 130px;
         height: 20px;
-        font-family: 'Inter';
         font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
+        @include typography.fontSet(body, 3);
         color: var(--text-primary);
         flex: none;
         order: 0;

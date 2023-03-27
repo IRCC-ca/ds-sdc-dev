@@ -12,3 +12,14 @@ export enum DSSizes {
     large = 'large',
     small = 'small'
 }
+
+export enum DSFullSizes {
+    large = 'large',
+    small = 'small',
+    extraSmall = 'extraSmall'
+}
+
+export enum DSOrientations {
+    horizontal = 'horizontal',
+    vertical = 'vertical'
+}

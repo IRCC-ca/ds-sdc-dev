@@ -1,5 +1,6 @@
 @use '../../util/device' as device;
 @use '../../tokens/template-const' as template-const;
+@use '../../typography/typography' as typography;
 @use 'sass:map';
 
 @mixin selector {
@@ -16,16 +17,13 @@
 
 @mixin layout {
     .link {
-        font-size: 16px;
+        @include typography.fontSet(body, 2);
         background-color: transparent;
         margin-bottom: 28px;
         margin-top: 24px;
         margin-left: 20px;
-        font-family: 'Inter';
         text-decoration: underline;
         text-underline-offset: 4px; //Adjust space between line & text
         --text: var(--link-text);
     }
-
-    
 }
