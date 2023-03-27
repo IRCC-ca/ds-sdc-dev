@@ -31,7 +31,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     padding: 2px 8px;
     border-radius: 11px;
 
-    @include typography.fontSize(map.get(text.$body, level), 4);
+    @include typography.fontSet(body, 4);
 
     &.rounded {
       min-width: 8px;
@@ -49,7 +49,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       min-width: 14px;
     }
 
-    @include typography.fontSize(map.get(text.$body, level), 4);
+    @include typography.fontSet(body, 4);
 
     &.num-lg {
       padding: 2px 8px;
@@ -68,7 +68,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     padding: 4px 8px;
     border-radius: 15px;
 
-    @include typography.fontSize(map.get(text.$body, level), 2);
+    @include typography.fontSet(body, 2);
 
     &.rounded {
       padding: 2px 8px;
@@ -87,7 +87,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       min-width: 18px;
     }
 
-    @include typography.fontSize(map.get(text.$body, level), 2);
+    @include typography.fontSet(body, 2);
 
     &.num-lg {
       padding: 4px 8px;

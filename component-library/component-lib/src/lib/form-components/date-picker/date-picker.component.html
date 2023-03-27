@@ -1,8 +1,8 @@
 <div class="{{ config.size }}">
-  <lib-label [config]="labelConfig"></lib-label>
+  <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
   <div class="all-select-container">
     <div class="select-container select-year">
-      <lib-select [config]="dropDownConfigs.year"></lib-select>
+      <lib-select [attr.aria-live]="'off'" [config]="dropDownConfigs.year"></lib-select>
     </div>
     <div class="select-container select-month">
       <lib-select [config]="dropDownConfigs.month"></lib-select>

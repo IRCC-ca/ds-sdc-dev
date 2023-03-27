@@ -1,13 +1,13 @@
 <form class="checkbox-container" [formGroup]="config.formGroup"
   (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <div class="checkbox-container" [ngClass]="config.size">
-    <lib-label [config]="labelConfig"></lib-label>
+    <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
       <div class="checkbox">
         <input [attr.aria-live]="'off'" (blur)="touched = true" id="{{config.id}}" class="check"
           [ngClass]="{ mixed: config.mixed, focus: !config.disableFocus, error: getErrorState()}"
           [attr.size]="config.size" type="checkbox" [formControlName]="config.id"
-          [attr.aria-invalid]="formControl?.errors" 
+          [attr.aria-invalid]="formControl?.errors"
           [attr.aria-label]="
           formControl?.invalid && touched
           ? (config.label || '' | translate) + ' ' +
@@ -19,11 +19,11 @@
             (config.label || '' | translate) + ' ' +
             (config.desc || '' | translate) + ' ' +
             (config.helpText || '' | translate) + ' ' +
-            (config.inlineLabel || '' | translate)            
+            (config.inlineLabel || '' | translate)
         "/>
         <span class="checkmark"></span>
       </div>
-      <label [attr.aria-live]="'off'" class="label" [for]="config.id" [id]="config.id + '_label'"
+      <label [attr.aria-live]="'off'" class="checkbox-desc-label" [for]="config.id" [id]="config.id + '_label'"
 
         [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small', 'makeBold': config.inlineLabelBold}">{{config.inlineLabel
         || '' | translate}}

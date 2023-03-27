@@ -26,7 +26,7 @@
   lib-breadcrumb-link {
     a,
     lib-button .text {
-      @include typography.fontSize(map.get(text.$body, level), 3);
+      @include typography.fontSet(body, 3);
     }
 
     &.breadcrumb-root {
@@ -39,7 +39,7 @@
   }
 
   p {
-    @include typography.fontSize(map.get(text.$body, level), 3);
+    @include typography.fontSet(body, 3);
 
     &.breadcrumb-child {
       margin-left: 8px;
@@ -59,7 +59,7 @@
 
     a,
     lib-button .text {
-      @include typography.fontSize(map.get(text.$body, level), 2);
+      @include typography.fontSet(body, 2);
     }
 
     &.breadcrumb-item {
@@ -72,7 +72,7 @@
   }
 
   p {
-    @include typography.fontSize(map.get(text.$body, level), 2);
+    @include typography.fontSet(body, 2);
 
     margin: 0;
 
@@ -111,6 +111,11 @@
       &:focus {
         outline: none;
       }
+
+      &:hover,
+      &:active {
+        background: none;
+      }
     }
 
     lib-button {
@@ -142,10 +147,6 @@
   lib-button {
     button {
       padding: 0;
-
-      .text {
-        font-family: Inter, serif;
-      }
 
       &:hover {
         color: var(--link-text-hover);

@@ -4,11 +4,11 @@
       <lib-breadcrumb-link tabindex="0" class="breadcrumb-root" [config]="link"></lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="!first && !last">
-      <lib-icon class="fa-solid fa-chevron-right"></lib-icon>
+      <lib-icon class="fa-light fa-chevron-right"></lib-icon>
       <lib-breadcrumb-link tabindex="0" class="breadcrumb-item" [config]="link"></lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="last">
-      <lib-icon class="fa-solid fa-chevron-right"></lib-icon>
+      <lib-icon class="fa-light fa-chevron-right"></lib-icon>
       <p class="breadcrumb-child">{{link.text}}</p>
     </ng-container>
   </ng-container>

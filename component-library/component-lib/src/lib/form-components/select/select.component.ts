@@ -26,6 +26,7 @@ export interface ISelectConfig {
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
   topLabel?: string;
+  disableError?: boolean //used to disable the error aria-live (mostly for use when nested, as in date picker)
 }
 export interface ISelectOptionsConfig {
   text: string;
@@ -115,7 +116,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  ngOnChanges() {
+  //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
+  //TODO: Replace this with something less blunt
+  ngDoCheck() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,

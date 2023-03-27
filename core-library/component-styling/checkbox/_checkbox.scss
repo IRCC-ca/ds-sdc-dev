@@ -22,8 +22,6 @@
 
 // For size small overwrite
 @mixin size-sm {
-
-  label,
   p {
     font-size: token-size.$fixed-14;
   }
@@ -33,25 +31,12 @@
     font-size: 14px;
   }
 
-  label {
+  .checkbox-desc-label {
     font-size: 14px;
-
-    &.checkbox-label {
-      font-size: 16px;
-    }
   }
 
   div.check-error {
     font-size: 14px;
-
-    p {
-      margin-top: token-size.$fixed-8;
-    }
-  }
-
-  .required-star {
-    font-size: 12px;
-    margin-right: 4px;
   }
 }
 
@@ -74,45 +59,10 @@
     &.disabled-label {
       color: var(--text-disabled);
     }
-
-    &.checkbox-label {
-      font-family: 'Lato', sans-serif;
-      color: var(--text-primary);
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-  }
-
-  p {
-    &.check-desc {
-      color: var(--text-primary);
-      margin-top: token-size.$fixed-4;
-      margin-bottom: token-size.$fixed-12;
-    }
-
-    &.check-hint {
-      color: var(--text-placeholder);
-      margin-bottom: token-size.$fixed-8;
-      margin-top: 0;
-    }
   }
 
   div.check-error {
     margin-top: token-size.$fixed-8;
-  }
-
-  .required-field-container {
-    display: flex;
-  }
-
-  .required-star {
-    color: var(--critical-text);
-    font-weight: 400;
-    line-height: 16px;
-    justify-self: flex-start;
-    margin-right: 5px;
-    font-size: 16px;
   }
 
   @include size.selector(small) {
