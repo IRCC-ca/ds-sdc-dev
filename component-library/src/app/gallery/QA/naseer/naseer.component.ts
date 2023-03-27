@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ButtonColor, ButtonIconDirection, IButtonConfig, IDropdownConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig, ITextareaComponentConfig } from 'ircc-ds-angular-component-library';
+import { ButtonColor, ButtonIconDirection, IButtonConfig, IDatePickerConfig, IDropdownConfig, IIconButtonComponentConfig, IIconButtonIconConfig, IInputComponentConfig, ITextareaComponentConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 
 export enum InputFieldType {
   INPUTFIELD = 'qaInput',
   TEXTAREA = 'qaTextareaInput',
+  DATEPICKER = 'qaDatePicker'
 }
 
 @Component({
@@ -22,10 +23,12 @@ export class NaseerComponent implements OnInit {
   showTextareaComponent: boolean = false;
   showDropDownComponent: boolean = false;
   showIconButtonComponent: boolean = false;
+  showDatePickerComponent: boolean = false;
 
   INPUT_ID = 'qa_test_input';
   form_input = new FormGroup({});
   form_textarea = new FormGroup({});
+  form_date_picker = new FormGroup({});
 
   qaInput : IInputComponentConfig = {
     id: this.INPUT_ID,
@@ -40,6 +43,18 @@ export class NaseerComponent implements OnInit {
       {key: 'testingError', errorLOV: 'ERROR.testErrorMessage'},
       {key: 'maxlength' , errorLOV: 'ERROR.fieldExceededMaxLength'},
     ]
+  };
+
+  qaDateOfBirthDatePickerConfig: IDatePickerConfig = {
+    id: this.INPUT_ID,
+    formGroup: this.form_date_picker,
+    maxYear: 2040,
+    minYear: 2010,
+    size: 'small',
+    unknownDateToggle: {
+      dayUnknown: true,
+      yearUnknown: true
+    }
   };
 
   qaButton : IIconButtonComponentConfig = {
@@ -205,6 +220,48 @@ export class NaseerComponent implements OnInit {
     ]
   }
 
+  testerConfigDatePicker: IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'label',
+        formGroup: this.form_date_picker,
+        label: 'label/Title'
+      },
+      {
+        id: 'desc',
+        formGroup: this.form_date_picker,
+        label: 'description'
+      },
+      {
+        id: 'hint',
+        formGroup: this.form_date_picker,
+        label: 'hint'
+      },
+    ],
+    checkboxes: [
+      {
+        id: 'required',
+        formGroup: this.form_date_picker,
+        inlineLabel: 'required'
+      },
+    ],
+    selects: [
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form_date_picker,
+        options: [
+          {
+            text: 'small'
+          },
+          {
+            text: 'large'
+          }
+        ]
+      },
+    ]
+  }
+
   testInputComponentConfig: IAutoTestComponentConfig = {
     id: 'naseer_input_tester',
     formGroup: this.form_input,
@@ -216,6 +273,13 @@ export class NaseerComponent implements OnInit {
     formGroup: this.form_textarea,
     testFields: this.testerConfigTextarea
   }
+
+  testDatePickerComponentConfig: IAutoTestComponentConfig = {
+    id: 'naseer_datepicker_tester',
+    formGroup: this.form_date_picker,
+    testFields: this.testerConfigDatePicker
+  }
+
 
 
 
@@ -284,6 +348,38 @@ export class NaseerComponent implements OnInit {
       }
     })
 
+
+    //******************************************************************************************************** */
+    //********************************* DatePicker Component Tester *********************************************** */
+    //******************************************************************************************************** */
+
+    this.testerConfigDatePicker.selects?.forEach(i => {
+      this.form_date_picker.addControl(i.id, new FormControl());
+
+    });
+    this.testerConfigDatePicker.checkboxes?.forEach(i => {
+      this.form_date_picker.addControl(i.id, new FormControl());
+    });
+    this.testerConfigDatePicker.inputs?.forEach(i => {
+      this.form_date_picker.addControl(i.id, new FormControl());
+    });
+
+    this.form_date_picker.addControl(this.qaDateOfBirthDatePickerConfig.id + '_dayControl', new FormControl(''));
+    this.form_date_picker.addControl(this.qaDateOfBirthDatePickerConfig.id + '_monthControl',new FormControl(''));
+    this.form_date_picker.addControl(this.qaDateOfBirthDatePickerConfig.id + '_yearControl',new FormControl(''));
+    this.form_date_picker.valueChanges.subscribe(x => {
+
+      var updatedConfig : IDatePickerConfig = {
+        id: this.INPUT_ID,
+        formGroup: this.form_date_picker,
+      };
+      for(let param in x){
+          updatedConfig = {...updatedConfig, [param] : x[param]}
+          this.qaDateOfBirthDatePickerConfig = updatedConfig;
+      }
+      console.log(this.qaDateOfBirthDatePickerConfig.maxYear)
+    })
+
   }
 
   buttonActions(actionType: string) {
@@ -293,24 +389,35 @@ export class NaseerComponent implements OnInit {
         this.showTextareaComponent = false;
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
+        this.showDatePickerComponent = false;
         break;
       case 'textareaComponent':
         this.showInputComponent = false;
         this.showTextareaComponent = true;
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
+        this.showDatePickerComponent = false;
+        break;
+      case 'datepickerComponent':
+        this.showInputComponent = false;
+        this.showTextareaComponent = false;
+        this.showDropDownComponent = false;
+        this.showIconButtonComponent = false;
+        this.showDatePickerComponent = true;
         break;
       case 'dropDownComponent':
         this.showInputComponent = false;
         this.showTextareaComponent = false;
         this.showDropDownComponent = true;
         this.showIconButtonComponent = false;
+        this.showDatePickerComponent = false;
         break;
       case 'iconButtonComponent':
         this.showInputComponent = false;
         this.showTextareaComponent = false;
         this.showDropDownComponent = false;
         this.showIconButtonComponent = true;
+        this.showDatePickerComponent = false;
         break;
       case 'inputError':
         this.form_textarea.get(this.qaTextareaInput.id)?.valid ?

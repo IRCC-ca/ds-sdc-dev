@@ -1,6 +1,7 @@
 <h2> Click the Component you want to test</h2>
 <button (click)="buttonActions('inputComponent')">Input Component</button>
 <button (click)="buttonActions('textareaComponent')">Textarea Component</button>
+<button (click)="buttonActions('datepickerComponent')">Datepicker Component</button>
 <button (click)="buttonActions('dropDownComponent')">Drop Down</button>
 <button (click)="buttonActions('iconButtonComponent')">Icon Buttons</button>
 
@@ -53,4 +54,13 @@
   </div>
   <button (click)="disable()">Disable</button>
 </ng-container>
+
+<ng-container *ngIf="showDatePickerComponent === true">
+  <h2>Datepicker Component</h2>
+  <lib-date-picker [config]="qaDateOfBirthDatePickerConfig"></lib-date-picker>
+  <app-auto-tester [config]="testDatePickerComponentConfig"></app-auto-tester>
+  <!-- <button (click)="buttonActions('disable-input')">Disable</button> -->
+</ng-container>
+
+
 
