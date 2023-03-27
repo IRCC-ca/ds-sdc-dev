@@ -297,12 +297,16 @@ export class MahsaComponent implements OnInit {
 
     this.spinnerForm.valueChanges.subscribe(value => {
       for (let param in value) {
-        if (value[param]) {
-          if ((value['size'] === 'small' || value['size'] === 'extraSmall') && value['orientation'] === 'vertical') {
-            value['orientation'] = 'horizontal';
-          }
-          this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
+        if ((value['size'] === 'small' || value['size'] === 'extraSmall') && value['orientation'] === 'vertical') {
+          value['orientation'] = 'horizontal';
         }
+        if (!value['label']) {
+          delete this.qaSpinner.label;
+        }
+        if (!value['description']) {
+          delete this.qaSpinner.description;
+        }
+        if (value[param]) this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
       }
     });
   }
