@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DSFullSizes, DSOrientations } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { DSFullSizes, DSOrientations } from '../../../shared/constants/jl-components.constants';
 
 export const SPINNER_LABELS_EN = ["Loading", "Success", "Error"];
 export const SPINNER_LABELS_FR = ["Chargement", "Succès", "Erreur"];

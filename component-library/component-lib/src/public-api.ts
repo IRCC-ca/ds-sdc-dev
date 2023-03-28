@@ -5,7 +5,7 @@
 /** Non-Components - Shared **/
 export * from './shared/functions/stand-alone.functions'
 export * from './shared/interfaces/component-configs';
-export * from './shared/constants/jl-components/jl-components.constants/jl-components.constants'
+export * from './shared/constants/jl-components.constants'
 
 
 /** Banner Component **/
