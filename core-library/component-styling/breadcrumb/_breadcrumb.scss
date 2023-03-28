@@ -87,6 +87,10 @@
     bottom: -2px;
     padding: 0 4px;
   }
+
+  lib-icon-button.elipsis-icon {
+    top: 5px;
+  }
 }
 
 @mixin layout {
@@ -160,6 +164,11 @@
         color: var(--link-text-active);
       }
     }
+  }
+
+  lib-icon-button.elipsis-icon {
+    display: inline-block;
+    position: relative;
   }
 
   @include size.selector(small) {

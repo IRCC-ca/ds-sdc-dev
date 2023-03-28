@@ -5,6 +5,7 @@ export interface ILinkComponentConfig {
   linkKey?: string;
   href?: string,
   routerLink?: string,
+  overflow?: boolean
 }
 
 @Component({
@@ -13,7 +14,8 @@ export interface ILinkComponentConfig {
 })
 export class BreadcrumbLinkComponent {
   @Input() config: ILinkComponentConfig = {
-    text: ''
+    text: '',
+    overflow: false
   }
 
   constructor() { }

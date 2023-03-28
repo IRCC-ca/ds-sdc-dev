@@ -2,6 +2,8 @@
   <ng-container *ngFor="let link of config?.links; first as first; last as last; index as i">
     <ng-container *ngIf="first">
       <lib-breadcrumb-link tabindex="0" class="breadcrumb-root" [config]="link"></lib-breadcrumb-link>
+      <lib-icon class="fa-light fa-chevron-right"></lib-icon>
+      <lib-icon-button class="elipsis-icon" [config]="separatorIcon"></lib-icon-button>
     </ng-container>
     <ng-container *ngIf="!first && !last">
       <lib-icon class="fa-light fa-chevron-right"></lib-icon>

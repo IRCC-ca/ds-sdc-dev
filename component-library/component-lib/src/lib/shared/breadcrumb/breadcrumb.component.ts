@@ -3,6 +3,7 @@ import { DSSizes } from "../../../shared/constants/jl-components/jl-components.c
 import { ILinkComponentConfig } from "./link/link.component";
 import { TranslateService } from "@ngx-translate/core";
 import { StandAloneFunctions } from "../../../shared/functions/stand-alone.functions";
+import { IIconButtonComponentConfig } from "../icon-button/icon-button.component";
 
 export enum LinkType {
   href = 'href',
@@ -30,10 +31,20 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
     type: 'href'
   };
   baseUrl = '';
+  separatorIcon: IIconButtonComponentConfig = {
+    id: 'breadcrumb_separator',
+    category: 'custom',
+    size: this.config?.size,
+    icon: {
+      class: 'fa-solid fa-ellipsis',
+      color: 'var(--text-primary)'
+    }
+  };
   constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
 
   ngOnInit() {
     this.createLinks();
+    this.separatorIcon.size = this.config.size;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -49,6 +60,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
       }
     }
     this.createLinks();
+    this.separatorIcon.size = this.config.size;
   }
 
   /**
