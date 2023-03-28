@@ -34,6 +34,12 @@ $selectors: 'lib-spinner';
 
 @mixin size-large() {
   .vertical {
+    .label {
+      margin: {
+        top: 16px;
+        bottom: 4px;
+      }
+    }
     .icon-div {
       width: 80px;
     }
@@ -94,7 +100,6 @@ $selectors: 'lib-spinner';
     .container {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
   }
   .vertical {
