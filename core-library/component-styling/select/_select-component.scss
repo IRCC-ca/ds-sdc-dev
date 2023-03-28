@@ -86,7 +86,7 @@ $selectors: 'lib-select';
 		line-height: 24px;
 		color: var(--text);
 		border-radius: token-size.$border-radius;
-		background-color: white;
+		background-color: var(--surface1);
 		border-color: var(--border);
 		border-width: 1px;
 		width: 100%;
