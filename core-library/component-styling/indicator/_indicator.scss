@@ -101,27 +101,31 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
   }
 }
 
-@mixin coloration($palette, $type){
+@mixin coloration($palette, $type) {
   @if $type == validation {
-    &.strong{
-      &.#{$palette}{
+    &.strong {
+      &.#{$palette} {
         background: var(--#{$palette}-background);
       }
     }
-    &.weak{
-      &.#{$palette}{
+
+    &.weak {
+      &.#{$palette} {
         background: var(--#{$palette}-background-weak);
         color: var(--#{$palette}-text);
       }
     }
-  } @if $type == colors {
-    &.strong{
-      &.#{$palette}{
+  }
+
+  @if $type == colors {
+    &.strong {
+      &.#{$palette} {
         background: var(--#{$palette}-category-background);
       }
     }
-    &.weak{
-      &.#{$palette}{
+
+    &.weak {
+      &.#{$palette} {
         background: var(--#{$palette}-category-background-weak);
         color: var(--#{$palette}-category-text);
       }
@@ -132,16 +136,18 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
 @mixin layout {
   display: inline-block;
 
-  .text{
+  .text {
     @each $palette in $status {
       @include coloration($palette, validation);
     }
+
     @each $palette in $color {
       @include coloration($palette, colors);
     }
   }
 
-  .number, .dot{
+  .number,
+  .dot {
     @each $palette in $status {
       @include coloration($palette, validation);
     }
