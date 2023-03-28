@@ -59,11 +59,6 @@ $selectors: 'lib-spinner';
     .desc {
       margin-left: 16px;
     }
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
   }
   .label {
     @include typography.fontSet(heading, 4);
@@ -71,9 +66,6 @@ $selectors: 'lib-spinner';
 }
 
 @mixin size-small() {
-  .container {
-    display: block;
-  }
   .spinner-container {
     height: 28px;
     .icon-div {
@@ -98,6 +90,13 @@ $selectors: 'lib-spinner';
     width: 100%;
   }
 
+  .horizontal {
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
   .vertical {
     .container {
       display: flex;
@@ -152,9 +151,6 @@ $selectors: 'lib-spinner';
   @include types(critical);
 
   .extraSmall {
-    .container {
-      display: block;
-    }
     .spinner-container {
       height: 20px;
       .icon-div {
