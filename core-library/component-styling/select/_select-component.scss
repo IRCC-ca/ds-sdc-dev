@@ -86,8 +86,10 @@ $selectors: 'lib-select';
 		line-height: 24px;
 		color: var(--text);
 		border-radius: token-size.$border-radius;
+		background-color: white;
 		// showing but not
 		border-color: var(--border);
+		border-width: 1px;
 		width: 100%;
 		-webkit-appearance: none;
 		-moz-appearance: none;
