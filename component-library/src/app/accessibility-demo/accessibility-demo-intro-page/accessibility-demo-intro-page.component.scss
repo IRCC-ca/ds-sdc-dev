@@ -1,0 +1,10 @@
+.page_container{
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+
+  lib-button{
+    align-self: center;
+  }
+}
