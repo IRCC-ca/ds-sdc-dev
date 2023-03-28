@@ -207,6 +207,11 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       display: block;
       overflow: hidden;
     }
+
+    // Force hiding icon when change from text to number
+    > svg {
+      display: none;
+    }
   }
 
   @include size.selector(small) {
