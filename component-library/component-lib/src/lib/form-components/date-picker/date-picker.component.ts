@@ -183,7 +183,6 @@ export class DatePickerComponent implements OnInit {
     if (this.id) this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
-    // if (this.category) this.config.category = this.category;
     if (this.required) this.config.required = this.required;
     if (this.hint) this.config.hint = this.hint;
     if (this.desc) this.config.desc = this.desc;
@@ -278,6 +277,7 @@ export class DatePickerComponent implements OnInit {
     }
     else {
       if (this.config.unknownDateToggle?.dayUnknown) this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR, value: "**" });
+
     }
 
     if ((this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 1) || (!this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 0)) {
@@ -292,7 +292,6 @@ export class DatePickerComponent implements OnInit {
       this.config.formGroup,
       this.config.id,
       [],
-      // this.config.errorMessages,
       this.config.label,
       this.config.desc,
       this.config.hint,
@@ -383,7 +382,6 @@ export class DatePickerComponent implements OnInit {
     this.days = [];
     this.dropDownConfigs.day.options = [];
     const numDays = this.getNumDaysInMonth(month, year);
-    console.log(month, year)
     for (let i = 1; i <= numDays; i++) {
       this.days.push(i);
     }
