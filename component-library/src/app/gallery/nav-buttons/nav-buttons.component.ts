@@ -35,7 +35,7 @@ export class NavButtonsComponent implements OnInit {
     private languageSwitchButton: LanguageSwitchButtonService) { }
 
   ngOnInit() {
-    this.setBaseUrl() //set initial base url
+    this.setBaseUrl(); //set initial base url
     this.createButtonIds();
 
     //Detect language changes to set base url to new language

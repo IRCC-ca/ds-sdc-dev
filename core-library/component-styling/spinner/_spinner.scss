@@ -1,0 +1,161 @@
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/size' as size;
+@use '../../tokens/template-const';
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use '../../util/device' as device;
+@use '../../tokens/sizes';
+@use 'sass:map';
+$selectors: 'lib-spinner';
+
+@mixin selectors {
+	#{$selectors}#{template-const.$escape} {
+		@content;
+	}
+}
+
+@mixin create {
+	@include selectors() {
+	  @include layout();
+	}
+}
+
+@mixin types($category: active) {
+  .#{$category} {
+    background-color: var(--#{$category}-alert-background);
+    .spinner-icon {
+      --text: var(--#{$category}-alert-text);
+    }
+  }
+}
+
+@mixin size-large() {
+  .spinner-container {
+    width: 80px;
+    height: 80px;
+    >div {
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+  .spinner-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .label {
+    margin: {
+      left: 16px;
+      bottom: 4px;
+    }
+    @include typography.fontSet(heading, 4);
+  }
+  .desc {
+    margin-left: 16px;
+  }
+}
+
+@mixin size-small() {
+  .spinner-container {
+    width: 28px;
+    height: 28px;
+    >div {
+      height: 28px;
+      border-radius: 50%;
+    }
+  }
+  .spinner-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .label {
+    margin-left: 8px;
+    @include typography.fontSet(body, 1);
+  }
+  .desc {
+    margin-left: 8px;
+  }
+}
+
+@mixin layout {
+  .horizontal {
+    .container {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .vertical {
+    .text {
+      display: flex;
+      flex-direction: column;
+      .label {
+        margin-left: 11px;
+      }
+      .desc {
+        margin-left: 0;
+      }
+    }
+  }
+  .extraSmall {
+    .spinner-container {
+      width: 20px;
+      height: 20px;
+      >div {
+        height: 20px;
+        border-radius: 50%;
+      }
+    }
+    .spinner-icon {
+      width: 20px;
+      height: 20px;
+    }
+    .label {
+      margin-left: 8px;
+      @include typography.fontSet(body, 3);
+    }
+  }
+
+  .spinner-container {
+    border-radius: 50%;
+  }
+
+  .spinner-icon {
+    color: var(--text);
+  }
+  .animated-icon {
+    animation: rotation 1s linear infinite;
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(359deg);
+      }
+    }
+  }
+
+  .label {
+    white-space: nowrap;
+  }
+  .desc {
+    color: var(--text-placeholder);
+    white-space: nowrap;
+  }
+
+	@include size.selector(large) {
+    @include size-large();
+    .small {
+      @include size-small()
+    }  
+  }
+
+  @include size.selector(small) {
+    @include size-small();
+    .large {
+      @include size-large()
+    }  
+  }
+
+  @include types(success);
+  @include types(critical);
+}

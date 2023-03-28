@@ -25,7 +25,13 @@
 <ng-container *ngIf="showDropDownComponent === true">
   <h2>Dropdown Component</h2>
   <div class="select-component">
-    <lib-dropdown size="small"></lib-dropdown>
+    <lib-dropdown [config]="testDropdownConfig"></lib-dropdown>
+  </div>
+  <div class="select-component">
+    <lib-dropdown category="plain" label="Plain"></lib-dropdown>
+  </div>
+  <div class="select-component">
+    <lib-dropdown label="Primary"></lib-dropdown>
   </div>
 </ng-container>
 
@@ -38,9 +44,12 @@
     <lib-icon-button class="test-icon" [category]="'custom'" [icon]="customIconConfigTest" [size]="'large'"></lib-icon-button>
     <lib-icon-button class="test-icon" [category]="'primary'"  [size]="'large'"></lib-icon-button>
     <lib-icon-button class="test-icon" [category]="'primary'"  [size]="'large'"></lib-icon-button>
-    <lib-button [config]="testButtonConfig">Test</lib-button>
-    <lib-button id="test-button-1" icon="fa-regular fa-igloo">Test Button</lib-button>
-    <lib-button id="test-button-2" icon="fa-regular fa-igloo" iconDirection="right">Supeeeeeeeeeeeeeeeeeeeeeeeeer long Buttooooooooooooooon labeeeeeeeeeeeeeel</lib-button>
+    <div class="button-container-test">
+      <lib-button [config]="testButtonConfig">Test</lib-button>
+      <lib-button id="test-button-1" icon="fa-regular fa-igloo">Test Button</lib-button>
+      <lib-button id="test-button-2" icon="fa-regular fa-igloo" iconDirection="left">Supeeeeeeeeeeeeeeeeeeeeeeeeer long Buttooooooooooooooon labeeeeeeeeeeeeeel</lib-button>
+      <lib-button id="test-button-2" icon="fa-regular fa-igloo" iconDirection="right">Supeeeeeeeeeeeeeeeeeeeeeeeeer long Buttooooooooooooooon labeeeeeeeeeeeeeel</lib-button>
+    </div>
   </div>
   <button (click)="disable()">Disable</button>
 </ng-container>

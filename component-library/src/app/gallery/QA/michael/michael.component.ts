@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormControl, FormGroup } from "@angular/forms";
-import { IBreadcrumbConfig, ICheckBoxComponentConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import {
+  IBreadcrumbConfig,
+  ICheckBoxComponentConfig,
+  IIndicatorConfig,
+  IInputComponentConfig
+} from 'ircc-ds-angular-component-library';
 import {IAutoTestComponentConfig, IAutoTestConfigObject} from "@app/gallery/QA/auto-tester/auto-tester.component";
 
 @Component({
@@ -13,6 +18,7 @@ export class MichaelComponent implements OnInit {
 
   form_0: FormGroup = new FormGroup({});
   form_1: FormGroup = new FormGroup({});
+  form_2: FormGroup = new FormGroup({});
   CHECKBOX_ID = 'qa_test_checkbox';
   qaCheckboxConfig : IInputComponentConfig = {
     id: this.CHECKBOX_ID,
@@ -209,6 +215,14 @@ export class MichaelComponent implements OnInit {
     ],
   };
 
+  indicatorConfig: IIndicatorConfig = {
+    category: 'strong',
+    type: 'dot',
+    size: 'large',
+    purpose: 'status',
+    status: 'primary'
+  }
+
   testerBreadcrumbConfig: IAutoTestConfigObject = {
     selects: [
       {
@@ -245,6 +259,150 @@ export class MichaelComponent implements OnInit {
     formGroup: this.form_1,
     testFields: this.testerBreadcrumbConfig,
   };
+  testerIndicatorFieldConfig: IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'label',
+        formGroup: this.form_2,
+        label: 'Label',
+        type: 'text'
+      },
+    ],
+    selects: [
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'large'
+          },
+          {
+            text: 'small'
+          },
+        ]
+      },
+      {
+        id: 'type',
+        label: 'Type',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'dot'
+          },
+          {
+            text: 'text'
+          },
+          {
+            text: 'number'
+          },
+        ]
+      },
+      {
+        id: 'icon',
+        label: 'Icon',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'Code',
+            value: 'fa-solid fa-code'
+          },
+          {
+            text: 'Maple Leaf',
+            value: 'fa-brands fa-canadian-maple-leaf'
+          }
+        ]
+      },
+      {
+        id: 'category',
+        label: 'Category',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'strong'
+          },
+          {
+            text: 'weak'
+          },
+        ]
+      },
+      {
+        id: 'purpose',
+        label: 'Purpose',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'status'
+          },
+          {
+            text: 'palette'
+          },
+        ]
+      },
+      {
+        id: 'status',
+        label: 'Status',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'information'
+          },
+          {
+            text: 'warning'
+          },
+          {
+            text: 'critical'
+          },
+          {
+            text: 'neutral'
+          },
+          {
+            text: 'primary'
+          },
+          {
+            text: 'success'
+          },
+        ]
+      },
+      {
+        id: 'palette',
+        label: 'Palette',
+        formGroup: this.form_2,
+        options: [
+          {
+            text: 'teal'
+          },
+          {
+            text: 'orange'
+          },
+          {
+            text: 'red'
+          },
+          {
+            text: 'grey'
+          },
+          {
+            text: 'blue'
+          },
+          {
+            text: 'green'
+          },
+          {
+            text: 'purple'
+          },
+          {
+            text: 'navy'
+          },
+        ]
+      },
+    ]
+  };
+
+  testIndicatorConfig: IAutoTestComponentConfig = {
+    id: 'michael_indicator_tester',
+    formGroup: this.form_2,
+    testFields: this.testerIndicatorFieldConfig,
+  };
 
   constructor(private altLang: LanguageSwitchService) { }
 
@@ -274,11 +432,6 @@ export class MichaelComponent implements OnInit {
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
-        if (param === 'errorIcon') {
-          updatedConfig = {...updatedConfig, ['errorIcon'] : {
-              class: x[param]
-            }}
-        }
         this.qaInputConfig = updatedConfig;
       }
     })
@@ -308,11 +461,6 @@ export class MichaelComponent implements OnInit {
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
-        if (param === 'errorIcon') {
-          updatedConfig = {...updatedConfig, ['errorIcon'] : {
-              class: x[param]
-            }}
-        }
         this.qaCheckboxConfig = updatedConfig;
       }
     })
@@ -342,6 +490,36 @@ export class MichaelComponent implements OnInit {
     this.form_1.patchValue({
       'size': 'large',
       'type': 'routerLink'
+    });
+
+    // Auto tester component configs - Indicator
+    this.testerIndicatorFieldConfig.inputs?.forEach(i => {
+      this.form_2.addControl(i.id, new FormControl());
+    });
+    this.testerIndicatorFieldConfig.selects?.forEach(i => {
+      this.form_2.addControl(i.id, new FormControl());
+    });
+
+    this.form_2.addControl(this.testIndicatorConfig.id, new FormControl());
+    this.form_2.valueChanges.subscribe(x => {
+      let updatedConfig: IIndicatorConfig = {...this.indicatorConfig};
+      for(let param in x){
+        if (x[param] === null) continue;
+        updatedConfig = {...updatedConfig, [param] : x[param]}
+        if (updatedConfig?.type === 'number') {
+          updatedConfig = {...updatedConfig,
+            'label' : Number(updatedConfig?.label)
+          }
+        }
+      }
+      this.indicatorConfig = updatedConfig;
+    })
+    this.form_2.patchValue({
+      'category': 'strong',
+      'type': 'dot',
+      'size': 'large',
+      'purpose': 'status',
+      'palette': 'generic'
     });
   }
 

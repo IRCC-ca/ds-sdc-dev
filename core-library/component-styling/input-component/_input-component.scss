@@ -21,24 +21,6 @@
 }
 
 @mixin size-large() {
-  .input-label {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .input-desc {
-    font-size: 16px;
-  }
-
-  .input-hint {
-    font-size: 16px;
-    margin: 12px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 16px;
-  }
-
   .input-password-field {
     margin-top: 8px;
     height: 54px;
@@ -57,26 +39,6 @@
 }
 
 @mixin size-small() {
-
-  .input-label {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .input-desc {
-    font-size: 14px;
-  }
-
-  .input-hint {
-    font-size: 14px;
-    margin: 8px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 12px;
-  }
-
-
   .input-password-field {
     padding: 10px 44px 10px 12px; 
     margin-top: 4px;
@@ -103,34 +65,6 @@
 
   .input-container {
     user-select: none;
-
-    .input-text {
-      width: 100%;
-      display: grid;
-      position: relative;
-
-      .input-label {
-        display: flex;
-        font-family: 'Lato'
-      }
-      .input-desc {
-        margin: 4px 0px 0px 0px;
-      }
-
-      .input-hint {
-        color: #6F6F71;
-      }
-      .required-field-container {
-        display: flex;
-        .required-star {
-          color: var(--critical-text);
-          font-weight: 400;
-          line-height: 16px;
-          justify-self:flex-start;
-          margin-right: 5px;
-        }
-      }
-    }
   }
 
   @include size.selector(large) {
@@ -179,5 +113,15 @@
 
   .check-error {
     padding: 8px 0;
+  }
+
+  .sr-only {
+      clip: rect(0 0 0 0); 
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap; 
+      width: 1px;
   }
 }

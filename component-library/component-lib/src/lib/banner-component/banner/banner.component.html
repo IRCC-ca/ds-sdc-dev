@@ -35,11 +35,11 @@
         [icon]='cta?.btnConfig?.icon'
         [iconDirection]='cta?.btnConfig?.iconDirection'
         >{{cta.text | translate}}</lib-button>
-        <a *ngIf="cta?.type === 'link'" [routerLink]="cta?.linkConfig  | translate">{{cta.text | translate}}</a>
+        <a *ngIf="cta?.type === 'link'" [routerLink]="cta?.linkConfig  | translate" [attr.aria-label]='cta?.ariaLabel'>{{cta.text | translate}}</a>
       </ng-container>
     </div>
     </div></div>
     <div class="banner-btn">
-      <lib-icon-button size="extraSmall" class="banner-close" *ngIf="config?.dismissible" [config]="iconConfig" (clickEvent)="eventHandler($event)"></lib-icon-button>
+      <lib-icon-button [ariaLabel]="(config?.ariaDissmissible || '') | translate" size="extraSmall" class="banner-close" *ngIf="config?.dismissible" [config]="iconConfig" (clickEvent)="eventHandler($event)"></lib-icon-button>
       </div>
 </div>

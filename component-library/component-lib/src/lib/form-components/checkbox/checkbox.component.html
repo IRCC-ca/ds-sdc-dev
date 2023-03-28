@@ -1,46 +1,44 @@
-<form class="checkbox-container" [formGroup]="config.formGroup" (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
+<form class="checkbox-container" [formGroup]="config.formGroup"
+  (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <div class="checkbox-container" [ngClass]="config.size">
-     <label *ngIf="config.label" class="checkbox-label"
-       [attr.aria-label]="
-         config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-         ? (config.label || '' | translate) + ' ' +
-           (config.helpText || '' | translate) + ' ' +
-           ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
-         : (config.label || '' | translate) + ' ' + (config.helpText || '' | translate)
-       ">
-      <span class="required-field-container" *ngIf="config.required">
-        <lib-icon [class]="'fa-regular fa-asterisk required-star'"></lib-icon>
-        {{(config.label || '') | translate}}
-      </span>
-      <span *ngIf="!config.required">
-        {{(config.label || '') | translate}}
-      </span>
-    </label>
-    <p *ngIf="config?.desc" class="check-desc" [ngClass]="config.size">{{(config.desc || '') | translate}}</p>
-    <p *ngIf="config?.helpText" class="check-hint" [ngClass]="config.size">{{(config.helpText || '') | translate}}</p>
+    <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
       <div class="checkbox">
-        <input id="{{config.id}}" class="check"
+        <input [attr.aria-live]="'off'" (blur)="touched = true" id="{{config.id}}" class="check"
           [ngClass]="{ mixed: config.mixed, focus: !config.disableFocus, error: getErrorState()}"
-          [attr.size]="config.size" type="checkbox" [formControlName]="config.id" />
+          [attr.size]="config.size" type="checkbox" [formControlName]="config.id"
+          [attr.aria-invalid]="formControl?.errors"
+          [attr.aria-label]="
+          formControl?.invalid && touched
+          ? (config.label || '' | translate) + ' ' +
+          (config.desc || '' | translate) + ' ' +
+          (config.helpText || '' | translate) + ' ' +
+          (config.inlineLabel || '' | translate) + ' ' +
+            errorStubText + ' ' + errorAria
+          :
+            (config.label || '' | translate) + ' ' +
+            (config.desc || '' | translate) + ' ' +
+            (config.helpText || '' | translate) + ' ' +
+            (config.inlineLabel || '' | translate)
+        "/>
         <span class="checkmark"></span>
       </div>
-      <label class="label" for="{{config.id}}" [attr.aria-label]="
-          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-          ? (config.inlineLabel || '' | translate) + ' ' +
-            (config.helpText || '' | translate) + ' ' +
-            ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || [])))
-          :
-            (config.inlineLabel || '' | translate) + ' ' + (config.helpText || '' | translate)
-        " [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small', 'makeBold': config.inlineLabelBold}">{{config.inlineLabel || '' | translate}}
+      <label [attr.aria-live]="'off'" class="checkbox-desc-label" [for]="config.id" [id]="config.id + '_label'"
+
+        [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small', 'makeBold': config.inlineLabelBold}">{{config.inlineLabel
+        || '' | translate}}
       </label>
     </div>
-    <div *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid" class="check-error" [ngClass]="{'small': config.size === 'small' }">
-      <ng-container *ngFor="let errors of errorIds; let i = index">
-        <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
-          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
-        </div>
-      </ng-container>
+    <div aria-live="polite">
+      <div *ngIf="(formControl?.touched) && formControl?.invalid" class="check-error"
+        [ngClass]="{'small': config.size === 'small' }">
+        <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
+        <ng-container *ngFor="let errors of errorIds; let i = index">
+          <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
+            <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+          </div>
+        </ng-container>
+      </div>
     </div>
   </div>
 </form>

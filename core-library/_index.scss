@@ -15,6 +15,7 @@
 @use "./tokens/global/selected";
 @use "./tokens/global/text-global";
 @use "./tokens/global/validation";
+@use "./tokens/global/categories";
 @use "./tokens/alert/alert";
 @use "./tokens/partial/focus";
 @use "./tokens/partial/disable";
@@ -30,18 +31,35 @@
 @use "./component-styling/date-picker/date-picker";
 @use "./component-styling/footer/footer";
 @use "./component-styling/icon/icon";
+@use "./component-styling/indicator/indicator";
 @use "./component-styling/button/button" as button-component;
-@use "./component-styling/textarea/textarea" as textarea-component;
 @use "./component-styling/select/select-component" as select-component;
 @use "./component-styling/chips/item" as chip-item;
 @use "./component-styling/chips/list" as chip-list;
 @use "./component-styling/chips/secondary" as chip-secondary;
 @use "./component-styling/error/error" as error-component;
 @use "./component-styling/tabs/tabs" as tabs-component;
+@use "./component-styling/textarea/textarea" as textarea-component;
 @use "./component-styling/progress-tags/progress-tags" as tags-component;
-@use "./component-styling/progress-indicator/progress-indicator" as progressIndicator-component;
+@use "./component-styling/progress-indicator/progress-indicator";
+@use "./component-styling/label/label-component" as label-component;
+@use "./component-styling/spinner/spinner" as spinner-component;
+@use "./component-styling/hidden-nav/hidden-nav";
+@use "./component-styling/language-switch/language-switch";
 @use "./typography/fa-wrapper";
 
+@forward "./theme/theme" as theme-*;
+@forward "./theme/ircc-jl-colors" as palette-*;
+@forward "./typography/fonts" as fonts-*;
+@forward "./typography/typography" as typography-*;
+@forward "./paint/paint" as paint-*;
+@forward "./tokens/link/link" as link-*;
+@forward "./tokens/radio/radio" as radio-*;
+@forward "./tokens/partial/focus" as focus-*;
+@forward "./tokens/partial/disable" as disable-*;
+@forward "./tokens/checkbox/checkbox" as checkbox-*;
+@forward "./tokens/input/input" as input-text-*;
+@forward "./tokens/input/textarea" as input-textarea-*;
 @forward "./theme/theme" as theme-*;
 @forward "./theme/ircc-jl-colors" as palette-*;
 @forward "./typography/fonts" as fonts-*;
@@ -61,6 +79,7 @@
   @include selected.create();
   @include text-global.create();
   @include validation.create();
+  @include categories.create();
   @include paint.create();
   @include fonts.create();
   @include typography.create();
@@ -84,6 +103,7 @@
     @include element(input-component);
     @include element(alert);
     @include element(banner);
+    @include element(breadcrumb);
     @include element(radio-component);
     @include element(icon-button);
     @include element(header-component);
@@ -96,12 +116,16 @@
     @include element(icon);
     @include element(tabs-component);
     @include element(button-component);
-    @include element(textarea-component);
     @include element(error-component);
     @include element(tags-component);
+    @include element(progress-indicator);
     @include element(select-component);
-    @include element(progressIndicator-component);
-    @include element(breadcrumb);
+    @include element(label-component);
+    @include element(hidden-nav);
+    @include element(language-switch);
+    @include element(textarea-component);
+    @include element(indicator);
+    @include element(spinner-component);
   }
 
   @else {
@@ -236,12 +260,24 @@
     @include tags-component.create();
   }
 
+  @else if $key == progress-indicator {
+    @include progress-indicator.create();
+  }
+
   @else if $key == select-component {
     @include select-component.create();
   }
 
-  @else if $key == progressIndicator-component {
-    @include progressIndicator-component.create();
+  @else if $key == label-component {
+    @include label-component.create();
+  }
+
+  @else if $key == hidden-nav {
+    @include hidden-nav.create();
+  }
+
+  @else if $key == language-switch {
+    @include language-switch.create();
   }
 
   @else if $key == textarea-component {
@@ -251,4 +287,13 @@
   @else if $key == breadcrumb {
     @include breadcrumb.create();
   }
+
+  @else if $key == spinner-component {
+    @include spinner-component.create();
+  }
+
+  @else if $key == indicator {
+    @include indicator.create();
+  }
+
 }

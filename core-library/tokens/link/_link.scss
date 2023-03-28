@@ -13,6 +13,7 @@
         --link-text: #{color.mix-token($cta-palette, 700)};
         --link-text-active: #{color.mix-token($cta-palette, 900)};
         --link-text-visited: #{color.mix-token($visited-palette, 700)};
+        --link-cta-text-visited: #{color.mix-token($visited-palette, 800)};
     }
 
     @include theme.dark {
@@ -22,6 +23,7 @@
         --link-text: #{color.mix-token($cta-palette, 400)};
         --link-text-active: #{color.mix-token($cta-palette, 300)};
         --link-text-visited: #{color.mix-token($visited-palette, 500)};
+        --link-cta-text-visited: #{color.mix-token($visited-palette, 800)};
     }
 }
 
