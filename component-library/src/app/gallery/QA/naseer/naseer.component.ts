@@ -51,6 +51,7 @@ export class NaseerComponent implements OnInit {
     label: 'label text',
     desc: 'description text',
     hint: 'hint text',
+    required: true,
     maxYear: 2040,
     minYear: 2010,
     size: 'small',
@@ -68,9 +69,10 @@ export class NaseerComponent implements OnInit {
     desc: 'description text',
     hint: 'hint text',
     size: 'large',
+    required: true,
     unknownDateToggle: {
-      dayUnknown: false,
-      monthUnknown: false,
+      dayUnknown: true,
+      monthUnknown: true,
       yearUnknown: true
     }
   };
