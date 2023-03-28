@@ -35,6 +35,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
 
     &.rounded {
       min-width: 8px;
+      border-radius: 50%;
     }
 
     > svg {
@@ -43,7 +44,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
   }
 
   .number {
-    padding: 6px 9px;
+    padding: 2px 5px;
 
     > span {
       min-width: 14px;
@@ -71,8 +72,9 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     @include typography.fontSet(body, 3);
 
     &.rounded {
-      padding: 2px 8px;
+      padding: 4px 8px;
       min-width: 12px;
+      border-radius: 50%;
     }
 
     > svg {
@@ -81,7 +83,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
   }
 
   .number {
-    padding: 7px 10px;
+    padding: 4px 5px;
 
     > span {
       min-width: 18px;
@@ -189,6 +191,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       display: block;
       overflow: hidden;
       white-space: nowrap;
+      width: 100%;
 
       &.abbr {
         text-overflow: ellipsis;
