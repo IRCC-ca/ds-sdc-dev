@@ -2,12 +2,14 @@
   "ROUTES": {
     "LandingPage": "page-general",
     "LandingPage-alt": "landing-page",
-    "AccessibilityDemo": "démo-d'accessibilité",  
+    "AccessibilityDemo": "démo-d'accessibilité",
     "AccessibilityDemo-alt": "accessibility-demo",
     "AccessibilityDemoPrevious": "précédent",
     "AccessibilityDemoPrevious-alt": "previous",
     "AccessibilityDemoNext": "prochaine",
     "AccessibilityDemoNext-alt": "next",
+    "AccessibilityDemoIntro": "introduction",
+    "AccessibilityDemoIntro-alt": "intro",
     "DevTest": "test-dev",
     "DevTest-alt": "dev-test",
     "HeaderFooter": "en-tête-pied-de-page",
@@ -43,7 +45,7 @@
   "OPPOSITE_LANGUAGE": "English",
 
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
-  
+
   "APP_NAME": "component-library",
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
@@ -56,7 +58,7 @@
       "hide_password_aria-label": "masquer le texte du mot de passe"
     }
   },
-  
+
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
   },
@@ -82,6 +84,7 @@
     "GENERIC_PLACEHOLDER": "Select an option"
   },
   "ACC_DEMO": {
+    "INTRO_BTN": "Commencer la tâche",
     "MODAL_TITLE": "Steps",
     "PREVIOUS_PAGE": {
       "HEADER": "Background information",
@@ -95,7 +98,7 @@
       "DOB_NO_SELECTION_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
       "DOB_REQUIRED":"Please fill in the missing fields to complete your date of birth.",
       "DECLARATION_REQUIRED": "No selection has been made. Please make a selection to complete your declaration",
-      "DECLARATION_CUSTOM": "You must agree to continue" 
+      "DECLARATION_CUSTOM": "You must agree to continue"
     },
     "STEPPER": {
       "STEP1": "Background information",
