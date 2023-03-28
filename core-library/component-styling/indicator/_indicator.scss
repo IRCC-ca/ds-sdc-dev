@@ -68,7 +68,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     padding: 4px 8px;
     border-radius: 15px;
 
-    @include typography.fontSet(body, 2);
+    @include typography.fontSet(body, 3);
 
     &.rounded {
       padding: 2px 8px;
@@ -87,7 +87,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       min-width: 18px;
     }
 
-    @include typography.fontSet(body, 2);
+    @include typography.fontSet(body, 3);
 
     &.num-lg {
       padding: 4px 8px;
