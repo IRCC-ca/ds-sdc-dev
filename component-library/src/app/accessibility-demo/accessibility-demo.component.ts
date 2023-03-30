@@ -426,11 +426,15 @@ export class AccessibilityDemoComponent implements OnInit {
    * Getter for the previous page button
    */
   get getPreviousButtonLink() {
-    return this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoPrevious');
+    const curLang = this.translate.currentLang;
+    let langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
+    return '/' + langKey + '/' + this.translate.instant('ROUTES.AccessibilityDemo') + '/' + this.translate.instant('ROUTES.AccessibilityDemoPrevious');
   }
 
   get getNextButtonLink() {
-    return this.router.url + '/' + this.translate.instant('ROUTES.AccessibilityDemoNext');
+    const curLang = this.translate.currentLang;
+    let langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
+    return '/' + langKey + '/' + this.translate.instant('ROUTES.AccessibilityDemo') + '/' + this.translate.instant('ROUTES.AccessibilityDemoNext');
   }
 
   /**

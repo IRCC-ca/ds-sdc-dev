@@ -1,3 +1,4 @@
-<div class="page-container">
-    <button [routerLink]="getNextButtonLink">{{'ACC_DEMO.ADJACENT_PAGES_BUTTONS.START' | translate}}</button>
-</div>
+<lib-button [routerLink]="getNextButtonLink">{{'ACC_DEMO.ADJACENT_PAGES_BUTTONS.START' | translate}}</lib-button>
+<lib-footer [id]="'footer'">
+  <span>{{ "Version" | translate }}</span>
+</lib-footer>
