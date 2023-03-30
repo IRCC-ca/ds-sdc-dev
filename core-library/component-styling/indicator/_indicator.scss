@@ -35,6 +35,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
 
     &.rounded {
       min-width: 8px;
+      border-radius: 50%;
     }
 
     > svg {
@@ -43,7 +44,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
   }
 
   .number {
-    padding: 6px 9px;
+    padding: 2px 5px;
 
     > span {
       min-width: 14px;
@@ -68,11 +69,12 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     padding: 4px 8px;
     border-radius: 15px;
 
-    @include typography.fontSet(body, 2);
+    @include typography.fontSet(body, 3);
 
     &.rounded {
-      padding: 2px 8px;
+      padding: 4px 8px;
       min-width: 12px;
+      border-radius: 50%;
     }
 
     > svg {
@@ -81,13 +83,13 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
   }
 
   .number {
-    padding: 7px 10px;
+    padding: 4px 5px;
 
     > span {
       min-width: 18px;
     }
 
-    @include typography.fontSet(body, 2);
+    @include typography.fontSet(body, 3);
 
     &.num-lg {
       padding: 4px 8px;
@@ -101,27 +103,31 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
   }
 }
 
-@mixin coloration($palette, $type){
+@mixin coloration($palette, $type) {
   @if $type == validation {
-    &.strong{
-      &.#{$palette}{
+    &.strong {
+      &.#{$palette} {
         background: var(--#{$palette}-background);
       }
     }
-    &.weak{
-      &.#{$palette}{
+
+    &.weak {
+      &.#{$palette} {
         background: var(--#{$palette}-background-weak);
         color: var(--#{$palette}-text);
       }
     }
-  } @if $type == colors {
-    &.strong{
-      &.#{$palette}{
+  }
+
+  @if $type == colors {
+    &.strong {
+      &.#{$palette} {
         background: var(--#{$palette}-category-background);
       }
     }
-    &.weak{
-      &.#{$palette}{
+
+    &.weak {
+      &.#{$palette} {
         background: var(--#{$palette}-category-background-weak);
         color: var(--#{$palette}-category-text);
       }
@@ -132,16 +138,18 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
 @mixin layout {
   display: inline-block;
 
-  .text{
+  .text {
     @each $palette in $status {
       @include coloration($palette, validation);
     }
+
     @each $palette in $color {
       @include coloration($palette, colors);
     }
   }
 
-  .number, .dot{
+  .number,
+  .dot {
     @each $palette in $status {
       @include coloration($palette, validation);
     }
@@ -183,6 +191,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       display: block;
       overflow: hidden;
       white-space: nowrap;
+      width: 100%;
 
       &.abbr {
         text-overflow: ellipsis;
@@ -197,6 +206,11 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     span {
       display: block;
       overflow: hidden;
+    }
+
+    // Force hiding icon when change from text to number
+    > svg {
+      display: none;
     }
   }
 

@@ -508,7 +508,7 @@ export class MichaelComponent implements OnInit {
         updatedConfig = {...updatedConfig, [param] : x[param]}
         if (updatedConfig?.type === 'number') {
           updatedConfig = {...updatedConfig,
-            'label' : Number(updatedConfig?.label)
+            'label' : isNaN(Number(updatedConfig?.label)) ? 1 : Number(updatedConfig?.label)
           }
         }
       }
