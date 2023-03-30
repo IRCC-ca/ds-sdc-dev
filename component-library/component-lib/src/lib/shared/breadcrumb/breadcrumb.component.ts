@@ -41,6 +41,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
     }
   };
   overflowLinks?: ILinkComponentConfig[];
+  normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
   displayOverflow = false;
   constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
 
@@ -82,12 +83,13 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
           prev = link[this.config.type]
         }
         // To be removed
-        if (i > 0 && i < linksLength - 1) {
+        if (i > 0 && i < linksLength - 2) {
           link.overflow = true;
         }
       })
 
       this.overflowLinks = this.config?.links.filter(link => link.overflow);
+      this.normalLinks = this.config?.links.filter(link => !link.overflow);
     }
   }
 
