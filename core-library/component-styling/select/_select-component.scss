@@ -97,6 +97,8 @@ $selectors: 'lib-select';
 	}
 
 	.custom-chevron {
+		position: relative;
+		z-index: 10;
 		cursor: pointer;
 		pointer-events: none;
 		font-weight: 300;
@@ -116,6 +118,12 @@ $selectors: 'lib-select';
 
 	.select-option {
 		color: black;
+	}
+	
+	.select-clicked {
+		.custom-chevron {
+			transform: rotateZ(180deg);
+		  }
 	}
 
 	select:invalid,
