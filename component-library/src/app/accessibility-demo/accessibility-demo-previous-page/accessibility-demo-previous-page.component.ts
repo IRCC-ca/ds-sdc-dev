@@ -1,7 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { IIconButtonComponentConfig, IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
-import { AccessbilityDemoFormStateService } from '../accessbility-demo-form-state.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
