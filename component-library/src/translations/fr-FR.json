@@ -90,65 +90,69 @@
     "GENERIC_PLACEHOLDER": "Select an option"
   },
   "ACC_DEMO": {
-    "MODAL_TITLE": "Steps",
+    "INTRO_BTN": "Commencer la tâche",
+    "MODAL_TITLE": "Étapes",
+    "HAMBURGER_ARIA": "Ouvrir l'indicateur de progression",
     "PREVIOUS_PAGE": {
-      "HEADER": "Background information",
-      "CONTENT": "This page is not part of the prototype. Please use the button below to return to the previous screen."
+      "HEADER": "Renseignements généraux",
+      "CONTENT": "Cette page ne fait pas partie du prototype. Veuillez utiliser le bouton ci-dessous pour revenir à l'écran précédent."
     },
-    "NEXT_PAGE": "This is an example of a next page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
+    "NEXT_PAGE": "Il s'agit d'un exemple de page suivante - elle est simplement ici à des fins de démonstration et n'est pas configurée pour une accessibilité correcte. Notez la mise à jour de l'indicateur de progression en haut de la page. Vous pouvez naviguer à l'aide de l'indicateur de progression",
     "ERRORS": {
-      "REQUIRED": "This field is required.",
-      "FAMILY_NAME_REQUIRED": "This field is blank. Please enter a family name",
-      "SELECTS_RADIO_REQUIRED": "No selection has been made. Please select an option",
-      "DOB_NO_SELECTION_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
-      "DOB_REQUIRED":"Please fill in the missing fields to complete your date of birth.",
-      "DECLARATION_REQUIRED": "No selection has been made. Please make a selection to complete your declaration",
-      "DECLARATION_CUSTOM": "You must agree to continue" 
+      "REQUIRED": "Ce champ est obligatoire.",
+      "FAMILY_NAME_REQUIRED": "Ce champ est vide. Veuillez entrer un nom de famille.",
+      "SELECTS_RADIO_REQUIRED": "Aucune sélection n'a été effectuée. Veuillez sélectionner une option.",
+      "DOB_NO_SELECTION_REQUIRED": "Aucune sélection n'a été effectuée. Veuillez remplir les champs pour compléter votre date de naissance.",
+      "DOB_REQUIRED": "Veuillez remplir les champs manquants pour compléter votre date de naissance.",
+      "DECLARATION_REQUIRED": "Aucune sélection n'a été effectuée. Veuillez faire une sélection pour compléter votre déclaration.",
+      "DECLARATION_CUSTOM": "Vous devez accepter pour continuer."
     },
     "STEPPER": {
-      "STEP1": "Background information",
-      "STEP2": "Personal information",
-      "STEP3": "Work information",
-      "STEP4": "Review & submit"
+      "STEP1": "Renseignements généraux",
+      "STEP2": "Renseignements personnels",
+      "STEP3": "Renseignements sur le travail",
+      "STEP4": "Examen et soumission"
     },
     "PERSONAL_INFO": {
       "ERROR_BANNER": {
-        "TITLE": "Missing information",
-        "CONTENT": "There are unresolved errors below."
+        "TITLE": "Information manquante",
+        "CONTENT": "Il y a des erreurs non résolues ci-dessous."
       },
-      "H1": "Personal information",
-      "BODY": "Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
+      "H1": "Renseignements personnels",
+      "BODY": "Entrez les informations correctes dans les espaces ci-dessous telles qu'elles apparaissent sur votre passeport, vos documents de voyage ou d'identité.",
       "FAMILY_NAME_INPUT": {
-        "LABEL": "Family name (required)",
-        "LABEL_INFO_BUTTON_ARIA": "more information",
-        "DESC": "This is your surname or last name",
-        "BANNER": "If you do not have a family name, provide all your given names in the family name field and leave the given names field blank."
+        "LABEL": "Nom de famille (obligatoire)",
+        "LABEL_INFO_BUTTON_ARIA": "plus d'informations",
+        "DESC": "Ceci est votre nom de famille ou votre nom de famille",
+        "BANNER": "Si vous n'avez pas de nom de famille, fournissez tous vos prénoms dans le champ du nom de famille et laissez le champ des prénoms vide.",
+        "BANNER_CLOSE": "Bannière d'information sur le nom de famille. Fermer"
       },
       "GIVEN_NAME_INPUT": {
-        "LABEL": "Given name",
-        "DESC": "This is your first name and middle name, if applicable"
+        "LABEL": "Prénom",
+        "DESC": "Ceci est votre prénom et votre deuxième prénom, le cas échéant"
       },
       "SEX_AT_BIRTH_RADIO": {
-        "LABEL": "Sex at birth (required)",
-        "LABEL_INFO_BUTTON_ARIA": "more information",
-        "FEMALE": "F - Female",
-        "MALE": "M - Male",
-        "OTHER": "X - Another sex",
-        "BANNER": "<p>This question is asked for identity verification purposes only. <br><br>Sex refers to your status at birth, and may not reflect your precise gender identity.</p>"
+        "LABEL": "Sexe à la naissance (obligatoire)",
+        "LABEL_INFO_BUTTON_ARIA": "plus d'informations",
+        "FEMALE": "F - Femme",
+        "MALE": "M - Masculin",
+        "OTHER": "X - Autre sexe",
+        "BANNER": "<p>Cette question est posée à des fins de vérification d'identité uniquement. <br><br>Le sexe fait référence à votre état à la naissance et peut ne pas refléter votre identité de genre précise.</p>",
+        "BANNER_CLOSE": "Bannière d'information sur le sexe à la naissance. Fermer"
       },
       "DATE_OF_BIRTH": {
-        "LABEL": "Date de naissance"
+        "LABEL": "Date de naissance (obligatoire)"
       },
       "COUNTRY_OF_BIRTH": {
-        "LABEL": "Country/territory of birth (required)",
+        "LABEL": "Pays/territoire de naissance (obligatoire)",
         "OPTIONS": {
           "CANADA": "Canada",
-          "USA": "United States of America",
-          "MEXICO": "Mexico"
+          "USA": "États-Unis d'Amérique",
+          "MEXICO": "Mexique"
         }
       },
       "CITY_OF_BIRTH": {
-        "LABEL": "City or town of birth (required)",
+        "LABEL": "Ville ou village de naissance (obligatoire)",
         "OPTIONS": {
           "CANADA": {
             "OTTAWA": "Ottawa",
@@ -168,15 +172,19 @@
         }
       },
       "DECLARATION": {
-        "INLINE_LABEL": "I declare that the above information is true and accurate.",
-        "LABEL": "Declaration (required)"
+        "INLINE_LABEL": "Je déclare que les informations ci-dessus sont vraies et exactes.",
+        "LABEL": "Déclaration (obligatoire)"
       }
     },
     "BUTTONS": {
-      "PREVIOUS": "Previous step",
-      "NEXT": "Save and continue",
-      "PREVIOUS_PAGE_NEXT": "Next",
+      "PREVIOUS": "Étape précédente",
+      "NEXT": "Enregistrer et continuer",
+      "PREVIOUS_PAGE_NEXT": "Suivant",
       "HAMBURGER": "Menu"
+    },
+    "ADJACENT_PAGES_BUTTONS": {
+      "START": "Commencer",
+      "FINISHED": "Retour"
     }
   }
 }
