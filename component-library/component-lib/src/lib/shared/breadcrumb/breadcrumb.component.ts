@@ -40,6 +40,8 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
       color: 'var(--text-primary)'
     }
   };
+  overflowLinks?: ILinkComponentConfig[];
+  displayOverflow = false;
   constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
 
   ngOnInit() {
@@ -70,6 +72,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
     this.baseUrl = this.standalone.getBaseUrl('', this.config.baseUrlKey);
     if (this.config.links && this.config.links.length > 1) {
       let prev: string | undefined;
+      const linksLength = this.config.links.length;
       this.config?.links.forEach((link, i) => {
         if (i === 0) {
           link[this.config.type] = this.baseUrl;
@@ -78,7 +81,17 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
           link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/'
           prev = link[this.config.type]
         }
+        // To be removed
+        if (i > 0 && i < linksLength - 1) {
+          link.overflow = true;
+        }
       })
+
+      this.overflowLinks = this.config?.links.filter(link => link.overflow);
     }
+  }
+
+  flipOverflow(buttonId: string) {
+    this.displayOverflow = !this.displayOverflow;
   }
 }

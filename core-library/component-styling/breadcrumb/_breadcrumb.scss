@@ -17,6 +17,7 @@
 
 @mixin create {
   @include selector() {
+    --breadcrumb-neutral-grey: #{color.mix-token(neutral, 500)};
     @include layout();
   }
 }
@@ -95,6 +96,7 @@
 
 @mixin layout {
   padding: 6px 0;
+  position: relative;
 
   lib-breadcrumb-link {
     border-radius: 4px;
@@ -106,6 +108,12 @@
 
     &.breadcrumb-item {
       padding: 4px 8px;
+    }
+
+    &.breadcrumb-overflow {
+      display: block;
+      margin-right: 0;
+      padding: 8px 0;
     }
 
     a {
@@ -144,7 +152,7 @@
   }
 
   svg.fa-chevron-right {
-    color: color.mix-token(neutral, 500);
+    color: var(--breadcrumb-neutral-grey);
     position: relative;
   }
 
@@ -169,6 +177,19 @@
   lib-icon-button.elipsis-icon {
     display: inline-block;
     position: relative;
+  }
+
+  div.overflow {
+    max-width: 197px;
+    border: 1px solid var(--breadcrumb-neutral-grey);
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background: var(--surface1);
+    z-index: 99;
+    left: -8px;
+    top: 44px;
+    padding: 8px 16px;
+    position: absolute;
   }
 
   @include size.selector(small) {
