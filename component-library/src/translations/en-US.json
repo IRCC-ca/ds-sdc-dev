@@ -176,6 +176,10 @@
       "NEXT": "Save and continue",
       "PREVIOUS_PAGE_NEXT": "Next",
       "HAMBURGER": "Menu"
+    },
+    "ADJACENT_PAGES_BUTTONS": {
+      "START": "Start",
+      "FINISHED": "Return to start"
     }
   }
 }

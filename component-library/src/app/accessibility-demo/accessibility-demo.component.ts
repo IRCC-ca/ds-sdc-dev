@@ -63,18 +63,18 @@ export class AccessibilityDemoComponent implements OnInit {
   hiddenNavConfig = {
     id: 'hidden_nav',
     skipLinks: [
-    {
-      title: 'Skip to main content',
-      href: 'ds-cont'
-    },
-    {
-      title: 'Skip to form',
-      href: 'ds-form'
-    },
-    {
-      title: 'Skip to footer',
-      href: 'ds-footer'
-    }
+      {
+        title: 'Skip to main content',
+        href: 'ds-cont'
+      },
+      {
+        title: 'Skip to form',
+        href: 'ds-form'
+      },
+      {
+        title: 'Skip to footer',
+        href: 'ds-footer'
+      }
     ]
   }
 
@@ -253,50 +253,32 @@ export class AccessibilityDemoComponent implements OnInit {
   };
 
   allowedNavItemIds: string[] = ['progress_indicator_step_0', 'progress_indicator_step_1', 'hamburger_dialog_x_button'];
+  currentBaseUrl = '';
+  baseUrlKey = 'ROUTES.AccessibilityDemo';
+  language = '';
+
+
 
   constructor(
     private translate: TranslateService,
     private altLang: LanguageSwitchService,
-    private languageSwitchButton: LanguageSwitchButtonService,
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
     private labelButton: LabelButtonService,
     private elementRef: ElementRef
   ) { }
 
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.innerWidth = window.innerWidth;
-    this.updateProgressBarOrientation();
-  }
-
   ngOnInit() {
+    this.altLang.setAltLangLink('AccessibilityDemo-alt');
+    this.setBaseUrl();
+    this.getLanguage();
+
     //Set orientation of the progress bar and get initial window width
     this.innerWidth = window.innerWidth;
-    this.updateProgressBarOrientation();
 
     //if the page has moved to this one via a back or forward browser button, this detects the move and updates the page.
     this.progressIndicator.updateSelected(1);
-    this.routerSub = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.progressIndicator.updateSelected(1);
-      }
-    });
 
-    this.altLang.setAltLangLink('AccessibilityDemo-alt');
-    this.altLang.getAltLangLink().subscribe((altLang: string) => {
-      this.altPathKey = altLang;
-      this.setAltLangURL();
-      console.log(this.altLangURL);
-    });
-    this.languageSwitchButton.languageClickObs$.subscribe((response) => {
-      console.log(response);
-      if (response) this.changeLang(); //Has to ignore the first response.
-    });
-
-    this.progressIndicatorSub = this.progressIndicator.progressIndicatorObs$.subscribe((response) => {
-      this.progressIndicatorConfig = response;
-    });
 
     //Handle label button presses
     this.labelButton.buttonPress(''); //reset the button BehaviourSubject
@@ -358,69 +340,7 @@ export class AccessibilityDemoComponent implements OnInit {
     this.cityOfBirthSelectConfig.options = temp;
   }
 
-  /**
-   * Update the progress indicator status (unlock/lock the next element)
-   */
-  updateProgressIndicator() {
-    if (
-      this.progressIndicatorConfig.steps &&
-      (this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked' ||
-        this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted')
-    ) {
-      let tempConfig = this.progressIndicatorConfig;
-      if (tempConfig.steps) {
-        if (this.form.valid) {
-          tempConfig.steps[2].tagConfig.type = 'notStarted';
-          this.progressIndicator.updateProgressIndicator(tempConfig);
-        } else {
-          tempConfig.steps[2].tagConfig.type = 'locked';
-          this.progressIndicator.updateProgressIndicator(tempConfig);
-        }
-      }
-    }
-  }
 
-/**
- * Update the orientation of the progress bar
- */
-  updateProgressBarOrientation() {
-    if (this.innerWidth < 980 && ((this.progressIndicatorConfig.orientation === 'horizontal') || (this.progressIndicatorConfig.orientation === undefined))) {
-      this.progressIndicator.updateOrientation('vertical');
-      if (this.hamburgerMenuState === undefined) { this.hamburgerMenuState = false; }
-    } else if (this.innerWidth > 980 && ((this.progressIndicatorConfig.orientation === 'vertical') || (this.progressIndicatorConfig.orientation === undefined))) {
-      this.progressIndicator.updateOrientation('horizontal');
-      this.hamburgerMenuState = undefined;
-    }
-  }
-
-  /**
-   * Event handler for progress tabs button events
-   * @param event number (index of tab pressed)
-   */
-  progressTabButtonEvent(event: Event) {
-    const eventInt = parseInt(event.toString());
-    if (this.progressIndicatorConfig.selected !== undefined) {
-      if (eventInt !== this.progressIndicatorConfig.selected) {
-        switch (eventInt) {
-          case 0:
-            if (this.router.url !== this.getPreviousButtonLink) this.router.navigateByUrl(this.getPreviousButtonLink);
-            break;
-
-          case 1:
-            // console.log(this.router.url, this.getMainPageLink);
-            if (this.router.url !== this.getMainPageLink) this.router.navigateByUrl(this.getMainPageLink);
-            break;
-
-          case 2:
-            if (this.router.url !== this.getNextButtonLink) this.router.navigateByUrl(this.getNextButtonLink);
-            break;
-
-          default:
-            break;
-        }
-      }
-    }
-  }
 
   /**
    * Event handler for icon button press events
@@ -444,26 +364,24 @@ export class AccessibilityDemoComponent implements OnInit {
   /**
    * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
    */
-    navButton() {
-      this.nextClicked = true;
-      this.form.markAllAsTouched();
-      this.updateProgressIndicator();
-      if (!this.form.valid) {
-        this.showErrorBanner = true;
-        this.form.valueChanges.subscribe(() => {
-          this.showErrorBanner = !this.form.valid;
-          this.updateProgressIndicator();
-        });
-      } else {
-        let tempConfig = this.progressIndicatorConfig;
-        if (tempConfig.steps) {
-          tempConfig.steps[1].tagConfig.type = 'success';
-          tempConfig.steps[2].tagConfig.type = 'primary';
-        }
-        this.progressIndicator.updateProgressIndicator(tempConfig);
-        this.router.navigateByUrl(this.getNextButtonLink);
-      } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
-    }
+  navButton() {
+    this.nextClicked = true;
+    this.form.markAllAsTouched();
+    if (!this.form.valid) {
+      this.showErrorBanner = true;
+      this.form.valueChanges.subscribe(() => {
+        this.showErrorBanner = !this.form.valid;
+      });
+    } else {
+      let tempConfig = this.progressIndicatorConfig;
+      if (tempConfig.steps) {
+        tempConfig.steps[1].tagConfig.type = 'success';
+        tempConfig.steps[2].tagConfig.type = 'primary';
+      }
+      this.progressIndicator.updateProgressIndicator(tempConfig);
+      this.router.navigateByUrl(this.getNextButtonLink);
+    } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
+  }
 
   /**
    * Event handler for banner close button events
@@ -491,10 +409,11 @@ export class AccessibilityDemoComponent implements OnInit {
     console.log(this.hamburgerMenuState)
     if (this.hamburgerMenuState !== undefined && !this.hamburgerMenuState) {
       this.hamburgerMenuState = true;
-      setTimeout(() => {const focus = document.getElementById('hamburger_dialog_x_button');
-      focus?.focus();
-      console.log(focus)
-    }, 50);
+      setTimeout(() => {
+        const focus = document.getElementById('hamburger_dialog_x_button');
+        focus?.focus();
+        console.log(focus)
+      }, 50);
     } else {
       this.hamburgerMenuState = false;
     }
@@ -524,54 +443,36 @@ export class AccessibilityDemoComponent implements OnInit {
     return '/' + lang + '/' + this.translate.instant('ROUTES.AccessibilityDemo');
   }
 
-
-  /*************** LANGUAGE FUNCTIONS ********************/
-
-  /** Toggles language without reloading component */
-  //This currently uses both 'en' and 'en-US' language values, sine in some cases, en is provided in initial load
-  changeLang() {
+  /**
+ * Use HREF to get the URL. This is used as router.url does not update on language change.
+ * @returns the current working url as a string
+ */
+  getURL() {
     const curLang = this.translate.currentLang;
-    this.translate.use(curLang === 'en-US' || curLang === 'en' ? 'fr-FR' : 'en-US');
-    // Changes the html lang attribute
-    // console.log((curLang === "en-US") || (curLang === 'en') ? 'fr' : 'en');
-    document.documentElement.lang = curLang === 'en-US' || curLang === 'en' ? 'fr' : 'en';
-    // Pushes page into history to allow the use of the 'Back' button on browser
-    window.history.pushState('', '', this.altLangURL);
-    this.setAltLangURL();
-    console.log(this.altLangURL, this.altPathKey);
-  }
-
-  //Alt-language url key must be in the corresponding language, but have the french work
-  setAltLangURL() {
-    console.log(this.translate.currentLang);
-    this.altLangURL = this.translate.currentLang === 'en-US' || this.translate.currentLang === 'en' ? 'fr' : 'en';
-    this.getAltLanguageValues();
-
-    if (this.altPathKey) this.altLangURL += '/' + this.translate.instant('ROUTES.' + this.altPathKey);
+    let langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
+    const i = window.location.href.slice(window.location.href.indexOf(langKey), window.location.href.length);
+    return i;
   }
 
   /**
-   * Generates an alt-language path based on the current url and the translate values. Currently not the best
-   * code in the world and should likely be refactored.
-   */
-  getAltLanguageValues() {
-    const urlParts = this.router.url.split('/');
-    const translateIndex = Object.keys(this.translate.translations).indexOf(urlParts[1]);
-    const translateValues = (Object.values(this.translate.translations)[translateIndex] as any).ROUTES;
-    let translatedURLPieces: string[] = [];
-    urlParts.forEach((val: string, index: number) => {
-      if (index > 1) {
-        let i = Object.values(translateValues as any).indexOf(val);
-        translatedURLPieces.push(Object.keys(translateValues as any)[i]);
+ * Set the current base url. TODO: Consider moving this into a service for easy re-use elsewhere. 
+ */
+  setBaseUrl() {
+    this.currentBaseUrl = '';
+    let i = this.getURL().split('/');
+    i.forEach((j: string, index: number) => {
+      if (index !== (i.length - 1)) {
+        this.currentBaseUrl += ('/' + j);
+      } else if (j === this.translate.instant(this.baseUrlKey || '')) {
+        this.currentBaseUrl += ('/' + j);
       }
     });
-    translatedURLPieces.forEach((piece) => {
-      //Operates on the assumption that the alt route is the same as the route, but with '-alt' appended
-      let k = this.translate.instant('ROUTES.' + piece + '-alt');
-      if (this.translate.instant('ROUTES.' + this.altPathKey) !== k) {
-        this.altLangURL += '/' + k;
-      }
-    });
+    if (this.currentBaseUrl[this.currentBaseUrl.length] !== '/') this.currentBaseUrl += '/';
+  }
+
+  getLanguage() {
+    const curLang = this.translate.currentLang;
+    this.language = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
   }
 
   ngOnDestroy() {
@@ -579,6 +480,8 @@ export class AccessibilityDemoComponent implements OnInit {
     this.progressIndicatorSub?.unsubscribe();
   }
 }
+
+
 
 /**
  * Compares two items and returns either -1 or 1, depending on which should come first. Used for .sort()
@@ -589,22 +492,3 @@ export class AccessibilityDemoComponent implements OnInit {
 export function compare(a: number | string, b: number | string, isAsc: boolean) {
   return isAsc ? (a < b ? 1 : -1) : a > b ? 1 : -1;
 }
-
-// /** Given an element, scroll to it with an optional delay */
-// export function scrollToElement(element: HTMLElement | null, delay: boolean, smooth: boolean = true, focusTo: boolean = false) {
-//   if (element) { // Timeout ensures scroll occurs after the view is updated
-//     if (delay) {
-//       setTimeout(() => { element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' }); if (focusTo) { element.focus(); } }, 2);
-//     } else {
-//       element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
-//       if (focusTo) { element.focus(); }
-//     }
-//   }
-// }
-
-// /** Finds an element by ID (platformID is used to find document in universal apps) * If document and the elementID are available, scroll to the element */
-// export function scrollToElementByID(elementID: string, delay: boolean, smooth: boolean = true, focusTo: boolean = false) {
-//   if (elementID) {
-//     scrollToElement(document.getElementById(elementID), delay, smooth, focusTo);
-//   }
-// }

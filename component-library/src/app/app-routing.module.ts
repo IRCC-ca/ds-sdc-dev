@@ -4,24 +4,12 @@ import { Shell } from './shell/shell.service';
 
 const routes: Routes = [
 
-  {
-    path: 'en',
-    children: [
-      { path: 'accessibility-demo', loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
-    ]
-  },
-  {
-    path: 'fr',
-    children: [
-      { path: "démo-d'accessibilité", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
-    ]
-  },
-
   Shell.childRoutes([
     {
       path: 'en',
       children: [
         { path: 'landing-page', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
+        { path: 'accessibility-demo', loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
         { path: '**', redirectTo: 'landing-page' }
       ]
     },
@@ -29,6 +17,7 @@ const routes: Routes = [
       path: 'fr',
       children: [
         { path: 'page-general', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
+        { path: "démo-d'accessibilité", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
         { path: '**', redirectTo: 'page-general' }
       ]
     },
