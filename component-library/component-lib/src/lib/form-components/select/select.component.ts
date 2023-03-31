@@ -46,7 +46,8 @@ export interface ISelectOptionsConfig {
 export class SelectComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorIds: IErrorIDs[] = [];
-  activiatedSelect: boolean = false
+  activiatedSelect: boolean = false;
+  rotateChevron: boolean = false;
 
   @Input() config: ISelectConfig = {
     id: '',
@@ -87,6 +88,15 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   valueChange($event: any) {
     this.activiatedSelect = true;
+  }
+
+  onClicked() {
+    this.rotateChevron = !this.rotateChevron;
+  }
+
+  onBlur() {
+    this.touched = true
+    this.rotateChevron = false;
   }
 
   ngOnInit() {
