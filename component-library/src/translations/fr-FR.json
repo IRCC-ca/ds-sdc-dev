@@ -2,12 +2,14 @@
   "ROUTES": {
     "LandingPage": "page-general",
     "LandingPage-alt": "landing-page",
-    "AccessibilityDemo": "démo-d'accessibilité",  
+    "AccessibilityDemo": "démo-d'accessibilité",
     "AccessibilityDemo-alt": "accessibility-demo",
     "AccessibilityDemoPrevious": "précédent",
     "AccessibilityDemoPrevious-alt": "previous",
     "AccessibilityDemoNext": "prochaine",
     "AccessibilityDemoNext-alt": "next",
+    "AccessibilityDemoIntro": "introduction",
+    "AccessibilityDemoIntro-alt": "intro",
     "DevTest": "test-dev",
     "DevTest-alt": "dev-test",
     "HeaderFooter": "en-tête-pied-de-page",
@@ -28,7 +30,6 @@
     "michael": "michael-fr",
     "michael-alt": "michael-en"
   },
-
   "BUTTONS": {
     "Back": "Retour",
     "FormInputs": "Components formulaire",
@@ -37,21 +38,16 @@
     "DevTestPage": "Page de teste",
     "QATesting": "Page de teste pour AQ",
     "HomeURLOverride": "/fr/page-general"
-
   },
-
   "OPPOSITE_LANGUAGE": "English",
-
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
-  
   "APP_NAME": "component-library",
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
   "Home": "Accueil",
   "Version": "Version",
-
   "Input_Component": {
-    "Password-icon" : {
+    "Password-icon": {
       "show_password_aria-label": "afficher le texte du mot de passe",
       "hide_password_aria-label": "masquer le texte du mot de passe"
     }
@@ -66,7 +62,6 @@
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
   },
-
   "QA": {
     "header": "Page de AQ",
     "michael": "Michael",
@@ -97,8 +92,7 @@
       "HEADER": "Renseignements généraux",
       "CONTENT": "Cette page ne fait pas partie du prototype. Veuillez utiliser le bouton ci-dessous pour revenir à l'écran précédent."
     },
-    "NEXT_PAGE": "Il s'agit d'un exemple de page suivante - elle est simplement ici à des fins de démonstration et n'est pas configurée pour une accessibilité correcte. Notez la mise à jour de l'indicateur de progression en haut de la page. Vous pouvez naviguer à l'aide de l'indicateur de progression",
-    "NEXT_PAGE_COMPLETE": "Tâche accomplie!",
+    "NEXT_PAGE": "This is an example of a next page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
     "ERRORS": {
       "REQUIRED": "Ce champ est obligatoire.",
       "FAMILY_NAME_REQUIRED": "Ce champ est vide. Veuillez entrer un nom de famille.",

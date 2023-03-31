@@ -8,6 +8,8 @@
     "AccessibilityDemoPrevious-alt": "précédent",
     "AccessibilityDemoNext": "next",
     "AccessibilityDemoNext-alt": "prochaine",
+    "AccessibilityDemoIntro": "intro",
+    "AccessibilityDemoIntro-alt": "introduction",
     "DevTest": "dev-test",
     "DevTest-alt": "test-dev",
     "HeaderFooter": "header-footer",
@@ -86,6 +88,7 @@
     "GENERIC_PLACEHOLDER": "Select an option"
   },
   "ACC_DEMO": {
+    "INTRO_BTN": "Begin task",
     "MODAL_TITLE": "Steps",
     "HAMBURGER_ARIA": "Open the progress indicator",
     "PREVIOUS_PAGE": {
@@ -101,7 +104,7 @@
       "DOB_NO_SELECTION_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
       "DOB_REQUIRED":"Please fill in the missing fields to complete your date of birth.",
       "DECLARATION_REQUIRED": "No selection has been made. Please make a selection to complete your declaration",
-      "DECLARATION_CUSTOM": "You must agree to continue" 
+      "DECLARATION_CUSTOM": "You must agree to continue"
     },
     "STEPPER": {
       "STEP1": "Background information",
