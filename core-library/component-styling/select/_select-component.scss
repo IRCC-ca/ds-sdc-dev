@@ -26,6 +26,10 @@ $selectors: 'lib-select';
 		height: 52px;
 	}
 
+	.custom-chevron {
+		font-size: 20px;
+	}
+
 	.select-placeholder {
 		@include typography.fontSet(body, 2);
 		color: var(--text-placeholder)
@@ -45,6 +49,10 @@ $selectors: 'lib-select';
 		padding: 10px 12px;
 		font-size: 16px;
 		height: 40px;
+	}
+
+	.custom-chevron {
+		font-size: 16px;
 	}
 
 	.select-placeholder {
@@ -97,10 +105,11 @@ $selectors: 'lib-select';
 	}
 
 	.custom-chevron {
+		position: relative;
+		z-index: 10;
 		cursor: pointer;
 		pointer-events: none;
 		font-weight: 300;
-		font-size: 20px;
 		color: var(--text);
 		margin-left: -31px;
 	}
@@ -116,6 +125,12 @@ $selectors: 'lib-select';
 
 	.select-option {
 		color: black;
+	}
+	
+	.select-clicked {
+		.custom-chevron {
+			transform: rotateZ(180deg);
+		  }
 	}
 
 	select:invalid,
