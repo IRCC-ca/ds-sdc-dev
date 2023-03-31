@@ -8,22 +8,20 @@ const routes: Routes = [
     {
       path: 'en',
       children: [
-        { path: 'landing-page', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
         { path: 'accessibility-demo', loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
-        { path: '**', redirectTo: 'landing-page' }
+        { path: '**', redirectTo: 'accessibility-demo/previous' }
       ]
     },
     {
       path: 'fr',
       children: [
-        { path: 'page-general', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
         { path: "démo-d'accessibilité", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
-        { path: '**', redirectTo: 'page-general' }
+        { path: '**', redirectTo: "démo-d'accessibilité/précédent" }
       ]
     },
     //Must be last, as it contains the fallback route when no prior route is matched
     //TODO: Check this
-    { path: '**', redirectTo: '/en/landing-page' }
+    { path: '**', redirectTo: '/en/accessibility-demo/previous' }
   ])
 ];
 

@@ -98,6 +98,7 @@
       "CONTENT": "Cette page ne fait pas partie du prototype. Veuillez utiliser le bouton ci-dessous pour revenir à l'écran précédent."
     },
     "NEXT_PAGE": "Il s'agit d'un exemple de page suivante - elle est simplement ici à des fins de démonstration et n'est pas configurée pour une accessibilité correcte. Notez la mise à jour de l'indicateur de progression en haut de la page. Vous pouvez naviguer à l'aide de l'indicateur de progression",
+    "NEXT_PAGE_COMPLETE": "Tâche accomplie!",
     "ERRORS": {
       "REQUIRED": "Ce champ est obligatoire.",
       "FAMILY_NAME_REQUIRED": "Ce champ est vide. Veuillez entrer un nom de famille.",

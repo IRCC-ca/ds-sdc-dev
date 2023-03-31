@@ -1,6 +1,5 @@
-<lib-hidden-nav [config]="hiddenNavConfig"></lib-hidden-nav>
 <div class="page_container" [ngClass]="{'no_scroll' : hamburgerMenuState}">
-    <div  id="ds-cont" aria-live="polite" class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
+    <div id="ds-cont" aria-live="polite" class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
         <div class="error_banner" *ngIf="showErrorBanner">
             <lib-banner [config]="errorBannerConfig"></lib-banner>
         </div>
@@ -42,10 +41,11 @@
             <div class="declaration_checkbox_container">
                 <lib-checkbox [config]="declarationCheckboxConfig"></lib-checkbox>
             </div>
-            <div class="buttons_container">
+            <div class="buttons_container" tabindex="-1">
+                <!-- TODO: Double Tab on btn1 -->
                 <div class="btn1">
                     <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'"
-                        [routerLink]="getPreviousButtonLink">
+                        tabindex="-1" [routerLink]="getPreviousButtonLink">
                         {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
                 </div>
                 <div class="btn2">
