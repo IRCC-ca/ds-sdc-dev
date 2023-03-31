@@ -23,6 +23,7 @@
 @mixin size-large() {
   .label {
     @include typography.fontSet(heading, 5);
+    font-weight: 700;
   }
 
   .input-desc {
@@ -57,6 +58,7 @@
 
   .label {
     @include typography.fontSet(heading, 6);
+    font-family: 700;
   }
 
   .input-desc {
