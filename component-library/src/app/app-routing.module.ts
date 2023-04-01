@@ -9,19 +9,19 @@ const routes: Routes = [
       path: 'en',
       children: [
         { path: 'accessibility-demo', loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
-        { path: '**', redirectTo: 'accessibility-demo/previous' }
+        { path: '**', redirectTo: 'accessibility-demo/begin' }
       ]
     },
     {
       path: 'fr',
       children: [
         { path: "démo-d'accessibilité", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
-        { path: '**', redirectTo: "démo-d'accessibilité/précédent" }
+        { path: '**', redirectTo: "démo-d'accessibilité/commencer" }
       ]
     },
     //Must be last, as it contains the fallback route when no prior route is matched
     //TODO: Check this
-    { path: '**', redirectTo: '/en/accessibility-demo/previous' }
+    { path: '**', redirectTo: '/en/accessibility-demo/begin' }
   ])
 ];
 

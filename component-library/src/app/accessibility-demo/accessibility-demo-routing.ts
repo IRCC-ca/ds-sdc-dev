@@ -9,10 +9,10 @@ const routes: Routes = [
   { path: '', component: AccessibilityDemoComponent },
   { path: 'intro', component: AccessibilityDemoIntroPageComponent}, //English
   { path: 'introduction', component: AccessibilityDemoIntroPageComponent}, //French
-  { path: 'previous', component: AccessibilityDemoPreviousPageComponent }, //English
-  { path: 'précédent', component: AccessibilityDemoPreviousPageComponent }, //French
-  { path: 'next', component: AccessibilityDemoNextPageComponent }, //English
-  { path: 'prochaine', component: AccessibilityDemoNextPageComponent }, //French
+  { path: 'begin', component: AccessibilityDemoPreviousPageComponent }, //English
+  { path: 'commencer', component: AccessibilityDemoPreviousPageComponent }, //French
+  { path: 'completed', component: AccessibilityDemoNextPageComponent }, //English
+  { path: 'complete', component: AccessibilityDemoNextPageComponent }, //French
 ];
 
 @NgModule({
