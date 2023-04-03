@@ -1,12 +1,15 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IBannerConfig, ICheckBoxComponentConfig, IDatePickerConfig, IDatePickerErrorMessages, IIconButtonComponentConfig, IInputComponentConfig, IProgressIndicatorConfig, IRadioInputComponentConfig, ISelectConfig, ISelectOptionsConfig, LabelButtonService, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { requiredTrueValidator } from '@app/@shared/shared-functions/shared-validators';
 import { AccessbilityDemoFormStateService } from './accessbility-demo-form-state.service';
 import { Subscription } from 'rxjs';
+import { FormStateService } from './form-state.service';
+import { filter } from 'rxjs/operators';
+
 
 
 export interface ICityOfBirth {
@@ -256,6 +259,7 @@ export class AccessibilityDemoComponent implements OnInit {
   currentBaseUrl = '';
   baseUrlKey = 'ROUTES.AccessibilityDemo';
   language = '';
+  formStateSub = new Subscription;
 
 
 
@@ -263,9 +267,8 @@ export class AccessibilityDemoComponent implements OnInit {
     private translate: TranslateService,
     private altLang: LanguageSwitchService,
     private router: Router,
-    private progressIndicator: AccessbilityDemoFormStateService,
     private labelButton: LabelButtonService,
-    private elementRef: ElementRef
+    private formState: FormStateService
   ) { }
 
   ngOnInit() {
@@ -273,24 +276,9 @@ export class AccessibilityDemoComponent implements OnInit {
     this.setBaseUrl();
     this.getLanguage();
 
-    //Set orientation of the progress bar and get initial window width
-    this.innerWidth = window.innerWidth;
-
-    //if the page has moved to this one via a back or forward browser button, this detects the move and updates the page.
-    this.progressIndicator.updateSelected(1);
-
-
-    //Handle label button presses
-    this.labelButton.buttonPress(''); //reset the button BehaviourSubject
-    this.labelButtonSub = this.labelButton.labelButtonClickObs$.subscribe(response => {
-      this.iconButtonHandler(response);
-    });
-
-    //Initial pop of cities is all values
-    this.setCities(CITIES_OF_BIRTH_LOVS_ALL);
-
+    /** ADD CONTROLS TO FORM GROUP **/
     this.form.addControl(this.familyNameInputConfig.id, new FormControl('', Validators.required));
-    this.form.addControl(this.givenNameInputConfig.id, new FormControl());
+    this.form.addControl(this.givenNameInputConfig.id, new FormControl(''));
     this.form.addControl(this.sexAtBirthRadioConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.dateOfBirthDatePickerConfig.id + '_dayControl', new FormControl('', Validators.required));
     this.form.addControl(
@@ -304,6 +292,62 @@ export class AccessibilityDemoComponent implements OnInit {
     this.form.addControl(this.countryOfBirthSelectConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.cityOfBirthSelectConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.declarationCheckboxConfig.id, new FormControl('', [requiredTrueValidator()]));
+
+    // const savedFormData = this.getFormData;
+    // if (savedFormData) {
+    //   this.form.setValue(savedFormData);
+    // }
+
+    this.formStateSub = this.formState.formStateObs$.subscribe(response => {
+      console.log(response.contains(this.familyNameInputConfig.id));
+      if (response.contains(this.familyNameInputConfig.id)) {
+        this.form.patchValue(response.value);
+      }
+    });
+    console.log(this.form);
+
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.formState.broadcastFormGroup();
+        // this.form.updateValueAndValidity();
+        // console.log(this.form, "I AM RUNNING!")
+        // this.formState.updateFormGroup(this.form);
+        // sessionStorage.setItem('form', JSON.stringify(this.form));
+      }
+    });
+
+
+    //Handle label button presses
+    this.labelButton.buttonPress(''); //reset the button BehaviourSubject
+    this.labelButtonSub = this.labelButton.labelButtonClickObs$.subscribe(response => {
+      this.iconButtonHandler(response);
+    });
+
+    //This is terrible...
+    this.form.valueChanges.subscribe(() => {
+      this.formState.updateFormGroup(this.form);
+    });
+
+    //Initial pop of cities is all values
+    if (this.form.get(this.countryOfBirthSelectConfig.id)?.value) {
+      switch (this.form.get(this.countryOfBirthSelectConfig.id)?.value.toLowerCase()) {
+        case 'canada':
+          this.setCities(CITIES_OF_BIRTH_LOVS_CANADA);
+          break;
+        case 'usa':
+          this.setCities(CITIES_OF_BIRTH_LOVS_USA);
+          break;
+        case 'mexico':
+          this.setCities(CITIES_OF_BIRTH_LOVS_MEXICO);
+          break;
+        default:
+          this.setCities(CITIES_OF_BIRTH_LOVS_ALL);
+          break;
+      }
+    } else {
+      this.setCities(CITIES_OF_BIRTH_LOVS_ALL);
+    }
 
     //Watch for changes in the country of birth select:
     this.form.get(this.countryOfBirthSelectConfig.id)?.valueChanges.subscribe((change) => {
@@ -378,7 +422,6 @@ export class AccessibilityDemoComponent implements OnInit {
         tempConfig.steps[1].tagConfig.type = 'success';
         tempConfig.steps[2].tagConfig.type = 'primary';
       }
-      this.progressIndicator.updateProgressIndicator(tempConfig);
       this.router.navigateByUrl(this.getNextButtonLink);
     } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
   }
@@ -399,23 +442,6 @@ export class AccessibilityDemoComponent implements OnInit {
 
       default:
         break;
-    }
-  }
-
-  /**
-   * Open the hamburger menu progress indicator
-   */
-  menuHamburgerButton() {
-    console.log(this.hamburgerMenuState)
-    if (this.hamburgerMenuState !== undefined && !this.hamburgerMenuState) {
-      this.hamburgerMenuState = true;
-      setTimeout(() => {
-        const focus = document.getElementById('hamburger_dialog_x_button');
-        focus?.focus();
-        console.log(focus)
-      }, 50);
-    } else {
-      this.hamburgerMenuState = false;
     }
   }
 
@@ -481,7 +507,7 @@ export class AccessibilityDemoComponent implements OnInit {
 
   ngOnDestroy() {
     this.routerSub?.unsubscribe();
-    this.progressIndicatorSub?.unsubscribe();
+    this.formStateSub.unsubscribe();
   }
 }
 
