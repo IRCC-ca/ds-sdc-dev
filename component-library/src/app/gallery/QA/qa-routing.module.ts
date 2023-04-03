@@ -25,6 +25,10 @@ QARoutes.childRoutes([
 
     { path: 'naseer-en', component: NaseerComponent }, //English
     { path: 'naseer-fr', component: NaseerComponent }, //French
+    
+    //testing routing bug, needs to be removed afterwards
+    { path: 'naseer2-en', component: NaseerComponent }, //English
+    { path: 'naseer2-fr', component: NaseerComponent }, //French
 ])
     ];
 
