@@ -1,4 +1,13 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+  HostListener,
+  ElementRef,
+  AfterViewInit
+} from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { ILinkComponentConfig } from "./link/link.component";
 import { TranslateService } from "@ngx-translate/core";
@@ -24,7 +33,7 @@ export interface IBreadcrumbConfig {
   selector: 'lib-breadcrumb',
   templateUrl: './breadcrumb.component.html'
 })
-export class BreadcrumbComponent implements OnInit, OnChanges {
+export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() config: IBreadcrumbConfig = {
     id: '',
     baseUrlKey: '',
@@ -43,11 +52,19 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
   overflowLinks?: ILinkComponentConfig[];
   normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
   displayOverflow = false;
-  constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
+  constructor(
+    private translate: TranslateService,
+    private standalone: StandAloneFunctions,
+    private el: ElementRef
+  ) {}
 
   ngOnInit() {
     this.createLinks();
     this.separatorIcon.size = this.config.size;
+  }
+
+  ngAfterViewInit() {
+    this.createOverflows();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -82,15 +99,36 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
           link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/'
           prev = link[this.config.type]
         }
-        // To be removed
-        if (i > 0 && i < linksLength - 2) {
-          link.overflow = true;
-        }
       })
 
       this.overflowLinks = this.config?.links.filter(link => link.overflow);
       this.normalLinks = this.config?.links.filter(link => !link.overflow);
     }
+  }
+
+
+  createOverflows() {
+    if (this.el.nativeElement.offsetHeight <= 44 || this.el.nativeElement.offsetHeight == 0) return;
+
+    if (this.config.links && this.config.links.length > 1) {
+      const linksLength = this.config.links.length;
+
+      const overflow = this.config?.links.find((link, i) => (
+        i > 0 && i < linksLength - 1 && !link.overflow)
+      );
+      if (overflow) overflow.overflow = true;
+
+      this.overflowLinks = this.config?.links.filter(link => link.overflow);
+      this.normalLinks = this.config?.links.filter(link => !link.overflow);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.overflowLinks = [];
+    this.normalLinks = [];
+    this.createLinks();
+    this.createOverflows();
   }
 
   flipOverflow(buttonId: string) {

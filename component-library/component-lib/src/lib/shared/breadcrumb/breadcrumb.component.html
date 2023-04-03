@@ -2,8 +2,10 @@
   <ng-container *ngFor="let link of normalLinks; first as first; last as last; index as i">
     <ng-container *ngIf="first">
       <lib-breadcrumb-link tabindex="0" class="breadcrumb-root" [config]="link"></lib-breadcrumb-link>
-      <lib-icon class="fa-light fa-chevron-right"></lib-icon>
-      <lib-icon-button (clickEvent)="flipOverflow($event)" class="elipsis-icon" [config]="separatorIcon"></lib-icon-button>
+      <ng-container *ngIf="overflowLinks && overflowLinks.length > 0">
+        <lib-icon class="fa-light fa-chevron-right" id="overflow"></lib-icon>
+        <lib-icon-button (clickEvent)="flipOverflow($event)" class="elipsis-icon" [config]="separatorIcon"></lib-icon-button>
+      </ng-container>
     </ng-container>
     <ng-container *ngIf="!first && !last">
       <lib-icon class="fa-light fa-chevron-right"></lib-icon>
@@ -14,7 +16,7 @@
       <p class="breadcrumb-child">{{link.text}}</p>
     </ng-container>
   </ng-container>
-  <div class="overflow" *ngIf="displayOverflow">
+  <div class="overflow" *ngIf="displayOverflow && overflowLinks && overflowLinks.length > 0">
     <ng-container *ngFor="let link of overflowLinks; first as first; last as last; index as i">
       <lib-breadcrumb-link tabindex="0" class="breadcrumb-overflow" [config]="link"></lib-breadcrumb-link>
     </ng-container>
