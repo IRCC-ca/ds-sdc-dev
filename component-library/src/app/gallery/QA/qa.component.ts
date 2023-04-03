@@ -31,7 +31,7 @@ export class QaComponent implements OnInit {
       { //testing routing bug, needs to be removed afterwards
         name: 'Naseer2',
         url: 'naseer2',
-        category: 'secondary'
+        category: 'plain'
       },
       {
         name: 'Michael',
