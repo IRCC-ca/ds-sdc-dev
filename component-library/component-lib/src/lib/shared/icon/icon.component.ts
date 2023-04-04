@@ -22,7 +22,6 @@ export class IconComponent {
     ngDoCheck() {
       const change = this.differ.diff(this);
         if (change) {
-          console.log('HERE');
           let cont = document.getElementById('ds-icon-container');
           console.log(cont);
             change.forEachChangedItem(item => {
@@ -44,8 +43,4 @@ export class IconComponent {
         }
     }
 
-    ngOnInit() {
-        if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
-        if (this.fontFamily) this.config.fontFamily = this.fontFamily;
-    }
 }
