@@ -1,0 +1,8 @@
+<div class="option-container">
+  <button category="plain">
+    <div class="option-contents">
+      <p>{{config.value || '' | translate}}</p>
+      <div *ngIf="config.selected"><span class="fa-solid fa-check option-check"></span></div>
+    </div>
+  </button>
+</div>

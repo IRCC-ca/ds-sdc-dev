@@ -1,7 +1,12 @@
+<div (click)="swap()" class="icon-container">
+<span class="fa-regular fa-mustache"></span>
+</div>
 
+<lib-flyout [config]="testFlyoutConfig"></lib-flyout>
+<hr/>
+<lib-dropdown [config]="dropdownConfig"></lib-dropdown>
 
-
-
+<br/><br/>
 <!-- Back Button *** Do NOT remove! ************ -->
 <button routerLink="'ROUTES.LandingPage' | translate">{{"BUTTONS.Back" |
     translate}}</button>

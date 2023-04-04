@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ButtonCategories } from '../button/button.component';
 import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
+import { IFlyoutConfig } from '../flyout/flyout.component';
+import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
 
 export interface IDropdownConfig {
     id: string;
@@ -11,9 +13,8 @@ export interface IDropdownConfig {
     placeholderText?: string;
     disabled?: boolean;
     icon?: IIconButtonIconConfig;
+    flyout?: IFlyoutConfig;
 }
-  
-
 @Component({
   selector: 'lib-dropdown',
   templateUrl: './drop-down.component.html'
@@ -21,7 +22,7 @@ export interface IDropdownConfig {
 export class DropdownComponent implements OnInit {
 
   @Input() config: IDropdownConfig = {
-    id: '',
+    id: ''
   };
 
   @Input() id: string = '';
@@ -33,6 +34,19 @@ export class DropdownComponent implements OnInit {
 
   showPlaceholder : boolean = false;
   selected: boolean = false;
+
+  flyoutConfig : IFlyoutConfig = {
+    id: this.config.id + '_flyout',
+    options: [{
+      value: 'Options empty'
+    }]
+  }
+
+  selectedOption(e: Event) {
+    console.log(e);
+    this.showPlaceholder = false;
+    this.config.label = e.toString();
+  }
 
   ngOnInit() {
 
@@ -51,6 +65,9 @@ export class DropdownComponent implements OnInit {
       }
       this.showPlaceholder = true;
     }
+
+    if(this.config.flyout) this.flyoutConfig = this.config.flyout;
+
   }
 
   toggleSelect() {
