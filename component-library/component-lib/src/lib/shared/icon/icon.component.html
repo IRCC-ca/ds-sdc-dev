@@ -1,7 +1,9 @@
+<div id="ds-icon-container"
+>
 <span
     class="font-icon"
+    [ngClass]="config.fontFamily"
     [attr.aria-hidden]="(config?.ariaLabel === '')"
     [attr.aria-label]="config?.ariaLabel"
-    [style.--font-unicode]="formattedIcon"
-    [ngClass]="config.fontFamily"
 ></span>
+</div>
