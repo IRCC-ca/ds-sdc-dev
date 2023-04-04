@@ -13,11 +13,6 @@ export class IconComponent {
     @Input() config: IIconConfig = {
     };
 
-    @Input() ariaLabel?: string;
-    @Input() fontFamily?: string;
-
-    formattedIcon = '';
-
     differ: KeyValueDiffer<string, any>;
 
     constructor(private differs: KeyValueDiffers) {
@@ -27,17 +22,22 @@ export class IconComponent {
     ngDoCheck() {
       const change = this.differ.diff(this);
         if (change) {
+          console.log('HERE');
           let cont = document.getElementById('ds-icon-container');
+          console.log(cont);
             change.forEachChangedItem(item => {
+              console.log(item.key);
               if(item.key === 'config' && cont){
                   if(!item.currentValue.ariaLabel){
                     cont.innerHTML = `
                     <span class='${item.currentValue.fontFamily}' aria-hidden='true'></span>
                     `
+                    console.log('changed');
                   } else {
                     cont.innerHTML = `
                     <span class='${item.currentValue.fontFamily}' aria-label='${item.currentValue.ariaLabel}'></span>
                     `
+                    console.log('also changed');
                   }
               }
             });
