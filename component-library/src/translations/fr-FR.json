@@ -2,7 +2,7 @@
   "ROUTES": {
     "LandingPage": "page-general",
     "LandingPage-alt": "landing-page",
-    "AccessibilityDemo": "démo-d'accessibilité",
+    "AccessibilityDemo": "demo-d-accessibilite",
     "AccessibilityDemo-alt": "accessibility-demo",
     "AccessibilityDemoPrevious": "commencer",
     "AccessibilityDemoPrevious-alt": "begin",

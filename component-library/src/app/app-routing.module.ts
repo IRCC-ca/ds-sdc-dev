@@ -15,8 +15,8 @@ const routes: Routes = [
     {
       path: 'fr',
       children: [
-        { path: "démo-d'accessibilité", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
-        { path: '**', redirectTo: "démo-d'accessibilité/commencer" }
+        { path: "demo-d-accessibilite", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
+        { path: '**', redirectTo: "demo-d-accessibilite/commencer" }
       ]
     },
     //Must be last, as it contains the fallback route when no prior route is matched
