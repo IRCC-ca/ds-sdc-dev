@@ -256,7 +256,6 @@ export class NaseerComponent implements OnInit {
 
   ngOnInit() {
     this.altLang.setAltLangLink('naseer-alt');
-    this.altLang.setAltLangLink('naseer2-alt');  //testing routing bug, needs to be removed afterwards
 
     //******************************************************************************************************** */
     //********************************* Input Component Tester *********************************************** */
