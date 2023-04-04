@@ -28,11 +28,6 @@ export class QaComponent implements OnInit {
         url: 'naseer',
         category: 'secondary'
       },
-      { //testing routing bug, needs to be removed afterwards
-        name: 'Naseer2',
-        url: 'naseer2',
-        category: 'plain'
-      },
       {
         name: 'Michael',
         url: 'michael',
