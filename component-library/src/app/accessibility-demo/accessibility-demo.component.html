@@ -13,7 +13,7 @@
                     (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
             </div>
             <div class="modal_container" *ngIf="hamburgerMenuState">
-                <dialog preventTabOut [enabled]="allowedNavItemIds" id="progress_dialog" class="dialog" open>
+                <dialog appPreventTabOut [enabled]="allowedNavItemIds" id="progress_dialog" class="dialog" open>
                     <div class="progress_dialog_content">
                         <div class="modal_header">
                             <h5>{{'ACC_DEMO.MODAL_TITLE' | translate}}</h5>
