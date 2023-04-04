@@ -107,6 +107,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
           link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/'
           prev = link[this.config.type]
         }
+        link.overflow = false;
       })
 
       this.overflowLinks = this.config?.links.filter(link => link.overflow);
@@ -123,7 +124,8 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     this.renderer.appendChild(containerElement, tempElement);
     const maxHeight = tempElement.offsetHeight;
     this.renderer.removeChild(containerElement, tempElement);
-    return maxHeight;
+    // Calculate based on elipsis icon size to p tag ratio
+    return maxHeight * 1.375;
   }
 
   createOverflows() {
