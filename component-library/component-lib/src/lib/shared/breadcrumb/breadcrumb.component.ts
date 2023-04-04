@@ -6,7 +6,8 @@ import {
   SimpleChanges,
   HostListener,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
+  Renderer2
 } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
 import { ILinkComponentConfig } from "./link/link.component";
@@ -52,15 +53,18 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   overflowLinks?: ILinkComponentConfig[];
   normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
   displayOverflow = false;
+  private maxHeight: number = 0; // Max height of element in px
   constructor(
     private translate: TranslateService,
     private standalone: StandAloneFunctions,
-    private el: ElementRef
+    private el: ElementRef,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit() {
     this.createLinks();
     this.separatorIcon.size = this.config.size;
+    this.maxHeight = this.getMaxHeight();
   }
 
   ngAfterViewInit() {
@@ -68,6 +72,10 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    // If changing size, update max height
+    if (!changes['config'].firstChange && changes['config'].currentValue.size !== changes['config'].previousValue.size) {
+      this.maxHeight = this.getMaxHeight();
+    }
     if (this.config?.links && this.config?.links.length > 0) {
       if (this.config.type == 'routerLink') {
         this.config?.links.forEach(link => {
@@ -106,9 +114,20 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
+  getMaxHeight(): number {
+    const containerElement = this.el.nativeElement;
+    const tempElement = this.renderer.createElement('p');
+    const text = this.renderer.createText('Test');
+    this.renderer.appendChild(tempElement, text);
+    this.renderer.addClass(tempElement, 'breadcrumb-child')
+    this.renderer.appendChild(containerElement, tempElement);
+    const maxHeight = tempElement.offsetHeight;
+    this.renderer.removeChild(containerElement, tempElement);
+    return maxHeight;
+  }
 
   createOverflows() {
-    if (this.el.nativeElement.offsetHeight <= 44 || this.el.nativeElement.offsetHeight == 0) return;
+    if (this.el.nativeElement.offsetHeight <= this.maxHeight) return;
 
     if (this.config.links && this.config.links.length > 1) {
       const linksLength = this.config.links.length;
