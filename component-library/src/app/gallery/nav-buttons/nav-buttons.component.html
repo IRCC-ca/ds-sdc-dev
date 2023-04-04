@@ -5,11 +5,11 @@
         <ng-container *ngFor="let button of config?.buttons">
             <ng-container [ngSwitch]="button.category">
                 <ng-container *ngSwitchCase="'plain'">
-                    <a class="button" category="plain" id="{{button.id}}"
+                    <button class="button" category="plain" id="{{button.id}}"
                     [routerLink]="config?.globalBaseUrlOverride || button.baseUrlOverride || currentBaseUrl 
                     + ('ROUTES.' + button.url | translate)">{{button.name
                     |
-                    translate}}</a>
+                    translate}}</button>
                 </ng-container>
 
                 <ng-container *ngSwitchCase="'secondary'">
