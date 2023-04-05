@@ -23,17 +23,17 @@ export class IconComponent {
       const change = this.differ.diff(this);
         if (change) {
           let cont = document.getElementById('ds-icon-container');
-\            change.forEachChangedItem(item => {
-\              if(item.key === 'config' && cont){
+            change.forEachChangedItem(item => {
+              if(item.key === 'config' && cont){
                   if(!item.currentValue.ariaLabel){
                     cont.innerHTML = `
                     <span class='${item.currentValue.fontFamily}' aria-hidden='true'></span>
                     `
-\                  } else {
+                  } else {
                     cont.innerHTML = `
                     <span class='${item.currentValue.fontFamily}' aria-label='${item.currentValue.ariaLabel}'></span>
                     `
-\                  }
+                  }
               }
             });
         }
