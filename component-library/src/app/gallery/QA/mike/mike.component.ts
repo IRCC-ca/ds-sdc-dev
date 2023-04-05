@@ -330,7 +330,7 @@ export class MikeComponent implements OnInit {
         id: this.BANNER_ID
       };
 
-      for(let param in x){
+      for(const param in x){
         updatedConfig = {...updatedConfig, [param] : x[param]}
         this.qaBanner = updatedConfig;
       }
@@ -347,7 +347,7 @@ export class MikeComponent implements OnInit {
       id: 'ctaBtn_1'
     }
 
-        for(let param in x){
+        for(const param in x){
 
           if(!x['noCta']){
             //if cta isn't disabled
@@ -393,7 +393,7 @@ export class MikeComponent implements OnInit {
 
     this.radioTesterForm.valueChanges.subscribe(x => {
       console.log(x);
-      for(let param in x){
+      for(const param in x){
         console.log(x[param])
         this.radioConfig = {...this.radioConfig, [param]:x[param]}
       }

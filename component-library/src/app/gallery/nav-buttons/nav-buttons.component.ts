@@ -55,7 +55,7 @@ export class NavButtonsComponent implements OnInit {
    */
   getURL() {
     const curLang = this.translate.currentLang;
-    let langKey = ((curLang === "en-US") || (curLang === 'en') ? '/en/' : '/fr/');
+    const langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
     const i = window.location.href.slice(window.location.href.indexOf(langKey), window.location.href.length);
     return i;
   }
@@ -65,7 +65,7 @@ export class NavButtonsComponent implements OnInit {
    */
   setBaseUrl() {
     this.currentBaseUrl = '';
-    let i = this.getURL().split('/');
+    const i = this.getURL().split('/');
     i.forEach((j: string, index: number) => {
       if (index !== (i.length - 1)) {
         this.currentBaseUrl += ('/' + j);

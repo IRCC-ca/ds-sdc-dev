@@ -283,7 +283,6 @@ export class MahsaComponent implements OnInit {
           { text: 'Option 2'},
         ],
       };
-
       for(let param in value) {
         if(value[param]){
           updatedConfig = { ...updatedConfig, [param]: value[param] };
@@ -297,14 +296,14 @@ export class MahsaComponent implements OnInit {
         id: 'tag1',
         formGroup: this.tagForm
       };
-      for (let param in value) {
+      for (const param in value) {
         tagConf = { ...tagConf, [param]: value[param] };
         this.qaTags = tagConf;
       }
     });
 
     this.spinnerForm.valueChanges.subscribe(value => {
-      for (let param in value) {
+      for (const param in value) {
         if ((value['size'] === 'small' || value['size'] === 'extraSmall') && value['orientation'] === 'vertical') {
           value['orientation'] = 'horizontal';
         }
