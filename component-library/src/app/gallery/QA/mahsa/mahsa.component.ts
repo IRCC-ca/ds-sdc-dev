@@ -25,6 +25,7 @@ export class MahsaComponent implements OnInit {
   TAB_ID = 'qa-test-tabs';
   SPINNER_ID = 'qa-test-spinner';
 
+  /** Configs: */
   qaSelect: ISelectConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
@@ -53,16 +54,17 @@ export class MahsaComponent implements OnInit {
     id: this.SPINNER_ID,
   }
 
-  testerConfig: IAutoTestConfigObject = {
+  /** Test config objects */
+  selectTesterConfig: IAutoTestConfigObject = {
     selects: [
       {
         id: 'smallErrorMessages',
         formGroup: this.form,
         label: 'Small Error',
-        // errorMessages: [
-        //   { key: 'maxlength' , errorLOV: 'ERROR.errorMessage' },
-        //   { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
-        // ],
+        errorMessages: [
+          { key: 'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
+        ],
         options: [
           { text: 'Maxlength' },
           { text: 'TestingError' },
@@ -74,10 +76,10 @@ export class MahsaComponent implements OnInit {
         id: 'largeErrorMessages',
         formGroup: this.form,
         label: 'Large Error',
-        // errorMessages: [
-        //   { key:'maxlength' , errorLOV: 'ERROR.errorMessage' },
-        //   { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
-        // ],
+        errorMessages: [
+          { key:'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
+        ],
         options: [
           { text: 'Maxlength' },
           { text: 'TestingError' },
@@ -226,7 +228,7 @@ export class MahsaComponent implements OnInit {
   autoTestConfig: IAutoTestComponentConfig = {
     id: 'mahsa_tester',
     formGroup: this.form,
-    testFields: this.testerConfig
+    testFields: this.selectTesterConfig
   };
 
   tagTestConfig: IAutoTestComponentConfig = {
@@ -248,23 +250,23 @@ export class MahsaComponent implements OnInit {
     this.form.addControl(this.qaSelect.id, new FormControl());
 
     /** Select Auto-Testing Controls Init **/
-    this.testerConfig.selects?.forEach(i => {
+    this.selectTesterConfig.selects?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.testerConfig.checkboxes?.forEach(i => {
+    this.selectTesterConfig.checkboxes?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.testerConfig.inputs?.forEach(i => {
+    this.selectTesterConfig.inputs?.forEach(i => {
       this.form.addControl(i.id, new FormControl());
     });
 
     console.log(this.form);
 
-
+    /** Tag Auto-Testing Controls Init **/
     this.tagTestConfigObj.selects?.forEach(i => {
       this.tagForm.addControl(i.id, new FormControl());
     });
-
+    /** Spinner Auto-Testing Controls Init **/
     this.spinnerTestConfigObj.selects?.forEach(i => {
       this.spinnerForm.addControl(i.id, new FormControl());
     });
@@ -275,12 +277,17 @@ export class MahsaComponent implements OnInit {
     this.form.valueChanges.subscribe(value => {
       let updatedConfig: ISelectConfig = {
         id: this.SELECT_ID,
-        formGroup: this.form
+        formGroup: this.form,
+        options: [
+          { text: 'Option 1'},
+          { text: 'Option 2'},
+        ],
       };
-
-      for(const param in value) {
-        updatedConfig = { ...updatedConfig, [param]: value[param] };
-        this.qaSelect = updatedConfig;
+      for(let param in value) {
+        if(value[param]){
+          updatedConfig = { ...updatedConfig, [param]: value[param] };
+          this.qaSelect = updatedConfig;
+        }
       }
     });
 
