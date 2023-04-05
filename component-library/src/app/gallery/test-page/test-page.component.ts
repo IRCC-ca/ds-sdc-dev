@@ -17,7 +17,7 @@ export class TestPageComponent implements OnInit {
   }
 
   testFlyoutConfig : IFlyoutConfig = {
-    id: 'flyout_1',
+    id: '',
     options : [
       {
         value: 'test'
@@ -47,6 +47,7 @@ export class TestPageComponent implements OnInit {
     id: 'dropdown_1',
     category: 'secondary',
     flyout: {
+      id: '',
       options : [
       {
         value: 'test'

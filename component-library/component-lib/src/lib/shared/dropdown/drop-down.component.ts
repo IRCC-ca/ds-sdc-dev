@@ -3,8 +3,6 @@ import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ButtonCategories } from '../button/button.component';
 import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
 import { IFlyoutConfig } from '../flyout/flyout.component';
-import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
-
 export interface IDropdownConfig {
     id: string;
     label?: string;

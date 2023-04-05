@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, HostListener } from '@angular/core';
 import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
 
 export enum IFlyoutSelectTypes {
@@ -21,10 +21,54 @@ export interface IFlyoutConfig {
 export class FlyoutComponent implements OnInit {
 
   @Input() config : IFlyoutConfig = {
+  }
+  @Input() id : string = '';
+  @Output() isSelected = new EventEmitter();
+
+  selectedIndex : number = 0;
+
+  @HostListener('document:keydown.arrowdown', ['$event'])
+  onArrowDown(event: KeyboardEvent) {
+    event.preventDefault();
+    if (this.config.options) {
+      this.selectedIndex = Math.min(this.selectedIndex + 1, this.config.options.length - 1);
+      while (this.config.options[this.selectedIndex].clickable = false) {
+        this.selectedIndex++;
+      }
+    }
+    this.focusIndex();
+    console.log('down', this.selectedIndex);
 
   }
-  @Input() id? : string;
-  @Output() isSelected = new EventEmitter();
+
+  @HostListener('document:keydown.arrowup', ['$event'])
+  onArrowUp(event: KeyboardEvent) {
+    event.preventDefault();
+    this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
+    if(this.config.options){
+      while (this.config.options[this.selectedIndex].clickable = false) {
+        this.selectedIndex--;
+      }
+    }
+    this.focusIndex();
+    console.log('up', this.selectedIndex);
+  }
+
+  @HostListener('document:keydown.enter', ['$event'])
+  onEnter(event: KeyboardEvent) {
+    event.preventDefault();
+    console.log('enter', this.selectedIndex);
+    this.optionSelected(this.selectedIndex);
+  }
+
+  focusIndex() {
+    console.log(this.id);
+    let flyout = document.getElementById(`${this.id}`);
+    console.log(flyout);
+    let options = flyout?.childNodes;
+    console.log(options);
+
+  }
 
   clearOptions(){
     console.log('getting here?');
@@ -39,11 +83,12 @@ export class FlyoutComponent implements OnInit {
   ngOnInit() {
     console.log('Flyout:', this.config);
     if(this.config.type === undefined) this.config.type = 'single';
-    if(this.id) this.config.id = this.id;
+    if(this.config.id) this.id = this.config.id;
   };
 
   optionSelected(i: number){
-    if(this.config.options && !this.config.options[i].selected && this.config.options[i].clickable){
+    this.config.options ? console.log(this.config?.options[i]) : null;
+    if(this.config.options && !this.config.options[i].selected && !this.config.options[i].clickable){
       console.log(i);
       console.log(this.config.type);
       this.config.type != 'multi' ? this.clearOptions() : /*this.config.selection = [].push(this.config.options[i]);*/null;
