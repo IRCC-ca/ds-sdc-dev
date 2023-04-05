@@ -7,7 +7,8 @@ import {
   HostListener,
   ElementRef,
   AfterViewInit,
-  Renderer2
+  Renderer2,
+  ChangeDetectorRef
 } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ILinkComponentConfig } from "./link/link.component";
@@ -58,7 +59,8 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     private translate: TranslateService,
     private standalone: StandAloneFunctions,
     private el: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private changeRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -69,6 +71,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit() {
     this.createOverflows();
+    this.changeRef.detectChanges();
   }
 
   ngOnChanges(changes: SimpleChanges) {
