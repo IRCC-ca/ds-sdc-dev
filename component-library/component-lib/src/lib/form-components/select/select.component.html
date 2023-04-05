@@ -27,11 +27,11 @@
       </div>
     </div>
     <div aria-live="polite" *ngIf="!config.disableError">
-      <div *ngIf="formControl?.touched && formControl?.invalid">
+      <div *ngIf="(formControl?.touched) && formControl?.invalid">
         <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
         <ng-container *ngFor="let errors of errorIds; let i = index">
           <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
-            <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+            <lib-error [size]="config?.size" [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
           </div>
         </ng-container>
       </div>
