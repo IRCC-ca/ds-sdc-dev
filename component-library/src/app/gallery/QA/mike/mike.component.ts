@@ -41,7 +41,7 @@ export class MikeComponent implements OnInit {
   }
 
   iconConfig : IIconConfig = {
-    fontFamily: 'fa-regular fa-mustache'
+    FA_keywords: 'fa-regular fa-mustache'
   }
 
   form = new FormGroup({});
@@ -53,8 +53,8 @@ export class MikeComponent implements OnInit {
   iconTest : IAutoTestConfigObject = {
     inputs: [
       {
-        id: 'fontFamily',
-        label:'fontFamily',
+        id: 'FA_keywords',
+        label:'FA_keywords',
         formGroup: this.iconTesterForm
       },
       {
@@ -367,7 +367,7 @@ export class MikeComponent implements OnInit {
 
   this.iconTesterForm.valueChanges.subscribe(x => {
     let updatedConfig : IIconConfig = {
-      fontFamily: this.iconConfig.fontFamily
+      FA_keywords: this.iconConfig.FA_keywords
     }
 
     for(let param in x){
