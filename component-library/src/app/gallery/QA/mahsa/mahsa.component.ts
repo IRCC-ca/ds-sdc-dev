@@ -275,12 +275,18 @@ export class MahsaComponent implements OnInit {
     this.form.valueChanges.subscribe(value => {
       let updatedConfig: ISelectConfig = {
         id: this.SELECT_ID,
-        formGroup: this.form
+        formGroup: this.form,
+        options: [
+          { text: 'Option 1'},
+          { text: 'Option 2'},
+        ],
       };
 
       for(let param in value) {
-        updatedConfig = { ...updatedConfig, [param]: value[param] };
-        this.qaSelect = updatedConfig;
+        if(value[param]){
+          updatedConfig = { ...updatedConfig, [param]: value[param] };
+          this.qaSelect = updatedConfig;
+        }
       }
     });
 
