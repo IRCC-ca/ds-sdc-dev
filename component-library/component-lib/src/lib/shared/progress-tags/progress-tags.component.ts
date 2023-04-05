@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { DSSizes } from "../../../shared/constants/jl-components.constants";
 
 export const TAG_LABELS_EN = ["In Progress", "Completed", "Error", "Locked", "Not started"];
 export const TAG_LABELS_FR = ["En cours", "Complété", "Erreur", "Verrouillé", "Pas commencé"];

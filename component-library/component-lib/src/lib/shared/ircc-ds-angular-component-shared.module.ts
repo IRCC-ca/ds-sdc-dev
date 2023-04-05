@@ -12,6 +12,8 @@ import { LabelComponent } from './label/label.component';
 import { ProgressIndicatorComponent } from "./progress-indicator/progress-indicator.component";
 import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { BreadcrumbLinkComponent } from "./breadcrumb/link/link.component";
+import { IndicatorComponent } from './indicator/indicator.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -19,17 +21,19 @@ const IrccDsSharedComponents = [
   BreadcrumbLinkComponent,
   IconComponent,
   IconButtonComponent,
+  IndicatorComponent,
   TabsComponent,
   ProgressTagsComponent,
   DropdownComponent,
   LabelComponent,
   ProgressTagsComponent,
-  ProgressIndicatorComponent
+  ProgressIndicatorComponent,
+  SpinnerComponent
 ];
 
 @NgModule({
   declarations: [
-    ...IrccDsSharedComponents
+    ...IrccDsSharedComponents,
   ],
   imports: [
     CommonModule,

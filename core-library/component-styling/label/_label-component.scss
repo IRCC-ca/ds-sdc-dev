@@ -22,16 +22,16 @@
 
 @mixin size-large() {
   .label {
-    font-size: 20px;
+    @include typography.fontSet(heading, 5);
     font-weight: 700;
   }
 
   .input-desc {
-    font-size: 16px;
+    @include typography.fontSet(body, 2);
   }
 
   .input-hint {
-    font-size: 16px;
+    @include typography.fontSet(body, 2);
     margin: 12px 0px 0px 0px;
   }
 
@@ -57,16 +57,16 @@
 @mixin size-small() {
 
   .label {
-    font-size: 16px;
+    @include typography.fontSet(heading, 6);
     font-weight: 700;
   }
 
   .input-desc {
-    font-size: 14px;
+    @include typography.fontSet(body, 3);
   }
 
   .input-hint {
-    font-size: 14px;
+    @include typography.fontSet(body, 3);
     margin: 8px 0px 0px 0px;
   }
 
@@ -95,7 +95,6 @@
     }
       .label {
         display: flex;
-        font-family: 'Lato'
       }
       .input-desc {
         margin: 4px 0px 0px 0px;

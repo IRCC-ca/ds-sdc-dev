@@ -2,25 +2,7 @@
   <form [formGroup]="config.formGroup">
     <div class="textarea-container" ngClass="{{config.size}} resize-{{config.resizable}}">
       <div>
-        <label *ngIf="config.label" class="textarea-label" [attr.aria-label]="
-          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-          ? (config.label || '' | translate) + ' ' +
-          (config.desc || '' | translate) + ' ' +
-          ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) + ' ' +
-          (config.hint || '' | translate)
-          : (config.label || '' | translate)  + ' ' +
-          (config.desc || '' | translate) + ' ' +
-          (config.hint || '' | translate)
-        ">
-        <div class="required-field-container" *ngIf="config.required">
-            <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}
-        </div>
-        <div *ngIf="!config.required">
-          {{(config.label || '') | translate}}
-        </div>
-        </label>
-        <p *ngIf="config.desc" class="textarea-desc">{{(config.desc || '') | translate}}</p>
-        <p *ngIf="config.hint" class="textarea-hint">{{ config.hint | translate }}</p>
+        <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
         <div class="content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <textarea class="textarea-field" maxlength="{{config.charLimit}}" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0"
             [id]="config.id" [formControlName]="config.id" [attr.aria-label]="'Textarea Input' + ' ' + (config.placeholder || '' | translate)" #textareaInput>123

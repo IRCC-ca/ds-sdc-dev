@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import {  ISelectConfig, IProgressTagsConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import { ISelectConfig, IProgressTagsConfig, ITabNavConfig, ISpinnerConfig } from 'ircc-ds-angular-component-library';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
 @Component({
   selector: 'app-mahsa',
@@ -9,13 +9,24 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
   styleUrls: ['./mahsa.component.scss']
 })
 export class MahsaComponent implements OnInit {
+
+  toggleComp(comp: string) {
+    document.querySelectorAll('section')?.forEach(section => {
+      section.classList.remove('show');
+    });
+    document.getElementById(comp)?.classList.toggle('show');
+  };
+
   form = new FormGroup({});
   tagForm = new FormGroup({});
+  spinnerForm = new FormGroup({});
 
   SELECT_ID = 'qa_test_select';
   TAB_ID = 'qa-test-tabs';
+  SPINNER_ID = 'qa-test-spinner';
 
-  qaSelect:  ISelectConfig = {
+  /** Configs: */
+  qaSelect: ISelectConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
     options: [
@@ -39,24 +50,13 @@ export class MahsaComponent implements OnInit {
     id: 'tag-test',
   }
 
-  testerConfig: IAutoTestConfigObject = {
+  qaSpinner: ISpinnerConfig = {
+    id: this.SPINNER_ID,
+  }
+
+  /** Test config objects */
+  selectTesterConfig: IAutoTestConfigObject = {
     selects: [
-      {
-        id: 'category', //should be same as config property that we target
-        formGroup: this.form,
-        label: 'Category',
-        options: [
-          {
-            text: 'secondary'
-          },
-          {
-            text: 'primary'
-          },
-          {
-            text: 'plain'
-          }
-        ],
-      },
       {
         id: 'smallErrorMessages',
         formGroup: this.form,
@@ -163,10 +163,72 @@ export class MahsaComponent implements OnInit {
     ]
   };
 
+  spinnerTestConfigObj: IAutoTestConfigObject = {
+    selects: [
+      {
+        id: 'type',
+        label: 'Type',
+        formGroup: this.spinnerForm,
+        options: [
+          {
+            text: 'active'
+          },
+          {
+            text: 'success'
+          },
+          {
+            text: 'critical'
+          }
+        ]
+      },
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.spinnerForm,
+        options: [
+          {
+            text: 'large'
+          },
+          {
+            text: 'small'
+          },
+          {
+            text: 'extraSmall'
+          }
+        ]
+      },
+      {
+        id: 'orientation',
+        label: 'Orientation',
+        formGroup: this.spinnerForm,
+        options: [
+          {
+            text: 'horizontal'
+          },
+          {
+            text: 'vertical'
+          }
+        ]
+      }
+    ],
+    inputs: [
+      {
+        id: 'label',
+        formGroup: this.spinnerForm,
+        label: 'Label'
+      },
+      {
+        id: 'description',
+        formGroup: this.spinnerForm,
+        label: 'Description'
+      },
+    ]
+  };
+
   autoTestConfig: IAutoTestComponentConfig = {
     id: 'mahsa_tester',
     formGroup: this.form,
-    testFields: this.testerConfig
+    testFields: this.selectTesterConfig
   };
 
   tagTestConfig: IAutoTestComponentConfig = {
@@ -175,35 +237,57 @@ export class MahsaComponent implements OnInit {
     testFields: this.tagTestConfigObj
   };
 
+  spinnerTestConfig: IAutoTestComponentConfig = {
+    id: 'spinner_tester',
+    formGroup: this.spinnerForm,
+    testFields: this.spinnerTestConfigObj
+  };
+
   constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
     this.altLang.setAltLangLink('mahsa-alt');
-
-    this.testerConfig.selects?.forEach(i => {
-      this.form.addControl(i.id, new FormControl());
-    });
-    this.testerConfig.checkboxes?.forEach(i => {
-      this.form.addControl(i.id, new FormControl());
-    });
-    this.testerConfig.inputs?.forEach(i => {
-      this.form.addControl(i.id, new FormControl());
-    });
     this.form.addControl(this.qaSelect.id, new FormControl());
 
+    /** Select Auto-Testing Controls Init **/
+    this.selectTesterConfig.selects?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
+    this.selectTesterConfig.checkboxes?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
+    this.selectTesterConfig.inputs?.forEach(i => {
+      this.form.addControl(i.id, new FormControl());
+    });
+
+    console.log(this.form);
+
+    /** Tag Auto-Testing Controls Init **/
     this.tagTestConfigObj.selects?.forEach(i => {
       this.tagForm.addControl(i.id, new FormControl());
+    });
+    /** Spinner Auto-Testing Controls Init **/
+    this.spinnerTestConfigObj.selects?.forEach(i => {
+      this.spinnerForm.addControl(i.id, new FormControl());
+    });
+    this.spinnerTestConfigObj.inputs?.forEach(i => {
+      this.spinnerForm.addControl(i.id, new FormControl());
     });
 
     this.form.valueChanges.subscribe(value => {
       let updatedConfig: ISelectConfig = {
         id: this.SELECT_ID,
-        formGroup: this.form
+        formGroup: this.form,
+        options: [
+          { text: 'Option 1'},
+          { text: 'Option 2'},
+        ],
       };
-
       for(let param in value) {
-        updatedConfig = { ...updatedConfig, [param]: value[param] };
-        this.qaSelect = updatedConfig;
+        if(value[param]){
+          updatedConfig = { ...updatedConfig, [param]: value[param] };
+          this.qaSelect = updatedConfig;
+        }
       }
     });
 
@@ -212,9 +296,24 @@ export class MahsaComponent implements OnInit {
         id: 'tag1',
         formGroup: this.tagForm
       };
-      for (let param in value) {
+      for (const param in value) {
         tagConf = { ...tagConf, [param]: value[param] };
         this.qaTags = tagConf;
+      }
+    });
+
+    this.spinnerForm.valueChanges.subscribe(value => {
+      for (const param in value) {
+        if ((value['size'] === 'small' || value['size'] === 'extraSmall') && value['orientation'] === 'vertical') {
+          value['orientation'] = 'horizontal';
+        }
+        if (!value['label']) {
+          delete this.qaSpinner.label;
+        }
+        if (!value['description']) {
+          delete this.qaSpinner.description;
+        }
+        if (value[param]) this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
       }
     });
   }
@@ -263,4 +362,27 @@ export class MahsaComponent implements OnInit {
   size() {
     this.qaTabs.size ? this.qaTabs.size = 'large' : this.qaTabs.size = 'small';
   };
+
+  hideShowError() {
+    document.getElementById('spinner-div')?.toggleAttribute('hidden');
+    this.qaSpinner.type = 'active';
+    this.qaSpinner.label = 'Loading';
+    this.qaSpinner.description = 'This is Loading!';
+    setTimeout(() => {
+      this.qaSpinner.type = 'critical';
+      this.qaSpinner.label = 'Error Label';
+      this.qaSpinner.description = 'Error Description';
+    }, 2000);
+  };
+  hideShowSuccess() {
+    document.getElementById('spinner-div2')?.toggleAttribute('hidden');
+    this.qaSpinner.type = 'active';
+    this.qaSpinner.label = 'Loading';
+    this.qaSpinner.description = 'This is Loading!';
+    setTimeout(() => {
+      this.qaSpinner.type = 'success';
+      this.qaSpinner.label = 'Success Label';
+      this.qaSpinner.description = 'Success Description';
+    }, 2000);
+  }
 }

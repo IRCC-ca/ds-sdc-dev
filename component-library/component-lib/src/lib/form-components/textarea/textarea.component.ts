@@ -1,8 +1,9 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
+import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { IErrorIconConfig } from '../error/error.component';
 
 
@@ -19,6 +20,7 @@ export interface ITextareaComponentConfig {
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
   errorIcon?: IErrorIconConfig;
+  labelIconConfig?: ILabelIconConfig;
 }
 
 export enum ResizableTypes {
@@ -57,6 +59,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = []
   charLimitStatus = '';
   currentCharacterStatusAria='';
+  labelConfig: ILabelConfig = {
+    formGroup: this.config.formGroup,
+    parentID: ''
+  }
   
 
   constructor(public standAloneFunctions: StandAloneFunctions) { }
@@ -89,6 +95,28 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     this.config.formGroup.valueChanges.subscribe(change => {
       this.characterCountStatus(change[this.config.id]?.length)
     });
+
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig);
+  }
+
+  ngOnChanges() {
+    this.labelConfig = this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig);
   }
 
   public focusInput(focusValue: boolean): void {

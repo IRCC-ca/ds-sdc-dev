@@ -1,10 +1,9 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
-import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 import { TranslateService } from '@ngx-translate/core';
 
 // export declare enum SelectType {
@@ -26,6 +25,7 @@ export interface ISelectConfig {
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
   topLabel?: string;
+  disableError?: boolean //used to disable the error aria-live (mostly for use when nested, as in date picker)
 }
 export interface ISelectOptionsConfig {
   text: string;
@@ -46,7 +46,8 @@ export interface ISelectOptionsConfig {
 export class SelectComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorIds: IErrorIDs[] = [];
-  activiatedSelect: boolean = false
+  activiatedSelect: boolean = false;
+  rotateChevron: boolean = false;
 
   @Input() config: ISelectConfig = {
     id: '',
@@ -89,6 +90,15 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     this.activiatedSelect = true;
   }
 
+  onClicked() {
+    this.rotateChevron = !this.rotateChevron;
+  }
+
+  onBlur() {
+    this.touched = true
+    this.rotateChevron = false;
+  }
+
   ngOnInit() {
     const retControl = this.config.formGroup.get(this.config.id);
     if (retControl) {
@@ -115,7 +125,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  ngOnChanges() {
+  //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
+  //TODO: Replace this with something less blunt
+  ngDoCheck() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,

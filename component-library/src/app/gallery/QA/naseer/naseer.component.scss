@@ -2,3 +2,15 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+.button-container-test {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    lib-button {
+        padding: 2px;
+    }
+}
+.datepicker-container {
+    padding-bottom: 500px;
+}

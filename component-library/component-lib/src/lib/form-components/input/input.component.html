@@ -2,7 +2,7 @@
   <form [formGroup]="config.formGroup">
     <div class="input-container" [ngClass]="config.size">
       <div class="input-text">
-        <ircc-cl-lib-label [config]="labelConfig"></ircc-cl-lib-label>
+        <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
           TODO: Should probably change the (keyup) to (onblur) -->

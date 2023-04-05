@@ -4,11 +4,11 @@
       <ircc-cl-lib-breadcrumb-link tabindex="0" class="breadcrumb-root" [config]="link"></ircc-cl-lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="!first && !last">
-      <ircc-cl-lib-icon class="fa-solid fa-chevron-right"></ircc-cl-lib-icon>
+      <ircc-cl-lib-icon class="fa-light fa-chevron-right"></ircc-cl-lib-icon>
       <ircc-cl-lib-breadcrumb-link tabindex="0" class="breadcrumb-item" [config]="link"></ircc-cl-lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="last">
-      <ircc-cl-lib-icon class="fa-solid fa-chevron-right"></ircc-cl-lib-icon>
+      <ircc-cl-lib-icon class="fa-light fa-chevron-right"></ircc-cl-lib-icon>
       <p class="breadcrumb-child">{{link.text}}</p>
     </ng-container>
   </ng-container>

@@ -15,6 +15,7 @@
 @use "./tokens/global/selected";
 @use "./tokens/global/text-global";
 @use "./tokens/global/validation";
+@use "./tokens/global/categories";
 @use "./tokens/alert/alert";
 @use "./tokens/partial/focus";
 @use "./tokens/partial/disable";
@@ -30,6 +31,7 @@
 @use "./component-styling/date-picker/date-picker";
 @use "./component-styling/footer/footer";
 @use "./component-styling/icon/icon";
+@use "./component-styling/indicator/indicator";
 @use "./component-styling/button/button" as button-component;
 @use "./component-styling/select/select-component" as select-component;
 @use "./component-styling/chips/item" as chip-item;
@@ -41,6 +43,7 @@
 @use "./component-styling/progress-tags/progress-tags" as tags-component;
 @use "./component-styling/progress-indicator/progress-indicator";
 @use "./component-styling/label/label-component" as label-component;
+@use "./component-styling/spinner/spinner" as spinner-component;
 @use "./component-styling/hidden-nav/hidden-nav";
 @use "./component-styling/language-switch/language-switch";
 @use "./typography/fa-wrapper";
@@ -76,6 +79,7 @@
   @include selected.create();
   @include text-global.create();
   @include validation.create();
+  @include categories.create();
   @include paint.create();
   @include fonts.create();
   @include typography.create();
@@ -120,6 +124,8 @@
     @include element(hidden-nav);
     @include element(language-switch);
     @include element(textarea-component);
+    @include element(indicator);
+    @include element(spinner-component);
   }
 
   @else {
@@ -281,4 +287,13 @@
   @else if $key == breadcrumb {
     @include breadcrumb.create();
   }
+
+  @else if $key == spinner-component {
+    @include spinner-component.create();
+  }
+
+  @else if $key == indicator {
+    @include indicator.create();
+  }
+
 }

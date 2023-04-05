@@ -21,23 +21,6 @@
 }
 
 @mixin size-large() {
-  .textarea-label {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .textarea-desc {
-    font-size: 16px;
-  }
-
-  .textarea-hint {
-    font-size: 16px;
-    margin: 12px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 16px;
-  }
 
   .textarea-field {
     min-height: 78px;
@@ -52,30 +35,9 @@
     margin-top: 8px;
     margin-bottom: 0px;
   }
-
-  // }
 }
 
 @mixin size-small() {
-
-  .textarea-label {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .textarea-desc {
-    font-size: 14px;
-  }
-
-  .textarea-hint {
-    font-size: 14px;
-    margin: 8px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 12px;
-  }
-
 
   .textarea-field {
     min-height: 62px;
@@ -121,27 +83,6 @@
   }
 
   .textarea-container {
-    .textarea-label {
-      display: flex;
-      font-family: 'Lato'
-    }
-    .textarea-desc {
-      margin: 4px 0px 0px 0px;
-    }
-    .textarea-hint {
-      color: #6F6F71;
-    }
-    .required-field-container {
-      display: flex;
-      .required-star {
-          color: var(--critical-text);
-          font-weight: 400;
-          line-height: 16px;
-          justify-self:flex-start;
-          margin-right: 5px;
-      }
-    }
-
     .content-area {
       display: block;
 

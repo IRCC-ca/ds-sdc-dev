@@ -1,6 +1,6 @@
 <form [formGroup]="config.formGroup" [ngClass]="config.size"
   (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
-  <ircc-cl-lib-label [config]="labelConfig"></ircc-cl-lib-label>
+  <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
   <div class="radio-buttons">
     <div *ngFor="let option of config.options; let index = index" class="radio">
       <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
@@ -12,16 +12,18 @@
         formControl?.invalid && touched
         ? (config.label || '' | translate) + ' ' +
         (config.desc || '' | translate) + ' ' +
+        (config.hint || '' | translate) + ' ' +
         (config.helpText || '' | translate) + ' ' +
         (option.text || '' | translate) + ' ' +
-          errorStubText + ' ' + errorAria
+        (errorStubText + ': ' + errorAria)
         :
           (config.label || '' | translate) + ' ' +
           (config.desc || '' | translate) + ' ' +
+          (config.hint || '' | translate) + ' ' +
           (config.helpText || '' | translate) + ' ' +
-          (option.text || '' | translate)            
+          (option.text || '' | translate)
       ">
-      <label for="{{config.id + index}}" 
+      <label for="{{config.id + index}}"
         [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'">{{(option.text || '') | translate}}</label>
     </div>
   </div>

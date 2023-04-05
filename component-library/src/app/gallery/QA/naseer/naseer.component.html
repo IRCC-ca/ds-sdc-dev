@@ -1,6 +1,7 @@
 <h2> Click the Component you want to test</h2>
 <button (click)="buttonActions('inputComponent')">Input Component</button>
 <button (click)="buttonActions('textareaComponent')">Textarea Component</button>
+<button (click)="buttonActions('datepickerComponent')">Datepicker Component</button>
 <button (click)="buttonActions('dropDownComponent')">Drop Down</button>
 <button (click)="buttonActions('iconButtonComponent')">Icon Buttons</button>
 
@@ -25,7 +26,13 @@
 <ng-container *ngIf="showDropDownComponent === true">
   <h2>Dropdown Component</h2>
   <div class="select-component">
-    <ircc-cl-lib-dropdown size="small"></ircc-cl-lib-dropdown>
+    <ircc-cl-lib-dropdown [config]="testDropdownConfig"></ircc-cl-lib-dropdown>
+  </div>
+  <div class="select-component">
+    <ircc-cl-lib-dropdown category="plain" label="Plain"></ircc-cl-lib-dropdown>
+  </div>
+  <div class="select-component">
+    <ircc-cl-lib-dropdown label="Primary"></ircc-cl-lib-dropdown>
   </div>
 </ng-container>
 
@@ -38,10 +45,27 @@
     <ircc-cl-lib-icon-button class="test-icon" [category]="'custom'" [icon]="customIconConfigTest" [size]="'large'"></ircc-cl-lib-icon-button>
     <ircc-cl-lib-icon-button class="test-icon" [category]="'primary'"  [size]="'large'"></ircc-cl-lib-icon-button>
     <ircc-cl-lib-icon-button class="test-icon" [category]="'primary'"  [size]="'large'"></ircc-cl-lib-icon-button>
-    <ircc-cl-lib-button [config]="testButtonConfig">Test</ircc-cl-lib-button>
-    <ircc-cl-lib-button id="test-button-1" icon="fa-regular fa-igloo">Test Button</ircc-cl-lib-button>
-    <ircc-cl-lib-button id="test-button-2" icon="fa-regular fa-igloo" iconDirection="right">Supeeeeeeeeeeeeeeeeeeeeeeeeer long Buttooooooooooooooon labeeeeeeeeeeeeeel</ircc-cl-lib-button>
+    <div class="button-container-test">
+      <ircc-cl-lib-button [config]="testButtonConfig">Test</ircc-cl-lib-button>
+      <ircc-cl-lib-button id="test-button-1" icon="fa-regular fa-igloo">Test Button</ircc-cl-lib-button>
+      <ircc-cl-lib-button id="test-button-2" icon="fa-regular fa-igloo" iconDirection="left">Supeeeeeeeeeeeeeeeeeeeeeeeeer long Buttooooooooooooooon labeeeeeeeeeeeeeel</ircc-cl-lib-button>
+      <ircc-cl-lib-button id="test-button-2" icon="fa-regular fa-igloo" iconDirection="right">Supeeeeeeeeeeeeeeeeeeeeeeeeer long Buttooooooooooooooon labeeeeeeeeeeeeeel</ircc-cl-lib-button>
+    </div>
   </div>
   <button (click)="disable()">Disable</button>
 </ng-container>
+
+<ng-container *ngIf="showDatePickerComponent === true">
+  <div>
+    <h2>Datepicker Component (Small)</h2>
+    <ircc-cl-lib-date-picker [config]="qaDateOfBirthDatePickerConfig"></ircc-cl-lib-date-picker>
+  </div>
+  <br>
+  <div class='datepicker-container'>
+    <h2>Datepicker Component (Large)</h2>
+    <ircc-cl-lib-date-picker [config]="qaDateOfBirthDatePickerConfig2"></ircc-cl-lib-date-picker>
+  </div>
+</ng-container>
+
+
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { IProgressTagsConfig } from '../progress-tags/progress-tags.component';
 import { ITabConfig, ITabNavConfig } from '../tabs/tabs.component';
 import { TranslateService } from '@ngx-translate/core';

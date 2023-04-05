@@ -7,7 +7,7 @@ import {
   ValidatorFn
 } from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
-import { DSSizes } from '../../../shared/constants/jl-components/jl-components.constants/jl-components.constants';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';

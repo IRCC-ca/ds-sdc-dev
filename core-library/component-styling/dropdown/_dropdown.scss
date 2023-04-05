@@ -19,28 +19,36 @@
     @include layout();
   }
 }
+
 @mixin size-large() {
-  .select-dropdown {
-    padding: 14px 13px 14px 12px;
-    font-size: 16px;
-    height: 54px;
+  .dropdown {
+    padding: 12px 21px 12px 20px;
+    font-size: 20px;
+    min-height: 54px;
     line-height: 24px;
   }
+
   .custom-chevron {
     font-size: 20px;
   }
+
   .placholder-text {
-    font-size: 16px;
+    font-size: 20px;
+  }
+
+  .custom-icon {
+    width: 24px;
+    height: 24px;
   }
 }
 
 @mixin size-small() {
-  .select-dropdown {
+  .dropdown {
     padding: 10px;
-    padding: 10px 13px 10px 12px;
-    height: 42px;
+    padding: 8px 17px 8px 16px;
+    min-height: 42px;
     line-height: 20px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .custom-chevron {
@@ -48,7 +56,12 @@
   }
 
   .placholder-text {
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  .custom-icon {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -70,16 +83,11 @@
 
   .content-container {
     > button {
-      &.select-dropdown {
-        background-color: white;
-        border-style: solid;
-        border: 1px solid #868687;
-        color: var(--text-primary);
-        border-radius: token-size.$border-radius;
+      &.dropdown {
         width: 100%;
-        
         display: flex;
         justify-content: space-between;
+        align-items: center;
         
       }
 
@@ -87,23 +95,47 @@
         cursor: pointer;
         pointer-events: none;
         font-weight: 300;
-        color: var(--text-primary);
       }
 
       .label-text {
-        color: var(--text-primary);
         margin: 0px;
       }
 
       .placholder-text {
-        color: var(--text-placeholder);
         margin: 0px;
       }
 
-      &:active {
-        background-color: var(--generic-active);
+      .icon-text-container {
+        display: flex;
+        box-sizing: border-box;
+      }
+
+      .custom-icon {
+        padding-right: 8px;
+      }
+    }
+    .secondary, .plain{
+      &.selected-true {
+        background-color: var(--navigation-weak);
+        &:hover {
+          background-color: var(--navigation-weak-hover);
+        }
+        &:active {
+          background-color: var(--navigation-weak-active);
+        }
+      }
+    }
+
+    .primary {
+      &.selected-true {
+        background-color: var(--formcontrol);
+        &:hover {
+          background-color: var(--formcontrol-hover);
+        }
+        &:active {
+          background-color: var(--formcontrol-active);
+        }
       }
     }
   }
 }
-

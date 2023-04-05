@@ -14,6 +14,16 @@
     line-height: map.get($map, $level, line-height);
 }
 
+@mixin fontSet($type, $level) {
+    @if $type == heading {
+        @include fontSize(map.get(text.$heading, level), $level);
+        font-family: map.get(text.$heading, family);
+    } @else if $type == body {
+        @include fontSize(map.get(text.$body, level), $level);
+        font-family: map.get(text.$body, family);
+    }
+}
+
 /// Defines font weight for emphasis elements
 /// @param {Number} $weight font-weight to use for emphasis on parent
 @mixin emphasis($weight) {

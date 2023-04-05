@@ -5,7 +5,7 @@
 /** Non-Components - Shared **/
 export * from './shared/functions/stand-alone.functions'
 export * from './shared/interfaces/component-configs';
-export * from './shared/constants/jl-components/jl-components.constants/jl-components.constants'
+export * from './shared/constants/jl-components.constants'
 
 
 /** Banner Component **/
@@ -45,6 +45,7 @@ export * from './lib/shared/ircc-ds-angular-component-shared.module';
 export * from './lib/shared/button/button.component';
 export * from './lib/shared/icon/icon.component';
 export * from './lib/shared/icon-button/icon-button.component';
+export * from './lib/shared/indicator/indicator.component';
 export * from './lib/shared/tabs/tabs.component';
 export * from './lib/shared/label/label.component';
 export * from './lib/shared/progress-tags/progress-tags.component'
@@ -53,3 +54,4 @@ export * from './lib/shared/dropdown/drop-down.component';
 export * from './lib/shared/label/label-button.service';
 export * from './lib/shared/breadcrumb/breadcrumb.component';
 export * from './lib/shared/breadcrumb/link/link.component';
+export * from './lib/shared/spinner/spinner.component';
