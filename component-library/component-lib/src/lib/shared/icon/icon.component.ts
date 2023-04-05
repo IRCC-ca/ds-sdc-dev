@@ -1,4 +1,4 @@
-import { Component, Input, KeyValueDiffer, KeyValueDiffers } from '@angular/core';
+import { Component, DoCheck, Input, KeyValueDiffer, KeyValueDiffers } from '@angular/core';
 
 export interface IIconConfig {
     ariaLabel?: string;
@@ -9,7 +9,7 @@ export interface IIconConfig {
     selector: 'lib-icon',
     templateUrl: './icon.component.html'
 })
-export class IconComponent {
+export class IconComponent implements DoCheck {
     @Input() config: IIconConfig = {
     };
 
@@ -23,17 +23,17 @@ export class IconComponent {
       const change = this.differ.diff(this);
         if (change) {
           let cont = document.getElementById('ds-icon-container');
-\            change.forEachChangedItem(item => {
-\              if(item.key === 'config' && cont){
+            change.forEachChangedItem(item => {
+              if(item.key === 'config' && cont){
                   if(!item.currentValue.ariaLabel){
                     cont.innerHTML = `
                     <span class='${item.currentValue.fontFamily}' aria-hidden='true'></span>
                     `
-\                  } else {
+                  } else {
                     cont.innerHTML = `
                     <span class='${item.currentValue.fontFamily}' aria-label='${item.currentValue.ariaLabel}'></span>
                     `
-\                  }
+                  }
               }
             });
         }
