@@ -1,8 +1,8 @@
 <div class="option-container">
-  <button category="plain">
+  <lib-button [id]="config.id ? config.id : ''" [category]="'plain'">
     <div class="option-contents">
-      <p>{{config.value || '' | translate}}</p>
+      <p class="option-text">{{config.value || '' | translate}}</p>
       <div *ngIf="config.selected"><span class="fa-solid fa-check option-check"></span></div>
     </div>
-  </button>
+  </lib-button>
 </div>

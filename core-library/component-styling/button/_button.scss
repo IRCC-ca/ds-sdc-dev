@@ -27,6 +27,10 @@
     justify-content: space-around;
     width: 100%;
 
+    .button-content-container {
+      width: 100%;
+    }
+
     &.right {
       .button-content-container {
         display: flex;

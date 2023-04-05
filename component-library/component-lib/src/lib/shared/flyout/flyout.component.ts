@@ -23,7 +23,7 @@ export class FlyoutComponent implements OnInit {
   @Input() config : IFlyoutConfig = {
 
   }
-
+  @Input() id? : string;
   @Output() isSelected = new EventEmitter();
 
   clearOptions(){
@@ -39,6 +39,7 @@ export class FlyoutComponent implements OnInit {
   ngOnInit() {
     console.log('Flyout:', this.config);
     if(this.config.type === undefined) this.config.type = 'single';
+    if(this.id) this.config.id = this.id;
   };
 
   optionSelected(i: number){

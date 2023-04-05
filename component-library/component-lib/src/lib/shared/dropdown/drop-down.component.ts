@@ -46,6 +46,11 @@ export class DropdownComponent implements OnInit {
     console.log(e);
     this.showPlaceholder = false;
     this.config.label = e.toString();
+    this.selected = !this.selected;
+  }
+
+  onBlur(e: FocusEvent) {
+    console.log('BLUR', e);
   }
 
   ngOnInit() {
@@ -72,5 +77,11 @@ export class DropdownComponent implements OnInit {
 
   toggleSelect() {
     this.selected = !this.selected;
+    if(this.selected){
+      let flyout = document.getElementById(`${this.config.id}_flyout`);
+      flyout?.addEventListener('keypress', (e : KeyboardEvent)=>{
+        console.log(e.key);
+      })
+    }
   }
 }

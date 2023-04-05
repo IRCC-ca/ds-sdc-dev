@@ -18,20 +18,34 @@ export class TestPageComponent implements OnInit {
 
   testFlyoutConfig : IFlyoutConfig = {
     id: 'flyout_1',
-    options: [
-    {
-      id: 'test_1',
-      value: 'test'
-    },
-    {
-      id: 'test_2',
-      value: 'test 2'
-    }
-    ]
+    options : [
+      {
+        value: 'test'
+      },
+      {
+        value: 'anotha test'
+      },
+      {
+        value: 'yet anotha test3'
+      },
+      {
+        value: 'yet anotha test2'
+      },
+      {
+        value: 'yet anotha test1'
+      },
+      {
+        value: 'yet anotha test5'
+      },
+      {
+        value: 'yet anotha test4'
+      }
+      ]
   };
 
   dropdownConfig : IDropdownConfig = {
     id: 'dropdown_1',
+    category: 'secondary',
     flyout: {
       options : [
       {
@@ -41,7 +55,19 @@ export class TestPageComponent implements OnInit {
         value: 'anotha test'
       },
       {
-        value: 'yet anotha test'
+        value: 'yet anotha test3'
+      },
+      {
+        value: 'yet anotha test2'
+      },
+      {
+        value: 'yet anotha test1'
+      },
+      {
+        value: 'yet anotha test5'
+      },
+      {
+        value: 'yet anotha test4'
       }
       ]
     }

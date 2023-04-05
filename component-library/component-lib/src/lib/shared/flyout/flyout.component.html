@@ -1,5 +1,5 @@
 <div class="flyout-container">
-  <div *ngFor="let option of config?.options; let index = index">
-    <lib-flyout-option [config]="option" (click)="optionSelected(index)" [id]="this.config.id + '_option_' + index"></lib-flyout-option>
+  <div *ngFor="let option of config?.options; let index = index" class="flyout-option-container">
+    <lib-flyout-option [config]="option" (click)="optionSelected(index)" [id]="this.config.id + '_option_' + (index+1)"></lib-flyout-option>
   </div>
 </div>

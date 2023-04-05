@@ -23,21 +23,39 @@
 
 @mixin layout {
     p {
-      padding: 0;
-      margin: 0;
-      text-align: left;
-    }
-    button {
-      width: 100%;
       --text: var(--text-primary);
       color: var(--text);
     }
+
+    lib-button {
+       .lib-button {
+        display: block;
+        overflow: visible;
+        padding: 0;
+
+        &:hover{
+          background: none;
+        }
+      }
+      
+    }
     .option{
+      &-container {
+        margin: 0px 6px;
+        padding: 6px 0px;
+      }
+
       &-contents {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        margin: 0 10px;
+      }
+
+      &-text {
+        padding: 0;
+        margin: 2px 0;
       }
 
       &-check{
