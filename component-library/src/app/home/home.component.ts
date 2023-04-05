@@ -245,9 +245,9 @@ export class HomeComponent implements OnInit {
   valueChange(event: any) {
     console.log(event);
     if (event.id) {
-      let index = this.demoTextArray.findIndex(val => val.id === event.id);
+      const index = this.demoTextArray.findIndex(val => val.id === event.id);
       if (index === -1) {
-        let temp: IComponentOutputEvent = { id: event.id, value: event.value };
+        const temp: IComponentOutputEvent = { id: event.id, value: event.value };
         this.demoTextArray.push(temp)
       } else {
         this.demoTextArray[index].value = event.value;
@@ -264,7 +264,7 @@ export class HomeComponent implements OnInit {
       key: string;
       value: string;
     }
-    let valReturn: IValReturn[] = [];
+    const valReturn: IValReturn[] = [];
     console.log(this.form.value);
     Object.keys(this.form.value).forEach(key => {
       valReturn.push({ key: key, value: this.form.get(key)?.value });

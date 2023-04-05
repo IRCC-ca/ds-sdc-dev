@@ -56,4 +56,8 @@ export class DropdownComponent implements OnInit {
   toggleSelect() {
     this.selected = !this.selected;
   }
+
+  onBlur() {
+    this.selected = false;
+  }
 }

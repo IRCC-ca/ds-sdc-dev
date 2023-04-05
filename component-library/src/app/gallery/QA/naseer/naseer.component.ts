@@ -275,12 +275,12 @@ export class NaseerComponent implements OnInit {
     this.form_input.addControl(this.qaInput.id, new FormControl())
     this.form_input.valueChanges.subscribe(x => {
 
-      var updatedConfig : IInputComponentConfig = {
+      let updatedConfig : IInputComponentConfig = {
         id: this.INPUT_ID,
         formGroup: this.form_input,
       };
       if (!x['type']) x['type'] = 'text';
-      for(let param in x){
+      for(const param in x){
           updatedConfig = {...updatedConfig, [param] : x[param]}
           this.qaInput = updatedConfig;
       }
@@ -305,13 +305,13 @@ export class NaseerComponent implements OnInit {
     this.form_textarea.addControl(this.qaTextareaInput.id, new FormControl())
     this.form_textarea.valueChanges.subscribe(x => {
 
-      var updatedConfig : IInputComponentConfig = {
+      let updatedConfig : IInputComponentConfig = {
         id: this.INPUT_ID,
         formGroup: this.form_textarea,
         errorMessages: this.qaTextareaInput.errorMessages
       };
       if (!x['type']) x['type'] = 'text';
-      for(let param in x){
+      for(const param in x){
           updatedConfig = {...updatedConfig, [param] : x[param]}
           this.qaTextareaInput = updatedConfig;
       }

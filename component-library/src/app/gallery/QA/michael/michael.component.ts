@@ -423,12 +423,12 @@ export class MichaelComponent implements OnInit {
     this.form.addControl(this.qaInputConfig.id, new FormControl())
 
     this.form.valueChanges.subscribe(x => {
-      var updatedConfig : IInputComponentConfig = {
+      let updatedConfig : IInputComponentConfig = {
         id: this.INPUT_ID,
         formGroup: this.form,
         errorMessages: this.qaInputConfig.errorMessages
       };
-      for(let param in x){
+      for(const param in x){
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
@@ -457,7 +457,7 @@ export class MichaelComponent implements OnInit {
         formGroup: this.form_0,
         errorMessages: this.qaCheckboxConfig.errorMessages
       };
-      for(let param in x){
+      for(const param in x){
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
@@ -479,7 +479,7 @@ export class MichaelComponent implements OnInit {
     this.form_1.addControl(this.breadCrumbConfig.id, new FormControl());
     this.form_1.valueChanges.subscribe(x => {
       let updatedConfig: IBreadcrumbConfig = {...this.breadCrumbConfig};
-      for(let param in x){
+      for(const param in x){
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         // console.log('updatedConfig: ', updatedConfig);
@@ -503,7 +503,7 @@ export class MichaelComponent implements OnInit {
     this.form_2.addControl(this.testIndicatorConfig.id, new FormControl());
     this.form_2.valueChanges.subscribe(x => {
       let updatedConfig: IIndicatorConfig = {...this.indicatorConfig};
-      for(let param in x){
+      for(const param in x){
         if (x[param] === null) continue;
         updatedConfig = {...updatedConfig, [param] : x[param]}
         if (updatedConfig?.type === 'number') {

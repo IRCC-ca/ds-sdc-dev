@@ -117,6 +117,10 @@ $selectors: 'lib-select';
 	.lib-select {
 		display: flex;
 		align-items: center;
+
+		.activited-select {
+			color: var(--text-primary);
+		}
 	}
 
 	.select-placeholder {
@@ -143,9 +147,7 @@ $selectors: 'lib-select';
 		--border: var(--border-disabled);
 	}
 
-	.activited-select {
-		color: var(--text-primary);
-	}
+	
 
 	.sr-only {
 		clip: rect(0 0 0 0);

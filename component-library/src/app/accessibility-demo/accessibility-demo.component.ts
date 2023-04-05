@@ -367,7 +367,7 @@ export class AccessibilityDemoComponent implements OnInit {
       (this.progressIndicatorConfig.steps[2].tagConfig.type === 'locked' ||
         this.progressIndicatorConfig.steps[2].tagConfig.type === 'notStarted')
     ) {
-      let tempConfig = this.progressIndicatorConfig;
+      const tempConfig = this.progressIndicatorConfig;
       if (tempConfig.steps) {
         if (this.form.valid) {
           tempConfig.steps[2].tagConfig.type = 'notStarted';
@@ -455,7 +455,7 @@ export class AccessibilityDemoComponent implements OnInit {
           this.updateProgressIndicator();
         });
       } else {
-        let tempConfig = this.progressIndicatorConfig;
+        const tempConfig = this.progressIndicatorConfig;
         if (tempConfig.steps) {
           tempConfig.steps[1].tagConfig.type = 'success';
           tempConfig.steps[2].tagConfig.type = 'primary';
@@ -558,16 +558,16 @@ export class AccessibilityDemoComponent implements OnInit {
     const urlParts = this.router.url.split('/');
     const translateIndex = Object.keys(this.translate.translations).indexOf(urlParts[1]);
     const translateValues = (Object.values(this.translate.translations)[translateIndex] as any).ROUTES;
-    let translatedURLPieces: string[] = [];
+    const translatedURLPieces: string[] = [];
     urlParts.forEach((val: string, index: number) => {
       if (index > 1) {
-        let i = Object.values(translateValues as any).indexOf(val);
+        const i = Object.values(translateValues as any).indexOf(val);
         translatedURLPieces.push(Object.keys(translateValues as any)[i]);
       }
     });
     translatedURLPieces.forEach((piece) => {
       //Operates on the assumption that the alt route is the same as the route, but with '-alt' appended
-      let k = this.translate.instant('ROUTES.' + piece + '-alt');
+      const k = this.translate.instant('ROUTES.' + piece + '-alt');
       if (this.translate.instant('ROUTES.' + this.altPathKey) !== k) {
         this.altLangURL += '/' + k;
       }
