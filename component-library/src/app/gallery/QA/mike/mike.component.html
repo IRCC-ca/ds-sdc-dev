@@ -3,6 +3,7 @@
 <button (click)="toggleComp('radio')">Radio Component</button>
 <button (click)="toggleComp('banner')">Banner Component</button>
 <button (click)="toggleComp('hidden')">Hidden Nav Component</button>
+<button (click)="toggleComp('icon')">Icon Component</button>
 </div>
 <hr/>
 <section id="radio">
@@ -36,5 +37,9 @@
 <p>Accusantium recusandae dolore quae rem, veritatis optio et dignissimos nisi ad sit asperiores ipsum explicabo laudantium vitae a repellendus unde non quod eum ipsa, qui culpa magni architecto? Accusantium, reiciendis!</p>
 <h2 id="t2">Test 2</h2>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia sunt error ullam deleniti ex, laboriosam amet maiores, fugit et asperiores, sequi culpa quae atque rerum.</p>
+</section>
+<section id="icon">
+  <lib-icon [config]="iconConfig"></lib-icon>
+  <app-auto-tester [config]="iconComponentConfig"></app-auto-tester>
 </section>
 

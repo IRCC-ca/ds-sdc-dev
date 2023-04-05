@@ -55,7 +55,7 @@ export class NavButtonsComponent implements OnInit {
    */
   getURL() {
     const curLang = this.translate.currentLang;
-    let langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
+    let langKey = ((curLang === "en-US") || (curLang === 'en') ? '/en/' : '/fr/');
     const i = window.location.href.slice(window.location.href.indexOf(langKey), window.location.href.length);
     return i;
   }

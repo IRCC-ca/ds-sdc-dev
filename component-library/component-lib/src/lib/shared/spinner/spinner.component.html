@@ -3,24 +3,30 @@
     [ngClass]="{'active': config?.type === 'active', 'success': config?.type === 'success', 'critical': config?.type === 'critical'}">
     <ng-container [ngSwitch]="config?.type">
       <div *ngSwitchCase="'success'" class="container">
-        <i class="fa-circle-check fa-regular spinner-icon" title={{text[1]}}></i>
+        <div class="icon-div">
+          <i class="fa-circle-check fa-regular spinner-icon" title={{text[1]}}></i>
+        </div>
         <div class="text">
-          <div class="label">{{config.label}}</div>
-          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
+          <div class="label" [innerHTML]="config.label"></div>
+          <div *ngIf="config?.size === 'large'" class="desc" [innerHTML]="config.description"></div>
         </div>
       </div>
       <div *ngSwitchCase="'critical'" class="container">
-        <i class="fa-circle-exclamation fa-regular spinner-icon" title={{text[2]}}></i>
+        <div class="icon-div">
+          <i class="fa-circle-exclamation fa-regular spinner-icon" title={{text[2]}}></i>
+        </div>
         <div class="text">
-          <div class="label">{{config.label}}</div>
-          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
+          <div class="label" [innerHTML]="config.label"></div>
+          <div *ngIf="config?.size === 'large'" class="desc" [innerHTML]="config.description"></div>
         </div>
       </div>
       <div *ngSwitchDefault class="container">
-        <img src="./src/assets/icons/spinner-states.svg" alt={{text[0]}} class="spinner-icon animated-icon">
+        <div class="icon-div">
+          <img src="./src/assets/icons/spinner-states.svg" alt={{text[0]}} class="spinner-icon animated-icon">
+        </div>
         <div class="text">
-          <div class="label">{{config.label}}</div>
-          <div *ngIf="config?.size === 'large'" class="desc">{{config.description}}</div>
+          <div class="label" [innerHTML]="config.label"></div>
+          <div *ngIf="config?.size === 'large'" class="desc" [innerHTML]="config.description"></div>
         </div>
       </div>
     </ng-container>

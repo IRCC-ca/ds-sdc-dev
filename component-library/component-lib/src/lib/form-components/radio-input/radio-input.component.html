@@ -12,16 +12,18 @@
         formControl?.invalid && touched
         ? (config.label || '' | translate) + ' ' +
         (config.desc || '' | translate) + ' ' +
+        (config.hint || '' | translate) + ' ' +
         (config.helpText || '' | translate) + ' ' +
         (option.text || '' | translate) + ' ' +
-          errorStubText + ' ' + errorAria
+        (errorStubText + ': ' + errorAria)
         :
           (config.label || '' | translate) + ' ' +
           (config.desc || '' | translate) + ' ' +
+          (config.hint || '' | translate) + ' ' +
           (config.helpText || '' | translate) + ' ' +
-          (option.text || '' | translate)            
+          (option.text || '' | translate)
       ">
-      <label for="{{config.id + index}}" 
+      <label for="{{config.id + index}}"
         [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'">{{(option.text || '') | translate}}</label>
     </div>
   </div>

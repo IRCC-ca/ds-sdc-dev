@@ -9,7 +9,7 @@ import {
   AfterViewInit,
   Renderer2
 } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ILinkComponentConfig } from "./link/link.component";
 import { TranslateService } from "@ngx-translate/core";
 import { StandAloneFunctions } from "../../../shared/functions/stand-alone.functions";

@@ -26,6 +26,10 @@ $selectors: 'lib-select';
 		height: 52px;
 	}
 
+	.custom-chevron {
+		font-size: 20px;
+	}
+
 	.select-placeholder {
 		@include typography.fontSet(body, 2);
 		color: var(--text-placeholder)
@@ -45,6 +49,10 @@ $selectors: 'lib-select';
 		padding: 10px 12px;
 		font-size: 16px;
 		height: 40px;
+	}
+
+	.custom-chevron {
+		font-size: 16px;
 	}
 
 	.select-placeholder {
@@ -86,8 +94,9 @@ $selectors: 'lib-select';
 		line-height: 24px;
 		color: var(--text);
 		border-radius: token-size.$border-radius;
-		// showing but not
+		background-color: var(--surface1);
 		border-color: var(--border);
+		border-width: 1px;
 		width: 100%;
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -96,10 +105,11 @@ $selectors: 'lib-select';
 	}
 
 	.custom-chevron {
+		position: relative;
+		z-index: 10;
 		cursor: pointer;
 		pointer-events: none;
 		font-weight: 300;
-		font-size: 20px;
 		color: var(--text);
 		margin-left: -31px;
 	}
@@ -115,6 +125,12 @@ $selectors: 'lib-select';
 
 	.select-option {
 		color: black;
+	}
+	
+	.select-clicked {
+		.custom-chevron {
+			transform: rotateZ(180deg);
+		  }
 	}
 
 	select:invalid,

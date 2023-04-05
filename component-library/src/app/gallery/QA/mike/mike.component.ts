@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import { FormGroup, FormControl, ValidatorFn, Validators} from '@angular/forms';
 import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
-import { IBannerConfig, ICTAConfig, IButtonConfig, IRadioInputComponentConfig, IHiddenNavConfig } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICTAConfig, IButtonConfig, IRadioInputComponentConfig, IHiddenNavConfig, IIconConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-mike',
@@ -40,11 +40,36 @@ export class MikeComponent implements OnInit {
     ]
   }
 
+  iconConfig : IIconConfig = {
+    fontFamily: 'fa-regular fa-mustache'
+  }
 
   form = new FormGroup({});
   ctaForm1 = new FormGroup({});
   radioForm = new FormGroup({});
   radioTesterForm = new FormGroup({});
+  iconTesterForm = new FormGroup({});
+
+  iconTest : IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'fontFamily',
+        label:'fontFamily',
+        formGroup: this.iconTesterForm
+      },
+      {
+        id: 'ariaLabel',
+        label:'ariaLabel',
+        formGroup: this.iconTesterForm
+      }
+    ],
+  }
+
+  iconComponentConfig : IAutoTestComponentConfig = {
+    id: 'icon_tester',
+    formGroup: this.iconTesterForm,
+    testFields: this.iconTest
+  }
 
   radioConfig : IRadioInputComponentConfig = {
     id: 'radio_1',
@@ -325,6 +350,10 @@ export class MikeComponent implements OnInit {
       this.radioTesterForm.addControl(i.id, new FormControl());
     });
 
+    this.iconTest.inputs?.forEach(i => {
+      this.iconTesterForm.addControl(i.id, new FormControl());
+    })
+
     this.form.valueChanges.subscribe(x => {
       let updatedConfig : IBannerConfig = {
         id: this.BANNER_ID
@@ -335,6 +364,19 @@ export class MikeComponent implements OnInit {
         this.qaBanner = updatedConfig;
       }
   });
+
+  this.iconTesterForm.valueChanges.subscribe(x => {
+    let updatedConfig : IIconConfig = {
+      fontFamily: this.iconConfig.fontFamily
+    }
+
+    for(let param in x){
+      updatedConfig = {...updatedConfig, [param] : x[param]}
+      this.iconConfig = updatedConfig;
+    }
+
+    console.log('ICON CONFIG:', updatedConfig);
+  })
 
   // code for CTA1:
     this.ctaForm1.valueChanges.subscribe(x => {

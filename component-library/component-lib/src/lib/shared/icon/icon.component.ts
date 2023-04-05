@@ -1,17 +1,8 @@
-import { Component, Input } from '@angular/core';
-
-export const FONT_FAMILIES = {
-    ['fa-solid']: null,
-    ['fa-thin']: null,
-    ['fa-light']: null,
-    ['fa-regular']: null,
-    ['fa-brands']: null,
-};
+import { Component, Input, KeyValueDiffer, KeyValueDiffers } from '@angular/core';
 
 export interface IIconConfig {
     ariaLabel?: string;
-    unicode: string;
-    fontFamily: keyof typeof FONT_FAMILIES;
+    fontFamily?: string;
 }
 
 @Component({
@@ -20,21 +11,36 @@ export interface IIconConfig {
 })
 export class IconComponent {
     @Input() config: IIconConfig = {
-        unicode: '',
-        fontFamily: 'fa-regular'
     };
 
-    @Input() ariaLabel?: string;
-    @Input() unicode?: string;
-    @Input() fontFamily?: keyof typeof FONT_FAMILIES;
+    differ: KeyValueDiffer<string, any>;
 
-    formattedIcon = '';
-
-    ngOnInit() {
-        this.formattedIcon = "'" + '\\' + this.config?.unicode + "'";
-
-        if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
-        if (this.fontFamily) this.config.fontFamily = this.fontFamily;
-        if (this.unicode) this.config.unicode = this.unicode;
+    constructor(private differs: KeyValueDiffers) {
+      this.differ = this.differs.find({}).create();
     }
+
+    ngDoCheck() {
+      const change = this.differ.diff(this);
+        if (change) {
+          let cont = document.getElementById('ds-icon-container');
+          console.log(cont);
+            change.forEachChangedItem(item => {
+              console.log(item.key);
+              if(item.key === 'config' && cont){
+                  if(!item.currentValue.ariaLabel){
+                    cont.innerHTML = `
+                    <span class='${item.currentValue.fontFamily}' aria-hidden='true'></span>
+                    `
+                    console.log('changed');
+                  } else {
+                    cont.innerHTML = `
+                    <span class='${item.currentValue.fontFamily}' aria-label='${item.currentValue.ariaLabel}'></span>
+                    `
+                    console.log('also changed');
+                  }
+              }
+            });
+        }
+    }
+
 }

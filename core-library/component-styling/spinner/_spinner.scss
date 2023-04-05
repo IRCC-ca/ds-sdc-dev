@@ -23,7 +23,9 @@ $selectors: 'lib-spinner';
 
 @mixin types($category: active) {
   .#{$category} {
-    background-color: var(--#{$category}-alert-background);
+    .icon-div {
+      background-color: var(--#{$category}-alert-background);
+    }
     .spinner-icon {
       --text: var(--#{$category}-alert-text);
     }
@@ -31,10 +33,20 @@ $selectors: 'lib-spinner';
 }
 
 @mixin size-large() {
+  .vertical {
+    .label {
+      margin: {
+        top: 16px;
+        bottom: 4px;
+      }
+    }
+    .icon-div {
+      width: 80px;
+    }
+  }
   .spinner-container {
-    width: 80px;
     height: 80px;
-    >div {
+    .icon-div {
       height: 80px;
       border-radius: 50%;
     }
@@ -43,23 +55,26 @@ $selectors: 'lib-spinner';
     width: 80px;
     height: 80px;
   }
-  .label {
-    margin: {
-      left: 16px;
-      bottom: 4px;
+  .horizontal {
+    .label {
+      margin: {
+        left: 16px;
+        bottom: 4px;
+      }
     }
-    @include typography.fontSet(heading, 4);
+    .desc {
+      margin-left: 16px;
+    }
   }
-  .desc {
-    margin-left: 16px;
+  .label {
+    @include typography.fontSet(heading, 4);
   }
 }
 
 @mixin size-small() {
   .spinner-container {
-    width: 28px;
     height: 28px;
-    >div {
+    .icon-div {
       height: 28px;
       border-radius: 50%;
     }
@@ -68,50 +83,35 @@ $selectors: 'lib-spinner';
     width: 28px;
     height: 28px;
   }
-  .label {
-    margin-left: 8px;
-    @include typography.fontSet(body, 1);
-  }
-  .desc {
-    margin-left: 8px;
-  }
+    .label {
+      margin-left: 8px;
+      margin-bottom: 0;
+      @include typography.fontSet(body, 1);
+    }
 }
 
 @mixin layout {
+
+  .spinner-container {
+    width: 100%;
+  }
+
   .horizontal {
     .container {
       display: flex;
-      align-items: center;
+      justify-content: center;
     }
   }
   .vertical {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .text {
       display: flex;
       flex-direction: column;
-      .label {
-        margin-left: 11px;
-      }
-      .desc {
-        margin-left: 0;
-      }
-    }
-  }
-  .extraSmall {
-    .spinner-container {
-      width: 20px;
-      height: 20px;
-      >div {
-        height: 20px;
-        border-radius: 50%;
-      }
-    }
-    .spinner-icon {
-      width: 20px;
-      height: 20px;
-    }
-    .label {
-      margin-left: 8px;
-      @include typography.fontSet(body, 3);
+      text-align: center;
     }
   }
 
@@ -134,12 +134,8 @@ $selectors: 'lib-spinner';
     }
   }
 
-  .label {
-    white-space: nowrap;
-  }
   .desc {
     color: var(--text-placeholder);
-    white-space: nowrap;
   }
 
 	@include size.selector(large) {
@@ -158,4 +154,23 @@ $selectors: 'lib-spinner';
 
   @include types(success);
   @include types(critical);
+
+  .extraSmall {
+    .spinner-container {
+      height: 20px;
+      .icon-div {
+        height: 20px;
+        border-radius: 50%;
+      }
+    }
+    .spinner-icon {
+      width: 20px;
+      height: 20px;
+    }
+    .label {
+      margin-left: 8px;
+      margin-bottom: 0;
+      @include typography.fontSet(body, 3);
+    }
+  }
 }

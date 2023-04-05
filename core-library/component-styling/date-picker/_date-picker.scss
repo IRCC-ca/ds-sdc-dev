@@ -19,9 +19,76 @@
 }
 
 @mixin size-large() {
+  @media (max-width: 530px) {
+    .all-select-container {
+      .select-year {
+        width: 180px;
+      }
+
+      .select-month {
+        width: 180px;
+      }
+
+      .select-day {
+        width: 180px;
+      }
+    }
+  }
+
+  @media (min-width: 529px) {
+    .all-select-container {
+      .select-year {
+        width: 136px;
+      }
+
+      .select-month {
+        width: 136px;
+      }
+
+      .select-day {
+        width: 136px;
+      }
+    }
+  }
 }
 
 @mixin size-small() {
+
+  @media (max-width: 530px) {
+    .all-select-container {
+      .select-year {
+        width: 152px;
+        margin-bottom: 12px;
+      }
+
+      .select-month {
+        width: 152px;
+        margin-bottom: 12px;
+      }
+
+      .select-day {
+        width: 152px;
+      }
+    }
+  }
+
+  @media (min-width: 529px) {
+    .all-select-container {
+      .select-year {
+        width: 124px;
+      }
+
+      .select-month {
+        width: 124px;
+        margin-left: 12px;
+      }
+
+      .select-day {
+        width: 124px;
+        margin-left: 12px;
+      }
+    }
+  }
 
 }
 
@@ -43,51 +110,33 @@
     }
   }
 
-  @media (max-width: 373px) {
+  @media (max-width: 530px) {
     .all-select-container {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
 
-      //Currently only has the large size - TODO: Update to include small
-      // .select-container {
-      //   // min-width: 155px;
-
       .select-year {
-        width: 100%;
+        margin-bottom: 12px;
       }
 
       .select-month {
-        width: 100%;
-      }
-
-      .select-day {
-        width: 100%;
+        margin-bottom: 12px;
       }
     }
   }
 
-  @media (min-width: 372px) {
+  @media (min-width: 529px) {
     .all-select-container {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
 
-      //Currently only has the large size - TODO: Update to include small
-      // .select-container {
-      //   // min-width: 155px;
-
-      .select-year {
-        min-width: 112px;
-      }
-
       .select-month {
-        min-width: 144px;
         margin-left: 12px;
       }
 
       .select-day {
-        min-width: 92px;
         margin-left: 12px;
       }
     }

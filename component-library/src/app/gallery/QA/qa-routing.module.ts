@@ -12,7 +12,7 @@ import { QARoutes } from "./qa.service"
     const routes: Routes = [
 QARoutes.childRoutes([
     { path: 'kris-en', component: KrisComponent }, //English
-    { path: 'kris-fa', component: KrisComponent}, //French
+    { path: 'kris-fr', component: KrisComponent}, //French
 
     { path: 'mahsa-en', component: MahsaComponent }, //English
     { path: 'mahsa-fr', component: MahsaComponent }, //French
