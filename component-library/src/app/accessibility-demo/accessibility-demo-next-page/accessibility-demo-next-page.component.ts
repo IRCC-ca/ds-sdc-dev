@@ -3,6 +3,8 @@ import { IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
+import { FormStateService } from '../form-state.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-accessibility-demo-next-page',
@@ -19,10 +21,14 @@ export class AccessibilityDemoNextPageComponent implements OnInit {
   altLangURL = ''
 
   constructor(private translate: TranslateService,
-              private altLang: LanguageSwitchService,) { }
+              private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
     this.altLang.setAltLangLink('AccessibilityDemoNext-alt');
+  }
+
+  clearForm() {
+    localStorage.removeItem('form');
   }
 
   /**

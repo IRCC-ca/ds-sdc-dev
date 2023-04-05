@@ -44,7 +44,7 @@
             <div class="buttons_container" tabindex="-1">
                 <!-- TODO: Double Tab on btn1 -->
                 <div class="btn1">
-                    <lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'"
+                    <lib-button (click)="back()" [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'"
                         tabindex="-1" [routerLink]="getPreviousButtonLink">
                         {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</lib-button>
                 </div>

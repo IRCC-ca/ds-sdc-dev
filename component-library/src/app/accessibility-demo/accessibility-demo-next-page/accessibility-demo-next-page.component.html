@@ -2,7 +2,7 @@
 
 <p class="h2 complete">{{'ACC_DEMO.NEXT_PAGE_COMPLETE' | translate}}</p>
 <div class="button-container">
-    <button [routerLink]="getPreviousButtonLink">{{'ACC_DEMO.ADJACENT_PAGES_BUTTONS.FINISHED' | translate}}</button>
+    <button [routerLink]="getPreviousButtonLink" (click)="clearForm()">{{'ACC_DEMO.ADJACENT_PAGES_BUTTONS.FINISHED' | translate}}</button>
 </div>
 <lib-footer [id]="'footer'">
     <span>{{ "Version" | translate }}</span>

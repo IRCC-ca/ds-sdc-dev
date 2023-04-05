@@ -260,6 +260,7 @@ export class AccessibilityDemoComponent implements OnInit {
   baseUrlKey = 'ROUTES.AccessibilityDemo';
   language = '';
   formStateSub = new Subscription;
+  formValSub = new Subscription;
 
 
 
@@ -268,7 +269,6 @@ export class AccessibilityDemoComponent implements OnInit {
     private altLang: LanguageSwitchService,
     private router: Router,
     private labelButton: LabelButtonService,
-    private formState: FormStateService
   ) { }
 
   ngOnInit() {
@@ -293,40 +293,16 @@ export class AccessibilityDemoComponent implements OnInit {
     this.form.addControl(this.cityOfBirthSelectConfig.id, new FormControl('', Validators.required));
     this.form.addControl(this.declarationCheckboxConfig.id, new FormControl('', [requiredTrueValidator()]));
 
-    // const savedFormData = this.getFormData;
-    // if (savedFormData) {
-    //   this.form.setValue(savedFormData);
-    // }
 
-    this.formStateSub = this.formState.formStateObs$.subscribe(response => {
-      console.log(response.contains(this.familyNameInputConfig.id));
-      if (response.contains(this.familyNameInputConfig.id)) {
-        this.form.patchValue(response.value);
-      }
-    });
-    console.log(this.form);
-
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.formState.broadcastFormGroup();
-        // this.form.updateValueAndValidity();
-        // console.log(this.form, "I AM RUNNING!")
-        // this.formState.updateFormGroup(this.form);
-        // sessionStorage.setItem('form', JSON.stringify(this.form));
-      }
-    });
-
+    const state = localStorage.getItem('form');
+    if (state) {
+      this.form.patchValue(JSON.parse(state));
+    }
 
     //Handle label button presses
     this.labelButton.buttonPress(''); //reset the button BehaviourSubject
     this.labelButtonSub = this.labelButton.labelButtonClickObs$.subscribe(response => {
       this.iconButtonHandler(response);
-    });
-
-    //This is terrible...
-    this.form.valueChanges.subscribe(() => {
-      this.formState.updateFormGroup(this.form);
     });
 
     //Initial pop of cities is all values
@@ -406,24 +382,10 @@ export class AccessibilityDemoComponent implements OnInit {
   }
 
   /**
-   * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
+   * Back button function to store the state of the form
    */
-  navButton() {
-    this.nextClicked = true;
-    this.form.markAllAsTouched();
-    if (!this.form.valid) {
-      this.showErrorBanner = true;
-      this.form.valueChanges.subscribe(() => {
-        this.showErrorBanner = !this.form.valid;
-      });
-    } else {
-      let tempConfig = this.progressIndicatorConfig;
-      if (tempConfig.steps) {
-        tempConfig.steps[1].tagConfig.type = 'success';
-        tempConfig.steps[2].tagConfig.type = 'primary';
-      }
-      this.router.navigateByUrl(this.getNextButtonLink);
-    } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
+  back() {
+    localStorage.setItem('form', JSON.stringify(this.form.value));
   }
 
   /**
@@ -444,6 +406,29 @@ export class AccessibilityDemoComponent implements OnInit {
         break;
     }
   }
+
+  /**
+   * Once triggered, this tracks if the form is valid and updates the showErrorBanner variable accordingly
+   */
+  navButton() {
+    this.nextClicked = true;
+    this.form.markAllAsTouched();
+    if (!this.form.valid) {
+      this.showErrorBanner = true;
+      this.form.valueChanges.subscribe(() => {
+        this.showErrorBanner = !this.form.valid;
+      });
+    } else {
+      let tempConfig = this.progressIndicatorConfig;
+      if (tempConfig.steps) {
+        tempConfig.steps[1].tagConfig.type = 'success';
+        tempConfig.steps[2].tagConfig.type = 'primary';
+      }
+      localStorage.setItem('form', JSON.stringify(this.form.value));
+      this.router.navigateByUrl(this.getNextButtonLink);
+    } //NOTE: No need to deal with cases not covered above, since those will result in navigation!
+  }
+
 
   /************************************Getters for Navigation**************************************/
 
@@ -508,6 +493,7 @@ export class AccessibilityDemoComponent implements OnInit {
   ngOnDestroy() {
     this.routerSub?.unsubscribe();
     this.formStateSub.unsubscribe();
+    console.log(this.form.value);
   }
 }
 

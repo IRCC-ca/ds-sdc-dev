@@ -13,10 +13,6 @@ export class FormStateService {
 
   updateFormGroup(form: FormGroup) {
     this.form = form;
-    console.log(this.form.value, 'SERVICE')
-  }
-
-  broadcastFormGroup() {
     this.formStateSubj.next(this.form);
   }
 }
