@@ -27,11 +27,11 @@ export class IconComponent {
               if(item.key === 'config' && cont){
                   if(!item.currentValue.ariaLabel){
                     cont.innerHTML = `
-                    <span class='${item.currentValue.fontFamily}' aria-hidden='true'></span>
+                    <span class='${item.currentValue.FA_keywords}' aria-hidden='true'></span>
                     `
                   } else {
                     cont.innerHTML = `
-                    <span class='${item.currentValue.fontFamily}' aria-label='${item.currentValue.ariaLabel}'></span>
+                    <span class='${item.currentValue.FA_keywords}' aria-label='${item.currentValue.ariaLabel}'></span>
                     `
                   }
               }
