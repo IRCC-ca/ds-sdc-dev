@@ -24,10 +24,11 @@ export interface IFlyoutOptionConfig {
 export class FlyoutOptionComponent implements OnInit {
 
   @Input() config : IFlyoutOptionConfig = {
+    id: '',
     value: 'Blank label'
   }
 
-  @Input() id : string = '';
+  @Input() id? : string;
 
   constructor() { }
 
@@ -35,6 +36,7 @@ export class FlyoutOptionComponent implements OnInit {
     console.log('Option:', this.config);
     if(this.config.type === undefined) this.config.type = 'text';
     if(this.config.type === 'text' || 'checkbox' || 'dropdown') this.config.clickable = true;
+    if(this.id) this.config.id = this.id;
   };
 
 };

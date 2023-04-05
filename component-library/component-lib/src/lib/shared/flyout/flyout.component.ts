@@ -25,7 +25,7 @@ export class FlyoutComponent implements OnInit {
   @Input() id : string = '';
   @Output() isSelected = new EventEmitter();
 
-  selectedIndex : number = 0;
+  selectedIndex : number = -1;
 
   @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
@@ -62,12 +62,9 @@ export class FlyoutComponent implements OnInit {
   }
 
   focusIndex() {
-    console.log(this.id);
-    let flyout = document.getElementById(`${this.id}`);
-    console.log(flyout);
-    let options = flyout?.childNodes;
-    console.log(options);
-
+    if(this.config.options){
+      console.log(this.config.options[this.selectedIndex].id);
+    }
   }
 
   clearOptions(){
