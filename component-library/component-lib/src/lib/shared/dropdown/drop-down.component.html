@@ -1,10 +1,9 @@
 <div class="content-container" [ngClass]="config.size">
-
     <button [id]="config.id" (click)="toggleSelect()" [disabled]="config.disabled"
     class="dropdown selected-{{selected}} {{config.category}}" attr.category="{{config.category}}"
     >
       <div class="icon-text-container">
-        <lib-icon *ngIf="config.icon" class="{{config.icon?.class}} custom-icon" [style.color]="config.icon?.color"></lib-icon>
+        <lib-icon *ngIf="config.icon" class="custom-icon" [style.color]="config.icon?.color" [config]="{'FA_keywords':config.icon?.class}"></lib-icon>
         <p *ngIf="showPlaceholder" class="placholder-text">{{config.placeholderText}}</p>
         <p class="label-text">{{config.label}}</p>
       </div>
@@ -16,3 +15,5 @@
       </div>
     </button>
 </div>
+<lib-flyout [id]="config.id + '_flyout'" *ngIf="selected" [config]="flyoutConfig" (isSelected)="selectedOption($event)"></lib-flyout>
+

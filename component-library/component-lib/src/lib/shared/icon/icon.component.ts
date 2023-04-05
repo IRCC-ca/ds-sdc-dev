@@ -2,7 +2,7 @@ import { Component, Input, KeyValueDiffer, KeyValueDiffers } from '@angular/core
 
 export interface IIconConfig {
     ariaLabel?: string;
-    fontFamily?: string;
+    FA_keywords?: string;
 }
 
 @Component({
