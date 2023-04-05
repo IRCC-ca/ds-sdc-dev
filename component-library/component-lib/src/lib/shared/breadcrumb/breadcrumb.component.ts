@@ -90,7 +90,6 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
         })
       }
     }
-    this.createLinks();
     this.separatorIcon.size = this.config.size;
   }
 
