@@ -2,26 +2,26 @@
     <div class="dimmer" *ngIf="hamburgerMenuState"></div>
     <div class="outer_header_stepper_container" id="outer_header_stepper_container">
         <div class="header_stepper_container" id="header_stepper_inner_container">
-            <lib-header [id]="'header'" [ngClass]="{'disable_all' : hamburgerMenuState}"></lib-header>
+            <ircc-cl-lib-header [id]="'header'" [ngClass]="{'disable_all' : hamburgerMenuState}"></ircc-cl-lib-header>
             <div class="stepper" *ngIf="innerWidth > 980">
-                <lib-progress-indicator [config]="progressIndicatorConfig"
-                    (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+                <ircc-cl-lib-progress-indicator [config]="progressIndicatorConfig"
+                    (tabClick)="progressTabButtonEvent($event)"></ircc-cl-lib-progress-indicator>
             </div>
             <div class="hamburger" *ngIf="innerWidth < 980">
-                <lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'"
-                    (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</lib-button>
+                <ircc-cl-lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'"
+                    (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</ircc-cl-lib-button>
             </div>
             <div class="modal_container" *ngIf="hamburgerMenuState">
                 <dialog appPreventTabOut [enabled]="allowedNavItemIds" id="progress_dialog" class="dialog" open>
                     <div class="progress_dialog_content">
                         <div class="modal_header">
                             <h5>{{'ACC_DEMO.MODAL_TITLE' | translate}}</h5>
-                            <lib-icon-button [config]="hamburgerDialogXButtonConfig"
-                                (click)="menuHamburgerButton()"></lib-icon-button>
+                            <ircc-cl-lib-icon-button [config]="hamburgerDialogXButtonConfig"
+                                (click)="menuHamburgerButton()"></ircc-cl-lib-icon-button>
                         </div>
                         <div class="progress_container">
-                            <lib-progress-indicator [config]="progressIndicatorConfig"
-                                (tabClick)="progressTabButtonEvent($event)"></lib-progress-indicator>
+                            <ircc-cl-lib-progress-indicator [config]="progressIndicatorConfig"
+                                (tabClick)="progressTabButtonEvent($event)"></ircc-cl-lib-progress-indicator>
                         </div>
                     </div>
                 </dialog>
@@ -33,8 +33,8 @@
         <p>{{'ACC_DEMO.PREVIOUS_PAGE.CONTENT' | translate}}</p>
     </div>
     <div class="buttons_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
-        <lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" category="secondary"
+        <ircc-cl-lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" category="secondary"
             [routerLink]="getMainPageLink">
-            {{'ACC_DEMO.BUTTONS.PREVIOUS_PAGE_NEXT' | translate}}</lib-button>
+            {{'ACC_DEMO.BUTTONS.PREVIOUS_PAGE_NEXT' | translate}}</ircc-cl-lib-button>
     </div>
 </div>

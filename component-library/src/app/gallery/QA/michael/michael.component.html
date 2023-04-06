@@ -2,17 +2,17 @@
 <lib-indicator [config]="indicatorConfig"></lib-indicator>
 <app-auto-tester [config]="testIndicatorConfig"></app-auto-tester>
 <h2>Breadcrumb</h2>
-<lib-breadcrumb [config]="breadCrumbConfig"></lib-breadcrumb>
+<ircc-cl-lib-breadcrumb [config]="breadCrumbConfig"></ircc-cl-lib-breadcrumb>
 <app-auto-tester [config]="testBreadCrumbConfig"></app-auto-tester>
 <h2>Checkbox</h2>
 <!-- Checkbox Test -->
-<lib-checkbox [config]="qaCheckboxConfig"></lib-checkbox>
+<ircc-cl-lib-checkbox [config]="qaCheckboxConfig"></ircc-cl-lib-checkbox>
 <button (click)="buttonActions('disableCheckbox')">Toggle Disable Checkbox</button>
 <button (click)="buttonActions('checkboxError')">Toggle Error Checkbox</button>
 <br>
 <app-auto-tester [config]="testCheckboxComponentConfig"></app-auto-tester>
 <h2 [id]="'QA.michael-input' | translate">Input</h2>
-<lib-input [config]="qaInputConfig"></lib-input>
+<ircc-cl-lib-input [config]="qaInputConfig"></ircc-cl-lib-input>
 <app-auto-tester [config]="testInputComponentConfig"></app-auto-tester>
 <button (click)="buttonActions('inputError')">Toggle Single Error Input</button>
 <button (click)="buttonActions('setInputError')">Set Input Errors</button>

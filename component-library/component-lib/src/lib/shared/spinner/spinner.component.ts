@@ -19,7 +19,7 @@ export interface ISpinnerConfig {
   description?: string
 }
 @Component({
-  selector: 'lib-spinner',
+  selector: 'ircc-cl-lib-spinner',
   templateUrl: './spinner.component.html'
 })
 export class SpinnerComponent implements OnInit {

@@ -2,7 +2,7 @@
   <form [formGroup]="config.formGroup">
     <div class="input-container" [ngClass]="config.size">
       <div class="input-text">
-        <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
+        <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
         <div class="input-content-area" [ngClass]="focusState === true ? 'focus' : ''">
           <!-- ngModel doesn't mind undefined values, apparently
           TODO: Should probably change the (keyup) to (onblur) -->
@@ -37,7 +37,7 @@
           <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
           <ng-container *ngFor="let errors of errorIds; let i = index">
             <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
-              <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+              <ircc-cl-lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></ircc-cl-lib-error>
             </div>
           </ng-container>
         </div>

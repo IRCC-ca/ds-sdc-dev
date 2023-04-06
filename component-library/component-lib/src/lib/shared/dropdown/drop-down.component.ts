@@ -15,7 +15,7 @@ export interface IDropdownConfig {
   
 
 @Component({
-  selector: 'lib-dropdown',
+  selector: 'ircc-cl-lib-dropdown',
   templateUrl: './drop-down.component.html'
 })
 export class DropdownComponent implements OnInit {

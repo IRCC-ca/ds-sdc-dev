@@ -283,7 +283,7 @@ export class MahsaComponent implements OnInit {
           { text: 'Option 2'},
         ],
       };
-      for(let param in value) {
+      for(const param in value) {
         if(value[param]){
           updatedConfig = { ...updatedConfig, [param]: value[param] };
           this.qaSelect = updatedConfig;

@@ -1,7 +1,7 @@
 <form class="checkbox-container" [formGroup]="config.formGroup"
   (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <div class="checkbox-container" [ngClass]="config.size">
-    <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
+    <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
       <div class="checkbox">
         <input [attr.aria-live]="'off'" (blur)="touched = true" id="{{config.id}}" class="check"
@@ -35,7 +35,7 @@
         <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
         <ng-container *ngFor="let errors of errorIds; let i = index">
           <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
-            <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+            <ircc-cl-lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></ircc-cl-lib-error>
           </div>
         </ng-container>
       </div>

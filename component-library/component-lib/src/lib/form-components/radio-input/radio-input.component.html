@@ -1,6 +1,6 @@
 <form [formGroup]="config.formGroup" [ngClass]="config.size"
   (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
-  <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
+  <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
   <div class="radio-buttons">
     <div *ngFor="let option of config.options; let index = index" class="radio">
       <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
@@ -32,7 +32,7 @@
     <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
     <ng-container *ngFor="let errors of errorIds; let i = index">
       <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
-        <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+        <ircc-cl-lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></ircc-cl-lib-error>
       </div>
     </ng-container>
   </ng-container>

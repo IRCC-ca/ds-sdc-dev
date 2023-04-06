@@ -31,7 +31,7 @@ export enum ResizableTypes {
 }
 
 @Component({
-  selector: 'lib-textarea',
+  selector: 'ircc-cl-lib-textarea',
   templateUrl: './textarea.component.html',
   providers: [
     {

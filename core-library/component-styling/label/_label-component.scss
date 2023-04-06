@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-label#{template-const.$escape} {
+  ircc-cl-lib-label#{template-const.$escape} {
       @content;
   }
 }

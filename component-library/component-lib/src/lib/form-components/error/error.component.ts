@@ -15,7 +15,7 @@ export interface IErrorComponentConfig {
 }
 
 @Component({
-  selector: 'lib-error',
+  selector: 'ircc-cl-lib-error',
   templateUrl: './error.component.html',
 })
 export class ErrorComponent implements OnInit, OnChanges {

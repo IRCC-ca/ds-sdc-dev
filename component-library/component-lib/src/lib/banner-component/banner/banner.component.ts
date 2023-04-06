@@ -42,7 +42,7 @@ export interface IBannerConfig {
 };
 
 @Component({
-  selector: 'lib-banner',
+  selector: 'ircc-cl-lib-banner',
   templateUrl: './banner.component.html'
 })
 export class BannerComponent implements OnInit {

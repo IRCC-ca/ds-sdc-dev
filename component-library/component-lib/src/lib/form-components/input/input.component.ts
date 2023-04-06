@@ -30,7 +30,7 @@ export enum InputTypes {
   password = 'password'
 }
 @Component({
-  selector: 'lib-input',
+  selector: 'ircc-cl-lib-input',
   templateUrl: './input.component.html',
   providers: [
     {

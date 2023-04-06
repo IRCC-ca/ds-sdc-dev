@@ -13,7 +13,7 @@ export const LANGUAGE_SWITCH_ARIA_FRENCH = 'Switch language to English'
 
 
 @Component({
-  selector: 'lib-language-switch',
+  selector: 'ircc-cl-lib-language-switch',
   templateUrl: './language-switch.component.html',
 })
 export class LanguageSwitchComponent implements OnInit {

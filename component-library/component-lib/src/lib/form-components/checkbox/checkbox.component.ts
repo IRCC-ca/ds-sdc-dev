@@ -25,7 +25,7 @@ export interface ICheckBoxComponentConfig {
 }
 
 @Component({
-  selector: 'lib-checkbox',
+  selector: 'ircc-cl-lib-checkbox',
   templateUrl: './checkbox.component.html',
   providers: [
     {

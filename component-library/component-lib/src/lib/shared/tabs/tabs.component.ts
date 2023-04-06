@@ -13,7 +13,7 @@ export interface ITabConfig {
   value?: string
 }
 @Component({
-  selector: 'lib-tabs',
+  selector: 'ircc-cl-lib-tabs',
   templateUrl: './tabs.component.html'
 })
 export class TabsComponent implements OnInit {

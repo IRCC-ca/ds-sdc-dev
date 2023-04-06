@@ -1,6 +1,6 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
-  <lib-input name="chipContentText" [(ngModel)]="chipContentText" placeholder="Add Chip">
-  </lib-input>
+  <ircc-cl-lib-input name="chipContentText" [(ngModel)]="chipContentText" placeholder="Add Chip">
+  </ircc-cl-lib-input>
 </form>
 <div class="chip-list">
   <lib-chip-item *ngFor="let chip of chipList; let idx = index" [chipContent]="chip"

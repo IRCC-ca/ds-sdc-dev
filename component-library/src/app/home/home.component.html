@@ -17,7 +17,7 @@
             <!-- Checkbox Test -->
             <div class="demoCheckboxContainer">
                 <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
-                    <lib-checkbox [config]="checkbox" [formControlName]="checkbox.id"></lib-checkbox>
+                    <ircc-cl-lib-checkbox [config]="checkbox" [formControlName]="checkbox.id"></ircc-cl-lib-checkbox>
                 </div>
                 <button (click)="buttonActions(homeButtonActionTypes.disableCheckbox)">Toggle Disable Checkbox</button>
                 <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">Toggle Error Checkbox</button>
@@ -26,7 +26,7 @@
             <!-- Radio Input Test -->
             <br>
             <div>
-                <lib-radio-input [config]="radioConfig" [formControlName]="radioConfig.id"></lib-radio-input>
+                <ircc-cl-lib-radio-input [config]="radioConfig" [formControlName]="radioConfig.id"></ircc-cl-lib-radio-input>
             </div>
         </form>
 
@@ -39,22 +39,22 @@
         <form [formGroup]="form">
             <div>
                 <div>
-                    <lib-radio-input [config]="radioErrorTestConfig" [formControlName]="radioErrorTestConfig.id"></lib-radio-input>
+                    <ircc-cl-lib-radio-input [config]="radioErrorTestConfig" [formControlName]="radioErrorTestConfig.id"></ircc-cl-lib-radio-input>
                 </div>
                 <button (click)="buttonActions(homeButtonActionTypes.disableRadio)">Disable Radio</button>
 
                 <div class="demoInput">
-                    <lib-input *ngFor="let config of inputConfigs" [config]="config" [formControlName]="config.id">
-                    </lib-input>
+                    <ircc-cl-lib-input *ngFor="let config of inputConfigs" [config]="config" [formControlName]="config.id">
+                    </ircc-cl-lib-input>
                 </div>
                 <button class="disable-button" (click)="buttonActions(homeButtonActionTypes.disablePassword)">Toggle Disable Password</button>
             </div>
 
             <div class="selectDropDown">
-                <lib-select [config]="selectDropDownConfig" [formControlName]="selectDropDownConfig.id"></lib-select>
+                <ircc-cl-lib-select [config]="selectDropDownConfig" [formControlName]="selectDropDownConfig.id"></ircc-cl-lib-select>
             </div>
         </form>
-        <lib-date-picker [title]="'Testing'" [dateForm]="form" [id]="datePickerID"></lib-date-picker>
+        <ircc-cl-lib-date-picker [title]="'Testing'" [dateForm]="form" [id]="datePickerID"></ircc-cl-lib-date-picker>
 
     </div>
 
@@ -78,9 +78,9 @@
     </div>
       <!-- Button test -->
       <div class="demoButtonContainer">
-          <lib-button icon='fa-regular fa-mustache' [iconDirection]="iconDirectionEnum.left">Test</lib-button>
+          <ircc-cl-lib-button icon='fa-regular fa-mustache' [iconDirection]="iconDirectionEnum.left">Test</ircc-cl-lib-button>
       </div>
       <div>
-        <lib-icon-button [config]="iconButtonConfig"></lib-icon-button>
+        <ircc-cl-lib-icon-button [config]="iconButtonConfig"></ircc-cl-lib-icon-button>
       </div>
 </div>
