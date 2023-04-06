@@ -102,7 +102,6 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     this.baseUrl = this.standalone.getBaseUrl('', this.config.baseUrlKey);
     if (this.config.links && this.config.links.length > 1) {
       let prev: string | undefined;
-      const linksLength = this.config.links.length;
       this.config?.links.forEach((link, i) => {
         if (i === 0) {
           link[this.config.type] = this.baseUrl;

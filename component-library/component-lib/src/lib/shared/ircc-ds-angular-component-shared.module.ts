@@ -14,6 +14,7 @@ import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
 import { BreadcrumbLinkComponent } from "./breadcrumb/link/link.component";
 import { IndicatorComponent } from './indicator/indicator.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { DomChangeDirective } from "../../shared/directives/dom-change.directive";
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -34,6 +35,7 @@ const IrccDsSharedComponents = [
 @NgModule({
   declarations: [
     ...IrccDsSharedComponents,
+    DomChangeDirective
   ],
   imports: [
     CommonModule,
