@@ -13,7 +13,7 @@ export enum TabShiftTab {
 }
 
 @Directive({
-  selector: '[irccClLibPreventTabOut]'
+  selector: '[appPreventTabOut]'
 })
 export class PreventTabOutDirective {
   @Input() enabled?: string[] = [];
