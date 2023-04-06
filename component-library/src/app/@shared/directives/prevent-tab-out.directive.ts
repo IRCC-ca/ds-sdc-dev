@@ -7,7 +7,7 @@ export enum TabShiftTab {
 }
 
 @Directive({
-  selector: '[preventTabOut]'
+  selector: '[appPreventTabOut]'
 })
 export class PreventTabOutDirective {
   @Input() enabled?: string[] = [];
@@ -24,7 +24,7 @@ export class PreventTabOutDirective {
 
   preventTabs(event: KeyboardEvent, type: TabShiftTab) {
     const focusableEls = document.querySelectorAll('button:not([disabled])');
-    let modalEls: any[] = [];
+    const modalEls: any[] = [];
     focusableEls.forEach(el => {
       this.enabled?.forEach(id => {
         if (el.id === id) {
