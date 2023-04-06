@@ -1,4 +1,7 @@
-<div [ngClass]="{ 'nav-item': inNavbar }" ngbDropdown>
+<div
+  [ngClass]="{ 'nav-item': inNavbar }"
+  ngbDropdown
+>
   <a
     *ngIf="inNavbar; else button"
     id="language-dropdown"

@@ -1,21 +1,33 @@
 <div class="page_container">
-  <div class="dimmer" *ngIf="hamburgerMenuState"></div>
+  <div
+    class="dimmer"
+    *ngIf="hamburgerMenuState"
+  ></div>
   <div
     class="outer_header_stepper_container"
     id="outer_header_stepper_container"
   >
-    <div class="header_stepper_container" id="header_stepper_inner_container">
+    <div
+      class="header_stepper_container"
+      id="header_stepper_inner_container"
+    >
       <ircc-cl-lib-header
         [id]="'header'"
         [ngClass]="{ disable_all: hamburgerMenuState }"
       ></ircc-cl-lib-header>
-      <div class="stepper" *ngIf="innerWidth > 980">
+      <div
+        class="stepper"
+        *ngIf="innerWidth > 980"
+      >
         <ircc-cl-lib-progress-indicator
           [config]="progressIndicatorConfig"
           (tabClick)="progressTabButtonEvent($event)"
         ></ircc-cl-lib-progress-indicator>
       </div>
-      <div class="hamburger" *ngIf="innerWidth < 980">
+      <div
+        class="hamburger"
+        *ngIf="innerWidth < 980"
+      >
         <ircc-cl-lib-button
           [category]="'plain'"
           [iconDirection]="'left'"
@@ -24,7 +36,10 @@
           >{{ 'ACC_DEMO.BUTTONS.HAMBURGER' | translate }}</ircc-cl-lib-button
         >
       </div>
-      <div class="modal_container" *ngIf="hamburgerMenuState">
+      <div
+        class="modal_container"
+        *ngIf="hamburgerMenuState"
+      >
         <dialog
           appPreventTabOut
           [enabled]="allowedNavItemIds"
@@ -51,7 +66,10 @@
       </div>
     </div>
   </div>
-  <div class="body" [ngClass]="{ disable_all: hamburgerMenuState }">
+  <div
+    class="body"
+    [ngClass]="{ disable_all: hamburgerMenuState }"
+  >
     <h1>{{ 'ACC_DEMO.PREVIOUS_PAGE.HEADER' | translate }}</h1>
     <p>{{ 'ACC_DEMO.PREVIOUS_PAGE.CONTENT' | translate }}</p>
   </div>

@@ -1,24 +1,39 @@
 <ircc-cl-lib-hidden-nav [config]="hiddenNavConfig"></ircc-cl-lib-hidden-nav>
-<div class="page_container" [ngClass]="{ no_scroll: hamburgerMenuState }">
-  <div class="dimmer" *ngIf="hamburgerMenuState"></div>
+<div
+  class="page_container"
+  [ngClass]="{ no_scroll: hamburgerMenuState }"
+>
+  <div
+    class="dimmer"
+    *ngIf="hamburgerMenuState"
+  ></div>
   <nav
     role="navigation"
     class="outer_header_stepper_container"
     id="outer_header_stepper_container"
   >
-    <div class="header_stepper_container" id="header_stepper_inner_container">
+    <div
+      class="header_stepper_container"
+      id="header_stepper_inner_container"
+    >
       <ircc-cl-lib-header
         [id]="'header'"
         [ngClass]="{ disable_all: hamburgerMenuState }"
       ></ircc-cl-lib-header>
-      <div class="stepper" *ngIf="innerWidth > 980">
+      <div
+        class="stepper"
+        *ngIf="innerWidth > 980"
+      >
         <ircc-cl-lib-progress-indicator
           [config]="progressIndicatorConfig"
           (tabClick)="progressTabButtonEvent($event)"
         >
         </ircc-cl-lib-progress-indicator>
       </div>
-      <div class="hamburger" *ngIf="innerWidth < 980">
+      <div
+        class="hamburger"
+        *ngIf="innerWidth < 980"
+      >
         <ircc-cl-lib-button
           [category]="'plain'"
           [iconDirection]="'left'"
@@ -27,7 +42,10 @@
           >{{ 'ACC_DEMO.BUTTONS.HAMBURGER' | translate }}</ircc-cl-lib-button
         >
       </div>
-      <div class="modal_container" *ngIf="hamburgerMenuState">
+      <div
+        class="modal_container"
+        *ngIf="hamburgerMenuState"
+      >
         <dialog
           appPreventTabOut
           [enabled]="allowedNavItemIds"
@@ -61,10 +79,16 @@
     class="content_container"
     [ngClass]="{ disable_all: hamburgerMenuState }"
   >
-    <div class="error_banner" *ngIf="showErrorBanner">
+    <div
+      class="error_banner"
+      *ngIf="showErrorBanner"
+    >
       <ircc-cl-lib-banner [config]="errorBannerConfig"></ircc-cl-lib-banner>
     </div>
-    <div id="ds-form" class="form_container">
+    <div
+      id="ds-form"
+      class="form_container"
+    >
       <div>
         <h1>{{ 'ACC_DEMO.PERSONAL_INFO.H1' | translate }}</h1>
         <p>{{ 'ACC_DEMO.PERSONAL_INFO.BODY' | translate }}</p>
@@ -148,7 +172,10 @@
         </div>
       </div>
     </div>
-    <div id="ds-footer" class="footer">
+    <div
+      id="ds-footer"
+      class="footer"
+    >
       <ircc-cl-lib-footer [id]="'footer'">
         <span>{{ 'Version' | translate }}</span>
       </ircc-cl-lib-footer>

@@ -20,7 +20,10 @@
 
       <!-- Checkbox Test -->
       <div class="demoCheckboxContainer">
-        <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
+        <div
+          class="demoCheckbox"
+          *ngFor="let checkbox of checkboxesConfigs"
+        >
           <ircc-cl-lib-checkbox
             [config]="checkbox"
             [formControlName]="checkbox.id"
