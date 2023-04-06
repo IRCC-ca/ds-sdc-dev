@@ -21,7 +21,8 @@ import { InputComponent } from '../../form-components/input/input.component';
 //add them in using the template.
 import { ChipItemComponent } from '../chips/chip-item/chip-item.component';
 
-interface IOption { //Changed: Interfaces should ALWAYS start with 'I'.
+interface IOption {
+  //Changed: Interfaces should ALWAYS start with 'I'.
   text: string;
   value: string;
 }
@@ -73,19 +74,12 @@ export class AutocompleteComponent implements OnInit, DoCheck {
   @HostListener('click', ['$event'])
   clickInside(event: { target: HTMLInputElement }) {
     const target = event.target;
-    if (
-      this.hideDropdown === true &&
-      target.type === `text` &&
-      this.options.length > 0
-    ) {
+    if (this.hideDropdown === true && target.type === `text` && this.options.length > 0) {
       this.isFocusInsideComponent = true;
       this.isComponentClicked = true;
       this.toggleDropDown();
       this.addHover = true;
-    } else if (
-      target.classList.contains('select-target') ||
-      target.classList.contains(`selected`)
-    ) {
+    } else if (target.classList.contains('select-target') || target.classList.contains(`selected`)) {
       this.isComponentClicked = false;
       this.isFocusInsideComponent = false;
       this.toggleDropDown();

@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { IrccDsAngularBannerModule, IrccDsAngularComponentsSharedModule, IrccDsAngularFormComponentsModule, IrccDsAngularLegacyOldModule, IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-library';
+import {
+  IrccDsAngularBannerModule,
+  IrccDsAngularComponentsSharedModule,
+  IrccDsAngularFormComponentsModule,
+  IrccDsAngularLegacyOldModule,
+  IrccDsAngularHeaderFooterModule
+} from 'ircc-ds-angular-component-library';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavButtonsComponent } from '@app/gallery/nav-buttons/nav-buttons.component';
 import { RouterModule } from '@angular/router';
 import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
-
-
 
 @NgModule({
   imports: [
@@ -21,10 +25,7 @@ import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
     IrccDsAngularLegacyOldModule,
     IrccDsAngularHeaderFooterModule
   ],
-  declarations: [
-    NavButtonsComponent,
-    PreventTabOutDirective
-  ],
+  declarations: [NavButtonsComponent, PreventTabOutDirective],
   exports: [
     IrccDsAngularBannerModule,
     IrccDsAngularFormComponentsModule,
@@ -37,4 +38,4 @@ import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
     IrccDsAngularHeaderFooterModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -1,14 +1,14 @@
-import {
-  Component,
-  forwardRef,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import {
+  ERROR_TEXT_STUB_EN,
+  ERROR_TEXT_STUB_FR,
+  ILabelConfig,
+  ILabelIconConfig
+} from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
 
 export interface IInputComponentConfig {
@@ -45,7 +45,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: IInputComponentConfig = {
     id: '',
-    formGroup: new FormGroup({}),
+    formGroup: new FormGroup({})
   };
 
   @Input() id = '';
@@ -63,12 +63,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
-  }
+  };
   touched = false;
   errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions,
-    private translate: TranslateService,) { }
+  constructor(public standAloneFunctions: StandAloneFunctions, private translate: TranslateService) {}
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -81,10 +80,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
 
     this.setLang(this.translate.currentLang);
-    this.translate.onLangChange.subscribe(change => {
+    this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
-
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
@@ -94,7 +92,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
 
     if (this.id !== '') {
       this.config.id = this.id;
@@ -106,18 +105,16 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (!this.config.type) {
       this.config.type = InputTypes.text;
-    }
-
-    else if (this.config.type === InputTypes.password) {
+    } else if (this.config.type === InputTypes.password) {
       this.showPassword = false;
       this.typeControl = InputTypes.password;
-      this.ariaText = "Password Input";
+      this.ariaText = 'Password Input';
     }
 
-    (this.type === InputTypes.text) ? (this.showPassword = false) : (this.showPassword = true);
+    this.type === InputTypes.text ? (this.showPassword = false) : (this.showPassword = true);
 
     //set disable to true when form is disabled
-    this.config.formGroup.valueChanges.subscribe(change => {
+    this.config.formGroup.valueChanges.subscribe((change) => {
       if (change[this.config.id] === undefined) {
         this.disabled = true;
       } else {
@@ -125,7 +122,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       }
     });
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
+      this.errorIds = this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
 
     //Get the error text when the formControl value changes
@@ -140,7 +141,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   getAriaErrorText() {
     if (this.config.errorMessages) {
       this.formControl?.markAsDirty();
-      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
+      this.errorAria = this.standAloneFunctions.getErrorAria(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
   }
 
@@ -154,9 +159,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
   setLang(lang: string) {
     this.getAriaErrorText();
-    if ((lang === 'en') || (lang === 'en-US')) {
+    if (lang === 'en' || lang === 'en-US') {
       this.errorStubText = ERROR_TEXT_STUB_EN;
-
     } else {
       this.errorStubText = ERROR_TEXT_STUB_FR;
     }
@@ -171,7 +175,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
   }
 
   public focusInput(focusValue: boolean): void {
@@ -187,17 +192,14 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     if (this.showPassword) {
       this.typeControl = InputTypes.text;
       this.ariaText = 'Text Input';
-    }
-    else {
+    } else {
       this.typeControl = InputTypes.password;
       this.ariaText = 'Password Input';
     }
   }
 
-  public clearvalue() {
-  }
-  writeValue(value: string): void {
-  }
+  public clearvalue() {}
+  writeValue(value: string): void {}
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
@@ -212,8 +214,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
    * Return error state from FormGroup, must be touched & invalid
    */
   get getErrorState(): boolean {
-    return (this.config.formGroup.get(this.config.id)?.touched &&
-      this.config.formGroup.get(this.config.id)?.invalid) ?? false;
+    return (
+      (this.config.formGroup.get(this.config.id)?.touched && this.config.formGroup.get(this.config.id)?.invalid) ??
+      false
+    );
   }
-
 }

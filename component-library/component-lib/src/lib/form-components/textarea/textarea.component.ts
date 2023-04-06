@@ -6,7 +6,6 @@ import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
 import { IErrorIconConfig } from '../error/error.component';
 
-
 export interface ITextareaComponentConfig {
   formGroup: FormGroup;
   id: string;
@@ -15,7 +14,7 @@ export interface ITextareaComponentConfig {
   hint?: string;
   required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
   placeholder?: string;
-  charLimit? : string;
+  charLimit?: string;
   resizable?: keyof typeof ResizableTypes;
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
@@ -42,12 +41,11 @@ export enum ResizableTypes {
   ]
 })
 export class TextareaComponent implements ControlValueAccessor, OnInit {
-
   formGroupEmpty: FormGroup = new FormGroup({});
   //DON'T include default values of '' unless it REALLY makes sense to do so. Instead, make them optional
   @Input() config: ITextareaComponentConfig = {
     id: '',
-    formGroup: new FormGroup({}),
+    formGroup: new FormGroup({})
   };
 
   @Input() id = '';
@@ -56,16 +54,15 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
 
   disabled = false;
   focusState = false;
-  errorIds: IErrorIDs[] = []
+  errorIds: IErrorIDs[] = [];
   charLimitStatus = '';
-  currentCharacterStatusAria='';
+  currentCharacterStatusAria = '';
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
-  }
-  
+  };
 
-  constructor(public standAloneFunctions: StandAloneFunctions) { }
+  constructor(public standAloneFunctions: StandAloneFunctions) {}
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -85,15 +82,19 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
 
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+      this.errorIds = this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
 
     if (this.config.formGroup.controls[this.config.id].value) {
-      this.characterCountStatus(this.config.formGroup.controls[this.config.id].value.length)
+      this.characterCountStatus(this.config.formGroup.controls[this.config.id].value.length);
     }
 
-    this.config.formGroup.valueChanges.subscribe(change => {
-      this.characterCountStatus(change[this.config.id]?.length)
+    this.config.formGroup.valueChanges.subscribe((change) => {
+      this.characterCountStatus(change[this.config.id]?.length);
     });
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -104,7 +105,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
   }
 
   ngOnChanges() {
@@ -116,39 +118,34 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
   }
 
   public focusInput(focusValue: boolean): void {
     this.focusState = !focusValue;
   }
 
-  characterCountStatus (currCharCount : any) {
+  characterCountStatus(currCharCount: any) {
     if (this.config?.charLimit) {
       if (this.config?.charLimit == currCharCount) {
-        this.charLimitStatus="maxLimit"
-        this.currentCharacterStatusAria = 'TEXTAREA_COMPONENT.maxLimit'
-
-      }
-      else if (Number(this.config?.charLimit) - currCharCount == 15) {
-        this.charLimitStatus="warningLimit";
-        this.currentCharacterStatusAria = "TEXTAREA_COMPONENT.warningLimit";
-      }
-      else if (Number(this.config?.charLimit) - currCharCount < 15) {
-        this.charLimitStatus="warningLimit";
-        this.currentCharacterStatusAria = "";
-      }
-      else {
-        this.charLimitStatus="";
-        this.currentCharacterStatusAria = "";
+        this.charLimitStatus = 'maxLimit';
+        this.currentCharacterStatusAria = 'TEXTAREA_COMPONENT.maxLimit';
+      } else if (Number(this.config?.charLimit) - currCharCount == 15) {
+        this.charLimitStatus = 'warningLimit';
+        this.currentCharacterStatusAria = 'TEXTAREA_COMPONENT.warningLimit';
+      } else if (Number(this.config?.charLimit) - currCharCount < 15) {
+        this.charLimitStatus = 'warningLimit';
+        this.currentCharacterStatusAria = '';
+      } else {
+        this.charLimitStatus = '';
+        this.currentCharacterStatusAria = '';
       }
     }
   }
 
-  public clearvalue() {
-  }
-  writeValue(value: string): void {
-  }
+  public clearvalue() {}
+  writeValue(value: string): void {}
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }

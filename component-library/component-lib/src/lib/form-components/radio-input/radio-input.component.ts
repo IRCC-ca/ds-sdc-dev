@@ -1,15 +1,14 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  ControlValueAccessor,
-  FormGroup,
-  NG_VALUE_ACCESSOR,
-  ValidatorFn
-} from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import {
+  ERROR_TEXT_STUB_EN,
+  ERROR_TEXT_STUB_FR,
+  ILabelConfig,
+  ILabelIconConfig
+} from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
 
 export interface IRadioInputComponentConfig {
@@ -36,8 +35,6 @@ export interface IRadioInputOption {
   disabled?: true;
   error?: true;
 }
-
-
 
 @Component({
   selector: 'ircc-cl-lib-radio-input',
@@ -70,11 +67,10 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   errorStubText = '';
   errorAria = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions,
-              private translate: TranslateService) { }
+  constructor(public standAloneFunctions: StandAloneFunctions, private translate: TranslateService) {}
 
-  onChange = (formValue: string) => { };
-  onTouched = () => { };
+  onChange = (formValue: string) => {};
+  onTouched = () => {};
   writeValue(formValue: any) {
     // this.form.get('formControl')?.setValue(formValue);
   }
@@ -94,15 +90,14 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     const retControl = this.config.formGroup.get(this.config.id);
-    if(retControl){
+    if (retControl) {
       this.formControl = retControl;
     }
 
     this.setLang(this.translate.currentLang);
-    this.translate.onLangChange.subscribe(change => {
+    this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
-
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
@@ -112,16 +107,21 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
 
     if (this.id !== '') this.config.id = this.id;
     if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+      this.errorIds = this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -130,19 +130,24 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
   }
 
   /**
- * Get the aria error text for the label
- */
+   * Get the aria error text for the label
+   */
   getAriaErrorText() {
     if (this.config.errorMessages) {
       this.formControl?.markAsDirty();
-      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
+      this.errorAria = this.standAloneFunctions.getErrorAria(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
   }
-  
+
   /**
    * Set a boolean representing the touched state to true and trigger getAriaErrorText()
    */
@@ -153,9 +158,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
 
   setLang(lang: string) {
     this.getAriaErrorText();
-    if ((lang === 'en') || (lang === 'en-US')) {
+    if (lang === 'en' || lang === 'en-US') {
       this.errorStubText = ERROR_TEXT_STUB_EN;
-
     } else {
       this.errorStubText = ERROR_TEXT_STUB_FR;
     }
@@ -174,5 +178,4 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     }
     return '';
   }
-
 }

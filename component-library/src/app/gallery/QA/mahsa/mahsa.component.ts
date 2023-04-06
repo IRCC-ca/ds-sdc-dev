@@ -1,21 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ISelectConfig, IProgressTagsConfig, ITabNavConfig, ISpinnerConfig } from 'ircc-ds-angular-component-library';
-import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
+import {
+  ISelectConfig,
+  IProgressTagsConfig,
+  ITabNavConfig,
+  ISpinnerConfig
+} from 'ircc-ds-angular-component-library';
+import {
+  IAutoTestComponentConfig,
+  IAutoTestConfigObject
+} from '../auto-tester/auto-tester.component';
 @Component({
   selector: 'app-mahsa',
   templateUrl: './mahsa.component.html',
   styleUrls: ['./mahsa.component.scss']
 })
 export class MahsaComponent implements OnInit {
-
   toggleComp(comp: string) {
-    document.querySelectorAll('section')?.forEach(section => {
+    document.querySelectorAll('section')?.forEach((section) => {
       section.classList.remove('show');
     });
     document.getElementById(comp)?.classList.toggle('show');
-  };
+  }
 
   form = new FormGroup({});
   tagForm = new FormGroup({});
@@ -29,10 +36,7 @@ export class MahsaComponent implements OnInit {
   qaSelect: ISelectConfig = {
     id: this.SELECT_ID,
     formGroup: this.form,
-    options: [
-      { text: 'Option 1'},
-      { text: 'Option 2'},
-    ],
+    options: [{ text: 'Option 1' }, { text: 'Option 2' }]
   };
 
   qaTabs: ITabNavConfig = {
@@ -42,17 +46,17 @@ export class MahsaComponent implements OnInit {
       { id: 'profile', title: 'Profile', value: 'This is Profile' },
       { id: 'contact', title: 'Contact', value: 'This is Contact' },
       { id: 'products', title: 'Products', value: 'This is Products' },
-      { id: 'login', title: 'Login', value: 'This is Login' },
-    ],
+      { id: 'login', title: 'Login', value: 'This is Login' }
+    ]
   };
 
   qaTags: IProgressTagsConfig = {
-    id: 'tag-test',
-  }
+    id: 'tag-test'
+  };
 
   qaSpinner: ISpinnerConfig = {
-    id: this.SPINNER_ID,
-  }
+    id: this.SPINNER_ID
+  };
 
   /** Test config objects */
   selectTesterConfig: IAutoTestConfigObject = {
@@ -62,7 +66,7 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Small Error',
         errorMessages: [
-          { key: 'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'maxlength', errorLOV: 'ERROR.errorMessage' },
           { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
@@ -77,7 +81,7 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Large Error',
         errorMessages: [
-          { key:'maxlength' , errorLOV: 'ERROR.errorMessage' },
+          { key: 'maxlength', errorLOV: 'ERROR.errorMessage' },
           { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
@@ -91,18 +95,15 @@ export class MahsaComponent implements OnInit {
         id: 'size',
         formGroup: this.form,
         label: 'Size',
-        options: [
-          { text: 'large' },
-          { text: 'small' }
-        ]
+        options: [{ text: 'large' }, { text: 'small' }]
       }
     ],
     checkboxes: [
       {
         id: 'required',
         formGroup: this.form,
-        inlineLabel: 'Required/Optional',
-      },
+        inlineLabel: 'Required/Optional'
+      }
     ],
     inputs: [
       {
@@ -119,7 +120,7 @@ export class MahsaComponent implements OnInit {
         id: 'hint',
         formGroup: this.form,
         label: 'Hint'
-      },
+      }
     ]
   };
 
@@ -221,7 +222,7 @@ export class MahsaComponent implements OnInit {
         id: 'description',
         formGroup: this.spinnerForm,
         label: 'Description'
-      },
+      }
     ]
   };
 
@@ -243,55 +244,52 @@ export class MahsaComponent implements OnInit {
     testFields: this.spinnerTestConfigObj
   };
 
-  constructor(private altLang: LanguageSwitchService) { }
+  constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
     this.altLang.setAltLangLink('mahsa-alt');
     this.form.addControl(this.qaSelect.id, new FormControl());
 
     /** Select Auto-Testing Controls Init **/
-    this.selectTesterConfig.selects?.forEach(i => {
+    this.selectTesterConfig.selects?.forEach((i) => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.selectTesterConfig.checkboxes?.forEach(i => {
+    this.selectTesterConfig.checkboxes?.forEach((i) => {
       this.form.addControl(i.id, new FormControl());
     });
-    this.selectTesterConfig.inputs?.forEach(i => {
+    this.selectTesterConfig.inputs?.forEach((i) => {
       this.form.addControl(i.id, new FormControl());
     });
 
     console.log(this.form);
 
     /** Tag Auto-Testing Controls Init **/
-    this.tagTestConfigObj.selects?.forEach(i => {
+    this.tagTestConfigObj.selects?.forEach((i) => {
       this.tagForm.addControl(i.id, new FormControl());
     });
     /** Spinner Auto-Testing Controls Init **/
-    this.spinnerTestConfigObj.selects?.forEach(i => {
+    this.spinnerTestConfigObj.selects?.forEach((i) => {
       this.spinnerForm.addControl(i.id, new FormControl());
     });
-    this.spinnerTestConfigObj.inputs?.forEach(i => {
+    this.spinnerTestConfigObj.inputs?.forEach((i) => {
       this.spinnerForm.addControl(i.id, new FormControl());
     });
 
-    this.form.valueChanges.subscribe(value => {
+    this.form.valueChanges.subscribe((value) => {
       let updatedConfig: ISelectConfig = {
         id: this.SELECT_ID,
         formGroup: this.form,
-        options: [
-          { text: 'Option 1'},
-          { text: 'Option 2'},
-        ],
+        options: [{ text: 'Option 1' }, { text: 'Option 2' }]
       };
-      for(const param in value) {
-        if(value[param]){
+      for (const param in value) {
+        if (value[param]) {
           updatedConfig = { ...updatedConfig, [param]: value[param] };
           this.qaSelect = updatedConfig;
         }
       }
     });
 
-    this.tagForm.valueChanges.subscribe(value => {
+    this.tagForm.valueChanges.subscribe((value) => {
       let tagConf: ISelectConfig = {
         id: 'tag1',
         formGroup: this.tagForm
@@ -302,9 +300,12 @@ export class MahsaComponent implements OnInit {
       }
     });
 
-    this.spinnerForm.valueChanges.subscribe(value => {
+    this.spinnerForm.valueChanges.subscribe((value) => {
       for (const param in value) {
-        if ((value['size'] === 'small' || value['size'] === 'extraSmall') && value['orientation'] === 'vertical') {
+        if (
+          (value['size'] === 'small' || value['size'] === 'extraSmall') &&
+          value['orientation'] === 'vertical'
+        ) {
           value['orientation'] = 'horizontal';
         }
         if (!value['label']) {
@@ -313,55 +314,80 @@ export class MahsaComponent implements OnInit {
         if (!value['description']) {
           delete this.qaSpinner.description;
         }
-        if (value[param]) this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
+        if (value[param])
+          this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
       }
     });
   }
 
   disable() {
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.disabled ?
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.enable() :
-    this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
+    this.qaSelect?.formGroup.get(this.qaSelect.id)?.disabled
+      ? this.qaSelect?.formGroup.get(this.qaSelect.id)?.enable()
+      : this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
   }
 
   setSamllError() {
-    if (this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'Maxlength')  {
-      this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({'maxlength': { requiredLength: 3, actualLength: 5 }});
-    } else if (this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'TestingError') {
-      this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({'testingError': true});
+    if (
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'Maxlength'
+    ) {
+      this.qaSelect?.formGroup
+        .get('smallErrorMessages')
+        ?.setErrors({ maxlength: { requiredLength: 3, actualLength: 5 } });
+    } else if (
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.value ===
+      'TestingError'
+    ) {
+      this.qaSelect?.formGroup
+        .get('smallErrorMessages')
+        ?.setErrors({ testingError: true });
     } else {
-      this.qaSelect?.formGroup.get('smallErrorMessages')?.
-      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({
+        testingError: true,
+        maxlength: { requiredLength: 3, actualLength: 5 }
+      });
     }
-  };
+  }
   setLargeError() {
-    if (this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'Maxlength')  {
-      this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({'maxlength': { requiredLength: 3, actualLength: 5 }});
-    } else if (this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'TestingError') {
-      this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({'testingError': true});
+    if (
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'Maxlength'
+    ) {
+      this.qaSelect?.formGroup
+        .get('largeErrorMessages')
+        ?.setErrors({ maxlength: { requiredLength: 3, actualLength: 5 } });
+    } else if (
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.value ===
+      'TestingError'
+    ) {
+      this.qaSelect?.formGroup
+        .get('largeErrorMessages')
+        ?.setErrors({ testingError: true });
     } else {
-      this.qaSelect?.formGroup.get('largeErrorMessages')?.
-      setErrors({'testingError': true, 'maxlength': { requiredLength: 3, actualLength: 5 }});
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({
+        testingError: true,
+        maxlength: { requiredLength: 3, actualLength: 5 }
+      });
     }
-  };
+  }
   resetError() {
     this.qaSelect?.formGroup.get('smallErrorMessages')?.reset();
     this.qaSelect?.formGroup.get('largeErrorMessages')?.reset();
-  };
+  }
 
   disableSelectedBtn() {
     this.qaTabs?.tab?.forEach((item: any) => {
-      if (document.getElementById(item.id)?.hasAttribute("selected")) {
-        document.getElementById(item.id)?.setAttribute("disabled", '');
+      if (document.getElementById(item.id)?.hasAttribute('selected')) {
+        document.getElementById(item.id)?.setAttribute('disabled', '');
       } else {
-        document.getElementById(item.id)?.removeAttribute("disabled");
+        document.getElementById(item.id)?.removeAttribute('disabled');
       }
     });
-  };
+  }
 
   size() {
-    this.qaTabs.size ? this.qaTabs.size = 'large' : this.qaTabs.size = 'small';
-  };
+    this.qaTabs.size
+      ? (this.qaTabs.size = 'large')
+      : (this.qaTabs.size = 'small');
+  }
 
   hideShowError() {
     document.getElementById('spinner-div')?.toggleAttribute('hidden');
@@ -373,7 +399,7 @@ export class MahsaComponent implements OnInit {
       this.qaSpinner.label = 'Error Label';
       this.qaSpinner.description = 'Error Description';
     }, 2000);
-  };
+  }
   hideShowSuccess() {
     document.getElementById('spinner-div2')?.toggleAttribute('hidden');
     this.qaSpinner.type = 'active';

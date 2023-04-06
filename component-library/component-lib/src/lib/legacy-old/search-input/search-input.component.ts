@@ -18,14 +18,12 @@ export interface ISearchInputButtonConfig {
 })
 export class SearchInputComponent implements OnInit {
   @Input() config?: ISearchInputConfig;
-  @Output() searchEvent: EventEmitter<any> = new EventEmitter()
+  @Output() searchEvent: EventEmitter<any> = new EventEmitter();
 
-
-  searchInputControl = new FormControl;
-  constructor() { }
+  searchInputControl = new FormControl();
+  constructor() {}
 
   ngOnInit(): void {
     console.log('testing');
   }
-
 }

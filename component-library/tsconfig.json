@@ -17,24 +17,15 @@
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es2020",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2020", "dom"],
     "baseUrl": "./",
     "paths": {
       "@app/*": ["src/app/*"],
       "@shared": ["src/app/@shared"],
       "@shared/*": ["src/app/@shared/*"],
-      "@env/*": [
-        "src/environments/*"
-      ],
-      "ircc-ds-angular-component-library": [
-        "dist/ircc-ds-angular-component-library"
-      ]
+      "@env/*": ["src/environments/*"],
+      "ircc-ds-angular-component-library": ["dist/ircc-ds-angular-component-library"]
     }
   },
   "angularCompilerOptions": {

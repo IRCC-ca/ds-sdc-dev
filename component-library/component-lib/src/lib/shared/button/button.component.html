@@ -1,17 +1,17 @@
 <button
-    [attr.aria-label]="config.ariaLabel"
-    [attr.color]="config.color"
-    [attr.category]="config.category"
-    [attr.size]="config.size"
-    [disabled]="config.disabled"
-    [ngClass]="config.iconDirection"
-    (click)="clickEvent(config.id)"
-    class="lib-button"
-
->   <div class="button-content-container">
-        <span class="icon" *ngIf="config.icon">
-            <ircc-cl-lib-icon [class]="config.icon"></ircc-cl-lib-icon>
-        </span>
-        <span class="text"><ng-content></ng-content></span>
-    </div>
+  [attr.aria-label]="config.ariaLabel"
+  [attr.color]="config.color"
+  [attr.category]="config.category"
+  [attr.size]="config.size"
+  [disabled]="config.disabled"
+  [ngClass]="config.iconDirection"
+  (click)="clickEvent(config.id)"
+  class="lib-button"
+>
+  <div class="button-content-container">
+    <span class="icon" *ngIf="config.icon">
+      <ircc-cl-lib-icon [class]="config.icon"></ircc-cl-lib-icon>
+    </span>
+    <span class="text"><ng-content></ng-content></span>
+  </div>
 </button>

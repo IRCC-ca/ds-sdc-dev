@@ -19,10 +19,8 @@ describe('HeaderComponent', () => {
         I18nModule
       ],
       declarations: [HeaderComponent],
-      providers: [
-      ]
-    })
-    .compileComponents();
+      providers: []
+    }).compileComponents();
   }));
 
   beforeEach(() => {

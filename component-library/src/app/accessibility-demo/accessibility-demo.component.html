@@ -1,92 +1,157 @@
 <ircc-cl-lib-hidden-nav [config]="hiddenNavConfig"></ircc-cl-lib-hidden-nav>
-<div class="page_container" [ngClass]="{'no_scroll' : hamburgerMenuState}">
-    <div class="dimmer" *ngIf="hamburgerMenuState"></div>
-    <nav role="navigation" class="outer_header_stepper_container" id="outer_header_stepper_container">
-        <div class="header_stepper_container" id="header_stepper_inner_container">
-            <ircc-cl-lib-header [id]="'header'" [ngClass]="{'disable_all' : hamburgerMenuState}"></ircc-cl-lib-header>
-            <div class="stepper" *ngIf="innerWidth > 980">
-                <ircc-cl-lib-progress-indicator [config]="progressIndicatorConfig" (tabClick)="progressTabButtonEvent($event)">
-                </ircc-cl-lib-progress-indicator>
+<div class="page_container" [ngClass]="{ no_scroll: hamburgerMenuState }">
+  <div class="dimmer" *ngIf="hamburgerMenuState"></div>
+  <nav
+    role="navigation"
+    class="outer_header_stepper_container"
+    id="outer_header_stepper_container"
+  >
+    <div class="header_stepper_container" id="header_stepper_inner_container">
+      <ircc-cl-lib-header
+        [id]="'header'"
+        [ngClass]="{ disable_all: hamburgerMenuState }"
+      ></ircc-cl-lib-header>
+      <div class="stepper" *ngIf="innerWidth > 980">
+        <ircc-cl-lib-progress-indicator
+          [config]="progressIndicatorConfig"
+          (tabClick)="progressTabButtonEvent($event)"
+        >
+        </ircc-cl-lib-progress-indicator>
+      </div>
+      <div class="hamburger" *ngIf="innerWidth < 980">
+        <ircc-cl-lib-button
+          [category]="'plain'"
+          [iconDirection]="'left'"
+          [icon]="'fa-light fa-bars'"
+          (click)="menuHamburgerButton()"
+          >{{ 'ACC_DEMO.BUTTONS.HAMBURGER' | translate }}</ircc-cl-lib-button
+        >
+      </div>
+      <div class="modal_container" *ngIf="hamburgerMenuState">
+        <dialog
+          appPreventTabOut
+          [enabled]="allowedNavItemIds"
+          id="progress_dialog"
+          class="dialog"
+          open
+        >
+          <div class="progress_dialog_content">
+            <div class="modal_header">
+              <h5>{{ 'ACC_DEMO.MODAL_TITLE' | translate }}</h5>
+              <ircc-cl-lib-icon-button
+                [config]="hamburgerDialogXButtonConfig"
+                (click)="menuHamburgerButton()"
+              >
+              </ircc-cl-lib-icon-button>
             </div>
-            <div class="hamburger" *ngIf="innerWidth < 980">
-                <ircc-cl-lib-button [category]="'plain'" [iconDirection]="'left'" [icon]="'fa-light fa-bars'"
-                    (click)="menuHamburgerButton()">{{'ACC_DEMO.BUTTONS.HAMBURGER' | translate}}</ircc-cl-lib-button>
+            <div class="progress_container">
+              <ircc-cl-lib-progress-indicator
+                [config]="progressIndicatorConfig"
+                (tabClick)="progressTabButtonEvent($event)"
+              ></ircc-cl-lib-progress-indicator>
             </div>
-            <div class="modal_container" *ngIf="hamburgerMenuState">
-                <dialog appPreventTabOut [enabled]="allowedNavItemIds" id="progress_dialog" class="dialog" open>
-                    <div class="progress_dialog_content">
-                        <div class="modal_header">
-                            <h5>{{'ACC_DEMO.MODAL_TITLE' | translate}}</h5>
-                            <ircc-cl-lib-icon-button [config]="hamburgerDialogXButtonConfig" (click)="menuHamburgerButton()">
-                            </ircc-cl-lib-icon-button>
-                        </div>
-                        <div class="progress_container">
-                            <ircc-cl-lib-progress-indicator [config]="progressIndicatorConfig"
-                                (tabClick)="progressTabButtonEvent($event)"></ircc-cl-lib-progress-indicator>
-                        </div>
-                    </div>
-                </dialog>
-            </div>
-        </div>
-    </nav>
-    <div  id="ds-cont" aria-live="polite" class="content_container" [ngClass]="{'disable_all' : hamburgerMenuState}">
-        <div class="error_banner" *ngIf="showErrorBanner">
-            <ircc-cl-lib-banner [config]="errorBannerConfig"></ircc-cl-lib-banner>
-        </div>
-        <div id="ds-form" class="form_container">
-            <div>
-                <h1>{{'ACC_DEMO.PERSONAL_INFO.H1' | translate}}</h1>
-                <p>{{'ACC_DEMO.PERSONAL_INFO.BODY' | translate}}</p>
-            </div>
-            <div class="family_name_container">
-                <ircc-cl-lib-input [config]="familyNameInputConfig"></ircc-cl-lib-input>
-                <div aria-live="polite">
-                    <div class="banner_container" *ngIf="showFamilyNameBanner" aria-live="polite">
-                        <ircc-cl-lib-banner [config]="familyNameInputBannerConfig" (btnEvent)="bannerCloseHandler($event)">
-                        </ircc-cl-lib-banner>
-                    </div>
-                </div>
-            </div>
-            <div class="given_name_container">
-                <ircc-cl-lib-input [config]="givenNameInputConfig"></ircc-cl-lib-input>
-            </div>
-            <div class="sex_at_birth_container">
-                <ircc-cl-lib-radio-input [config]="sexAtBirthRadioConfig"></ircc-cl-lib-radio-input>
-                <div aria-live="polite">
-                    <div class="banner_container" *ngIf="showSexAtBirthBanner" aria-live="polite">
-                        <ircc-cl-lib-banner [config]="sexAtBirthRadioBannerConfig" (btnEvent)="bannerCloseHandler($event)">
-                        </ircc-cl-lib-banner>
-                    </div>
-                </div>
-            </div>
-            <div class="date_of_birth_container">
-                <ircc-cl-lib-date-picker [config]="dateOfBirthDatePickerConfig"></ircc-cl-lib-date-picker>
-            </div>
-            <div class="country_of_birth_container">
-                <ircc-cl-lib-select [config]="countryOfBirthSelectConfig"></ircc-cl-lib-select>
-            </div>
-            <div class="city_of_birth_container">
-                <ircc-cl-lib-select [config]="cityOfBirthSelectConfig"></ircc-cl-lib-select>
-            </div>
-            <div class="declaration_checkbox_container">
-                <ircc-cl-lib-checkbox [config]="declarationCheckboxConfig"></ircc-cl-lib-checkbox>
-            </div>
-            <div class="buttons_container">
-                <div class="btn1">
-                    <ircc-cl-lib-button [iconDirection]="'left'" [category]="'secondary'" [icon]="'fa-light fa-arrow-left'"
-                        [routerLink]="getPreviousButtonLink">
-                        {{'ACC_DEMO.BUTTONS.PREVIOUS' | translate}}</ircc-cl-lib-button>
-                </div>
-                <div class="btn2">
-                    <ircc-cl-lib-button [iconDirection]="'right'" [icon]="'fa-light fa-arrow-right'" (click)="navButton()">
-                        {{'ACC_DEMO.BUTTONS.NEXT' | translate}}</ircc-cl-lib-button>
-                </div>
-            </div>
-        </div>
-        <div id="ds-footer" class="footer">
-            <ircc-cl-lib-footer [id]="'footer'">
-                <span>{{ "Version" | translate }}</span>
-            </ircc-cl-lib-footer>
-        </div>
+          </div>
+        </dialog>
+      </div>
     </div>
+  </nav>
+  <div
+    id="ds-cont"
+    aria-live="polite"
+    class="content_container"
+    [ngClass]="{ disable_all: hamburgerMenuState }"
+  >
+    <div class="error_banner" *ngIf="showErrorBanner">
+      <ircc-cl-lib-banner [config]="errorBannerConfig"></ircc-cl-lib-banner>
+    </div>
+    <div id="ds-form" class="form_container">
+      <div>
+        <h1>{{ 'ACC_DEMO.PERSONAL_INFO.H1' | translate }}</h1>
+        <p>{{ 'ACC_DEMO.PERSONAL_INFO.BODY' | translate }}</p>
+      </div>
+      <div class="family_name_container">
+        <ircc-cl-lib-input [config]="familyNameInputConfig"></ircc-cl-lib-input>
+        <div aria-live="polite">
+          <div
+            class="banner_container"
+            *ngIf="showFamilyNameBanner"
+            aria-live="polite"
+          >
+            <ircc-cl-lib-banner
+              [config]="familyNameInputBannerConfig"
+              (btnEvent)="bannerCloseHandler($event)"
+            >
+            </ircc-cl-lib-banner>
+          </div>
+        </div>
+      </div>
+      <div class="given_name_container">
+        <ircc-cl-lib-input [config]="givenNameInputConfig"></ircc-cl-lib-input>
+      </div>
+      <div class="sex_at_birth_container">
+        <ircc-cl-lib-radio-input
+          [config]="sexAtBirthRadioConfig"
+        ></ircc-cl-lib-radio-input>
+        <div aria-live="polite">
+          <div
+            class="banner_container"
+            *ngIf="showSexAtBirthBanner"
+            aria-live="polite"
+          >
+            <ircc-cl-lib-banner
+              [config]="sexAtBirthRadioBannerConfig"
+              (btnEvent)="bannerCloseHandler($event)"
+            >
+            </ircc-cl-lib-banner>
+          </div>
+        </div>
+      </div>
+      <div class="date_of_birth_container">
+        <ircc-cl-lib-date-picker
+          [config]="dateOfBirthDatePickerConfig"
+        ></ircc-cl-lib-date-picker>
+      </div>
+      <div class="country_of_birth_container">
+        <ircc-cl-lib-select
+          [config]="countryOfBirthSelectConfig"
+        ></ircc-cl-lib-select>
+      </div>
+      <div class="city_of_birth_container">
+        <ircc-cl-lib-select
+          [config]="cityOfBirthSelectConfig"
+        ></ircc-cl-lib-select>
+      </div>
+      <div class="declaration_checkbox_container">
+        <ircc-cl-lib-checkbox
+          [config]="declarationCheckboxConfig"
+        ></ircc-cl-lib-checkbox>
+      </div>
+      <div class="buttons_container">
+        <div class="btn1">
+          <ircc-cl-lib-button
+            [iconDirection]="'left'"
+            [category]="'secondary'"
+            [icon]="'fa-light fa-arrow-left'"
+            [routerLink]="getPreviousButtonLink"
+          >
+            {{ 'ACC_DEMO.BUTTONS.PREVIOUS' | translate }}</ircc-cl-lib-button
+          >
+        </div>
+        <div class="btn2">
+          <ircc-cl-lib-button
+            [iconDirection]="'right'"
+            [icon]="'fa-light fa-arrow-right'"
+            (click)="navButton()"
+          >
+            {{ 'ACC_DEMO.BUTTONS.NEXT' | translate }}</ircc-cl-lib-button
+          >
+        </div>
+      </div>
+    </div>
+    <div id="ds-footer" class="footer">
+      <ircc-cl-lib-footer [id]="'footer'">
+        <span>{{ 'Version' | translate }}</span>
+      </ircc-cl-lib-footer>
+    </div>
+  </div>
 </div>

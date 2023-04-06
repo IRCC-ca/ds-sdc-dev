@@ -1,9 +1,11 @@
-<button category="plain"
-        [id]="config.id"
-        [attr.aria-label]="config?.ariaLabel"
-        [disabled]="config?.disabled"
-        (click)="buttonClick()"
-        [class]="config.category+' '+config.size">
+<button
+  category="plain"
+  [id]="config.id"
+  [attr.aria-label]="config?.ariaLabel"
+  [disabled]="config?.disabled"
+  (click)="buttonClick()"
+  [class]="config.category + ' ' + config.size"
+>
   <span>
     <ircc-cl-lib-icon [class]="config.icon?.class" [style.color]="config.icon?.color"></ircc-cl-lib-icon>
   </span>

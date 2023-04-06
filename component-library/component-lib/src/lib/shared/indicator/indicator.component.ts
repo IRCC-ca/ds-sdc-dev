@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components.constants";
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
 export enum IndicatorType {
   dot,
@@ -32,7 +32,7 @@ export enum IndicatorStatus {
   critical = 'critical',
   neutral = 'neutral',
   primary = 'primary',
-  success = 'success',
+  success = 'success'
 }
 
 export enum IndicatorPalette {
@@ -59,9 +59,9 @@ export interface IIndicatorConfig {
 
 @Component({
   selector: 'lib-indicator',
-  templateUrl: './indicator.component.html',
+  templateUrl: './indicator.component.html'
 })
-export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges{
+export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() config: IIndicatorConfig = {
     type: 'text',
     category: IndicatorTreatment.weak,
@@ -97,7 +97,7 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges{
   // If label only have 1 character, it should be rounded
   private checkLabelRounded() {
     if (typeof this.config?.label === 'string') {
-      this.rounded = (this.config.label.length == 1 && !this.config.icon);
+      this.rounded = this.config.label.length == 1 && !this.config.icon;
     }
   }
 

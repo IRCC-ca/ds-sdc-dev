@@ -1,86 +1,122 @@
 <div class="pageContainer">
-    <div class="configTestCol">
-        <form [formGroup]="form">
-            <button (click)="resetChips()">Reset Chips</button>
-            <div class="demoChipContainer">
-                <div class="demoChipItem">
-                    <lib-chip-item [chipContent]="'Test Item Chip'"></lib-chip-item>
-                </div>
-                <div class="demoChipListContainer">
-                    <lib-chip-list [chipList]="['test1', 'test2', 'test3']"></lib-chip-list>
-                </div>
-                <div class="demo">
-                    <lib-secondary-chips [chipContent]="'Test Secondary'"></lib-secondary-chips>
-                </div>
-            </div>
-
-            <!-- Checkbox Test -->
-            <div class="demoCheckboxContainer">
-                <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
-                    <ircc-cl-lib-checkbox [config]="checkbox" [formControlName]="checkbox.id"></ircc-cl-lib-checkbox>
-                </div>
-                <button (click)="buttonActions(homeButtonActionTypes.disableCheckbox)">Toggle Disable Checkbox</button>
-                <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">Toggle Error Checkbox</button>
-            </div>
-
-            <!-- Radio Input Test -->
-            <br>
-            <div>
-                <ircc-cl-lib-radio-input [config]="radioConfig" [formControlName]="radioConfig.id"></ircc-cl-lib-radio-input>
-            </div>
-        </form>
-
-    </div>
-
-
-
-    <!-- Non-Config Tests -->
-    <div class="nonConfigTestCol">
-        <form [formGroup]="form">
-            <div>
-                <div>
-                    <ircc-cl-lib-radio-input [config]="radioErrorTestConfig" [formControlName]="radioErrorTestConfig.id"></ircc-cl-lib-radio-input>
-                </div>
-                <button (click)="buttonActions(homeButtonActionTypes.disableRadio)">Disable Radio</button>
-
-                <div class="demoInput">
-                    <ircc-cl-lib-input *ngFor="let config of inputConfigs" [config]="config" [formControlName]="config.id">
-                    </ircc-cl-lib-input>
-                </div>
-                <button class="disable-button" (click)="buttonActions(homeButtonActionTypes.disablePassword)">Toggle Disable Password</button>
-            </div>
-
-            <div class="selectDropDown">
-                <ircc-cl-lib-select [config]="selectDropDownConfig" [formControlName]="selectDropDownConfig.id"></ircc-cl-lib-select>
-            </div>
-        </form>
-        <ircc-cl-lib-date-picker [title]="'Testing'" [dateForm]="form" [id]="datePickerID"></ircc-cl-lib-date-picker>
-
-    </div>
-
-    <div class="displayCol">
-        <div>
-            <h3>Values in Input</h3>
-            <ng-container *ngFor="let element of demoTextArray">
-                <h6>{{element.id}}:</h6>
-                <p>{{element.value}}</p>
-            </ng-container>
-            <h3>Values in Form</h3>
-            <ng-container *ngFor="let element of getFormElements()">
-                <span class="displayContainerSpan">
-                    <h5>{{element.key}}:</h5>
-                    <p>{{element.value}}</p>
-                </span>
-            </ng-container>
+  <div class="configTestCol">
+    <form [formGroup]="form">
+      <button (click)="resetChips()">Reset Chips</button>
+      <div class="demoChipContainer">
+        <div class="demoChipItem">
+          <lib-chip-item [chipContent]="'Test Item Chip'"></lib-chip-item>
         </div>
-        <button [routerLink]="'/quick-demo'">Go To Demo Page</button>
+        <div class="demoChipListContainer">
+          <lib-chip-list
+            [chipList]="['test1', 'test2', 'test3']"
+          ></lib-chip-list>
+        </div>
+        <div class="demo">
+          <lib-secondary-chips
+            [chipContent]="'Test Secondary'"
+          ></lib-secondary-chips>
+        </div>
+      </div>
 
-    </div>
-      <!-- Button test -->
-      <div class="demoButtonContainer">
-          <ircc-cl-lib-button icon='fa-regular fa-mustache' [iconDirection]="iconDirectionEnum.left">Test</ircc-cl-lib-button>
+      <!-- Checkbox Test -->
+      <div class="demoCheckboxContainer">
+        <div class="demoCheckbox" *ngFor="let checkbox of checkboxesConfigs">
+          <ircc-cl-lib-checkbox
+            [config]="checkbox"
+            [formControlName]="checkbox.id"
+          ></ircc-cl-lib-checkbox>
+        </div>
+        <button (click)="buttonActions(homeButtonActionTypes.disableCheckbox)">
+          Toggle Disable Checkbox
+        </button>
+        <button (click)="buttonActions(homeButtonActionTypes.checkboxError)">
+          Toggle Error Checkbox
+        </button>
       </div>
+
+      <!-- Radio Input Test -->
+      <br />
       <div>
-        <ircc-cl-lib-icon-button [config]="iconButtonConfig"></ircc-cl-lib-icon-button>
+        <ircc-cl-lib-radio-input
+          [config]="radioConfig"
+          [formControlName]="radioConfig.id"
+        ></ircc-cl-lib-radio-input>
       </div>
+    </form>
+  </div>
+
+  <!-- Non-Config Tests -->
+  <div class="nonConfigTestCol">
+    <form [formGroup]="form">
+      <div>
+        <div>
+          <ircc-cl-lib-radio-input
+            [config]="radioErrorTestConfig"
+            [formControlName]="radioErrorTestConfig.id"
+          ></ircc-cl-lib-radio-input>
+        </div>
+        <button (click)="buttonActions(homeButtonActionTypes.disableRadio)">
+          Disable Radio
+        </button>
+
+        <div class="demoInput">
+          <ircc-cl-lib-input
+            *ngFor="let config of inputConfigs"
+            [config]="config"
+            [formControlName]="config.id"
+          >
+          </ircc-cl-lib-input>
+        </div>
+        <button
+          class="disable-button"
+          (click)="buttonActions(homeButtonActionTypes.disablePassword)"
+        >
+          Toggle Disable Password
+        </button>
+      </div>
+
+      <div class="selectDropDown">
+        <ircc-cl-lib-select
+          [config]="selectDropDownConfig"
+          [formControlName]="selectDropDownConfig.id"
+        ></ircc-cl-lib-select>
+      </div>
+    </form>
+    <ircc-cl-lib-date-picker
+      [title]="'Testing'"
+      [dateForm]="form"
+      [id]="datePickerID"
+    ></ircc-cl-lib-date-picker>
+  </div>
+
+  <div class="displayCol">
+    <div>
+      <h3>Values in Input</h3>
+      <ng-container *ngFor="let element of demoTextArray">
+        <h6>{{ element.id }}:</h6>
+        <p>{{ element.value }}</p>
+      </ng-container>
+      <h3>Values in Form</h3>
+      <ng-container *ngFor="let element of getFormElements()">
+        <span class="displayContainerSpan">
+          <h5>{{ element.key }}:</h5>
+          <p>{{ element.value }}</p>
+        </span>
+      </ng-container>
+    </div>
+    <button [routerLink]="'/quick-demo'">Go To Demo Page</button>
+  </div>
+  <!-- Button test -->
+  <div class="demoButtonContainer">
+    <ircc-cl-lib-button
+      icon="fa-regular fa-mustache"
+      [iconDirection]="iconDirectionEnum.left"
+      >Test</ircc-cl-lib-button
+    >
+  </div>
+  <div>
+    <ircc-cl-lib-icon-button
+      [config]="iconButtonConfig"
+    ></ircc-cl-lib-icon-button>
+  </div>
 </div>

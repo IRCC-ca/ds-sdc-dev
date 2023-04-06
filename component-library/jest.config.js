@@ -14,9 +14,9 @@ module.exports = {
       allowSyntheticDefaultImports: true,
       tsconfig: '<rootDir>/tsconfig.spec.json',
       diagnostics: {
-        ignoreCodes: ['TS151001'],
+        ignoreCodes: ['TS151001']
       }
-    },
+    }
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)']
 };

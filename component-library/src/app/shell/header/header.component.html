@@ -1,22 +1,46 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
-      <button class="navbar-toggler" type="button" aria-controls="navbar-menu"
-              aria-label="Toggle navigation" (click)="toggleMenu()" [attr.aria-expanded]="!menuHidden">
+      <a class="navbar-brand" href="https://github.com/ngx-rocket" translate
+        >APP_NAME</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-controls="navbar-menu"
+        aria-label="Toggle navigation"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="!menuHidden"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+      <div
+        id="navbar-menu"
+        class="collapse navbar-collapse float-xs-none"
+        [ngbCollapse]="menuHidden"
+      >
         <div class="navbar-nav me-auto mb-2 mb-lg-0">
-          <button class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
+          <button
+            class="nav-item nav-link text-uppercase"
+            routerLink="/home"
+            routerLinkActive="active"
+          >
             <i class="fas fa-home"></i>
             <span translate>Home</span>
           </button>
-          <button class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
+          <button
+            class="nav-item nav-link text-uppercase"
+            routerLink="/about"
+            routerLinkActive="active"
+          >
             <i class="fas fa-question-circle"></i>
             <span translate>About</span>
           </button>
-          <button class="nav-item nav-link text-uppercase" routerLink="/test" routerLinkActive="active">
+          <button
+            class="nav-item nav-link text-uppercase"
+            routerLink="/test"
+            routerLinkActive="active"
+          >
             <i class="fa-solid fa-magnifying-glass"></i>
             <span>Test</span>
           </button>
