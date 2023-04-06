@@ -1,4 +1,8 @@
-<div class="{{ config?.size }} {{ config.orientation }}" id="{{ config?.id }}" aria-live="polite">
+<div
+  class="{{ config?.size }} {{ config.orientation }}"
+  id="{{ config?.id }}"
+  aria-live="polite"
+>
   <div
     class="spinner-container"
     [ngClass]="{
@@ -10,29 +14,51 @@
     <ng-container [ngSwitch]="config?.type">
       <div *ngSwitchCase="'success'" class="container">
         <div class="icon-div">
-          <i class="fa-circle-check fa-regular spinner-icon" title="{{ text[1] }}"></i>
+          <i
+            class="fa-circle-check fa-regular spinner-icon"
+            title="{{ text[1] }}"
+          ></i>
         </div>
         <div class="text">
           <div class="label" [innerHTML]="config.label"></div>
-          <div *ngIf="config?.size === 'large'" class="desc" [innerHTML]="config.description"></div>
+          <div
+            *ngIf="config?.size === 'large'"
+            class="desc"
+            [innerHTML]="config.description"
+          ></div>
         </div>
       </div>
       <div *ngSwitchCase="'critical'" class="container">
         <div class="icon-div">
-          <i class="fa-circle-exclamation fa-regular spinner-icon" title="{{ text[2] }}"></i>
+          <i
+            class="fa-circle-exclamation fa-regular spinner-icon"
+            title="{{ text[2] }}"
+          ></i>
         </div>
         <div class="text">
           <div class="label" [innerHTML]="config.label"></div>
-          <div *ngIf="config?.size === 'large'" class="desc" [innerHTML]="config.description"></div>
+          <div
+            *ngIf="config?.size === 'large'"
+            class="desc"
+            [innerHTML]="config.description"
+          ></div>
         </div>
       </div>
       <div *ngSwitchDefault class="container">
         <div class="icon-div">
-          <img src="./src/assets/icons/spinner-states.svg" alt="{{ text[0] }}" class="spinner-icon animated-icon" />
+          <img
+            src="./src/assets/icons/spinner-states.svg"
+            alt="{{ text[0] }}"
+            class="spinner-icon animated-icon"
+          />
         </div>
         <div class="text">
           <div class="label" [innerHTML]="config.label"></div>
-          <div *ngIf="config?.size === 'large'" class="desc" [innerHTML]="config.description"></div>
+          <div
+            *ngIf="config?.size === 'large'"
+            class="desc"
+            [innerHTML]="config.description"
+          ></div>
         </div>
       </div>
     </ng-container>

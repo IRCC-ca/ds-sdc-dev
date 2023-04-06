@@ -1,11 +1,21 @@
 <div class="{{ config?.size }}">
-  <ng-container *ngFor="let link of config?.links; first as first; last as last; index as i">
+  <ng-container
+    *ngFor="let link of config?.links; first as first; last as last; index as i"
+  >
     <ng-container *ngIf="first">
-      <ircc-cl-lib-breadcrumb-link tabindex="0" class="breadcrumb-root" [config]="link"></ircc-cl-lib-breadcrumb-link>
+      <ircc-cl-lib-breadcrumb-link
+        tabindex="0"
+        class="breadcrumb-root"
+        [config]="link"
+      ></ircc-cl-lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="!first && !last">
       <ircc-cl-lib-icon class="fa-light fa-chevron-right"></ircc-cl-lib-icon>
-      <ircc-cl-lib-breadcrumb-link tabindex="0" class="breadcrumb-item" [config]="link"></ircc-cl-lib-breadcrumb-link>
+      <ircc-cl-lib-breadcrumb-link
+        tabindex="0"
+        class="breadcrumb-item"
+        [config]="link"
+      ></ircc-cl-lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="last">
       <ircc-cl-lib-icon class="fa-light fa-chevron-right"></ircc-cl-lib-icon>

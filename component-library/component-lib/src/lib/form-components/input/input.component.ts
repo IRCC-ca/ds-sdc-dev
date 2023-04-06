@@ -1,8 +1,16 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR
+} from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
 import {
   ERROR_TEXT_STUB_EN,
   ERROR_TEXT_STUB_FR,
@@ -67,7 +75,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions, private translate: TranslateService) {}
+  constructor(
+    public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService
+  ) {}
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -111,7 +122,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.ariaText = 'Password Input';
     }
 
-    this.type === InputTypes.text ? (this.showPassword = false) : (this.showPassword = true);
+    this.type === InputTypes.text
+      ? (this.showPassword = false)
+      : (this.showPassword = true);
 
     //set disable to true when form is disabled
     this.config.formGroup.valueChanges.subscribe((change) => {
@@ -215,7 +228,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
    */
   get getErrorState(): boolean {
     return (
-      (this.config.formGroup.get(this.config.id)?.touched && this.config.formGroup.get(this.config.id)?.invalid) ??
+      (this.config.formGroup.get(this.config.id)?.touched &&
+        this.config.formGroup.get(this.config.id)?.invalid) ??
       false
     );
   }

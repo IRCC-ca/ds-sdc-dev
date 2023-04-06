@@ -1,5 +1,8 @@
 <div [class]="config.orientation" class="main-container">
-  <div class="container-plus-line" *ngFor="let step of config.steps; let i = index">
+  <div
+    class="container-plus-line"
+    *ngFor="let step of config.steps; let i = index"
+  >
     <nav class="progress-nav" role="navigation">
       <button
         role="tab"
@@ -29,13 +32,21 @@
           >
             {{ stepText + ' ' + (i + 1) }}
           </button>
-          <span class="stepTitle" [innerHTML]="step.title || '' | translate"></span>
+          <span
+            class="stepTitle"
+            [innerHTML]="step.title || '' | translate"
+          ></span>
           <div [ngClass]="{ small: config.size === 'small' }">
-            <ircc-cl-lib-progress-tags [config]="step.tagConfig"></ircc-cl-lib-progress-tags>
+            <ircc-cl-lib-progress-tags
+              [config]="step.tagConfig"
+            ></ircc-cl-lib-progress-tags>
           </div>
         </div>
       </button>
     </nav>
-    <div [ngClass]="{ 'green-line': step.tagConfig.type === 'success' }" class="line"></div>
+    <div
+      [ngClass]="{ 'green-line': step.tagConfig.type === 'success' }"
+      class="line"
+    ></div>
   </div>
 </div>

@@ -32,8 +32,14 @@
     <div class="banner-right">
       <div class="banner-body">
         <div class="banner-text" id="{{ textId }}">
-          <div class="banner-title h6 emphasis" *ngIf="config?.title">{{ config?.title || '' | translate }}</div>
-          <div class="banner-content" [innerHTML]="config?.content || '' | translate" *ngIf="config?.content"></div>
+          <div class="banner-title h6 emphasis" *ngIf="config?.title">
+            {{ config?.title || '' | translate }}
+          </div>
+          <div
+            class="banner-content"
+            [innerHTML]="config?.content || '' | translate"
+            *ngIf="config?.content"
+          ></div>
         </div>
       </div>
       <div class="banner-ctas" *ngIf="config?.cta">

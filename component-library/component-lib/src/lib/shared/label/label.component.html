@@ -6,7 +6,8 @@
   <label *ngIf="config.label" class="label">
     <span class="label_field_container">
       <div class="required-field-container" *ngIf="config.required">
-        <i class="fa-regular fa-asterisk required-star"></i>{{ config.label || '' | translate }}
+        <i class="fa-regular fa-asterisk required-star"></i
+        >{{ config.label || '' | translate }}
       </div>
       <div *ngIf="!config.required">
         {{ config.label || '' | translate }}
@@ -17,12 +18,18 @@
           category="plain"
           (click)="iconButtonClick()"
           role="button"
-          [attr.aria-label]="(config.label | translate) + ' ' + (config.iconButton.ariaText | translate)"
+          [attr.aria-label]="
+            (config.label | translate) +
+            ' ' +
+            (config.iconButton.ariaText | translate)
+          "
         ></button>
         <i [class]="config.iconButton.iconClass"></i>
       </div>
     </span>
   </label>
-  <p *ngIf="config.desc" class="input-desc">{{ config.desc || '' | translate }}</p>
+  <p *ngIf="config.desc" class="input-desc">
+    {{ config.desc || '' | translate }}
+  </p>
   <p *ngIf="config.hint" class="input-hint">{{ config.hint | translate }}</p>
 </div>

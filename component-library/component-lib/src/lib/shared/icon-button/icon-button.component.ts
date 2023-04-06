@@ -59,7 +59,9 @@ export class IconButtonComponent implements OnInit {
     if (this.disabled) this.config.disabled = this.disabled;
     if (this.icon)
       this.config.icon =
-        this.config.category === IconButtonCategories.custom ? this.icon : this.iconConfigs[this.config.category];
+        this.config.category === IconButtonCategories.custom
+          ? this.icon
+          : this.iconConfigs[this.config.category];
     else if (!this.icon && this.config.icon)
       this.config.icon =
         this.config.category === IconButtonCategories.custom

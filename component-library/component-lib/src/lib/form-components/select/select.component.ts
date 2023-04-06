@@ -1,8 +1,16 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR
+} from '@angular/forms';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
 import {
   ERROR_TEXT_STUB_EN,
   ERROR_TEXT_STUB_FR,
@@ -68,7 +76,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   };
   errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions, private translate: TranslateService) {}
+  constructor(
+    public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService
+  ) {}
 
   onChange = (formValue: string) => {};
   onTouched = () => {};

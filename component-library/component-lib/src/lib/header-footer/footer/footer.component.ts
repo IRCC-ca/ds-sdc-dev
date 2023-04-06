@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
-export const GOV_LOGO_FOOTER = 'https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg';
+export const GOV_LOGO_FOOTER =
+  'https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg';
 
 export const GOV_LOGO_ARIA_LABEL_ENGLISH = 'Symbol of the Government of Canada';
 export const GOV_LOGO_ARIA_LABEL_FRENCH = 'Symbole du gouvernement du Canada';

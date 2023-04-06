@@ -23,7 +23,13 @@ const IrccDsAngularFormComponents = [
 
 @NgModule({
   declarations: [...IrccDsAngularFormComponents],
-  imports: [CommonModule, IrccDsAngularComponentsSharedModule, TranslateModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    IrccDsAngularComponentsSharedModule,
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   exports: [...IrccDsAngularFormComponents]
 })
 export class IrccDsAngularFormComponentsModule {}

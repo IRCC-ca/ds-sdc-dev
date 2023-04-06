@@ -15,7 +15,8 @@
     "write:env": "ngx-scripts env npm_package_version",
     "generate": "ng generate",
     "build-component": "cd component-lib && ng build ircc-ds-angular-component-library",
-    "build-component-watch": "cd component-lib && ng build ircc-ds-angular-component-library --watch"
+    "build-component-watch": "cd component-lib && ng build ircc-ds-angular-component-library --watch",
+    "prettier": "prettier --write \"./**/*.{js,ts,json,html,css}\""
   },
   "dependencies": {
     "@angular/animations": "~14.2.12",

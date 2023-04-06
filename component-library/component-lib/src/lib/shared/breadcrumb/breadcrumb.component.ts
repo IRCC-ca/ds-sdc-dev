@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { ILinkComponentConfig } from './link/link.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -30,7 +36,10 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
     type: 'href'
   };
   baseUrl = '';
-  constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
+  constructor(
+    private translate: TranslateService,
+    private standalone: StandAloneFunctions
+  ) {}
 
   ngOnInit() {
     this.createLinks();
@@ -63,7 +72,8 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
           link[this.config.type] = this.baseUrl;
           prev = link[this.config.type];
         } else if (link.linkKey) {
-          link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/';
+          link[this.config.type] =
+            prev + this.translate.instant(link.linkKey) + '/';
           prev = link[this.config.type];
         }
       });

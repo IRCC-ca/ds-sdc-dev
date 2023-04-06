@@ -2,14 +2,32 @@
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true
+    "editor.formatOnPaste": false
   },
   "eslint.options": {
     "extensions": [".ts", ".html"]
   },
-  "eslint.validate": ["javascript", "typescript", "html"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ],
   "files.autoSave": "afterDelay",
   "search.exclude": {
     "**/node_modules": false
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

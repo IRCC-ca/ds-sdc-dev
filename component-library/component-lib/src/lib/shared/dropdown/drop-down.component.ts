@@ -36,9 +36,12 @@ export class DropdownComponent implements OnInit {
     if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label !== '') this.config.label = this.label;
-    if (this.placeholderText !== '') this.config.placeholderText = this.placeholderText;
+    if (this.placeholderText !== '')
+      this.config.placeholderText = this.placeholderText;
     if (this.disabled !== undefined) this.config.disabled = this.disabled;
-    this.category === undefined ? undefined : (this.config.category = this.category);
+    this.category === undefined
+      ? undefined
+      : (this.config.category = this.category);
 
     if (!this.config.category) this.config.category = ButtonCategories.primary;
 

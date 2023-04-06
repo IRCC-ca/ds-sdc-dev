@@ -13,7 +13,9 @@
         class="{{ config.icon?.class }} custom-icon"
         [style.color]="config.icon?.color"
       ></ircc-cl-lib-icon>
-      <p *ngIf="showPlaceholder" class="placholder-text">{{ config.placeholderText }}</p>
+      <p *ngIf="showPlaceholder" class="placholder-text">
+        {{ config.placeholderText }}
+      </p>
       <p class="label-text">{{ config.label }}</p>
     </div>
     <div *ngIf="!selected" role="img">

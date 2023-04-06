@@ -89,7 +89,11 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
 
   // Check if number exceeds 99
   private checkNumber() {
-    if (this.config.type === 'number' && this.config?.label && this.config.label > 99) {
+    if (
+      this.config.type === 'number' &&
+      this.config?.label &&
+      this.config.label > 99
+    ) {
       this.config.label = '99+';
     }
   }
@@ -104,6 +108,9 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
   // Check if div exceeds 200px
   private checkLabelLength() {
     // Max 200px - padding 8px x2
-    this.abbr = <boolean>(this.label?.nativeElement?.offsetWidth && this.label?.nativeElement?.offsetWidth > 184);
+    this.abbr = <boolean>(
+      (this.label?.nativeElement?.offsetWidth &&
+        this.label?.nativeElement?.offsetWidth > 184)
+    );
   }
 }

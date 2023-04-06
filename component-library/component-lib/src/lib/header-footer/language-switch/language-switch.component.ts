@@ -1,5 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  Input,
+  OnInit,
+  PLATFORM_ID
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchButtonService } from './language-switch-button.service';
 
@@ -55,10 +62,14 @@ export class LanguageSwitchComponent implements OnInit {
 
   setText(lang: string) {
     if (lang === 'en' || lang === 'en-US') {
-      this.isMobile ? (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE) : (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH);
+      this.isMobile
+        ? (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE)
+        : (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH);
       this.aria = LANGUAGE_SWITCH_ARIA_ENGLISH;
     } else {
-      this.isMobile ? (this.text = LANGUAGE_SWITCH_TEXT_FRENCH_MOBILE) : (this.text = LANGUAGE_SWITCH_TEXT_FRENCH);
+      this.isMobile
+        ? (this.text = LANGUAGE_SWITCH_TEXT_FRENCH_MOBILE)
+        : (this.text = LANGUAGE_SWITCH_TEXT_FRENCH);
       this.aria = LANGUAGE_SWITCH_ARIA_FRENCH;
     }
   }

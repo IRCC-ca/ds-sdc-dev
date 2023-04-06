@@ -8,11 +8,22 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HiddenNavComponent } from './hidden-nav/hidden-nav.component';
 
-const IrccDsHeaderFooterComponents = [HeaderComponent, FooterComponent, LanguageSwitchComponent, HiddenNavComponent];
+const IrccDsHeaderFooterComponents = [
+  HeaderComponent,
+  FooterComponent,
+  LanguageSwitchComponent,
+  HiddenNavComponent
+];
 
 @NgModule({
   declarations: [...IrccDsHeaderFooterComponents],
-  imports: [CommonModule, IrccDsAngularComponentsSharedModule, TranslateModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    IrccDsAngularComponentsSharedModule,
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   exports: [...IrccDsHeaderFooterComponents]
 })
 export class IrccDsAngularHeaderFooterModule {}

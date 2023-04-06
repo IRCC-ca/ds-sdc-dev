@@ -59,15 +59,25 @@ export class ButtonComponent {
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
-    this.category === undefined ? undefined : (this.config.category = this.category);
+    this.category === undefined
+      ? undefined
+      : (this.config.category = this.category);
     this.size === undefined ? undefined : (this.config.size = this.size);
     this.color === undefined ? undefined : (this.config.color = this.color);
-    this.ariaLabel !== undefined ? (this.config.ariaLabel = this.ariaLabel) : undefined;
-    this.disabled !== undefined ? (this.config.disabled = this.disabled) : undefined;
+    this.ariaLabel !== undefined
+      ? (this.config.ariaLabel = this.ariaLabel)
+      : undefined;
+    this.disabled !== undefined
+      ? (this.config.disabled = this.disabled)
+      : undefined;
     if (this.icon || this.config.icon) {
       this.config.icon = this.icon ? this.icon : this.config.icon;
-      this.config.iconDirection = this.iconDirection ? this.iconDirection : this.config.iconDirection;
-      this.config.iconDirection = this.config.iconDirection ? this.config.iconDirection : 'left';
+      this.config.iconDirection = this.iconDirection
+        ? this.iconDirection
+        : this.config.iconDirection;
+      this.config.iconDirection = this.config.iconDirection
+        ? this.config.iconDirection
+        : 'left';
     } else {
       this.config.icon = undefined;
       this.config.iconDirection = undefined;

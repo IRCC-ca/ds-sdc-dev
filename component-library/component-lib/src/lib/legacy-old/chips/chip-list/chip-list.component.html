@@ -1,5 +1,10 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
-  <ircc-cl-lib-input name="chipContentText" [(ngModel)]="chipContentText" placeholder="Add Chip"> </ircc-cl-lib-input>
+  <ircc-cl-lib-input
+    name="chipContentText"
+    [(ngModel)]="chipContentText"
+    placeholder="Add Chip"
+  >
+  </ircc-cl-lib-input>
 </form>
 <div class="chip-list">
   <lib-chip-item

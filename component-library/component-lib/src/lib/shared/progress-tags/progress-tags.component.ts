@@ -2,8 +2,20 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
-export const TAG_LABELS_EN = ['In Progress', 'Completed', 'Error', 'Locked', 'Not started'];
-export const TAG_LABELS_FR = ['En cours', 'Complété', 'Erreur', 'Verrouillé', 'Pas commencé'];
+export const TAG_LABELS_EN = [
+  'In Progress',
+  'Completed',
+  'Error',
+  'Locked',
+  'Not started'
+];
+export const TAG_LABELS_FR = [
+  'En cours',
+  'Complété',
+  'Erreur',
+  'Verrouillé',
+  'Pas commencé'
+];
 
 export enum TagType {
   primary = 'primary',
@@ -48,7 +60,10 @@ export class ProgressTagsComponent implements OnInit {
   }
 
   setTypeTitle() {
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       this.text = TAG_LABELS_EN;
     } else {
       this.text = TAG_LABELS_FR;

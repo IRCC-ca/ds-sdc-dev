@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IIconButtonComponentConfig, IIconButtonIconConfig } from '../../shared/icon-button/icon-button.component';
+import {
+  IIconButtonComponentConfig,
+  IIconButtonIconConfig
+} from '../../shared/icon-button/icon-button.component';
 import { IButtonConfig } from '../../shared/button/button.component';
 
 export enum BannerType {
@@ -82,7 +85,10 @@ export class BannerComponent implements OnInit {
     let containerHeight = document.getElementById(this.textId)?.offsetHeight;
     let el: any = document.querySelector(`#${this.config?.id} .banner-line`);
     let ctas: any = document.querySelector(`#${this.config?.id} .banner-ctas`);
-    if ((containerHeight && el && containerHeight > 35) || (el && containerHeight && containerHeight > 23 && ctas)) {
+    if (
+      (containerHeight && el && containerHeight > 35) ||
+      (el && containerHeight && containerHeight > 23 && ctas)
+    ) {
       el.style.display = 'block';
     } else if (el) {
       el.style.display = 'none';
@@ -95,7 +101,8 @@ export class BannerComponent implements OnInit {
 
     if (this.config?.cta) {
       this.config?.cta.forEach((item) => {
-        if (item.ariaLabel && item.btnConfig) item.btnConfig.ariaLabel = item.ariaLabel;
+        if (item.ariaLabel && item.btnConfig)
+          item.btnConfig.ariaLabel = item.ariaLabel;
       });
     }
 

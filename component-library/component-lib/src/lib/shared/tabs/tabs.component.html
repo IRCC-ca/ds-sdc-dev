@@ -11,7 +11,12 @@
       >
         {{ val.title }}
       </button>
-      <button *ngIf="val.id !== config.selected" class="tabs-btn" [id]="val.id" (click)="setSelected(val.id)">
+      <button
+        *ngIf="val.id !== config.selected"
+        class="tabs-btn"
+        [id]="val.id"
+        (click)="setSelected(val.id)"
+      >
         {{ val.title }}
       </button>
     </div>

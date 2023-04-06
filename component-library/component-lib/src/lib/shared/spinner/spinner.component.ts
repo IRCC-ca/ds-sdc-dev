@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DSFullSizes, DSOrientations } from '../../../shared/constants/jl-components.constants';
+import {
+  DSFullSizes,
+  DSOrientations
+} from '../../../shared/constants/jl-components.constants';
 
 export const SPINNER_LABELS_EN = ['Loading', 'Success', 'Error'];
 export const SPINNER_LABELS_FR = ['Chargement', 'Succès', 'Erreur'];
@@ -58,7 +61,10 @@ export class SpinnerComponent implements OnInit {
   }
 
   setTypeTitle() {
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       this.text = SPINNER_LABELS_EN;
     } else {
       this.text = SPINNER_LABELS_FR;
@@ -66,7 +72,10 @@ export class SpinnerComponent implements OnInit {
   }
 
   removeVertical() {
-    if (this.config.size !== 'large' && this.config.orientation === 'vertical') {
+    if (
+      this.config.size !== 'large' &&
+      this.config.orientation === 'vertical'
+    ) {
       this.config.orientation = 'horizontal';
     }
   }

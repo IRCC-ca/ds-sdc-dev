@@ -34,6 +34,11 @@ const IrccDsSharedComponents = [
 @NgModule({
   declarations: [...IrccDsSharedComponents],
   imports: [CommonModule, TranslateModule, RouterModule],
-  exports: [CommonModule, TranslateModule, RouterModule, ...IrccDsSharedComponents]
+  exports: [
+    CommonModule,
+    TranslateModule,
+    RouterModule,
+    ...IrccDsSharedComponents
+  ]
 })
 export class IrccDsAngularComponentsSharedModule {}

@@ -1,4 +1,9 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick
+} from '@angular/core/testing';
 import { UniversalTranslateLoader } from '@app/shared/translate/universal-translate-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AutocompleteComponent } from './autocomplete.component';
@@ -41,7 +46,9 @@ describe('DropdownComponent', () => {
 
   it('should open the dropdown', fakeAsync(() => {
     spyOn(component, 'clickInside');
-    const button = fixture.debugElement.nativeElement.querySelector('.autocomplete-container');
+    const button = fixture.debugElement.nativeElement.querySelector(
+      '.autocomplete-container'
+    );
     button.click();
     tick();
     expect(component.clickInside).toHaveBeenCalled();

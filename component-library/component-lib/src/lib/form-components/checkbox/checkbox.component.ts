@@ -1,8 +1,16 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR
+} from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
 import {
   ERROR_TEXT_STUB_EN,
   ERROR_TEXT_STUB_FR,
@@ -63,7 +71,10 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   errorAria = '';
   errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions, private translate: TranslateService) {}
+  constructor(
+    public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService
+  ) {}
 
   onTouch = () => {};
   onChange = () => {};
@@ -179,7 +190,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
    */
   getErrorState(): boolean {
     return (
-      (this.config.formGroup.get(this.config.id)?.touched && this.config.formGroup.get(this.config.id)?.invalid) ??
+      (this.config.formGroup.get(this.config.id)?.touched &&
+        this.config.formGroup.get(this.config.id)?.invalid) ??
       false
     );
   }

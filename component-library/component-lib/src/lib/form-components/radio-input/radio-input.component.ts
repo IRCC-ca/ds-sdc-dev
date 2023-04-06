@@ -1,8 +1,17 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+  ValidatorFn
+} from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
 import {
   ERROR_TEXT_STUB_EN,
   ERROR_TEXT_STUB_FR,
@@ -67,7 +76,10 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   errorStubText = '';
   errorAria = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions, private translate: TranslateService) {}
+  constructor(
+    public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService
+  ) {}
 
   onChange = (formValue: string) => {};
   onTouched = () => {};
@@ -111,7 +123,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     );
 
     if (this.id !== '') this.config.id = this.id;
-    if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty)
+      this.config.formGroup = this.formGroup;
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -172,7 +185,10 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
    */
   getDisabled(index: number) {
     if (this.config.options) {
-      if (this.config.options[index].disabled === undefined && !this.config.disabled) {
+      if (
+        this.config.options[index].disabled === undefined &&
+        !this.config.disabled
+      ) {
         return null;
       }
     }

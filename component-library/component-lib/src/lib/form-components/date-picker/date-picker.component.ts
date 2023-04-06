@@ -11,7 +11,10 @@ import {
 import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
 
 export const DATE_PICKER_MONTHS_EN = [
   'January',
@@ -169,7 +172,10 @@ export class DatePickerComponent implements OnInit {
   //Get the current year for use in the year dropdown
   private currentYear = new Date().getFullYear();
 
-  constructor(private translate: TranslateService, public standAloneFunctions: StandAloneFunctions) {}
+  constructor(
+    private translate: TranslateService,
+    public standAloneFunctions: StandAloneFunctions
+  ) {}
 
   ngOnInit() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -194,12 +200,16 @@ export class DatePickerComponent implements OnInit {
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
     if (this.maxYear) this.config.maxYear = this.maxYear;
     if (this.minYear) this.config.minYear = this.minYear;
-    if (this.unknownDateToggle) this.config.unknownDateToggle = this.unknownDateToggle;
+    if (this.unknownDateToggle)
+      this.config.unknownDateToggle = this.unknownDateToggle;
 
     //Set the ids for the dropdowns
-    this.dropDownConfigs.day.id = this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION;
-    this.dropDownConfigs.month.id = this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION;
-    this.dropDownConfigs.year.id = this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION;
+    this.dropDownConfigs.day.id =
+      this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION;
+    this.dropDownConfigs.month.id =
+      this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION;
+    this.dropDownConfigs.year.id =
+      this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION;
 
     this.dropDownConfigs.day.formGroup = this.config.formGroup;
     this.dropDownConfigs.month.formGroup = this.config.formGroup;
@@ -230,12 +240,21 @@ export class DatePickerComponent implements OnInit {
       this.setLabelLanguage();
       this.getAriaOverride();
     });
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       if (this.config.unknownDateToggle?.yearUnknown)
-        this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_EN, value: '**' });
+        this.dropDownConfigs.year.options?.push({
+          text: DATE_PICKER_UNKOWN_EN,
+          value: '**'
+        });
     } else {
       if (this.config.unknownDateToggle?.yearUnknown)
-        this.dropDownConfigs.year.options?.push({ text: DATE_PICKER_UNKOWN_FR, value: '**' });
+        this.dropDownConfigs.year.options?.push({
+          text: DATE_PICKER_UNKOWN_FR,
+          value: '**'
+        });
     }
 
     if (this.config.minYear || this.config.maxYear) {
@@ -263,28 +282,44 @@ export class DatePickerComponent implements OnInit {
       .get(this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION)
       ?.valueChanges.subscribe((month) => {
         //add if statement here - the value of year can be empty, since it may not have been selected yet.
-        const numDays = this.updateDaysArray(month, this.config.formGroup.get(this.config.id + '_yearControl')?.value);
+        const numDays = this.updateDaysArray(
+          month,
+          this.config.formGroup.get(this.config.id + '_yearControl')?.value
+        );
       });
     this.config.formGroup
       .get(this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION)
       ?.valueChanges.subscribe((year) => {
         const numDays = this.updateDaysArray(
-          this.config.formGroup.get(this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION)?.value,
+          this.config.formGroup.get(
+            this.config.id + DATE_PICKER_MONTH_CONTROL_ID_EXTENSION
+          )?.value,
           year
         );
       });
 
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       if (this.config.unknownDateToggle?.dayUnknown)
-        this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN, value: '**' });
+        this.dropDownConfigs.day.options?.push({
+          text: DATE_PICKER_UNKOWN_EN,
+          value: '**'
+        });
     } else {
       if (this.config.unknownDateToggle?.dayUnknown)
-        this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR, value: '**' });
+        this.dropDownConfigs.day.options?.push({
+          text: DATE_PICKER_UNKOWN_FR,
+          value: '**'
+        });
     }
 
     if (
-      (this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 1) ||
-      (!this.config.unknownDateToggle?.dayUnknown && this.dropDownConfigs.day.options?.length === 0)
+      (this.config.unknownDateToggle?.dayUnknown &&
+        this.dropDownConfigs.day.options?.length === 1) ||
+      (!this.config.unknownDateToggle?.dayUnknown &&
+        this.dropDownConfigs.day.options?.length === 0)
     ) {
       for (let i = 1; i <= 31; i++) {
         this.dropDownConfigs.day.options?.push({ text: i.toString() });
@@ -318,17 +353,29 @@ export class DatePickerComponent implements OnInit {
    */
   setMonthsLanguage() {
     this.dropDownConfigs.month.options = [];
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       this.months = DATE_PICKER_MONTHS_EN;
       if (this.config.unknownDateToggle?.monthUnknown)
-        this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_EN, value: '**' });
+        this.dropDownConfigs.month.options?.push({
+          text: DATE_PICKER_UNKOWN_EN,
+          value: '**'
+        });
     } else {
       this.months = DATE_PICKER_MONTHS_FR;
       if (this.config.unknownDateToggle?.monthUnknown)
-        this.dropDownConfigs.month.options?.push({ text: DATE_PICKER_UNKOWN_FR, value: '**' });
+        this.dropDownConfigs.month.options?.push({
+          text: DATE_PICKER_UNKOWN_FR,
+          value: '**'
+        });
     }
     this.months.forEach((month: string, index: number) => {
-      this.dropDownConfigs.month.options?.push({ text: month, value: (index + 1).toString().padStart(2, '0') });
+      this.dropDownConfigs.month.options?.push({
+        text: month,
+        value: (index + 1).toString().padStart(2, '0')
+      });
     });
   }
 
@@ -338,18 +385,33 @@ export class DatePickerComponent implements OnInit {
   setYearDayLanguage() {
     this.dropDownConfigs.day.options?.shift();
     this.dropDownConfigs.year.options?.shift();
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       this.months = DATE_PICKER_MONTHS_EN;
       if (this.config.unknownDateToggle?.dayUnknown)
-        this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value: '**' });
+        this.dropDownConfigs.day.options?.unshift({
+          text: DATE_PICKER_UNKOWN_EN,
+          value: '**'
+        });
       if (this.config.unknownDateToggle?.yearUnknown)
-        this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_EN, value: '**' });
+        this.dropDownConfigs.year.options?.unshift({
+          text: DATE_PICKER_UNKOWN_EN,
+          value: '**'
+        });
     } else {
       this.months = DATE_PICKER_MONTHS_FR;
       if (this.config.unknownDateToggle?.dayUnknown)
-        this.dropDownConfigs.day.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value: '**' });
+        this.dropDownConfigs.day.options?.unshift({
+          text: DATE_PICKER_UNKOWN_FR,
+          value: '**'
+        });
       if (this.config.unknownDateToggle?.yearUnknown)
-        this.dropDownConfigs.year.options?.unshift({ text: DATE_PICKER_UNKOWN_FR, value: '**' });
+        this.dropDownConfigs.year.options?.unshift({
+          text: DATE_PICKER_UNKOWN_FR,
+          value: '**'
+        });
     }
   }
 
@@ -357,7 +419,10 @@ export class DatePickerComponent implements OnInit {
    * Set the language for the labels of each dropdown
    */
   setLabelLanguage() {
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       this.dropDownConfigs.day.label = DATE_PICKER_LABELS_EN[0];
       this.dropDownConfigs.month.label = DATE_PICKER_LABELS_EN[1];
       this.dropDownConfigs.year.label = DATE_PICKER_LABELS_EN[2];
@@ -392,13 +457,24 @@ export class DatePickerComponent implements OnInit {
     for (let i = 1; i <= numDays; i++) {
       this.days.push(i);
     }
-    this.config.formGroup.get(this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION)?.setValue('');
-    if (this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US') {
+    this.config.formGroup
+      .get(this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION)
+      ?.setValue('');
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       if (this.config.unknownDateToggle?.dayUnknown)
-        this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_EN, value: '**' });
+        this.dropDownConfigs.day.options?.push({
+          text: DATE_PICKER_UNKOWN_EN,
+          value: '**'
+        });
     } else {
       if (this.config.unknownDateToggle?.dayUnknown)
-        this.dropDownConfigs.day.options?.push({ text: DATE_PICKER_UNKOWN_FR, value: '**' });
+        this.dropDownConfigs.day.options?.push({
+          text: DATE_PICKER_UNKOWN_FR,
+          value: '**'
+        });
     }
     this.days.forEach((day) => {
       this.dropDownConfigs.day.options?.push({ text: day.toString() });
@@ -471,10 +547,16 @@ export class DatePickerComponent implements OnInit {
       ) {
         this.yearSelect?.setAttribute(
           'aria-label',
-          this.getLabelCore() + this.dropDownConfigs.year.label + ' ' + this.getErrorAria()
+          this.getLabelCore() +
+            this.dropDownConfigs.year.label +
+            ' ' +
+            this.getErrorAria()
         );
       } else {
-        this.yearSelect?.setAttribute('aria-label', this.getLabelCore() + this.dropDownConfigs.year.label);
+        this.yearSelect?.setAttribute(
+          'aria-label',
+          this.getLabelCore() + this.dropDownConfigs.year.label
+        );
       }
     }
     if (this.monthSelect !== '') {
@@ -485,10 +567,16 @@ export class DatePickerComponent implements OnInit {
       ) {
         this.monthSelect?.setAttribute(
           'aria-label',
-          this.getLabelCore() + this.dropDownConfigs.month.label + ' ' + this.getErrorAria()
+          this.getLabelCore() +
+            this.dropDownConfigs.month.label +
+            ' ' +
+            this.getErrorAria()
         );
       } else {
-        this.monthSelect?.setAttribute('aria-label', this.getLabelCore() + this.dropDownConfigs.month.label);
+        this.monthSelect?.setAttribute(
+          'aria-label',
+          this.getLabelCore() + this.dropDownConfigs.month.label
+        );
       }
     }
     if (this.daySelect !== '') {
@@ -499,10 +587,16 @@ export class DatePickerComponent implements OnInit {
       ) {
         this.daySelect?.setAttribute(
           'aria-label',
-          this.getLabelCore() + this.dropDownConfigs.day.label + ' ' + this.getErrorAria()
+          this.getLabelCore() +
+            this.dropDownConfigs.day.label +
+            ' ' +
+            this.getErrorAria()
         );
       } else {
-        this.daySelect?.setAttribute('aria-label', this.getLabelCore() + this.dropDownConfigs.day.label);
+        this.daySelect?.setAttribute(
+          'aria-label',
+          this.getLabelCore() + this.dropDownConfigs.day.label
+        );
       }
     }
   }
@@ -513,9 +607,12 @@ export class DatePickerComponent implements OnInit {
    */
   getLabelCore() {
     let labelCore = '';
-    if (this.config.label) labelCore += this.translate.instant(this.config.label) + ' ';
-    if (this.config.desc) labelCore += this.translate.instant(this.config.desc) + ' ';
-    if (this.config.hint) labelCore += this.translate.instant(this.config.hint) + ' ';
+    if (this.config.label)
+      labelCore += this.translate.instant(this.config.label) + ' ';
+    if (this.config.desc)
+      labelCore += this.translate.instant(this.config.desc) + ' ';
+    if (this.config.hint)
+      labelCore += this.translate.instant(this.config.hint) + ' ';
     return labelCore;
   }
 
@@ -543,7 +640,9 @@ export class DatePickerComponent implements OnInit {
     this.onTouched = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    isDisabled ? this.config.formGroup.disable() : this.config.formGroup.enable();
+    isDisabled
+      ? this.config.formGroup.disable()
+      : this.config.formGroup.enable();
   }
   private onTouched: () => void = () => {};
 }

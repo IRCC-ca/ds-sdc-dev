@@ -1,9 +1,19 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR
+} from '@angular/forms';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
-import { ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import {
+  ILabelConfig,
+  ILabelIconConfig
+} from '../../shared/label/label.component';
 import { IErrorIconConfig } from '../error/error.component';
 
 export interface ITextareaComponentConfig {
@@ -90,7 +100,9 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
 
     if (this.config.formGroup.controls[this.config.id].value) {
-      this.characterCountStatus(this.config.formGroup.controls[this.config.id].value.length);
+      this.characterCountStatus(
+        this.config.formGroup.controls[this.config.id].value.length
+      );
     }
 
     this.config.formGroup.valueChanges.subscribe((change) => {
