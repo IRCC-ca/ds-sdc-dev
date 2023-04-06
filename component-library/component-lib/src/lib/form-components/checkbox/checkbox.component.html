@@ -1,7 +1,7 @@
 <form class="checkbox-container" [formGroup]="config.formGroup"
   (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
   <div class="checkbox-container" [ngClass]="config.size">
-    <ircc-cl-lib-label [config]="labelConfig"></ircc-cl-lib-label>
+    <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
     <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
       <div class="checkbox">
         <input [attr.aria-live]="'off'" (blur)="touched = true" id="{{config.id}}" class="check"
