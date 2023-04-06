@@ -129,7 +129,7 @@
       "projectType": "library",
       "root": "component-lib",
       "sourceRoot": "component-lib/src",
-      "prefix": "lib",
+      "prefix": "ircc-cl-lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
