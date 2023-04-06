@@ -21,7 +21,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": "irccClLib",
             "style": "camelCase"
           }
         ],
