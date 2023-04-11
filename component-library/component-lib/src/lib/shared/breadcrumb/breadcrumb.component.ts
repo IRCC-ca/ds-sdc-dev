@@ -8,7 +8,8 @@ import {
   ElementRef,
   AfterViewInit,
   Renderer2,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ViewChild
 } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ILinkComponentConfig } from "./link/link.component";
@@ -55,6 +56,8 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
   displayOverflow = false;
   private maxHeight: number = 0; // Max height of element in px
+  @ViewChild('breadcrumb_child') childRef?: ElementRef<HTMLParagraphElement>;
+  isChildOverflow: boolean = false;
   constructor(
     private translate: TranslateService,
     private standalone: StandAloneFunctions,
@@ -72,8 +75,9 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.createOverflows();
+      this.isChildOverflow = this.getChildOverflow();
       this.changeRef.detectChanges();
-    }, 1000);
+    }, 0);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -153,9 +157,19 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     this.normalLinks = [];
     this.createLinks();
     this.createOverflows();
+    this.isChildOverflow = this.getChildOverflow();
   }
 
   flipOverflow(buttonId: string) {
     this.displayOverflow = !this.displayOverflow;
+  }
+
+  // Check if child page title overflows to 2nd line
+  getChildOverflow(): boolean {
+    if (this.childRef) {
+      return (this.childRef.nativeElement.offsetWidth < this.childRef.nativeElement.scrollWidth);
+    } else {
+      return false;
+    }
   }
 }

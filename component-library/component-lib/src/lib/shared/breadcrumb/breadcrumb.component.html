@@ -13,7 +13,10 @@
     </ng-container>
     <ng-container *ngIf="last">
       <lib-icon [config]="{'fontFamily': 'fa-light fa-chevron-right'}"></lib-icon>
-      <p class="breadcrumb-child">{{link.text}}</p>
+      <p class="breadcrumb-child" #breadcrumb_child>
+        <span *ngIf="!isChildOverflow">{{link.text}}</span>
+        <abbr *ngIf="isChildOverflow" [title]="link.text">{{link.text}}</abbr>
+      </p>
     </ng-container>
   </ng-container>
   <div class="overflow" *ngIf="displayOverflow && overflowLinks && overflowLinks.length > 0">
