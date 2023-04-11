@@ -29,5 +29,6 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "easynpm.defaultProjectRoot": "/Users/alexandreircc/Documents/GitHub/ds-sdc-dev/component-library"
 }

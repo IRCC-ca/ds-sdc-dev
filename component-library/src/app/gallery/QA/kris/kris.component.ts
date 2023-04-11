@@ -11,12 +11,17 @@ import {
   IAutoTestConfigObject
 } from '../auto-tester/auto-tester.component';
 
+// Parent components imports
+import { ParentTemplateComponent } from '../../../@shared/templates/parent-template.component';
+import { TranslateService } from '@ngx-translate/core';
+import { StandAloneFunctions } from 'ircc-ds-angular-component-library';
+
 @Component({
   selector: 'app-kris',
   templateUrl: './kris.component.html',
   styleUrls: ['./kris.component.scss']
 })
-export class KrisComponent implements OnInit {
+export class KrisComponent extends ParentTemplateComponent implements OnInit {
   form = new FormGroup({});
 
   selectConfig: ISelectConfig = {
@@ -49,11 +54,16 @@ export class KrisComponent implements OnInit {
     ]
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(
+    altLang: LanguageSwitchService,
+    translate: TranslateService,
+    standAloneFunctions: StandAloneFunctions
+  ) {
+    super(altLang, translate, standAloneFunctions);
+  }
 
   ngOnInit() {
     this.altLang.setAltLangLink('kris-alt');
-
     this.form.addControl(
       this.selectConfig.id,
       new FormControl('', [
@@ -62,5 +72,6 @@ export class KrisComponent implements OnInit {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
       ])
     );
+    console.log(super.getURL());
   }
 }
