@@ -1,24 +1,50 @@
 <div class="{{ config.size }}">
-  <ircc-cl-lib-label [config]="labelConfig" [attr.size]="config.size"></ircc-cl-lib-label>
+  <ircc-cl-lib-label
+    [config]="labelConfig"
+    [attr.size]="config.size"
+  ></ircc-cl-lib-label>
   <form [formGroup]="config.formGroup">
     <div class="ircc-cl-lib-select">
-      <select (blur)="onBlur()" (click)="onClicked()" class="custom-select h6 select-placeholder" [name]="config.id" [id]="config.id"
-        [formControlName]="config.id" (change)="valueChange($event)" [class.activited-select]="activiatedSelect"
+      <select
+        (blur)="onBlur()"
+        (click)="onClicked()"
+        class="custom-select h6 select-placeholder"
+        [name]="config.id"
+        [id]="config.id"
+        [formControlName]="config.id"
+        (change)="valueChange($event)"
+        [class.activited-select]="activiatedSelect"
         [attr.aria-invalid]="formControl?.errors"
         [attr.aria-live]="'off'"
-        [attr.aria-label]="formControl?.invalid && touched
-        ? (config.label || '' | translate) + ' ' + 
-          (config.desc || '' | translate) + ' ' +
-          (config.hint || '' | translate) + ' ' +
-          (errorStubText + ': ' + errorAria)
-        :
-          (config.label || '' | translate) + ' ' + 
-          (config.desc || '' | translate )+ ' ' +
-          (config.hint || '' | translate)">
-        <option [value]="''" [disabled]="true" [selected]="true" [hidden]="true">
-          {{ config.placeholder || "" | translate }}
+        [attr.aria-label]="
+          formControl?.invalid && touched
+            ? (config.label || '' | translate) +
+              ' ' +
+              (config.desc || '' | translate) +
+              ' ' +
+              (config.hint || '' | translate) +
+              ' ' +
+              (errorStubText + ': ' + errorAria)
+            : (config.label || '' | translate) +
+              ' ' +
+              (config.desc || '' | translate) +
+              ' ' +
+              (config.hint || '' | translate)
+        "
+      >
+        <option
+          [value]="''"
+          [disabled]="true"
+          [selected]="true"
+          [hidden]="true"
+        >
+          {{ config.placeholder || '' | translate }}
         </option>
-        <option *ngFor="let option of config.options" [value]="option.value || option.text" class="select-option">
+        <option
+          *ngFor="let option of config.options"
+          [value]="option.value || option.text"
+          class="select-option"
+        >
           {{ option.text | translate }}
         </option>
       </select>
@@ -27,11 +53,17 @@
       </div>
     </div>
     <div aria-live="polite" *ngIf="!config.disableError">
-      <div *ngIf="(formControl?.touched) && formControl?.invalid">
-        <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
+      <div *ngIf="formControl?.touched && formControl?.invalid">
+        <span class="sr-only">{{
+          errorStubText + ': ' + (config.label || '' | translate) + ': '
+        }}</span>
         <ng-container *ngFor="let errors of errorIds; let i = index">
           <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
-            <ircc-cl-lib-error [size]="config?.size" [id]="errors.id" [errorLOV]="errors.errorLOV"></ircc-cl-lib-error>
+            <ircc-cl-lib-error
+              [size]="config?.size"
+              [id]="errors.id"
+              [errorLOV]="errors.errorLOV"
+            ></ircc-cl-lib-error>
           </div>
         </ng-container>
       </div>

@@ -1,25 +1,24 @@
 <div class="autoTestContainer">
-    <div class="checkboxes">
-        <ng-container *ngFor="let input of config.testFields?.checkboxes">
-            <div class="checkbox">
-                <ircc-cl-lib-checkbox [config]="input"></ircc-cl-lib-checkbox>
-            </div>
-        </ng-container>
-    </div>
-    <div class="dropdowns">
-        <ng-container *ngFor="let input of config.testFields?.selects">
-            <div class="dropdown">
-                <ircc-cl-lib-select [config]="input"></ircc-cl-lib-select>
-            </div>
-        </ng-container>
-    </div>
-    <div class="inputs">
-        <ng-container *ngFor="let input of config.testFields?.inputs">
-            <div class="text-input">
-                <ircc-cl-lib-input [config]="input"></ircc-cl-lib-input>
-            </div>
-        </ng-container>
-    </div>
+  <div class="checkboxes">
+    <ng-container *ngFor="let input of config.testFields?.checkboxes">
+      <div class="checkbox">
+        <ircc-cl-lib-checkbox [config]="input"></ircc-cl-lib-checkbox>
+      </div>
+    </ng-container>
+  </div>
+  <div class="dropdowns">
+    <ng-container *ngFor="let input of config.testFields?.selects">
+      <div class="dropdown">
+        <ircc-cl-lib-select [config]="input"></ircc-cl-lib-select>
+      </div>
+    </ng-container>
+  </div>
+  <div class="inputs">
+    <ng-container *ngFor="let input of config.testFields?.inputs">
+      <div class="text-input">
+        <ircc-cl-lib-input [config]="input"></ircc-cl-lib-input>
+      </div>
+    </ng-container>
+  </div>
 </div>
-<hr/>
-
+<hr />

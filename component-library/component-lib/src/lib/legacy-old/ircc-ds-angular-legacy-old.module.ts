@@ -18,18 +18,14 @@ const IrccDsLegacyOldComponents = [
 ];
 
 @NgModule({
-  declarations: [
-    ...IrccDsLegacyOldComponents
-  ],
+  declarations: [...IrccDsLegacyOldComponents],
   imports: [
     CommonModule,
     IrccDsAngularComponentsSharedModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  exports: [
-    ...IrccDsLegacyOldComponents
-  ]
+  exports: [...IrccDsLegacyOldComponents]
 })
-export class IrccDsAngularLegacyOldModule { }
+export class IrccDsAngularLegacyOldModule {}

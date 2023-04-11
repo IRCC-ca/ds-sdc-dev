@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { ICheckBoxComponentConfig, ISelectConfig, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
-import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/auto-tester.component';
+import {
+  ICheckBoxComponentConfig,
+  ISelectConfig,
+  IRadioInputComponentConfig
+} from 'ircc-ds-angular-component-library';
+import {
+  IAutoTestComponentConfig,
+  IAutoTestConfigObject
+} from '../auto-tester/auto-tester.component';
 
 @Component({
   selector: 'app-kris',
@@ -10,13 +17,12 @@ import { IAutoTestComponentConfig, IAutoTestConfigObject } from '../auto-tester/
   styleUrls: ['./kris.component.scss']
 })
 export class KrisComponent implements OnInit {
-
   form = new FormGroup({});
 
-  selectConfig:  ISelectConfig = {
+  selectConfig: ISelectConfig = {
     id: 'select',
     formGroup: this.form,
-    label: "Testing input select",
+    label: 'Testing input select',
     hint: "Try clicking into the select, but not selecting anything on first load to trigger the 'required' error",
     desc: 'Email regex and minLength of 7 - email should be valid, "short" should trigger two errors',
     options: [
@@ -43,13 +49,18 @@ export class KrisComponent implements OnInit {
     ]
   };
 
-
-  constructor(private altLang: LanguageSwitchService) { }
+  constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
     this.altLang.setAltLangLink('kris-alt');
 
-    this.form.addControl(this.selectConfig.id, new FormControl('',
-      [Validators.required, Validators.minLength(7), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]));
+    this.form.addControl(
+      this.selectConfig.id,
+      new FormControl('', [
+        Validators.required,
+        Validators.minLength(7),
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
+      ])
+    );
   }
 }

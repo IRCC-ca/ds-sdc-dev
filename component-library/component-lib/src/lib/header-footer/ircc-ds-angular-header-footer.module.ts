@@ -16,9 +16,7 @@ const IrccDsHeaderFooterComponents = [
 ];
 
 @NgModule({
-  declarations: [
-    ...IrccDsHeaderFooterComponents
-  ],
+  declarations: [...IrccDsHeaderFooterComponents],
   imports: [
     CommonModule,
     IrccDsAngularComponentsSharedModule,
@@ -26,8 +24,6 @@ const IrccDsHeaderFooterComponents = [
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [
-    ...IrccDsHeaderFooterComponents
-  ]
+  exports: [...IrccDsHeaderFooterComponents]
 })
-export class IrccDsAngularHeaderFooterModule { }
+export class IrccDsAngularHeaderFooterModule {}

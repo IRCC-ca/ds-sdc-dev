@@ -4,12 +4,9 @@ import { ShellComponent } from './shell.component';
 import { Shell } from './shell.service';
 
 describe('Shell', () => {
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        ShellComponent
-      ]
+      declarations: [ShellComponent]
     });
   });
 

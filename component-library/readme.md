@@ -3,30 +3,32 @@
 This project was generated with [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket/)
 version 11.0.0.
 
-This project uses a git submodule. For more information, see https://git-scm.com/book/en/v2/Git-Tools-Submodules 
+This project uses a git submodule. For more information, see https://git-scm.com/book/en/v2/Git-Tools-Submodules
 When first cloning this project use "git clone --recurse-submodules <repoURL>" or the submodule folder will be empty. If you
 have already cloned this project, you can run "git submodule init", then "git submodule update" to populate the submodule.
-
 
 # Getting started
 
 1. Go to project folder and install dependencies:
- ```sh
- cd ./component-lib
- npm install
- cd ../
- npm install
- ```
+
+```sh
+cd ./component-lib
+npm install
+cd ../
+npm install
+```
 
 2. Build the library using the --watch option to update the project whenever there is a change to the library:
+
 ```sh
 ng build ircc-ds-angular-component-library --watch
 ```
 
 3. Launch development server, and open `localhost:4200` in your browser:
- ```sh
- npm start
- ```
+
+```sh
+npm start
+```
 
 # Project structure
 
@@ -59,7 +61,7 @@ proxy.conf.js                backend proxy configuration
 Task automation is based on [NPM scripts](https://docs.npmjs.com/misc/scripts).
 
 | Task                                            | Description                                                                                                      |
-|-------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `npm start`                                     | Run development server on `http://localhost:4200/`                                                               |
 | `npm run build [-- --configuration=production]` | Lint code and build web app for production (with [AOT](https://angular.io/guide/aot-compiler)) in `dist/` folder |
 | `npm test`                                      | Run unit tests via [Karma](https://karma-runner.github.io) in watch mode                                         |

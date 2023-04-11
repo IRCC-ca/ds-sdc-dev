@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ICheckBoxComponentConfig, ISelectConfig, IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import {
+  ICheckBoxComponentConfig,
+  ISelectConfig,
+  IInputComponentConfig
+} from 'ircc-ds-angular-component-library';
 
 export interface IAutoTestComponentConfig {
   id: string;
@@ -20,15 +24,12 @@ export interface IAutoTestConfigObject {
   styleUrls: ['./auto-tester.component.scss']
 })
 export class AutoTesterComponent implements OnInit {
-
   @Input() config: IAutoTestComponentConfig = {
     id: '',
     formGroup: new FormGroup({})
-  }
+  };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

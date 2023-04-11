@@ -8,9 +8,8 @@ describe('ProgressIndicatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProgressIndicatorComponent ]
-    })
-    .compileComponents();
+      declarations: [ProgressIndicatorComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProgressIndicatorComponent);
     component = fixture.componentInstance;

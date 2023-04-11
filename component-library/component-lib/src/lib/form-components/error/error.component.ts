@@ -1,6 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-
 
 export interface IErrorIconConfig {
   class: string; // Fontawesome icon class
@@ -16,7 +21,7 @@ export interface IErrorComponentConfig {
 
 @Component({
   selector: 'ircc-cl-lib-error',
-  templateUrl: './error.component.html',
+  templateUrl: './error.component.html'
 })
 export class ErrorComponent implements OnInit, OnChanges {
   @Input() config?: IErrorComponentConfig;
@@ -25,13 +30,14 @@ export class ErrorComponent implements OnInit, OnChanges {
   @Input() icon?: IErrorIconConfig;
   @Input() size?: keyof typeof DSSizes;
 
-  constructor() { }
+  constructor() {}
   ngOnInit() {
     //Initial null and override check:
-    if (!this.config) this.config = {
-      id: '',
-      errorLOV: '',
-    };
+    if (!this.config)
+      this.config = {
+        id: '',
+        errorLOV: ''
+      };
     this.portInputValues();
   }
 
