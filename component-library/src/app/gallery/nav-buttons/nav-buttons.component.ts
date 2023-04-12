@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent } from '@angular/router';
 import {
   ButtonCategories,
   LanguageSwitchButtonService
@@ -51,12 +51,13 @@ export class NavButtonsComponent implements OnInit {
       }
     });
 
-    this.setActiveButtonByUrl(this.router.url.split('?')[0].split('/').pop())
+
+    //subscribes to route changes or page reload and updates active button
+    this.setActiveButtonByUrl()
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      const lastUrlSegment = event.url.split('?')[0].split('/').pop()
-      this.setActiveButtonByUrl(lastUrlSegment)
+    ).subscribe(() => {
+      this.setActiveButtonByUrl()
     });
   }
 
@@ -114,7 +115,8 @@ export class NavButtonsComponent implements OnInit {
     });
   }
 
-  setActiveButtonByUrl(lastUrlSegment: any) {
+  setActiveButtonByUrl() {
+    const lastUrlSegment = this.router.url.split('?')[0].split('/').pop()
     this.config?.buttons.forEach(button => {
       if (this.translate.instant('ROUTES.' + button.url) === lastUrlSegment) {
         button.category = "primary";
