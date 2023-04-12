@@ -11,8 +11,6 @@ import { MichaelComponent } from './michael/michael.component';
 import { MikeComponent } from './mike/mike.component';
 import { AutoTesterComponent } from './auto-tester/auto-tester.component';
 
-
-
 @NgModule({
   declarations: [
     QaComponent,
@@ -23,11 +21,6 @@ import { AutoTesterComponent } from './auto-tester/auto-tester.component';
     MikeComponent,
     AutoTesterComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    TranslateModule,
-    QARoutingModule
-  ]
+  imports: [CommonModule, SharedModule, TranslateModule, QARoutingModule]
 })
-export class QaModule { }
+export class QaModule {}

@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-    lib-progress-tags#{template-const.$escape} {
+    ircc-cl-lib-progress-tags#{template-const.$escape} {
         @content;
     }
 }

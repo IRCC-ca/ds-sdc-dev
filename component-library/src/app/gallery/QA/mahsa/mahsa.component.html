@@ -1,64 +1,70 @@
 <h2>Select component for QA:</h2>
 <span class="btn-cont">
-<button (click)="toggleComp('select')">Select Component</button>
-<button (click)="toggleComp('tab')">Tabs Component</button>
-<button (click)="toggleComp('tag')">Tags Component</button>
-<button (click)="toggleComp('spinner')">Spinner Component</button>
+  <button (click)="toggleComp('select')">Select Component</button>
+  <button (click)="toggleComp('tab')">Tabs Component</button>
+  <button (click)="toggleComp('tag')">Tags Component</button>
+  <button (click)="toggleComp('spinner')">Spinner Component</button>
 </span>
 
 <section id="select">
   <h1>Select Dropdown Testing:</h1>
-  <lib-select [config]="qaSelect"></lib-select>
+  <ircc-cl-lib-select [config]="qaSelect"></ircc-cl-lib-select>
   <app-auto-tester [config]="autoTestConfig"></app-auto-tester>
   <button (click)="disable()">Disable</button>
   <button (click)="setSamllError()">Small Error</button>
   <button (click)="setLargeError()">Large Error</button>
   <button (click)="resetError()">Reset Error</button>
-  <hr>
+  <hr />
 </section>
 
 <section id="tab">
   <h1>Tabs Testing:</h1>
-  <lib-tabs [config]="qaTabs"></lib-tabs>
-  <br>
+  <ircc-cl-lib-tabs [config]="qaTabs"></ircc-cl-lib-tabs>
+  <br />
   <button (click)="disableSelectedBtn()">Disbale Tab</button>
   <button (click)="size()">Size</button>
-  <hr>
+  <hr />
 </section>
 
 <section id="tag">
   <h1>Tags Testing:</h1>
-  <lib-progress-tags [config]="qaTags"></lib-progress-tags>
-  <br>
+  <ircc-cl-lib-progress-tags [config]="qaTags"></ircc-cl-lib-progress-tags>
+  <br />
   <app-auto-tester [config]="tagTestConfig"></app-auto-tester>
-  <br>
+  <br />
 </section>
 
 <section id="spinner">
   <h1>Spinner Testing only for Voice-Over or NVDA:</h1>
   <button (click)="hideShowError()">Show/Hide Error</button>
   <button (click)="hideShowSuccess()">Show/Hide Success</button>
-  <div id="spinner-div" [hidden]="true">
-    <br>
-    <lib-spinner [config]="qaSpinner"></lib-spinner>
-    <br>
-    <br>
-    <br>
-    <br>  
+  <div
+    id="spinner-div"
+    [hidden]="true"
+  >
+    <br />
+    <ircc-cl-lib-spinner [config]="qaSpinner"></ircc-cl-lib-spinner>
+    <br />
+    <br />
+    <br />
+    <br />
   </div>
-  <div id="spinner-div2" [hidden]="true">
-    <br>
-    <lib-spinner [config]="qaSpinner"></lib-spinner>
-    <br>
-    <br>
-    <br>
-    <br>  
+  <div
+    id="spinner-div2"
+    [hidden]="true"
+  >
+    <br />
+    <ircc-cl-lib-spinner [config]="qaSpinner"></ircc-cl-lib-spinner>
+    <br />
+    <br />
+    <br />
+    <br />
   </div>
-  <hr>
+  <hr />
   <h1>Only Spinner Component for Testing:</h1>
-  <lib-spinner [config]="qaSpinner"></lib-spinner>
-  <br>
-  <br>
-  <br>
+  <ircc-cl-lib-spinner [config]="qaSpinner"></ircc-cl-lib-spinner>
+  <br />
+  <br />
+  <br />
   <app-auto-tester [config]="spinnerTestConfig"></app-auto-tester>
 </section>

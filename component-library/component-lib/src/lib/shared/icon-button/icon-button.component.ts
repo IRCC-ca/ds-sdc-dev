@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
-import { DSFullSizes } from "../../../shared/constants/jl-components.constants";
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { DSFullSizes } from '../../../shared/constants/jl-components.constants';
 export enum IconButtonCategories {
   primary = 'primary',
   critical = 'critical',
@@ -12,19 +12,19 @@ export interface IIconButtonIconConfig {
 }
 
 export interface IIconButtonComponentConfig {
-  id: string,
-  category: keyof typeof IconButtonCategories,
-  size?: keyof typeof DSFullSizes,
-  ariaLabel?: string,
-  disabled?: boolean,
-  icon?: IIconButtonIconConfig
+  id: string;
+  category: keyof typeof IconButtonCategories;
+  size?: keyof typeof DSFullSizes;
+  ariaLabel?: string;
+  disabled?: boolean;
+  icon?: IIconButtonIconConfig;
 }
 
 export const CLASS_X_MARK = 'fa-thin fa-xmark';
 export const CLASS_TRASHCAN = 'fa-solid fa-trash-can';
 @Component({
-  selector: 'lib-icon-button',
-  templateUrl: './icon-button.component.html',
+  selector: 'ircc-cl-lib-icon-button',
+  templateUrl: './icon-button.component.html'
 })
 export class IconButtonComponent implements OnInit {
   @Input() config: IIconButtonComponentConfig = {
@@ -37,7 +37,7 @@ export class IconButtonComponent implements OnInit {
   @Input() size?: keyof typeof DSFullSizes | DSFullSizes;
   @Input() ariaLabel?: string;
   @Input() disabled?: boolean;
-  @Input() icon? : IIconButtonIconConfig;
+  @Input() icon?: IIconButtonIconConfig;
   @Output() clickEvent = new EventEmitter<string>();
   // Mapping of icons to category
   iconConfigs: { [key: string]: IIconButtonIconConfig } = {
@@ -49,7 +49,7 @@ export class IconButtonComponent implements OnInit {
       class: CLASS_TRASHCAN,
       color: 'var(--critical-text)'
     }
-  }
+  };
 
   ngOnInit(): void {
     if (this.id) this.config.id = this.id;
@@ -57,9 +57,17 @@ export class IconButtonComponent implements OnInit {
     if (this.size) this.config.size = this.size;
     if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
     if (this.disabled) this.config.disabled = this.disabled;
-    if (this.icon) this.config.icon = this.config.category === IconButtonCategories.custom ? this.icon : this.iconConfigs[this.config.category];
-    else if (!this.icon && this.config.icon) this.config.icon = this.config.category === IconButtonCategories.custom ? this.config.icon : this.iconConfigs[this.config.category]
-    else this.config.icon = this.iconConfigs[this.config.category]
+    if (this.icon)
+      this.config.icon =
+        this.config.category === IconButtonCategories.custom
+          ? this.icon
+          : this.iconConfigs[this.config.category];
+    else if (!this.icon && this.config.icon)
+      this.config.icon =
+        this.config.category === IconButtonCategories.custom
+          ? this.config.icon
+          : this.iconConfigs[this.config.category];
+    else this.config.icon = this.iconConfigs[this.config.category];
   }
 
   buttonClick(id = this.config.id) {

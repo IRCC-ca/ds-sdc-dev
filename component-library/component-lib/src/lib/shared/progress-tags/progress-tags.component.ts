@@ -1,9 +1,21 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DSSizes } from "../../../shared/constants/jl-components.constants";
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
-export const TAG_LABELS_EN = ["In Progress", "Completed", "Error", "Locked", "Not started"];
-export const TAG_LABELS_FR = ["En cours", "Complété", "Erreur", "Verrouillé", "Pas commencé"];
+export const TAG_LABELS_EN = [
+  'In Progress',
+  'Completed',
+  'Error',
+  'Locked',
+  'Not started'
+];
+export const TAG_LABELS_FR = [
+  'En cours',
+  'Complété',
+  'Erreur',
+  'Verrouillé',
+  'Pas commencé'
+];
 
 export enum TagType {
   primary = 'primary',
@@ -11,28 +23,27 @@ export enum TagType {
   critical = 'critical',
   locked = 'locked',
   notStarted = 'notStarted'
-};
+}
 export interface IProgressTagsConfig {
-  id: string,
-  type?: keyof typeof TagType,
-  size?: keyof typeof DSSizes
+  id: string;
+  type?: keyof typeof TagType;
+  size?: keyof typeof DSSizes;
 }
 @Component({
-  selector: 'lib-progress-tags',
-  templateUrl: './progress-tags.component.html',
+  selector: 'ircc-cl-lib-progress-tags',
+  templateUrl: './progress-tags.component.html'
 })
 export class ProgressTagsComponent implements OnInit {
-
   text: string[] = [];
 
   @Input() config: IProgressTagsConfig = {
-    id: '',
+    id: ''
   };
   @Input() id = '';
   @Input() type?: keyof typeof TagType | TagType;
   @Input() size?: keyof typeof DSSizes | DSSizes;
 
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService) {}
 
   ngOnInit(): void {
     if (this.id) this.config.id = this.id;
@@ -42,17 +53,20 @@ export class ProgressTagsComponent implements OnInit {
     this.translate.onLangChange.subscribe(() => {
       this.setTypeTitle();
     });
-  };
+  }
 
   ngOnChanges() {
     this.setTypeTitle();
-  };
+  }
 
   setTypeTitle() {
-    if ((this.translate.currentLang === 'en') || (this.translate.currentLang === 'en-US')) {
+    if (
+      this.translate.currentLang === 'en' ||
+      this.translate.currentLang === 'en-US'
+    ) {
       this.text = TAG_LABELS_EN;
     } else {
       this.text = TAG_LABELS_FR;
     }
-  };
-};
+  }
+}

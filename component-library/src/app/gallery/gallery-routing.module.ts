@@ -8,30 +8,31 @@ import { MiscellaneousComponent } from './miscellaneous/miscellaneous.component'
 import { TestPageComponent } from './test-page/test-page.component';
 
 const routes: Routes = [
-    { path: '', component: LandingPageComponent },
-    { path: 'dev-test', component: TestPageComponent }, //English
-    { path: 'test-dev', component: TestPageComponent }, //French
+  { path: '', component: LandingPageComponent },
+  { path: 'dev-test', component: TestPageComponent }, //English
+  { path: 'test-dev', component: TestPageComponent }, //French
 
-    { path: 'qa', loadChildren: () => import('./QA/qa.module').then(m => m.QaModule) }, //English
-    { path: 'aq', loadChildren: () => import('./QA/qa.module').then(m => m.QaModule) }, //French
+  {
+    path: 'qa',
+    loadChildren: () => import('./QA/qa.module').then((m) => m.QaModule)
+  }, //English
+  {
+    path: 'aq',
+    loadChildren: () => import('./QA/qa.module').then((m) => m.QaModule)
+  }, //French
 
+  //TODO: all other components will be going through another router outlet inside the gallery component.
+  //TODO: Check for another way to route through router-outlet (see how app-component does it).
+  LandingPage.childRoutes([
+    { path: 'form-components', component: FormInputComponent }, //English
+    { path: 'components-formulaire', component: FormInputComponent }, //French
 
-        //TODO: all other components will be going through another router outlet inside the gallery component.
-        //TODO: Check for another way to route through router-outlet (see how app-component does it).
-    LandingPage.childRoutes([
-      { path: 'form-components', component: FormInputComponent }, //English
-      { path: 'components-formulaire', component: FormInputComponent }, //French
+    { path: 'header-footer', component: HeaderFooterComponent }, //English
+    { path: 'en-tête-pied-de-page', component: HeaderFooterComponent }, //French
 
-      { path: 'header-footer', component: HeaderFooterComponent }, //English
-      { path: 'en-tête-pied-de-page', component: HeaderFooterComponent }, //French
-
-      { path: 'miscellaneous', component: MiscellaneousComponent }, //English
-      { path: 'divers', component: MiscellaneousComponent }, //French
-
-    ])
-
-
-
+    { path: 'miscellaneous', component: MiscellaneousComponent }, //English
+    { path: 'divers', component: MiscellaneousComponent } //French
+  ])
 ];
 
 @NgModule({
@@ -39,4 +40,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class GalleryRoutingModule { }
+export class GalleryRoutingModule {}

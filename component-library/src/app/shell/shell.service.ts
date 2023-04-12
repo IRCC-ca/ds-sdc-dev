@@ -6,7 +6,6 @@ import { ShellComponent } from './shell.component';
  * Provides helper methods to create routes.
  */
 export class Shell {
-
   /**
    * Creates routes using the shell component and authentication.
    * @param routes The routes to add.
@@ -16,7 +15,7 @@ export class Shell {
     return {
       path: '',
       component: ShellComponent,
-      children: routes,
+      children: routes
     };
   }
 }

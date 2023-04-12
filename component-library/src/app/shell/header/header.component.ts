@@ -5,9 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-
 export class HeaderComponent {
-
   @Input() id?: string = 'header';
 
   menuHidden = true;
@@ -15,5 +13,4 @@ export class HeaderComponent {
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
   }
-
 }

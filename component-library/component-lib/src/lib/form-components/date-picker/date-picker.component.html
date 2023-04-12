@@ -1,25 +1,37 @@
 <div class="{{ config.size }}">
-  <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
+  <ircc-cl-lib-label
+    [config]="labelConfig"
+    [attr.size]="config.size"
+  ></ircc-cl-lib-label>
   <div class="all-select-container">
     <div class="select-container select-year">
-      <lib-select [attr.aria-live]="'off'" [config]="dropDownConfigs.year"></lib-select>
+      <ircc-cl-lib-select
+        [attr.aria-live]="'off'"
+        [config]="dropDownConfigs.year"
+      ></ircc-cl-lib-select>
     </div>
     <div class="select-container select-month">
-      <lib-select [config]="dropDownConfigs.month"></lib-select>
+      <ircc-cl-lib-select [config]="dropDownConfigs.month"></ircc-cl-lib-select>
     </div>
     <div class="select-container select-day">
-      <lib-select [config]="dropDownConfigs.day"></lib-select>
+      <ircc-cl-lib-select [config]="dropDownConfigs.day"></ircc-cl-lib-select>
     </div>
   </div>
   <div aria-live="polite">
     <ng-container *ngIf="datePickerTouchedOrInvalid()">
-      <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
+      <span class="sr-only">{{
+        errorStubText + ': ' + (config.label || '' | translate) + ': '
+      }}</span>
       <!-- TODO: Do something clever here to add which of the dropdowns are in error and put them in the above p tag -->
       <ng-container *ngFor="let errors of errorIds; let i = index">
         <div
           *ngIf="config.formGroup.get(dropDownConfigs.year.id)?.errors?.[errors.key] || config.formGroup.get(dropDownConfigs.month.id)?.errors?.[errors.key] || config.formGroup.get(dropDownConfigs.day.id)?.errors?.[errors.key]"
-          class="radio-errors">
-          <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+          class="radio-errors"
+        >
+          <ircc-cl-lib-error
+            [id]="errors.id"
+            [errorLOV]="errors.errorLOV"
+          ></ircc-cl-lib-error>
         </div>
       </ng-container>
     </ng-container>

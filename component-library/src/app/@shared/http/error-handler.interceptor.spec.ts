@@ -1,6 +1,9 @@
 import { Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
 import { ErrorHandlerInterceptor } from './error-handler.interceptor';
@@ -18,15 +21,19 @@ describe('ErrorHandlerInterceptor', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{
-        provide: HTTP_INTERCEPTORS,
-        useFactory: createInterceptor,
-        multi: true
-      }]
+      providers: [
+        {
+          provide: HTTP_INTERCEPTORS,
+          useFactory: createInterceptor,
+          multi: true
+        }
+      ]
     });
 
     http = TestBed.inject(HttpClient);
-    httpMock = TestBed.inject(HttpTestingController as Type<HttpTestingController>);
+    httpMock = TestBed.inject(
+      HttpTestingController as Type<HttpTestingController>
+    );
   });
 
   afterEach(() => {
@@ -40,10 +47,15 @@ describe('ErrorHandlerInterceptor', () => {
     jest.spyOn(ErrorHandlerInterceptor.prototype as any, 'errorHandler');
 
     // Act
-    http.get('/toto').subscribe(() => fail('should error'), () => {
-      // Assert
-      expect((ErrorHandlerInterceptor.prototype as any).errorHandler).toHaveBeenCalled();
-    });
+    http.get('/toto').subscribe(
+      () => fail('should error'),
+      () => {
+        // Assert
+        expect(
+          (ErrorHandlerInterceptor.prototype as any).errorHandler
+        ).toHaveBeenCalled();
+      }
+    );
 
     httpMock.expectOne({}).flush(null, {
       status: 404,

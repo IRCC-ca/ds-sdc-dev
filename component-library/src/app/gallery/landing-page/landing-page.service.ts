@@ -5,7 +5,6 @@ import { LandingPageComponent } from './landing-page.component';
  * Provides helper methods to create routes.
  */
 export class LandingPage {
-
   /**
    * Creates routes using the shell component and authentication.
    * @param routes The routes to add.
@@ -15,7 +14,7 @@ export class LandingPage {
     return {
       path: '',
       component: LandingPageComponent,
-      children: routes,
+      children: routes
     };
   }
 }

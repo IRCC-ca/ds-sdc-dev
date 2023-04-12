@@ -3,15 +3,13 @@
  */
 
 /** Non-Components - Shared **/
-export * from './shared/functions/stand-alone.functions'
+export * from './shared/functions/stand-alone.functions';
 export * from './shared/interfaces/component-configs';
-export * from './shared/constants/jl-components.constants'
-
+export * from './shared/constants/jl-components.constants';
 
 /** Banner Component **/
 export * from './lib/banner-component/ircc-ds-angular-banner.module';
 export * from './lib/banner-component/banner/banner.component';
-
 
 /** Form Input Components **/
 export * from './lib/form-components/ircc-ds-angular-form-components.module';
@@ -39,7 +37,6 @@ export * from './lib/legacy-old/chips/chip-list/chip-list.component';
 export * from './lib/legacy-old/chips/secondary-chips/secondary-chips.component';
 export * from './lib/legacy-old/search-input/search-input.component';
 
-
 /** Shared Components **/
 export * from './lib/shared/ircc-ds-angular-component-shared.module';
 export * from './lib/shared/button/button.component';
@@ -48,7 +45,7 @@ export * from './lib/shared/icon-button/icon-button.component';
 export * from './lib/shared/indicator/indicator.component';
 export * from './lib/shared/tabs/tabs.component';
 export * from './lib/shared/label/label.component';
-export * from './lib/shared/progress-tags/progress-tags.component'
+export * from './lib/shared/progress-tags/progress-tags.component';
 export * from './lib/shared/progress-indicator/progress-indicator.component';
 export * from './lib/shared/dropdown/drop-down.component';
 export * from './lib/shared/label/label-button.service';

@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-dropdown#{template-const.$escape} {
+  ircc-cl-lib-dropdown#{template-const.$escape} {
     @content;
   }
 }

@@ -7,8 +7,6 @@ import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-libra
 import { AccessibilityDemoPreviousPageComponent } from './accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoNextPageComponent } from './accessibility-demo-next-page/accessibility-demo-next-page.component';
 
-
-
 @NgModule({
   declarations: [
     AccessibilityDemoComponent,
@@ -22,4 +20,4 @@ import { AccessibilityDemoNextPageComponent } from './accessibility-demo-next-pa
     IrccDsAngularHeaderFooterModule
   ]
 })
-export class AccessibilityDemoModule { }
+export class AccessibilityDemoModule {}

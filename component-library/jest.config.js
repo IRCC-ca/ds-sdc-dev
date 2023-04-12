@@ -8,15 +8,17 @@ module.exports = {
   roots: ['src'],
   coverageDirectory: 'reports',
   setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>/'
+  }),
   globals: {
     'ts-jest': {
       allowSyntheticDefaultImports: true,
       tsconfig: '<rootDir>/tsconfig.spec.json',
       diagnostics: {
-        ignoreCodes: ['TS151001'],
+        ignoreCodes: ['TS151001']
       }
-    },
+    }
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)']
 };

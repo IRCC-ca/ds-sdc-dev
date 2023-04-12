@@ -7,11 +7,9 @@ import { LanguageSwitchService } from '@app/@shared/language-switch/language-swi
   styleUrls: ['./form-input.component.scss']
 })
 export class FormInputComponent implements OnInit {
-
-  constructor(private altLang: LanguageSwitchService) { }
+  constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
     this.altLang.setAltLangLink('FormComponents');
   }
-
 }

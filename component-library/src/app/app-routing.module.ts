@@ -3,17 +3,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { Shell } from './shell/shell.service';
 
 const routes: Routes = [
-
   {
     path: 'en',
     children: [
-      { path: 'accessibility-demo', loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
+      {
+        path: 'accessibility-demo',
+        loadChildren: () =>
+          import('./accessibility-demo/accessibility-demo.module').then(
+            (m) => m.AccessibilityDemoModule
+          )
+      }
     ]
   },
   {
     path: 'fr',
     children: [
-      { path: "démo-d'accessibilité", loadChildren: () => import('./accessibility-demo/accessibility-demo.module').then(m => m.AccessibilityDemoModule) },
+      {
+        path: "démo-d'accessibilité",
+        loadChildren: () =>
+          import('./accessibility-demo/accessibility-demo.module').then(
+            (m) => m.AccessibilityDemoModule
+          )
+      }
     ]
   },
 
@@ -21,14 +32,22 @@ const routes: Routes = [
     {
       path: 'en',
       children: [
-        { path: 'landing-page', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
+        {
+          path: 'landing-page',
+          loadChildren: () =>
+            import('./gallery/gallery.module').then((m) => m.GalleryModule)
+        },
         { path: '**', redirectTo: 'landing-page' }
       ]
     },
     {
       path: 'fr',
       children: [
-        { path: 'page-general', loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule) },
+        {
+          path: 'page-general',
+          loadChildren: () =>
+            import('./gallery/gallery.module').then((m) => m.GalleryModule)
+        },
         { path: '**', redirectTo: 'page-general' }
       ]
     },
@@ -43,4 +62,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

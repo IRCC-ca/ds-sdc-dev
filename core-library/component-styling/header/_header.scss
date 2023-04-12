@@ -11,7 +11,7 @@
 @use 'sass:map';
 
 @mixin selector {
-    lib-header#{template-const.$escape} {
+    ircc-cl-lib-header#{template-const.$escape} {
         @content;
     }
 }

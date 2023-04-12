@@ -4,7 +4,7 @@
 @use '../../util/device' as device;
  
 @mixin selector {
-    lib-footer#{template-const.$escape} {
+    ircc-cl-lib-footer#{template-const.$escape} {
       @content;
     }
 }
