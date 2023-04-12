@@ -9,7 +9,7 @@
         rounded ? 'rounded' : '',
         config.label === '99+' ? 'num-lg' : '',
         abbr ? 'abbr' : '']">
-      <lib-icon *ngIf="config.type === 'text' && config?.icon" [config]="{'fontFamily':config.icon}"></lib-icon>
+      <lib-icon *ngIf="config.type === 'text' && config?.icon" [config]="{'FA_keywords':config.icon}"></lib-icon>
       <ng-container *ngIf="abbr; else nonAbbr" >
         <span class="abbr"><abbr [title]="config?.label">{{config?.label}}</abbr></span>
       </ng-container>
