@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-button#{template-const.$escape} {
+  ircc-cl-lib-button#{template-const.$escape} {
     @content;
   }
 }

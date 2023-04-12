@@ -23,9 +23,9 @@ In addition, this project also follows the general [Angular style guide](https:/
 
 - Within a file, type definitions should come first
 - Within a class, these priorities should be respected:
-  * Properties comes before functions
-  * Static symbols comes before instance symbols
-  * Public symbols comes before private symbols
+  - Properties comes before functions
+  - Static symbols comes before instance symbols
+  - Public symbols comes before private symbols
 
 ## Coding rules
 
@@ -41,9 +41,9 @@ In addition, this project also follows the general [Angular style guide](https:/
 - Use arrow functions over anonymous function expressions
 - Only surround arrow function parameters when necessary.
   For example, `(x) => x + x` is wrong but the following are correct:
-  * `x => x + x`
-  * `(x, y) => x + y`
-  * `<T>(x: T, y: T) => x === y`
+  - `x => x + x`
+  - `(x, y) => x + y`
+  - `<T>(x: T, y: T) => x === y`
 
 ## Definitions
 

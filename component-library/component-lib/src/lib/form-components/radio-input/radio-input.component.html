@@ -1,40 +1,73 @@
-<form [formGroup]="config.formGroup" [ngClass]="config.size"
-  (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
-  <lib-label [config]="labelConfig" [attr.size]="config.size"></lib-label>
+<form
+  [formGroup]="config.formGroup"
+  [ngClass]="config.size"
+  (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
+>
+  <ircc-cl-lib-label
+    [config]="labelConfig"
+    [attr.size]="config.size"
+  ></ircc-cl-lib-label>
   <div class="radio-buttons">
     <div *ngFor="let option of config.options; let index = index" class="radio">
       <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
-      <input (blur)="touched = true" type="radio" value="{{option.value || option.text}}" id="{{config.id + index}}"
-        [formControlName]="config.id ?? 'formControl'" [attr.disabled]='getDisabled(index)'
-        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size" [attr.aria-invalid]="formControl?.errors"
+      <input
+        (blur)="touched = true"
+        type="radio"
+        value="{{ option.value || option.text }}"
+        id="{{ config.id + index }}"
+        [formControlName]="config.id ?? 'formControl'"
+        [attr.disabled]="getDisabled(index)"
+        [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size"
+        [attr.aria-invalid]="formControl?.errors"
         [attr.aria-live]="'off'"
         [attr.aria-label]="
-        formControl?.invalid && touched
-        ? (config.label || '' | translate) + ' ' +
-        (config.desc || '' | translate) + ' ' +
-        (config.hint || '' | translate) + ' ' +
-        (config.helpText || '' | translate) + ' ' +
-        (option.text || '' | translate) + ' ' +
-        (errorStubText + ': ' + errorAria)
-        :
-          (config.label || '' | translate) + ' ' +
-          (config.desc || '' | translate) + ' ' +
-          (config.hint || '' | translate) + ' ' +
-          (config.helpText || '' | translate) + ' ' +
-          (option.text || '' | translate)
-      ">
-      <label for="{{config.id + index}}"
-        [ngClass]="option?.sizeOverride ? option?.sizeOverride + '_label' : config.size + '_label'">{{(option.text || '') | translate}}</label>
+          formControl?.invalid && touched
+            ? (config.label || '' | translate) +
+              ' ' +
+              (config.desc || '' | translate) +
+              ' ' +
+              (config.hint || '' | translate) +
+              ' ' +
+              (config.helpText || '' | translate) +
+              ' ' +
+              (option.text || '' | translate) +
+              ' ' +
+              (errorStubText + ': ' + errorAria)
+            : (config.label || '' | translate) +
+              ' ' +
+              (config.desc || '' | translate) +
+              ' ' +
+              (config.hint || '' | translate) +
+              ' ' +
+              (config.helpText || '' | translate) +
+              ' ' +
+              (option.text || '' | translate)
+        "
+      />
+      <label
+        for="{{ config.id + index }}"
+        [ngClass]="
+          option?.sizeOverride
+            ? option?.sizeOverride + '_label'
+            : config.size + '_label'
+        "
+        >{{ option.text || '' | translate }}</label
+      >
     </div>
   </div>
   <div aria-live="polite">
-  <ng-container *ngIf="(formControl?.touched) && formControl?.invalid">
-    <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
-    <ng-container *ngFor="let errors of errorIds; let i = index">
-      <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
-        <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
-      </div>
+    <ng-container *ngIf="formControl?.touched && formControl?.invalid">
+      <span class="sr-only">{{
+        errorStubText + ': ' + (config.label || '' | translate) + ': '
+      }}</span>
+      <ng-container *ngFor="let errors of errorIds; let i = index">
+        <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
+          <ircc-cl-lib-error
+            [id]="errors.id"
+            [errorLOV]="errors.errorLOV"
+          ></ircc-cl-lib-error>
+        </div>
+      </ng-container>
     </ng-container>
-  </ng-container>
-</div>
+  </div>
 </form>

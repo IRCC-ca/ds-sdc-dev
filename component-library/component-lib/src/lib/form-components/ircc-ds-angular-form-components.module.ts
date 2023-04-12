@@ -7,9 +7,9 @@ import { IrccDsAngularComponentsSharedModule } from '../shared/ircc-ds-angular-c
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DatePickerComponent } from "./date-picker/date-picker.component";
+import { DatePickerComponent } from './date-picker/date-picker.component';
 import { TextareaComponent } from './textarea/textarea.component';
-import { SelectComponent } from "./select/select.component";
+import { SelectComponent } from './select/select.component';
 
 const IrccDsAngularFormComponents = [
   CheckboxComponent,
@@ -22,18 +22,14 @@ const IrccDsAngularFormComponents = [
 ];
 
 @NgModule({
-  declarations: [
-    ...IrccDsAngularFormComponents,
-  ],
+  declarations: [...IrccDsAngularFormComponents],
   imports: [
     CommonModule,
     IrccDsAngularComponentsSharedModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  exports: [
-    ...IrccDsAngularFormComponents
-  ]
+  exports: [...IrccDsAngularFormComponents]
 })
-export class IrccDsAngularFormComponentsModule { }
+export class IrccDsAngularFormComponentsModule {}

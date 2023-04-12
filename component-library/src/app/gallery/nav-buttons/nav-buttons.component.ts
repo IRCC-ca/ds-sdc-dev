@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonCategories, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import {
+  ButtonCategories,
+  LanguageSwitchButtonService
+} from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
-
 
 export interface ILibraryNavButtons {
   name: string;
@@ -25,28 +27,27 @@ export interface INavButtonComponentConfig {
   styleUrls: ['./nav-buttons.component.scss']
 })
 export class NavButtonsComponent implements OnInit {
-
   @Input() config?: INavButtonComponentConfig;
 
   currentBaseUrl = '';
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private translate: TranslateService,
-    private languageSwitchButton: LanguageSwitchButtonService) { }
+    private languageSwitchButton: LanguageSwitchButtonService
+  ) {}
 
   ngOnInit() {
     this.setBaseUrl(); //set initial base url
     this.createButtonIds();
 
     //Detect language changes to set base url to new language
-    this.languageSwitchButton.languageClickObs$.subscribe(response => {
+    this.languageSwitchButton.languageClickObs$.subscribe((response) => {
       if (response) {
         this.setBaseUrl();
         this.buttonUrlOverrides();
       }
     });
-
-
   }
 
   /**
@@ -55,25 +56,29 @@ export class NavButtonsComponent implements OnInit {
    */
   getURL() {
     const curLang = this.translate.currentLang;
-    const langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
-    const i = window.location.href.slice(window.location.href.indexOf(langKey), window.location.href.length);
+    const langKey = curLang === 'en-US' || curLang === 'en' ? 'en' : 'fr';
+    const i = window.location.href.slice(
+      window.location.href.indexOf(langKey),
+      window.location.href.length
+    );
     return i;
   }
 
   /**
-   * Set the current base url. TODO: Consider moving this into a service for easy re-use elsewhere. 
+   * Set the current base url. TODO: Consider moving this into a service for easy re-use elsewhere.
    */
   setBaseUrl() {
     this.currentBaseUrl = '';
     const i = this.getURL().split('/');
     i.forEach((j: string, index: number) => {
-      if (index !== (i.length - 1)) {
-        this.currentBaseUrl += ('/' + j);
+      if (index !== i.length - 1) {
+        this.currentBaseUrl += '/' + j;
       } else if (j === this.translate.instant(this.config?.baseUrlKey || '')) {
-        this.currentBaseUrl += ('/' + j);
+        this.currentBaseUrl += '/' + j;
       }
     });
-    if (this.currentBaseUrl[this.currentBaseUrl.length] !== '/') this.currentBaseUrl += '/';
+    if (this.currentBaseUrl[this.currentBaseUrl.length] !== '/')
+      this.currentBaseUrl += '/';
   }
 
   /**
@@ -81,20 +86,21 @@ export class NavButtonsComponent implements OnInit {
    */
   buttonUrlOverrides() {
     if (this.config?.globalBaseUrlOverride) {
-      this.config.globalBaseUrlOverride = this.translate.instant(this.config.globalBaseUrlOverride);
+      this.config.globalBaseUrlOverride = this.translate.instant(
+        this.config.globalBaseUrlOverride
+      );
     }
 
-    this.config?.buttons.forEach(button => {
+    this.config?.buttons.forEach((button) => {
       if (button.baseUrlOverride) {
-        button.baseUrlOverride = (this.translate.instant(button.baseUrlOverride));
+        button.baseUrlOverride = this.translate.instant(button.baseUrlOverride);
       }
     });
   }
 
   createButtonIds() {
-    this.config?.buttons.forEach(button => {
-      button.id = button.name.replace(/\s/g, "");
+    this.config?.buttons.forEach((button) => {
+      button.id = button.name.replace(/\s/g, '');
     });
   }
-
 }

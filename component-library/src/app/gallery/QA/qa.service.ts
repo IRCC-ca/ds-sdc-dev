@@ -5,7 +5,6 @@ import { QaComponent } from './qa.component';
  * Provides helper methods to create routes.
  */
 export class QARoutes {
-
   /**
    * Creates routes using the shell component and authentication.
    * @param routes The routes to add.
@@ -15,7 +14,7 @@ export class QARoutes {
     return {
       path: '',
       component: QaComponent,
-      children: routes,
+      children: routes
     };
   }
 }

@@ -9,7 +9,7 @@
 @use 'sass:map';
 
 @mixin selector {
-  lib-label#{template-const.$escape} {
+  ircc-cl-lib-label#{template-const.$escape} {
       @content;
   }
 }
@@ -89,6 +89,8 @@
 
     .label_field_container{
       display: flex;
+      word-break: break-all;
+      white-space: normal;
       .icon_container {
         display: flex;
       }
@@ -97,10 +99,14 @@
         display: flex;
       }
       .input-desc {
+        word-break: break-all;
+        white-space: normal;
         margin: 4px 0px 0px 0px;
       }
 
       .input-hint {
+        word-break: break-all;
+        white-space: normal;
         color: var(--text-placeholder)
       }
       .required-field-container {

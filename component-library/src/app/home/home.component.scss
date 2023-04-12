@@ -2,7 +2,6 @@
   margin-left: 32px;
   display: grid;
 
-
   .logo {
     width: 100px;
   }
@@ -10,11 +9,13 @@
   q {
     font-style: italic;
     font-size: 1.2rem;
-    quotes: "« " " »";
+    quotes: '« ' ' »';
   }
 
   .demoChipContainer {
-    .demoChipItem, .demoChipListContainer, .demoChipSecondaryContainer {
+    .demoChipItem,
+    .demoChipListContainer,
+    .demoChipSecondaryContainer {
       margin-top: 12px;
     }
   }
@@ -56,5 +57,4 @@
   .disable-button {
     margin: 10px 0px 10px 0px;
   }
-
 }

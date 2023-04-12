@@ -9,20 +9,11 @@
       "initGit": true,
       "usePrefix": true,
       "appName": "component-library",
-      "target": [
-        "web"
-      ],
+      "target": ["web"],
       "ui": "bootstrap",
-      "features": [
-      ],
-      "languages": [
-        "en-US",
-        "fr-FR"
-      ],
-      "tools": [
-        "hads",
-        "jest"
-      ],
+      "features": [],
+      "languages": ["en-US", "fr-FR"],
+      "tools": ["hads", "jest"],
       "utility": [],
       "deploy": "none",
       "projectName": "component-library",

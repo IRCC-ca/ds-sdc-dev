@@ -31,36 +31,33 @@ export const HELP_ICON_ALT_EN = ', more information';
 export const HELP_ICON_ALT_FR = ", plus d'information";
 
 @Component({
-  selector: 'lib-label',
-  templateUrl: './label.component.html',
+  selector: 'ircc-cl-lib-label',
+  templateUrl: './label.component.html'
 })
 export class LabelComponent implements OnInit {
-
   @Input() config: ILabelConfig = {
     formGroup: new FormGroup({}),
     parentID: ''
-  }
+  };
   labelIconText = '';
 
-
-  constructor(private translate: TranslateService,
+  constructor(
+    private translate: TranslateService,
     public standAloneFunctions: StandAloneFunctions,
-    private labelButton: LabelButtonService) { }
+    private labelButton: LabelButtonService
+  ) {}
 
   ngOnInit() {
     this.setLang(this.translate.currentLang);
-    this.translate.onLangChange.subscribe(change => {
+    this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
-
   }
 
-
   setLang(lang: string) {
-    if ((lang === 'en') || (lang === 'en-US')) {
+    if (lang === 'en' || lang === 'en-US') {
       // this.errorStubText = ERROR_TEXT_STUB_EN;
       this.labelIconText = HELP_ICON_ALT_EN;
-
     } else {
       // this.errorStubText = ERROR_TEXT_STUB_FR;
       this.labelIconText = HELP_ICON_ALT_FR;
@@ -68,7 +65,7 @@ export class LabelComponent implements OnInit {
   }
 
   /**
-   * Output the button press 
+   * Output the button press
    * @param id of the button being pressed (same as component ID)
    */
   iconButtonClick() {

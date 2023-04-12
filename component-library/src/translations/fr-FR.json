@@ -2,7 +2,7 @@
   "ROUTES": {
     "LandingPage": "page-general",
     "LandingPage-alt": "landing-page",
-    "AccessibilityDemo": "démo-d'accessibilité",  
+    "AccessibilityDemo": "démo-d'accessibilité",
     "AccessibilityDemo-alt": "accessibility-demo",
     "AccessibilityDemoPrevious": "précédent",
     "AccessibilityDemoPrevious-alt": "previous",
@@ -37,13 +37,12 @@
     "DevTestPage": "Page de teste",
     "QATesting": "Page de teste pour AQ",
     "HomeURLOverride": "/fr/page-general"
-
   },
 
   "OPPOSITE_LANGUAGE": "English",
 
   "Header_URL": "https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg",
-  
+
   "APP_NAME": "component-library",
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
@@ -51,7 +50,7 @@
   "Version": "Version",
 
   "Input_Component": {
-    "Password-icon" : {
+    "Password-icon": {
       "show_password_aria-label": "afficher le texte du mot de passe",
       "hide_password_aria-label": "masquer le texte du mot de passe"
     }
@@ -62,7 +61,7 @@
     "maxLimit": "Limite maximale de caractères atteinte.",
     "warningLimit": "Limite maximale de caractères atteinte en 15 caractères."
   },
-  
+
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
   },
@@ -101,9 +100,9 @@
       "FAMILY_NAME_REQUIRED": "This field is blank. Please enter a family name",
       "SELECTS_RADIO_REQUIRED": "No selection has been made. Please select an option",
       "DOB_NO_SELECTION_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
-      "DOB_REQUIRED":"Please fill in the missing fields to complete your date of birth.",
+      "DOB_REQUIRED": "Please fill in the missing fields to complete your date of birth.",
       "DECLARATION_REQUIRED": "No selection has been made. Please make a selection to complete your declaration",
-      "DECLARATION_CUSTOM": "You must agree to continue" 
+      "DECLARATION_CUSTOM": "You must agree to continue"
     },
     "STEPPER": {
       "STEP1": "Background information",

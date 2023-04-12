@@ -1,11 +1,23 @@
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR
+} from '@angular/forms';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
+import {
+  ERROR_TEXT_STUB_EN,
+  ERROR_TEXT_STUB_FR,
+  ILabelConfig,
+  ILabelIconConfig
+} from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
-
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
@@ -25,7 +37,7 @@ export interface ICheckBoxComponentConfig {
 }
 
 @Component({
-  selector: 'lib-checkbox',
+  selector: 'ircc-cl-lib-checkbox',
   templateUrl: './checkbox.component.html',
   providers: [
     {
@@ -34,7 +46,6 @@ export interface ICheckBoxComponentConfig {
       multi: true
     }
   ]
-
 })
 export class CheckboxComponent implements ControlValueAccessor, OnInit {
   formGroupEmpty: FormGroup = new FormGroup({});
@@ -60,14 +71,15 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   errorAria = '';
   errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions,
-              private translate: TranslateService) { }
+  constructor(
+    public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService
+  ) {}
 
   onTouch = () => {};
   onChange = () => {};
 
-  writeValue(): void {
-  }
+  writeValue(): void {}
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
@@ -86,15 +98,14 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit() {
     const retControl = this.config.formGroup.get(this.config.id);
-    if(retControl){
+    if (retControl) {
       this.formControl = retControl;
     }
 
     this.setLang(this.translate.currentLang);
-    this.translate.onLangChange.subscribe(change => {
+    this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
-
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
@@ -104,7 +115,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.helpText,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
 
     if (this.id !== '') {
       this.config.id = this.id;
@@ -116,7 +128,11 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     }
 
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages)
+      this.errorIds = this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
 
     //Get the error text when the formControl value changes
@@ -125,7 +141,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     });
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -134,16 +150,21 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       this.config.desc,
       this.config.helpText,
       this.config.required,
-      this.config.labelIconConfig);
+      this.config.labelIconConfig
+    );
   }
 
   /**
- * Get the aria error text for the label
- */
+   * Get the aria error text for the label
+   */
   getAriaErrorText() {
     if (this.config.errorMessages) {
       this.formControl?.markAsDirty();
-      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
+      this.errorAria = this.standAloneFunctions.getErrorAria(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
   }
 
@@ -157,9 +178,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   setLang(lang: string) {
     this.getAriaErrorText();
-    if ((lang === 'en') || (lang === 'en-US')) {
+    if (lang === 'en' || lang === 'en-US') {
       this.errorStubText = ERROR_TEXT_STUB_EN;
-
     } else {
       this.errorStubText = ERROR_TEXT_STUB_FR;
     }
@@ -169,7 +189,10 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
    * Return error state from FormGroup, must be touched & invalid
    */
   getErrorState(): boolean {
-    return (this.config.formGroup.get(this.config.id)?.touched &&
-      this.config.formGroup.get(this.config.id)?.invalid) ?? false;
+    return (
+      (this.config.formGroup.get(this.config.id)?.touched &&
+        this.config.formGroup.get(this.config.id)?.invalid) ??
+      false
+    );
   }
 }

@@ -14,11 +14,12 @@ we also have setup a backend proxy to redirect API calls to whatever URL and por
 In the root folder you will find a `proxy.conf.js`, containing the backend proxy configuration.
 
 The interesting part is there:
+
 ```js
 const proxyConfig = [
   {
     context: '/api',
-    pathRewrite: {'^/api': ''},
+    pathRewrite: { '^/api': '' },
     target: 'http://api.icndb.com',
     changeOrigin: true
   }

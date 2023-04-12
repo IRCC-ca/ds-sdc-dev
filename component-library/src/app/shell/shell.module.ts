@@ -20,10 +20,6 @@ import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-libra
     SharedModule,
     IrccDsAngularHeaderFooterModule
   ],
-  declarations: [
-    HeaderComponent,
-    ShellComponent
-  ]
+  declarations: [HeaderComponent, ShellComponent]
 })
-export class ShellModule {
-}
+export class ShellModule {}

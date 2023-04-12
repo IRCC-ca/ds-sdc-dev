@@ -1,15 +1,25 @@
-<div class="{{config?.size}}">
-  <ng-container *ngFor="let link of config?.links; first as first; last as last; index as i">
+<div class="{{ config?.size }}">
+  <ng-container
+    *ngFor="let link of config?.links; first as first; last as last; index as i"
+  >
     <ng-container *ngIf="first">
-      <lib-breadcrumb-link tabindex="0" class="breadcrumb-root" [config]="link"></lib-breadcrumb-link>
+      <ircc-cl-lib-breadcrumb-link
+        tabindex="0"
+        class="breadcrumb-root"
+        [config]="link"
+      ></ircc-cl-lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="!first && !last">
-      <lib-icon [config]="{'FA_keywords':'fa-light fa-chevron-right'}"></lib-icon>
-      <lib-breadcrumb-link tabindex="0" class="breadcrumb-item" [config]="link"></lib-breadcrumb-link>
+      <ircc-cl-lib-icon [config]="{'FA_keywords':'fa-light fa-chevron-right'}"></ircc-cl-lib-icon>
+      <ircc-cl-lib-breadcrumb-link
+        tabindex="0"
+        class="breadcrumb-item"
+        [config]="link"
+      ></ircc-cl-lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="last">
-      <lib-icon [config]="{'FA_keywords':'fa-light fa-chevron-right'}" class=""></lib-icon>
-      <p class="breadcrumb-child">{{link.text}}</p>
+      <ircc-cl-lib-icon [config]="{'FA_keywords':'fa-light fa-chevron-right'}" class=""></ircc-cl-lib-icon>
+      <p class="breadcrumb-child">{{ link.text }}</p>
     </ng-container>
   </ng-container>
 </div>

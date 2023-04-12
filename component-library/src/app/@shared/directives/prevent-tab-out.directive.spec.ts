@@ -1,4 +1,4 @@
-import { PreventTabOutDirective } from "./prevent-tab-out.directive";
+import { PreventTabOutDirective } from './prevent-tab-out.directive';
 
 describe('PreventOutsideClickDirective', () => {
   it('should create an instance', () => {
