@@ -1,21 +1,25 @@
 # Updating npm dependencies
 
 - Check outdated packages
+
 ```sh
 npm outdated
 ```
 
 - Update local packages according to `package.json`
+
 ```sh
 npm update
 ```
 
 - Upgrade packages manually
+
 ```sh
 npm install --save[-dev] <package_name>@latest
 ```
 
 Alternatively, you can use [npm-check](https://github.com/dylang/npm-check) to perform an interactive upgrade:
+
 ```sh
 npm-check -u --skip-unused
 ```
@@ -28,6 +32,7 @@ reproducible dependency tree and avoid unwanted package updates.
 
 If you use a previous npm version, it is recommended to use [npm shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) to
 lock down all your dependencies version:
+
 ```sh
 npm shrinkwrap --dev
 ```

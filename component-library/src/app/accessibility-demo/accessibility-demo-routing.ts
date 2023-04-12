@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'previous', component: AccessibilityDemoPreviousPageComponent }, //English
   { path: 'précédent', component: AccessibilityDemoPreviousPageComponent }, //French
   { path: 'next', component: AccessibilityDemoNextPageComponent }, //English
-  { path: 'prochaine', component: AccessibilityDemoNextPageComponent }, //French
+  { path: 'prochaine', component: AccessibilityDemoNextPageComponent } //French
 ];
 
 @NgModule({
@@ -17,4 +17,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class AccessibilityDemoRoutingModule { }
+export class AccessibilityDemoRoutingModule {}

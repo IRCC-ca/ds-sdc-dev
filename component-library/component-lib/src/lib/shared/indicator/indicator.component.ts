@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components.constants";
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
 export enum IndicatorType {
   dot,
@@ -32,7 +32,7 @@ export enum IndicatorStatus {
   critical = 'critical',
   neutral = 'neutral',
   primary = 'primary',
-  success = 'success',
+  success = 'success'
 }
 
 export enum IndicatorPalette {
@@ -59,9 +59,9 @@ export interface IIndicatorConfig {
 
 @Component({
   selector: 'lib-indicator',
-  templateUrl: './indicator.component.html',
+  templateUrl: './indicator.component.html'
 })
-export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges{
+export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() config: IIndicatorConfig = {
     type: 'text',
     category: IndicatorTreatment.weak,
@@ -89,7 +89,11 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges{
 
   // Check if number exceeds 99
   private checkNumber() {
-    if (this.config.type === 'number' && this.config?.label && this.config.label > 99) {
+    if (
+      this.config.type === 'number' &&
+      this.config?.label &&
+      this.config.label > 99
+    ) {
       this.config.label = '99+';
     }
   }
@@ -97,13 +101,16 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges{
   // If label only have 1 character, it should be rounded
   private checkLabelRounded() {
     if (typeof this.config?.label === 'string') {
-      this.rounded = (this.config.label.length == 1 && !this.config.icon);
+      this.rounded = this.config.label.length == 1 && !this.config.icon;
     }
   }
 
   // Check if div exceeds 200px
   private checkLabelLength() {
     // Max 200px - padding 8px x2
-    this.abbr = <boolean>(this.label?.nativeElement?.offsetWidth && this.label?.nativeElement?.offsetWidth > 184);
+    this.abbr = <boolean>(
+      (this.label?.nativeElement?.offsetWidth &&
+        this.label?.nativeElement?.offsetWidth > 184)
+    );
   }
 }

@@ -8,9 +8,8 @@ describe('QaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QaComponent ]
-    })
-    .compileComponents();
+      declarations: [QaComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(QaComponent);
     component = fixture.componentInstance;

@@ -5,7 +5,7 @@
 @use "../../typography/typography" as typography;
 @use "../../tokens/text" as text;
 @use "sass:map";
-$selectors: "lib-error";
+$selectors: "ircc-cl-lib-error";
 
 @mixin selectors {
   #{$selectors}#{template-const.$escape} {
@@ -19,69 +19,70 @@ $selectors: "lib-error";
   }
 }
 
-@mixin small-styles {
+@mixin small-styles() {
   .errorIcon {
     height: 16px;
     width: 16px;
+    margin-top: -4px;
   }
 
   .errorText {
     font-size: 14px;
-  }
-
-  .errorContainer {
-    height: 16px;
-    margin: 4px 0;
-    align-items: flex-start;
+    margin: {
+      top: 4px;
+      bottom: 8px;
+    };
   }
 
   .additionalError {
-    margin-left: 20px;
+    margin: {
+      top: 0;
+      left: 20px;
+    };
   }
 }
 
-@mixin large-styles {
+@mixin large-styles() {
   .errorIcon {
     height: 20px;
     width: 20px;
+    margin-top: -3px;
   }
 
   .errorText {
-    font-size: 16px;
-    margin: 0px 0;
-  }
-
-  .errorContainer {
-    height: 20px;
-    margin: 12px 0;
+    margin: 8px 0 12px 0;
   }
 
   .additionalError {
     margin-left: 24px;
+    margin: {
+      top: 0;
+      bottom: 12px;
+    }
   }
 }
 
 @mixin layout {
   @include size.selector(large) {
-    @include large-styles;
+    @include large-styles();
 
     .small {
-      @include small-styles;
+      @include small-styles();
     }
   }
 
   @include size.selector(small) {
-    @include small-styles;
+    @include small-styles();
 
     .large {
-      @include large-styles;
+      @include large-styles();
     }
   }
 
   .errorContainer {
     display: flex;
     color: var(--critical-text);
-    align-items: flex-start;
+    align-items: center;
   }
 
   .errorIcon {

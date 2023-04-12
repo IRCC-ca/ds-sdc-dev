@@ -9,24 +9,21 @@ import { FormInputComponent } from './form-input/form-input.component';
 import { HeaderFooterComponent } from './header-footer/header-footer.component';
 import { MiscellaneousComponent } from './miscellaneous/miscellaneous.component';
 
-
-
 @NgModule({
   declarations: [
     LandingPageComponent,
     TestPageComponent,
     FormInputComponent,
     HeaderFooterComponent,
-    MiscellaneousComponent,
+    MiscellaneousComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     TranslateModule,
     SharedModule,
-    GalleryRoutingModule,
+    GalleryRoutingModule
   ],
-  exports: [
-  ]
+  exports: []
 })
-export class GalleryModule { }
+export class GalleryModule {}

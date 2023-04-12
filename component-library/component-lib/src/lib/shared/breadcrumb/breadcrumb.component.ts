@@ -19,21 +19,21 @@ import { IIconButtonComponentConfig } from "../icon-button/icon-button.component
 
 export enum LinkType {
   href = 'href',
-  routerLink = 'routerLink',
+  routerLink = 'routerLink'
 }
 
 export interface IBreadcrumbConfig {
-  id: string,
-  size?: keyof typeof DSSizes,
+  id: string;
+  size?: keyof typeof DSSizes;
   type: keyof typeof LinkType;
   // Translation key of base url segment
   baseUrlKey: string;
   // The mid-layer navigation to the ancestor links, the previous pages that lead to users to the child page
-  links?: ILinkComponentConfig[],
+  links?: ILinkComponentConfig[];
 }
 
 @Component({
-  selector: 'lib-breadcrumb',
+  selector: 'ircc-cl-lib-breadcrumb',
   templateUrl: './breadcrumb.component.html'
 })
 export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
@@ -87,13 +87,13 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     }
     if (this.config?.links && this.config?.links.length > 0) {
       if (this.config.type == 'routerLink') {
-        this.config?.links.forEach(link => {
+        this.config?.links.forEach((link) => {
           delete link.href;
-        })
+        });
       } else {
-        this.config?.links.forEach(link => {
+        this.config?.links.forEach((link) => {
           delete link.routerLink;
-        })
+        });
       }
     }
     this.separatorIcon.size = this.config.size;
@@ -109,10 +109,11 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
       this.config?.links.forEach((link, i) => {
         if (i === 0) {
           link[this.config.type] = this.baseUrl;
-          prev = link[this.config.type]
+          prev = link[this.config.type];
         } else if (link.linkKey) {
-          link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/'
-          prev = link[this.config.type]
+          link[this.config.type] =
+            prev + this.translate.instant(link.linkKey) + '/';
+          prev = link[this.config.type];
         }
         link.overflow = false;
       })

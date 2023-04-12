@@ -1,6 +1,6 @@
 export interface IComponentOutputEvent {
-    id: string;
-    value: string | boolean;
+  id: string;
+  value: string | boolean;
 }
 
 /**
@@ -8,6 +8,6 @@ export interface IComponentOutputEvent {
  * @see ErrorComponent
  */
 export interface IErrorPairs {
-    key: string;
-    errorLOV: string;
-  }
+  key: string;
+  errorLOV: string;
+}

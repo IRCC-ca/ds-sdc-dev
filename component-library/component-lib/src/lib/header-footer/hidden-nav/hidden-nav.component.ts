@@ -1,37 +1,36 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 export interface ISkipLinkConfig {
-  title: string,
-  href: string,
-  ariaLabel?: string
+  title: string;
+  href: string;
+  ariaLabel?: string;
 }
 
 export interface IHiddenNavConfig {
-  id: string,
-  skipLinks?: ISkipLinkConfig[]
+  id: string;
+  skipLinks?: ISkipLinkConfig[];
 }
 
 @Component({
-  selector: 'lib-hidden-nav',
+  selector: 'ircc-cl-lib-hidden-nav',
   templateUrl: './hidden-nav.component.html'
 })
 export class HiddenNavComponent {
-
   @Input() config: IHiddenNavConfig = {
     id: ''
-  }
+  };
 
-  scrollToAnchor(id : string){
+  scrollToAnchor(id: string) {
     if (id) {
       const el = document.getElementById(id);
       el?.scrollIntoView();
-      el?.setAttribute('tabindex','-1');
+      el?.setAttribute('tabindex', '-1');
       el?.focus();
     }
   }
 
-  @HostListener('keydown',['$event.key'])
-  handleKeyDown(key : string, link? : string){
+  @HostListener('keydown', ['$event.key'])
+  handleKeyDown(key: string, link?: string) {
     key === 'Tab' ? this.showNav() : null;
     key === 'Enter' && link ? this.scrollToAnchor(link) : null;
   }
@@ -41,5 +40,4 @@ export class HiddenNavComponent {
     const btns = document.getElementsByClassName('hidden-btns');
     container?.classList.add('active-nav');
   }
-
 }

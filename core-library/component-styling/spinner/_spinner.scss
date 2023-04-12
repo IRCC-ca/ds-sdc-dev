@@ -7,7 +7,7 @@
 @use '../../util/device' as device;
 @use '../../tokens/sizes';
 @use 'sass:map';
-$selectors: 'lib-spinner';
+$selectors: 'ircc-cl-lib-spinner';
 
 @mixin selectors {
 	#{$selectors}#{template-const.$escape} {

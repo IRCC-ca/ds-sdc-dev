@@ -11,7 +11,7 @@
 @use 'sass:map';
 
 @mixin selector {
-    lib-hidden-nav#{template-const.$escape} {
+    ircc-cl-lib-hidden-nav#{template-const.$escape} {
         @content;
     }
 }

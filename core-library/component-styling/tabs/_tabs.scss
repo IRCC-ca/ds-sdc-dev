@@ -6,7 +6,7 @@
 @use '../../util/device' as device;
 @use '../../tokens/sizes';
 @use 'sass:map';
-$selectors: 'lib-tabs';
+$selectors: 'ircc-cl-lib-tabs';
 
 @mixin selectors {
 	#{$selectors}#{template-const.$escape} {
