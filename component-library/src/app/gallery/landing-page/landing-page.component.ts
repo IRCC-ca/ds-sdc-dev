@@ -32,23 +32,28 @@ export class LandingPageComponent implements OnInit {
     buttons: [
       {
         name: 'BUTTONS.FormInputs',
-        url: 'FormComponents'
+        url: 'FormComponents',
+        category: 'secondary'
       },
       {
         name: 'BUTTONS.HeaderFooter',
-        url: 'HeaderFooter'
+        url: 'HeaderFooter',
+        category: 'secondary'
       },
       {
         name: 'BUTTONS.Miscellaneous',
-        url: 'Miscellaneous'
+        url: 'Miscellaneous',
+        category: 'secondary'
       },
       {
         name: 'BUTTONS.DevTestPage',
-        url: 'DevTest'
+        url: 'DevTest',
+        category: 'secondary'
       },
       {
         name: 'BUTTONS.QATesting',
-        url: 'QATesting'
+        url: 'QATesting',
+        category: 'secondary'
       }
     ]
   };

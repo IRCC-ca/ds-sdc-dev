@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent } from '@angular/router';
 import {
   ButtonCategories,
   LanguageSwitchButtonService
 } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
+import { NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 export interface ILibraryNavButtons {
   name: string;
@@ -35,18 +37,27 @@ export class NavButtonsComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
     private languageSwitchButton: LanguageSwitchButtonService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.setBaseUrl(); //set initial base url
     this.createButtonIds();
 
     //Detect language changes to set base url to new language
-    this.languageSwitchButton.languageClickObs$.subscribe((response) => {
+    this.languageSwitchButton.languageClickObs$.subscribe((response: any) => {
       if (response) {
         this.setBaseUrl();
         this.buttonUrlOverrides();
       }
+    });
+
+
+    //subscribes to route changes or page reload and updates active button
+    this.setActiveButtonByUrl()
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.setActiveButtonByUrl()
     });
   }
 
@@ -102,5 +113,17 @@ export class NavButtonsComponent implements OnInit {
     this.config?.buttons.forEach((button) => {
       button.id = button.name.replace(/\s/g, '');
     });
+  }
+
+  setActiveButtonByUrl() {
+    const lastUrlSegment = this.router.url.split('?')[0].split('/').pop()
+    this.config?.buttons.forEach(button => {
+      if (this.translate.instant('ROUTES.' + button.url) === lastUrlSegment) {
+        button.category = "primary";
+      }
+      else {
+        button.category = "secondary";
+      }
+    })
   }
 }
