@@ -8,9 +8,8 @@ describe('SelectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HiddenNavComponent ]
-    })
-    .compileComponents();
+      declarations: [HiddenNavComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HiddenNavComponent);
     component = fixture.componentInstance;

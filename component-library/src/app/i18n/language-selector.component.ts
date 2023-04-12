@@ -11,11 +11,9 @@ export class LanguageSelectorComponent implements OnInit {
   @Input() inNavbar = false;
   @Input() menuClass = '';
 
-  constructor(
-    private i18nService: I18nService
-  ) { }
+  constructor(private i18nService: I18nService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   setLanguage(language: string) {
     this.i18nService.language = language;
@@ -28,6 +26,4 @@ export class LanguageSelectorComponent implements OnInit {
   get languages(): string[] {
     return this.i18nService.supportedLanguages;
   }
-
 }
-

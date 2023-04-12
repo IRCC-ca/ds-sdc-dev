@@ -1,33 +1,57 @@
-<div class="navContainer" id="{{config?.id}}">
-    <div class="navFlexContainer">
-        <h1 class="navHeader">{{'QA.header' | translate}}</h1>
-        <!-- Nav Buttons -->
-        <ng-container *ngFor="let button of config?.buttons">
-            <ng-container [ngSwitch]="button.category">
-                <ng-container *ngSwitchCase="'plain'">
-                    <button class="button" category="plain" id="{{button.id}}"
-                    [routerLink]="config?.globalBaseUrlOverride || button.baseUrlOverride || currentBaseUrl 
-                    + ('ROUTES.' + button.url | translate)">{{button.name
-                    |
-                    translate}}</button>
-                </ng-container>
-
-                <ng-container *ngSwitchCase="'secondary'">
-                    <button class="button" category="secondary" id="{{button.id}}"
-                        [routerLink]="config?.globalBaseUrlOverride || button.baseUrlOverride || currentBaseUrl 
-                        + ('ROUTES.' + button.url | translate)">{{button.name
-                        |
-                        translate}}</button>
-                </ng-container>
-
-                <ng-container *ngSwitchDefault>
-                    <button class="button" category="primary" id="{{button.id}}"
-                    [routerLink]="config?.globalBaseUrlOverride || button.baseUrlOverride || currentBaseUrl 
-                    + ('ROUTES.' + button.url | translate)">{{button.name
-                    |
-                    translate}}</button>
-                </ng-container>
-            </ng-container>
+<div
+  class="navContainer"
+  id="{{ config?.id }}"
+>
+  <div class="navFlexContainer">
+    <h1 class="navHeader">{{ 'QA.header' | translate }}</h1>
+    <!-- Nav Buttons -->
+    <ng-container *ngFor="let button of config?.buttons">
+      <ng-container [ngSwitch]="button.category">
+        <ng-container *ngSwitchCase="'plain'">
+          <button
+            class="button"
+            category="plain"
+            id="{{ button.id }}"
+            [routerLink]="
+              config?.globalBaseUrlOverride ||
+              button.baseUrlOverride ||
+              currentBaseUrl + ('ROUTES.' + button.url | translate)
+            "
+          >
+            {{ button.name | translate }}
+          </button>
         </ng-container>
-    </div>
+
+        <ng-container *ngSwitchCase="'secondary'">
+          <button
+            class="button"
+            category="secondary"
+            id="{{ button.id }}"
+            [routerLink]="
+              config?.globalBaseUrlOverride ||
+              button.baseUrlOverride ||
+              currentBaseUrl + ('ROUTES.' + button.url | translate)
+            "
+          >
+            {{ button.name | translate }}
+          </button>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault>
+          <button
+            class="button"
+            category="primary"
+            id="{{ button.id }}"
+            [routerLink]="
+              config?.globalBaseUrlOverride ||
+              button.baseUrlOverride ||
+              currentBaseUrl + ('ROUTES.' + button.url | translate)
+            "
+          >
+            {{ button.name | translate }}
+          </button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>

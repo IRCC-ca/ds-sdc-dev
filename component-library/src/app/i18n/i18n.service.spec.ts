@@ -8,7 +8,6 @@ const defaultLanguage = 'en-US';
 const supportedLanguages = ['eo', 'en-US', 'fr-FR'];
 
 class MockTranslateService {
-
   currentLang = '';
   onLangChange = new Subject();
 
@@ -24,8 +23,7 @@ class MockTranslateService {
     return 'en-US';
   }
 
-  setTranslation(lang: string, translations: object, shouldMerge?: boolean) { }
-
+  setTranslation(lang: string, translations: object, shouldMerge?: boolean) {}
 }
 
 describe('I18nService', () => {
@@ -37,7 +35,7 @@ describe('I18nService', () => {
     TestBed.configureTestingModule({
       providers: [
         I18nService,
-        { provide: TranslateService, useClass: MockTranslateService },
+        { provide: TranslateService, useClass: MockTranslateService }
       ]
     });
 
@@ -45,12 +43,11 @@ describe('I18nService', () => {
     translateService = TestBed.inject(TranslateService);
 
     // Create spies
-  onLangChangeSpy = jest.fn();
-  translateService.onLangChange
-    .subscribe((event: LangChangeEvent) => {
+    onLangChangeSpy = jest.fn();
+    translateService.onLangChange.subscribe((event: LangChangeEvent) => {
       onLangChangeSpy(event.lang);
     });
-  jest.spyOn(translateService, 'use');
+    jest.spyOn(translateService, 'use');
   });
 
   afterEach(() => {
@@ -135,5 +132,4 @@ describe('I18nService', () => {
       expect(currentLanguage).toEqual(defaultLanguage);
     });
   });
-
 });

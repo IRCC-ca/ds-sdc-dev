@@ -7,8 +7,7 @@ import { LanguageSwitchService } from '@app/@shared/language-switch/language-swi
   styleUrls: ['./miscellaneous.component.scss']
 })
 export class MiscellaneousComponent implements OnInit {
-
-  constructor(private altLang: LanguageSwitchService) { }
+  constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
     this.altLang.setAltLangLink('Miscellaneous-alt');

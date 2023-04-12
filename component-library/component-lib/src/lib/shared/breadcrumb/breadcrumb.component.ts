@@ -1,22 +1,28 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components.constants";
-import { ILinkComponentConfig } from "./link/link.component";
-import { TranslateService } from "@ngx-translate/core";
-import { StandAloneFunctions } from "../../../shared/functions/stand-alone.functions";
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { ILinkComponentConfig } from './link/link.component';
+import { TranslateService } from '@ngx-translate/core';
+import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
 
 export enum LinkType {
   href = 'href',
-  routerLink = 'routerLink',
+  routerLink = 'routerLink'
 }
 
 export interface IBreadcrumbConfig {
-  id: string,
-  size?: keyof typeof DSSizes,
+  id: string;
+  size?: keyof typeof DSSizes;
   type: keyof typeof LinkType;
   // Translation key of base url segment
   baseUrlKey: string;
   // The mid-layer navigation to the ancestor links, the previous pages that lead to users to the child page
-  links?: ILinkComponentConfig[],
+  links?: ILinkComponentConfig[];
 }
 
 @Component({
@@ -30,7 +36,10 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
     type: 'href'
   };
   baseUrl = '';
-  constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
+  constructor(
+    private translate: TranslateService,
+    private standalone: StandAloneFunctions
+  ) {}
 
   ngOnInit() {
     this.createLinks();
@@ -39,13 +48,13 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (this.config?.links && this.config?.links.length > 0) {
       if (this.config.type == 'routerLink') {
-        this.config?.links.forEach(link => {
+        this.config?.links.forEach((link) => {
           delete link.href;
-        })
+        });
       } else {
-        this.config?.links.forEach(link => {
+        this.config?.links.forEach((link) => {
           delete link.routerLink;
-        })
+        });
       }
     }
     this.createLinks();
@@ -61,12 +70,13 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
       this.config?.links.forEach((link, i) => {
         if (i === 0) {
           link[this.config.type] = this.baseUrl;
-          prev = link[this.config.type]
+          prev = link[this.config.type];
         } else if (link.linkKey) {
-          link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/'
-          prev = link[this.config.type]
+          link[this.config.type] =
+            prev + this.translate.instant(link.linkKey) + '/';
+          prev = link[this.config.type];
         }
-      })
+      });
     }
   }
 }

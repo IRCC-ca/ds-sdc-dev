@@ -7,9 +7,11 @@
 <h2>Checkbox</h2>
 <!-- Checkbox Test -->
 <ircc-cl-lib-checkbox [config]="qaCheckboxConfig"></ircc-cl-lib-checkbox>
-<button (click)="buttonActions('disableCheckbox')">Toggle Disable Checkbox</button>
+<button (click)="buttonActions('disableCheckbox')">
+  Toggle Disable Checkbox
+</button>
 <button (click)="buttonActions('checkboxError')">Toggle Error Checkbox</button>
-<br>
+<br />
 <app-auto-tester [config]="testCheckboxComponentConfig"></app-auto-tester>
 <h2 [id]="'QA.michael-input' | translate">Input</h2>
 <ircc-cl-lib-input [config]="qaInputConfig"></ircc-cl-lib-input>

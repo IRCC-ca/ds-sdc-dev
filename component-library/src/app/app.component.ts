@@ -16,21 +16,25 @@ const log = new Logger('App');
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private translateService: TranslateService,
-    private i18nService: I18nService) {
-      translateService.setTranslation('en', enUS);
-      translateService.setTranslation('fr', frFR);
+    private i18nService: I18nService
+  ) {
+    translateService.setTranslation('en', enUS);
+    translateService.setTranslation('fr', frFR);
     /**
-    * Subscribe to router events because the init cycle for this component happens
-    * before the router functionality
-    */
+     * Subscribe to router events because the init cycle for this component happens
+     * before the router functionality
+     */
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        this.translateService.use(this.router.url.includes('/fr') ? 'fr' : 'en');
+        this.translateService.use(
+          this.router.url.includes('/fr') ? 'fr' : 'en'
+        );
         //Sets the html language attribute to current language
-        document.documentElement.lang = this.translateService.currentLang.substring(0, 2);
+        document.documentElement.lang =
+          this.translateService.currentLang.substring(0, 2);
       }
     });
   }
@@ -49,5 +53,4 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.i18nService.destroy();
   }
-
 }

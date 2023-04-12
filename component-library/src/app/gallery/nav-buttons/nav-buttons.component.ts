@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ButtonCategories, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
+import {
+  ButtonCategories,
+  LanguageSwitchButtonService
+} from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
 
 export interface ILibraryNavButtons {
   name: string;
@@ -27,14 +29,15 @@ export interface INavButtonComponentConfig {
   styleUrls: ['./nav-buttons.component.scss']
 })
 export class NavButtonsComponent implements OnInit {
-
   @Input() config?: INavButtonComponentConfig;
 
   currentBaseUrl = '';
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private translate: TranslateService,
-    private languageSwitchButton: LanguageSwitchButtonService) { }
+    private languageSwitchButton: LanguageSwitchButtonService
+  ) { }
 
   ngOnInit() {
     this.setBaseUrl(); //set initial base url
@@ -47,14 +50,14 @@ export class NavButtonsComponent implements OnInit {
         this.buttonUrlOverrides();
       }
     });
-    
+
     this.setActiveButtonByUrl(this.router.url.split('?')[0].split('/').pop())
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-        const lastUrlSegment = event.url.split('?')[0].split('/').pop()
-        this.setActiveButtonByUrl(lastUrlSegment)
-      });
+      const lastUrlSegment = event.url.split('?')[0].split('/').pop()
+      this.setActiveButtonByUrl(lastUrlSegment)
+    });
   }
 
   /**
@@ -63,25 +66,29 @@ export class NavButtonsComponent implements OnInit {
    */
   getURL() {
     const curLang = this.translate.currentLang;
-    const langKey = ((curLang === "en-US") || (curLang === 'en') ? 'en' : 'fr');
-    const i = window.location.href.slice(window.location.href.indexOf(langKey), window.location.href.length);
+    const langKey = curLang === 'en-US' || curLang === 'en' ? 'en' : 'fr';
+    const i = window.location.href.slice(
+      window.location.href.indexOf(langKey),
+      window.location.href.length
+    );
     return i;
   }
 
   /**
-   * Set the current base url. TODO: Consider moving this into a service for easy re-use elsewhere. 
+   * Set the current base url. TODO: Consider moving this into a service for easy re-use elsewhere.
    */
   setBaseUrl() {
     this.currentBaseUrl = '';
     const i = this.getURL().split('/');
     i.forEach((j: string, index: number) => {
-      if (index !== (i.length - 1)) {
-        this.currentBaseUrl += ('/' + j);
+      if (index !== i.length - 1) {
+        this.currentBaseUrl += '/' + j;
       } else if (j === this.translate.instant(this.config?.baseUrlKey || '')) {
-        this.currentBaseUrl += ('/' + j);
+        this.currentBaseUrl += '/' + j;
       }
     });
-    if (this.currentBaseUrl[this.currentBaseUrl.length] !== '/') this.currentBaseUrl += '/';
+    if (this.currentBaseUrl[this.currentBaseUrl.length] !== '/')
+      this.currentBaseUrl += '/';
   }
 
   /**
@@ -89,25 +96,27 @@ export class NavButtonsComponent implements OnInit {
    */
   buttonUrlOverrides() {
     if (this.config?.globalBaseUrlOverride) {
-      this.config.globalBaseUrlOverride = this.translate.instant(this.config.globalBaseUrlOverride);
+      this.config.globalBaseUrlOverride = this.translate.instant(
+        this.config.globalBaseUrlOverride
+      );
     }
 
-    this.config?.buttons.forEach(button => {
+    this.config?.buttons.forEach((button) => {
       if (button.baseUrlOverride) {
-        button.baseUrlOverride = (this.translate.instant(button.baseUrlOverride));
+        button.baseUrlOverride = this.translate.instant(button.baseUrlOverride);
       }
     });
   }
 
   createButtonIds() {
-    this.config?.buttons.forEach(button => {
-      button.id = button.name.replace(/\s/g, "");
+    this.config?.buttons.forEach((button) => {
+      button.id = button.name.replace(/\s/g, '');
     });
   }
 
-  setActiveButtonByUrl(lastUrlSegment : any) {
+  setActiveButtonByUrl(lastUrlSegment: any) {
     this.config?.buttons.forEach(button => {
-      if(this.translate.instant('ROUTES.' + button.url) === lastUrlSegment) {
+      if (this.translate.instant('ROUTES.' + button.url) === lastUrlSegment) {
         button.category = "primary";
       }
       else {

@@ -1,5 +1,11 @@
-import { Directive, ElementRef, Output, EventEmitter, HostListener, Input } from '@angular/core';
-
+import {
+  Directive,
+  ElementRef,
+  Output,
+  EventEmitter,
+  HostListener,
+  Input
+} from '@angular/core';
 
 export enum TabShiftTab {
   tab = 'tab',
@@ -11,7 +17,7 @@ export enum TabShiftTab {
 })
 export class PreventTabOutDirective {
   @Input() enabled?: string[] = [];
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {}
 
   @HostListener('keydown.tab', ['$event'])
   onTab(event: KeyboardEvent) {
@@ -25,8 +31,8 @@ export class PreventTabOutDirective {
   preventTabs(event: KeyboardEvent, type: TabShiftTab) {
     const focusableEls = document.querySelectorAll('button:not([disabled])');
     const modalEls: any[] = [];
-    focusableEls.forEach(el => {
-      this.enabled?.forEach(id => {
+    focusableEls.forEach((el) => {
+      this.enabled?.forEach((id) => {
         if (el.id === id) {
           modalEls.push(el);
         }

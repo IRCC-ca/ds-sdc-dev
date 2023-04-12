@@ -18,15 +18,15 @@ If you are new to Cypress, you can read the [introduction guide](https://docs.cy
 
 ## Page objects
 
-E2E tests should follow the *[Page Object](https://github.com/SeleniumHQ/selenium/wiki/PageObjects)* pattern.
+E2E tests should follow the _[Page Object](https://github.com/SeleniumHQ/selenium/wiki/PageObjects)_ pattern.
 
 #### What is a page object?
 
 A page object:
 
 - Models the objects on a page under test:
-  * *Properties* wrap page elements
-  * *Methods* wrap code that interacts with the page elements
+  - _Properties_ wrap page elements
+  - _Methods_ wrap code that interacts with the page elements
 - Simplifies the test scripts
 - Reduces the amount of duplicated code
 

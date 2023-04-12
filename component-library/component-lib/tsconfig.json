@@ -3,11 +3,9 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "target": "es2020",
-    "sourceMap": true,
+    "sourceMap": true
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "angularCompilerOptions": {
     "strictTemplates": true
   }
