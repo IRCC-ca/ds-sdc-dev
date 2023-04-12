@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonCategories, LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
+import { NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 
 export interface ILibraryNavButtons {
@@ -39,14 +41,20 @@ export class NavButtonsComponent implements OnInit {
     this.createButtonIds();
 
     //Detect language changes to set base url to new language
-    this.languageSwitchButton.languageClickObs$.subscribe(response => {
+    this.languageSwitchButton.languageClickObs$.subscribe((response: any) => {
       if (response) {
         this.setBaseUrl();
         this.buttonUrlOverrides();
       }
     });
-
-
+    
+    this.setActiveButtonByUrl(this.router.url.split('?')[0].split('/').pop())
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+        const lastUrlSegment = event.url.split('?')[0].split('/').pop()
+        this.setActiveButtonByUrl(lastUrlSegment)
+      });
   }
 
   /**
@@ -97,4 +105,14 @@ export class NavButtonsComponent implements OnInit {
     });
   }
 
+  setActiveButtonByUrl(lastUrlSegment : any) {
+    this.config?.buttons.forEach(button => {
+      if(this.translate.instant('ROUTES.' + button.url) === lastUrlSegment) {
+        button.category = "primary";
+      }
+      else {
+        button.category = "secondary";
+      }
+    })
+  }
 }
