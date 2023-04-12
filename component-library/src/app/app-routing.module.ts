@@ -2,58 +2,47 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Shell } from './shell/shell.service';
 
-const routes: Routes = [
-  {
-    path: 'en',
-    children: [
-      {
-        path: 'accessibility-demo',
-        loadChildren: () =>
-          import('./accessibility-demo/accessibility-demo.module').then(
-            (m) => m.AccessibilityDemoModule
-          )
-      }
-    ]
-  },
-  {
-    path: 'fr',
-    children: [
-      {
-        path: "démo-d'accessibilité",
-        loadChildren: () =>
-          import('./accessibility-demo/accessibility-demo.module').then(
-            (m) => m.AccessibilityDemoModule
-          )
-      }
-    ]
-  },
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/404/notFound.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
+const routes: Routes = [
   Shell.childRoutes([
     {
       path: 'en',
+      loadChildren: () =>
+        import('./gallery/gallery.module').then((m) => m.GalleryModule),
       children: [
         {
           path: 'landing-page',
           loadChildren: () =>
-            import('./gallery/gallery.module').then((m) => m.GalleryModule)
+            import('./pages/landing/landing.module').then(
+              (m) => m.LandingModule
+            )
         },
-        { path: '**', redirectTo: 'landing-page' }
+        { path: '**', component: NotFoundComponent }
       ]
     },
     {
       path: 'fr',
+      loadChildren: () =>
+        import('./gallery/gallery.module').then((m) => m.GalleryModule),
       children: [
         {
           path: 'page-general',
           loadChildren: () =>
-            import('./gallery/gallery.module').then((m) => m.GalleryModule)
+            import('./pages/landing/landing.module').then(
+              (m) => m.LandingModule
+            )
         },
-        { path: '**', redirectTo: 'page-general' }
+        { path: '**', component: NotFoundComponent }
       ]
     },
-    //Must be last, as it contains the fallback route when no prior route is matched
-    //TODO: Check this
-    { path: '**', redirectTo: '/en/landing-page' }
+    { path: '', component: HomeComponent },
+    {
+      path: '**',
+      component: NotFoundComponent
+    }
   ])
 ];
 

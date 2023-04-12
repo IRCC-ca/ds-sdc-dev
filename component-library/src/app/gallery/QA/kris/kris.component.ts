@@ -12,9 +12,12 @@ import {
 } from '../auto-tester/auto-tester.component';
 
 // Parent components imports
-import { ParentTemplateComponent } from '../../../@shared/templates/parent-template.component';
-import { TranslateService } from '@ngx-translate/core';
-import { StandAloneFunctions } from 'ircc-ds-angular-component-library';
+import {
+  ParentTemplateComponent,
+  TranslateService,
+  StandAloneFunctions,
+  Router
+} from '../../../@shared/templates/parent-template.module';
 
 @Component({
   selector: 'app-kris',
@@ -57,9 +60,10 @@ export class KrisComponent extends ParentTemplateComponent implements OnInit {
   constructor(
     altLang: LanguageSwitchService,
     translate: TranslateService,
-    standAloneFunctions: StandAloneFunctions
+    standAloneFunctions: StandAloneFunctions,
+    router: Router
   ) {
-    super(altLang, translate, standAloneFunctions);
+    super(altLang, translate, standAloneFunctions, router);
   }
 
   ngOnInit() {
