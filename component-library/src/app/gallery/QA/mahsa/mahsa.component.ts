@@ -282,6 +282,15 @@ export class MahsaComponent implements OnInit {
         options: [{ text: 'Option 1' }, { text: 'Option 2' }]
       };
       for (const param in value) {
+        if (!value['label']) {
+          delete this.qaSelect.label;
+        }
+        if (!value['desc']) {
+          delete this.qaSelect.desc;
+        }
+        if (!value['hint']) {
+          delete this.qaSelect.hint;
+        }
         if (value[param]) {
           updatedConfig = { ...updatedConfig, [param]: value[param] };
           this.qaSelect = updatedConfig;
