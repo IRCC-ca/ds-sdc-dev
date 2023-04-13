@@ -82,8 +82,20 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnChanges(changes: SimpleChanges) {
     // If changing size, update max height
-    if (!changes['config'].firstChange && changes['config'].currentValue.size !== changes['config'].previousValue.size) {
+    if (
+      !changes['config'].firstChange &&
+      changes['config'].currentValue.size !==
+        changes['config'].previousValue.size
+    ) {
       this.maxHeight = this.getMaxHeight();
+    }
+    // If changing link type, recreate all links
+    if (
+      !changes['config'].firstChange &&
+      changes['config'].currentValue.type !==
+        changes['config'].previousValue.type
+    ) {
+      this.createLinks();
     }
     if (this.config?.links && this.config?.links.length > 0) {
       if (this.config.type == 'routerLink') {
