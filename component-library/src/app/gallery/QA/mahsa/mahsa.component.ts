@@ -276,52 +276,52 @@ export class MahsaComponent implements OnInit {
     });
 
     this.form.valueChanges.subscribe((value) => {
+      let updatedConfig: ISelectConfig = {
+        id: this.SELECT_ID,
+        formGroup: this.form,
+        options: [{ text: 'Option 1' }, { text: 'Option 2' }]
+      };
       Object.keys(value).forEach((param) => {
         if (!value['label']) delete this.qaSelect.label;
         if (!value['desc']) delete this.qaSelect.desc;
         if (!value['hint']) delete this.qaSelect.hint;
         if (value[param]) {
-          this.qaSelect = { ...this.qaSelect, [param]: value[param] };
+          updatedConfig = { ...updatedConfig, [param]: value[param] };
+          this.qaSelect = updatedConfig;
         }
-      });   
+      });  
     });
 
     this.tagForm.valueChanges.subscribe((value) => {
-      let tagConf: ISelectConfig = {
-        id: 'tag1',
-        formGroup: this.tagForm
-      };
-      for (const param in value) {
-        tagConf = { ...tagConf, [param]: value[param] };
-        this.qaTags = tagConf;
-      }
+      Object.keys(value).forEach((param) => {
+        if (value[param]) {
+          this.qaTags = { ...this.qaTags, [param]: value[param] }
+        };
+      });
     });
 
     this.spinnerForm.valueChanges.subscribe((value) => {
-      for (const param in value) {
+      Object.keys(value).forEach((param) => {
         if (
           (value['size'] === 'small' || value['size'] === 'extraSmall') &&
           value['orientation'] === 'vertical'
         ) {
           value['orientation'] = 'horizontal';
-        }
-        if (!value['label']) {
-          delete this.qaSpinner.label;
-        }
-        if (!value['description']) {
-          delete this.qaSpinner.description;
-        }
-        if (value[param])
+        };
+        if (!value['label']) delete this.qaSpinner.label;
+        if (!value['description']) delete this.qaSpinner.description;
+        if (value[param]) {
           this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
-      }
+        };
+      });
     });
-  }
+  };
 
   disable() {
     this.qaSelect?.formGroup.get(this.qaSelect.id)?.disabled
       ? this.qaSelect?.formGroup.get(this.qaSelect.id)?.enable()
       : this.qaSelect?.formGroup.get(this.qaSelect.id)?.disable();
-  }
+  };
 
   setSamllError() {
     if (
@@ -342,8 +342,8 @@ export class MahsaComponent implements OnInit {
         testingError: true,
         maxlength: { requiredLength: 3, actualLength: 5 }
       });
-    }
-  }
+    };
+  };
   setLargeError() {
     if (
       this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'Maxlength'
@@ -363,12 +363,12 @@ export class MahsaComponent implements OnInit {
         testingError: true,
         maxlength: { requiredLength: 3, actualLength: 5 }
       });
-    }
-  }
+    };
+  };
   resetError() {
     this.qaSelect?.formGroup.get('smallErrorMessages')?.reset();
     this.qaSelect?.formGroup.get('largeErrorMessages')?.reset();
-  }
+  };
 
   disableSelectedBtn() {
     this.qaTabs?.tab?.forEach((item: any) => {
@@ -376,15 +376,15 @@ export class MahsaComponent implements OnInit {
         document.getElementById(item.id)?.setAttribute('disabled', '');
       } else {
         document.getElementById(item.id)?.removeAttribute('disabled');
-      }
+      };
     });
-  }
+  };
 
   size() {
     this.qaTabs.size
       ? (this.qaTabs.size = 'large')
       : (this.qaTabs.size = 'small');
-  }
+  };
 
   hideShowError() {
     document.getElementById('spinner-div')?.toggleAttribute('hidden');
@@ -396,7 +396,7 @@ export class MahsaComponent implements OnInit {
       this.qaSpinner.label = 'Error Label';
       this.qaSpinner.description = 'Error Description';
     }, 2000);
-  }
+  };
   hideShowSuccess() {
     document.getElementById('spinner-div2')?.toggleAttribute('hidden');
     this.qaSpinner.type = 'active';
@@ -407,5 +407,5 @@ export class MahsaComponent implements OnInit {
       this.qaSpinner.label = 'Success Label';
       this.qaSpinner.description = 'Success Description';
     }, 2000);
-  }
+  };
 }
