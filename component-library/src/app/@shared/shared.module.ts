@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavButtonsComponent } from '@app/gallery/nav-buttons/nav-buttons.component';
 import { RouterModule } from '@angular/router';
 import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
+import { InteractiveDemoComponent } from 'doc-site-components/interactive-demo/interactive-demo.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
     IrccDsAngularLegacyOldModule,
     IrccDsAngularHeaderFooterModule
   ],
-  declarations: [NavButtonsComponent, PreventTabOutDirective],
+  declarations: [NavButtonsComponent, PreventTabOutDirective, InteractiveDemoComponent],
   exports: [
     IrccDsAngularBannerModule,
     IrccDsAngularFormComponentsModule,
@@ -35,7 +36,8 @@ import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
     FormsModule,
     NavButtonsComponent,
     PreventTabOutDirective,
-    IrccDsAngularHeaderFooterModule
+    IrccDsAngularHeaderFooterModule,
+    InteractiveDemoComponent
   ]
 })
 export class SharedModule {}
