@@ -1,6 +1,6 @@
-// @use '../../../../core-library/tokens/sizes';
-@use '../../../../../../core-library/tokens/sizes';
-@use '../../../../../../core-library/util/device' as device;
+@use '../../../../core-library/tokens/sizes';
+@use '../../../../core-library/util/device' as device;
+
 .page_container {
   .dimmer {
     width: 100%;
@@ -36,7 +36,26 @@
         height: 68px;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid var(--divider);
+        // border-bottom: 1px solid var(--divider);
+      }
+
+      .headerLine {
+        color: var(--divider);
+        border-width: sizes.$fixed-1;
+        border-style: solid;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include device.in-phone-layout() {
+          margin-right: -8px;
+          margin-left: -8px;
+        }
+
+        // @include device.in-tablet-layout() {
+        @media (max-width: 979px) {
+          margin-right: -8px;
+          margin-left: -8px;
+        }
       }
 
       .modal_container {
@@ -69,6 +88,7 @@
       }
     }
   }
+
   hamburger .disable_all {
     pointer-events: none;
   }
@@ -126,9 +146,11 @@
           align-items: center;
           justify-content: space-between;
           height: 116px;
+
           .btn1 {
             width: 100%;
           }
+
           .btn2 {
             width: 100%;
           }
