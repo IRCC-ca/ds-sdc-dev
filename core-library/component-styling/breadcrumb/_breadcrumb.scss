@@ -18,6 +18,7 @@
 @mixin create {
   @include selector() {
     --breadcrumb-neutral-grey: #{color.mix-token(neutral, 500)};
+
     @include layout();
   }
 }
@@ -115,7 +116,11 @@
     &.breadcrumb-overflow {
       display: block;
       margin-right: 0;
-      padding: 8px 0;
+      padding: 8px 16px;
+
+      &:active {
+        background: var(--generic-active);
+      }
     }
 
     a {
@@ -196,7 +201,7 @@
     z-index: 99;
     left: -8px;
     top: 44px;
-    padding: 8px 16px;
+    padding: 8px 0;
     position: absolute;
   }
 
