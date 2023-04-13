@@ -11,11 +11,11 @@ import {
   ChangeDetectorRef,
   ViewChild
 } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components.constants";
-import { ILinkComponentConfig } from "./link/link.component";
-import { TranslateService } from "@ngx-translate/core";
-import { StandAloneFunctions } from "../../../shared/functions/stand-alone.functions";
-import { IIconButtonComponentConfig } from "../icon-button/icon-button.component";
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { ILinkComponentConfig } from './link/link.component';
+import { TranslateService } from '@ngx-translate/core';
+import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { IIconButtonComponentConfig } from '../icon-button/icon-button.component';
 
 export enum LinkType {
   href = 'href',
@@ -128,10 +128,10 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
           prev = link[this.config.type];
         }
         link.overflow = false;
-      })
+      });
 
-      this.overflowLinks = this.config?.links.filter(link => link.overflow);
-      this.normalLinks = this.config?.links.filter(link => !link.overflow);
+      this.overflowLinks = this.config?.links.filter((link) => link.overflow);
+      this.normalLinks = this.config?.links.filter((link) => !link.overflow);
     }
   }
 
@@ -140,7 +140,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     const tempElement = this.renderer.createElement('p');
     const text = this.renderer.createText('Test');
     this.renderer.appendChild(tempElement, text);
-    this.renderer.addClass(tempElement, 'breadcrumb-child')
+    this.renderer.addClass(tempElement, 'breadcrumb-child');
     this.renderer.appendChild(containerElement, tempElement);
     const maxHeight = tempElement.offsetHeight;
     this.renderer.removeChild(containerElement, tempElement);
@@ -154,13 +154,13 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.config.links && this.config.links.length > 1) {
       const linksLength = this.config.links.length;
 
-      const overflow = this.config?.links.find((link, i) => (
-        i > 0 && i < linksLength - 1 && !link.overflow)
+      const overflow = this.config?.links.find(
+        (link, i) => i > 0 && i < linksLength - 1 && !link.overflow
       );
       if (overflow) overflow.overflow = true;
 
-      this.overflowLinks = this.config?.links.filter(link => link.overflow);
-      this.normalLinks = this.config?.links.filter(link => !link.overflow);
+      this.overflowLinks = this.config?.links.filter((link) => link.overflow);
+      this.normalLinks = this.config?.links.filter((link) => !link.overflow);
     }
   }
 
@@ -180,7 +180,10 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   // Check if child page title overflows to 2nd line
   getChildOverflow(): boolean {
     if (this.childRef) {
-      return (this.childRef.nativeElement.offsetWidth < this.childRef.nativeElement.scrollWidth);
+      return (
+        this.childRef.nativeElement.offsetWidth <
+        this.childRef.nativeElement.scrollWidth
+      );
     } else {
       return false;
     }
