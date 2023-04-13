@@ -84,5 +84,14 @@
         border-style: solid;
         margin-top: 0;
         margin-bottom: 0;
+        @include device.in-phone-layout() {
+            margin-right: -8px;
+            margin-left: -8px;
+        }
+        // @include device.in-tablet-layout() {
+            @media (max-width: 979px) {
+            margin-right: -8px;
+            margin-left: -8px;
+        }
     }
 }
