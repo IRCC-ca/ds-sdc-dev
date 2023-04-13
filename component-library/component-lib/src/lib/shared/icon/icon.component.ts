@@ -1,4 +1,10 @@
-import { Component, Input, KeyValueDiffer, KeyValueDiffers, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  KeyValueDiffer,
+  KeyValueDiffers,
+  SimpleChanges
+} from '@angular/core';
 
 export interface IIconConfig {
   ariaLabel?: string;
@@ -21,9 +27,5 @@ export class IconComponent {
     this.differ = this.differs.find({}).create();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['config']) {
-      console.log('config changed', changes['config'].currentValue);
-    }
-  }
+  ngOnChanges(changes: SimpleChanges) {}
 }
