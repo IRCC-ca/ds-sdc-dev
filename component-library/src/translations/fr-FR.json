@@ -62,6 +62,10 @@
     "warningLimit": "Limite maximale de caractères atteinte en 15 caractères."
   },
 
+  "BREADCRUMB_COMPONENT": {
+    "ADDITIONAL_LINKS": "Liens supplémentaires"
+  },
+
   "LandingPage": {
     "header": "Ce page est pour les tests et assurance du qualité seulment"
   },

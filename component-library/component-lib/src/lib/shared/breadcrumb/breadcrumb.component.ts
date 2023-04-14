@@ -70,6 +70,9 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     this.createLinks();
     this.separatorIcon.size = this.config.size;
     this.maxHeight = this.getMaxHeight();
+    this.separatorIcon.ariaLabel = this.translate.instant(
+      'BREADCRUMB_COMPONENT.ADDITIONAL_LINKS'
+    );
   }
 
   ngAfterViewInit() {
