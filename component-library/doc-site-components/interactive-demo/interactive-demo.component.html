@@ -7,6 +7,8 @@
             <ng-content select="[component]"></ng-content>
         </div>
     </div>
+    <!-- TODO: This accordion will almost certainly need to be changed to a custom accordion component.
+        Check with design/Tyh/Kris to see if there is an accordion component in the works -->
     <div class="toggles-accordion">
         <ng-container *ngIf="isOpen">
             <ircc-cl-lib-button [config]="accordionButtonOpenConfig" (click)="toggle()">{{accordionOpen |
