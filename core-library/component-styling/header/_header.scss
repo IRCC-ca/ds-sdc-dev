@@ -28,10 +28,13 @@
         container-type: inline-size;
         container-name: header-container;
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
+        // align-items: center;
         margin: 0;
         padding: 0;
+        // @include device.in-phone-layout(){
+        //     align-items: flex-start;
+        // }
 
         #canada-home-img-link {
             height: 75px;
@@ -49,6 +52,7 @@
 
             @include device.in-phone-layout(){
                 width: 249px;
+                // height: 23.52px;
                 margin-left: 8px;
             }
             img {
@@ -67,7 +71,6 @@
             }
         }
     }
-        
         @container header-container (width: calc(100vw - 16px)) {
             .image-container {
                 margin-left: 12px;
@@ -79,19 +82,33 @@
         }
     
     .headerLine {
+        container-type: inline-size;
+        container-name: headerLine-container;
         color: var(--header-line);
         border-width: sizes.$fixed-2;
         border-style: solid;
         margin-top: 0;
         margin-bottom: 0;
-        @include device.in-phone-layout() {
-            margin-right: -8px;
+        // @media (width: calc(100vw - 16px)) {
+        //     margin-right: -8px;
+        //     margin-left: -8px;
+        //   }
+        // margin-right: -8px;
+        // margin-left: -8px;
+        // @include device.in-phone-layout() {
+        //     margin-right: -8px;
+        //     margin-left: -8px;
+        // }
+        // // @include device.in-tablet-layout() {
+        //     @media (max-width: 979px) {
+        //     margin-right: -8px;
+        //     margin-left: -8px;
+        // }
+    }
+    @container headerLine-container (width: calc(100vw - 16px)) {
+
             margin-left: -8px;
-        }
-        // @include device.in-tablet-layout() {
-            @media (max-width: 979px) {
             margin-right: -8px;
-            margin-left: -8px;
-        }
+
     }
 }
