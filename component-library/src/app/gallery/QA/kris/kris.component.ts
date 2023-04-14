@@ -87,6 +87,58 @@ export class KrisComponent extends ParentTemplateComponent implements OnInit {
           text: 'False'
         }
       ]
+    },
+    {
+      id: 'showPrimaryToggle',
+      formGroup: this.form,
+      label: 'Show primary button',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showPlainToggle',
+      formGroup: this.form,
+      label: 'Show plain button',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showTitleToggle',
+      formGroup: this.form,
+      label: 'Show title',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showCloseToggle',
+      formGroup: this.form,
+      label: 'Show close',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
     }
   ]
 

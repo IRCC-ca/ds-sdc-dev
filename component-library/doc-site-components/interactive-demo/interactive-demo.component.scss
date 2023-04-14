@@ -16,8 +16,16 @@
         background-color: #868687;
     }
 
+    .toggles-accordion {
+        display: flex;
+        justify-content: center;
+    }
+
     .toggles {
         margin-left: 28px;
         margin-right: 28px; 
+        margin-bottom: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 }

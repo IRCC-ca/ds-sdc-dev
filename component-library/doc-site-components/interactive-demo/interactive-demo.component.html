@@ -7,7 +7,17 @@
             <ng-content select="[component]"></ng-content>
         </div>
     </div>
-    <div class="toggles">
+    <div class="toggles-accordion">
+        <ng-container *ngIf="isOpen">
+            <ircc-cl-lib-button [config]="accordionButtonOpenConfig" (click)="toggle()">{{accordionOpen |
+                translate}}</ircc-cl-lib-button>
+        </ng-container>
+        <ng-container *ngIf="!isOpen">
+            <ircc-cl-lib-button [config]="accordionButtonClosedConfig" (click)="toggle()">{{accordionClosed |
+                translate}}</ircc-cl-lib-button>
+        </ng-container>
+    </div>
+    <div class="toggles" *ngIf="isOpen">
         <ng-content select="[toggles]"></ng-content>
     </div>
 </div>

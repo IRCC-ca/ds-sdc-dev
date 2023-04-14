@@ -22,15 +22,15 @@
   @media (max-width: 530px) {
     .all-select-container {
       .select-year {
-        width: 180px;
+        min-width: 136px;
       }
 
       .select-month {
-        width: 180px;
+        min-width: 136px;
       }
 
       .select-day {
-        width: 180px;
+        min-width: 136px;
       }
     }
   }
@@ -57,17 +57,17 @@
   @media (max-width: 530px) {
     .all-select-container {
       .select-year {
-        width: 152px;
+        min-width: 124px;
         margin-bottom: 12px;
       }
 
       .select-month {
-        width: 152px;
+        min-width: 124px;
         margin-bottom: 12px;
       }
 
       .select-day {
-        width: 152px;
+        min-width: 124px;
       }
     }
   }
