@@ -36,27 +36,25 @@
         height: 68px;
         display: flex;
         align-items: center;
-        // border-bottom: 1px solid var(--divider);
+        border-bottom: 1px solid var(--divider);
       }
 
-      .headerLine {
-        color: var(--divider);
-        border-width: sizes.$fixed-1;
-        border-style: solid;
-        margin-top: 0;
-        margin-bottom: 0;
-
-        @include device.in-phone-layout() {
-          margin-right: -8px;
-          margin-left: -8px;
-        }
-
-        // @include device.in-tablet-layout() {
-        @media (max-width: 979px) {
-          margin-right: -8px;
-          margin-left: -8px;
-        }
-      }
+      // .headerLine {
+      //   color: var(--divider);
+      //   border-width: sizes.$fixed-1;
+      //   border-style: solid;
+      //   margin-top: 0;
+      //   margin-bottom: 0;
+      //   @include device.in-phone-layout() {
+      //       margin-right: -8px;
+      //       margin-left: -8px;
+      //   }
+      //   // @include device.in-tablet-layout() {
+      //       @media (max-width: 979px) {
+      //       margin-right: -8px;
+      //       margin-left: -8px;
+      //   }
+      // }
 
       .modal_container {
         z-index: 10;
