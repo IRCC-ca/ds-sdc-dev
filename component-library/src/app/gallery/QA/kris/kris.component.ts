@@ -4,7 +4,9 @@ import { LanguageSwitchService } from '@app/@shared/language-switch/language-swi
 import {
   ICheckBoxComponentConfig,
   ISelectConfig,
-  IRadioInputComponentConfig
+  IRadioInputComponentConfig,
+  ITabNavConfig,
+  IBannerConfig
 } from 'ircc-ds-angular-component-library';
 import {
   IAutoTestComponentConfig,
@@ -24,35 +26,71 @@ import { StandAloneFunctions } from 'ircc-ds-angular-component-library';
 export class KrisComponent extends ParentTemplateComponent implements OnInit {
   form = new FormGroup({});
 
-  selectConfig: ISelectConfig = {
-    id: 'select',
-    formGroup: this.form,
-    label: 'Testing input select',
-    hint: "Try clicking into the select, but not selecting anything on first load to trigger the 'required' error",
-    desc: 'Email regex and minLength of 7 - email should be valid, "short" should trigger two errors',
-    options: [
+  demoTabsConfig: ITabNavConfig = {
+    id: 'demoTabs',
+    tab: [
       {
-        text: 'email@email.com'
+        id: 'info',
+        title: 'Info'
       },
       {
-        text: 'short'
-      }
-    ],
-    errorMessages: [
-      {
-        key: 'required',
-        errorLOV: 'Required Error'
+        id: 'warning',
+        title: 'Warning'
       },
       {
-        key: 'minlength',
-        errorLOV: 'Minlength Error'
-      },
-      {
-        key: 'pattern',
-        errorLOV: 'Pattern Error'
+        id: 'critical',
+        title: 'Critical'
       }
     ]
   };
+
+  bannerConfig: IBannerConfig = {
+    id: 'banner',
+    title: 'Title text',
+    type: 'info',
+    dismissible: true,
+    cta: [
+      {
+        text: 'Default',
+        type: 'button',
+        btnConfig: {
+          id: 'cta1',
+          category: 'secondary'
+        }
+      }
+    ]
+  };
+
+  toggles: IRadioInputComponentConfig[] = [
+    {
+      id: 'sizeToggle',
+      formGroup: this.form,
+      label: 'Size',
+      options: [
+        {
+          text: 'Small'
+        },
+        {
+          text: 'Large'
+        }
+      ]
+    },
+    {
+      id: 'showDescToggle',
+      formGroup: this.form,
+      label: 'Show description',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    }
+  ]
+
+
 
   constructor(
     altLang: LanguageSwitchService,
@@ -64,14 +102,10 @@ export class KrisComponent extends ParentTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.altLang.setAltLangLink('kris-alt');
-    this.form.addControl(
-      this.selectConfig.id,
-      new FormControl('', [
-        Validators.required,
-        Validators.minLength(7),
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
-      ])
-    );
-    console.log(super.getURL());
+    this.toggles.forEach(toggle => {
+      if (toggle.options && toggle.options[0].text){
+        this.form.addControl(toggle.id, new FormControl(toggle.options[0].text))
+      }
+    });
   }
 }

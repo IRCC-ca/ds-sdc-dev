@@ -1,1 +1,13 @@
-<p>interactive-demo works!</p>
+<div class="container">
+    <div class="tabs">
+        <ng-content select="[tabs]"></ng-content>
+    </div>
+    <div class="component_container">
+        <div class="test_component">
+            <ng-content select="[component]"></ng-content>
+        </div>
+    </div>
+    <div class="toggles">
+        <ng-content select="[toggles]"></ng-content>
+    </div>
+</div>

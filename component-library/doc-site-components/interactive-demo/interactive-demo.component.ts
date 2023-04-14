@@ -9,7 +9,7 @@ export class InteractiveDemoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

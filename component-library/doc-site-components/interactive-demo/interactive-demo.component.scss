@@ -1,0 +1,23 @@
+// @use '../../../core-library/tokens/template-const' as template-const;
+@use '../../../core-library/tokens/sizes' as token-size;
+@use '../../../core-library/util/size' as size;
+@use '../../../core-library/tokens/sizes';
+
+
+
+
+.container {
+    border-radius: 8px;
+    border-width: sizes.$fixed-1;
+    border-color: --neutral; //Not working
+    border-style: solid;
+
+    .test_component {
+        background-color: #868687;
+    }
+
+    .toggles {
+        margin-left: 28px;
+        margin-right: 28px; 
+    }
+}

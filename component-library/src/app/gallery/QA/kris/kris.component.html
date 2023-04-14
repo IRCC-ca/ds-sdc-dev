@@ -1,4 +1,10 @@
 <!-- <form [formGroup]="form"> -->
 <!-- <app-auto-tester [config]="autoTestConfig"></app-auto-tester> -->
-<ircc-cl-lib-select [config]="selectConfig"></ircc-cl-lib-select>
 <!-- </form> -->
+<app-interactive-demo>
+    <ircc-cl-lib-tabs tabs [config]="demoTabsConfig"></ircc-cl-lib-tabs>
+    <ircc-cl-lib-banner component [config]="bannerConfig"></ircc-cl-lib-banner>
+    <ng-container toggles *ngFor="let toggle of toggles">
+        <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+</app-interactive-demo>
