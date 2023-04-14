@@ -1,0 +1,49 @@
+<div class="content-doc-wrapper col-12 col-lg-10">
+  <app-test></app-test>
+  <app-title-slug-url
+    translate="Overview.Heading"
+    type="primary"
+  ></app-title-slug-url>
+  <h2
+    class="sub-title emphasis"
+    [style.margin-top]="0"
+  >
+    {{ 'Overview.SubHeading' | translate }}
+  </h2>
+  <p>{{ 'Overview.Text' | translate }}</p>
+  <div
+    class="wrapper-container row"
+    [style.box-sizing]="'border-box'"
+  >
+    <div class="col-12 col-md-6">
+      <div class="for-designers">
+        <h3>{{ 'Overview.DesignerHeading' | translate }}</h3>
+        <p>{{ 'Overview.DesignerText' | translate }}</p>
+        <a
+          routerLink="/{{ currentLanguage }}/{{
+            'ROUTES.forDesigners' | translate
+          }}"
+          >{{ 'Overview.GetStartedHeading' | translate }}</a
+        >
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="for-devs">
+        <h3>{{ 'Overview.DeveloperHeading' | translate }}</h3>
+        <p>{{ 'Overview.DeveloperText' | translate }}</p>
+        <a
+          routerLink="/{{ currentLanguage }}/{{
+            'ROUTES.forDevelopers' | translate
+          }}"
+          >{{ 'Overview.GetStartedHeading' | translate }}</a
+        >
+      </div>
+    </div>
+  </div>
+  <app-title-slug-url
+    [translate]="'LeftSideNav.sub-titles.contact'"
+    type="secondary"
+    >Overview</app-title-slug-url
+  >
+  <p [innerHTML]="'Contact.Text' | translate"></p>
+</div>

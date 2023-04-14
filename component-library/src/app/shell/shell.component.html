@@ -1,2 +1,27 @@
-<ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
-<router-outlet></router-outlet>
+<div>
+  <div class="header">
+    <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
+    <h1 class="emphasis">{{ 'Overview.SubHeading' | translate }}</h1>
+  </div>
+
+  <div class="main-container top {{ navStatus }}">
+    <!-- <app-side-nav
+      class="left-nav"
+      [navBarData]="leftNavData"
+      [mobileToggleIcon]="true"
+    ></app-side-nav> -->
+    <div
+      class="content"
+      role="main"
+    >
+      <div class="content-area-responsive">
+        <div class="page-content">
+          <router-outlet></router-outlet>
+          <p>{{ 'Home.DateModified' | translate }}: 2023-02-10</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <ircc-cl-lib-footer> </ircc-cl-lib-footer>
+</div>

@@ -1,0 +1,16 @@
+@use 'src/scss/grid';
+app-page-token {
+  @include grid.row;
+}
+div.color-sample {
+  width: 88px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.typo-sample {
+  p {
+    color: var(--text-secondary) !important;
+    margin: 0;
+  }
+}

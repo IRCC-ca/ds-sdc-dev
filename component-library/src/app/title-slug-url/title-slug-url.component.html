@@ -1,0 +1,12 @@
+<h2
+  [id]="titleSlugified"
+  [className]="type"
+  [translate]="translate"
+>
+  <ng-content></ng-content>
+</h2>
+<a
+  [href]="slugifiedUrl"
+  [cdkCopyToClipboard]="slugifiedUrl"
+  >{{ 'Buttons.CopyURL' | translate }}</a
+>

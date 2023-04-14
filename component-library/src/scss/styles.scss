@@ -1,0 +1,219 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '../../node_modules/@ircc-ca/ds-sdc-core/index' as ircc-ds;
+@use '../../node_modules/@ircc-ca/ds-sdc-core/util/color' as ircc-ds-color;
+@use '../../node_modules/@ircc-ca/ds-sdc-core/tokens/sizes' as ircc-ds-sizes;
+@use 'sass:map';
+@import 'grid';
+@import 'table';
+@import 'code';
+@import '../../node_modules/@ircc-ca/ds-sdc-core/layout/layout-grid';
+
+@include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(), default, large, light);
+@include ircc-ds.element-styles();
+
+// Enable Bootstrap row & column support.
+@include make-grid-columns();
+
+$page-width: 1440px;
+$tablet-padding: 24px;
+$mobile-padding: 16px;
+
+app-root {
+  display: block;
+  max-width: $page-width;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.language-toggle {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.header {
+  overflow: hidden;
+  top: 0;
+  max-width: $page-width;
+  width: 100%;
+  background: white;
+  z-index: 100;
+  position: fixed;
+  border-bottom: 1px solid var(--divider);
+  @include un-tablet-layout {
+    left: 0;
+  }
+  .grid-container {
+    @include un-tablet-layout {
+      padding-left: $tablet-padding;
+    }
+    @include in-phone-layout {
+      padding-left: $mobile-padding;
+    }
+  }
+  h1 {
+    @include un-tablet-layout {
+      padding: 0 $tablet-padding;
+    }
+    @include in-phone-layout {
+      padding: 0 $mobile-padding;
+      font-size: 30px;
+    }
+  }
+  lib-header {
+    .grid-container {
+      img {
+        margin-left: 0;
+      }
+    }
+    button#header_langToggle {
+      padding-right: 0;
+      @include un-laptop-layout {
+        padding-right: 8px;
+      }
+    }
+  }
+}
+.main-container {
+
+  &.nav-open {
+    display: flex;
+    align-items: flex-start !important;
+    column-gap: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  &.nav-closed {
+    display: block;
+  }
+
+  &.top {
+    margin-top: 170px;
+    @include un-tablet-layout {
+      margin-top: 180px;
+    }
+  }
+
+  > app-side-nav.left-nav {
+    @include up-laptop-layout {
+      @include col-2;
+    }
+    @include in-desktop-layout {
+      @include col-2;
+      margin-right: -1px;
+    }
+    @include un-tablet-layout {
+      @include col-12;
+    }
+  }
+  .content[role=main] {
+    box-sizing: border-box;
+    min-height: calc(100vh - 60px);
+
+    @include col-12;
+    @include in-tablet-layout {
+      @include col-12;
+    }
+    @include up-laptop-layout {
+      @include col-10;
+      padding-left: ircc-ds-sizes.$fixed-36;
+    }
+    @include in-desktop-layout {
+      padding-left: ircc-ds-sizes.$fixed-40;
+    }
+    @include un-tablet-layout {
+      @include col-12;
+      padding: 0 $tablet-padding;
+    }
+    @include in-phone-layout {
+      padding: 0 $mobile-padding;
+    }
+    .page-content {
+      width: 100%;
+      .content-doc-wrapper {
+        box-sizing: border-box;
+        @include in-desktop-layout {
+          padding-right: ircc-ds-sizes.$fixed-40;
+        }
+        @include un-desktop-layout {
+          padding-right: ircc-ds-sizes.$fixed-20;
+        }
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+markdown {
+  overflow: hidden;
+  pre {
+    overflow: auto !important;
+  }
+}
+
+h5 {
+  font-weight: 700 !important;
+  margin-bottom: 12px;
+  &.text-underline {
+    border-bottom: 1px solid;
+    margin: 8px 0;
+  }
+  &.text-color-green {
+    color: var(--success-text);
+  }
+  &.text-color-red {
+    color: var(--critical-text);
+  }
+  &.round-purple-num {
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 22px;
+    margin-bottom: 0;
+    position: relative;
+    top: 2px;
+  }
+}
+
+span {
+  &.round-purple-num {
+    color: ircc-ds-color.mix-token(visited, 900);
+    font-weight: 700;
+    background-color: ircc-ds-color.mix-token(visited, 200);
+    padding: 9px 15px;
+    border-radius:50%;
+  }
+}
+
+app-info-text-small {
+  // To be replace with color token
+  color: ircc-ds-color.mix-token(information, 900);
+}
+
+app-page-token {
+  .spacing-sample {
+    height: 20px;
+    margin: 0 auto;
+    background: ircc-ds-color.mix-token(visited, 100);
+    border-left: 1px solid ircc-ds-color.mix-token(visited, 700);
+    border-right: 1px solid ircc-ds-color.mix-token(visited, 700);
+  }
+}
+
+jds-link {
+  a {
+    color: var(--link-text);
+  }
+  cursor: pointer;
+}
+
+a {
+  &:active {
+    background: none !important;
+  }
+  // To be removed once core package fix the bug
+  &:hover {
+    background-color: transparent !important;
+  }
+}
