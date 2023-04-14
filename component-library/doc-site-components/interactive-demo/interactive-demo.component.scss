@@ -13,7 +13,9 @@
     border-style: solid;
 
     .test_component {
-        background-color: #868687;
+        background-color: #F5F5F7;
+        display: flex;
+        justify-content: center;
     }
 
     .toggles-accordion {

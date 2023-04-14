@@ -49,6 +49,7 @@ export class KrisComponent extends ParentTemplateComponent implements OnInit {
     title: 'Title text',
     type: 'info',
     dismissible: true,
+    content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
     cta: [
       {
         text: 'Default',

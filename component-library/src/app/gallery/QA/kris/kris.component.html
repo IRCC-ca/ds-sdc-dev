@@ -3,7 +3,9 @@
 <!-- </form> -->
 <app-interactive-demo>
     <ircc-cl-lib-tabs tabs [config]="demoTabsConfig"></ircc-cl-lib-tabs>
-    <ircc-cl-lib-banner component [config]="bannerConfig"></ircc-cl-lib-banner>
+    <div component class="banner-container">
+        <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
+    </div>
     <ng-container toggles *ngFor="let toggle of toggles">
         <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
     </ng-container>
