@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
-import { ShellComponent } from './shell/shell.component';
+import { ShelldModule } from './shell/shell.module';
 import { DsPageModule } from './modules/ds-pages.module';
 
 // Design system modules
@@ -38,8 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LangSwitchComponent,
-    ShellComponent
+    LangSwitchComponent
     // SideNavComponent,
     // TestComponent
   ],
@@ -48,6 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     DsPageModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ShelldModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       // Disable html sanitize to allow generating id

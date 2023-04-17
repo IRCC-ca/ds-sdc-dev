@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ISideNavDataInterface } from '../../side-nav/side-nav.model';
 import { TranslateService } from '@ngx-translate/core';
-import { SideNavConfig } from '../../side-nav/side-nav.config';
 import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
+
+import {
+  slugTitleURLType,
+  slugTitleURLConfig
+} from '@app/title-slug-url/title-slug-url.component';
 
 @Component({
   selector: 'app-overview',
@@ -13,17 +16,28 @@ import { TranslatedPageComponent } from '../translated-page-component';
   providers: [SlugifyPipe]
 })
 export class OverviewComponent implements OnInit, TranslatedPageComponent {
-  rightNavData: ISideNavDataInterface[];
   currentLanguage: string = '';
   altLangLink = 'overview'; // ROUTE translation path
+  slugTitleURLType = slugTitleURLType;
+
+  overViewSlugTitleURLConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Overview.Heading.Title',
+    route: 'Overview.Route',
+    anchor: 'Overview.Heading.Anchor'
+  };
+  contactSlugTitleURLConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Overview.Contact.Title',
+    route: 'Overview.Route',
+    anchor: 'Overview.Contact.Anchor'
+  };
 
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private slugify: SlugifyPipe,
-    private navBarConfig: SideNavConfig
+    private slugify: SlugifyPipe
   ) {
-    this.rightNavData = navBarConfig.getRightNavBarConfig([]);
     this.currentLanguage = translate.currentLang;
   }
 

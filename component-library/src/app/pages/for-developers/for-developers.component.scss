@@ -1,0 +1,12 @@
+@use 'src/scss/grid';
+:host {
+  @include grid.row;
+  @include grid.up-phone-layout() {
+    .col-md-6:nth-child(odd) {
+      padding-right: 12px;
+    }
+    .col-md-6:nth-child(even) {
+      padding-left: 12px;
+    }
+  }
+}

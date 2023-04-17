@@ -1,16 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-@use '../../node_modules/@ircc-ca/ds-sdc-core/index' as ircc-ds;
-@use '../../node_modules/@ircc-ca/ds-sdc-core/util/color' as ircc-ds-color;
-@use '../../node_modules/@ircc-ca/ds-sdc-core/tokens/sizes' as ircc-ds-sizes;
+// @use '../../node_modules/@ircc-ca/ds-sdc-core/index' as ircc-ds;
+// @use '../../../core-library/index' as ircc-ds;
+@use '../../../core-library/util/color' as ircc-ds-color;
+@use '../../../core-library/tokens/sizes' as ircc-ds-sizes;
+// // @use '../../node_modules/@ircc-ca/ds-sdc-core/util/color' as ircc-ds-color;
+// // @use '../../node_modules/@ircc-ca/ds-sdc-core/tokens/sizes' as ircc-ds-sizes;
 @use 'sass:map';
 @import 'grid';
 @import 'table';
 @import 'code';
-@import '../../node_modules/@ircc-ca/ds-sdc-core/layout/layout-grid';
+// // @import '../../node_modules/@ircc-ca/ds-sdc-core/layout/layout-grid';
 
-@include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(), default, large, light);
-@include ircc-ds.element-styles();
+// @include ircc-ds.theme-init-required(
+//   ircc-ds.palette-journeylab(),
+//   default,
+//   large,
+//   light
+// );
+// @include ircc-ds.element-styles();
 
 // Enable Bootstrap row & column support.
 @include make-grid-columns();
@@ -75,7 +83,6 @@ app-root {
   }
 }
 .main-container {
-
   &.nav-open {
     display: flex;
     align-items: flex-start !important;
@@ -106,7 +113,7 @@ app-root {
       @include col-12;
     }
   }
-  .content[role=main] {
+  .content[role='main'] {
     box-sizing: border-box;
     min-height: calc(100vh - 60px);
 
@@ -182,7 +189,7 @@ span {
     font-weight: 700;
     background-color: ircc-ds-color.mix-token(visited, 200);
     padding: 9px 15px;
-    border-radius:50%;
+    border-radius: 50%;
   }
 }
 

@@ -11,8 +11,8 @@ import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loa
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { OverviewComponent } from './pages/overview/overview.component';
-// import { ForDesignersComponent } from './pages/for-designers/for-designers.component';
-// import { PageForDevelopersComponent } from './pages/for-developers/for-developers.component';
+import { ForDesignersComponent } from './pages/for-designers/for-designers.component';
+import { ForDevelopersComponent } from './pages/for-developers/for-developers.component';
 // import { PageButtonComponent } from './pages/button/button.component';
 // import { PageUtilitiesComponent } from './pages/utilities/utilities.component';
 
@@ -36,14 +36,14 @@ const routes: Routes = [
   Shell.childRoutes([
     // English
     { path: 'overview', component: OverviewComponent },
-    // { path: 'designers', component: ForDesignersComponent },
-    // { path: 'developers', component: PageForDevelopersComponent },
+    { path: 'designers', component: ForDesignersComponent },
+    { path: 'developers', component: ForDevelopersComponent },
     // { path: 'utilities', component: PageUtilitiesComponent },
     // { path: 'buttons', component: PageButtonComponent },
     // French
     { path: 'aperçu', component: OverviewComponent },
-    // { path: 'concepteurs', component: ForDesignersComponent },
-    // { path: 'developpeurs', component: PageForDevelopersComponent },
+    { path: 'concepteurs', component: ForDesignersComponent },
+    { path: 'developpeurs', component: ForDevelopersComponent },
     // { path: 'utilitaires', component: PageUtilitiesComponent },
     // { path: 'boutons', component: PageButtonComponent },
     { path: '', redirectTo: '/overview', pathMatch: 'full' }

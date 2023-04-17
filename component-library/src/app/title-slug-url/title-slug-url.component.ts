@@ -1,6 +1,17 @@
-import { AfterContentInit, Component, ElementRef, Input } from '@angular/core';
-import { SlugifyPipe } from '../share/pipe-slugify.pipe';
+import { AfterContentInit, Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { SlugifyPipe } from '../share/pipe-slugify.pipe';
+
+export enum slugTitleURLType {
+  'primary' = 'primary',
+  'secondary' = 'secondary'
+}
+export interface slugTitleURLConfig {
+  type: slugTitleURLType;
+  title: string;
+  route: string;
+  anchor: string;
+}
 
 @Component({
   selector: 'app-title-slug-url',
@@ -9,25 +20,19 @@ import { TranslateService } from '@ngx-translate/core';
   providers: [SlugifyPipe]
 })
 export class TitleSlugUrlComponent implements AfterContentInit {
-  @Input() type: 'primary' | 'secondary' = 'secondary';
-  @Input() notTranslate = ''; // translation binding
-  title = '';
-  titleSlugified = ''; // overview-test
-  slugifiedUrl = ''; // http://localhost:4200/en/overview#overview-test
+  @Input()
+  config!: slugTitleURLConfig;
+  currentLang = '';
+  windowOrigin = '';
 
-  constructor() {} // private translator: TranslateService // private slugify: SlugifyPipe, // private el: ElementRef,
+  constructor(
+    private translator: TranslateService,
+    private slugify: SlugifyPipe
+  ) {
+    this.currentLang = translator.currentLang;
+  }
 
   ngAfterContentInit(): void {
-    // this.title = this.el.nativeElement.innerText;
-    // if (this.translate != '') {
-    //   this.title = this.translator.instant(this.translate);
-    // }
-    // this.titleSlugified = this.slugify.transform(this.title);
-    // console.log(this.titleSlugified);
-    // this.slugifiedUrl =
-    //   this.el.nativeElement.ownerDocument.location.origin +
-    //   this.el.nativeElement.ownerDocument.location.pathname +
-    //   '#' +
-    //   this.titleSlugified;
+    this.windowOrigin = window.location.origin;
   }
 }

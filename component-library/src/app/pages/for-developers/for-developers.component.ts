@@ -5,12 +5,12 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
-  selector: 'app-for-designers',
-  templateUrl: './for-designers.component.html',
-  styleUrls: ['./for-designers.component.scss'],
+  selector: 'app-for-developers',
+  templateUrl: './for-developers.component.html',
+  styleUrls: ['./for-developers.component.scss'],
   providers: [SlugifyPipe]
 })
-export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
+export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'forDesigners';
 
   constructor(

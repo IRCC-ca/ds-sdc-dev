@@ -1,9 +1,7 @@
 <div class="content-doc-wrapper col-12 col-lg-10">
   <app-title-slug-url
-    notTranslate="Overview.Heading"
-    type="primary"
+    [config]="overViewSlugTitleURLConfig"
   ></app-title-slug-url>
-  <h2>Hello</h2>
   <h2
     class="sub-title emphasis"
     [style.margin-top]="0"
@@ -40,10 +38,5 @@
       </div>
     </div>
   </div>
-  <app-title-slug-url
-    [translate]="'LeftSideNav.sub-titles.contact'"
-    type="secondary"
-    >Overview</app-title-slug-url
-  >
-  <p [innerHTML]="'Contact.Text' | translate"></p>
+  <app-title-slug-url [config]="contactSlugTitleURLConfig"></app-title-slug-url>
 </div>

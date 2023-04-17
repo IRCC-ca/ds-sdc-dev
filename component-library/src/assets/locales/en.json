@@ -286,7 +286,15 @@
     }
   },
   "Overview": {
-    "Heading": "Overview",
+    "Route": "overview",
+    "Heading": {
+      "Title": "Overview",
+      "Anchor": "overview"
+    },
+    "Contact": {
+      "Title": "Contact us",
+      "Anchor": "contact-us"
+    },
     "SubHeading": "IRCC design system",
     "Text": "The IRCC design system is a toolkit of shared design and code that provides visual language, components, patterns and guidelines – all in one centralized source of truth that enables product teams to build scalable, accessible, unified experiences. It is customized for the client and officer experience and allows teams to efficiently build consistent immigration digital services.",
     "DesignerHeading": "For designers",

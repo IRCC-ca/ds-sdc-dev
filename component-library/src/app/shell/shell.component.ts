@@ -5,8 +5,6 @@ import {
   OnInit,
   PLATFORM_ID
 } from '@angular/core';
-import { SideNavConfig } from '../side-nav/side-nav.config';
-import { ISideNavDataInterface } from '../side-nav/side-nav.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
@@ -20,7 +18,6 @@ import { DisplayLanguages, Languages } from '../share/global-params';
 })
 export class ShellComponent implements OnInit {
   title = 'ds-sdc-doc';
-  leftNavData: ISideNavDataInterface[];
   mobile = false;
   navStatus = 'nav-open';
   public innerWidth: any; // Width of viewport window
@@ -34,11 +31,8 @@ export class ShellComponent implements OnInit {
     private altLang: LangSwitchService,
     private languageSwitchButton: LanguageSwitchButtonService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: object,
-    private navBarConfig: SideNavConfig
-  ) {
-    this.leftNavData = navBarConfig.getLeftNavBarConfig();
-  }
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {}
 
   ngOnInit(): void {
     this.onResize();

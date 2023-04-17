@@ -1,15 +1,15 @@
 <h2
-  [id]="titleSlugified"
-  [className]="type"
+  [id]="config.anchor"
+  [className]="config.type"
 >
-  Hi!
-  <!-- <ng-content></ng-content> -->
+  {{ config.title | translate }}
 </h2>
-<h2>TESTING1</h2>
-<a [href]="'www.google.ca'">this is a string</a>
-<!-- <a
-  [href]="slugifiedUrl"
-  [cdkCopyToClipboard]="slugifiedUrl"
-  >{{ 'Buttons.CopyURL' | translate }}</a
-> -->
-<h2>Testing2</h2>
+<a
+  routerLink="/{{ currentLang }}/{{ config.route | translate | SlugifyPipe }}"
+  fragment="{{ config.anchor | translate }}"
+  cdkCopyToClipboard="{{ windowOrigin }}/{{ currentLang }}/{{
+    config.route | translate
+  }}#{{ config.anchor | translate }}"
+>
+  {{ 'Buttons.CopyURL' | translate }}
+</a>
