@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TitleSlugUrlComponent } from '@app/title-slug-url/title-slug-url.component';
+import { TitleSlugUrlComponent } from '@app/components/title-slug-url/title-slug-url.component';
 import { OverviewComponent } from '@app/pages/overview/overview.component';
 import { ForDesignersComponent } from '@app/pages/for-designers/for-designers.component';
 import { ForDevelopersComponent } from '@app/pages/for-developers/for-developers.component';

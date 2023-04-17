@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, Input } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { SlugifyPipe } from '../share/pipe-slugify.pipe';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 
 export enum slugTitleURLType {
   'primary' = 'primary',
@@ -9,8 +9,6 @@ export enum slugTitleURLType {
 export interface slugTitleURLConfig {
   type: slugTitleURLType;
   title: string;
-  route: string;
-  anchor: string;
 }
 
 @Component({
@@ -21,18 +19,26 @@ export interface slugTitleURLConfig {
 })
 export class TitleSlugUrlComponent implements AfterContentInit {
   @Input()
-  config!: slugTitleURLConfig;
+  config: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: ''
+  };
   currentLang = '';
+  windowPathname = '';
   windowOrigin = '';
 
-  constructor(
-    private translator: TranslateService,
-    private slugify: SlugifyPipe
-  ) {
+  constructor(private translator: TranslateService) {
     this.currentLang = translator.currentLang;
+  }
+
+  ngOnInit() {
+    this.translator.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentLang = event.lang;
+    });
   }
 
   ngAfterContentInit(): void {
     this.windowOrigin = window.location.origin;
+    this.windowPathname = window.location.pathname;
   }
 }
