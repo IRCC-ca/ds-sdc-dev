@@ -73,13 +73,8 @@ export class DropdownComponent implements OnInit {
 
   }
 
-  toggleSelect() {
-    this.selected = !this.selected;
-    if(this.selected){
-      let flyout = document.getElementById(`${this.config.id}_flyout`);
-      flyout?.addEventListener('keypress', (e : KeyboardEvent)=>{
-        console.log(e.key);
-      })
-    }
+  toggleFlyout(status: boolean) {
+    this.selected = status;
   }
+
 }

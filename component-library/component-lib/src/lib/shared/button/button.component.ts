@@ -36,6 +36,7 @@ export interface IButtonConfig {
     disabled?: boolean;
     icon?: string;
     iconDirection?: keyof typeof ButtonIconDirection;
+    tabIndex?: number;
 };
 
 @Component({
@@ -54,6 +55,7 @@ export class ButtonComponent {
     @Input() disabled?: boolean;
     @Input() icon?: string;
     @Input() iconDirection?: keyof typeof ButtonIconDirection;
+    @Input() tabIndex?: number;
 
     @Output() btnAction : EventEmitter<any> = new EventEmitter();
 
@@ -64,6 +66,7 @@ export class ButtonComponent {
         (this.color === undefined) ? undefined : this.config.color = this.color;
         (this.ariaLabel !== undefined) ? this.config.ariaLabel = this.ariaLabel : undefined;
         (this.disabled !== undefined) ? this.config.disabled = this.disabled : undefined;
+        (this.tabIndex !== undefined) ? this.config.tabIndex = this.tabIndex : undefined;
         if (this.icon || this.config.icon) {
             this.config.icon = this.icon ? this.icon : this.config.icon;
             this.config.iconDirection = this.iconDirection? this.iconDirection : this.config.iconDirection;

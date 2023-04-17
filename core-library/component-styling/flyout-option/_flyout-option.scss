@@ -39,6 +39,11 @@
       }
       
     }
+
+    .selected{
+      background: var(--generic-hover);
+    }
+
     .option{
       &-container {
         margin: 0px 6px;

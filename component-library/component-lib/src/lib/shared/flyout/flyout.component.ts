@@ -7,7 +7,7 @@ export enum IFlyoutSelectTypes {
 }
 
 export interface IFlyoutConfig {
-  id?: string,
+  id: string,
   options?: IFlyoutOptionConfig[],
   disabled?: boolean
   selection?: [] | number,
@@ -21,8 +21,9 @@ export interface IFlyoutConfig {
 export class FlyoutComponent implements OnInit {
 
   @Input() config : IFlyoutConfig = {
+    id: ''
   }
-  @Input() id : string = '';
+  @Input() id? : string;
   @Output() isSelected = new EventEmitter();
 
   selectedIndex : number = -1;
@@ -35,8 +36,8 @@ export class FlyoutComponent implements OnInit {
       while (this.config.options[this.selectedIndex].clickable = false) {
         this.selectedIndex++;
       }
+      this.highlightIndex(this.config.options[this.selectedIndex].id);
     }
-    this.focusIndex();
     console.log('down', this.selectedIndex);
 
   }
@@ -49,8 +50,8 @@ export class FlyoutComponent implements OnInit {
       while (this.config.options[this.selectedIndex].clickable = false) {
         this.selectedIndex--;
       }
+      this.highlightIndex(this.config.options[this.selectedIndex].id);
     }
-    this.focusIndex();
     console.log('up', this.selectedIndex);
   }
 
@@ -61,9 +62,19 @@ export class FlyoutComponent implements OnInit {
     this.optionSelected(this.selectedIndex);
   }
 
-  focusIndex() {
-    if(this.config.options){
-      console.log(this.config.options[this.selectedIndex].id);
+  highlightIndex(el_id: any) {
+    if(el_id){
+      console.log(el_id);
+      let el = document.getElementById(el_id);
+      console.log(el);
+      if (el){
+        document.querySelectorAll('.option-container').forEach(option => {
+          option.classList.remove('selected');
+        });
+        el.parentElement?.parentElement?.classList.add('selected');
+        console.log('in here');
+        el.parentElement?.parentElement?.scrollIntoView({block: "end", behavior: "smooth"});
+      }
     }
   }
 
@@ -80,7 +91,7 @@ export class FlyoutComponent implements OnInit {
   ngOnInit() {
     console.log('Flyout:', this.config);
     if(this.config.type === undefined) this.config.type = 'single';
-    if(this.config.id) this.id = this.config.id;
+    if(this.id) this.config.id = this.id;
   };
 
   optionSelected(i: number){

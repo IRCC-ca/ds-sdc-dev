@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
-import { IDropdownConfig, IFlyoutConfig, IFlyoutOptionConfig } from 'ircc-ds-angular-component-library';
+import { IButtonConfig, IDropdownConfig, IFlyoutConfig, IFlyoutOptionConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-test-page',
@@ -15,33 +15,9 @@ export class TestPageComponent implements OnInit {
     let cont = document.querySelector('.icon-container') as HTMLElement;
     cont.innerHTML = `<span class="fa-regular fa-check"></span>`
   }
-
-  testFlyoutConfig : IFlyoutConfig = {
-    id: '',
-    options : [
-      {
-        value: 'test'
-      },
-      {
-        value: 'anotha test'
-      },
-      {
-        value: 'yet anotha test3'
-      },
-      {
-        value: 'yet anotha test2'
-      },
-      {
-        value: 'yet anotha test1'
-      },
-      {
-        value: 'yet anotha test5'
-      },
-      {
-        value: 'yet anotha test4'
-      }
-      ]
-  };
+  testBtn : IButtonConfig = {
+    id: 'test_btn'
+  }
 
   dropdownConfig : IDropdownConfig = {
     id: 'dropdown_1',

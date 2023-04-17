@@ -1,5 +1,5 @@
 <div class="content-container" [ngClass]="config.size">
-    <button [id]="config.id" (blur)="onBlur($event)" (click)="toggleSelect()" [disabled]="config.disabled"
+    <button [id]="config.id" (focusout)="toggleFlyout(false)" (click)="toggleFlyout(!selected)" [disabled]="config.disabled"
     class="dropdown selected-{{selected}} {{config.category}}" attr.category="{{config.category}}"
     >
       <div class="icon-text-container">
