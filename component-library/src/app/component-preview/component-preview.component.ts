@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-component-preview',
@@ -8,6 +8,5 @@ import {Component, Input} from '@angular/core';
 export class ComponentPreviewComponent {
   @Input() copyText?: string;
 
-  constructor() { }
-
+  constructor() {}
 }

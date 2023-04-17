@@ -1,6 +1,6 @@
-import {Component, Inject, PLATFORM_ID} from '@angular/core';
-import {NavigationEnd, Router, Scroll} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { NavigationEnd, Router, Scroll } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Languages } from './share/global-params';
 // @ts-ignore
 import en from '../assets/locales/en.json';
@@ -14,8 +14,10 @@ const isInViewport = (elem: Element) => {
   return (
     bounding.top >= 0 &&
     bounding.left >= 0 &&
-    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    bounding.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    bounding.right <=
+      (window.innerWidth || document.documentElement.clientWidth)
   );
 };
 @Component({
@@ -47,12 +49,21 @@ export class AppComponent {
      */
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        this.translate.use(this.router.url.includes('/fr') ? Languages.French : Languages.English);
+        this.translate.use(
+          this.router.url.includes('/fr') ? Languages.French : Languages.English
+        );
         //Sets the html language attribute to current language
-        document.documentElement.lang = this.translate.currentLang.substring(0,2);
+        document.documentElement.lang = this.translate.currentLang.substring(
+          0,
+          2
+        );
       }
       // https://gist.github.com/tkutcher/3863b53ea5bc2d766fb22a4b55cac6ca
-      if (event instanceof Scroll && event.anchor && isPlatformBrowser(this.platformId)) {
+      if (
+        event instanceof Scroll &&
+        event.anchor &&
+        isPlatformBrowser(this.platformId)
+      ) {
         setTimeout(() => {
           const targetElement = document.querySelector('#' + event.anchor);
           if (!targetElement) {

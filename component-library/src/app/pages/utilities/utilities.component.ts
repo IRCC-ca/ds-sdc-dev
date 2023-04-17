@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ISideNavDataInterface} from "../../side-nav/side-nav.model";
-import {TranslateService} from "@ngx-translate/core";
-import {SideNavConfig} from "../../side-nav/side-nav.config";
-import {SlugifyPipe} from "../../share/pipe-slugify.pipe";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ISideNavDataInterface } from '../../side-nav/side-nav.model';
+import { TranslateService } from '@ngx-translate/core';
+import { SideNavConfig } from '../../side-nav/side-nav.config';
+import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import {
   breakpoint,
   breakpoints,
@@ -11,10 +11,10 @@ import {
   spacingsFixed,
   typography,
   typographys
-} from "./utilities.constant";
-import {SafeHtmlPipe} from "../../share/safe-html.pipe";
-import {LangSwitchService} from "../../share/lan-switch/lang-switch.service";
-import {TranslatedPageComponent} from "../translated-page-component";
+} from './utilities.constant';
+import { SafeHtmlPipe } from '../../share/safe-html.pipe';
+import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
   selector: 'app-page-token',
@@ -25,13 +25,14 @@ import {TranslatedPageComponent} from "../translated-page-component";
 })
 export class PageUtilitiesComponent implements OnInit, TranslatedPageComponent {
   rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [ // list of all right nav items
+  rightNavDataRaw: string[] = [
+    // list of all right nav items
     'Utilities.Heading',
     'LeftSideNav.sub-titles.colours',
     'LeftSideNav.sub-titles.typography',
     'Utilities.SpacingHeading',
-    'Utilities.BreakpointsHeading',
-  ]
+    'Utilities.BreakpointsHeading'
+  ];
   colorSample: colorSample[] = colorSamples;
   spacingSample: number[] = spacingsFixed;
   breakpoints: breakpoint[] = breakpoints;

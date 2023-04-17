@@ -20,7 +20,6 @@ import { DsPageModule } from './modules/ds-pages.module';
 
 // Design system modules
 
-
 // Components
 // import { SideNavComponent } from './side-nav/side-nav.component';
 // import { SideNavConfig } from './side-nav/side-nav.config';
@@ -40,7 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     LangSwitchComponent,
-    ShellComponent,
+    ShellComponent
     // SideNavComponent,
     // TestComponent
   ],

@@ -7,22 +7,15 @@ import { SafeHtmlPipe } from '@app/share/safe-html.pipe';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { SharedModule } from './shared.module';
 
-
-
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
     OverviewComponent,
     // ForDesignersComponent,
     SlugifyPipe,
-    SafeHtmlPipe,
+    SafeHtmlPipe
   ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ], 
-  exports: [
-    TitleSlugUrlComponent
-  ]
+  imports: [CommonModule, SharedModule],
+  exports: [TitleSlugUrlComponent]
 })
-export class DsPageModule { }
+export class DsPageModule {}

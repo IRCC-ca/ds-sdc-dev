@@ -15,11 +15,7 @@ export class TitleSlugUrlComponent implements AfterContentInit {
   titleSlugified = ''; // overview-test
   slugifiedUrl = ''; // http://localhost:4200/en/overview#overview-test
 
-  constructor(
-    // private el: ElementRef,
-    // private slugify: SlugifyPipe,
-    // private translator: TranslateService
-  ) {}
+  constructor() {} // private translator: TranslateService // private slugify: SlugifyPipe, // private el: ElementRef,
 
   ngAfterContentInit(): void {
     // this.title = this.el.nativeElement.innerText;

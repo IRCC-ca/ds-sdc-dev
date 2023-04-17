@@ -45,13 +45,13 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    var current = '';
+    let current = '';
     //calculating real height of scrollable content
     const height =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
-    var sideNavTitles = document.querySelectorAll('h2');
-    var sideNavLinks = document.querySelectorAll('.right-nav a');
+    const sideNavTitles = document.querySelectorAll('h2');
+    const sideNavLinks = document.querySelectorAll('.right-nav a');
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;

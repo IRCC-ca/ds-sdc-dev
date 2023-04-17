@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IrccDsAngularComponentsSharedModule, IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-library';
+import {
+  IrccDsAngularComponentsSharedModule,
+  IrccDsAngularHeaderFooterModule
+} from 'ircc-ds-angular-component-library';
 import { TranslateModule } from '@ngx-translate/core';
-
-
 
 @NgModule({
   declarations: [],
@@ -19,4 +20,4 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
