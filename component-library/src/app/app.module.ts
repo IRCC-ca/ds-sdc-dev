@@ -12,28 +12,22 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SlugifyPipe } from './share/pipe-slugify.pipe';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
-import { SafeHtmlPipe } from './share/safe-html.pipe';
 import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
 import { ShellComponent } from './shell/shell.component';
+import { DsPageModule } from './modules/ds-pages.module';
 
 // Design system modules
-import { IrccDsAngularComponentsSharedModule } from 'ircc-ds-angular-component-library';
-import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-library';
+
 
 // Components
 // import { SideNavComponent } from './side-nav/side-nav.component';
 // import { SideNavConfig } from './side-nav/side-nav.config';
-import { TitleSlugUrlComponent } from './title-slug-url/title-slug-url.component';
 // import {InfoTextSmallComponent} from './info-text-small/info-text-small.component';
 // import {ComponentPreviewComponent} from './component-preview/component-preview.component';
-import { TestComponent } from './test/test.component';
 
 //Pages
-import { OverviewComponent } from './pages/overview/overview.component';
-import { ForDesignersComponent } from './pages/for-designers/for-designers.component';
 // import {PageButtonComponent} from './pages/button/button.component';
 // import {PageUtilitiesComponent} from './pages/utilities/utilities.component';
 // import {PageForDevelopersComponent} from './pages/for-developers/for-developers.component';
@@ -45,21 +39,15 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    OverviewComponent,
-    ForDesignersComponent,
-    SlugifyPipe,
-    SafeHtmlPipe,
     LangSwitchComponent,
     ShellComponent,
     // SideNavComponent,
-    TitleSlugUrlComponent,
-    TestComponent
+    // TestComponent
   ],
   imports: [
-    IrccDsAngularHeaderFooterModule,
     BrowserModule,
+    DsPageModule,
     BrowserAnimationsModule,
-    IrccDsAngularComponentsSharedModule,
     HttpClientModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
