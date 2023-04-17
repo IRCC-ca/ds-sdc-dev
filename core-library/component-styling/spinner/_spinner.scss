@@ -101,6 +101,11 @@ $selectors: 'ircc-cl-lib-spinner';
       display: flex;
       justify-content: center;
     }
+    .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
   .vertical {
     .container {
