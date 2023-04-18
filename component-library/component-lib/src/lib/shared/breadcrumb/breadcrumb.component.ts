@@ -80,7 +80,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
       this.createOverflows();
       this.isChildOverflow = this.getChildOverflow();
       this.changeRef.detectChanges();
-    }, 0);
+    }, 500);
   }
 
   ngOnChanges(changes: SimpleChanges) {
