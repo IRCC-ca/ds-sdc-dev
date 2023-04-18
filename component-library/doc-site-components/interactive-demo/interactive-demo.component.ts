@@ -12,7 +12,7 @@ export class InteractiveDemoComponent implements OnInit {
     class: 'fa-light fa-chevron-down'
   }
 
-  accordionText = 'DEMO_COMPONENT.ACCORDION_OPEN';
+  accordionText: string = 'DEMO_COMPONENT.ACCORDION_OPEN' || 'DEMO_COMPONENT.ACCORDION_CLOSED';
   isOpen = true;
 
   constructor() { }
