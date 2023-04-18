@@ -8,6 +8,7 @@ import { SafeHtmlPipe } from '@app/share/safe-html.pipe';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { SharedModule } from './shared.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { QaModule } from '@app/pages/QA/qa.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     SlugifyPipe,
     SafeHtmlPipe
   ],
-  imports: [CommonModule, SharedModule, ClipboardModule],
+  imports: [CommonModule, SharedModule, ClipboardModule, QaModule],
   exports: [TitleSlugUrlComponent]
 })
 export class DsPageModule {}
