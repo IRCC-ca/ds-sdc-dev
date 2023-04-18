@@ -13,7 +13,6 @@ export class InteractiveDemoComponent implements OnInit {
   }
 
   accordionText = 'DEMO_COMPONENT.ACCORDION_OPEN';
-
   isOpen = true;
 
   constructor() { }
