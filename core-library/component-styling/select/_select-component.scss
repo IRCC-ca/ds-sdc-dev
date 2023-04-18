@@ -31,7 +31,7 @@ $selectors: 'ircc-cl-lib-select';
 	}
 
 	.select-placeholder {
-		@include typography.fontSet(body, 2);
+		@include typography.fontSet(body, 2, regular);
 		color: var(--text-placeholder)
 	}
 
@@ -56,7 +56,7 @@ $selectors: 'ircc-cl-lib-select';
 	}
 
 	.select-placeholder {
-		@include typography.fontSet(body, 3);
+		@include typography.fontSet(body, 3, regular);
 		color: var(--text-placeholder)
 	}
 

@@ -68,8 +68,7 @@ $selectors: 'ircc-cl-lib-spinner';
     }
   }
   .label {
-    @include typography.fontSet(heading, 4);
-    font-weight: 700;
+    @include typography.fontSet(heading, 4, emphasis);
   }
 }
 
@@ -93,8 +92,7 @@ $selectors: 'ircc-cl-lib-spinner';
   .label {
     margin-left: 8px;
     margin-bottom: 0;
-    @include typography.fontSet(body, 1);
-    font-weight: 400;
+    @include typography.fontSet(body, 1, regular);
   }
 }
 
@@ -193,8 +191,7 @@ $selectors: 'ircc-cl-lib-spinner';
     .label {
       margin-left: 8px;
       margin-bottom: 0;
-      @include typography.fontSet(body, 3);
-      font-weight: 400;
+      @include typography.fontSet(body, 3, regular);
     }
   }
 }
