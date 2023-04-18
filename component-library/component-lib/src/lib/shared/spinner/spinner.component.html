@@ -12,15 +12,21 @@
     }"
   >
     <ng-container [ngSwitch]="config?.type">
-      <div *ngSwitchCase="'success'" class="container">
+      <div
+        *ngSwitchCase="'success'"
+        class="container"
+      >
         <div class="icon-div">
           <i
-            class="fa-circle-check fa-regular spinner-icon"
+            class="fa-check fa-regular spinner-icon"
             title="{{ text[1] }}"
           ></i>
         </div>
         <div class="text">
-          <div class="label" [innerHTML]="config.label"></div>
+          <div
+            class="label"
+            [innerHTML]="config.label"
+          ></div>
           <div
             *ngIf="config?.size === 'large'"
             class="desc"
@@ -28,15 +34,21 @@
           ></div>
         </div>
       </div>
-      <div *ngSwitchCase="'critical'" class="container">
+      <div
+        *ngSwitchCase="'critical'"
+        class="container"
+      >
         <div class="icon-div">
           <i
-            class="fa-circle-exclamation fa-regular spinner-icon"
+            class="fa-exclamation fa-regular spinner-icon"
             title="{{ text[2] }}"
           ></i>
         </div>
         <div class="text">
-          <div class="label" [innerHTML]="config.label"></div>
+          <div
+            class="label"
+            [innerHTML]="config.label"
+          ></div>
           <div
             *ngIf="config?.size === 'large'"
             class="desc"
@@ -44,16 +56,22 @@
           ></div>
         </div>
       </div>
-      <div *ngSwitchDefault class="container">
+      <div
+        *ngSwitchDefault
+        class="container"
+      >
         <div class="icon-div">
           <img
             src="./src/assets/icons/spinner-states.svg"
             alt="{{ text[0] }}"
-            class="spinner-icon animated-icon"
+            class="animated-icon loading-icon"
           />
         </div>
         <div class="text">
-          <div class="label" [innerHTML]="config.label"></div>
+          <div
+            class="label"
+            [innerHTML]="config.label"
+          ></div>
           <div
             *ngIf="config?.size === 'large'"
             class="desc"

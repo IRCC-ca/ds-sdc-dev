@@ -47,13 +47,14 @@ $selectors: 'ircc-cl-lib-spinner';
   .spinner-container {
     height: 80px;
     .icon-div {
+      width: 80px;
       height: 80px;
       border-radius: 50%;
     }
   }
   .spinner-icon {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
   }
   .horizontal {
     .label {
@@ -68,6 +69,7 @@ $selectors: 'ircc-cl-lib-spinner';
   }
   .label {
     @include typography.fontSet(heading, 4);
+    font-weight: 700;
   }
 }
 
@@ -75,30 +77,38 @@ $selectors: 'ircc-cl-lib-spinner';
   .spinner-container {
     height: 28px;
     .icon-div {
+      width: 28px;
       height: 28px;
       border-radius: 50%;
     }
   }
   .spinner-icon {
+    width: 14px;
+    height: 16px;
+  }
+  .loading-icon {
     width: 28px;
     height: 28px;
   }
-    .label {
-      margin-left: 8px;
-      margin-bottom: 0;
-      @include typography.fontSet(body, 1);
-    }
+  .label {
+    margin-left: 8px;
+    margin-bottom: 0;
+    @include typography.fontSet(body, 1);
+    font-weight: 400;
+  }
 }
 
 @mixin layout {
-
-  .spinner-container {
-    width: 100%;
-  }
+  
 
   .horizontal {
     .container {
       display: flex;
+      justify-content: center;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
       justify-content: center;
     }
   }
@@ -117,10 +127,18 @@ $selectors: 'ircc-cl-lib-spinner';
 
   .spinner-container {
     border-radius: 50%;
+    width: 100%;
+  }
+
+  .icon-div {
+    position: relative;
   }
 
   .spinner-icon {
     color: var(--text);
+    position: absolute;
+    top: 25%;
+    left: 25%;
   }
   .animated-icon {
     animation: rotation 1s linear infinite;
@@ -159,11 +177,16 @@ $selectors: 'ircc-cl-lib-spinner';
     .spinner-container {
       height: 20px;
       .icon-div {
+        width: 20px;
         height: 20px;
         border-radius: 50%;
       }
     }
     .spinner-icon {
+      width: 12px;
+      height: 12px;
+    }
+    .loading-icon {
       width: 20px;
       height: 20px;
     }
@@ -171,6 +194,7 @@ $selectors: 'ircc-cl-lib-spinner';
       margin-left: 8px;
       margin-bottom: 0;
       @include typography.fontSet(body, 3);
+      font-weight: 400;
     }
   }
 }

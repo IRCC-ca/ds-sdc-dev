@@ -1,0 +1,43 @@
+@use '../../../core-library/tokens/sizes' as token-size;
+@use '../../../core-library/util/size' as size;
+@use '../../../core-library/tokens/sizes';
+
+
+
+
+.container {
+    border-radius: 5px;
+    border-width: sizes.$fixed-1;
+    border-color: var(--neutral-border);
+    border-style: solid;
+
+    .test_component {
+        background-color: var(--surface1);
+        display: flex;
+        justify-content: center;
+    }
+
+    .hide-show-button {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        height: 48px;
+    }
+
+    .icon-container {
+        padding-right: 9px;
+    }
+
+    .flip-chevron {
+        .custom-chevron {
+            transform: rotateZ(180deg);
+        }
+	}
+
+    .toggles {
+        margin: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
