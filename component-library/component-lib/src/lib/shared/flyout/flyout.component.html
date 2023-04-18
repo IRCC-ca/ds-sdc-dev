@@ -1,0 +1,6 @@
+<div class="flyout-container">
+  <div *ngFor="let option of config?.options; let index = index" class="flyout-option-container">
+    <ircc-cl-lib-flyout-option [config]="option" (click)="optionSelected(index)" [id]="config.id + '_option_' + (index+1)"></ircc-cl-lib-flyout-option>
+  </div>
+</div>
+<span id="sr" class="sr-only" aria-live="polite">{{((a11yText || '') | translate)}}</span>

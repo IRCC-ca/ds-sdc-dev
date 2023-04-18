@@ -1,18 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ButtonCategories } from '../button/button.component';
 import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
-
+import { IFlyoutConfig } from '../flyout/flyout.component';
 export interface IDropdownConfig {
-  id: string;
-  label?: string;
-  size?: keyof typeof DSSizes;
-  category?: keyof typeof ButtonCategories;
-  placeholderText?: string;
-  disabled?: boolean;
-  icon?: IIconButtonIconConfig;
+    id: string;
+    label?: string;
+    size?: keyof typeof DSSizes;
+    category?: keyof typeof ButtonCategories;
+    placeholderText?: string;
+    disabled?: boolean;
+    icon?: IIconButtonIconConfig;
+    flyout?: IFlyoutConfig;
 }
-
 @Component({
   selector: 'ircc-cl-lib-dropdown',
   templateUrl: './drop-down.component.html'
@@ -31,6 +31,23 @@ export class DropdownComponent implements OnInit {
 
   showPlaceholder: boolean = false;
   selected: boolean = false;
+
+  flyoutConfig : IFlyoutConfig = {
+    id: this.config.id + '_flyout',
+    options: [{
+      value: 'Options empty'
+    }]
+  }
+
+  selectedOption(e: Event) {
+    if(e){
+      this.showPlaceholder = false;
+      this.config.label = e.toString();
+      this.selected = !this.selected;
+    }else{
+      this.toggleFlyout(false);
+    }
+  }
 
   ngOnInit() {
     if (this.id !== '') this.config.id = this.id;
@@ -51,13 +68,15 @@ export class DropdownComponent implements OnInit {
       }
       this.showPlaceholder = true;
     }
+
+    if(this.config.flyout) this.flyoutConfig = this.config.flyout;
   }
 
-  toggleSelect() {
-    this.selected = !this.selected;
-  }
-
-  onBlur() {
-    this.selected = false;
+  toggleFlyout(status: boolean, e?: FocusEvent) {
+    let target = e?.currentTarget as HTMLElement;
+    console.log('E:', e, 'TARGET', target, 'iD:', this.config.id);
+    if(target?.id != this.config.id || !e){
+      this.selected = status;
+    }
   }
 }
