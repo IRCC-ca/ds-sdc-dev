@@ -12,6 +12,7 @@ export interface IFlyoutOptionConfig {
   id?: string,
   value: string,
   selected?: boolean,
+  active?: boolean,
   disabled?: boolean,
   type?: keyof typeof IFlyoutOptionType,
   clickable?: boolean

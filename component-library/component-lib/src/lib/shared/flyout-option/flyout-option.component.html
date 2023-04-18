@@ -1,4 +1,4 @@
-<div class="option-container" aria-label="tesing this out">
+<div class="option-container" aria-label="tesing this out" [ngClass]="{ 'selected' : config.active }">
   <lib-button [category]="'plain'" [id]="config.id ? config.id : ''" role="option">
     <div class="option-contents">
       <p class="option-text">{{config.value || '' | translate}}</p>

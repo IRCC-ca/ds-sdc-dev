@@ -41,10 +41,13 @@ export class DropdownComponent implements OnInit {
   }
 
   selectedOption(e: Event) {
-    console.log(e);
-    this.showPlaceholder = false;
-    this.config.label = e.toString();
-    this.selected = !this.selected;
+    if(e){
+      this.showPlaceholder = false;
+      this.config.label = e.toString();
+      this.selected = !this.selected;
+    }else{
+      this.toggleFlyout(false);
+    }
   }
 
   ngOnInit() {

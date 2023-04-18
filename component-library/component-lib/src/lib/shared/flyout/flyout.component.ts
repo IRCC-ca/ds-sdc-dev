@@ -25,9 +25,9 @@ export class FlyoutComponent implements OnInit {
   }
   @Input() id? : string;
   @Output() isSelected = new EventEmitter();
-  @Output() closeFlyout = new EventEmitter();
 
   selectedIndex : number = -1;
+  a11yText : string = '';
 
   @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
@@ -60,22 +60,22 @@ export class FlyoutComponent implements OnInit {
   onEnter(event: KeyboardEvent) {
     event.preventDefault();
     console.log('enter', this.selectedIndex);
-    this.selectedIndex != -1 ? this.optionSelected(this.selectedIndex) : this.closeFlyout.emit();
+    this.selectedIndex != -1 ? this.optionSelected(this.selectedIndex) : this.isSelected.emit(null);
   }
 
   highlightIndex(el_id: any) {
     if(el_id){
-      console.log(el_id);
-      let el = document.getElementById(el_id);
-      console.log(el);
-      if (el){
-        document.querySelectorAll('.option-container').forEach(option => {
-          option.classList.remove('selected');
-        });
-        el.parentElement?.parentElement?.classList.add('selected');
-        console.log('in here');
-        el.parentElement?.parentElement?.scrollIntoView({block: "end", behavior: "smooth"});
-      }
+      this.config.options?.forEach(option => {
+        if(option.id === el_id){
+          option.active = true;
+          let el = document.getElementById(el_id);
+          if (el) el.parentElement?.parentElement?.scrollIntoView({block: "end", behavior: "smooth"});
+          this.a11yText = option.value;
+          if(option.selected) this.a11yText += ' currently selected'; //translation?
+        }else{
+          option.active = false;
+        }
+      });
     }
   }
 

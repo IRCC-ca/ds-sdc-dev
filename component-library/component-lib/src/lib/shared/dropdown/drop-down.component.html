@@ -1,5 +1,5 @@
-<div class="content-container" [ngClass]="config.size" aria-label="testing to see when read">
-    <button aria-haspopup="listbox" [id]="config.id" (focusout)="toggleFlyout(false, $event)" (click)="toggleFlyout(!selected)" [disabled]="config.disabled"
+<div class="content-container" [ngClass]="config.size">
+    <button aria-live="polite" attr.aria-label="{{(('Dropdown' || '') | translate)}}" [id]="config.id" (focusout)="toggleFlyout(false, $event)" (click)="toggleFlyout(!selected)" [disabled]="config.disabled"
     class="dropdown selected-{{selected}} {{config.category}}" attr.category="{{config.category}}"
     >
       <div class="icon-text-container">
@@ -15,4 +15,4 @@
       </div>
     </button>
 </div>
-<lib-flyout [id]="config.id + '_flyout'" *ngIf="selected" [config]="flyoutConfig" (isSelected)="selectedOption($event)" (closeFlyout)="toggleFlyout(false)"></lib-flyout>
+<lib-flyout [id]="config.id + '_flyout'" *ngIf="selected" [config]="flyoutConfig" (isSelected)="selectedOption($event)"></lib-flyout>
