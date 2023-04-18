@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IButtonConfig, IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
+import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-interactive-demo',
@@ -29,5 +29,4 @@ export class InteractiveDemoComponent implements OnInit {
       this.accordionText = 'DEMO_COMPONENT.ACCORDION_OPEN' :
       this.accordionText = 'DEMO_COMPONENT.ACCORDION_CLOSED';
   }
-
 }
