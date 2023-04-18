@@ -21,6 +21,15 @@
 }
 
 @mixin layout {
+  
+  .screen-reader{
+    position: absolute;
+    left:-900000px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+
   .flyout {
     &-container{
       margin-top: 11px;

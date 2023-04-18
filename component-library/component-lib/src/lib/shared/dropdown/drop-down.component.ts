@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ButtonCategories } from '../button/button.component';
 import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
@@ -47,10 +47,6 @@ export class DropdownComponent implements OnInit {
     this.selected = !this.selected;
   }
 
-  onBlur(e: FocusEvent) {
-    console.log('BLUR', e);
-  }
-
   ngOnInit() {
 
     if (this.id !== '') this.config.id = this.id;
@@ -70,11 +66,13 @@ export class DropdownComponent implements OnInit {
     }
 
     if(this.config.flyout) this.flyoutConfig = this.config.flyout;
-
   }
 
-  toggleFlyout(status: boolean) {
-    this.selected = status;
+  toggleFlyout(status: boolean, e?: FocusEvent) {
+    let target = e?.currentTarget as HTMLElement;
+    console.log('E:', e, 'TARGET', target, 'iD:', this.config.id);
+    if(target?.id != this.config.id || !e){
+      this.selected = status;
+    }
   }
-
 }

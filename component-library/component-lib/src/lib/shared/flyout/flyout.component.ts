@@ -25,6 +25,7 @@ export class FlyoutComponent implements OnInit {
   }
   @Input() id? : string;
   @Output() isSelected = new EventEmitter();
+  @Output() closeFlyout = new EventEmitter();
 
   selectedIndex : number = -1;
 
@@ -33,7 +34,7 @@ export class FlyoutComponent implements OnInit {
     event.preventDefault();
     if (this.config.options) {
       this.selectedIndex = Math.min(this.selectedIndex + 1, this.config.options.length - 1);
-      while (this.config.options[this.selectedIndex].clickable = false) {
+      while (this.config.options[this.selectedIndex].clickable === false) {
         this.selectedIndex++;
       }
       this.highlightIndex(this.config.options[this.selectedIndex].id);
@@ -47,7 +48,7 @@ export class FlyoutComponent implements OnInit {
     event.preventDefault();
     this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
     if(this.config.options){
-      while (this.config.options[this.selectedIndex].clickable = false) {
+      while (this.config.options[this.selectedIndex].clickable === false) {
         this.selectedIndex--;
       }
       this.highlightIndex(this.config.options[this.selectedIndex].id);
@@ -59,7 +60,7 @@ export class FlyoutComponent implements OnInit {
   onEnter(event: KeyboardEvent) {
     event.preventDefault();
     console.log('enter', this.selectedIndex);
-    this.optionSelected(this.selectedIndex);
+    this.selectedIndex != -1 ? this.optionSelected(this.selectedIndex) : this.closeFlyout.emit();
   }
 
   highlightIndex(el_id: any) {
@@ -95,12 +96,14 @@ export class FlyoutComponent implements OnInit {
   };
 
   optionSelected(i: number){
+    console.log('CLICK HAPPENING?');
     this.config.options ? console.log(this.config?.options[i]) : null;
-    if(this.config.options && !this.config.options[i].selected && !this.config.options[i].clickable){
+    if(this.config.options && !this.config.options[i].selected && this.config.options[i].clickable){
       console.log(i);
       console.log(this.config.type);
       this.config.type != 'multi' ? this.clearOptions() : /*this.config.selection = [].push(this.config.options[i]);*/null;
       this.config.options[i].selected = true;
+      console.log(this.config.options);
       this.isSelected.emit(this.config.options[i].value);
       }
   }
