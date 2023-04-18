@@ -40,7 +40,7 @@
 
 @mixin small-styles() {
     button.tags-btn {
-        @include typography.fontSet(body, 4);
+        @include typography.fontSet(body, 4, regular);
         &:where([selected])::after {
             transform: translateY(sizes.$fixed-0);
         }
