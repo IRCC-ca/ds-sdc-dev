@@ -7,26 +7,36 @@
 
 
 .container {
-    border-radius: 8px;
+    border-radius: 5px;
     border-width: sizes.$fixed-1;
-    border-color: --neutral; //Not working
+    border-color: var(--neutral-border);
     border-style: solid;
 
     .test_component {
-        background-color: #F5F5F7;
+        background-color: var(--surface1);
         display: flex;
         justify-content: center;
     }
 
-    .toggles-accordion {
+    .hide-show-button {
+        width: 100%;
         display: flex;
-        justify-content: center;
+        align-items: center;
+        height: 48px;
     }
+
+    .icon-container {
+        padding-right: 9px;
+    }
+
+    .flip-chevron {
+        .custom-chevron {
+            transform: rotateZ(180deg);
+        }
+	}
 
     .toggles {
-        margin-left: 28px;
-        margin-right: 28px; 
-        margin-bottom: 28px;
+        margin: 28px;
         display: grid;
         grid-template-columns: 1fr 1fr;
     }

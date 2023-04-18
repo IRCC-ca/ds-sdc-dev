@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IButtonConfig } from 'ircc-ds-angular-component-library';
+import { IButtonConfig, IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-interactive-demo',
@@ -8,24 +8,15 @@ import { IButtonConfig } from 'ircc-ds-angular-component-library';
 })
 export class InteractiveDemoComponent implements OnInit {
 
-  accordionButtonOpenConfig: IButtonConfig = {
-    id: 'accordionButton',
-    category: 'plain',
-    icon: 'fa-light fa-chevron-up'
-  };
+  iconConfig: IIconButtonIconConfig = {
+    class: 'fa-light fa-chevron-down'
+  }
 
-  accordionButtonClosedConfig: IButtonConfig = {
-    id: 'accordionButton',
-    category: 'plain',
-    icon: 'fa-light fa-chevron-down'
-  };
-
-  accordionOpen = 'DEMO_COMPONENT.ACCORDION_OPEN';
-  accordionClosed = 'DEMO_COMPONENT.ACCORDION_CLOSED';
+  accordionText = 'DEMO_COMPONENT.ACCORDION_OPEN';
 
   isOpen = true;
 
-  constructor() {}
+  constructor() { }
 
 
   ngOnInit() {
@@ -33,6 +24,10 @@ export class InteractiveDemoComponent implements OnInit {
 
   toggle() {
     this.isOpen = !this.isOpen;
+
+    this.isOpen ?
+      this.accordionText = 'DEMO_COMPONENT.ACCORDION_OPEN' :
+      this.accordionText = 'DEMO_COMPONENT.ACCORDION_CLOSED';
   }
 
 }
