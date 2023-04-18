@@ -26,7 +26,7 @@
   ircc-cl-lib-breadcrumb-link {
     a,
     ircc-cl-lib-button .text {
-      @include typography.fontSet(body, 3);
+      @include typography.fontSet(body, 3, regular);
     }
 
     &.breadcrumb-root {
@@ -39,7 +39,7 @@
   }
 
   p {
-    @include typography.fontSet(body, 3);
+    @include typography.fontSet(body, 3, regular);
 
     &.breadcrumb-child {
       margin-left: 8px;
@@ -59,7 +59,7 @@
 
     a,
     ircc-cl-lib-button .text {
-      @include typography.fontSet(body, 2);
+      @include typography.fontSet(body, 2, regular);
     }
 
     &.breadcrumb-item {
@@ -72,7 +72,7 @@
   }
 
   p {
-    @include typography.fontSet(body, 2);
+    @include typography.fontSet(body, 2, regular);
 
     margin: 0;
 

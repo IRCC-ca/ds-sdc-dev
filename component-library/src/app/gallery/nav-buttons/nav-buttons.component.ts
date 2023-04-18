@@ -37,7 +37,7 @@ export class NavButtonsComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
     private languageSwitchButton: LanguageSwitchButtonService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.setBaseUrl(); //set initial base url
@@ -51,14 +51,13 @@ export class NavButtonsComponent implements OnInit {
       }
     });
 
-
     //subscribes to route changes or page reload and updates active button
-    this.setActiveButtonByUrl()
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.setActiveButtonByUrl()
-    });
+    this.setActiveButtonByUrl();
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.setActiveButtonByUrl();
+      });
   }
 
   /**
@@ -116,14 +115,13 @@ export class NavButtonsComponent implements OnInit {
   }
 
   setActiveButtonByUrl() {
-    const lastUrlSegment = this.router.url.split('?')[0].split('/').pop()
-    this.config?.buttons.forEach(button => {
+    const lastUrlSegment = this.router.url.split('?')[0].split('/').pop();
+    this.config?.buttons.forEach((button) => {
       if (this.translate.instant('ROUTES.' + button.url) === lastUrlSegment) {
-        button.category = "primary";
+        button.category = 'primary';
+      } else {
+        button.category = 'secondary';
       }
-      else {
-        button.category = "secondary";
-      }
-    })
+    });
   }
 }

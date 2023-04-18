@@ -39,7 +39,7 @@
         width: 130px;
         height: 20px;
         font-style: normal;
-        @include typography.fontSet(body, 3);
+        @include typography.fontSet(body, 3, regular);
         color: var(--text-primary);
         flex: none;
         order: 0;
