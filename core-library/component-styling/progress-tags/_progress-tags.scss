@@ -41,7 +41,7 @@
     }
     .content {
         margin-left: 6px;
-        @include typography.fontSet(body, 3);
+        @include typography.fontSet(body, 3, regular);
     }
 }
 
@@ -57,7 +57,7 @@
     }
     .content {
         margin-left: 5px;
-        @include typography.fontSet(body, 4);
+        @include typography.fontSet(body, 4, regular);
     }
 }
 

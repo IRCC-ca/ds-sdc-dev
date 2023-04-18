@@ -23,17 +23,17 @@
 
 @mixin large-styles() {
     button.tags-btn {
-        @include typography.fontSet(body, 3);
+        @include typography.fontSet(body, 3, regular);
         &:where([selected])::after {
             transform: translateY(sizes.$fixed-0);
         }
     }
     button.tags-btn-plus {
-        @include typography.fontSet(body, 3); 
+        @include typography.fontSet(body, 3, regular); 
         padding-bottom: 4px;
     }
     .stepTitle {
-        @include typography.fontSet(heading, 5);
+        @include typography.fontSet(heading, 5, regular);
         margin-bottom: 8px;
     }
   }
@@ -46,11 +46,11 @@
         }
     }
     button.tags-btn-plus {
-        @include typography.fontSet(body, 4);
+        @include typography.fontSet(body, 4, regular);
         padding-bottom: 4px;
     }
     .stepTitle {
-        @include typography.fontSet(heading, 6);
+        @include typography.fontSet(heading, 6, regular);
         margin-bottom: 4px;
     }
   }
