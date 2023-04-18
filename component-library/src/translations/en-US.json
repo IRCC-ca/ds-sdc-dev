@@ -28,6 +28,10 @@
     "michael": "michael-en",
     "michael-alt": "michael-fr"
   },
+  "DEMO_COMPONENT": {
+    "ACCORDION_OPEN": "Hide configurations",
+    "ACCORDION_CLOSED": "Show configurations"
+  },
   "BUTTONS": {
     "Back": "Back",
     "FormInputs": "Form Inputs",
