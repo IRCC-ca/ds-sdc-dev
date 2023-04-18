@@ -29,7 +29,7 @@ export class AppComponent {
   title = 'ds-sdc-doc';
   mobile = false;
   navStatus = 'nav-open';
-  public innerWidth: any; // Width of viewport window
+  innerWidth: any; // Width of viewport window
   readonly HEADER_OFFSET = -190;
   readonly SCROLL_DELAY = 200;
 
