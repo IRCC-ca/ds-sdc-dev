@@ -92,6 +92,7 @@
 }
 
 @mixin layout {
+  display: block;
   padding: 6px 0;
   position: relative;
 
