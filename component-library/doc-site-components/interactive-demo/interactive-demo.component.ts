@@ -13,7 +13,7 @@ export class InteractiveDemoComponent implements OnInit {
   }
 
   accordionText: string = 'DEMO_COMPONENT.ACCORDION_OPEN' || 'DEMO_COMPONENT.ACCORDION_CLOSED';
-  isOpen = true;
+  isOpen: boolean = true;
 
   constructor() { }
 
