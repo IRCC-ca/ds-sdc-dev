@@ -18,19 +18,6 @@ import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
 import { ShelldModule } from './shell/shell.module';
 import { DsPageModule } from './modules/ds-pages.module';
 
-// Design system modules
-
-// Components
-// import { SideNavComponent } from './side-nav/side-nav.component';
-// import { SideNavConfig } from './side-nav/side-nav.config';
-// import {InfoTextSmallComponent} from './info-text-small/info-text-small.component';
-// import {ComponentPreviewComponent} from './component-preview/component-preview.component';
-
-//Pages
-// import {PageButtonComponent} from './pages/button/button.component';
-// import {PageUtilitiesComponent} from './pages/utilities/utilities.component';
-// import {PageForDevelopersComponent} from './pages/for-developers/for-developers.component';
-
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locales/', '.json');
 }

@@ -38,14 +38,12 @@ const routes: Routes = [
     { path: 'overview', component: OverviewComponent },
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
-    // { path: 'utilities', component: PageUtilitiesComponent },
-    // { path: 'buttons', component: PageButtonComponent },
+    
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
-    // { path: 'utilitaires', component: PageUtilitiesComponent },
-    // { path: 'boutons', component: PageButtonComponent },
+    
     { path: '', redirectTo: '/overview', pathMatch: 'full' }
   ]),
   { path: '**', redirectTo: '/overview', pathMatch: 'full' }
