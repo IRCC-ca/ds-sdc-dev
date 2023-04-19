@@ -27,7 +27,11 @@ import { InteractiveDemoComponent } from 'doc-site-components/interactive-demo/i
     IrccDsAngularHeaderFooterModule,
     IrccDsAngularComponentsSharedModule
   ],
-  declarations: [NavButtonsComponent, PreventTabOutDirective, InteractiveDemoComponent],
+  declarations: [
+    NavButtonsComponent,
+    PreventTabOutDirective,
+    InteractiveDemoComponent
+  ],
   exports: [
     IrccDsAngularBannerModule,
     IrccDsAngularFormComponentsModule,

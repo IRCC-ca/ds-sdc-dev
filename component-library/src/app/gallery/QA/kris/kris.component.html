@@ -2,11 +2,20 @@
 <!-- <app-auto-tester [config]="autoTestConfig"></app-auto-tester> -->
 <!-- </form> -->
 <app-interactive-demo>
-    <ircc-cl-lib-tabs tabs [config]="demoTabsConfig"></ircc-cl-lib-tabs>
-    <div component class="banner-container">
-        <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
-    </div>
-    <ng-container toggles *ngFor="let toggle of toggles">
-        <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
-    </ng-container>
+  <ircc-cl-lib-tabs
+    tabs
+    [config]="demoTabsConfig"
+  ></ircc-cl-lib-tabs>
+  <div
+    component
+    class="banner-container"
+  >
+    <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
+  </div>
+  <ng-container
+    toggles
+    *ngFor="let toggle of toggles"
+  >
+    <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+  </ng-container>
 </app-interactive-demo>

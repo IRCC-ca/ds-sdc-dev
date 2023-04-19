@@ -49,7 +49,8 @@ export class KrisComponent extends ParentTemplateComponent implements OnInit {
     title: 'Title text',
     type: 'info',
     dismissible: true,
-    content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
+    content:
+      'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
     cta: [
       {
         text: 'Default',
@@ -141,9 +142,7 @@ export class KrisComponent extends ParentTemplateComponent implements OnInit {
         }
       ]
     }
-  ]
-
-
+  ];
 
   constructor(
     altLang: LanguageSwitchService,
@@ -155,9 +154,12 @@ export class KrisComponent extends ParentTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.altLang.setAltLangLink('kris-alt');
-    this.toggles.forEach(toggle => {
-      if (toggle.options && toggle.options[0].text){
-        this.form.addControl(toggle.id, new FormControl(toggle.options[0].text))
+    this.toggles.forEach((toggle) => {
+      if (toggle.options && toggle.options[0].text) {
+        this.form.addControl(
+          toggle.id,
+          new FormControl(toggle.options[0].text)
+        );
       }
     });
   }
