@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LanguageSwitchService } from '@app/@shared/language-switch/language-switch.service';
 import {
   ButtonColor,
@@ -69,6 +69,22 @@ export class NaseerComponent implements OnInit {
       dayUnknown: true,
       monthUnknown: true,
       yearUnknown: true
+    },
+    errorMessages: {
+      general: [
+        {
+          key: 'required',
+          errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        }
+      ]
     }
   };
 
@@ -84,6 +100,22 @@ export class NaseerComponent implements OnInit {
       dayUnknown: true,
       monthUnknown: true,
       yearUnknown: true
+    },
+    errorMessages: {
+      general: [
+        {
+          key: 'required',
+          errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        }
+      ]
     }
   };
 
@@ -261,7 +293,7 @@ export class NaseerComponent implements OnInit {
     testFields: this.testerConfigTextarea
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
     this.altLang.setAltLangLink('naseer-alt');
@@ -326,15 +358,15 @@ export class NaseerComponent implements OnInit {
     //******************************************************************************************************** */
     this.form_date_picker.addControl(
       this.qaDateOfBirthDatePickerConfig.id + '_dayControl',
-      new FormControl('')
+      new FormControl('', Validators.required)
     );
     this.form_date_picker.addControl(
       this.qaDateOfBirthDatePickerConfig.id + '_monthControl',
-      new FormControl('')
+      new FormControl('', Validators.required)
     );
     this.form_date_picker.addControl(
       this.qaDateOfBirthDatePickerConfig.id + '_yearControl',
-      new FormControl('')
+      new FormControl('', Validators.required)
     );
   }
 
@@ -378,8 +410,8 @@ export class NaseerComponent implements OnInit {
       case 'inputError':
         this.form_textarea.get(this.qaTextareaInput.id)?.valid
           ? this.form_textarea
-              .get(this.qaTextareaInput.id)
-              ?.setErrors({ invalid: true })
+            .get(this.qaTextareaInput.id)
+            ?.setErrors({ invalid: true })
           : this.form_textarea.get(this.qaTextareaInput.id)?.reset();
 
         this.form_textarea.updateValueAndValidity();
@@ -406,11 +438,11 @@ export class NaseerComponent implements OnInit {
       case 'disable-textarea':
         this.qaTextareaInput?.formGroup.get(this.qaTextareaInput.id)?.disabled
           ? this.qaTextareaInput?.formGroup
-              .get(this.qaTextareaInput.id)
-              ?.enable()
+            .get(this.qaTextareaInput.id)
+            ?.enable()
           : this.qaTextareaInput?.formGroup
-              .get(this.qaTextareaInput.id)
-              ?.disable();
+            .get(this.qaTextareaInput.id)
+            ?.disable();
         break;
     }
   }
