@@ -1,0 +1,292 @@
+@use '../../../core-library/tokens/sizes' as ircc-ds-sizes;
+@import 'functions';
+
+// Referenced from bootstrap's grid system https://getbootstrap.com/docs/4.0/layout/grid/
+// To be replaced by ircc design system's grid system.
+
+@mixin col-1 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 8.33333%;
+  flex: 0 0 8.33333%;
+  max-width: 8.33333%;
+}
+
+@mixin col-2 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 16.66667%;
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
+}
+
+$col-2-width: 16.66667%;
+
+@mixin col-3 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+$col-3-width: 25%;
+
+@mixin col-4 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 33.33333%;
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+
+@mixin col-5 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 41.66667%;
+  flex: 0 0 41.66667%;
+  max-width: 41.66667%;
+}
+
+@mixin col-6 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+@mixin col-7 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 58.33333%;
+  flex: 0 0 58.33333%;
+  max-width: 58.33333%;
+}
+
+@mixin col-8 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 66.66667%;
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+}
+
+@mixin col-9 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 75%;
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+@mixin col-10 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 83.33333%;
+  flex: 0 0 83.33333%;
+  max-width: 83.33333%;
+}
+
+@mixin col-11 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 91.66667%;
+  flex: 0 0 91.66667%;
+  max-width: 91.66667%;
+}
+
+@mixin col-12 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@mixin row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Media Queries Preset
+$screen_sm: ircc-ds-sizes.$bp-width-phone;
+$screen_md: ircc-ds-sizes.$bp-width-tablet;
+$screen_lg: 992px;
+$screen_xl: ircc-ds-sizes.$bp-width-desktop;
+
+// Interim fix until node_modules/@ircc-ca/ds-sdc-core/util/_device.scss's bug is fixed
+@mixin in-phone-layout {
+  @media only screen and (max-width: $screen_md - 1px) {
+    @content;
+  }
+}
+
+// Screen width above phone layout
+@mixin up-phone-layout {
+  @media only screen and (min-width: $screen_md) {
+    @content;
+  }
+}
+
+@mixin in-tablet-layout {
+  @media only screen and (min-width: $screen_md) and (max-width: $screen_lg - 1px) {
+    @content;
+  }
+}
+
+// Screen width under tablet layout
+@mixin un-tablet-layout {
+  @media only screen and (max-width: $screen_lg - 1px) {
+    @content;
+  }
+}
+
+@mixin in-laptop-layout {
+  @media only screen and (min-width: $screen_lg) and (max-width: $screen_xl - 1px) {
+    @content;
+  }
+}
+
+// Screen width under laptop layout
+@mixin un-laptop-layout {
+  @media only screen and (max-width: $screen_xl - 1px) {
+    @content;
+  }
+}
+
+// Screen width above laptop layout
+@mixin up-laptop-layout {
+  @media only screen and (min-width: $screen_lg) {
+    @content;
+  }
+}
+
+@mixin in-desktop-layout {
+  @media only screen and (min-width: $screen_xl) {
+    @content;
+  }
+}
+
+@mixin un-desktop-layout {
+  @media only screen and (max-width: $screen_xl - 1px) {
+    @content;
+  }
+}
+
+// The following was copied & modified from https://github.com/twbs/bootstrap/blob/main/scss/_grid.scss
+// scss-docs-start grid-breakpoints
+// Aligned with IRCC Design System Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: $screen_sm,
+  md: $screen_md,
+  lg: $screen_lg,
+  xl: $screen_xl
+) !default;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+$grid-row-columns: 6 !default;
+
+@mixin make-col-ready() {
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+// Convenience classes for grid layout.
+.row {
+  @include row;
+
+  > * {
+    @include make-col-ready();
+  }
+}
+
+@mixin make-col($size: false, $columns: $grid-columns) {
+  @if $size {
+    flex: 0 0 auto !important;
+    width: percentage(divide($size, $columns));
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+
+@mixin make-grid-columns(
+  $columns: $grid-columns,
+  $gutter: $grid-gutter-width,
+  $breakpoints: $grid-breakpoints
+) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$infix} {
+        flex: 1 0 0; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      }
+
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        // `$columns - 1` because offsetting by the width of an entire row isn't possible
+        @for $i from 0 through ($columns - 1) {
+          @if not($infix == '' and $i == 0) {
+            // Avoid emitting useless .offset-0
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// Row columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// number of columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: divide(100%, $count);
+  }
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: divide($size, $columns);
+  margin-left: if($num == 0, 0, percentage($num));
+}
