@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   ButtonColor,
   ButtonIconDirection,
@@ -69,6 +69,22 @@ export class NaseerComponent implements OnInit {
       dayUnknown: true,
       monthUnknown: true,
       yearUnknown: true
+    },
+    errorMessages: {
+      general: [
+        {
+          key: 'required',
+          errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        }
+      ]
     }
   };
 
@@ -84,6 +100,22 @@ export class NaseerComponent implements OnInit {
       dayUnknown: true,
       monthUnknown: true,
       yearUnknown: true
+    },
+    errorMessages: {
+      general: [
+        {
+          key: 'required',
+          errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        },
+        {
+          key: 'required',
+          errorLOV: 'ERROR.testErrorMessage'
+        }
+      ]
     }
   };
 
@@ -261,10 +293,10 @@ export class NaseerComponent implements OnInit {
     testFields: this.testerConfigTextarea
   };
 
-  constructor() {}
+  constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
-    // this.altLang.setAltLangLink('naseer-alt');
+    this.altLang.setAltLangLink('naseer-alt');
 
     //******************************************************************************************************** */
     //********************************* Input Component Tester *********************************************** */
@@ -326,15 +358,15 @@ export class NaseerComponent implements OnInit {
     //******************************************************************************************************** */
     this.form_date_picker.addControl(
       this.qaDateOfBirthDatePickerConfig.id + '_dayControl',
-      new FormControl('')
+      new FormControl('', Validators.required)
     );
     this.form_date_picker.addControl(
       this.qaDateOfBirthDatePickerConfig.id + '_monthControl',
-      new FormControl('')
+      new FormControl('', Validators.required)
     );
     this.form_date_picker.addControl(
       this.qaDateOfBirthDatePickerConfig.id + '_yearControl',
-      new FormControl('')
+      new FormControl('', Validators.required)
     );
   }
 
@@ -411,6 +443,12 @@ export class NaseerComponent implements OnInit {
           : this.qaTextareaInput?.formGroup
               .get(this.qaTextareaInput.id)
               ?.disable();
+        break;
+      case 'setErrorDate':
+        this.form_date_picker.markAllAsTouched();
+        break;
+      case 'removeErrorDate':
+        this.form_date_picker.markAsUntouched();
         break;
     }
   }
