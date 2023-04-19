@@ -108,5 +108,19 @@
     <ircc-cl-lib-date-picker
       [config]="qaDateOfBirthDatePickerConfig2"
     ></ircc-cl-lib-date-picker>
+    <div class="errorButtonContainer">
+      <button
+        class="errorButton"
+        (click)="buttonActions('setErrorDate')"
+      >
+        Set Error
+      </button>
+      <button
+        class="errorButton"
+        (click)="buttonActions('removeErrorDate')"
+      >
+        Remove Error
+      </button>
+    </div>
   </div>
 </ng-container>
