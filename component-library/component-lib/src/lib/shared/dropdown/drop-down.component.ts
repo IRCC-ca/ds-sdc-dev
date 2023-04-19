@@ -40,6 +40,7 @@ export class DropdownComponent implements OnInit {
   }
 
   selectedOption(e: Event) {
+    //if it receives it's event info it selects the index - if not closes flyout
     if(e){
       this.showPlaceholder = false;
       this.config.label = e.toString();
@@ -72,9 +73,9 @@ export class DropdownComponent implements OnInit {
     if(this.config.flyout) this.flyoutConfig = this.config.flyout;
   }
 
+  //function receives a truthy value which determines wether it closes or opens, but also looks for FocusEvent to check if flyout is being interacted with
   toggleFlyout(status: boolean, e?: FocusEvent) {
     let target = e?.currentTarget as HTMLElement;
-    console.log('E:', e, 'TARGET', target, 'iD:', this.config.id);
     if(target?.id != this.config.id || !e){
       this.selected = status;
     }

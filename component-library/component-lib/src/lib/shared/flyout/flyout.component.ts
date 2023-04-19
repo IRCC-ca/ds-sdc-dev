@@ -34,13 +34,12 @@ export class FlyoutComponent implements OnInit {
     event.preventDefault();
     if (this.config.options) {
       this.selectedIndex = Math.min(this.selectedIndex + 1, this.config.options.length - 1);
+      //while loop skips through any non-clickable options
       while (this.config.options[this.selectedIndex].clickable === false) {
         this.selectedIndex++;
       }
       this.highlightIndex(this.config.options[this.selectedIndex].id);
     }
-    console.log('down', this.selectedIndex);
-
   }
 
   @HostListener('document:keydown.arrowup', ['$event'])
@@ -48,21 +47,23 @@ export class FlyoutComponent implements OnInit {
     event.preventDefault();
     this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
     if(this.config.options){
+      //while loop skips through any non-clickable options
       while (this.config.options[this.selectedIndex].clickable === false) {
         this.selectedIndex--;
       }
       this.highlightIndex(this.config.options[this.selectedIndex].id);
     }
-    console.log('up', this.selectedIndex);
   }
 
   @HostListener('document:keydown.enter', ['$event'])
   onEnter(event: KeyboardEvent) {
     event.preventDefault();
     console.log('enter', this.selectedIndex);
+    //if the index hasn't changes through arrow navigation, emits our event but lets the parent know nothing was selected
     this.selectedIndex != -1 ? this.optionSelected(this.selectedIndex) : this.isSelected.emit(null);
   }
 
+  //takes in the active index from HostListeners and sets the config option to active state which triggers styling
   highlightIndex(el_id: any) {
     if(el_id){
       this.config.options?.forEach(option => {
@@ -71,6 +72,7 @@ export class FlyoutComponent implements OnInit {
           let el = document.getElementById(el_id);
           if (el) el.parentElement?.parentElement?.scrollIntoView({block: "end", behavior: "smooth"});
           this.a11yText = option.value;
+          //updates a11yText to indicate currently selected item if scrolling through flyout again
           if(option.selected) this.a11yText += ' currently selected'; //translation?
         }else{
           option.active = false;
@@ -79,31 +81,27 @@ export class FlyoutComponent implements OnInit {
     }
   }
 
+  //clears all selections by setting the option.selected to false
   clearOptions(){
-    console.log('getting here?');
     this.config?.options?.forEach(option => {
       option.selected = false;
     });
-    console.log('THE OPTIONS', this.config.options);
   }
 
   constructor() { }
 
   ngOnInit() {
-    console.log('Flyout:', this.config);
     if(this.config.type === undefined) this.config.type = 'single';
     if(this.id) this.config.id = this.id;
   };
 
+  //function takes in index value of current active option and selects it
   optionSelected(i: number){
-    console.log('CLICK HAPPENING?');
-    this.config.options ? console.log(this.config?.options[i]) : null;
     if(this.config.options && !this.config.options[i].selected && this.config.options[i].clickable){
-      console.log(i);
-      console.log(this.config.type);
+      //setup for future multi select feature
       this.config.type != 'multi' ? this.clearOptions() : /*this.config.selection = [].push(this.config.options[i]);*/null;
       this.config.options[i].selected = true;
-      console.log(this.config.options);
+      //emits the value of the selected index so it's visible to the parent
       this.isSelected.emit(this.config.options[i].value);
       }
   }
