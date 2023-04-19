@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavButtonsComponent } from '../nav-buttons/nav-buttons.component';
 import { RouterModule } from '@angular/router';
 import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
-import { InteractiveDemoComponent } from 'doc-site-components/interactive-demo/interactive-demo.component';
+import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
 
 @NgModule({
   imports: [
