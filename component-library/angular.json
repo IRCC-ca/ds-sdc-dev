@@ -38,7 +38,7 @@
                 "output": "src/assets"
               }
             ],
-            "styles": ["src/main.scss"],
+            "styles": ["src/scss/styles.scss"],
             "scripts": []
           },
           "configurations": {

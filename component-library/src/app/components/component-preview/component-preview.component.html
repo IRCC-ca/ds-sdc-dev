@@ -1,0 +1,12 @@
+<div class="preview-wrapper">
+  <ng-content></ng-content>
+  <jds-button
+    *ngIf="copyText"
+    [cdkCopyToClipboard]="copyText"
+    size="small"
+    category="plain"
+    class="copy"
+  >
+    {{ 'Buttons.CopyCode' | translate }}
+  </jds-button>
+</div>

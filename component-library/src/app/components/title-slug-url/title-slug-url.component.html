@@ -1,0 +1,15 @@
+<h2
+  id="{{ config.title | translate | SlugifyPipe }}"
+  [className]="config.type"
+>
+  {{ config.title | translate }}
+</h2>
+<a
+  routerLink="{{ windowPathname }}"
+  fragment="{{ config.title | translate | SlugifyPipe }}"
+  cdkCopyToClipboard="{{ windowOrigin }}{{ windowPathname }}#{{
+    config.title | translate | SlugifyPipe
+  }}"
+>
+  {{ 'Buttons.CopyURL' | translate }}
+</a>
