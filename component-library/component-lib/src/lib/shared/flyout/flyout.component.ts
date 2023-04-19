@@ -1,5 +1,5 @@
-import { Component, Input, Output, OnInit, EventEmitter, HostListener } from '@angular/core';
-import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
+import { Component, Input, Output, OnInit, EventEmitter, HostListener, ViewChildren, ElementRef } from '@angular/core';
+import { FlyoutOptionComponent, IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
 
 export enum IFlyoutSelectTypes {
   single = 'single',
@@ -19,6 +19,8 @@ export interface IFlyoutConfig {
   templateUrl: './flyout.component.html'
 })
 export class FlyoutComponent implements OnInit {
+  @ViewChildren('selected') optionContainers!: ElementRef;
+
 
   @Input() config : IFlyoutConfig = {
     id: ''
@@ -28,6 +30,7 @@ export class FlyoutComponent implements OnInit {
 
   selectedIndex : number = -1;
   a11yText : string = '';
+
 
   @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
@@ -69,8 +72,10 @@ export class FlyoutComponent implements OnInit {
       this.config.options?.forEach(option => {
         if(option.id === el_id){
           option.active = true;
-          let el = document.getElementById(el_id);
-          if (el) el.parentElement?.parentElement?.scrollIntoView({block: "end", behavior: "smooth"});
+          // let el = document.getElementById(el_id);
+          // el.scrollIntoView({block: "end", behavior: "smooth"});
+          console.log(this.optionContainers);
+          this.optionContainers.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end" });
           this.a11yText = option.value;
           //updates a11yText to indicate currently selected item if scrolling through flyout again
           if(option.selected) this.a11yText += ' currently selected'; //translation?
