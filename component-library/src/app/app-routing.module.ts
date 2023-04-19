@@ -20,6 +20,7 @@ import { MahsaComponent } from './pages/QA/mahsa/mahsa.component';
 import { MichaelComponent } from './pages/QA/michael/michael.component';
 import { MikeComponent } from './pages/QA/mike/mike.component';
 import { NaseerComponent } from './pages/QA/naseer/naseer.component';
+import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
 
 import { Shell } from './shell/shell.service';
 
@@ -55,6 +56,14 @@ const routes: Routes = [
 
     { path: 'naseer-en', component: NaseerComponent }, //English
     { path: 'naseer-fr', component: NaseerComponent }, //French
+
+    {
+      path: 'accessibility-demo',
+      loadChildren: () =>
+        import('./pages/QA/accessibility-demo/accessibility-demo.module').then(
+          (m) => m.AccessibilityDemoModule
+        )
+    },
 
     // French
     { path: 'aperçu', component: OverviewComponent },
