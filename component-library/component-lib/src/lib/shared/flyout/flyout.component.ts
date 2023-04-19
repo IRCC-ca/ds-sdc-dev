@@ -68,7 +68,6 @@ export class FlyoutComponent implements OnInit {
   @HostListener('document:keydown.enter', ['$event'])
   onEnter(event: KeyboardEvent) {
     event.preventDefault();
-    console.log('enter', this.selectedIndex);
     //if the index hasn't changes through arrow navigation, emits our event but lets the parent know nothing was selected
     this.selectedIndex != -1 ? this.optionSelected(this.selectedIndex) : this.isSelected.emit(null);
   }

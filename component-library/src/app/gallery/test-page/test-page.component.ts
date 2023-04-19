@@ -45,7 +45,7 @@ export class TestPageComponent implements OnInit {
         },
         {
           value: 'yet anotha test1',
-          clickable:false
+          clickable: false
         },
         {
           value: 'yet anotha test5'
