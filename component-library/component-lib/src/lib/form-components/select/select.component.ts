@@ -19,17 +19,11 @@ import {
 } from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
 
-// export declare enum SelectType {
-//   secondary = "secondary",
-//   primary = "primary",
-//   plain = "plain",
-// }
 export interface ISelectConfig {
   id: string;
   formGroup: FormGroup;
   label?: string;
   options?: ISelectOptionsConfig[];
-  // category?: keyof typeof SelectType;
   required?: boolean;
   hint?: string;
   desc?: string;
@@ -65,7 +59,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() config: ISelectConfig = {
     id: '',
     formGroup: new FormGroup({})
-    // category: 'secondary',
   };
   formControl?: AbstractControl;
   errorAria = '';
@@ -79,10 +72,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService
-  ) {}
+  ) { }
 
-  onChange = (formValue: string) => {};
-  onTouched = () => {};
+  onChange = (formValue: string) => { };
+  onTouched = () => { };
   writeValue(formValue: any) {
     // this.form.get('formControl')?.setValue(formValue);
   }

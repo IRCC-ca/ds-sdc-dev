@@ -12,11 +12,9 @@ import { LanguageSwitchButtonService } from './language-switch-button.service';
 
 export const LANGUAGE_SWITCH_TEXT_ENGLISH = 'Français';
 export const LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE = 'FR';
-export const LANGUAGE_SWITCH_ARIA_ENGLISH = 'Changer la langue à français';
 
 export const LANGUAGE_SWITCH_TEXT_FRENCH = 'English';
 export const LANGUAGE_SWITCH_TEXT_FRENCH_MOBILE = 'EN';
-export const LANGUAGE_SWITCH_ARIA_FRENCH = 'Switch language to English';
 
 @Component({
   selector: 'ircc-cl-lib-language-switch',
@@ -65,12 +63,10 @@ export class LanguageSwitchComponent implements OnInit {
       this.isMobile
         ? (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE)
         : (this.text = LANGUAGE_SWITCH_TEXT_ENGLISH);
-      this.aria = LANGUAGE_SWITCH_ARIA_ENGLISH;
     } else {
       this.isMobile
         ? (this.text = LANGUAGE_SWITCH_TEXT_FRENCH_MOBILE)
         : (this.text = LANGUAGE_SWITCH_TEXT_FRENCH);
-      this.aria = LANGUAGE_SWITCH_ARIA_FRENCH;
     }
   }
 }

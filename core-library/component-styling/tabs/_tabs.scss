@@ -46,7 +46,7 @@ $selectors: 'ircc-cl-lib-tabs';
 @mixin layout {
 	
 	.page-nav {
-		overflow-x: scroll;
+		overflow-x: auto;
 	}
 
 	@include size.selector(large) {

@@ -1,0 +1,44 @@
+@use 'src/scss/grid';
+
+:host {
+  @include grid.row;
+  > .content-doc-wrapper {
+    @include grid.col-12;
+    @include grid.up-laptop-layout {
+      @include grid.col-12;
+    }
+
+    .wrapper-container {
+      margin-top: 64px;
+      > div.col-md-6 {
+        padding-bottom: 12px;
+        // This can be replaced by Bootstrap's gutter
+        &:nth-child(1) {
+          @include grid.up-phone-layout {
+            padding-right: 6px;
+          }
+        }
+        &:nth-child(2) {
+          @include grid.up-phone-layout {
+            padding-left: 6px;
+          }
+        }
+      }
+      .for-designers, .for-devs {
+        min-height: 174px;
+        border: 1px solid #DFDFE1;
+        border-radius: 12px;
+        padding: 0 24px 24px 20px;
+
+        h3 {
+          margin: 20px 0 0 0;
+          font-weight: 700;
+        }
+
+        p {
+          margin: 12px 0;
+        }
+      }
+    }
+  }
+}

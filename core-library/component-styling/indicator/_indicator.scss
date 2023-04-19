@@ -31,7 +31,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     padding: 2px 8px;
     border-radius: 11px;
 
-    @include typography.fontSet(body, 4);
+    @include typography.fontSet(body, 4, emphasis);
 
     &.rounded {
       min-width: 8px;
@@ -50,7 +50,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       min-width: 14px;
     }
 
-    @include typography.fontSet(body, 4);
+    @include typography.fontSet(body, 4, emphasis);
 
     &.num-lg {
       padding: 2px 8px;
@@ -69,7 +69,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
     padding: 4px 8px;
     border-radius: 15px;
 
-    @include typography.fontSet(body, 3);
+    @include typography.fontSet(body, 3, emphasis);
 
     &.rounded {
       padding: 4px 8px;
@@ -89,7 +89,7 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
       min-width: 18px;
     }
 
-    @include typography.fontSet(body, 3);
+    @include typography.fontSet(body, 3, emphasis);
 
     &.num-lg {
       padding: 4px 8px;
@@ -158,7 +158,6 @@ $color: grey,red,orange,blue,green,purple,teal,navy;
   .text,
   .number {
     &.strong {
-      font-weight: 600;
       color: var(--grey-category-text-weak);
     }
   }
