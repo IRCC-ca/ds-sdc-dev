@@ -1,5 +1,5 @@
-import { Component, Input, Output, OnInit, EventEmitter, HostListener, ViewChildren, ElementRef } from '@angular/core';
-import { FlyoutOptionComponent, IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
+import { Component, Input, Output, OnInit, EventEmitter, HostListener, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
 
 export enum IFlyoutSelectTypes {
   single = 'single',
@@ -19,8 +19,7 @@ export interface IFlyoutConfig {
   templateUrl: './flyout.component.html'
 })
 export class FlyoutComponent implements OnInit {
-  @ViewChildren('selected') optionContainers!: ElementRef;
-
+  @ViewChildren('option') optionContainers: QueryList<ElementRef> = new QueryList<ElementRef>;
 
   @Input() config : IFlyoutConfig = {
     id: ''
@@ -31,30 +30,38 @@ export class FlyoutComponent implements OnInit {
   selectedIndex : number = -1;
   a11yText : string = '';
 
-
   @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
     event.preventDefault();
     if (this.config.options) {
-      this.selectedIndex = Math.min(this.selectedIndex + 1, this.config.options.length - 1);
-      //while loop skips through any non-clickable options
-      while (this.config.options[this.selectedIndex].clickable === false) {
-        this.selectedIndex++;
-      }
-      this.highlightIndex(this.config.options[this.selectedIndex].id);
+      let foundClickable = false;
+      this.config.options.slice(this.selectedIndex + 1).forEach((option, index) => {
+        if (!foundClickable && option.clickable !== false) {
+          this.selectedIndex += index + 1;
+          this.highlightIndex(option.id);
+          foundClickable = true;
+        }
+      });
     }
   }
 
   @HostListener('document:keydown.arrowup', ['$event'])
   onArrowUp(event: KeyboardEvent) {
     event.preventDefault();
-    this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
-    if(this.config.options){
-      //while loop skips through any non-clickable options
-      while (this.config.options[this.selectedIndex].clickable === false) {
-        this.selectedIndex--;
-      }
-      this.highlightIndex(this.config.options[this.selectedIndex].id);
+    if (this.config.options) {
+      let foundClickable = false;
+      this.config.options
+        .slice(0, this.selectedIndex)
+        .reverse()
+        .forEach((option, index) => {
+          if (!foundClickable && option.clickable !== false) {
+            this.selectedIndex -= index + 1;
+            this.highlightIndex(option.id);
+            foundClickable = true;
+          }
+        });
+      // Ensure selectedIndex does not fall below 0
+      this.selectedIndex = Math.max(this.selectedIndex, 0);
     }
   }
 
@@ -72,10 +79,10 @@ export class FlyoutComponent implements OnInit {
       this.config.options?.forEach(option => {
         if(option.id === el_id){
           option.active = true;
-          // let el = document.getElementById(el_id);
-          // el.scrollIntoView({block: "end", behavior: "smooth"});
-          console.log(this.optionContainers);
-          this.optionContainers.nativeElement?.scrollIntoView({ behavior: "smooth", block: "end" });
+          this.optionContainers.toArray()[this.selectedIndex]?.nativeElement?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+          });
           this.a11yText = option.value;
           //updates a11yText to indicate currently selected item if scrolling through flyout again
           if(option.selected) this.a11yText += ' currently selected'; //translation?

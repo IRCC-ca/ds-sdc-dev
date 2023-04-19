@@ -18,6 +18,7 @@ export interface IDropdownConfig {
   templateUrl: './drop-down.component.html'
 })
 export class DropdownComponent implements OnInit {
+
   @Input() config: IDropdownConfig = {
     id: ''
   };
@@ -75,8 +76,8 @@ export class DropdownComponent implements OnInit {
 
   //function receives a truthy value which determines wether it closes or opens, but also looks for FocusEvent to check if flyout is being interacted with
   toggleFlyout(status: boolean, e?: FocusEvent) {
-    let target = e?.currentTarget as HTMLElement;
-    if(target?.id != this.config.id || !e){
+    let target = e?.relatedTarget as HTMLElement;
+    if(!target?.id.includes(this.config.id) || !e){
       this.selected = status;
     }
   }

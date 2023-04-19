@@ -36,7 +36,7 @@ export class FlyoutOptionComponent implements OnInit {
   ngOnInit() {
     console.log('Option:', this.config);
     if(this.config.type === undefined) this.config.type = 'text';
-    if(this.config.type === 'text' || 'checkbox' || 'dropdown') this.config.clickable = true;
+    if((this.config.type === 'text' || 'checkbox' || 'dropdown') && this.config.clickable !== false) this.config.clickable = true;
     if(this.id) this.config.id = this.id;
   };
 
