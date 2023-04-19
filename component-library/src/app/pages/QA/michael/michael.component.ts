@@ -202,7 +202,7 @@ export class MichaelComponent implements OnInit {
     baseUrlKey: 'ROUTES.LandingPage',
     links: [
       {
-        text: 'Home'
+        text: 'Home.Title'
       },
       {
         text: 'QA.header',

@@ -1,5 +1,6 @@
 {
   "Home": {
+    "Title": "Accueil",
     "DateModified": "Date de modification"
   },
   "ROUTES": {
@@ -8,7 +9,9 @@
     "forDevelopers": "developpeurs",
     "utilities": "utilitaires",
     "buttons": "boutons",
-    "contact": "contactez"
+    "contact": "contactez",
+    "QATesting": "aq",
+    "michael": "michael-fr"
   },
   "Buttons": {
     "Title": "Boutons",
@@ -358,5 +361,9 @@
   },
   "Contact": {
     "Text": "Pour faire part de vos commentaires (compliment, commentaire ou plainte) ou pour toute demande de renseignements, contactez <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
+  },
+  "QA": {
+    "header": "QA",
+    "michael": "Michael"
   }
 }
