@@ -72,6 +72,9 @@ const routes: Routes = [
     { path: 'codeview', component: codeViewComponent },
     { path: 'codeview-fr', component: codeViewComponent },
 
+    { path: 'bobby-en', component: BobbyComponent }, //English
+    { path: 'bobby-fr', component: BobbyComponent },
+
     {
       path: 'accessibility-demo',
       component: AccessibilityDemoComponent
