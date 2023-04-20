@@ -9,6 +9,7 @@ import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { SharedModule } from './shared.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { QaModule } from '@app/pages/QA/qa.module';
+import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/accessibility-demo.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,13 @@ import { QaModule } from '@app/pages/QA/qa.module';
     SlugifyPipe,
     SafeHtmlPipe
   ],
-  imports: [CommonModule, SharedModule, ClipboardModule, QaModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    ClipboardModule,
+    QaModule,
+    AccessibilityDemoModule
+  ],
   exports: [TitleSlugUrlComponent]
 })
 export class DsPageModule {}
