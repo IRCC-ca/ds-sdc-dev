@@ -71,7 +71,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     this.separatorIcon.size = this.config.size;
     this.maxHeight = this.getMaxHeight();
     this.separatorIcon.ariaLabel = this.translate.instant(
-      'BREADCRUMB_COMPONENT.ADDITIONAL_LINKS'
+      'ACC_DEMO.BREADCRUMB_COMPONENT.ADDITIONAL_LINKS'
     );
   }
 
