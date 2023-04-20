@@ -134,8 +134,9 @@
 //     @include in-phone-layout {
 //       padding: 0 $mobile-padding;
 //     }
-//     .page-content {
-//       width: 100%;
+.page-content {
+  max-width: 100%;
+}
 //       .content-doc-wrapper {
 //         box-sizing: border-box;
 //         @include in-desktop-layout {
