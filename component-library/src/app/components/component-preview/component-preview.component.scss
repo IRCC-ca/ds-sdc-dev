@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  .preview-wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface2);
+    min-width: 300px;
+    min-height: 170px;
+    jds-button.copy {
+      flex-basis: 100%;
+      text-align: center;
+      margin-top: -60px;
+    }
+  }
+}
