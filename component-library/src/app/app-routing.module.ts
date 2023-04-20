@@ -16,13 +16,14 @@ import { ForDevelopersComponent } from './pages/for-developers/for-developers.co
 // import { PageButtonComponent } from './pages/button/button.component';
 // import { PageUtilitiesComponent } from './pages/utilities/utilities.component';
 
+import { Shell } from './shell/shell.service';
 import { MahsaComponent } from './pages/QA/mahsa/mahsa.component';
 import { MichaelComponent } from './pages/QA/michael/michael.component';
 import { MikeComponent } from './pages/QA/mike/mike.component';
 import { NaseerComponent } from './pages/QA/naseer/naseer.component';
-import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
-
-import { Shell } from './shell/shell.service';
+import { AccessibilityDemoComponent } from './pages/QA/accessibility-demo/accessibility-demo.component';
+import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-previous-page/accessibility-demo-previous-page.component';
+import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -45,33 +46,49 @@ const routes: Routes = [
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
 
-    { path: 'mahsa-en', component: MahsaComponent }, //English
-    { path: 'mahsa-fr', component: MahsaComponent }, //French
-
-    { path: 'michael-en', component: MichaelComponent }, //English
-    { path: 'michael-fr', component: MichaelComponent }, //French
-
-    { path: 'mike-en', component: MikeComponent }, //English
-    { path: 'mike-fr', component: MikeComponent }, //French
-
-    { path: 'naseer-en', component: NaseerComponent }, //English
-    { path: 'naseer-fr', component: NaseerComponent }, //French
-
-    {
-      path: 'accessibility-demo',
-      loadChildren: () =>
-        import('./pages/QA/accessibility-demo/accessibility-demo.module').then(
-          (m) => m.AccessibilityDemoModule
-        )
-    },
-
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
 
+    //QA PATHS
+    { path: 'mahsa-en', component: MahsaComponent }, //English
+    { path: 'mahsa-fr', component: MahsaComponent }, //French
+    { path: 'michael-en', component: MichaelComponent }, //English
+    { path: 'michael-fr', component: MichaelComponent }, //French
+    { path: 'mike-en', component: MikeComponent }, //English
+    { path: 'mike-fr', component: MikeComponent }, //French
+    { path: 'naseer-en', component: NaseerComponent }, //English
+    { path: 'naseer-fr', component: NaseerComponent }, //French
+
+    {
+      path: 'accessibility-demo',
+      component: AccessibilityDemoComponent
+    },
+    {
+      path: 'accessibility-demo-next',
+      component: AccessibilityDemoNextPageComponent
+    },
+    {
+      path: 'accessibility-demo-previous',
+      component: AccessibilityDemoPreviousPageComponent
+    },
+    {
+      path: "démo-d'accessibilité",
+      component: AccessibilityDemoComponent
+    },
+    {
+      path: "démo-d'accessibilité-précédent",
+      component: AccessibilityDemoPreviousPageComponent
+    },
+    {
+      path: "démo-d'accessibilité-prochaine",
+      component: AccessibilityDemoNextPageComponent
+    },
+
     { path: '', redirectTo: '/overview', pathMatch: 'full' }
   ]),
+
   { path: '**', redirectTo: '/overview', pathMatch: 'full' }
 ];
 

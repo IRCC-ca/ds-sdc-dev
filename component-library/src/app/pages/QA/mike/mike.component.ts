@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
   FormGroup,
   FormControl,
@@ -327,10 +327,9 @@ export class MikeComponent implements OnInit {
       : document.getElementById('radio_10')?.setAttribute('disabled', '');
   }
 
-  constructor(private altLang: LanguageSwitchService) {}
-
+  constructor(private lang: LangSwitchService) {}
   ngOnInit() {
-    this.altLang.setAltLangLink('mike-alt');
+    this.lang.setAltLangLink('mike');
 
     this.testerConfig.selects?.forEach((i) => {
       this.form.addControl(i.id, new FormControl());
