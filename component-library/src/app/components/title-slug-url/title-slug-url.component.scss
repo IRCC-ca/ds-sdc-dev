@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  > h2 {
+    display: inline-block;
+    font-weight: 700;
+    &.primary {
+      font-size: 36px;
+    }
+    &.secondary {
+      font-size: 28px;
+      margin-top: 60px;
+    }
+  }
+  > a {
+    margin-left: 16px;
+    position: relative;
+    bottom: 5px;
+    text-decoration: none !important;
+    color: var(--link-text);
+  }
+}

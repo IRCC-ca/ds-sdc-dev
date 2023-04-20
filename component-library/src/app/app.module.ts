@@ -1,52 +1,65 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouteReuseStrategy, RouterModule } from '@angular/router';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import {
-  RouteReusableStrategy,
-  ApiPrefixInterceptor,
-  ErrorHandlerInterceptor,
-  SharedModule
-} from '@shared';
-import { ShellModule } from './shell/shell.module';
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  SecurityContext
+} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import ngx-translate and the http loader
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { GalleryModule } from './gallery/gallery.module';
-import { QaModule } from './gallery/QA/qa.module';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
+import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
+import { ShelldModule } from './shell/shell.module';
+import { DsPageModule } from './modules/ds-pages.module';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/locales/', '.json');
+}
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    LangSwitchComponent
+    // SideNavComponent,
+    // TestComponent
+  ],
   imports: [
     BrowserModule,
-    FormsModule,
+    DsPageModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule,
-    TranslateModule.forRoot(),
-    NgbModule,
-    SharedModule,
-    ShellModule,
-    AppRoutingModule // must be imported as the last module as it contains the fallback route
+    ShelldModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      // Disable html sanitize to allow generating id
+      sanitize: SecurityContext.NONE,
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          headerIds: true
+        }
+      }
+    }),
+    // ngx-translate and the loader module
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    AppRoutingModule,
+    ClipboardModule
   ],
-  declarations: [AppComponent],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ApiPrefixInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlerInterceptor,
-      multi: true
-    },
-    {
-      provide: RouteReuseStrategy,
-      useClass: RouteReusableStrategy
-    }
-  ],
+  // providers: [SideNavConfig],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
