@@ -64,5 +64,12 @@
     &-check {
       color: var(--navigation);
     }
+
+    //TODO: Tokens aren't working here. Figure out what's going on
+    &-div {
+      font-family: 'lato';
+      color: var(--text);
+      font-size: 20px;
+    }
   }
 }

@@ -40,17 +40,6 @@ export class DropdownComponent implements OnInit {
     }]
   }
 
-  selectedOption(e: Event) {
-    //if it receives it's event info it selects the index - if not closes flyout
-    if(e){
-      this.showPlaceholder = false;
-      this.config.label = e.toString();
-      this.selected = !this.selected;
-    }else{
-      this.toggleFlyout(false);
-    }
-  }
-
   ngOnInit() {
     if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size = this.size;
@@ -74,11 +63,40 @@ export class DropdownComponent implements OnInit {
     if(this.config.flyout) this.flyoutConfig = this.config.flyout;
   }
 
-  //function receives a truthy value which determines wether it closes or opens, but also looks for FocusEvent to check if flyout is being interacted with
+  selectedOption(e: Event) {
+    //if it receives it's event info it selects the index - if not closes flyout
+    if(e){
+      this.showPlaceholder = false;
+      this.config.label = e.toString();
+      this.selected = !this.selected;
+      this.clearFlyoutFocus(); //clear the flyout focus if the flyout is closed.
+    }else{
+      this.toggleFlyout(false);
+    }
+  }
+
+  /**
+   * function receives a truthy value which determines wether it closes or opens, 
+   * but also looks for FocusEvent to check if flyout is being interacted with
+   * @param status 
+   * @param e 
+   */
   toggleFlyout(status: boolean, e?: FocusEvent) {
     let target = e?.relatedTarget as HTMLElement;
     if(!target?.id.includes(this.config.id) || !e){
       this.selected = status;
+      !status && this.clearFlyoutFocus(); //clear the flyout focus if the flyout is closed.
+    }
+  }
+
+  /**
+   * Clear the flyout active state
+   */
+  clearFlyoutFocus() {
+    if (this.config?.flyout?.options) {
+      this.config.flyout.options.forEach(i => {
+        i.active = false;
+      });
     }
   }
 }

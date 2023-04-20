@@ -25,10 +25,25 @@ export class FlyoutComponent implements OnInit {
     id: ''
   }
   @Input() id? : string;
+  @Input() options?: IFlyoutOptionConfig[];
+  @Input() disabled?: boolean;
+  @Input() selection?: [] | number;
+  @Input() type?: keyof typeof IFlyoutSelectTypes;
+
+  //TODO: Must add the other config parameters
   @Output() isSelected = new EventEmitter();
 
   selectedIndex : number = -1;
   a11yText : string = '';
+
+  ngOnInit() {
+    if(this.config.type === undefined) this.config.type = 'single';
+    if(this.id) this.config.id = this.id;
+    if(this.options) this.config.options = this.options;
+    if(this.disabled) this.config.disabled = this.disabled;
+    if(this.selection) this.config.selection = this.selection;
+    if(this.type) this.config.type = this.type;
+  };
 
   @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
@@ -99,18 +114,11 @@ export class FlyoutComponent implements OnInit {
     });
   }
 
-  constructor() { }
-
-  ngOnInit() {
-    if(this.config.type === undefined) this.config.type = 'single';
-    if(this.id) this.config.id = this.id;
-  };
-
   //function takes in index value of current active option and selects it
   optionSelected(i: number){
     if(this.config.options && !this.config.options[i].selected && this.config.options[i].clickable){
       //setup for future multi select feature
-      this.config.type != 'multi' ? this.clearOptions() : /*this.config.selection = [].push(this.config.options[i]);*/null;
+      this.config.type !== 'multi' ? this.clearOptions() : /*this.config.selection = [].push(this.config.options[i]);*/console.log('MULTI');
       this.config.options[i].selected = true;
       //emits the value of the selected index so it's visible to the parent
       this.isSelected.emit(this.config.options[i].value);
