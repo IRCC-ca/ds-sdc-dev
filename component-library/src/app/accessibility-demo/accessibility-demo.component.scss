@@ -1,3 +1,5 @@
+@use '../../../../core-library/tokens/sizes';
+@use '../../../../core-library/util/device' as device;
 .page_container {
   .dimmer {
     width: 100%;
@@ -66,7 +68,7 @@
       }
     }
   }
-
+hamburger
   .disable_all {
     pointer-events: none;
   }
