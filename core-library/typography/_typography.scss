@@ -14,13 +14,15 @@
     line-height: map.get($map, $level, line-height);
 }
 
-@mixin fontSet($type, $level) {
+@mixin fontSet($type, $level, $weight) {
     @if $type == heading {
         @include fontSize(map.get(text.$heading, level), $level);
         font-family: map.get(text.$heading, family);
+        font-weight: map.get(text.$heading, weight, $weight);
     } @else if $type == body {
         @include fontSize(map.get(text.$body, level), $level);
         font-family: map.get(text.$body, family);
+        font-weight: map.get(text.$body, weight, $weight);
     }
 }
 
