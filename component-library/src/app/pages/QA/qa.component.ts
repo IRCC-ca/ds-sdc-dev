@@ -41,6 +41,11 @@ export class QaComponent implements OnInit {
         category: 'secondary'
       },
       {
+        name: 'Bobby',
+        url: 'bobby',
+        category: 'secondary'
+      },
+      {
         name: 'Home',
         url: 'LandingPage',
         baseUrlOverride: 'BUTTONS.HomeURLOverride'
@@ -48,7 +53,7 @@ export class QaComponent implements OnInit {
     ]
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
     this.altLang.setAltLangLink('QATesting-alt');

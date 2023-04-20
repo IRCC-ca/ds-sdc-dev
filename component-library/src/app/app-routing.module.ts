@@ -26,6 +26,8 @@ import { AccessibilityDemoComponent } from './pages/QA/accessibility-demo/access
 import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
 import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
+import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
+import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -64,6 +66,8 @@ const routes: Routes = [
     { path: 'mike-fr', component: MikeComponent }, //French
     { path: 'naseer-en', component: NaseerComponent }, //English
     { path: 'naseer-fr', component: NaseerComponent }, //French
+    { path: 'bobby-en', component: BobbyComponent }, //English
+    { path: 'bobby-fr', component: BobbyComponent }, //French
 
     { path: 'codeview', component: codeViewComponent },
     { path: 'codeview-fr', component: codeViewComponent },
@@ -122,4 +126,4 @@ const routerOptions: ExtraOptions = {
   ],
   exports: [RouterModule, LocalizeRouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
