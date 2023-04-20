@@ -1,16 +1,9 @@
 import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import {
-  ButtonColor,
-  ButtonIconDirection,
-  IButtonConfig,
-  IDatePickerConfig,
-  IDropdownConfig,
-  IIconButtonComponentConfig,
   IIconButtonIconConfig,
-  IInputComponentConfig,
-  ITextareaComponentConfig
+  IInputComponentConfig
 } from 'ircc-ds-angular-component-library';
 import {
   IAutoTestComponentConfig,
