@@ -40,10 +40,10 @@ export class TestPageComponent implements OnInit {
           clickable: false
         },
         {
-          value: 'yet anotha test2',
+          value: 'yet anotha test2'
         },
         {
-          value: 'yet anotha test1',
+          value: 'yet anotha test1'
         },
         {
           value: 'yet anotha test5'
