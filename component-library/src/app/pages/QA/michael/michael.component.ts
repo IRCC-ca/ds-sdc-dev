@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
   IBreadcrumbConfig,
@@ -407,10 +407,10 @@ export class MichaelComponent implements OnInit {
     testFields: this.testerIndicatorFieldConfig
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(private lang: LangSwitchService) {}
 
   ngOnInit() {
-    this.altLang.setAltLangLink('michael-alt');
+    this.lang.setAltLangLink('michael');
 
     // Auto tester component configs - Input
     this.testerInputConfig.selects?.forEach((i) => {

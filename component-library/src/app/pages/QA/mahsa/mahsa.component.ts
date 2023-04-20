@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service'; //'@app/@shared/language-switch/language-switch.service';
+// import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service'; //'@app/@shared/language-switch/language-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
   ISelectConfig,
   IProgressTagsConfig,
@@ -244,10 +245,10 @@ export class MahsaComponent implements OnInit {
     testFields: this.spinnerTestConfigObj
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(private lang: LangSwitchService) {}
 
   ngOnInit() {
-    this.altLang.setAltLangLink('mahsa-alt');
+    this.lang.setAltLangLink('mahsa');
     this.form.addControl(this.qaSelect.id, new FormControl());
 
     /** Select Auto-Testing Controls Init **/

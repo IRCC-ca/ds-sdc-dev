@@ -1,4 +1,4 @@
-import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -293,10 +293,10 @@ export class NaseerComponent implements OnInit {
     testFields: this.testerConfigTextarea
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(private lang: LangSwitchService) {}
 
   ngOnInit() {
-    this.altLang.setAltLangLink('naseer-alt');
+    this.lang.setAltLangLink('naseer');
 
     //******************************************************************************************************** */
     //********************************* Input Component Tester *********************************************** */

@@ -20,6 +20,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { requiredTrueValidator } from '../@shared/shared-functions/shared-validators';
 import { AccessbilityDemoFormStateService } from './accessbility-demo-form-state.service';
 import { Subscription } from 'rxjs';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 
 export interface ICityOfBirth {
   lov: string;
@@ -306,7 +307,8 @@ export class AccessibilityDemoComponent implements OnInit {
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
     private labelButton: LabelButtonService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private lang: LangSwitchService
   ) {}
 
   @HostListener('window:resize', ['$event'])
@@ -328,16 +330,16 @@ export class AccessibilityDemoComponent implements OnInit {
       }
     });
 
-    this.altLang.setAltLangLink('AccessibilityDemo-alt');
-    this.altLang.getAltLangLink().subscribe((altLang: string) => {
-      this.altPathKey = altLang;
-      this.setAltLangURL();
-      console.log(this.altLangURL);
-    });
-    this.languageSwitchButton.languageClickObs$.subscribe((response) => {
-      console.log(response);
-      if (response) this.changeLang(); //Has to ignore the first response.
-    });
+    this.lang.setAltLangLink('AccessibilityDemo');
+    // this.lang.getAltLangLink().subscribe((altLang: string) => {
+    //   this.altPathKey = altLang;
+    //   this.setAltLangURL();
+    //   console.log(this.altLangURL);
+    // });
+    // this.languageSwitchButton.languageClickObs$.subscribe((response) => {
+    //   console.log(response);
+    //   if (response) this.changeLang(); //Has to ignore the first response.
+    // });
 
     this.progressIndicatorSub =
       this.progressIndicator.progressIndicatorObs$.subscribe((response) => {
@@ -593,7 +595,7 @@ export class AccessibilityDemoComponent implements OnInit {
    */
   get getPreviousButtonLink() {
     return (
-      this.router.url +
+      this.translate.currentLang +
       '/' +
       this.translate.instant('ROUTES.AccessibilityDemoPrevious')
     );
@@ -601,7 +603,7 @@ export class AccessibilityDemoComponent implements OnInit {
 
   get getNextButtonLink() {
     return (
-      this.router.url +
+      this.translate.currentLang +
       '/' +
       this.translate.instant('ROUTES.AccessibilityDemoNext')
     );
