@@ -103,6 +103,14 @@
       textarea {
         display: block;
         box-sizing: border-box;
+
+        &:disabled {
+
+          &::placeholder {
+            color: var(--text-disabled)
+          }
+
+        }
       }
     }
   }

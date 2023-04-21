@@ -565,4 +565,11 @@ export class MichaelComponent implements OnInit {
         break;
     }
   }
+
+  toggleComp(comp: string) {
+    document.querySelectorAll('section')?.forEach((section) => {
+      section.classList.remove('show');
+    });
+    document.getElementById(comp)?.classList.toggle('show');
+  }
 }

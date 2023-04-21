@@ -450,6 +450,12 @@ export class NaseerComponent implements OnInit {
       case 'removeErrorDate':
         this.form_date_picker.markAsUntouched();
         break;
+      case 'setErrorDate':
+        this.form_date_picker.markAllAsTouched();
+        break;
+      case 'removeErrorDate':
+        this.form_date_picker.markAsUntouched();
+        break;
     }
   }
 
