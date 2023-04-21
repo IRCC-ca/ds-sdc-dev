@@ -1,0 +1,42 @@
+$radius: 6px;
+table {
+  border: 1px solid var(--border);
+  border-spacing: 0;
+  border-radius: $radius;
+  max-width: 100%;
+  display: inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  th, td {
+    padding: 16px;
+    border: 1px solid;
+    border-color: var(--divider);
+  }
+  th {
+    @extend .h6;
+    font-weight: 700 !important;
+    text-align: left;
+    &:first-child {
+      border-radius: $radius 0 0 0;
+    }
+    &:last-child {
+      border-radius: 0 $radius 0 0;
+    }
+  }
+  tr {
+    @extend .body3;
+  }
+  tr:last-child {
+    > td {
+      &:first-child {
+        border-radius: 0 0 0 $radius;
+      }
+      &:last-child {
+        border-radius: 0 0 $radius 0;
+      }
+    }
+  }
+  td {
+    vertical-align: top;
+  }
+}

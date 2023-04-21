@@ -1,0 +1,152 @@
+// @use '../../../../core-library/tokens/sizes';
+@use '../../../../../../core-library/tokens/sizes';
+@use '../../../../../../core-library/util/device' as device;
+.page_container {
+  .dimmer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(44, 44, 45, 0.8);
+    z-index: 10;
+    overflow: hidden;
+    margin-top: -8px;
+  }
+
+  .shadow {
+    box-shadow: 0px 16px 28px rgba(0, 0, 0, 0.06);
+  }
+
+  .outer_header_stepper_container {
+    top: 0;
+    background-color: var(--surface1);
+    width: 100%;
+
+    .header_stepper_container {
+      @media (min-width: 980px) {
+        margin-left: 164px;
+      }
+
+      max-width: 1036px;
+
+      .stepper {
+        margin-top: 40px;
+      }
+
+      .hamburger {
+        height: 68px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--divider);
+      }
+
+      .modal_container {
+        z-index: 10;
+        position: fixed;
+        background-color: var(--surface1);
+        top: 0;
+
+        .dialog {
+          border: none;
+          height: 100vh;
+        }
+
+        .progress_dialog_content {
+          .modal_header {
+            display: flex;
+            height: 68px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--divider);
+          }
+
+          .progress_container {
+            // height: 100%
+            margin-top: 40px;
+            overflow-y: auto;
+            height: calc(95vh - 108px);
+          }
+        }
+      }
+    }
+  }
+  hamburger .disable_all {
+    pointer-events: none;
+  }
+
+  .content_container {
+    @media (min-width: 980px) {
+      margin-left: 164px;
+      margin-right: 164px;
+    }
+
+    @media (max-width: 979px) {
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+
+    @media (max-width: 412px) {
+      //set here because of the min size of the date picker
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    max-width: 1036px;
+
+    .error_banner {
+      margin-top: 40px;
+      max-width: 628px;
+    }
+
+    .form_container {
+      max-width: 628px;
+
+      //Margin above inputs:
+      .family_name_container,
+      .given_name_container,
+      .sex_at_birth_container,
+      .date_of_birth_container,
+      .country_of_birth_container,
+      .city_of_birth_container,
+      .declaration_checkbox_container {
+        margin-top: 44px;
+      }
+
+      .banner_container {
+        margin-top: 16px;
+      }
+
+      .buttons_container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 64px;
+
+        @media (max-width: 372px) {
+          display: flex;
+          flex-direction: column-reverse;
+          align-items: center;
+          justify-content: space-between;
+          height: 116px;
+          .btn1 {
+            width: 100%;
+          }
+          .btn2 {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .footer {
+      margin-top: 88px;
+    }
+
+    .form_container {
+      margin-top: 40px;
+    }
+  }
+}
+
+.no_scroll {
+  height: 100vh;
+  overflow: hidden;
+}
