@@ -12,9 +12,9 @@ import {
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 
 export enum InputFieldType {
-  INPUTFIELD = 'qaInput',
-  TEXTAREA = 'qaTextareaInput',
-  DATEPICKER = 'qaDatePicker'
+  BASICINPUTFIELD = 'basicInputConfig',
+  PASSWORDINPUTFIELD = 'passwordInputConfig',
+
 }
 
 @Component({
@@ -25,14 +25,33 @@ export enum InputFieldType {
 })
 export class BobbyComponent implements OnInit {
   showInputComponent: boolean = false;
+  BASIC_INPUT_ID = 'basic_input'
+  PASSWORD_INPUT_ID = 'password_input'
 
   INPUT_ID = 'qa_test_input';
-  form_input = new FormGroup({});
+  form_input = new FormGroup({})
+  form_input_basic = new FormGroup({});
+  form_input_password = new FormGroup({});
+
 
   qaInput: IInputComponentConfig = {
     id: this.INPUT_ID,
     formGroup: this.form_input
   };
+
+  basicInputConfig: IInputComponentConfig = {
+    id: this.BASIC_INPUT_ID,
+    formGroup: this.form_input_basic,
+    label: "Label text",
+    type: 'text'
+  }
+
+  passwordInputConfig: IInputComponentConfig = {
+    id: this.PASSWORD_INPUT_ID,
+    formGroup: this.form_input_password,
+    label: "Label text",
+    type: 'password'
+  }
 
   customIconConfigTest: IIconButtonIconConfig = {
     class: 'fa-regular fa-igloo',
