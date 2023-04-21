@@ -1,1 +1,6 @@
 @use 'src/scss/code';
+
+.row {
+  display: flex;
+  justify-content: space-evenly;
+}
