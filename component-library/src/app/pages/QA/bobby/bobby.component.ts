@@ -9,6 +9,7 @@ import {
   IAutoTestComponentConfig,
   IAutoTestConfigObject
 } from '../auto-tester/auto-tester.component';
+import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 
 export enum InputFieldType {
   INPUTFIELD = 'qaInput',
@@ -19,7 +20,8 @@ export enum InputFieldType {
 @Component({
   selector: 'app-bobby',
   templateUrl: './bobby.component.html',
-  styleUrls: ['./bobby.component.scss']
+  styleUrls: ['./bobby.component.scss'],
+  providers: [SlugifyPipe]
 })
 export class BobbyComponent implements OnInit {
   showInputComponent: boolean = false;
