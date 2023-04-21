@@ -469,5 +469,21 @@
   "DEMO_COMPONENT": {
     "ACCORDION_OPEN": "Masquer les configurations",
     "ACCORDION_CLOSED": "Afficher les configurations"
+  },
+    "Input": {
+    "Title": "Input",
+    "TypesHeading": "Types",
+    "ConfigurationsHeading": "Configurations",
+    "DesignGuidelinesHeading": "Design guidelines",
+    "AnatomyHeading": "Anatomy",
+    "SpecsHeading": "Specs",
+    "ContentGuidelinesHeading": "Content guidelines",
+    "FigmaHeading": "Usage in Figma",
+    "AccessibilityHeading": "Accessibility",
+    "ResearchHeading": "Research",
+    "Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
+    "InteractiveDemo": "Interactive Demo",
+    "InteractiveDemoDesc": "Try our input component and the configurable options available within it."
+
   }
 }

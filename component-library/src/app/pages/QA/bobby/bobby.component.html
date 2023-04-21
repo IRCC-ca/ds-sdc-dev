@@ -12,14 +12,18 @@
 <div class="content-doc-wrapper">
   <app-title-slug-url [translate]="'Input.Title'" type="primary">Input</app-title-slug-url>
   <p>{{'Input.Intro' | translate}}</p>
-  <app-info-text-small>
-    {{'Input.IntroAlert' | translate}}
-  </app-info-text-small>
+  
+  <section class="interactive-demo">
+    <app-title-slug-url [translate]="'Input.InteractiveDemo'"></app-title-slug-url>
+    <p>{{'Input.InteractiveDemoDesc' | translate}}</p>
+    <app-interactive-demo></app-interactive-demo>
+  </section>
+  
   <section class="types">
     <app-title-slug-url [translate]="'Input.TypesHeading'"></app-title-slug-url>
     <h5 [style.margin-top]="'7px'">{{'Input.PrimaryHeading' | translate}}</h5>
     <app-component-preview copyText="<button>{{'Input.PrimaryBtnText' | translate}}</button>">
-      <!-- <button>{{'Input.PrimaryBtnText' | translate}}</button> -->
+      <button>{{'Input.PrimaryBtnText' | translate}}</button>
     </app-component-preview>
     <p>{{'Input.PrimaryText' | translate}}</p>
     <h5>{{'Input.SecondaryHeading' | translate}}</h5>
@@ -45,8 +49,9 @@
     </app-component-preview>
     <p>{{'Buttons.PlainText' | translate}}</p>
   </section>
+  
   <section class="configs">
-    <!-- <app-title-slug-url [translate]="'Buttons.ConfigurationsHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.ConfigurationsHeading'"></app-title-slug-url>
     <div class="row">
       <div class="col-12 col-md-6">
         <h5 [style.margin-top]="0">{{'Buttons.ConfigSizeHeading' | translate}}</h5>
@@ -83,7 +88,7 @@
     </div> -->
   </section>
   <div class="design-guidelines">
-    <!-- <app-title-slug-url [translate]="'Buttons.DesignGuidelinesHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.DesignGuidelinesHeading'"></app-title-slug-url>
     <h5 [style.margin-top]="0">{{'Buttons.HierarchyHeading' | translate}}</h5>
     <div class="row">
       <div class="col-12 col-md-6">
@@ -131,7 +136,7 @@
     <p>{{'Buttons.MinMaxWidthText' | translate}}</p> -->
   </div>
   <section class="anatomy">
-    <!-- <app-title-slug-url [translate]="'Buttons.AnatomyHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.AnatomyHeading'"></app-title-slug-url>
     <img src="assets/img/anatomy-image-button.jpg" alt="{{'Buttons.AnatomyImgAlt' | translate}}"><br/>
     <span class="round-purple-num">1</span>
     <h5 class="round-purple-num">{{'Buttons.AnatomyBGHeading' | translate}}</h5>
@@ -144,12 +149,12 @@
     <p>{{'Buttons.AnatomyLblText' | translate}}</p> -->
   </section>
   <section class="specs">
-    <!-- <app-title-slug-url [translate]="'Buttons.SpecsHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.SpecsHeading'"></app-title-slug-url>
     <img src="assets/img/button-specs.jpg" alt="{{'Buttons.SpecsImgAlt' | translate}}">
     <p>{{'Buttons.SpecsText' | translate}}</p> -->
   </section>
   <section class="content-guidelines">
-    <!-- <app-title-slug-url [translate]="'Buttons.ContentGuidelinesHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.ContentGuidelinesHeading'"></app-title-slug-url>
     <h5 [style.margin-top]="0">{{'Buttons.CaseHeading' | translate}}</h5>
     <div class="row">
       <div class="col-12 col-md-6">
@@ -178,7 +183,7 @@
     </div> -->
   </section>
   <section class="usage-figma">
-    <!-- <app-title-slug-url [translate]="'Buttons.FigmaHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.FigmaHeading'"></app-title-slug-url>
     <div class="row">
       <div class="col-12 col-md-8">
         <h5 [style]="'margin-top: 0; margin-bottom: 12px;'">{{'Buttons.FigmaDirectionsHeading' | translate}}</h5>
@@ -195,14 +200,14 @@
     </div> -->
   </section>
   <section class="accessibility">
-    <!-- <app-title-slug-url [translate]="'Buttons.AccessibilityHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.AccessibilityHeading'"></app-title-slug-url>
     <h5 [style.margin-top]="0">{{'Buttons.AccessibilityColourHeading' | translate}}</h5>
     <p>{{'Buttons.AccessibilityColourText' | translate}}</p>
     <h5 [style.margin-top]="0">{{'Buttons.AccessibilityKeyboardHeading' | translate}}</h5>
     <p>{{'Buttons.AccessibilityKeyboardText' | translate}}</p> -->
   </section>
   <section class="research">
-    <!-- <app-title-slug-url [translate]="'Buttons.ResearchHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.ResearchHeading'"></app-title-slug-url>
     <p>{{'Buttons.ResearchText' | translate}}</p> -->
   </section>
 </div>
