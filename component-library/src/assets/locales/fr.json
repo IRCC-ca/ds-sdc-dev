@@ -485,5 +485,10 @@
     "InteractiveDemo": "Interactive Demo",
     "InteractiveDemoDesc": "Try our input component and the configurable options available within it."
 
+  },
+    "InteractiveDemo": {
+    "ConfigAccordionOpen": "Show Configurations",
+    "ConfigAccordionClosed": "Hide Configurations"
+
   }
 }
