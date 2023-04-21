@@ -10,44 +10,28 @@
 </ng-container> -->
 
 <div class="content-doc-wrapper">
-  <app-title-slug-url [translate]="'Input.Title'" type="primary">Input</app-title-slug-url>
-  <p>{{'Input.Intro' | translate}}</p>
+  <app-title-slug-url [translate]="'Input.Title'" type="primary" class="h1 emphasis">Button</app-title-slug-url>
+  <p class="body1">{{'Input.Intro' | translate}}</p>
   
   <section class="interactive-demo">
-    <app-title-slug-url [translate]="'Input.InteractiveDemo'"></app-title-slug-url>
-    <p>{{'Input.InteractiveDemoDesc' | translate}}</p>
+    <app-title-slug-url [translate]="'Input.InteractiveDemo'" class="h3 emphasis"></app-title-slug-url>
+    <p class="body3">{{'Input.InteractiveDemoDesc' | translate}}</p>
     <app-interactive-demo></app-interactive-demo>
+    <!-- CODE BLOCK COMPONENT</button> -->
   </section>
   
   <section class="types">
-    <app-title-slug-url [translate]="'Input.TypesHeading'"></app-title-slug-url>
-    <h5 [style.margin-top]="'7px'">{{'Input.PrimaryHeading' | translate}}</h5>
+    <app-title-slug-url [translate]="'Input.TypesHeading'" class="h3 epmhasis"></app-title-slug-url>
+    <h5 class="emphasis">{{'Input.PrimaryHeading' | translate}}</h5>
     <app-component-preview copyText="<button>{{'Input.PrimaryBtnText' | translate}}</button>">
-      <button>{{'Input.PrimaryBtnText' | translate}}</button>
+      <!-- <button>{{'Input.PrimaryBtnText' | translate}}</button> -->
     </app-component-preview>
     <p>{{'Input.PrimaryText' | translate}}</p>
-    <h5>{{'Input.SecondaryHeading' | translate}}</h5>
+    <h5 class="emphasis">{{'Input.SecondaryHeading' | translate}}</h5>
     <app-component-preview copyText="<button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button>">
       <!-- <button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button> -->
     </app-component-preview>
-    <p>{{'Buttons.SecondaryText' | translate}}</p>
-    <h5>{{'Buttons.CriticalHeading' | translate}}</h5>
-    <app-component-preview copyText="<button color='critical'>{{'Buttons.CriticalBtnText' | translate}}</button>">
-      <!-- <button color='critical'>{{'Buttons.CriticalBtnText' | translate}}</button> -->
-    </app-component-preview>
-    <p>{{'Buttons.CriticalText' | translate}}</p>
-    <h5>{{'Buttons.PlainHeading' | translate}}</h5>
-    <app-component-preview
-      [style.width]="'300px'"
-      copyText="<button category='plain'>{{'Buttons.PlainBtnText' | translate}}</button>">
-      <!-- <button category='plain'>{{'Buttons.PlainBtnText' | translate}}</button> -->
-    </app-component-preview>
-    <app-component-preview
-      [style.width]="'300px'"
-      copyText="<button category='plain' color='critical'>{{'Buttons.PlainCritBtnText' | translate}}</button>">
-      <!-- <button category='plain' color='critical'>{{'Buttons.PlainCritBtnText' | translate}}</button> -->
-    </app-component-preview>
-    <p>{{'Buttons.PlainText' | translate}}</p>
+    <p>{{'Input.SecondaryText' | translate}}</p>
   </section>
   
   <section class="configs">

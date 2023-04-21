@@ -15,6 +15,7 @@ import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
 import { InfoTextSmallComponent } from '@app/components/info-text-small/info-text-small.component';
 import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   imports: [
@@ -27,14 +28,15 @@ import { ComponentPreviewComponent } from '@app/components/component-preview/com
     IrccDsAngularFormComponentsModule,
     IrccDsAngularLegacyOldModule,
     IrccDsAngularHeaderFooterModule,
-    IrccDsAngularComponentsSharedModule
+    IrccDsAngularComponentsSharedModule,
+    ClipboardModule
   ],
   declarations: [
     NavButtonsComponent,
     PreventTabOutDirective,
     InteractiveDemoComponent,
     InfoTextSmallComponent,
-    ComponentPreviewComponent,
+    ComponentPreviewComponent
   ],
   exports: [
     IrccDsAngularBannerModule,
@@ -43,6 +45,7 @@ import { ComponentPreviewComponent } from '@app/components/component-preview/com
     IrccDsAngularComponentsSharedModule,
     ReactiveFormsModule,
     FormsModule,
+    ClipboardModule,
     NavButtonsComponent,
     PreventTabOutDirective,
     IrccDsAngularHeaderFooterModule,

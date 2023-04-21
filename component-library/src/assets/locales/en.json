@@ -487,7 +487,11 @@
     "ResearchHeading": "Research",
     "Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
     "InteractiveDemo": "Interactive Demo",
-    "InteractiveDemoDesc": "Try our input component and the configurable options available within it."
+    "InteractiveDemoDesc": "Try our input component and the configurable options available within it.",
+    "PrimaryHeading": "Basic input",
+    "SecondaryHeading": "Password input",
+    "PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
+    "SecondaryText": "The password input allows users to enter their password. The password can be hidden or shown."
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
