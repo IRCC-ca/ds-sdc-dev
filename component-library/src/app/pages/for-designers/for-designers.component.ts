@@ -14,12 +14,13 @@ import { TranslatedPageComponent } from '../translated-page-component';
 })
 export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
   rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [ // list of all right nav items
-  'Overview.DeveloperHeading',
-  'Developers.GetStartedHeading',
-  'Developers.UsageHeading',
-  'Developers.FontAwesomeHeading',
-  'Developers.ReleasesHeading',
+  rightNavDataRaw: string[] = [
+    // list of all right nav items
+    'Overview.DeveloperHeading',
+    'Developers.GetStartedHeading',
+    'Developers.UsageHeading',
+    'Developers.FontAwesomeHeading',
+    'Developers.ReleasesHeading'
   ];
   altLangLink = 'forDesigners';
 
