@@ -24,6 +24,7 @@ import { NaseerComponent } from './pages/QA/naseer/naseer.component';
 import { AccessibilityDemoComponent } from './pages/QA/accessibility-demo/accessibility-demo.component';
 import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
+import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -45,11 +46,14 @@ const routes: Routes = [
     { path: 'overview', component: OverviewComponent },
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
+    { path: 'banner-doc', component: BannerDocumentationComponent },
+
 
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
+    { path: 'banner-doc-fr', component: BannerDocumentationComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
