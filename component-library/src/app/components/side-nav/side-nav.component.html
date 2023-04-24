@@ -1,0 +1,40 @@
+<!-- <jds-font-icon -->
+<ircc-cl-lib-icon
+  class="menu-icon"
+  *ngIf="mobileToggleIcon && mobile"
+  [config]="showMenu ? xmarkIconConfig : barsIconConfig"
+  (click)="toggleMobileMenu(false)"
+></ircc-cl-lib-icon>
+<!-- ></jds-font-icon> -->
+<div
+  [@leftSideNavTrigger]="showMenu ? 'open' : 'close'"
+  class="{{ navClassName }} sidenav-section-wrapper {{ navStatus }}"
+  [style.width]="width"
+>
+  <div *ngFor="let data of navBarData">
+    <div class="sidenav-title">
+      <div *ngIf="data.category === 'title'">
+        <h3 class="title">{{ data.text | translate }}</h3>
+      </div>
+      <div *ngIf="data.category === 'sub-title' && data.path">
+        <a
+          class="menuItems"
+          routerLink="{{ data.path | translate }}"
+          routerLinkActive="active"
+          (click)="toggleMobileMenu(true)"
+        >
+          {{ data.text | translate }}
+        </a>
+      </div>
+      <div *ngIf="data.category === 'slug-url' && data.path">
+        <a
+          class="menuItems"
+          routerLink="."
+          [routerLinkActive]="showActive ? 'active' : ''"
+          fragment="{{ data.path | translate | SlugifyPipe }}"
+          >{{ data.text | translate }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

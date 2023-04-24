@@ -1,1 +1,124 @@
-<h1>For Designers</h1>
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url
+    [translate]="'Designers.Heading'"
+    type="primary"
+    >For designers</app-title-slug-url
+  >
+  <p>{{ 'Designers.HeadingText' | translate }}</p>
+
+  <app-title-slug-url
+    [translate]="'Designers.AboutHeading'"
+  ></app-title-slug-url>
+  <p [style.margin-top]="'7px'">{{ 'Designers.AboutText1' | translate }}</p>
+  <p [innerHTML]="'Designers.AboutText2' | translate"></p>
+
+  <app-title-slug-url
+    [translate]="'Designers.AccessHeading'"
+  ></app-title-slug-url>
+  <p>{{ 'Designers.AccessText1' | translate }}</p>
+  <ol>
+    <li [innerHTML]="'Designers.AccessListItem1' | translate"></li>
+    <li [innerHTML]="'Designers.AccessListItem2' | translate"></li>
+    <li>{{ 'Designers.AccessListItem3' | translate }}</li>
+    <li>{{ 'Designers.AccessListItem4' | translate }}</li>
+    <li>{{ 'Designers.AccessListItem5' | translate }}</li>
+    <li [innerHTML]="'Designers.AccessListItem6' | translate"></li>
+  </ol>
+  <p>{{ 'Designers.AccessText2' | translate }}</p>
+  <p>{{ 'Designers.AccessText3' | translate }}</p>
+  <img
+    src="assets/img/for-designers-img-1.jpg"
+    alt="{{ 'Designers.FigmaImg1AltText' | translate }}"
+  />
+
+  <app-title-slug-url
+    [translate]="'Designers.InstallFontsHeading'"
+  ></app-title-slug-url>
+  <p>{{ 'Designers.InstallFontsText1' | translate }}</p>
+  <p [innerHTML]="'Designers.InstallFontsLink' | translate"></p>
+
+  <app-title-slug-url
+    [translate]="'Designers.UsingStylesHeading'"
+  ></app-title-slug-url>
+  <p>{{ 'Designers.UsingStylesText1' | translate }}</p>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <p>{{ 'Designers.UsingStylesStrokeText1' | translate }}</p>
+      <ol>
+        <li
+          [innerHTML]="'Designers.UsingStylesStrokeListItem1' | translate"
+        ></li>
+        <li>{{ 'Designers.UsingStylesStrokeListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesStrokeListItem3' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesStrokeListItem4' | translate }}</li>
+      </ol>
+      <p [innerHTML]="'Designers.UsingStylesStrokeText2' | translate"></p>
+      <img
+        src="assets/img/for-designers-img-2.jpg"
+        alt="{{ 'Designers.UsingStylesStrokeImgAltText' | translate }}"
+      />
+    </div>
+
+    <div class="col-12 col-md-6">
+      <p>{{ 'Designers.UsingStylesTextText1' | translate }}</p>
+      <ol>
+        <li [innerHTML]="'Designers.UsingStylesTextListItem1' | translate"></li>
+        <li>{{ 'Designers.UsingStylesTextListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesTextListItem3' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesTextListItem4' | translate }}</li>
+      </ol>
+      <p [innerHTML]="'Designers.UsingStylesTextText2' | translate"></p>
+      <img
+        src="assets/img/for-designers-img-3.jpg"
+        alt="{{ 'Designers.UsingStylesTextImgAltText' | translate }}"
+      />
+    </div>
+  </div>
+
+  <app-title-slug-url
+    [translate]="'Designers.UsingComponentsHeading'"
+  ></app-title-slug-url>
+  <p>{{ 'Designers.UsingComponentsText1' | translate }}</p>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <p>{{ 'Designers.UsingComponentsInsertText1' | translate }}</p>
+      <ol>
+        <li
+          [innerHTML]="'Designers.UsingComponentsInsertListItem1' | translate"
+        ></li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem3' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem4' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem5' | translate }}</li>
+      </ol>
+      <img
+        src="assets/img/for-designers-img-4.jpg"
+        alt="{{ 'Designers.UsingComponentsInsertImgAlt' | translate }}"
+      />
+    </div>
+
+    <div class="col-12 col-md-6">
+      <p>{{ 'Designers.UsingComponentsConfigureText1' | translate }}</p>
+      <ol>
+        <li>{{ 'Designers.UsingComponentsConfigureListItem1' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsConfigureListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsConfigureListItem3' | translate }}</li>
+      </ol>
+      <img
+        src="assets/img/for-designers-img-5.jpg"
+        alt="{{ 'Designers.UsingComponentsConfigureImgAlt' | translate }}"
+      />
+    </div>
+  </div>
+
+  <app-title-slug-url
+    [translate]="'Designers.FigmaHeading'"
+  ></app-title-slug-url>
+  <p>{{ 'Designers.FigmaText' | translate }}</p>
+</div>
+
+<!-- <app-side-nav
+  class="right-nav col-12 col-lg-3 col-xl-2"
+  [navBarData]="rightNavData"
+></app-side-nav> -->

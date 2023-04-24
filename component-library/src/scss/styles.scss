@@ -1,14 +1,16 @@
+// // /* You can add global styles to this file, and also import other style files */
+
 @import 'component-lib/styles';
-
-// /* You can add global styles to this file, and also import other style files */
-
-// // @use '../../node_modules/@ircc-ca/ds-sdc-core/index' as ircc-ds;
 // // @use '../../../core-library/index' as ircc-ds;
-
+// @use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;
+// @use '~@ircc-ca/ds-sdc-core/tokens/sizes' as ircc-ds-sizes;
+// @use '~@ircc-ca/ds-sdc-core/util/color' as ircc-ds-color;
 // @use 'sass:map';
+
 // @import 'grid';
 // @import 'table';
 // @import 'code';
+// @import '~@ircc-ca/ds-sdc-core/layout/layout-grid';
 // // @import '../../node_modules/@ircc-ca/ds-sdc-core/layout/layout-grid';
 
 // @include ircc-ds.theme-init-required(
@@ -19,7 +21,7 @@
 // );
 // @include ircc-ds.element-styles();
 
-// Enable Bootstrap row & column support.
+// // Enable Bootstrap row & column support.
 // @include make-grid-columns();
 
 // $page-width: 1440px;

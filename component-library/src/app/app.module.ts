@@ -17,6 +17,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
 import { ShelldModule } from './shell/shell.module';
 import { DsPageModule } from './modules/ds-pages.module';
+import { SideNavConfig } from './components/side-nav/side-nav.config';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locales/', '.json');
@@ -25,8 +27,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LangSwitchComponent
-    // SideNavComponent,
+    LangSwitchComponent,
+    SideNavComponent,
     // TestComponent
   ],
   imports: [
@@ -58,7 +60,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     ClipboardModule
   ],
-  // providers: [SideNavConfig],
+  providers: [SideNavConfig],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

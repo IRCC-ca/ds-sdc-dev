@@ -10,12 +10,12 @@ import { SharedModule } from './shared.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { QaModule } from '@app/pages/QA/qa.module';
 import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/accessibility-demo.module';
-
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
     OverviewComponent,
     ForDesignersComponent,
+    ForDevelopersComponent,
     SlugifyPipe,
     SafeHtmlPipe
   ],
