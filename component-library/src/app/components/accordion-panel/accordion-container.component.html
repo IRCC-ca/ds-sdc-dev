@@ -1,5 +1,8 @@
 <div class="accordion-panel">
   <div class="accordion-nav">
+    <div class="accordion-extra-left">
+      <ng-content select="[extraLeft]"></ng-content>
+    </div>
     <div class="accordion-expand-button">
       <ircc-cl-lib-button
         *ngIf="open === true"
@@ -18,9 +21,8 @@
         {{ buttonText | translate }}
       </ircc-cl-lib-button>
     </div>
-
-    <div class="accordion-extra-button">
-      <ng-content select="[navButtons]"></ng-content>
+    <div class="accordion-extra-right">
+      <ng-content select="[extraRight]"></ng-content>
     </div>
   </div>
   <div [class]="open ? 'open accordion-content' : 'close accordion-content'">

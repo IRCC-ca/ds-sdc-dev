@@ -2,13 +2,20 @@
   display: grid;
   grid-template-columns: 30% auto 30%;
 
+  .accordion-extra-left {
+    grid-column: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   .accordion-expand-button {
     grid-column: 2;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .accordion-extra-button {
+  .accordion-extra-right {
     grid-column: 3;
     display: flex;
     justify-content: flex-end;
