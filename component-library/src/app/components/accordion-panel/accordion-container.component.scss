@@ -1,0 +1,29 @@
+.accordion-nav {
+  display: grid;
+  grid-template-columns: 30% auto 30%;
+
+  .accordion-expand-button {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .accordion-extra-button {
+    grid-column: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.accordion-content {
+  &.open {
+    height: auto;
+  }
+
+  &.close {
+    height: 0px;
+    padding-bottom: 0px;
+    display: none;
+  }
+}
