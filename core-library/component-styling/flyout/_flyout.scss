@@ -26,6 +26,10 @@
     @include a11y.sr-only;
   }
 
+  .selected {
+    background: var(--generic-hover);
+  }
+
   .flyout {
     &-container {
       margin-top: 11px;
