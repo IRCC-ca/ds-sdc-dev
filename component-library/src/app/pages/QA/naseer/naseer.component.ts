@@ -4,12 +4,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   ButtonColor,
   ButtonIconDirection,
+
+  IBannerConfig,
+
   IButtonConfig,
+
+  ICTAConfig,
+
   IDatePickerConfig,
   IDropdownConfig,
   IIconButtonComponentConfig,
   IIconButtonIconConfig,
   IInputComponentConfig,
+  IRadioInputComponentConfig,
+  ITabNavConfig,
   ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
 import {
@@ -34,6 +42,7 @@ export class NaseerComponent implements OnInit {
   showDropDownComponent: boolean = false;
   showIconButtonComponent: boolean = false;
   showDatePickerComponent: boolean = false;
+  showInteractiveBannerComponent: boolean = false;
 
   INPUT_ID = 'qa_test_input';
   form_input = new FormGroup({});
@@ -295,8 +304,323 @@ export class NaseerComponent implements OnInit {
 
   constructor(private altLang: LanguageSwitchService) { }
 
+
+  form_interactive_banner = new FormGroup({});
+
+  demoTabsConfig: ITabNavConfig = {
+    id: 'demoTabs',
+    tab: [
+      {
+        id: 'info',
+        title: 'Info',
+      },
+      {
+        id: 'warning',
+        title: 'Warning'
+      },
+      {
+        id: 'critical',
+        title: 'Critical'
+      },
+      {
+        id: 'success',
+        title: 'Success'
+      },
+      {
+        id: 'generic',
+        title: 'Generic',
+      }
+    ]
+  };
+
+  bannerConfig: IBannerConfig = {
+    id: 'banner',
+    title: 'Title text',
+    type: 'warning',
+    dismissible: true,
+    content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
+    cta: [
+      {
+        text: 'Primary',
+        type: 'button',
+        btnConfig: {
+          id: 'cta1',
+          category: 'primary'
+        }
+      },
+      {
+        text: 'Secondary',
+        type: 'button',
+        btnConfig: {
+          id: 'cta1',
+          category: 'secondary'
+        }
+      },
+      {
+        text: 'Plain',
+        type: 'button',
+        btnConfig: {
+          id: 'ctaPlain',
+          category: 'plain'
+        }
+      },
+      {
+        text: 'Link',
+        type: 'link',
+        // btnConfig: {
+        //   id: 'cta1',
+        //   category: 'plain'
+        // }
+      }
+    ]
+  };
+
+  addItemtoCTAList(text : string){
+
+    const plainExample : ICTAConfig = {
+      text: 'Plain',
+      type: 'button',
+      btnConfig: {
+        id: 'ctaPlain',
+        category: 'plain'
+      }
+    }
+
+    const secondaryExample : ICTAConfig = {
+      text: 'Secondary',
+      type: 'button',
+      btnConfig: {
+        id: 'ctaSecondary',
+        category: 'secondary'
+      }
+    }
+
+    const primaryExample  : ICTAConfig = {
+      text: 'Primary',
+      type: 'button',
+      btnConfig: {
+        id: 'ctaPrimary',
+        category: 'primary'
+      }
+    }
+
+    const linkExample : ICTAConfig = {
+      text: 'Link',
+      type: 'link',
+    }
+
+    const indexOfObject : any = this.bannerConfig?.cta?.findIndex((object) => {
+      return object.text === text;
+    });
+    
+    if (indexOfObject == -1) {
+      if(text === "Primary") this.bannerConfig?.cta?.push(primaryExample);
+      else if(text === "Secondary") this.bannerConfig?.cta?.push(secondaryExample);
+      else if(text === "Plain") this.bannerConfig?.cta?.push(plainExample);
+      else if(text === "Link") this.bannerConfig?.cta?.push(linkExample);
+    }
+  }
+
+  removeItemFromCTAList(text : string){
+    const indexOfObject : any = this.bannerConfig?.cta?.findIndex((object) => {
+      return object.text === text;
+    });
+    
+    if (indexOfObject !== -1) {
+      this.bannerConfig?.cta?.splice(indexOfObject, 1);
+    }
+  }
+
+  toggles: IRadioInputComponentConfig[] = [
+    {
+      id: 'sizeToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Size',
+      options: [
+        {
+          text: 'Small'
+        },
+        {
+          text: 'Large'
+        }
+      ]
+    },
+    {
+      id: 'showDescToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show description',
+      options: [
+        {
+          text: 'True',
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showPrimaryToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show primary button',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showPlainToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show plain button',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showSecondaryToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show secondary button',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showTitleToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show title',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showCloseToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show close',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showLinkToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show link',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+
+  ]
+
   ngOnInit() {
     this.altLang.setAltLangLink('naseer-alt');
+
+    this.toggles.forEach(toggle => {
+      console.log("toggle:=", toggle)
+      if (toggle.options && toggle.options[0].text){
+        this.form_interactive_banner.addControl(toggle.id, new FormControl(toggle.options[0].text))
+      }
+    });
+
+
+
+    this.form_interactive_banner.valueChanges.subscribe((value) => {
+      console.log("X->", value)
+      for (const param in value) {
+        switch(param){
+          case 'sizeToggle':
+            this.bannerConfig.size =  (value['sizeToggle']).toLowerCase()
+            break
+            case 'showDescToggle':
+              console.log("showDescToggle ->", value['showDescToggle'])
+              if(value['showDescToggle'] === 'True') {
+                this.bannerConfig.content='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
+              }
+              else {
+                this.bannerConfig.content = '';
+              }
+              break
+            case 'showPrimaryToggle':
+              if(value['showPrimaryToggle'] === 'True') {
+                this.addItemtoCTAList("Primary")
+              }
+              else {
+                this.removeItemFromCTAList("Primary")
+              }
+              break
+            case 'showPlainToggle':
+              if(value['showPlainToggle'] === 'True') {
+                this.addItemtoCTAList("Plain")
+              }
+              else {
+                this.removeItemFromCTAList("Plain")
+              }
+              break
+            case 'showSecondaryToggle':
+              if(value['showSecondaryToggle'] === 'True') {
+                this.addItemtoCTAList("Secondary")
+              }
+              else {
+                this.removeItemFromCTAList('Secondary')
+              }
+              break
+            case 'showTitleToggle':
+              if(value['showTitleToggle'] === 'True') {
+                this.bannerConfig.title='Title text';
+              }
+              else {
+                this.bannerConfig.title = ''
+              }
+              break
+            case 'showCloseToggle':
+              if(value['showCloseToggle'] === 'True') {
+                this.bannerConfig.dismissible = true;
+              }
+              else {
+                this.bannerConfig.dismissible = false;
+              }
+              break
+            case 'showLinkToggle':
+              if(value['showLinkToggle'] === 'True') {
+                this.addItemtoCTAList("Link")
+              }
+              else {
+                this.removeItemFromCTAList("Link")
+              }
+              break
+          default:{
+            console.log("default")
+          }
+        }
+      }
+    });
 
     //******************************************************************************************************** */
     //********************************* Input Component Tester *********************************************** */
@@ -378,6 +702,7 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = false;
+        this.showInteractiveBannerComponent = false;
         break;
       case 'textareaComponent':
         this.showInputComponent = false;
@@ -385,6 +710,7 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = false;
+        this.showInteractiveBannerComponent = false;
         break;
       case 'datepickerComponent':
         this.showInputComponent = false;
@@ -392,6 +718,7 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = true;
+        this.showInteractiveBannerComponent = false;
         break;
       case 'dropDownComponent':
         this.showInputComponent = false;
@@ -399,6 +726,7 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = true;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = false;
+        this.showInteractiveBannerComponent = false;
         break;
       case 'iconButtonComponent':
         this.showInputComponent = false;
@@ -406,6 +734,15 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = true;
         this.showDatePickerComponent = false;
+        this.showInteractiveBannerComponent = false;
+        break;
+      case 'interactiveBanner':
+        this.showInputComponent = false;
+        this.showTextareaComponent = false;
+        this.showDropDownComponent = false;
+        this.showIconButtonComponent = false;
+        this.showDatePickerComponent = false;
+        this.showInteractiveBannerComponent = true;
         break;
       case 'inputError':
         this.form_textarea.get(this.qaTextareaInput.id)?.valid

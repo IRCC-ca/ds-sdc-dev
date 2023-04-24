@@ -1,11 +1,18 @@
 <h2>Click the Component you want to test</h2>
-<button (click)="buttonActions('inputComponent')">Input Component</button>
-<button (click)="buttonActions('textareaComponent')">Textarea Component</button>
-<button (click)="buttonActions('datepickerComponent')">
-  Datepicker Component
-</button>
-<button (click)="buttonActions('dropDownComponent')">Drop Down</button>
-<button (click)="buttonActions('iconButtonComponent')">Icon Buttons</button>
+<div class="heading-buttons-container">
+  <button (click)="buttonActions('inputComponent')">Input Component</button>
+  <button (click)="buttonActions('textareaComponent')">
+    Textarea Component
+  </button>
+  <button (click)="buttonActions('datepickerComponent')">
+    Datepicker Component
+  </button>
+  <button (click)="buttonActions('dropDownComponent')">Drop Down</button>
+  <button (click)="buttonActions('iconButtonComponent')">Icon Buttons</button>
+  <button (click)="buttonActions('interactiveBanner')">
+    Interactive Banner
+  </button>
+</div>
 
 <ng-container *ngIf="showInputComponent === true">
   <h2>Input Component</h2>
@@ -123,4 +130,25 @@
       </button>
     </div>
   </div>
+</ng-container>
+
+<ng-container *ngIf="showInteractiveBannerComponent === true">
+  <app-interactive-demo>
+    <ircc-cl-lib-tabs
+      tabs
+      [config]="demoTabsConfig"
+    ></ircc-cl-lib-tabs>
+    <div
+      component
+      class="banner-container"
+    >
+      <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
+    </div>
+    <ng-container
+      toggles
+      *ngFor="let toggle of toggles"
+    >
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+  </app-interactive-demo>
 </ng-container>
