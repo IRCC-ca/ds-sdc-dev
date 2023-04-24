@@ -461,6 +461,9 @@
       "ADDITIONAL_LINKS": "Liens supplémentaires"
     }
   },
+  "Indicator": {
+    "Heading": "Indicateur"
+  },
   "QA": {
     "header": "Page de destination du contrôle qualité",
     "michael": "Michael"

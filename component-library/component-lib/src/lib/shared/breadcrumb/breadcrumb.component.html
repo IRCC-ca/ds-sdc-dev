@@ -1,4 +1,8 @@
-<div class="{{ config?.size }}" (domChange)="createOverflows()">
+<div
+  class="{{ config?.size }}"
+  (domChange)="createOverflows()"
+  #breadcrumb_div
+>
   <ng-container
     *ngFor="let link of normalLinks; first as first; last as last; index as i"
   >

@@ -25,7 +25,10 @@
   <div class="col-lg-10">
     <div class="side-menu-content">
       <div *ngFor="let cont of config.tab">
-        <div *ngIf="cont.id === config.selected" class="content">
+        <div
+          *ngIf="cont.id === config.selected"
+          class="content"
+        >
           {{ cont.value }}
         </div>
       </div>

@@ -4,6 +4,7 @@
 @use '../../tokens/template-const';
 @use '../../typography/typography'as typography;
 @use '../../tokens/text'as text;
+@use "../../util/accessibility" as a11y;
 @use 'sass:map';
 
 @mixin selector {
@@ -142,9 +143,20 @@
     }
   }
 
-  p.errorText {
-    margin: 4px 0 8px 0;
+  ircc-cl-lib-error {
+    .errorIcon {
+      margin-top: 4px;
+    }
+  
+    p.errorText {
+      margin: 4px 0 0 0;
+    }
+  
+    p.errorText.additionalError {
+      margin: 8px 0px 0px 20px 
+    }
   }
+
 
   .date-form {
     display: flex;
@@ -178,12 +190,6 @@
   }
 
   .sr-only {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+    @include a11y.sr-only;
   }
 }

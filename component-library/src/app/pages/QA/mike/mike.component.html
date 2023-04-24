@@ -3,7 +3,7 @@
   <button (click)="toggleComp('radio')">Radio Component</button>
   <button (click)="toggleComp('banner')">Banner Component</button>
   <button (click)="toggleComp('hidden')">Hidden Nav Component</button>
-  <button (click)="toggleComp('icon')">Icon Component</button>
+  <button (click)="toggleComp('flyout')">Flyout/Dropdown Component</button>
 </div>
 <hr />
 <section id="radio">
@@ -69,7 +69,6 @@
     quae atque rerum.
   </p>
 </section>
-<section id="icon">
-  <ircc-cl-lib-icon [config]="iconConfig"></ircc-cl-lib-icon>
-  <app-auto-tester [config]="iconComponentConfig"></app-auto-tester>
+<section id="flyout">
+  <ircc-cl-lib-dropdown [config]="dropdownConfig"></ircc-cl-lib-dropdown>
 </section>

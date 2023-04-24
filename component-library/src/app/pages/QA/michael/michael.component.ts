@@ -223,7 +223,8 @@ export class MichaelComponent implements OnInit {
     type: 'dot',
     size: 'large',
     purpose: 'status',
-    status: 'primary'
+    status: 'primary',
+    ariaLabel: 'Indicator.Heading'
   };
 
   testerBreadcrumbConfig: IAutoTestConfigObject = {
@@ -564,5 +565,12 @@ export class MichaelComponent implements OnInit {
         this.form.updateValueAndValidity();
         break;
     }
+  }
+
+  toggleComp(comp: string) {
+    document.querySelectorAll('section')?.forEach((section) => {
+      section.classList.remove('show');
+    });
+    document.getElementById(comp)?.classList.toggle('show');
   }
 }

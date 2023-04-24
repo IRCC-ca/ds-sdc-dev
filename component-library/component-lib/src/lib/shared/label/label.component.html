@@ -3,16 +3,25 @@
   class="label_container"
   [ngClass]="{ extra_padding: config.label && !config.desc && !config.hint }"
 >
-  <label *ngIf="config.label" class="label">
+  <label
+    *ngIf="config.label"
+    class="label"
+  >
     <span class="label_field_container">
-      <div class="required-field-container" *ngIf="config.required">
+      <div
+        class="required-field-container"
+        *ngIf="config.required"
+      >
         <i class="fa-regular fa-asterisk required-star"></i
         >{{ config.label || '' | translate }}
       </div>
       <div *ngIf="!config.required">
         {{ config.label || '' | translate }}
       </div>
-      <div *ngIf="config.iconButton" class="icon_container">
+      <div
+        *ngIf="config.iconButton"
+        class="icon_container"
+      >
         <button
           class="touch_button"
           category="plain"
@@ -28,8 +37,16 @@
       </div>
     </span>
   </label>
-  <p *ngIf="config.desc" class="input-desc">
+  <p
+    *ngIf="config.desc"
+    class="input-desc"
+  >
     {{ config.desc || '' | translate }}
   </p>
-  <p *ngIf="config.hint" class="input-hint">{{ config.hint | translate }}</p>
+  <p
+    *ngIf="config.hint"
+    class="input-hint"
+  >
+    {{ config.hint | translate }}
+  </p>
 </div>

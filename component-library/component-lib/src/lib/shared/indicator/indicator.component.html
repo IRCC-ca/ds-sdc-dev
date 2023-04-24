@@ -1,21 +1,39 @@
-<div [ngClass]="['indicator-container', config?.size ?? '']">
-  <div *ngIf="config.type === 'text' || config.type === 'number'"
-     #label
-     [ngClass]="[
-        config.type,
-        config.category,
-        config.purpose === 'status' ? EIndicatorStatus[config.status ?? 'information'] : '',
-        config.purpose === 'palette' ? config.palette : '',
-        rounded ? 'rounded' : '',
-        config.label === '99+' ? 'num-lg' : '',
-        abbr ? 'abbr' : '']">
-      <ircc-cl-lib-icon *ngIf="config.type === 'text' && config?.icon" [config]="{'FA_keywords':config.icon}"></ircc-cl-lib-icon>
-      <ng-container *ngIf="abbr; else nonAbbr" >
-        <span class="abbr"><abbr [title]="config?.label">{{config?.label}}</abbr></span>
-      </ng-container>
-      <ng-template #nonAbbr>
-        <span>{{config?.label}}</span>
-      </ng-template>
+<div
+  [ngClass]="['indicator-container', config?.size ?? '']"
+  [attr.aria-label]="
+    (config?.ariaLabel ?? 'Indicator.Heading' | translate) +
+    ' ' +
+    (config?.label ?? '')
+  "
+  [tabIndex]="0"
+>
+  <div
+    *ngIf="config.type === 'text' || config.type === 'number'"
+    #label
+    [ngClass]="[
+      config.type,
+      config.category,
+      config.purpose === 'status'
+        ? EIndicatorStatus[config.status ?? 'information']
+        : '',
+      config.purpose === 'palette' ? config.palette : '',
+      rounded ? 'rounded' : '',
+      config.label === '99+' ? 'num-lg' : '',
+      abbr ? 'abbr' : ''
+    ]"
+  >
+    <ircc-cl-lib-icon
+      *ngIf="config.type === 'text' && config?.icon"
+      [config]="{ 'FA_keywords': config.icon }"
+    ></ircc-cl-lib-icon>
+    <ng-container *ngIf="abbr; else nonAbbr">
+      <span class="abbr"
+        ><abbr [title]="config?.label">{{ config?.label }}</abbr></span
+      >
+    </ng-container>
+    <ng-template #nonAbbr>
+      <span>{{ config?.label }}</span>
+    </ng-template>
   </div>
   <span
     *ngIf="config.type === 'dot'"

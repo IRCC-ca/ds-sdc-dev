@@ -465,6 +465,9 @@
       "ADDITIONAL_LINKS": "Additional links"
     }
   },
+  "Indicator": {
+    "Heading": "Indicator"
+  },
   "QA": {
     "header": "QA Landing Page",
     "michael": "Michael"

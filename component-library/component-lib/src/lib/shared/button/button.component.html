@@ -1,13 +1,14 @@
 <button
-    [attr.aria-label]="config.ariaLabel"
-    [attr.color]="config.color"
-    [attr.category]="config.category"
-    [attr.size]="config.size"
-    [disabled]="config.disabled"
-    [ngClass]="config.iconDirection"
-    (click)="clickEvent(config.id)"
-    class="lib-button"
-
+  [attr.aria-label]="config.ariaLabel"
+  [attr.color]="config.color"
+  [attr.category]="config.category"
+  [attr.size]="config.size"
+  [attr.tabIndex]="config.tabIndex"
+  [disabled]="config.disabled"
+  [ngClass]="config.iconDirection"
+  (click)="clickEvent(config.id)"
+  class="lib-button"
+  [id]="config.id"
 >   <div class="button-content-container">
         <span class="icon" *ngIf="config.icon">
             <ircc-cl-lib-icon [config]="{'FA_keywords':config.icon}"></ircc-cl-lib-icon>
