@@ -526,9 +526,25 @@
     "ErrorDontText": "Only show the error message when showing error validation.",
     "MaxMinWidthHeading": "Minimum and maximum widths",
     "MaxMinWidthImgAlt": "",
-    "MaxMinWidthText": "Small inputs have a maximum width of 552 pixels and a minimum width of 92 pixels. Large inputs have a maximum width of 632 pixels and a minimum width of 104 pixels. "
-
-
+    "MaxMinWidthText": "Small inputs have a maximum width of 552 pixels and a minimum width of 92 pixels. Large inputs have a maximum width of 632 pixels and a minimum width of 104 pixels. ",
+    "AnatomyImgAlt": "The parts that makeup the input component. The parts are described in the content below.",
+    "AnatomyLabelHeading": "Label",
+    "AnatomyLabelText": "The label makes the purpose of the field clear.",
+    "AnatomyRequiredIndicatorHeading": "Required indicator",
+    "AnatomyRequiredIndicatorText": "Indicates which fields are mandatory to successfully submit the form.",
+    "AnatomyDescHeading": "Description",
+    "AnatomyDescText": "The description includes the action a user is to perform as well as all the relevant information required.",
+    "AnatomyHintHeading": "Hint",
+    "AnatomyHintText": "The hint is used to display secondary or tertiary information. It is only used when the label and description will not suffice in helping the user understand the input.",
+    "AnatomyInputFieldHeading": "Input field",
+    "AnatomyInputFieldText": "The area that the user interacts with to input content.",
+    "AnatomyInputContentHeading": "Input field content",
+    "AnatomyInputContentText": "The content that the user inputs into the field. The field also supports optional placeholder text that displays before the user inputs text.",
+    "AnatomyErrorHeading": "Error message",
+    "AnatomyErrorText": "The error text that displays if the field is in an invalid state.",
+    "AnatomyPasswordHeading": "Password field",
+    "AnatomyPasswordText": "The password field allows users to enter their password. The password can be hidden or shown.",
+    "SpecsImgAlt": "The small basic input’s label is 24 pixels in height with a fluid width. The required indicator is 12 pixels wide. There are 4 pixels of padding between the required indicator and the label. The description is 20 pixels in height with a fluid width. There are 4 pixels of padding between the label and the description. The hint text is 20 pixels in height with a fluid width. There are 8 pixels of padding between the hint text and the description. The input field is 40 pixels in height with a fixed width.  There are 4 pixels of padding between the input field and the hint text. The error message is 20 pixels in height with a fluid width. The error icon is 16 by 16 pixels. There are 4 pixels of padding between the error icon and the error message. There are 4 pixels of padding between the error message and the input field. The small password field is 40 pixels tall with a fixed width. There are 12 pixels of padding within the input field. The password text is fluid in width. The hide/show password icon is 16 pixels wide. There are 4 pixels of padding between the hide/show password icon and the password text. The large basic input’s label is 28 pixels in height with a fluid width. The required indicator is 16 pixels wide. There are 4 pixels of padding between the required indicator and the label. The description is 24 pixels in height with a fluid width. There are 4 pixels of padding between the label and the description. The hint text is 24 pixels in height with a fluid width. There are 12 pixels of padding between the hint text and the description. The input field is 52 pixels in height with a fixed width.  There are 8 pixels of padding between the input field and the hint text. The error message is 24 pixels in height with a fluid width. The error icon is 20 by 20 pixels. There are 4 pixels of padding between the error icon and the error message. There are 4 pixels of padding between the error message and the input field. The large password field is 52 pixels tall with a fixed width. There are 12 pixels of padding within the input field. The password text is fluid in width. The hide/show password icon is 20 pixels wide. There are 4 pixels of padding between the hide/show password icon and the password text. "
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
