@@ -68,7 +68,8 @@ export class LabelComponent implements OnInit {
    * Output the button press
    * @param id of the button being pressed (same as component ID)
    */
-  iconButtonClick() {
+  iconButtonClick(e: Event) {
+    e.preventDefault();
     this.labelButton.buttonPress(this.config.parentID);
   }
 
