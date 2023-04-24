@@ -584,7 +584,18 @@
     "RequiredFieldsDoImgAlt": "An input field to collect the user’s job title. The label is “Job title (required)”. The input field is empty.",
     "RequiredFieldsDoText": "In addition to using the required asterisk (*), also add “(required)” at the end of all labels within required fields.",
     "RequiredFieldsDontImgAlt": "An input field to collect the user’s job title. The label is “Job title”. The input field is empty.",
-    "RequiredFieldsDontText": "Indicate required fields with only the asterisk (*)."
+    "RequiredFieldsDontText": "Indicate required fields with only the asterisk (*).",
+    "FigmaDirectionsHeading": "Directions for use",
+    "FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“form-input”</strong> component from the Components library.",
+    "FigmaDirectionsListItem2": "In the right panel, configure the properties and variants to meet your needs. ",
+    "FigmaDirectionsListItem3": "Never override colours, radius, padding, text size, etc. This way foundational elements are kept consistent.",
+    "FigmaDirectionsListItem4": "Never override the asterisk (*) or error icons in order to keep those visual indicators consistent.",
+    "FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a input. These options allow designers to hide or show the required asterisk, description, hint, count and error text.",
+    "AccessInputsHeading": "To access the input field’s states",
+    "AccessInputsListItem1": "Click into the <strong>input-field</strong> subcomponent inside of the <strong>form-input</strong> component in the Layers palette (left panel). ",
+    "AccessInputsListItem2": "From there, you can configure the input field’s content and states in the right panel.",
+    "AccessInputsImgAlt1": "A screenshot of the layer panel from Figma. The selected layer displayed is the “input-field” subcomponent within the “form-input” component.",
+    "AccessInputsImgAlt2": "A screenshot of the design panel from Figma. With the “input-field” subcomponent selected, designers can choose from its configuration options. These options include the type of field, the type of content populated within the field, whether the field is in an error state and the state of the field."
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
