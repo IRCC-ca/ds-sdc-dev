@@ -37,7 +37,7 @@
   <section class="configs">
     <app-title-slug-url [translate]="'Input.ConfigurationsHeading'" type="primary" class="h3 epmhasis"></app-title-slug-url>
     <div class="row">
-      <div>
+      <div class="column">
         <h5>{{'Input.ConfigSizeHeading' | translate}}</h5>
         <ul>
           <li>{{'Input.ConfigSizeSmall' | translate}}</li>
@@ -51,7 +51,9 @@
           <li>{{'Input.ConfigHintFalse' | translate}}</li>
         </ul>
       </div>
-      <div>
+    </div>
+    <div class="row"> 
+      <div class="column">
         <h5>{{'Input.ConfigRequiredHeading' | translate}}</h5>
         <ul>
           <li>{{'Input.ConfigRequiredTrue' | translate}}</li>
@@ -65,7 +67,9 @@
           <li>{{'Input.ConfigErrorFalse' | translate}}</li>
         </ul>
       </div>
-            <div>
+    </div>  
+    <div class="row"> 
+      <div class="column">
         <h5>{{'Input.ConfigDescHeading' | translate}}</h5>
         <ul>
           <li>{{'Input.ConfigDescTrue' | translate}}</li>
@@ -86,33 +90,33 @@
     <app-title-slug-url [translate]="'Input.DesignGuidelinesHeading'" type="primary" class="h3 epmhasis"></app-title-slug-url>
     <h5 class="h5 emphasis">{{'Input.FieldWidth' | translate}}</h5>
     <div class="row">
-      <div>
+      <div class="column">
         <img src="" alt="{{'Input.FieldWidthImgDo' | translate}}">
-        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.FieldWidthDoHeading'|translate}}</h5>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
         <p class="body3">{{'Input.FieldWidthDoText'|translate}}</p>
       </div>
       <div>
         <img src="" alt="{{'Input.FieldWidthImgDont' | translate}}">
-        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.FieldWidthDontHeading'|translate}}</h5>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
         <p class="body3">{{'Input.FieldWidthDontText'|translate}}</p>
       </div>
     </div>
     <h5 class="h5 emphasis">{{'Input.ErrorsHeading' | translate}}</h5>
     <div class="row">
-      <div>
+      <div class="column">
         <img src="" alt="{{'Input.ErrorDoImgAlt' | translate}}">
-        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.ErrorDoHeading'|translate}}</h5>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
         <p class="body3">{{'Input.ErrorDoText'|translate}}</p>
       </div>
       <div>
         <img src="" alt="{{'Input.ErrorDontImgAlt' | translate}}">
-        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.ErrorDontHeading'|translate}}</h5>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
         <p class="body3">{{'Input.ErrorDontText'|translate}}</p>
       </div>
      </div>  
     <h5 class="h5 emphasis">{{'Input.MaxMinWidthHeading' | translate}}</h5>
     <div class="row">
-      <div>
+      <div class="column">
         <img src="" alt="{{'Input.MaxMinWidthImgAlt' | translate}}">
         <p class="body3">{{'Input.MaxMinWidthText'|translate}}</p>
       </div>
@@ -154,34 +158,122 @@
   </section>
   
   <section class="content-guidelines">
-    <!-- <app-title-slug-url [translate]="'Input.ContentGuidelinesHeading'"></app-title-slug-url>
-    <h5>{{'Input.CaseHeading' | translate}}</h5>
+    <app-title-slug-url [translate]="'Input.ContentGuidelinesHeading'"></app-title-slug-url>
+
+    <h5>{{'Input.WriteLabelsHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WriteLabelsSubHeading' | translate}}</p>
     <div class="row">
-      <div>
-        <img src="" alt="{{'Input.CaseDoImgAlt' | translate}}"><br/>
+      <div class="column">
+        <img src="" alt="{{'Input.WriteLabelsDoImgAlt1' | translate}}"><br/>
         <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
-        <p>{{'Input.CaseDoText'|translate}}</p>
+        <p>{{'Input.WriteLabelsDoText1'|translate}}</p>
       </div>
       <div>
-        <img src="" alt="{{'Input.CaseDontImgAlt' | translate}}"><br/>
+        <img src="" alt="{{'Input.WriteLabelsDontImgAlt1' | translate}}"><br/>
         <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
-        <p>{{'Input.CaseDontText'|translate}}</p>
+        <p>{{'Input.WriteLabelsDontText1'|translate}}</p>
       </div>
     </div>
-    <h5>{{'Input.DescriptiveHeading' | translate}}</h5>
     <div class="row">
-      <div>
-        <img src="" alt="{{'Input.DescriptiveDoImgAlt' | translate}}"><br/>
+      <div class="column">
+        <img src="" alt="{{'Input.WriteLabelsDoImgAlt2' | translate}}"><br/>
         <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
-        <p>{{'Input.DescriptiveDoText'|translate}}</p>
+        <p>{{'Input.WriteLabelsDoText2'|translate}}</p>
       </div>
       <div>
-        <img src="" alt="{{'Input.DescriptiveDontImgAlt' | translate}}"><br/>
+        <img src="" alt="{{'Input.WriteLabelsDontImgAlt2' | translate}}"><br/>
         <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
-        <p>{{'Input.DescriptiveDontText'|translate}}</p>
+        <p>{{'Input.WriteLabelsDontText2'|translate}}</p>
       </div>
-    </div> -->
+    </div>
+
+    <h5>{{'Input.WriteDescHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WriteDescSubHeading' | translate}}</p>
+    <div class="row">
+      <div class="column">
+        <img src="" alt="{{'Input.WriteDescDoImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WriteDescDoText'|translate}}</p>
+      </div>
+      <div>
+        <img src="" alt="{{'Input.WriteDescDontImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WriteDescDontText'|translate}}</p>
+      </div>
+    </div>
+
+    <h5>{{'Input.WritePlaceholderHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WritePlaceholderSubHeading' | translate}}</p>
+    <div class="row">
+      <div class="column">
+        <img src="" alt="{{'Input.WritePlaceholderDoImgAlt1' | translate}}"><br/>
+        <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDoText1'|translate}}</p>
+      </div>
+      <div>
+        <img src="" alt="{{'Input.WritePlaceholderDontImgAlt1' | translate}}"><br/>
+        <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDontText1'|translate}}</p>
+      </div>
+    </div>  
+    <div class="row">  
+      <div class="column">
+        <img src="" alt="{{'Input.WritePlaceholderDoImgAlt2' | translate}}"><br/>
+        <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDoText2'|translate}}</p>
+      </div>
+      <div>
+        <img src="" alt="{{'Input.WritePlaceholderDontImgAlt2' | translate}}"><br/>
+        <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDontText2'|translate}}</p>
+      </div>
+    </div>
+
+    <h5>{{'Input.WriteErrorsHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WriteErrorsSubHeading' | translate}}</p>
+    <div class="row">
+      <div class="column">
+        <img src="" alt="{{'Input.WriteErrorsDoImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WriteErrorsDoText'|translate}}</p>
+      </div>
+      <div>
+        <img src="" alt="{{'Input.WriteErrorsDontImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WriteErrorsDontText'|translate}}</p>
+      </div>
+    </div>
+    
+    <h5>{{'Input.NecessaryContentHeading' | translate}}</h5>
+    <div class="row">
+      <div class="column">
+        <img src="" alt="{{'Input.NecessaryContentDoImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.NecessaryContentDoText'|translate}}</p>
+      </div>
+      <div>
+        <img src="" alt="{{'Input.NecessaryContentDontImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.NecessaryContentDontText'|translate}}</p>
+      </div>
+    </div>
+
+    <h5>{{'Input.RequiredFieldsHeading' | translate}}</h5>
+    <p class="body3"></p>
+    <div class="row">
+      <div class="column">
+        <img src="" alt="{{'Input.RequiredFieldsDoImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.RequiredFieldsDoText'|translate}}</p>
+      </div>
+      <div>
+        <img src="" alt="{{'Input.RequiredFieldsDontImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.RequiredFieldsDontText'|translate}}</p>
+      </div>
+    </div>
   </section>
+
   <section class="usage-figma">
     <!-- <app-title-slug-url [translate]="'Input.FigmaHeading'"></app-title-slug-url>
     <div class="row">

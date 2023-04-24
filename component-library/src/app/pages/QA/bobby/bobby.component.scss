@@ -2,5 +2,11 @@
 
 .row {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
+}
+
+.column {
+  width: 50%;
+  max-width: 50%;
+  margin-right: 20px;
 }
