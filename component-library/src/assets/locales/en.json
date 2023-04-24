@@ -459,5 +459,8 @@
       "PREVIOUS_PAGE_NEXT": "Next",
       "HAMBURGER": "Menu"
     }
+  },
+  "Indicator": {
+    "Heading": "Indicator"
   }
 }

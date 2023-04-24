@@ -55,6 +55,7 @@ export interface IIndicatorConfig {
   purpose: keyof typeof IndicatorPurpose;
   status?: keyof typeof IndicatorStatus; // Sentiment
   palette?: keyof typeof IndicatorPalette; // Colour
+  ariaLabel?: string; // Aria label line of value
 }
 
 @Component({
