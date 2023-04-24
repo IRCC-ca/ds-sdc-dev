@@ -6,8 +6,6 @@ import {
   OnInit,
   Output,
   Renderer2,
-  SimpleChange,
-  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
@@ -34,10 +32,10 @@ export class resizableContainerComponent implements OnInit {
   dragListener: Function | undefined;
 
   resizeButtonConfig: IIconButtonComponentConfig = {
-    id: 'hamburger_dialog_x_button',
+    id: 'resize_button',
     category: 'custom',
-    size: 'large',
-    ariaLabel: 'ACC_DEMO.HAMBURGER_ARIA',
+    size: 'small',
+    ariaLabel: 'RESIZE_ARIA',
     icon: {
       class: 'fa-regular fa-grip-lines',
       color: 'var(--text-primary)'
