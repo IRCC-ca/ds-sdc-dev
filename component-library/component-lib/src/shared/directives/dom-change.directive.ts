@@ -1,4 +1,10 @@
-import { Directive, ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  Output
+} from '@angular/core';
 
 /**
  * @see https://stackblitz.com/edit/angular-mutationobserver-example?file=app%2Fapp.module.ts,app%2Fdom-change.directive.ts,app%2Fapp.component.ts
@@ -16,9 +22,10 @@ export class DomChangeDirective implements OnDestroy {
     const element = this.elementRef.nativeElement;
 
     this.changes = new MutationObserver((mutations: MutationRecord[]) => {
-        mutations.forEach((mutation: MutationRecord) => this.domChange.emit(mutation));
-      }
-    );
+      mutations.forEach((mutation: MutationRecord) =>
+        this.domChange.emit(mutation)
+      );
+    });
 
     this.changes.observe(element, {
       attributes: true,

@@ -56,8 +56,10 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
   displayOverflow = false;
   private maxHeight: number = 0; // Max height of element in px
-  @ViewChild('breadcrumb_div') divRef?: ElementRef<HTMLDivElement>;
-  @ViewChild('breadcrumb_child') childRef?: ElementRef<HTMLParagraphElement>;
+  @ViewChild('breadcrumb_div', { static: false })
+  divRef?: ElementRef<HTMLDivElement>;
+  @ViewChild('breadcrumb_child', { static: false })
+  childRef?: ElementRef<HTMLParagraphElement>;
   isChildOverflow: boolean = false;
   constructor(
     private translate: TranslateService,
