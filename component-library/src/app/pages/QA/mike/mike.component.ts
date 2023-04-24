@@ -15,7 +15,8 @@ import {
   ICTAConfig,
   IButtonConfig,
   IRadioInputComponentConfig,
-  IHiddenNavConfig
+  IHiddenNavConfig,
+  IDropdownConfig
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -36,6 +37,33 @@ export class MikeComponent implements OnInit {
   qaBanner: IBannerConfig = {
     id: this.BANNER_ID
   };
+
+  dropdownConfig : IDropdownConfig = {
+    id: 'dropdown_test',
+    flyout: {
+      id: 'dropdown_test_flyout',
+      options: [
+        {
+          value: 'option 1'
+        },
+        {
+          value: 'option 2'
+        },
+        {
+          value: 'option 3'
+        },
+        {
+          value: 'option 4'
+        },
+        {
+          value: 'option 5'
+        },
+        {
+          value: 'option 6'
+        },
+      ]
+    }
+  }
 
   hiddenNavConfig: IHiddenNavConfig = {
     id: 'hidden_nav',
