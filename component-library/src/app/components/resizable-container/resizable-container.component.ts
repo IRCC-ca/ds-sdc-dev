@@ -15,7 +15,7 @@ import { IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
   templateUrl: './resizable-container.component.html',
   styleUrls: ['./resizable-container.component.scss']
 })
-export class resizableContainerComponent implements OnInit {
+export class resizableContainerComponent {
   @ViewChild('resizeBar', { static: false }) resizeBar: ElementRef | undefined;
   @ViewChild('resizeContainer', { static: false }) resizeContainer:
     | ElementRef
@@ -41,8 +41,6 @@ export class resizableContainerComponent implements OnInit {
   };
 
   constructor(private renderer: Renderer2) {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit() {
     if (this.resizeContainer) {
