@@ -1,0 +1,26 @@
+<div class="option-container">
+  <!-- Problem: When not clickable, the hover state needs to be disabled! -->
+  <ng-container *ngIf="config.clickable !== false">
+    <ircc-cl-lib-button
+      [category]="'plain'"
+      [id]="config.id ? config.id : ''"
+      role="option"
+      [tabIndex]="-1"
+    >
+      <div class="option-contents">
+        <p class="option-text">{{ config.value || '' | translate }}</p>
+        <div *ngIf="config.selected">
+          <span class="fa-solid fa-check option-check"></span>
+        </div>
+      </div>
+    </ircc-cl-lib-button>
+  </ng-container>
+  <div *ngIf="config.clickable === false">
+    <div class="option-contents">
+      <p class="option-text option-div">{{ config.value || '' | translate }}</p>
+      <div *ngIf="config.selected">
+        <span class="fa-solid fa-check option-check"></span>
+      </div>
+    </div>
+  </div>
+</div>
