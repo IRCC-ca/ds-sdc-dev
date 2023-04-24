@@ -56,12 +56,12 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
   displayOverflow = false;
   private maxHeight: number = 0; // Max height of element in px
+  @ViewChild('breadcrumb_div') divRef?: ElementRef<HTMLDivElement>;
   @ViewChild('breadcrumb_child') childRef?: ElementRef<HTMLParagraphElement>;
   isChildOverflow: boolean = false;
   constructor(
     private translate: TranslateService,
     private standalone: StandAloneFunctions,
-    private el: ElementRef,
     private renderer: Renderer2,
     private changeRef: ChangeDetectorRef
   ) {}
@@ -136,7 +136,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   getMaxHeight(): number {
-    const containerElement = this.el.nativeElement;
+    const containerElement = this.divRef && this.divRef.nativeElement;
     const tempElement = this.renderer.createElement('p');
     const text = this.renderer.createText('Test');
     this.renderer.appendChild(tempElement, text);
@@ -149,7 +149,11 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   createOverflows() {
-    if (this.el.nativeElement.offsetHeight <= this.maxHeight) return;
+    if (
+      this.divRef &&
+      this.divRef?.nativeElement.offsetHeight <= this.maxHeight
+    )
+      return;
 
     if (this.config.links && this.config.links.length > 1) {
       const linksLength = this.config.links.length;
