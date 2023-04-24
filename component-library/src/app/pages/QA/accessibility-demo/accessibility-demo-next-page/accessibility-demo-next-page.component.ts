@@ -5,6 +5,7 @@ import { AccessbilityDemoFormStateService } from '../accessbility-demo-form-stat
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { LanguageSwitchService } from '../../@shared/language-switch/language-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 
 @Component({
   selector: 'app-accessibility-demo-next-page',
@@ -24,16 +25,17 @@ export class AccessibilityDemoNextPageComponent implements OnInit {
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
     private translate: TranslateService,
-    private altLang: LanguageSwitchService
+    private altLang: LanguageSwitchService,
+    private lang: LangSwitchService
   ) {}
 
   ngOnInit() {
-    this.altLang.setAltLangLink('AccessibilityDemoNext-alt');
-    this.altLang.getAltLangLink().subscribe((altLang: string) => {
-      this.altPathKey = altLang;
-      this.setAltLangURL();
-      console.log(this.altLangURL);
-    });
+    this.lang.setAltLangLink('AccessibilityDemoNext');
+    // this.lang.getAltLangLink().subscribe((altLang: string) => {
+    //   this.altPathKey = altLang;
+    //   this.setAltLangURL();
+    //   console.log(this.altLangURL);
+    // });
 
     this.progressIndicator.updateSelected(2);
     //if the page has moved to this one via a back or forward browser button, this detects the move and updates the page.
@@ -81,7 +83,7 @@ export class AccessibilityDemoNextPageComponent implements OnInit {
    */
   get getPreviousButtonLink() {
     return (
-      this.router.url +
+      this.translate.currentLang +
       '/' +
       this.translate.instant('ROUTES.AccessibilityDemoPrevious')
     );
@@ -89,7 +91,7 @@ export class AccessibilityDemoNextPageComponent implements OnInit {
 
   get getNextButtonLink() {
     return (
-      this.router.url +
+      this.translate.currentLang +
       '/' +
       this.translate.instant('ROUTES.AccessibilityDemoNext')
     );

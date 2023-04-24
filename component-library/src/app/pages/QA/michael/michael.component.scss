@@ -1,3 +1,18 @@
 button {
   margin-top: 8px;
 }
+
+section {
+  display: none;
+}
+
+.btn-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.show {
+  display: block;
+}

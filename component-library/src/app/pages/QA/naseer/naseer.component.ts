@@ -1,4 +1,4 @@
-import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -302,7 +302,7 @@ export class NaseerComponent implements OnInit {
     testFields: this.testerConfigTextarea
   };
 
-  constructor(private altLang: LanguageSwitchService) { }
+  constructor(private lang: LangSwitchService) {}
 
 
   form_interactive_banner = new FormGroup({});
@@ -540,7 +540,7 @@ export class NaseerComponent implements OnInit {
   ]
 
   ngOnInit() {
-    this.altLang.setAltLangLink('naseer-alt');
+    this.lang.setAltLangLink('naseer');
 
     this.toggles.forEach(toggle => {
       console.log("toggle:=", toggle)
@@ -747,8 +747,8 @@ export class NaseerComponent implements OnInit {
       case 'inputError':
         this.form_textarea.get(this.qaTextareaInput.id)?.valid
           ? this.form_textarea
-            .get(this.qaTextareaInput.id)
-            ?.setErrors({ invalid: true })
+              .get(this.qaTextareaInput.id)
+              ?.setErrors({ invalid: true })
           : this.form_textarea.get(this.qaTextareaInput.id)?.reset();
 
         this.form_textarea.updateValueAndValidity();
@@ -775,11 +775,11 @@ export class NaseerComponent implements OnInit {
       case 'disable-textarea':
         this.qaTextareaInput?.formGroup.get(this.qaTextareaInput.id)?.disabled
           ? this.qaTextareaInput?.formGroup
-            .get(this.qaTextareaInput.id)
-            ?.enable()
+              .get(this.qaTextareaInput.id)
+              ?.enable()
           : this.qaTextareaInput?.formGroup
-            .get(this.qaTextareaInput.id)
-            ?.disable();
+              .get(this.qaTextareaInput.id)
+              ?.disable();
         break;
       case 'setErrorDate':
         this.form_date_picker.markAllAsTouched();
