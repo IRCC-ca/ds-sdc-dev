@@ -12,7 +12,10 @@
   }"
 >
   <div class="banner-container">
-    <div class="banner-left" *ngIf="config?.type != 'generic' && config?.type">
+    <div
+      class="banner-left"
+      *ngIf="config?.type != 'generic' && config?.type"
+    >
       <ng-container [ngSwitch]="config?.type">
         <div *ngSwitchCase="'critical'">
           <i class="fa-circle-exclamation fa-regular banner-icon"></i>
@@ -27,12 +30,21 @@
           <i class="fa-triangle-exclamation fa-regular banner-icon"></i>
         </div>
       </ng-container>
-      <div class="banner-line" [ngClass]="{ hidden: !lineVisible }"></div>
+      <div
+        class="banner-line"
+        [ngClass]="{ hidden: !lineVisible }"
+      ></div>
     </div>
     <div class="banner-right">
       <div class="banner-body">
-        <div class="banner-text" id="{{ textId }}">
-          <div class="banner-title h6 emphasis" *ngIf="config?.title">
+        <div
+          class="banner-text"
+          id="{{ textId }}"
+        >
+          <div
+            class="banner-title h6 emphasis"
+            *ngIf="config?.title"
+          >
             {{ config?.title || '' | translate }}
           </div>
           <div
@@ -42,7 +54,10 @@
           ></div>
         </div>
       </div>
-      <div class="banner-ctas" *ngIf="config?.cta">
+      <div
+        class="banner-ctas"
+        *ngIf="config?.cta"
+      >
         <ng-container *ngFor="let cta of config?.cta; let index = index">
           <ircc-cl-lib-button
             *ngIf="cta?.type === 'button'"
@@ -56,6 +71,7 @@
             >{{ cta.text | translate }}</ircc-cl-lib-button
           >
           <a
+            class="cta-link"
             *ngIf="cta?.type === 'link'"
             [routerLink]="cta?.linkConfig | translate"
             [attr.aria-label]="cta?.ariaLabel"
