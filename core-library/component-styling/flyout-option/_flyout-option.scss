@@ -38,10 +38,6 @@
     }
   }
 
-  .selected {
-    background: var(--generic-hover);
-  }
-
   .option {
     &-container {
       margin: 0px 6px;
@@ -67,7 +63,7 @@
 
     //TODO: Tokens aren't working here. Figure out what's going on
     &-div {
-      font-family: 'lato';
+      font-family: "lato";
       color: var(--text);
       font-size: 20px;
     }

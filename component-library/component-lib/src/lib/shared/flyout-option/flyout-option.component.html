@@ -1,7 +1,12 @@
-<div class="option-container" aria-label="tesing this out" [ngClass]="{ selected: config.active }">
+<div class="option-container">
   <!-- Problem: When not clickable, the hover state needs to be disabled! -->
   <ng-container *ngIf="config.clickable !== false">
-    <ircc-cl-lib-button [category]="'plain'" [id]="config.id ? config.id : ''" role="option" [tabIndex]="-1">
+    <ircc-cl-lib-button
+      [category]="'plain'"
+      [id]="config.id ? config.id : ''"
+      role="option"
+      [tabIndex]="-1"
+    >
       <div class="option-contents">
         <p class="option-text">{{ config.value || '' | translate }}</p>
         <div *ngIf="config.selected">
