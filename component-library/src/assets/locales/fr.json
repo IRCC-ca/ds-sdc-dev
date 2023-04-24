@@ -487,9 +487,25 @@
     "PrimaryHeading": "Basic input",
     "SecondaryHeading": "Password input",
     "PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
-    "SecondaryText": "The password input allows users to enter their password. The password can be hidden or shown."
-
-
+    "SecondaryText": "The password input allows users to enter their password. The password can be hidden or shown.",
+    "ConfigSizeHeading": "Size",
+    "ConfigSizeSmall": "Small",
+    "ConfigSizeLarge": "Large",
+    "ConfigHintHeading": "Hint",
+    "ConfigHintTrue": "True",
+    "ConfigHintFalse": "False",
+    "ConfigRequiredHeading": "Required",
+    "ConfigRequiredTrue": "True",
+    "ConfigRequiredFalse": "False",
+    "ConfigErrorHeading": "Error",
+    "ConfigErrorTrue": "True",
+    "ConfigErrorFalse": "False",
+    "ConfigDescHeading": "Description",
+    "ConfigDescTrue": "True",
+    "ConfigDescFalse": "False",
+    "ConfigPlaceholderHeading": "Placeholder",
+    "ConfigPlaceholderTrue": "True",
+    "ConfigPlaceholderFalse": "False"
   },
     "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",

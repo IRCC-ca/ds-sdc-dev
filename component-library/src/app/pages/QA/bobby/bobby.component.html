@@ -23,7 +23,7 @@
   <section class="types">
     <app-title-slug-url [translate]="'Input.TypesHeading'" class="h3 epmhasis"></app-title-slug-url>
     <h5 class="emphasis">{{'Input.PrimaryHeading' | translate}}</h5>
-    <app-component-preview copyText="<button>{{'Buttons.PrimaryBtnText' | translate}}</button>">
+    <app-component-preview copyText="<button category='secondary'>{{'Buttons.PrimaryBtnText' | translate}}</button>">
       <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
     <p>{{'Input.PrimaryText' | translate}}</p>
@@ -35,44 +35,54 @@
   </section>
   
   <section class="configs">
-    <app-title-slug-url [translate]="'Input.ConfigurationsHeading'"></app-title-slug-url>
+    <app-title-slug-url [translate]="'Input.ConfigurationsHeading'" class="h3 epmhasis"></app-title-slug-url>
     <div class="row">
       <div>
-        <h5>{{'Buttons.ConfigSizeHeading' | translate}}</h5>
+        <h5>{{'Input.ConfigSizeHeading' | translate}}</h5>
         <ul>
-          <li>{{'Buttons.ConfigSizeSmall' | translate}}</li>
-          <li>{{'Buttons.ConfigSizeLarge' | translate}}</li>
+          <li>{{'Input.ConfigSizeSmall' | translate}}</li>
+          <li>{{'Input.ConfigSizeLarge' | translate}}</li>
         </ul>
       </div>
       <div>
-        <h5>{{'Buttons.ConfigLayoutHeading' | translate}}</h5>
+        <h5>{{'Input.ConfigHintHeading' | translate}}</h5>
         <ul>
-          <li>{{'Buttons.ConfigLayoutFluid' | translate}}</li>
-          <li>{{'Buttons.ConfigLayoutFixed' | translate}}</li>
+          <li>{{'Input.ConfigHintTrue' | translate}}</li>
+          <li>{{'Input.ConfigHintFalse' | translate}}</li>
         </ul>
       </div>
       <div>
-        <h5>{{'Buttons.ConfigIconHeading' | translate}}</h5>
+        <h5>{{'Input.ConfigRequiredHeading' | translate}}</h5>
         <ul>
-          <li>{{'Buttons.ConfigIconNone' | translate}}</li>
-          <li>{{'Buttons.ConfigIconLeading' | translate}}</li>
-          <li>{{'Buttons.ConfigIconTrailing' | translate}}</li>
+          <li>{{'Input.ConfigRequiredTrue' | translate}}</li>
+          <li>{{'Input.ConfigRequiredFalse' | translate}}</li>
         </ul>
       </div>
       <div>
-        <h5>{{'Buttons.ConfigStateHeading' | translate}}</h5>
+        <h5>{{'Input.ConfigErrorHeading' | translate}}</h5>
         <ul>
-          <li>{{'Buttons.ConfigStateDefault' | translate}}</li>
-          <li>{{'Buttons.ConfigStateHover' | translate}}</li>
-          <li>{{'Buttons.ConfigStateActive' | translate}}</li>
-          <li>{{'Buttons.ConfigStateActive' | translate}}</li>
-          <li>{{'Buttons.ConfigStateFocus' | translate}}</li>
+          <li>{{'Input.ConfigErrorTrue' | translate}}</li>
+          <li>{{'Input.ConfigErrorFalse' | translate}}</li>
+        </ul>
+      </div>
+            <div>
+        <h5>{{'Input.ConfigDescHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigDescTrue' | translate}}</li>
+          <li>{{'Input.ConfigDescFalse' | translate}}</li>
+        </ul>
+      </div>
+      <div>
+        <h5>{{'Input.ConfigPlaceholderHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigPlaceholderTrue' | translate}}</li>
+          <li>{{'Input.ConfigPlaceholderFalse' | translate}}</li>
         </ul>
       </div>
     </div>
   </section>
   <div class="design-guidelines">
-    <app-title-slug-url [translate]="'Input.DesignGuidelinesHeading'"></app-title-slug-url>
+    <app-title-slug-url [translate]="'Input.DesignGuidelinesHeading'" class="h3 epmhasis"></app-title-slug-url>
     <h5 class="h5 emphasis">{{'Input.FieldWidth' | translate}}</h5>
     <div class="row">
       <div>
@@ -89,19 +99,19 @@
     <h5>{{'Input.ErrorsHeading' | translate}}</h5>
     <div class="row">
       <div>
-        <img src="" alt="{{'Input.DestructiveDoImgAlt' | translate}}">
+        <img src="" alt="{{'Input.ErrorDoImgAlt' | translate}}">
         <h5 class="text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
-        <p>{{'Input.DestructiveDoText'|translate}}</p>
+        <p>{{'Input.ErrorDoText'|translate}}</p>
       </div>
       <div>
-        <img src="" alt="{{'Input.DestructiveDontImgAlt' | translate}}">
+        <img src="" alt="{{'Input.ErrorDontImgAlt' | translate}}">
         <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
-        <p>{{'Input.DestructiveDontText'|translate}}</p>
+        <p>{{'Input.ErrorDontText'|translate}}</p>
       </div>
     </div>
   </div>
   <section class="anatomy">
-    <!-- <app-title-slug-url [translate]="'Input.AnatomyHeading'"></app-title-slug-url>
+    <!-- <app-title-slug-url [translate]="'Input.AnatomyHeading'" class="h3 epmhasis"></app-title-slug-url>
     <img src="assets/img/anatomy-image-button.jpg" alt="{{'Buttons.AnatomyImgAlt' | translate}}"><br/>
     <span class="round-purple-num">1</span>
     <h5 class="round-purple-num">{{'Buttons.AnatomyBGHeading' | translate}}</h5>
