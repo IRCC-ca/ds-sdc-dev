@@ -595,7 +595,22 @@
     "AccessInputsListItem1": "Click into the <strong>input-field</strong> subcomponent inside of the <strong>form-input</strong> component in the Layers palette (left panel). ",
     "AccessInputsListItem2": "From there, you can configure the input field’s content and states in the right panel.",
     "AccessInputsImgAlt1": "A screenshot of the layer panel from Figma. The selected layer displayed is the “input-field” subcomponent within the “form-input” component.",
-    "AccessInputsImgAlt2": "A screenshot of the design panel from Figma. With the “input-field” subcomponent selected, designers can choose from its configuration options. These options include the type of field, the type of content populated within the field, whether the field is in an error state and the state of the field."
+    "AccessInputsImgAlt2": "A screenshot of the design panel from Figma. With the “input-field” subcomponent selected, designers can choose from its configuration options. These options include the type of field, the type of content populated within the field, whether the field is in an error state and the state of the field.",
+    "AccessibilityColourHeading": "Colour contrast",
+    "AccessibilityColourText": "All elements within the input component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1.",
+    "AccessibilityKeyboardHeading": "Keyboard accessible",
+    "AccessibilityKeyboardText": "Inputs are developed using the native HTML input element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity. The input can be navigated to and interacted with using a keyboard and receives a visible focus.",
+    "AccessibilityContentHeading": "Content",
+    "AccessibilityContentItem1": "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
+    "AccessibilityContentItem2": "Headings and labels describe topic or purpose.",
+    "AccessibilityContentItem3": "Labels or instructions are provided when content requires user input.",
+    "AccessibilityContentItem4": "The label, description and hint are placed outside of the form field and are always visible to the user. The content is presented in a logical reading order.",
+    "AccessibilityContentItem5": "Label that includes an asterisk to indicate the control is required.",
+    "AccessibilityContentItem6": "Clear labelling for required fields, including the word “required” in parentheses.",
+    "AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
+    "AccessibilityValidationHeading": "Validation",
+    "AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
+    "ResearchText": "Coming soon."
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
