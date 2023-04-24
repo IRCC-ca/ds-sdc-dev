@@ -1,0 +1,16 @@
+<div
+  #resizeContainer
+  class="resize-container"
+>
+  <div class="resize-content"><ng-content></ng-content></div>
+  <div
+    #resizeBar
+    class="resize-bar"
+  >
+    <ircc-cl-lib-icon-button
+      [config]="resizeButtonConfig"
+      class="tabs-btn"
+    >
+    </ircc-cl-lib-icon-button>
+  </div>
+</div>

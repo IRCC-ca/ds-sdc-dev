@@ -1,0 +1,27 @@
+.resize-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .resize-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+  }
+  .resize-bar {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    cursor: row-resize;
+    ircc-cl-lib-icon-button {
+      button {
+        padding: 10px 10px 4px 10px;
+      }
+    }
+  }
+}
