@@ -223,7 +223,8 @@ export class MichaelComponent implements OnInit {
     type: 'dot',
     size: 'large',
     purpose: 'status',
-    status: 'primary'
+    status: 'primary',
+    ariaLabel: 'Indicator.Heading'
   };
 
   testerBreadcrumbConfig: IAutoTestConfigObject = {

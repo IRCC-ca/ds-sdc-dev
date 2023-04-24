@@ -6,6 +6,7 @@
 @use "../../tokens/sizes"as token-size;
 @use "../../typography/typography"as typography;
 @use "../../tokens/text"as text;
+@use "../../util/accessibility" as a11y;
 @use "sass:map";
 
 @mixin selector {
@@ -76,12 +77,6 @@
   }
 
   .sr-only {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+    @include a11y.sr-only;
   }
 }

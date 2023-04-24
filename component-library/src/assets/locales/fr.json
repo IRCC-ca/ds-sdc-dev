@@ -458,6 +458,9 @@
       "HAMBURGER": "Menu"
     }
   },
+  "Indicator": {
+    "Heading": "Indicateur"
+  },
   "QA": {
     "header": "Page de destination du contrôle qualité",
     "michael": "Michael"
