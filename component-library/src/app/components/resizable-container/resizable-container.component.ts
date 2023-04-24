@@ -9,13 +9,11 @@ import {
   ViewChild
 } from '@angular/core';
 import { IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
-import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 
 @Component({
   selector: 'app-resizable-container',
   templateUrl: './resizable-container.component.html',
-  styleUrls: ['./resizable-container.component.scss'],
-  providers: [SlugifyPipe]
+  styleUrls: ['./resizable-container.component.scss']
 })
 export class resizableContainerComponent implements OnInit {
   @ViewChild('resizeBar', { static: false }) resizeBar: ElementRef | undefined;
