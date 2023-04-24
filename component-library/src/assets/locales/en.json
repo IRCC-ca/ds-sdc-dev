@@ -509,7 +509,26 @@
     "ConfigDescFalse": "False",
     "ConfigPlaceholderHeading": "Placeholder",
     "ConfigPlaceholderTrue": "True",
-    "ConfigPlaceholderFalse": "False"
+    "ConfigPlaceholderFalse": "False",
+    "FieldWidth": "Field widths",
+    "FieldWidthImgDo": "A wide input field for typing a country name and a narrow input field for typing a year.",
+    "FieldWidthDoHeading": "Do",
+    "FieldWidthDoText": "Use field widths that are appropriate for the type of content being gathered.",
+    "FieldWidthImgDont": "A narrow input field for typing a country name and a wide input field for typing a year.",
+    "FieldWidthDontHeading": "Don't",
+    "FieldWidthDontText": "Use arbitrary field widths that are not sized based on the width of the expected value.",
+    "ErrorsHeading": "Errors",
+    "ErrorDoImgAlt": "An input field that shows validation by highlighting the field red with an error message underneath.",
+    "ErrorDoHeading": "Do",
+    "ErrorDoText": "Show the error visual treatment on the field in addition to showing the error message when showing error validation.",
+    "ErrorDontImgAlt": "An input field that only uses an error message as validation.",
+    "ErrorDontHeading": "Don't",
+    "ErrorDontText": "Only show the error message when showing error validation.",
+    "MaxMinWidthHeading": "Minimum and maximum widths",
+    "MaxMinWidthImgAlt": "",
+    "MaxMinWidthText": "Small inputs have a maximum width of 552 pixels and a minimum width of 92 pixels. Large inputs have a maximum width of 632 pixels and a minimum width of 104 pixels. "
+
+
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
