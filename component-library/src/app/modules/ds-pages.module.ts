@@ -10,10 +10,18 @@ import { SharedModule } from './shared.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { QaModule } from '@app/pages/QA/qa.module';
 import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/accessibility-demo.module';
+import { codeViewerComponent } from '@app/components/code-viewer/code-viewer.component';
+import { resizableContainerComponent } from '@app/components/resizable-container/resizable-container.component';
+import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
+import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
+    resizableContainerComponent,
+    codeViewerComponent,
+    accordionContainerComponent,
+    codeViewComponent,
     OverviewComponent,
     ForDesignersComponent,
     SlugifyPipe,
@@ -26,6 +34,11 @@ import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/access
     QaModule,
     AccessibilityDemoModule
   ],
-  exports: [TitleSlugUrlComponent]
+  exports: [
+    TitleSlugUrlComponent,
+    codeViewerComponent,
+    accordionContainerComponent,
+    resizableContainerComponent
+  ]
 })
 export class DsPageModule {}
