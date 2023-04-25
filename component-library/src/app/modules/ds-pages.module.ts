@@ -12,6 +12,7 @@ import { QaModule } from '@app/pages/QA/qa.module';
 import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/accessibility-demo.module';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     SlugifyPipe,
     SafeHtmlPipe,
     BannerDocumentationComponent,
-    InteractiveDemoComponent
+    InteractiveDemoComponent,
+    accordionContainerComponent
   ],
   imports: [
     CommonModule,

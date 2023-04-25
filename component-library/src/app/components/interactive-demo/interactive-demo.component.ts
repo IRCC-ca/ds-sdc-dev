@@ -19,11 +19,7 @@ export class InteractiveDemoComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggle() {
-    this.isOpen = !this.isOpen;
-
-    this.isOpen
-      ? (this.accordionText = 'DEMO_COMPONENT.ACCORDION_OPEN')
-      : (this.accordionText = 'DEMO_COMPONENT.ACCORDION_CLOSED');
+  toggle(accordianOpen : any) {
+    this.isOpen = accordianOpen;
   }
 }
