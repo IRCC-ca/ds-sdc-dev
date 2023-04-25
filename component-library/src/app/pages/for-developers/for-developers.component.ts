@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
-import {ClipboardModule} from '@angular/cdk/clipboard';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 @Component({
   selector: 'app-for-developers',
   templateUrl: './for-developers.component.html',
@@ -14,13 +14,14 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 })
 export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [ // list of all right nav items
+  rightNavDataRaw: string[] = [
+    // list of all right nav items
     'Overview.DeveloperHeading',
     'Developers.GetStartedHeading',
     'Developers.UsageHeading',
     'Developers.FontAwesomeHeading',
-    'Developers.ReleasesHeading',
-  ]
+    'Developers.ReleasesHeading'
+  ];
   altLangLink = 'forDesigners';
 
   constructor(

@@ -28,7 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     LangSwitchComponent,
-    SideNavComponent,
+    SideNavComponent
     // TestComponent
   ],
   imports: [
