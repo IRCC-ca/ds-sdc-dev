@@ -11,6 +11,10 @@
   margin-right: 20px;
 }
 
+.single-img {
+  display: block;
+}
+
 .content-doc-wrapper {
   box-sizing: border-box;
 
@@ -55,9 +59,9 @@ h5 {
 
 span {
   &.round-purple-num {
-    // color: ircc-ds-color.mix-token(visited, 900);
+    color: #592D85;
     font-weight: 700;
-    // background-color: ircc-ds-color.mix-token(visited, 200);
+    background-color: #E1D1F0;
     padding: 9px 15px;
     border-radius: 50%;
   }
