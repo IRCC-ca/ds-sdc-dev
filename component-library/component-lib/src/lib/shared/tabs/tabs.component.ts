@@ -6,6 +6,7 @@ export interface ITabNavConfig {
   tab?: ITabConfig[];
   size?: keyof typeof DSSizes;
   selected?: string;
+  showContent?: boolean;
 }
 export interface ITabConfig {
   id?: string;
@@ -18,7 +19,8 @@ export interface ITabConfig {
 })
 export class TabsComponent implements OnInit {
   @Input() config: ITabNavConfig = {
-    id: ''
+    id: '',
+    showContent: true
   };
   @Output() valueChange = new EventEmitter<string>();
 
