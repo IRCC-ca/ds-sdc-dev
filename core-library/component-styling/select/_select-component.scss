@@ -142,6 +142,9 @@ $selectors: 'ircc-cl-lib-select';
 	select.ng-invalid.ng-touched {
 		border-color: var(--critical-border);
 		background-color: var(--critical-background-weak);
+		&:active {
+			background-color: var(--critical-background-weak-hover);
+		}
 	}
 
 	select:disabled {

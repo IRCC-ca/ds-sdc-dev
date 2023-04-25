@@ -38,7 +38,7 @@ export class MikeComponent implements OnInit {
     id: this.BANNER_ID
   };
 
-  dropdownConfig : IDropdownConfig = {
+  dropdownConfig: IDropdownConfig = {
     id: 'dropdown_test',
     flyout: {
       id: 'dropdown_test_flyout',
@@ -60,10 +60,10 @@ export class MikeComponent implements OnInit {
         },
         {
           value: 'option 6'
-        },
+        }
       ]
     }
-  }
+  };
 
   hiddenNavConfig: IHiddenNavConfig = {
     id: 'hidden_nav',
