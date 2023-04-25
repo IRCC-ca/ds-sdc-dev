@@ -20,40 +20,43 @@ export class BannerDocumentationComponent implements OnInit {
 
   form_interactive_banner = new FormGroup({});
 
+  buttonSet = new Set<string>();
+  buttonSet2 = new Set<string>(['Primary', 'Secondary', 'Plain', 'Link']);
+  
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    title: 'Title text',
-    dismissible: true,
-    content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
+    // title: 'Title text',
+    // dismissible: true,
+    // content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
     cta: [
-      {
-        text: 'Primary',
-        type: 'button',
-        btnConfig: {
-          id: 'cta1',
-          category: 'primary'
-        }
-      },
-      {
-        text: 'Secondary',
-        type: 'button',
-        btnConfig: {
-          id: 'cta1',
-          category: 'secondary'
-        }
-      },
-      {
-        text: 'Plain',
-        type: 'button',
-        btnConfig: {
-          id: 'ctaPlain',
-          category: 'plain'
-        }
-      },
-      {
-        text: 'Link',
-        type: 'link',
-      }
+    //   {
+    //     text: 'Primary',
+    //     type: 'button',
+    //     btnConfig: {
+    //       id: 'cta1',
+    //       category: 'primary'
+    //     }
+    //   },
+    //   {
+    //     text: 'Secondary',
+    //     type: 'button',
+    //     btnConfig: {
+    //       id: 'cta1',
+    //       category: 'secondary'
+    //     }
+    //   },
+    //   {
+    //     text: 'Plain',
+    //     type: 'button',
+    //     btnConfig: {
+    //       id: 'ctaPlain',
+    //       category: 'plain'
+    //     }
+    //   },
+    //   {
+    //     text: 'Link',
+    //     type: 'link',
+    //   }
     ]
   };
 
@@ -68,6 +71,32 @@ export class BannerDocumentationComponent implements OnInit {
         },
         {
           text: 'Large'
+        }
+      ]
+    },
+    {
+      id: 'showCloseToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show close',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showTitleToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show title',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
         }
       ]
     },
@@ -114,32 +143,6 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showSecondaryToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show secondary button',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
-        }
-      ]
-    },
-    {
-      id: 'showTitleToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show title',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
-        }
-      ]
-    },
-    {
-      id: 'showCloseToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show close',
       options: [
         {
           text: 'True'
@@ -265,18 +268,50 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  disableRadio(name : string) {
+    this.toggles.forEach(item  => {
+      if (item.id === name){
+        item.disabled = true;
+      }
+    })
+  }
+
+  // checkCurrentButtonSet() {}
+
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
     
     this.toggles.forEach(toggle => {
-      console.log("toggle:=", toggle)
-      if (toggle.options && toggle.options[0].text){
-        this.form_interactive_banner.addControl(toggle.id, new FormControl(toggle.options[0].text))
+      // console.log("toggle:=", toggle)
+      if (toggle.options && toggle.options[1].text){
+        this.form_interactive_banner.addControl(toggle.id, new FormControl(toggle.options[1].text))
       }
+      
+      // if(this.bannerConfig?.cta && this.bannerConfig?.cta?.length <= 2) {
+
+      // } else {
+
+      // }
     });
+    console.log("--------------------->:", this.bannerConfig?.cta?.length)
+
+    // if(this.bannerConfig?.cta && this.bannerConfig?.cta?.length === 1) {
+    //   // this.disableRadio('showSecondaryToggle')
+    // }
+
+
   
     this.form_interactive_banner.valueChanges.subscribe((value : any) => {
-      console.log("X->", value)
+      //0 1 2 3
+      console.log("Size of button set->", this.buttonSet.size)
+      console.log("Value", value)
+
+      if(this.buttonSet.size >= 2 && this.buttonSet2.has(value)) {
+        this.disableRadio('showSecondaryToggle')
+        //{primary, plain}
+        
+      }
+      
       for (const param in value) {
         switch(param){
           case 'sizeToggle':
@@ -292,27 +327,34 @@ export class BannerDocumentationComponent implements OnInit {
               }
               break
             case 'showPrimaryToggle':
+              // value['showPrimaryToggle'].options.disabled = true
               if(value['showPrimaryToggle'] === 'True') {
                 this.addItemtoCTAList("Primary")
+                this.buttonSet.add('Primary')
               }
               else {
                 this.removeItemFromCTAList("Primary")
+                this.buttonSet.delete('Primary')
               }
               break
             case 'showPlainToggle':
               if(value['showPlainToggle'] === 'True') {
                 this.addItemtoCTAList("Plain")
+                this.buttonSet.add('Plain')
               }
               else {
                 this.removeItemFromCTAList("Plain")
+                this.buttonSet.delete('Plain')
               }
               break
             case 'showSecondaryToggle':
               if(value['showSecondaryToggle'] === 'True') {
-                this.addItemtoCTAList("Secondary")
+                this.addItemtoCTAList("Secondary");
+                this.buttonSet.add("Secondary");
               }
               else {
-                this.removeItemFromCTAList('Secondary')
+                this.removeItemFromCTAList('Secondary');
+                this.buttonSet.delete('Secondary');
               }
               break
             case 'showTitleToggle':
@@ -334,15 +376,23 @@ export class BannerDocumentationComponent implements OnInit {
             case 'showLinkToggle':
               if(value['showLinkToggle'] === 'True') {
                 this.addItemtoCTAList("Link")
+                this.buttonSet.add('Link')
               }
               else {
                 this.removeItemFromCTAList("Link")
+                this.buttonSet.delete('Link')
               }
               break
           default:{
             console.log("default")
           }
         }
+      }
+
+      if(this.buttonSet.size >= 2) {
+        this.disableRadio('showSecondaryToggle')
+        //{primary, plain}
+        
       }
     });
   }
