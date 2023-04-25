@@ -337,8 +337,11 @@ export class MikeComponent implements OnInit {
 
   iconClick() {
     console.log('click');
-    this.iconConfig = {...this.iconConfig, FA_keywords: 'fa-regular fa-check'}
-    this.iconConfig = {...this.iconConfig, ariaLabel: ''}
+    this.iconConfig = {
+      ...this.iconConfig,
+      FA_keywords: 'fa-regular fa-check'
+    };
+    this.iconConfig = { ...this.iconConfig, ariaLabel: '' };
     console.log(this.iconConfig);
   }
 
