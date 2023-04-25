@@ -1,1 +1,94 @@
-<h1>For Developers</h1>
+<ng-template #clipboardBtn>
+  <!-- <jds-button class="copy">{{ 'Buttons.Copy' | translate }}</jds-button> -->
+  <button class="copy">{{ 'Buttons.Copy' | translate }}</button>
+</ng-template>
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url
+    class="for-developers"
+    type="primary"
+    >{{ 'Overview.DeveloperHeading' | translate }}</app-title-slug-url
+  >
+  <p class="dev-txt">{{ 'Overview.DeveloperPackageTxt' | translate }}</p>
+  <app-title-slug-url
+    class="getting-started"
+    type="primary"
+    >{{ 'Developers.GetStartedHeading' | translate }}</app-title-slug-url
+  >
+  <p>
+    To install the IRCC Digital Journey Labs Design System styles, you will need
+    to run the following command using
+    <a href="https://www.npmjs.com/">npm</a>
+  </p>
+  <div>
+    <button>Copy</button>
+    <p>npm install --save-dev @ircc-ca/ds-sdc-core</p>
+  </div>
+  <h2>Usage</h2>
+  <p>
+    In your root-level stylesheet, initialize the design system with the
+    following:
+  </p>
+  <div>
+    <button>Copy</button>
+    <p>@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;</p>
+    <p>
+      @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(),
+      default, large, light);
+    </p>
+    <p>@include ircc-ds.element-styles();</p>
+  </div>
+  <p>
+    The 3rd parameter should be set to small for internal websites, large for
+    external websites.
+  </p>
+  <p>
+    You can pass in dark instead of light as the final parameter of
+    theme-init-required() to initialize only the dark color scheme, or system if
+    you would like to default to the user's operating system settings.
+  </p>
+  <p>
+    A list of elements can be passed to element-styles() to include, should only
+    certain element styles be desired.
+  </p>
+  <p>
+    At root-level create an .npmrc file. At the top of the file add
+    @ircc-ca:registry=https://registry.npmjs.org/ to specify the npmjs registry.
+  </p>
+  <h2>Font Awesome</h2>
+  <p>
+    The Design System core leverages the use of Font Awesome kits to import
+    icons used by the design system. Place the following in the head of your
+    project to pull down the relevant icons.
+  </p>
+  <button>Copy</button>
+  <p>
+    <script
+      src="https://kit.fontawesome.com/8e16e0c619.js"
+      crossorigin="anonymous"
+    ></script>
+  </p>
+  <h2>Releases</h2>
+  <p>
+    The Design System utilizes two different types of releases: patch releases
+    and full releases. To target a patch release use the command below.
+  </p>
+  <p><strong>To install a patch release:</strong></p>
+  <button>Copy</button>
+  <p>npm install @ircc-ca/ds-sdc-core@patch</p>
+  <!-- <markdown
+    *ngIf="translate.currentLang === 'en'"
+    clipboard
+    [clipboardButtonTemplate]="clipboardBtn"
+    [src]="'assets/md/README_core_en.md'"
+  ></markdown>
+  <markdown
+    *ngIf="translate.currentLang === 'fr'"
+    clipboard
+    [clipboardButtonTemplate]="clipboardBtn"
+    [src]="'assets/md/README_core_fr.md'"
+  ></markdown> -->
+</div>
+<!-- <app-side-nav
+  class="right-nav col-12 col-lg-3 col-xl-2"
+  [navBarData]="rightNavData"
+></app-side-nav> -->
