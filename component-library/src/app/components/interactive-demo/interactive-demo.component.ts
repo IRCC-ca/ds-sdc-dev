@@ -13,7 +13,7 @@ export class InteractiveDemoComponent implements OnInit {
   };
 
   accordionConfig: IAccordionContainerConfig = {
-    id: 'codeViewerTabsCccordion',
+    id: 'InteractiveDemoComponentAcccordion',
     open: true,
     buttonText: 'DEMO_COMPONENT.ACCORDION_OPEN',
     buttonTextClosed: 'DEMO_COMPONENT.ACCORDION_CLOSED'
