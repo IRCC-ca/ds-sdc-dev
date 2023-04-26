@@ -13,6 +13,7 @@ import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/access
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
 import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
+import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,15 @@ import { accordionContainerComponent } from '@app/components/accordion-panel/acc
     SafeHtmlPipe,
     BannerDocumentationComponent,
     InteractiveDemoComponent,
-    accordionContainerComponent
+    accordionContainerComponent,
+    InputDocumentationComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     ClipboardModule,
     QaModule,
-    AccessibilityDemoModule,
+    AccessibilityDemoModule
   ],
   exports: [TitleSlugUrlComponent]
 })
