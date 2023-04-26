@@ -66,18 +66,25 @@ export class codeViewerComponent implements OnInit {
     if (this.config.openAccordion !== undefined) {
       this.openAccordion = this.config.openAccordion;
     }
+
     if (this.config.selected) {
       this.tabconfig.selected = this.config.selected;
     }
+
     if (this.config.tab) {
       this.tabconfig.tab = this.config.tab;
+    } else {
+      this.tabconfig.tab = [];
     }
+
     if (this.config.tab && this.config.selected) {
       this.selectedTab = this.config.tab.find(
         (tab) => tab.id === this.config.selected
       );
     } else if (this.config.tab) {
       this.selectedTab = this.config.tab[0];
+    } else {
+      this.selectedTab = {};
     }
   }
 

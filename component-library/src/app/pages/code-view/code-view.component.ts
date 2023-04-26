@@ -35,8 +35,14 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
   setTabsA() {
     this.codeViewConfig = {
       id: 'code-viewer-demo',
-      openAccordion: true,
-      selected: 'rust',
+      openAccordion: true
+    };
+  }
+
+  setTabsB() {
+    this.codeViewConfig = {
+      id: 'code-viewer-demo',
+      selected: 'java',
       tab: [
         {
           id: 'java',
@@ -45,7 +51,7 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
 
           public static void main(String[] args){
         
-             System.out.println("Looooooooooooooooooooooooooooooooooooooooooooooooooooooooonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng string");
+            System.out.println("Looooooooooooooooooooooooooooooooooooooooooooooooooooooooonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng string");
           
           }
         }`
@@ -83,18 +89,6 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
         
         player.updateScore(50)`
         }
-      ]
-    };
-  }
-
-  setTabsB() {
-    this.codeViewConfig = {
-      id: 'code-viewer-demo',
-      openAccordion: true,
-      selected: 'lorem',
-      tab: [
-        { id: 'lorem', title: 'Lorem', value: 'Lorem' },
-        { id: 'ipsum', title: 'Ipsum', value: 'Ipsum' }
       ]
     };
   }
