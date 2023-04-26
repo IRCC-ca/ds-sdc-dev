@@ -4,9 +4,8 @@
 </ng-template> -->
 <div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url
-    [translate]="'Overview.DeveloperHeading'"
+    [config]="overViewDeveloperSlug"
     class="for-developers"
-    type="primary"
   ></app-title-slug-url>
   <!-- <p class="dev-txt">{{ 'Overview.DeveloperPackageTxt' | translate }}</p> -->
   <p
@@ -14,9 +13,8 @@
     class="dev-txt"
   ></p>
   <app-title-slug-url
-    [translate]="'Developers.GetStartedHeading'"
+    [config]="developerStartedSlug"
     class="getting-started"
-    type="primary"
   ></app-title-slug-url>
   <p>
     To install the IRCC Digital Journey Labs Design System styles, you will need

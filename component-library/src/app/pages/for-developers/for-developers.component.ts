@@ -6,6 +6,7 @@ import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
 @Component({
   selector: 'app-for-developers',
   templateUrl: './for-developers.component.html',
@@ -27,6 +28,15 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   @ViewChild('paragraph2') paragraph2Ref!: ElementRef;
   @ViewChild('paragraph3') paragraph3Ref!: ElementRef;
   @ViewChild('paragraph4') paragraph4Ref!: ElementRef;
+
+  overViewDeveloperSlug: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Overview.DeveloperHeading'
+  };
+  developerStartedSlug: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Developers.GetStartedHeading'
+  };
 
   constructor(
     private translate: TranslateService,

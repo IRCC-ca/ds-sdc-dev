@@ -1,20 +1,14 @@
 <div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
-  <app-title-slug-url
-    [translate]="'Designers.Heading'"
-    type="primary"
+  <app-title-slug-url [config]="designerHeadingSlug"
     >For designers</app-title-slug-url
   >
   <p>{{ 'Designers.HeadingText' | translate }}</p>
 
-  <app-title-slug-url
-    [translate]="'Designers.AboutHeading'"
-  ></app-title-slug-url>
+  <app-title-slug-url [config]="designerAboutHeadingSlug"></app-title-slug-url>
   <p [style.margin-top]="'7px'">{{ 'Designers.AboutText1' | translate }}</p>
   <p [innerHTML]="'Designers.AboutText2' | translate"></p>
 
-  <app-title-slug-url
-    [translate]="'Designers.AccessHeading'"
-  ></app-title-slug-url>
+  <app-title-slug-url [config]="designerAccessHeadingSlug"></app-title-slug-url>
   <p>{{ 'Designers.AccessText1' | translate }}</p>
   <ol>
     <li [innerHTML]="'Designers.AccessListItem1' | translate"></li>
@@ -31,14 +25,12 @@
     alt="{{ 'Designers.FigmaImg1AltText' | translate }}"
   />
 
-  <app-title-slug-url
-    [translate]="'Designers.InstallFontsHeading'"
-  ></app-title-slug-url>
+  <app-title-slug-url [config]="designerInstallFontSlug"></app-title-slug-url>
   <p>{{ 'Designers.InstallFontsText1' | translate }}</p>
   <p [innerHTML]="'Designers.InstallFontsLink' | translate"></p>
 
   <app-title-slug-url
-    [translate]="'Designers.UsingStylesHeading'"
+    [config]="designerUsingStylesHeadingSlug"
   ></app-title-slug-url>
   <p>{{ 'Designers.UsingStylesText1' | translate }}</p>
   <div class="row">
@@ -76,7 +68,7 @@
   </div>
 
   <app-title-slug-url
-    [translate]="'Designers.UsingComponentsHeading'"
+    [config]="designerUsingComponentsHeadingSlug"
   ></app-title-slug-url>
   <p>{{ 'Designers.UsingComponentsText1' | translate }}</p>
 
@@ -112,9 +104,7 @@
     </div>
   </div>
 
-  <app-title-slug-url
-    [translate]="'Designers.FigmaHeading'"
-  ></app-title-slug-url>
+  <app-title-slug-url [config]="designerFigmaHeadingSlug"></app-title-slug-url>
   <p>{{ 'Designers.FigmaText' | translate }}</p>
 </div>
 
