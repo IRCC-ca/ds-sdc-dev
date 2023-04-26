@@ -23,6 +23,7 @@
     "Title": "Buttons",
     "Copy": "Copy",
     "CopyCode": "Copy code",
+    "CopyStyle": "Copy style",
     "CopyURL": "Copy URL",
     "Intro": "Buttons trigger an action or navigate to another page. They have multiple styles and configurations for various needs. They call attention to actions the user should take to progress through a flow.",
     "IntroAlert": "This UI element is currently available in our styles package only. The component version is coming soon.",
@@ -610,7 +611,9 @@
     "AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
     "AccessibilityValidationHeading": "Validation",
     "AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
-    "ResearchText": "Coming soon."
+    "ResearchText": "Coming soon.",
+    "CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
+    "LabelText": "Label text"
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",

@@ -23,6 +23,7 @@
     "Title": "Boutons",
     "Copy": "Copier",
     "CopyCode": "Copier le code",
+    "CopyStyle": "Copy style",
     "CopyURL": "Copier l’URL",
     "Intro": "Les boutons déclenchent une action ou permettent de naviguer vers une autre page. Ils ont de multiples styles et configurations selon les besoins variés. Ils attirent l’attention sur les actions que l’utilisateur doit effectuer pour progresser dans un flux.",
     "IntroAlert": "Cet élément de l’interface utilisateur est actuellement disponible uniquement dans le prologiciel des styles. Il sera bientôt offert pour le progiciel des composantes.",
@@ -606,7 +607,9 @@
     "AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
     "AccessibilityValidationHeading": "Validation",
     "AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
-    "ResearchText": "Coming soon."
+    "ResearchText": "Coming soon.",
+    "CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
+    "LabelText": "Label text"
   },
     "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",

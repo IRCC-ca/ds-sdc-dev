@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ComponentPreviewComponent {
   @Input() copyText?: string;
+  @Input() copyStyle?: string;
 
-  constructor() {}
+  constructor() { }
 }

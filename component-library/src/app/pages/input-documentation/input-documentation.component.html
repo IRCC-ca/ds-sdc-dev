@@ -6,18 +6,20 @@
     <app-title-slug-url  [config]="interactiveDemoSlugConfig" class="h3 emphasis"></app-title-slug-url>
     <p class="body3">{{'Input.InteractiveDemoDesc' | translate}}</p>
     <app-interactive-demo></app-interactive-demo>
-  CODE BLOCK COMPONENT
+    <div class="code-viewer">
+      <img src="assets/img/input-content/code-viewer.png" alt="{{'Input.CodeViewer' | translate}}">
+    </div>
   </section>
   
   <section class="types">
     <app-title-slug-url  [config]="typesSlugConfig" class="h3 epmhasis"></app-title-slug-url>
     <h5 class="emphasis">{{'Input.PrimaryHeading' | translate}}</h5>
-    <app-component-preview copyText="<button category='secondary'>{{'Buttons.PrimaryBtnText' | translate}}</button>">
+    <app-component-preview class="h6" copyStyle="<button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button>">
       <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
     <p>{{'Input.PrimaryText' | translate}}</p>
     <h5 class="emphasis">{{'Input.SecondaryHeading' | translate}}</h5>
-    <app-component-preview copyText="<button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button>">
+    <app-component-preview class="h6" copyStyle="<button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button>">
             <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
     <p class="body3">{{'Input.SecondaryText' | translate}}</p>

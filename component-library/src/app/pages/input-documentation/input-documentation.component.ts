@@ -33,14 +33,14 @@ export class InputDocumentationComponent implements OnInit {
   basicInputConfig: IInputComponentConfig = {
     id: this.BASIC_INPUT_ID,
     formGroup: this.form_input_basic,
-    label: "Label text",
+    label: 'Input.LabelText',
     type: 'text'
   }
 
   passwordInputConfig: IInputComponentConfig = {
     id: this.PASSWORD_INPUT_ID,
     formGroup: this.form_input_password,
-    label: "Label text",
+    label: 'Input.LabelText',
     type: 'password'
   }
 

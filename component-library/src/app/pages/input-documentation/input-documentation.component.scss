@@ -15,16 +15,14 @@
   display: block;
 }
 
+.code-viewer {
+  margin-top: 24px;
+}
+
 .content-doc-wrapper {
   box-sizing: border-box;
   max-width: 872px;
 
-  // @include in-desktop-layout {
-  //   padding-right: ircc-ds-sizes.$fixed-40;
-  // }
-  // @include un-desktop-layout {
-  //   padding-right: ircc-ds-sizes.$fixed-20;
-  // }
   img {
     max-width: 100%;
   }
@@ -52,6 +50,7 @@ h3 {
   bottom: 5px;
   text-decoration: none !important;
   color: var(--link-text);
+  cursor: pointer;
 }
 
 
@@ -91,37 +90,3 @@ span {
     border-radius: 50%;
   }
 }
-
-// app-info-text-small {
-//   // To be replace with color token
-//   color: ircc-ds-color.mix-token(information, 900);
-// }
-
-// app-page-token {
-//   .spacing-sample {
-//     height: 20px;
-//     margin: 0 auto;
-//     background: ircc-ds-color.mix-token(visited, 100);
-//     border-left: 1px solid ircc-ds-color.mix-token(visited, 700);
-//     border-right: 1px solid ircc-ds-color.mix-token(visited, 700);
-//   }
-// }
-
-// jds-link {
-//   a {
-//     color: var(--link-text);
-//   }
-
-//   cursor: pointer;
-// }
-
-// a {
-//   &:active {
-//     background: none !important;
-//   }
-
-//   // To be removed once core package fix the bug
-//   &:hover {
-//     background-color: transparent !important;
-//   }
-// }
