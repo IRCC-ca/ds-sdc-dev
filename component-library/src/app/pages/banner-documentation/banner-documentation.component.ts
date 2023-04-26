@@ -21,8 +21,8 @@ export class BannerDocumentationComponent implements OnInit {
 
   form_interactive_banner = new FormGroup({});
 
-  buttonSet = new Set<string>();
-  buttonSet2 = new Set<string>(['showPrimaryButtonToggle', 'showSecondaryButtonToggle', 'showPlainButtonToggle', 'showLinkToggle']);
+  currentButtonSet = new Set<string>();
+  buttonSetWithAllOptions = new Set<string>(['showPrimaryButtonToggle', 'showSecondaryButtonToggle', 'showPlainButtonToggle', 'showLinkToggle']);
   
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
@@ -265,19 +265,17 @@ export class BannerDocumentationComponent implements OnInit {
     }, 1000);
   }
 
-  checkCurrentButtonSet() {
-    console.log('Buttonset:', this.buttonSet)
-    if(this.buttonSet.size >= 2) {
-      this.buttonSet2.forEach(x => {
-        if(!this.buttonSet.has(x)) {
-          console.log('Disable:',x)
-          this.disableRadio(x)
+  checkCurrentButtonCounter() {
+    if(this.currentButtonSet.size >= 2) {
+      this.buttonSetWithAllOptions.forEach(btn => {
+        if(!this.currentButtonSet.has(btn)) {
+          this.disableRadio(btn)
         }
       })
     }
     else {
-      this.buttonSet2.forEach(x => {
-        this.enableRadio(x)
+      this.buttonSetWithAllOptions.forEach(btn => {
+        this.enableRadio(btn)
       })
     }
   }
@@ -293,10 +291,6 @@ export class BannerDocumentationComponent implements OnInit {
     else {
       this.bannerConfig.dismissible = false;
     }
-  }
-
-  doNothing() {
-    console.log("Do nothing")
   }
 
   handleTitleToggle(value : any) {
@@ -320,52 +314,52 @@ export class BannerDocumentationComponent implements OnInit {
   handlePrimaryButtonToggle(value : any) {
     if(value['showPrimaryButtonToggle'] === 'True') {
       this.addItemtoCTAList("Primary")
-      this.buttonSet.add('showPrimaryButtonToggle')
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.add('showPrimaryButtonToggle')
+      this.checkCurrentButtonCounter()
     }
     else {
       this.removeItemFromCTAList("Primary")
-      this.buttonSet.delete('showPrimaryButtonToggle')
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.delete('showPrimaryButtonToggle')
+      this.checkCurrentButtonCounter()
     }
   }
 
   handleSecondaryButtonToggle(value : any) {
     if(value['showSecondaryButtonToggle'] === 'True') {
       this.addItemtoCTAList("Secondary");
-      this.buttonSet.add("showSecondaryButtonToggle");
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.add("showSecondaryButtonToggle");
+      this.checkCurrentButtonCounter()
     }
     else {
       this.removeItemFromCTAList('Secondary');
-      this.buttonSet.delete('showSecondaryButtonToggle');
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.delete('showSecondaryButtonToggle');
+      this.checkCurrentButtonCounter()
     }
   }
 
   handlePlainButtonToggle(value : any) {
     if(value['showPlainButtonToggle'] === 'True') {
       this.addItemtoCTAList("Plain")
-      this.buttonSet.add('showPlainButtonToggle')
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.add('showPlainButtonToggle')
+      this.checkCurrentButtonCounter()
     }
     else {
       this.removeItemFromCTAList("Plain")
-      this.buttonSet.delete('showPlainButtonToggle')
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.delete('showPlainButtonToggle')
+      this.checkCurrentButtonCounter()
     }
   }
 
   handleLinkToggle(value : any) {
     if(value['showLinkToggle'] === 'True') {
       this.addItemtoCTAList("Link")
-      this.buttonSet.add('showLinkToggle')
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.add('showLinkToggle')
+      this.checkCurrentButtonCounter()
     }
     else {
       this.removeItemFromCTAList("Link")
-      this.buttonSet.delete('showLinkToggle')
-      this.checkCurrentButtonSet()
+      this.currentButtonSet.delete('showLinkToggle')
+      this.checkCurrentButtonCounter()
     }
   }
 
@@ -406,88 +400,6 @@ export class BannerDocumentationComponent implements OnInit {
         if (this.track_toggles[param] === value[param]) continue;
         this.track_toggles[param] = value[param]
         this.toggle_function[param].apply(this, [value])
-        // switch(param){
-        //   case 'sizeToggle':
-        //     console.log("------------------SIZETOGGLE-------------------------------")
-        //     this.bannerConfig.size =  (value['sizeToggle']).toLowerCase()
-        //     break
-        //   case 'showDescToggle':
-        //     if(value['showDescToggle'] === 'True') {
-        //       this.bannerConfig.content='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
-        //     }
-        //     else {
-        //       this.bannerConfig.content = '';
-        //     }
-        //     break
-        //   case 'showPrimaryToggle':
-        //     if(value['showPrimaryToggle'] === 'True') {
-        //       this.addItemtoCTAList("Primary")
-        //       this.buttonSet.add('showPrimaryToggle')
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     else {
-        //       this.removeItemFromCTAList("Primary")
-        //       this.buttonSet.delete('showPrimaryToggle')
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     break
-        //   case 'showPlainToggle':
-        //     if(value['showPlainToggle'] === 'True') {
-        //       this.addItemtoCTAList("Plain")
-        //       this.buttonSet.add('showPlainToggle')
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     else {
-        //       this.removeItemFromCTAList("Plain")
-        //       this.buttonSet.delete('showPlainToggle')
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     break
-        //   case 'showSecondaryToggle':
-        //     if(value['showSecondaryToggle'] === 'True') {
-        //       this.addItemtoCTAList("Secondary");
-        //       this.buttonSet.add("showSecondaryToggle");
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     else {
-        //       this.removeItemFromCTAList('Secondary');
-        //       this.buttonSet.delete('showSecondaryToggle');
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     break
-        //   case 'showTitleToggle':
-        //     if(value['showTitleToggle'] === 'True') {
-        //       this.bannerConfig.title='Title text';
-        //     }
-        //     else {
-        //       this.bannerConfig.title = ''
-        //     }
-        //     break
-        //   case 'showCloseToggle':
-        //     if(value['showCloseToggle'] === 'True') {
-        //       this.bannerConfig.dismissible = true;
-        //     }
-        //     else {
-        //       this.bannerConfig.dismissible = false;
-        //     }
-        //     break
-        //   case 'showLinkToggle':
-        //     console.log("------------------SHOWLINKTOGGLE-------------------------------")
-        //     if(value['showLinkToggle'] === 'True') {
-        //       this.addItemtoCTAList("Link")
-        //       this.buttonSet.add('showLinkToggle')
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     else {
-        //       this.removeItemFromCTAList("Link")
-        //       this.buttonSet.delete('showLinkToggle')
-        //       this.checkCurrentButtonSet()
-        //     }
-        //     break
-        //   default:{
-        //     console.log("default")
-        //   }
-        // }
       }
     });
   }
