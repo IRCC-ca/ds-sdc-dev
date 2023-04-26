@@ -2,15 +2,7 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
-  ButtonColor,
-  ButtonIconDirection,
-
-  IBannerConfig,
-
   IButtonConfig,
-
-  ICTAConfig,
-
   IDatePickerConfig,
   IDropdownConfig,
   IIconButtonComponentConfig,
@@ -40,7 +32,6 @@ export class NaseerComponent implements OnInit {
   showDropDownComponent: boolean = false;
   showIconButtonComponent: boolean = false;
   showDatePickerComponent: boolean = false;
-  showInteractiveBannerComponent: boolean = false;
 
   INPUT_ID = 'qa_test_input';
   form_input = new FormGroup({});
@@ -385,7 +376,6 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = false;
-        this.showInteractiveBannerComponent = false;
         break;
       case 'textareaComponent':
         this.showInputComponent = false;
@@ -393,7 +383,6 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = false;
-        this.showInteractiveBannerComponent = false;
         break;
       case 'datepickerComponent':
         this.showInputComponent = false;
@@ -401,7 +390,6 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = true;
-        this.showInteractiveBannerComponent = false;
         break;
       case 'dropDownComponent':
         this.showInputComponent = false;
@@ -409,7 +397,6 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = true;
         this.showIconButtonComponent = false;
         this.showDatePickerComponent = false;
-        this.showInteractiveBannerComponent = false;
         break;
       case 'iconButtonComponent':
         this.showInputComponent = false;
@@ -417,7 +404,6 @@ export class NaseerComponent implements OnInit {
         this.showDropDownComponent = false;
         this.showIconButtonComponent = true;
         this.showDatePickerComponent = false;
-        this.showInteractiveBannerComponent = false;
         break;
       case 'inputError':
         this.form_textarea.get(this.qaTextareaInput.id)?.valid
