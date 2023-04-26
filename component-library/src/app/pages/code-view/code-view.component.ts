@@ -78,6 +78,17 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
           id: 'SWIFT',
           title: 'SWIFT',
           value: `
+        struct Player {
+          var name: String
+          var highScore: Int = 0
+          var history: [Int] = []
+      
+          init(_ name: String) {
+              self.name = name
+          }
+        }
+        
+        
         extension Player {
             mutating func updateScore(_ newScore: Int) {
                 history.append(newScore)
@@ -88,6 +99,7 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
             }
         }
         
+        var player = Player("Tomas")
         player.updateScore(50)`
         }
       ]

@@ -8,21 +8,9 @@
     </div>
   </div>
   <div class="toggles-accordion">
-    <button
-      class="hide-show-button"
-      category="plain"
-      (click)="toggle()"
-    >
-      <div
-        class="icon-container"
-        [class.flip-chevron]="isOpen"
-      >
-        <ircc-cl-lib-icon
-          class="{{ iconConfig.class }} custom-chevron"
-        ></ircc-cl-lib-icon>
-      </div>
-      <p class="label-text">{{ accordionText | translate }}</p>
-    </button>
+    <app-accordian-container
+      (getOpen)="toggle($event)"
+    ></app-accordian-container>
   </div>
   <div
     class="toggles"

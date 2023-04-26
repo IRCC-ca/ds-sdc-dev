@@ -15,6 +15,8 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { resizableContainerComponent } from '@app/components/resizable-container/resizable-container.component';
 import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
+import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
+import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { codeViewComponent } from '@app/pages/code-view/code-view.component';
     resizableContainerComponent,
     codeViewerComponent,
     accordionContainerComponent,
-    codeViewComponent,
     OverviewComponent,
     ForDesignersComponent,
     SlugifyPipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    codeViewComponent,
+    BannerDocumentationComponent,
+    InteractiveDemoComponent
   ],
   imports: [
     CommonModule,
