@@ -24,7 +24,7 @@
   >
     <ircc-cl-lib-icon
       *ngIf="config.type === 'text' && config?.icon"
-      [class]="config.icon"
+      [config]="{ 'FA_keywords': config.icon }"
     ></ircc-cl-lib-icon>
     <ng-container *ngIf="abbr; else nonAbbr">
       <span class="abbr"
