@@ -21,8 +21,7 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
 
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService,
-    private slugify: SlugifyPipe
+    private lang: LangSwitchService
   ) {
     this.currentLanguage = translate.currentLang;
   }

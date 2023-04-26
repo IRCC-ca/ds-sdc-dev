@@ -6,31 +6,25 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import {
   IButtonConfig,
-  ITabNavConfig
+  ITabNavConfig,
+  ITabConfig
 } from 'ircc-ds-angular-component-library';
-import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 
-export interface ICodeViewerTab {
-  id?: string;
-  title: string;
-  value?: string;
-}
+import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
 
 export interface ICodeViewerConfig {
   id: string;
   openAccordion?: boolean;
-  tab?: ICodeViewerTab[];
+  tab?: ITabConfig[];
   selected?: string;
 }
 
 @Component({
   selector: 'app-code-viewer',
   templateUrl: './code-viewer.component.html',
-  styleUrls: ['./code-viewer.component.scss'],
-  providers: [SlugifyPipe]
+  styleUrls: ['./code-viewer.component.scss']
 })
 export class codeViewerComponent implements OnInit {
   @Input() config: ICodeViewerConfig = {
@@ -38,12 +32,17 @@ export class codeViewerComponent implements OnInit {
   };
   @Output() getSelected = new EventEmitter<string>();
 
-  tabconfig: ITabNavConfig = {
+  tabConfig: ITabNavConfig = {
     id: 'codeViewerTabs',
     showContent: false
   };
   selectedTab: any = {
     title: ''
+  };
+
+  accordionConfig: IAccordionContainerConfig = {
+    id: 'codeViewerTabsCccordion',
+    open: this.config.openAccordion
   };
 
   openAccordion: boolean = false;
@@ -56,8 +55,6 @@ export class codeViewerComponent implements OnInit {
     size: 'small',
     ariaLabel: 'Click to copy the code'
   };
-
-  constructor(private translate: TranslateService) {}
 
   ngOnInit() {
     this.setupComponent();
@@ -76,13 +73,13 @@ export class codeViewerComponent implements OnInit {
     }
 
     if (this.config.selected) {
-      this.tabconfig.selected = this.config.selected;
+      this.tabConfig.selected = this.config.selected;
     }
 
     if (this.config.tab) {
-      this.tabconfig.tab = this.config.tab;
+      this.tabConfig.tab = this.config.tab;
     } else {
-      this.tabconfig.tab = [];
+      this.tabConfig.tab = [];
     }
 
     if (this.config.tab && this.config.selected) {

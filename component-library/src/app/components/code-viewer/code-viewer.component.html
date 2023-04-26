@@ -4,10 +4,13 @@
 >
   <ircc-cl-lib-tabs
     class="tabs-component"
-    [config]="tabconfig"
+    [config]="tabConfig"
     (valueChange)="getSelectedTab($event)"
   ></ircc-cl-lib-tabs>
-  <app-accordian-container [open]="openAccordion">
+  <app-accordian-container
+    [config]="accordionConfig"
+    [open]="openAccordion"
+  >
     <ircc-cl-lib-button
       extraRight
       [config]="buttonConfigCopy"

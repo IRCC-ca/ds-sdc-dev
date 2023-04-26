@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
+import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
 
 @Component({
   selector: 'app-interactive-demo',
@@ -11,15 +12,14 @@ export class InteractiveDemoComponent implements OnInit {
     class: 'fa-light fa-chevron-down'
   };
 
-  accordionText: string =
-    'DEMO_COMPONENT.ACCORDION_OPEN' || 'DEMO_COMPONENT.ACCORDION_CLOSED';
-  isOpen: boolean = true;
+  accordionConfig: IAccordionContainerConfig = {
+    id: 'codeViewerTabsCccordion',
+    open: true,
+    buttonText: 'DEMO_COMPONENT.ACCORDION_OPEN',
+    buttonTextClosed: 'DEMO_COMPONENT.ACCORDION_CLOSED'
+  };
 
   constructor() {}
 
   ngOnInit() {}
-
-  toggle(accordianOpen: any) {
-    this.isOpen = accordianOpen;
-  }
 }

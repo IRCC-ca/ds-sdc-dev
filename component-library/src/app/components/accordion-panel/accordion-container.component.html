@@ -1,31 +1,36 @@
 <div class="accordion-panel">
   <div class="accordion-nav">
+    <!-- this projection area will appear to the left of the accordion open button-->
     <div class="accordion-extra-left">
       <ng-content select="[extraLeft]"></ng-content>
     </div>
     <div class="accordion-expand-button">
       <ircc-cl-lib-button
-        *ngIf="open === true"
+        *ngIf="config.open === true"
         [config]="buttonConfigAcccordion"
         icon="fa-light fa-chevron-up"
         (click)="openAccordion()"
       >
-        {{ buttonText | translate }}
+        {{ config.buttonText || '' | translate }}
       </ircc-cl-lib-button>
       <ircc-cl-lib-button
-        *ngIf="open === false"
+        *ngIf="config.open === false"
         [config]="buttonConfigAcccordion"
         icon="fa-light fa-chevron-down"
         (click)="openAccordion()"
       >
-        {{ buttonTextClosed | translate }}
+        {{ config.buttonTextClosed || '' | translate }}
       </ircc-cl-lib-button>
     </div>
+
+    <!-- this projection area will appear to the left of the accordion open button-->
     <div class="accordion-extra-right">
       <ng-content select="[extraRight]"></ng-content>
     </div>
   </div>
-  <div [class]="open ? 'open accordion-content' : 'close accordion-content'">
+  <div
+    [class]="config.open ? 'open accordion-content' : 'close accordion-content'"
+  >
     <ng-content></ng-content>
   </div>
 </div>
