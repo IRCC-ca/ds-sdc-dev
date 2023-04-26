@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IBannerConfig, ICTAConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
+import { slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({
   selector: 'app-banner-documentation',
@@ -10,7 +11,7 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
   styleUrls: ['./banner-documentation.component.scss']
 })
 export class BannerDocumentationComponent implements OnInit {
-
+  @ViewChild('banner' , { static: false }) banner!: ElementRef;
   altLangLink = 'bannerDocumentation';
 
   constructor(
@@ -21,48 +22,21 @@ export class BannerDocumentationComponent implements OnInit {
   form_interactive_banner = new FormGroup({});
 
   buttonSet = new Set<string>();
-  buttonSet2 = new Set<string>(['Primary', 'Secondary', 'Plain', 'Link']);
+  buttonSet2 = new Set<string>(['showPrimaryButtonToggle', 'showSecondaryButtonToggle', 'showPlainButtonToggle', 'showLinkToggle']);
   
+  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Interactive Demo'
+  };
+
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    // title: 'Title text',
-    // dismissible: true,
-    // content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
-    cta: [
-    //   {
-    //     text: 'Primary',
-    //     type: 'button',
-    //     btnConfig: {
-    //       id: 'cta1',
-    //       category: 'primary'
-    //     }
-    //   },
-    //   {
-    //     text: 'Secondary',
-    //     type: 'button',
-    //     btnConfig: {
-    //       id: 'cta1',
-    //       category: 'secondary'
-    //     }
-    //   },
-    //   {
-    //     text: 'Plain',
-    //     type: 'button',
-    //     btnConfig: {
-    //       id: 'ctaPlain',
-    //       category: 'plain'
-    //     }
-    //   },
-    //   {
-    //     text: 'Link',
-    //     type: 'link',
-    //   }
-    ]
+    cta: []
   };
 
   toggles: IRadioInputComponentConfig[] = [
     {
-      id: 'sizeToggle',
+      id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
       label: 'Size',
       options: [
@@ -93,7 +67,7 @@ export class BannerDocumentationComponent implements OnInit {
       label: 'Show title',
       options: [
         {
-          text: 'True'
+          text: 'True',
         },
         {
           text: 'False'
@@ -114,7 +88,7 @@ export class BannerDocumentationComponent implements OnInit {
       ]
     },
     {
-      id: 'showPrimaryToggle',
+      id: 'showPrimaryButtonToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show primary button',
       options: [
@@ -127,7 +101,7 @@ export class BannerDocumentationComponent implements OnInit {
       ]
     },
     {
-      id: 'showPlainToggle',
+      id: 'showPlainButtonToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show plain button',
       options: [
@@ -140,7 +114,7 @@ export class BannerDocumentationComponent implements OnInit {
       ]
     },
     {
-      id: 'showSecondaryToggle',
+      id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show secondary button',
       options: [
@@ -276,123 +250,244 @@ export class BannerDocumentationComponent implements OnInit {
     })
   }
 
-  // checkCurrentButtonSet() {}
+  enableRadio(name : string) {
+    this.toggles.forEach(item  => {
+      if (item.id === name){
+        item.disabled = false;
+      }
+    })
+  }
+
+  bannerClose(event : Event) {
+    const bannerContainer = this.banner.nativeElement.querySelector(`#${event}`)
+    setTimeout(function () {
+      bannerContainer?.classList.remove('noDisplay');
+    }, 1000);
+  }
+
+  checkCurrentButtonSet() {
+    console.log('Buttonset:', this.buttonSet)
+    if(this.buttonSet.size >= 2) {
+      this.buttonSet2.forEach(x => {
+        if(!this.buttonSet.has(x)) {
+          console.log('Disable:',x)
+          this.disableRadio(x)
+        }
+      })
+    }
+    else {
+      this.buttonSet2.forEach(x => {
+        this.enableRadio(x)
+      })
+    }
+  }
+
+  handleSizeToggle(value : any) {
+    this.bannerConfig.size =  (value['showSizeToggle']).toLowerCase()
+  }
+
+  handleCloseToggle(value : any) {
+    if(value['showCloseToggle'] === 'True') {
+      this.bannerConfig.dismissible = true;
+    }
+    else {
+      this.bannerConfig.dismissible = false;
+    }
+  }
+
+  doNothing() {
+    console.log("Do nothing")
+  }
+
+  handleTitleToggle(value : any) {
+    if(value['showTitleToggle'] === 'True') {
+      this.bannerConfig.title='Title text';
+    }
+    else {
+      this.bannerConfig.title = ''
+    }
+  }
+
+  handleDescToggle(value : any) {
+    if(value['showDescToggle'] === 'True') {
+      this.bannerConfig.content='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
+    }
+    else {
+      this.bannerConfig.content = '';
+    }
+  }
+
+  handlePrimaryButtonToggle(value : any) {
+    if(value['showPrimaryButtonToggle'] === 'True') {
+      this.addItemtoCTAList("Primary")
+      this.buttonSet.add('showPrimaryButtonToggle')
+      this.checkCurrentButtonSet()
+    }
+    else {
+      this.removeItemFromCTAList("Primary")
+      this.buttonSet.delete('showPrimaryButtonToggle')
+      this.checkCurrentButtonSet()
+    }
+  }
+
+  handleSecondaryButtonToggle(value : any) {
+    if(value['showSecondaryButtonToggle'] === 'True') {
+      this.addItemtoCTAList("Secondary");
+      this.buttonSet.add("showSecondaryButtonToggle");
+      this.checkCurrentButtonSet()
+    }
+    else {
+      this.removeItemFromCTAList('Secondary');
+      this.buttonSet.delete('showSecondaryButtonToggle');
+      this.checkCurrentButtonSet()
+    }
+  }
+
+  handlePlainButtonToggle(value : any) {
+    if(value['showPlainButtonToggle'] === 'True') {
+      this.addItemtoCTAList("Plain")
+      this.buttonSet.add('showPlainButtonToggle')
+      this.checkCurrentButtonSet()
+    }
+    else {
+      this.removeItemFromCTAList("Plain")
+      this.buttonSet.delete('showPlainButtonToggle')
+      this.checkCurrentButtonSet()
+    }
+  }
+
+  handleLinkToggle(value : any) {
+    if(value['showLinkToggle'] === 'True') {
+      this.addItemtoCTAList("Link")
+      this.buttonSet.add('showLinkToggle')
+      this.checkCurrentButtonSet()
+    }
+    else {
+      this.removeItemFromCTAList("Link")
+      this.buttonSet.delete('showLinkToggle')
+      this.checkCurrentButtonSet()
+    }
+  }
+
+  track_toggles = {
+    'showSizeToggle' : "Large",
+    'showCloseToggle' : "False",
+    'showTitleToggle' : "False",
+    'showDescToggle' : "False",
+    'showPrimaryButtonToggle' : "False",
+    'showSecondaryButtonToggle' : "False",
+    'showPlainButtonToggle' : "False",
+    'showLinkToggle' : "False",
+  }
+
+  toggle_function = {
+    'showSizeToggle' : this.handleSizeToggle,
+    'showCloseToggle' : this.handleCloseToggle,
+    'showTitleToggle' : this.handleTitleToggle,
+    'showDescToggle' : this.handleDescToggle,
+    'showPrimaryButtonToggle' : this.handlePrimaryButtonToggle,
+    'showSecondaryButtonToggle' : this.handleSecondaryButtonToggle,
+    'showPlainButtonToggle' : this.handlePlainButtonToggle,
+    'showLinkToggle' : this.handleLinkToggle,
+  }
+
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
     
     this.toggles.forEach(toggle => {
-      // console.log("toggle:=", toggle)
       if (toggle.options && toggle.options[1].text){
         this.form_interactive_banner.addControl(toggle.id, new FormControl(toggle.options[1].text))
       }
-      
-      // if(this.bannerConfig?.cta && this.bannerConfig?.cta?.length <= 2) {
-
-      // } else {
-
-      // }
     });
-    console.log("--------------------->:", this.bannerConfig?.cta?.length)
 
-    // if(this.bannerConfig?.cta && this.bannerConfig?.cta?.length === 1) {
-    //   // this.disableRadio('showSecondaryToggle')
-    // }
-
-
-  
     this.form_interactive_banner.valueChanges.subscribe((value : any) => {
-      //0 1 2 3
-      console.log("Size of button set->", this.buttonSet.size)
-      console.log("Value", value)
-
-      if(this.buttonSet.size >= 2 && this.buttonSet2.has(value)) {
-        this.disableRadio('showSecondaryToggle')
-        //{primary, plain}
-        
-      }
-      
       for (const param in value) {
-        switch(param){
-          case 'sizeToggle':
-            this.bannerConfig.size =  (value['sizeToggle']).toLowerCase()
-            break
-            case 'showDescToggle':
-              console.log("showDescToggle ->", value['showDescToggle'])
-              if(value['showDescToggle'] === 'True') {
-                this.bannerConfig.content='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
-              }
-              else {
-                this.bannerConfig.content = '';
-              }
-              break
-            case 'showPrimaryToggle':
-              // value['showPrimaryToggle'].options.disabled = true
-              if(value['showPrimaryToggle'] === 'True') {
-                this.addItemtoCTAList("Primary")
-                this.buttonSet.add('Primary')
-              }
-              else {
-                this.removeItemFromCTAList("Primary")
-                this.buttonSet.delete('Primary')
-              }
-              break
-            case 'showPlainToggle':
-              if(value['showPlainToggle'] === 'True') {
-                this.addItemtoCTAList("Plain")
-                this.buttonSet.add('Plain')
-              }
-              else {
-                this.removeItemFromCTAList("Plain")
-                this.buttonSet.delete('Plain')
-              }
-              break
-            case 'showSecondaryToggle':
-              if(value['showSecondaryToggle'] === 'True') {
-                this.addItemtoCTAList("Secondary");
-                this.buttonSet.add("Secondary");
-              }
-              else {
-                this.removeItemFromCTAList('Secondary');
-                this.buttonSet.delete('Secondary');
-              }
-              break
-            case 'showTitleToggle':
-              if(value['showTitleToggle'] === 'True') {
-                this.bannerConfig.title='Title text';
-              }
-              else {
-                this.bannerConfig.title = ''
-              }
-              break
-            case 'showCloseToggle':
-              if(value['showCloseToggle'] === 'True') {
-                this.bannerConfig.dismissible = true;
-              }
-              else {
-                this.bannerConfig.dismissible = false;
-              }
-              break
-            case 'showLinkToggle':
-              if(value['showLinkToggle'] === 'True') {
-                this.addItemtoCTAList("Link")
-                this.buttonSet.add('Link')
-              }
-              else {
-                this.removeItemFromCTAList("Link")
-                this.buttonSet.delete('Link')
-              }
-              break
-          default:{
-            console.log("default")
-          }
-        }
-      }
-
-      if(this.buttonSet.size >= 2) {
-        this.disableRadio('showSecondaryToggle')
-        //{primary, plain}
-        
+        if (this.track_toggles[param] === value[param]) continue;
+        this.track_toggles[param] = value[param]
+        this.toggle_function[param].apply(this, [value])
+        // switch(param){
+        //   case 'sizeToggle':
+        //     console.log("------------------SIZETOGGLE-------------------------------")
+        //     this.bannerConfig.size =  (value['sizeToggle']).toLowerCase()
+        //     break
+        //   case 'showDescToggle':
+        //     if(value['showDescToggle'] === 'True') {
+        //       this.bannerConfig.content='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
+        //     }
+        //     else {
+        //       this.bannerConfig.content = '';
+        //     }
+        //     break
+        //   case 'showPrimaryToggle':
+        //     if(value['showPrimaryToggle'] === 'True') {
+        //       this.addItemtoCTAList("Primary")
+        //       this.buttonSet.add('showPrimaryToggle')
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     else {
+        //       this.removeItemFromCTAList("Primary")
+        //       this.buttonSet.delete('showPrimaryToggle')
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     break
+        //   case 'showPlainToggle':
+        //     if(value['showPlainToggle'] === 'True') {
+        //       this.addItemtoCTAList("Plain")
+        //       this.buttonSet.add('showPlainToggle')
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     else {
+        //       this.removeItemFromCTAList("Plain")
+        //       this.buttonSet.delete('showPlainToggle')
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     break
+        //   case 'showSecondaryToggle':
+        //     if(value['showSecondaryToggle'] === 'True') {
+        //       this.addItemtoCTAList("Secondary");
+        //       this.buttonSet.add("showSecondaryToggle");
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     else {
+        //       this.removeItemFromCTAList('Secondary');
+        //       this.buttonSet.delete('showSecondaryToggle');
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     break
+        //   case 'showTitleToggle':
+        //     if(value['showTitleToggle'] === 'True') {
+        //       this.bannerConfig.title='Title text';
+        //     }
+        //     else {
+        //       this.bannerConfig.title = ''
+        //     }
+        //     break
+        //   case 'showCloseToggle':
+        //     if(value['showCloseToggle'] === 'True') {
+        //       this.bannerConfig.dismissible = true;
+        //     }
+        //     else {
+        //       this.bannerConfig.dismissible = false;
+        //     }
+        //     break
+        //   case 'showLinkToggle':
+        //     console.log("------------------SHOWLINKTOGGLE-------------------------------")
+        //     if(value['showLinkToggle'] === 'True') {
+        //       this.addItemtoCTAList("Link")
+        //       this.buttonSet.add('showLinkToggle')
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     else {
+        //       this.removeItemFromCTAList("Link")
+        //       this.buttonSet.delete('showLinkToggle')
+        //       this.checkCurrentButtonSet()
+        //     }
+        //     break
+        //   default:{
+        //     console.log("default")
+        //   }
+        // }
       }
     });
   }
