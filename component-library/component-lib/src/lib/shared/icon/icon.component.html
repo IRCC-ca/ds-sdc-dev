@@ -1,7 +1,10 @@
-<span
-  class="font-icon"
-  [attr.aria-hidden]="config?.ariaLabel === ''"
-  [attr.aria-label]="config?.ariaLabel"
-  [style.--font-unicode]="formattedIcon"
-  [ngClass]="config.fontFamily"
-></span>
+<span id="ds-icon-container">
+  <span #iconSpan>
+    <i
+      class="font-icon"
+      [ngClass]="config.FA_keywords"
+      [attr.aria-hidden]="config?.ariaLabel === ''"
+      [attr.aria-label]="config?.ariaLabel"
+    ></i>
+  </span>
+</span>
