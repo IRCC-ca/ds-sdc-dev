@@ -26,10 +26,7 @@ import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
     IrccDsAngularHeaderFooterModule,
     IrccDsAngularComponentsSharedModule
   ],
-  declarations: [
-    NavButtonsComponent,
-    PreventTabOutDirective,
-  ],
+  declarations: [NavButtonsComponent, PreventTabOutDirective],
   exports: [
     IrccDsAngularBannerModule,
     IrccDsAngularFormComponentsModule,
@@ -40,7 +37,7 @@ import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
     NavButtonsComponent,
     PreventTabOutDirective,
     IrccDsAngularHeaderFooterModule,
-    IrccDsAngularComponentsSharedModule,
+    IrccDsAngularComponentsSharedModule
   ]
 })
 export class SharedModule {}

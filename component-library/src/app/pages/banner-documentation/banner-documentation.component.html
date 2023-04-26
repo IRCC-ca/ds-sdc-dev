@@ -1,28 +1,32 @@
-<app-title-slug-url
-  [config]="interactiveDemoSlugTitleURLConfig"
-></app-title-slug-url>
+<div class="content-doc-wrapper col-12 col-lg-10">
+  <div style="width: 100%">
+    <app-title-slug-url
+      [config]="interactiveDemoSlugTitleURLConfig"
+    ></app-title-slug-url>
 
-<app-interactive-demo>
-  <ircc-cl-lib-tabs
-    tabs
-    (valueChange)="setBannerType($event)"
-    [config]="demoTabsConfig"
-  >
-  </ircc-cl-lib-tabs>
-  <div
-    component
-    class="banner-container"
-    #banner
-  >
-    <ircc-cl-lib-banner
-      (btnEvent)="bannerClose($event)"
-      [config]="bannerConfig"
-    ></ircc-cl-lib-banner>
+    <app-interactive-demo>
+      <ircc-cl-lib-tabs
+        tabs
+        (valueChange)="setBannerType($event)"
+        [config]="demoTabsConfig"
+      >
+      </ircc-cl-lib-tabs>
+      <div
+        component
+        class="banner-container"
+        #banner
+      >
+        <ircc-cl-lib-banner
+          (btnEvent)="bannerClose($event)"
+          [config]="bannerConfig"
+        ></ircc-cl-lib-banner>
+      </div>
+      <ng-container
+        toggles
+        *ngFor="let toggle of toggles"
+      >
+        <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+      </ng-container>
+    </app-interactive-demo>
   </div>
-  <ng-container
-    toggles
-    *ngFor="let toggle of toggles"
-  >
-    <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
-  </ng-container>
-</app-interactive-demo>
+</div>
