@@ -281,7 +281,11 @@ export class BannerDocumentationComponent implements OnInit {
     );
     setTimeout(function () {
       bannerContainer?.classList.remove('noDisplay');
-    }, 1000);
+      bannerContainer?.classList.add('bannerDismissed');
+      setTimeout(function () {
+        bannerContainer?.classList.remove('bannerDismissed');
+      }, 700);
+    }, 700);
   }
 
   checkCurrentButtonCounter() {
