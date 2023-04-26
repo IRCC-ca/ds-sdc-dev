@@ -10,6 +10,9 @@ import { SharedModule } from './shared.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { QaModule } from '@app/pages/QA/qa.module';
 import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/accessibility-demo.module';
+import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
+import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,17 @@ import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/access
     OverviewComponent,
     ForDesignersComponent,
     SlugifyPipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    BannerDocumentationComponent,
+    InteractiveDemoComponent,
+    accordionContainerComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     ClipboardModule,
     QaModule,
-    AccessibilityDemoModule
+    AccessibilityDemoModule,
   ],
   exports: [TitleSlugUrlComponent]
 })
