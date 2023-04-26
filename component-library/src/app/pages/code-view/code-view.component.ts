@@ -29,20 +29,14 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
-    this.setTabsA();
-  }
-
-  setTabsA() {
-    this.codeViewConfig = {
-      id: 'code-viewer-demo',
-      openAccordion: true
-    };
+    this.setTabsB();
   }
 
   setTabsB() {
     this.codeViewConfig = {
       id: 'code-viewer-demo',
       selected: 'java',
+      openAccordion: true,
       tab: [
         {
           id: 'java',
