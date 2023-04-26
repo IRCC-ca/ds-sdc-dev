@@ -7,7 +7,7 @@
 
 .column {
   width: 50%;
-  max-width: 50%;
+  max-width: 424px;
   margin-right: 20px;
 }
 
@@ -17,6 +17,7 @@
 
 .content-doc-wrapper {
   box-sizing: border-box;
+  max-width: 872px;
 
   // @include in-desktop-layout {
   //   padding-right: ircc-ds-sizes.$fixed-40;

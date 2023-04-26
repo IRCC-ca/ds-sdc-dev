@@ -5,7 +5,7 @@ import {
   IInputComponentConfig
 } from 'ircc-ds-angular-component-library';
 
-import { slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
+import { slugAnchorType, slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 
@@ -19,6 +19,8 @@ import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 export class InputDocumentationComponent implements OnInit {
   currentLanguage: string = '';
   slugTitleURLType = slugTitleURLType;
+  anchorType = slugAnchorType;
+
   altLangLink = 'inputDocumentation';
 
   BASIC_INPUT_ID = 'basic_input'
@@ -43,58 +45,80 @@ export class InputDocumentationComponent implements OnInit {
   }
 
   inputTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
-    title: 'Input.Title'
+    type: slugTitleURLType.primary,
+    title: 'Input.Title',
+    anchorType: slugAnchorType.primary
+
   }
 
   interactiveDemoSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.InteractiveDemo'
+    title: 'Input.InteractiveDemo',
+    anchorType: slugAnchorType.primary
+
   }
 
   typesSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.TypesHeading'
+    title: 'Input.TypesHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   configurationSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.TypesHeading'
+    title: 'Input.ConfigurationsHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   guidelineSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.DesignGuidelinesHeading'
+    title: 'Input.DesignGuidelinesHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   anatomySlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.AnatomyHeading'
+    title: 'Input.AnatomyHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   specsSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.SpecsHeading'
+    title: 'Input.SpecsHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   contentGuideSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.ContentGuidelinesHeading'
+    title: 'Input.ContentGuidelinesHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   figmaSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.FigmaHeading'
+    title: 'Input.FigmaHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   accessibilitySlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.AccessibilityHeading'
+    title: 'Input.AccessibilityHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
   researchSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.ResearchHeading'
+    title: 'Input.ResearchHeading',
+    anchorType: slugAnchorType.primary
+
   }
 
 
