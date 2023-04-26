@@ -6,7 +6,10 @@ import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  slugTitleURLConfig,
+  slugTitleURLType
+} from '@app/components/title-slug-url/title-slug-url.component';
 @Component({
   selector: 'app-for-developers',
   templateUrl: './for-developers.component.html',
