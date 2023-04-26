@@ -2,7 +2,7 @@
 
 .content-doc-wrapper {
   box-sizing: border-box;
-  max-width: 1000px;
+  max-width: 900px;
 
   img {
     display: block;
@@ -19,6 +19,23 @@
 .config-row {
   display: flex;
   justify-content: flex-start;
+}
+
+.figma-usage {
+  max-width: 547px;
+  margin-right: 20px;
+}
+
+.image-container-1 {
+  width: 232px;
+  height: 237px;
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+  position: relative;
+  top: 50px;
+}
+
+.image-container-2 {
+  display: flex;
 }
 
 .column {

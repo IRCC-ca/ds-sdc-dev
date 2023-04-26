@@ -268,7 +268,7 @@
   <section class="usage-figma">
     <app-title-slug-url  [config]="figmaSlugConfig" class="h3 epmhasis"></app-title-slug-url>
     <div class="row">
-      <div class="column">
+      <div class="figma-usage">
         <h5 class="h5 emphasis">{{'Input.FigmaDirectionsHeading' | translate}}</h5>
         <ol>
           <li [innerHtml]="'Input.FigmaDirectionsListItem1' | translate" class="body3 emphasis"></li>
@@ -277,21 +277,25 @@
           <li [innerHtml]="'Input.FigmaDirectionsListItem4' | translate" class="body3 emphasis"></li>
         </ol>
       </div>
-      <div>
+      <div class="image-container-1">
         <img src="assets/img/input-content/figma-usage-1.png" alt="{{'Input.FigmaDirectionsImgAlt' | translate}}">
       </div>
     </div>
     <div class="row">
-      <div class="column">
+      <div class="figma-usage">
         <h5 class="h5 emphasis">{{'Input.AccessInputsHeading' | translate}}</h5>
         <ol>
           <li [innerHtml]="'Input.AccessInputsListItem1' | translate" class="body3 emphasis"></li>
           <li [innerHtml]="'Input.AccessInputsListItem2' | translate" class="body3 emphasis"></li>
         </ol>
-        <img src="assets/img/input-content/figma-usage-2.png" alt="{{'Input.AccessInputsImgAlt1' | translate}}">
       </div>
-      <div class="column">
-        <img src="assets/img/input-content/figma-usage-3.png" alt="{{'Input.AccessInputsImgAlt2' | translate}}">
+      <div class="image-container-2">
+        <div>
+          <img src="assets/img/input-content/figma-usage-2.png" alt="{{'Input.AccessInputsImgAlt1' | translate}}">
+        </div>
+        <div>
+          <img src="assets/img/input-content/figma-usage-3.png" alt="{{'Input.AccessInputsImgAlt2' | translate}}">
+        </div>
       </div>
     </div>
   </section>
