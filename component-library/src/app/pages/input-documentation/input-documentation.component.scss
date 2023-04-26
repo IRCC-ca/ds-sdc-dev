@@ -1,8 +1,19 @@
 @use 'src/scss/code';
 
+.content-doc-wrapper {
+  box-sizing: border-box;
+  max-width: 1000px;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
 .row {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .column {
@@ -19,14 +30,6 @@
   margin-top: 24px;
 }
 
-.content-doc-wrapper {
-  box-sizing: border-box;
-  max-width: 872px;
-
-  img {
-    max-width: 100%;
-  }
-}
 
 
 
