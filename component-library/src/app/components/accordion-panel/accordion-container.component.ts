@@ -8,7 +8,8 @@ import { IButtonConfig } from 'ircc-ds-angular-component-library';
   styleUrls: ['./accordion-container.component.scss']
 })
 export class accordionContainerComponent {
-  @Input() buttonText: string = 'Show Code';
+  @Input() buttonText: string = 'Accordion.HideCode';
+  @Input() buttonTextClosed: string = 'Accordion.ShowCode';
   @Input() open: boolean = true;
   @Output() getOpen = new EventEmitter<boolean>();
 

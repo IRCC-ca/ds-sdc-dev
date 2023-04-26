@@ -63,6 +63,7 @@ const routes: Routes = [
     { path: 'naseer-fr', component: NaseerComponent }, //French
 
     { path: 'codeview', component: codeViewComponent },
+    { path: 'codeview-fr', component: codeViewComponent },
 
     {
       path: 'accessibility-demo',
