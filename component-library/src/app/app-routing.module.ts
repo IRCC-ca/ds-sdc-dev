@@ -17,6 +17,7 @@ import { ForDevelopersComponent } from './pages/for-developers/for-developers.co
 // import { PageUtilitiesComponent } from './pages/utilities/utilities.component';
 
 import { Shell } from './shell/shell.service';
+import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { MahsaComponent } from './pages/QA/mahsa/mahsa.component';
 import { MichaelComponent } from './pages/QA/michael/michael.component';
 import { MikeComponent } from './pages/QA/mike/mike.component';
@@ -48,7 +49,6 @@ const routes: Routes = [
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'banner-doc', component: BannerDocumentationComponent },
 
-
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
@@ -64,6 +64,9 @@ const routes: Routes = [
     { path: 'mike-fr', component: MikeComponent }, //French
     { path: 'naseer-en', component: NaseerComponent }, //English
     { path: 'naseer-fr', component: NaseerComponent }, //French
+
+    { path: 'codeview', component: codeViewComponent },
+    { path: 'codeview-fr', component: codeViewComponent },
 
     {
       path: 'accessibility-demo',
