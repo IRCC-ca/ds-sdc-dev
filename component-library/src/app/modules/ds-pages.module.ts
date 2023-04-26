@@ -34,6 +34,6 @@ import { ShelldModule } from '@app/shell/shell.module';
     ShelldModule
   ],
   exports: [TitleSlugUrlComponent],
-  providers: [SideNavConfig],
+  providers: [SideNavConfig]
 })
 export class DsPageModule {}

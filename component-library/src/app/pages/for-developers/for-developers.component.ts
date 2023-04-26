@@ -39,12 +39,12 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-  };
+  }
 
   copyToClipboard(index: number) {
     // const textToCopy = this.textToCopyRef.nativeElement.innerText;
     let textToCopy;
-    switch(index) {
+    switch (index) {
       case 0:
         textToCopy = this.paragraph1Ref.nativeElement.innerText;
         break;
@@ -57,8 +57,7 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
       case 3:
         textToCopy = this.paragraph4Ref.nativeElement.innerText;
         break;
-    } 
+    }
     this.clipboard.copy(textToCopy);
-    
   }
 }
