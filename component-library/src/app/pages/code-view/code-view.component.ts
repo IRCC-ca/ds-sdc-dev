@@ -29,7 +29,11 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
-    this.setTabsB();
+    this.setTabsC();
+  }
+
+  getSelected(event: string) {
+    console.log(event);
   }
 
   setTabsB() {
@@ -41,7 +45,8 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
         {
           id: 'java',
           title: 'Java',
-          value: `public class Test {
+          value: `
+        public class Test {
 
           public static void main(String[] args){
         
@@ -53,7 +58,8 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
         {
           id: 'rust',
           title: 'Rust',
-          value: `use std::slice;
+          value: `
+        use std::slice;
 
         fn main() {
             let some_vector = vec![1, 2, 3, 4];
@@ -71,7 +77,8 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
         {
           id: 'SWIFT',
           title: 'SWIFT',
-          value: `extension Player {
+          value: `
+        extension Player {
             mutating func updateScore(_ newScore: Int) {
                 history.append(newScore)
                 if highScore < newScore {
@@ -91,10 +98,30 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
     this.codeViewConfig = {
       id: 'code-viewer-demo',
       openAccordion: true,
-      selected: 'lorem',
+      selected: 'html',
       tab: [
-        { id: 'lorem', title: 'Lorem', value: 'I am a text change' },
-        { id: 'ipsum', title: 'Ipsum', value: 'Ipsum' }
+        {
+          id: 'html',
+          title: 'HTML',
+          value: `
+  <ircc-cl-lib-tabs [config]="qaTabs"></ircc-cl-lib-tabs>
+  `
+        },
+        {
+          id: 'ts',
+          title: 'TypeScript',
+          value: `
+  import { ITabNavConfig} from 'ircc-ds-angular-component-library';
+  //...
+
+  qaTabs: ITabNavConfig = {
+    id: 'tab-id',
+    tab: [
+      { id: 'tab1', title: 'Tab1', value: 'this is a string' },
+      { id: 'tab2', title: 'Tab2', value: 'this is a string' }
+    ]
+  };`
+        }
       ]
     };
   }

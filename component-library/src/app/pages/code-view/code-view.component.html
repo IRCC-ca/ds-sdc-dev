@@ -1,6 +1,9 @@
 <div class="content-doc-wrapper col-12 col-lg-10">
   <div style="width: 100%">
-    <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
+    <app-code-viewer
+      (getSelected)="getSelected($event)"
+      [config]="codeViewConfig"
+    ></app-code-viewer>
   </div>
 
   <button (click)="setTabsB()">B</button>

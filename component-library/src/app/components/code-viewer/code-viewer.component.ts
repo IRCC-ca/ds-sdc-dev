@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {
   IButtonConfig,
@@ -29,6 +36,7 @@ export class codeViewerComponent implements OnInit {
   @Input() config: ICodeViewerConfig = {
     id: ''
   };
+  @Output() getSelected = new EventEmitter<string>();
 
   tabconfig: ITabNavConfig = {
     id: 'codeViewerTabs',
@@ -94,6 +102,7 @@ export class codeViewerComponent implements OnInit {
         (element) => element.id === selected
       );
       this.config.selected = selected;
+      this.getSelected.emit(selected);
     }
   }
 
