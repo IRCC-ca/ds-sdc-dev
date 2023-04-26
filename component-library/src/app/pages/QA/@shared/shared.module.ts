@@ -34,9 +34,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
   declarations: [
     NavButtonsComponent,
     PreventTabOutDirective,
-    InteractiveDemoComponent,
     InfoTextSmallComponent,
-    ComponentPreviewComponent
   ],
   exports: [
     IrccDsAngularBannerModule,
@@ -50,10 +48,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     PreventTabOutDirective,
     IrccDsAngularHeaderFooterModule,
     IrccDsAngularComponentsSharedModule,
-    InteractiveDemoComponent,
     InfoTextSmallComponent,
-    ComponentPreviewComponent,
-
   ]
 })
 export class SharedModule { }

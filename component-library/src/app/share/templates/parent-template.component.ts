@@ -1,7 +1,8 @@
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../lan-switch/lang-switch.service';
 import { SlugifyPipe } from '../pipe-slugify.pipe';
-import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
+// import { SideNavConfig } from './parent-template.module';
+
 
 export class ParentTemplateComponent {
   currentBaseUrl: string = '';
@@ -14,8 +15,8 @@ export class ParentTemplateComponent {
     protected translate: TranslateService,
     protected lang: LangSwitchService,
     protected slugify: SlugifyPipe,
-    protected navBarConfig: SideNavConfig
-  ) {}
+    // protected navBarConfig: SideNavConfig
+  ) { }
 
   getLanguage() {
     const curLang = this.translate.currentLang;

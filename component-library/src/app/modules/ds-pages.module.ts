@@ -17,6 +17,10 @@ import { accordionContainerComponent } from '@app/components/accordion-panel/acc
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
+import { InputComponent } from 'component-lib/src/public-api';
+import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     SafeHtmlPipe,
     codeViewComponent,
     BannerDocumentationComponent,
-    InteractiveDemoComponent
+    InteractiveDemoComponent,
+    InputDocumentationComponent,
+    InteractiveDemoComponent,
+    ComponentPreviewComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +45,9 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     ClipboardModule,
     QaModule,
     HighlightModule,
-    AccessibilityDemoModule
+    AccessibilityDemoModule,
+    TranslateModule,
+    SharedModule
   ],
   exports: [
     TitleSlugUrlComponent,
@@ -56,4 +65,4 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     }
   ]
 })
-export class DsPageModule {}
+export class DsPageModule { }

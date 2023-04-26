@@ -1,0 +1,126 @@
+@use 'src/scss/code';
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.column {
+  width: 50%;
+  max-width: 50%;
+  margin-right: 20px;
+}
+
+.single-img {
+  display: block;
+}
+
+.content-doc-wrapper {
+  box-sizing: border-box;
+
+  // @include in-desktop-layout {
+  //   padding-right: ircc-ds-sizes.$fixed-40;
+  // }
+  // @include un-desktop-layout {
+  //   padding-right: ircc-ds-sizes.$fixed-20;
+  // }
+  img {
+    max-width: 100%;
+  }
+}
+
+
+
+h3 {
+  display: inline-block;
+  font-weight: 700;
+
+  &.primary {
+    font-size: 36px;
+  }
+
+  &.secondary {
+    font-size: 28px;
+    margin-top: 60px;
+  }
+}
+
+>a {
+  margin-left: 16px;
+  position: relative;
+  bottom: 5px;
+  text-decoration: none !important;
+  color: var(--link-text);
+}
+
+
+h5 {
+  font-weight: 700 !important;
+  margin-bottom: 12px;
+
+  &.text-underline {
+    border-bottom: 1px solid;
+    margin: 8px 0;
+  }
+
+  &.text-color-green {
+    color: var(--success-text);
+  }
+
+  &.text-color-red {
+    color: var(--critical-text);
+  }
+
+  &.round-purple-num {
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 22px;
+    margin-bottom: 0;
+    position: relative;
+    top: 2px;
+  }
+}
+
+span {
+  &.round-purple-num {
+    color: #592D85;
+    font-weight: 700;
+    background-color: #E1D1F0;
+    padding: 9px 15px;
+    border-radius: 50%;
+  }
+}
+
+// app-info-text-small {
+//   // To be replace with color token
+//   color: ircc-ds-color.mix-token(information, 900);
+// }
+
+// app-page-token {
+//   .spacing-sample {
+//     height: 20px;
+//     margin: 0 auto;
+//     background: ircc-ds-color.mix-token(visited, 100);
+//     border-left: 1px solid ircc-ds-color.mix-token(visited, 700);
+//     border-right: 1px solid ircc-ds-color.mix-token(visited, 700);
+//   }
+// }
+
+// jds-link {
+//   a {
+//     color: var(--link-text);
+//   }
+
+//   cursor: pointer;
+// }
+
+// a {
+//   &:active {
+//     background: none !important;
+//   }
+
+//   // To be removed once core package fix the bug
+//   &:hover {
+//     background-color: transparent !important;
+//   }
+// }

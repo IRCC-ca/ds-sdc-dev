@@ -28,6 +28,7 @@ import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-dem
 import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
 import { BobbyComponent } from './pages/QA/bobby/bobby.component';
+import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -50,12 +51,16 @@ const routes: Routes = [
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'banner-doc', component: BannerDocumentationComponent },
+    { path: 'input-documentation', component: InputDocumentationComponent },
+
 
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'banner-doc-fr', component: BannerDocumentationComponent },
+    { path: 'documentation dentree', component: InputDocumentationComponent },
+
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English

@@ -1,0 +1,323 @@
+<div class="content-doc-wrapper">
+  <app-title-slug-url  [config]="inputTitleSlugConfig" class="h1 emphasis"></app-title-slug-url>
+  <p class="body1">{{'Input.Intro' | translate}}</p>
+
+  <section class="interactive-demo">
+    <app-title-slug-url  [config]="interactiveDemoSlugConfig" class="h3 emphasis"></app-title-slug-url>
+    <p class="body3">{{'Input.InteractiveDemoDesc' | translate}}</p>
+    <app-interactive-demo></app-interactive-demo>
+  CODE BLOCK COMPONENT
+  </section>
+  
+  <section class="types">
+    <app-title-slug-url  [config]="typesSlugConfig" class="h3 epmhasis"></app-title-slug-url>
+    <h5 class="emphasis">{{'Input.PrimaryHeading' | translate}}</h5>
+    <app-component-preview copyText="<button category='secondary'>{{'Buttons.PrimaryBtnText' | translate}}</button>">
+      <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
+    </app-component-preview>
+    <p>{{'Input.PrimaryText' | translate}}</p>
+    <h5 class="emphasis">{{'Input.SecondaryHeading' | translate}}</h5>
+    <app-component-preview copyText="<button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button>">
+            <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
+    </app-component-preview>
+    <p class="body3">{{'Input.SecondaryText' | translate}}</p>
+  </section>
+  
+  <section class="configs">
+    <app-title-slug-url [config]="configurationSlugConfig" class="h3 epmhasis"></app-title-slug-url>
+    <div class="row">
+      <div class="column">
+        <h5>{{'Input.ConfigSizeHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigSizeSmall' | translate}}</li>
+          <li>{{'Input.ConfigSizeLarge' | translate}}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5>{{'Input.ConfigHintHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigHintTrue' | translate}}</li>
+          <li>{{'Input.ConfigHintFalse' | translate}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row"> 
+      <div class="column">
+        <h5>{{'Input.ConfigRequiredHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigRequiredTrue' | translate}}</li>
+          <li>{{'Input.ConfigRequiredFalse' | translate}}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5>{{'Input.ConfigErrorHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigErrorTrue' | translate}}</li>
+          <li>{{'Input.ConfigErrorFalse' | translate}}</li>
+        </ul>
+      </div>
+    </div>  
+    <div class="row"> 
+      <div class="column">
+        <h5>{{'Input.ConfigDescHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigDescTrue' | translate}}</li>
+          <li>{{'Input.ConfigDescFalse' | translate}}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5>{{'Input.ConfigPlaceholderHeading' | translate}}</h5>
+        <ul>
+          <li>{{'Input.ConfigPlaceholderTrue' | translate}}</li>
+          <li>{{'Input.ConfigPlaceholderFalse' | translate}}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="design-guidelines">
+    <app-title-slug-url [config]="guidelineSlugConfig" class="h3 epmhasis"></app-title-slug-url>
+    <h5 class="h5 emphasis">{{'Input.FieldWidth' | translate}}</h5>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/field-width-do.png" alt="{{'Input.FieldWidthImgDo' | translate}}">
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p class="body3">{{'Input.FieldWidthDoText'|translate}}</p>
+      </div>
+      <div class="column">
+      <!-- <picture class="item2">
+      <source srcset="assets/canada_logo_dark.svg" media="(prefers-color-scheme: dark)">
+      <img [alt]="'Home.FooterAlt' | translate" src="assets/canada_logo_light.svg">
+      </picture> -->
+        <img src="assets/img/input-content/field-width-dont.png" alt="{{'Input.FieldWidthImgDont' | translate}}">
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p class="body3">{{'Input.FieldWidthDontText'|translate}}</p>
+      </div>
+    </div>
+    <h5 class="h5 emphasis">{{'Input.ErrorsHeading' | translate}}</h5>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/error-do.png" alt="{{'Input.ErrorDoImgAlt' | translate}}">
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p class="body3">{{'Input.ErrorDoText'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/error-dont.png" alt="{{'Input.ErrorDontImgAlt' | translate}}">
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p class="body3">{{'Input.ErrorDontText'|translate}}</p>
+      </div>
+     </div>  
+    <h5 class="h5 emphasis">{{'Input.MaxMinWidthHeading' | translate}}</h5>
+    <div class="row">
+      <div>
+        <img src="assets/img/input-content/input-max-width.png" alt="{{'Input.MaxMinWidthImgAlt' | translate}}">
+        <p class="body3">{{'Input.MaxMinWidthText'|translate}}</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="anatomy">
+    <app-title-slug-url [config]="anatomySlugConfig"  class="h3 epmhasis"></app-title-slug-url>
+    <img class="single-img" src="assets/img/input-content/input-anatomy.png" alt="{{'Input.AnatomyImgAlt' | translate}}"><br/>
+    <span class="round-purple-num">1</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyLabelHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyLabelText' | translate}}</p>
+    <span class="round-purple-num">2</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyRequiredIndicatorHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyRequiredIndicatorText' | translate}}</p>
+    <span class="round-purple-num">3</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyDescHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyDescText' | translate}}</p>
+    <span class="round-purple-num">4</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyHintHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyHintText' | translate}}</p>
+    <span class="round-purple-num">5</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyInputFieldHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyInputFieldText' | translate}}</p>
+    <span class="round-purple-num">6</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyInputContentHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyInputContentText' | translate}}</p>
+    <span class="round-purple-num">7</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyErrorHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyErrorText' | translate}}</p>
+    <span class="round-purple-num">8</span>
+    <h5 class="h5 emphasis round-purple-num">{{'Input.AnatomyPasswordHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AnatomyPasswordText' | translate}}</p>
+  </section>
+
+  <section class="specs">
+    <app-title-slug-url [config]="specsSlugConfig" class="h3 epmhasis"></app-title-slug-url>
+    <img class="single-img" src="assets/img/input-content/input-specs.png" alt="{{'Input.SpecsImgAlt' | translate}}">
+  </section>
+  
+  <section class="content-guidelines">
+    <app-title-slug-url [config]="contentGuideSlugConfig" lass="h3 epmhasis"></app-title-slug-url>
+
+    <h5>{{'Input.WriteLabelsHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WriteLabelsSubHeading' | translate}}</p>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/label-do-1.png" alt="{{'Input.WriteLabelsDoImgAlt1' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WriteLabelsDoText1'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/label-dont-1.png" alt="{{'Input.WriteLabelsDontImgAlt1' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WriteLabelsDontText1'|translate}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/label-do-2.png" alt="{{'Input.WriteLabelsDoImgAlt2' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WriteLabelsDoText2'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/label-dont-2.png" alt="{{'Input.WriteLabelsDontImgAlt2' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WriteLabelsDontText2'|translate}}</p>
+      </div>
+    </div>
+
+    <h5>{{'Input.WriteDescHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WriteDescSubHeading' | translate}}</p>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/desc-do.png" alt="{{'Input.WriteDescDoImgAlt' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WriteDescDoText'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/desc-dont.png" alt="{{'Input.WriteDescDontImgAlt' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WriteDescDontText'|translate}}</p>
+      </div>
+    </div>
+
+    <h5>{{'Input.WritePlaceholderHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WritePlaceholderSubHeading' | translate}}</p>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/placeholder-do-1.png" alt="{{'Input.WritePlaceholderDoImgAlt1' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDoText1'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/placeholder-dont-1.png" alt="{{'Input.WritePlaceholderDontImgAlt1' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDontText1'|translate}}</p>
+      </div>
+    </div>  
+    <div class="row">  
+      <div class="column">
+        <img src="assets/img/input-content/placeholder-do-2.png" alt="{{'Input.WritePlaceholderDoImgAlt2' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDoText2'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/placeholder-dont-2.png" alt="{{'Input.WritePlaceholderDontImgAlt2' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WritePlaceholderDontText2'|translate}}</p>
+      </div>
+    </div>
+
+    <h5>{{'Input.WriteErrorsHeading' | translate}}</h5>
+    <p class="body3">{{'Input.WriteErrorsSubHeading' | translate}}</p>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/error-message-do.png" alt="{{'Input.WriteErrorsDoImgAlt' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.WriteErrorsDoText'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/error-message-dont.png" alt="{{'Input.WriteErrorsDontImgAlt' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.WriteErrorsDontText'|translate}}</p>
+      </div>
+    </div>
+    
+    <h5>{{'Input.NecessaryContentHeading' | translate}}</h5>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/necessary-content-do.png" alt="{{'Input.NecessaryContentDoImgAlt' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.NecessaryContentDoText'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/necessary-content-dont.png" alt="{{'Input.NecessaryContentDontImgAlt' | translate}}"><br/>
+        <h5 class="text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.NecessaryContentDontText'|translate}}</p>
+      </div>
+    </div>
+
+    <h5>{{'Input.RequiredFieldsHeading' | translate}}</h5>
+    <p class="body3"></p>
+    <div class="row">
+      <div class="column">
+        <img src="assets/img/input-content/required-field-do.png" alt="{{'Input.RequiredFieldsDoImgAlt' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-green">{{'Input.DoHeading'|translate}}</h5>
+        <p>{{'Input.RequiredFieldsDoText'|translate}}</p>
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/required-field-dont.png" alt="{{'Input.RequiredFieldsDontImgAlt' | translate}}"><br/>
+        <h5 class="h5 emphasis text-underline text-color-red">{{'Input.DontHeading'|translate}}</h5>
+        <p>{{'Input.RequiredFieldsDontText'|translate}}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="usage-figma">
+    <app-title-slug-url  [config]="figmaSlugConfig" class="h3 epmhasis"></app-title-slug-url>
+    <div class="row">
+      <div class="column">
+        <h5 class="h5 emphasis">{{'Input.FigmaDirectionsHeading' | translate}}</h5>
+        <ol>
+          <li [innerHtml]="'Input.FigmaDirectionsListItem1' | translate" class="body3 emphasis"></li>
+          <li [innerHtml]="'Input.FigmaDirectionsListItem2' | translate" class="body3 emphasis"></li>
+          <li [innerHtml]="'Input.FigmaDirectionsListItem3' | translate" class="body3 emphasis"></li>
+          <li [innerHtml]="'Input.FigmaDirectionsListItem4' | translate" class="body3 emphasis"></li>
+        </ol>
+      </div>
+      <div>
+        <img src="assets/img/input-content/figma-usage-1.png" alt="{{'Input.FigmaDirectionsImgAlt' | translate}}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <h5 class="h5 emphasis">{{'Input.AccessInputsHeading' | translate}}</h5>
+        <ol>
+          <li [innerHtml]="'Input.AccessInputsListItem1' | translate" class="body3 emphasis"></li>
+          <li [innerHtml]="'Input.AccessInputsListItem2' | translate" class="body3 emphasis"></li>
+        </ol>
+        <img src="assets/img/input-content/figma-usage-2.png" alt="{{'Input.AccessInputsImgAlt1' | translate}}">
+      </div>
+      <div class="column">
+        <img src="assets/img/input-content/figma-usage-3.png" alt="{{'Input.AccessInputsImgAlt2' | translate}}">
+      </div>
+    </div>
+  </section>
+  <section class="accessibility">
+    <app-title-slug-url [config]="accessibilitySlugConfig" class="h3 epmhasis"></app-title-slug-url>
+    <h5 class="h5 emphasis">{{'Input.AccessibilityColourHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AccessibilityColourText' | translate}}</p>
+    <h5 class="h5 emphasis">{{'Input.AccessibilityKeyboardHeading' | translate}}</h5>
+    <p>{{'Input.AccessibilityKeyboardText' | translate}}</p>
+    <h5>{{'Input.AccessibilityContentHeading' | translate}}</h5>
+    <ul>
+      <li [innerHtml]="'Input.AccessibilityContentItem1' | translate" class="body3 emphasis"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem2' | translate" class="body3 emphasis"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem3' | translate" class="body3 emphasis"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem4' | translate" class="body3 emphasis"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem5' | translate" class="body3 emphasis"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem6' | translate" class="body3 emphasis"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem7' | translate" class="body3 emphasis"></li>
+    </ul>
+    <h5 class="h5 emphasis">{{'Input.AccessibilityValidationHeading' | translate}}</h5>
+    <p class="body3">{{'Input.AccessibilityValidationText' | translate}}</p>
+  </section>
+  <section class="research">
+    <app-title-slug-url [config]="researchSlugConfig" class="h3 epmhasis"></app-title-slug-url>
+    <p class="body3">{{'Input.ResearchText' | translate}}</p>
+  </section>
+</div>
