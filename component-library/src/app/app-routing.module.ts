@@ -49,7 +49,6 @@ const routes: Routes = [
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'banner-doc', component: BannerDocumentationComponent },
 
-
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },

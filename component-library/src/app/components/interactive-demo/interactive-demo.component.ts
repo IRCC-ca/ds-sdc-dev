@@ -19,7 +19,7 @@ export class InteractiveDemoComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggle(accordianOpen : any) {
+  toggle(accordianOpen: any) {
     this.isOpen = accordianOpen;
   }
 }
