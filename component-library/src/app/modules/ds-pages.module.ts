@@ -10,6 +10,10 @@ import { SharedModule } from './shared.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { QaModule } from '@app/pages/QA/qa.module';
 import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/accessibility-demo.module';
+import { SideNavComponent } from '@app/components/side-nav/side-nav.component';
+import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
+import { ShellComponent } from '@app/shell/shell.component';
+import { ShelldModule } from '@app/shell/shell.module';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -17,15 +21,19 @@ import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/access
     ForDesignersComponent,
     ForDevelopersComponent,
     SlugifyPipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    SideNavComponent,
+    ShellComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     ClipboardModule,
     QaModule,
-    AccessibilityDemoModule
+    AccessibilityDemoModule,
+    ShelldModule
   ],
-  exports: [TitleSlugUrlComponent]
+  exports: [TitleSlugUrlComponent],
+  providers: [SideNavConfig],
 })
 export class DsPageModule {}

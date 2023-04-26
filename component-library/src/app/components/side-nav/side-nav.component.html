@@ -27,18 +27,11 @@
         </a>
       </div>
       <div *ngIf="data.category === 'slug-url' && data.path">
-        <!-- <a    /// UPDATE to use SlugifyPipe
-          class="menuItems"
-          routerLink="."
-          [routerLinkActive]="showActive ? 'active' : ''"
-          fragment="{{ data.path | translate | SlugifyPipe }}"
-          >{{ data.text | translate }}</a
-        > -->
         <a
           class="menuItems"
           routerLink="."
           [routerLinkActive]="showActive ? 'active' : ''"
-          fragment="{{ data.path | translate }}"
+          fragment="{{ data.path | translate | SlugifyPipe }}"
           >{{ data.text | translate }}</a
         >
       </div>

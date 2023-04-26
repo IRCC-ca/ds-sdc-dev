@@ -1,27 +1,31 @@
-<ng-template #clipboardBtn>
-  <!-- <jds-button class="copy">{{ 'Buttons.Copy' | translate }}</jds-button> -->
-  <button class="copy">{{ 'Buttons.Copy' | translate }}</button>
-</ng-template>
+<!-- <ng-template #clipboardBtn>
+<jds-button class="copy">{{ 'Buttons.Copy' | translate }}</jds-button> 
+  <button class="copy">HERE{{ 'Buttons.Copy' | translate }}</button>
+</ng-template> -->
 <div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url
+    [translate]="'Overview.DeveloperHeading'"
     class="for-developers"
     type="primary"
-    >{{ 'Overview.DeveloperHeading' | translate }}</app-title-slug-url
-  >
-  <p class="dev-txt">{{ 'Overview.DeveloperPackageTxt' | translate }}</p>
+  ></app-title-slug-url>
+  <!-- <p class="dev-txt">{{ 'Overview.DeveloperPackageTxt' | translate }}</p> -->
+  <p
+    [translate]="'Overview.DeveloperPackageTxt'"
+    class="dev-txt"
+  ></p>
   <app-title-slug-url
+    [translate]="'Developers.GetStartedHeading'"
     class="getting-started"
     type="primary"
-    >{{ 'Developers.GetStartedHeading' | translate }}</app-title-slug-url
-  >
+  ></app-title-slug-url>
   <p>
     To install the IRCC Digital Journey Labs Design System styles, you will need
     to run the following command using
     <a href="https://www.npmjs.com/">npm</a>
   </p>
   <div>
-    <button>Copy</button>
-    <p>npm install --save-dev @ircc-ca/ds-sdc-core</p>
+    <button (click)="copyToClipboard(0)">Copy</button>
+    <p #paragraph1>npm install --save-dev @ircc-ca/ds-sdc-core</p>
   </div>
   <h2>Usage</h2>
   <p>
@@ -29,13 +33,13 @@
     following:
   </p>
   <div>
-    <button>Copy</button>
-    <p>@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;</p>
-    <p>
+    <button (click)="copyToClipboard(1)">Copy</button>
+    <p #paragraph2>
+      @use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;<br />
       @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(),
-      default, large, light);
+      default, large, light);<br />
+      @include ircc-ds.element-styles();
     </p>
-    <p>@include ircc-ds.element-styles();</p>
   </div>
   <p>
     The 3rd parameter should be set to small for internal websites, large for
@@ -60,12 +64,10 @@
     icons used by the design system. Place the following in the head of your
     project to pull down the relevant icons.
   </p>
-  <button>Copy</button>
-  <p>
-    <script
-      src="https://kit.fontawesome.com/8e16e0c619.js"
-      crossorigin="anonymous"
-    ></script>
+  <button (click)="copyToClipboard(2)">Copy</button>
+  <p #paragraph3>
+    &lt;script src="https://kit.fontawesome.com/8e16e0c619.js"
+    crossorigin="anonymous"&gt;&lt;/script&gt;
   </p>
   <h2>Releases</h2>
   <p>
@@ -73,8 +75,8 @@
     and full releases. To target a patch release use the command below.
   </p>
   <p><strong>To install a patch release:</strong></p>
-  <button>Copy</button>
-  <p>npm install @ircc-ca/ds-sdc-core@patch</p>
+  <button (click)="copyToClipboard(3)">Copy</button>
+  <p #paragraph4>npm install @ircc-ca/ds-sdc-core@patch</p>
   <!-- <markdown
     *ngIf="translate.currentLang === 'en'"
     clipboard
@@ -88,7 +90,7 @@
     [src]="'assets/md/README_core_fr.md'"
   ></markdown> -->
 </div>
-<!-- <app-side-nav
+<app-side-nav
   class="right-nav col-12 col-lg-3 col-xl-2"
   [navBarData]="rightNavData"
-></app-side-nav> -->
+></app-side-nav>

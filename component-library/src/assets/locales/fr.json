@@ -300,7 +300,8 @@
     "DesignerText": "Découvrez comment démarrer avec la bibliothèque Figma du système de conception IRCC.",
     "DeveloperHeading": "Pour les développeurs",
     "DeveloperText": "Découvrez comment commencer à mettre en œuvre le système de conception IRCC dans votre projet.",
-    "GetStartedHeading": "Commencer"
+    "GetStartedHeading": "Commencer",
+    "DeveloperPackageTxt": "FR This package contains the theming functionality for the Journey Design System."
   },
   "Designers": {
     "Heading": "Pour les concepteurs",
