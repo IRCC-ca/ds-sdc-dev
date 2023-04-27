@@ -1,9 +1,9 @@
 export interface colorSample {
-  tokenName: string,
-  colorRole: string,
-  colorCode: string,
-  figmaStyle: string,
-  description: string
+  tokenName: string;
+  colorRole: string;
+  colorCode: string;
+  figmaStyle: string;
+  description: string;
 }
 
 export const colorSamples: colorSample[] = [
@@ -790,44 +790,46 @@ export const colorSamples: colorSample[] = [
     colorCode: '#4974F5',
     figmaStyle: 'global / focus / <br/> border',
     description: 'Utilities.ColourTableDescriptionRow112'
-  },
+  }
 ];
 
-export const spacingsFixed: number[] = [4, 8, 12, 16, 24, 32, 40, 56, 72, 88, 100];
+export const spacingsFixed: number[] = [
+  4, 8, 12, 16, 24, 32, 40, 56, 72, 88, 100
+];
 
 export interface breakpoint {
-  svgPath: string,
-  varName: string,
-  width: number,
+  svgPath: string;
+  varName: string;
+  width: number;
 }
 
 export const breakpoints: breakpoint[] = [
   {
     svgPath: 'assets/svg/icon-bp-1.svg',
     varName: '$bp-width-phone',
-    width: 360,
+    width: 360
   },
   {
     svgPath: 'assets/svg/icon-bp-2.svg',
     varName: '$bp-width-tablet',
-    width: 768,
+    width: 768
   },
   {
     svgPath: 'assets/svg/icon-bp-3.svg',
     varName: '$bp-width-desktop',
-    width: 1366,
-  },
+    width: 1366
+  }
 ];
 
 export interface typography {
-  tag: string,
-  class: string | null // Use null if tag name is same as class name
-  type?: 'p' | 'a', // Type of paragraph or anchor link
-  fontWeight: string,
-  size: string,
-  lineHeight: string,
-  textStyle: string, // ['key_for_style_name', 'tag_name']
-  description: string | null // translation key or null if no description
+  tag: string;
+  class: string | null; // Use null if tag name is same as class name
+  type?: 'p' | 'a'; // Type of paragraph or anchor link
+  fontWeight: string;
+  size: string;
+  lineHeight: string;
+  textStyle: string; // ['key_for_style_name', 'tag_name']
+  description: string | null; // translation key or null if no description
 }
 
 export const typographys: typography[] = [
@@ -1209,6 +1211,6 @@ export const typographys: typography[] = [
     size: '12px / 0.75rem',
     lineHeight: '20px / 1.25rem<br/>8px / 0.5rem',
     textStyle: 'Emphasis Links / body4',
-    description: null,
-  },
+    description: null
+  }
 ];
