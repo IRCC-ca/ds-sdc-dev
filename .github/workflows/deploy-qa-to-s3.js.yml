@@ -20,6 +20,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: npm run install
       - run: npm run deploy-build
       - run: npm run deploy-qa-to-s3
