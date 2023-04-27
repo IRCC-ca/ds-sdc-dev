@@ -4,8 +4,6 @@
   box-sizing: border-box;
   max-width: 900px;
 
-
-
   img {
     display: block;
     width: 100%;
@@ -13,55 +11,8 @@
 }
 
 h2,
-.body1 {
+h3 .body1 {
   margin: 0px;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-
-  @media (max-width: 360px) {
-    flex-wrap: wrap;
-  }
-}
-
-.config-row {
-  //most sections wrap responsively but the config section does not
-  display: flex;
-  justify-content: flex-start;
-}
-
-.figma-usage {
-  max-width: 547px;
-  margin-right: 20px;
-
-  @media (max-width: 768px) {
-    max-width: 444px;
-  }
-}
-
-.image-container-1 {
-  width: 232px;
-  height: 237px;
-  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
-  position: relative;
-  top: 50px;
-}
-
-.image-container-2 {
-  display: flex;
-  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
-}
-
-.column {
-  width: 50%;
-  // max-width: 424px;
-  margin: 12px;
-}
-
-.code-viewer {
-  margin-top: 24px;
 }
 
 h3 {
@@ -124,4 +75,57 @@ span {
     padding: 9px 15px;
     border-radius: 50%;
   }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 400px) {
+    flex-wrap: wrap;
+  }
+}
+
+.column {
+  width: 50%;
+}
+
+.left-column {
+  margin-right: 12px;
+}
+
+.right-column {
+  margin-left: 12px;
+}
+
+.code-viewer {
+  margin-top: 24px;
+}
+
+.config-row {
+  //most sections wrap responsively but the config section does not
+  display: flex;
+  justify-content: flex-start;
+}
+
+.figma-usage {
+  max-width: 547px;
+  margin-right: 20px;
+
+  @media (max-width: 768px) {
+    max-width: 444px;
+  }
+}
+
+.image-container-1 {
+  width: 232px;
+  height: 237px;
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+  // position: relative;
+  // top: 50px;
+}
+
+.image-container-2 {
+  // display: flex;
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
 }
