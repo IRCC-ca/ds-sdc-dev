@@ -8,10 +8,10 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import {
   IBannerConfig,
-  ICTAConfig
-} from '../../../../component-lib/src/lib/banner-component/banner/banner.component';
-import { IRadioInputComponentConfig } from '../../../../component-lib/src/lib/form-components/radio-input/radio-input.component';
-import { ITabNavConfig } from '../../../../component-lib/src/lib/shared/tabs/tabs.component';
+  ICTAConfig,
+  IRadioInputComponentConfig,
+  ITabNavConfig
+} from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
