@@ -36,7 +36,8 @@
     }
   }
 
-  .toggles {
+  .toggles,
+  .checkboxes {
     margin: 16px 28px 28px 28px;
     display: grid;
     grid-template-columns: 1fr 1fr;

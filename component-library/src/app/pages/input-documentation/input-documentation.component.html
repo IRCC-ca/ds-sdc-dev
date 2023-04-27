@@ -11,18 +11,21 @@
   </ircc-cl-lib-tabs>
   <div
     component
-    class="banner-container"
-    #banner
+    class="input-container"
+    #input
   >
-    <ircc-cl-lib-banner
-      (btnEvent)="bannerClose($event)"
-      [config]="bannerConfig"
-    ></ircc-cl-lib-banner>
+    <ircc-cl-lib-input [config]="inputConfig"></ircc-cl-lib-input>
   </div>
   <ng-container
     toggles
     *ngFor="let toggle of toggles"
   >
     <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+  </ng-container>
+  <ng-container
+    checkboxes
+    *ngFor="let checkbox of checkboxes"
+  >
+    <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
   </ng-container>
 </app-interactive-demo>

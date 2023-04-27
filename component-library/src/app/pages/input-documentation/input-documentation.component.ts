@@ -8,7 +8,9 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import {
   IBannerConfig,
+  ICheckBoxComponentConfig,
   ICTAConfig,
+  IInputComponentConfig,
   IRadioInputComponentConfig,
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
@@ -29,9 +31,9 @@ export class InputDocumentationComponent
     private lang: LangSwitchService
   ) {}
 
-  @ViewChild('banner', { static: false }) banner!: ElementRef;
+  @ViewChild('input', { static: false }) banner!: ElementRef;
 
-  form_interactive_banner = new FormGroup({});
+  form_interactive_input = new FormGroup({});
 
   currentButtonSet = new Set<string>();
   buttonSetWithAllOptions = new Set<string>([
@@ -51,10 +53,22 @@ export class InputDocumentationComponent
     cta: []
   };
 
+  inputConfig: IInputComponentConfig = {
+    id: 'input',
+    formGroup: this.form_interactive_input,
+    label: 'Label text',
+    desc: 'Description line of text',
+    errorMessages: [
+      { key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' },
+      { key: 'testingError', errorLOV: 'ERROR.testErrorMessage' },
+      { key: 'maxlength', errorLOV: 'ERROR.fieldExceededMaxLength' }
+    ]
+  };
+
   toggles: IRadioInputComponentConfig[] = [
     {
-      id: 'showSizeToggle',
-      formGroup: this.form_interactive_banner,
+      id: 'size',
+      formGroup: this.form_interactive_input,
       label: 'Size',
       options: [
         {
@@ -66,9 +80,9 @@ export class InputDocumentationComponent
       ]
     },
     {
-      id: 'showCloseToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show close',
+      id: 'hint',
+      formGroup: this.form_interactive_input,
+      label: 'Hint',
       options: [
         {
           text: 'True'
@@ -79,9 +93,9 @@ export class InputDocumentationComponent
       ]
     },
     {
-      id: 'showTitleToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show title',
+      id: 'required',
+      formGroup: this.form_interactive_input,
+      label: 'Required',
       options: [
         {
           text: 'True'
@@ -92,9 +106,25 @@ export class InputDocumentationComponent
       ]
     },
     {
-      id: 'showDescToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show description',
+      id: 'error',
+      formGroup: this.form_interactive_input,
+      label: 'Error',
+      options: [
+        {
+          text: 'None'
+        },
+        {
+          text: 'Single'
+        },
+        {
+          text: 'Multiple'
+        }
+      ]
+    },
+    {
+      id: 'desc',
+      formGroup: this.form_interactive_input,
+      label: 'Description',
       options: [
         {
           text: 'True'
@@ -105,48 +135,9 @@ export class InputDocumentationComponent
       ]
     },
     {
-      id: 'showPrimaryButtonToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show primary button',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
-        }
-      ]
-    },
-    {
-      id: 'showPlainButtonToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show plain button',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
-        }
-      ]
-    },
-    {
-      id: 'showSecondaryButtonToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show secondary button',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
-        }
-      ]
-    },
-    {
-      id: 'showLinkToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show link',
+      id: 'placeholder',
+      formGroup: this.form_interactive_input,
+      label: 'Placeholder',
       options: [
         {
           text: 'True'
@@ -158,43 +149,37 @@ export class InputDocumentationComponent
     }
   ];
 
+  checkboxes: ICheckBoxComponentConfig[] = [
+    {
+      id: 'state',
+      formGroup: this.form_interactive_input,
+      label: 'State',
+      inlineLabel: 'Disabled'
+    }
+  ];
+
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
     tab: [
       {
-        id: 'info',
-        title: 'Info'
+        id: 'basic',
+        title: 'Basic'
       },
       {
-        id: 'warning',
-        title: 'Warning'
-      },
-      {
-        id: 'critical',
-        title: 'Critical'
-      },
-      {
-        id: 'success',
-        title: 'Success'
-      },
-      {
-        id: 'generic',
-        title: 'Generic'
+        id: 'password',
+        title: 'Password'
       }
     ]
   };
 
   setBannerType(value: any) {
-    if (value === 'info') {
-      this.bannerConfig.type = 'info';
-    } else if (value === 'warning') {
-      this.bannerConfig.type = 'warning';
-    } else if (value === 'success') {
-      this.bannerConfig.type = 'success';
-    } else if (value === 'generic') {
-      this.bannerConfig.type = 'generic';
-    } else if (value === 'critical') {
-      this.bannerConfig.type = 'critical';
+    switch (value) {
+      case 'password':
+        this.inputConfig.type = 'password';
+        break;
+      default:
+        this.inputConfig.type = 'text';
+        break;
     }
   }
 
@@ -293,8 +278,24 @@ export class InputDocumentationComponent
     }
   }
 
-  handleSizeToggle(value: any) {
-    this.bannerConfig.size = value['showSizeToggle'].toLowerCase();
+  handleSizeToggle(value: any): IInputComponentConfig {
+    return {
+      ...this.inputConfig,
+      size: value['size'].toLowerCase()
+    };
+  }
+
+  handleHintToggle(value: any): IInputComponentConfig {
+    return {
+      ...this.inputConfig,
+      hint: value['hint'] === 'True' ? 'Hint text' : ''
+    };
+  }
+  handleRequiredToggle(value: any): IInputComponentConfig {
+    return {
+      ...this.inputConfig,
+      required: value['required'] === 'True'
+    };
   }
 
   handleCloseToggle(value: any) {
@@ -370,46 +371,78 @@ export class InputDocumentationComponent
     }
   }
 
-  track_toggles = {
-    showSizeToggle: 'Large',
-    showCloseToggle: 'False',
-    showTitleToggle: 'False',
-    showDescToggle: 'False',
-    showPrimaryButtonToggle: 'False',
-    showSecondaryButtonToggle: 'False',
-    showPlainButtonToggle: 'False',
-    showLinkToggle: 'False'
-  };
-
-  toggle_function = {
-    showSizeToggle: this.handleSizeToggle,
-    showCloseToggle: this.handleCloseToggle,
-    showTitleToggle: this.handleTitleToggle,
-    showDescToggle: this.handleDescToggle,
-    showPrimaryButtonToggle: this.handlePrimaryButtonToggle,
-    showSecondaryButtonToggle: this.handleSecondaryButtonToggle,
-    showPlainButtonToggle: this.handlePlainButtonToggle,
-    showLinkToggle: this.handleLinkToggle
-  };
-
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
+    this.form_interactive_input.addControl(
+      this.inputConfig.id,
+      new FormControl()
+    );
+
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_interactive_banner.addControl(
+        this.form_interactive_input.addControl(
           toggle.id,
           new FormControl(toggle.options[1].text)
         );
       }
     });
 
-    this.form_interactive_banner.valueChanges.subscribe((value: any) => {
-      for (const param in value) {
-        if (this.track_toggles[param] === value[param]) continue;
-        this.track_toggles[param] = value[param];
-        this.toggle_function[param].apply(this, [value]);
-      }
+    this.checkboxes.forEach((checkbox) => {
+      this.form_interactive_input.addControl(checkbox.id, new FormControl());
     });
+
+    this.form_interactive_input.valueChanges.subscribe((value: any) => {
+      console.log(value);
+      this.inputConfig = this.parseToggleConfig(value);
+      if (value['error']) this.toggleErrors(value['error']);
+      if (value['state']) this.toggleDisabled(value['state']);
+    });
+  }
+
+  /**
+   * Return mapping of input config from form values
+   */
+  private parseToggleConfig(value: any): IInputComponentConfig {
+    return {
+      ...this.inputConfig,
+      size: value['size'].toLowerCase(),
+      hint: value['hint'] === 'True' ? 'Hint text' : '',
+      required: value['required'] === 'True',
+      desc: value['desc'] === 'True' ? 'Description line of text' : '',
+      placeholder: value['placeholder'] === 'True' ? 'Placeholder text' : ''
+    };
+  }
+
+  private toggleErrors(error: string) {
+    switch (error) {
+      case 'None':
+        this.form_interactive_input
+          .get(this.inputConfig.id)
+          ?.setErrors({ errors: null });
+        break;
+      case 'Single':
+        this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
+          invalid: true
+        });
+        break;
+      case 'Multiple':
+        this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
+          invalid: true,
+          testingError: true,
+          maxlength: { requiredLength: 3, actualLength: 5 }
+        });
+        break;
+    }
+  }
+
+  private toggleDisabled(disabled: boolean) {
+    if (disabled) {
+      this.form_interactive_input.get(this.inputConfig.id)?.disabled
+        ? this.form_interactive_input.get(this.inputConfig.id)?.enable()
+        : this.form_interactive_input.get(this.inputConfig.id)?.disable();
+    } else {
+      this.form_interactive_input.get(this.inputConfig.id)?.enable();
+    }
   }
 }

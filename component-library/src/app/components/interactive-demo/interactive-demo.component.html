@@ -10,7 +10,11 @@
   <div class="toggles-accordion">
     <app-accordian-container [config]="accordionConfig">
       <div class="toggles">
-        <ng-content select="[toggles]"></ng-content></div
-    ></app-accordian-container>
+        <ng-content select="[toggles]"></ng-content>
+      </div>
+      <div class="checkboxes">
+        <ng-content select="[checkboxes]"></ng-content>
+      </div>
+    </app-accordian-container>
   </div>
 </div>
