@@ -468,5 +468,9 @@
   },
   "Indicator": {
     "Heading": "Indicator"
+  },
+  "DEMO_COMPONENT": {
+    "ACCORDION_OPEN": "Hide configurations",
+    "ACCORDION_CLOSED": "Show configurations"
   }
 }
