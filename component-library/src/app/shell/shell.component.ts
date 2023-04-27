@@ -40,7 +40,7 @@ export class ShellComponent implements OnInit {
     this.leftNavData = navBarConfig.getLeftNavBarConfig();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.onResize();
 
     this.altLang.getAltLangLink().subscribe((altLang: string) => {

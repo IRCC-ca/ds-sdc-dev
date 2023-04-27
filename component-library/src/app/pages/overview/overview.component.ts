@@ -33,7 +33,7 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
     this.currentLanguage = translate.currentLang;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
   }
 }

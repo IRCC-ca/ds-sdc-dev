@@ -262,7 +262,9 @@
     "TypographyTableSizeHeading": "Format",
     "TypographyTableLineHeightHeading": "Hauteur de ligne et espacement des paragraphes",
     "TypographyTableFigmaHeading": "Style de texte Figma",
-    "TypographyTableTokenHeading": "Nom du cours"
+    "TypographyTableTokenHeading": "Nom du cours",
+    "AccessibilityHeading": "[FR] Accessibility",
+    "Letter": "[FR] Aa"
   },
   "RightSideNav": {
     "OnThisPage": "Sur cette page"

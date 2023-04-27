@@ -263,7 +263,8 @@
     "TypographyTableLineHeightHeading": "Line height & paragraph spacing",
     "TypographyTableFigmaHeading": "Figma text style",
     "TypographyTableTokenHeading": "Class name",
-    "AccessibilityHeading": "Accessibility"
+    "AccessibilityHeading": "Accessibility",
+    "Letter": "Aa"
   },
   "RightSideNav": {
     "OnThisPage": "On this Page"

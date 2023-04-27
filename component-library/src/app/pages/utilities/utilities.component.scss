@@ -1,0 +1,23 @@
+@use 'src/scss/grid';
+app-utilities {
+  @include grid.row;
+  .spacing-sample {
+    height: 20px;
+    margin: 0 auto;
+    // background: color.mix-token(visited, 100);
+    // border-left: 1px solid color.mix-token(visited, 700);
+    // border-right: 1px solid color.mix-token(visited, 700);
+  }
+}
+div.color-sample {
+  width: 88px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.typo-sample {
+  p {
+    color: var(--text-secondary) !important;
+    margin: 0;
+  }
+}
