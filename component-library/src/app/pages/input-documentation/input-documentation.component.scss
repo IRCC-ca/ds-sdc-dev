@@ -1,4 +1,11 @@
 @use 'src/scss/code';
+@use "../../../../../core-library/util/color" as color;
+@use "../../../../../core-library/util/theme" as theme;
+@use "../../../../../core-library/util/device" as device;
+@use "../../../../../core-library/util/size" as size;
+@use "../../../../../core-library/tokens/template-const" as template-const;
+@use "../../../../../core-library/tokens/sizes" as token-size;
+@use "sass:map";
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -80,7 +87,7 @@ span {
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 400px) {
+  @include device.in-phone-layout() {
     flex-wrap: wrap;
   }
 }
@@ -111,7 +118,7 @@ span {
   max-width: 547px;
   margin-right: 20px;
 
-  @media (max-width: 768px) {
+  @include device.in-tablet-layout() {
     max-width: 444px;
   }
 }
@@ -123,7 +130,6 @@ span {
 }
 
 .image-container-2 {
-  // display: flex;
   filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
 }
 
@@ -131,7 +137,8 @@ span {
   display: flex;
   justify-content: space-between;
 
-  @media (max-width:768px) {
+
+  @include device.in-tablet-layout() {
     flex-wrap: wrap;
   }
 }
