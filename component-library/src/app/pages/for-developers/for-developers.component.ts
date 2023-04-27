@@ -29,8 +29,10 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'forDesigners';
 
   paragraph1: string = 'npm install --save-dev @ircc-ca/ds-sdc-core';
-  paragraph2: string = "@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds; @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(),default, large, light); @include ircc-ds.element-styles();';"
-  paragraph3: string = '<script src="https://kit.fontawesome.com/8e16e0c619.js" crossorigin="anonymous"></script>';
+  paragraph2: string =
+    "@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds; @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(),default, large, light); @include ircc-ds.element-styles();';";
+  paragraph3: string =
+    '<script src="https://kit.fontawesome.com/8e16e0c619.js" crossorigin="anonymous"></script>';
   paragraph4: string = 'npm install @ircc-ca/ds-sdc-core@patch';
 
   overViewDeveloperSlug: slugTitleURLConfig = {
