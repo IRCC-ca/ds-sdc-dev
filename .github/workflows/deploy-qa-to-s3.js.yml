@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - "qa/**"
+      - "feature/s3-deployment"
 
 jobs:
   build:
