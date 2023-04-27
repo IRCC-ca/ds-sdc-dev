@@ -9,7 +9,10 @@
       href="favicon.ico"
     />
     <title>component-library</title>
-    <base href="/" />
+    <script>
+      window['base-href'] = window.location.pathname;
+      console.log(window['base-href']);
+    </script>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1"
