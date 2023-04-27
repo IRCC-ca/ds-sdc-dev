@@ -5,7 +5,6 @@
   max-width: 900px;
 
   img {
-    display: block;
     width: 100%;
   }
 }
@@ -118,14 +117,21 @@ span {
 }
 
 .image-container-1 {
-  width: 232px;
-  height: 237px;
+  max-width: 232px;
+  height: auto;
   filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
-  // position: relative;
-  // top: 50px;
 }
 
 .image-container-2 {
   // display: flex;
   filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+}
+
+.three-column-row {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width:768px) {
+    flex-wrap: wrap;
+  }
 }
