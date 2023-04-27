@@ -51,6 +51,7 @@ export class BannerDocumentationComponent implements OnInit {
     {
       id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
+      size: 'small',
       label: 'Size',
       options: [
         {
@@ -65,6 +66,7 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showCloseToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show close',
+      size: 'small',
       options: [
         {
           text: 'True'
@@ -78,6 +80,7 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showTitleToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show title',
+      size: 'small',
       options: [
         {
           text: 'True'
@@ -91,6 +94,7 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showDescToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show description',
+      size: 'small',
       options: [
         {
           text: 'True'
@@ -104,6 +108,7 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showPrimaryButtonToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show primary button',
+      size: 'small',
       options: [
         {
           text: 'True'
@@ -117,6 +122,7 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showPlainButtonToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show plain button',
+      size: 'small',
       options: [
         {
           text: 'True'
@@ -130,6 +136,7 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show secondary button',
+      size: 'small',
       options: [
         {
           text: 'True'
@@ -143,6 +150,7 @@ export class BannerDocumentationComponent implements OnInit {
       id: 'showLinkToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show link',
+      size: 'small',
       options: [
         {
           text: 'True'
@@ -156,6 +164,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
+    size: "small",
     tab: [
       {
         id: 'info',
@@ -272,7 +281,11 @@ export class BannerDocumentationComponent implements OnInit {
     );
     setTimeout(function () {
       bannerContainer?.classList.remove('noDisplay');
-    }, 1000);
+      bannerContainer?.classList.add('bannerDismissed');
+      setTimeout(function () {
+        bannerContainer?.classList.remove('bannerDismissed');
+      }, 700);
+    }, 700);
   }
 
   checkCurrentButtonCounter() {
