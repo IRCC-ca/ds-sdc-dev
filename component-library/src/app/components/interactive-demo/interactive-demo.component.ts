@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
 
@@ -11,6 +11,8 @@ export class InteractiveDemoComponent implements OnInit {
   iconConfig: IIconButtonIconConfig = {
     class: 'fa-light fa-chevron-down'
   };
+
+  @Input() componentType? : string;
 
   accordionConfig: IAccordionContainerConfig = {
     id: 'InteractiveDemoComponentAcccordion',

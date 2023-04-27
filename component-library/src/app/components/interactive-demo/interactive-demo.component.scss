@@ -14,6 +14,10 @@
     justify-content: center;
   }
 
+  .banner {
+    background-color: var(--surface1);
+  }
+
   .hide-show-button {
     width: 100%;
     max-width: 100%;
@@ -36,5 +40,6 @@
     margin: 16px 28px 28px 28px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    row-gap: 24px;
   }
 }
