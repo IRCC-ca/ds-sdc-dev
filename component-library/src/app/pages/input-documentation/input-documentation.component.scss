@@ -20,7 +20,10 @@ h2,
 .row {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+
+  @media (max-width: 360px) {
+    flex-wrap: wrap;
+  }
 }
 
 .config-row {
@@ -32,6 +35,10 @@ h2,
 .figma-usage {
   max-width: 547px;
   margin-right: 20px;
+
+  @media (max-width: 768px) {
+    max-width: 444px;
+  }
 }
 
 .image-container-1 {
@@ -49,8 +56,8 @@ h2,
 
 .column {
   width: 50%;
-  max-width: 424px;
-  margin-right: 20px;
+  // max-width: 424px;
+  margin: 12px;
 }
 
 .code-viewer {
@@ -84,6 +91,7 @@ h3 {
 h5 {
   font-weight: 700 !important;
   margin-bottom: 12px;
+  margin-top: 0px;
 
   &.text-underline {
     border-bottom: 1px solid;
