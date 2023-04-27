@@ -29,8 +29,7 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   ];
   altLangLink = 'forDesigners';
 
-  paragraph1: string =
-    `@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;\n
+  paragraph1: string = `@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;\n
     @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(), default, large);\n
     @include ircc-ds.element-styles();`;
   paragraph2: string =
@@ -61,8 +60,6 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
     type: slugTitleURLType.primary,
     title: 'Developers.ReleasesHeading'
   };
-
-  
 
   constructor(
     private translate: TranslateService,
