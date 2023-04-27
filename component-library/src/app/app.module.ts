@@ -15,7 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
-import { ShelldModule } from './shell/shell.module';
 import { DsPageModule } from './modules/ds-pages.module';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -25,7 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LangSwitchComponent
+    LangSwitchComponent,
     // TestComponent
   ],
   imports: [

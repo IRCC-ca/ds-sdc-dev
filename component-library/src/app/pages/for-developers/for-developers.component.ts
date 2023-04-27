@@ -23,18 +23,20 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
     'Overview.DeveloperHeading',
     'Developers.GetStartedHeading',
     'Developers.UsageHeading',
+    'Developers.ThemesHeading',
     'Developers.FontAwesomeHeading',
     'Developers.ReleasesHeading'
   ];
   altLangLink = 'forDesigners';
 
-  paragraph1: string = 'npm install --save-dev @ircc-ca/ds-sdc-core';
+  paragraph1: string =
+    `@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;\n
+    @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(), default, large);\n
+    @include ircc-ds.element-styles();`;
   paragraph2: string =
-    "@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds; @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(),default, large, light); @include ircc-ds.element-styles();';";
-  paragraph3: string =
     '<script src="https://kit.fontawesome.com/8e16e0c619.js" crossorigin="anonymous"></script>';
-  paragraph4: string = 'npm install @ircc-ca/ds-sdc-core@patch';
-
+  paragraph3: string = 'npm install @ircc-ca/ds-sdc-core@patch';
+  placeholder: string = '<code block/>';
   overViewDeveloperSlug: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
     title: 'Overview.DeveloperHeading'
@@ -43,6 +45,24 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
     type: slugTitleURLType.primary,
     title: 'Developers.GetStartedHeading'
   };
+  developerUsageSlug: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Developers.UsageHeading'
+  };
+  developerThemesSlug: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Developers.ThemesHeading'
+  };
+  developerFontAwesomeSlug: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Developers.FontAwesomeHeading'
+  };
+  developerReleasesSlug: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'Developers.ReleasesHeading'
+  };
+
+  
 
   constructor(
     private translate: TranslateService,

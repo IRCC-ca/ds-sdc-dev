@@ -361,7 +361,20 @@
     "UsageHeading": "Usage",
     "ThemesHeading": "Themes",
     "FontAwesomeHeading": "Font Awesome",
-    "ReleasesHeading": "Versions"
+    "ReleasesHeading": "Versions",
+    "GetStartedTxt": "[FR] To install the IRCC Digital Journey Labs Design System styles, you will need to run the following command using <a href='https://www.npmjs.com/'>npm</a>",
+    "UsageTxt": "[FR] In your root-level stylesheet, initialize the design system with the following:",
+    "UsageTitle1": "[FR] For external websites:",
+    "UsageTitle2": "[FR] For internal websites:",
+    "ThemesTxt": "[FR] You can set the theme for your project to either Light, Dark or System. Setting the theme to System will apply the Light or Dark theme to your applications UI based on the users Operating System preferences.",
+    "ThemesTitle1": "[FR] To use the Light theme:",
+    "ThemesTitle2": "[FR] To use the Dark theme:",
+    "ThemesTitle3": "[FR] To use the users Operating System preference to set the theme:",
+    "FontAwesomeTxt": "[FR] The Design System core leverages the use of Font Awesome kits to import icons used by the design system. Place the following in the head of your project to pull down the relevant icons.",
+    "ReleasesTxt": "[FR] The Design System utilizes three different types of releases: patch releases, beta releases and full releases. To target a specific release type use the relevant pattern and specify the release number.",
+    "ReleasesTitle1": "[FR] To install a patch release:",
+    "ReleasesTitle2": "[FR] To install a beta release:",
+    "ReleasesTitle3": "[FR] To install a full release:"
   },
   "Contact": {
     "Text": "Pour faire part de vos commentaires (compliment, commentaire ou plainte) ou pour toute demande de renseignements, contactez <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."

@@ -14,12 +14,14 @@ import { SideNavComponent } from '@app/components/side-nav/side-nav.component';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { ShellComponent } from '@app/shell/shell.component';
 import { ShelldModule } from '@app/shell/shell.module';
+import { UtilitiesComponent } from '@app/pages/utilities/utilities.component';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
     OverviewComponent,
     ForDesignersComponent,
     ForDevelopersComponent,
+    UtilitiesComponent,
     SlugifyPipe,
     SafeHtmlPipe,
     SideNavComponent,
