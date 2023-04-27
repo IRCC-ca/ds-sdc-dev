@@ -24,10 +24,6 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
     type: slugTitleURLType.primary,
     title: 'Overview.Heading'
   };
-  contactSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
-    title: 'Overview.Contact'
-  };
 
   constructor(
     private translate: TranslateService,

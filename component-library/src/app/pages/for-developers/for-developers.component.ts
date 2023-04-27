@@ -27,10 +27,11 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
     'Developers.ReleasesHeading'
   ];
   altLangLink = 'forDesigners';
-  @ViewChild('paragraph1') paragraph1Ref!: ElementRef;
-  @ViewChild('paragraph2') paragraph2Ref!: ElementRef;
-  @ViewChild('paragraph3') paragraph3Ref!: ElementRef;
-  @ViewChild('paragraph4') paragraph4Ref!: ElementRef;
+
+  paragraph1: string = 'npm install --save-dev @ircc-ca/ds-sdc-core';
+  paragraph2: string = "@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds; @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(),default, large, light); @include ircc-ds.element-styles();';"
+  paragraph3: string = '<script src="https://kit.fontawesome.com/8e16e0c619.js" crossorigin="anonymous"></script>';
+  paragraph4: string = 'npm install @ircc-ca/ds-sdc-core@patch';
 
   overViewDeveloperSlug: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
@@ -54,23 +55,7 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
     this.lang.setAltLangLink(this.altLangLink);
   }
 
-  copyToClipboard(index: number) {
-    // const textToCopy = this.textToCopyRef.nativeElement.innerText;
-    let textToCopy;
-    switch (index) {
-      case 0:
-        textToCopy = this.paragraph1Ref.nativeElement.innerText;
-        break;
-      case 1:
-        textToCopy = this.paragraph2Ref.nativeElement.innerText;
-        break;
-      case 2:
-        textToCopy = this.paragraph3Ref.nativeElement.innerText;
-        break;
-      case 3:
-        textToCopy = this.paragraph4Ref.nativeElement.innerText;
-        break;
-    }
-    this.clipboard.copy(textToCopy);
+  copyToClipboard(item: string) {
+    this.clipboard.copy(item);
   }
 }
