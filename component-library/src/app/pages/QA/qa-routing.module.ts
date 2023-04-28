@@ -21,7 +21,7 @@ const routes: Routes = [
     { path: 'mike-fr', component: MikeComponent }, //French
 
     { path: 'naseer-en', component: NaseerComponent }, //English
-    { path: 'naseer-fr', component: NaseerComponent },//French
+    { path: 'naseer-fr', component: NaseerComponent }, //French
 
     { path: 'bobby-en', component: BobbyComponent }, //English
     { path: 'bobby-fr', component: BobbyComponent } //French
@@ -33,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class QARoutingModule { }
+export class QARoutingModule {}

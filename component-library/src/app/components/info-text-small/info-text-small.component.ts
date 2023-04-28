@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IIconConfig } from 'ircc-ds-angular-component-library';
 
-
 @Component({
   selector: 'app-info-text-small',
   templateUrl: './info-text-small.component.html',
@@ -13,5 +12,5 @@ export class InfoTextSmallComponent {
     fontFamily: 'fa-regular'
   };
 
-  constructor() { }
+  constructor() {}
 }

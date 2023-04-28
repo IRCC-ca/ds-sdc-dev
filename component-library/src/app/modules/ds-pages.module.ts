@@ -65,4 +65,4 @@ import { ComponentPreviewComponent } from '@app/components/component-preview/com
     }
   ]
 })
-export class DsPageModule { }
+export class DsPageModule {}

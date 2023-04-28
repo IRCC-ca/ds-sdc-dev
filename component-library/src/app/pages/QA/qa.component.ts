@@ -53,7 +53,7 @@ export class QaComponent implements OnInit {
     ]
   };
 
-  constructor(private altLang: LanguageSwitchService) { }
+  constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
     this.altLang.setAltLangLink('QATesting-alt');

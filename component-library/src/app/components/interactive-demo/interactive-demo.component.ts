@@ -18,12 +18,13 @@ export class InteractiveDemoComponent implements OnInit {
   };
 
   accordionText: string =
-    'InteractiveDemo.ConfigAccordionOpen' || 'InteractiveDemo.ConfigAccordionClosed';
+    'InteractiveDemo.ConfigAccordionOpen' ||
+    'InteractiveDemo.ConfigAccordionClosed';
   isOpen: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   toggle() {
     this.isOpen = !this.isOpen;

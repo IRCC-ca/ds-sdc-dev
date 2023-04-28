@@ -28,4 +28,4 @@ import { TranslateModule } from '@ngx-translate/core';
     IrccDsAngularFormComponentsModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

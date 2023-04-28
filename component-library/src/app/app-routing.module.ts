@@ -53,14 +53,12 @@ const routes: Routes = [
     { path: 'banner-doc', component: BannerDocumentationComponent },
     { path: 'input-documentation', component: InputDocumentationComponent },
 
-
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'banner-doc-fr', component: BannerDocumentationComponent },
     { path: 'documentation dentree', component: InputDocumentationComponent },
-
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
@@ -134,4 +132,4 @@ const routerOptions: ExtraOptions = {
   ],
   exports: [RouterModule, LocalizeRouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
