@@ -38,7 +38,7 @@ export class BannerDocumentationComponent implements OnInit {
   ]);
 
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
+    type: slugTitleURLType.secondary,
     title: 'Interactive Demo'
   };
 
