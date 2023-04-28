@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
+import { TranslateService } from '@ngx-translate/core';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslatedPageComponent } from '../translated-page-component';
@@ -14,7 +14,8 @@ import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 })
 export class ButtonComponent implements OnInit, TranslatedPageComponent {
   rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [ // list of all right nav items
+  rightNavDataRaw: string[] = [
+    // list of all right nav items
     'Buttons.Title',
     'Buttons.TypesHeading',
     'Buttons.ConfigurationsHeading',
@@ -33,9 +34,9 @@ export class ButtonComponent implements OnInit, TranslatedPageComponent {
     private navBarConfig: SideNavConfig
   ) {
     this.rightNavData = navBarConfig.getRightNavBarConfig(this.rightNavDataRaw);
-  };
+  }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-  };
-};
+  }
+}
