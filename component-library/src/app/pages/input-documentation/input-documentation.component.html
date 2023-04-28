@@ -1,28 +1,28 @@
 <div class="content-doc-wrapper">
   <app-title-slug-url  [config]="inputTitleSlugConfig" class="h1 emphasis"></app-title-slug-url>
-  <p class="body1">{{'Input.Intro' | translate}}</p>
+  <p class="body1 intro">{{'Input.Intro' | translate}}</p>
 
   <section class="interactive-demo">
     <app-title-slug-url  [config]="interactiveDemoSlugConfig" class="h3 emphasis"></app-title-slug-url>
     <p class="body3">{{'Input.InteractiveDemoDesc' | translate}}</p>
     <app-interactive-demo></app-interactive-demo>
-    <div class="code-viewer">
+    <div class="code-viewer demo">
       <img src="assets/img/input-content/code-viewer.png" alt="{{'Input.CodeViewer' | translate}}">
     </div>
   </section>
   
   <section class="types">
     <app-title-slug-url  [config]="typesSlugConfig" class="h3 epmhasis"></app-title-slug-url>
-    <h5 class="emphasis">{{'Input.PrimaryHeading' | translate}}</h5>
+    <h5 class="emphasis type-heading">{{'Input.PrimaryHeading' | translate}}</h5>
     <app-component-preview class="h6" copyStyle="<button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button>">
       <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
-    <p class="body3">{{'Input.PrimaryText' | translate}}</p>
-    <h5 class="emphasis">{{'Input.SecondaryHeading' | translate}}</h5>
+    <p class="body3 type-body">{{'Input.PrimaryText' | translate}}</p>
+    <h5 class="emphasis type-sub-heading">{{'Input.SecondaryHeading' | translate}}</h5>
     <app-component-preview class="h6" copyStyle="<button category='secondary'>{{'Buttons.SecondaryIBtnText' | translate}}</button>">
             <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
-    <p class="body3">{{'Input.SecondaryText' | translate}}</p>
+    <p class="body3 type-secondary">{{'Input.SecondaryText' | translate}}</p>
   </section>
   
   <section class="configs">
@@ -77,9 +77,9 @@
     </div>
   </section>
 
-  <div class="design-guidelines">
+  <section class="design-guide">
     <app-title-slug-url [config]="guidelineSlugConfig" class="h3 epmhasis"></app-title-slug-url>
-    <h5 class="h5 emphasis">{{'Input.FieldWidth' | translate}}</h5>
+    <h5 class="h5 emphasis design-guidelines">{{'Input.FieldWidth' | translate}}</h5>
     <div class="row">
       <div class="column left-column">
         <img src="assets/img/input-content/field-width-do.png" alt="{{'Input.FieldWidthImgDo' | translate}}">
@@ -92,7 +92,7 @@
         <p class="body3">{{'Input.FieldWidthDontText'|translate}}</p>
       </div>
     </div>
-    <h5 class="h5 emphasis">{{'Input.ErrorsHeading' | translate}}</h5>
+    <h5 class="h5 emphasis design-guidelines">{{'Input.ErrorsHeading' | translate}}</h5>
     <div class="row">
       <div class="column left-column">
         <img src="assets/img/input-content/error-do.png" alt="{{'Input.ErrorDoImgAlt' | translate}}">
@@ -105,14 +105,14 @@
         <p class="body3">{{'Input.ErrorDontText'|translate}}</p>
       </div>
      </div>  
-    <h5 class="h5 emphasis">{{'Input.MaxMinWidthHeading' | translate}}</h5>
+    <h5 class="h5 emphasis design-guidelines">{{'Input.MaxMinWidthHeading' | translate}}</h5>
     <div class="row">
       <div>
         <img src="assets/img/input-content/input-max-width.png" alt="{{'Input.MaxMinWidthImgAlt' | translate}}">
         <p class="body3">{{'Input.MaxMinWidthText'|translate}}</p>
       </div>
     </div>
-  </div>
+  </section>
 
   <section class="anatomy">
     <app-title-slug-url [config]="anatomySlugConfig"  class="h3 epmhasis"></app-title-slug-url>
