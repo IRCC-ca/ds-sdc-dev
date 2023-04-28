@@ -12,6 +12,7 @@
     background-color: var(--surface2);
     display: flex;
     justify-content: center;
+    border-top: sizes.$fixed-1 solid var(--divider);
   }
 
   .banner {
