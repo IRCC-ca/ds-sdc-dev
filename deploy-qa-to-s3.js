@@ -11,7 +11,29 @@ const getBranch = () =>
     return exec("git rev-parse --abbrev-ref HEAD", (err, stdout, stderr) => {
       if (err) reject(`getBranch Error: ${err}`);
       else if (typeof stdout === "string")
-        resolve(stdout.trim().replace("/", "-").toLowerCase());
+        resolve(stdout.trim().replaceAll("/", "-").toLowerCase());
+    });
+  });
+
+const UploadFile = (branhcName, path, client) =>
+  new Promise((resolve, reject) => {
+    const fileObject = fs.readFileSync(
+      `./component-library/dist/demo-project/${path[1]}`
+    );
+    const upload = new Upload({
+      client: client,
+      params: {
+        Bucket: BUCKET_NAME,
+        Key: `${branhcName}/${path[1]}`,
+        Body: fileObject,
+        ContentType: mime.lookup(
+          `./component-library/dist/demo-project/${path[1]}`
+        ),
+      },
+    });
+
+    upload.done().then((res, error) => {
+      resolve(`Uploaded: ./component-library/dist/demo-project/${path[1]}`);
     });
   });
 
@@ -52,6 +74,7 @@ const client = new AWS.S3Client({
     console.log("Not sending to AWS ");
     return;
   }
+  console.log(branhcName);
 
   const response = await client.send(
     new AWS.PutObjectCommand({ Bucket: BUCKET_NAME, Key: `${branhcName}/` })
@@ -62,27 +85,11 @@ const client = new AWS.S3Client({
 
   for await (const f of getFiles("./component-library/dist/demo-project")) {
     const path = f.split("demo-project/");
-    // console.log(path[1]);
-    const fileObject = fs.readFileSync(
-      `./component-library/dist/demo-project/${path[1]}`
-    );
-
-    const upload = new Upload({
-      client: client,
-      params: {
-        Bucket: BUCKET_NAME,
-        Key: `${branhcName}/${path[1]}`,
-        Body: fileObject,
-        ContentType: mime.lookup(
-          `./component-library/dist/demo-project/${path[1]}`
-        ),
-      },
-    });
-
-    upload.done().then((res, error) => {
-      console.log(`Uploaded: ./component-library/dist/demo-project/${path[1]}`);
-    });
+    console.log(await UploadFile(branhcName, path, client));
   }
 
   console.log(`Upload Done!`);
+  console.log(
+    `Visit your QA site at: https://jl-ds-qa-test.s3.ca-central-1.amazonaws.com/${branhcName}/index.html`
+  );
 })();
