@@ -15,6 +15,7 @@ import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { ShellComponent } from '@app/shell/shell.component';
 import { ShelldModule } from '@app/shell/shell.module';
 import { UtilitiesComponent } from '@app/pages/utilities/utilities.component';
+import { ButtonComponent } from '@app/pages/button/button.component';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -22,6 +23,7 @@ import { UtilitiesComponent } from '@app/pages/utilities/utilities.component';
     ForDesignersComponent,
     ForDevelopersComponent,
     UtilitiesComponent,
+    ButtonComponent,
     SlugifyPipe,
     SafeHtmlPipe,
     SideNavComponent,

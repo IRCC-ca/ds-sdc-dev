@@ -127,7 +127,7 @@
       "bp-figma-usage": "Set frame width to {{px}} pixels"
     },
     "Heading": "Utilities",
-    "Text": "Our global tokens are re-usable utilities that are applied consistently to elements and components throughout the entire design system. This creates consistency to how colours, spacing, etc. are applied and allows efficient and reliable design iterations to be made globally.",
+    "Text": "Utilities are re-usable tokens, variables, etc. that are applied consistently to elements and components throughout the entire design system. This creates consistency in how the design system’s foundations are applied and allows efficient and reliable design iterations to be made globally.",
     "TypographyHeading": "Typography",
     "TypographyText": "The type scale keeps the number of styles to a minimum and is designed to ensure an affective visual hierarchy of content globally. Text styles include point sizes, line heights and paragraph spacing that pass AAA accessibility standards under WCAG 2.1.",
     "SpacingText": "Spacing units to apply as padding or margins throughout the UI. Spacing options are limited to help create consistency across spacing decisions. All spacing units are a multiple of four to adhere to a four pixel grid.",

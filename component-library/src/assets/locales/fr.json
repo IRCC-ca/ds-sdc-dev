@@ -127,7 +127,7 @@
       "bp-figma-usage": "Définir la largeur du cadre à {{px}} pixels"
     },
     "Heading": "Utilitaires",
-    "Text": "Les jetons sont des utilitaires réutilisables qui sont appliqués de manière cohérente aux éléments et aux composants dans l’ensemble du système de conception. Cela crée une cohérence dans la façon dont les couleurs, l’espacement, etc. sont appliqués et cela permet d’effectuer des répétitions des conceptions à l’échelle mondiale qui sont efficaces et fiables.",
+    "Text": "[FR] Utilities are re-usable tokens, variables, etc. that are applied consistently to elements and components throughout the entire design system. This creates consistency in how the design system’s foundations are applied and allows efficient and reliable design iterations to be made globally.",
     "TypographyHeading": "Typographie",
     "TypographyText": "L’échelle de caractères réduit le nombre de styles au minimum et elle est conçue pour assurer une hiérarchie visuelle efficace du contenu dans son ensemble. Les styles de texte comprennent des tailles de points, des hauteurs de lignes et des espacements de paragraphes qui répondent aux normes d’accessibilité AAA de la version 2.1 des normes WCAG.",
     "SpacingHeading": "Espacement",

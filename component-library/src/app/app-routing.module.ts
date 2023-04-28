@@ -14,6 +14,7 @@ import { OverviewComponent } from './pages/overview/overview.component';
 import { ForDesignersComponent } from './pages/for-designers/for-designers.component';
 import { ForDevelopersComponent } from './pages/for-developers/for-developers.component';
 import { UtilitiesComponent } from './pages/utilities/utilities.component';
+import { ButtonComponent } from './pages/button/button.component';
 // import { PageButtonComponent } from './pages/button/button.component';
 // import { PageUtilitiesComponent } from './pages/utilities/utilities.component';
 
@@ -47,12 +48,14 @@ const routes: Routes = [
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'utilities', component: UtilitiesComponent },
+    { path: 'buttons', component: ButtonComponent },
 
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'utilitaires', component: UtilitiesComponent },
+    { path: 'boutons', component: ButtonComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
