@@ -16,11 +16,6 @@
   }
 }
 
-h2,
-h3 .body1 {
-  margin: 0px;
-}
-
 h3 {
   display: inline-block;
   font-weight: 700;
@@ -33,6 +28,11 @@ h3 {
     font-size: 28px;
     margin-top: 60px;
   }
+}
+
+.body1.intro {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .design-guidelines {
