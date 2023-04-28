@@ -133,10 +133,10 @@ export class ButtonDocumentationComponent implements OnInit {
     console.log('handleIconToggle', value)
     this.buttonConfig.icon ='fa-regular fa-igloo'
     if (value['showIconToggle'] === 'Leading') {
-      this.buttonConfig.iconDirection='right'
+      this.buttonConfig.iconDirection='left'
     } 
     else if (value['showIconToggle'] === 'Trailing') {
-      this.buttonConfig.iconDirection='left'
+      this.buttonConfig.iconDirection='right'
     }
     else {
       this.buttonConfig.icon =''
