@@ -14,7 +14,7 @@ import {
   IRadioInputComponentConfig,
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input-documentation',
@@ -393,10 +393,9 @@ export class InputDocumentationComponent
     });
 
     this.form_interactive_input.valueChanges.subscribe((value: any) => {
-      console.log(value);
       this.inputConfig = this.parseToggleConfig(value);
       if (value['error']) this.toggleErrors(value['error']);
-      if (value['state']) this.toggleDisabled(value['state']);
+      if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
 
@@ -437,12 +436,18 @@ export class InputDocumentationComponent
   }
 
   private toggleDisabled(disabled: boolean) {
+    const inputControl: AbstractControl | null =
+      this.form_interactive_input.get(this.inputConfig.id);
+    if (
+      (disabled && inputControl?.disabled) ||
+      (!disabled && inputControl?.enabled)
+    )
+      return;
+
     if (disabled) {
-      this.form_interactive_input.get(this.inputConfig.id)?.disabled
-        ? this.form_interactive_input.get(this.inputConfig.id)?.enable()
-        : this.form_interactive_input.get(this.inputConfig.id)?.disable();
+      inputControl?.disable();
     } else {
-      this.form_interactive_input.get(this.inputConfig.id)?.enable();
+      inputControl?.enable();
     }
   }
 }
