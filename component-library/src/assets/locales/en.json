@@ -365,6 +365,12 @@
     "FontAwesomeHeading": "Font Awesome",
     "ReleasesHeading": "Releases"
   },
+  "ERROR": {
+    "fieldIsInvalid": "This field is invalid.",
+    "fieldExceededMaxLength": "This field has exceeded max length.",
+    "testErrorMessage": "Test error message.",
+    "errorMessage": "Error message"
+  },
   "Contact": {
     "Text": "To provide feedback (compliment, comment or complaint) or for any inquiries, contact <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
   },
