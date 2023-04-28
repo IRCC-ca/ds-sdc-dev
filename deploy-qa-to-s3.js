@@ -48,6 +48,11 @@ const client = new AWS.S3Client({
 
 (async () => {
   let branhcName = await getBranch();
+  if (!branhcName.startsWith("qa")) {
+    console.log("Not sending to AWS");
+    return;
+  }
+
   const response = await client.send(
     new AWS.PutObjectCommand({ Bucket: BUCKET_NAME, Key: `${branhcName}/` })
   );
