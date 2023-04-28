@@ -35,9 +35,43 @@ h3 {
   margin-bottom: 0px;
 }
 
-.design-guidelines {
-  margin-top: 24px;
+.body3.demo {
+  margin-top: 0px;
+  margin-bottom: 24px;
+}
+
+.body3.type-body {
+  margin-top: 12px;
   margin-bottom: 12px;
+}
+
+.subtitles {
+  margin-bottom: 12px;
+}
+
+.body3.subtext {
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
+
+.body3.last {
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+
+.body3.anatomy {
+  margin-bottom: 0px;
+}
+
+
+ul {
+  margin-top: 0px;
+  margin-bottom: 12px;
+
+}
+
+.end-list {
+  margin-bottom: 0px;
 }
 
 >a {
@@ -57,7 +91,8 @@ h5 {
 
   &.text-underline {
     border-bottom: 1px solid;
-    margin: 8px 0;
+    margin-top: 8px;
+    margin-bottom: 0px;
   }
 
   &.text-color-green {
@@ -71,7 +106,7 @@ h5 {
   &.round-purple-num {
     display: inline-block;
     margin-left: 8px;
-    margin-top: 22px;
+    margin-top: 24px;
     margin-bottom: 0;
     position: relative;
     top: 2px;

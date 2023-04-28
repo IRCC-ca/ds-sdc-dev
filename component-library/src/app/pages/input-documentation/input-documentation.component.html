@@ -10,7 +10,7 @@
       [config]="interactiveDemoSlugConfig"
       class="h3 emphasis"
     ></app-title-slug-url>
-    <p class="body3">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
+    <p class="body3 demo">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
     <app-interactive-demo></app-interactive-demo>
     <div class="code-viewer demo">
       <img
@@ -48,7 +48,7 @@
     >
       <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
-    <p class="body3 type-secondary">{{ 'Input.SecondaryText' | translate }}</p>
+    <p class="body3 last">{{ 'Input.SecondaryText' | translate }}</p>
   </section>
 
   <section class="configs">
@@ -91,14 +91,14 @@
     <div class="config-row">
       <div class="column">
         <h5>{{ 'Input.ConfigDescHeading' | translate }}</h5>
-        <ul>
+        <ul class="end-list">
           <li>{{ 'Input.ConfigDescTrue' | translate }}</li>
           <li>{{ 'Input.ConfigDescFalse' | translate }}</li>
         </ul>
       </div>
       <div class="column">
         <h5>{{ 'Input.ConfigPlaceholderHeading' | translate }}</h5>
-        <ul>
+        <ul class="end-list">
           <li>{{ 'Input.ConfigPlaceholderTrue' | translate }}</li>
           <li>{{ 'Input.ConfigPlaceholderFalse' | translate }}</li>
         </ul>
@@ -111,7 +111,7 @@
       [config]="guidelineSlugConfig"
       class="h3 epmhasis"
     ></app-title-slug-url>
-    <h5 class="h5 emphasis design-guidelines">
+    <h5 class="h5 emphasis subtitles">
       {{ 'Input.FieldWidth' | translate }}
     </h5>
     <div class="row">
@@ -123,7 +123,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p class="body3">{{ 'Input.FieldWidthDoText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.FieldWidthDoText' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -133,10 +133,10 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p class="body3">{{ 'Input.FieldWidthDontText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.FieldWidthDontText' | translate }}</p>
       </div>
     </div>
-    <h5 class="h5 emphasis design-guidelines">
+    <h5 class="h5 emphasis subtitles">
       {{ 'Input.ErrorsHeading' | translate }}
     </h5>
     <div class="row">
@@ -148,7 +148,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p class="body3">{{ 'Input.ErrorDoText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.ErrorDoText' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -158,10 +158,10 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p class="body3">{{ 'Input.ErrorDontText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.ErrorDontText' | translate }}</p>
       </div>
     </div>
-    <h5 class="h5 emphasis design-guidelines">
+    <h5 class="h5 emphasis subtitles">
       {{ 'Input.MaxMinWidthHeading' | translate }}
     </h5>
     <div class="row">
@@ -170,7 +170,7 @@
           src="assets/img/input-content/input-max-width.png"
           alt="{{ 'Input.MaxMinWidthImgAlt' | translate }}"
         />
-        <p class="body3">{{ 'Input.MaxMinWidthText' | translate }}</p>
+        <p class="body3 last">{{ 'Input.MaxMinWidthText' | translate }}</p>
       </div>
     </div>
   </section>
@@ -188,42 +188,42 @@
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyLabelHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyLabelText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyLabelText' | translate }}</p>
     <span class="round-purple-num">2</span>
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyRequiredIndicatorHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyRequiredIndicatorText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyRequiredIndicatorText' | translate }}</p>
     <span class="round-purple-num">3</span>
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyDescHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyDescText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyDescText' | translate }}</p>
     <span class="round-purple-num">4</span>
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyHintHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyHintText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyHintText' | translate }}</p>
     <span class="round-purple-num">5</span>
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyInputFieldHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyInputFieldText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyInputFieldText' | translate }}</p>
     <span class="round-purple-num">6</span>
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyInputContentHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyInputContentText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyInputContentText' | translate }}</p>
     <span class="round-purple-num">7</span>
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyErrorHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyErrorText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyErrorText' | translate }}</p>
     <span class="round-purple-num">8</span>
     <h5 class="h5 emphasis round-purple-num">
       {{ 'Input.AnatomyPasswordHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AnatomyPasswordText' | translate }}</p>
+    <p class="body3 anatomy">{{ 'Input.AnatomyPasswordText' | translate }}</p>
   </section>
 
   <section class="specs">
@@ -244,8 +244,8 @@
       lass="h3 epmhasis"
     ></app-title-slug-url>
 
-    <h5>{{ 'Input.WriteLabelsHeading' | translate }}</h5>
-    <p class="body3">{{ 'Input.WriteLabelsSubHeading' | translate }}</p>
+    <h5 class="subtitles">{{ 'Input.WriteLabelsHeading' | translate }}</h5>
+    <p class="body3 subtext">{{ 'Input.WriteLabelsSubHeading' | translate }}</p>
     <div class="row">
       <div class="column left-column">
         <img
@@ -255,7 +255,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WriteLabelsDoText1' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WriteLabelsDoText1' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -265,7 +265,7 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WriteLabelsDontText1' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WriteLabelsDontText1' | translate }}</p>
       </div>
     </div>
     <div class="row">
@@ -277,7 +277,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WriteLabelsDoText2' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WriteLabelsDoText2' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -287,12 +287,12 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WriteLabelsDontText2' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WriteLabelsDontText2' | translate }}</p>
       </div>
     </div>
 
-    <h5>{{ 'Input.WriteDescHeading' | translate }}</h5>
-    <p class="body3">{{ 'Input.WriteDescSubHeading' | translate }}</p>
+    <h5 class="subtitles">{{ 'Input.WriteDescHeading' | translate }}</h5>
+    <p class="body3 subtext">{{ 'Input.WriteDescSubHeading' | translate }}</p>
     <div class="row">
       <div class="column left-column">
         <img
@@ -302,7 +302,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WriteDescDoText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WriteDescDoText' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -312,12 +312,12 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WriteDescDontText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WriteDescDontText' | translate }}</p>
       </div>
     </div>
 
-    <h5>{{ 'Input.WritePlaceholderHeading' | translate }}</h5>
-    <p class="body3">{{ 'Input.WritePlaceholderSubHeading' | translate }}</p>
+    <h5 class="subtitles">{{ 'Input.WritePlaceholderHeading' | translate }}</h5>
+    <p class="body3 subtext">{{ 'Input.WritePlaceholderSubHeading' | translate }}</p>
     <div class="row">
       <div class="column left-column">
         <img
@@ -327,7 +327,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WritePlaceholderDoText1' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WritePlaceholderDoText1' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -337,7 +337,7 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WritePlaceholderDontText1' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WritePlaceholderDontText1' | translate }}</p>
       </div>
     </div>
     <div class="row">
@@ -349,7 +349,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WritePlaceholderDoText2' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WritePlaceholderDoText2' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -359,12 +359,12 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WritePlaceholderDontText2' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WritePlaceholderDontText2' | translate }}</p>
       </div>
     </div>
 
-    <h5>{{ 'Input.WriteErrorsHeading' | translate }}</h5>
-    <p class="body3">{{ 'Input.WriteErrorsSubHeading' | translate }}</p>
+    <h5 class="subtitles">{{ 'Input.WriteErrorsHeading' | translate }}</h5>
+    <p class="body3 subtext">{{ 'Input.WriteErrorsSubHeading' | translate }}</p>
     <div class="row">
       <div class="column left-column">
         <img
@@ -384,11 +384,11 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.WriteErrorsDontText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.WriteErrorsDontText' | translate }}</p>
       </div>
     </div>
 
-    <h5>{{ 'Input.NecessaryContentHeading' | translate }}</h5>
+    <h5 class="subtitles">{{ 'Input.NecessaryContentHeading' | translate }}</h5>
     <div class="row">
       <div class="column left-column">
         <img
@@ -398,7 +398,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p>{{ 'Input.NecessaryContentDoText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.NecessaryContentDoText' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -408,12 +408,11 @@
         <h5 class="text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.NecessaryContentDontText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.NecessaryContentDontText' | translate }}</p>
       </div>
     </div>
 
-    <h5>{{ 'Input.RequiredFieldsHeading' | translate }}</h5>
-    <p class="body3"></p>
+    <h5 class="subtitles">{{ 'Input.RequiredFieldsHeading' | translate }}</h5>
     <div class="row">
       <div class="column left-column">
         <img
@@ -423,7 +422,7 @@
         <h5 class="h5 emphasis text-underline text-color-green">
           {{ 'Input.DoHeading' | translate }}
         </h5>
-        <p>{{ 'Input.RequiredFieldsDoText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.RequiredFieldsDoText' | translate }}</p>
       </div>
       <div class="column right-column">
         <img
@@ -433,7 +432,7 @@
         <h5 class="h5 emphasis text-underline text-color-red">
           {{ 'Input.DontHeading' | translate }}
         </h5>
-        <p>{{ 'Input.RequiredFieldsDontText' | translate }}</p>
+        <p class="body3 subtext">{{ 'Input.RequiredFieldsDontText' | translate }}</p>
       </div>
     </div>
   </section>
@@ -445,7 +444,7 @@
     ></app-title-slug-url>
     <div class="row">
       <div class="figma-usage">
-        <h5 class="h5 emphasis">
+        <h5 class="h5 emphasis subtitles">
           {{ 'Input.FigmaDirectionsHeading' | translate }}
         </h5>
         <ol>
@@ -476,7 +475,7 @@
     </div>
     <div class="three-column-row">
       <div class="figma-usage">
-        <h5 class="h5 emphasis">
+        <h5 class="h5 emphasis subtitles">
           {{ 'Input.AccessInputsHeading' | translate }}
         </h5>
         <ol>
@@ -509,55 +508,57 @@
       [config]="accessibilitySlugConfig"
       class="h3 epmhasis"
     ></app-title-slug-url>
-    <h5 class="h5 emphasis">
+    <h5 class="h5 emphasis subtitles">
       {{ 'Input.AccessibilityColourHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AccessibilityColourText' | translate }}</p>
-    <h5 class="h5 emphasis">
+    <p class="body3 subtext">{{ 'Input.AccessibilityColourText' | translate }}</p>
+    <h5 class="h5 emphasis subtitles">
       {{ 'Input.AccessibilityKeyboardHeading' | translate }}
     </h5>
-    <p>{{ 'Input.AccessibilityKeyboardText' | translate }}</p>
-    <h5>{{ 'Input.AccessibilityContentHeading' | translate }}</h5>
+    <p class="body3 subtext">{{ 'Input.AccessibilityKeyboardText' | translate }}</p>
+    <h5 class="h5 emphasis subtitles">{{ 'Input.AccessibilityContentHeading' | translate }}</h5>
     <ul>
       <li
         [innerHtml]="'Input.AccessibilityContentItem1' | translate"
-        class="body3 emphasis"
+        class="body3"
       ></li>
       <li
         [innerHtml]="'Input.AccessibilityContentItem2' | translate"
-        class="body3 emphasis"
+        class="body3"
       ></li>
       <li
         [innerHtml]="'Input.AccessibilityContentItem3' | translate"
-        class="body3 emphasis"
+        class="body3"
       ></li>
       <li
         [innerHtml]="'Input.AccessibilityContentItem4' | translate"
-        class="body3 emphasis"
+        class="body3"
       ></li>
       <li
         [innerHtml]="'Input.AccessibilityContentItem5' | translate"
-        class="body3 emphasis"
+        class="body3"
       ></li>
       <li
         [innerHtml]="'Input.AccessibilityContentItem6' | translate"
-        class="body3 emphasis"
+        class="body3"
       ></li>
       <li
         [innerHtml]="'Input.AccessibilityContentItem7' | translate"
-        class="body3 emphasis"
+        class="body3"
       ></li>
     </ul>
-    <h5 class="h5 emphasis">
+    <h5 class="h5 emphasis subtitles">
       {{ 'Input.AccessibilityValidationHeading' | translate }}
     </h5>
-    <p class="body3">{{ 'Input.AccessibilityValidationText' | translate }}</p>
+    <ul>
+      <li class="body3" [innerHtml]="'Input.AccessibilityValidationText' | translate"></li>
+    </ul>
   </section>
   <section class="research">
     <app-title-slug-url
       [config]="researchSlugConfig"
       class="h3 epmhasis"
     ></app-title-slug-url>
-    <p class="body3">{{ 'Input.ResearchText' | translate }}</p>
+    <p class="body3 subtext">{{ 'Input.ResearchText' | translate }}</p>
   </section>
 </div>
