@@ -63,10 +63,10 @@ const params = {
 
 (async () => {
   let branhcName = await getBranch();
-  // if (!branhcName.startsWith("qa")) {
-  //   console.log("\x1b[34m%s\x1b[0m", "Not sending branch to QA");
-  //   return;
-  // }
+  if (!branhcName.startsWith("qa")) {
+    console.log("\x1b[34m%s\x1b[0m", "Not sending branch to QA");
+    return;
+  }
 
   if (ID === undefined || SECRET === undefined) {
     console.log("\x1b[31m%s\x1b[0m", "Please enter your AWS Credentials");
@@ -77,7 +77,7 @@ const params = {
     region: REGION,
     credentials: {
       accessKeyId: ID,
-      secretAccessKey: SECRET
+      secretAccessKey: SECRET,
     },
   });
 
