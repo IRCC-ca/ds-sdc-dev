@@ -41,6 +41,7 @@ export class InputDocumentationComponent
   inputConfig: IInputComponentConfig = {
     id: 'input',
     formGroup: this.form_interactive_input,
+    size: 'small',
     label: 'Label text',
     desc: 'Description line of text',
     errorMessages: [
@@ -54,6 +55,7 @@ export class InputDocumentationComponent
     {
       id: 'size',
       formGroup: this.form_interactive_input,
+      size: 'small',
       label: 'Size',
       options: [
         {
@@ -67,6 +69,7 @@ export class InputDocumentationComponent
     {
       id: 'hint',
       formGroup: this.form_interactive_input,
+      size: 'small',
       label: 'Hint',
       options: [
         {
@@ -82,6 +85,7 @@ export class InputDocumentationComponent
     {
       id: 'required',
       formGroup: this.form_interactive_input,
+      size: 'small',
       label: 'Required',
       options: [
         {
@@ -95,6 +99,7 @@ export class InputDocumentationComponent
     {
       id: 'error',
       formGroup: this.form_interactive_input,
+      size: 'small',
       label: 'Error',
       options: [
         {
@@ -111,6 +116,7 @@ export class InputDocumentationComponent
     {
       id: 'desc',
       formGroup: this.form_interactive_input,
+      size: 'small',
       label: 'Description',
       options: [
         {
@@ -126,6 +132,7 @@ export class InputDocumentationComponent
     {
       id: 'placeholder',
       formGroup: this.form_interactive_input,
+      size: 'small',
       label: 'Placeholder',
       options: [
         {
@@ -144,6 +151,7 @@ export class InputDocumentationComponent
     {
       id: 'state',
       formGroup: this.form_interactive_input,
+      size: 'small',
       label: 'State',
       inlineLabel: 'Disabled'
     }
@@ -151,6 +159,7 @@ export class InputDocumentationComponent
 
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
+    size: 'small',
     tab: [
       {
         id: 'basic',
@@ -196,6 +205,7 @@ export class InputDocumentationComponent
     });
 
     this.form_interactive_input.patchValue({
+      size: 'Small',
       hint: 'False',
       desc: 'True',
       placeholder: 'False',
