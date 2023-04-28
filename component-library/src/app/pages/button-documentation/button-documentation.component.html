@@ -12,8 +12,17 @@
       >
       </ircc-cl-lib-tabs>
       <div
+        *ngIf="layoutFluid"
         component
-        class="button-container"
+        class="button-container-fluid"
+      >
+        <ircc-cl-lib-button [config]="buttonConfig">Default</ircc-cl-lib-button>
+      </div>
+
+      <div
+        *ngIf="!layoutFluid"
+        component
+        class="button-container-fixed"
       >
         <ircc-cl-lib-button [config]="buttonConfig">Default</ircc-cl-lib-button>
       </div>

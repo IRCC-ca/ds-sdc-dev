@@ -12,6 +12,7 @@ import { IButtonConfig, ICheckBoxComponentConfig, IRadioInputComponentConfig, IT
 })
 export class ButtonDocumentationComponent implements OnInit {
   altLangLink = 'buttonDocumentation';
+  layoutFluid: boolean = true;
 
   constructor(
     private translate: TranslateService,
@@ -71,20 +72,20 @@ export class ButtonDocumentationComponent implements OnInit {
         }
       ]
     },
-    // {
-    //   id: 'showLayoutToggle',
-    //   formGroup: this.form_interactive_button,
-    //   label: 'Layout',
-    //   size: 'small',
-    //   options: [
-    //     {
-    //       text: 'Fluid'
-    //     },
-    //     {
-    //       text: 'Fixed'
-    //     }
-    //   ]
-    // },
+    {
+      id: 'showLayoutToggle',
+      formGroup: this.form_interactive_button,
+      label: 'Layout',
+      size: 'small',
+      options: [
+        {
+          text: 'Fluid'
+        },
+        {
+          text: 'Fixed'
+        }
+      ]
+    },
     {
       id: 'showIconToggle',
       formGroup: this.form_interactive_button,
@@ -158,6 +159,14 @@ export class ButtonDocumentationComponent implements OnInit {
     }
   }
 
+  handleLayoutToggle(value : any) {
+    if (value['showLayoutToggle']  === 'Fluid') {
+      this.layoutFluid = true
+    } else {
+      this.layoutFluid = false
+    }
+  }
+
   setButtonCategory(value: any) {
     if (value === 'primary') {
       this.buttonConfig.category = 'primary';
@@ -182,7 +191,7 @@ export class ButtonDocumentationComponent implements OnInit {
           break;
         default: {
           console.log("Default")
-          this.form_interactive_button.addControl(toggle.id,new FormControl(toggle.options[1].text));
+          this.form_interactive_button.addControl(toggle.id,new FormControl(toggle.options[0].text));
         }
       }
     }
@@ -192,14 +201,16 @@ export class ButtonDocumentationComponent implements OnInit {
     showSizeToggle: 'Large',
     showIconToggle: 'None',
     showCriticalToggle: 'False',
-    showSelectToggle: false
+    showSelectToggle: false,
+    showLayoutToggle: 'Fluid'
   };
 
   toggle_function = {
     showSizeToggle: this.handleSizeToggle,
     showIconToggle: this.handleIconToggle,
     showCriticalToggle: this.handleCriticalToggle,
-    showSelectToggle: this.handleSelectCheckbox
+    showSelectToggle: this.handleSelectCheckbox,
+    showLayoutToggle: this.handleLayoutToggle
   };
 
   ngOnInit(): void {
@@ -222,14 +233,8 @@ export class ButtonDocumentationComponent implements OnInit {
     });
 
     this.form_interactive_button.valueChanges.subscribe((value: any) => {
-      console.log("------------value------------", value)
       for (const param in value) {
-        console.log('Param', param)
-        console.log(`------>this.track_toggles[param]: ${this.track_toggles[param]}    value[param]", ${value[param]}`)
         if (this.track_toggles[param] === value[param]) continue;
-        // console.log("Value",value)
-        // console.log('Param', param)
-        // // console.log()
         this.track_toggles[param] = value[param];
         this.toggle_function[param].apply(this, [value]);
       }

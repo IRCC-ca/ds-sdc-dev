@@ -1,4 +1,12 @@
-.button-container {
+.button-container-fluid {
+  padding: auto;
+  padding-top: 54px;
+  padding-bottom: 54px;
+}
+
+.button-container-fixed {
+  max-width: 400px;
+  width: 100%;
   padding: auto;
   padding-top: 54px;
   padding-bottom: 54px;
