@@ -59,32 +59,26 @@ const params = {
   region: "REGION",
 };
 
-const client = new AWS.S3Client({
-  region: REGION,
-  credentials: {
-    accessKeyId: ID,
-    secretAccessKey: SECRET,
-    sessionToken: SESSION,
-  },
-});
-
 (async () => {
-  const command = new AWS.GetBucketPolicyCommand({
-    Bucket: BUCKET_NAME,
-  });
-
-  try {
-    const { Policy } = await client.send(command);
-    console.log(JSON.parse(Policy));
-  } catch (err) {
-    console.error(err);
-  }
-
   let branhcName = await getBranch();
   if (!branhcName.startsWith("qa")) {
-    console.log("Not sending to AWS ");
+    console.log("\x1b[34m%s\x1b[0m", "Not sending branch to AWS");
     return;
   }
+
+  if (ID === undefined || SECRET === undefined || SESSION === undefined) {
+    console.log("\x1b[31m%s\x1b[0m", "Please enter your AWS Credentials");
+    return;
+  }
+
+  const client = new AWS.S3Client({
+    region: REGION,
+    credentials: {
+      accessKeyId: ID,
+      secretAccessKey: SECRET,
+      sessionToken: SESSION,
+    },
+  });
 
   const response = await client.send(
     new AWS.PutObjectCommand({ Bucket: BUCKET_NAME, Key: `${branhcName}/` })
