@@ -127,10 +127,12 @@ export class InputDocumentationComponent
       label: 'Description',
       options: [
         {
-          text: 'True'
+          text: 'Show',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Hide',
+          value: 'False'
         }
       ]
     },
@@ -140,10 +142,12 @@ export class InputDocumentationComponent
       label: 'Placeholder',
       options: [
         {
-          text: 'True'
+          text: 'Show',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Hide',
+          value: 'False'
         }
       ]
     }
