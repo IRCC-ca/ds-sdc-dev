@@ -69,6 +69,17 @@ const client = new AWS.S3Client({
 });
 
 (async () => {
+  const command = new AWS.GetBucketPolicyCommand({
+    Bucket: BUCKET_NAME,
+  });
+
+  try {
+    const { Policy } = await client.send(command);
+    console.log(JSON.parse(Policy));
+  } catch (err) {
+    console.error(err);
+  }
+
   let branhcName = await getBranch();
   if (!branhcName.startsWith("qa")) {
     console.log("Not sending to AWS ");
