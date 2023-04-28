@@ -49,7 +49,7 @@ const client = new AWS.S3Client({
 (async () => {
   let branhcName = await getBranch();
   if (!branhcName.startsWith("qa")) {
-    console.log("Not sending to AWS");
+    console.log("Not sending to AWS ");
     return;
   }
 
