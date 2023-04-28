@@ -7,9 +7,7 @@ import {
   slugTitleURLType
 } from '@app/components/title-slug-url/title-slug-url.component';
 import {
-  IBannerConfig,
   ICheckBoxComponentConfig,
-  ICTAConfig,
   IInputComponentConfig,
   IRadioInputComponentConfig,
   ITabNavConfig
@@ -35,22 +33,9 @@ export class InputDocumentationComponent
 
   form_interactive_input = new FormGroup({});
 
-  currentButtonSet = new Set<string>();
-  buttonSetWithAllOptions = new Set<string>([
-    'showPrimaryButtonToggle',
-    'showSecondaryButtonToggle',
-    'showPlainButtonToggle',
-    'showLinkToggle'
-  ]);
-
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
     title: 'Interactive Demo'
-  };
-
-  bannerConfig: IBannerConfig = {
-    id: 'banner',
-    cta: []
   };
 
   inputConfig: IInputComponentConfig = {
@@ -85,10 +70,12 @@ export class InputDocumentationComponent
       label: 'Hint',
       options: [
         {
-          text: 'True'
+          text: 'Show',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Hide',
+          value: 'False'
         }
       ]
     },
@@ -187,194 +174,6 @@ export class InputDocumentationComponent
     }
   }
 
-  addItemtoCTAList(text: string) {
-    const plainExample: ICTAConfig = {
-      text: 'Plain',
-      type: 'button',
-      btnConfig: {
-        id: 'ctaPlain',
-        category: 'plain'
-      }
-    };
-
-    const secondaryExample: ICTAConfig = {
-      text: 'Secondary',
-      type: 'button',
-      btnConfig: {
-        id: 'ctaSecondary',
-        category: 'secondary'
-      }
-    };
-
-    const primaryExample: ICTAConfig = {
-      text: 'Primary',
-      type: 'button',
-      btnConfig: {
-        id: 'ctaPrimary',
-        category: 'primary'
-      }
-    };
-
-    const linkExample: ICTAConfig = {
-      text: 'Link',
-      type: 'link'
-    };
-
-    const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
-      return object.text === text;
-    });
-
-    if (indexOfObject == -1) {
-      if (text === 'Primary') this.bannerConfig?.cta?.push(primaryExample);
-      else if (text === 'Secondary')
-        this.bannerConfig?.cta?.push(secondaryExample);
-      else if (text === 'Plain') this.bannerConfig?.cta?.push(plainExample);
-      else if (text === 'Link') this.bannerConfig?.cta?.push(linkExample);
-    }
-  }
-
-  removeItemFromCTAList(text: string) {
-    const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
-      return object.text === text;
-    });
-
-    if (indexOfObject !== -1) {
-      this.bannerConfig?.cta?.splice(indexOfObject, 1);
-    }
-  }
-
-  disableRadio(name: string) {
-    this.toggles.forEach((item) => {
-      if (item.id === name) {
-        item.disabled = true;
-      }
-    });
-  }
-
-  enableRadio(name: string) {
-    this.toggles.forEach((item) => {
-      if (item.id === name) {
-        item.disabled = false;
-      }
-    });
-  }
-
-  bannerClose(event: Event) {
-    const bannerContainer = this.banner.nativeElement.querySelector(
-      `#${event}`
-    );
-    setTimeout(function () {
-      bannerContainer?.classList.remove('noDisplay');
-    }, 1000);
-  }
-
-  checkCurrentButtonCounter() {
-    if (this.currentButtonSet.size >= 2) {
-      this.buttonSetWithAllOptions.forEach((btn) => {
-        if (!this.currentButtonSet.has(btn)) {
-          this.disableRadio(btn);
-        }
-      });
-    } else {
-      this.buttonSetWithAllOptions.forEach((btn) => {
-        this.enableRadio(btn);
-      });
-    }
-  }
-
-  handleSizeToggle(value: any): IInputComponentConfig {
-    return {
-      ...this.inputConfig,
-      size: value['size'].toLowerCase()
-    };
-  }
-
-  handleHintToggle(value: any): IInputComponentConfig {
-    return {
-      ...this.inputConfig,
-      hint: value['hint'] === 'True' ? 'Hint text' : ''
-    };
-  }
-  handleRequiredToggle(value: any): IInputComponentConfig {
-    return {
-      ...this.inputConfig,
-      required: value['required'] === 'True'
-    };
-  }
-
-  handleCloseToggle(value: any) {
-    if (value['showCloseToggle'] === 'True') {
-      this.bannerConfig.dismissible = true;
-    } else {
-      this.bannerConfig.dismissible = false;
-    }
-  }
-
-  handleTitleToggle(value: any) {
-    if (value['showTitleToggle'] === 'True') {
-      this.bannerConfig.title = 'Title text';
-    } else {
-      this.bannerConfig.title = '';
-    }
-  }
-
-  handleDescToggle(value: any) {
-    if (value['showDescToggle'] === 'True') {
-      this.bannerConfig.content =
-        'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
-    } else {
-      this.bannerConfig.content = '';
-    }
-  }
-
-  handlePrimaryButtonToggle(value: any) {
-    if (value['showPrimaryButtonToggle'] === 'True') {
-      this.addItemtoCTAList('Primary');
-      this.currentButtonSet.add('showPrimaryButtonToggle');
-      this.checkCurrentButtonCounter();
-    } else {
-      this.removeItemFromCTAList('Primary');
-      this.currentButtonSet.delete('showPrimaryButtonToggle');
-      this.checkCurrentButtonCounter();
-    }
-  }
-
-  handleSecondaryButtonToggle(value: any) {
-    if (value['showSecondaryButtonToggle'] === 'True') {
-      this.addItemtoCTAList('Secondary');
-      this.currentButtonSet.add('showSecondaryButtonToggle');
-      this.checkCurrentButtonCounter();
-    } else {
-      this.removeItemFromCTAList('Secondary');
-      this.currentButtonSet.delete('showSecondaryButtonToggle');
-      this.checkCurrentButtonCounter();
-    }
-  }
-
-  handlePlainButtonToggle(value: any) {
-    if (value['showPlainButtonToggle'] === 'True') {
-      this.addItemtoCTAList('Plain');
-      this.currentButtonSet.add('showPlainButtonToggle');
-      this.checkCurrentButtonCounter();
-    } else {
-      this.removeItemFromCTAList('Plain');
-      this.currentButtonSet.delete('showPlainButtonToggle');
-      this.checkCurrentButtonCounter();
-    }
-  }
-
-  handleLinkToggle(value: any) {
-    if (value['showLinkToggle'] === 'True') {
-      this.addItemtoCTAList('Link');
-      this.currentButtonSet.add('showLinkToggle');
-      this.checkCurrentButtonCounter();
-    } else {
-      this.removeItemFromCTAList('Link');
-      this.currentButtonSet.delete('showLinkToggle');
-      this.checkCurrentButtonCounter();
-    }
-  }
-
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
@@ -394,6 +193,13 @@ export class InputDocumentationComponent
 
     this.checkboxes.forEach((checkbox) => {
       this.form_interactive_input.addControl(checkbox.id, new FormControl());
+    });
+
+    this.form_interactive_input.patchValue({
+      hint: 'False',
+      desc: 'True',
+      placeholder: 'False',
+      error: 'None'
     });
 
     this.form_interactive_input.valueChanges.subscribe((value: any) => {
@@ -418,6 +224,12 @@ export class InputDocumentationComponent
   }
 
   private toggleErrors(error: string) {
+    if (
+      !this.form_interactive_input.get(this.inputConfig.id)?.touched &&
+      error !== 'None'
+    )
+      this.form_interactive_input.get(this.inputConfig.id)?.markAsTouched();
+
     switch (error) {
       case 'None':
         this.form_interactive_input
