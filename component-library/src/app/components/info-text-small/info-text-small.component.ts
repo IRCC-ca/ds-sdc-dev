@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IIconConfig } from '@ircc-ca/ds-sdc-angular/icon';
+import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/icon/icon.component';
 
 @Component({
   selector: 'app-info-text-small',
