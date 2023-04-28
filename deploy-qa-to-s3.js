@@ -74,7 +74,6 @@ const client = new AWS.S3Client({
     console.log("Not sending to AWS ");
     return;
   }
-  console.log(branhcName);
 
   const response = await client.send(
     new AWS.PutObjectCommand({ Bucket: BUCKET_NAME, Key: `${branhcName}/` })
