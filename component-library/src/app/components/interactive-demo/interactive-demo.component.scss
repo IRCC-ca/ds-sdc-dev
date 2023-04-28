@@ -12,6 +12,10 @@
     background-color: var(--surface2);
     display: flex;
     justify-content: center;
+    align-items: center;
+    word-break: break-word;
+    white-space: normal;
+    min-height: 180px;
   }
 
   .banner {
