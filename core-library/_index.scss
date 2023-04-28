@@ -46,6 +46,8 @@
 @use "./component-styling/spinner/spinner" as spinner-component;
 @use "./component-styling/hidden-nav/hidden-nav";
 @use "./component-styling/language-switch/language-switch";
+@use "./component-styling/flyout/flyout";
+@use "./component-styling/flyout-option/flyout-option";
 @use "./typography/fa-wrapper";
 
 @forward "./theme/theme" as theme-*;
@@ -126,6 +128,8 @@
     @include element(textarea-component);
     @include element(indicator);
     @include element(spinner-component);
+    @include element(flyout);
+    @include element(flyout-option);
   }
 
   @else {
@@ -296,4 +300,12 @@
     @include indicator.create();
   }
 
+  @else if $key == flyout {
+    @include flyout.create();
+  }
+
+  @else if $key == flyout-option {
+    @include flyout-option.create();
+  }
+  
 }

@@ -8,7 +8,15 @@
     "forDevelopers": "developers",
     "utilities": "utilities",
     "buttons": "buttons",
-    "contact": "contact"
+    "contact": "contact",
+    "codeview": "codeview",
+    "mahsa": "mahsa-en",
+    "michael": "michael-en",
+    "naseer": "naseer-en",
+    "mike": "mike-en",
+    "AccessibilityDemo": "accessibility-demo",
+    "AccessibilityDemoNext": "accessibility-demo-next",
+    "AccessibilityDemoPrevious": "accessibility-demo-previous"
   },
   "Buttons": {
     "Title": "Buttons",
@@ -359,5 +367,110 @@
   },
   "Contact": {
     "Text": "To provide feedback (compliment, comment or complaint) or for any inquiries, contact <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
+  },
+  "Accordion": {
+    "ShowCode": "Show Code",
+    "HideCode": "Hide Code",
+    "CopyCode": "Copy Code"
+  },
+  "ACC_DEMO": {
+    "MODAL_TITLE": "Steps",
+    "HAMBURGER_ARIA": "Open the progress indicator",
+    "PREVIOUS_PAGE": {
+      "HEADER": "Background information",
+      "CONTENT": "This page is not part of the prototype. Please use the button below to return to the previous screen."
+    },
+    "NEXT_PAGE": "This is an example of a next page - it is simply here for demonstration purposes and is not set up for correct accessibility. Note the update to the progress indicator at the top of the page. You can navigate using the progress indicator",
+    "ERRORS": {
+      "REQUIRED": "This field is required.",
+      "FAMILY_NAME_REQUIRED": "This field is blank. Please enter a family name",
+      "SELECTS_RADIO_REQUIRED": "No selection has been made. Please select an option",
+      "DOB_NO_SELECTION_REQUIRED": "No selection has been made. Please fill in the fields to complete your date of birth.",
+      "DOB_REQUIRED": "Please fill in the missing fields to complete your date of birth.",
+      "DECLARATION_REQUIRED": "No selection has been made. Please make a selection to complete your declaration",
+      "DECLARATION_CUSTOM": "You must agree to continue"
+    },
+    "STEPPER": {
+      "STEP1": "Background information",
+      "STEP2": "Personal information",
+      "STEP3": "Work information",
+      "STEP4": "Review & submit"
+    },
+    "PERSONAL_INFO": {
+      "ERROR_BANNER": {
+        "TITLE": "Missing information",
+        "CONTENT": "There are unresolved errors below."
+      },
+      "H1": "Personal information",
+      "BODY": "Enter the correct information in the spaces below as it appears in your passport, travel or identity documents.",
+      "FAMILY_NAME_INPUT": {
+        "LABEL": "Family name (required)",
+        "LABEL_INFO_BUTTON_ARIA": "more information",
+        "DESC": "This is your surname or last name",
+        "BANNER": "If you do not have a family name, provide all your given names in the family name field and leave the given names field blank.",
+        "BANNER_CLOSE": "Family name info banner. Close"
+      },
+      "GIVEN_NAME_INPUT": {
+        "LABEL": "Given name",
+        "DESC": "This is your first name and middle name, if applicable"
+      },
+      "SEX_AT_BIRTH_RADIO": {
+        "LABEL": "Sex at birth (required)",
+        "LABEL_INFO_BUTTON_ARIA": "more information",
+        "FEMALE": "F - Female",
+        "MALE": "M - Male",
+        "OTHER": "X - Another sex",
+        "BANNER": "<p>This question is asked for identity verification purposes only. <br><br>Sex refers to your status at birth, and may not reflect your precise gender identity.</p>",
+        "BANNER_CLOSE": "Sex at birth info banner. Close"
+      },
+      "DATE_OF_BIRTH": {
+        "LABEL": "Date of birth (required)"
+      },
+      "COUNTRY_OF_BIRTH": {
+        "LABEL": "Country/territory of birth (required)",
+        "OPTIONS": {
+          "CANADA": "Canada",
+          "USA": "United States of America",
+          "MEXICO": "Mexico"
+        }
+      },
+      "CITY_OF_BIRTH": {
+        "LABEL": "City or town of birth (required)",
+        "OPTIONS": {
+          "CANADA": {
+            "OTTAWA": "Ottawa",
+            "ST_JOHNS": "St. John's",
+            "VICTORIA": "Victoria",
+            "CALGARY": "Calgary"
+          },
+          "USA": {
+            "TAMPA": "Tampa Bay",
+            "WASHINGTON": "Washington",
+            "NEW_YORK": "New York",
+            "OAKLAND": "Oakland"
+          },
+          "MEXICO": {
+            "MEXICO": "Mexico City"
+          }
+        }
+      },
+      "DECLARATION": {
+        "INLINE_LABEL": "I declare that the above information is true and accurate.",
+        "LABEL": "Declaration (required)"
+      }
+    },
+    "BUTTONS": {
+      "PREVIOUS": "Previous step",
+      "NEXT": "Save and continue",
+      "PREVIOUS_PAGE_NEXT": "Next",
+      "HAMBURGER": "Menu"
+    }
+  },
+  "Indicator": {
+    "Heading": "Indicator"
+  },
+  "DEMO_COMPONENT": {
+    "ACCORDION_OPEN": "Hide configurations",
+    "ACCORDION_CLOSED": "Show configurations"
   }
 }

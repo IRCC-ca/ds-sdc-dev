@@ -1,12 +1,12 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
 
 @mixin selector {
   ircc-cl-lib-button#{template-const.$escape} {
@@ -21,18 +21,21 @@
 }
 
 @mixin layout {
-
   .lib-button {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    
+
+    .button-content-container {
+      width: 100%;
+    }
+
     &.right {
       .button-content-container {
         display: flex;
         align-items: center;
         flex-direction: row-reverse;
-      }   
+      }
       .icon {
         padding-left: 8px;
       }
@@ -42,12 +45,12 @@
       .button-content-container {
         display: flex;
         align-items: center;
-      }   
+      }
       .icon {
         padding-right: 8px;
       }
     }
-    
+
     .icon {
       font-weight: 300;
     }

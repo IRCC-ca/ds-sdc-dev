@@ -74,9 +74,9 @@ export class BannerComponent implements OnInit {
       banner?.classList.add('bannerDismissed');
       setTimeout(function () {
         banner?.classList.add('noDisplay');
-      }, 300);
+        banner?.classList.remove('bannerDismissed');
+      }, 700);
       this.btnEvent?.emit(this.config.id);
-      banner?.classList.remove('bannerDismissed');
       banner?.classList.remove('noDisplay');
     }
   }

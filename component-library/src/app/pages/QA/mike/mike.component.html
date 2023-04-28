@@ -3,6 +3,8 @@
   <button (click)="toggleComp('radio')">Radio Component</button>
   <button (click)="toggleComp('banner')">Banner Component</button>
   <button (click)="toggleComp('hidden')">Hidden Nav Component</button>
+  <button (click)="toggleComp('icon')">Icon Component</button>
+  <button (click)="toggleComp('flyout')">Flyout/Dropdown Component</button>
 </div>
 <hr />
 <section id="radio">
@@ -67,4 +69,14 @@
     ullam deleniti ex, laboriosam amet maiores, fugit et asperiores, sequi culpa
     quae atque rerum.
   </p>
+</section>
+<section id="icon">
+  <ircc-cl-lib-icon
+    [config]="iconConfig"
+    (click)="iconClick()"
+  ></ircc-cl-lib-icon>
+</section>
+<section id="flyout">
+  <ircc-cl-lib-dropdown [config]="dropdownConfig"></ircc-cl-lib-dropdown>
+  <ircc-cl-lib-dropdown [config]="dropdownConfig"></ircc-cl-lib-dropdown>
 </section>

@@ -47,9 +47,11 @@ export class LangSwitchComponent implements OnInit {
 
   setAltLangURL() {
     this.altLangURL = this.translate.currentLang ?? Languages.English;
-    if (this.altPathKey)
+    if (this.altPathKey) {
+      console.log('ROUTES.' + this.altPathKey);
       this.altLangURL +=
         '/' + this.translate.instant('ROUTES.' + this.altPathKey);
+    }
   }
 
   /** Toggles language without reloading component */

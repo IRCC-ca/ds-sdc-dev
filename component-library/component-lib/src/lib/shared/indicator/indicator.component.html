@@ -1,4 +1,12 @@
-<div [ngClass]="['indicator-container', config?.size ?? '']">
+<div
+  [ngClass]="['indicator-container', config?.size ?? '']"
+  [attr.aria-label]="
+    (config?.ariaLabel ?? 'Indicator.Heading' | translate) +
+    ' ' +
+    (config?.label ?? '')
+  "
+  [tabIndex]="0"
+>
   <div
     *ngIf="config.type === 'text' || config.type === 'number'"
     #label
@@ -16,7 +24,7 @@
   >
     <ircc-cl-lib-icon
       *ngIf="config.type === 'text' && config?.icon"
-      [class]="config.icon"
+      [config]="{ 'FA_keywords': config.icon }"
     ></ircc-cl-lib-icon>
     <ng-container *ngIf="abbr; else nonAbbr">
       <span class="abbr"
