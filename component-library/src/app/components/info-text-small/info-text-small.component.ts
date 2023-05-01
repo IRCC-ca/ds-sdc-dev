@@ -12,5 +12,5 @@ export class InfoTextSmallComponent {
     ariaLabel: ''
   };
 
-  constructor() { }
+  constructor() {}
 }

@@ -102,7 +102,7 @@ export class BobbyComponent implements OnInit {
     testFields: this.testerConfigInput
   };
 
-  constructor(private altLang: LanguageSwitchService) { }
+  constructor(private altLang: LanguageSwitchService) {}
 
   ngOnInit() {
     this.altLang.setAltLangLink('bobby-alt');
