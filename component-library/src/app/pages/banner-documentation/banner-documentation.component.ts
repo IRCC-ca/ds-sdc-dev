@@ -164,7 +164,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
-    size: "small",
+    size: 'small',
     tab: [
       {
         id: 'info',

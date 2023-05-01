@@ -125,7 +125,7 @@
       }
 
       button {
-        line-height: 1rem !important;
+        line-height: 1rem;
 
         &:focus,
         &:focus-visible {
@@ -140,7 +140,7 @@
   }
 
   svg.fa-chevron-right {
-    color: color.mix-token(neutral, 500);
+    color: var(--text-disabled);
     position: relative;
   }
 
