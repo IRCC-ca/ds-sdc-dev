@@ -335,6 +335,16 @@ export class MikeComponent implements OnInit {
     testFields: this.ctaTestConfigObj
   };
 
+  iconClick() {
+    console.log('click');
+    this.iconConfig = {
+      ...this.iconConfig,
+      FA_keywords: 'fa-regular fa-check'
+    };
+    this.iconConfig = { ...this.iconConfig, ariaLabel: '' };
+    console.log(this.iconConfig);
+  }
+
   triggerError() {
     if (!this.radioConfig.formGroup.get('radio_1')?.hasError('otherError')) {
       this.radioConfig.formGroup.get('radio_1')?.hasError('required')

@@ -10,6 +10,7 @@
     "utilities": "utilitaires",
     "buttons": "boutons",
     "contact": "contactez",
+    "codeview": "codeview-fr",
     "mahsa": "mahsa-fr",
     "michael": "michael-fr",
     "naseer": "naseer-fr",
@@ -368,6 +369,11 @@
   "Contact": {
     "Text": "Pour faire part de vos commentaires (compliment, commentaire ou plainte) ou pour toute demande de renseignements, contactez <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
   },
+  "Accordion": {
+    "ShowCode": "Afficher le code",
+    "HideCode": "Masquer le code",
+    "CopyCode": "Copier le code"
+  },
   "ACC_DEMO": {
     "MODAL_TITLE": "Steps",
     "PREVIOUS_PAGE": {
@@ -464,5 +470,9 @@
   "QA": {
     "header": "Page de destination du contrôle qualité",
     "michael": "Michael"
+  },
+  "DEMO_COMPONENT": {
+    "ACCORDION_OPEN": "Masquer les configurations",
+    "ACCORDION_CLOSED": "Afficher les configurations"
   }
 }

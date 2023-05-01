@@ -10,6 +10,7 @@
     "utilities": "utilities",
     "buttons": "buttons",
     "contact": "contact",
+    "codeview": "codeview",
     "mahsa": "mahsa-en",
     "michael": "michael-en",
     "naseer": "naseer-en",
@@ -369,6 +370,11 @@
   "Contact": {
     "Text": "To provide feedback (compliment, comment or complaint) or for any inquiries, contact <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
   },
+  "Accordion": {
+    "ShowCode": "Show Code",
+    "HideCode": "Hide Code",
+    "CopyCode": "Copy Code"
+  },
   "ACC_DEMO": {
     "MODAL_TITLE": "Steps",
     "HAMBURGER_ARIA": "Open the progress indicator",
@@ -468,5 +474,9 @@
   "QA": {
     "header": "QA Landing Page",
     "michael": "Michael"
+  },
+  "DEMO_COMPONENT": {
+    "ACCORDION_OPEN": "Hide configurations",
+    "ACCORDION_CLOSED": "Show configurations"
   }
 }
