@@ -6,9 +6,15 @@ export enum slugTitleURLType {
   'primary' = 'primary',
   'secondary' = 'secondary'
 }
+
+export enum slugAnchorType {
+  'primary' = 'primary',
+  'secondary' = 'secondary'
+}
 export interface slugTitleURLConfig {
   type: slugTitleURLType;
   title: string;
+  anchorType: slugAnchorType;
 }
 
 @Component({
@@ -21,7 +27,8 @@ export class TitleSlugUrlComponent implements AfterContentInit {
   @Input()
   config: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
-    title: ''
+    title: '',
+    anchorType: slugAnchorType.primary
   };
   currentLang = '';
   windowPathname = '';

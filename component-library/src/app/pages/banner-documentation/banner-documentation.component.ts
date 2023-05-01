@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import {
+  slugAnchorType,
   slugTitleURLConfig,
   slugTitleURLType
 } from '@app/components/title-slug-url/title-slug-url.component';
@@ -39,7 +40,8 @@ export class BannerDocumentationComponent implements OnInit {
 
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Interactive Demo'
+    title: 'Interactive Demo',
+    anchorType: slugAnchorType.primary
   };
 
   bannerConfig: IBannerConfig = {
