@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 import {
@@ -27,19 +27,18 @@ export class InputDocumentationComponent implements OnInit {
   BASIC_INPUT_ID = 'basic_input';
   PASSWORD_INPUT_ID = 'password_input';
 
-  form_input_basic = new FormGroup({});
-  form_input_password = new FormGroup({});
+  form_input = new FormGroup({});
 
   basicInputConfig: IInputComponentConfig = {
     id: this.BASIC_INPUT_ID,
-    formGroup: this.form_input_basic,
+    formGroup: this.form_input,
     label: 'Input.LabelText',
     type: 'text'
   };
 
   passwordInputConfig: IInputComponentConfig = {
     id: this.PASSWORD_INPUT_ID,
-    formGroup: this.form_input_password,
+    formGroup: this.form_input,
     label: 'Input.LabelText',
     type: 'password'
   };
@@ -120,5 +119,8 @@ export class InputDocumentationComponent implements OnInit {
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
+    this.form_input.addControl(this.BASIC_INPUT_ID, new FormControl())
+    this.form_input.addControl(this.PASSWORD_INPUT_ID, new FormControl())
+
   }
 }
