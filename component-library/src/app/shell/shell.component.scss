@@ -40,9 +40,10 @@ $mobile-padding: 16px;
 .main-container {
   &.nav-open {
     display: flex;
-    align-items: flex-start !important;
-    column-gap: 0 !important;
-    justify-content: flex-start !important;
+    /** These 3 lines doesn't do anything **/
+    align-items: flex-start;
+    column-gap: 0;
+    justify-content: flex-start;
   }
 
   &.nav-closed {

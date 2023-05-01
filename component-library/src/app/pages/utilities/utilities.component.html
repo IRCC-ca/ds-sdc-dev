@@ -50,6 +50,7 @@
           >{{ 'Utilities.Letter' | translate }}</a
         >
         <p
+          class="alphabet"
           *ngIf="typo.type === 'p' || !typo.type"
           [class]="typo.class ?? typo.tag"
         >

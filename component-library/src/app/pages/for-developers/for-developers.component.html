@@ -16,16 +16,11 @@
     [config]="developerStartedSlug"
     class="getting-started"
   ></app-title-slug-url>
-  <p [translate]="'Developers.GetStartedTxt'"></p>
-  <!-- <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
-    <button (click)="copyToClipboard(paragraph1)">Copy</button>
-    <p>{{ paragraph1 }}</p>
-  </div> -->
-  <!-- <h2>Usage</h2> -->
+  <p [innerHTML]="'Developers.GetStartedTxt' | translate"></p>
   <app-title-slug-url [config]="developerUsageSlug"></app-title-slug-url>
   <p [translate]="'Developers.UsageTxt'"></p>
   <p [translate]="'Developers.UsageTitle1'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(paragraph1)"
@@ -33,7 +28,7 @@
     <p style="white-space: pre-line">{{ paragraph1 }}</p>
   </div>
   <p [translate]="'Developers.UsageTitle2'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(paragraph1)"
@@ -43,7 +38,7 @@
   <app-title-slug-url [config]="developerThemesSlug"></app-title-slug-url>
   <p [translate]="'Developers.ThemesTxt'"></p>
   <p [translate]="'Developers.ThemesTitle1'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
@@ -51,7 +46,7 @@
     <p style="white-space: pre-line">{{ placeholder }}</p>
   </div>
   <p [translate]="'Developers.ThemesTitle2'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
@@ -59,7 +54,7 @@
     <p style="white-space: pre-line">{{ placeholder }}</p>
   </div>
   <p [translate]="'Developers.ThemesTitle3'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
@@ -69,7 +64,7 @@
 
   <app-title-slug-url [config]="developerFontAwesomeSlug"></app-title-slug-url>
   <p [translate]="'Developers.FontAwesomeTxt'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
@@ -79,7 +74,7 @@
   <app-title-slug-url [config]="developerReleasesSlug"></app-title-slug-url>
   <p [translate]="'Developers.ReleasesTxt'"></p>
   <p [translate]="'Developers.ReleasesTitle1'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
@@ -87,7 +82,7 @@
     <p>{{ placeholder }}</p>
   </div>
   <p [translate]="'Developers.ReleasesTitle2'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
@@ -95,25 +90,13 @@
     <p>{{ placeholder }}</p>
   </div>
   <p [translate]="'Developers.ReleasesTitle3'"></p>
-  <div style="border: 1px solid black; padding: 16px; border-radius: 4px">
+  <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
     <p>{{ placeholder }}</p>
   </div>
-  <!-- <markdown
-    *ngIf="translate.currentLang === 'en'"
-    clipboard
-    [clipboardButtonTemplate]="clipboardBtn"
-    [src]="'assets/md/README_core_en.md'"
-  ></markdown>
-  <markdown
-    *ngIf="translate.currentLang === 'fr'"
-    clipboard
-    [clipboardButtonTemplate]="clipboardBtn"
-    [src]="'assets/md/README_core_fr.md'"
-  ></markdown> -->
 </div>
 <app-side-nav
   class="right-nav col-12 col-lg-3 col-xl-2"

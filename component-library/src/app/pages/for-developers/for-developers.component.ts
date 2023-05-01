@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { TranslateService } from '@ngx-translate/core';
@@ -27,7 +27,7 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
     'Developers.FontAwesomeHeading',
     'Developers.ReleasesHeading'
   ];
-  altLangLink = 'forDesigners';
+  altLangLink = 'forDevelopers';
 
   paragraph1: string = `@use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;\n
     @include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(), default, large);\n

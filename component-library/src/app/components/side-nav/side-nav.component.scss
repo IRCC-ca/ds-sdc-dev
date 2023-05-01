@@ -72,15 +72,15 @@ $footer-height: 240px;
       text-decoration: none;
     }
     &:focus {
-      outline: var(--navigation) solid 3px !important;
+      outline: var(--navigation) solid 3px;
     }
     &:hover {
-      background: var(--generic-hover) !important;
+      background: var(--generic-hover);
     }
     &:active {
-      background: var(--generic-active) !important;
+      background: var(--generic-active);
     }
-    &:visited {
+    &:visited { // Do we have visited state here?!
       // color:black;
       // text-decoration: none;
     }
@@ -90,15 +90,15 @@ $footer-height: 240px;
     }
 
     &.active {
-      background: var(--navigation-weak) !important;
+      background: var(--navigation-weak);
       outline: var(--navigation) solid 1px;
       &:hover {
-        background: var(--navigation-weak-hover) !important;
-        outline: var(--navigation-hover) solid 1px !important;
+        background: var(--navigation-weak-hover);
+        outline: var(--navigation-hover) solid 1px;
       }
       &:focus {
         border: var(--navigation) solid 1px;
-        outline: var(--navigation) solid 3px !important;
+        outline: var(--navigation) solid 3px;
         outline-offset: 2px;
         box-shadow: none;
       }
