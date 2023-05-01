@@ -2,9 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
 
-
 export enum ComponentType {
-  banner = 'banner',
+  banner = 'banner'
 }
 
 @Component({
@@ -16,7 +15,6 @@ export class InteractiveDemoComponent implements OnInit {
   iconConfig: IIconButtonIconConfig = {
     class: 'fa-light fa-chevron-down'
   };
-
 
   /*
    This variable is added to the class of component container,
@@ -33,8 +31,7 @@ export class InteractiveDemoComponent implements OnInit {
     buttonTextClosed: 'DEMO_COMPONENT.ACCORDION_CLOSED'
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }

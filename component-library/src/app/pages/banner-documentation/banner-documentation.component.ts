@@ -26,7 +26,7 @@ export class BannerDocumentationComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
-  ) { }
+  ) {}
 
   form_interactive_banner = new FormGroup({});
 
@@ -166,7 +166,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
-    size: "small",
+    size: 'small',
     tab: [
       {
         id: 'info',
