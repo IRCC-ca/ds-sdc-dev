@@ -119,8 +119,7 @@ export class InputDocumentationComponent implements OnInit {
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
-    this.form_input.addControl(this.BASIC_INPUT_ID, new FormControl())
-    this.form_input.addControl(this.PASSWORD_INPUT_ID, new FormControl())
-
+    this.form_input.addControl(this.BASIC_INPUT_ID, new FormControl());
+    this.form_input.addControl(this.PASSWORD_INPUT_ID, new FormControl());
   }
 }
