@@ -60,12 +60,6 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     ClipboardModule
   ],
-  providers: [
-    {
-      provide: APP_BASE_HREF,
-      useValue: window['base-href']
-    }
-  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
