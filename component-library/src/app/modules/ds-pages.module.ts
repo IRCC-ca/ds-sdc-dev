@@ -17,6 +17,7 @@ import { accordionContainerComponent } from '@app/components/accordion-panel/acc
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { EventSubDirective } from '@app/components/interactive-demo/event-sub.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     SafeHtmlPipe,
     codeViewComponent,
     BannerDocumentationComponent,
-    InteractiveDemoComponent
+    InteractiveDemoComponent,
+    EventSubDirective
   ],
   imports: [
     CommonModule,
@@ -56,4 +58,4 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     }
   ]
 })
-export class DsPageModule {}
+export class DsPageModule { }

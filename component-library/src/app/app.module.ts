@@ -27,7 +27,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LangSwitchComponent
+    LangSwitchComponent,
     // SideNavComponent,
     // TestComponent
   ],
@@ -69,4 +69,4 @@ export function createTranslateLoader(http: HttpClient) {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

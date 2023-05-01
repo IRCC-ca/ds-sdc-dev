@@ -14,7 +14,7 @@
     "typescriptreact",
     "html"
   ],
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "off",
   "search.exclude": {
     "**/node_modules": false
   },

@@ -12,6 +12,7 @@ import {
   slugTitleURLConfig,
   slugTitleURLType
 } from '@app/components/title-slug-url/title-slug-url.component';
+import { IInteractiveDemoConfig } from '@app/components/interactive-demo/interactive-demo.component';
 
 @Component({
   selector: 'app-banner-documentation',
@@ -25,7 +26,7 @@ export class BannerDocumentationComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
-  ) {}
+  ) { }
 
   form_interactive_banner = new FormGroup({});
 
@@ -162,34 +163,39 @@ export class BannerDocumentationComponent implements OnInit {
     }
   ];
 
-  demoTabsConfig: ITabNavConfig = {
-    id: 'demoTabs',
-    size: "small",
-    tab: [
-      {
-        id: 'info',
-        title: 'Info'
-      },
-      {
-        id: 'warning',
-        title: 'Warning'
-      },
-      {
-        id: 'critical',
-        title: 'Critical'
-      },
-      {
-        id: 'success',
-        title: 'Success'
-      },
-      {
-        id: 'generic',
-        title: 'Generic'
-      }
-    ]
+  demoConfig: IInteractiveDemoConfig = {
+    id: 'banner_interactive_demo',
+    componentType: 'banner',
+    tabsConfig: {
+      id: 'demoTabs',
+      size: "small",
+      tab: [
+        {
+          id: 'info',
+          title: 'Info'
+        },
+        {
+          id: 'warning',
+          title: 'Warning'
+        },
+        {
+          id: 'critical',
+          title: 'Critical'
+        },
+        {
+          id: 'success',
+          title: 'Success'
+        },
+        {
+          id: 'generic',
+          title: 'Generic'
+        }
+      ]
+    }
   };
 
   setBannerType(value: any) {
+    console.log(value);
     if (value === 'info') {
       this.bannerConfig.type = 'info';
     } else if (value === 'warning') {

@@ -9,7 +9,8 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     IrccDsAngularComponentsSharedModule,
@@ -26,4 +27,4 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule
   ]
 })
-export class SharedModule {}
+export class SharedModule { }

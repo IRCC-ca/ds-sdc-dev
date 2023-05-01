@@ -4,13 +4,7 @@
       [config]="interactiveDemoSlugTitleURLConfig"
     ></app-title-slug-url>
 
-    <app-interactive-demo componentType="banner">
-      <ircc-cl-lib-tabs
-        tabs
-        (valueChange)="setBannerType($event)"
-        [config]="demoTabsConfig"
-      >
-      </ircc-cl-lib-tabs>
+    <app-interactive-demo appEventSub [buttonSubId]="demoConfig.id" (clickEvent)="setBannerType($event)" [config]="demoConfig">
       <div
         component
         class="banner-container"
