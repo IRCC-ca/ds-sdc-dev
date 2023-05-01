@@ -5,6 +5,7 @@ import { resolve } from "path";
 import { readdir } from "node:fs/promises";
 import * as fs from "fs";
 import * as mime from "mime-types";
+import * as cheerio from "cheerio";
 
 const getBranch = () =>
   new Promise((resolve, reject) => {
@@ -45,6 +46,28 @@ const UploadFile = (branhcName, path, client) =>
     });
   });
 
+const editBaseHref = (branhcName) =>
+  new Promise((resolve, reject) => {
+    let file = cheerio.load(
+      fs.readFileSync("./component-library/dist/demo-project/index.html")
+    );
+
+    // console.log();
+    file("base").attr("href");
+    file("base").attr("href", `/${branhcName}/`);
+    console.log(file("base").attr("href"));
+    fs.writeFile(
+      "./component-library/dist/demo-project/index.html",
+      file.html(),
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
+        resolve();
+      }
+    );
+  });
+
 async function* getFiles(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
   for (const dirent of dirents) {
@@ -83,6 +106,8 @@ const params = {
     return;
   }
 
+  await editBaseHref(branhcName);
+
   const client = new AWS.S3Client({
     region: REGION,
     credentials: {
@@ -105,6 +130,6 @@ const params = {
 
   console.log(`Upload Done!`);
   console.log(
-    `Visit your QA site at: https://jl-ds-qa-test.s3.ca-central-1.amazonaws.com/${branhcName}/index.html`
+    `Visit your QA site at: https://d2e3hkuvxc74rw.cloudfront.net/${branhcName}/index.html`
   );
 })();

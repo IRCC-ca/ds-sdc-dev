@@ -2,9 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
 
-
 export enum ComponentType {
-  banner = 'banner',
+  banner = 'banner'
 }
 
 @Component({
@@ -17,14 +16,13 @@ export class InteractiveDemoComponent implements OnInit {
     class: 'fa-light fa-chevron-down'
   };
 
-
   /*
    This variable is added to the class of component container,
    it is being used to overrride background color for interactive
    component specifically for Banner in the scss file, since 
    banner has a white background and rest have a grey background.
   */
-  @Input() componentType? : keyof typeof ComponentType;
+  @Input() componentType?: keyof typeof ComponentType;
 
   accordionConfig: IAccordionContainerConfig = {
     id: 'InteractiveDemoComponentAcccordion',
