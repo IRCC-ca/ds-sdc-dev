@@ -127,6 +127,11 @@ span {
 
 .column {
   width: 50%;
+
+  @include device.in-phone-layout() {
+    width: 100%;
+  }
+
 }
 
 .left-column {
