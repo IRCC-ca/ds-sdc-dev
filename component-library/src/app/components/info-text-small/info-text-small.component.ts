@@ -8,9 +8,9 @@ import { IIconConfig } from 'ircc-ds-angular-component-library';
 })
 export class InfoTextSmallComponent {
   circleInfoIcon: IIconConfig = {
-    unicode: 'f05a',
-    fontFamily: 'fa-regular'
+    FA_keywords: 'f05a',
+    ariaLabel: ''
   };
 
-  constructor() {}
+  constructor() { }
 }

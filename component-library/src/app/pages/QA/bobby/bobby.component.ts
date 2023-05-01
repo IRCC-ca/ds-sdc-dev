@@ -9,11 +9,6 @@ import {
   IAutoTestComponentConfig,
   IAutoTestConfigObject
 } from '../auto-tester/auto-tester.component';
-import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
-import {
-  slugTitleURLConfig,
-  slugTitleURLType
-} from '@app/components/title-slug-url/title-slug-url.component';
 
 export enum InputFieldType {
   BASICINPUTFIELD = 'basicInputConfig',
@@ -102,12 +97,12 @@ export class BobbyComponent implements OnInit {
   };
 
   testInputComponentConfig: IAutoTestComponentConfig = {
-    id: 'naseer_input_tester',
+    id: 'bobby_input_tester',
     formGroup: this.form_input,
     testFields: this.testerConfigInput
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(private altLang: LanguageSwitchService) { }
 
   ngOnInit() {
     this.altLang.setAltLangLink('bobby-alt');
