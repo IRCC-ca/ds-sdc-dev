@@ -4,7 +4,12 @@
       [config]="interactiveDemoSlugTitleURLConfig"
     ></app-title-slug-url>
 
-    <app-interactive-demo appEventSub [buttonSubId]="demoConfig.id" (clickEvent)="setBannerType($event)" [config]="demoConfig">
+    <app-interactive-demo
+      appEventSub
+      [buttonSubId]="demoConfig.id"
+      (clickEvent)="setBannerType($event)"
+      [config]="demoConfig"
+    >
       <div
         component
         class="banner-container"

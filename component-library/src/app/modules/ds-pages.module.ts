@@ -58,4 +58,4 @@ import { EventSubDirective } from '@app/components/interactive-demo/event-sub.di
     }
   ]
 })
-export class DsPageModule { }
+export class DsPageModule {}

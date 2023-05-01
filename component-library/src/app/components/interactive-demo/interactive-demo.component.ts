@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IIconButtonIconConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import {
+  IIconButtonIconConfig,
+  ITabNavConfig
+} from 'ircc-ds-angular-component-library';
 import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
 import { EventService } from './event-service.service';
 
-
 export enum ComponentType {
-  banner = 'banner',
+  banner = 'banner'
 }
 
 export interface IInteractiveDemoConfig {
@@ -29,8 +31,7 @@ export class InteractiveDemoComponent implements OnInit {
     tabsConfig: {
       id: ''
     }
-  }
-
+  };
 
   /*
    This variable is added to the class of component container,
@@ -49,7 +50,7 @@ export class InteractiveDemoComponent implements OnInit {
     buttonTextClosed: 'DEMO_COMPONENT.ACCORDION_CLOSED'
   };
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService) {}
 
   tabEvent(event: string) {
     this.eventService.onButtonClick(this.config.id + '_' + event);
@@ -59,6 +60,6 @@ export class InteractiveDemoComponent implements OnInit {
     if (this.componentType) this.config.componentType = this.componentType;
     if (this.id) this.config.id = this.id;
     if (this.tabsConfig) this.config.tabsConfig = this.tabsConfig;
-    this.accordionConfig.id = (this.id + '_' + this.accordionConfig.buttonText);
+    this.accordionConfig.id = this.id + '_' + this.accordionConfig.buttonText;
   }
 }

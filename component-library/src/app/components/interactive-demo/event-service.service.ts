@@ -8,7 +8,6 @@ export class EventService {
   private buttonClicked = new Subject<string>();
   buttonClickedObs$ = this.buttonClicked.asObservable();
 
-
   onButtonClick(id: string) {
     this.buttonClicked.next(id);
   }

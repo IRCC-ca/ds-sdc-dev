@@ -1,8 +1,10 @@
 <div class="container">
   <div class="tabs">
     <!-- <ng-content select="[tabs]"></ng-content> -->
-    <ircc-cl-lib-tabs (valueChange)="tabEvent($event)"
-    [config]="config.tabsConfig"></ircc-cl-lib-tabs>
+    <ircc-cl-lib-tabs
+      (valueChange)="tabEvent($event)"
+      [config]="config.tabsConfig"
+    ></ircc-cl-lib-tabs>
   </div>
   <div class="component_container">
     <div class="test_component {{ config.componentType }}">
