@@ -36,7 +36,6 @@ import { ComponentPreviewComponent } from '@app/components/component-preview/com
     BannerDocumentationComponent,
     InteractiveDemoComponent,
     InputDocumentationComponent,
-    InteractiveDemoComponent,
     ComponentPreviewComponent
   ],
   imports: [
@@ -65,4 +64,4 @@ import { ComponentPreviewComponent } from '@app/components/component-preview/com
     }
   ]
 })
-export class DsPageModule {}
+export class DsPageModule { }
