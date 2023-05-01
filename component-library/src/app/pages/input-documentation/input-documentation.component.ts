@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslatedPageComponent } from '@app/pages/translated-page-component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
-import { TranslateService } from '@ngx-translate/core';
 import {
   slugTitleURLConfig,
   slugTitleURLType
@@ -24,12 +23,7 @@ export class InputDocumentationComponent
 {
   altLangLink = 'inputDocumentation';
 
-  constructor(
-    private translate: TranslateService,
-    private lang: LangSwitchService
-  ) {}
-
-  @ViewChild('input', { static: false }) banner!: ElementRef;
+  constructor(private lang: LangSwitchService) {}
 
   form_interactive_input = new FormGroup({});
 
@@ -233,6 +227,9 @@ export class InputDocumentationComponent
     };
   }
 
+  /**
+   * Set input field as touched, toggle error states of input
+   */
   private toggleErrors(error: string) {
     if (
       !this.form_interactive_input.get(this.inputConfig.id)?.touched &&
@@ -261,6 +258,9 @@ export class InputDocumentationComponent
     }
   }
 
+  /**
+   * Toggle disabled state of input
+   */
   private toggleDisabled(disabled: boolean) {
     const inputControl: AbstractControl | null =
       this.form_interactive_input.get(this.inputConfig.id);
