@@ -1,11 +1,4 @@
-@use 'src/scss/code';
-@use "../../../../../core-library/util/color" as color;
-@use "../../../../../core-library/util/theme" as theme;
 @use "../../../../../core-library/util/device" as device;
-@use "../../../../../core-library/util/size" as size;
-@use "../../../../../core-library/tokens/template-const" as template-const;
-@use "../../../../../core-library/tokens/sizes" as token-size;
-@use "sass:map";
 
 .content-doc-wrapper {
   box-sizing: border-box;
