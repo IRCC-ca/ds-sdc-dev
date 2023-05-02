@@ -1,8 +1,17 @@
-<h2
+<h1
+  *ngIf="config.heading === 'h1'"
   id="{{ config.title | translate | SlugifyPipe }}"
   [className]="config.type"
 >
-  {{ config.title | translate }}
+  <strong>{{ config.title | translate }}</strong>
+</h1>
+<h2
+  *ngIf="config.heading !== 'h1'"
+  [ngClass]="'h3'"
+  id="{{ config.title | translate | SlugifyPipe }}"
+  [className]="config.type"
+>
+  <strong>{{ config.title | translate }}</strong>
 </h2>
 <a
   routerLink="{{ windowPathname }}"

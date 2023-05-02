@@ -3,20 +3,22 @@
     [config]="overViewSlugTitleURLConfig"
   ></app-title-slug-url>
   <h2
-    class="sub-title emphasis"
+    class="sub-title"
     [style.margin-top]="0"
   >
-    {{ 'Overview.SubHeading' | translate }}
+    <strong>{{ 'Overview.SubHeading' | translate }}</strong>
   </h2>
-  <p>{{ 'Overview.Text' | translate }}</p>
+  <p class="overviewTxt">{{ 'Overview.Text' | translate }}</p>
   <div
     class="wrapper-container row"
     [style.box-sizing]="'border-box'"
   >
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 box">
       <div class="for-designers">
-        <h3>{{ 'Overview.DesignerHeading' | translate }}</h3>
-        <p>{{ 'Overview.DesignerText' | translate }}</p>
+        <h3>
+          <strong>{{ 'Overview.DesignerHeading' | translate }}</strong>
+        </h3>
+        <p class="boxtxt">{{ 'Overview.DesignerText' | translate }}</p>
         <a
           routerLink="/{{ currentLanguage }}/{{
             'ROUTES.forDesigners' | translate
@@ -25,10 +27,12 @@
         >
       </div>
     </div>
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 box">
       <div class="for-devs">
-        <h3>{{ 'Overview.DeveloperHeading' | translate }}</h3>
-        <p>{{ 'Overview.DeveloperText' | translate }}</p>
+        <h3>
+          <strong>{{ 'Overview.DeveloperHeading' | translate }}</strong>
+        </h3>
+        <p class="boxtxt">{{ 'Overview.DeveloperText' | translate }}</p>
         <a
           routerLink="/{{ currentLanguage }}/{{
             'ROUTES.forDevelopers' | translate

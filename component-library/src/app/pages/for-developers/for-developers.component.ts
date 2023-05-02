@@ -38,7 +38,8 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   placeholder: string = '<code block/>';
   overViewDeveloperSlug: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
-    title: 'Overview.DeveloperHeading'
+    title: 'Overview.DeveloperHeading',
+    heading: 'h1'
   };
   developerStartedSlug: slugTitleURLConfig = {
     type: slugTitleURLType.primary,

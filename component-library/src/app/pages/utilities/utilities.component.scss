@@ -5,8 +5,11 @@ app-utilities {
     height: 20px;
     margin: 0 auto;
     // background: color.mix-token(visited, 100);
+    background: #F4EDFA;
     // border-left: 1px solid color.mix-token(visited, 700);
+    border-left: 1px solid var(--purple-category-background);
     // border-right: 1px solid color.mix-token(visited, 700);
+    border-right: 1px solid var(--purple-category-background);
   }
 }
 div.color-sample {
@@ -16,8 +19,8 @@ div.color-sample {
   border-radius: 4px;
 }
 .typo-sample {
-  p {
-    color: var(--text-secondary) !important;
+  p.alphabet {
+    color: var(--text-secondary);
     margin: 0;
   }
 }

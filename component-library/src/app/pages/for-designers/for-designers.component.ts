@@ -32,7 +32,8 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
 
   designerHeadingSlug: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
-    title: 'Designers.Heading'
+    title: 'Designers.Heading',
+    heading: 'h1'
   };
   designerAboutHeadingSlug: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
