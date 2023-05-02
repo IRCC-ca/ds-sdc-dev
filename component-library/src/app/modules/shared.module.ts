@@ -16,14 +16,16 @@ import { TranslateModule } from '@ngx-translate/core';
     IrccDsAngularHeaderFooterModule,
     IrccDsAngularBannerModule,
     IrccDsAngularFormComponentsModule,
-    TranslateModule
+    TranslateModule,
+    IrccDsAngularFormComponentsModule
   ],
   exports: [
     IrccDsAngularComponentsSharedModule,
     IrccDsAngularHeaderFooterModule,
     IrccDsAngularBannerModule,
     IrccDsAngularFormComponentsModule,
-    TranslateModule
+    TranslateModule,
+    IrccDsAngularFormComponentsModule
   ]
 })
 export class SharedModule {}

@@ -18,6 +18,10 @@ import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
+import { InputComponent } from 'component-lib/src/public-api';
+import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,8 @@ import { ButtonDocumentationComponent } from '@app/pages/button-documentation/bu
     BannerDocumentationComponent,
     InteractiveDemoComponent,
     ButtonDocumentationComponent
+    InputDocumentationComponent,
+    ComponentPreviewComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +46,9 @@ import { ButtonDocumentationComponent } from '@app/pages/button-documentation/bu
     ClipboardModule,
     QaModule,
     HighlightModule,
-    AccessibilityDemoModule
+    AccessibilityDemoModule,
+    TranslateModule,
+    SharedModule
   ],
   exports: [
     TitleSlugUrlComponent,

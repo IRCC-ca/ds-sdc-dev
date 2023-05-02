@@ -27,6 +27,9 @@ import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility
 import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
 import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 import { ButtonDocumentationComponent } from './pages/button-documentation/button-documentation.component';
+import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
+import { BobbyComponent } from './pages/QA/bobby/bobby.component';
+import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -50,6 +53,7 @@ const routes: Routes = [
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'banner-doc', component: BannerDocumentationComponent },
     { path: 'button-doc', component: ButtonDocumentationComponent },
+    { path: 'input-documentation', component: InputDocumentationComponent },
 
     // French
     { path: 'aperçu', component: OverviewComponent },
@@ -57,6 +61,7 @@ const routes: Routes = [
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'banner-doc-fr', component: BannerDocumentationComponent },
     { path: 'button-doc-fr', component: ButtonDocumentationComponent },
+    { path: 'documentation dentree', component: InputDocumentationComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
@@ -67,9 +72,14 @@ const routes: Routes = [
     { path: 'mike-fr', component: MikeComponent }, //French
     { path: 'naseer-en', component: NaseerComponent }, //English
     { path: 'naseer-fr', component: NaseerComponent }, //French
+    { path: 'bobby-en', component: BobbyComponent }, //English
+    { path: 'bobby-fr', component: BobbyComponent }, //French
 
     { path: 'codeview', component: codeViewComponent },
     { path: 'codeview-fr', component: codeViewComponent },
+
+    { path: 'bobby-en', component: BobbyComponent }, //English
+    { path: 'bobby-fr', component: BobbyComponent },
 
     {
       path: 'accessibility-demo',
