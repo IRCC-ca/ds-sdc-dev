@@ -9,4 +9,13 @@
   >
     {{ 'Buttons.CopyCode' | translate }}
   </jds-button>
+  <jds-button
+    *ngIf="copyStyle"
+    [cdkCopyToClipboard]="copyStyle"
+    size="small"
+    category="plain"
+    class="copy"
+  >
+    {{ 'Buttons.CopyStyle' | translate }}
+  </jds-button>
 </div>

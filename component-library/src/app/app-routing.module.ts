@@ -17,6 +17,7 @@ import { ForDevelopersComponent } from './pages/for-developers/for-developers.co
 // import { PageUtilitiesComponent } from './pages/utilities/utilities.component';
 
 import { Shell } from './shell/shell.service';
+import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { MahsaComponent } from './pages/QA/mahsa/mahsa.component';
 import { MichaelComponent } from './pages/QA/michael/michael.component';
 import { MikeComponent } from './pages/QA/mike/mike.component';
@@ -24,6 +25,11 @@ import { NaseerComponent } from './pages/QA/naseer/naseer.component';
 import { AccessibilityDemoComponent } from './pages/QA/accessibility-demo/accessibility-demo.component';
 import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
+import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
+import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
+import { BobbyComponent } from './pages/QA/bobby/bobby.component';
+import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
+import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -45,11 +51,15 @@ const routes: Routes = [
     { path: 'overview', component: OverviewComponent },
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
+    { path: 'banner-doc', component: BannerDocumentationComponent },
+    { path: 'input-documentation', component: InputDocumentationComponent },
 
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
+    { path: 'banner-doc-fr', component: BannerDocumentationComponent },
+    { path: 'documentation-dentree', component: InputDocumentationComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
@@ -60,6 +70,14 @@ const routes: Routes = [
     { path: 'mike-fr', component: MikeComponent }, //French
     { path: 'naseer-en', component: NaseerComponent }, //English
     { path: 'naseer-fr', component: NaseerComponent }, //French
+    { path: 'bobby-en', component: BobbyComponent }, //English
+    { path: 'bobby-fr', component: BobbyComponent }, //French
+
+    { path: 'codeview', component: codeViewComponent },
+    { path: 'codeview-fr', component: codeViewComponent },
+
+    { path: 'bobby-en', component: BobbyComponent }, //English
+    { path: 'bobby-fr', component: BobbyComponent },
 
     {
       path: 'accessibility-demo',

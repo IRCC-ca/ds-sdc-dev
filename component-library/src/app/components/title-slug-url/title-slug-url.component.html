@@ -5,6 +5,7 @@
   {{ config.title | translate }}
 </h2>
 <a
+  [className]="config.anchorType"
   routerLink="{{ windowPathname }}"
   fragment="{{ config.title | translate | SlugifyPipe }}"
   cdkCopyToClipboard="{{ windowOrigin }}{{ windowPathname }}#{{
