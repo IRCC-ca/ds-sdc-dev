@@ -20,7 +20,6 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
-import { InputComponent } from 'component-lib/src/public-api';
 import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 
 @NgModule({
