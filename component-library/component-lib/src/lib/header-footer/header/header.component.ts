@@ -34,9 +34,6 @@ export class HeaderComponent {
   * ngOnInit checks for current url Language and subscribes to changes. Appropriate translation will be pulled as a result.
   */
   ngOnInit() {
-    /**
-     * testing comment inside ngOnInit()
-     */
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
