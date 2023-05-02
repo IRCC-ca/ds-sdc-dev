@@ -36,7 +36,7 @@ import { ComponentPreviewComponent } from '@app/components/component-preview/com
     codeViewComponent,
     BannerDocumentationComponent,
     InteractiveDemoComponent,
-    ButtonDocumentationComponent
+    ButtonDocumentationComponent,
     InputDocumentationComponent,
     ComponentPreviewComponent
   ],
