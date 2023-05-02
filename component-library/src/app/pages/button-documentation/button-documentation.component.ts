@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
+import { slugAnchorType, slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
 import { IButtonConfig, ICheckBoxComponentConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -23,7 +23,8 @@ export class ButtonDocumentationComponent implements OnInit {
 
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
-    title: 'Interactive Demo'
+    title: 'Interactive Demo',
+    anchorType: slugAnchorType.primary
   };
 
   buttonConfig: IButtonConfig = {
