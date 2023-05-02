@@ -41,6 +41,11 @@ export class QaComponent implements OnInit {
         category: 'secondary'
       },
       {
+        name: 'Bobby',
+        url: 'bobby',
+        category: 'secondary'
+      },
+      {
         name: 'Home',
         url: 'LandingPage',
         baseUrlOverride: 'BUTTONS.HomeURLOverride'

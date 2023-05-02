@@ -13,10 +13,15 @@ import { AccessibilityDemoModule } from '@app/pages/QA/accessibility-demo/access
 import { codeViewerComponent } from '@app/components/code-viewer/code-viewer.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { resizableContainerComponent } from '@app/components/resizable-container/resizable-container.component';
-import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
+import { InputComponent } from 'component-lib/src/public-api';
+import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
+import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
+import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,11 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     SafeHtmlPipe,
     codeViewComponent,
     BannerDocumentationComponent,
-    InteractiveDemoComponent
+    InteractiveDemoComponent,
+    InputDocumentationComponent,
+    ComponentPreviewComponent,
+    InteractiveDemoComponent,
+    InputDocCodeComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +47,9 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     ClipboardModule,
     QaModule,
     HighlightModule,
-    AccessibilityDemoModule
+    AccessibilityDemoModule,
+    TranslateModule,
+    SharedModule
   ],
   exports: [
     TitleSlugUrlComponent,

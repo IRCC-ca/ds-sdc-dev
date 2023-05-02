@@ -6,7 +6,8 @@ import { TranslatedPageComponent } from '../translated-page-component';
 
 import {
   slugTitleURLType,
-  slugTitleURLConfig
+  slugTitleURLConfig,
+  slugAnchorType
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({
@@ -19,14 +20,17 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
   currentLanguage: string = '';
   altLangLink = 'overview'; // ROUTE translation path
   slugTitleURLType = slugTitleURLType;
+  anchorType = slugAnchorType;
 
   overViewSlugTitleURLConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
-    title: 'Overview.Heading'
+    title: 'Overview.Heading',
+    anchorType: slugAnchorType.primary
   };
   contactSlugTitleURLConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
-    title: 'Overview.Contact'
+    title: 'Overview.Contact',
+    anchorType: slugAnchorType.primary
   };
 
   constructor(
