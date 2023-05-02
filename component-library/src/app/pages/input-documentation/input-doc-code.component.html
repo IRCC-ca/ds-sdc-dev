@@ -1,0 +1,23 @@
+<app-interactive-demo>
+  <ircc-cl-lib-tabs
+    tabs
+    (valueChange)="setBannerType($event)"
+    [config]="demoTabsConfig"
+  >
+  </ircc-cl-lib-tabs>
+  <div
+    component
+    class="input-container"
+    #input
+  >
+    <ircc-cl-lib-input [config]="inputConfig"></ircc-cl-lib-input>
+  </div>
+  <ng-container toggles>
+    <ng-container *ngFor="let toggle of toggles">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxes">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+</app-interactive-demo>

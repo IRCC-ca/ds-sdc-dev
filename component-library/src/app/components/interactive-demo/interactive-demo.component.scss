@@ -1,9 +1,10 @@
-@use '../../../../../core-library/tokens/sizes' as token-size;
-@use '../../../../../core-library/util/size' as size;
-@use '../../../../../core-library/tokens/sizes';
+@use "../../../../../core-library/tokens/sizes" as token-size;
+@use "../../../../../core-library/util/size" as size;
+@use "../../../../../core-library/tokens/sizes";
 
 .container {
   border-radius: 5px;
+  padding-bottom: 4px;
   border-width: sizes.$fixed-1;
   border-color: var(--neutral-border);
   border-style: solid;
@@ -42,9 +43,13 @@
   }
 
   .toggles {
-    margin: 16px 28px 28px 28px;
+    margin: 16px 28px 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 24px;
+  }
+
+  .tabs {
+    padding: 12px 12px 0;
   }
 }

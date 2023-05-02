@@ -30,6 +30,7 @@ import { ButtonDocumentationComponent } from './pages/button-documentation/butto
 import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
 import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
+import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
