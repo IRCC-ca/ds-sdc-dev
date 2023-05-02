@@ -191,6 +191,9 @@ export class BannerDocumentationComponent implements OnInit {
     ]
   };
 
+  /**
+   * Set banner type based on the tab selected
+   */
   setBannerType(value: any) {
     if (value === 'info') {
       this.bannerConfig.type = 'info';
@@ -205,6 +208,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * eAdd item to CTA list
+   */
   addItemtoCTAList(text: string) {
     const plainExample: ICTAConfig = {
       text: 'Plain',
@@ -251,6 +257,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * remove specific item from cta array if it exists
+   */
   removeItemFromCTAList(text: string) {
     const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
       return object.text === text;
@@ -261,6 +270,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * disable radio button based on id
+   */
   disableRadio(name: string) {
     this.toggles.forEach((item) => {
       if (item.id === name) {
@@ -269,6 +281,9 @@ export class BannerDocumentationComponent implements OnInit {
     });
   }
 
+  /**
+   * enable radio button based on id
+   */
   enableRadio(name: string) {
     this.toggles.forEach((item) => {
       if (item.id === name) {
@@ -277,6 +292,9 @@ export class BannerDocumentationComponent implements OnInit {
     });
   }
 
+  /**
+   * Handles banner dismiss animation
+   */
   bannerClose(event: Event) {
     const bannerContainer = this.banner.nativeElement.querySelector(
       `#${event}`
@@ -290,6 +308,9 @@ export class BannerDocumentationComponent implements OnInit {
     }, 700);
   }
 
+  /**
+   * Disables/Enables button/link radios (Max 2 allowed on the banner at a time)
+   */
   checkCurrentButtonCounter() {
     if (this.currentButtonSet.size >= 2) {
       this.buttonSetWithAllOptions.forEach((btn) => {
@@ -304,10 +325,16 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * toggle between small and large size
+   */
   handleSizeToggle(value: any) {
     this.bannerConfig.size = value['showSizeToggle'].toLowerCase();
   }
 
+  /**
+   * Hide or show close icon on test banner based on radio selection
+   */
   handleCloseToggle(value: any) {
     if (value['showCloseToggle'] === 'True') {
       this.bannerConfig.dismissible = true;
@@ -316,6 +343,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show Title on test banner based on radio selection
+   */
   handleTitleToggle(value: any) {
     if (value['showTitleToggle'] === 'True') {
       this.bannerConfig.title = 'Title text';
@@ -333,6 +363,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show Primary button on test banner based on radio selection
+   */
   handlePrimaryButtonToggle(value: any) {
     if (value['showPrimaryButtonToggle'] === 'True') {
       this.addItemtoCTAList('Primary');
@@ -345,6 +378,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show Secondary button on test banner based on radio selection
+   */
   handleSecondaryButtonToggle(value: any) {
     if (value['showSecondaryButtonToggle'] === 'True') {
       this.addItemtoCTAList('Secondary');
@@ -357,6 +393,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show plain button on test banner based on radio selection
+   */
   handlePlainButtonToggle(value: any) {
     if (value['showPlainButtonToggle'] === 'True') {
       this.addItemtoCTAList('Plain');
@@ -369,6 +408,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show Link on test banner based on radio selection
+   */
   handleLinkToggle(value: any) {
     if (value['showLinkToggle'] === 'True') {
       this.addItemtoCTAList('Link');
@@ -381,6 +423,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Set default/initial value for each toggle
+   */
   track_toggles = {
     showSizeToggle: 'Large',
     showCloseToggle: 'False',
@@ -392,6 +437,9 @@ export class BannerDocumentationComponent implements OnInit {
     showLinkToggle: 'False'
   };
 
+  /**
+   * Calls the correct function based on the toggle id
+   */
   toggle_function = {
     showSizeToggle: this.handleSizeToggle,
     showCloseToggle: this.handleCloseToggle,
@@ -417,7 +465,7 @@ export class BannerDocumentationComponent implements OnInit {
 
     this.form_interactive_banner.valueChanges.subscribe((value: any) => {
       for (const param in value) {
-        if (this.track_toggles[param] === value[param]) continue;
+        if (this.track_toggles[param] === value[param]) continue; //if value did not change for specific param, will continue to the next param
         this.track_toggles[param] = value[param];
         this.toggle_function[param].apply(this, [value]);
       }

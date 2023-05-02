@@ -125,13 +125,17 @@ export class ButtonDocumentationComponent implements OnInit {
     ]
   };
 
+  /**
+   * toggle between small and large size
+   */
   handleSizeToggle(value: any) {
     this.buttonConfig.size = value['showSizeToggle'].toLowerCase();
-    console.log('Button config size', this.buttonConfig.size)
   }
 
+  /**
+   * position icon based on config
+   */
   handleIconToggle(value: any) {
-    console.log('handleIconToggle', value)
     this.buttonConfig.icon ='fa-regular fa-igloo'
     if (value['showIconToggle'] === 'Leading') {
       this.buttonConfig.iconDirection='left'
@@ -144,6 +148,9 @@ export class ButtonDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * toggle between critical and default button
+   */
   handleCriticalToggle(value: any) {
     if (value['showCriticalToggle'] === 'True') {
       this.buttonConfig.color = 'critical';
@@ -152,6 +159,9 @@ export class ButtonDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * toggle between disabled and enabled state
+   */
   handleSelectCheckbox(value : any) {
     if (value['showSelectToggle']) {
       this.buttonConfig.disabled = true;
@@ -160,6 +170,9 @@ export class ButtonDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * toggle between type of layout selected
+   */
   handleLayoutToggle(value : any) {
     if (value['showLayoutToggle']  === 'Fluid') {
       this.layoutFluid = true
@@ -168,6 +181,9 @@ export class ButtonDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Set button category based on the tab selected
+   */
   setButtonCategory(value: any) {
     if (value === 'primary') {
       this.buttonConfig.category = 'primary';
@@ -178,6 +194,9 @@ export class ButtonDocumentationComponent implements OnInit {
     } 
   }
 
+  /**
+   * Assign initial value for radio based on id
+   */
   assignToggleDefaultValues(toggleID : string, toggle : IRadioInputComponentConfig) {
     if (toggle.options) {
       switch(toggleID) {
@@ -198,6 +217,9 @@ export class ButtonDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Set default/initial value for each toggle
+   */
   track_toggles = {
     showSizeToggle: 'Large',
     showIconToggle: 'None',
@@ -206,6 +228,9 @@ export class ButtonDocumentationComponent implements OnInit {
     showLayoutToggle: 'Fluid'
   };
 
+  /**
+   * Calls the correct function based on the toggle id
+   */
   toggle_function = {
     showSizeToggle: this.handleSizeToggle,
     showIconToggle: this.handleIconToggle,
@@ -235,7 +260,7 @@ export class ButtonDocumentationComponent implements OnInit {
 
     this.form_interactive_button.valueChanges.subscribe((value: any) => {
       for (const param in value) {
-        if (this.track_toggles[param] === value[param]) continue;
+        if (this.track_toggles[param] === value[param]) continue; //if value did not change for specific param, will continue to the next param
         this.track_toggles[param] = value[param];
         this.toggle_function[param].apply(this, [value]);
       }
