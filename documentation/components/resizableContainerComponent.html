@@ -38,7 +38,7 @@
   <li>Components</li>
   <li
   >
-  ProgressTagsComponent</li>
+  resizableContainerComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -52,6 +52,9 @@
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
         </li>
         <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -61,18 +64,12 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts</code>
+    <code>component-library/src/app/components/resizable-container/resizable-container.component.ts</code>
 </p>
 
 
 
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-    </p>
 
 
 <section>
@@ -92,15 +89,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ircc-cl-lib-progress-tags</code></td>
+                <td class="col-md-9"><code>app-resizable-container</code></td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./resizable-container.component.scss</code></td>
+            </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./progress-tags.component.html</code></td>
+                <td class="col-md-9"><code>./resizable-container.component.html</code></td>
             </tr>
 
 
@@ -127,7 +128,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#text" >text</a>
+                                <a href="#dragListener" >dragListener</a>
+                            </li>
+                            <li>
+                                <a href="#isDragging" >isDragging</a>
+                            </li>
+                            <li>
+                                <a href="#resizeBar" >resizeBar</a>
+                            </li>
+                            <li>
+                                <a href="#resizeButtonConfig" >resizeButtonConfig</a>
+                            </li>
+                            <li>
+                                <a href="#resizeContainer" >resizeContainer</a>
                             </li>
                         </ul>
                     </td>
@@ -142,13 +155,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ngOnChanges" >ngOnChanges</a>
-                            </li>
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                            <li>
-                                <a href="#setTypeTitle" >setTypeTitle</a>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
                             </li>
                         </ul>
                     </td>
@@ -163,21 +170,29 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#config" >config</a>
+                                <a href="#minHeight" >minHeight</a>
                             </li>
                             <li>
-                                <a href="#id" >id</a>
-                            </li>
-                            <li>
-                                <a href="#size" >size</a>
-                            </li>
-                            <li>
-                                <a href="#type" >type</a>
+                                <a href="#setHeight" >setHeight</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getHeight" >getHeight</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -191,12 +206,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(translate: TranslateService)</code>
+<code>constructor(renderer: <a href="https://angular.io/api/core/Renderer2" target="_blank">Renderer2</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -214,10 +229,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>translate</td>
+                                                        <td>renderer</td>
                                                   
                                                         <td>
-                                                                    <code>TranslateService</code>
+                                                                        <code><a href="https://angular.io/api/core/Renderer2" target="_blank" >Renderer2</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -240,26 +255,24 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="config"></a>
-                        <b>config</b>
+                        <a name="minHeight"></a>
+                        <b>minHeight</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/IProgressTagsConfig.html" target="_self" >IProgressTagsConfig</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>{
-    id: &#x27;&#x27;
-  }</code>
+                        <i>Default value : </i><code>150</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:23</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -268,72 +281,53 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="id"></a>
-                        <b>id</b>
+                        <a name="setHeight"></a>
+                        <b>setHeight</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                        <i>Default value : </i><code>150</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:42</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="size"></a>
-                        <b>size</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code> | DSSizes</code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:44</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="type"></a>
-                        <b>type</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#TagType" target="_self" > | TagType</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:24</a></div>
                             </td>
                         </tr>
             </tbody>
         </table>
 </section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getHeight"></a>
+                        <b>getHeight</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
 
 
     <section>
@@ -345,98 +339,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="ngOnChanges"></a>
+                    <a name="ngAfterViewInit"></a>
                     <span class="name">
-                        <span ><b>ngOnChanges</b></span>
-                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ngOnChanges()</code>
+<code>ngAfterViewInit()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:58</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:48</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setTypeTitle"></a>
-                    <span class="name">
-                        <span ><b>setTypeTitle</b></span>
-                        <a href="#setTypeTitle"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>setTypeTitle()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:44</a></div>
                 </td>
             </tr>
 
@@ -462,27 +382,157 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="text"></a>
+                    <a name="dragListener"></a>
                     <span class="name">
-                        <span ><b>text</b></span>
-                        <a href="#text"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>dragListener</b></span>
+                        <a href="#dragListener"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>string[]</code>
+                        <i>Type : </i>    <code>Function | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDragging"></a>
+                    <span class="name">
+                        <span ><b>isDragging</b></span>
+                        <a href="#isDragging"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizeBar"></a>
+                    <span class="name">
+                        <span ><b>resizeBar</b></span>
+                        <a href="#resizeBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef | undefined</code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>[]</code>
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;resizeBar&#x27;, {static: false})<br />
+                        </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">component-library/component-lib/src/lib/shared/progress-tags/progress-tags.component.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizeButtonConfig"></a>
+                    <span class="name">
+                        <span ><b>resizeButtonConfig</b></span>
+                        <a href="#resizeButtonConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IIconButtonComponentConfig.html" target="_self" >IIconButtonComponentConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;resize_button&#x27;,
+    category: &#x27;custom&#x27;,
+    size: &#x27;small&#x27;,
+    ariaLabel: &#x27;RESIZE_ARIA&#x27;,
+    icon: {
+      class: &#x27;fa-regular fa-grip-lines&#x27;,
+      color: &#x27;var(--text-primary)&#x27;
+    }
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizeContainer"></a>
+                    <span class="name">
+                        <span ><b>resizeContainer</b></span>
+                        <a href="#resizeContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;resizeContainer&#x27;, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">component-library/src/app/components/resizable-container/resizable-container.component.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -495,76 +545,96 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnChanges, OnInit } from &#x27;@angular/core&#x27;;
-import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
-import { DSSizes } from &#x27;../../../shared/constants/jl-components.constants&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  Renderer2,
+  ViewChild
+} from &#x27;@angular/core&#x27;;
+import { IIconButtonComponentConfig } from &#x27;ircc-ds-angular-component-library&#x27;;
 
-export const TAG_LABELS_EN &#x3D; [
-  &#x27;In Progress&#x27;,
-  &#x27;Completed&#x27;,
-  &#x27;Error&#x27;,
-  &#x27;Locked&#x27;,
-  &#x27;Not started&#x27;
-];
-export const TAG_LABELS_FR &#x3D; [
-  &#x27;En cours&#x27;,
-  &#x27;Complété&#x27;,
-  &#x27;Erreur&#x27;,
-  &#x27;Verrouillé&#x27;,
-  &#x27;Pas commencé&#x27;
-];
-
-export enum TagType {
-  primary &#x3D; &#x27;primary&#x27;,
-  success &#x3D; &#x27;success&#x27;,
-  critical &#x3D; &#x27;critical&#x27;,
-  locked &#x3D; &#x27;locked&#x27;,
-  notStarted &#x3D; &#x27;notStarted&#x27;
-}
-export interface IProgressTagsConfig {
-  id: string;
-  type?: keyof typeof TagType;
-  size?: keyof typeof DSSizes;
-}
 @Component({
-  selector: &#x27;ircc-cl-lib-progress-tags&#x27;,
-  templateUrl: &#x27;./progress-tags.component.html&#x27;
+  selector: &#x27;app-resizable-container&#x27;,
+  templateUrl: &#x27;./resizable-container.component.html&#x27;,
+  styleUrls: [&#x27;./resizable-container.component.scss&#x27;]
 })
-export class ProgressTagsComponent implements OnInit {
-  text: string[] &#x3D; [];
+export class resizableContainerComponent {
+  @ViewChild(&#x27;resizeBar&#x27;, { static: false }) resizeBar: ElementRef | undefined;
+  @ViewChild(&#x27;resizeContainer&#x27;, { static: false }) resizeContainer:
+    | ElementRef
+    | undefined;
 
-  @Input() config: IProgressTagsConfig &#x3D; {
-    id: &#x27;&#x27;
-  };
-  @Input() id &#x3D; &#x27;&#x27;;
-  @Input() type?: keyof typeof TagType | TagType;
-  @Input() size?: keyof typeof DSSizes | DSSizes;
+  @Input() minHeight: number &#x3D; 150;
+  @Input() setHeight: number &#x3D; 150;
 
-  constructor(private translate: TranslateService) {}
+  @Output() getHeight &#x3D; new EventEmitter&lt;number&gt;();
 
-  ngOnInit(): void {
-    if (this.id) this.config.id &#x3D; this.id;
-    if (this.type) this.config.type &#x3D; this.type;
-    if (this.size) this.config.size &#x3D; this.size;
-    this.setTypeTitle();
-    this.translate.onLangChange.subscribe(() &#x3D;&gt; {
-      this.setTypeTitle();
-    });
-  }
+  isDragging &#x3D; false;
+  dragListener: Function | undefined;
 
-  ngOnChanges() {
-    this.setTypeTitle();
-  }
-
-  setTypeTitle() {
-    if (
-      this.translate.currentLang &#x3D;&#x3D;&#x3D; &#x27;en&#x27; ||
-      this.translate.currentLang &#x3D;&#x3D;&#x3D; &#x27;en-US&#x27;
-    ) {
-      this.text &#x3D; TAG_LABELS_EN;
-    } else {
-      this.text &#x3D; TAG_LABELS_FR;
+  resizeButtonConfig: IIconButtonComponentConfig &#x3D; {
+    id: &#x27;resize_button&#x27;,
+    category: &#x27;custom&#x27;,
+    size: &#x27;small&#x27;,
+    ariaLabel: &#x27;RESIZE_ARIA&#x27;,
+    icon: {
+      class: &#x27;fa-regular fa-grip-lines&#x27;,
+      color: &#x27;var(--text-primary)&#x27;
     }
+  };
+
+  constructor(private renderer: Renderer2) {}
+
+  ngAfterViewInit() {
+    if (this.resizeContainer) {
+      this.renderer.setStyle(
+        this.resizeContainer.nativeElement,
+        &#x27;min-height&#x27;,
+        this.minHeight + &#x27;px&#x27;
+      );
+      this.renderer.setStyle(
+        this.resizeContainer.nativeElement,
+        &#x27;height&#x27;,
+        this.setHeight + &#x27;px&#x27;
+      );
+    }
+
+    if (this.resizeBar) {
+      this.dragListener &#x3D; this.renderer.listen(
+        this.resizeBar?.nativeElement,
+        &#x27;mousedown&#x27;,
+        () &#x3D;&gt; {
+          this.isDragging &#x3D; true;
+        }
+      );
+    }
+
+    this.dragListener &#x3D; this.renderer.listen(
+      &#x27;document&#x27;,
+      &#x27;mousemove&#x27;,
+      (event: MouseEvent) &#x3D;&gt; {
+        if (this.isDragging &amp;&amp; this.resizeContainer) {
+          this.renderer.setStyle(
+            this.resizeContainer.nativeElement,
+            &#x27;height&#x27;,
+            this.resizeContainer.nativeElement.getBoundingClientRect().height +
+              event.movementY +
+              &#x27;px&#x27;
+          );
+          this.getHeight.emit(
+            this.resizeContainer.nativeElement.getBoundingClientRect().height +
+              event.movementY
+          );
+        }
+      }
+    );
+
+    this.dragListener &#x3D; this.renderer.listen(&#x27;document&#x27;, &#x27;mouseup&#x27;, () &#x3D;&gt; {
+      this.isDragging &#x3D; false;
+    });
   }
 }
 </code></pre>
@@ -572,45 +642,58 @@ export class ProgressTagsComponent implements OnInit {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div
-  class&#x3D;&quot;{{ config?.size }}&quot;
-  id&#x3D;&quot;{{ config?.id }}&quot;
-  class&#x3D;&quot;tag-component&quot;
-  [ngClass]&#x3D;&quot;{
-    success: config?.type &#x3D;&#x3D;&#x3D; &#x27;success&#x27;,
-    critical: config?.type &#x3D;&#x3D;&#x3D; &#x27;critical&#x27;,
-    neutral: config?.type &#x3D;&#x3D;&#x3D; &#x27;locked&#x27; || config?.type &#x3D;&#x3D;&#x3D; &#x27;notStarted&#x27;
-  }&quot;
+  #resizeContainer
+  class&#x3D;&quot;resize-container&quot;
 &gt;
-  &lt;div class&#x3D;&quot;tag-container&quot;&gt;
-    &lt;div class&#x3D;&quot;tag-left&quot;&gt;
-      &lt;ng-container [ngSwitch]&#x3D;&quot;config?.type&quot;&gt;
-        &lt;div *ngSwitchCase&#x3D;&quot;&#x27;success&#x27;&quot;&gt;
-          &lt;i class&#x3D;&quot;fa-circle-check fa-regular tag-icon&quot;&gt;&lt;/i&gt;
-          &lt;span class&#x3D;&quot;content&quot;&gt;{{ text[1] }}&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div *ngSwitchCase&#x3D;&quot;&#x27;critical&#x27;&quot;&gt;
-          &lt;i class&#x3D;&quot;fa-circle-exclamation fa-regular tag-icon&quot;&gt;&lt;/i&gt;
-          &lt;span class&#x3D;&quot;content&quot;&gt;{{ text[2] }}&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div *ngSwitchCase&#x3D;&quot;&#x27;locked&#x27;&quot;&gt;
-          &lt;i class&#x3D;&quot;fa-light fa-lock tag-icon&quot;&gt;&lt;/i&gt;
-          &lt;span class&#x3D;&quot;content&quot;&gt;{{ text[3] }}&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div *ngSwitchCase&#x3D;&quot;&#x27;notStarted&#x27;&quot;&gt;
-          &lt;i class&#x3D;&quot;fa-light fa-circle tag-icon&quot;&gt;&lt;/i&gt;
-          &lt;span class&#x3D;&quot;content&quot;&gt;{{ text[4] }}&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div *ngSwitchDefault&gt;
-          &lt;i class&#x3D;&quot;fa-regular fa-circle-half-stroke tag-icon&quot;&gt;&lt;/i&gt;
-          &lt;span class&#x3D;&quot;content&quot;&gt;{{ text[0] }}&lt;/span&gt;
-        &lt;/div&gt;
-      &lt;/ng-container&gt;
-    &lt;/div&gt;
+  &lt;div class&#x3D;&quot;resize-content&quot;&gt;&lt;ng-content&gt;&lt;/ng-content&gt;&lt;/div&gt;
+  &lt;div
+    #resizeBar
+    class&#x3D;&quot;resize-bar&quot;
+  &gt;
+    &lt;ircc-cl-lib-icon-button
+      [config]&#x3D;&quot;resizeButtonConfig&quot;
+      class&#x3D;&quot;tabs-btn&quot;
+    &gt;
+    &lt;/ircc-cl-lib-icon-button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
 
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./resizable-container.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.resize-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .resize-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+  }
+  .resize-bar {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    cursor: row-resize;
+    ircc-cl-lib-icon-button {
+      button {
+        padding: 10px 10px 4px 10px;
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -637,10 +720,10 @@ export class ProgressTagsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  class="{{ config?.size }}"  id="{{ config?.id }}"  class="tag-component"  [ngClass]="{    success: config?.type === \'success\',    critical: config?.type === \'critical\',    neutral: config?.type === \'locked\' || config?.type === \'notStarted\'  }">  <div class="tag-container">    <div class="tag-left">      <ng-container [ngSwitch]="config?.type">        <div *ngSwitchCase="\'success\'">          <i class="fa-circle-check fa-regular tag-icon"></i>          <span class="content">{{ text[1] }}</span>        </div>        <div *ngSwitchCase="\'critical\'">          <i class="fa-circle-exclamation fa-regular tag-icon"></i>          <span class="content">{{ text[2] }}</span>        </div>        <div *ngSwitchCase="\'locked\'">          <i class="fa-light fa-lock tag-icon"></i>          <span class="content">{{ text[3] }}</span>        </div>        <div *ngSwitchCase="\'notStarted\'">          <i class="fa-light fa-circle tag-icon"></i>          <span class="content">{{ text[4] }}</span>        </div>        <div *ngSwitchDefault>          <i class="fa-regular fa-circle-half-stroke tag-icon"></i>          <span class="content">{{ text[0] }}</span>        </div>      </ng-container>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div  #resizeContainer  class="resize-container">  <div class="resize-content"><ng-content></ng-content></div>  <div    #resizeBar    class="resize-bar"  >    <ircc-cl-lib-icon-button      [config]="resizeButtonConfig"      class="tabs-btn"    >    </ircc-cl-lib-icon-button>  </div></div></div>'
     var COMPONENTS = [{'name': 'accordionContainerComponent', 'selector': 'app-accordian-container'},{'name': 'AutocompleteComponent', 'selector': 'lib-autocomplete'},{'name': 'BannerComponent', 'selector': 'ircc-cl-lib-banner'},{'name': 'BreadcrumbComponent', 'selector': 'ircc-cl-lib-breadcrumb'},{'name': 'BreadcrumbLinkComponent', 'selector': 'ircc-cl-lib-breadcrumb-link'},{'name': 'ButtonComponent', 'selector': 'ircc-cl-lib-button'},{'name': 'CheckboxComponent', 'selector': 'ircc-cl-lib-checkbox'},{'name': 'ChipItemComponent', 'selector': 'lib-chip-item'},{'name': 'ChipListComponent', 'selector': 'lib-chip-list'},{'name': 'codeViewerComponent', 'selector': 'app-code-viewer'},{'name': 'ComponentPreviewComponent', 'selector': 'app-component-preview'},{'name': 'DatePickerComponent', 'selector': 'ircc-cl-lib-date-picker'},{'name': 'DropdownComponent', 'selector': 'ircc-cl-lib-dropdown'},{'name': 'ErrorComponent', 'selector': 'ircc-cl-lib-error'},{'name': 'FlyoutComponent', 'selector': 'ircc-cl-lib-flyout'},{'name': 'FlyoutOptionComponent', 'selector': 'ircc-cl-lib-flyout-option'},{'name': 'FooterComponent', 'selector': 'ircc-cl-lib-footer'},{'name': 'HeaderComponent', 'selector': 'ircc-cl-lib-header'},{'name': 'HiddenNavComponent', 'selector': 'ircc-cl-lib-hidden-nav'},{'name': 'IconButtonComponent', 'selector': 'ircc-cl-lib-icon-button'},{'name': 'IconComponent', 'selector': 'ircc-cl-lib-icon'},{'name': 'IndicatorComponent', 'selector': 'lib-indicator'},{'name': 'InfoTextSmallComponent', 'selector': 'app-info-text-small'},{'name': 'InputComponent', 'selector': 'ircc-cl-lib-input'},{'name': 'InteractiveDemoComponent', 'selector': 'app-interactive-demo'},{'name': 'LabelComponent', 'selector': 'ircc-cl-lib-label'},{'name': 'LanguageSwitchComponent', 'selector': 'ircc-cl-lib-language-switch'},{'name': 'ProgressIndicatorComponent', 'selector': 'ircc-cl-lib-progress-indicator'},{'name': 'ProgressTagsComponent', 'selector': 'ircc-cl-lib-progress-tags'},{'name': 'RadioInputComponent', 'selector': 'ircc-cl-lib-radio-input'},{'name': 'resizableContainerComponent', 'selector': 'app-resizable-container'},{'name': 'SearchInputComponent', 'selector': 'lib-search-input'},{'name': 'SecondaryChipsComponent', 'selector': 'lib-secondary-chips'},{'name': 'SelectComponent', 'selector': 'ircc-cl-lib-select'},{'name': 'SpinnerComponent', 'selector': 'ircc-cl-lib-spinner'},{'name': 'TabsComponent', 'selector': 'ircc-cl-lib-tabs'},{'name': 'TextareaComponent', 'selector': 'ircc-cl-lib-textarea'},{'name': 'TitleSlugUrlComponent', 'selector': 'app-title-slug-url'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'ProgressTagsComponent'};
+    var ACTUAL_COMPONENT = {'name': 'resizableContainerComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -686,7 +769,7 @@ export class ProgressTagsComponent implements OnInit {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'ProgressTagsComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'resizableContainerComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
