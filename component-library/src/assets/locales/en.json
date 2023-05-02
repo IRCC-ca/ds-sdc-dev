@@ -1,5 +1,6 @@
 {
   "Home": {
+    "Title": "Home",
     "DateModified": "Date Modified"
   },
   "ROUTES": {
@@ -17,7 +18,8 @@
     "bobby": "bobby-en",
     "AccessibilityDemo": "accessibility-demo",
     "AccessibilityDemoNext": "accessibility-demo-next",
-    "AccessibilityDemoPrevious": "accessibility-demo-previous"
+    "AccessibilityDemoPrevious": "accessibility-demo-previous",
+    "QATesting": "qa"
   },
   "Buttons": {
     "Title": "Buttons",
@@ -476,6 +478,10 @@
   },
   "Indicator": {
     "Heading": "Indicator"
+  },
+  "QA": {
+    "header": "QA Landing Page",
+    "michael": "Michael"
   },
   "DEMO_COMPONENT": {
     "ACCORDION_OPEN": "Hide configurations",

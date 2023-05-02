@@ -1,5 +1,6 @@
 {
   "Home": {
+    "Title": "Accueil",
     "DateModified": "Date de modification"
   },
   "ROUTES": {
@@ -17,7 +18,8 @@
     "bobby": "bobby-fr",
     "AccessibilityDemo": "démo-d'accessibilité",
     "AccessibilityDemoNext": "démo-d'accessibilité-prochaine",
-    "AccessibilityDemoPrevious": "démo-d'accessibilité-précédent"
+    "AccessibilityDemoPrevious": "démo-d'accessibilité-précédent",
+    "QATesting": "aq"
   },
   "Buttons": {
     "Title": "Boutons",
@@ -472,6 +474,10 @@
   },
   "Indicator": {
     "Heading": "Indicateur"
+  },
+  "QA": {
+    "header": "Page de destination du contrôle qualité",
+    "michael": "Michael"
   },
   "DEMO_COMPONENT": {
     "ACCORDION_OPEN": "Masquer les configurations",
