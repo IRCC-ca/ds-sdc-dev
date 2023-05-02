@@ -29,6 +29,7 @@ import { BannerDocumentationComponent } from './pages/banner-documentation/banne
 import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
 import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
+import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -58,7 +59,7 @@ const routes: Routes = [
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'banner-doc-fr', component: BannerDocumentationComponent },
-    { path: 'documentation dentree', component: InputDocumentationComponent },
+    { path: 'documentation-dentree', component: InputDocumentationComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
