@@ -130,6 +130,6 @@ const params = {
 
   console.log(`Upload Done!`);
   console.log(
-    `Visit your QA site at: https://d2e3hkuvxc74rw.cloudfront.net/${branhcName}/index.html`
+    `Visit your QA site at: https://d1whfh0luwluq8.cloudfront.net/${branhcName}/index.html`
   );
 })();
