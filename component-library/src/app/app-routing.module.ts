@@ -53,15 +53,13 @@ const routes: Routes = [
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'banner-doc', component: BannerDocumentationComponent },
     { path: 'input-documentation', component: InputDocumentationComponent },
-    { path: 'input-doc', component: InputDocDemoComponent },
 
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'banner-doc-fr', component: BannerDocumentationComponent },
-    { path: 'documentation dentree', component: InputDocumentationComponent },
-    { path: 'input-doc-fr', component: InputDocDemoComponent },
+    { path: 'documentation-dentree', component: InputDocumentationComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English

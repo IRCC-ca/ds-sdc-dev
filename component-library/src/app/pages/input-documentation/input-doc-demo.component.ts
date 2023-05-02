@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TranslatedPageComponent } from '@app/pages/translated-page-component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
-  slugTitleURLConfig,
-  slugTitleURLType
-} from '@app/components/title-slug-url/title-slug-url.component';
-import {
   ICheckBoxComponentConfig,
   IInputComponentConfig,
   IRadioInputComponentConfig,
@@ -24,11 +20,6 @@ export class InputDocDemoComponent implements OnInit, TranslatedPageComponent {
   constructor(private lang: LangSwitchService) {}
 
   form_interactive_input = new FormGroup({});
-
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
-    title: 'Interactive Demo'
-  };
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
