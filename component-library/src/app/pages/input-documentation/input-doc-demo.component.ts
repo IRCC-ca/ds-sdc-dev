@@ -14,13 +14,11 @@ import {
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-documentation',
-  templateUrl: './input-documentation.component.html',
-  styleUrls: ['./input-documentation.component.scss']
+  selector: 'app-input-doc-demo',
+  templateUrl: './input-doc-demo.component.html',
+  styleUrls: ['./input-doc-demo.component.scss']
 })
-export class InputDocumentationComponent
-  implements OnInit, TranslatedPageComponent
-{
+export class InputDocDemoComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'inputDocumentation';
 
   constructor(private lang: LangSwitchService) {}
