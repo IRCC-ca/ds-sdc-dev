@@ -1,0 +1,4 @@
+{
+    "include": ["component-library/component-lib/src/lib/**/*.ts"],
+    "exclude": []
+  }
