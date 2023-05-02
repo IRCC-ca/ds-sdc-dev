@@ -209,7 +209,7 @@ export class BannerDocumentationComponent implements OnInit {
   }
 
   /**
-   * eAdd item to CTA list
+   * Add item to CTA list
    */
   addItemtoCTAList(text: string) {
     const plainExample: ICTAConfig = {
