@@ -84,7 +84,7 @@ async function* getFiles(dir) {
 const ID = process.env.AWS_ACCESS_KEY_ID;
 const SECRET = process.env.AWS_SECRET_ACCESS_KEY;
 const REGION = "ca-central-1";
-const BUCKET_NAME = "jl-ds-qa-test";
+const BUCKET_NAME = "jl-ds-qa";
 const params = {
   region: "REGION",
 };
