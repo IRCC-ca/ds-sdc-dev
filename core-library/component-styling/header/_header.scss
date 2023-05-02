@@ -27,6 +27,15 @@
     .heading {
         container-type: inline-size;
         container-name: header-container;
+        display: flex;
+        justify-content: space-between;
+        // align-items: center;
+        margin: 0;
+        padding: 0;
+        // @include device.in-phone-layout(){
+        //     align-items: flex-start;
+        // }
+
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -41,12 +50,14 @@
 
             @include device.in-phone-layout() {
                 width: 249px;
-                margin-left: 16px;
+                // height: 23.52px;
+                margin-left: 8px;
             }
 
             #canada-home-img-link {
                 height: 75px;
                 padding: 0;
+
                 @include device.if-hover {
                     background-color: transparent;
                 }
@@ -54,7 +65,7 @@
 
             img {
                 width: 100%;
-                height: 100%;   
+                height: 100%;
                 object-fit: contain;
             }
         }
@@ -62,37 +73,64 @@
         .languageSwitch {
             justify-self: end;
             align-self: center;
-            @include device.in-phone-layout(){
+
+            @include device.in-phone-layout() {
                 margin-right: 16px;
             }
         }
     }
-        
-    @container header-container (width > 90vw) {
+
+    @container header-container (width: calc(100vw - 16px)) {
         .image-container {
-            margin-left: 20px;
+            margin-left: 12px;
         }
 
-        .languageSwitch {
-            margin-right: 20px;
+        @container header-container (width > 90vw) {
+            .image-container {
+                margin-left: 20px;
+            }
+
+            .languageSwitch {
+                margin-right: 20px;
+            }
+
+            .headerLine {
+                overflow: visible;
+                margin-left: -8px;
+                margin-right: -8px;
+            }
         }
+
         .headerLine {
-            overflow: visible;
-            margin-left: -8px;
-            margin-right: -8px;
+            container-type: inline-size;
+            container-name: headerLine-container;
+            color: var(--header-line);
+            border-width: sizes.$fixed-2;
+            border-style: solid;
+            margin-top: 0;
+            margin-bottom: 0;
+            // @media (width: calc(100vw - 16px)) {
+            //     margin-right: -8px;
+            //     margin-left: -8px;
+            //   }
+            // margin-right: -8px;
+            // margin-left: -8px;
+            // @include device.in-phone-layout() {
+            //     margin-right: -8px;
+            //     margin-left: -8px;
+            // }
+            // // @include device.in-tablet-layout() {
+            //     @media (max-width: 979px) {
+            //     margin-right: -8px;
+            //     margin-left: -8px;
+            // }
         }
-    }
-    
-    .headerLine {
 
-        color: var(--header-line);
-        border-width: sizes.$fixed-2;
-        border-style: solid;
-        margin-top: 0;
-        margin-bottom: 0;
-        @include device.in-phone-layout() {
+        @container headerLine-container (width: calc(100vw - 16px)) {
+
             margin-left: -8px;
             margin-right: -8px;
+
         }
     }
 }

@@ -16,6 +16,10 @@ import { resizableContainerComponent } from '@app/components/resizable-container
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
+import { InputComponent } from 'component-lib/src/public-api';
+import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 import { InputDocDemoComponent } from '@app/pages/input-documentation/input-doc-demo.component';
 
@@ -32,6 +36,9 @@ import { InputDocDemoComponent } from '@app/pages/input-documentation/input-doc-
     codeViewComponent,
     BannerDocumentationComponent,
     InteractiveDemoComponent,
+    InputDocumentationComponent,
+    ComponentPreviewComponent,
+    InteractiveDemoComponent,
     InputDocDemoComponent
   ],
   imports: [
@@ -40,7 +47,9 @@ import { InputDocDemoComponent } from '@app/pages/input-documentation/input-doc-
     ClipboardModule,
     QaModule,
     HighlightModule,
-    AccessibilityDemoModule
+    AccessibilityDemoModule,
+    TranslateModule,
+    SharedModule
   ],
   exports: [
     TitleSlugUrlComponent,

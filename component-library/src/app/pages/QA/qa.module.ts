@@ -9,6 +9,7 @@ import { MichaelComponent } from './michael/michael.component';
 import { MikeComponent } from './mike/mike.component';
 import { AutoTesterComponent } from './auto-tester/auto-tester.component';
 import { IrccDsAngularFormComponentsModule } from 'ircc-ds-angular-component-library';
+import { BobbyComponent } from './bobby/bobby.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { IrccDsAngularFormComponentsModule } from 'ircc-ds-angular-component-lib
     NaseerComponent,
     MichaelComponent,
     MikeComponent,
-    AutoTesterComponent
+    AutoTesterComponent,
+    BobbyComponent
   ],
   imports: [
     CommonModule,
