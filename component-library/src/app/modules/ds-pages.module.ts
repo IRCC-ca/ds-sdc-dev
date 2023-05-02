@@ -21,7 +21,7 @@ import { InputDocumentationComponent } from '@app/pages/input-documentation/inpu
 import { InputComponent } from 'component-lib/src/public-api';
 import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
-import { InputDocDemoComponent } from '@app/pages/input-documentation/input-doc-demo.component';
+import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { InputDocDemoComponent } from '@app/pages/input-documentation/input-doc-
     InputDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
-    InputDocDemoComponent
+    InputDocCodeComponent
   ],
   imports: [
     CommonModule,
