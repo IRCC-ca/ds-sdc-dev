@@ -22,7 +22,7 @@ export class ButtonDocumentationComponent implements OnInit {
   form_interactive_button = new FormGroup({});
 
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
+    type: slugTitleURLType.secondary,
     title: 'Interactive Demo',
     anchorType: slugAnchorType.primary
   };
@@ -214,7 +214,7 @@ export class ButtonDocumentationComponent implements OnInit {
     showLayoutToggle: this.handleLayoutToggle
   };
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.lang.setAltLangLink(this.altLangLink);
     
