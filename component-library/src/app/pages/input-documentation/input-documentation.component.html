@@ -180,56 +180,19 @@
   <section class="anatomy">
     <app-title-slug-url
       [config]="anatomySlugConfig"
-      class="h3 epmhasis"
+      class="h3 emphasis"
     ></app-title-slug-url>
     <img
       src="assets/img/input-content/input-anatomy.png"
       alt="{{ 'Input.AnatomyImgAlt' | translate }}"
     /><br />
-    <span class="round-purple-num">1</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyLabelHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyLabelText' | translate }}</p>
-    <span class="round-purple-num">2</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyRequiredIndicatorHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">
-      {{ 'Input.AnatomyRequiredIndicatorText' | translate }}
-    </p>
-    <span class="round-purple-num">3</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyDescHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyDescText' | translate }}</p>
-    <span class="round-purple-num">4</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyHintHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyHintText' | translate }}</p>
-    <span class="round-purple-num">5</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyInputFieldHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyInputFieldText' | translate }}</p>
-    <span class="round-purple-num">6</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyInputContentHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">
-      {{ 'Input.AnatomyInputContentText' | translate }}
-    </p>
-    <span class="round-purple-num">7</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyErrorHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyErrorText' | translate }}</p>
-    <span class="round-purple-num">8</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyPasswordHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyPasswordText' | translate }}</p>
+    <ng-container *ngFor="let content of anatomyContentItems; let i = index">
+      <span class="round-purple-num">{{ i + 1 }}</span>
+      <h5 class="h5 emphasis round-purple-num">
+        {{ content.title | translate }}
+      </h5>
+      <p class="body3 anatomy">{{ content.description | translate }}</p>
+    </ng-container>
   </section>
 
   <section class="specs">
@@ -482,18 +445,11 @@
           {{ 'Input.FigmaDirectionsHeading' | translate }}
         </h5>
         <ol>
-          <li class="body3 emphasis">
-            {{ 'Input.FigmaDirectionsListItem1' | translate }}
-          </li>
-          <li class="body3 emphasis">
-            {{ 'Input.FigmaDirectionsListItem2' | translate }}
-          </li>
-          <li class="body3 emphasis">
-            {{ 'Input.FigmaDirectionsListItem3' | translate }}
-          </li>
-          <li class="body3 emphasis">
-            {{ 'Input.FigmaDirectionsListItem4' | translate }}
-          </li>
+          <li
+            class="body3 emphasis"
+            *ngFor="let direction of figmaDirections"
+            [innerHtml]="direction | translate"
+          ></li>
         </ol>
       </div>
       <div class="image-container-1">
@@ -555,31 +511,8 @@
     </h5>
     <ul>
       <li
-        [innerHtml]="'Input.AccessibilityContentItem1' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem2' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem3' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem4' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem5' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem6' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem7' | translate"
+        *ngFor="let content of accessibilityContentItems"
+        [innerHtml]="content | translate"
         class="body3"
       ></li>
     </ul>
