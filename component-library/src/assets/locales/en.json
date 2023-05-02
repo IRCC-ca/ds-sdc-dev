@@ -474,6 +474,9 @@
       "NEXT": "Save and continue",
       "PREVIOUS_PAGE_NEXT": "Next",
       "HAMBURGER": "Menu"
+    },
+    "BREADCRUMB_COMPONENT": {
+      "ADDITIONAL_LINKS": "Additional links"
     }
   },
   "Indicator": {
