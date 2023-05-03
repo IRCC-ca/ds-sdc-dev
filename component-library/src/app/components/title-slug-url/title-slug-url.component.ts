@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input } from '@angular/core';
+import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 
@@ -23,7 +23,7 @@ export interface slugTitleURLConfig {
   styleUrls: ['./title-slug-url.component.scss'],
   providers: [SlugifyPipe]
 })
-export class TitleSlugUrlComponent implements AfterContentInit {
+export class TitleSlugUrlComponent implements AfterContentInit, OnInit {
   @Input()
   config: slugTitleURLConfig = {
     type: slugTitleURLType.primary,

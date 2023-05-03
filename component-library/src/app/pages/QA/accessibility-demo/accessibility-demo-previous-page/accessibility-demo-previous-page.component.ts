@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
   IIconButtonComponentConfig,
@@ -15,7 +15,9 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
   templateUrl: './accessibility-demo-previous-page.component.html',
   styleUrls: ['./accessibility-demo-previous-page.component.scss']
 })
-export class AccessibilityDemoPreviousPageComponent implements OnInit {
+export class AccessibilityDemoPreviousPageComponent
+  implements OnInit, OnDestroy
+{
   routerSub?: Subscription;
   progressIndicatorSub?: Subscription;
   progressIndicatorConfig: IProgressIndicatorConfig = {

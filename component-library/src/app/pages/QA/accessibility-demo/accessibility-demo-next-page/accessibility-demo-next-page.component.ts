@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IProgressIndicatorConfig } from 'ircc-ds-angular-component-library';
 import { AccessbilityDemoFormStateService } from '../accessbility-demo-form-state.service';
@@ -12,7 +12,7 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
   templateUrl: './accessibility-demo-next-page.component.html',
   styleUrls: ['./accessibility-demo-next-page.component.scss']
 })
-export class AccessibilityDemoNextPageComponent implements OnInit {
+export class AccessibilityDemoNextPageComponent implements OnInit, OnDestroy {
   routerSub?: Subscription;
   progressIndicatorSub?: Subscription;
   progressIndicatorConfig: IProgressIndicatorConfig = {
