@@ -48,19 +48,28 @@
           {{ option.text | translate }}
         </option>
       </select>
-      <div class="icon-container" [class.select-clicked]="rotateChevron">
+      <div
+        class="icon-container"
+        [class.select-clicked]="rotateChevron"
+      >
         <i class="fa-thin fa-chevron-down custom-chevron"></i>
       </div>
     </div>
-    <div aria-live="polite" *ngIf="!config.disableError">
+    <div
+      aria-live="polite"
+      *ngIf="!config.disableError"
+    >
       <div *ngIf="formControl?.touched && formControl?.invalid">
         <span class="sr-only">{{
           errorStubText + ': ' + (config.label || '' | translate) + ': '
         }}</span>
         <ng-container *ngFor="let errors of errorIds; let i = index">
-          <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
+          <div
+            *ngIf="formControl?.errors?.[errors.key]"
+            class="radio-errors"
+          >
             <ircc-cl-lib-error
-              [size]="config?.size"
+              [size]="config.size"
               [id]="errors.id"
               [errorLOV]="errors.errorLOV"
             ></ircc-cl-lib-error>
