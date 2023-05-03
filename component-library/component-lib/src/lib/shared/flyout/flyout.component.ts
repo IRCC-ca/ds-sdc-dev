@@ -45,6 +45,14 @@ export class FlyoutComponent implements OnInit {
     if(this.type) this.config.type = this.type;
   };
 
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event) {
+    let target = event.target as HTMLElement;
+    if(!target.classList.contains('option-contents') && !target.classList.contains('dropdown')){
+      this.isSelected.emit(null);
+    }
+  }
+
   @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
     event.preventDefault();

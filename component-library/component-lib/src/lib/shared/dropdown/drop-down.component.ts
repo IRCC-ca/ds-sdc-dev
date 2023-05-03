@@ -76,12 +76,13 @@ export class DropdownComponent implements OnInit {
   }
 
   /**
-   * function receives a truthy value which determines wether it closes or opens, 
+   * function receives a truthy value which determines wether it closes or opens,
    * but also looks for FocusEvent to check if flyout is being interacted with
-   * @param status 
-   * @param e 
+   * @param status
+   * @param e
    */
   toggleFlyout(status: boolean, e?: FocusEvent) {
+    console.log('here');
     let target = e?.relatedTarget as HTMLElement;
     if(!target?.id.includes(this.config.id) || !e){
       this.selected = status;

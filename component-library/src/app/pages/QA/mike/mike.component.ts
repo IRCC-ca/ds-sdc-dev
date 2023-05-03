@@ -48,7 +48,8 @@ export class MikeComponent implements OnInit {
           value: 'option 1'
         },
         {
-          value: 'option 2'
+          value: 'option 2',
+          disabled: true
         },
         {
           value: 'option 3'
