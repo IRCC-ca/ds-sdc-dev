@@ -158,7 +158,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
-  setBannerType(value: any) {
+  setInputType(value: any) {
     switch (value) {
       case 'password':
         this.inputConfig.type = 'password';
