@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { slugAnchorType, slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
-import { IButtonConfig, ICheckBoxComponentConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import { ButtonColor, IButtonConfig, ICheckBoxComponentConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-button-documentation',
@@ -29,8 +29,10 @@ export class ButtonDocumentationComponent implements OnInit {
 
   buttonConfig: IButtonConfig = {
     id: 'button',
+    color: ButtonColor.CTA,
     disabled: false,
-    icon: ''
+    icon: '',
+    size: 'large'
     
   };
 
@@ -126,13 +128,6 @@ export class ButtonDocumentationComponent implements OnInit {
   };
 
   /**
-   * toggle between small and large size
-   */
-  handleSizeToggle(value: any) {
-    this.buttonConfig.size = value['showSizeToggle'].toLowerCase();
-  }
-
-  /**
    * position icon based on config
    */
   handleIconToggle(value: any) {
@@ -145,28 +140,6 @@ export class ButtonDocumentationComponent implements OnInit {
     }
     else {
       this.buttonConfig.icon =''
-    }
-  }
-
-  /**
-   * toggle between critical and default button
-   */
-  handleCriticalToggle(value: any) {
-    if (value['showCriticalToggle'] === 'True') {
-      this.buttonConfig.color = 'critical';
-    } else {
-      this.buttonConfig.color = 'CTA';
-    }
-  }
-
-  /**
-   * toggle between disabled and enabled state
-   */
-  handleSelectCheckbox(value : any) {
-    if (value['showSelectToggle']) {
-      this.buttonConfig.disabled = true;
-    } else {
-      this.buttonConfig.disabled = false;
     }
   }
 
@@ -218,26 +191,18 @@ export class ButtonDocumentationComponent implements OnInit {
   }
 
   /**
-   * Set default/initial value for each toggle
+   * Return mapping of input config from form values
    */
-  track_toggles = {
-    showSizeToggle: 'Large',
-    showIconToggle: 'None',
-    showCriticalToggle: 'False',
-    showSelectToggle: false,
-    showLayoutToggle: 'Fluid'
-  };
-
-  /**
-   * Calls the correct function based on the toggle id
-   */
-  toggle_function = {
-    showSizeToggle: this.handleSizeToggle,
-    showIconToggle: this.handleIconToggle,
-    showCriticalToggle: this.handleCriticalToggle,
-    showSelectToggle: this.handleSelectCheckbox,
-    showLayoutToggle: this.handleLayoutToggle
-  };
+  private parseToggleConfig(value: any): IButtonConfig {
+    this.handleLayoutToggle(value);
+    this.handleIconToggle(value);
+    return {
+      ...this.buttonConfig,
+      size: value['showSizeToggle'].toLowerCase(),
+      color: value['showCriticalToggle'] === 'True' ? this.buttonConfig.color = 'critical' : this.buttonConfig.color = 'CTA',
+      disabled: value['showSelectToggle'] === true ? this.buttonConfig.disabled = true : this.buttonConfig.disabled = false,
+    };
+  }
 
   ngOnInit() {
 
@@ -259,11 +224,7 @@ export class ButtonDocumentationComponent implements OnInit {
     });
 
     this.form_interactive_button.valueChanges.subscribe((value: any) => {
-      for (const param in value) {
-        if (this.track_toggles[param] === value[param]) continue; //if value did not change for specific param, will continue to the next param
-        this.track_toggles[param] = value[param];
-        this.toggle_function[param].apply(this, [value]);
-      }
+      this.buttonConfig = this.parseToggleConfig(value);
     });
   }
 }
