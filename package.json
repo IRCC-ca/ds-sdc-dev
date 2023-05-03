@@ -9,10 +9,12 @@
     "publish-beta": "cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish --tag beta",
     "deploy-build": "cd component-library/component-lib && ng build ircc-ds-angular-component-library && cd .. && ng build",
     "deploy-qa-to-s3": "node ./deploy-qa-to-s3.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "compodoc": "npx compodoc -p tsconfig.doc.json -s"
   },
   "type": "module",
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.19",
     "husky": "^8.0.3"
   },
   "dependencies": {
