@@ -8,6 +8,7 @@ import {
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { ICodeViewerConfig } from '@app/components/code-viewer/code-viewer.component';
 
 /**
  * Interactive input demo & code block
@@ -158,6 +159,40 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
+  inputConfigCodeView = {
+    id: this.inputConfig.id,
+    formGroup: `new FormGroup({})`,
+    size: this.inputConfig.size,
+    label: this.inputConfig.label,
+    desc: this.inputConfig.desc,
+    hint: this.inputConfig.hint,
+    errorMessages: this.inputConfig.errorMessages
+  };
+
+  codeViewConfig: ICodeViewerConfig = {
+    id: 'input-code-viewer',
+    openAccordion: true,
+    selected: 'html',
+    tab: [
+      {
+        id: 'html',
+        title: 'HTML',
+        value: `<ircc-cl-lib-input [config]="inputConfig"></ircc-cl-lib-input>`
+      },
+      {
+        id: 'ts',
+        title: 'TypeScript',
+        value: `
+import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+
+inputConfig: IInputComponentConfig = ${this.stringify(
+          this.inputConfigCodeView
+        )}`
+      }
+    ]
+  };
+
   setBannerType(value: any) {
     switch (value) {
       case 'password':
@@ -267,5 +302,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     } else {
       inputControl?.enable();
     }
+  }
+
+  private stringify(object: any) {
+    return (
+      JSON.stringify(object, null, 4)
+        // 'key:' => key:
+        .replace(/"([^"]+)":/g, '$1:')
+        // "new Class()" => new Class()
+        .replace(/"new /g, 'new ')
+        .replace(/\)"/g, ')')
+    );
   }
 }
