@@ -21,6 +21,8 @@ export const CANADA_LOGO_ARIA_LABEL_FRENCH =
 export class HeaderComponent {
   /**
    * This is the ID of the header component. Will be applied as the ID of the header Element within the custom element.
+   *
+   * All IDs must be unique and can be used to specifically target an element within your project.
    */
   @Input() id = '';
   imageURL = '';
@@ -31,7 +33,10 @@ export class HeaderComponent {
   constructor(private translate: TranslateService) {}
 
   /**
-  * ngOnInit checks for current url Language and subscribes to changes. Appropriate translation will be pulled as a result.
+  * ngOnInit() lifecycle method run immediately when the component is initialized. c
+  *
+  * For Header Component the ngOnInit() checks for current url Language and subscribes to changes. Appropriate translations
+  * will be pulled as a result and content will be displayed in the users selected language.
   */
   ngOnInit() {
     this.setLang(this.translate.currentLang);
@@ -41,7 +46,8 @@ export class HeaderComponent {
   }
 
   /**
-  * setLang(lang: string) accepts and string value which currently needs to be 'en' or 'en-US' to trigger English translations otherwise
+  * setLang(lang: string) if a function which accepts a string value.
+  * This value currently needs to be 'en' or 'en-US' to trigger English translations otherwise
   * french translations will be triggered.
   */
   setLang(lang: string) {
