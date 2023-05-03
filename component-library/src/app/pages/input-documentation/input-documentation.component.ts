@@ -40,7 +40,7 @@ export class InputDocumentationComponent implements OnInit {
   passwordInputConfig: IInputComponentConfig = {
     id: this.PASSWORD_INPUT_ID,
     formGroup: this.form_input,
-    label: 'Input.LabelText',
+    label: 'Input.LabelText2',
     type: 'password'
   };
 
