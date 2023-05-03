@@ -326,44 +326,6 @@ export class BannerDocumentationComponent implements OnInit {
   }
 
   /**
-   * toggle between small and large size
-   */
-  handleSizeToggle(value: any) {
-    this.bannerConfig.size = value['showSizeToggle'].toLowerCase();
-  }
-
-  /**
-   * Hide or show close icon on test banner based on radio selection
-   */
-  handleCloseToggle(value: any) {
-    if (value['showCloseToggle'] === 'True') {
-      this.bannerConfig.dismissible = true;
-    } else {
-      this.bannerConfig.dismissible = false;
-    }
-  }
-
-  /**
-   * Hide or show Title on test banner based on radio selection
-   */
-  handleTitleToggle(value: any) {
-    if (value['showTitleToggle'] === 'True') {
-      this.bannerConfig.title = 'Title text';
-    } else {
-      this.bannerConfig.title = '';
-    }
-  }
-
-  handleDescToggle(value: any) {
-    if (value['showDescToggle'] === 'True') {
-      this.bannerConfig.content =
-        'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
-    } else {
-      this.bannerConfig.content = '';
-    }
-  }
-
-  /**
    * Hide or show Primary button on test banner based on radio selection
    */
   handlePrimaryButtonToggle(value: any) {
@@ -424,32 +386,17 @@ export class BannerDocumentationComponent implements OnInit {
   }
 
   /**
-   * Set default/initial value for each toggle
+   * Return mapping of input config from form values
    */
-  track_toggles = {
-    showSizeToggle: 'Large',
-    showCloseToggle: 'False',
-    showTitleToggle: 'False',
-    showDescToggle: 'False',
-    showPrimaryButtonToggle: 'False',
-    showSecondaryButtonToggle: 'False',
-    showPlainButtonToggle: 'False',
-    showLinkToggle: 'False'
-  };
-
-  /**
-   * Calls the correct function based on the toggle id
-   */
-  toggle_function = {
-    showSizeToggle: this.handleSizeToggle,
-    showCloseToggle: this.handleCloseToggle,
-    showTitleToggle: this.handleTitleToggle,
-    showDescToggle: this.handleDescToggle,
-    showPrimaryButtonToggle: this.handlePrimaryButtonToggle,
-    showSecondaryButtonToggle: this.handleSecondaryButtonToggle,
-    showPlainButtonToggle: this.handlePlainButtonToggle,
-    showLinkToggle: this.handleLinkToggle
-  };
+  private parseToggleConfig(value: any): IBannerConfig {
+    return {
+      ...this.bannerConfig,
+      size: value['showSizeToggle'].toLowerCase(),
+      title: value['showTitleToggle'] === 'True' ? this.bannerConfig.title = 'Title text' : '',
+      content: value['showDescToggle'] === 'True' ? this.bannerConfig.content ='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.': '',
+      dismissible: value['showCloseToggle'] === 'True' ? true : false,
+    };
+  }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
@@ -464,11 +411,11 @@ export class BannerDocumentationComponent implements OnInit {
     });
 
     this.form_interactive_banner.valueChanges.subscribe((value: any) => {
-      for (const param in value) {
-        if (this.track_toggles[param] === value[param]) continue; //if value did not change for specific param, will continue to the next param
-        this.track_toggles[param] = value[param];
-        this.toggle_function[param].apply(this, [value]);
-      }
+      this.handlePrimaryButtonToggle(value)
+      this.handlePlainButtonToggle(value)
+      this.handleSecondaryButtonToggle(value),
+      this.handleLinkToggle(value)
+      this.bannerConfig = this.parseToggleConfig(value);
     });
   }
 }
