@@ -82,7 +82,6 @@ export class DropdownComponent implements OnInit {
    * @param e
    */
   toggleFlyout(status: boolean, e?: FocusEvent) {
-    console.log('here');
     let target = e?.relatedTarget as HTMLElement;
     if(!target?.id.includes(this.config.id) || !e){
       this.selected = status;
