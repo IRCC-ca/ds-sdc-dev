@@ -84,7 +84,7 @@ async function* getFiles(dir) {
 const ID = process.env.AWS_ACCESS_KEY_ID;
 const SECRET = process.env.AWS_SECRET_ACCESS_KEY;
 const REGION = "ca-central-1";
-const BUCKET_NAME = "jl-ds-qa-test";
+const BUCKET_NAME = "jl-ds-qa";
 const params = {
   region: "REGION",
 };
@@ -130,6 +130,6 @@ const params = {
 
   console.log(`Upload Done!`);
   console.log(
-    `Visit your QA site at: https://d2e3hkuvxc74rw.cloudfront.net/${branhcName}/index.html`
+    `Visit your QA site at: https://d1whfh0luwluq8.cloudfront.net/${branhcName}/index.html`
   );
 })();
