@@ -1,6 +1,9 @@
 {
   "include": [
+<<<<<<< HEAD
     "component-library/src/app/components/**/*.ts",
+=======
+>>>>>>> dev
     "component-library/component-lib/src/lib/**/*.ts",
     "component-library/component-lib/src/lib/**/**/*.ts",
     "component-library/component-lib/src/lib/shared/**/**/*.ts",

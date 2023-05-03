@@ -202,7 +202,7 @@ export class MichaelComponent implements OnInit {
     baseUrlKey: 'ROUTES.LandingPage',
     links: [
       {
-        text: 'Home'
+        text: 'Home.Title'
       },
       {
         text: 'QA.header',
@@ -213,7 +213,7 @@ export class MichaelComponent implements OnInit {
         linkKey: 'ROUTES.michael'
       },
       {
-        text: 'Child Page Title'
+        text: 'Child Page Title Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
       }
     ]
   };

@@ -396,8 +396,14 @@ export class InteractiveDemoComponent implements OnInit {
   &lt;div class&#x3D;&quot;toggles-accordion&quot;&gt;
     &lt;app-accordian-container [config]&#x3D;&quot;accordionConfig&quot;&gt;
       &lt;div class&#x3D;&quot;toggles&quot;&gt;
+<<<<<<< HEAD
         &lt;ng-content select&#x3D;&quot;[toggles]&quot;&gt;&lt;/ng-content&gt;&lt;/div
     &gt;&lt;/app-accordian-container&gt;
+=======
+        &lt;ng-content select&#x3D;&quot;[toggles]&quot;&gt;&lt;/ng-content&gt;
+      &lt;/div&gt;
+    &lt;/app-accordian-container&gt;
+>>>>>>> dev
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -407,12 +413,22 @@ export class InteractiveDemoComponent implements OnInit {
                 <p class="comment">
                     <code>./interactive-demo.component.scss</code>
                 </p>
+<<<<<<< HEAD
                 <pre class="line-numbers"><code class="language-scss">@use &#x27;../../../../../core-library/tokens/sizes&#x27; as token-size;
 @use &#x27;../../../../../core-library/util/size&#x27; as size;
 @use &#x27;../../../../../core-library/tokens/sizes&#x27;;
 
 .container {
   border-radius: 5px;
+=======
+                <pre class="line-numbers"><code class="language-scss">@use &quot;../../../../../core-library/tokens/sizes&quot; as token-size;
+@use &quot;../../../../../core-library/util/size&quot; as size;
+@use &quot;../../../../../core-library/tokens/sizes&quot;;
+
+.container {
+  border-radius: 5px;
+  padding-bottom: 4px;
+>>>>>>> dev
   border-width: sizes.$fixed-1;
   border-color: var(--neutral-border);
   border-style: solid;
@@ -447,11 +463,22 @@ export class InteractiveDemoComponent implements OnInit {
   }
 
   .toggles {
+<<<<<<< HEAD
     margin: 16px 28px 28px 28px;
+=======
+    margin: 16px 28px 24px;
+>>>>>>> dev
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 24px;
   }
+<<<<<<< HEAD
+=======
+
+  .tabs {
+    padding: 12px 12px 0;
+  }
+>>>>>>> dev
 }
 </code></pre>
     </div>
@@ -481,7 +508,11 @@ export class InteractiveDemoComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
+<<<<<<< HEAD
         var COMPONENT_TEMPLATE = '<div><div class="container">  <div class="tabs">    <ng-content select="[tabs]"></ng-content>  </div>  <div class="component_container">    <div class="test_component {{ componentType }}">      <ng-content select="[component]"></ng-content>    </div>  </div>  <div class="toggles-accordion">    <app-accordian-container [config]="accordionConfig">      <div class="toggles">        <ng-content select="[toggles]"></ng-content></div    ></app-accordian-container>  </div></div></div>'
+=======
+        var COMPONENT_TEMPLATE = '<div><div class="container">  <div class="tabs">    <ng-content select="[tabs]"></ng-content>  </div>  <div class="component_container">    <div class="test_component {{ componentType }}">      <ng-content select="[component]"></ng-content>    </div>  </div>  <div class="toggles-accordion">    <app-accordian-container [config]="accordionConfig">      <div class="toggles">        <ng-content select="[toggles]"></ng-content>      </div>    </app-accordian-container>  </div></div></div>'
+>>>>>>> dev
     var COMPONENTS = [{'name': 'accordionContainerComponent', 'selector': 'app-accordian-container'},{'name': 'AutocompleteComponent', 'selector': 'lib-autocomplete'},{'name': 'BannerComponent', 'selector': 'ircc-cl-lib-banner'},{'name': 'BreadcrumbComponent', 'selector': 'ircc-cl-lib-breadcrumb'},{'name': 'BreadcrumbLinkComponent', 'selector': 'ircc-cl-lib-breadcrumb-link'},{'name': 'ButtonComponent', 'selector': 'ircc-cl-lib-button'},{'name': 'CheckboxComponent', 'selector': 'ircc-cl-lib-checkbox'},{'name': 'ChipItemComponent', 'selector': 'lib-chip-item'},{'name': 'ChipListComponent', 'selector': 'lib-chip-list'},{'name': 'codeViewerComponent', 'selector': 'app-code-viewer'},{'name': 'ComponentPreviewComponent', 'selector': 'app-component-preview'},{'name': 'DatePickerComponent', 'selector': 'ircc-cl-lib-date-picker'},{'name': 'DropdownComponent', 'selector': 'ircc-cl-lib-dropdown'},{'name': 'ErrorComponent', 'selector': 'ircc-cl-lib-error'},{'name': 'FlyoutComponent', 'selector': 'ircc-cl-lib-flyout'},{'name': 'FlyoutOptionComponent', 'selector': 'ircc-cl-lib-flyout-option'},{'name': 'FooterComponent', 'selector': 'ircc-cl-lib-footer'},{'name': 'HeaderComponent', 'selector': 'ircc-cl-lib-header'},{'name': 'HiddenNavComponent', 'selector': 'ircc-cl-lib-hidden-nav'},{'name': 'IconButtonComponent', 'selector': 'ircc-cl-lib-icon-button'},{'name': 'IconComponent', 'selector': 'ircc-cl-lib-icon'},{'name': 'IndicatorComponent', 'selector': 'lib-indicator'},{'name': 'InfoTextSmallComponent', 'selector': 'app-info-text-small'},{'name': 'InputComponent', 'selector': 'ircc-cl-lib-input'},{'name': 'InteractiveDemoComponent', 'selector': 'app-interactive-demo'},{'name': 'LabelComponent', 'selector': 'ircc-cl-lib-label'},{'name': 'LanguageSwitchComponent', 'selector': 'ircc-cl-lib-language-switch'},{'name': 'ProgressIndicatorComponent', 'selector': 'ircc-cl-lib-progress-indicator'},{'name': 'ProgressTagsComponent', 'selector': 'ircc-cl-lib-progress-tags'},{'name': 'RadioInputComponent', 'selector': 'ircc-cl-lib-radio-input'},{'name': 'resizableContainerComponent', 'selector': 'app-resizable-container'},{'name': 'SearchInputComponent', 'selector': 'lib-search-input'},{'name': 'SecondaryChipsComponent', 'selector': 'lib-secondary-chips'},{'name': 'SelectComponent', 'selector': 'ircc-cl-lib-select'},{'name': 'SpinnerComponent', 'selector': 'ircc-cl-lib-spinner'},{'name': 'TabsComponent', 'selector': 'ircc-cl-lib-tabs'},{'name': 'TextareaComponent', 'selector': 'ircc-cl-lib-textarea'},{'name': 'TitleSlugUrlComponent', 'selector': 'app-title-slug-url'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'InteractiveDemoComponent'};

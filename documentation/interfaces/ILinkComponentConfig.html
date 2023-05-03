@@ -99,6 +99,16 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+<<<<<<< HEAD
+=======
+                                        <a href="#overflow" 
+>
+                                            overflow
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+>>>>>>> dev
                                         <a href="#routerLink" 
 >
                                             routerLink
@@ -201,6 +211,47 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+<<<<<<< HEAD
+=======
+                                        <a name="overflow"></a>
+                                        <span class="name "><b>overflow</b>
+                                            <a href="#overflow">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>overflow:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+>>>>>>> dev
                                         <a name="routerLink"></a>
                                         <span class="name "><b>routerLink</b>
                                             <a href="#routerLink">
@@ -280,6 +331,10 @@ export interface ILinkComponentConfig {
   linkKey?: string;
   href?: string;
   routerLink?: string;
+<<<<<<< HEAD
+=======
+  overflow?: boolean;
+>>>>>>> dev
 }
 
 @Component({
@@ -288,7 +343,12 @@ export interface ILinkComponentConfig {
 })
 export class BreadcrumbLinkComponent {
   @Input() config: ILinkComponentConfig &#x3D; {
+<<<<<<< HEAD
     text: &#x27;&#x27;
+=======
+    text: &#x27;&#x27;,
+    overflow: false
+>>>>>>> dev
   };
 
   constructor() {}

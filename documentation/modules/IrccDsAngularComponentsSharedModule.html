@@ -565,6 +565,10 @@ import { BreadcrumbComponent } from &#x27;./breadcrumb/breadcrumb.component&#x27
 import { BreadcrumbLinkComponent } from &#x27;./breadcrumb/link/link.component&#x27;;
 import { IndicatorComponent } from &#x27;./indicator/indicator.component&#x27;;
 import { SpinnerComponent } from &#x27;./spinner/spinner.component&#x27;;
+<<<<<<< HEAD
+=======
+import { DomChangeDirective } from &quot;../../shared/directives/dom-change.directive&quot;;
+>>>>>>> dev
 import { FlyoutComponent } from &#x27;./flyout/flyout.component&#x27;;
 import { FlyoutOptionComponent } from &#x27;./flyout-option/flyout-option.component&#x27;;
 
@@ -587,7 +591,11 @@ const IrccDsSharedComponents &#x3D; [
 ];
 
 @NgModule({
+<<<<<<< HEAD
   declarations: [...IrccDsSharedComponents],
+=======
+  declarations: [...IrccDsSharedComponents, DomChangeDirective],
+>>>>>>> dev
   imports: [CommonModule, TranslateModule, RouterModule],
   exports: [
     CommonModule,

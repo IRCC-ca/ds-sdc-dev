@@ -620,16 +620,44 @@ export enum InputTypes {
     }
   ]
 })
+<<<<<<< HEAD
 export class InputComponent implements ControlValueAccessor, OnInit {
   formGroupEmpty: FormGroup &#x3D; new FormGroup({});
   //DON&#x27;T include default values of &#x27;&#x27; unless it REALLY makes sense to do so. Instead, make them optional
+=======
+/**
+* The input component can act as a basic text field or password input that&#x27;s completely customizable.
+*/
+export class InputComponent implements ControlValueAccessor, OnInit {
+  formGroupEmpty: FormGroup &#x3D; new FormGroup({});
+  /**
+   * Note: DON&#x27;T include default values of &#x27;&#x27; unless it REALLY makes sense to do so - instead, make them optional.
+   * The config input is where you declare the inputs desired properties such as labels, hints, descriptions, etc. where only the id and form group are mandatory properties. Refer to IInputComponentConfig interface.
+*/
+>>>>>>> dev
   @Input() config: IInputComponentConfig &#x3D; {
     id: &#x27;&#x27;,
     formGroup: new FormGroup({})
   };
+<<<<<<< HEAD
 
   @Input() id &#x3D; &#x27;&#x27;;
   @Input() formGroup &#x3D; this.formGroupEmpty;
+=======
+  /**
+* The input id is used to identify the component uniquely for subscribing to value changes and errors
+*/
+  @Input() id &#x3D; &#x27;&#x27;;
+
+  /**
+  * FormGroup aggregates the values of each child FormControl into one object, with each control name as the key. It calculates its status by reducing the status values of its children. For example, if one of the controls in a group is invalid, the entire group becomes invalid.
+  */
+  @Input() formGroup &#x3D; this.formGroupEmpty;
+
+  /**
+  * Type refers to the 2 different input options: basic text or password as the password type has additional configuration
+  */
+>>>>>>> dev
   @Input() type: keyof typeof InputTypes &#x3D; InputTypes.password;
 
   disabled &#x3D; false;
@@ -650,12 +678,22 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService
+<<<<<<< HEAD
   ) {}
+=======
+  ) { }
+>>>>>>> dev
 
   //Removed &#x27;!&#x27; and added null case in onChange
   private onTouch?: () &#x3D;&gt; void;
   private onChange?: (value: any) &#x3D;&gt; void;
 
+<<<<<<< HEAD
+=======
+  /**
+ * When the page loads, we initialize the form with it&#x27;s controls, labels, and config, and detect value changes and errors. setLang detects changes to the language toggle to serve the correct text
+ */
+>>>>>>> dev
   ngOnInit() {
     const retControl &#x3D; this.config.formGroup.get(this.config.id);
     if (retControl) {
@@ -741,7 +779,13 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     this.touched &#x3D; true;
     this.getAriaErrorText();
   }
+<<<<<<< HEAD
 
+=======
+  /**
+* setLang detects changes to the language toggle to serve the correct aria error text
+*/
+>>>>>>> dev
   setLang(lang: string) {
     this.getAriaErrorText();
     if (lang &#x3D;&#x3D;&#x3D; &#x27;en&#x27; || lang &#x3D;&#x3D;&#x3D; &#x27;en-US&#x27;) {
@@ -751,6 +795,12 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
+<<<<<<< HEAD
+=======
+  /**
+  * A lifecycle hook that is called when any data-bound property of a directive changes.
+  */
+>>>>>>> dev
   ngOnChanges() {
     this.labelConfig &#x3D; this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
@@ -764,6 +814,12 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     );
   }
 
+<<<<<<< HEAD
+=======
+  /**
+  * Apply focus state
+  */
+>>>>>>> dev
   public focusInput(focusValue: boolean): void {
     this.focusState &#x3D; !focusValue;
   }
@@ -783,6 +839,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
+<<<<<<< HEAD
   public clearvalue() {}
   writeValue(value: string): void {}
   registerOnChange(fn: any): void {
@@ -791,6 +848,38 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   registerOnTouched(fn: any): void {
     this.onTouch &#x3D; fn;
   }
+=======
+  /**
+* 
+*/
+  public clearvalue() { }
+
+
+  /**
+   * 
+   */
+  writeValue(value: string): void { }
+
+
+  /**
+   * 
+   */
+  registerOnChange(fn: any): void {
+    this.onChange &#x3D; fn;
+  }
+
+
+  /**
+ * 
+ */
+  registerOnTouched(fn: any): void {
+    this.onTouch &#x3D; fn;
+  }
+
+  /**
+ * Apply a disabled state
+ */
+>>>>>>> dev
   setDisabledState(isDisabled: boolean) {
     this.disabled &#x3D; isDisabled;
   }

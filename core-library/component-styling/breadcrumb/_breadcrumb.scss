@@ -17,6 +17,8 @@
 
 @mixin create {
   @include selector() {
+    --breadcrumb-neutral-grey: #{color.mix-token(neutral, 500)};
+
     @include layout();
   }
 }
@@ -90,7 +92,15 @@
 }
 
 @mixin layout {
+  display: block;
   padding: 6px 0;
+  position: relative;
+
+  > div {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
 
   ircc-cl-lib-breadcrumb-link {
     border-radius: 4px;
@@ -102,6 +112,16 @@
 
     &.breadcrumb-item {
       padding: 4px 8px;
+    }
+
+    &.breadcrumb-overflow {
+      display: block;
+      margin-right: 0;
+      padding: 8px 16px;
+
+      &:active {
+        background: var(--generic-active);
+      }
     }
 
     a {
@@ -137,6 +157,12 @@
 
   p {
     display: inline-block;
+
+    &.breadcrumb-child {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 
   svg.fa-chevron-right {
@@ -160,6 +186,24 @@
         color: var(--link-text-active);
       }
     }
+  }
+
+  lib-icon-button.elipsis-icon {
+    display: inline-block;
+    position: relative;
+  }
+
+  div.overflow {
+    max-width: 197px;
+    border: 1px solid var(--breadcrumb-neutral-grey);
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background: var(--surface1);
+    z-index: 99;
+    left: -8px;
+    top: 44px;
+    padding: 8px 0;
+    position: absolute;
   }
 
   @include size.selector(small) {

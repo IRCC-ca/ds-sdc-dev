@@ -299,12 +299,26 @@
   Input,
   OnInit,
   OnChanges,
+<<<<<<< HEAD
   SimpleChanges
+=======
+  SimpleChanges,
+  HostListener,
+  ElementRef,
+  AfterViewInit,
+  Renderer2,
+  ChangeDetectorRef,
+  ViewChild
+>>>>>>> dev
 } from &#x27;@angular/core&#x27;;
 import { DSSizes } from &#x27;../../../shared/constants/jl-components.constants&#x27;;
 import { ILinkComponentConfig } from &#x27;./link/link.component&#x27;;
 import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 import { StandAloneFunctions } from &#x27;../../../shared/functions/stand-alone.functions&#x27;;
+<<<<<<< HEAD
+=======
+import { IIconButtonComponentConfig } from &#x27;../icon-button/icon-button.component&#x27;;
+>>>>>>> dev
 
 export enum LinkType {
   href &#x3D; &#x27;href&#x27;,
@@ -325,23 +339,88 @@ export interface IBreadcrumbConfig {
   selector: &#x27;ircc-cl-lib-breadcrumb&#x27;,
   templateUrl: &#x27;./breadcrumb.component.html&#x27;
 })
+<<<<<<< HEAD
 export class BreadcrumbComponent implements OnInit, OnChanges {
+=======
+export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
+>>>>>>> dev
   @Input() config: IBreadcrumbConfig &#x3D; {
     id: &#x27;&#x27;,
     baseUrlKey: &#x27;&#x27;,
     type: &#x27;href&#x27;
   };
   baseUrl &#x3D; &#x27;&#x27;;
+<<<<<<< HEAD
   constructor(
     private translate: TranslateService,
     private standalone: StandAloneFunctions
+=======
+  separatorIcon: IIconButtonComponentConfig &#x3D; {
+    id: &#x27;breadcrumb_separator&#x27;,
+    category: &#x27;custom&#x27;,
+    size: this.config?.size,
+    icon: {
+      class: &#x27;fa-solid fa-ellipsis&#x27;,
+      color: &#x27;var(--text-primary)&#x27;
+    }
+  };
+  overflowLinks?: ILinkComponentConfig[];
+  normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
+  displayOverflow &#x3D; false;
+  private maxHeight: number &#x3D; 0; // Max height of element in px
+  @ViewChild(&#x27;breadcrumb_div&#x27;, { static: false })
+  divRef?: ElementRef&lt;HTMLDivElement&gt;;
+  @ViewChild(&#x27;breadcrumb_child&#x27;, { static: false })
+  childRef?: ElementRef&lt;HTMLParagraphElement&gt;;
+  isChildOverflow: boolean &#x3D; false;
+  constructor(
+    private translate: TranslateService,
+    private standalone: StandAloneFunctions,
+    private renderer: Renderer2,
+    private changeRef: ChangeDetectorRef
+>>>>>>> dev
   ) {}
 
   ngOnInit() {
     this.createLinks();
+<<<<<<< HEAD
   }
 
   ngOnChanges(changes: SimpleChanges) {
+=======
+    this.separatorIcon.size &#x3D; this.config.size;
+    this.maxHeight &#x3D; this.getMaxHeight();
+    this.separatorIcon.ariaLabel &#x3D; this.translate.instant(
+      &#x27;ACC_DEMO.BREADCRUMB_COMPONENT.ADDITIONAL_LINKS&#x27;
+    );
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() &#x3D;&gt; {
+      this.createOverflows();
+      this.isChildOverflow &#x3D; this.getChildOverflow();
+      this.changeRef.detectChanges();
+    }, 500);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // If changing size, update max height
+    if (
+      !changes[&#x27;config&#x27;].firstChange &amp;&amp;
+      changes[&#x27;config&#x27;].currentValue.size !&#x3D;&#x3D;
+        changes[&#x27;config&#x27;].previousValue.size
+    ) {
+      this.maxHeight &#x3D; this.getMaxHeight();
+    }
+    // If changing link type, recreate all links
+    if (
+      !changes[&#x27;config&#x27;].firstChange &amp;&amp;
+      changes[&#x27;config&#x27;].currentValue.type !&#x3D;&#x3D;
+        changes[&#x27;config&#x27;].previousValue.type
+    ) {
+      this.createLinks();
+    }
+>>>>>>> dev
     if (this.config?.links &amp;&amp; this.config?.links.length &gt; 0) {
       if (this.config.type &#x3D;&#x3D; &#x27;routerLink&#x27;) {
         this.config?.links.forEach((link) &#x3D;&gt; {
@@ -353,7 +432,11 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
         });
       }
     }
+<<<<<<< HEAD
     this.createLinks();
+=======
+    this.separatorIcon.size &#x3D; this.config.size;
+>>>>>>> dev
   }
 
   /**
@@ -372,7 +455,73 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
             prev + this.translate.instant(link.linkKey) + &#x27;/&#x27;;
           prev &#x3D; link[this.config.type];
         }
+<<<<<<< HEAD
       });
+=======
+        link.overflow &#x3D; false;
+      });
+
+      this.overflowLinks &#x3D; this.config?.links.filter((link) &#x3D;&gt; link.overflow);
+      this.normalLinks &#x3D; this.config?.links.filter((link) &#x3D;&gt; !link.overflow);
+    }
+  }
+
+  getMaxHeight(): number {
+    const containerElement &#x3D; this.divRef &amp;&amp; this.divRef.nativeElement;
+    const tempElement &#x3D; this.renderer.createElement(&#x27;p&#x27;);
+    const text &#x3D; this.renderer.createText(&#x27;Test&#x27;);
+    this.renderer.appendChild(tempElement, text);
+    this.renderer.addClass(tempElement, &#x27;breadcrumb-child&#x27;);
+    this.renderer.appendChild(containerElement, tempElement);
+    const maxHeight &#x3D; tempElement.offsetHeight;
+    this.renderer.removeChild(containerElement, tempElement);
+    // Calculate based on elipsis icon size to p tag ratio
+    return maxHeight * 1.375;
+  }
+
+  createOverflows() {
+    if (
+      this.divRef &amp;&amp;
+      this.divRef?.nativeElement.offsetHeight &lt;&#x3D; this.maxHeight
+    )
+      return;
+
+    if (this.config.links &amp;&amp; this.config.links.length &gt; 1) {
+      const linksLength &#x3D; this.config.links.length;
+
+      const overflow &#x3D; this.config?.links.find(
+        (link, i) &#x3D;&gt; i &gt; 0 &amp;&amp; i &lt; linksLength - 1 &amp;&amp; !link.overflow
+      );
+      if (overflow) overflow.overflow &#x3D; true;
+
+      this.overflowLinks &#x3D; this.config?.links.filter((link) &#x3D;&gt; link.overflow);
+      this.normalLinks &#x3D; this.config?.links.filter((link) &#x3D;&gt; !link.overflow);
+    }
+  }
+
+  @HostListener(&#x27;window:resize&#x27;, [&#x27;$event&#x27;])
+  onResize(event: Event) {
+    this.overflowLinks &#x3D; [];
+    this.normalLinks &#x3D; [];
+    this.createLinks();
+    this.createOverflows();
+    this.isChildOverflow &#x3D; this.getChildOverflow();
+  }
+
+  flipOverflow(buttonId: string) {
+    this.displayOverflow &#x3D; !this.displayOverflow;
+  }
+
+  // Check if child page title overflows to 2nd line
+  getChildOverflow(): boolean {
+    if (this.childRef) {
+      return (
+        this.childRef.nativeElement.offsetWidth &lt;
+        this.childRef.nativeElement.scrollWidth
+      );
+    } else {
+      return false;
+>>>>>>> dev
     }
   }
 }

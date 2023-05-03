@@ -1,17 +1,17 @@
 <div
-  class="{{ config?.size }} {{ config.orientation }}"
-  id="{{ config?.id }}"
+  class="{{ config.size }} {{ config.orientation }}"
+  id="{{ config.id }}"
   aria-live="polite"
 >
   <div
     class="spinner-container"
     [ngClass]="{
-      active: config?.type === 'active',
-      success: config?.type === 'success',
-      critical: config?.type === 'critical'
+      active: config.type === 'active',
+      success: config.type === 'success',
+      critical: config.type === 'critical'
     }"
   >
-    <ng-container [ngSwitch]="config?.type">
+    <ng-container [ngSwitch]="config.type">
       <div
         *ngSwitchCase="'success'"
         class="container"
@@ -28,7 +28,7 @@
             [innerHTML]="config.label"
           ></div>
           <div
-            *ngIf="config?.size === 'large'"
+            *ngIf="config.size === 'large'"
             class="desc"
             [innerHTML]="config.description"
           ></div>
@@ -50,7 +50,7 @@
             [innerHTML]="config.label"
           ></div>
           <div
-            *ngIf="config?.size === 'large'"
+            *ngIf="config.size === 'large'"
             class="desc"
             [innerHTML]="config.description"
           ></div>
@@ -73,7 +73,7 @@
             [innerHTML]="config.label"
           ></div>
           <div
-            *ngIf="config?.size === 'large'"
+            *ngIf="config.size === 'large'"
             class="desc"
             [innerHTML]="config.description"
           ></div>

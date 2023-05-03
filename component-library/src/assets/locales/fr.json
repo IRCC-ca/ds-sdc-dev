@@ -1,5 +1,6 @@
 {
   "Home": {
+    "Title": "Accueil",
     "DateModified": "Date de modification"
   },
   "ROUTES": {
@@ -17,7 +18,8 @@
     "bobby": "bobby-fr",
     "AccessibilityDemo": "démo-d'accessibilité",
     "AccessibilityDemoNext": "démo-d'accessibilité-prochaine",
-    "AccessibilityDemoPrevious": "démo-d'accessibilité-précédent"
+    "AccessibilityDemoPrevious": "démo-d'accessibilité-précédent",
+    "QATesting": "aq"
   },
   "Buttons": {
     "Title": "Boutons",
@@ -366,6 +368,12 @@
     "FontAwesomeHeading": "Font Awesome",
     "ReleasesHeading": "Versions"
   },
+  "ERROR": {
+    "fieldIsInvalid": "Ce champ est invalide.",
+    "fieldExceededMaxLength": "Ce champ a dépassé la longueur maximale.",
+    "testErrorMessage": "Tester le message d'erreur.",
+    "errorMessage": "Message d'erreur"
+  },
   "Contact": {
     "Text": "Pour faire part de vos commentaires (compliment, commentaire ou plainte) ou pour toute demande de renseignements, contactez <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
   },
@@ -462,10 +470,17 @@
       "NEXT": "Save and continue",
       "PREVIOUS_PAGE_NEXT": "Next",
       "HAMBURGER": "Menu"
+    },
+    "BREADCRUMB_COMPONENT": {
+      "ADDITIONAL_LINKS": "Liens supplémentaires"
     }
   },
   "Indicator": {
     "Heading": "Indicateur"
+  },
+  "QA": {
+    "header": "Page de destination du contrôle qualité",
+    "michael": "Michael"
   },
   "DEMO_COMPONENT": {
     "ACCORDION_OPEN": "Masquer les configurations",

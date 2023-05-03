@@ -71,13 +71,22 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/IrccDsAngularComponentsSharedModule.html" data-type="entity-link" >IrccDsAngularComponentsSharedModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+<<<<<<< HEAD
                                             'data-target="#components-links-module-IrccDsAngularComponentsSharedModule-1f660a365b73e232d353a0323838209f7723897fca136c15c264e775a7811cc5ce2d6c8ed90c473d1d8cc9a32650c17a2a47de88a008edb8ac7ee4f8a850300b"' : 'data-target="#xs-components-links-module-IrccDsAngularComponentsSharedModule-1f660a365b73e232d353a0323838209f7723897fca136c15c264e775a7811cc5ce2d6c8ed90c473d1d8cc9a32650c17a2a47de88a008edb8ac7ee4f8a850300b"' }>
+=======
+                                            'data-target="#components-links-module-IrccDsAngularComponentsSharedModule-39e675d4625c581e9a6a3328e9a1dc32864a0d9e87f089b8e258120e3b487ea31ea72a0dfe7a2b223dcdfb1af50381b8058d3af8161e746aa00f56708bb2fb1d"' : 'data-target="#xs-components-links-module-IrccDsAngularComponentsSharedModule-39e675d4625c581e9a6a3328e9a1dc32864a0d9e87f089b8e258120e3b487ea31ea72a0dfe7a2b223dcdfb1af50381b8058d3af8161e746aa00f56708bb2fb1d"' }>
+>>>>>>> dev
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
+<<<<<<< HEAD
                                         <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-IrccDsAngularComponentsSharedModule-1f660a365b73e232d353a0323838209f7723897fca136c15c264e775a7811cc5ce2d6c8ed90c473d1d8cc9a32650c17a2a47de88a008edb8ac7ee4f8a850300b"' :
                                             'id="xs-components-links-module-IrccDsAngularComponentsSharedModule-1f660a365b73e232d353a0323838209f7723897fca136c15c264e775a7811cc5ce2d6c8ed90c473d1d8cc9a32650c17a2a47de88a008edb8ac7ee4f8a850300b"' }>
+=======
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-IrccDsAngularComponentsSharedModule-39e675d4625c581e9a6a3328e9a1dc32864a0d9e87f089b8e258120e3b487ea31ea72a0dfe7a2b223dcdfb1af50381b8058d3af8161e746aa00f56708bb2fb1d"' :
+                                            'id="xs-components-links-module-IrccDsAngularComponentsSharedModule-39e675d4625c581e9a6a3328e9a1dc32864a0d9e87f089b8e258120e3b487ea31ea72a0dfe7a2b223dcdfb1af50381b8058d3af8161e746aa00f56708bb2fb1d"' }>
+>>>>>>> dev
                                             <li class="link">
                                                 <a href="components/BreadcrumbComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BreadcrumbComponent</a>
                                             </li>
@@ -215,6 +224,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
+<<<<<<< HEAD
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#components-links"' :
                             'data-target="#xs-components-links"' }>
@@ -246,6 +256,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                         </ul>
                     </li>
+=======
+>>>>>>> dev
                         <li class="chapter">
                             <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
                                 'data-target="#xs-injectables-links"' }>
@@ -271,9 +283,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
+<<<<<<< HEAD
                                 <a href="interfaces/IAccordionContainerConfig.html" data-type="entity-link" >IAccordionContainerConfig</a>
                             </li>
                             <li class="link">
+=======
+>>>>>>> dev
                                 <a href="interfaces/IBannerConfig.html" data-type="entity-link" >IBannerConfig</a>
                             </li>
                             <li class="link">
@@ -286,9 +301,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/ICheckBoxComponentConfig.html" data-type="entity-link" >ICheckBoxComponentConfig</a>
                             </li>
                             <li class="link">
+<<<<<<< HEAD
                                 <a href="interfaces/ICodeViewerConfig.html" data-type="entity-link" >ICodeViewerConfig</a>
                             </li>
                             <li class="link">
+=======
+>>>>>>> dev
                                 <a href="interfaces/ICTAConfig.html" data-type="entity-link" >ICTAConfig</a>
                             </li>
                             <li class="link">
@@ -390,9 +408,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="interfaces/ITextareaComponentConfig.html" data-type="entity-link" >ITextareaComponentConfig</a>
                             </li>
+<<<<<<< HEAD
                             <li class="link">
                                 <a href="interfaces/slugTitleURLConfig.html" data-type="entity-link" >slugTitleURLConfig</a>
                             </li>
+=======
+>>>>>>> dev
                         </ul>
                     </li>
                     <li class="chapter">

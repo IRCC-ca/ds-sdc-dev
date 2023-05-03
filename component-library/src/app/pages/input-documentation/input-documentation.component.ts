@@ -10,6 +10,7 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
+import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
 
 @Component({
   selector: 'app-input-documentation',
@@ -108,6 +109,58 @@ export class InputDocumentationComponent implements OnInit {
     title: 'Input.ResearchHeading',
     anchorType: slugAnchorType.primary
   };
+
+  figmaDirections: string[] = [
+    'Input.FigmaDirectionsListItem1',
+    'Input.FigmaDirectionsListItem2',
+    'Input.FigmaDirectionsListItem3',
+    'Input.FigmaDirectionsListItem4'
+  ];
+
+  accessibilityContentItems: string[] = [
+    'Input.AccessibilityContentItem1',
+    'Input.AccessibilityContentItem2',
+    'Input.AccessibilityContentItem3',
+    'Input.AccessibilityContentItem4',
+    'Input.AccessibilityContentItem5',
+    'Input.AccessibilityContentItem6',
+    'Input.AccessibilityContentItem7'
+  ];
+
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'Input.AnatomyLabelHeading',
+      description: 'Input.AnatomyLabelText'
+    },
+    {
+      title: 'Input.AnatomyRequiredIndicatorHeading',
+      description: 'Input.AnatomyRequiredIndicatorText'
+    },
+    {
+      title: 'Input.AnatomyDescHeading',
+      description: 'Input.AnatomyDescText'
+    },
+    {
+      title: 'Input.AnatomyHintHeading',
+      description: 'Input.AnatomyHintText'
+    },
+    {
+      title: 'Input.AnatomyInputFieldHeading',
+      description: 'Input.AnatomyInputFieldText'
+    },
+    {
+      title: 'Input.AnatomyInputContentHeading',
+      description: 'Input.AnatomyInputContentText'
+    },
+    {
+      title: 'Input.AnatomyErrorHeading',
+      description: 'Input.AnatomyErrorText'
+    },
+    {
+      title: 'Input.AnatomyPasswordHeading',
+      description: 'Input.AnatomyPasswordText'
+    }
+  ];
 
   constructor(
     private translate: TranslateService,
