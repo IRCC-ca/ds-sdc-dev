@@ -1,0 +1,915 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ircc-ds documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ircc-ds documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  IndicatorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>component-library/component-lib/src/lib/shared/indicator/indicator.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>lib-indicator</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./indicator.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#abbr" >abbr</a>
+                            </li>
+                            <li>
+                                <a href="#EIndicatorStatus" >EIndicatorStatus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#label" >label</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#rounded" >rounded</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#checkLabelLength" >checkLabelLength</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#checkLabelRounded" >checkLabelRounded</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#checkNumber" >checkNumber</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#config" >config</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="config"></a>
+                        <b>config</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IIndicatorConfig.html" target="_self" >IIndicatorConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    type: &#x27;text&#x27;,
+    category: IndicatorTreatment.weak,
+    purpose: IndicatorPurpose.status
+  }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:66</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkLabelLength"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>checkLabelLength</b></span>
+                        <a href="#checkLabelLength"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkLabelLength()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkLabelRounded"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>checkLabelRounded</b></span>
+                        <a href="#checkLabelRounded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkLabelRounded()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkNumber"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>checkNumber</b></span>
+                        <a href="#checkNumber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkNumber()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:76</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abbr"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>abbr</b></span>
+                        <a href="#abbr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="EIndicatorStatus"></a>
+                    <span class="name">
+                        <span ><b>EIndicatorStatus</b></span>
+                        <a href="#EIndicatorStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>IndicatorStatus</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="label"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>label</b></span>
+                        <a href="#label"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef&lt;HTMLDivElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;label&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rounded"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>rounded</b></span>
+                        <a href="#rounded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">component-library/component-lib/src/lib/shared/indicator/indicator.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild
+} from &#x27;@angular/core&#x27;;
+import { DSSizes } from &#x27;../../../shared/constants/jl-components.constants&#x27;;
+
+export enum IndicatorType {
+  dot,
+  text,
+  number
+}
+
+export enum IndicatorTreatment {
+  strong &#x3D; &#x27;strong&#x27;,
+  weak &#x3D; &#x27;weak&#x27;
+}
+
+export enum IndicatorPurpose {
+  status &#x3D; &#x27;status&#x27;,
+  palette &#x3D; &#x27;palette&#x27;
+}
+
+export enum IndicatorStatus {
+  information &#x3D; &#x27;information&#x27;,
+  warning &#x3D; &#x27;warning&#x27;,
+  critical &#x3D; &#x27;critical&#x27;,
+  neutral &#x3D; &#x27;neutral&#x27;,
+  primary &#x3D; &#x27;primary&#x27;,
+  success &#x3D; &#x27;success&#x27;
+}
+
+export enum IndicatorPalette {
+  teal,
+  orange,
+  red,
+  grey,
+  blue,
+  green,
+  purple,
+  navy
+}
+
+export interface IIndicatorConfig {
+  label?: string | number;
+  size?: keyof typeof DSSizes;
+  type: keyof typeof IndicatorType;
+  icon?: string;
+  category: keyof typeof IndicatorTreatment; // Treatment
+  purpose: keyof typeof IndicatorPurpose;
+  status?: keyof typeof IndicatorStatus; // Sentiment
+  palette?: keyof typeof IndicatorPalette; // Colour
+  ariaLabel?: string; // Aria label line of value
+}
+
+@Component({
+  selector: &#x27;lib-indicator&#x27;,
+  templateUrl: &#x27;./indicator.component.html&#x27;
+})
+export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
+  @Input() config: IIndicatorConfig &#x3D; {
+    type: &#x27;text&#x27;,
+    category: IndicatorTreatment.weak,
+    purpose: IndicatorPurpose.status
+  };
+  @ViewChild(&#x27;label&#x27;) label?: ElementRef&lt;HTMLDivElement&gt;;
+  EIndicatorStatus &#x3D; IndicatorStatus;
+  rounded?: boolean;
+  abbr?: boolean; // Display abbr tag when text is truncated
+
+  ngOnInit() {
+    this.checkLabelRounded();
+    this.checkNumber();
+  }
+
+  ngAfterViewInit() {
+    this.checkLabelLength();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.checkNumber();
+    this.checkLabelRounded();
+    this.checkLabelLength();
+  }
+
+  // Check if number exceeds 99
+  private checkNumber() {
+    if (
+      this.config.type &#x3D;&#x3D;&#x3D; &#x27;number&#x27; &amp;&amp;
+      this.config?.label &amp;&amp;
+      this.config.label &gt; 99
+    ) {
+      this.config.label &#x3D; &#x27;99+&#x27;;
+    }
+  }
+
+  // If label only have 1 character, it should be rounded
+  private checkLabelRounded() {
+    if (typeof this.config?.label &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      this.rounded &#x3D; this.config.label.length &#x3D;&#x3D; 1 &amp;&amp; !this.config.icon;
+    }
+  }
+
+  // Check if div exceeds 200px
+  private checkLabelLength() {
+    // Max 200px - padding 8px x2
+    this.abbr &#x3D; &lt;boolean&gt;(
+      (this.label?.nativeElement?.offsetWidth &amp;&amp;
+        this.label?.nativeElement?.offsetWidth &gt; 184)
+    );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div
+  [ngClass]&#x3D;&quot;[&#x27;indicator-container&#x27;, config?.size ?? &#x27;&#x27;]&quot;
+  [attr.aria-label]&#x3D;&quot;
+    (config?.ariaLabel ?? &#x27;Indicator.Heading&#x27; | translate) +
+    &#x27; &#x27; +
+    (config?.label ?? &#x27;&#x27;)
+  &quot;
+  [tabIndex]&#x3D;&quot;0&quot;
+&gt;
+  &lt;div
+    *ngIf&#x3D;&quot;config.type &#x3D;&#x3D;&#x3D; &#x27;text&#x27; || config.type &#x3D;&#x3D;&#x3D; &#x27;number&#x27;&quot;
+    #label
+    [ngClass]&#x3D;&quot;[
+      config.type,
+      config.category,
+      config.purpose &#x3D;&#x3D;&#x3D; &#x27;status&#x27;
+        ? EIndicatorStatus[config.status ?? &#x27;information&#x27;]
+        : &#x27;&#x27;,
+      config.purpose &#x3D;&#x3D;&#x3D; &#x27;palette&#x27; ? config.palette : &#x27;&#x27;,
+      rounded ? &#x27;rounded&#x27; : &#x27;&#x27;,
+      config.label &#x3D;&#x3D;&#x3D; &#x27;99+&#x27; ? &#x27;num-lg&#x27; : &#x27;&#x27;,
+      abbr ? &#x27;abbr&#x27; : &#x27;&#x27;
+    ]&quot;
+  &gt;
+    &lt;ircc-cl-lib-icon
+      *ngIf&#x3D;&quot;config.type &#x3D;&#x3D;&#x3D; &#x27;text&#x27; &amp;&amp; config?.icon&quot;
+      [config]&#x3D;&quot;{ &#x27;FA_keywords&#x27;: config.icon }&quot;
+    &gt;&lt;/ircc-cl-lib-icon&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;abbr; else nonAbbr&quot;&gt;
+      &lt;span class&#x3D;&quot;abbr&quot;
+        &gt;&lt;abbr [title]&#x3D;&quot;config?.label&quot;&gt;{{ config?.label }}&lt;/abbr&gt;&lt;/span
+      &gt;
+    &lt;/ng-container&gt;
+    &lt;ng-template #nonAbbr&gt;
+      &lt;span&gt;{{ config?.label }}&lt;/span&gt;
+    &lt;/ng-template&gt;
+  &lt;/div&gt;
+  &lt;span
+    *ngIf&#x3D;&quot;config.type &#x3D;&#x3D;&#x3D; &#x27;dot&#x27;&quot;
+    [ngClass]&#x3D;&quot;[
+      config.type,
+      config.category,
+      config.purpose &#x3D;&#x3D;&#x3D; &#x27;status&#x27;
+        ? EIndicatorStatus[config.status ?? &#x27;information&#x27;]
+        : &#x27;&#x27;,
+      config.purpose &#x3D;&#x3D;&#x3D; &#x27;palette&#x27; ? config.palette : &#x27;&#x27;
+    ]&quot;
+  &gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div  [ngClass]="[\'indicator-container\', config?.size ?? \'\']"  [attr.aria-label]="    (config?.ariaLabel ?? \'Indicator.Heading\' | translate) +    \' \' +    (config?.label ?? \'\')  "  [tabIndex]="0">  <div    *ngIf="config.type === \'text\' || config.type === \'number\'"    #label    [ngClass]="[      config.type,      config.category,      config.purpose === \'status\'        ? EIndicatorStatus[config.status ?? \'information\']        : \'\',      config.purpose === \'palette\' ? config.palette : \'\',      rounded ? \'rounded\' : \'\',      config.label === \'99+\' ? \'num-lg\' : \'\',      abbr ? \'abbr\' : \'\'    ]"  >    <ircc-cl-lib-icon      *ngIf="config.type === \'text\' && config?.icon"      [config]="{ \'FA_keywords\': config.icon }"    ></ircc-cl-lib-icon>    <ng-container *ngIf="abbr; else nonAbbr">      <span class="abbr"        ><abbr [title]="config?.label">{{ config?.label }}</abbr></span      >    </ng-container>    <ng-template #nonAbbr>      <span>{{ config?.label }}</span>    </ng-template>  </div>  <span    *ngIf="config.type === \'dot\'"    [ngClass]="[      config.type,      config.category,      config.purpose === \'status\'        ? EIndicatorStatus[config.status ?? \'information\']        : \'\',      config.purpose === \'palette\' ? config.palette : \'\'    ]"  >  </span></div></div>'
+    var COMPONENTS = [{'name': 'accordionContainerComponent', 'selector': 'app-accordian-container'},{'name': 'AutocompleteComponent', 'selector': 'lib-autocomplete'},{'name': 'BannerComponent', 'selector': 'ircc-cl-lib-banner'},{'name': 'BreadcrumbComponent', 'selector': 'ircc-cl-lib-breadcrumb'},{'name': 'BreadcrumbLinkComponent', 'selector': 'ircc-cl-lib-breadcrumb-link'},{'name': 'ButtonComponent', 'selector': 'ircc-cl-lib-button'},{'name': 'CheckboxComponent', 'selector': 'ircc-cl-lib-checkbox'},{'name': 'ChipItemComponent', 'selector': 'lib-chip-item'},{'name': 'ChipListComponent', 'selector': 'lib-chip-list'},{'name': 'codeViewerComponent', 'selector': 'app-code-viewer'},{'name': 'ComponentPreviewComponent', 'selector': 'app-component-preview'},{'name': 'DatePickerComponent', 'selector': 'ircc-cl-lib-date-picker'},{'name': 'DropdownComponent', 'selector': 'ircc-cl-lib-dropdown'},{'name': 'ErrorComponent', 'selector': 'ircc-cl-lib-error'},{'name': 'FlyoutComponent', 'selector': 'ircc-cl-lib-flyout'},{'name': 'FlyoutOptionComponent', 'selector': 'ircc-cl-lib-flyout-option'},{'name': 'FooterComponent', 'selector': 'ircc-cl-lib-footer'},{'name': 'HeaderComponent', 'selector': 'ircc-cl-lib-header'},{'name': 'HiddenNavComponent', 'selector': 'ircc-cl-lib-hidden-nav'},{'name': 'IconButtonComponent', 'selector': 'ircc-cl-lib-icon-button'},{'name': 'IconComponent', 'selector': 'ircc-cl-lib-icon'},{'name': 'IndicatorComponent', 'selector': 'lib-indicator'},{'name': 'InfoTextSmallComponent', 'selector': 'app-info-text-small'},{'name': 'InputComponent', 'selector': 'ircc-cl-lib-input'},{'name': 'InteractiveDemoComponent', 'selector': 'app-interactive-demo'},{'name': 'LabelComponent', 'selector': 'ircc-cl-lib-label'},{'name': 'LanguageSwitchComponent', 'selector': 'ircc-cl-lib-language-switch'},{'name': 'ProgressIndicatorComponent', 'selector': 'ircc-cl-lib-progress-indicator'},{'name': 'ProgressTagsComponent', 'selector': 'ircc-cl-lib-progress-tags'},{'name': 'RadioInputComponent', 'selector': 'ircc-cl-lib-radio-input'},{'name': 'resizableContainerComponent', 'selector': 'app-resizable-container'},{'name': 'SearchInputComponent', 'selector': 'lib-search-input'},{'name': 'SecondaryChipsComponent', 'selector': 'lib-secondary-chips'},{'name': 'SelectComponent', 'selector': 'ircc-cl-lib-select'},{'name': 'SpinnerComponent', 'selector': 'ircc-cl-lib-spinner'},{'name': 'TabsComponent', 'selector': 'ircc-cl-lib-tabs'},{'name': 'TextareaComponent', 'selector': 'ircc-cl-lib-textarea'},{'name': 'TitleSlugUrlComponent', 'selector': 'app-title-slug-url'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'IndicatorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'IndicatorComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
