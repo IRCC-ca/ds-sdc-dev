@@ -215,37 +215,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#components-links"' :
-                            'data-target="#xs-components-links"' }>
-                            <span class="icon ion-md-cog"></span>
-                            <span>Components</span>
-                            <span class="icon ion-ios-arrow-down"></span>
-                        </div>
-                        <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
-                            <li class="link">
-                                <a href="components/accordionContainerComponent.html" data-type="entity-link" >accordionContainerComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/codeViewerComponent.html" data-type="entity-link" >codeViewerComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/ComponentPreviewComponent.html" data-type="entity-link" >ComponentPreviewComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/InfoTextSmallComponent.html" data-type="entity-link" >InfoTextSmallComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/InteractiveDemoComponent.html" data-type="entity-link" >InteractiveDemoComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/resizableContainerComponent.html" data-type="entity-link" >resizableContainerComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/TitleSlugUrlComponent.html" data-type="entity-link" >TitleSlugUrlComponent</a>
-                            </li>
-                        </ul>
-                    </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
                                 'data-target="#xs-injectables-links"' }>
@@ -271,9 +240,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/IAccordionContainerConfig.html" data-type="entity-link" >IAccordionContainerConfig</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/IBannerConfig.html" data-type="entity-link" >IBannerConfig</a>
                             </li>
                             <li class="link">
@@ -284,9 +250,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/ICheckBoxComponentConfig.html" data-type="entity-link" >ICheckBoxComponentConfig</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/ICodeViewerConfig.html" data-type="entity-link" >ICodeViewerConfig</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ICTAConfig.html" data-type="entity-link" >ICTAConfig</a>
@@ -389,9 +352,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/ITextareaComponentConfig.html" data-type="entity-link" >ITextareaComponentConfig</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/slugTitleURLConfig.html" data-type="entity-link" >slugTitleURLConfig</a>
                             </li>
                         </ul>
                     </li>

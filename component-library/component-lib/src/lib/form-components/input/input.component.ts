@@ -48,9 +48,7 @@ export enum InputTypes {
     }
   ]
 })
-/**
-* 
-*/
+
 export class InputComponent implements ControlValueAccessor, OnInit {
   formGroupEmpty: FormGroup = new FormGroup({});
   /**
@@ -201,8 +199,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   }
 
   /**
-* A lifecycle hook that is called when any data-bound property of a directive changes.
-*/
+  * A lifecycle hook that is called when any data-bound property of a directive changes.
+  */
   ngOnChanges() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
