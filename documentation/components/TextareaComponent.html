@@ -1,0 +1,1605 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ircc-ds documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ircc-ds documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  TextareaComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../components/TextareaComponent.html" target="_self" >{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; TextareaComponent), multi: true
+}</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ircc-cl-lib-textarea</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./textarea.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#charLimitStatus" >charLimitStatus</a>
+                            </li>
+                            <li>
+                                <a href="#currentCharacterStatusAria" >currentCharacterStatusAria</a>
+                            </li>
+                            <li>
+                                <a href="#disabled" >disabled</a>
+                            </li>
+                            <li>
+                                <a href="#errorIds" >errorIds</a>
+                            </li>
+                            <li>
+                                <a href="#focusState" >focusState</a>
+                            </li>
+                            <li>
+                                <a href="#formGroupEmpty" >formGroupEmpty</a>
+                            </li>
+                            <li>
+                                <a href="#labelConfig" >labelConfig</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#onChange" >onChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#onTouch" >onTouch</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#standAloneFunctions" >standAloneFunctions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#characterCountStatus" >characterCountStatus</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#clearvalue" >clearvalue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#focusInput" >focusInput</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnChange" >registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched" >registerOnTouched</a>
+                            </li>
+                            <li>
+                                <a href="#setDisabledState" >setDisabledState</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue" >writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#charLimit" >charLimit</a>
+                            </li>
+                            <li>
+                                <a href="#config" >config</a>
+                            </li>
+                            <li>
+                                <a href="#formGroup" >formGroup</a>
+                            </li>
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(standAloneFunctions: StandAloneFunctions)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:73</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>standAloneFunctions</td>
+                                                  
+                                                        <td>
+                                                                    <code>StandAloneFunctions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="charLimit"></a>
+                        <b>charLimit</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:63</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="config"></a>
+                        <b>config</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ITextareaComponentConfig.html" target="_self" >ITextareaComponentConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;&#x27;,
+    formGroup: new FormGroup({})
+  }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:56</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formGroup"></a>
+                        <b>formGroup</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formGroupEmpty</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:62</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="id"></a>
+                        <b>id</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:61</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="characterCountStatus"></a>
+                    <span class="name">
+                        <span ><b>characterCountStatus</b></span>
+                        <a href="#characterCountStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>characterCountStatus(currCharCount: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:141</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>currCharCount</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearvalue"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>clearvalue</b></span>
+                        <a href="#clearvalue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>clearvalue()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:159</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focusInput"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>focusInput</b></span>
+                        <a href="#focusInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>focusInput(focusValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>focusValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <span ><b>registerOnChange</b></span>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="161"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:161</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <span ><b>registerOnTouched</b></span>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="164"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:164</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDisabledState"></a>
+                    <span class="name">
+                        <span ><b>setDisabledState</b></span>
+                        <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="167"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:167</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isDisabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <span ><b>writeValue</b></span>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="160"
+                            class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:160</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="charLimitStatus"></a>
+                    <span class="name">
+                        <span ><b>charLimitStatus</b></span>
+                        <a href="#charLimitStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentCharacterStatusAria"></a>
+                    <span class="name">
+                        <span ><b>currentCharacterStatusAria</b></span>
+                        <a href="#currentCharacterStatusAria"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="disabled"></a>
+                    <span class="name">
+                        <span ><b>disabled</b></span>
+                        <a href="#disabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorIds"></a>
+                    <span class="name">
+                        <span ><b>errorIds</b></span>
+                        <a href="#errorIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IErrorIDs[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focusState"></a>
+                    <span class="name">
+                        <span ><b>focusState</b></span>
+                        <a href="#focusState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formGroupEmpty"></a>
+                    <span class="name">
+                        <span ><b>formGroupEmpty</b></span>
+                        <a href="#formGroupEmpty"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelConfig"></a>
+                    <span class="name">
+                        <span ><b>labelConfig</b></span>
+                        <a href="#labelConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ILabelConfig.html" target="_self" >ILabelConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    formGroup: this.config.formGroup,
+    parentID: &#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onChange"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>onChange</b></span>
+                        <a href="#onChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTouch"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>onTouch</b></span>
+                        <a href="#onTouch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="standAloneFunctions"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>standAloneFunctions</b></span>
+                        <a href="#standAloneFunctions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>StandAloneFunctions</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">component-library/component-lib/src/lib/form-components/textarea/textarea.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, forwardRef, Input, OnInit } from &#x27;@angular/core&#x27;;
+import {
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR
+} from &#x27;@angular/forms&#x27;;
+import { DSSizes } from &#x27;../../../shared/constants/jl-components.constants&#x27;;
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from &#x27;../../../shared/functions/stand-alone.functions&#x27;;
+import { IErrorPairs } from &#x27;../../../shared/interfaces/component-configs&#x27;;
+import {
+  ILabelConfig,
+  ILabelIconConfig
+} from &#x27;../../shared/label/label.component&#x27;;
+import { IErrorIconConfig } from &#x27;../error/error.component&#x27;;
+
+export interface ITextareaComponentConfig {
+  formGroup: FormGroup;
+  id: string;
+  label?: string;
+  desc?: string;
+  hint?: string;
+  required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
+  placeholder?: string;
+  charLimit?: string;
+  resizable?: keyof typeof ResizableTypes;
+  size?: keyof typeof DSSizes;
+  errorMessages?: IErrorPairs[];
+  errorIcon?: IErrorIconConfig;
+  labelIconConfig?: ILabelIconConfig;
+}
+
+export enum ResizableTypes {
+  vertical &#x3D; &#x27;vertical&#x27;,
+  horizontal &#x3D; &#x27;password&#x27;,
+  both &#x3D; &#x27;both&#x27;,
+  none &#x3D; &#x27;none&#x27;
+}
+
+@Component({
+  selector: &#x27;ircc-cl-lib-textarea&#x27;,
+  templateUrl: &#x27;./textarea.component.html&#x27;,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() &#x3D;&gt; TextareaComponent),
+      multi: true
+    }
+  ]
+})
+export class TextareaComponent implements ControlValueAccessor, OnInit {
+  formGroupEmpty: FormGroup &#x3D; new FormGroup({});
+  //DON&#x27;T include default values of &#x27;&#x27; unless it REALLY makes sense to do so. Instead, make them optional
+  @Input() config: ITextareaComponentConfig &#x3D; {
+    id: &#x27;&#x27;,
+    formGroup: new FormGroup({})
+  };
+
+  @Input() id &#x3D; &#x27;&#x27;;
+  @Input() formGroup &#x3D; this.formGroupEmpty;
+  @Input() charLimit &#x3D; &#x27;&#x27;;
+
+  disabled &#x3D; false;
+  focusState &#x3D; false;
+  errorIds: IErrorIDs[] &#x3D; [];
+  charLimitStatus &#x3D; &#x27;&#x27;;
+  currentCharacterStatusAria &#x3D; &#x27;&#x27;;
+  labelConfig: ILabelConfig &#x3D; {
+    formGroup: this.config.formGroup,
+    parentID: &#x27;&#x27;
+  };
+
+  constructor(public standAloneFunctions: StandAloneFunctions) {}
+
+  //Removed &#x27;!&#x27; and added null case in onChange
+  private onTouch?: () &#x3D;&gt; void;
+  private onChange?: (value: any) &#x3D;&gt; void;
+
+  ngOnInit(): void {
+    if (this.id !&#x3D;&#x3D; &#x27;&#x27;) {
+      this.config.id &#x3D; this.id;
+    }
+
+    if (this.formGroup !&#x3D;&#x3D; this.formGroupEmpty) {
+      this.config.formGroup &#x3D; this.formGroup;
+    }
+
+    if (this.charLimit !&#x3D;&#x3D; &#x27;&#x27;) {
+      this.config.charLimit &#x3D; this.charLimit;
+    }
+
+    if (this.config.errorMessages) {
+      this.errorIds &#x3D; this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
+    }
+
+    if (this.config.formGroup.controls[this.config.id].value) {
+      this.characterCountStatus(
+        this.config.formGroup.controls[this.config.id].value.length
+      );
+    }
+
+    this.config.formGroup.valueChanges.subscribe((change) &#x3D;&gt; {
+      this.characterCountStatus(change[this.config.id]?.length);
+    });
+
+    this.labelConfig &#x3D; this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig
+    );
+  }
+
+  ngOnChanges() {
+    this.labelConfig &#x3D; this.standAloneFunctions.makeLabelConfig(
+      this.config.formGroup,
+      this.config.id,
+      this.config.errorMessages,
+      this.config.label,
+      this.config.desc,
+      this.config.hint,
+      this.config.required,
+      this.config.labelIconConfig
+    );
+  }
+
+  public focusInput(focusValue: boolean): void {
+    this.focusState &#x3D; !focusValue;
+  }
+
+  characterCountStatus(currCharCount: any) {
+    if (this.config?.charLimit) {
+      if (this.config?.charLimit &#x3D;&#x3D; currCharCount) {
+        this.charLimitStatus &#x3D; &#x27;maxLimit&#x27;;
+        this.currentCharacterStatusAria &#x3D; &#x27;TEXTAREA_COMPONENT.maxLimit&#x27;;
+      } else if (Number(this.config?.charLimit) - currCharCount &#x3D;&#x3D; 15) {
+        this.charLimitStatus &#x3D; &#x27;warningLimit&#x27;;
+        this.currentCharacterStatusAria &#x3D; &#x27;TEXTAREA_COMPONENT.warningLimit&#x27;;
+      } else if (Number(this.config?.charLimit) - currCharCount &lt; 15) {
+        this.charLimitStatus &#x3D; &#x27;warningLimit&#x27;;
+        this.currentCharacterStatusAria &#x3D; &#x27;&#x27;;
+      } else {
+        this.charLimitStatus &#x3D; &#x27;&#x27;;
+        this.currentCharacterStatusAria &#x3D; &#x27;&#x27;;
+      }
+    }
+  }
+
+  public clearvalue() {}
+  writeValue(value: string): void {}
+  registerOnChange(fn: any): void {
+    this.onChange &#x3D; fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouch &#x3D; fn;
+  }
+  setDisabledState(isDisabled: boolean) {
+    this.disabled &#x3D; isDisabled;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div&gt;
+  &lt;form [formGroup]&#x3D;&quot;config.formGroup&quot;&gt;
+    &lt;div
+      class&#x3D;&quot;textarea-container&quot;
+      ngClass&#x3D;&quot;{{ config.size }} resize-{{ config.resizable }}&quot;
+    &gt;
+      &lt;div&gt;
+        &lt;ircc-cl-lib-label
+          [config]&#x3D;&quot;labelConfig&quot;
+          [attr.size]&#x3D;&quot;config.size&quot;
+        &gt;&lt;/ircc-cl-lib-label&gt;
+        &lt;div
+          class&#x3D;&quot;content-area&quot;
+          [ngClass]&#x3D;&quot;focusState &#x3D;&#x3D;&#x3D; true ? &#x27;focus&#x27; : &#x27;&#x27;&quot;
+        &gt;
+          &lt;textarea
+            class&#x3D;&quot;textarea-field&quot;
+            maxlength&#x3D;&quot;{{ config.charLimit }}&quot;
+            placeholder&#x3D;&quot;{{ config.placeholder || &#x27;&#x27; | translate }}&quot;
+            tabindex&#x3D;&quot;0&quot;
+            [id]&#x3D;&quot;config.id&quot;
+            [formControlName]&#x3D;&quot;config.id&quot;
+            [attr.aria-label]&#x3D;&quot;
+              &#x27;Textarea Input&#x27; + &#x27; &#x27; + (config.placeholder || &#x27;&#x27; | translate)
+            &quot;
+            #textareaInput
+          &gt;
+123
+          &lt;/textarea&gt;
+          &lt;p
+            *ngIf&#x3D;&quot;config.charLimit&quot;
+            class&#x3D;&quot;character-count&quot;
+            [ngClass]&#x3D;&quot;charLimitStatus&quot;
+            aria-live&#x3D;&quot;polite&quot;
+            attr.aria-label&#x3D;&quot; {{
+              &#x27;TEXTAREA_COMPONENT.characters-used-aria-label&#x27;
+                | translate
+                  : {
+                      currentCharacterCount: textareaInput.value.length,
+                      characterLimit: config.charLimit
+                    }
+            }}
+             {{ currentCharacterStatusAria || &#x27;&#x27; | translate }}&quot;
+            tabindex&#x3D;&quot;0&quot;
+          &gt;
+            {{ textareaInput.value.length }}/{{ config.charLimit }}
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div
+        *ngIf&#x3D;&quot;
+          config.formGroup.get(config.id)?.touched &amp;&amp;
+          config.formGroup.get(config.id)?.invalid
+        &quot;
+        class&#x3D;&quot;check-error&quot;
+      &gt;
+        &lt;ng-container *ngFor&#x3D;&quot;let errors of errorIds; let i &#x3D; index&quot;&gt;
+          &lt;div
+            *ngIf&#x3D;&quot;config.formGroup.get(config.id)?.errors?.[errors.key]&quot;
+            class&#x3D;&quot;radio-errors&quot;
+          &gt;
+            &lt;ircc-cl-lib-error
+              [size]&#x3D;&quot;config?.size&quot;
+              [id]&#x3D;&quot;errors.id&quot;
+              [errorLOV]&#x3D;&quot;errors.errorLOV&quot;
+            &gt;&lt;/ircc-cl-lib-error&gt;
+          &lt;/div&gt;
+        &lt;/ng-container&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div>  <form [formGroup]="config.formGroup">    <div      class="textarea-container"      ngClass="{{ config.size }} resize-{{ config.resizable }}"    >      <div>        <ircc-cl-lib-label          [config]="labelConfig"          [attr.size]="config.size"        ></ircc-cl-lib-label>        <div          class="content-area"          [ngClass]="focusState === true ? \'focus\' : \'\'"        >          <textarea            class="textarea-field"            maxlength="{{ config.charLimit }}"            placeholder="{{ config.placeholder || \'\' | translate }}"            tabindex="0"            [id]="config.id"            [formControlName]="config.id"            [attr.aria-label]="              \'Textarea Input\' + \' \' + (config.placeholder || \'\' | translate)            "            #textareaInput          >123          </textarea>          <p            *ngIf="config.charLimit"            class="character-count"            [ngClass]="charLimitStatus"            aria-live="polite"            attr.aria-label=" {{              \'TEXTAREA_COMPONENT.characters-used-aria-label\'                | translate                  : {                      currentCharacterCount: textareaInput.value.length,                      characterLimit: config.charLimit                    }            }}             {{ currentCharacterStatusAria || \'\' | translate }}"            tabindex="0"          >            {{ textareaInput.value.length }}/{{ config.charLimit }}          </p>        </div>      </div>      <div        *ngIf="          config.formGroup.get(config.id)?.touched &&          config.formGroup.get(config.id)?.invalid        "        class="check-error"      >        <ng-container *ngFor="let errors of errorIds; let i = index">          <div            *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]"            class="radio-errors"          >            <ircc-cl-lib-error              [size]="config?.size"              [id]="errors.id"              [errorLOV]="errors.errorLOV"            ></ircc-cl-lib-error>          </div>        </ng-container>      </div>    </div>  </form></div></div>'
+    var COMPONENTS = [{'name': 'AutocompleteComponent', 'selector': 'lib-autocomplete'},{'name': 'BannerComponent', 'selector': 'ircc-cl-lib-banner'},{'name': 'BreadcrumbComponent', 'selector': 'ircc-cl-lib-breadcrumb'},{'name': 'BreadcrumbLinkComponent', 'selector': 'ircc-cl-lib-breadcrumb-link'},{'name': 'ButtonComponent', 'selector': 'ircc-cl-lib-button'},{'name': 'CheckboxComponent', 'selector': 'ircc-cl-lib-checkbox'},{'name': 'ChipItemComponent', 'selector': 'lib-chip-item'},{'name': 'ChipListComponent', 'selector': 'lib-chip-list'},{'name': 'DatePickerComponent', 'selector': 'ircc-cl-lib-date-picker'},{'name': 'DropdownComponent', 'selector': 'ircc-cl-lib-dropdown'},{'name': 'ErrorComponent', 'selector': 'ircc-cl-lib-error'},{'name': 'FlyoutComponent', 'selector': 'ircc-cl-lib-flyout'},{'name': 'FlyoutOptionComponent', 'selector': 'ircc-cl-lib-flyout-option'},{'name': 'FooterComponent', 'selector': 'ircc-cl-lib-footer'},{'name': 'HeaderComponent', 'selector': 'ircc-cl-lib-header'},{'name': 'HiddenNavComponent', 'selector': 'ircc-cl-lib-hidden-nav'},{'name': 'IconButtonComponent', 'selector': 'ircc-cl-lib-icon-button'},{'name': 'IconComponent', 'selector': 'ircc-cl-lib-icon'},{'name': 'IndicatorComponent', 'selector': 'lib-indicator'},{'name': 'InputComponent', 'selector': 'ircc-cl-lib-input'},{'name': 'LabelComponent', 'selector': 'ircc-cl-lib-label'},{'name': 'LanguageSwitchComponent', 'selector': 'ircc-cl-lib-language-switch'},{'name': 'ProgressIndicatorComponent', 'selector': 'ircc-cl-lib-progress-indicator'},{'name': 'ProgressTagsComponent', 'selector': 'ircc-cl-lib-progress-tags'},{'name': 'RadioInputComponent', 'selector': 'ircc-cl-lib-radio-input'},{'name': 'SearchInputComponent', 'selector': 'lib-search-input'},{'name': 'SecondaryChipsComponent', 'selector': 'lib-secondary-chips'},{'name': 'SelectComponent', 'selector': 'ircc-cl-lib-select'},{'name': 'SpinnerComponent', 'selector': 'ircc-cl-lib-spinner'},{'name': 'TabsComponent', 'selector': 'ircc-cl-lib-tabs'},{'name': 'TextareaComponent', 'selector': 'ircc-cl-lib-textarea'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TextareaComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TextareaComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

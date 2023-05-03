@@ -1,4 +1,10 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   IBannerConfig,
@@ -80,7 +86,7 @@ export const CITIES_OF_BIRTH_LOVS_ALL: ICityOfBirth[] = [
   templateUrl: './accessibility-demo.component.html',
   styleUrls: ['./accessibility-demo.component.scss']
 })
-export class AccessibilityDemoComponent implements OnInit {
+export class AccessibilityDemoComponent implements OnInit, OnDestroy {
   altPathKey = '';
   altLangURL = '';
   form = new FormGroup({});

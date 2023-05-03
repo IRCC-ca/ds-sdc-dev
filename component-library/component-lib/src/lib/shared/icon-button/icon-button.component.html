@@ -1,14 +1,14 @@
 <button
   category="plain"
   [id]="config.id"
-  [attr.aria-label]="config?.ariaLabel"
-  [disabled]="config?.disabled"
+  [attr.aria-label]="config.ariaLabel"
+  [disabled]="config.disabled"
   (click)="buttonClick()"
   [class]="config.category + ' ' + config.size"
 >
   <span>
     <ircc-cl-lib-icon
-      [config]="{'FA_keywords':config.icon?.class}"
+      [config]="{ FA_keywords: config.icon?.class }"
       [style.color]="config.icon?.color"
     ></ircc-cl-lib-icon>
   </span>

@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -14,7 +15,7 @@ import { IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';
   templateUrl: './resizable-container.component.html',
   styleUrls: ['./resizable-container.component.scss']
 })
-export class resizableContainerComponent {
+export class resizableContainerComponent implements AfterViewInit {
   @ViewChild('resizeBar', { static: false }) resizeBar: ElementRef | undefined;
   @ViewChild('resizeContainer', { static: false }) resizeContainer:
     | ElementRef

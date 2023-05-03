@@ -194,7 +194,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     ]
   };
 
-  setBannerType(value: any) {
+  setInputType(value: any) {
     switch (value) {
       case 'password':
         this.inputConfig.type = 'password';

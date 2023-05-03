@@ -2,6 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
   SimpleChanges
@@ -26,7 +27,7 @@ export interface ICodeViewerConfig {
   templateUrl: './code-viewer.component.html',
   styleUrls: ['./code-viewer.component.scss']
 })
-export class codeViewerComponent implements OnInit {
+export class codeViewerComponent implements OnInit, OnChanges {
   @Input() config: ICodeViewerConfig = {
     id: ''
   };

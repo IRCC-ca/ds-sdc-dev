@@ -15,11 +15,11 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({
-  selector: 'app-banner-documentation',
-  templateUrl: './banner-documentation.component.html',
-  styleUrls: ['./banner-documentation.component.scss']
+  selector: 'app-banner-doc-code',
+  templateUrl: './banner-doc-code.component.html',
+  styleUrls: ['./banner-doc-code.component.scss']
 })
-export class BannerDocumentationComponent implements OnInit {
+export class BannerDocCodeComponent implements OnInit {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
   altLangLink = 'bannerDocumentation';
 
@@ -191,6 +191,9 @@ export class BannerDocumentationComponent implements OnInit {
     ]
   };
 
+  /**
+   * Set banner type based on the tab selected
+   */
   setBannerType(value: any) {
     if (value === 'info') {
       this.bannerConfig.type = 'info';
@@ -205,6 +208,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Add item to CTA list
+   */
   addItemtoCTAList(text: string) {
     const plainExample: ICTAConfig = {
       text: 'Plain',
@@ -251,6 +257,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * remove specific item from cta array if it exists
+   */
   removeItemFromCTAList(text: string) {
     const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
       return object.text === text;
@@ -261,6 +270,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * disable radio button based on id
+   */
   disableRadio(name: string) {
     this.toggles.forEach((item) => {
       if (item.id === name) {
@@ -269,6 +281,9 @@ export class BannerDocumentationComponent implements OnInit {
     });
   }
 
+  /**
+   * enable radio button based on id
+   */
   enableRadio(name: string) {
     this.toggles.forEach((item) => {
       if (item.id === name) {
@@ -277,6 +292,9 @@ export class BannerDocumentationComponent implements OnInit {
     });
   }
 
+  /**
+   * Handles banner dismiss animation
+   */
   bannerClose(event: Event) {
     const bannerContainer = this.banner.nativeElement.querySelector(
       `#${event}`
@@ -290,6 +308,9 @@ export class BannerDocumentationComponent implements OnInit {
     }, 700);
   }
 
+  /**
+   * Disables/Enables button/link radios (Max 2 allowed on the banner at a time)
+   */
   checkCurrentButtonCounter() {
     if (this.currentButtonSet.size >= 2) {
       this.buttonSetWithAllOptions.forEach((btn) => {
@@ -304,35 +325,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
-  handleSizeToggle(value: any) {
-    this.bannerConfig.size = value['showSizeToggle'].toLowerCase();
-  }
-
-  handleCloseToggle(value: any) {
-    if (value['showCloseToggle'] === 'True') {
-      this.bannerConfig.dismissible = true;
-    } else {
-      this.bannerConfig.dismissible = false;
-    }
-  }
-
-  handleTitleToggle(value: any) {
-    if (value['showTitleToggle'] === 'True') {
-      this.bannerConfig.title = 'Title text';
-    } else {
-      this.bannerConfig.title = '';
-    }
-  }
-
-  handleDescToggle(value: any) {
-    if (value['showDescToggle'] === 'True') {
-      this.bannerConfig.content =
-        'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.';
-    } else {
-      this.bannerConfig.content = '';
-    }
-  }
-
+  /**
+   * Hide or show Primary button on test banner based on radio selection
+   */
   handlePrimaryButtonToggle(value: any) {
     if (value['showPrimaryButtonToggle'] === 'True') {
       this.addItemtoCTAList('Primary');
@@ -345,6 +340,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show Secondary button on test banner based on radio selection
+   */
   handleSecondaryButtonToggle(value: any) {
     if (value['showSecondaryButtonToggle'] === 'True') {
       this.addItemtoCTAList('Secondary');
@@ -357,6 +355,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show plain button on test banner based on radio selection
+   */
   handlePlainButtonToggle(value: any) {
     if (value['showPlainButtonToggle'] === 'True') {
       this.addItemtoCTAList('Plain');
@@ -369,6 +370,9 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
+  /**
+   * Hide or show Link on test banner based on radio selection
+   */
   handleLinkToggle(value: any) {
     if (value['showLinkToggle'] === 'True') {
       this.addItemtoCTAList('Link');
@@ -381,27 +385,18 @@ export class BannerDocumentationComponent implements OnInit {
     }
   }
 
-  track_toggles = {
-    showSizeToggle: 'Large',
-    showCloseToggle: 'False',
-    showTitleToggle: 'False',
-    showDescToggle: 'False',
-    showPrimaryButtonToggle: 'False',
-    showSecondaryButtonToggle: 'False',
-    showPlainButtonToggle: 'False',
-    showLinkToggle: 'False'
-  };
-
-  toggle_function = {
-    showSizeToggle: this.handleSizeToggle,
-    showCloseToggle: this.handleCloseToggle,
-    showTitleToggle: this.handleTitleToggle,
-    showDescToggle: this.handleDescToggle,
-    showPrimaryButtonToggle: this.handlePrimaryButtonToggle,
-    showSecondaryButtonToggle: this.handleSecondaryButtonToggle,
-    showPlainButtonToggle: this.handlePlainButtonToggle,
-    showLinkToggle: this.handleLinkToggle
-  };
+  /**
+   * Return mapping of input config from form values
+   */
+  private parseToggleConfig(value: any): IBannerConfig {
+    return {
+      ...this.bannerConfig,
+      size: value['showSizeToggle'].toLowerCase(),
+      title: value['showTitleToggle'] === 'True' ? this.bannerConfig.title = 'Title text' : '',
+      content: value['showDescToggle'] === 'True' ? this.bannerConfig.content ='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.': '',
+      dismissible: value['showCloseToggle'] === 'True' ? true : false,
+    };
+  }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
@@ -416,11 +411,11 @@ export class BannerDocumentationComponent implements OnInit {
     });
 
     this.form_interactive_banner.valueChanges.subscribe((value: any) => {
-      for (const param in value) {
-        if (this.track_toggles[param] === value[param]) continue;
-        this.track_toggles[param] = value[param];
-        this.toggle_function[param].apply(this, [value]);
-      }
+      this.handlePrimaryButtonToggle(value)
+      this.handlePlainButtonToggle(value)
+      this.handleSecondaryButtonToggle(value),
+      this.handleLinkToggle(value)
+      this.bannerConfig = this.parseToggleConfig(value);
     });
   }
 }

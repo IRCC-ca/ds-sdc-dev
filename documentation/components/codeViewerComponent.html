@@ -1,0 +1,1107 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ircc-ds documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ircc-ds documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  codeViewerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>component-library/src/app/components/code-viewer/code-viewer.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-code-viewer</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./code-viewer.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./code-viewer.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#accordionConfig" >accordionConfig</a>
+                            </li>
+                            <li>
+                                <a href="#buttonConfigCopy" >buttonConfigCopy</a>
+                            </li>
+                            <li>
+                                <a href="#height" >height</a>
+                            </li>
+                            <li>
+                                <a href="#minHeightResizeContainer" >minHeightResizeContainer</a>
+                            </li>
+                            <li>
+                                <a href="#openAccordion" >openAccordion</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTab" >selectedTab</a>
+                            </li>
+                            <li>
+                                <a href="#tabConfig" >tabConfig</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getHeight" >getHeight</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedTab" >getSelectedTab</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setupComponent" >setupComponent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#config" >config</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getSelected" >getSelected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="config"></a>
+                        <b>config</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ICodeViewerConfig.html" target="_self" >ICodeViewerConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:30</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getSelected"></a>
+                        <b>getSelected</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:33</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHeight"></a>
+                    <span class="name">
+                        <span ><b>getHeight</b></span>
+                        <a href="#getHeight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getHeight(height: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>height</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedTab"></a>
+                    <span class="name">
+                        <span ><b>getSelectedTab</b></span>
+                        <a href="#getSelectedTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedTab(selected: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:96</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selected</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setupComponent"></a>
+                    <span class="name">
+                        <span ><b>setupComponent</b></span>
+                        <a href="#setupComponent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setupComponent()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="accordionConfig"></a>
+                    <span class="name">
+                        <span ><b>accordionConfig</b></span>
+                        <a href="#accordionConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IAccordionContainerConfig.html" target="_self" >IAccordionContainerConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;codeViewerTabsCccordion&#x27;,
+    open: this.config.openAccordion
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttonConfigCopy"></a>
+                    <span class="name">
+                        <span ><b>buttonConfigCopy</b></span>
+                        <a href="#buttonConfigCopy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IButtonConfig.html" target="_self" >IButtonConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;accordion-button&#x27;,
+    category: &#x27;plain&#x27;,
+    size: &#x27;small&#x27;,
+    ariaLabel: &#x27;Click to copy the code&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="height"></a>
+                    <span class="name">
+                        <span ><b>height</b></span>
+                        <a href="#height"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>150</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="minHeightResizeContainer"></a>
+                    <span class="name">
+                        <span ><b>minHeightResizeContainer</b></span>
+                        <a href="#minHeightResizeContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>150</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAccordion"></a>
+                    <span class="name">
+                        <span ><b>openAccordion</b></span>
+                        <a href="#openAccordion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTab"></a>
+                    <span class="name">
+                        <span ><b>selectedTab</b></span>
+                        <a href="#selectedTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    title: &#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabConfig"></a>
+                    <span class="name">
+                        <span ><b>tabConfig</b></span>
+                        <a href="#tabConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ITabNavConfig.html" target="_self" >ITabNavConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    id: &#x27;codeViewerTabs&#x27;,
+    showContent: false
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">component-library/src/app/components/code-viewer/code-viewer.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges
+} from &#x27;@angular/core&#x27;;
+import {
+  IButtonConfig,
+  ITabNavConfig,
+  ITabConfig
+} from &#x27;ircc-ds-angular-component-library&#x27;;
+
+import { IAccordionContainerConfig } from &#x27;../accordion-panel/accordion-container.component&#x27;;
+
+export interface ICodeViewerConfig {
+  id: string;
+  openAccordion?: boolean;
+  tab?: ITabConfig[];
+  selected?: string;
+}
+
+@Component({
+  selector: &#x27;app-code-viewer&#x27;,
+  templateUrl: &#x27;./code-viewer.component.html&#x27;,
+  styleUrls: [&#x27;./code-viewer.component.scss&#x27;]
+})
+export class codeViewerComponent implements OnInit {
+  @Input() config: ICodeViewerConfig &#x3D; {
+    id: &#x27;&#x27;
+  };
+  @Output() getSelected &#x3D; new EventEmitter&lt;string&gt;();
+
+  tabConfig: ITabNavConfig &#x3D; {
+    id: &#x27;codeViewerTabs&#x27;,
+    showContent: false
+  };
+  selectedTab: any &#x3D; {
+    title: &#x27;&#x27;
+  };
+
+  accordionConfig: IAccordionContainerConfig &#x3D; {
+    id: &#x27;codeViewerTabsCccordion&#x27;,
+    open: this.config.openAccordion
+  };
+
+  openAccordion: boolean &#x3D; false;
+  minHeightResizeContainer &#x3D; 150;
+  height: number &#x3D; 150;
+
+  buttonConfigCopy: IButtonConfig &#x3D; {
+    id: &#x27;accordion-button&#x27;,
+    category: &#x27;plain&#x27;,
+    size: &#x27;small&#x27;,
+    ariaLabel: &#x27;Click to copy the code&#x27;
+  };
+
+  ngOnInit() {
+    this.setupComponent();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes[&#x27;config&#x27;]) {
+      this.config &#x3D; changes[&#x27;config&#x27;].currentValue;
+      this.setupComponent();
+    }
+  }
+
+  setupComponent() {
+    if (this.config.openAccordion !&#x3D;&#x3D; undefined) {
+      this.openAccordion &#x3D; this.config.openAccordion;
+    }
+
+    if (this.config.selected) {
+      this.tabConfig.selected &#x3D; this.config.selected;
+    }
+
+    if (this.config.tab) {
+      this.tabConfig.tab &#x3D; this.config.tab;
+    } else {
+      this.tabConfig.tab &#x3D; [];
+    }
+
+    if (this.config.tab &amp;&amp; this.config.selected) {
+      this.selectedTab &#x3D; this.config.tab.find(
+        (tab) &#x3D;&gt; tab.id &#x3D;&#x3D;&#x3D; this.config.selected
+      );
+    } else if (this.config.tab) {
+      this.selectedTab &#x3D; this.config.tab[0];
+    } else {
+      this.selectedTab &#x3D; {};
+    }
+  }
+
+  getSelectedTab(selected: any) {
+    if (this.config.tab) {
+      this.selectedTab &#x3D; this.config.tab.find(
+        (element) &#x3D;&gt; element.id &#x3D;&#x3D;&#x3D; selected
+      );
+      this.config.selected &#x3D; selected;
+      this.getSelected.emit(selected);
+    }
+  }
+
+  getHeight(height: number) {
+    this.height &#x3D; height;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div
+  [id]&#x3D;&quot;config.id&quot;
+  class&#x3D;&quot;code-viewer&quot;
+&gt;
+  &lt;ircc-cl-lib-tabs
+    class&#x3D;&quot;tabs-component&quot;
+    [config]&#x3D;&quot;tabConfig&quot;
+    (valueChange)&#x3D;&quot;getSelectedTab($event)&quot;
+  &gt;&lt;/ircc-cl-lib-tabs&gt;
+  &lt;app-accordian-container
+    [config]&#x3D;&quot;accordionConfig&quot;
+    [open]&#x3D;&quot;openAccordion&quot;
+  &gt;
+    &lt;ircc-cl-lib-button
+      extraRight
+      [config]&#x3D;&quot;buttonConfigCopy&quot;
+      [cdkCopyToClipboard]&#x3D;&quot;selectedTab.value&quot;
+      class&#x3D;&quot;tabs-btn&quot;
+    &gt;
+      {{ &#x27;Accordion.CopyCode&#x27; | translate }}
+    &lt;/ircc-cl-lib-button&gt;
+
+    &lt;app-resizable-container
+      (getHeight)&#x3D;&quot;getHeight($event)&quot;
+      [setHeight]&#x3D;&quot;height&quot;
+      [minHeight]&#x3D;&quot;minHeightResizeContainer&quot;
+    &gt;
+      &lt;pre&gt;&lt;code [highlight]&#x3D;&quot;selectedTab.value&quot;&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/app-resizable-container
+  &gt;&lt;/app-accordian-container&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./code-viewer.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@use &#x27;../../../../../core-library/util/theme&#x27; as theme;
+@use &#x27;../../../../../core-library/util/size&#x27; as size;
+@use &#x27;../../../../../core-library/tokens/template-const&#x27;;
+
+@use &#x27;sass:map&#x27;;
+$selectors: &#x27;app-code-viewer&#x27;;
+
+@mixin selectors {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selectors() {
+    @include layout();
+  }
+}
+
+@mixin layout {
+  .code-viewer {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 100%;
+
+    app-accordian-container {
+      border-top: 1px solid var(--divider);
+      display: block;
+    }
+    pre,
+    code {
+      overflow: auto;
+      width: 100%;
+      height: 100%;
+      white-space: pre;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div  [id]="config.id"  class="code-viewer">  <ircc-cl-lib-tabs    class="tabs-component"    [config]="tabConfig"    (valueChange)="getSelectedTab($event)"  ></ircc-cl-lib-tabs>  <app-accordian-container    [config]="accordionConfig"    [open]="openAccordion"  >    <ircc-cl-lib-button      extraRight      [config]="buttonConfigCopy"      [cdkCopyToClipboard]="selectedTab.value"      class="tabs-btn"    >      {{ \'Accordion.CopyCode\' | translate }}    </ircc-cl-lib-button>    <app-resizable-container      (getHeight)="getHeight($event)"      [setHeight]="height"      [minHeight]="minHeightResizeContainer"    >      <pre><code [highlight]="selectedTab.value"> </code></pre></app-resizable-container  ></app-accordian-container></div></div>'
+    var COMPONENTS = [{'name': 'accordionContainerComponent', 'selector': 'app-accordian-container'},{'name': 'AutocompleteComponent', 'selector': 'lib-autocomplete'},{'name': 'BannerComponent', 'selector': 'ircc-cl-lib-banner'},{'name': 'BreadcrumbComponent', 'selector': 'ircc-cl-lib-breadcrumb'},{'name': 'BreadcrumbLinkComponent', 'selector': 'ircc-cl-lib-breadcrumb-link'},{'name': 'ButtonComponent', 'selector': 'ircc-cl-lib-button'},{'name': 'CheckboxComponent', 'selector': 'ircc-cl-lib-checkbox'},{'name': 'ChipItemComponent', 'selector': 'lib-chip-item'},{'name': 'ChipListComponent', 'selector': 'lib-chip-list'},{'name': 'codeViewerComponent', 'selector': 'app-code-viewer'},{'name': 'ComponentPreviewComponent', 'selector': 'app-component-preview'},{'name': 'DatePickerComponent', 'selector': 'ircc-cl-lib-date-picker'},{'name': 'DropdownComponent', 'selector': 'ircc-cl-lib-dropdown'},{'name': 'ErrorComponent', 'selector': 'ircc-cl-lib-error'},{'name': 'FlyoutComponent', 'selector': 'ircc-cl-lib-flyout'},{'name': 'FlyoutOptionComponent', 'selector': 'ircc-cl-lib-flyout-option'},{'name': 'FooterComponent', 'selector': 'ircc-cl-lib-footer'},{'name': 'HeaderComponent', 'selector': 'ircc-cl-lib-header'},{'name': 'HiddenNavComponent', 'selector': 'ircc-cl-lib-hidden-nav'},{'name': 'IconButtonComponent', 'selector': 'ircc-cl-lib-icon-button'},{'name': 'IconComponent', 'selector': 'ircc-cl-lib-icon'},{'name': 'IndicatorComponent', 'selector': 'lib-indicator'},{'name': 'InfoTextSmallComponent', 'selector': 'app-info-text-small'},{'name': 'InputComponent', 'selector': 'ircc-cl-lib-input'},{'name': 'InteractiveDemoComponent', 'selector': 'app-interactive-demo'},{'name': 'LabelComponent', 'selector': 'ircc-cl-lib-label'},{'name': 'LanguageSwitchComponent', 'selector': 'ircc-cl-lib-language-switch'},{'name': 'ProgressIndicatorComponent', 'selector': 'ircc-cl-lib-progress-indicator'},{'name': 'ProgressTagsComponent', 'selector': 'ircc-cl-lib-progress-tags'},{'name': 'RadioInputComponent', 'selector': 'ircc-cl-lib-radio-input'},{'name': 'resizableContainerComponent', 'selector': 'app-resizable-container'},{'name': 'SearchInputComponent', 'selector': 'lib-search-input'},{'name': 'SecondaryChipsComponent', 'selector': 'lib-secondary-chips'},{'name': 'SelectComponent', 'selector': 'ircc-cl-lib-select'},{'name': 'SpinnerComponent', 'selector': 'ircc-cl-lib-spinner'},{'name': 'TabsComponent', 'selector': 'ircc-cl-lib-tabs'},{'name': 'TextareaComponent', 'selector': 'ircc-cl-lib-textarea'},{'name': 'TitleSlugUrlComponent', 'selector': 'app-title-slug-url'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'codeViewerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'codeViewerComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
