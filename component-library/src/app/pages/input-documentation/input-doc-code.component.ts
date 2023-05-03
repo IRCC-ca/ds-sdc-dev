@@ -8,7 +8,10 @@ import {
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
-import { ICodeViewerConfig } from '@app/components/code-viewer/code-viewer.component';
+import {
+  ICodeViewerConfig,
+  stringify
+} from '@app/components/code-viewer/code-viewer.component';
 
 /**
  * Interactive input demo & code block
@@ -186,9 +189,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
 import { FormGroup } from '@angular/forms';
 
-inputConfig: IInputComponentConfig = ${this.stringify(
-          this.inputConfigCodeView
-        )}`
+inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
       }
     ]
   };
@@ -235,6 +236,7 @@ inputConfig: IInputComponentConfig = ${this.stringify(
 
     this.form_interactive_input.valueChanges.subscribe((value: any) => {
       this.inputConfig = this.parseToggleConfig(value);
+      this.parseCodeViewConfig();
       if (value['error']) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
@@ -304,14 +306,22 @@ inputConfig: IInputComponentConfig = ${this.stringify(
     }
   }
 
-  private stringify(object: any) {
-    return (
-      JSON.stringify(object, null, 4)
-        // 'key:' => key:
-        .replace(/"([^"]+)":/g, '$1:')
-        // "new Class()" => new Class()
-        .replace(/"new /g, 'new ')
-        .replace(/\)"/g, ')')
-    );
+  private parseCodeViewConfig() {
+    const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
+    if (-1 == index || !index) return;
+    this.inputConfigCodeView = {
+      ...this.inputConfigCodeView,
+      size: this.inputConfig.size,
+      label: this.inputConfig.label,
+      desc: this.inputConfig.desc,
+      hint: this.inputConfig.hint
+    };
+    if (this.codeViewConfig?.tab) {
+      this.codeViewConfig.tab[index].value = `
+import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+
+inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`;
+    }
   }
 }

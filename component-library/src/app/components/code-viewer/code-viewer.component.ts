@@ -107,3 +107,17 @@ export class codeViewerComponent implements OnInit {
     this.height = height;
   }
 }
+
+/**
+ * Convert config object to string
+ */
+export function stringify(object: any): string {
+  return (
+    JSON.stringify(object, null, 4)
+      // 'key:' => key:
+      .replace(/"([^"]+)":/g, '$1:')
+      // "new Class()" => new Class()
+      .replace(/"new /g, 'new ')
+      .replace(/\)"/g, ')')
+  );
+}
