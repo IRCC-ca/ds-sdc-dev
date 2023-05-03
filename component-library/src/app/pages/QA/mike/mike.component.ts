@@ -367,14 +367,14 @@ export class MikeComponent implements OnInit {
   }
 
   toggleSize() {
-    if(this.dropdownConfig.size){
-      if(this.dropdownConfig.size === 'large'){
-        this.dropdownConfig = {...this.dropdownConfig, size: 'small' }
-      }else{
-        this.dropdownConfig = {...this.dropdownConfig, size: 'large'}
+    if (this.dropdownConfig.size) {
+      if (this.dropdownConfig.size === 'large') {
+        this.dropdownConfig = { ...this.dropdownConfig, size: 'small' };
+      } else {
+        this.dropdownConfig = { ...this.dropdownConfig, size: 'large' };
       }
-    }else{
-      this.dropdownConfig = {...this.dropdownConfig, size: 'small' }
+    } else {
+      this.dropdownConfig = { ...this.dropdownConfig, size: 'small' };
     }
   }
 
