@@ -8,24 +8,35 @@
 @use "../../tokens/text" as text;
 @use "sass:map";
 
-@mixin selector {
+@mixin selectors {
   ircc-cl-lib-flyout-option#{template-const.$escape} {
     @content;
   }
 }
 
 @mixin create {
-  @include selector() {
+  @include selectors() {
     @include layout();
   }
 }
 
-@mixin layout {
-  p {
-    --text: var(--text-primary);
-    color: var(--text);
+@mixin small-styles {
+  .option {
+    &-text {
+      @include typography.fontSet(body, 3, regular);
+    }
   }
+}
 
+@mixin large-styles {
+  .option {
+    &-text {
+      @include typography.fontSet(body, 2, regular);
+    }
+  }
+}
+
+@mixin layout {
   ircc-cl-lib-button {
     .lib-button {
       display: block;
@@ -40,8 +51,8 @@
 
   .option {
     &-container {
-      margin: 0px 6px;
-      padding: 6px 0px;
+      margin: 0;
+      padding: 0;
     }
 
     &-contents {
@@ -49,23 +60,30 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      margin: 0 10px;
+      margin: 8px 16px;
     }
 
     &-text {
       padding: 0;
-      margin: 2px 0;
+      margin: 0;
     }
 
     &-check {
       color: var(--navigation);
     }
+  }
 
-    //TODO: Tokens aren't working here. Figure out what's going on
-    &-div {
-      font-family: "lato";
-      color: var(--text);
-      font-size: 20px;
+  @include size.selector(small) {
+    @include small-styles;
+    .large {
+      @include large-styles;
+    }
+  }
+
+  @include size.selector(large) {
+    @include large-styles;
+    .small {
+      @include small-styles;
     }
   }
 }

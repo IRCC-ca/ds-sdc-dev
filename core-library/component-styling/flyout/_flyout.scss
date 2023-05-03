@@ -9,15 +9,29 @@
 @use "../../util/accessibility" as a11y;
 @use "sass:map";
 
-@mixin selector {
+@mixin selectors {
   ircc-cl-lib-flyout#{template-const.$escape} {
     @content;
   }
 }
 
 @mixin create {
-  @include selector() {
+  @include selectors() {
     @include layout();
+  }
+}
+
+@mixin large-styles {
+  .flyout-container,
+  &.flyout-container {
+    max-height: 200px;
+  }
+}
+
+@mixin small-styles {
+  .flyout-container,
+  &.flyout-container {
+    max-height: 180px;
   }
 }
 
@@ -30,19 +44,47 @@
     background: var(--generic-hover);
   }
 
+  .option-text {
+    color: var(--text-primary);
+  }
+
+  .disabled-option {
+    * {
+      cursor: not-allowed;
+    }
+    .option-text {
+      color: var(--text-disabled);
+    }
+  }
+
   .flyout {
     &-container {
       margin-top: 11px;
       box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-      max-height: 220px;
       overflow-y: scroll;
       overflow-x: visible;
     }
     &-option-container {
-      &:hover,
-      &:focus {
-        background: var(--generic-hover);
+      &:not(.disabled-option) {
+        &:hover,
+        &:focus {
+          background: var(--generic-hover);
+        }
       }
+    }
+  }
+
+  @include size.selector(large) {
+    @include large-styles;
+    .small {
+      @include small-styles;
+    }
+  }
+
+  @include size.selector(small) {
+    @include small-styles;
+    .large {
+      @include large-styles;
     }
   }
 }

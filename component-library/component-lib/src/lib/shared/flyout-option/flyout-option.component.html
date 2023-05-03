@@ -1,4 +1,7 @@
-<div class="option-container">
+<div
+  class="option-container"
+  [ngClass]="config.size"
+>
   <ircc-cl-lib-button
     [category]="'plain'"
     [id]="config.id ? config.id : ''"

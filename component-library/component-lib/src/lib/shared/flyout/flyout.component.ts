@@ -1,4 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter, HostListener, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
 
 export enum IFlyoutSelectTypes {
@@ -11,7 +12,8 @@ export interface IFlyoutConfig {
   options?: IFlyoutOptionConfig[],
   disabled?: boolean
   selection?: [] | number,
-  type?: keyof typeof IFlyoutSelectTypes
+  type?: keyof typeof IFlyoutSelectTypes,
+  size?: keyof typeof DSSizes
 };
 
 @Component({
@@ -29,6 +31,7 @@ export class FlyoutComponent implements OnInit {
   @Input() disabled?: boolean;
   @Input() selection?: [] | number;
   @Input() type?: keyof typeof IFlyoutSelectTypes;
+  @Input() size?: keyof typeof DSSizes;
 
   //TODO: Must add the other config parameters
   @Output() isSelected = new EventEmitter();
@@ -43,6 +46,7 @@ export class FlyoutComponent implements OnInit {
     if(this.disabled) this.config.disabled = this.disabled;
     if(this.selection) this.config.selection = this.selection;
     if(this.type) this.config.type = this.type;
+    if(this.size) this.config.size = this.size;
   };
 
   @HostListener('document:click', ['$event'])

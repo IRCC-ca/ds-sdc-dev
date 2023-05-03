@@ -366,6 +366,18 @@ export class MikeComponent implements OnInit {
       : document.getElementById('radio_10')?.setAttribute('disabled', '');
   }
 
+  toggleSize() {
+    if(this.dropdownConfig.size){
+      if(this.dropdownConfig.size === 'large'){
+        this.dropdownConfig = {...this.dropdownConfig, size: 'small' }
+      }else{
+        this.dropdownConfig = {...this.dropdownConfig, size: 'large'}
+      }
+    }else{
+      this.dropdownConfig = {...this.dropdownConfig, size: 'small' }
+    }
+  }
+
   constructor(private lang: LangSwitchService) {}
   ngOnInit() {
     this.lang.setAltLangLink('mike');

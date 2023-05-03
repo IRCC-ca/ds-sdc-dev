@@ -42,6 +42,7 @@
 </div>
 <ircc-cl-lib-flyout
   [id]="config.id + '_flyout'"
+  [size]="config.size"
   *ngIf="selected"
   [config]="flyoutConfig"
   (isSelected)="selectedOption($event)"
