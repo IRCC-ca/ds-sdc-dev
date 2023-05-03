@@ -16,10 +16,10 @@ import {
 
 @Component({
   selector: 'app-banner-documentation',
-  templateUrl: './banner-documentation.component.html',
-  styleUrls: ['./banner-documentation.component.scss']
+  templateUrl: './banner-doc-code.component.html',
+  styleUrls: ['./banner-doc-code.component.scss']
 })
-export class BannerDocumentationComponent implements OnInit {
+export class BannerDocCodeComponent implements OnInit {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
   altLangLink = 'bannerDocumentation';
 

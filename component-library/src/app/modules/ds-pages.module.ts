@@ -14,7 +14,7 @@ import { codeViewerComponent } from '@app/components/code-viewer/code-viewer.com
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { resizableContainerComponent } from '@app/components/resizable-container/resizable-container.component';
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
-import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
+import { BannerDocCodeComponent } from '@app/pages/banner-documentation/banner-doc-code.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -34,7 +34,7 @@ import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-
     SlugifyPipe,
     SafeHtmlPipe,
     codeViewComponent,
-    BannerDocumentationComponent,
+    BannerDocCodeComponent,
     InteractiveDemoComponent,
     ButtonDocumentationComponent,
     InputDocumentationComponent,

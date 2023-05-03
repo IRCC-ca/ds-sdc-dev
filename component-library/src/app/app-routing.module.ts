@@ -25,7 +25,7 @@ import { NaseerComponent } from './pages/QA/naseer/naseer.component';
 import { AccessibilityDemoComponent } from './pages/QA/accessibility-demo/accessibility-demo.component';
 import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
-import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
+import { BannerDocCodeComponent } from './pages/banner-documentation/banner-doc-code.component';
 import { ButtonDocumentationComponent } from './pages/button-documentation/button-documentation.component';
 import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
 import { BobbyComponent } from './pages/QA/bobby/bobby.component';
@@ -52,7 +52,7 @@ const routes: Routes = [
     { path: 'overview', component: OverviewComponent },
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
-    { path: 'banner-doc', component: BannerDocumentationComponent },
+    { path: 'banner-doc', component: BannerDocCodeComponent },
     { path: 'button-doc', component: ButtonDocumentationComponent },
     { path: 'input-documentation', component: InputDocumentationComponent },
 
@@ -60,7 +60,7 @@ const routes: Routes = [
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
-    { path: 'banner-doc-fr', component: BannerDocumentationComponent },
+    { path: 'banner-doc-fr', component: BannerDocCodeComponent },
     { path: 'button-doc-fr', component: ButtonDocumentationComponent },
     { path: 'documentation dentree', component: InputDocumentationComponent },
 
