@@ -67,8 +67,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() id = '';
 
   /**
-  * 
-  The form group is the form name each of the configurable options will share and can be subscribed to
+  * FormGroup aggregates the values of each child FormControl into one object, with each control name as the key. It calculates its status by reducing the status values of its children. For example, if one of the controls in a group is invalid, the entire group becomes invalid.
   */
   @Input() formGroup = this.formGroupEmpty;
 
