@@ -392,9 +392,16 @@ export class BannerDocCodeComponent implements OnInit {
     return {
       ...this.bannerConfig,
       size: value['showSizeToggle'].toLowerCase(),
-      title: value['showTitleToggle'] === 'True' ? this.bannerConfig.title = 'Title text' : '',
-      content: value['showDescToggle'] === 'True' ? this.bannerConfig.content ='Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.': '',
-      dismissible: value['showCloseToggle'] === 'True' ? true : false,
+      title:
+        value['showTitleToggle'] === 'True'
+          ? (this.bannerConfig.title = 'Title text')
+          : '',
+      content:
+        value['showDescToggle'] === 'True'
+          ? (this.bannerConfig.content =
+              'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.')
+          : '',
+      dismissible: value['showCloseToggle'] === 'True' ? true : false
     };
   }
 
@@ -411,10 +418,9 @@ export class BannerDocCodeComponent implements OnInit {
     });
 
     this.form_interactive_banner.valueChanges.subscribe((value: any) => {
-      this.handlePrimaryButtonToggle(value)
-      this.handlePlainButtonToggle(value)
-      this.handleSecondaryButtonToggle(value),
-      this.handleLinkToggle(value)
+      this.handlePrimaryButtonToggle(value);
+      this.handlePlainButtonToggle(value);
+      this.handleSecondaryButtonToggle(value), this.handleLinkToggle(value);
       this.bannerConfig = this.parseToggleConfig(value);
     });
   }
