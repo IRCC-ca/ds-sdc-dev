@@ -16,7 +16,7 @@ import { resizableContainerComponent } from '@app/components/resizable-container
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
 import { BannerDocCodeComponent } from '@app/pages/banner-documentation/banner-doc-code.component';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
-import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
+import { ButtonDocCodeComponent } from '@app/pages/button-documentation/button-doc-code.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
 import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
@@ -36,7 +36,7 @@ import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-
     codeViewComponent,
     BannerDocCodeComponent,
     InteractiveDemoComponent,
-    ButtonDocumentationComponent,
+    ButtonDocCodeComponent,
     InputDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,

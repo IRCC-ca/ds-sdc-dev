@@ -6,11 +6,11 @@ import { slugAnchorType, slugTitleURLConfig, slugTitleURLType } from '@app/compo
 import { ButtonColor, IButtonConfig, ICheckBoxComponentConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
-  selector: 'app-button-documentation',
-  templateUrl: './button-documentation.component.html',
-  styleUrls: ['./button-documentation.component.scss']
+  selector: 'app-button-doc-code',
+  templateUrl: './button-doc-code.component.html',
+  styleUrls: ['./button-doc-code.component.scss']
 })
-export class ButtonDocumentationComponent implements OnInit {
+export class ButtonDocCodeComponent implements OnInit {
   altLangLink = 'buttonDocumentation';
   layoutFluid: boolean = true;
 

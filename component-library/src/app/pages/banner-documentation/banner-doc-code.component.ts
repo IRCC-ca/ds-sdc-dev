@@ -15,7 +15,7 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({
-  selector: 'app-banner-documentation',
+  selector: 'app-banner-doc-code',
   templateUrl: './banner-doc-code.component.html',
   styleUrls: ['./banner-doc-code.component.scss']
 })

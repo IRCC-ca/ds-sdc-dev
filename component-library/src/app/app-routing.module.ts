@@ -26,7 +26,7 @@ import { AccessibilityDemoComponent } from './pages/QA/accessibility-demo/access
 import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
 import { BannerDocCodeComponent } from './pages/banner-documentation/banner-doc-code.component';
-import { ButtonDocumentationComponent } from './pages/button-documentation/button-documentation.component';
+import { ButtonDocCodeComponent } from './pages/button-documentation/button-doc-code.component';
 import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';
 import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
@@ -53,7 +53,7 @@ const routes: Routes = [
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'banner-doc', component: BannerDocCodeComponent },
-    { path: 'button-doc', component: ButtonDocumentationComponent },
+    { path: 'button-doc', component: ButtonDocCodeComponent },
     { path: 'input-documentation', component: InputDocumentationComponent },
 
     // French
@@ -61,7 +61,7 @@ const routes: Routes = [
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'banner-doc-fr', component: BannerDocCodeComponent },
-    { path: 'button-doc-fr', component: ButtonDocumentationComponent },
+    { path: 'button-doc-fr', component: ButtonDocCodeComponent },
     { path: 'documentation dentree', component: InputDocumentationComponent },
 
     //QA PATHS
