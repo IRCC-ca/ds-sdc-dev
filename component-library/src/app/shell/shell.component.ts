@@ -11,6 +11,11 @@ import { LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
 import { DisplayLanguages, Languages } from '../share/global-params';
 
+import {
+  INavigationConfig,
+  INavigationHeaderConfig
+} from 'ircc-ds-angular-component-library';
+
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html',
@@ -25,6 +30,14 @@ export class ShellComponent implements OnInit {
   altLangURL: string = '';
   altPathKey: string = '';
   language: string = this.translate.currentLang;
+
+  navConfig: INavigationConfig = {
+    id: 'shell-nav',
+    header: {
+      label: 'Overview.SubHeading',
+      icon: 'fa-light fa-arrow-left'
+    }
+  };
 
   constructor(
     private translate: TranslateService,

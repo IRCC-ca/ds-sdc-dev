@@ -1,0 +1,9 @@
+<div
+  [id]="config.id"
+  class="lib-nav-section"
+>
+  <ng-content select="[parent-content]"></ng-content>
+  <div style="padding-left: 1rem">
+    <ng-content select="[child-content]"></ng-content>
+  </div>
+</div>

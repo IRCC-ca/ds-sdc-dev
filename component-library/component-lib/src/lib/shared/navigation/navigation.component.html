@@ -1,0 +1,12 @@
+<div
+  [id]="config.id"
+  class="lib-navigation"
+>
+  <h4>
+    <ircc-cl-lib-icon
+      [config]="{ FA_keywords: config.header.icon }"
+    ></ircc-cl-lib-icon>
+    {{ config.header.label | translate }}
+  </h4>
+  <ng-content></ng-content>
+</div>
