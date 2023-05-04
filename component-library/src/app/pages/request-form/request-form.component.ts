@@ -7,7 +7,11 @@ import {
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
-import { IBannerConfig } from 'ircc-ds-angular-component-library';
+import {
+  IBannerConfig,
+  IRadioInputComponentConfig
+} from 'ircc-ds-angular-component-library';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-request-form',
@@ -17,6 +21,7 @@ import { IBannerConfig } from 'ircc-ds-angular-component-library';
 })
 export class RequestFormComponent implements OnInit {
   altLangLink = 'requestForm';
+  form = new FormGroup({});
 
   submitRequestTitleSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
@@ -25,13 +30,13 @@ export class RequestFormComponent implements OnInit {
   };
 
   requestCriteriaTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
+    type: slugTitleURLType.secondary,
     title: 'RequestForm.RequestCriteriaTitle',
     anchorType: slugAnchorType.primary
   };
 
   requestFormTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
+    type: slugTitleURLType.secondary,
     title: 'RequestForm.RequestFormTitle',
     anchorType: slugAnchorType.primary
   };
@@ -45,6 +50,63 @@ export class RequestFormComponent implements OnInit {
     size: 'small',
     cta: []
   };
+
+  typeOfRequestRadioConfig: IRadioInputComponentConfig = {
+    id: 'radio-request-type',
+    formGroup: this.form,
+    label: 'RequestForm.typeOfRequestRadio',
+    required: true,
+    options: [
+      {
+        text: 'RequestForm.radioOption1',
+        value: 'Change'
+      },
+      {
+        text: 'RequestForm.radioOption2',
+        value: 'Request'
+      },
+      {
+        text: 'RequestForm.radioOption3',
+        value: 'Bug'
+      }
+    ],
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredRadioError'
+      }
+    ],
+    size: 'small',
+    disabled: false,
+    error: true
+  };
+
+  urgentRequestRadioConfig: IRadioInputComponentConfig = {
+    id: 'radio-request-urgent',
+    formGroup: this.form,
+    label: 'RequestForm.urgentRequestRadio',
+    required: true,
+    options: [
+      {
+        text: 'RequestForm.urgentOption1',
+        value: 'Change'
+      },
+      {
+        text: 'RequestForm.urgentOption2',
+        value: 'Request'
+      }
+    ],
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredRadioError'
+      }
+    ],
+    size: 'small',
+    disabled: false,
+    error: true
+  };
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
@@ -52,5 +114,15 @@ export class RequestFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
+
+    this.form.addControl(
+      this.typeOfRequestRadioConfig.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.form.addControl(
+      this.urgentRequestRadioConfig.id,
+      new FormControl('', Validators.required)
+    );
   }
 }

@@ -646,6 +646,14 @@
     "requestCriteriaSubHeading1": "Useful",
     "requestCriteriaSubText2": "There is evidence that this component or pattern would be useful for many teams or services.",
     "requestCriteriaSubHeading2": "Unique",
-    "requestCriteriaSubText3": "It does not replicate something already in the Design System. If it’s intended to replace an existing component or pattern, there is evidence to show that it’s better than the existing version and solves existing use cases."
+    "requestCriteriaSubText3": "It does not replicate something already in the Design System. If it’s intended to replace an existing component or pattern, there is evidence to show that it’s better than the existing version and solves existing use cases.",
+    "typeOfRequestRadio": "Type of request (required)",
+    "radioOption1": "Change request (modifying or adding to an existing system part)",
+    "radioOption2": "Feature request (Defining and creating na new system part)",
+    "radioOption3": "Bug (A system part that is not functioning as intended)",
+    "requiredRadioError": "No selection has been made. Please select an option",
+    "urgentRequestRadio": "Is the request urgent? (required)",
+    "urgentOption1": "Yes",
+    "urgentOption2": "No"
     }
 }
