@@ -2,8 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { slugAnchorType, slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
-import { ButtonColor, IButtonConfig, ICheckBoxComponentConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import {
+  slugAnchorType,
+  slugTitleURLConfig,
+  slugTitleURLType
+} from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  ButtonColor,
+  IButtonConfig,
+  ICheckBoxComponentConfig,
+  IRadioInputComponentConfig,
+  ITabNavConfig
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-button-doc-code',
@@ -33,18 +43,17 @@ export class ButtonDocCodeComponent implements OnInit {
     disabled: false,
     icon: '',
     size: 'large'
-    
   };
 
-  checkboxes : ICheckBoxComponentConfig[] = [
+  checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'showSelectToggle',
       formGroup: this.form_interactive_button,
-      label:'State',
+      label: 'State',
       size: 'small',
       inlineLabel: 'Disabled'
     }
-  ]
+  ];
 
   toggles: IRadioInputComponentConfig[] = [
     {
@@ -105,12 +114,12 @@ export class ButtonDocCodeComponent implements OnInit {
           text: 'Trailing'
         }
       ]
-    },
+    }
   ];
 
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
-    size: "small",
+    size: 'small',
     tab: [
       {
         id: 'primary',
@@ -131,26 +140,24 @@ export class ButtonDocCodeComponent implements OnInit {
    * position icon based on config
    */
   handleIconToggle(value: any) {
-    this.buttonConfig.icon ='fa-regular fa-igloo'
+    this.buttonConfig.icon = 'fa-regular fa-igloo';
     if (value['showIconToggle'] === 'Leading') {
-      this.buttonConfig.iconDirection='left'
-    } 
-    else if (value['showIconToggle'] === 'Trailing') {
-      this.buttonConfig.iconDirection='right'
-    }
-    else {
-      this.buttonConfig.icon =''
+      this.buttonConfig.iconDirection = 'left';
+    } else if (value['showIconToggle'] === 'Trailing') {
+      this.buttonConfig.iconDirection = 'right';
+    } else {
+      this.buttonConfig.icon = '';
     }
   }
 
   /**
    * toggle between type of layout selected
    */
-  handleLayoutToggle(value : any) {
-    if (value['showLayoutToggle']  === 'Fluid') {
-      this.layoutFluid = true
+  handleLayoutToggle(value: any) {
+    if (value['showLayoutToggle'] === 'Fluid') {
+      this.layoutFluid = true;
     } else {
-      this.layoutFluid = false
+      this.layoutFluid = false;
     }
   }
 
@@ -164,27 +171,42 @@ export class ButtonDocCodeComponent implements OnInit {
       this.buttonConfig.category = 'secondary';
     } else if (value === 'plain') {
       this.buttonConfig.category = 'plain';
-    } 
+    }
   }
 
   /**
    * Assign initial value for radio based on id
    */
-  assignToggleDefaultValues(toggleID : string, toggle : IRadioInputComponentConfig) {
+  assignToggleDefaultValues(
+    toggleID: string,
+    toggle: IRadioInputComponentConfig
+  ) {
     if (toggle.options) {
-      switch(toggleID) {
+      switch (toggleID) {
         case 'showIconToggle':
-          this.form_interactive_button.addControl(toggle.id,new FormControl(toggle.options[0].text));
+          this.form_interactive_button.addControl(
+            toggle.id,
+            new FormControl(toggle.options[0].text)
+          );
           break;
-        case 'showSizeToggle': 
-          this.form_interactive_button.addControl(toggle.id,new FormControl(toggle.options[1].text));
+        case 'showSizeToggle':
+          this.form_interactive_button.addControl(
+            toggle.id,
+            new FormControl(toggle.options[1].text)
+          );
           break;
         case 'showCriticalToggle':
-          this.form_interactive_button.addControl(toggle.id,new FormControl(toggle.options[1].text));
+          this.form_interactive_button.addControl(
+            toggle.id,
+            new FormControl(toggle.options[1].text)
+          );
           break;
         default: {
-          console.log("Default")
-          this.form_interactive_button.addControl(toggle.id,new FormControl(toggle.options[0].text));
+          console.log('Default');
+          this.form_interactive_button.addControl(
+            toggle.id,
+            new FormControl(toggle.options[0].text)
+          );
         }
       }
     }
@@ -199,27 +221,29 @@ export class ButtonDocCodeComponent implements OnInit {
     return {
       ...this.buttonConfig,
       size: value['showSizeToggle'].toLowerCase(),
-      color: value['showCriticalToggle'] === 'True' ? this.buttonConfig.color = 'critical' : this.buttonConfig.color = 'CTA',
-      disabled: value['showSelectToggle'] === true ? this.buttonConfig.disabled = true : this.buttonConfig.disabled = false,
+      color:
+        value['showCriticalToggle'] === 'True'
+          ? (this.buttonConfig.color = 'critical')
+          : (this.buttonConfig.color = 'CTA'),
+      disabled:
+        value['showSelectToggle'] === true
+          ? (this.buttonConfig.disabled = true)
+          : (this.buttonConfig.disabled = false)
     };
   }
 
   ngOnInit() {
-
     this.lang.setAltLangLink(this.altLangLink);
-    
+
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
-        this.form_interactive_button.addControl(
-          checkbox.id,
-          new FormControl()
-        );
+        this.form_interactive_button.addControl(checkbox.id, new FormControl());
       }
     });
 
     this.toggles.forEach((toggle) => {
       if (toggle.options) {
-        this.assignToggleDefaultValues(toggle.id, toggle)
+        this.assignToggleDefaultValues(toggle.id, toggle);
       }
     });
 
