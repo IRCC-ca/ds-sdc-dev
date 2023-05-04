@@ -32,6 +32,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     id: 'input',
     formGroup: this.form_interactive_input,
     size: 'small',
+    required: false,
     label: 'Label text',
     desc: 'Description line of text',
     errorMessages: [
@@ -165,6 +166,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   inputConfigCodeView = {
     id: this.inputConfig.id,
     formGroup: `new FormGroup({})`,
+    required: this.inputConfig.required,
     size: this.inputConfig.size,
     label: this.inputConfig.label,
     desc: this.inputConfig.desc,
@@ -312,6 +314,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     this.inputConfigCodeView = {
       ...this.inputConfigCodeView,
       size: this.inputConfig.size,
+      required: this.inputConfig.required,
       label: this.inputConfig.label,
       desc: this.inputConfig.desc,
       hint: this.inputConfig.hint
