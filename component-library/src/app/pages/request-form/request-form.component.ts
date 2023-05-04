@@ -9,7 +9,11 @@ import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
 import {
   IBannerConfig,
-  IRadioInputComponentConfig
+  IButtonConfig,
+  IDatePickerConfig,
+  IDatePickerErrorMessages,
+  IRadioInputComponentConfig,
+  ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -89,11 +93,11 @@ export class RequestFormComponent implements OnInit {
     options: [
       {
         text: 'RequestForm.urgentOption1',
-        value: 'Change'
+        value: 'Y'
       },
       {
         text: 'RequestForm.urgentOption2',
-        value: 'Request'
+        value: 'N'
       }
     ],
     errorMessages: [
@@ -105,6 +109,93 @@ export class RequestFormComponent implements OnInit {
     size: 'small',
     disabled: false,
     error: true
+  };
+
+  requestTitleTextAreaConfig: ITextareaComponentConfig = {
+    formGroup: this.form,
+    id: 'request-title-text-area',
+    label: 'RequestForm.requestTitleLabel',
+    desc: 'RequestForm.requestTitleDesc',
+    required: true,
+    charLimit: '50',
+    resizable: 'vertical',
+    size: 'small'
+    // errorMessages?: IErrorPairs[];
+    // errorIcon?: IErrorIconConfig;
+  };
+
+  requestDetailsTextAreaConfig: ITextareaComponentConfig = {
+    formGroup: this.form,
+    id: 'request-details-text-area',
+    label: 'RequestForm.requestDetailsLabel',
+    desc: 'RequestForm.requestDetailsDesc',
+    required: true,
+    resizable: 'vertical',
+    size: 'large'
+    // errorMessages?: IErrorPairs[];
+    // errorIcon?: IErrorIconConfig;
+  };
+
+  useCaseTextAreaConfig: ITextareaComponentConfig = {
+    formGroup: this.form,
+    id: 'use-case-text-area',
+    label: 'RequestForm.useCaseLabel',
+    desc: 'RequestForm.useCaseDesc',
+    required: true,
+    resizable: 'vertical',
+    size: 'large'
+    // errorMessages?: IErrorPairs[];
+    // errorIcon?: IErrorIconConfig;
+  };
+
+  referencesTextAreaConfig: ITextareaComponentConfig = {
+    formGroup: this.form,
+    id: 'references-text-area',
+    label: 'RequestForm.referencesLabel',
+    desc: 'RequestForm.referencesCaseDesc',
+    hint: 'RequestForm.referencesHint',
+    resizable: 'vertical',
+    size: 'large'
+    // errorMessages?: IErrorPairs[];
+    // errorIcon?: IErrorIconConfig;
+  };
+
+  urgentDetailsTextAreaConfig: ITextareaComponentConfig = {
+    formGroup: this.form,
+    id: 'urgent-details-text-area',
+    label: 'RequestForm.urgentDetailsLabel',
+    required: true,
+    resizable: 'vertical',
+    size: 'large'
+    // errorMessages?: IErrorPairs[];
+    // errorIcon?: IErrorIconConfig;
+  };
+
+  datePickerErrorMessages: IDatePickerErrorMessages = {
+    general: [
+      {
+        key: 'required',
+        errorLOV: 'Some Error'
+      }
+    ]
+  };
+
+  requestedDateDatePickerConfig: IDatePickerConfig = {
+    id: 'date-requested-datepicker',
+    formGroup: this.form,
+    label: 'RequestForm.requestedDateLabel',
+    desc: 'RequestForm.requestedDateDesc',
+    required: true,
+    size: 'small',
+    errorMessages: this.datePickerErrorMessages,
+    minYear: 2023
+  };
+
+  buttonConfig: IButtonConfig = {
+    id: 'submit-request-btn',
+    category: 'primary',
+    size: 'small',
+    ariaLabel: ''
   };
 
   constructor(
@@ -121,7 +212,45 @@ export class RequestFormComponent implements OnInit {
     );
 
     this.form.addControl(
+      this.requestTitleTextAreaConfig.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.form.addControl(
+      this.requestDetailsTextAreaConfig.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.form.addControl(
+      this.useCaseTextAreaConfig.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.form.addControl(
+      this.referencesTextAreaConfig.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.form.addControl(
       this.urgentRequestRadioConfig.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.form.addControl(
+      this.urgentDetailsTextAreaConfig.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.form.addControl(
+      this.requestedDateDatePickerConfig.id + '_dayControl',
+      new FormControl('', Validators.required)
+    );
+    this.form.addControl(
+      this.requestedDateDatePickerConfig.id + '_monthControl',
+      new FormControl('', Validators.required)
+    );
+    this.form.addControl(
+      this.requestedDateDatePickerConfig.id + '_yearControl',
       new FormControl('', Validators.required)
     );
   }

@@ -654,6 +654,19 @@
     "requiredRadioError": "No selection has been made. Please select an option",
     "urgentRequestRadio": "Is the request urgent? (required)",
     "urgentOption1": "Yes",
-    "urgentOption2": "No"
+    "urgentOption2": "No",
+    "requestTitleLabel": "Request title (required)",
+    "requestTitleDesc": "Enter a brief title that represents the feature, change or bug.",
+    "requestDetailsLabel": "Request details (required)",
+    "requestDetailsDesc": "Describe the feature, change or bug.",
+    "useCaseLabel": "Use case(s) (required)",
+    "useCaseDesc": "Describe the use case(s) that you are currently unable to satisfy with the design system.",
+    "referencesLabel": "References",
+    "referencesCaseDesc": "Include any URLs you may have that we can view as reference. This can be website links or Figma design links, etc.",
+    "referencesHint": "We currently are unable to support attachments",
+    "urgentDetailsLabel": "Why is the request urgent? (required)",
+    "requestedDateLabel": "When is the completed work needed by? (required)",
+    "requestedDateDesc": "When would you need the work delivered in order for your team to start implementation into your project?",
+    "SubmitBtn": "Submit request"
     }
 }

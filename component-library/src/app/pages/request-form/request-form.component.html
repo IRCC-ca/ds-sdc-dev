@@ -33,13 +33,46 @@
           [config]="typeOfRequestRadioConfig"
         ></ircc-cl-lib-radio-input>
       </div>
-      <!-- <ircc-cl-lib-textarea></ircc-cl-lib-textarea>
-      <ircc-cl-lib-textarea></ircc-cl-lib-textarea>
-      <ircc-cl-lib-textarea></ircc-cl-lib-textarea>
-      <ircc-cl-lib-radio-input [config]="urgentRequestRadioConfig"></ircc-cl-lib-radio-input>
-      <ircc-cl-lib-textarea></ircc-cl-lib-textarea>
-      <ircc-cl-lib-date-picker></ircc-cl-lib-date-picker>
-      <ircc-cl-lib-button></ircc-cl-lib-button> -->
+      <div class="request-title-text-area-container">
+        <ircc-cl-lib-textarea
+          [config]="requestTitleTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="request-details-text-area-container">
+        <ircc-cl-lib-textarea
+          [config]="requestDetailsTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="use-case-text-area-container">
+        <ircc-cl-lib-textarea
+          [config]="useCaseTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="references-text-area-container">
+        <ircc-cl-lib-textarea
+          [config]="referencesTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="urgent-request-radio-container">
+        <ircc-cl-lib-radio-input
+          [config]="urgentRequestRadioConfig"
+        ></ircc-cl-lib-radio-input>
+      </div>
+      <div class="urgent-details-container">
+        <ircc-cl-lib-textarea
+          [config]="urgentDetailsTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="date-requested-container">
+        <ircc-cl-lib-date-picker
+          [config]="requestedDateDatePickerConfig"
+        ></ircc-cl-lib-date-picker>
+      </div>
+      <div class="submit-request-container">
+        <ircc-cl-lib-button [config]="buttonConfig">{{
+          'RequestForm.SubmitBtn' | translate
+        }}</ircc-cl-lib-button>
+      </div>
     </div>
   </section>
 </div>
