@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { slugTitleURLConfig, slugTitleURLType, slugAnchorType } from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  slugTitleURLConfig,
+  slugTitleURLType,
+  slugAnchorType
+} from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
@@ -28,12 +32,13 @@ export class RequestFormComponent implements OnInit {
     dismissible: false,
     size: 'small',
     cta: []
-  }
-  constructor(private translate: TranslateService,
-    private lang: LangSwitchService) { }
+  };
+  constructor(
+    private translate: TranslateService,
+    private lang: LangSwitchService
+  ) {}
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
-
   }
 }
