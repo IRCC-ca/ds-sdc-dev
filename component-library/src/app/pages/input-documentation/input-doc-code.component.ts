@@ -173,6 +173,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     label: this.inputConfig.label,
     desc: this.inputConfig.desc,
     hint: this.inputConfig.hint,
+    placeholder: this.inputConfig.placeholder,
     errorMessages: this.inputConfig.errorMessages
   };
 
@@ -321,7 +322,8 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
       required: this.inputConfig.required,
       label: this.inputConfig.label,
       desc: this.inputConfig.desc,
-      hint: this.inputConfig.hint
+      hint: this.inputConfig.hint,
+      placeholder: this.inputConfig.placeholder
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value = `
