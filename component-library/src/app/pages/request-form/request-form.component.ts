@@ -7,7 +7,7 @@ import {
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
-import { IBannerConfig } from 'component-lib/src/lib/banner-component/banner/banner.component';
+import { IBannerConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-request-form',
@@ -18,16 +18,28 @@ import { IBannerConfig } from 'component-lib/src/lib/banner-component/banner/ban
 export class RequestFormComponent implements OnInit {
   altLangLink = 'requestForm';
 
-  requestFormTitleSlugConfig: slugTitleURLConfig = {
+  submitRequestTitleSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
     title: 'RequestForm.Title',
     anchorType: slugAnchorType.primary
   };
 
+  requestCriteriaTitleSlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'RequestForm.RequestCriteriaTitle',
+    anchorType: slugAnchorType.primary
+  };
+
+  requestFormTitleSlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.primary,
+    title: 'RequestForm.RequestFormTitle',
+    anchorType: slugAnchorType.primary
+  };
+
   bannerConfig: IBannerConfig = {
     id: 'request-form-banner',
-    content: 'Some content',
-    type: 'generic',
+    content: 'RequestForm.BannerDesc',
+    type: 'info',
     rounded: false,
     dismissible: false,
     size: 'small',

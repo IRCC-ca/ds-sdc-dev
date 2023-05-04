@@ -630,6 +630,17 @@
     "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
     "ConfigAccordionClosed": "Hide Configurations"
-
-  }
+  },
+    "RequestForm": {
+    "Title": "Submit a request",
+    "Intro": "Some intro about what this is used for. Change requests, feature requests, bugs, etc.",
+    "BannerDesc": "This form is submitted to<a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>which is viewed by the design system team. We will review and respond to your request as soon as possible.",
+    "RequestCriteriaTitle": "Request criteria",
+    "RequestFormTitle": "Request form",
+    "requestCriteriaSubText1": "A request should show that the contribution to the system would be useful and unique.",
+    "requestCriteriaSubHeading1": "Useful",
+    "requestCriteriaSubText2": "There is evidence that this component or pattern would be useful for many teams or services.",
+    "requestCriteriaSubHeading2": "Unique",
+    "requestCriteriaSubText3": "It does not replicate something already in the Design System. If it’s intended to replace an existing component or pattern, there is evidence to show that it’s better than the existing version and solves existing use cases."
+    }
 }
