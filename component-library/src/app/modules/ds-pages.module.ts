@@ -70,4 +70,4 @@ import { RequestFormComponent } from '@app/pages/request-form/request-form.compo
     }
   ]
 })
-export class DsPageModule { }
+export class DsPageModule {}

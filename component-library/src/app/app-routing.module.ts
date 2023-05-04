@@ -58,7 +58,6 @@ const routes: Routes = [
     { path: 'input-documentation', component: InputDocumentationComponent },
     { path: 'request-form', component: RequestFormComponent },
 
-
     // French
     { path: 'aperçu', component: OverviewComponent },
     { path: 'concepteurs', component: ForDesignersComponent },
@@ -67,7 +66,6 @@ const routes: Routes = [
     { path: 'button-doc-fr', component: ButtonDocCodeComponent },
     { path: 'documentation dentree', component: InputDocumentationComponent },
     { path: 'request-form-fr', component: RequestFormComponent },
-
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
@@ -137,4 +135,4 @@ const routerOptions: ExtraOptions = {
   ],
   exports: [RouterModule, LocalizeRouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
