@@ -164,7 +164,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
-  inputConfigCodeView = {
+  inputConfigCodeView: any = {
     id: this.inputConfig.id,
     formGroup: `new FormGroup({})`,
     type: this.inputConfig.type,
@@ -174,7 +174,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     desc: this.inputConfig.desc,
     hint: this.inputConfig.hint,
     placeholder: this.inputConfig.placeholder,
-    errorMessages: this.inputConfig.errorMessages
+    errorMessages: undefined
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -255,10 +255,11 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     return {
       ...this.inputConfig,
       size: value['size'].toLowerCase(),
-      hint: value['hint'] === 'True' ? 'Hint text' : '',
+      hint: value['hint'] === 'True' ? 'Hint text' : undefined,
       required: value['required'] === 'True',
-      desc: value['desc'] === 'True' ? 'Description line of text' : '',
-      placeholder: value['placeholder'] === 'True' ? 'Placeholder text' : ''
+      desc: value['desc'] === 'True' ? 'Description line of text' : undefined,
+      placeholder:
+        value['placeholder'] === 'True' ? 'Placeholder text' : undefined
     };
   }
 
@@ -277,11 +278,13 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
         this.form_interactive_input
           .get(this.inputConfig.id)
           ?.setErrors({ errors: null });
+        this.inputConfigCodeView.errorMessages = undefined;
         break;
       case 'Single':
         this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
           invalid: true
         });
+        this.inputConfigCodeView.errorMessages = this.inputConfig.errorMessages;
         break;
       case 'Multiple':
         this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
@@ -289,8 +292,10 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
           testingError: true,
           maxlength: { requiredLength: 3, actualLength: 5 }
         });
+        this.inputConfigCodeView.errorMessages = this.inputConfig.errorMessages;
         break;
     }
+    this.parseCodeViewConfig();
   }
 
   /**
