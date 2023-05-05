@@ -14,6 +14,7 @@ import {
   IRadioInputComponentConfig,
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
+import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
 
 @Component({
   selector: 'app-button-doc-code',
@@ -41,8 +42,43 @@ export class ButtonDocCodeComponent implements OnInit {
     id: 'button',
     color: ButtonColor.CTA,
     disabled: false,
-    icon: '',
+    icon: undefined,
     size: 'large'
+  };
+
+  buttonConfigCodeView: any = {
+    id: this.buttonConfig.id,
+    formGroup: `new FormGroup({})`,
+    category: this.buttonConfig.category,
+    color: this.buttonConfig.color,
+    size: this.buttonConfig.size,
+    ariaLabel: this.buttonConfig.ariaLabel,
+    disabled: this.buttonConfig.disabled,
+    icon: this.buttonConfig.icon,
+    iconDirection: this.buttonConfig.iconDirection,
+    tabIndex: this.buttonConfig.tabIndex,
+  };
+
+  codeViewConfig: ICodeViewerConfig = {
+    id: 'button-code-viewer',
+    openAccordion: true,
+    selected: 'html',
+    tab: [
+      {
+        id: 'html',
+        title: 'HTML',
+        value: `<ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>`
+      },
+      {
+        id: 'ts',
+        title: 'TypeScript',
+        value: `
+import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+
+buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
+      }
+    ]
   };
 
   checkboxes: ICheckBoxComponentConfig[] = [
@@ -147,6 +183,7 @@ export class ButtonDocCodeComponent implements OnInit {
       this.buttonConfig.iconDirection = 'right';
     } else {
       this.buttonConfig.icon = '';
+      this.buttonConfig.iconDirection = undefined
     }
   }
 
@@ -172,6 +209,7 @@ export class ButtonDocCodeComponent implements OnInit {
     } else if (value === 'plain') {
       this.buttonConfig.category = 'plain';
     }
+    this.parseCodeViewConfig();
   }
 
   /**
@@ -213,7 +251,7 @@ export class ButtonDocCodeComponent implements OnInit {
   }
 
   /**
-   * Return mapping of input config from form values
+   * Return mapping of button config from form values
    */
   private parseToggleConfig(value: any): IButtonConfig {
     this.handleLayoutToggle(value);
@@ -230,6 +268,31 @@ export class ButtonDocCodeComponent implements OnInit {
           ? (this.buttonConfig.disabled = true)
           : (this.buttonConfig.disabled = false)
     };
+  }
+
+  private parseCodeViewConfig() {
+    const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
+    if (-1 == index || !index) return;
+    this.buttonConfigCodeView = {
+      ...this.buttonConfigCodeView,
+      id: this.buttonConfig.id,
+      formGroup: `new FormGroup({})`,
+      category: this.buttonConfig.category,
+      color: this.buttonConfig.color,
+      size: this.buttonConfig.size,
+      ariaLabel: this.buttonConfig.ariaLabel,
+      disabled: this.buttonConfig.disabled,
+      icon: this.buttonConfig.icon,
+      iconDirection: this.buttonConfig.iconDirection,
+      tabIndex: this.buttonConfig.tabIndex,
+    };
+    if (this.codeViewConfig?.tab) {
+      this.codeViewConfig.tab[index].value = `
+import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+
+buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`;
+    }
   }
 
   ngOnInit() {
@@ -249,6 +312,7 @@ export class ButtonDocCodeComponent implements OnInit {
 
     this.form_interactive_button.valueChanges.subscribe((value: any) => {
       this.buttonConfig = this.parseToggleConfig(value);
+      this.parseCodeViewConfig();
     });
   }
 }
