@@ -16,86 +16,125 @@
     [config]="developerStartedSlug"
     class="getting-started"
   ></app-title-slug-url>
-  <p [innerHTML]="'Developers.GetStartedTxt' | translate"></p>
+  <p
+    [innerHTML]="'Developers.GetStartedTxt' | translate"
+    class="descriptions started"
+  ></p>
   <app-title-slug-url [config]="developerUsageSlug"></app-title-slug-url>
-  <p [translate]="'Developers.UsageTxt'"></p>
-  <p [translate]="'Developers.UsageTitle1'"></p>
+  <p
+    [translate]="'Developers.UsageTxt'"
+    class="descriptions"
+  ></p>
+  <p
+    [translate]="'Developers.UsageTitle1'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(paragraph1)"
     ></button>
-    <p style="white-space: pre-line">{{ paragraph1 }}</p>
+    <p class="code">{{ paragraph1 }}</p>
   </div>
-  <p [translate]="'Developers.UsageTitle2'"></p>
+  <p
+    [translate]="'Developers.UsageTitle2'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(paragraph1)"
     ></button>
-    <p style="white-space: pre-line">{{ paragraph1 }}</p>
+    <p class="code">{{ paragraph1 }}</p>
   </div>
   <app-title-slug-url [config]="developerThemesSlug"></app-title-slug-url>
-  <p [translate]="'Developers.ThemesTxt'"></p>
-  <p [translate]="'Developers.ThemesTitle1'"></p>
+  <p
+    class="descriptions"
+    [translate]="'Developers.ThemesTxt'"
+  ></p>
+  <p
+    [translate]="'Developers.ThemesTitle1'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
-    <p style="white-space: pre-line">{{ placeholder }}</p>
+    <p class="code">{{ placeholder }}</p>
   </div>
-  <p [translate]="'Developers.ThemesTitle2'"></p>
+  <p
+    [translate]="'Developers.ThemesTitle2'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
-    <p style="white-space: pre-line">{{ placeholder }}</p>
+    <p class="code">{{ placeholder }}</p>
   </div>
-  <p [translate]="'Developers.ThemesTitle3'"></p>
+  <p
+    [translate]="'Developers.ThemesTitle3'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
-    <p style="white-space: pre-line">{{ placeholder }}</p>
+    <p class="code">{{ placeholder }}</p>
   </div>
 
   <app-title-slug-url [config]="developerFontAwesomeSlug"></app-title-slug-url>
-  <p [translate]="'Developers.FontAwesomeTxt'"></p>
-  <div class="code-box">
+  <p
+    [translate]="'Developers.FontAwesomeTxt'"
+    class="descriptions"
+  ></p>
+  <div class="code-box awesome">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
-    <p>{{ placeholder }}</p>
+    <p class="code">{{ placeholder }}</p>
   </div>
   <app-title-slug-url [config]="developerReleasesSlug"></app-title-slug-url>
-  <p [translate]="'Developers.ReleasesTxt'"></p>
-  <p [translate]="'Developers.ReleasesTitle1'"></p>
+  <p
+    [translate]="'Developers.ReleasesTxt'"
+    class="descriptions"
+  ></p>
+  <p
+    [translate]="'Developers.ReleasesTitle1'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
-    <p>{{ placeholder }}</p>
+    <p class="code">{{ placeholder }}</p>
   </div>
-  <p [translate]="'Developers.ReleasesTitle2'"></p>
+  <p
+    [translate]="'Developers.ReleasesTitle2'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
-    <p>{{ placeholder }}</p>
+    <p class="code">{{ placeholder }}</p>
   </div>
-  <p [translate]="'Developers.ReleasesTitle3'"></p>
+  <p
+    [translate]="'Developers.ReleasesTitle3'"
+    class="code-title"
+  ></p>
   <div class="code-box">
     <button
       [translate]="'Buttons.Copy'"
       (click)="copyToClipboard(placeholder)"
     ></button>
-    <p>{{ placeholder }}</p>
+    <p class="code">{{ placeholder }}</p>
   </div>
 </div>
 <app-side-nav

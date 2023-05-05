@@ -364,7 +364,7 @@
     "ThemesHeading": "Themes",
     "FontAwesomeHeading": "Font Awesome",
     "ReleasesHeading": "Versions",
-    "GetStartedTxt": "[FR] To install the IRCC Digital Journey Labs Design System styles, you will need to run the following command using <a href='https://www.npmjs.com/'>npm</a>",
+    "GetStartedTxt": "[FR] To install the IRCC Digital Journey Labs Design System styles, you will need to run the following command using <a href='https://www.npmjs.com/'>npm</a>:",
     "UsageTxt": "[FR] In your root-level stylesheet, initialize the design system with the following:",
     "UsageTitle1": "[FR] For external websites:",
     "UsageTitle2": "[FR] For internal websites:",

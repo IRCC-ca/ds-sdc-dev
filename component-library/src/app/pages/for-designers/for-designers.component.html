@@ -1,14 +1,17 @@
 <div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url [config]="designerHeadingSlug"></app-title-slug-url>
-  <p>{{ 'Designers.HeadingText' | translate }}</p>
+  <p class="design-txt">{{ 'Designers.HeadingText' | translate }}</p>
 
   <app-title-slug-url [config]="designerAboutHeadingSlug"></app-title-slug-url>
-  <p [style.margin-top]="'7px'">{{ 'Designers.AboutText1' | translate }}</p>
-  <p [innerHTML]="'Designers.AboutText2' | translate"></p>
+  <p class="descriptions">{{ 'Designers.AboutText1' | translate }}</p>
+  <p
+    class="descriptions about last"
+    [innerHTML]="'Designers.AboutText2' | translate"
+  ></p>
 
   <app-title-slug-url [config]="designerAccessHeadingSlug"></app-title-slug-url>
-  <p>{{ 'Designers.AccessText1' | translate }}</p>
-  <ol>
+  <p class="descriptions">{{ 'Designers.AccessText1' | translate }}</p>
+  <ol class="descriptions">
     <li [innerHTML]="'Designers.AccessListItem1' | translate"></li>
     <li [innerHTML]="'Designers.AccessListItem2' | translate"></li>
     <li>{{ 'Designers.AccessListItem3' | translate }}</li>
@@ -16,25 +19,30 @@
     <li>{{ 'Designers.AccessListItem5' | translate }}</li>
     <li [innerHTML]="'Designers.AccessListItem6' | translate"></li>
   </ol>
-  <p>{{ 'Designers.AccessText2' | translate }}</p>
-  <p>{{ 'Designers.AccessText3' | translate }}</p>
+  <p class="descriptions">{{ 'Designers.AccessText2' | translate }}</p>
+  <p class="descriptions last">{{ 'Designers.AccessText3' | translate }}</p>
   <img
     src="assets/img/for-designers-img-1.jpg"
     alt="{{ 'Designers.FigmaImg1AltText' | translate }}"
   />
 
   <app-title-slug-url [config]="designerInstallFontSlug"></app-title-slug-url>
-  <p>{{ 'Designers.InstallFontsText1' | translate }}</p>
-  <p [innerHTML]="'Designers.InstallFontsLink' | translate"></p>
+  <p class="descriptions">{{ 'Designers.InstallFontsText1' | translate }}</p>
+  <p
+    class="descriptions last"
+    [innerHTML]="'Designers.InstallFontsLink' | translate"
+  ></p>
 
   <app-title-slug-url
     [config]="designerUsingStylesHeadingSlug"
   ></app-title-slug-url>
-  <p>{{ 'Designers.UsingStylesText1' | translate }}</p>
+  <p class="descriptions">{{ 'Designers.UsingStylesText1' | translate }}</p>
   <div class="row">
     <div class="col-12 col-md-6">
-      <p>{{ 'Designers.UsingStylesStrokeText1' | translate }}</p>
-      <ol>
+      <p class="descriptions">
+        {{ 'Designers.UsingStylesStrokeText1' | translate }}
+      </p>
+      <ol class="descriptions">
         <li
           [innerHTML]="'Designers.UsingStylesStrokeListItem1' | translate"
         ></li>
@@ -42,7 +50,10 @@
         <li>{{ 'Designers.UsingStylesStrokeListItem3' | translate }}</li>
         <li>{{ 'Designers.UsingStylesStrokeListItem4' | translate }}</li>
       </ol>
-      <p [innerHTML]="'Designers.UsingStylesStrokeText2' | translate"></p>
+      <p
+        class="descriptions last"
+        [innerHTML]="'Designers.UsingStylesStrokeText2' | translate"
+      ></p>
       <img
         src="assets/img/for-designers-img-2.jpg"
         alt="{{ 'Designers.UsingStylesStrokeImgAltText' | translate }}"
@@ -50,14 +61,19 @@
     </div>
 
     <div class="col-12 col-md-6">
-      <p>{{ 'Designers.UsingStylesTextText1' | translate }}</p>
-      <ol>
+      <p class="descriptions">
+        {{ 'Designers.UsingStylesTextText1' | translate }}
+      </p>
+      <ol class="descriptions">
         <li [innerHTML]="'Designers.UsingStylesTextListItem1' | translate"></li>
         <li>{{ 'Designers.UsingStylesTextListItem2' | translate }}</li>
         <li>{{ 'Designers.UsingStylesTextListItem3' | translate }}</li>
         <li>{{ 'Designers.UsingStylesTextListItem4' | translate }}</li>
       </ol>
-      <p [innerHTML]="'Designers.UsingStylesTextText2' | translate"></p>
+      <p
+        class="descriptions last"
+        [innerHTML]="'Designers.UsingStylesTextText2' | translate"
+      ></p>
       <img
         src="assets/img/for-designers-img-3.jpg"
         alt="{{ 'Designers.UsingStylesTextImgAltText' | translate }}"
@@ -68,12 +84,14 @@
   <app-title-slug-url
     [config]="designerUsingComponentsHeadingSlug"
   ></app-title-slug-url>
-  <p>{{ 'Designers.UsingComponentsText1' | translate }}</p>
+  <p class="descriptions">{{ 'Designers.UsingComponentsText1' | translate }}</p>
 
   <div class="row">
     <div class="col-12 col-md-6">
-      <p>{{ 'Designers.UsingComponentsInsertText1' | translate }}</p>
-      <ol>
+      <p class="descriptions">
+        {{ 'Designers.UsingComponentsInsertText1' | translate }}
+      </p>
+      <ol class="descriptions last">
         <li
           [innerHTML]="'Designers.UsingComponentsInsertListItem1' | translate"
         ></li>
@@ -89,8 +107,10 @@
     </div>
 
     <div class="col-12 col-md-6">
-      <p>{{ 'Designers.UsingComponentsConfigureText1' | translate }}</p>
-      <ol>
+      <p class="descriptions">
+        {{ 'Designers.UsingComponentsConfigureText1' | translate }}
+      </p>
+      <ol class="descriptions last">
         <li>{{ 'Designers.UsingComponentsConfigureListItem1' | translate }}</li>
         <li>{{ 'Designers.UsingComponentsConfigureListItem2' | translate }}</li>
         <li>{{ 'Designers.UsingComponentsConfigureListItem3' | translate }}</li>
@@ -103,7 +123,7 @@
   </div>
 
   <app-title-slug-url [config]="designerFigmaHeadingSlug"></app-title-slug-url>
-  <p>{{ 'Designers.FigmaText' | translate }}</p>
+  <p class="descriptions last">{{ 'Designers.FigmaText' | translate }}</p>
 </div>
 
 <app-side-nav

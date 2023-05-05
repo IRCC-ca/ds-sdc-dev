@@ -27,7 +27,7 @@ export class TitleSlugUrlComponent implements AfterContentInit {
   @Input()
   config: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
-    title: '', 
+    title: '',
     heading: HeadingType.h1
   };
   currentLang = '';

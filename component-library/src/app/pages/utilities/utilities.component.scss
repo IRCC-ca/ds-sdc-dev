@@ -1,4 +1,6 @@
 @use 'src/scss/grid';
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
 app-utilities {
   @include grid.row;
   .spacing-sample {
@@ -6,10 +8,19 @@ app-utilities {
     margin: 0 auto;
     // background: color.mix-token(visited, 100);
     background: #F4EDFA;
-    // border-left: 1px solid color.mix-token(visited, 700);
     border-left: 1px solid var(--purple-category-background);
-    // border-right: 1px solid color.mix-token(visited, 700);
     border-right: 1px solid var(--purple-category-background);
+  }
+  .utility-txt {
+    @include typography.fontSet(body, 1, regular);
+    margin: 0;
+  }
+  .descriptions {
+    @include typography.fontSet(body, 3, regular);
+    margin: 0;
+  }
+  table {
+    margin-top: 24px;
   }
 }
 div.color-sample {

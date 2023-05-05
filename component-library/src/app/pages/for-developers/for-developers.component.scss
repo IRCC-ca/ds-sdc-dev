@@ -1,8 +1,46 @@
 @use 'src/scss/grid';
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
 :host {
   @include grid.row;
   .dev-txt {
-    font-size: 20px;
-    margin: 0 0 16px 0;
+    @include typography.fontSet(body, 1, regular);
+    margin: 0;
   }
-}
+  .descriptions {
+    &.started {
+      // > a {
+      //   padding: 0;
+      //   background-color: red;
+      // }
+    }
+    @include typography.fontSet(body, 3, regular);
+    margin: 0;
+  }
+  .code-title {
+    @include typography.fontSet(body, 3, emphasis);
+    margin: {
+      top: 24px;
+      bottom: 16px;
+    };
+  }
+
+  .code-box {
+    &.awesome {
+      margin-top: 24px;
+    }
+    border: 1px solid var(--border); 
+    padding: 16px; 
+    border-radius: 4px;
+    .code {
+      color: var(--text-secondary);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 14px;
+      line-height: 20px;
+      white-space: pre-line;
+      margin: {
+        top: 20px;
+        bottom: 0;
+      };
+    }
+  }

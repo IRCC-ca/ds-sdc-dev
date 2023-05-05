@@ -1,4 +1,6 @@
 @use 'src/scss/grid';
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
 :host {
   @include grid.row;
   @include grid.up-phone-layout() {
@@ -8,5 +10,30 @@
     .col-md-6:nth-child(even) {
       padding-left: 12px;
     }
+  }
+
+  .design-txt {
+    @include typography.fontSet(body, 1, regular);
+    margin: 0;
+  }
+  .descriptions {
+    &.about {
+      // > a {
+      //   padding: 0;
+      //   background-color: red;
+      // }
+    }
+    &.last {
+      margin-bottom: 0
+    }
+    @include typography.fontSet(body, 3, regular);
+    margin: {
+      top: 0;
+      bottom: 8px;
+    };
+  }
+
+  img {
+    margin-top: 24px;
   }
 }
