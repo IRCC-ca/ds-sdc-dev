@@ -26,8 +26,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RequestFormComponent implements OnInit {
   altLangLink = 'requestForm';
   form = new FormGroup({});
-  showUseCase: boolean = true;
-  requestUrgent: boolean = true;
+  showUseCase: boolean = false;
+  requestUrgent: boolean = false;
 
   submitRequestTitleSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
@@ -239,7 +239,7 @@ export class RequestFormComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
@@ -291,5 +291,33 @@ export class RequestFormComponent implements OnInit {
       this.requestedDateDatePickerConfig.id + '_yearControl',
       new FormControl('', Validators.required)
     );
+  }
+
+  /**
+   * Event handler for radio events
+   * @param $event id string of radio pressed)
+   */
+  radioButtonChanged($event: any) {
+    console.log($event.target['id']);
+
+    switch ($event.target['id']) {
+      case this.typeOfRequestRadioConfig.id + '0':
+        this.showUseCase = true;
+        break;
+      case this.typeOfRequestRadioConfig.id + '1':
+        this.showUseCase = true;
+        break;
+      case this.typeOfRequestRadioConfig.id + '2':
+        this.showUseCase = false;
+        break;
+      case this.urgentRequestRadioConfig.id + '0':
+        this.requestUrgent = true;
+        break;
+      case this.urgentRequestRadioConfig.id + '1':
+        this.requestUrgent = false;
+        break;
+      default:
+        break;
+    }
   }
 }

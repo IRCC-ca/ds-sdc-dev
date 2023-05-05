@@ -33,6 +33,7 @@
       <div class="type-request-radio-container">
         <ircc-cl-lib-radio-input
           [config]="typeOfRequestRadioConfig"
+          (change)="radioButtonChanged($event)"
         ></ircc-cl-lib-radio-input>
       </div>
       <div class="request-title-text-area-container">
@@ -61,6 +62,7 @@
       <div class="urgent-request-radio-container">
         <ircc-cl-lib-radio-input
           [config]="urgentRequestRadioConfig"
+          (change)="radioButtonChanged($event)"
         ></ircc-cl-lib-radio-input>
       </div>
       <div
