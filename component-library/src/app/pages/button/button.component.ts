@@ -13,27 +13,11 @@ import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
   providers: [SlugifyPipe]
 })
 export class ButtonComponent implements OnInit, TranslatedPageComponent {
-  rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [
-    // list of all right nav items
-    'Buttons.Title',
-    'Buttons.TypesHeading',
-    'Buttons.ConfigurationsHeading',
-    'Buttons.DesignGuidelinesHeading',
-    'Buttons.AnatomyHeading',
-    'Buttons.SpecsHeading',
-    'Buttons.ContentGuidelinesHeading',
-    'Buttons.FigmaHeading',
-    'Buttons.AccessibilityHeading',
-    'Buttons.ResearchHeading'
-  ];
   altLangLink = 'buttons';
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private navBarConfig: SideNavConfig
   ) {
-    this.rightNavData = navBarConfig.getRightNavBarConfig(this.rightNavDataRaw);
   }
 
   ngOnInit() {

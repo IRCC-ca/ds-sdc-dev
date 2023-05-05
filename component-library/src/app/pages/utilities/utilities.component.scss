@@ -6,8 +6,7 @@ app-utilities {
   .spacing-sample {
     height: 20px;
     margin: 0 auto;
-    // background: color.mix-token(visited, 100);
-    background: #F4EDFA;
+    background: var(--purple-category-background-weak);
     border-left: 1px solid var(--purple-category-background);
     border-right: 1px solid var(--purple-category-background);
   }
