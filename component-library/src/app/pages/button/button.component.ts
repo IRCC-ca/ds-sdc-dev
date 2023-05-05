@@ -16,9 +16,8 @@ export class ButtonComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'buttons';
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService,
-  ) {
-  }
+    private lang: LangSwitchService
+  ) {}
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
