@@ -1,6 +1,7 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
+import { navItemHeadingComponent } from '../nav-item-heading/nav-item-heading.component';
 
 export interface INavigationItemConfig {
   id: string;

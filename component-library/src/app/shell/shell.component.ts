@@ -11,10 +11,7 @@ import { LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
 import { DisplayLanguages, Languages } from '../share/global-params';
 
-import {
-  INavigationConfig,
-  INavigationHeaderConfig
-} from 'ircc-ds-angular-component-library';
+import { INavigationConfig } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-shell',
@@ -33,10 +30,10 @@ export class ShellComponent implements OnInit {
 
   navConfig: INavigationConfig = {
     id: 'shell-nav',
-    header: {
-      label: 'Overview.SubHeading',
-      icon: 'fa-light fa-arrow-left'
-    }
+    size: 'large',
+    label: 'Overview.SubHeading',
+    iconLeading: 'fa-light fa-arrow-left',
+    iconTrailing: 'fa-light fa-arrow-right'
   };
 
   constructor(

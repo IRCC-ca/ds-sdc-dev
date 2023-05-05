@@ -48,6 +48,7 @@
 @use "./component-styling/language-switch/language-switch";
 @use "./component-styling/flyout/flyout";
 @use "./component-styling/flyout-option/flyout-option";
+@use "./component-styling/navigation/navigation";
 @use "./typography/fa-wrapper";
 
 @forward "./theme/theme" as theme-*;
@@ -130,6 +131,7 @@
     @include element(spinner-component);
     @include element(flyout);
     @include element(flyout-option);
+    @include element(navigation);
   }
 
   @else {
@@ -306,6 +308,10 @@
 
   @else if $key == flyout-option {
     @include flyout-option.create();
+  }
+
+  @else if $key == navigation {
+    @include navigation.create();
   }
   
 }

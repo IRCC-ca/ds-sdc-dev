@@ -1,12 +1,57 @@
 <div
   [id]="config.id"
+  [attr.size]="config.size"
   class="lib-navigation"
 >
-  <h4>
+  <div class="navigation-header">
     <ircc-cl-lib-icon
-      [config]="{ FA_keywords: config.header.icon }"
+      [config]="{ FA_keywords: config?.iconLeading || '' }"
     ></ircc-cl-lib-icon>
-    {{ config.header.label | translate }}
-  </h4>
-  <ng-content></ng-content>
+    <h4>{{ config?.label || '' | translate }}</h4>
+    <ircc-cl-lib-icon
+      [config]="{ FA_keywords: config?.iconTrailing || '' }"
+    ></ircc-cl-lib-icon>
+  </div>
+  <!-- <ng-content></ng-content> -->
+
+  {{ navigationObject | json }}
+
+  <ul>
+    <ng-container
+      *ngTemplateOutlet="
+        recursiveListTmpl;
+        context: { list: navigationObject.items }
+      "
+    ></ng-container>
+  </ul>
+
+  <ng-template
+    #recursiveListTmpl
+    let-list="list"
+  >
+    <li *ngFor="let item of list">
+      {{ item.label }} <br />
+      {{ item.type }}
+      <ul *ngIf="item.children.length > 0">
+        <ng-container
+          *ngTemplateOutlet="
+            recursiveListTmpl;
+            context: { list: item.children }
+          "
+        ></ng-container>
+      </ul>
+    </li>
+  </ng-template>
+
+  <!--   
+  <div *ngFor="let key of arrayOfObject(navigationObject)">
+    <div *ngIf="!isArray(navigationObject[key])">
+      {{ key + ': ' + navigationObject[i][key] }}
+    </div>
+
+    <div *ngIf="isArray(ob[key])">
+      <hello [obj]="ob[key]"></hello>
+    </div>
+    {{ key }}
+  </div> -->
 </div>
