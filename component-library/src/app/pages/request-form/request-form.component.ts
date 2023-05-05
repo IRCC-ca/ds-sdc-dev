@@ -26,6 +26,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RequestFormComponent implements OnInit {
   altLangLink = 'requestForm';
   form = new FormGroup({});
+  showUseCase: boolean = true;
+  requestUrgent: boolean = true;
 
   submitRequestTitleSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
@@ -119,8 +121,17 @@ export class RequestFormComponent implements OnInit {
     required: true,
     charLimit: '50',
     resizable: 'vertical',
-    size: 'small'
-    // errorMessages?: IErrorPairs[];
+    size: 'small',
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredTextAreaError'
+      },
+      {
+        key: 'maxLength',
+        errorLOV: 'RequestForm.fieldExceededMaxLength'
+      }
+    ]
     // errorIcon?: IErrorIconConfig;
   };
 
@@ -131,8 +142,17 @@ export class RequestFormComponent implements OnInit {
     desc: 'RequestForm.requestDetailsDesc',
     required: true,
     resizable: 'vertical',
-    size: 'large'
-    // errorMessages?: IErrorPairs[];
+    size: 'large',
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredTextAreaError'
+      }
+      // {
+      //   key: 'maxLength',
+      //   errorLOV: 'RequestForm.fieldExceededMaxLength'
+      // }
+    ]
     // errorIcon?: IErrorIconConfig;
   };
 
@@ -143,8 +163,17 @@ export class RequestFormComponent implements OnInit {
     desc: 'RequestForm.useCaseDesc',
     required: true,
     resizable: 'vertical',
-    size: 'large'
-    // errorMessages?: IErrorPairs[];
+    size: 'large',
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredTextAreaError'
+      }
+      // {
+      //   key: 'maxLength',
+      //   errorLOV: 'RequestForm.fieldExceededMaxLength'
+      // }
+    ]
     // errorIcon?: IErrorIconConfig;
   };
 
@@ -166,8 +195,17 @@ export class RequestFormComponent implements OnInit {
     label: 'RequestForm.urgentDetailsLabel',
     required: true,
     resizable: 'vertical',
-    size: 'large'
-    // errorMessages?: IErrorPairs[];
+    size: 'large',
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredTextAreaError'
+      }
+      // {
+      //   key: 'maxLength',
+      //   errorLOV: 'RequestForm.fieldExceededMaxLength'
+      // }
+    ]
     // errorIcon?: IErrorIconConfig;
   };
 
@@ -175,7 +213,7 @@ export class RequestFormComponent implements OnInit {
     general: [
       {
         key: 'required',
-        errorLOV: 'Some Error'
+        errorLOV: 'RequestForm.requiredDateError'
       }
     ]
   };

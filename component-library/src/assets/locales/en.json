@@ -667,6 +667,9 @@
     "urgentDetailsLabel": "Why is the request urgent? (required)",
     "requestedDateLabel": "When is the completed work needed by? (required)",
     "requestedDateDesc": "When would you need the work delivered in order for your team to start implementation into your project?",
-    "SubmitBtn": "Submit request"
+    "SubmitBtn": "Submit request",
+    "requiredTextAreaError": "This field is required.",
+    "fieldExceededMaxLength": "This field has exceeded max length.",
+    "requiredDateError": "Please fill in the missing fields"
     }
 }

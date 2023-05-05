@@ -45,7 +45,10 @@
           [config]="requestDetailsTextAreaConfig"
         ></ircc-cl-lib-textarea>
       </div>
-      <div class="use-case-text-area-container">
+      <div
+        class="use-case-text-area-container"
+        *ngIf="showUseCase"
+      >
         <ircc-cl-lib-textarea
           [config]="useCaseTextAreaConfig"
         ></ircc-cl-lib-textarea>
@@ -60,12 +63,18 @@
           [config]="urgentRequestRadioConfig"
         ></ircc-cl-lib-radio-input>
       </div>
-      <div class="urgent-details-container">
+      <div
+        class="urgent-details-container"
+        *ngIf="requestUrgent"
+      >
         <ircc-cl-lib-textarea
           [config]="urgentDetailsTextAreaConfig"
         ></ircc-cl-lib-textarea>
       </div>
-      <div class="date-requested-container">
+      <div
+        class="date-requested-container"
+        *ngIf="requestUrgent"
+      >
         <ircc-cl-lib-date-picker
           [config]="requestedDateDatePickerConfig"
         ></ircc-cl-lib-date-picker>
