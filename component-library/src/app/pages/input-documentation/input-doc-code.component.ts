@@ -8,6 +8,10 @@ import {
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import {
+  ICodeViewerConfig,
+  stringify
+} from '@app/components/code-viewer/code-viewer.component';
 
 /**
  * Interactive input demo & code block
@@ -28,6 +32,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     id: 'input',
     formGroup: this.form_interactive_input,
     size: 'small',
+    type: 'text',
+    required: false,
     label: 'Label text',
     desc: 'Description line of text',
     errorMessages: [
@@ -158,6 +164,41 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
+  inputConfigCodeView: any = {
+    id: this.inputConfig.id,
+    formGroup: `new FormGroup({})`,
+    type: this.inputConfig.type,
+    required: this.inputConfig.required,
+    size: this.inputConfig.size,
+    label: this.inputConfig.label,
+    desc: this.inputConfig.desc,
+    hint: this.inputConfig.hint,
+    placeholder: this.inputConfig.placeholder,
+    errorMessages: undefined
+  };
+
+  codeViewConfig: ICodeViewerConfig = {
+    id: 'input-code-viewer',
+    openAccordion: true,
+    selected: 'html',
+    tab: [
+      {
+        id: 'html',
+        title: 'HTML',
+        value: `<ircc-cl-lib-input [config]="inputConfig"></ircc-cl-lib-input>`
+      },
+      {
+        id: 'ts',
+        title: 'TypeScript',
+        value: `
+import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+
+inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
+      }
+    ]
+  };
+
   setInputType(value: any) {
     switch (value) {
       case 'password':
@@ -167,6 +208,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.inputConfig.type = 'text';
         break;
     }
+    this.parseCodeViewConfig();
   }
 
   ngOnInit() {
@@ -200,6 +242,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.form_interactive_input.valueChanges.subscribe((value: any) => {
       this.inputConfig = this.parseToggleConfig(value);
+      this.parseCodeViewConfig();
       if (value['error']) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
@@ -212,10 +255,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     return {
       ...this.inputConfig,
       size: value['size'].toLowerCase(),
-      hint: value['hint'] === 'True' ? 'Hint text' : '',
+      hint: value['hint'] === 'True' ? 'Hint text' : undefined,
       required: value['required'] === 'True',
-      desc: value['desc'] === 'True' ? 'Description line of text' : '',
-      placeholder: value['placeholder'] === 'True' ? 'Placeholder text' : ''
+      desc: value['desc'] === 'True' ? 'Description line of text' : undefined,
+      placeholder:
+        value['placeholder'] === 'True' ? 'Placeholder text' : undefined
     };
   }
 
@@ -234,11 +278,13 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.form_interactive_input
           .get(this.inputConfig.id)
           ?.setErrors({ errors: null });
+        this.inputConfigCodeView.errorMessages = undefined;
         break;
       case 'Single':
         this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
           invalid: true
         });
+        this.inputConfigCodeView.errorMessages = this.inputConfig.errorMessages;
         break;
       case 'Multiple':
         this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
@@ -246,8 +292,10 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           testingError: true,
           maxlength: { requiredLength: 3, actualLength: 5 }
         });
+        this.inputConfigCodeView.errorMessages = this.inputConfig.errorMessages;
         break;
     }
+    this.parseCodeViewConfig();
   }
 
   /**
@@ -266,6 +314,28 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       inputControl?.disable();
     } else {
       inputControl?.enable();
+    }
+  }
+
+  private parseCodeViewConfig() {
+    const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
+    if (-1 == index || !index) return;
+    this.inputConfigCodeView = {
+      ...this.inputConfigCodeView,
+      size: this.inputConfig.size,
+      type: this.inputConfig.type,
+      required: this.inputConfig.required,
+      label: this.inputConfig.label,
+      desc: this.inputConfig.desc,
+      hint: this.inputConfig.hint,
+      placeholder: this.inputConfig.placeholder
+    };
+    if (this.codeViewConfig?.tab) {
+      this.codeViewConfig.tab[index].value = `
+import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+
+inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`;
     }
   }
 }
