@@ -1,16 +1,16 @@
 <div
-  class="{{ config?.size }}"
-  id="{{ config?.id }}"
+  class="{{ config.size }}"
+  id="{{ config.id }}"
   class="tag-component"
   [ngClass]="{
-    success: config?.type === 'success',
-    critical: config?.type === 'critical',
-    neutral: config?.type === 'locked' || config?.type === 'notStarted'
+    success: config.type === 'success',
+    critical: config.type === 'critical',
+    neutral: config.type === 'locked' || config.type === 'notStarted'
   }"
 >
   <div class="tag-container">
     <div class="tag-left">
-      <ng-container [ngSwitch]="config?.type">
+      <ng-container [ngSwitch]="config.type">
         <div *ngSwitchCase="'success'">
           <i class="fa-circle-check fa-regular tag-icon"></i>
           <span class="content">{{ text[1] }}</span>

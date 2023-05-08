@@ -1,0 +1,18 @@
+<div
+  class="option-container"
+  [ngClass]="config.size"
+>
+  <ircc-cl-lib-button
+    [category]="'plain'"
+    [id]="config.id ? config.id : ''"
+    role="option"
+    [tabIndex]="-1"
+  >
+    <div class="option-contents">
+      <p class="option-text">{{ config.value || '' | translate }}</p>
+      <div *ngIf="config.selected">
+        <span class="fa-solid fa-check option-check"></span>
+      </div>
+    </div>
+  </ircc-cl-lib-button>
+</div>

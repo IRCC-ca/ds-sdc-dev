@@ -14,6 +14,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { BreadcrumbLinkComponent } from './breadcrumb/link/link.component';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { DomChangeDirective } from "../../shared/directives/dom-change.directive";
+import { FlyoutComponent } from './flyout/flyout.component';
+import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -28,11 +31,13 @@ const IrccDsSharedComponents = [
   LabelComponent,
   ProgressTagsComponent,
   ProgressIndicatorComponent,
-  SpinnerComponent
+  SpinnerComponent,
+  FlyoutComponent,
+  FlyoutOptionComponent
 ];
 
 @NgModule({
-  declarations: [...IrccDsSharedComponents],
+  declarations: [...IrccDsSharedComponents, DomChangeDirective],
   imports: [CommonModule, TranslateModule, RouterModule],
   exports: [
     CommonModule,

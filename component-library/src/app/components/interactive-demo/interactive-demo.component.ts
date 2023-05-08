@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
+import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
+
+export enum ComponentType {
+  banner = 'banner'
+}
 
 @Component({
   selector: 'app-interactive-demo',
@@ -11,19 +16,22 @@ export class InteractiveDemoComponent implements OnInit {
     class: 'fa-light fa-chevron-down'
   };
 
-  accordionText: string =
-    'DEMO_COMPONENT.ACCORDION_OPEN' || 'DEMO_COMPONENT.ACCORDION_CLOSED';
-  isOpen: boolean = true;
+  /*
+   This variable is added to the class of component container,
+   it is being used to overrride background color for interactive
+   component specifically for Banner in the scss file, since 
+   banner has a white background and rest have a grey background.
+  */
+  @Input() componentType?: keyof typeof ComponentType;
+
+  accordionConfig: IAccordionContainerConfig = {
+    id: 'InteractiveDemoComponentAcccordion',
+    open: true,
+    buttonText: 'DEMO_COMPONENT.ACCORDION_OPEN',
+    buttonTextClosed: 'DEMO_COMPONENT.ACCORDION_CLOSED'
+  };
 
   constructor() {}
 
   ngOnInit() {}
-
-  toggle() {
-    this.isOpen = !this.isOpen;
-
-    this.isOpen
-      ? (this.accordionText = 'DEMO_COMPONENT.ACCORDION_OPEN')
-      : (this.accordionText = 'DEMO_COMPONENT.ACCORDION_CLOSED');
-  }
 }

@@ -13,6 +13,9 @@ import { NavButtonsComponent } from '../nav-buttons/nav-buttons.component';
 import { RouterModule } from '@angular/router';
 import { PreventTabOutDirective } from './directives/prevent-tab-out.directive';
 import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { InfoTextSmallComponent } from '@app/components/info-text-small/info-text-small.component';
+import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   imports: [
@@ -25,12 +28,13 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     IrccDsAngularFormComponentsModule,
     IrccDsAngularLegacyOldModule,
     IrccDsAngularHeaderFooterModule,
-    IrccDsAngularComponentsSharedModule
+    IrccDsAngularComponentsSharedModule,
+    ClipboardModule
   ],
   declarations: [
     NavButtonsComponent,
     PreventTabOutDirective,
-    InteractiveDemoComponent
+    InfoTextSmallComponent
   ],
   exports: [
     IrccDsAngularBannerModule,
@@ -39,11 +43,12 @@ import { InteractiveDemoComponent } from '@app/components/interactive-demo/inter
     IrccDsAngularComponentsSharedModule,
     ReactiveFormsModule,
     FormsModule,
+    ClipboardModule,
     NavButtonsComponent,
     PreventTabOutDirective,
     IrccDsAngularHeaderFooterModule,
     IrccDsAngularComponentsSharedModule,
-    InteractiveDemoComponent
+    InfoTextSmallComponent
   ]
 })
 export class SharedModule {}

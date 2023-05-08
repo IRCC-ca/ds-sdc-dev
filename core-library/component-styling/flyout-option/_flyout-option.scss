@@ -1,0 +1,89 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selectors {
+  ircc-cl-lib-flyout-option#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selectors() {
+    @include layout();
+  }
+}
+
+@mixin small-styles {
+  .option {
+    &-text {
+      @include typography.fontSet(body, 3, regular);
+    }
+  }
+}
+
+@mixin large-styles {
+  .option {
+    &-text {
+      @include typography.fontSet(body, 2, regular);
+    }
+  }
+}
+
+@mixin layout {
+  ircc-cl-lib-button {
+    .lib-button {
+      display: block;
+      overflow: visible;
+      padding: 0;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  .option {
+    &-container {
+      margin: 0;
+      padding: 0;
+    }
+
+    &-contents {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 16px;
+    }
+
+    &-text {
+      padding: 0;
+      margin: 0;
+    }
+
+    &-check {
+      color: var(--navigation);
+    }
+  }
+
+  @include size.selector(small) {
+    @include small-styles;
+    .large {
+      @include large-styles;
+    }
+  }
+
+  @include size.selector(large) {
+    @include large-styles;
+    .small {
+      @include small-styles;
+    }
+  }
+}

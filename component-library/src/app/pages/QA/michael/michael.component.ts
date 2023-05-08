@@ -202,7 +202,7 @@ export class MichaelComponent implements OnInit {
     baseUrlKey: 'ROUTES.LandingPage',
     links: [
       {
-        text: 'Home'
+        text: 'Home.Title'
       },
       {
         text: 'QA.header',
@@ -213,7 +213,7 @@ export class MichaelComponent implements OnInit {
         linkKey: 'ROUTES.michael'
       },
       {
-        text: 'Child Page Title'
+        text: 'Child Page Title Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
       }
     ]
   };
@@ -223,7 +223,8 @@ export class MichaelComponent implements OnInit {
     type: 'dot',
     size: 'large',
     purpose: 'status',
-    status: 'primary'
+    status: 'primary',
+    ariaLabel: 'Indicator.Heading'
   };
 
   testerBreadcrumbConfig: IAutoTestConfigObject = {
@@ -564,5 +565,12 @@ export class MichaelComponent implements OnInit {
         this.form.updateValueAndValidity();
         break;
     }
+  }
+
+  toggleComp(comp: string) {
+    document.querySelectorAll('section')?.forEach((section) => {
+      section.classList.remove('show');
+    });
+    document.getElementById(comp)?.classList.toggle('show');
   }
 }

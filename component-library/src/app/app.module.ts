@@ -17,6 +17,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
 import { DsPageModule } from './modules/ds-pages.module';
 
+import { APP_BASE_HREF } from '@angular/common';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locales/', '.json');
 }

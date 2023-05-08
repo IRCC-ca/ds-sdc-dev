@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 export interface ITabNavConfig {
@@ -6,6 +6,7 @@ export interface ITabNavConfig {
   tab?: ITabConfig[];
   size?: keyof typeof DSSizes;
   selected?: string;
+  showContent?: boolean;
 }
 export interface ITabConfig {
   id?: string;
@@ -18,12 +19,15 @@ export interface ITabConfig {
 })
 export class TabsComponent implements OnInit {
   @Input() config: ITabNavConfig = {
-    id: ''
+    id: '',
+    showContent: true
   };
+  @Output() valueChange = new EventEmitter<string>();
 
   ngOnInit() {
     if (this.config.selected === undefined && this.config.tab) {
       this.config.selected = this.config.tab[0].id;
+      this.valueChange.emit(this.config.selected);
     }
   }
 
@@ -37,6 +41,7 @@ export class TabsComponent implements OnInit {
         let nav = document.querySelector('.page-nav');
         nav && x ? (nav.scrollLeft = x) : null;
       }
+      this.valueChange.emit(selectedID);
     }
   }
 }

@@ -13,12 +13,39 @@
       bottom: 24px;
     };
   } 
+  display: block;
+
+  // > h2 {
+  //   display: inline-block;
+  //   font-weight: 700;
+
+  //   &.primary {
+  //     font-size: 36px;
+  //     margin-top: 0px;
+  //     margin-bottom: 24px;
+  //   }
+
+  //   &.secondary {
+  //     font-size: 28px;
+  //     margin-top: 80px;
+  //     margin-bottom: 24px;
+  //   }
+  // }
+
   > a {
-    margin-left: 16px;
+    margin-left: 12px;
     position: relative;
     bottom: 5px;
     text-decoration: none;
     color: var(--link-text);
     font-family: "Lato";
+
+    &.primary {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0em;
+      text-align: center;
+    }
   }
 }

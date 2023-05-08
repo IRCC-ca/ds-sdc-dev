@@ -19,9 +19,24 @@ import { ButtonComponent } from '@app/pages/button/button.component';
 import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 import { InfoTextSmallComponent } from '@app/components/info-text-small/info-text-small.component';
 import { ContactComponent } from '@app/pages/contact/contact.component';
+import { codeViewerComponent } from '@app/components/code-viewer/code-viewer.component';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { resizableContainerComponent } from '@app/components/resizable-container/resizable-container.component';
+import { codeViewComponent } from '@app/pages/code-view/code-view.component';
+import { BannerDocCodeComponent } from '@app/pages/banner-documentation/banner-doc-code.component';
+import { InteractiveDemoComponent } from '@app/components/interactive-demo/interactive-demo.component';
+import { ButtonDocCodeComponent } from '@app/pages/button-documentation/button-doc-code.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
+import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
+import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
+
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
+    resizableContainerComponent,
+    codeViewerComponent,
+    accordionContainerComponent,
     OverviewComponent,
     ForDesignersComponent,
     ForDevelopersComponent,
@@ -33,7 +48,15 @@ import { ContactComponent } from '@app/pages/contact/contact.component';
     SideNavComponent,
     ComponentPreviewComponent,
     InfoTextSmallComponent,
-    ShellComponent
+    ShellComponent,
+    codeViewComponent,
+    BannerDocCodeComponent,
+    InteractiveDemoComponent,
+    ButtonDocCodeComponent,
+    InputDocumentationComponent,
+    ComponentPreviewComponent,
+    InteractiveDemoComponent,
+    InputDocCodeComponent
   ],
   imports: [
     CommonModule,
@@ -41,9 +64,27 @@ import { ContactComponent } from '@app/pages/contact/contact.component';
     ClipboardModule,
     QaModule,
     AccessibilityDemoModule,
-    ShelldModule
+    ShelldModule,
+    HighlightModule,
+    AccessibilityDemoModule,
+    TranslateModule,
+    SharedModule
   ],
-  exports: [TitleSlugUrlComponent],
-  providers: [SideNavConfig]
+  exports: [
+    TitleSlugUrlComponent,
+    codeViewerComponent,
+    accordionContainerComponent,
+    resizableContainerComponent
+  ],
+  providers: [
+    SideNavConfig,
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+        themePath: 'assets/code-viewer.css'
+      }
+    }
+  ]
 })
 export class DsPageModule {}

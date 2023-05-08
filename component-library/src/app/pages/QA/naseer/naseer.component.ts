@@ -2,8 +2,6 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
-  ButtonColor,
-  ButtonIconDirection,
   IButtonConfig,
   IDatePickerConfig,
   IDropdownConfig,

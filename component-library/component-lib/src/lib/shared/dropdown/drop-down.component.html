@@ -1,8 +1,12 @@
-<div class="content-container" [ngClass]="config.size">
+<div
+  class="content-container"
+  [ngClass]="config.size"
+>
   <button
+    aria-live="polite"
+    attr.aria-label="{{ 'Dropdown' || '' | translate }}"
     [id]="config.id"
-    (blur)="onBlur()"
-    (click)="toggleSelect()"
+    (click)="toggleFlyout(!selected)"
     [disabled]="config.disabled"
     class="dropdown selected-{{ selected }} {{ config.category }}"
     attr.category="{{ config.category }}"
@@ -10,19 +14,36 @@
     <div class="icon-text-container">
       <ircc-cl-lib-icon
         *ngIf="config.icon"
-        class="{{ config.icon?.class }} custom-icon"
+        class="custom-icon"
         [style.color]="config.icon?.color"
+        [config]="{ FA_keywords: config.icon?.class }"
       ></ircc-cl-lib-icon>
-      <p *ngIf="showPlaceholder" class="placholder-text">
+      <p
+        *ngIf="showPlaceholder"
+        class="placholder-text"
+      >
         {{ config.placeholderText }}
       </p>
       <p class="label-text">{{ config.label }}</p>
     </div>
-    <div *ngIf="!selected" role="img">
+    <div
+      *ngIf="!selected"
+      role="img"
+    >
       <i class="fa-light fa-chevron-down custom-chevron"></i>
     </div>
-    <div *ngIf="selected" role="img">
+    <div
+      *ngIf="selected"
+      role="img"
+    >
       <i class="fa-light fa-chevron-up custom-chevron"></i>
     </div>
   </button>
 </div>
+<ircc-cl-lib-flyout
+  [id]="config.id + '_flyout'"
+  [size]="config.size"
+  *ngIf="selected"
+  [config]="flyoutConfig"
+  (isSelected)="selectedOption($event)"
+></ircc-cl-lib-flyout>

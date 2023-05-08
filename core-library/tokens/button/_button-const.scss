@@ -24,7 +24,6 @@ $selectors: 'button';
     border-radius: token-size.$border-radius;
     border-style: none;
     justify-content: center;
-    max-width: token-size.$max-button-width;
     cursor: pointer;
 
     @include button-size();

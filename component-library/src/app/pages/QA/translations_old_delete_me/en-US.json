@@ -64,6 +64,10 @@
     "warningLimit": "Maximum character limit reached in 15 characters."
   },
 
+  "BREADCRUMB_COMPONENT": {
+    "ADDITIONAL_LINKS": "Additional links"
+  },
+
   "LandingPage": {
     "header": "This page is for testing and QA purposes only"
   },

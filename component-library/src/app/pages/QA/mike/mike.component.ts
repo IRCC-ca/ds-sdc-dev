@@ -15,7 +15,9 @@ import {
   ICTAConfig,
   IButtonConfig,
   IRadioInputComponentConfig,
-  IHiddenNavConfig
+  IHiddenNavConfig,
+  IIconConfig,
+  IDropdownConfig
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -37,6 +39,34 @@ export class MikeComponent implements OnInit {
     id: this.BANNER_ID
   };
 
+  dropdownConfig: IDropdownConfig = {
+    id: 'dropdown_test',
+    flyout: {
+      id: 'dropdown_test_flyout',
+      options: [
+        {
+          value: 'option 1'
+        },
+        {
+          value: 'option 2',
+          disabled: true
+        },
+        {
+          value: 'option 3'
+        },
+        {
+          value: 'option 4'
+        },
+        {
+          value: 'option 5'
+        },
+        {
+          value: 'option 6'
+        }
+      ]
+    }
+  };
+
   hiddenNavConfig: IHiddenNavConfig = {
     id: 'hidden_nav',
     skipLinks: [
@@ -52,10 +82,36 @@ export class MikeComponent implements OnInit {
     ]
   };
 
+  iconConfig: IIconConfig = {
+    FA_keywords: 'fa-regular fa-mustache'
+  };
+
   form = new FormGroup({});
   ctaForm1 = new FormGroup({});
   radioForm = new FormGroup({});
   radioTesterForm = new FormGroup({});
+  iconTesterForm = new FormGroup({});
+
+  iconTest: IAutoTestConfigObject = {
+    inputs: [
+      {
+        id: 'FA_keywords',
+        label: 'FA_keywords',
+        formGroup: this.iconTesterForm
+      },
+      {
+        id: 'ariaLabel',
+        label: 'ariaLabel',
+        formGroup: this.iconTesterForm
+      }
+    ]
+  };
+
+  iconComponentConfig: IAutoTestComponentConfig = {
+    id: 'icon_tester',
+    formGroup: this.iconTesterForm,
+    testFields: this.iconTest
+  };
 
   radioConfig: IRadioInputComponentConfig = {
     id: 'radio_1',
@@ -280,6 +336,16 @@ export class MikeComponent implements OnInit {
     testFields: this.ctaTestConfigObj
   };
 
+  iconClick() {
+    console.log('click');
+    this.iconConfig = {
+      ...this.iconConfig,
+      FA_keywords: 'fa-regular fa-check'
+    };
+    this.iconConfig = { ...this.iconConfig, ariaLabel: '' };
+    console.log(this.iconConfig);
+  }
+
   triggerError() {
     if (!this.radioConfig.formGroup.get('radio_1')?.hasError('otherError')) {
       this.radioConfig.formGroup.get('radio_1')?.hasError('required')
@@ -298,6 +364,18 @@ export class MikeComponent implements OnInit {
     document.getElementById('radio_10')?.hasAttribute('disabled')
       ? document.getElementById('radio_10')?.removeAttribute('disabled')
       : document.getElementById('radio_10')?.setAttribute('disabled', '');
+  }
+
+  toggleSize() {
+    if (this.dropdownConfig.size) {
+      if (this.dropdownConfig.size === 'large') {
+        this.dropdownConfig = { ...this.dropdownConfig, size: 'small' };
+      } else {
+        this.dropdownConfig = { ...this.dropdownConfig, size: 'large' };
+      }
+    } else {
+      this.dropdownConfig = { ...this.dropdownConfig, size: 'small' };
+    }
   }
 
   constructor(private lang: LangSwitchService) {}
@@ -338,6 +416,10 @@ export class MikeComponent implements OnInit {
       this.radioTesterForm.addControl(i.id, new FormControl());
     });
 
+    this.iconTest.inputs?.forEach((i) => {
+      this.iconTesterForm.addControl(i.id, new FormControl());
+    });
+
     this.form.valueChanges.subscribe((x) => {
       let updatedConfig: IBannerConfig = {
         id: this.BANNER_ID
@@ -347,6 +429,19 @@ export class MikeComponent implements OnInit {
         updatedConfig = { ...updatedConfig, [param]: x[param] };
         this.qaBanner = updatedConfig;
       }
+    });
+
+    this.iconTesterForm.valueChanges.subscribe((x) => {
+      let updatedConfig: IIconConfig = {
+        FA_keywords: this.iconConfig.FA_keywords
+      };
+
+      for (const param in x) {
+        updatedConfig = { ...updatedConfig, [param]: x[param] };
+        this.iconConfig = updatedConfig;
+      }
+
+      console.log('ICON CONFIG:', updatedConfig);
     });
 
     // code for CTA1:
