@@ -25,7 +25,7 @@ export class RequestFormService {
   requestFormObs = this.requestFormData.asObservable();
 
   private storageKey: string = 'requestFormData';
-  constructor() {}
+  constructor() { }
 
   setFormData(data: IRequestFormDataInterface) {
     localStorage.setItem(this.storageKey, JSON.stringify(data));
@@ -54,8 +54,8 @@ export class RequestFormService {
     return new SESClient({
       region: 'ca-central-1',
       credentials: {
-        accessKeyId: 'AKIA6ATZUSYD44EQBLU3',
-        secretAccessKey: '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'
+        accessKeyId: '',
+        secretAccessKey: ''
       }
     });
   }
