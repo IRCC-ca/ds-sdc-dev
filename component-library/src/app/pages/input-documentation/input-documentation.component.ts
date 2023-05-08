@@ -5,7 +5,7 @@ import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 import {
   slugAnchorType,
-  slugTitleURLConfig,
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
-import {
-  slugTitleURLConfig,
-} from '@app/components/title-slug-url/title-slug-url.component';
+import { slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';

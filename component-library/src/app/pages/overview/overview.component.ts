@@ -4,9 +4,7 @@ import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
 
-import {
-  slugTitleURLConfig
-} from '@app/components/title-slug-url/title-slug-url.component';
+import { slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({
   selector: 'app-overview',
