@@ -22,7 +22,7 @@ $selectors: "ircc-cl-lib-spinner";
 }
 
 @mixin types($status) {
-  .#{$staus} {
+  .#{$status} {
     .icon-div {
       background-color: var(--#{$status}-background-weak);
     }
