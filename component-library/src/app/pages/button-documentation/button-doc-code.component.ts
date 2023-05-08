@@ -74,9 +74,9 @@ export class ButtonDocCodeComponent implements OnInit {
         id: 'html',
         title: 'HTML',
         value:
-        `<div class=${LayoutType.fluid}>\n`+
-        '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n'+
-        '</div>'
+          `<div class=${LayoutType.fluid}>\n`+
+          '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n'+
+          '</div>'
 
       },
       {
@@ -90,8 +90,7 @@ export class ButtonDocCodeComponent implements OnInit {
       {
         id: 'css',
         title: 'CSS',
-        value: "//By default button Layout is fluid and it matched container width\n"+
-        ".button-container-fluid {\n}"
+        value: "//By default button Layout is fluid and it matches container width\n"
       }
     ]
   };
@@ -309,8 +308,7 @@ export class ButtonDocCodeComponent implements OnInit {
         }
         else {
           this.codeViewConfig.tab[cssIndex].value=
-          "//By default button Layout is fluid and it matched container width\n"+
-          ".button-container-fluid {\n}"
+          "//By default button Layout is fluid and it matches container width\n"
         }
     }
   }
