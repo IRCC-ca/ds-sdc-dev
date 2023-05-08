@@ -1,42 +1,40 @@
 /* stylelint-disable selector-max-universal */
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../template-const' as template-const;
-@use '../sizes' as sizes;
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "../sizes" as sizes;
 
 @mixin tokens($palette) {
-    @include theme.light {
-        --focus-border: #{color.mix-token($palette, 700)};
-        --focus-border-weak: #{color.mix-token($palette, 200)};
-    }
-    @include theme.dark {
-        --focus-border: #{color.mix-token($palette, 600)};
-        --focus-border-weak: #{color.mix-token($palette, 1100)};
-    }
+  @include theme.light {
+    --focus-border: #{color.mix-token($palette, 700)};
+  }
+  @include theme.dark {
+    --focus-border: #{color.mix-token($palette, 600)};
+  }
 }
 
 @mixin create($palette: focus) {
-    @include selector {
-        @include layout();
+  @include selector {
+    @include layout();
+  }
+  @at-root {
+    #{template-const.$root-selectors} {
+      @include tokens($palette);
     }
-    @at-root {
-        #{template-const.$root-selectors} {
-        @include tokens($palette);
-        }
-    }
+  }
 }
 
 @mixin layout {
-    outline: var(--focus-border) solid sizes.$outline-width;
-    outline-offset: sizes.$outline-width;
-    box-shadow: sizes.$focus-shadow;
-    z-index: 10;
-    overflow: visible;
-    position: relative;
+  outline: var(--focus-border) solid sizes.$outline-width;
+  outline-offset: sizes.$outline-width;
+  box-shadow: sizes.$focus-shadow;
+  z-index: 10;
+  overflow: visible;
+  position: relative;
 }
 
 @mixin selector {
-    *:focus-visible {
-        @content;
-    }
+  *:focus-visible {
+    @content;
+  }
 }

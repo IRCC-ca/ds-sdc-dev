@@ -24,14 +24,10 @@
 }
 
 @mixin layout {
-  //defines the container our query will run on
   .heading {
+    //defines the container our query will run on
     container-type: inline-size;
     container-name: header-container;
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
 
     .header-content {
       display: flex;
@@ -47,8 +43,7 @@
 
       @include device.in-phone-layout() {
         width: 249px;
-        // height: 23.52px;
-        margin-left: 8px;
+        margin-left: 16px;
       }
 
       #canada-home-img-link {
@@ -79,41 +74,37 @@
 
   //container query which applies margins if the container is 16px less than the view width
   // i.e. if the header is spanning almost the entire screen then we will indent the image and lang toggle so they aren't cut off
-  @container header-container (width: calc(100vw - 16px)) {
+  @container header-container (width > 90vw) {
     .image-container {
-      margin-left: 12px;
+      margin-left: 20px;
     }
 
-    @container header-container (width > 90vw) {
-      .image-container {
-        margin-left: 20px;
-      }
-
-      .languageSwitch {
-        margin-right: 20px;
-      }
-
-      .headerLine {
-        overflow: visible;
-        margin-left: -8px;
-        margin-right: -8px;
-      }
+    .languageSwitch {
+      margin-right: 20px;
     }
 
     .headerLine {
-      container-type: inline-size;
-      container-name: headerLine-container;
-      color: var(--header-line);
-      border-width: sizes.$fixed-2;
-      border-style: solid;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    //allows headerLine to span entire view width even when the margin is applies to the header container
-    @container headerLine-container (width: calc(100vw - 16px)) {
+      overflow: visible;
       margin-left: -8px;
       margin-right: -8px;
+    }
+  }
+
+  .headerLine {
+    color: var(--navy-11);
+    border-width: sizes.$fixed-2;
+    border-style: solid;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include device.in-phone-layout() {
+      margin-right: -8px;
+      margin-left: -8px;
+    }
+    //allows headerLine to span entire view width even when the margin is applied to the header container
+    @media (max-width: 979px) {
+      margin-right: -8px;
+      margin-left: -8px;
     }
   }
 }
