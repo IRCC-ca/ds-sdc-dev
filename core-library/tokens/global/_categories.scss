@@ -16,7 +16,11 @@
 @mixin tokens($palette) {
     @include theme.light() {
         --#{$palette}-category-background: #{color.mix-token($palette, 700)};
-        --#{$palette}-category-background-weak: #{color.mix-token($palette, 100)};
+        @if ($palette == grey) {
+            --#{$palette}-category-background-weak: #{color.mix-token($palette, 200)};
+        } @else {
+            --#{$palette}-category-background-weak: #{color.mix-token($palette, 100)};
+        }
         --#{$palette}-category-text: #{color.mix-token($palette, 900)};
         --#{$palette}-category-text-weak: #{color.mix-token(neutral, 100)};
     }
