@@ -24,7 +24,7 @@
   .#{$status} {
     background-color: var(--#{$status}-background-weak);
     .tag-left {
-      --text: var(--#{$category}-text);
+      --text: var(--#{$status}-text);
     }
   }
 }
