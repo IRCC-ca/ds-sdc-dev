@@ -3,7 +3,6 @@ import { TranslatedPageComponent } from '../translated-page-component';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import {
   slugTitleURLConfig,
-  slugTitleURLType
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({
@@ -12,7 +11,6 @@ import {
 })
 export class ContactComponent implements OnInit, TranslatedPageComponent {
   contactSubTitleSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'LeftSideNav.sub-titles.contact'
   };
   altLangLink = 'contact';

@@ -5,7 +5,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import {
   slugAnchorType,
   slugTitleURLConfig,
-  slugTitleURLType
 } from '@app/components/title-slug-url/title-slug-url.component';
 import {
   ButtonColor,
@@ -32,7 +31,6 @@ export class ButtonDocCodeComponent implements OnInit {
   form_interactive_button = new FormGroup({});
 
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'Interactive Demo',
     anchorType: slugAnchorType.primary
   };

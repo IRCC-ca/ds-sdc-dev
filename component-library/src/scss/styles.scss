@@ -48,14 +48,14 @@ app-root {
   // @include un-tablet-layout {
   //   left: 0;
   // }   
-  .grid-container { //where is it?
-    @include un-tablet-layout {
-      padding-left: $tablet-padding;
-    }
-    @include in-phone-layout {
-      padding-left: $mobile-padding;
-    }
-  }
+  // .grid-container { //where is it?
+  //   @include un-tablet-layout {
+  //     padding-left: $tablet-padding;
+  //   }
+  //   @include in-phone-layout {
+  //     padding-left: $mobile-padding;
+  //   }
+  // }
   /** MOVED TO SHELL SCSS **/
   // h1 {
   //   @include un-tablet-layout {

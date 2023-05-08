@@ -5,7 +5,6 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
 
 import {
-  slugTitleURLType,
   slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 
@@ -18,10 +17,8 @@ import {
 export class OverviewComponent implements OnInit, TranslatedPageComponent {
   currentLanguage: string = '';
   altLangLink = 'overview'; // ROUTE translation path
-  slugTitleURLType = slugTitleURLType;
 
   overViewSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Overview.Heading',
     heading: 'h1'
   };

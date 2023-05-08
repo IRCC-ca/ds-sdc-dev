@@ -8,7 +8,6 @@ import { TranslatedPageComponent } from '../translated-page-component';
 import { Clipboard } from '@angular/cdk/clipboard';
 import {
   slugTitleURLConfig,
-  slugTitleURLType
 } from '@app/components/title-slug-url/title-slug-url.component';
 @Component({
   selector: 'app-for-developers',
@@ -37,28 +36,22 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   paragraph3: string = 'npm install @ircc-ca/ds-sdc-core@patch';
   placeholder: string = '<code block/>';
   overViewDeveloperSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Overview.DeveloperHeading',
     heading: 'h1'
   };
   developerStartedSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Developers.GetStartedHeading'
   };
   developerUsageSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Developers.UsageHeading'
   };
   developerThemesSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Developers.ThemesHeading'
   };
   developerFontAwesomeSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Developers.FontAwesomeHeading'
   };
   developerReleasesSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Developers.ReleasesHeading'
   };
 

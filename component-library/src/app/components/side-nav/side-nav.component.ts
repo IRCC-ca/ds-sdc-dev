@@ -86,12 +86,10 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   navClassName = '';
   navStatus = 'nav-closed';
   barsIconConfig: IIconConfig = {
-    unicode: 'f0c9',
-    fontFamily: 'fa-light'
+    FA_keywords: 'fa-regular fa-bars'
   };
   xmarkIconConfig: IIconConfig = {
-    unicode: 'f00d',
-    fontFamily: 'fa-light'
+    FA_keywords: 'fa-regular fa-x'
   };
   width: string = '100%'; // Width of component
 

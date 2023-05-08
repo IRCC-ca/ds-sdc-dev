@@ -3,7 +3,6 @@ import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import {
   slugTitleURLConfig,
-  slugTitleURLType
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
@@ -44,23 +43,19 @@ export class UtilitiesComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'utilities'; // ROUTE translation path
 
   utilitiesHeadingSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
-    title: 'Utilities.Heading'
+    title: 'Utilities.Heading',
+    heading: 'h1'
   };
   utilitiesColorSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Utilities.ColourHeading'
   };
   utilitiesTypographySlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Utilities.TypographyHeading'
   };
   utilitiesSpacingSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Utilities.SpacingHeading'
   };
   utilitiesBreakpointsSlug: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Utilities.BreakpointsHeading'
   };
 
