@@ -6,9 +6,9 @@ app-utilities {
   .spacing-sample {
     height: 20px;
     margin: 0 auto;
-    background: var(--purple-category-background-weak);
-    border-left: 1px solid var(--purple-category-background);
-    border-right: 1px solid var(--purple-category-background);
+    background: var(--purple-1);
+    border-left: 1px solid var(--purple-7);
+    border-right: 1px solid var(--purple-7);
   }
   .utility-txt {
     @include typography.fontSet(body, 1, regular);
