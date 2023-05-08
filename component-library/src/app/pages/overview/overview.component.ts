@@ -6,7 +6,7 @@ import { TranslatedPageComponent } from '../translated-page-component';
 
 import {
   slugTitleURLType,
-  slugTitleURLConfig,
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({

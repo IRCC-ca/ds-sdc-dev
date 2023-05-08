@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatedPageComponent } from '@app/pages/translated-page-component';
-import { LangSwitchService, TranslateService } from '@app/share/templates/parent-template.module';
+import {
+  LangSwitchService,
+  TranslateService
+} from '@app/share/templates/parent-template.module';
 import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/icon/icon.component';
 
 @Component({
@@ -18,7 +21,7 @@ export class InfoTextSmallComponent implements OnInit, TranslatedPageComponent {
 
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService,
+    private lang: LangSwitchService
   ) {}
 
   ngOnInit() {
