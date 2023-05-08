@@ -16,6 +16,12 @@ import {
   ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { throwError } from 'rxjs/internal/observable/throwError';
+import {
+  IRequestFormDataInterface,
+  RequestFormService
+} from './request-form.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-request-form',
@@ -28,6 +34,10 @@ export class RequestFormComponent implements OnInit {
   form = new FormGroup({});
   showUseCase: boolean = false;
   requestUrgent: boolean = false;
+  requestFormData: IRequestFormDataInterface = {};
+
+  // email = 'IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'
+  email = 'ds-form-request@padye.com';
 
   submitRequestTitleSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
@@ -236,10 +246,16 @@ export class RequestFormComponent implements OnInit {
     ariaLabel: ''
   };
 
+  //1 - move it over to the service
+  //2 - sending the data from the form whenever it's updated - done
+  //3 - getting data back out via observable
+  //4 - avoid endless loop of propogation
+
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService
-  ) { }
+    private lang: LangSwitchService,
+    private requestFormService: RequestFormService
+  ) {}
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
@@ -283,14 +299,30 @@ export class RequestFormComponent implements OnInit {
       this.requestedDateDatePickerConfig.id + '_dayControl',
       new FormControl('', Validators.required)
     );
+
     this.form.addControl(
       this.requestedDateDatePickerConfig.id + '_monthControl',
       new FormControl('', Validators.required)
     );
+
     this.form.addControl(
       this.requestedDateDatePickerConfig.id + '_yearControl',
       new FormControl('', Validators.required)
     );
+    /**
+     * Get local storage form data on page reload
+     */
+    this.getFormDataFromService();
+
+    /**
+     * Set local storage form data
+     *
+     */
+    this.form.valueChanges.subscribe((val) => {
+      this.setFormData(val);
+      // this.form.patchValue({ value: this.requestFormData })
+      // this.form.updateValueAndValidity();
+    });
   }
 
   /**
@@ -298,8 +330,6 @@ export class RequestFormComponent implements OnInit {
    * @param $event id string of radio pressed)
    */
   radioButtonChanged($event: any) {
-    console.log($event.target['id']);
-
     switch ($event.target['id']) {
       case this.typeOfRequestRadioConfig.id + '0':
         this.showUseCase = true;
@@ -319,5 +349,38 @@ export class RequestFormComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  /**
+   * Get local storage form data on page reload with the service
+   */
+  getFormDataFromService() {
+    return this.requestFormService.requestFormObs.subscribe((val) => {
+      this.requestFormData = val;
+      console.log('requestFormData', this.requestFormData);
+      // this.form.patchValue({ value: this.requestFormData })
+      // this.form.updateValueAndValidity();
+    });
+  }
+
+  /**
+   * Set local storage form data on page reload with the service
+   */
+
+  setFormData(requestFormData: IRequestFormDataInterface): void {
+    // if (requestFormData) {
+    //   this.requestFormData = Object.assign(
+    //     this.requestFormData,
+    //     requestFormData
+    //   );
+    // }
+    // localStorage.setItem('requestFormData', JSON.stringify(requestFormData));
+    // console.log(requestFormData);
+    return this.requestFormService.setFormData(requestFormData);
+  }
+
+  submitForm() {
+    const data = localStorage.getItem('requestFormData');
+    this.requestFormService.sendRequestForm(this.email, data);
   }
 }

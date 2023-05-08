@@ -82,9 +82,11 @@
         ></ircc-cl-lib-date-picker>
       </div>
       <div class="submit-request-container">
-        <ircc-cl-lib-button [config]="buttonConfig">{{
-          'RequestForm.SubmitBtn' | translate
-        }}</ircc-cl-lib-button>
+        <ircc-cl-lib-button
+          [config]="buttonConfig"
+          (click)="submitForm()"
+          >{{ 'RequestForm.SubmitBtn' | translate }}</ircc-cl-lib-button
+        >
       </div>
     </div>
   </section>
