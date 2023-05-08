@@ -25,7 +25,7 @@ export class RequestFormService {
   requestFormObs = this.requestFormData.asObservable();
 
   private storageKey: string = 'requestFormData';
-  constructor() { }
+  constructor() {}
 
   setFormData(data: IRequestFormDataInterface) {
     localStorage.setItem(this.storageKey, JSON.stringify(data));
