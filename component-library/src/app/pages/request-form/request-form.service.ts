@@ -60,7 +60,6 @@ export class RequestFormService {
     });
   }
   async sendRequestForm(email: string, body: any) {
-    const typeRequest = body['radio-request-type'];
     //configure the email params and body to send
     const englishEmail = `
       <p>Design System Request</p>
@@ -73,7 +72,8 @@ export class RequestFormService {
                       
                       ${body}`;
 
-    let mainBody, mainBodyPlain;
+    let mainBody = '';
+    let mainBodyPlain = '';
     mainBody = englishEmail;
     mainBodyPlain = englishEmailPlain;
 
