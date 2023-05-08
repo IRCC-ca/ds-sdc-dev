@@ -16,6 +16,12 @@ import {
 } from 'ircc-ds-angular-component-library';
 import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
 
+
+export enum LayoutType {
+  'fluid' = 'button-container-fluid',
+  'fixed' = 'button-container-fixed'
+}
+
 @Component({
   selector: 'app-button-doc-code',
   templateUrl: './button-doc-code.component.html',
@@ -67,16 +73,25 @@ export class ButtonDocCodeComponent implements OnInit {
       {
         id: 'html',
         title: 'HTML',
-        value: `<ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>`
+        value:
+        `<div class=${LayoutType.fluid}>\n`+
+        '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n'+
+        '</div>'
+
       },
       {
         id: 'ts',
         title: 'TypeScript',
-        value: `
-import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';
-import { FormGroup } from '@angular/forms';
-
-buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
+        value:
+          "import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';\n"+
+          "import { FormGroup } from '@angular/forms';\n\n"+
+          `buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
+      },
+      {
+        id: 'css',
+        title: 'CSS',
+        value: "//By default button Layout is fluid and it matched container width\n"+
+        ".button-container-fluid {\n}"
       }
     ]
   };
@@ -193,8 +208,10 @@ buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
   handleLayoutToggle(value: any) {
     if (value['showLayoutToggle'] === 'Fluid') {
       this.layoutFluid = true;
+      this.updateHtmlandCssCodeBlock(LayoutType.fluid)
     } else {
       this.layoutFluid = false;
+      this.updateHtmlandCssCodeBlock(LayoutType.fixed)
     }
   }
 
@@ -270,6 +287,35 @@ buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
     };
   }
 
+  private updateHtmlandCssCodeBlock(layoutStyleClass : LayoutType) {
+    const htmlIndex= this.codeViewConfig?.tab?.findIndex((t) => t.id === 'html')
+    const cssIndex= this.codeViewConfig?.tab?.findIndex((t) => t.id === 'css')
+
+    if (cssIndex === undefined) return;
+    if (htmlIndex === undefined) return;
+    if (this.codeViewConfig?.tab) {
+
+        this.codeViewConfig.tab[htmlIndex].value= `<div class=${layoutStyleClass}>\n`+
+          '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n'+
+          "</div>"
+          
+
+        if(layoutStyleClass === LayoutType.fixed) {
+          this.codeViewConfig.tab[cssIndex].value=
+            ".button-container-fixed {\n"+
+              "  max-width = 400px;\n"+
+              "  width: 100%;\n"+
+            "}"
+        }
+        else {
+          this.codeViewConfig.tab[cssIndex].value=
+          "//By default button Layout is fluid and it matched container width\n"+
+          ".button-container-fluid {\n}"
+        }
+    }
+  }
+
+
   private parseCodeViewConfig() {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
     if (-1 == index || !index) return;
@@ -287,11 +333,10 @@ buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
       tabIndex: this.buttonConfig.tabIndex,
     };
     if (this.codeViewConfig?.tab) {
-      this.codeViewConfig.tab[index].value = `
-import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';
-import { FormGroup } from '@angular/forms';
-
-buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`;
+      this.codeViewConfig.tab[index].value =
+        "import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';\n"+
+        "import { FormGroup } from '@angular/forms';\n\n"+
+        `buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
     }
   }
 
