@@ -39,12 +39,6 @@ export class BannerDocCodeComponent implements OnInit {
     'showLinkToggle'
   ]);
 
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
-
   bannerConfig: IBannerConfig = {
     id: 'banner',
     cta: [],
@@ -93,111 +87,127 @@ export class BannerDocCodeComponent implements OnInit {
       id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
       size: 'small',
-      label: 'Size',
+      label: 'Banner.BannerConfig.Size',
       options: [
         {
-          text: 'Small'
+          text: 'Banner.BannerConfig.Small',
+          value: 'Small'
         },
         {
-          text: 'Large'
+          text: 'Banner.BannerConfig.Large',
+          value: 'Large'
         }
       ]
     },
     {
       id: 'showCloseToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show close',
+      label: 'Banner.BannerConfig.ShowClose',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'Banner.BannerConfig.True',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Banner.BannerConfig.False',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showTitleToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show title',
+      label: 'Banner.BannerConfig.ShowTitle',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'Banner.BannerConfig.True',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Banner.BannerConfig.False',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showDescToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show description',
+      label: 'Banner.BannerConfig.ShowDescription',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'Banner.BannerConfig.True',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Banner.BannerConfig.False',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showPrimaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show primary button',
+      label: 'Banner.BannerConfig.ShowPrimaryButton',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'Banner.BannerConfig.True',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Banner.BannerConfig.False',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showPlainButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show plain button',
+      label: 'Banner.BannerConfig.ShowPlainButton',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'Banner.BannerConfig.True',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Banner.BannerConfig.False',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show secondary button',
+      label: 'Banner.BannerConfig.ShowSecondaryButton',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'Banner.BannerConfig.True',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Banner.BannerConfig.False',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showLinkToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show link',
+      label: 'Banner.BannerConfig.ShowLink',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'Banner.BannerConfig.True',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'Banner.BannerConfig.False',
+          value: 'False'
         }
       ]
     }
@@ -209,23 +219,23 @@ export class BannerDocCodeComponent implements OnInit {
     tab: [
       {
         id: 'info',
-        title: 'Info'
+        title: 'Banner.InfoHeading'
       },
       {
         id: 'warning',
-        title: 'Warning'
+        title: 'Banner.WarningHeading'
       },
       {
         id: 'critical',
-        title: 'Critical'
+        title: 'Banner.CriticalHeading'
       },
       {
         id: 'success',
-        title: 'Success'
+        title: 'Banner.SuccessHeading'
       },
       {
         id: 'generic',
-        title: 'Generic'
+        title: 'Banner.GenericHeading'
       }
     ]
   };
@@ -474,7 +484,7 @@ export class BannerDocCodeComponent implements OnInit {
       if (toggle.options && toggle.options[1].text) {
         this.form_interactive_banner.addControl(
           toggle.id,
-          new FormControl(toggle.options[1].text)
+          new FormControl(toggle.options[1].value)
         );
       }
     });
