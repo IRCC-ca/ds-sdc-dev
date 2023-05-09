@@ -15,8 +15,6 @@ import { ForDesignersComponent } from './pages/for-designers/for-designers.compo
 import { ForDevelopersComponent } from './pages/for-developers/for-developers.component';
 import { UtilitiesComponent } from './pages/utilities/utilities.component';
 import { ButtonComponent } from './pages/button/button.component';
-// import { PageButtonComponent } from './pages/button/button.component';
-// import { PageUtilitiesComponent } from './pages/utilities/utilities.component';
 
 import { Shell } from './shell/shell.service';
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';

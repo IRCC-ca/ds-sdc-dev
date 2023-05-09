@@ -4,7 +4,6 @@
 $footer-height: 240px;
 
 :host {
-  // position: fixed;
   position: relative;
   @include grid.col-12;
   > jds-font-icon {

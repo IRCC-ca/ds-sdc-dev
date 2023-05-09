@@ -1,11 +1,9 @@
-<!-- <jds-font-icon -->
 <ircc-cl-lib-icon
   class="menu-icon"
   *ngIf="mobileToggleIcon && mobile"
   [config]="showMenu ? xmarkIconConfig : barsIconConfig"
   (click)="toggleMobileMenu(false)"
 ></ircc-cl-lib-icon>
-<!-- ></jds-font-icon> -->
 <div
   [@leftSideNavTrigger]="showMenu ? 'open' : 'close'"
   class="{{ navClassName }} sidenav-section-wrapper {{ navStatus }}"
