@@ -1,0 +1,213 @@
+<div class="content-doc-wrapper">
+  <app-title-slug-url
+    [config]="inputTitleSlugConfig"
+    class="h1 emphasis"
+  ></app-title-slug-url>
+  <p class="body1 intro">{{ 'Banner.Intro' | translate }}</p>
+
+  <section class="interactive-demo">
+    <app-title-slug-url
+      [config]="interactiveDemoSlugConfig"
+    ></app-title-slug-url>
+    <p class="body3 demo">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
+    <app-banner-doc-code></app-banner-doc-code>
+  </section>
+
+  <section class="types">
+    <!-- Info Banner Preview -->
+    <app-title-slug-url
+      [config]="typesSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <h5 class="emphasis type-heading">
+      {{ 'Banner.InfoHeading' | translate }}
+    </h5>
+    <app-component-preview
+      class="h6"
+      copyStyle="<button category='secondary'>{{
+        'Buttons.SecondaryIBtnText' | translate
+      }}</button>"
+      componentType="banner"
+    >
+      <ircc-cl-lib-banner
+        class="banner-preview"
+        [config]="infoBannerConfig"
+      ></ircc-cl-lib-banner>
+    </app-component-preview>
+    <p class="body3 subtext-1">{{ 'Banner.InfoPrimaryText' | translate }}</p>
+
+    <!-- Warning Banner Preview -->
+    <h5 class="emphasis type-heading">
+      {{ 'Banner.WarningHeading' | translate }}
+    </h5>
+    <app-component-preview
+      class="h6"
+      copyStyle="<button category='secondary'>{{
+        'Buttons.SecondaryIBtnText' | translate
+      }}</button>"
+      componentType="banner"
+    >
+      <ircc-cl-lib-banner
+        class="banner-preview"
+        [config]="warningBannerConfig"
+      ></ircc-cl-lib-banner>
+    </app-component-preview>
+    <p class="body3 subtext-1">{{ 'Banner.WarningPrimaryText' | translate }}</p>
+
+    <!-- Critical Banner Preview -->
+    <h5 class="emphasis type-heading">
+      {{ 'Banner.CriticalHeading' | translate }}
+    </h5>
+    <app-component-preview
+      class="h6"
+      copyStyle="<button category='secondary'>{{
+        'Buttons.SecondaryIBtnText' | translate
+      }}</button>"
+      componentType="banner"
+    >
+      <ircc-cl-lib-banner
+        class="banner-preview"
+        [config]="criticalBannerConfig"
+      ></ircc-cl-lib-banner>
+    </app-component-preview>
+    <p class="body3 subtext-1">
+      {{ 'Banner.CriticalPrimaryText' | translate }}
+    </p>
+
+    <!-- Success Banner Preview -->
+    <h5 class="emphasis type-heading">
+      {{ 'Banner.SuccessHeading' | translate }}
+    </h5>
+    <app-component-preview
+      class="h6"
+      copyStyle="<button category='secondary'>{{
+        'Buttons.SecondaryIBtnText' | translate
+      }}</button>"
+      componentType="banner"
+    >
+      <ircc-cl-lib-banner
+        class="banner-preview"
+        [config]="successBannerConfig"
+      ></ircc-cl-lib-banner>
+    </app-component-preview>
+    <p class="body3 subtext-1">{{ 'Banner.SuccessPrimaryText' | translate }}</p>
+
+    <!-- generic Banner Preview -->
+    <h5 class="emphasis type-heading">
+      {{ 'Banner.GenericHeading' | translate }}
+    </h5>
+    <app-component-preview
+      class="h6"
+      copyStyle="<button category='secondary'>{{
+        'Buttons.SecondaryIBtnText' | translate
+      }}</button>"
+      componentType="banner"
+    >
+      <ircc-cl-lib-banner
+        class="banner-preview"
+        [config]="genericBannerConfig"
+      ></ircc-cl-lib-banner>
+    </app-component-preview>
+    <p class="body3 subtext-1">{{ 'Banner.GenericPrimaryText' | translate }}</p>
+  </section>
+
+  <section class="configs">
+    <app-title-slug-url
+      [config]="configurationSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <div class="config-row">
+      <div class="column">
+        <h5>{{ 'Banner.BannerConfig.SizeLabel' | translate }}</h5>
+        <ul>
+          <li>{{ 'Banner.BannerConfig.SmallLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.LargeLabel' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5>{{ 'Input.TypesHeading' | translate }}</h5>
+        <ul>
+          <li>{{ 'Banner.InfoHeading' | translate }}</li>
+          <li>{{ 'Banner.WarningHeading' | translate }}</li>
+          <li>{{ 'Banner.CriticalHeading' | translate }}</li>
+          <li>{{ 'Banner.SuccessHeading' | translate }}</li>
+          <li>{{ 'Banner.GenericHeading' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="config-heading">
+          {{ 'Banner.BannerConfig.StateLabel' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'Banner.BannerConfig.DefaultLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.HoverLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.ActiveLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.DisabledLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.FocusLabel' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="config-heading">
+          {{ 'Banner.BannerConfig.DescriptionLabel' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="config-heading">
+          {{ 'Banner.BannerConfig.TitleLabel' | translate }}
+        </h5>
+        <ul class="end-list">
+          <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="config-heading">
+          {{ 'Banner.BannerConfig.CloseLabel' | translate }}
+        </h5>
+        <ul class="end-list">
+          <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="config-heading">
+          {{ 'Banner.BannerConfig.CTA1Label' | translate }}
+        </h5>
+        <ul class="end-list">
+          <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="config-heading">
+          {{ 'Banner.BannerConfig.CTA2Label' | translate }}
+        </h5>
+        <ul class="end-list">
+          <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="config-heading">
+          {{ 'Banner.BannerConfig.CTA3Label' | translate }}
+        </h5>
+        <ul class="end-list">
+          <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
+          <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
