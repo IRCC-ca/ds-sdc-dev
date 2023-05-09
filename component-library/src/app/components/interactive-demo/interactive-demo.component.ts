@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
 
-export enum ComponentType {
+export enum InteractiveComponentType {
   banner = 'banner'
 }
 
@@ -22,7 +22,7 @@ export class InteractiveDemoComponent implements OnInit {
    component specifically for Banner in the scss file, since 
    banner has a white background and rest have a grey background.
   */
-  @Input() componentType?: keyof typeof ComponentType;
+  @Input() componentType?: keyof typeof InteractiveComponentType;
 
   accordionConfig: IAccordionContainerConfig = {
     id: 'InteractiveDemoComponentAcccordion',
