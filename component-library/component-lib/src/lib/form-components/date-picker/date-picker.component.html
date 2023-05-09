@@ -3,20 +3,21 @@
     [config]="labelConfig"
     [attr.size]="config.size"
   ></ircc-cl-lib-label>
-  <div class="all-select-container">
-    <div class="select-container select-year">
-      <ircc-cl-lib-select
-        [attr.aria-live]="'off'"
-        [config]="dropDownConfigs.year"
-      ></ircc-cl-lib-select>
-    </div>
-    <div class="select-container select-month">
-      <ircc-cl-lib-select [config]="dropDownConfigs.month"></ircc-cl-lib-select>
-    </div>
-    <div class="select-container select-day">
-      <ircc-cl-lib-select [config]="dropDownConfigs.day"></ircc-cl-lib-select>
-    </div>
-  </div>
+  <fieldset class="all-select-container">
+    <ircc-cl-lib-select
+      class="select-year"
+      [attr.aria-live]="'off'"
+      [config]="dropDownConfigs.year"
+    ></ircc-cl-lib-select>
+    <ircc-cl-lib-select
+      class="select-month"
+      [config]="dropDownConfigs.month"
+    ></ircc-cl-lib-select>
+    <ircc-cl-lib-select
+      class="select-day"
+      [config]="dropDownConfigs.day"
+    ></ircc-cl-lib-select>
+  </fieldset>
   <div aria-live="polite">
     <ng-container *ngIf="datePickerTouchedOrInvalid()">
       <span class="sr-only">{{
