@@ -22,14 +22,33 @@ h3 {
 
 .body1.intro {
   margin-top: 0px;
+  margin-bottom: 24px;
+}
+
+.body3.subtext-1 {
+  margin-top: 0px;
+  margin-bottom: 16px;
+}
+
+.body3.subtext-2 {
+  margin-top: 0px;
+  margin-bottom: 16px;
+}
+
+.body3.subtext-3 {
+  margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.sub-heading-1 {
+  margin-top: 0px;
+  margin-bottom: 8px;
 }
 
 .form-container {
   max-width: 872px;
 
   //Margin above form inputs:
-  .type-request-radio-container,
   .request-title-text-area-container,
   .request-details-text-area-container,
   .use-case-text-area-container,

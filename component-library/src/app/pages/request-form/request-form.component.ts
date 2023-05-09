@@ -93,7 +93,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
         errorLOV: 'RequestForm.requiredRadioError'
       }
     ],
-    size: 'small',
+    size: 'large',
     disabled: false,
     error: true
   };
@@ -119,7 +119,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
         errorLOV: 'RequestForm.requiredRadioError'
       }
     ],
-    size: 'small',
+    size: 'large',
     disabled: false,
     error: true
   };
@@ -132,7 +132,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     required: true,
     charLimit: '50',
     resizable: 'vertical',
-    size: 'small',
+    size: 'large',
     errorMessages: [
       {
         key: 'required',
@@ -235,7 +235,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     label: 'RequestForm.requestedDateLabel',
     desc: 'RequestForm.requestedDateDesc',
     required: true,
-    size: 'small',
+    size: 'large',
     errorMessages: this.datePickerErrorMessages,
     minYear: 2023
   };
