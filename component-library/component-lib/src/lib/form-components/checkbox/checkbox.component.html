@@ -23,7 +23,7 @@
           [attr.size]="config.size"
           type="checkbox"
           [formControlName]="config.id"
-          [attr.aria-invalid]="formControl?.errors"
+          [attr.aria-invalid]="formControl?.invalid"
           [attr.aria-label]="
             formControl?.invalid && touched
               ? (config.label || '' | translate) +
