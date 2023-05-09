@@ -31,6 +31,7 @@ import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibi
 import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
+import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -52,7 +53,7 @@ const routes: Routes = [
     { path: 'overview', component: OverviewComponent },
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
-    { path: 'banner-doc', component: BannerDocCodeComponent },
+    { path: 'banner-doc', component: BannerDocumentationComponent },
     { path: 'button-doc', component: ButtonDocCodeComponent },
     { path: 'input-documentation', component: InputDocumentationComponent },
 
