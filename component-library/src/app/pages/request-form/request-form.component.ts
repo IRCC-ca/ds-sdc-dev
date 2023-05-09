@@ -19,11 +19,10 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
-import { Observable } from 'rxjs/internal/Observable';
+
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
 import { first } from 'rxjs/operators';
-import { throwError } from 'rxjs/internal/observable/throwError';
 
 @Component({
   selector: 'app-request-form',
@@ -255,7 +254,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
   ) {}
   ngAfterViewInit(): void {
     /**
-     * Set local storage form data when form values change
+     * Set local storage form data when form values change after init so we're not setting and getting at the same time
      *
      */
     this.form.valueChanges.subscribe((val) => {
