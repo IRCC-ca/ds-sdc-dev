@@ -28,15 +28,19 @@ export class RequestFormService {
   constructor() {}
 
   setFormData(data: IRequestFormDataInterface) {
+    console.log('service SET');
+
     localStorage.setItem(this.storageKey, JSON.stringify(data));
     this.requestFormData.next(data);
   }
 
   getFormData(): Observable<IRequestFormDataInterface> {
-    return this.requestFormData;
+    console.log('service GET');
+
+    return this.requestFormObs;
   }
 
-  clearUserSettings() {
+  clearFormData() {
     localStorage.removeItem(this.storageKey);
   }
 

@@ -320,9 +320,29 @@ export class RequestFormComponent implements OnInit {
      */
     this.form.valueChanges.subscribe((val) => {
       this.setFormData(val);
-      // this.form.patchValue({ value: this.requestFormData })
-      // this.form.updateValueAndValidity();
     });
+  }
+
+  /**
+   * Get local storage form data on page reload with the service
+   */
+  getFormDataFromService() {
+    this.requestFormService.getFormData().subscribe((val) => {
+      this.requestFormData = val;
+      console.log('comp GET');
+
+      console.log('requestFormData', this.requestFormData);
+    });
+  }
+
+  /**
+   * Set local storage form data on page reload with the service
+   */
+
+  setFormData(requestFormData: IRequestFormDataInterface): void {
+    console.log('comp SET');
+
+    return this.requestFormService.setFormData(requestFormData);
   }
 
   /**
@@ -349,34 +369,6 @@ export class RequestFormComponent implements OnInit {
       default:
         break;
     }
-  }
-
-  /**
-   * Get local storage form data on page reload with the service
-   */
-  getFormDataFromService() {
-    return this.requestFormService.requestFormObs.subscribe((val) => {
-      this.requestFormData = val;
-      console.log('requestFormData', this.requestFormData);
-      // this.form.patchValue({ value: this.requestFormData })
-      // this.form.updateValueAndValidity();
-    });
-  }
-
-  /**
-   * Set local storage form data on page reload with the service
-   */
-
-  setFormData(requestFormData: IRequestFormDataInterface): void {
-    // if (requestFormData) {
-    //   this.requestFormData = Object.assign(
-    //     this.requestFormData,
-    //     requestFormData
-    //   );
-    // }
-    // localStorage.setItem('requestFormData', JSON.stringify(requestFormData));
-    // console.log(requestFormData);
-    return this.requestFormService.setFormData(requestFormData);
   }
 
   submitForm() {
