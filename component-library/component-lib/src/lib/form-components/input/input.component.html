@@ -26,7 +26,7 @@
             [type]="typeControl"
             [id]="config.id"
             [formControlName]="config.id"
-            [attr.aria-invalid]="formControl?.errors"
+            [attr.aria-invalid]="formControl?.invalid"
             [attr.aria-live]="'off'"
             [attr.aria-label]="
               formControl?.invalid && touched
