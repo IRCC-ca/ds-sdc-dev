@@ -8,15 +8,23 @@
     align-items: center;
     justify-content: center;
     background-color: var(--surface2);
-    max-width: 362px;
     min-height: 170px;
 
     jds-button.copy {
       flex-basis: 100%;
       text-align: center;
       margin-top: -10px;
-      color: #2A4980;
+      color: #2a4980;
       cursor: pointer;
     }
+  }
+
+  .banner {
+    background-color: var(--surface1);
+    max-width: 400px;
+  }
+
+  .input {
+    max-width: 362px;
   }
 }
