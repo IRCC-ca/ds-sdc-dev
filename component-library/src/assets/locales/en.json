@@ -635,5 +635,54 @@
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
     "ConfigAccordionClosed": "Hide Configurations"
+  },
+  "Banner": {
+    "Title": "Banners",
+    "Intro": "Banners provide valuable supporting content to the user conveying a specific sentiment (warning, success, informational, etc.) and can be used to help the user complete a task or better understand the content they are viewing.",
+    "InteractiveDemoDesc": "Try our banner component and the configurable options available within it.",
+    "InfoHeading": "Info",
+    "InfoPrimaryText": "Info banners are used to convey important general information.",
+    "WarningHeading": "Warning",
+    "WarningPrimaryText": "Warning banners are used to convey important warnings.",
+    "CriticalHeading": "Critical",
+    "CriticalPrimaryText": "Critical banners are used to convey critical information or errors.",
+    "SuccessHeading": "Success",
+    "SuccessPrimaryText": "Success banners are used to convey successful actions or validations.",
+    "GenericHeading": "Generic",
+    "GenericPrimaryText": "Generic banners are used when an alert sentiment is not appropriate for displaying a message to the user.",
+    "BannerPreview": {
+      "Title": "Title text",
+      "Content": "Description text lorem ipsum dolor sit amet consecteteur adipiscing elit."
+    },
+
+    "BannerConfig": {
+      "SizeLabel": "Size",
+      "SmallLabel": "Small",
+      "LargeLabel": "Large",
+      "TrueLabel" : "True",
+      "FalseLabel": "False",
+      "ShowTitleLabel": "Show title",
+      "ShowDescriptionLabel": "Show description",
+      "ShowCloseLabel": "Show close",
+      "ShowPrimaryButtonLabel": "Show primary button",
+      "ShowSecondaryButtonLabel": "Show secondary button",
+      "ShowPlainButtonLabel": "Show plain button",
+      "ShowLinkLabel": "Show link",
+      "StateLabel": "State",
+      "DefaultLabel": "Default",
+      "HoverLabel": "Hover",
+      "ActiveLabel": "Active",
+      "DisabledLabel": "Disabled",
+      "FocusLabel": "Focus",
+      "DescriptionLabel": "Description",
+      "TitleLabel": "Title",
+      "CloseLabel": "Close",
+      "CTA1Label": "CTA 1",
+      "CTA2Label": "CTA 2 (if CTA 1 is set to true)",
+      "CTA3Label": "CTA 3 (if CTA 1 is set to true)"
+
+    }
+
   }
+
 }
