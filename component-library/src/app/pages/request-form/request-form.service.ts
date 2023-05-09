@@ -28,15 +28,15 @@ export class RequestFormService {
   constructor() {}
 
   setFormData(data: IRequestFormDataInterface) {
-    console.log('service SET');
-
     localStorage.setItem(this.storageKey, JSON.stringify(data));
     this.requestFormData.next(data);
   }
 
   getFormData(): Observable<IRequestFormDataInterface> {
-    console.log('service GET');
-
+    const data = localStorage.getItem(this.storageKey);
+    if (data) {
+      this.requestFormData.next(JSON.parse(data));
+    }
     return this.requestFormObs;
   }
 

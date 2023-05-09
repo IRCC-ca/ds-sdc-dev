@@ -1,12 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  slugTitleURLConfig,
-  slugTitleURLType,
-  slugAnchorType
-} from '@app/components/title-slug-url/title-slug-url.component';
-import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
-import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
-import { TranslateService } from '@app/share/templates/parent-template.module';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   IBannerConfig,
   IButtonConfig,
@@ -15,13 +8,22 @@ import {
   IRadioInputComponentConfig,
   ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { throwError } from 'rxjs/internal/observable/throwError';
 import {
   IRequestFormDataInterface,
   RequestFormService
 } from './request-form.service';
+import {
+  slugAnchorType,
+  slugTitleURLConfig,
+  slugTitleURLType
+} from '@app/components/title-slug-url/title-slug-url.component';
+
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
+import { TranslateService } from '@app/share/templates/parent-template.module';
+import { first } from 'rxjs/operators';
+import { throwError } from 'rxjs/internal/observable/throwError';
 
 @Component({
   selector: 'app-request-form',
@@ -29,7 +31,7 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./request-form.component.scss'],
   providers: [SlugifyPipe]
 })
-export class RequestFormComponent implements OnInit {
+export class RequestFormComponent implements OnInit, AfterViewInit {
   altLangLink = 'requestForm';
   form = new FormGroup({});
   showUseCase: boolean = false;
@@ -246,16 +248,20 @@ export class RequestFormComponent implements OnInit {
     ariaLabel: ''
   };
 
-  //1 - move it over to the service
-  //2 - sending the data from the form whenever it's updated - done
-  //3 - getting data back out via observable
-  //4 - avoid endless loop of propogation
-
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
     private requestFormService: RequestFormService
   ) {}
+  ngAfterViewInit(): void {
+    /**
+     * Set local storage form data when form values change
+     *
+     */
+    this.form.valueChanges.subscribe((val) => {
+      this.setFormData(val);
+    });
+  }
 
   ngOnInit(): void {
     this.lang.setAltLangLink(this.altLangLink);
@@ -313,35 +319,36 @@ export class RequestFormComponent implements OnInit {
      * Get local storage form data on page reload
      */
     this.getFormDataFromService();
-
-    /**
-     * Set local storage form data
-     *
-     */
-    this.form.valueChanges.subscribe((val) => {
-      this.setFormData(val);
-    });
   }
 
   /**
-   * Get local storage form data on page reload with the service
+   * Get local storage form data on page reload from the RequestFormService
    */
   getFormDataFromService() {
-    this.requestFormService.getFormData().subscribe((val) => {
-      this.requestFormData = val;
-      console.log('comp GET');
-
-      console.log('requestFormData', this.requestFormData);
-    });
+    this.requestFormService
+      .getFormData()
+      .pipe(first()) //take only the first to avoid infinite loop
+      .subscribe((val) => {
+        this.requestFormData = val;
+        this.form.patchValue(this.requestFormData);
+        this.form.updateValueAndValidity();
+        /**
+         * If the data in local storage contains a value that would trigger fields to show/hide, we set it here separately because there won't be a change event to toggle the boolean like radioButtonChanged($event)
+         */
+        if (
+          this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Change' ||
+          this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Request'
+        )
+          this.showUseCase = true;
+        if (this.requestFormData[this.urgentRequestRadioConfig.id] === 'Y')
+          this.requestUrgent = true;
+      });
   }
 
   /**
    * Set local storage form data on page reload with the service
    */
-
   setFormData(requestFormData: IRequestFormDataInterface): void {
-    console.log('comp SET');
-
     return this.requestFormService.setFormData(requestFormData);
   }
 
