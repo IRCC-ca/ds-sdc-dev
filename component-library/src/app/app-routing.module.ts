@@ -49,62 +49,65 @@ export function HttpLoaderFactory(
 const routes: Routes = [
   Shell.childRoutes([
     // English
-    { path: 'overview', component: OverviewComponent },
-    { path: 'designers', component: ForDesignersComponent },
-    { path: 'developers', component: ForDevelopersComponent },
-    { path: 'banner-doc', component: BannerDocCodeComponent },
-    { path: 'button-doc', component: ButtonDocCodeComponent },
-    { path: 'input-documentation', component: InputDocumentationComponent },
+    { path: 'overview', component: OverviewComponent, title: 'Overview' },
+    { path: 'designers', component: ForDesignersComponent, title: 'Designers' },
+    { path: 'developers', component: ForDevelopersComponent, title: 'Developers' },
+    { path: 'banner-doc', component: BannerDocCodeComponent, title: 'Banner-doc' },
+    { path: 'button-doc', component: ButtonDocCodeComponent, title: 'Button-doc' },
+    { path: 'input-documentation', component: InputDocumentationComponent, title: 'Input-documentation' },
 
     // French
-    { path: 'aperçu', component: OverviewComponent },
-    { path: 'concepteurs', component: ForDesignersComponent },
-    { path: 'developpeurs', component: ForDevelopersComponent },
-    { path: 'banner-doc-fr', component: BannerDocCodeComponent },
-    { path: 'button-doc-fr', component: ButtonDocCodeComponent },
-    { path: 'documentation dentree', component: InputDocumentationComponent },
+    { path: 'aperçu', component: OverviewComponent, title: 'Aperçu' },
+    { path: 'concepteurs', component: ForDesignersComponent, title: 'Concepteurs' },
+    { path: 'developpeurs', component: ForDevelopersComponent, title: 'Developpeurs' },
+    { path: 'banner-doc-fr', component: BannerDocCodeComponent, title: 'Banner-doc-fr' },
+    { path: 'button-doc-fr', component: ButtonDocCodeComponent, title: 'Button-doc-fr' },
+    { path: 'documentation dentree', component: InputDocumentationComponent, title: 'Documentation dentree' },
 
     //QA PATHS
-    { path: 'mahsa-en', component: MahsaComponent }, //English
-    { path: 'mahsa-fr', component: MahsaComponent }, //French
-    { path: 'michael-en', component: MichaelComponent }, //English
-    { path: 'michael-fr', component: MichaelComponent }, //French
-    { path: 'mike-en', component: MikeComponent }, //English
-    { path: 'mike-fr', component: MikeComponent }, //French
-    { path: 'naseer-en', component: NaseerComponent }, //English
-    { path: 'naseer-fr', component: NaseerComponent }, //French
-    { path: 'bobby-en', component: BobbyComponent }, //English
-    { path: 'bobby-fr', component: BobbyComponent }, //French
+    { path: 'mahsa-en', component: MahsaComponent, title: 'Mahsa-en' }, //English
+    { path: 'mahsa-fr', component: MahsaComponent, title: 'Mahsa-fr' }, //French
+    { path: 'michael-en', component: MichaelComponent, title: 'Michael-en' }, //English
+    { path: 'michael-fr', component: MichaelComponent, title: 'Michael-fr' }, //French
+    { path: 'mike-en', component: MikeComponent, title: 'Mike-en' }, //English
+    { path: 'mike-fr', component: MikeComponent, title: 'Mike-fr' }, //French
+    { path: 'naseer-en', component: NaseerComponent, title: 'Naseer-en' }, //English
+    { path: 'naseer-fr', component: NaseerComponent, title: 'Naseer-fr' }, //French
+    { path: 'bobby-en', component: BobbyComponent, title: 'Bobby-en' }, //English
+    { path: 'bobby-fr', component: BobbyComponent, title: 'Bobby-fr' }, //French
 
-    { path: 'codeview', component: codeViewComponent },
-    { path: 'codeview-fr', component: codeViewComponent },
-
-    { path: 'bobby-en', component: BobbyComponent }, //English
-    { path: 'bobby-fr', component: BobbyComponent },
+    { path: 'codeview', component: codeViewComponent, title: 'Codeview' },
+    { path: 'codeview-fr', component: codeViewComponent, title: 'Codeview-fr' },
 
     {
       path: 'accessibility-demo',
-      component: AccessibilityDemoComponent
+      component: AccessibilityDemoComponent,
+      title: 'Accessibility-demo'
     },
     {
       path: 'accessibility-demo-next',
-      component: AccessibilityDemoNextPageComponent
+      component: AccessibilityDemoNextPageComponent,
+      title: 'Accessibility-demo-next'
     },
     {
       path: 'accessibility-demo-previous',
-      component: AccessibilityDemoPreviousPageComponent
+      component: AccessibilityDemoPreviousPageComponent,
+      title: 'Accessibility-demo-previous'
     },
     {
       path: "démo-d'accessibilité",
-      component: AccessibilityDemoComponent
+      component: AccessibilityDemoComponent,
+      title: "Démo-d'accessibilité"
     },
     {
       path: "démo-d'accessibilité-précédent",
-      component: AccessibilityDemoPreviousPageComponent
+      component: AccessibilityDemoPreviousPageComponent,
+      title: "démo-d'accessibilité-précédent"
     },
     {
       path: "démo-d'accessibilité-prochaine",
-      component: AccessibilityDemoNextPageComponent
+      component: AccessibilityDemoNextPageComponent,
+      title: "démo-d'accessibilité-prochaine"
     },
 
     { path: '', redirectTo: '/overview', pathMatch: 'full' }
