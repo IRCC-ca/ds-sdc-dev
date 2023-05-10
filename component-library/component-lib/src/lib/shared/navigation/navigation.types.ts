@@ -19,8 +19,11 @@ export interface NavigationItemAccordion extends NavigationItem {
 }
 
 export interface NavigationItemLink extends NavigationItem {
+  icon: string;
   href: string;
   anchor: boolean;
 }
 
-export interface NavigationItemHeading extends NavigationItem {}
+export interface NavigationItemHeading extends NavigationItem {
+  icon: string;
+}

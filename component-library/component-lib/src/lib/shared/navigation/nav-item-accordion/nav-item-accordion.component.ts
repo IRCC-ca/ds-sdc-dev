@@ -1,6 +1,8 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
+import { NavigationItemAccordion } from '../navigation.types';
+import { IButtonConfig } from '../../button/button.component';
 
 export interface INavigationItemConfig {
   id: string;
@@ -8,20 +10,32 @@ export interface INavigationItemConfig {
 }
 
 @Component({
-  selector: 'ircc-cl-lib-nav-item',
+  selector: 'ircc-cl-lib-nav-accordion',
   templateUrl: './nav-item-accordion.component.html'
 })
 export class navItemAccordionComponent implements OnInit {
-  @Input() config: INavigationItemConfig = {
+  @Input() config: NavigationItemAccordion = {
     id: '',
-    size: DSSizes.small
+    open: false,
+    label: '',
+    type: 'accordion',
+    children: []
   };
-
   @Input() id: string = '';
-  @Input() size?: keyof typeof DSSizes;
+
+  buttonConfigAcccordion: IButtonConfig = {
+    id: 'accordion-button',
+    category: 'plain',
+    size: 'small',
+    ariaLabel: 'Click to expand the accordion',
+    iconDirection: 'left'
+  };
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
-    this.size !== undefined ? (this.config.size = this.size) : undefined;
+  }
+
+  openAccordion() {
+    this.config.open = !this.config.open;
   }
 }
