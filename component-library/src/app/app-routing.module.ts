@@ -51,18 +51,54 @@ const routes: Routes = [
     // English
     { path: 'overview', component: OverviewComponent, title: 'Overview' },
     { path: 'designers', component: ForDesignersComponent, title: 'Designers' },
-    { path: 'developers', component: ForDevelopersComponent, title: 'Developers' },
-    { path: 'banner-doc', component: BannerDocCodeComponent, title: 'Banner-doc' },
-    { path: 'button-doc', component: ButtonDocCodeComponent, title: 'Button-doc' },
-    { path: 'input-documentation', component: InputDocumentationComponent, title: 'Input-documentation' },
+    {
+      path: 'developers',
+      component: ForDevelopersComponent,
+      title: 'Developers'
+    },
+    {
+      path: 'banner-doc',
+      component: BannerDocCodeComponent,
+      title: 'Banner-doc'
+    },
+    {
+      path: 'button-doc',
+      component: ButtonDocCodeComponent,
+      title: 'Button-doc'
+    },
+    {
+      path: 'input-documentation',
+      component: InputDocumentationComponent,
+      title: 'Input-documentation'
+    },
 
     // French
     { path: 'aperçu', component: OverviewComponent, title: 'Aperçu' },
-    { path: 'concepteurs', component: ForDesignersComponent, title: 'Concepteurs' },
-    { path: 'developpeurs', component: ForDevelopersComponent, title: 'Developpeurs' },
-    { path: 'banner-doc-fr', component: BannerDocCodeComponent, title: 'Banner-doc-fr' },
-    { path: 'button-doc-fr', component: ButtonDocCodeComponent, title: 'Button-doc-fr' },
-    { path: 'documentation dentree', component: InputDocumentationComponent, title: 'Documentation dentree' },
+    {
+      path: 'concepteurs',
+      component: ForDesignersComponent,
+      title: 'Concepteurs'
+    },
+    {
+      path: 'developpeurs',
+      component: ForDevelopersComponent,
+      title: 'Developpeurs'
+    },
+    {
+      path: 'banner-doc-fr',
+      component: BannerDocCodeComponent,
+      title: 'Banner-doc-fr'
+    },
+    {
+      path: 'button-doc-fr',
+      component: ButtonDocCodeComponent,
+      title: 'Button-doc-fr'
+    },
+    {
+      path: 'documentation dentree',
+      component: InputDocumentationComponent,
+      title: 'Documentation dentree'
+    },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent, title: 'Mahsa-en' }, //English
