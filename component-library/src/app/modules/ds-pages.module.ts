@@ -22,7 +22,7 @@ import { InputDocumentationComponent } from '@app/pages/input-documentation/inpu
 import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
-import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
+// import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +41,7 @@ import { RequestFormComponent } from '@app/pages/request-form/request-form.compo
     InputDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
-    InputDocCodeComponent,
-    RequestFormComponent
+    InputDocCodeComponent
   ],
   imports: [
     CommonModule,
