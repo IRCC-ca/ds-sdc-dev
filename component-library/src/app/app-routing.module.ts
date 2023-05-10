@@ -31,6 +31,7 @@ import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibi
 import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
+import { RequestFormComponent } from './pages/request-form/request-form.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -55,6 +56,7 @@ const routes: Routes = [
     { path: 'banner-doc', component: BannerDocCodeComponent },
     { path: 'button-doc', component: ButtonDocCodeComponent },
     { path: 'input-documentation', component: InputDocumentationComponent },
+    { path: 'request-form', component: RequestFormComponent },
 
     // French
     { path: 'aperçu', component: OverviewComponent },
@@ -63,6 +65,7 @@ const routes: Routes = [
     { path: 'banner-doc-fr', component: BannerDocCodeComponent },
     { path: 'button-doc-fr', component: ButtonDocCodeComponent },
     { path: 'documentation dentree', component: InputDocumentationComponent },
+    { path: 'request-form-fr', component: RequestFormComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
@@ -75,12 +78,8 @@ const routes: Routes = [
     { path: 'naseer-fr', component: NaseerComponent }, //French
     { path: 'bobby-en', component: BobbyComponent }, //English
     { path: 'bobby-fr', component: BobbyComponent }, //French
-
     { path: 'codeview', component: codeViewComponent },
     { path: 'codeview-fr', component: codeViewComponent },
-
-    { path: 'bobby-en', component: BobbyComponent }, //English
-    { path: 'bobby-fr', component: BobbyComponent },
 
     {
       path: 'accessibility-demo',
