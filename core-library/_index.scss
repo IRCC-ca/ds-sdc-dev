@@ -49,6 +49,7 @@
 @use "./component-styling/flyout/flyout";
 @use "./component-styling/flyout-option/flyout-option";
 @use "./component-styling/navigation/navigation";
+@use "./component-styling/navigation/navigation-accordion";
 @use "./typography/fa-wrapper";
 
 @forward "./theme/theme" as theme-*;
@@ -131,6 +132,7 @@
     @include element(flyout);
     @include element(flyout-option);
     @include element(navigation);
+    @include element(navigation-accordion);
   }
 
   @else {
@@ -223,10 +225,10 @@
     @include flyout.create();
   } @else if $key == flyout-option {
     @include flyout-option.create();
-  }
-
-  @else if $key == navigation {
+  } @else if $key == navigation {
     @include navigation.create();
+  } @else if $key == navigation-accordion {
+    @include navigation-accordion.create();
   }
   
 }

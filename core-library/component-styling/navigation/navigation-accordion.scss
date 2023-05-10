@@ -9,7 +9,7 @@
 @use "sass:map";
 
 @mixin selector {
-    ircc-cl-lib-navigation#{template-const.$escape} {
+  ircc-cl-lib-nav-accordion#{template-const.$escape} {
     @content;
   }
 }
@@ -19,23 +19,6 @@
     @include layout();
   }
 }
-
-// @mixin types($category: information) {
-//   .#{$category} {
-//     background: pink;
-//     // background-color: var(--#{$category}-alert-background);
-
-//     // .banner-left {
-//     //   .banner-line {
-//     //     background-color: var(--#{$category}-alert-border);
-//     //   }
-
-//     //   .banner-icon {
-//     //     color: var(--#{$category}-alert-icon);
-//     //   }
-//     // }
-//   }
-// }
 
 @mixin large-styles() {
 
@@ -62,45 +45,33 @@
     }
   }
 
-  .lib-navigation{
-    padding: 16px;
-    max-width: 500px;
-    border: 1px solid black;
-  }
-
-  .navigation-header{
+  .accordion-nav{
     display: grid;
-    grid-template-columns: 20px auto 20px;
+    grid-template-columns: auto 20px;
 
-    ircc-cl-lib-icon{
+    ircc-cl-lib-icon, .accordion-expand-button{
       align-self: center;
     }
 
-    h4{
+    h4,h5{
+        align-self: center;
         padding: none;
         margin: none;
         flex:1;
+        margin-block-start: 0;
+        margin-block-end: 0;
     }
   }
 
-  .navigation-area{
-    ul {
-      list-style: none;
+  .accordion-content{
+    &.open{
+      display: block;
     }
 
-    .parent-navigation{
-      margin: 0;
-      padding: 0;
+    &.close{
+      display: none;
     }
-
-    // .child-navigation{
-    //   margin: 0;
-    //   padding: 1rem;
-    // }
-  }
-
-  
- 
+  } 
 
 //   @include types(information);
 //   @include types(critical);
