@@ -57,14 +57,12 @@ export class navigationComponent implements OnInit {
     let returnItem: NavigationItem = {
       id: '',
       label: '',
-      icon: '',
       type: 'accordion',
       children: []
     };
     returnItem = items.find((element: any) => element[key] === value) || {
       id: '',
       label: '',
-      icon: '',
       type: 'accordion',
       children: []
     };

@@ -9,7 +9,6 @@ export enum NavigationItemType {
 export interface NavigationItem {
   id: string;
   label: string;
-  icon: string;re
   type: keyof typeof NavigationItemType;
   children: NavigationItem[];
 }
@@ -19,8 +18,11 @@ export interface NavigationItemAccordion extends NavigationItem {
 }
 
 export interface NavigationItemLink extends NavigationItem {
+  icon: string;
   href: string;
   anchor: boolean;
 }
 
-export interface NavigationItemHeading extends NavigationItem {}
+export interface NavigationItemHeading extends NavigationItem {
+  icon: string;
+}

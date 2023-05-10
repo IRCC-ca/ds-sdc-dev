@@ -5,11 +5,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { navigationComponent } from './navigation.component';
 import { navItemHeadingComponent } from './nav-item-heading/nav-item-heading.component';
 import { navItemNavComponent } from './nav-item-nav/nav-item-nav.component';
+import { navItemAccordionComponent } from './nav-item-accordion/nav-item-accordion.component';
 
 const IrccDsNavigationComponents = [
   navigationComponent,
   navItemHeadingComponent,
-  navItemNavComponent
+  navItemNavComponent,
+  navItemAccordionComponent
 ];
 
 @NgModule({

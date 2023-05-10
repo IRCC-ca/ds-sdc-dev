@@ -60,4 +60,5 @@ export * from './lib/shared/navigation/ircc-ds-angular-navigation.module';
 export * from './lib/shared/navigation/navigation.component';
 export * from './lib/shared/navigation/nav-item-heading/nav-item-heading.component';
 export * from './lib/shared/navigation/nav-item-nav/nav-item-nav.component';
+export * from './lib/shared/navigation/nav-item-accordion/nav-item-accordion.component';
 export * from './lib/shared/navigation/navigation.types';

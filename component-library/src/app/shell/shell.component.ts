@@ -181,11 +181,10 @@ export class ShellComponent implements OnInit {
     ]
   };
 
-  itemQA: NavigationItemHeading = {
+  itemQA: NavigationItemAccordion = {
     id: 'qa',
-    label: 'QA Pages',
-    icon: 'fa-light fa-arrow-right',
-    type: 'heading',
+    label: 'QA.header',
+    type: 'accordion',
     children: [
       this.mashsa,
       this.michael,
@@ -193,7 +192,8 @@ export class ShellComponent implements OnInit {
       this.mike,
       this.bobby,
       this.other
-    ]
+    ],
+    open: false
   };
 
   navConfig: INavigationConfig = {
