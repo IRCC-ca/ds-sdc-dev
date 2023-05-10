@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
 export enum IFlyoutOptionType {
   text = 'text',
@@ -15,7 +16,8 @@ export interface IFlyoutOptionConfig {
   active?: boolean,
   disabled?: boolean,
   type?: keyof typeof IFlyoutOptionType,
-  clickable?: boolean
+  clickable?: boolean,
+  size?: keyof typeof DSSizes
 };
 
 @Component({
@@ -30,13 +32,19 @@ export class FlyoutOptionComponent implements OnInit {
   }
 
   @Input() id? : string;
+  @Input() size? : keyof typeof DSSizes;
 
   constructor() { }
 
   ngOnInit() {
     if(this.config.type === undefined) this.config.type = 'text';
-    if((this.config.type === 'text' || 'checkbox' || 'dropdown') && this.config.clickable !== false) this.config.clickable = true;
+    if((this.config.type === 'text' || 'checkbox' || 'dropdown') && this.config.clickable !== false && this.config.disabled !== true) {
+      this.config.clickable = true;
+    } else {
+      this.config.clickable = false;
+    }
     if(this.id) this.config.id = this.id;
+    if(this.size) this.config.size = this.size;
   };
 
 };

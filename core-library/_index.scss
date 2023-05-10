@@ -5,7 +5,6 @@
 @use "./tokens/button/nav";
 @use "./tokens/button/primary";
 @use "./tokens/button/secondary";
-@use "./tokens/button/round";
 @use "./tokens/checkbox/checkbox";
 @use "./tokens/radio/radio";
 @use "./tokens/link/link";
@@ -16,6 +15,7 @@
 @use "./tokens/global/text-global";
 @use "./tokens/global/validation";
 @use "./tokens/global/categories";
+@use "./tokens/global/color";
 @use "./tokens/alert/alert";
 @use "./tokens/partial/focus";
 @use "./tokens/partial/disable";
@@ -76,9 +76,9 @@
 @forward "./tokens/input/input" as input-text-*;
 @forward "./tokens/input/textarea" as input-textarea-*;
 
-
 @mixin element-styles($include: null) {
   @include global.create();
+  @include color.create();
   @include selected.create();
   @include text-global.create();
   @include validation.create();
@@ -94,7 +94,6 @@
     @include element(plain);
     @include element(dropdown);
     @include element(nav);
-    @include element(round);
     @include element(checkbox);
     @include element(radio);
     @include element(input);
@@ -144,169 +143,85 @@
 @mixin element($key) {
   @if $key == primary {
     @include primary.create();
-  }
-
-  @else if $key == secondary {
+  } @else if $key == secondary {
     @include secondary.create();
-  }
-
-  @else if $key == plain {
+  } @else if $key == plain {
     @include plain.create();
-  }
-
-  @else if $key == dropdown {
+  } @else if $key == dropdown {
     @include dropdown.create();
-  }
-
-  @else if $key == nav {
+  } @else if $key == nav {
     @include nav.create();
-  }
-
-  @else if $key == round {
-    @include round.create();
-  }
-
-  @else if $key == checkbox {
+  } @else if $key == checkbox {
     @include checkbox.create();
-  }
-
-  @else if $key == radio {
+  } @else if $key == radio {
     @include radio.create();
-  }
-
-  @else if $key == input {
+  } @else if $key == input {
     @include input.create();
-  }
-
-  @else if $key == textarea {
+  } @else if $key == textarea {
     @include textarea.create();
-  }
-
-  @else if $key == link {
+  } @else if $key == link {
     @include link.create();
-  }
-
-  @else if $key == focus {
+  } @else if $key == focus {
     @include focus.create();
-  }
-
-  @else if $key == disable {
+  } @else if $key == disable {
     @include disable.create();
-  }
-
-  @else if $key == checkbox-component {
+  } @else if $key == checkbox-component {
     @include checkbox-component.create();
-  }
-
-  @else if $key == input-component {
+  } @else if $key == input-component {
     @include input-component.create();
-  }
-
-  @else if $key == alert {
+  } @else if $key == alert {
     @include alert.create();
-  }
-
-  @else if $key == banner {
+  } @else if $key == banner {
     @include banner.create();
-  }
-
-  @else if $key == radio-component {
+  } @else if $key == radio-component {
     @include radio-component.create();
-  }
-
-  @else if $key == icon-button {
+  } @else if $key == icon-button {
     @include icon-button.create();
-  }
-
-  @else if $key == header-component {
+  } @else if $key == header-component {
     @include header-component.create();
-  }
-
-  @else if $key == footer {
+  } @else if $key == footer {
     @include footer.create();
-  }
-
-  @else if $key == autocomplete {
+  } @else if $key == autocomplete {
     @include autocomplete.create();
-  }
-
-  @else if $key == chip-item {
+  } @else if $key == chip-item {
     @include chip-item.create();
-  }
-
-  @else if $key == chip-list {
+  } @else if $key == chip-list {
     @include chip-list.create();
-  }
-
-  @else if $key == chip-secondary {
+  } @else if $key == chip-secondary {
     @include chip-secondary.create();
-  }
-
-  @else if $key == date-picker {
+  } @else if $key == date-picker {
     @include date-picker.create();
-  }
-
-  @else if $key == icon {
+  } @else if $key == icon {
     @include icon.create();
-  }
-
-  @else if $key == error-component {
+  } @else if $key == error-component {
     @include error-component.create();
-  }
-
-  @else if $key == tabs-component {
+  } @else if $key == tabs-component {
     @include tabs-component.create();
-  }
-
-  @else if $key == button-component {
+  } @else if $key == button-component {
     @include button-component.create();
-  }
-
-  @else if $key == tags-component {
+  } @else if $key == tags-component {
     @include tags-component.create();
-  }
-
-  @else if $key == progress-indicator {
+  } @else if $key == progress-indicator {
     @include progress-indicator.create();
-  }
-
-  @else if $key == select-component {
+  } @else if $key == select-component {
     @include select-component.create();
-  }
-
-  @else if $key == label-component {
+  } @else if $key == label-component {
     @include label-component.create();
-  }
-
-  @else if $key == hidden-nav {
+  } @else if $key == hidden-nav {
     @include hidden-nav.create();
-  }
-
-  @else if $key == language-switch {
+  } @else if $key == language-switch {
     @include language-switch.create();
-  }
-
-  @else if $key == textarea-component {
+  } @else if $key == textarea-component {
     @include textarea-component.create();
-  }
-
-  @else if $key == breadcrumb {
+  } @else if $key == breadcrumb {
     @include breadcrumb.create();
-  }
-
-  @else if $key == spinner-component {
+  } @else if $key == spinner-component {
     @include spinner-component.create();
-  }
-
-  @else if $key == indicator {
+  } @else if $key == indicator {
     @include indicator.create();
-  }
-
-  @else if $key == flyout {
+  } @else if $key == flyout {
     @include flyout.create();
-  }
-
-  @else if $key == flyout-option {
+  } @else if $key == flyout-option {
     @include flyout-option.create();
   }
 

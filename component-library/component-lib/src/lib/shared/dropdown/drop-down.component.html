@@ -6,7 +6,6 @@
     aria-live="polite"
     attr.aria-label="{{ 'Dropdown' || '' | translate }}"
     [id]="config.id"
-    (focusout)="toggleFlyout(false, $event)"
     (click)="toggleFlyout(!selected)"
     [disabled]="config.disabled"
     class="dropdown selected-{{ selected }} {{ config.category }}"
@@ -16,8 +15,8 @@
       <ircc-cl-lib-icon
         *ngIf="config.icon"
         class="custom-icon"
-        [style.color]="config.icon.color"
-        [config]="{ FA_keywords: config.icon.class }"
+        [style.color]="config.icon?.color"
+        [config]="{ FA_keywords: config.icon?.class }"
       ></ircc-cl-lib-icon>
       <p
         *ngIf="showPlaceholder"
@@ -43,6 +42,7 @@
 </div>
 <ircc-cl-lib-flyout
   [id]="config.id + '_flyout'"
+  [size]="config.size"
   *ngIf="selected"
   [config]="flyoutConfig"
   (isSelected)="selectedOption($event)"

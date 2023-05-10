@@ -48,7 +48,8 @@ export class MikeComponent implements OnInit {
           value: 'option 1'
         },
         {
-          value: 'option 2'
+          value: 'option 2',
+          disabled: true
         },
         {
           value: 'option 3'
@@ -363,6 +364,18 @@ export class MikeComponent implements OnInit {
     document.getElementById('radio_10')?.hasAttribute('disabled')
       ? document.getElementById('radio_10')?.removeAttribute('disabled')
       : document.getElementById('radio_10')?.setAttribute('disabled', '');
+  }
+
+  toggleSize() {
+    if (this.dropdownConfig.size) {
+      if (this.dropdownConfig.size === 'large') {
+        this.dropdownConfig = { ...this.dropdownConfig, size: 'small' };
+      } else {
+        this.dropdownConfig = { ...this.dropdownConfig, size: 'large' };
+      }
+    } else {
+      this.dropdownConfig = { ...this.dropdownConfig, size: 'small' };
+    }
   }
 
   constructor(private lang: LangSwitchService) {}

@@ -53,6 +53,10 @@
     bottom: 0;
     padding: 0 2px;
   }
+
+  div.overflow_menu {
+    top: 44px;
+  }
 }
 
 @mixin size-lg {
@@ -88,6 +92,10 @@
     font-size: 20px;
     bottom: -2px;
     padding: 0 4px;
+  }
+
+  div.overflow_menu {
+    top: 48px;
   }
 }
 
@@ -179,7 +187,7 @@
       }
 
       &:visited {
-        color: var(--link-cta-text-visited);
+        color: var(--link-text-visited);
       }
 
       &:active {
@@ -193,15 +201,20 @@
     position: relative;
   }
 
-  div.overflow {
-    max-width: 197px;
+  div.overflow-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  div.overflow_menu {
+    width: 197px;
     border: 1px solid var(--breadcrumb-neutral-grey);
     border-radius: 4px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     background: var(--surface1);
     z-index: 99;
-    left: -8px;
-    top: 44px;
+    left: -58px;
     padding: 8px 0;
     position: absolute;
   }

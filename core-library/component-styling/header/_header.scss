@@ -1,136 +1,110 @@
-@use '../../tokens/sizes';
-@use '../../layout/layout-grid';
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
+@use "../../tokens/sizes";
+@use "../../layout/layout-grid";
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
 
 @mixin selector {
-    ircc-cl-lib-header#{template-const.$escape} {
-        @content;
-    }
+  ircc-cl-lib-header#{template-const.$escape} {
+    @content;
+  }
 }
 
+//creates header style sheet and apply styles to the appropriate selector
 @mixin create {
-    @include selector() {
-        @include layout();
-    }
+  @include selector() {
+    @include layout();
+  }
 }
 
 @mixin layout {
+  .heading {
+    //defines the container our query will run on
+    container-type: inline-size;
+    container-name: header-container;
 
-    .heading {
-        container-type: inline-size;
-        container-name: header-container;
-        display: flex;
-        justify-content: space-between;
-        // align-items: center;
-        margin: 0;
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0;
+    }
+
+    .image-container {
+      align-self: center;
+      width: 296.47px;
+      padding: 0;
+
+      @include device.in-phone-layout() {
+        width: 249px;
+        margin-left: 16px;
+      }
+
+      #canada-home-img-link {
+        height: 75px;
         padding: 0;
-        // @include device.in-phone-layout(){
-        //     align-items: flex-start;
-        // }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            margin: 0;
-            padding: 0;
+        @include device.if-hover {
+          background-color: transparent;
         }
+      }
 
-        .image-container {
-            align-self: center;
-            width: 296.47px;
-            padding: 0;
-
-            @include device.in-phone-layout() {
-                width: 249px;
-                // height: 23.52px;
-                margin-left: 8px;
-            }
-
-            #canada-home-img-link {
-                height: 75px;
-                padding: 0;
-
-                @include device.if-hover {
-                    background-color: transparent;
-                }
-            }
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-            }
-        }
-
-        .languageSwitch {
-            justify-self: end;
-            align-self: center;
-
-            @include device.in-phone-layout() {
-                margin-right: 16px;
-            }
-        }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     }
 
-    @container header-container (width: calc(100vw - 16px)) {
-        .image-container {
-            margin-left: 12px;
-        }
+    .languageSwitch {
+      justify-self: end;
+      align-self: center;
 
-        @container header-container (width > 90vw) {
-            .image-container {
-                margin-left: 20px;
-            }
-
-            .languageSwitch {
-                margin-right: 20px;
-            }
-
-            .headerLine {
-                overflow: visible;
-                margin-left: -8px;
-                margin-right: -8px;
-            }
-        }
-
-        .headerLine {
-            container-type: inline-size;
-            container-name: headerLine-container;
-            color: var(--header-line);
-            border-width: sizes.$fixed-2;
-            border-style: solid;
-            margin-top: 0;
-            margin-bottom: 0;
-            // @media (width: calc(100vw - 16px)) {
-            //     margin-right: -8px;
-            //     margin-left: -8px;
-            //   }
-            // margin-right: -8px;
-            // margin-left: -8px;
-            // @include device.in-phone-layout() {
-            //     margin-right: -8px;
-            //     margin-left: -8px;
-            // }
-            // // @include device.in-tablet-layout() {
-            //     @media (max-width: 979px) {
-            //     margin-right: -8px;
-            //     margin-left: -8px;
-            // }
-        }
-
-        @container headerLine-container (width: calc(100vw - 16px)) {
-
-            margin-left: -8px;
-            margin-right: -8px;
-
-        }
+      @include device.in-phone-layout() {
+        margin-right: 16px;
+      }
     }
+  }
+
+  //container query which applies margins if the container is 16px less than the view width
+  // i.e. if the header is spanning almost the entire screen then we will indent the image and lang toggle so they aren't cut off
+  @container header-container (width > 90vw) {
+    .image-container {
+      margin-left: 20px;
+    }
+
+    .languageSwitch {
+      margin-right: 20px;
+    }
+
+    .headerLine {
+      overflow: visible;
+      margin-left: -8px;
+      margin-right: -8px;
+    }
+  }
+
+  .headerLine {
+    color: var(--navy-11);
+    border-width: sizes.$fixed-2;
+    border-style: solid;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include device.in-phone-layout() {
+      margin-right: -8px;
+      margin-left: -8px;
+    }
+    //allows headerLine to span entire view width even when the margin is applied to the header container
+    @media (max-width: 979px) {
+      margin-right: -8px;
+      margin-left: -8px;
+    }
+  }
 }

@@ -108,3 +108,22 @@ export class codeViewerComponent implements OnInit, OnChanges {
     this.height = height;
   }
 }
+
+/**
+ * Convert config object to string
+ */
+export function stringify(object: any): string {
+  // Remove entries of empty string in value
+  // https://stackoverflow.com/questions/286141/remove-blank-attributes-from-an-object-in-javascript
+  const obj = Object.fromEntries(
+    Object.entries(object).filter(([k, v]) => v != '')
+  );
+  return (
+    JSON.stringify(obj, null, 4)
+      // 'key:' => key:
+      .replace(/"([^"]+)":/g, '$1:')
+      // "new Class()" => new Class()
+      .replace(/"new /g, 'new ')
+      .replace(/\)"/g, ')')
+  );
+}
