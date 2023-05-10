@@ -87,14 +87,14 @@ export class BannerDocCodeComponent implements OnInit {
       id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
       size: 'small',
-      label: 'Banner.BannerConfig.Size',
+      label: 'Banner.BannerConfig.SizeLabel',
       options: [
         {
-          text: 'Banner.BannerConfig.Small',
+          text: 'Banner.BannerConfig.SmallLabel',
           value: 'Small'
         },
         {
-          text: 'Banner.BannerConfig.Large',
+          text: 'Banner.BannerConfig.LargeLabel',
           value: 'Large'
         }
       ]
@@ -102,15 +102,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showCloseToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowClose',
+      label: 'Banner.BannerConfig.ShowCloseLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.True',
+          text: 'Banner.BannerConfig.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.False',
+          text: 'Banner.BannerConfig.FalseLabel',
           value: 'False'
         }
       ]
@@ -118,15 +118,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showTitleToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowTitle',
+      label: 'Banner.BannerConfig.ShowTitleLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.True',
+          text: 'Banner.BannerConfig.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.False',
+          text: 'Banner.BannerConfig.FalseLabel',
           value: 'False'
         }
       ]
@@ -134,15 +134,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showDescToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowDescription',
+      label: 'Banner.BannerConfig.ShowDescriptionLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.True',
+          text: 'Banner.BannerConfig.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.False',
+          text: 'Banner.BannerConfig.FalseLabel',
           value: 'False'
         }
       ]
@@ -150,15 +150,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showPrimaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowPrimaryButton',
+      label: 'Banner.BannerConfig.ShowPrimaryButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.True',
+          text: 'Banner.BannerConfig.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.False',
+          text: 'Banner.BannerConfig.FalseLabel',
           value: 'False'
         }
       ]
@@ -166,15 +166,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showPlainButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowPlainButton',
+      label: 'Banner.BannerConfig.ShowPlainButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.True',
+          text: 'Banner.BannerConfig.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.False',
+          text: 'Banner.BannerConfig.FalseLabel',
           value: 'False'
         }
       ]
@@ -182,15 +182,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowSecondaryButton',
+      label: 'Banner.BannerConfig.ShowSecondaryButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.True',
+          text: 'Banner.BannerConfig.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.False',
+          text: 'Banner.BannerConfig.FalseLabel',
           value: 'False'
         }
       ]
@@ -198,15 +198,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showLinkToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowLink',
+      label: 'Banner.BannerConfig.ShowLinkLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.True',
+          text: 'Banner.BannerConfig.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.False',
+          text: 'Banner.BannerConfig.FalseLabel',
           value: 'False'
         }
       ]
