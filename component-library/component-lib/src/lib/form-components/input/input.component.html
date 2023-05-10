@@ -52,7 +52,7 @@
             tabindex="0"
             class="passwordIcon"
             (click)="hideShow()"
-            [disabled]="disabled"
+            [disabled]="disabled || config.formGroup.get(config.id)?.disabled"
             aria-label="Password eye Icon"
             aria-live="polite"
           >
