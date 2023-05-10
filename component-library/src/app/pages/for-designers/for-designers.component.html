@@ -4,10 +4,24 @@
 
   <app-title-slug-url [config]="designerAboutHeadingSlug"></app-title-slug-url>
   <p class="descriptions">{{ 'Designers.AboutText1' | translate }}</p>
-  <p
-    class="descriptions about last"
-    [innerHTML]="'Designers.AboutText2' | translate"
-  ></p>
+
+  <p class="descriptions about last">
+    {{ 'Designers.AboutText2' | translate
+    }}<a
+      class="link"
+      target="_blank"
+      href="{{ 'Designers.AboutLink1' | translate }}"
+      >{{ 'Designers.AboutLinKTxt1' | translate }}</a
+    >
+    {{ 'Designers.AboutText3' | translate
+    }}<a
+      class="link"
+      target="_blank"
+      href="{{ 'Designers.AboutLink2' | translate }}"
+      >{{ 'Designers.AboutLinKTxt2' | translate }}</a
+    >
+    {{ 'Designers.AboutText4' | translate }}
+  </p>
 
   <app-title-slug-url [config]="designerAccessHeadingSlug"></app-title-slug-url>
   <p class="descriptions">{{ 'Designers.AccessText1' | translate }}</p>

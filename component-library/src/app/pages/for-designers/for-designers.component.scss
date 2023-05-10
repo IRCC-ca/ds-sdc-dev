@@ -18,10 +18,9 @@
   }
   .descriptions {
     &.about {
-      // > a {
-      //   padding: 0;
-      //   background-color: red;
-      // }
+      .link {
+        padding: 0;
+      }
     }
     &.last {
       margin-bottom: 0
