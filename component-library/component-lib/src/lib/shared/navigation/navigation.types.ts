@@ -1,3 +1,5 @@
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
+
 export enum NavigationItemType {
   accordion = 'accordion',
   heading = 'heading',
@@ -7,7 +9,7 @@ export enum NavigationItemType {
 export interface NavigationItem {
   id: string;
   label: string;
-  icon: string;
+  icon: string;re
   type: keyof typeof NavigationItemType;
   children: NavigationItem[];
 }

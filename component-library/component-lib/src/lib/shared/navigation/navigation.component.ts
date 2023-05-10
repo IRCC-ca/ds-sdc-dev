@@ -2,12 +2,7 @@ import { EventEmitter, Input, Output, ViewChild, Type } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
-import {
-  NavigationItem,
-  NavigationItemLink,
-  NavigationItemAccordion,
-  NavigationItemHeading
-} from './navigation.types';
+import { NavigationItem } from './navigation.types';
 
 export interface INavigationConfig {
   id: string;
@@ -38,11 +33,6 @@ export class navigationComponent implements OnInit {
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
-
-    // //insert TEST DATA
-    // this.config.navigationConfig = [this.itemA, this.itemB];
-    // this.itemBAA.children.push(this.itemA);
-
     this.flattenNavigation = this.flatten(this.config.navigationConfig);
   }
 
