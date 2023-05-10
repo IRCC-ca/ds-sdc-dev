@@ -9,7 +9,7 @@ export enum NavigationItemType {
 export interface NavigationItem {
   id: string;
   label: string;
-  icon: string;re
+  icon: string;
   type: keyof typeof NavigationItemType;
   children: NavigationItem[];
 }
