@@ -11,10 +11,15 @@
     [config]="developerStartedSlug"
     class="getting-started"
   ></app-title-slug-url>
-  <p
-    [innerHTML]="'Developers.GetStartedTxt' | translate"
-    class="descriptions started"
-  ></p>
+  <p class="descriptions started">
+    {{ 'Developers.GetStartedTxt' | translate
+    }}<a
+      class="npmLink"
+      target="_blank"
+      href="{{ 'Developers.GetStartedLink' | translate }}"
+      >{{ 'Developers.GetStartedLinkTxt' | translate }}</a
+    >:
+  </p>
   <app-title-slug-url [config]="developerUsageSlug"></app-title-slug-url>
   <p
     [translate]="'Developers.UsageTxt'"

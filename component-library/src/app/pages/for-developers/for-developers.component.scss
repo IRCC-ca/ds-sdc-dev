@@ -9,10 +9,9 @@
   }
   .descriptions {
     &.started {
-      // > a {
-      //   padding: 0;
-      //   background-color: red;
-      // }
+      .npmLink {
+        padding: 0;
+      }
     }
     @include typography.fontSet(body, 3, regular);
     margin: 0;
