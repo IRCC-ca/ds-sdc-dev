@@ -1,7 +1,6 @@
 <form
   class="checkbox-container"
   [formGroup]="config.formGroup"
-  (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
 >
   <div class="checkbox-container" [ngClass]="config.size">
     <ircc-cl-lib-label
@@ -15,6 +14,7 @@
           (blur)="touched = true"
           id="{{ config.id }}"
           class="check"
+          (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
           [ngClass]="{
             mixed: config.mixed,
             focus: !config.disableFocus,
