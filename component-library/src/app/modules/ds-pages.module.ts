@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { InputDocumentationComponent } from '@app/pages/input-documentation/input-documentation.component';
 import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
+import { EncapsulatedElementComponent } from '@app/components/encapsulated-element/encapsulated-element.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-
     InputDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
-    InputDocCodeComponent
+    InputDocCodeComponent,
+    EncapsulatedElementComponent
   ],
   imports: [
     CommonModule,

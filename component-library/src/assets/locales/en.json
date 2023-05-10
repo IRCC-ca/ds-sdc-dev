@@ -324,7 +324,7 @@
     "AccessHeading": "Requesting access to the design library",
     "AccessText1": "The design library is published as a team library on Figma. There are currently three Figma files to connect to your project in order to access the full design system – Foundations, Components and Patterns. Here are the steps to get access:",
     "AccessListItem1": "<a target='_blank' href='https://www.figma.com/signup'>Create a Figma account</a> if you don’t have one already.",
-    "AccessListItem2": "Email <a href='mailto:Matthew.Emond@cic.gc.ca'>Matthew.Emond@cic.gc.ca</a> and tell us the email you use for your Figma account. You will receive a response as soon as we’ve granted you access.",
+    "AccessListItem2": "Email <a class='email' href='mailto:Matthew.Emond@cic.gc.ca'>Matthew.Emond@cic.gc.ca</a> and tell us the email you use for your Figma account. You will receive a response as soon as we’ve granted you access.",
     "AccessListItem3": "Once you have received confirmation that you have access, log into Figma with the email you provided.",
     "AccessListItem4": "Create a new design file or open an existing project.",
     "AccessListItem5": "On the left sidebar, select “Assets,” then select the Team Library icon.",

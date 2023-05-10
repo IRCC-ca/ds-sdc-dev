@@ -26,8 +26,16 @@
   <app-title-slug-url [config]="designerAccessHeadingSlug"></app-title-slug-url>
   <p class="descriptions">{{ 'Designers.AccessText1' | translate }}</p>
   <ol class="descriptions">
-    <li [innerHTML]="'Designers.AccessListItem1' | translate"></li>
-    <li [innerHTML]="'Designers.AccessListItem2' | translate"></li>
+    <!-- <li [innerHTML]="'Designers.AccessListItem1' | translate"></li> -->
+    <li>
+      <app-encapsulated-element
+        [injectedHtml]="'Designers.AccessListItem1' | translate"
+      ></app-encapsulated-element>
+    </li>
+    <!-- <li [innerHTML]="'Designers.AccessListItem2' | translate"></li> -->
+    <app-encapsulated-element
+      [injectedHtml]="'Designers.AccessListItem2' | translate"
+    ></app-encapsulated-element>
     <li>{{ 'Designers.AccessListItem3' | translate }}</li>
     <li>{{ 'Designers.AccessListItem4' | translate }}</li>
     <li>{{ 'Designers.AccessListItem5' | translate }}</li>
