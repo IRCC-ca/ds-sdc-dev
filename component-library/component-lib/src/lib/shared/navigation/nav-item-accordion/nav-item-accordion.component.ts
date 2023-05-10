@@ -2,17 +2,17 @@ import { EventEmitter, Input, Output } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
 
-export interface INavigationSectionConfig {
+export interface INavigationItemConfig {
   id: string;
   size?: keyof typeof DSSizes;
 }
 
 @Component({
-  selector: 'ircc-cl-lib-nav-section',
-  templateUrl: './nav-item-section.component.html'
+  selector: 'ircc-cl-lib-nav-item',
+  templateUrl: './nav-item-accordion.component.html'
 })
-export class navItemSectionComponent implements OnInit {
-  @Input() config: INavigationSectionConfig = {
+export class navItemAccordionComponent implements OnInit {
+  @Input() config: INavigationItemConfig = {
     id: '',
     size: DSSizes.small
   };

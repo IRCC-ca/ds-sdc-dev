@@ -63,14 +63,17 @@
   }
 
   .lib-navigation{
-    max-width: 250px;
+    max-width: 500px;
+    border: 1px solid black;
   }
 
   .navigation-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
+    display: grid;
+    grid-template-columns: 20px auto 20px;
+
+    ircc-cl-lib-icon{
+      align-self: center;
+    }
 
     h4{
         padding: none;
@@ -78,6 +81,24 @@
         flex:1;
     }
   }
+
+  .navigation-area{
+    ul {
+      list-style: none;
+    }
+
+    .parent-navigation{
+      margin: 0;
+      padding: 0;
+    }
+
+    // .child-navigation{
+    //   margin: 0;
+    //   padding: 1rem;
+    // }
+  }
+
+  
  
 
 //   @include types(information);

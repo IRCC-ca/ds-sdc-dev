@@ -11,7 +11,12 @@ import { LanguageSwitchButtonService } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
 import { DisplayLanguages, Languages } from '../share/global-params';
 
-import { INavigationConfig } from 'ircc-ds-angular-component-library';
+import {
+  INavigationConfig,
+  NavigationItemLink,
+  NavigationItemAccordion,
+  NavigationItemHeading
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-shell',
@@ -28,12 +33,176 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
+  itemAA: NavigationItemLink = {
+    label: 'Overview.Heading',
+    href: 'ROUTES.overview',
+    anchor: false,
+    id: 'Overview.Heading',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+  itemAB: NavigationItemLink = {
+    label: 'Designers.Heading',
+    href: 'ROUTES.forDesigners',
+    anchor: false,
+    id: 'Designers.Heading',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+  itemAC: NavigationItemLink = {
+    label: 'Overview.DeveloperHeading',
+    href: 'ROUTES.forDevelopers',
+    anchor: false,
+    id: 'Overview.DeveloperHeading',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+  itemA: NavigationItemHeading = {
+    id: 'GetStartedHeading',
+    label: 'Developers.GetStartedHeading',
+    icon: 'fa-light fa-arrow-right',
+    type: 'heading',
+    children: [this.itemAA, this.itemAB, this.itemAC]
+  };
+
+  mashsa: NavigationItemLink = {
+    label: 'mahsa',
+    href: 'ROUTES.mahsa',
+    anchor: false,
+    id: 'mahsa',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  michael: NavigationItemLink = {
+    label: 'michael',
+    href: 'ROUTES.michael',
+    anchor: false,
+    id: 'michael',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  naseer: NavigationItemLink = {
+    label: 'naseer',
+    href: 'ROUTES.naseer',
+    anchor: false,
+    id: 'naseer',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  mike: NavigationItemLink = {
+    label: 'mike',
+    href: 'ROUTES.mike',
+    anchor: false,
+    id: 'mike',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+  bobby: NavigationItemLink = {
+    label: 'bobby',
+    href: 'ROUTES.bobby',
+    anchor: false,
+    id: 'bobby',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  accessibility: NavigationItemLink = {
+    label: 'Accessibility Demo',
+    href: '/en/accessibility-demo',
+    anchor: false,
+    id: 'accessibility',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  banner: NavigationItemLink = {
+    label: 'Banner Documentation',
+    href: '/en/banner-doc',
+    anchor: false,
+    id: 'banner',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  codeview: NavigationItemLink = {
+    label: 'Code Viewer',
+    href: '/en/codeview',
+    anchor: false,
+    id: 'codeview',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  button: NavigationItemLink = {
+    label: 'Button Documentation',
+    href: '/en/button-doc',
+    anchor: false,
+    id: 'button',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  input: NavigationItemLink = {
+    label: 'Input Documentation',
+    href: '/en/input-documentation',
+    anchor: false,
+    id: 'input',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  other: NavigationItemHeading = {
+    id: 'other',
+    label: 'Other Pages',
+    icon: '',
+    type: 'heading',
+    children: [
+      this.accessibility,
+      this.banner,
+      this.codeview,
+      this.button,
+      this.input
+    ]
+  };
+
+  itemQA: NavigationItemHeading = {
+    id: 'qa',
+    label: 'QA Pages',
+    icon: 'fa-light fa-arrow-right',
+    type: 'heading',
+    children: [
+      this.mashsa,
+      this.michael,
+      this.naseer,
+      this.mike,
+      this.bobby,
+      this.other
+    ]
+  };
+
   navConfig: INavigationConfig = {
     id: 'shell-nav',
     size: 'large',
     label: 'Overview.SubHeading',
     iconLeading: 'fa-light fa-arrow-left',
-    iconTrailing: 'fa-light fa-arrow-right'
+    iconTrailing: 'fa-light fa-arrow-right',
+    navigationConfig: [this.itemA, this.itemQA]
   };
 
   constructor(

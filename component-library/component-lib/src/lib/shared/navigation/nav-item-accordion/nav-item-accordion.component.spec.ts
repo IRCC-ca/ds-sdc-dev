@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { navItemSectionComponent } from './nav-item-section.component';
+import { navItemNavComponent } from './nav-item-accordion.component';
 
 describe('TabsComponent', () => {
-  let component: navItemSectionComponent;
-  let fixture: ComponentFixture<navItemSectionComponent>;
+  let component: navItemNavComponent;
+  let fixture: ComponentFixture<navItemNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [navItemSectionComponent]
+      declarations: [navItemNavComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(navItemSectionComponent);
+    fixture = TestBed.createComponent(navItemNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

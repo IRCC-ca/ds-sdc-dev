@@ -1,53 +1,21 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { EventEmitter, Input, Output, ViewChild, Type } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
+
+import {
+  NavigationItem,
+  NavigationItemLink,
+  NavigationItemAccordion,
+  NavigationItemHeading
+} from './navigation.types';
+
 export interface INavigationConfig {
   id: string;
   label?: string;
   iconLeading?: string;
   iconTrailing?: string;
   size?: keyof typeof DSSizes;
-}
-
-enum NavigationItemType {
-  accordion = 'accordion',
-  heading = 'heading',
-  link = 'link'
-}
-
-interface NavigationItem {
-  id: string;
-  label: string;
-  icon: string;
-  type: keyof typeof NavigationItemType;
-  children: NavigationItem[];
-}
-
-interface NavigationItemAccordion extends NavigationItem {
-  open: boolean;
-}
-
-interface NavigationItemHeading extends NavigationItem {
-  customPropForHeader: string;
-}
-
-interface NavigationItemLink extends NavigationItem {
-  label: string;
-  href: string;
-  anchor: boolean;
-}
-
-interface CustomPropsArray {
-  key: string;
-  value: string;
-}
-interface NavigationItemCustom extends NavigationItem {
-  component: string;
-  componentProps: Array<CustomPropsArray>;
-}
-
-interface NavigationConfig {
-  items: Array<NavigationItem>;
+  navigationConfig?: Array<NavigationItem>;
 }
 
 @Component({
@@ -60,114 +28,22 @@ export class navigationComponent implements OnInit {
     label: '',
     iconLeading: '',
     iconTrailing: '',
-    size: 'small'
+    size: 'small',
+    navigationConfig: []
   };
-
+  @Input() navigationConfig: Array<NavigationItem> = [];
   @Input() id: string = '';
 
-  itemAA: NavigationItemLink = {
-    label: 'AA',
-    href: 'AA',
-    anchor: false,
-    id: 'AA',
-    icon: 'AA',
-    type: 'link',
-    children: []
-  };
-  itemAB: NavigationItemLink = {
-    label: 'AB',
-    href: 'AB',
-    anchor: false,
-    id: 'AB',
-    icon: 'AB',
-    type: 'link',
-    children: []
-  };
-
-  itemACC: NavigationItemLink = {
-    label: 'itemACC',
-    href: 'itemACC',
-    anchor: false,
-    id: 'itemACC',
-    icon: 'itemACC',
-    type: 'link',
-    children: []
-  };
-  itemAC: NavigationItemLink = {
-    label: 'AC',
-    href: 'AC',
-    anchor: false,
-    id: 'AC',
-    icon: 'AC',
-    type: 'link',
-    children: [this.itemACC]
-  };
-
-  itemA: NavigationItemHeading = {
-    id: 'A',
-    label: 'A',
-    icon: 'a',
-    type: 'heading',
-    customPropForHeader: 'string',
-    children: [this.itemAA, this.itemAB, this.itemAC]
-  };
-
-  itemBAA: NavigationItemLink = {
-    label: 'itemACC',
-    href: 'itemACC',
-    anchor: false,
-    id: 'itemACC',
-    icon: 'itemACC',
-    type: 'link',
-    children: []
-  };
-
-  itemBA: NavigationItemLink = {
-    label: 'AA',
-    href: 'AA',
-    anchor: false,
-    id: 'AA',
-    icon: 'AA',
-    type: 'link',
-    children: [this.itemBAA]
-  };
-  itemBB: NavigationItemLink = {
-    label: 'AB',
-    href: 'AB',
-    anchor: false,
-    id: 'AB',
-    icon: 'AB',
-    type: 'link',
-    children: []
-  };
-
-  itemBC: NavigationItemLink = {
-    label: 'AC',
-    href: 'AC',
-    anchor: false,
-    id: 'AC',
-    icon: 'AC',
-    type: 'link',
-    children: [this.itemACC]
-  };
-
-  itemB: NavigationItemHeading = {
-    id: 'A',
-    label: 'A',
-    icon: 'a',
-    type: 'heading',
-    customPropForHeader: 'string',
-    children: [this.itemBA, this.itemBB, this.itemBC]
-  };
-
-  navigationObject: NavigationConfig = {
-    items: [this.itemA, this.itemB]
-  };
+  flattenNavigation: Array<NavigationItem> = [];
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
 
-    console.log(this.flatten(this.navigationObject));
+    // //insert TEST DATA
+    // this.config.navigationConfig = [this.itemA, this.itemB];
+    // this.itemBAA.children.push(this.itemA);
+
+    this.flattenNavigation = this.flatten(this.config.navigationConfig);
   }
 
   flatten = (obj: any) => {
@@ -187,13 +63,33 @@ export class navigationComponent implements OnInit {
     return stackB;
   };
 
+  findByKey = (items: Array<NavigationItem>, key: string, value: string) => {
+    let returnItem: NavigationItem = {
+      id: '',
+      label: '',
+      icon: '',
+      type: 'accordion',
+      children: []
+    };
+    returnItem = items.find((element: any) => element[key] === value) || {
+      id: '',
+      label: '',
+      icon: '',
+      type: 'accordion',
+      children: []
+    };
+    return returnItem;
+  };
+
+  setNavigationItem = (obj: NavigationItem, key: string, value: string) => {
+    obj[key] = value;
+  };
+
   isArray = (obj: any) => {
-    //  console.log(Array.isArray(obj), obj);
     return Array.isArray(obj);
   };
 
   arrayOfObject = (obj: any) => {
-    console.log(Object.keys(obj));
     return Object.keys(obj);
   };
 }

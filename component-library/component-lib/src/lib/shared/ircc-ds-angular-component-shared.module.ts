@@ -17,10 +17,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { DomChangeDirective } from '../../shared/directives/dom-change.directive';
 import { FlyoutComponent } from './flyout/flyout.component';
 import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
-import { navigationComponent } from './navigation/navigation.component';
-import { navItemHeadingComponent } from './navigation/nav-item-heading/nav-item-heading.component';
-import { navItemSectionComponent } from './navigation/nav-item-section/nav-item-section.component';
-import { navItemNavComponent } from './navigation/nav-item-nav/nav-item-nav.component';
+
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -38,10 +35,6 @@ const IrccDsSharedComponents = [
   SpinnerComponent,
   FlyoutComponent,
   FlyoutOptionComponent,
-  navigationComponent,
-  navItemHeadingComponent,
-  navItemSectionComponent,
-  navItemNavComponent
 ];
 
 @NgModule({

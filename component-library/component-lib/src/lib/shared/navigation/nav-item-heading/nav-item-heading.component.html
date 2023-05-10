@@ -2,5 +2,9 @@
   [id]="config.id"
   class="lib-nav-header"
 >
-  <p>heading</p>
+  <h4>{{ config?.label || '' | translate }}</h4>
+  <ircc-cl-lib-icon
+    class="icon-trailing"
+    [config]="{ FA_keywords: config?.icon || '' }"
+  ></ircc-cl-lib-icon>
 </div>

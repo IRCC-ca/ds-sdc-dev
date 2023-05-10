@@ -2,5 +2,11 @@
   [id]="config.id"
   class="lib-nav-item"
 >
-  <p>navitem</p>
+  <a [routerLink]="config?.href || '' | translate">
+    <h5>{{ config?.label || '' | translate }}</h5>
+    <ircc-cl-lib-icon
+      class="icon-trailing"
+      [config]="{ FA_keywords: config?.icon || '' }"
+    ></ircc-cl-lib-icon>
+  </a>
 </div>

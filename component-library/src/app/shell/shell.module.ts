@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IrccDsAngularComponentsSharedModule,
-  IrccDsAngularHeaderFooterModule
+  IrccDsAngularHeaderFooterModule,
+  IrccDsAngularNavigationModule
 } from 'ircc-ds-angular-component-library';
 import { TranslateModule } from '@ngx-translate/core';
 import { ShellComponent } from './shell.component';
@@ -13,6 +14,7 @@ import { ShellComponent } from './shell.component';
     CommonModule,
     IrccDsAngularComponentsSharedModule,
     IrccDsAngularHeaderFooterModule,
+    IrccDsAngularNavigationModule,
     TranslateModule
   ],
   exports: [

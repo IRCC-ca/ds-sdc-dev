@@ -1,21 +1,22 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
-import { navItemHeadingComponent } from '../nav-item-heading/nav-item-heading.component';
 
-export interface INavigationItemConfig {
-  id: string;
-  size?: keyof typeof DSSizes;
-}
+import { NavigationItemLink } from '../navigation.types';
 
 @Component({
   selector: 'ircc-cl-lib-nav-item',
   templateUrl: './nav-item-nav.component.html'
 })
 export class navItemNavComponent implements OnInit {
-  @Input() config: INavigationItemConfig = {
+  @Input() config: NavigationItemLink = {
     id: '',
-    size: DSSizes.small
+    href: '',
+    anchor: false,
+    label: '',
+    icon: '',
+    type: 'link',
+    children: []
   };
 
   @Input() id: string = '';
@@ -23,6 +24,5 @@ export class navItemNavComponent implements OnInit {
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
-    this.size !== undefined ? (this.config.size = this.size) : undefined;
   }
 }
