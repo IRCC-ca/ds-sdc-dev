@@ -12,13 +12,9 @@
     class="getting-started"
   ></app-title-slug-url>
   <p class="descriptions started">
-    {{ 'Developers.GetStartedTxt' | translate
-    }}<a
-      class="npmLink"
-      target="_blank"
-      href="{{ 'Developers.GetStartedLink' | translate }}"
-      >{{ 'Developers.GetStartedLinkTxt' | translate }}</a
-    >:
+    <app-encapsulated-element
+      [injectedHtml]="'Developers.GetStartedTxt | translate'"
+    ></app-encapsulated-element>
   </p>
   <app-title-slug-url [config]="developerUsageSlug"></app-title-slug-url>
   <p

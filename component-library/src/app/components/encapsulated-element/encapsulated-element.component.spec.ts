@@ -8,9 +8,8 @@ describe('EncapsulatedElementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EncapsulatedElementComponent ]
-    })
-    .compileComponents();
+      declarations: [EncapsulatedElementComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EncapsulatedElementComponent);
     component = fixture.componentInstance;

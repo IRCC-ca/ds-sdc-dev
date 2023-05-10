@@ -1,3 +1,23 @@
-.email {
-  border: 2px solid green;
+@use "../../../../../core-library/util/device" as device;
+.link {
+  color: var(--navy-7);
+
+  @include device.if-hover {
+    color: var(--navy-8);
+    background-color: var(--generic-hover);
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline-offset: 0;
+  }
+
+  &:active {
+    color: var(--navy-9);
+    background-color: var(--generic-active);
+  }
+
+  &:visited {
+    color: var(--purple-8);
+  }
 }

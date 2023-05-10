@@ -6,36 +6,24 @@
   <p class="descriptions">{{ 'Designers.AboutText1' | translate }}</p>
 
   <p class="descriptions about last">
-    {{ 'Designers.AboutText2' | translate
-    }}<a
-      class="link"
-      target="_blank"
-      href="{{ 'Designers.AboutLink1' | translate }}"
-      >{{ 'Designers.AboutLinKTxt1' | translate }}</a
-    >
-    {{ 'Designers.AboutText3' | translate
-    }}<a
-      class="link"
-      target="_blank"
-      href="{{ 'Designers.AboutLink2' | translate }}"
-      >{{ 'Designers.AboutLinKTxt2' | translate }}</a
-    >
-    {{ 'Designers.AboutText4' | translate }}
+    <app-encapsulated-element
+      [injectedHtml]="'Designers.AboutText2' | translate"
+    ></app-encapsulated-element>
   </p>
 
   <app-title-slug-url [config]="designerAccessHeadingSlug"></app-title-slug-url>
   <p class="descriptions">{{ 'Designers.AccessText1' | translate }}</p>
   <ol class="descriptions">
-    <!-- <li [innerHTML]="'Designers.AccessListItem1' | translate"></li> -->
     <li>
       <app-encapsulated-element
         [injectedHtml]="'Designers.AccessListItem1' | translate"
       ></app-encapsulated-element>
     </li>
-    <!-- <li [innerHTML]="'Designers.AccessListItem2' | translate"></li> -->
-    <app-encapsulated-element
-      [injectedHtml]="'Designers.AccessListItem2' | translate"
-    ></app-encapsulated-element>
+    <li>
+      <app-encapsulated-element
+        [injectedHtml]="'Designers.AccessListItem2' | translate"
+      ></app-encapsulated-element>
+    </li>
     <li>{{ 'Designers.AccessListItem3' | translate }}</li>
     <li>{{ 'Designers.AccessListItem4' | translate }}</li>
     <li>{{ 'Designers.AccessListItem5' | translate }}</li>
@@ -50,10 +38,11 @@
 
   <app-title-slug-url [config]="designerInstallFontSlug"></app-title-slug-url>
   <p class="descriptions">{{ 'Designers.InstallFontsText1' | translate }}</p>
-  <p
-    class="descriptions last"
-    [innerHTML]="'Designers.InstallFontsLink' | translate"
-  ></p>
+  <p class="descriptions last">
+    <app-encapsulated-element
+      [injectedHtml]="'Designers.InstallFontsLink' | translate"
+    ></app-encapsulated-element>
+  </p>
 
   <app-title-slug-url
     [config]="designerUsingStylesHeadingSlug"
@@ -72,10 +61,11 @@
         <li>{{ 'Designers.UsingStylesStrokeListItem3' | translate }}</li>
         <li>{{ 'Designers.UsingStylesStrokeListItem4' | translate }}</li>
       </ol>
-      <p
-        class="descriptions last"
-        [innerHTML]="'Designers.UsingStylesStrokeText2' | translate"
-      ></p>
+      <p class="descriptions last">
+        <app-encapsulated-element
+          [injectedHtml]="'Designers.UsingStylesStrokeText2' | translate"
+        ></app-encapsulated-element>
+      </p>
       <img
         src="assets/img/forDesigner-content/for-designers-img-2.jpg"
         alt="{{ 'Designers.UsingStylesStrokeImgAltText' | translate }}"
@@ -92,10 +82,11 @@
         <li>{{ 'Designers.UsingStylesTextListItem3' | translate }}</li>
         <li>{{ 'Designers.UsingStylesTextListItem4' | translate }}</li>
       </ol>
-      <p
-        class="descriptions last"
-        [innerHTML]="'Designers.UsingStylesTextText2' | translate"
-      ></p>
+      <p class="descriptions last">
+        <app-encapsulated-element
+          [injectedHtml]="'Designers.UsingStylesTextText2' | translate"
+        ></app-encapsulated-element>
+      </p>
       <img
         src="assets/img/forDesigner-content/for-designers-img-3.jpg"
         alt="{{ 'Designers.UsingStylesTextImgAltText' | translate }}"
