@@ -14,7 +14,7 @@ import {
 } from './request-form.service';
 import {
   slugAnchorType,
-  slugTitleURLConfig,
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
