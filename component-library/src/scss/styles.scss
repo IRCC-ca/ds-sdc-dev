@@ -4,11 +4,17 @@
 @use '../../../core-library/util/device';
 @use '../../../core-library/util/color' as color;
 @use 'sass:map';
+@use '../app/components/code-viewer/code-viewer.component.scss' as code-viewer;
+@use '../app/components/accordion-panel/accordion-container.component.scss' as
+  accordion-container;
 
 @import 'component-lib/styles';
 @import 'grid';
 @import 'table';
 @import '../../../core-library/layout/layout-grid';
+
+@include code-viewer.create();
+@include accordion-container.create();
 
 // // Enable Bootstrap row & column support.
 @include make-grid-columns();
