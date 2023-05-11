@@ -6,17 +6,26 @@
   <button (click)="toggleComp('input')">Input Component</button>
 </div>
 <hr />
-<section id="indicator">
+<section
+  id="indicator"
+  *ngIf="activeSection === 'indicator'"
+>
   <h2>Indicator</h2>
   <lib-indicator [config]="indicatorConfig"></lib-indicator>
   <app-auto-tester [config]="testIndicatorConfig"></app-auto-tester>
 </section>
-<section id="breadcrumb">
+<section
+  id="breadcrumb"
+  *ngIf="activeSection === 'breadcrumb'"
+>
   <h2>Breadcrumb</h2>
   <ircc-cl-lib-breadcrumb [config]="breadCrumbConfig"></ircc-cl-lib-breadcrumb>
   <app-auto-tester [config]="testBreadCrumbConfig"></app-auto-tester>
 </section>
-<section id="checkbox">
+<section
+  id="checkbox"
+  *ngIf="activeSection === 'checkbox'"
+>
   <h2>Checkbox</h2>
   <!-- Checkbox Test -->
   <ircc-cl-lib-checkbox [config]="qaCheckboxConfig"></ircc-cl-lib-checkbox>
@@ -29,7 +38,10 @@
   <br />
   <app-auto-tester [config]="testCheckboxComponentConfig"></app-auto-tester>
 </section>
-<section id="input">
+<section
+  id="input"
+  *ngIf="activeSection === 'input'"
+>
   <h2>Input</h2>
   <ircc-cl-lib-input [config]="qaInputConfig"></ircc-cl-lib-input>
   <app-auto-tester [config]="testInputComponentConfig"></app-auto-tester>
