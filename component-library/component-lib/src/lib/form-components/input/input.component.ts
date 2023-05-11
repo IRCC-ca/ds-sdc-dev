@@ -145,11 +145,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     //set disable to true when form is disabled
     this.config.formGroup.valueChanges.subscribe((change) => {
-      if (change[this.config.id] === undefined) {
-        this.disabled = true;
-      } else {
-        this.disabled = false;
-      }
+      this.disabled = this.config.formGroup.get(this.config.id)
+        ?.disabled as boolean;
     });
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
