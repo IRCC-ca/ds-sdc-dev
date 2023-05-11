@@ -68,7 +68,10 @@
 
         <!--Type Accordion-->
         <ng-container *ngSwitchCase="'accordion'">
-          <ircc-cl-lib-nav-accordion [config]="item">
+          <ircc-cl-lib-nav-accordion
+            [config]="item"
+            [size]="config.size"
+          >
             <ul
               *ngIf="item.children.length > 0"
               class="child-navigation"

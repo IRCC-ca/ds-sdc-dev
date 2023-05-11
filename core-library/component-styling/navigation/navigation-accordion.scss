@@ -21,11 +21,11 @@
 }
 
 @mixin large-styles() {
-
+  
 }
 
 @mixin small-styles() {
-  
+  font-size: 0;
 }
 
 @mixin layout {
@@ -72,9 +72,4 @@
       display: none;
     }
   } 
-
-//   @include types(information);
-//   @include types(critical);
-//   @include types(warning);
-//   @include types(success);
 }

@@ -10,6 +10,7 @@ export interface NavigationItem {
   id: string;
   label: string;
   type: keyof typeof NavigationItemType;
+  size?: keyof typeof DSSizes;
   children: NavigationItem[];
 }
 

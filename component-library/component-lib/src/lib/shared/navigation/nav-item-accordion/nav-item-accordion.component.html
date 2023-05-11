@@ -1,35 +1,32 @@
-<!-- <div
+<div
   [id]="config.id"
+  [attr.size]="config.size"
   class="lib-nav-item"
 >
-  <h5>{{ config?.label || '' | translate }}</h5>
-  <ircc-cl-lib-icon
-    class="icon-trailing"
-    [config]="{ FA_keywords: config?.icon || '' }"
-  ></ircc-cl-lib-icon>
-</div> -->
-
-<div class="accordion-panel">
-  <div class="accordion-nav">
-    <h5>{{ config?.label || '' | translate }}</h5>
-    <div class="accordion-expand-button">
-      <ircc-cl-lib-icon
-        *ngIf="config.open === true"
-        class="icon-trailing"
-        [config]="{ FA_keywords: 'fa-light fa-chevron-up' }"
-        (click)="openAccordion()"
-      ></ircc-cl-lib-icon>
-      <ircc-cl-lib-icon
-        *ngIf="config.open === false"
-        class="icon-trailing"
-        [config]="{ FA_keywords: 'fa-light fa-chevron-down' }"
-        (click)="openAccordion()"
-      ></ircc-cl-lib-icon>
+  <div class="accordion-panel">
+    <div class="accordion-nav">
+      <h5>{{ config?.label || '' | translate }}</h5>
+      <div class="accordion-expand-button">
+        <ircc-cl-lib-icon
+          *ngIf="config.open === true"
+          class="icon-trailing"
+          [config]="{ FA_keywords: 'fa-light fa-chevron-up' }"
+          (click)="openAccordion()"
+        ></ircc-cl-lib-icon>
+        <ircc-cl-lib-icon
+          *ngIf="config.open === false"
+          class="icon-trailing"
+          [config]="{ FA_keywords: 'fa-light fa-chevron-down' }"
+          (click)="openAccordion()"
+        ></ircc-cl-lib-icon>
+      </div>
     </div>
-  </div>
-  <div
-    [class]="config.open ? 'open accordion-content' : 'close accordion-content'"
-  >
-    <ng-content></ng-content>
+    <div
+      [class]="
+        config.open ? 'open accordion-content' : 'close accordion-content'
+      "
+    >
+      <ng-content></ng-content>
+    </div>
   </div>
 </div>

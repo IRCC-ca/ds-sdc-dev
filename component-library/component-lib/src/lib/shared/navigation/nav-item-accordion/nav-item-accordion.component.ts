@@ -18,10 +18,14 @@ export class navItemAccordionComponent implements OnInit {
     id: '',
     open: false,
     label: '',
+    size: 'small',
     type: 'accordion',
     children: []
   };
   @Input() id: string = '';
+  @Input() open: boolean | undefined;
+  @Input() label: string = '';
+  @Input() size: keyof typeof DSSizes | undefined;
 
   buttonConfigAcccordion: IButtonConfig = {
     id: 'accordion-button',
@@ -33,6 +37,9 @@ export class navItemAccordionComponent implements OnInit {
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
+    this.open !== undefined ? (this.config.open = this.open) : undefined;
+    this.label !== '' ? (this.config.label = this.label) : undefined;
+    this.size !== undefined ? (this.config.size = this.size) : undefined;
   }
 
   openAccordion() {
