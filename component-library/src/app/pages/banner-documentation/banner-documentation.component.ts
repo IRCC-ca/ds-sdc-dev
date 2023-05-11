@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { slugAnchorType, slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
 
 @Component({
   selector: 'app-banner-documentation',
@@ -47,7 +48,7 @@ export class BannerDocumentationComponent implements OnInit {
     type: 'generic'
   };
 
-  inputTitleSlugConfig: slugTitleURLConfig = {
+  pageTitleSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.primary,
     title: 'Banner.Title',
     anchorType: slugAnchorType.primary
@@ -55,24 +56,109 @@ export class BannerDocumentationComponent implements OnInit {
 
   interactiveDemoSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.InteractiveDemo',
+    title: 'General.InteractiveDemo',
     anchorType: slugAnchorType.primary
   };
   
   typesSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.TypesHeading',
+    title: 'General.TypesHeading',
     anchorType: slugAnchorType.primary
   };
 
   configurationSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.ConfigurationsHeading',
+    title: 'General.ConfigurationsHeading',
     anchorType: slugAnchorType.primary
   };
 
+  guidelineSlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.secondary,
+    title: 'General.DesignGuidelinesHeading',
+    anchorType: slugAnchorType.primary
+  };
 
+  anatomySlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.secondary,
+    title: 'General.AnatomyHeading',
+    anchorType: slugAnchorType.primary
+  };
 
+  specsSlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.secondary,
+    title: 'General.SpecsHeading',
+    anchorType: slugAnchorType.primary
+  };
+
+  contentGuideSlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.secondary,
+    title: 'General.ContentGuidelinesHeading',
+    anchorType: slugAnchorType.primary
+  };
+
+  figmaSlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.secondary,
+    title: 'General.FigmaHeading',
+    anchorType: slugAnchorType.primary
+  };
+
+  accessibilitySlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.secondary,
+    title: 'General.AccessibilityHeading',
+    anchorType: slugAnchorType.primary
+  };
+
+  researchSlugConfig: slugTitleURLConfig = {
+    type: slugTitleURLType.secondary,
+    title: 'General.ResearchHeading',
+    anchorType: slugAnchorType.primary
+  };
+
+  figmaDirections: string[] = [
+    'Banner.UsageInFigma.FigmaDirectionsListItem1',
+    'Banner.UsageInFigma.FigmaDirectionsListItem2',
+    'Banner.UsageInFigma.FigmaDirectionsListItem3',
+    'Banner.UsageInFigma.FigmaDirectionsListItem4'
+  ];
+
+  accessibilityColorContrast: string[] = [
+    'Banner.Accessibility.ColorText1',
+    'Banner.Accessibility.ColorText2',
+    'Banner.Accessibility.ColorText3',
+    'Banner.Accessibility.ColorText4',
+    'Banner.Accessibility.ColorText5'
+  ];
+
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'Banner.Anatomy.ContainerHeading',
+      description: 'Banner.Anatomy.ContainerText'
+    },
+    {
+      title: 'Banner.Anatomy.BannerIconTypeHeading',
+      description: 'Banner.Anatomy.BannerIconTypeText'
+    },
+    {
+      title: 'Banner.Anatomy.BannerBarHeading',
+      description: 'Banner.Anatomy.BannerBarText'
+    },
+    {
+      title: 'Banner.Anatomy.TitleHeading',
+      description: 'Banner.Anatomy.TitleText'
+    },
+    {
+      title: 'Banner.Anatomy.DescriptionHeading',
+      description: 'Banner.Anatomy.DescriptionText'
+    },
+    {
+      title: 'Banner.Anatomy.CloseBtnHeading',
+      description: 'Banner.Anatomy.CloseBtnText'
+    },
+    {
+      title: 'Banner.Anatomy.CTAGroupHeading',
+      description: 'Banner.Anatomy.CTAGroupText'
+    },
+  ];
   constructor() { }
 
   ngOnInit(): void {

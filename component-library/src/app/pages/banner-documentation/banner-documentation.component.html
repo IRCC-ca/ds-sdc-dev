@@ -1,6 +1,6 @@
 <div class="content-doc-wrapper">
   <app-title-slug-url
-    [config]="inputTitleSlugConfig"
+    [config]="pageTitleSlugConfig"
     class="h1 emphasis"
   ></app-title-slug-url>
   <p class="body1 intro">{{ 'Banner.Intro' | translate }}</p>
@@ -9,7 +9,7 @@
     <app-title-slug-url
       [config]="interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p class="body3 demo">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
+    <p class="body3 demo">{{ 'Banner.InteractiveDemoDesc' | translate }}</p>
     <app-banner-doc-code></app-banner-doc-code>
   </section>
 
@@ -125,7 +125,7 @@
         </ul>
       </div>
       <div class="column">
-        <h5>{{ 'Input.TypesHeading' | translate }}</h5>
+        <h5>{{ 'General.TypesHeading' | translate }}</h5>
         <ul>
           <li>{{ 'Banner.InfoHeading' | translate }}</li>
           <li>{{ 'Banner.WarningHeading' | translate }}</li>
@@ -209,5 +209,379 @@
         </ul>
       </div>
     </div>
+  </section>
+
+  <section class="design-guide">
+    <app-title-slug-url
+      [config]="guidelineSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Banner.DesignGuideLines.KeepActionsSimpleLabel' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-actions-do.png"
+          alt="{{ 'Banner.DesignGuideLines.BannerActionsDoAlt' | translate }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-4">
+          {{ 'Banner.DesignGuideLines.BannerActionsDoText' | translate }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-actions-dont.png"
+          alt="{{ 'Banner.DesignGuideLines.BannerActionsDontAlt' | translate }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-4">
+          {{ 'Banner.DesignGuideLines.BannerActionsDontText' | translate }}
+        </p>
+      </div>
+    </div>
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Banner.DesignGuideLines.UseOneBannerAtATimeLabel' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-count-do.png"
+          alt="{{ 'Banner.DesignGuideLines.BannerCountDoAlt' | translate }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-5">
+          {{ 'Banner.DesignGuideLines.BannerCountDoText' | translate }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-count-dont.png"
+          alt="{{ 'Banner.DesignGuideLines.BannerCountDontAlt' | translate }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-7">
+          {{ 'Banner.DesignGuideLines.BannerCountDontText' | translate }}
+        </p>
+      </div>
+    </div>
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Banner.DesignGuideLines.ShowMaximumButtonsLabel' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-button-count-do.png"
+          alt="{{
+            'Banner.DesignGuideLines.bannerButtonCountDoAlt' | translate
+          }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-5">
+          {{ 'Banner.DesignGuideLines.bannerButtonCountDoText' | translate }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-button-count-dont.png"
+          alt="{{
+            'Banner.DesignGuideLines.bannerButtonCountDoAlt' | translate
+          }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-7">
+          {{ 'Banner.DesignGuideLines.bannerButtonCountDoText' | translate }}
+        </p>
+      </div>
+    </div>
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Banner.DesignGuideLines.ProperButtonTypeInGroupLabel' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-button-type-do.png"
+          alt="{{
+            'Banner.DesignGuideLines.bannerButtonTypeDoAlt' | translate
+          }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-5">
+          {{ 'Banner.DesignGuideLines.bannerButtonTypeDoText' | translate }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-button-type-dont.png"
+          alt="{{
+            'Banner.DesignGuideLines.bannerButtonTypeDontAlt' | translate
+          }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-7">
+          {{ 'Banner.DesignGuideLines.bannerButtonTypeDontText' | translate }}
+        </p>
+      </div>
+    </div>
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Banner.DesignGuideLines.BannerCorrectDismissLabel' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-dismiss-do.png"
+          alt="{{ 'Banner.DesignGuideLines.bannerDismissDoAlt' | translate }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-5">
+          {{ 'Banner.DesignGuideLines.bannerDismissDoText' | translate }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-dismiss-dont.png"
+          alt="{{ 'Banner.DesignGuideLines.bannerDismissDontAlt' | translate }}"
+        />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-7">
+          {{ 'Banner.DesignGuideLines.bannerDismissDontText' | translate }}
+        </p>
+      </div>
+    </div>
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Banner.DesignGuideLines.BannerMinMaxWidthLabel' | translate }}
+    </h5>
+    <div class="row">
+      <div>
+        <img
+          src="assets/img/banner-content/banner-min-max-width.png"
+          alt="{{ 'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate }}"
+        />
+        <p class="body3 last">
+          {{ 'Banner.DesignGuideLines.bannerMinMaxWidthText' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="anatomy">
+    <app-title-slug-url
+      [config]="anatomySlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <img
+      src="assets/img/banner-content/banner-anatomy.png"
+      alt="{{ 'Banner.Anatomy.ImgAlt' | translate }}"
+    /><br />
+    <ng-container *ngFor="let content of anatomyContentItems; let i = index">
+      <span class="round-purple-num">{{ i + 1 }}</span>
+      <h5 class="h5 emphasis round-purple-num">
+        {{ content.title | translate }}
+      </h5>
+      <p class="body3 subtext-8">{{ content.description | translate }}</p>
+    </ng-container>
+  </section>
+
+  <section class="specs">
+    <app-title-slug-url
+      [config]="specsSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <img
+      class="single-img"
+      src="assets/img/banner-content/banner-specs.png"
+      alt="{{ 'Banner.Specs.ImgAlt' | translate }}"
+    />
+    <p class="body3 last">
+      {{ 'Banner.Specs.Text' | translate }}
+    </p>
+  </section>
+
+  <section class="content-guidelines">
+    <app-title-slug-url
+      [config]="contentGuideSlugConfig"
+      lass="h3 emphasis"
+    ></app-title-slug-url>
+
+    <h5 class="subtitles">
+      {{ 'Banner.ContentGuideLines.UseCorrectCaseHeading' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-use-correct-case-do.png"
+          alt="{{
+            'Banner.ContentGuideLines.BannerUseCorrectCaseDoAlt' | translate
+          }}"
+        /><br />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-4">
+          {{
+            'Banner.ContentGuideLines.BannerUseCorrectCaseDoText' | translate
+          }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-use-correct-case-dont.png"
+          alt="{{
+            'Banner.ContentGuideLines.BannerUseCorrectCaseDontAlt' | translate
+          }}"
+        /><br />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-7">
+          {{
+            'Banner.ContentGuideLines.BannerUseCorrectCaseDontText' | translate
+          }}
+        </p>
+      </div>
+    </div>
+    <h5 class="subtitles">
+      {{ 'Banner.ContentGuideLines.EasyToReadTitleHeading' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-title-do.png"
+          alt="{{ 'Banner.ContentGuideLines.BannerTitleDoAlt' | translate }}"
+        /><br />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-11">
+          {{ 'Banner.ContentGuideLines.BannerTitleDoText' | translate }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-title-dont.png"
+          alt="{{ 'Banner.ContentGuideLines.BannerTitleDontAlt' | translate }}"
+        /><br />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-6">
+          {{ 'Banner.ContentGuideLines.BannerTitleDontText' | translate }}
+        </p>
+      </div>
+    </div>
+
+    <h5 class="subtitles">
+      {{ 'Banner.ContentGuideLines.ProperPunctuationHeading' | translate }}
+    </h5>
+    <div class="row">
+      <div class="column left-column">
+        <img
+          src="assets/img/banner-content/banner-punctuation-do.png"
+          alt="{{
+            'Banner.ContentGuideLines.BannerPunctuationDoAlt' | translate
+          }}"
+        /><br />
+        <h5 class="h5 emphasis text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-12">
+          {{ 'Banner.ContentGuideLines.BannerPunctuationDoText' | translate }}
+        </p>
+      </div>
+      <div class="column right-column">
+        <img
+          src="assets/img/banner-content/banner-punctuation-dont.png"
+          alt="{{
+            'Banner.ContentGuideLines.BannerPunctuationDontAlt' | translate
+          }}"
+        /><br />
+        <h5 class="h5 emphasis text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p class="body3 subtext-9">
+          {{ 'Banner.ContentGuideLines.BannerPunctuationDontAlt' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="usage-figma">
+    <app-title-slug-url
+      [config]="figmaSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <div class="row">
+      <div class="figma-usage">
+        <h5 class="h5 emphasis subtitles">
+          {{ 'General.FigmaDirectionsHeading' | translate }}
+        </h5>
+        <ol>
+          <li
+            class="body3"
+            *ngFor="let direction of figmaDirections"
+            [innerHtml]="direction | translate"
+          ></li>
+        </ol>
+      </div>
+      <div class="image-container-1">
+        <img
+          src="assets/img/banner-content/banner-figma-directions-for-use.png"
+          alt="{{ 'Banner.UsageInFigma.FigmaDirectionsImgAlt' | translate }}"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="accessibility">
+    <app-title-slug-url
+      [config]="accessibilitySlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Input.AccessibilityColourHeading' | translate }}
+    </h5>
+    <ol class="list-container">
+      <li
+        class="body3 list-item"
+        *ngFor="let item of accessibilityColorContrast"
+        [innerHtml]="item | translate"
+      ></li>
+    </ol>
+
+    <h5 class="h5 emphasis subtitles">
+      {{ 'Input.AccessibilityKeyboardHeading' | translate }}
+    </h5>
+    <p class="body3 subtext-4">
+      {{ 'Banner.Accessibility.KeyboardText' | translate }}
+    </p>
+  </section>
+
+  <section class="research">
+    <app-title-slug-url
+      [config]="researchSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <p class="body3 subtext-1">{{ 'Input.ResearchText' | translate }}</p>
   </section>
 </div>
