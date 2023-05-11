@@ -15,7 +15,6 @@ import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { ShellComponent } from '@app/shell/shell.component';
 import { ShelldModule } from '@app/shell/shell.module';
 import { UtilitiesComponent } from '@app/pages/utilities/utilities.component';
-import { ButtonComponent } from '@app/pages/button/button.component';
 import { ComponentPreviewComponent } from '@app/components/component-preview/component-preview.component';
 import { InfoTextSmallComponent } from '@app/components/info-text-small/info-text-small.component';
 import { ContactComponent } from '@app/pages/contact/contact.component';
@@ -42,7 +41,6 @@ import { EncapsulatedElementComponent } from '@app/components/encapsulated-eleme
     ForDesignersComponent,
     ForDevelopersComponent,
     UtilitiesComponent,
-    ButtonComponent,
     ContactComponent,
     SlugifyPipe,
     SafeHtmlPipe,

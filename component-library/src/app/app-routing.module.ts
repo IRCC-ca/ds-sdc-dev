@@ -14,7 +14,6 @@ import { OverviewComponent } from './pages/overview/overview.component';
 import { ForDesignersComponent } from './pages/for-designers/for-designers.component';
 import { ForDevelopersComponent } from './pages/for-developers/for-developers.component';
 import { UtilitiesComponent } from './pages/utilities/utilities.component';
-import { ButtonComponent } from './pages/button/button.component';
 
 import { Shell } from './shell/shell.service';
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
@@ -54,7 +53,6 @@ const routes: Routes = [
     { path: 'designers', component: ForDesignersComponent },
     { path: 'developers', component: ForDevelopersComponent },
     { path: 'utilities', component: UtilitiesComponent },
-    { path: 'buttons', component: ButtonComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'banner-doc', component: BannerDocCodeComponent },
     { path: 'button-doc', component: ButtonDocCodeComponent },
@@ -65,7 +63,6 @@ const routes: Routes = [
     { path: 'concepteurs', component: ForDesignersComponent },
     { path: 'developpeurs', component: ForDevelopersComponent },
     { path: 'utilitaires', component: UtilitiesComponent },
-    { path: 'boutons', component: ButtonComponent },
     { path: '[FR]contact', component: ContactComponent },
     { path: 'banner-doc-fr', component: BannerDocCodeComponent },
     { path: 'button-doc-fr', component: ButtonDocCodeComponent },

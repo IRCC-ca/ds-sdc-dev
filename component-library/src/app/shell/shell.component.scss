@@ -40,7 +40,6 @@ $mobile-padding: 16px;
 .main-container {
   &.nav-open {
     display: flex;
-    /** These 3 lines doesn't do anything **/
     align-items: flex-start;
     column-gap: 0;
     justify-content: flex-start;
