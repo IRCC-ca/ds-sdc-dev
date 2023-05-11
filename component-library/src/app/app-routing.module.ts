@@ -72,10 +72,10 @@ const routes: Routes = [
       component: InputDocumentationComponent,
       title: 'Input-documentation'
     },
-    { 
-      path: 'request-form', 
+    {
+      path: 'request-form',
       component: RequestFormComponent,
-      title: 'Request-form' 
+      title: 'Request-form'
     },
 
     // French
@@ -105,9 +105,9 @@ const routes: Routes = [
       component: InputDocumentationComponent,
       title: 'Documentation dentree'
     },
-    { 
-      path: 'request-form-fr', 
-      component: RequestFormComponent ,
+    {
+      path: 'request-form-fr',
+      component: RequestFormComponent,
       title: 'Request-form-fr'
     },
 
