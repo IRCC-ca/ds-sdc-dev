@@ -2,7 +2,7 @@
   "name": "ircc-ds",
   "version": "0.0.1",
   "scripts": {
-    "install": "cd component-library/component-lib && npm ci && cd .. && npm ci",
+    "install": "cd component-library/component-lib && npm i && cd .. && npm i",
     "build": "cd component-library && ng build ircc-ds-angular-component-library --watch",
     "start": "cd component-library && ng serve",
     "lint": "cd component-library && ng lint --fix",

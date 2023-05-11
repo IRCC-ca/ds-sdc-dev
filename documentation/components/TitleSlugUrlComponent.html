@@ -260,7 +260,6 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-    type: slugTitleURLType.primary,
     title: &#x27;&#x27;,
     anchorType: slugAnchorType.primary
   }</code>
@@ -489,7 +488,6 @@ export interface slugTitleURLConfig {
 export class TitleSlugUrlComponent implements AfterContentInit {
   @Input()
   config: slugTitleURLConfig &#x3D; {
-    type: slugTitleURLType.primary,
     title: &#x27;&#x27;,
     anchorType: slugAnchorType.primary
   };

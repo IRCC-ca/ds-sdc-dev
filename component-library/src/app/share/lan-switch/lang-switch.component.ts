@@ -31,7 +31,7 @@ export class LangSwitchComponent implements OnInit {
     translate.setTranslation(Languages.French, fr);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.altLang.getAltLangLink().subscribe((altLang: string) => {
       this.altPathKey = altLang;
       this.setAltLangURL();
