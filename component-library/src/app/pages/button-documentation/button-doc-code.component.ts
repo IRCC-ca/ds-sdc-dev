@@ -300,7 +300,7 @@ export class ButtonDocCodeComponent implements OnInit {
         if(layoutStyleClass === LayoutType.fixed) {
           this.codeViewConfig.tab[cssIndex].value=
             ".button-container-fixed {\n"+
-              "  max-width = 400px;\n"+
+              "  max-width: 260px;\n"+
               "  width: 100%;\n"+
             "}"
         }
