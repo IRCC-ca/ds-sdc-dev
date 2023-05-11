@@ -52,61 +52,61 @@ export class InputDocumentationComponent implements OnInit {
 
   interactiveDemoSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.InteractiveDemo',
+    title: 'General.InteractiveDemo',
     anchorType: slugAnchorType.primary
   };
 
   typesSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.TypesHeading',
+    title: 'General.TypesHeading',
     anchorType: slugAnchorType.primary
   };
 
   configurationSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.ConfigurationsHeading',
+    title: 'General.ConfigurationsHeading',
     anchorType: slugAnchorType.primary
   };
 
   guidelineSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.DesignGuidelinesHeading',
+    title: 'General.DesignGuidelinesHeading',
     anchorType: slugAnchorType.primary
   };
 
   anatomySlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.AnatomyHeading',
+    title: 'General.AnatomyHeading',
     anchorType: slugAnchorType.primary
   };
 
   specsSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.SpecsHeading',
+    title: 'General.SpecsHeading',
     anchorType: slugAnchorType.primary
   };
 
   contentGuideSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.ContentGuidelinesHeading',
+    title: 'General.ContentGuidelinesHeading',
     anchorType: slugAnchorType.primary
   };
 
   figmaSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.FigmaHeading',
+    title: 'General.FigmaHeading',
     anchorType: slugAnchorType.primary
   };
 
   accessibilitySlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.AccessibilityHeading',
+    title: 'General.AccessibilityHeading',
     anchorType: slugAnchorType.primary
   };
 
   researchSlugConfig: slugTitleURLConfig = {
     type: slugTitleURLType.secondary,
-    title: 'Input.ResearchHeading',
+    title: 'General.ResearchHeading',
     anchorType: slugAnchorType.primary
   };
 
