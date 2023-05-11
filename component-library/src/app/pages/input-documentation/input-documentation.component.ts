@@ -33,7 +33,7 @@ export class InputDocumentationComponent implements OnInit {
   basicInputConfig: IInputComponentConfig = {
     id: this.BASIC_INPUT_ID,
     formGroup: this.form_input,
-    label: 'Input.LabelText',
+    label: 'Input.LabelText1',
     type: 'text'
   };
 

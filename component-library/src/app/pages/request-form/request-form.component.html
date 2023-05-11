@@ -1,0 +1,99 @@
+<div class="content-doc-wrapper">
+  <app-title-slug-url
+    [config]="submitRequestTitleSlugConfig"
+    class="h1 emphasis"
+  ></app-title-slug-url>
+  <p class="body1 intro">{{ 'RequestForm.Intro' | translate }}</p>
+  <div class="banner-container">
+    <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
+  </div>
+
+  <section class="request-criteria">
+    <app-title-slug-url
+      [config]="requestCriteriaTitleSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <p class="body3 subtext-1">
+      {{ 'RequestForm.requestCriteriaSubText1' | translate }}
+    </p>
+    <h5 class="emphasis sub-heading-1">
+      {{ 'RequestForm.requestCriteriaSubHeading1' | translate }}
+    </h5>
+    <p class="body3 subtext-2">
+      {{ 'RequestForm.requestCriteriaSubText2' | translate }}
+    </p>
+    <h5 class="emphasis sub-heading-1">
+      {{ 'RequestForm.requestCriteriaSubHeading2' | translate }}
+    </h5>
+    <p class="body3 subtext-3">
+      {{ 'RequestForm.requestCriteriaSubText3' | translate }}
+    </p>
+  </section>
+
+  <section class="form-container">
+    <app-title-slug-url
+      [config]="requestFormTitleSlugConfig"
+      class="h3 emphasis"
+    ></app-title-slug-url>
+    <div class="form-container">
+      <div class="type-request-radio-container">
+        <ircc-cl-lib-radio-input
+          [config]="typeOfRequestRadioConfig"
+          (change)="radioButtonChanged($event)"
+        ></ircc-cl-lib-radio-input>
+      </div>
+      <div class="request-title-text-area-container">
+        <ircc-cl-lib-textarea
+          [config]="requestTitleTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="request-details-text-area-container">
+        <ircc-cl-lib-textarea
+          [config]="requestDetailsTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div
+        class="use-case-text-area-container"
+        *ngIf="showUseCase"
+      >
+        <ircc-cl-lib-textarea
+          [config]="useCaseTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="references-text-area-container">
+        <ircc-cl-lib-textarea
+          [config]="referencesTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div class="urgent-request-radio-container">
+        <ircc-cl-lib-radio-input
+          [config]="urgentRequestRadioConfig"
+          (change)="radioButtonChanged($event)"
+        ></ircc-cl-lib-radio-input>
+      </div>
+      <div
+        class="urgent-details-container"
+        *ngIf="requestUrgent"
+      >
+        <ircc-cl-lib-textarea
+          [config]="urgentDetailsTextAreaConfig"
+        ></ircc-cl-lib-textarea>
+      </div>
+      <div
+        class="date-requested-container"
+        *ngIf="requestUrgent"
+      >
+        <ircc-cl-lib-date-picker
+          [config]="requestedDateDatePickerConfig"
+        ></ircc-cl-lib-date-picker>
+      </div>
+      <div class="submit-request-container">
+        <ircc-cl-lib-button
+          [config]="buttonConfig"
+          (click)="submitForm()"
+          >{{ 'RequestForm.SubmitBtn' | translate }}</ircc-cl-lib-button
+        >
+      </div>
+    </div>
+  </section>
+</div>

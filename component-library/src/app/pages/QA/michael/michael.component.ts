@@ -19,6 +19,7 @@ import {
   styleUrls: ['./michael.component.scss']
 })
 export class MichaelComponent implements OnInit {
+  activeSection: string = '';
   form_0: FormGroup = new FormGroup({});
   form_1: FormGroup = new FormGroup({});
   form_2: FormGroup = new FormGroup({});
@@ -568,9 +569,6 @@ export class MichaelComponent implements OnInit {
   }
 
   toggleComp(comp: string) {
-    document.querySelectorAll('section')?.forEach((section) => {
-      section.classList.remove('show');
-    });
-    document.getElementById(comp)?.classList.toggle('show');
+    this.activeSection = comp;
   }
 }

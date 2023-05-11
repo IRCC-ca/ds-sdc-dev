@@ -12,7 +12,10 @@
         class="breadcrumb-root"
         [config]="link"
       ></ircc-cl-lib-breadcrumb-link>
-      <ng-container *ngIf="overflowLinks && overflowLinks.length > 0">
+      <div
+        *ngIf="overflowLinks && overflowLinks.length > 0"
+        class="overflow-container"
+      >
         <ircc-cl-lib-icon
           [config]="{ FA_keywords: 'fa-light fa-chevron-right' }"
           id="overflow"
@@ -22,7 +25,19 @@
           class="elipsis-icon"
           [config]="separatorIcon"
         ></ircc-cl-lib-icon-button>
-      </ng-container>
+        <div
+          class="overflow_menu"
+          *ngIf="displayOverflow && overflowLinks && overflowLinks.length > 0"
+        >
+          <ng-container *ngFor="let link of overflowLinks">
+            <ircc-cl-lib-breadcrumb-link
+              tabindex="0"
+              class="breadcrumb-overflow"
+              [config]="link"
+            ></ircc-cl-lib-breadcrumb-link>
+          </ng-container>
+        </div>
+      </div>
     </ng-container>
     <ng-container *ngIf="!first && !last">
       <ircc-cl-lib-icon
@@ -52,16 +67,4 @@
       </p>
     </ng-container>
   </ng-container>
-  <div
-    class="overflow"
-    *ngIf="displayOverflow && overflowLinks && overflowLinks.length > 0"
-  >
-    <ng-container *ngFor="let link of overflowLinks">
-      <ircc-cl-lib-breadcrumb-link
-        tabindex="0"
-        class="breadcrumb-overflow"
-        [config]="link"
-      ></ircc-cl-lib-breadcrumb-link>
-    </ng-container>
-  </div>
 </div>
