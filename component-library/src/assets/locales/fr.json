@@ -639,12 +639,46 @@
     "AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
     "ResearchText": "Coming soon.",
     "CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
-    "LabelText": "Label text",
+    "LabelText1": "Label text",
     "LabelText2": "Password"
   },
     "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
     "ConfigAccordionClosed": "Hide Configurations"
-
-  }
+  },
+    "RequestForm": {
+    "Title": "Submit a request",
+    "Intro": "Some intro about what this is used for. Change requests, feature requests, bugs, etc.",
+    "BannerDesc": "This form is submitted to<a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>which is viewed by the design system team. We will review and respond to your request as soon as possible.",
+    "RequestCriteriaTitle": "Request criteria",
+    "RequestFormTitle": "Request form",
+    "requestCriteriaSubText1": "A request should show that the contribution to the system would be useful and unique.",
+    "requestCriteriaSubHeading1": "Useful",
+    "requestCriteriaSubText2": "There is evidence that this component or pattern would be useful for many teams or services.",
+    "requestCriteriaSubHeading2": "Unique",
+    "requestCriteriaSubText3": "It does not replicate something already in the Design System. If it’s intended to replace an existing component or pattern, there is evidence to show that it’s better than the existing version and solves existing use cases.",
+    "typeOfRequestRadio": "Type of request (required)",
+    "radioOption1": "Change request (modifying or adding to an existing system part)",
+    "radioOption2": "Feature request (Defining and creating na new system part)",
+    "radioOption3": "Bug (A system part that is not functioning as intended)",
+    "typeOfRequestRadioError": "No selection has been made. Please select an option",
+    "urgentOption1": "Yes",
+    "urgentOption2": "No",
+    "requestTitleLabel": "Request title (required)",
+    "requestTitleDesc": "Enter a brief title that represents the feature, change or bug.",
+    "requestDetailsLabel": "Request details (required)",
+    "requestDetailsDesc": "Describe the feature, change or bug.",
+    "useCaseLabel": "Use case(s) (required)",
+    "useCaseDesc": "Describe the use case(s) that you are currently unable to satisfy with the design system.",
+    "referencesLabel": "References",
+    "referencesCaseDesc": "Include any URLs you may have that we can view as reference. This can be website links or Figma design links, etc.",
+    "referencesHint": "We currently are unable to support attachments",
+    "urgentDetailsLabel": "Why is the request urgent? (required)",
+    "requestedDateLabel": "When is the completed work needed by? (required)",
+    "requestedDateDesc": "When would you need the work delivered in order for your team to start implementation into your project?",
+    "SubmitBtn": "Submit request",
+        "requiredTextAreaError": "This field is required.",
+    "fieldExceededMaxLength": "This field has exceeded max length.",
+    "requiredDateError": "Please fill in the missing fields"
+    }
 }

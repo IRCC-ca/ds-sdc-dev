@@ -17,24 +17,26 @@
       </div>
     </div>
   </div>
-  <div class="main-container top {{ navStatus }}">
-    <app-side-nav
-      class="left-nav"
-      [navBarData]="leftNavData"
-      [mobileToggleIcon]="true"
-    ></app-side-nav>
-    <div
-      class="content"
-      role="main"
-    >
-      <div class="content-area-responsive">
-        <div class="page-content">
-          <router-outlet></router-outlet>
-          <p>{{ 'Home.DateModified' | translate }}: 2023-02-10</p>
+  <main>
+    <div class="main-container top {{ navStatus }}">
+      <app-side-nav
+        class="left-nav"
+        [navBarData]="leftNavData"
+        [mobileToggleIcon]="true"
+      ></app-side-nav>
+      <div
+        class="content"
+        role="main"
+      >
+        <div class="content-area-responsive">
+          <div class="page-content">
+            <router-outlet></router-outlet>
+            <p>{{ 'Home.DateModified' | translate }}: 2023-02-10</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
   <!-- Footer -->
   <ircc-cl-lib-footer> </ircc-cl-lib-footer>
 </div>
