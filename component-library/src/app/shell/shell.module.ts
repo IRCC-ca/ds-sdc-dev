@@ -5,10 +5,8 @@ import {
   IrccDsAngularHeaderFooterModule
 } from 'ircc-ds-angular-component-library';
 import { TranslateModule } from '@ngx-translate/core';
-import { ShellComponent } from './shell.component';
 
 @NgModule({
-  declarations: [ShellComponent],
   imports: [
     CommonModule,
     IrccDsAngularComponentsSharedModule,

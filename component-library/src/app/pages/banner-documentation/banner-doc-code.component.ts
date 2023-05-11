@@ -10,8 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import {
   slugAnchorType,
-  slugTitleURLConfig,
-  slugTitleURLType
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 @Component({
@@ -39,7 +38,6 @@ export class BannerDocCodeComponent implements OnInit {
   ]);
 
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'Interactive Demo',
     anchorType: slugAnchorType.primary
   };

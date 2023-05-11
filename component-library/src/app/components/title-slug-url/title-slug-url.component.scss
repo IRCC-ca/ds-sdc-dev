@@ -1,32 +1,29 @@
 :host {
-  display: block;
-
-  > h2 {
-    display: inline-block;
-    font-weight: 700;
-
-    &.primary {
-      font-size: 36px;
-      margin-top: 0px;
-      margin-bottom: 24px;
-    }
-
-    &.secondary {
-      font-size: 28px;
-      margin-top: 80px;
-      margin-bottom: 24px;
-    }
+  display: flex;
+  align-items: baseline;
+  > h1 {
+    margin: {
+      top: 48px;
+      bottom: 24px;
+    };
   }
+  > h2 {
+    margin: {
+      top: 64px;
+      bottom: 24px;
+    };
+  } 
 
   > a {
     margin-left: 12px;
     position: relative;
     bottom: 5px;
-    text-decoration: none !important;
+    text-decoration: none;
     color: var(--link-text);
+    font-family: "Lato";
+    padding: 0;
 
     &.primary {
-      font-family: Lato;
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;

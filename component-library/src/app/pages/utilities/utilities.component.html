@@ -1,0 +1,116 @@
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url [config]="utilitiesHeadingSlug"></app-title-slug-url>
+  <p class="utility-txt">{{ 'Utilities.Text' | translate }}</p>
+  <app-title-slug-url [config]="utilitiesColorSlug"></app-title-slug-url>
+  <p class="descriptions">{{ 'Utilities.ColourText' | translate }}</p>
+  <table [style.max-height]="'450px'">
+    <tr>
+      <th>{{ 'Utilities.TypographyTableStyleHeading' | translate }}</th>
+      <th>{{ 'Utilities.ColourTableTokenHeading' | translate }}</th>
+      <th>{{ 'Utilities.ColourTableColourHeading' | translate }}</th>
+      <th>{{ 'Utilities.ColourTableFigmaHeading' | translate }}</th>
+      <th>{{ 'Utilities.ColourTableDescriptionHeading' | translate }}</th>
+    </tr>
+    <tr *ngFor="let color of colorSample">
+      <td>
+        <div
+          class="color-sample"
+          [style]="'background: var(' + color.tokenName + ');'"
+        ></div>
+      </td>
+      <td>{{ color.tokenName }}</td>
+      <td
+        [innerHtml]="color.colorRole"
+        [style]="'white-space: normal; max-width: 200px;'"
+      ></td>
+      <td [innerHtml]="color.figmaStyle"></td>
+      <td [style]="'white-space: normal; min-width: 400px;'">
+        {{ color.description | translate }}
+      </td>
+    </tr>
+  </table>
+  <app-title-slug-url [config]="utilitiesTypographySlug"></app-title-slug-url>
+  <p class="descriptions">{{ 'Utilities.TypographyText' | translate }}</p>
+  <table [style.max-height]="'450px'">
+    <tr>
+      <th>{{ 'Utilities.TypographyTableStyleHeading' | translate }}</th>
+      <th>{{ 'Utilities.TypographyTableTokenHeading' | translate }}</th>
+      <th>{{ 'Utilities.TypographyTableFontWeightHeading' | translate }}</th>
+      <th>{{ 'Utilities.TypographyTableSizeHeading' | translate }}</th>
+      <th>{{ 'Utilities.TypographyTableLineHeightHeading' | translate }}</th>
+      <th>{{ 'Utilities.TypographyTableFigmaHeading' | translate }}</th>
+      <th>{{ 'Utilities.ColourTableDescriptionHeading' | translate }}</th>
+    </tr>
+    <tr *ngFor="let typo of typographySample">
+      <td class="typo-sample">
+        <a
+          *ngIf="typo.type === 'a'"
+          [class]="typo.class ?? typo.tag"
+          [style]="'text-decoration: underline; color: var(--link-text);'"
+          >{{ 'Utilities.Letter' | translate }}</a
+        >
+        <p
+          class="alphabet"
+          *ngIf="typo.type === 'p' || !typo.type"
+          [class]="typo.class ?? typo.tag"
+        >
+          {{ 'Utilities.Letter' | translate }}
+        </p>
+      </td>
+      <td>{{ typo.class ?? typo.tag }}</td>
+      <td [innerHtml]="typo.fontWeight"></td>
+      <td>{{ typo.size }}</td>
+      <td [innerHtml]="typo.lineHeight"></td>
+      <td>{{ typo.textStyle }}</td>
+      <td>{{ typo.description ? (typo.description | translate) : '-' }}</td>
+    </tr>
+  </table>
+  <app-title-slug-url [config]="utilitiesSpacingSlug"></app-title-slug-url>
+  <p class="descriptions">{{ 'Utilities.SpacingText' | translate }}</p>
+  <table>
+    <tr>
+      <th>{{ 'Utilities.SpacingTableSampleHeading' | translate }}</th>
+      <th>{{ 'Utilities.SpacingTableVariableHeading' | translate }}</th>
+      <th>{{ 'Utilities.SpacingTableValueHeading' | translate }}</th>
+      <th>{{ 'Utilities.SpacingTableFigmaHeading' | translate }}</th>
+    </tr>
+    <tr *ngFor="let space of spacingSample">
+      <td>
+        <div
+          class="spacing-sample"
+          [style.width]="space + 'px'"
+        ></div>
+      </td>
+      <td>$fixed-{{ space }}</td>
+      <td>{{ space }} {{ 'Utilities.sub-titles.pixels' | translate }}</td>
+      <td>{{ 'Utilities.content.figma-usage' | translate : { px: space } }}</td>
+    </tr>
+  </table>
+  <app-title-slug-url [config]="utilitiesBreakpointsSlug"></app-title-slug-url>
+  <p class="descriptions">{{ 'Utilities.BreakpointsText' | translate }}</p>
+  <table>
+    <tr>
+      <th>{{ 'Utilities.SpacingTableSampleHeading' | translate }}</th>
+      <th>{{ 'Utilities.SpacingTableVariableHeading' | translate }}</th>
+      <th>{{ 'Utilities.BreakpointsTableWidthHeading' | translate }}</th>
+      <th>{{ 'Utilities.SpacingTableFigmaHeading' | translate }}</th>
+    </tr>
+    <tr *ngFor="let pt of breakpoints">
+      <td [style.text-align]="'center'">
+        <img
+          [src]="pt.svgPath"
+          [alt]="pt.varName"
+        />
+      </td>
+      <td>{{ pt.varName }}</td>
+      <td>{{ pt.width }} {{ 'Utilities.sub-titles.pixels' | translate }}</td>
+      <td>
+        {{ 'Utilities.content.bp-figma-usage' | translate : { px: pt.width } }}
+      </td>
+    </tr>
+  </table>
+</div>
+<app-side-nav
+  class="right-nav col-12 col-lg-3 col-xl-2"
+  [navBarData]="rightNavData"
+></app-side-nav>
