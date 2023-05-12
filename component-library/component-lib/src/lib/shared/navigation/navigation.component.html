@@ -38,7 +38,11 @@
       <ng-container [ngSwitch]="item.type">
         <!--Type Heading-->
         <ng-container *ngSwitchCase="'heading'"
-          ><ircc-cl-lib-nav-header [config]="item">
+          ><ircc-cl-lib-nav-header
+            [attr.size]="config.size"
+            [size]="config.size"
+            [config]="item"
+          >
             <ul
               *ngIf="item.children.length > 0"
               class="child-navigation"
@@ -53,7 +57,11 @@
 
         <!--Type Link-->
         <ng-container *ngSwitchCase="'link'"
-          ><ircc-cl-lib-nav-item [config]="item">
+          ><ircc-cl-lib-nav-item
+            [attr.size]="config.size"
+            [size]="config.size"
+            [config]="item"
+          >
             <ul
               *ngIf="item.children.length > 0"
               class="child-navigation"
@@ -69,8 +77,9 @@
         <!--Type Accordion-->
         <ng-container *ngSwitchCase="'accordion'">
           <ircc-cl-lib-nav-accordion
-            [config]="item"
+            [attr.size]="config.size"
             [size]="config.size"
+            [config]="item"
           >
             <ul
               *ngIf="item.children.length > 0"
@@ -84,8 +93,6 @@
               ></ng-container></ul
           ></ircc-cl-lib-nav-accordion>
         </ng-container>
-
-        <!-- <ng-container *ngSwitchDefault>{{ item.label }}</ng-container> -->
       </ng-container>
     </li>
   </ng-template>

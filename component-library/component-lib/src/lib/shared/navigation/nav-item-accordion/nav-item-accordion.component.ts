@@ -28,6 +28,8 @@ export class navItemAccordionComponent implements OnInit {
   @Input() label: string = '';
   @Input() size: keyof typeof DSSizes | undefined;
 
+  headerID: string = '';
+
   buttonIconOpen: IIconButtonComponentConfig = {
     id: `${this.config.id}-button`,
     category: 'custom',
@@ -54,8 +56,10 @@ export class navItemAccordionComponent implements OnInit {
     this.label !== '' ? (this.config.label = this.label) : undefined;
     this.size !== undefined ? (this.config.size = this.size) : undefined;
 
+    this.headerID = `${this.id}-header`;
+
     this.buttonIconOpen = {
-      id: `${this.config.id}-button-open`,
+      id: `${this.config.id}_button_open`,
       category: 'custom',
       size: this.config?.size,
       icon: {
@@ -65,7 +69,7 @@ export class navItemAccordionComponent implements OnInit {
     };
 
     this.buttonIconClose = {
-      id: `${this.config.id}-button-close`,
+      id: `${this.config.id}_button_close`,
       category: 'custom',
       size: this.config?.size,
       icon: {

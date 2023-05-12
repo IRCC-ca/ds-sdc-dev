@@ -6,6 +6,7 @@
   <div class="accordion-panel">
     <div class="accordion-nav">
       <ircc-cl-lib-nav-header
+        [id]="headerID"
         [attr.size]="config.size"
         [label]="config?.label || ''"
       >
@@ -16,18 +17,19 @@
         >
           <ng-content></ng-content></div
       ></ircc-cl-lib-nav-header>
-      <div class="accordion-expand-button">
-        <ircc-cl-lib-icon-button
-          *ngIf="config.open === true"
-          (clickEvent)="openAccordion($event)"
-          [config]="buttonIconOpen"
-        ></ircc-cl-lib-icon-button>
-        <ircc-cl-lib-icon-button
-          *ngIf="config.open === false"
-          (clickEvent)="openAccordion($event)"
-          [config]="buttonIconClose"
-        ></ircc-cl-lib-icon-button>
-      </div>
+
+      <ircc-cl-lib-icon-button
+        *ngIf="config.open === true"
+        (clickEvent)="openAccordion($event)"
+        [config]="buttonIconOpen"
+        class="open"
+      ></ircc-cl-lib-icon-button>
+      <ircc-cl-lib-icon-button
+        *ngIf="config.open === false"
+        (clickEvent)="openAccordion($event)"
+        [config]="buttonIconClose"
+        class="close"
+      ></ircc-cl-lib-icon-button>
     </div>
   </div>
 </div>

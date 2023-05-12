@@ -44,7 +44,7 @@ export class navItemHeadingComponent implements OnInit {
     this.size !== undefined ? (this.config.size = this.size) : undefined;
 
     this.buttonIcon = {
-      id: `${this.config.id}-button`,
+      id: `${this.config.id}_button`,
       category: 'custom',
       size: this.config?.size,
       icon: {

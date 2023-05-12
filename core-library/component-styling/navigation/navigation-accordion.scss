@@ -51,6 +51,14 @@
       align-self: self-end;
       justify-self: self-end;
 
+      &.open {
+        align-self: self-start;
+      }
+
+      &.close {
+        align-self: self-end;
+      }
+
       &:hover{
         cursor: pointer;
       }

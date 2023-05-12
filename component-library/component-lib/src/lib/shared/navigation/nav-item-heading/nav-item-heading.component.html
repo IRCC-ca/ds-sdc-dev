@@ -1,10 +1,8 @@
-<div
-  [id]="config.id"
-  class="lib-nav-header"
->
+<div [id]="config.id">
   <div class="nav-header-header">
     <h5>{{ config?.label || '' | translate }}</h5>
     <ircc-cl-lib-icon-button
+      *ngIf="config.icon.length > 0"
       (clickEvent)="clickEvent($event)"
       [config]="buttonIcon"
     ></ircc-cl-lib-icon-button>

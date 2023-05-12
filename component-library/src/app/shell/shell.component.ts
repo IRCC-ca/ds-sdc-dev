@@ -201,7 +201,7 @@ export class ShellComponent implements OnInit {
 
   navConfig: INavigationConfig = {
     id: 'shell-nav',
-    size: 'small',
+    size: 'large',
     label: 'Overview.SubHeading',
     iconLeading: 'fa-light fa-arrow-left',
     iconTrailing: 'fa-light fa-arrow-right',
