@@ -21,7 +21,7 @@ import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-v
 })
 export class BannerDocCodeComponent implements OnInit {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
-  altLangLink = 'bannerDocumentation';
+  altLangLink = 'bannerDocCode';
 
   constructor(
     private translate: TranslateService,

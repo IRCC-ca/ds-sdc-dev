@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
 import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
+import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-banner-documentation',
@@ -9,9 +12,11 @@ import { ContentItem } from '@app/share/lan-switch/interface/content-item.interf
   styleUrls: ['./banner-documentation.component.scss']
 })
 export class BannerDocumentationComponent implements OnInit {
-
+  
+  currentLanguage: string = '';
+  altLangLink = 'bannerDocumentation';
   INFO_BANNER_ID = 'info_banner';
-
+  
   infoBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
     title: 'Banner.BannerPreview.Title',
@@ -147,9 +152,16 @@ export class BannerDocumentationComponent implements OnInit {
       description: 'Banner.Anatomy.CTAGroupText'
     },
   ];
-  constructor() { }
+  constructor(
+    private translate: TranslateService,
+    private lang: LangSwitchService,
+    private slugify: SlugifyPipe
+  ) {
+    this.currentLanguage = translate.currentLang;
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.lang.setAltLangLink(this.altLangLink);
   }
 
 }
