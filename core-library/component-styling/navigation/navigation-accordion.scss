@@ -47,10 +47,11 @@
 
   .accordion-nav{
     display: grid;
-    grid-template-columns: auto 20px;
+    grid-template-columns: auto auto;
 
-    ircc-cl-lib-icon, .accordion-expand-button{
-      align-self: center;
+    ircc-cl-lib-icon-button{
+      align-self: self-end;
+      justify-self: self-end;
 
       &:hover{
         cursor: pointer;

@@ -2,7 +2,8 @@ import { EventEmitter, Input, Output } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
 import { NavigationItemAccordion } from '../navigation.types';
-import { IButtonConfig } from '../../button/button.component';
+
+import { IIconButtonComponentConfig } from '../../icon-button/icon-button.component';
 
 export interface INavigationItemConfig {
   id: string;
@@ -27,12 +28,24 @@ export class navItemAccordionComponent implements OnInit {
   @Input() label: string = '';
   @Input() size: keyof typeof DSSizes | undefined;
 
-  buttonConfigAcccordion: IButtonConfig = {
-    id: 'accordion-button',
-    category: 'plain',
-    size: 'small',
-    ariaLabel: 'Click to expand the accordion',
-    iconDirection: 'left'
+  buttonIconOpen: IIconButtonComponentConfig = {
+    id: `${this.config.id}-button`,
+    category: 'custom',
+    size: this.config?.size,
+    icon: {
+      class: 'fa-light fa-arrow-right',
+      color: 'var(--text-primary)'
+    }
+  };
+
+  buttonIconClose: IIconButtonComponentConfig = {
+    id: `${this.config.id}-button`,
+    category: 'custom',
+    size: this.config?.size,
+    icon: {
+      class: 'fa-light fa-arrow-right',
+      color: 'var(--text-primary)'
+    }
   };
 
   ngOnInit() {
@@ -40,9 +53,30 @@ export class navItemAccordionComponent implements OnInit {
     this.open !== undefined ? (this.config.open = this.open) : undefined;
     this.label !== '' ? (this.config.label = this.label) : undefined;
     this.size !== undefined ? (this.config.size = this.size) : undefined;
+
+    this.buttonIconOpen = {
+      id: `${this.config.id}-button-open`,
+      category: 'custom',
+      size: this.config?.size,
+      icon: {
+        class: 'fa-light fa-chevron-up',
+        color: 'var(--text-primary)'
+      }
+    };
+
+    this.buttonIconClose = {
+      id: `${this.config.id}-button-close`,
+      category: 'custom',
+      size: this.config?.size,
+      icon: {
+        class: 'fa-light fa-chevron-down',
+        color: 'var(--text-primary)'
+      }
+    };
   }
 
-  openAccordion() {
+  openAccordion(event: any) {
     this.config.open = !this.config.open;
+    alert(`Insert Service Here. Button id: ${event}`);
   }
 }
