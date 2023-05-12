@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
-import { FormControl, FormGroup } from '@angular/forms';
 import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
 
 @Component({
