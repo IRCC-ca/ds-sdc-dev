@@ -5,6 +5,7 @@ import { ContentItem } from '@app/share/lan-switch/interface/content-item.interf
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
+import { docPageheadingConfig }  from '@app/share/documentation-page-headings';
 
 @Component({
   selector: 'app-banner-documentation',
@@ -16,6 +17,7 @@ export class BannerDocumentationComponent implements OnInit {
   currentLanguage: string = '';
   altLangLink = 'bannerDocumentation';
   INFO_BANNER_ID = 'info_banner';
+  headingConfig = docPageheadingConfig;
   
   infoBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
@@ -57,55 +59,7 @@ export class BannerDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
-  interactiveDemoSlugConfig: slugTitleURLConfig = {
-    title: 'General.InteractiveDemo',
-    anchorType: slugAnchorType.primary
-  };
   
-  typesSlugConfig: slugTitleURLConfig = {
-    title: 'General.TypesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  configurationSlugConfig: slugTitleURLConfig = {
-    title: 'General.ConfigurationsHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  guidelineSlugConfig: slugTitleURLConfig = {
-    title: 'General.DesignGuidelinesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  anatomySlugConfig: slugTitleURLConfig = {
-    title: 'General.AnatomyHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  specsSlugConfig: slugTitleURLConfig = {
-    title: 'General.SpecsHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  contentGuideSlugConfig: slugTitleURLConfig = {
-    title: 'General.ContentGuidelinesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  figmaSlugConfig: slugTitleURLConfig = {
-    title: 'General.FigmaHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  accessibilitySlugConfig: slugTitleURLConfig = {
-    title: 'General.AccessibilityHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  researchSlugConfig: slugTitleURLConfig = {
-    title: 'General.ResearchHeading',
-    anchorType: slugAnchorType.primary
-  };
 
   figmaDirections: string[] = [
     'Banner.UsageInFigma.FigmaDirectionsListItem1',
@@ -155,7 +109,6 @@ export class BannerDocumentationComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private slugify: SlugifyPipe
   ) {
     this.currentLanguage = translate.currentLang;
   }

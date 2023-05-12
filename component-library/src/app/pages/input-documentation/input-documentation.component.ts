@@ -10,6 +10,7 @@ import {
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
+import { docPageheadingConfig }  from '@app/share/documentation-page-headings';
 
 @Component({
   selector: 'app-input-documentation',
@@ -20,6 +21,7 @@ import { ContentItem } from '@app/share/lan-switch/interface/content-item.interf
 export class InputDocumentationComponent implements OnInit {
   currentLanguage: string = '';
   anchorType = slugAnchorType;
+  headingConfig = docPageheadingConfig;
 
   altLangLink = 'inputDocumentation';
 
@@ -45,56 +47,6 @@ export class InputDocumentationComponent implements OnInit {
   inputTitleSlugConfig: slugTitleURLConfig = {
     title: 'Input.Title',
     heading: 'h1',
-    anchorType: slugAnchorType.primary
-  };
-
-  interactiveDemoSlugConfig: slugTitleURLConfig = {
-    title: 'General.InteractiveDemo',
-    anchorType: slugAnchorType.primary
-  };
-
-  typesSlugConfig: slugTitleURLConfig = {
-    title: 'General.TypesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  configurationSlugConfig: slugTitleURLConfig = {
-    title: 'General.ConfigurationsHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  guidelineSlugConfig: slugTitleURLConfig = {
-    title: 'General.DesignGuidelinesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  anatomySlugConfig: slugTitleURLConfig = {
-    title: 'General.AnatomyHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  specsSlugConfig: slugTitleURLConfig = {
-    title: 'General.SpecsHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  contentGuideSlugConfig: slugTitleURLConfig = {
-    title: 'General.ContentGuidelinesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  figmaSlugConfig: slugTitleURLConfig = {
-    title: 'General.FigmaHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  accessibilitySlugConfig: slugTitleURLConfig = {
-    title: 'General.AccessibilityHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  researchSlugConfig: slugTitleURLConfig = {
-    title: 'General.ResearchHeading',
     anchorType: slugAnchorType.primary
   };
 
