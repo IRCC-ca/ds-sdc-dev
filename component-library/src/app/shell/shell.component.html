@@ -1,28 +1,37 @@
 <div>
   <div class="header">
     <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
-    <h1 class="emphasis">{{ 'Overview.SubHeading' | translate }}</h1>
-  </div>
-  <div class="main-container top {{ navStatus }}">
-    <div
-      class="content"
-      role="main"
-    >
-      <div class="content-area-responsive">
-        <div class="page-content">
-          <router-outlet></router-outlet>
-          <p>{{ 'Home.DateModified' | translate }}: 2023-02-10</p>
-        </div>
+    <!-- <div class="container">
+      <h1 class="emphasis">{{ 'Overview.SubHeading' | translate }}</h1>
+      <div>
+        <a routerLink="/en/overview">overview</a>
+        <a routerLink="/en/mahsa-en">mahsa</a>
+        <a routerLink="/en/michael-en">michael</a>
+        <a routerLink="/en/mike-en">mike</a>
+        <a routerLink="/en/naseer-en">naseer</a>
+        <a routerLink="/en/accessibility-demo">Accessibility Demo</a>
+        <a routerLink="/en/banner-doc">Banner Documentation</a>
+        <a routerLink="/en/codeview">Codeview</a>
+        <a routerLink="/en/button-doc">Button Documentation</a>
+        <a routerLink="/en/input-documentation">Input Documentation</a>
       </div>
-    </div>
+    </div> -->
   </div>
   <main>
     <div class="main-container top {{ navStatus }}">
-      <app-side-nav
-        class="left-nav"
+      <!-- <app-side-nav
+        
         [navBarData]="leftNavData"
         [mobileToggleIcon]="true"
-      ></app-side-nav>
+      ></app-side-nav> -->
+
+      <ircc-cl-lib-navigation
+        class="left-nav"
+        [config]="navConfig"
+      >
+        <div navigationContentTop><p>Header projected Area</p></div>
+        <div navigationContentBottom><p>Footer projected Area</p></div>
+      </ircc-cl-lib-navigation>
       <div
         class="content"
         role="main"

@@ -50,6 +50,7 @@
 @use "./component-styling/flyout-option/flyout-option";
 @use "./component-styling/navigation/navigation";
 @use "./component-styling/navigation/navigation-accordion";
+@use "./component-styling/navigation/navigation-header";
 @use "./typography/fa-wrapper";
 
 @forward "./theme/theme" as theme-*;
@@ -133,6 +134,7 @@
     @include element(flyout-option);
     @include element(navigation);
     @include element(navigation-accordion);
+    @include element(navigation-header);
   }
 
   @else {
@@ -229,6 +231,8 @@
     @include navigation.create();
   } @else if $key == navigation-accordion {
     @include navigation-accordion.create();
+  }  @else if $key == navigation-header {
+     @include navigation-header.create();
   }
   
 }

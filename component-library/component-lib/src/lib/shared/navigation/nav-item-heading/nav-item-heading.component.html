@@ -1,12 +1,17 @@
 <div
   [id]="config.id"
+  [attr.size]="config.size"
   class="lib-nav-header"
 >
-  <h4>{{ config?.label || '' | translate }}</h4>
-  <ircc-cl-lib-icon
-    class="icon-trailing"
-    [config]="{ FA_keywords: config?.icon || '' }"
-  ></ircc-cl-lib-icon>
+  <div class="nav-header-header">
+    <h5>{{ config?.label || '' | translate }}</h5>
+    <ircc-cl-lib-icon-button
+      (clickEvent)="clickEvent($event)"
+      [config]="buttonIcon"
+    ></ircc-cl-lib-icon-button>
+  </div>
 
-  <ng-content></ng-content>
+  <div class="nav-header-content">
+    <ng-content></ng-content>
+  </div>
 </div>

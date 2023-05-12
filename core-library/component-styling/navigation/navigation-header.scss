@@ -9,7 +9,7 @@
 @use "sass:map";
 
 @mixin selector {
-  ircc-cl-lib-nav-accordion#{template-const.$escape} {
+  ircc-cl-lib-nav-header#{template-const.$escape} {
     @content;
   }
 }
@@ -21,14 +21,30 @@
 }
 
 @mixin large-styles() {
-  
+  .nav-header-header{
+    h4,h5{
+      @include typography.fontSet(heading, 4, emphasis);
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
 }
 
 @mixin small-styles() {
-  font-size: 0;
+  
+
+  .nav-header-header{
+    h4,h5{
+      @include typography.fontSet(heading, 4, emphasis);
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+  
 }
 
 @mixin layout {
+
   @include size.selector(large) {
     @include large-styles();
 
@@ -45,26 +61,26 @@
     }
   }
 
-  .accordion-nav{
+  .nav-header-header{
     display: grid;
-    grid-template-columns: auto 20px;
+    grid-template-columns: auto auto;
 
-    ircc-cl-lib-icon, .accordion-expand-button{
-      align-self: center;
+    ircc-cl-lib-icon-button{
+      align-self: self-end;
+      justify-self: self-end;
 
       &:hover{
         cursor: pointer;
       }
     }
+
+    h4,h5{
+        align-self: center;
+        padding: 0px;
+        margin: 0px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
   }
 
-  .accordion-content{
-    &.open{
-      display: block;
-    }
-
-    &.close{
-      display: none;
-    }
-  } 
 }

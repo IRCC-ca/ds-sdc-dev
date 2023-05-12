@@ -4,20 +4,24 @@
   class="lib-nav-item"
 >
   <div class="accordion-panel">
-    <div class="accordion-nav">
-      <h5>{{ config?.label || '' | translate }}</h5>
+    <div
+      class="accordion-nav"
+      (click)="openAccordion()"
+    >
+      <ircc-cl-lib-nav-header
+        [attr.size]="config.size"
+        [label]="config?.label || ''"
+      ></ircc-cl-lib-nav-header>
       <div class="accordion-expand-button">
         <ircc-cl-lib-icon
           *ngIf="config.open === true"
           class="icon-trailing"
           [config]="{ FA_keywords: 'fa-light fa-chevron-up' }"
-          (click)="openAccordion()"
         ></ircc-cl-lib-icon>
         <ircc-cl-lib-icon
           *ngIf="config.open === false"
           class="icon-trailing"
           [config]="{ FA_keywords: 'fa-light fa-chevron-down' }"
-          (click)="openAccordion()"
         ></ircc-cl-lib-icon>
       </div>
     </div>
