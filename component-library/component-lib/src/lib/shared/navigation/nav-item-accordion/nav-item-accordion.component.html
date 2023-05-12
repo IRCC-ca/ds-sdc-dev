@@ -8,6 +8,13 @@
       <ircc-cl-lib-nav-header
         [attr.size]="config.size"
         [label]="config?.label || ''"
+      >
+        <div
+          [class]="
+            config.open ? 'open accordion-content' : 'close accordion-content'
+          "
+        >
+          <ng-content></ng-content></div
       ></ircc-cl-lib-nav-header>
       <div class="accordion-expand-button">
         <ircc-cl-lib-icon-button
@@ -21,13 +28,6 @@
           [config]="buttonIconClose"
         ></ircc-cl-lib-icon-button>
       </div>
-    </div>
-    <div
-      [class]="
-        config.open ? 'open accordion-content' : 'close accordion-content'
-      "
-    >
-      <ng-content></ng-content>
     </div>
   </div>
 </div>
