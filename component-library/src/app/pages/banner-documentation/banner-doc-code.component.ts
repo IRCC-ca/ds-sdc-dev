@@ -10,9 +10,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import {
   slugAnchorType,
-  slugTitleURLConfig,
-  slugTitleURLType
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
+import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
 
 @Component({
   selector: 'app-banner-doc-code',
@@ -39,15 +39,52 @@ export class BannerDocCodeComponent implements OnInit {
   ]);
 
   interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'Interactive Demo',
     anchorType: slugAnchorType.primary
   };
 
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    cta: []
+    cta: [],
   };
+
+  bannerConfigCodeView: any = {
+    id: this.bannerConfig.id,
+    title: this.bannerConfig.title,
+    content: this.bannerConfig.content,
+    type: this.bannerConfig.type,
+    rounded: this.bannerConfig.rounded,
+    dismissible: this.bannerConfig.dismissible,
+    cta: this.bannerConfig.cta,
+    size: this.bannerConfig.size,
+    ariaDissmissible: this.bannerConfig.ariaDissmissible
+  };
+
+  codeViewConfig: ICodeViewerConfig = {
+    id: 'banner-code-viewer',
+    openAccordion: true,
+    selected: 'html',
+    tab: [
+      {
+        id: 'html',
+        title: 'HTML',
+        value:
+          `<div>\n`+
+          '  <ircc-cl-lib-banenr [config]="bannerConfig"></ircc-cl-lib-banner>\n'+
+          '</div>'
+
+      },
+      {
+        id: 'ts',
+        title: 'TypeScript',
+        value:
+          "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n"+
+          `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`
+      }
+    ]
+  };
+
+
 
   toggles: IRadioInputComponentConfig[] = [
     {
@@ -206,6 +243,7 @@ export class BannerDocCodeComponent implements OnInit {
     } else if (value === 'critical') {
       this.bannerConfig.type = 'critical';
     }
+    this.parseCodeViewConfig();
   }
 
   /**
@@ -405,6 +443,28 @@ export class BannerDocCodeComponent implements OnInit {
     };
   }
 
+  private parseCodeViewConfig() {
+    const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
+    if (-1 == index || !index) return;
+    this.bannerConfigCodeView = {
+      ...this.bannerConfigCodeView,
+      id: this.bannerConfig.id,
+      title: this.bannerConfig.title,
+      content: this.bannerConfig.content,
+      type: this.bannerConfig.type,
+      rounded: this.bannerConfig.rounded,
+      dismissible: this.bannerConfig.dismissible,
+      cta: this.bannerConfig.cta,
+      size: this.bannerConfig.size,
+      ariaDissmissible: this.bannerConfig.ariaDissmissible
+    };
+    if (this.codeViewConfig?.tab) {
+      this.codeViewConfig.tab[index].value =
+        "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n"+
+        `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`
+    }
+  }
+
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
@@ -422,6 +482,7 @@ export class BannerDocCodeComponent implements OnInit {
       this.handlePlainButtonToggle(value);
       this.handleSecondaryButtonToggle(value), this.handleLinkToggle(value);
       this.bannerConfig = this.parseToggleConfig(value);
+      this.parseCodeViewConfig();
     });
   }
 }

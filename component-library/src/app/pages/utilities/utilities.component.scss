@@ -1,0 +1,36 @@
+@use 'src/scss/grid';
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
+app-utilities {
+  @include grid.row;
+  .spacing-sample {
+    height: 20px;
+    margin: 0 auto;
+    background: var(--purple-1);
+    border-left: 1px solid var(--purple-7);
+    border-right: 1px solid var(--purple-7);
+  }
+  .utility-txt {
+    @include typography.fontSet(body, 1, regular);
+    margin: 0;
+  }
+  .descriptions {
+    @include typography.fontSet(body, 3, regular);
+    margin: 0;
+  }
+  table {
+    margin-top: 24px;
+  }
+}
+div.color-sample {
+  width: 88px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.typo-sample {
+  p.alphabet {
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}

@@ -1,3 +1,4 @@
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
 $radius: 6px;
 table {
   border: 1px solid var(--border);
@@ -13,8 +14,7 @@ table {
     border-color: var(--divider);
   }
   th {
-    @extend .h6;
-    font-weight: 700 !important;
+    @include typography.fontSet(heading, 6, emphasis);
     text-align: left;
     &:first-child {
       border-radius: $radius 0 0 0;
@@ -24,7 +24,7 @@ table {
     }
   }
   tr {
-    @extend .body3;
+    @include typography.fontSet(body, 3, regular);
   }
   tr:last-child {
     > td {
