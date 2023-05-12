@@ -1,0 +1,242 @@
+@use '../../../core-library/util/device' as device;
+
+.content-doc-wrapper {
+  box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+  }
+}
+
+h3 {
+  display: inline-block;
+  font-weight: 700;
+
+  &.primary {
+    font-size: 36px;
+  }
+
+  &.secondary {
+    font-size: 28px;
+    margin-top: 60px;
+  }
+}
+
+.body1.intro {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.body3.demo {
+  margin-top: 0px;
+  margin-bottom: 24px;
+}
+
+.subtitles {
+  margin-bottom: 12px;
+}
+
+.body3.subtext-1 {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.body3.subtext-2 {
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
+
+.body3.subtext-3 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.body3.subtext-4 {
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+
+.body3.subtext-5 {
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.body3.subtext-6 {
+  margin-top: 8px;
+  margin-bottom: 48px;
+}
+
+.body3.subtext-7 {
+  margin-top: 8px;
+  margin-bottom: 44px;
+}
+
+.body3.subtext-8 {
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+
+.body3.subtext-9 {
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.body3.subtext-10 {
+  margin-top: 8px;
+  margin-bottom: 68px;
+}
+
+.body3.subtext-11 {
+  margin-top: 8px;
+  margin-bottom: 88px;
+}
+
+.body3.subtext-12 {
+  margin-top: 8px;
+  margin-bottom: 52px;
+}
+
+.body3.subtext-13 {
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+
+.body3.last {
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+
+.body3.anatomy {
+  margin-bottom: 0px;
+}
+
+.config-heading {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+ul {
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+
+.end-list {
+  margin-bottom: 0px;
+}
+
+> a {
+  margin-left: 16px;
+  position: relative;
+  bottom: 5px;
+  text-decoration: none;
+  color: var(--link-text);
+  cursor: pointer;
+}
+
+h5 {
+  font-weight: 700;
+  margin-bottom: 12px;
+  margin-top: 0px;
+
+  &.text-underline {
+    border-bottom: 1px solid;
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+
+  &.text-color-green {
+    color: var(--success-text);
+  }
+
+  &.text-color-red {
+    color: var(--critical-text);
+  }
+
+  &.round-purple-num {
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    position: relative;
+    top: 2px;
+  }
+}
+
+span {
+  &.round-purple-num {
+    color: #592d85;
+    font-weight: 700;
+    background-color: #e1d1f0;
+    padding: 9px 15px;
+    border-radius: 50%;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+
+  @include device.in-phone-layout() {
+    flex-wrap: wrap;
+  }
+}
+
+.column {
+  width: 50%;
+
+  @include device.in-phone-layout() {
+    width: 100%;
+  }
+}
+
+.left-column {
+  margin-right: 12px;
+}
+
+.right-column {
+  margin-left: 12px;
+}
+
+.code-viewer {
+  margin-top: 24px;
+}
+
+.config-row {
+  //most sections wrap responsively but the config section does not
+  display: flex;
+  justify-content: flex-start;
+}
+
+.figma-usage {
+  max-width: 547px;
+  margin-right: 20px;
+
+  @include device.in-tablet-layout() {
+    max-width: 444px;
+  }
+}
+
+.image-container-1 {
+  max-width: 232px;
+  height: auto;
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+}
+
+.image-container-2 {
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+}
+
+.three-column-row {
+  display: flex;
+  justify-content: space-between;
+
+  @include device.in-tablet-layout() {
+    flex-wrap: wrap;
+  }
+}
+
+ol > li::marker {
+  font-weight: bold;
+}
