@@ -40,6 +40,7 @@
     "@popperjs/core": "^2.11.0",
     "bootstrap": "^5.0.2",
     "ircc-ds-angular-component-library": "file:projects/ircc-ds-angular-component-library",
+    "@ircc-ca/ds-sdc-core": "file:../core-library",
     "ngx-highlightjs": "^7.0.1",
     "ngx-markdown": "^14.0.1",
     "rxjs": "^7.5.0",
