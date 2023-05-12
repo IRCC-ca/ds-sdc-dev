@@ -202,10 +202,18 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   setInputType(value: any) {
     switch (value) {
       case 'password':
-        this.inputConfig.type = 'password';
+        this.inputConfig = {
+          ...this.inputConfig,
+          type: 'password',
+          label: 'Password'
+        };
         break;
       default:
-        this.inputConfig.type = 'text';
+        this.inputConfig = {
+          ...this.inputConfig,
+          type: 'text',
+          label: 'Label text'
+        };
         break;
     }
     this.parseCodeViewConfig();

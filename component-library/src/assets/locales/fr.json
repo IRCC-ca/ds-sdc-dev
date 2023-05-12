@@ -110,7 +110,7 @@
     "FigmaDirectionsListItem1": "Dans le panneau des ressources, faire glisser le composant « bouton » à partir de la bibliothèque des composants.",
     "FigmaDirectionsListItem2": "Dans le panneau de droite, configurer les propriétés et les variantes en fonction de vos besoins.",
     "FigmaDirectionsListItem3": "Ne jamais modifier les couleurs, le rayon, le remplissage, la taille du texte, etc. De cette façon, les éléments fondamentaux restent cohérents.",
-    "FigmaDirectionsListItem4": "Si une icône est utilisée, les concepteurs peuvent <a target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>modifier</a> le mot-clé de Font Awesome afin de mettre à jour l’icône du bouton pour n’importe quelle icône de Font Awesome.",
+    "FigmaDirectionsListItem4": "Si une icône est utilisée, les concepteurs peuvent <a class='link' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>modifier</a> le mot-clé de Font Awesome afin de mettre à jour l’icône du bouton pour n’importe quelle icône de Font Awesome.",
     "FigmaDirectionsImgAlt": "Une capture d’écran du panneau de conception de Figma. Le panneau de conception affiche les options de configuration parmi lesquelles les concepteurs peuvent choisir lorsqu’ils personnalisent un bouton.",
     "AccessibilityHeading": "Accessibilité",
     "AccessibilityColourHeading": "Contraste des couleurs",
@@ -132,7 +132,7 @@
       "bp-figma-usage": "Définir la largeur du cadre à {{px}} pixels"
     },
     "Heading": "Utilitaires",
-    "Text": "Les jetons sont des utilitaires réutilisables qui sont appliqués de manière cohérente aux éléments et aux composants dans l’ensemble du système de conception. Cela crée une cohérence dans la façon dont les couleurs, l’espacement, etc. sont appliqués et cela permet d’effectuer des répétitions des conceptions à l’échelle mondiale qui sont efficaces et fiables.",
+    "Text": "[FR] Utilities are re-usable tokens, variables, etc. that are applied consistently to elements and components throughout the entire design system. This creates consistency in how the design system’s foundations are applied and allows efficient and reliable design iterations to be made globally.",
     "TypographyHeading": "Typographie",
     "TypographyText": "L’échelle de caractères réduit le nombre de styles au minimum et elle est conçue pour assurer une hiérarchie visuelle efficace du contenu dans son ensemble. Les styles de texte comprennent des tailles de points, des hauteurs de lignes et des espacements de paragraphes qui répondent aux normes d’accessibilité AAA de la version 2.1 des normes WCAG.",
     "SpacingHeading": "Espacement",
@@ -267,7 +267,9 @@
     "TypographyTableSizeHeading": "Format",
     "TypographyTableLineHeightHeading": "Hauteur de ligne et espacement des paragraphes",
     "TypographyTableFigmaHeading": "Style de texte Figma",
-    "TypographyTableTokenHeading": "Nom du cours"
+    "TypographyTableTokenHeading": "Nom du cours",
+    "AccessibilityHeading": "[FR] Accessibility",
+    "Letter": "[FR] Aa"
   },
   "RightSideNav": {
     "OnThisPage": "Sur cette page"
@@ -298,25 +300,25 @@
   },
   "Overview": {
     "Heading": "Aperçu",
-    "Contact": "Contactez-nous",
     "SubHeading": "Système de conception IRCC",
     "Text": "Le système de conception IRCC est une boîte à outils de conception et de code partagés qui fournit un langage visuel, des composants, des modèles et des directives, le tout dans une source de vérité centralisée qui permet aux équipes de produits de créer des expériences évolutives, accessibles et unifiées. Il est personnalisé pour l'expérience du client et de l'agent et permet aux équipes de créer efficacement des services numériques d'immigration cohérents.",
     "DesignerHeading": "Pour les concepteurs",
     "DesignerText": "Découvrez comment démarrer avec la bibliothèque Figma du système de conception IRCC.",
     "DeveloperHeading": "Pour les développeurs",
     "DeveloperText": "Découvrez comment commencer à mettre en œuvre le système de conception IRCC dans votre projet.",
-    "GetStartedHeading": "Commencer"
+    "GetStartedHeading": "Commencer",
+    "DeveloperPackageTxt": "FR This package contains the theming functionality for the Journey Design System."
   },
   "Designers": {
     "Heading": "Pour les concepteurs",
     "HeadingText": "Si vous êtes un concepteur, commencez ici pour trouver tout ce dont vous avez besoin pour utiliser la bibliothèque Figma du système de conception.",
     "AboutHeading": "À propos de la bibliothèque de conception",
     "AboutText1": "Le système de conception consiste, en partie, d'une bibliothèque Figma. Il s'agit du principal outil à utiliser par les concepteurs et il leur permet de créer des conceptions compatibles avec le système. La bibliothèque de conception est un ensemble centralisé de fichiers Figma qui est géré par une équipe de système de conception de base. En connectant votre projet à la bibliothèque de conception, vos projets hériteront automatiquement des mises à jour, des améliorations et des nouvelles fonctionnalités publiées dans la bibliothèque de conception.",
-    "AboutText2": "Figma est une plate-forme de conception collaborative conçue pour gérer les cas d'utilisation de l'interface utilisateur/UX et du système de conception. En savoir plus sur Figma ou parcourir la chaîne <a target='_blank' href='https://www.youtube.com/@Figma'>Youtube</a> de Figma pour vous familiariser avec le logiciel ou regarder des didacticiels.",
+    "AboutText2": "Figma est une plate-forme de conception collaborative conçue pour gérer les cas d'utilisation de l'interface utilisateur/UX et du système de conception. En savoir plus sur Figma <a class='link' target='_blank' href='https://www.figma.com'>ici</a> ou parcourir la chaîne <a class='link' target='_blank' href='https://www.youtube.com/@Figma'>[FR] Figma’s Youtube channel</a> de Figma pour vous familiariser avec le logiciel ou regarder des didacticiels.",
     "AccessHeading": "Demande d'accès à la bibliothèque de conception",
     "AccessText1": "La bibliothèque de conception est publiée en tant que bibliothèque d'équipe sur Figma. Il existe actuellement trois fichiers Figma à connecter à votre projet afin d'accéder au système de conception complet - Foundations, Components et Patterns. Voici les étapes pour y accéder :",
-    "AccessListItem1": "<a target='_blank' href='https://www.figma.com/signup'>Créez un compte Figma</a> si vous n'en avez pas déjà un.",
-    "AccessListItem2": "Envoyez un courriel à <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a> et indiquez-nous le courriel que vous utilisez pour votre compte Figma. Vous recevrez une réponse dès que nous vous aurons accordé l'accès.",
+    "AccessListItem1": "<a class='link' target='_blank' href='https://www.figma.com/signup'>Créez un compte Figma</a> si vous n'en avez pas déjà un.",
+    "AccessListItem2": "Envoyez un courriel à <a class='link' href='mailto:Matthew.Emond@cic.gc.ca'>Matthew.Emond@cic.gc.ca</a> et indiquez-nous le courriel que vous utilisez pour votre compte Figma. Vous recevrez une réponse dès que nous vous aurons accordé l'accès.",
     "AccessListItem3": "Une fois que vous avez reçu la confirmation que vous avez accès, connectez-vous à Figma avec le courriel que vous avez fourni.",
     "AccessListItem4": "Créez un nouveau fichier de conception ou ouvrez un projet existant.",
     "AccessListItem5": "Dans la barre latérale gauche, sélectionnez 'Assets', puis sélectionnez l'icône de la bibliothèque d'équipe.",
@@ -326,7 +328,7 @@
     "FigmaImg1AltText": "L'interface Figma utilisée pour connecter des bibliothèques de composants externes à un fichier Figma.",
     "InstallFontsHeading": "Installation des polices du système de conception",
     "InstallFontsText1": "Le système de conception utilise Lato, Inter et Font Awesome (police d'icônes). Lato et Inter sont des polices Google et devraient être automatiquement disponibles dans Figma dans le sélecteur de polices. Font Awesome a été défini comme une 'police partagée' pour notre plan d'organisation et devrait également être disponible automatiquement dans Figma dans le sélecteur de polices. Si vous n'êtes pas membre de l'organisation Figma 'IRCC - Journey Labs', vous devrez obtenir et installer une version payante de Font Awesome ou utiliser votre propre police d'icônes en combinaison avec ce système de conception.",
-    "InstallFontsLink": "<a target='_blank' href='https://fontawesome.com/'>En savoir plus sur Font Awesome</a>",
+    "InstallFontsLink": "<a class='link' target='_blank' href='https://fontawesome.com/'>En savoir plus sur Font Awesome</a>",
     "InstallFontsLinkURL": "https://fontawesome.com/",
     "UsingStylesHeading": "Utilisation des styles du système de conception",
     "UsingStylesText1": "Une fois que vous vous êtes connecté aux bibliothèques Figma et que vous vous êtes assuré d'avoir accès aux bonnes polices dans Figma, vous êtes prêt à commencer à utiliser les styles de couleur et de texte du système.",
@@ -335,14 +337,14 @@
     "UsingStylesStrokeListItem2": "Sélectionnez le calque auquel vous souhaitez appliquer le style de couleur",
     "UsingStylesStrokeListItem3": "Dans le panneau de conception, cliquez sur l'icône de style (quatre points) et recherchez le style de couleur système que vous souhaitez appliquer sous les propriétés 'fill' et/ou 'stroke'",
     "UsingStylesStrokeListItem4": "Conseil de pro : utilisez le champ de recherche pour filtrer la liste des styles de couleur",
-    "UsingStylesStrokeText2": "Voir la liste de tous les jetons de couleur et comment ils s'appliquent. Nous ajouterons une <a href='/fr/utilitaires#couleurs'>page de couleurs</a> à ce site de documentation pour des détails et des conseils supplémentaires.",
+    "UsingStylesStrokeText2": "[FR] Click <a class='link' href='/en/utilities#colours'>here</a> to see a list of all colour tokens and how they apply. We will be adding a colours page to this documentation site for additional details and guidance.",
     "UsingStylesStrokeImgAltText": "L'interface Figma utilisée pour appliquer des styles de couleur à un calque.",
     "UsingStylesTextText1": "Pour appliquer un style de texte :",
     "UsingStylesTextListItem1": "Assurez-vous d'avoir connecté la bibliothèque 'Foundations' à votre fichier Figma",
     "UsingStylesTextListItem2": "Sélectionnez le calque de texte auquel vous souhaitez définir le style de texte",
     "UsingStylesTextListItem3": "Dans le panneau de conception, cliquez sur l'icône de style (quatre points) et recherchez le style de texte système que vous souhaitez appliquer sous la propriété 'text'.",
     "UsingStylesTextListItem4": "Conseil de pro : utilisez le champ de recherche pour filtrer la liste des styles de texte",
-    "UsingStylesTextText2": "Voir la <a href='/fr/utilitaires#typographie'>liste de tous les jetons de texte</a> et comment ils s'appliquent. Nous ajouterons une page de typographie à ce site de documentation pour plus de détails et de conseils.",
+    "UsingStylesTextText2": "[FR] Click <a class='link' href='/en/utilities#typography'>here</a> to see a list of all text tokens and how they apply. We will be adding a typography page to this documentation site for additional details and guidance.",
     "UsingStylesTextImgAltText": "L'interface Figma utilisée pour appliquer des styles de texte à un calque de texte.",
     "UsingComponentsHeading": "Utilisation des composants du système de conception",
     "UsingComponentsText1": "Une fois que vous vous êtes connecté aux bibliothèques Figma et que vous vous êtes assuré d'avoir accès aux bonnes polices dans Figma, vous êtes prêt à commencer à utiliser les composants du système.",
@@ -366,7 +368,20 @@
     "UsageHeading": "Usage",
     "ThemesHeading": "Themes",
     "FontAwesomeHeading": "Font Awesome",
-    "ReleasesHeading": "Versions"
+    "ReleasesHeading": "Versions",
+    "GetStartedTxt": "[FR] To install the IRCC Digital Journey Labs Design System styles, you will need to run the following command using <a class='link' target='_blank' href='https://www.npmjs.com'>npm</a>:",
+    "UsageTxt": "[FR] In your root-level stylesheet, initialize the design system with the following:",
+    "UsageTitle1": "[FR] For external websites:",
+    "UsageTitle2": "[FR] For internal websites:",
+    "ThemesTxt": "[FR] You can set the theme for your project to either Light, Dark or System. Setting the theme to System will apply the Light or Dark theme to your applications UI based on the users Operating System preferences.",
+    "ThemesTitle1": "[FR] To use the Light theme:",
+    "ThemesTitle2": "[FR] To use the Dark theme:",
+    "ThemesTitle3": "[FR] To use the users Operating System preference to set the theme:",
+    "FontAwesomeTxt": "[FR] The Design System core leverages the use of Font Awesome kits to import icons used by the design system. Place the following in the head of your project to pull down the relevant icons.",
+    "ReleasesTxt": "[FR] The Design System utilizes three different types of releases: patch releases, beta releases and full releases. To target a specific release type use the relevant pattern and specify the release number.",
+    "ReleasesTitle1": "[FR] To install a patch release:",
+    "ReleasesTitle2": "[FR] To install a beta release:",
+    "ReleasesTitle3": "[FR] To install a full release:"
   },
   "ERROR": {
     "fieldIsInvalid": "Ce champ est invalide.",
@@ -375,7 +390,7 @@
     "errorMessage": "Message d'erreur"
   },
   "Contact": {
-    "Text": "Pour faire part de vos commentaires (compliment, commentaire ou plainte) ou pour toute demande de renseignements, contactez <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
+    "Text": "Pour faire part de vos commentaires (compliment, commentaire ou plainte) ou pour toute demande de renseignements, contactez <a class='link' href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
   },
   "Accordion": {
     "ShowCode": "Afficher le code",
@@ -611,7 +626,7 @@
     "AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
     "ResearchText": "Coming soon.",
     "CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
-    "LabelText": "Label text",
+    "LabelText1": "Label text",
     "LabelText2": "Password"
   },
     "InteractiveDemo": {
@@ -759,5 +774,40 @@
     "FigmaDirectionsHeading": "[FR] Directions for use",
     "DoHeading": "[FR] Do",
     "DontHeading": "[FR] Don't"
+  },
+  "RequestForm": {
+    "Title": "Submit a request",
+    "Intro": "Some intro about what this is used for. Change requests, feature requests, bugs, etc.",
+    "BannerDesc": "This form is submitted to<a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>which is viewed by the design system team. We will review and respond to your request as soon as possible.",
+    "RequestCriteriaTitle": "Request criteria",
+    "RequestFormTitle": "Request form",
+    "requestCriteriaSubText1": "A request should show that the contribution to the system would be useful and unique.",
+    "requestCriteriaSubHeading1": "Useful",
+    "requestCriteriaSubText2": "There is evidence that this component or pattern would be useful for many teams or services.",
+    "requestCriteriaSubHeading2": "Unique",
+    "requestCriteriaSubText3": "It does not replicate something already in the Design System. If it’s intended to replace an existing component or pattern, there is evidence to show that it’s better than the existing version and solves existing use cases.",
+    "typeOfRequestRadio": "Type of request (required)",
+    "radioOption1": "Change request (modifying or adding to an existing system part)",
+    "radioOption2": "Feature request (Defining and creating na new system part)",
+    "radioOption3": "Bug (A system part that is not functioning as intended)",
+    "typeOfRequestRadioError": "No selection has been made. Please select an option",
+    "urgentOption1": "Yes",
+    "urgentOption2": "No",
+    "requestTitleLabel": "Request title (required)",
+    "requestTitleDesc": "Enter a brief title that represents the feature, change or bug.",
+    "requestDetailsLabel": "Request details (required)",
+    "requestDetailsDesc": "Describe the feature, change or bug.",
+    "useCaseLabel": "Use case(s) (required)",
+    "useCaseDesc": "Describe the use case(s) that you are currently unable to satisfy with the design system.",
+    "referencesLabel": "References",
+    "referencesCaseDesc": "Include any URLs you may have that we can view as reference. This can be website links or Figma design links, etc.",
+    "referencesHint": "We currently are unable to support attachments",
+    "urgentDetailsLabel": "Why is the request urgent? (required)",
+    "requestedDateLabel": "When is the completed work needed by? (required)",
+    "requestedDateDesc": "When would you need the work delivered in order for your team to start implementation into your project?",
+    "SubmitBtn": "Submit request",
+        "requiredTextAreaError": "This field is required.",
+    "fieldExceededMaxLength": "This field has exceeded max length.",
+    "requiredDateError": "Please fill in the missing fields"
   }
 }

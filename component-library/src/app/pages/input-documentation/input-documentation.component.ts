@@ -5,8 +5,7 @@ import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
 
 import {
   slugAnchorType,
-  slugTitleURLConfig,
-  slugTitleURLType
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
@@ -20,7 +19,6 @@ import { ContentItem } from '@app/share/lan-switch/interface/content-item.interf
 })
 export class InputDocumentationComponent implements OnInit {
   currentLanguage: string = '';
-  slugTitleURLType = slugTitleURLType;
   anchorType = slugAnchorType;
 
   altLangLink = 'inputDocumentation';
@@ -33,7 +31,7 @@ export class InputDocumentationComponent implements OnInit {
   basicInputConfig: IInputComponentConfig = {
     id: this.BASIC_INPUT_ID,
     formGroup: this.form_input,
-    label: 'Input.LabelText',
+    label: 'Input.LabelText1',
     type: 'text'
   };
 
@@ -45,67 +43,57 @@ export class InputDocumentationComponent implements OnInit {
   };
 
   inputTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Input.Title',
+    heading: 'h1',
     anchorType: slugAnchorType.primary
   };
 
   interactiveDemoSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.InteractiveDemo',
     anchorType: slugAnchorType.primary
   };
 
   typesSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.TypesHeading',
     anchorType: slugAnchorType.primary
   };
 
   configurationSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.ConfigurationsHeading',
     anchorType: slugAnchorType.primary
   };
 
   guidelineSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.DesignGuidelinesHeading',
     anchorType: slugAnchorType.primary
   };
 
   anatomySlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.AnatomyHeading',
     anchorType: slugAnchorType.primary
   };
 
   specsSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.SpecsHeading',
     anchorType: slugAnchorType.primary
   };
 
   contentGuideSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.ContentGuidelinesHeading',
     anchorType: slugAnchorType.primary
   };
 
   figmaSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.FigmaHeading',
     anchorType: slugAnchorType.primary
   };
 
   accessibilitySlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.AccessibilityHeading',
     anchorType: slugAnchorType.primary
   };
 
   researchSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.ResearchHeading',
     anchorType: slugAnchorType.primary
   };

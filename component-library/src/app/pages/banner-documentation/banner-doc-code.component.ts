@@ -10,8 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import {
   slugAnchorType,
-  slugTitleURLConfig,
-  slugTitleURLType
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
 

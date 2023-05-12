@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { slugAnchorType, slugTitleURLConfig, slugTitleURLType } from '@app/components/title-slug-url/title-slug-url.component';
+import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
@@ -49,67 +49,56 @@ export class BannerDocumentationComponent implements OnInit {
   };
 
   pageTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'Banner.Title',
     anchorType: slugAnchorType.primary
   };
 
   interactiveDemoSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.InteractiveDemo',
     anchorType: slugAnchorType.primary
   };
   
   typesSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.TypesHeading',
     anchorType: slugAnchorType.primary
   };
 
   configurationSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.ConfigurationsHeading',
     anchorType: slugAnchorType.primary
   };
 
   guidelineSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.DesignGuidelinesHeading',
     anchorType: slugAnchorType.primary
   };
 
   anatomySlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.AnatomyHeading',
     anchorType: slugAnchorType.primary
   };
 
   specsSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.SpecsHeading',
     anchorType: slugAnchorType.primary
   };
 
   contentGuideSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.ContentGuidelinesHeading',
     anchorType: slugAnchorType.primary
   };
 
   figmaSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.FigmaHeading',
     anchorType: slugAnchorType.primary
   };
 
   accessibilitySlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.AccessibilityHeading',
     anchorType: slugAnchorType.primary
   };
 
   researchSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'General.ResearchHeading',
     anchorType: slugAnchorType.primary
   };

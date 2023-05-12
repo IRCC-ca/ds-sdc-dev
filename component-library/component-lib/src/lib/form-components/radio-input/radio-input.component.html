@@ -10,7 +10,6 @@
     <div
       *ngFor="let option of config.options; let index = index"
       class="radio"
-      (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
     >
       <!-- TODO: See if we can remove the error state from here, since it is controlled by the formControl -->
       <input
@@ -18,10 +17,11 @@
         type="radio"
         value="{{ option.value || option.text }}"
         id="{{ config.id + index }}"
+        (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
         [formControlName]="config.id ? config.id : 'formControl'"
         [attr.disabled]="getDisabled(index)"
         [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size"
-        [attr.aria-invalid]="formControl?.errors"
+        [attr.aria-invalid]="formControl?.invalid"
         [attr.aria-live]="'off'"
         [attr.aria-label]="
           formControl?.invalid && touched
