@@ -1,6 +1,7 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { TranslateService } from '@ngx-translate/core';
 export interface ITabNavConfig {
   id: string;
   tab?: ITabConfig[];
@@ -23,6 +24,10 @@ export class TabsComponent implements OnInit {
     showContent: true
   };
   @Output() valueChange = new EventEmitter<string>();
+
+  constructor(
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     if (this.config.selected === undefined && this.config.tab) {
