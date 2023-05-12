@@ -56,7 +56,7 @@ export class navItemAccordionComponent implements OnInit {
     this.label !== '' ? (this.config.label = this.label) : undefined;
     this.size !== undefined ? (this.config.size = this.size) : undefined;
 
-    this.headerID = `${this.id}-header`;
+    this.headerID = `${this.id}_header`;
 
     this.buttonIconOpen = {
       id: `${this.config.id}_button_open`,
