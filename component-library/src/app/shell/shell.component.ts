@@ -43,7 +43,8 @@ export class ShellComponent implements OnInit {
     id: 'Overview.Heading',
     icon: '',
     type: 'link',
-    children: []
+    children: [],
+    indicator: {status: 'information', icon: 'fa-regular fa-m'}
   };
   itemAB: NavigationItemLink = {
     label: 'Designers.Heading',

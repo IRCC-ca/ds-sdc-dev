@@ -1,9 +1,23 @@
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { IndicatorStatus, IndicatorType } from '../indicator/indicator.component';
 
 export enum NavigationItemType {
   accordion = 'accordion',
   heading = 'heading',
   link = 'link'
+}
+
+export enum NavigationStatus {
+  notStarted = 'notStarted',
+  inProgress = 'inProgress',
+  complete = 'complete',
+  locked = 'locked'
+}
+
+export interface NavigationIndicator {
+  status: keyof typeof IndicatorStatus;
+  icon: string;
+  label?: string;
 }
 
 export interface NavigationItem {
@@ -12,6 +26,7 @@ export interface NavigationItem {
   type: keyof typeof NavigationItemType;
   size?: keyof typeof DSSizes;
   children: NavigationItem[];
+  indicator?: NavigationIndicator;
 }
 
 export interface NavigationItemAccordion extends NavigationItem {
