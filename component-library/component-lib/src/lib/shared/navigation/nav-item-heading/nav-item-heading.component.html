@@ -1,11 +1,12 @@
 <div [id]="config.id">
   <div class="nav-header-header">
-    <h5>{{ config?.label || '' | translate }}</h5>
-    <ircc-cl-lib-icon-button
+    <ircc-cl-lib-icon
       *ngIf="config.icon.length > 0"
       (clickEvent)="clickEvent($event)"
-      [config]="buttonIcon"
-    ></ircc-cl-lib-icon-button>
+      [config]="{ FA_keywords: config.icon }"
+      [attr.size]="config.size"
+    ></ircc-cl-lib-icon>
+    <h5>{{ config?.label || '' | translate }}</h5>
   </div>
 
   <div class="nav-header-content">
