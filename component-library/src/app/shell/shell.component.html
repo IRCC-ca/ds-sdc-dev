@@ -2,7 +2,9 @@
   <div class="header">
     <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
     <div class="container">
-      <h1 class="emphasis">{{ 'Overview.SubHeading' | translate }}</h1>
+      <h2 [ngClass]="{ emphasis: true, h4: mobile }">
+        {{ 'Overview.SubHeading' | translate }}
+      </h2>
       <div>
         <a routerLink="/en/overview">overview</a>
         <a routerLink="/en/mahsa-en">mahsa</a>
