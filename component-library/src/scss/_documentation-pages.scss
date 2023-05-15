@@ -10,20 +10,6 @@
   }
 }
 
-h3 {
-  display: inline-block;
-  font-weight: 700;
-
-  &.primary {
-    font-size: 36px;
-  }
-
-  &.secondary {
-    font-size: 28px;
-    margin-top: 60px;
-  }
-}
-
 .body1.intro {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -166,9 +152,9 @@ h5 {
 
 span {
   &.round-purple-num {
-    color: #592d85;
+    color: var(--purple-9);
     font-weight: 700;
-    background-color: #e1d1f0;
+    background-color: var(--purple-2);
     padding: 9px 15px;
     border-radius: 50%;
   }

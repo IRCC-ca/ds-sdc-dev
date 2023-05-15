@@ -56,6 +56,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   pageTitleSlugConfig: slugTitleURLConfig = {
     title: 'Banner.Title',
+    heading: 'h1',
     anchorType: slugAnchorType.primary
   };
 

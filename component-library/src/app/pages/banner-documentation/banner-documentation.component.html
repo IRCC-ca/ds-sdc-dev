@@ -1,8 +1,5 @@
 <div class="content-doc-wrapper">
-  <app-title-slug-url
-    [config]="pageTitleSlugConfig"
-    class="h1 emphasis"
-  ></app-title-slug-url>
+  <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Banner.Intro' | translate }}</p>
 
   <section class="interactive-demo">
@@ -17,16 +14,15 @@
     <!-- Info Banner Preview -->
     <app-title-slug-url
       [config]="headingConfig.typesSlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <h5 class="emphasis type-heading">
       {{ 'Banner.InfoHeading' | translate }}
     </h5>
     <app-component-preview
       class="h6"
-      copyStyle="<button category='secondary'>{{
+      copyText="<banner category='secondary'>{{
         'Buttons.SecondaryIBtnText' | translate
-      }}</button>"
+      }}</banner>"
       componentType="banner"
     >
       <ircc-cl-lib-banner
@@ -114,7 +110,6 @@
   <section class="configs">
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <div class="config-row">
       <div class="column">
@@ -214,7 +209,6 @@
   <section class="design-guide">
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <h5 class="h5 emphasis subtitles">
       {{ 'Banner.DesignGuideLines.KeepActionsSimpleLabel' | translate }}
@@ -388,7 +382,6 @@
   <section class="anatomy">
     <app-title-slug-url
       [config]="headingConfig.anatomySlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <img
       src="assets/img/banner-content/banner-anatomy.png"
@@ -406,7 +399,6 @@
   <section class="specs">
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <img
       class="single-img"
@@ -421,7 +413,6 @@
   <section class="content-guidelines">
     <app-title-slug-url
       [config]="headingConfig.contentGuideSlugConfig"
-      lass="h3 emphasis"
     ></app-title-slug-url>
 
     <h5 class="subtitles">
@@ -529,7 +520,6 @@
   <section class="usage-figma">
     <app-title-slug-url
       [config]="headingConfig.figmaSlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <div class="row">
       <div class="figma-usage">
@@ -556,7 +546,6 @@
   <section class="accessibility">
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <h5 class="h5 emphasis subtitles">
       {{ 'Input.AccessibilityColourHeading' | translate }}
@@ -580,7 +569,6 @@
   <section class="research">
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <p class="body3 subtext-1">{{ 'Input.ResearchText' | translate }}</p>
   </section>
