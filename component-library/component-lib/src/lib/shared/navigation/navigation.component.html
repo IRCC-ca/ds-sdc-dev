@@ -7,11 +7,14 @@
     <ircc-cl-lib-icon
       class="icon-leading"
       [config]="{ FA_keywords: config?.iconLeading || '' }"
+      (click)="clickIconLeading(config.id + '_icon_leading')"
     ></ircc-cl-lib-icon>
-    <h4>{{ config?.label || '' | translate }}</h4>
+    <h3>{{ config?.label || '' | translate }}</h3>
     <ircc-cl-lib-icon
+      [id]="config.id + '_icon_trailing'"
       class="icon-trailing"
       [config]="{ FA_keywords: config?.iconTrailing || '' }"
+      (click)="clickIconTrailing(config.id + '_icon_trailing')"
     ></ircc-cl-lib-icon>
   </div>
 

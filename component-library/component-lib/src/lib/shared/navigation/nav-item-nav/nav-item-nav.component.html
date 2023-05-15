@@ -2,8 +2,13 @@
   [id]="config.id"
   class="lib-nav-item"
 >
-  <a [routerLink]="config?.href || '' | translate">
-    <h5>{{ config?.label || '' | translate }}</h5>
+  <a
+    [routerLink]="config?.href || '' | translate"
+    style="display: block; margin-bottom: 24px"
+  >
+    <p style="margin-block-start: 0; margin-block-end: 0; font-size: 16px">
+      {{ config?.label || '' | translate }}
+    </p>
     <ircc-cl-lib-icon
       class="icon-trailing"
       [config]="{ FA_keywords: config?.icon || '' }"

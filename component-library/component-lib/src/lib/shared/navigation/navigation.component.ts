@@ -80,4 +80,11 @@ export class navigationComponent implements OnInit {
   arrayOfObject = (obj: any) => {
     return Object.keys(obj);
   };
+
+  clickIconLeading = (event: any) => {
+    alert(`Insert Service Here. Button id: ${event}`);
+  };
+  clickIconTrailing = (event: any) => {
+    alert(`Insert Service Here. Button id: ${event}`);
+  };
 }

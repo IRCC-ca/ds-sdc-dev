@@ -170,18 +170,18 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  other: NavigationItemHeading = {
+  other: NavigationItemAccordion = {
     id: 'other',
     label: 'Other Pages',
-    icon: '',
-    type: 'heading',
+    type: 'accordion',
     children: [
       this.accessibility,
       this.banner,
       this.codeview,
       this.button,
       this.input
-    ]
+    ],
+    open: false
   };
 
   itemQA: NavigationItemAccordion = {
@@ -196,13 +196,13 @@ export class ShellComponent implements OnInit {
       this.bobby,
       this.other
     ],
-    open: false
+    open: true
   };
 
   navConfig: INavigationConfig = {
-    id: 'shell-nav',
-    size: 'large',
-    label: 'Overview.SubHeading',
+    id: 'shell_nav',
+    size: 'small',
+    label: 'Step title',
     iconLeading: 'fa-light fa-arrow-left',
     iconTrailing: 'fa-light fa-arrow-right',
     navigationConfig: [this.itemA, this.itemQA]

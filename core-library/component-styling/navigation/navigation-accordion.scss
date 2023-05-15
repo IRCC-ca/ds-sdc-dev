@@ -45,19 +45,19 @@
 
   .accordion-nav{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 190px auto;
 
     ircc-cl-lib-icon-button{
-      align-self: self-end;
+      align-self: self-start;
       justify-self: self-end;
 
-      &.open {
-        align-self: self-start;
-      }
+      // &.open {
+      //   align-self: self-start;
+      // }
 
-      &.close {
-        align-self: self-end;
-      }
+      // &.close {
+      //   align-self: self-start;
+      // }
 
       &:hover{
         cursor: pointer;

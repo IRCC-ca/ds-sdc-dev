@@ -23,7 +23,7 @@
 @mixin large-styles() {
   .nav-header-header{
     h4,h5{
-      @include typography.fontSet(heading, 4, emphasis);
+      @include typography.fontSet(heading, 5, emphasis);
       font-size: 24px;
       line-height: 36px;
     }
@@ -35,7 +35,7 @@
 
   .nav-header-header{
     h4,h5{
-      @include typography.fontSet(heading, 4, emphasis);
+      @include typography.fontSet(heading, 5, emphasis);
       font-size: 20px;
       line-height: 28px;
     }
