@@ -1,34 +1,17 @@
-:host {
+.title-slug-wrapper {
   display: flex;
-  align-items: baseline;
-  > h1 {
-    margin: {
-      top: 48px;
-      bottom: 24px;
-    }
-  }
-  > h2 {
-    margin: {
-      top: 80px;
-      bottom: 24px;
-    }
-  }
+  align-items: center;
+}
 
-  > a {
-    margin-left: 12px;
-    position: relative;
-    bottom: 5px;
-    text-decoration: none;
-    color: var(--link-text);
-    font-family: 'Lato';
-    padding: 0;
-
-    &.primary {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: 0em;
-      text-align: center;
-    }
+.h1-heading-type {
+  margin: {
+    top: 48px;
+    bottom: 24px;
+  }
+}
+.h2-heading-type {
+  margin: {
+    top: 80px;
+    bottom: 24px;
   }
 }

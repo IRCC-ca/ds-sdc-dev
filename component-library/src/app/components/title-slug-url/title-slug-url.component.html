@@ -1,23 +1,27 @@
-<h1
-  *ngIf="config.heading === 'h1'"
-  id="{{ config.title | translate | SlugifyPipe }}"
->
-  <strong>{{ config.title | translate }}</strong>
-</h1>
-<h2
-  *ngIf="config.heading !== 'h1'"
-  [ngClass]="'h3'"
-  id="{{ config.title | translate | SlugifyPipe }}"
->
-  <strong>{{ config.title | translate }}</strong>
-</h2>
-<a
-  [className]="config.anchorType"
-  routerLink="{{ windowPathname }}"
-  fragment="{{ config.title | translate | SlugifyPipe }}"
-  cdkCopyToClipboard="{{ windowOrigin }}{{ windowPathname }}#{{
-    config.title | translate | SlugifyPipe
-  }}"
->
-  {{ 'Buttons.CopyURL' | translate }}
-</a>
+<div class="title-slug-wrapper {{ config.heading }}-heading-type">
+  <h1
+    *ngIf="config.heading === 'h1'"
+    id="{{ config.title | translate | SlugifyPipe }}"
+  >
+    <strong>{{ config.title | translate }}</strong>
+  </h1>
+  <h2
+    *ngIf="config.heading !== 'h1'"
+    [ngClass]="'h3'"
+    id="{{ config.title | translate | SlugifyPipe }}"
+  >
+    <strong>{{ config.title | translate }}</strong>
+  </h2>
+  <ircc-cl-lib-button
+    [className]="config.anchorType"
+    category="plain"
+    size="small"
+    routerLink="{{ windowPathname }}"
+    fragment="{{ config.title | translate | SlugifyPipe }}"
+    cdkCopyToClipboard="{{ windowOrigin }}{{ windowPathname }}#{{
+      config.title | translate | SlugifyPipe
+    }}"
+  >
+    {{ 'Buttons.CopyURL' | translate }}
+  </ircc-cl-lib-button>
+</div>
