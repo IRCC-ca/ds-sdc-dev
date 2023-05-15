@@ -9,7 +9,6 @@ export enum NavigationItemType {
 export interface NavigationItem {
   id: string;
   label: string;
-  icon: string;
   type: keyof typeof NavigationItemType;
   size?: keyof typeof DSSizes;
   children: NavigationItem[];
