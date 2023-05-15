@@ -21,11 +21,9 @@
 }
 
 @mixin large-styles() {
-
 }
 
 @mixin small-styles() {
-  
 }
 
 @mixin layout {
@@ -47,19 +45,23 @@
 
   .accordion-nav{
     display: grid;
-    grid-template-columns: auto 20px;
+    grid-template-columns: 190px auto;
 
-    ircc-cl-lib-icon, .accordion-expand-button{
-      align-self: center;
-    }
+    ircc-cl-lib-icon-button{
+      align-self: self-start;
+      justify-self: self-end;
 
-    h4,h5{
-        align-self: center;
-        padding: none;
-        margin: none;
-        flex:1;
-        margin-block-start: 0;
-        margin-block-end: 0;
+      // &.open {
+      //   align-self: self-start;
+      // }
+
+      // &.close {
+      //   align-self: self-start;
+      // }
+
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 
@@ -72,9 +74,4 @@
       display: none;
     }
   } 
-
-//   @include types(information);
-//   @include types(critical);
-//   @include types(warning);
-//   @include types(success);
 }

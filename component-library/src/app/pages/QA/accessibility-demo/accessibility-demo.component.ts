@@ -3,7 +3,8 @@ import {
   ElementRef,
   HostListener,
   OnDestroy,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -131,6 +132,8 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     content: 'ACC_DEMO.PERSONAL_INFO.ERROR_BANNER.CONTENT',
     rounded: true
   };
+
+  @ViewChild('errorBanner') errorBannerRef!: ElementRef;
 
   familyNameInputConfig: IInputComponentConfig = {
     id: 'family_name_input',
@@ -546,6 +549,12 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
       this.form.valueChanges.subscribe(() => {
         this.showErrorBanner = !this.form.valid;
         this.updateProgressIndicator();
+      });
+
+      setTimeout(() => {
+        this.errorBannerRef.nativeElement.scrollIntoView({
+          behavior: 'smooth'
+        });
       });
     } else {
       const tempConfig = this.progressIndicatorConfig;

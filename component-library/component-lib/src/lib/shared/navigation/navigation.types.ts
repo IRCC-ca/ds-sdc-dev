@@ -11,6 +11,7 @@ export interface NavigationItem {
   label: string;
   icon: string;
   type: keyof typeof NavigationItemType;
+  size?: keyof typeof DSSizes;
   children: NavigationItem[];
 }
 
