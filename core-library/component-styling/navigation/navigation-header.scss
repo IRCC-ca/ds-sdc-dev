@@ -1,0 +1,86 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selector {
+  ircc-cl-lib-nav-header#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin large-styles() {
+  .nav-header-header{
+    h4,h5{
+      @include typography.fontSet(heading, 5, emphasis);
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+}
+
+@mixin small-styles() {
+  
+
+  .nav-header-header{
+    h4,h5{
+      @include typography.fontSet(heading, 5, emphasis);
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+  
+}
+
+@mixin layout {
+
+  @include size.selector(large) {
+    @include large-styles();
+
+    .small {
+      @include small-styles();
+    }
+  }
+
+  @include size.selector(small) {
+    @include small-styles();
+
+    .large {
+      @include large-styles();
+    }
+  }
+
+  .nav-header-header{
+    display: grid;
+    grid-template-columns: auto auto;
+
+    ircc-cl-lib-icon-button{
+      align-self: self-end;
+      justify-self: self-end;
+
+      &:hover{
+        cursor: pointer;
+      }
+    }
+
+    h4,h5{
+        align-self: center;
+        padding: 0px;
+        margin: 0px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+  }
+
+}

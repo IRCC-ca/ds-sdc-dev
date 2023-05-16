@@ -1,0 +1,106 @@
+<div
+  [id]="config.id"
+  [attr.size]="config.size"
+  class="lib-navigation"
+>
+  <div class="navigation-header">
+    <ircc-cl-lib-icon
+      class="icon-leading"
+      [config]="{ FA_keywords: config?.iconLeading || '' }"
+      (click)="clickIconLeading(config.id + '_icon_leading')"
+    ></ircc-cl-lib-icon>
+    <h3>{{ config?.label || '' | translate }}</h3>
+    <ircc-cl-lib-icon
+      [id]="config.id + '_icon_trailing'"
+      class="icon-trailing"
+      [config]="{ FA_keywords: config?.iconTrailing || '' }"
+      (click)="clickIconTrailing(config.id + '_icon_trailing')"
+    ></ircc-cl-lib-icon>
+  </div>
+
+  <div class="navigation-content-top">
+    <ng-content select="[navigationContentTop]"></ng-content>
+  </div>
+
+  <div class="navigation-area">
+    <ul class="parent-navigation">
+      <ng-container
+        *ngTemplateOutlet="
+          recursiveListTmpl;
+          context: { list: this.config.navigationConfig }
+        "
+      ></ng-container>
+    </ul>
+  </div>
+
+  <ng-template
+    #recursiveListTmpl
+    let-list="list"
+  >
+    <li *ngFor="let item of list">
+      <ng-container [ngSwitch]="item.type">
+        <!--Type Heading-->
+        <ng-container *ngSwitchCase="'heading'"
+          ><ircc-cl-lib-nav-header
+            [attr.size]="config.size"
+            [size]="config.size"
+            [config]="item"
+          >
+            <ul
+              *ngIf="item.children.length > 0"
+              class="child-navigation"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  recursiveListTmpl;
+                  context: { list: item.children }
+                "
+              ></ng-container></ul></ircc-cl-lib-nav-header
+        ></ng-container>
+
+        <!--Type Link-->
+        <ng-container *ngSwitchCase="'link'"
+          ><ircc-cl-lib-nav-item
+            [attr.size]="config.size"
+            [size]="config.size"
+            [config]="item"
+          >
+            <ul
+              *ngIf="item.children.length > 0"
+              class="child-navigation"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  recursiveListTmpl;
+                  context: { list: item.children }
+                "
+              ></ng-container></ul></ircc-cl-lib-nav-item
+        ></ng-container>
+
+        <!--Type Accordion-->
+        <ng-container *ngSwitchCase="'accordion'">
+          <ircc-cl-lib-nav-accordion
+            [attr.size]="config.size"
+            [size]="config.size"
+            [config]="item"
+          >
+            <ul
+              *ngIf="item.children.length > 0"
+              class="child-navigation"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  recursiveListTmpl;
+                  context: { list: item.children }
+                "
+              ></ng-container></ul
+          ></ircc-cl-lib-nav-accordion>
+        </ng-container>
+      </ng-container>
+    </li>
+  </ng-template>
+
+  <div class="navigation-content-bottom">
+    <ng-content select="[navigationContentBottom]"></ng-content>
+  </div>
+</div>

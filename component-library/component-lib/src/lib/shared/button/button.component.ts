@@ -28,55 +28,66 @@ export enum ButtonIconDirection {
 }
 
 export interface IButtonConfig {
-    id: string;
-    category?: keyof typeof ButtonCategories;
-    size?: keyof typeof ButtonSize;
-    color?: keyof typeof ButtonColor;
-    ariaLabel?: string;
-    disabled?: boolean;
-    icon?: string;
-    iconDirection?: keyof typeof ButtonIconDirection;
-    tabIndex?: number;
-};
+  id: string;
+  category?: keyof typeof ButtonCategories;
+  size?: keyof typeof ButtonSize;
+  color?: keyof typeof ButtonColor;
+  ariaLabel?: string;
+  disabled?: boolean;
+  icon?: string;
+  iconDirection?: keyof typeof ButtonIconDirection;
+  tabIndex?: number;
+}
 
 @Component({
   selector: 'ircc-cl-lib-button',
   templateUrl: './button.component.html'
 })
 export class ButtonComponent {
-@Input() config: IButtonConfig = {
-    id: '',
-};
-    @Input() id = '';
-    @Input() category?: keyof typeof ButtonCategories;
-    @Input() size?: keyof typeof ButtonSize;
-    @Input() color?: keyof typeof ButtonColor;
-    @Input() ariaLabel?: string;
-    @Input() disabled?: boolean;
-    @Input() icon?: string;
-    @Input() iconDirection?: keyof typeof ButtonIconDirection;
-    @Input() tabIndex?: number;
+  @Input() config: IButtonConfig = {
+    id: ''
+  };
+  @Input() id = '';
+  @Input() category?: keyof typeof ButtonCategories;
+  @Input() size?: keyof typeof ButtonSize;
+  @Input() color?: keyof typeof ButtonColor;
+  @Input() ariaLabel?: string;
+  @Input() disabled?: boolean;
+  @Input() icon?: string;
+  @Input() iconDirection?: keyof typeof ButtonIconDirection;
+  @Input() tabIndex?: number;
 
   @Output() btnAction: EventEmitter<any> = new EventEmitter();
 
-    ngOnInit() {
-        (this.id !== '') ? this.config.id = this.id : undefined;
-        (this.category === undefined) ? undefined : this.config.category = this.category;
-        (this.size === undefined) ? undefined : this.config.size = this.size;
-        (this.color === undefined) ? undefined : this.config.color = this.color;
-        (this.ariaLabel !== undefined) ? this.config.ariaLabel = this.ariaLabel : undefined;
-        (this.disabled !== undefined) ? this.config.disabled = this.disabled : undefined;
-        (this.tabIndex !== undefined) ? this.config.tabIndex = this.tabIndex : undefined;
-        if (this.icon || this.config.icon) {
-            this.config.icon = this.icon ? this.icon : this.config.icon;
-            this.config.iconDirection = this.iconDirection? this.iconDirection : this.config.iconDirection;
-            this.config.iconDirection = this.config.iconDirection ? this.config.iconDirection : 'left'
-        } else {
-            this.config.icon = undefined;
-            this.config.iconDirection = undefined;
-        }
+  ngOnInit() {
+    this.id !== '' ? (this.config.id = this.id) : undefined;
+    this.category === undefined
+      ? undefined
+      : (this.config.category = this.category);
+    this.size === undefined ? undefined : (this.config.size = this.size);
+    this.color === undefined ? undefined : (this.config.color = this.color);
+    this.ariaLabel !== undefined
+      ? (this.config.ariaLabel = this.ariaLabel)
+      : undefined;
+    this.disabled !== undefined
+      ? (this.config.disabled = this.disabled)
+      : undefined;
+    this.tabIndex !== undefined
+      ? (this.config.tabIndex = this.tabIndex)
+      : undefined;
+    if (this.icon || this.config.icon) {
+      this.config.icon = this.icon ? this.icon : this.config.icon;
+      this.config.iconDirection = this.iconDirection
+        ? this.iconDirection
+        : this.config.iconDirection;
+      this.config.iconDirection = this.config.iconDirection
+        ? this.config.iconDirection
+        : 'left';
+    } else {
+      this.config.icon = undefined;
+      this.config.iconDirection = undefined;
     }
-
+  }
 
   clickEvent(id: string) {
     this.btnAction.emit(id);

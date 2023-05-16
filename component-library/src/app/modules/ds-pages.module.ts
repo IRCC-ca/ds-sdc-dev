@@ -31,6 +31,7 @@ import { accordionContainerComponent } from '@app/components/accordion-panel/acc
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { EncapsulatedElementComponent } from '@app/components/encapsulated-element/encapsulated-element.component';
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
+import { IrccDsAngularNavigationModule } from 'ircc-ds-angular-component-library';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { RequestFormComponent } from '@app/pages/request-form/request-form.compo
     ShelldModule,
     HighlightModule,
     AccessibilityDemoModule,
+    IrccDsAngularNavigationModule,
     TranslateModule,
     SharedModule
   ],

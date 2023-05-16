@@ -1,7 +1,7 @@
 <div>
   <div class="header">
     <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
-    <div class="container">
+    <!-- <div class="container">
       <h1 class="emphasis">{{ 'Overview.SubHeading' | translate }}</h1>
       <div>
         <a routerLink="/en/overview">overview</a>
@@ -15,15 +15,24 @@
         <a routerLink="/en/button-doc">Button Documentation</a>
         <a routerLink="/en/input-documentation">Input Documentation</a>
       </div>
-    </div>
+    </div> -->
   </div>
   <main>
     <div class="main-container top {{ navStatus }}">
-      <app-side-nav
-        class="left-nav"
+      <!-- <app-side-nav
+        
         [navBarData]="leftNavData"
         [mobileToggleIcon]="true"
-      ></app-side-nav>
+      ></app-side-nav> -->
+
+      <ircc-cl-lib-navigation
+        class="left-nav"
+        [config]="navConfig"
+        [attr.size]="navConfig.size"
+      >
+        <!-- <div navigationContentTop><p>Header projected Area</p></div>
+        <div navigationContentBottom><p>Footer projected Area</p></div> -->
+      </ircc-cl-lib-navigation>
       <div
         class="content"
         role="main"
