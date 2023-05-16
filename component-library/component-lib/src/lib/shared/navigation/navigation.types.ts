@@ -36,7 +36,8 @@ export interface NavigationItemAccordion extends NavigationItem {
 export interface NavigationItemLink extends NavigationItem {
   icon: string;
   href: string;
-  anchor: boolean;
+  external?: boolean;
+  anchor?: string;
 }
 
 export interface NavigationItemHeading extends NavigationItem {

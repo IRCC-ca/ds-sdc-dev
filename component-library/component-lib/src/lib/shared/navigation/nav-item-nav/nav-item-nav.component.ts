@@ -11,16 +11,11 @@ import { IIndicatorConfig } from '../../indicator/indicator.component';
 })
 export class navItemNavComponent implements OnInit {
 
-  indicatorConfig : IIndicatorConfig = {
-    category: 'weak',
-    purpose: 'status',
-    type: 'dot'
-  }
-
   @Input() config: NavigationItemLink = {
     id: '',
     href: '',
-    anchor: false,
+    anchor: '', //anchor is true when the url has a hash. Routerlink needs to be null if external. [fragment] needed when it's using #heading etc...
+    external: false,
     label: '',
     icon: '',
     type: 'link',
@@ -31,17 +26,25 @@ export class navItemNavComponent implements OnInit {
   @Input() size?: keyof typeof DSSizes;
   @Input() indicator?: NavigationIndicator;
 
+  indicatorConfig : IIndicatorConfig = {
+    category: 'weak',
+    purpose: 'status',
+    type: 'dot'
+  }
+
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
     if (this.config.indicator){
       this.indicatorConfig = {
         type: 'dot',
         category: 'weak',
-        purpose: 'palette',
+        purpose: 'status',
         status: this.config.indicator.status,
         icon: this.config.indicator.icon
       }
       this.config.indicator.label ? this.indicatorConfig = {...this.indicatorConfig, type: 'text', label: this.config.indicator.label} : null;
+      this.config.size ? this.indicatorConfig = {...this.indicatorConfig, size: this.config.size} : null;
+
     }
   }
 }

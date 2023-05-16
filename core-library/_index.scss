@@ -51,6 +51,7 @@
 @use "./component-styling/navigation/navigation";
 @use "./component-styling/navigation/navigation-accordion";
 @use "./component-styling/navigation/navigation-header";
+@use "./component-styling/navigation/navigation-item";
 @use "./typography/fa-wrapper";
 
 @forward "./theme/theme" as theme-*;
@@ -135,9 +136,8 @@
     @include element(navigation);
     @include element(navigation-accordion);
     @include element(navigation-header);
-  }
-
-  @else {
+    @include element(navigation-item);
+  } @else {
     @each $key in $include {
       @include element($key);
     }
@@ -231,8 +231,9 @@
     @include navigation.create();
   } @else if $key == navigation-accordion {
     @include navigation-accordion.create();
-  }  @else if $key == navigation-header {
-     @include navigation-header.create();
+  } @else if $key == navigation-header {
+    @include navigation-header.create();
+  } @else if $key == navigation-item {
+    @include navigation-item.create();
   }
-  
 }

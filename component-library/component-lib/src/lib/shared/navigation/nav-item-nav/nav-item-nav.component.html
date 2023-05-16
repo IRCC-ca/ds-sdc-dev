@@ -2,20 +2,42 @@
   [id]="config.id"
   class="lib-nav-item"
 >
-  <a
-    [routerLink]="config?.href || '' | translate"
-    style="display: block; margin-bottom: 24px"
-  >
-    <p style="margin-block-start: 0; margin-block-end: 0; font-size: 16px">
-      {{ config?.label || '' | translate }}
-    </p>
-    <ircc-cl-lib-icon
-      class="icon-trailing"
-      [config]="{ FA_keywords: config?.icon || '' }"
-    ></ircc-cl-lib-icon>
-  </a>
+  <ng-container *ngIf="config?.external !== true; else externalLink">
+    <a
+      [routerLink]="config?.href || '' | translate"
+      [fragment]="config?.anchor"
+      [routerLinkActive]="'active-link'"
+    >
+      <p>
+        {{ config?.label || '' | translate }}
+      </p>
+      <ircc-cl-lib-icon
+        class="icon-trailing"
+        [config]="{ FA_keywords: config?.icon || '' }"
+      ></ircc-cl-lib-icon>
+    </a>
+  </ng-container>
+  <ng-template #externalLink>
+    <a
+      [attr.href]="
+        config?.href + (config?.anchor ? '#' + config.anchor : '') || ''
+          | translate
+      "
+    >
+      <p>
+        {{ config?.label || '' | translate }}
+      </p>
+      <ircc-cl-lib-icon
+        class="icon-trailing"
+        [config]="{ FA_keywords: config?.icon || '' }"
+      ></ircc-cl-lib-icon>
+    </a>
+  </ng-template>
 
   <ng-content></ng-content>
 
-  <lib-indicator [config]="indicatorConfig"></lib-indicator>
+  <ircc-cl-lib-indicator
+    *ngIf="config.indicator"
+    [config]="indicatorConfig"
+  ></ircc-cl-lib-indicator>
 </div>
