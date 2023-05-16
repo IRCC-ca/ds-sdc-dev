@@ -32,6 +32,7 @@ export class MahsaComponent implements OnInit {
   SELECT_ID = 'qa_test_select';
   TAB_ID = 'qa-test-tabs';
   SPINNER_ID = 'qa-test-spinner';
+  TAG_ID = 'qa-tag-test'
 
   /** Configs: */
   qaSelect: ISelectConfig = {
@@ -52,7 +53,7 @@ export class MahsaComponent implements OnInit {
   };
 
   qaTags: IProgressTagsConfig = {
-    id: 'tag-test'
+    id: this.TAG_ID
   };
 
   qaSpinner: ISpinnerConfig = {
@@ -287,6 +288,7 @@ export class MahsaComponent implements OnInit {
         if (!value['desc']) delete this.qaSelect.desc;
         if (!value['hint']) delete this.qaSelect.hint;
         if (value[param]) {
+          // this.qaSelect = { ...this.qaSelect, [param]: value[param] }
           updatedConfig = { ...updatedConfig, [param]: value[param] };
           this.qaSelect = updatedConfig;
         }
@@ -294,14 +296,24 @@ export class MahsaComponent implements OnInit {
     });
 
     this.tagForm.valueChanges.subscribe((value) => {
+      let updatedConfig: IProgressTagsConfig = {
+        id: this.TAG_ID,
+        // formGroup: this.tagForm,
+      };
       Object.keys(value).forEach((param) => {
         if (value[param]) {
-          this.qaTags = { ...this.qaTags, [param]: value[param] };
+          // this.qaTags = { ...this.qaTags, [param]: value[param] };
+          updatedConfig = { ...updatedConfig, [param]: value[param] };
+          this.qaTags = updatedConfig;
         }
       });
     });
 
     this.spinnerForm.valueChanges.subscribe((value) => {
+      let updatedConfig: ISpinnerConfig = {
+        id: this.SPINNER_ID,
+        // formGroup: this.spinnerForm,
+      };
       Object.keys(value).forEach((param) => {
         if (
           (value['size'] === 'small' || value['size'] === 'extraSmall') &&
@@ -312,7 +324,9 @@ export class MahsaComponent implements OnInit {
         if (!value['label']) delete this.qaSpinner.label;
         if (!value['description']) delete this.qaSpinner.description;
         if (value[param]) {
-          this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
+          // this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
+          updatedConfig = { ...updatedConfig, [param]: value[param] };
+          this.qaSpinner = updatedConfig;
         }
       });
     });
