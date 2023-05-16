@@ -32,7 +32,7 @@ export class MahsaComponent implements OnInit {
   SELECT_ID = 'qa_test_select';
   TAB_ID = 'qa-test-tabs';
   SPINNER_ID = 'qa-test-spinner';
-  TAG_ID = 'qa-tag-test'
+  TAG_ID = 'qa-tag-test';
 
   /** Configs: */
   qaSelect: ISelectConfig = {
@@ -297,7 +297,7 @@ export class MahsaComponent implements OnInit {
 
     this.tagForm.valueChanges.subscribe((value) => {
       let updatedConfig: IProgressTagsConfig = {
-        id: this.TAG_ID,
+        id: this.TAG_ID
         // formGroup: this.tagForm,
       };
       Object.keys(value).forEach((param) => {
@@ -311,7 +311,7 @@ export class MahsaComponent implements OnInit {
 
     this.spinnerForm.valueChanges.subscribe((value) => {
       let updatedConfig: ISpinnerConfig = {
-        id: this.SPINNER_ID,
+        id: this.SPINNER_ID
         // formGroup: this.spinnerForm,
       };
       Object.keys(value).forEach((param) => {
