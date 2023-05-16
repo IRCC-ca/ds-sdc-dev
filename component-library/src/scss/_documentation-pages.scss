@@ -163,6 +163,7 @@ span {
 .row {
   display: flex;
   justify-content: space-between;
+  flex-wrap: nowrap;
 
   @include device.in-phone-layout() {
     flex-wrap: wrap;
