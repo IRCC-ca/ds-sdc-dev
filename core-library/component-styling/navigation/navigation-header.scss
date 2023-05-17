@@ -62,17 +62,20 @@
   }
 
   .nav-header-header{
-    display: grid;
-    grid-template-columns: auto auto;
 
-    ircc-cl-lib-icon-button{
-      align-self: self-end;
-      justify-self: self-end;
+    padding-bottom: 8px;
 
-      &:hover{
-        cursor: pointer;
+    &.grid-header{
+      display: grid;
+      grid-template-columns: 30px auto;
+
+      ircc-cl-lib-icon {
+        align-self: center;
+        justify-self: flex-start;
       }
     }
+
+    
 
     h4,h5{
         align-self: center;

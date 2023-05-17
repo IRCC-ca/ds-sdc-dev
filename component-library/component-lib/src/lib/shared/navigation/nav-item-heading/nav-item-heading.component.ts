@@ -53,8 +53,4 @@ export class navItemHeadingComponent implements OnInit {
       }
     };
   }
-
-  clickEvent = (event: any) => {
-    alert(`Insert Service Here. Button id: ${event}`);
-  };
 }

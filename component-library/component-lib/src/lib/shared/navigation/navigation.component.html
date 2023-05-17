@@ -3,7 +3,10 @@
   [attr.size]="config.size"
   class="lib-navigation"
 >
-  <div class="navigation-header">
+  <div
+    class="navigation-header"
+    [class]="navigationClass()"
+  >
     <ircc-cl-lib-icon
       class="icon-leading"
       [config]="{ FA_keywords: config?.iconLeading || '' }"
@@ -18,9 +21,8 @@
     ></ircc-cl-lib-icon>
   </div>
 
-  <div class="navigation-content-top">
-    <ng-content select="[navigationContentTop]"></ng-content>
-  </div>
+  <!-- prettier-ignore -->
+  <div class="navigation-content-top"><ng-content select="[navigationContentTop]"></ng-content></div>
 
   <div class="navigation-area">
     <ul class="parent-navigation">
@@ -100,7 +102,6 @@
     </li>
   </ng-template>
 
-  <div class="navigation-content-bottom">
-    <ng-content select="[navigationContentBottom]"></ng-content>
-  </div>
+  <!-- prettier-ignore -->
+  <div class="navigation-content-bottom"><ng-content select="[navigationContentBottom]"></ng-content></div>
 </div>

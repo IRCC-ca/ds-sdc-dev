@@ -66,7 +66,7 @@ export class ShellComponent implements OnInit {
   itemA: NavigationItemHeading = {
     id: 'GetStartedHeading',
     label: 'Developers.GetStartedHeading',
-    icon: 'fa-light fa-arrow-right',
+    icon: 'fa-light fa-basketball',
     type: 'heading',
     children: [this.itemAA, this.itemAB, this.itemAC]
   };
@@ -174,28 +174,21 @@ export class ShellComponent implements OnInit {
     id: 'other',
     label: 'Other Pages',
     type: 'accordion',
+    open: true,
     children: [
       this.accessibility,
       this.banner,
       this.codeview,
       this.button,
       this.input
-    ],
-    open: false
+    ]
   };
 
   itemQA: NavigationItemAccordion = {
     id: 'qa',
     label: 'QA.header',
     type: 'accordion',
-    children: [
-      this.mashsa,
-      this.michael,
-      this.naseer,
-      this.mike,
-      this.bobby,
-      this.other
-    ],
+    children: [this.mashsa, this.michael, this.naseer, this.mike, this.bobby],
     open: true
   };
 
@@ -205,9 +198,14 @@ export class ShellComponent implements OnInit {
     label: 'Step title',
     iconLeading: 'fa-light fa-arrow-left',
     iconTrailing: 'fa-light fa-arrow-right',
-    navigationConfig: [this.itemA, this.itemQA]
+    navigationConfig: [this.itemA, this.itemQA, this.other]
   };
 
+  randomHeader: string = '';
+  randomFooter: string = '';
+
+  //
+  //
   constructor(
     private translate: TranslateService,
     private altLang: LangSwitchService,
@@ -230,6 +228,14 @@ export class ShellComponent implements OnInit {
     this.languageSwitchButton.languageClickObs$.subscribe((response) => {
       if (response) this.changeLang(); //Has to ignore the first response.
     });
+
+    this.randomHeader = `//picsum.photos/id/${Math.floor(
+      Math.random() * (1084 - 1) + 1
+    )}/200/200`;
+
+    this.randomFooter = `//picsum.photos/id/${Math.floor(
+      Math.random() * (1084 - 1) + 1
+    )}/200/200`;
   }
 
   @HostListener('window:resize', ['$event'])

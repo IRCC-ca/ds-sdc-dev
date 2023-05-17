@@ -81,10 +81,34 @@ export class navigationComponent implements OnInit {
     return Object.keys(obj);
   };
 
+  getIconsStatus = () => {
+    return (
+      this.config &&
+      (this.config?.iconLeading || '').length > 0 &&
+      (this.config?.iconTrailing || '').length > 0
+    );
+  };
+
   clickIconLeading = (event: any) => {
     alert(`Insert Service Here. Button id: ${event}`);
   };
   clickIconTrailing = (event: any) => {
     alert(`Insert Service Here. Button id: ${event}`);
+  };
+
+  navigationClass = (): string => {
+    if (
+      ((this.config?.iconLeading?.length || ''.length > 0) &&
+        this.config?.iconTrailing?.length) ||
+      ''.length > 0
+    ) {
+      return 'header-full';
+    } else if (this.config?.iconLeading?.length || ''.length > 0) {
+      return 'header-iconleading';
+    } else if (this.config?.iconTrailing?.length || ''.length > 0) {
+      return 'header-icontrailing';
+    }
+
+    return '';
   };
 }

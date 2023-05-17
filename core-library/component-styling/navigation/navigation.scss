@@ -21,6 +21,11 @@
 }
 
 @mixin large-styles() {
+
+  .lib-navigation{
+    padding: 16px;
+    width: 280px;
+  }
   
   h3{
     @include typography.fontSet(heading, 3, emphasis);
@@ -31,6 +36,12 @@
 }
 
 @mixin small-styles() {
+
+  .lib-navigation{
+    padding: 16px;
+    width: 244px;
+  }
+
  h3{
       @include typography.fontSet(heading, 3, emphasis);
       font-size: 24px;
@@ -56,13 +67,21 @@
   }
   .lib-navigation{
     padding: 16px;
-    width: 250px;
-    max-width: 500px;
+    padding-top: 8px;
   }
+
+  .navigation-content-top,
+  .navigation-content-bottom{
+    padding-bottom: 0px;
+
+    &:not(:empty){
+      padding-bottom: 24px;
+    }
+  }
+
 
   .navigation-header{
     display: grid;
-    grid-template-columns: 20px auto 20px;
     padding-bottom: 24px;
 
     ircc-cl-lib-icon{
@@ -74,10 +93,37 @@
 
     h3{
         padding: 0px;
-        margin: 0px;
-        flex:1;
-        justify-self: center;
+        margin: 0px;       
     }
+
+    &.header-full{
+
+      grid-template-columns: 20px auto 20px;
+  
+      h3{
+          flex:1;
+          justify-self: center;
+      }
+    }
+
+    &.header-iconleading{
+
+      grid-template-columns: 20px auto 0px;
+  
+      h3{
+          justify-self: flex-start;
+      }
+    }
+
+    &.header-icontrailing{
+
+      grid-template-columns: 0px auto 20px;
+  
+      h3{
+          justify-self: flex-start;
+      }
+    }
+
   }
 
   .navigation-area{
@@ -86,18 +132,16 @@
       margin: 0;
       padding: 0;
     }
+
+    .parent-navigation > li {
+      padding-bottom: 24px;
+    }
+
     .child-navigation{
       margin: 0;
       padding: 0px;
       padding-left: 40px;
     }
-  }
-
-  
+  }  
  
-
-//   @include types(information);
-//   @include types(critical);
-//   @include types(warning);
-//   @include types(success);
 }

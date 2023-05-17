@@ -20,7 +20,6 @@
   <main>
     <div class="main-container top {{ navStatus }}">
       <!-- <app-side-nav
-        
         [navBarData]="leftNavData"
         [mobileToggleIcon]="true"
       ></app-side-nav> -->
@@ -30,8 +29,32 @@
         [config]="navConfig"
         [attr.size]="navConfig.size"
       >
-        <!-- <div navigationContentTop><p>Header projected Area</p></div>
-        <div navigationContentBottom><p>Footer projected Area</p></div> -->
+        <div navigationContentTop>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            "
+          >
+            <p>Header projected content</p>
+            <img [src]="randomHeader" />
+          </div>
+        </div>
+        <div navigationContentBottom>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            "
+          >
+            <p>Footer projected content</p>
+            <img [src]="randomFooter" />
+          </div>
+        </div>
       </ircc-cl-lib-navigation>
       <div
         class="content"
@@ -49,3 +72,4 @@
   <!-- Footer -->
   <ircc-cl-lib-footer> </ircc-cl-lib-footer>
 </div>
+<div navigationContentTop><span>Header projected Area</span></div>
