@@ -127,6 +127,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.id = this.id;
     }
 
+    if (this.type) {
+      this.config.type = this.type;
+    }
+
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
