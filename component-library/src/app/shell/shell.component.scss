@@ -23,6 +23,7 @@ $mobile-padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    flex-wrap: wrap;
 
     // h1 {
     .emphasis {
@@ -31,7 +32,6 @@ $mobile-padding: 16px;
       }
       @include in-phone-layout {
         padding: 0 $mobile-padding;
-        font-size: 30px;
       }
     }
   }
