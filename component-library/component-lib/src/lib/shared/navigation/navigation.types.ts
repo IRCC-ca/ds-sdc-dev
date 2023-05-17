@@ -1,5 +1,14 @@
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
+export interface INavigationConfig {
+  id: string;
+  label?: string;
+  iconLeading?: string;
+  iconTrailing?: string;
+  size: keyof typeof DSSizes;
+  navigationConfig?: Array<NavigationItem>;
+}
+
 export enum NavigationItemType {
   accordion = 'accordion',
   heading = 'heading',

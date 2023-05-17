@@ -2,16 +2,7 @@ import { EventEmitter, Input, Output, ViewChild, Type } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
-import { NavigationItem } from './navigation.types';
-
-export interface INavigationConfig {
-  id: string;
-  label?: string;
-  iconLeading?: string;
-  iconTrailing?: string;
-  size?: keyof typeof DSSizes;
-  navigationConfig?: Array<NavigationItem>;
-}
+import { NavigationItem, INavigationConfig } from './navigation.types';
 
 @Component({
   selector: 'ircc-cl-lib-navigation',
