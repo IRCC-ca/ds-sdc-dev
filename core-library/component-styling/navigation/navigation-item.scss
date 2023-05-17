@@ -1,0 +1,163 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selectors {
+  ircc-cl-lib-nav-item#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selectors() {
+    @include layout();
+  }
+}
+
+@mixin large-styles() {
+  .lib-nav-item {
+    a {
+      p {
+        margin-right: 12px;
+        @include typography.fontSet(heading, 5, regular);
+      }
+
+      .icon-trailing {
+        margin-left: 16px;
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      .icon-left {
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      &.active-link {
+        p {
+          @include typography.fontSet(heading, 5, emphasis);
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
+
+@mixin small-styles() {
+  .lib-nav-item {
+    a {
+      p {
+        margin-right: 8px;
+        @include typography.fontSet(heading, 6, regular);
+      }
+
+      .icon-trailing {
+        margin-left: 8px;
+        span {
+          display: flex;
+        }
+        svg {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      .icon-left {
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &.active-link {
+        p {
+          @include typography.fontSet(heading, 6, emphasis);
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+@mixin layout {
+  @include size.selector(large) {
+    @include large-styles();
+
+    .small {
+      @include small-styles();
+    }
+  }
+
+  @include size.selector(small) {
+    @include small-styles();
+
+    .large {
+      @include large-styles();
+    }
+  }
+
+  .lib-nav-item {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &.border-left {
+      border-left: 4px solid var(--grey-5);
+    }
+
+    a {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: var(--text-primary);
+      border-radius: 0;
+      align-items: center;
+      padding: 12px 16px 12px 24px;
+
+      .icon-left {
+        margin-left: -12px;
+        margin-right: 12px;
+      }
+
+      ircc-cl-lib-indicator {
+        margin-left: auto;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      &[disabled] {
+        color: var(--text-disabled);
+        pointer-events: none;
+      }
+
+      &.active-link {
+        background: var(--navigation-weak);
+        &:hover {
+          background: var(--navigation-weak-hover);
+        }
+        &:active {
+          background: var(--navigation-weak-active);
+        }
+      }
+    }
+
+    &:has(a.active-link) {
+      border-left: 4px solid var(--navigation);
+    }
+  }
+}

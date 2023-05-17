@@ -39,16 +39,17 @@ export class ShellComponent implements OnInit {
   itemAA: NavigationItemLink = {
     label: 'Overview.Heading',
     href: 'ROUTES.overview',
-    anchor: false,
+    external: false,
     id: 'Overview.Heading',
-    icon: '',
+    icon: 'fa-regular fa-user',
+    trailingIcon: 'fa-regular fa-arrow-right',
     type: 'link',
-    children: []
+    children: [],
+    indicator: { status: 'information', icon: 'fa-regular fa-circle' }
   };
   itemAB: NavigationItemLink = {
     label: 'Designers.Heading',
     href: 'ROUTES.forDesigners',
-    anchor: false,
     id: 'Designers.Heading',
     icon: '',
     type: 'link',
@@ -57,7 +58,7 @@ export class ShellComponent implements OnInit {
   itemAC: NavigationItemLink = {
     label: 'Overview.DeveloperHeading',
     href: 'ROUTES.forDevelopers',
-    anchor: false,
+    anchor: 'themes',
     id: 'Overview.DeveloperHeading',
     icon: '',
     type: 'link',
@@ -74,7 +75,6 @@ export class ShellComponent implements OnInit {
   mashsa: NavigationItemLink = {
     label: 'mahsa',
     href: 'ROUTES.mahsa',
-    anchor: false,
     id: 'mahsa',
     icon: '',
     type: 'link',
@@ -84,7 +84,6 @@ export class ShellComponent implements OnInit {
   michael: NavigationItemLink = {
     label: 'michael',
     href: 'ROUTES.michael',
-    anchor: false,
     id: 'michael',
     icon: '',
     type: 'link',
@@ -94,7 +93,6 @@ export class ShellComponent implements OnInit {
   naseer: NavigationItemLink = {
     label: 'naseer',
     href: 'ROUTES.naseer',
-    anchor: false,
     id: 'naseer',
     icon: '',
     type: 'link',
@@ -104,7 +102,6 @@ export class ShellComponent implements OnInit {
   mike: NavigationItemLink = {
     label: 'mike',
     href: 'ROUTES.mike',
-    anchor: false,
     id: 'mike',
     icon: '',
     type: 'link',
@@ -113,7 +110,6 @@ export class ShellComponent implements OnInit {
   bobby: NavigationItemLink = {
     label: 'bobby',
     href: 'ROUTES.bobby',
-    anchor: false,
     id: 'bobby',
     icon: '',
     type: 'link',
@@ -123,7 +119,6 @@ export class ShellComponent implements OnInit {
   accessibility: NavigationItemLink = {
     label: 'Accessibility Demo',
     href: '/en/accessibility-demo',
-    anchor: false,
     id: 'accessibility',
     icon: '',
     type: 'link',
@@ -133,7 +128,6 @@ export class ShellComponent implements OnInit {
   banner: NavigationItemLink = {
     label: 'Banner Documentation',
     href: '/en/banner-doc',
-    anchor: false,
     id: 'banner',
     icon: '',
     type: 'link',
@@ -143,7 +137,6 @@ export class ShellComponent implements OnInit {
   codeview: NavigationItemLink = {
     label: 'Code Viewer',
     href: '/en/codeview',
-    anchor: false,
     id: 'codeview',
     icon: '',
     type: 'link',
@@ -153,7 +146,6 @@ export class ShellComponent implements OnInit {
   button: NavigationItemLink = {
     label: 'Button Documentation',
     href: '/en/button-doc',
-    anchor: false,
     id: 'button',
     icon: '',
     type: 'link',
@@ -163,7 +155,6 @@ export class ShellComponent implements OnInit {
   input: NavigationItemLink = {
     label: 'Input Documentation',
     href: '/en/input-documentation',
-    anchor: false,
     id: 'input',
     icon: '',
     type: 'link',
