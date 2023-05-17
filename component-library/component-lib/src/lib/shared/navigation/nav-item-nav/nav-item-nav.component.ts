@@ -14,7 +14,7 @@ export class navItemNavComponent implements OnInit {
   @Input() config: NavigationItemLink = {
     id: '',
     href: '',
-    anchor: '', //anchor is true when the url has a hash. Routerlink needs to be null if external. [fragment] needed when it's using #heading etc...
+    anchor: '',
     external: false,
     border: false,
     label: '',
@@ -37,20 +37,18 @@ export class navItemNavComponent implements OnInit {
   constructor(private renderer: Renderer2) {}
 
   linkClick(e: Event){
-    console.log(e);
-
-      console.log('anchor clicked', this.config.anchor);
-      setTimeout(() => {
-        if(this.config?.anchor){
-        const anchorElement = this.renderer.selectRootElement(`#${this.config.anchor}`, true);
-        anchorElement ? anchorElement.scrollIntoView({ behavior: 'smooth' }) : null;
-        }
-      }, 0);
-
+      if(!this.config.external){
+        setTimeout(() => {
+          if(this.config?.anchor){
+          const anchorElement = this.renderer.selectRootElement(`#${this.config.anchor}`, true);
+          anchorElement ? anchorElement.scrollIntoView({ behavior: 'smooth' }) : null;
+          }
+        }, 0);
+      }
+      alert(`Insert service here. Click event on nav-item with id: ${this.config.id}`)
   }
 
   ngOnInit() {
-    let testThing
     this.id !== '' ? (this.config.id = this.id) : undefined;
     if (this.config.indicator){
       this.indicatorConfig = {
