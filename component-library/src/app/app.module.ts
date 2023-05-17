@@ -18,6 +18,7 @@ import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
 import { DsPageModule } from './modules/ds-pages.module';
 
 import { APP_BASE_HREF } from '@angular/common';
+import { ModalDocumentationComponent } from './pages/modal-documentation/modal-documentation.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locales/', '.json');

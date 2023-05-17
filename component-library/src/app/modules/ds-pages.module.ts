@@ -31,6 +31,7 @@ import { accordionContainerComponent } from '@app/components/accordion-panel/acc
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { EncapsulatedElementComponent } from '@app/components/encapsulated-element/encapsulated-element.component';
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
+import { ModalDocumentationComponent } from '@app/pages/modal-documentation/modal-documentation.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { RequestFormComponent } from '@app/pages/request-form/request-form.compo
     InteractiveDemoComponent,
     InputDocCodeComponent,
     EncapsulatedElementComponent,
-    RequestFormComponent
+    RequestFormComponent,
+    ModalDocumentationComponent
   ],
   imports: [
     CommonModule,

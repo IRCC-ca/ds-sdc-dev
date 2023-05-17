@@ -54,3 +54,4 @@ export * from './lib/shared/breadcrumb/link/link.component';
 export * from './lib/shared/spinner/spinner.component';
 export * from './lib/shared/flyout/flyout.component';
 export * from './lib/shared/flyout-option/flyout-option.component';
+export * from './lib/shared/modal/modal.component';

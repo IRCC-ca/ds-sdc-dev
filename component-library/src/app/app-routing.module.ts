@@ -32,6 +32,7 @@ import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { RequestFormComponent } from './pages/request-form/request-form.component';
+import { ModalDocumentationComponent } from '@app/pages/modal-documentation/modal-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -59,6 +60,7 @@ const routes: Routes = [
     { path: 'button-doc', component: ButtonDocCodeComponent },
     { path: 'input-documentation', component: InputDocumentationComponent },
     { path: 'request-form', component: RequestFormComponent },
+    { path: 'modal-doc', component: ModalDocumentationComponent },
 
     // French
     { path: 'aperçu', component: OverviewComponent },
@@ -70,6 +72,7 @@ const routes: Routes = [
     { path: 'button-doc-fr', component: ButtonDocCodeComponent },
     { path: 'documentation dentree', component: InputDocumentationComponent },
     { path: 'request-form-fr', component: RequestFormComponent },
+    { path: 'modal-doc-fr', component: ModalDocumentationComponent },
 
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent }, //English
