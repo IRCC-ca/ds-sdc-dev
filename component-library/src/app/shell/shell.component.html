@@ -56,6 +56,39 @@
           </div>
         </div>
       </ircc-cl-lib-navigation>
+
+      <ircc-cl-lib-navigation
+        class="left-nav"
+        [config]="navConfigLarge"
+        [attr.size]="navConfigLarge.size"
+      >
+        <div navigationContentTop>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            "
+          >
+            <p>Header projected content</p>
+            <img [src]="randomHeader" />
+          </div>
+        </div>
+        <div navigationContentBottom>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            "
+          >
+            <p>Footer projected content</p>
+            <img [src]="randomFooter" />
+          </div>
+        </div>
+      </ircc-cl-lib-navigation>
       <div
         class="content"
         role="main"

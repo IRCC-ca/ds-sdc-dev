@@ -26,13 +26,30 @@ export class navigationComponent implements OnInit {
     size: 'small',
     navigationConfig: []
   };
-  @Input() navigationConfig: Array<NavigationItem> = [];
+
   @Input() id: string = '';
+  @Input() label: string = '';
+  @Input() iconLeading: string = '';
+  @Input() iconTrailing: string = '';
+  @Input() size: keyof typeof DSSizes | undefined;
+  @Input() navigationConfig: Array<NavigationItem> = [];
 
   flattenNavigation: Array<NavigationItem> = [];
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
+    this.label !== '' ? (this.config.label = this.label) : undefined;
+    this.iconLeading !== ''
+      ? (this.config.iconLeading = this.iconLeading)
+      : undefined;
+    this.iconTrailing !== ''
+      ? (this.config.iconTrailing = this.iconTrailing)
+      : undefined;
+    this.size !== undefined ? (this.config.size = this.size) : undefined;
+    this.navigationConfig.length > 0
+      ? (this.config.navigationConfig = this.navigationConfig)
+      : undefined;
+
     this.flattenNavigation = this.flatten(this.config.navigationConfig);
   }
 

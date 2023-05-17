@@ -1,6 +1,5 @@
 <div
   [id]="config.id"
-  [attr.size]="config.size"
   class="lib-nav-item"
 >
   <div class="accordion-panel">
@@ -8,6 +7,7 @@
       <ircc-cl-lib-nav-header
         [id]="headerID"
         [attr.size]="config.size"
+        [size]="config.size"
         [label]="config?.label || ''"
       >
         <div
@@ -22,11 +22,13 @@
         *ngIf="config.open === true"
         (clickEvent)="openAccordion($event)"
         [config]="buttonIconOpen"
+        [attr.size]="config.size"
         class="open"
       ></ircc-cl-lib-icon-button>
       <ircc-cl-lib-icon-button
         *ngIf="config.open === false"
         (clickEvent)="openAccordion($event)"
+        [attr.size]="config.size"
         [config]="buttonIconClose"
         class="close"
       ></ircc-cl-lib-icon-button>

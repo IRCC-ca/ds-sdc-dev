@@ -1,5 +1,4 @@
-import { EventEmitter, Input, Output } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { NavigationItem, NavigationItemHeading } from '../navigation.types';
 import { IIconButtonComponentConfig } from '../../icon-button/icon-button.component';

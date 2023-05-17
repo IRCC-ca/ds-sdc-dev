@@ -201,6 +201,13 @@ export class ShellComponent implements OnInit {
     navigationConfig: [this.itemA, this.itemQA, this.other]
   };
 
+  navConfigLarge: INavigationConfig = {
+    id: 'shell_nav',
+    size: 'large',
+    label: 'Step title Large',
+    navigationConfig: [{ ...this.itemA }, { ...this.itemQA }, { ...this.other }]
+  };
+
   randomHeader: string = '';
   randomFooter: string = '';
 

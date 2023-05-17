@@ -2,13 +2,7 @@ import { EventEmitter, Input, Output } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
 import { NavigationItemAccordion } from '../navigation.types';
-
 import { IIconButtonComponentConfig } from '../../icon-button/icon-button.component';
-
-export interface INavigationItemConfig {
-  id: string;
-  size?: keyof typeof DSSizes;
-}
 
 @Component({
   selector: 'ircc-cl-lib-nav-accordion',
@@ -57,7 +51,6 @@ export class navItemAccordionComponent implements OnInit {
     this.size !== undefined ? (this.config.size = this.size) : undefined;
 
     this.headerID = `${this.config.id}_header`;
-
     this.buttonIconOpen = {
       id: `${this.config.id}_button_open`,
       category: 'custom',
