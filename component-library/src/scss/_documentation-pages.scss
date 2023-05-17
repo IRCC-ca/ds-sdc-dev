@@ -176,8 +176,13 @@
   }
 }
 
-.row-container {
-  margin-bottom: 24px;
+.dos-and-donts-section {
+  > div {
+    margin-bottom: 12px;
+  }
+  > div:last-child {
+    margin-bottom: 32px;
+  }
 }
 
 .content-description {

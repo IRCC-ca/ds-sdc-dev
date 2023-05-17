@@ -140,43 +140,47 @@
       >
         {{ content.description | translate }}
       </p>
-
-      <div *ngFor="let img of content.doAndDontObjectArray">
-        <div class="row row-container">
-          <div class="column left-column">
-            <img
-              src="{{ img.doImgPath }}"
-              alt="{{ img.doImgAlt | translate }}"
-            />
-            <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
-                {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
-                {{ img.doImgDescription | translate }}
-              </p>
+      <section class="dos-and-donts-section">
+        <div
+          class="wrapper-container"
+          *ngFor="let img of content.doAndDontObjectArray"
+        >
+          <div class="row row-container">
+            <div class="column left-column">
+              <img
+                src="{{ img.doImgPath }}"
+                alt="{{ img.doImgAlt | translate }}"
+              />
+              <div class="do-dont-container">
+                <h5
+                  class="do-dont-heading emphasis text-underline text-color-green"
+                >
+                  {{ 'General.DoHeading' | translate }}
+                </h5>
+                <p>
+                  {{ img.doImgDescription | translate }}
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="column right-column">
-            <img
-              src="{{ img.dontImgPath }}"
-              alt="{{ img.dontImgAlt | translate }}"
-            />
-            <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
-                {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
-                {{ img.dontImgDescription | translate }}
-              </p>
+            <div class="column right-column">
+              <img
+                src="{{ img.dontImgPath }}"
+                alt="{{ img.dontImgAlt | translate }}"
+              />
+              <div class="do-dont-container">
+                <h5
+                  class="do-dont-heading emphasis text-underline text-color-red"
+                >
+                  {{ 'General.DontHeading' | translate }}
+                </h5>
+                <p>
+                  {{ img.dontImgDescription | translate }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </ng-container>
 
     <h5 class="sub-headings">
@@ -242,42 +246,47 @@
       >
         {{ content.description | translate }}
       </p>
-      <div *ngFor="let img of content.doAndDontObjectArray">
-        <div class="row row-container">
-          <div class="column left-column">
-            <img
-              src="{{ img.doImgPath }}"
-              alt="{{ img.doImgAlt | translate }}"
-            />
-            <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
-                {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
-                {{ img.doImgDescription | translate }}
-              </p>
+      <section class="dos-and-donts-section">
+        <div
+          class="wrapper-container"
+          *ngFor="let img of content.doAndDontObjectArray"
+        >
+          <div class="row row-container">
+            <div class="column left-column">
+              <img
+                src="{{ img.doImgPath }}"
+                alt="{{ img.doImgAlt | translate }}"
+              />
+              <div class="do-dont-container">
+                <h5
+                  class="do-dont-heading emphasis text-underline text-color-green"
+                >
+                  {{ 'General.DoHeading' | translate }}
+                </h5>
+                <p>
+                  {{ img.doImgDescription | translate }}
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="column right-column">
-            <img
-              src="{{ img.dontImgPath }}"
-              alt="{{ img.dontImgAlt | translate }}"
-            />
-            <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
-                {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
-                {{ img.dontImgDescription | translate }}
-              </p>
+            <div class="column right-column">
+              <img
+                src="{{ img.dontImgPath }}"
+                alt="{{ img.dontImgAlt | translate }}"
+              />
+              <div class="do-dont-container">
+                <h5
+                  class="do-dont-heading emphasis text-underline text-color-red"
+                >
+                  {{ 'General.DontHeading' | translate }}
+                </h5>
+                <p>
+                  {{ img.dontImgDescription | translate }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </ng-container>
   </section>
 
