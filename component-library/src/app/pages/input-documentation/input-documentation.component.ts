@@ -9,7 +9,7 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
-import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
+import { ContentItem, doDontTypes, guideLinesContentType } from '@app/share/lan-switch/interface/content-item.interface';
 import { docPageheadingConfig }  from '@app/share/documentation-page-headings';
 
 @Component({
@@ -49,6 +49,141 @@ export class InputDocumentationComponent implements OnInit {
     heading: 'h1',
     anchorType: slugAnchorType.primary
   };
+
+  designGuideLinesContent: guideLinesContentType[] = [
+    {
+      title: 'Input.FieldWidth',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/field-width-do.png',
+          doImgAlt: 'Input.FieldWidthImgDo',
+          doImgDescription: 'Input.FieldWidthDoText',
+          dontImgPath: 'assets/img/input-content/field-width-dont.png',
+          dontImgAlt: 'Input.FieldWidthImgDont',
+          dontImgDescription: 'Input.FieldWidthDontText'
+        },
+      ]
+    },
+    {
+      title: 'Input.ErrorsHeading',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/error-do.png',
+          doImgAlt: 'Input.ErrorDoImgAlt',
+          doImgDescription: 'Input.ErrorDoText',
+          dontImgPath: 'assets/img/input-content/error-dont.png',
+          dontImgAlt: 'Input.ErrorDontImgAlt',
+          dontImgDescription: 'Input.ErrorDontText'
+        }
+      ]
+    },
+  ];
+  
+  contentGuideLinesContent: guideLinesContentType[] = [
+    {
+      title: 'Input.WriteLabelsHeading',
+      description: 'Input.WriteLabelsSubHeading',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/label-do-1.png',
+          doImgAlt: 'Input.WriteLabelsDoImgAlt1',
+          doImgDescription: 'Input.WriteLabelsDoText1',
+          dontImgPath: 'assets/img/input-content/label-dont-1.png',
+          dontImgAlt: 'Input.WriteLabelsDontImgAlt1',
+          dontImgDescription: 'Input.WriteLabelsDontText1'
+        },
+        {
+          doImgPath: 'assets/img/input-content/label-do-2.png',
+          doImgAlt: 'Input.WriteLabelsDoImgAlt2',
+          doImgDescription: 'Input.WriteLabelsDoText2',
+          dontImgPath: 'assets/img/input-content/label-dont-2.png',
+          dontImgAlt: 'Input.WriteLabelsDontImgAlt2',
+          dontImgDescription: 'Input.WriteLabelsDontText2'
+        }
+      ]
+    },
+    {
+      title: 'Input.WriteDescHeading',
+      description: 'Input.WriteDescSubHeading',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/desc-do.png',
+          doImgAlt: 'Input.WriteDescDoImgAlt',
+          doImgDescription: 'Input.WriteDescDoText',
+          dontImgPath: 'assets/img/input-content/desc-dont.png',
+          dontImgAlt: 'Input.WriteDescDontImgAlt',
+          dontImgDescription: 'Input.WriteDescDontText'
+        }
+      ]
+    },
+    {
+      title: 'Input.WritePlaceholderHeading',
+      description: 'Input.WritePlaceholderSubHeading',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/placeholder-do-1.png',
+          doImgAlt: 'Input.WritePlaceholderDoImgAlt1',
+          doImgDescription: 'Input.WritePlaceholderDoText1',
+          dontImgPath: 'assets/img/input-content/placeholder-dont-1.png',
+          dontImgAlt: 'Input.WritePlaceholderDontImgAlt1',
+          dontImgDescription: 'Input.WritePlaceholderDontText1'
+        },
+        {
+          doImgPath: 'assets/img/input-content/placeholder-do-2.png',
+          doImgAlt: 'Input.WritePlaceholderDoImgAlt2',
+          doImgDescription: 'Input.WritePlaceholderDoText2',
+          dontImgPath: 'assets/img/input-content/placeholder-dont-2.png',
+          dontImgAlt: 'Input.WritePlaceholderDontImgAlt2',
+          dontImgDescription: 'Input.WritePlaceholderDontText2'
+        }
+      ]
+    },
+    {
+      title: 'Input.WriteErrorsHeading',
+      description: 'Input.WriteErrorsSubHeading',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/error-message-do.png',
+          doImgAlt: 'Input.WriteErrorsDoImgAlt',
+          doImgDescription: 'Input.WriteErrorsDoText',
+          dontImgPath: 'assets/img/input-content/error-message-dont.png',
+          dontImgAlt: 'Input.WriteErrorsDontImgAlt',
+          dontImgDescription: 'Input.WriteErrorsDontText'
+        }
+      ]
+    },
+    {
+      title: 'Input.NecessaryContentHeading',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/necessary-content-do.png',
+          doImgAlt: 'Input.NecessaryContentDoImgAlt',
+          doImgDescription: 'Input.NecessaryContentDoText',
+          dontImgPath: 'assets/img/input-content/necessary-content-dont.png',
+          dontImgAlt: 'Input.NecessaryContentDontImgAlt',
+          dontImgDescription: 'Input.NecessaryContentDontText'
+        }
+      ]
+    },
+    {
+      title: 'Input.RequiredFieldsHeading',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/input-content/required-field-do.png',
+          doImgAlt: 'Input.RequiredFieldsDoImgAlt',
+          doImgDescription: 'Input.RequiredFieldsDoText',
+          dontImgPath: 'assets/img/input-content/required-field-dont.png',
+          dontImgAlt: 'Input.RequiredFieldsDontImgAlt',
+          dontImgDescription: 'Input.RequiredFieldsDontText'
+        }
+      ]
+    },
+  ];
+
 
   figmaDirections: string[] = [
     'Input.FigmaDirectionsListItem1',

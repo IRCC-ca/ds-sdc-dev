@@ -5,7 +5,6 @@
   <section class="interactive-demo">
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
-      class="h3 emphasis"
     ></app-title-slug-url>
     <p class="body3 demo">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
     <app-input-doc-code></app-input-doc-code>
@@ -15,32 +14,35 @@
     <app-title-slug-url
       [config]="headingConfig.typesSlugConfig"
     ></app-title-slug-url>
-    <h5 class="emphasis type-heading">
-      {{ 'Input.PrimaryHeading' | translate }}
-    </h5>
-    <app-component-preview
-      class="h6"
-      copyStyle="<button category='secondary'>{{
-        'Buttons.SecondaryIBtnText' | translate
-      }}</button>"
-      componentType="input"
-    >
-      <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
-    </app-component-preview>
-    <p class="body3 subtext-1">{{ 'Input.PrimaryText' | translate }}</p>
-    <h5 class="emphasis type-sub-heading">
-      {{ 'Input.SecondaryHeading' | translate }}
-    </h5>
-    <app-component-preview
-      class="h6"
-      copyStyle="<button category='secondary'>{{
-        'Buttons.SecondaryIBtnText' | translate
-      }}</button>"
-      componentType="input"
-    >
-      <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
-    </app-component-preview>
-    <p class="body3 last">{{ 'Input.SecondaryText' | translate }}</p>
+    <div class="component-preview-container">
+      <h5 class="sub-headings">
+        {{ 'Input.PrimaryHeading' | translate }}
+      </h5>
+      <app-component-preview
+        class="h6"
+        copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
+        componentType="input"
+      >
+        <ircc-cl-lib-input
+          type="password"
+          [config]="basicInputConfig"
+        ></ircc-cl-lib-input>
+      </app-component-preview>
+      <p class="description">{{ 'Input.PrimaryText' | translate }}</p>
+    </div>
+    <div class="component-preview-container">
+      <h5 class="sub-headings">
+        {{ 'Input.SecondaryHeading' | translate }}
+      </h5>
+      <app-component-preview
+        class="h6"
+        copyText="<ircc-cl-lib-input type='password'></ircc-cl-lib-input>"
+        componentType="input"
+      >
+        <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
+      </app-component-preview>
+      <p class="description">{{ 'Input.SecondaryText' | translate }}</p>
+    </div>
   </section>
 
   <section class="configs">
@@ -49,58 +51,74 @@
     ></app-title-slug-url>
     <div class="config-row">
       <div class="column">
-        <h5>{{ 'Input.ConfigSizeHeading' | translate }}</h5>
-        <ul>
-          <li>{{ 'Input.ConfigSizeSmall' | translate }}</li>
-          <li>{{ 'Input.ConfigSizeLarge' | translate }}</li>
-        </ul>
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'Input.ConfigSizeHeading' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'Input.ConfigSizeSmall' | translate }}</li>
+            <li>{{ 'Input.ConfigSizeLarge' | translate }}</li>
+          </ul>
+        </div>
       </div>
       <div class="column">
-        <h5>{{ 'Input.ConfigHintHeading' | translate }}</h5>
-        <ul>
-          <li>{{ 'Input.ConfigHintTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigHintFalse' | translate }}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <h5 class="config-heading">
-          {{ 'Input.ConfigRequiredHeading' | translate }}
-        </h5>
-        <ul>
-          <li>{{ 'Input.ConfigRequiredTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigRequiredFalse' | translate }}</li>
-        </ul>
-      </div>
-      <div class="column">
-        <h5 class="config-heading">
-          {{ 'Input.ConfigErrorHeading' | translate }}
-        </h5>
-        <ul>
-          <li>{{ 'Input.ConfigErrorTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigErrorFalse' | translate }}</li>
-        </ul>
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'Input.ConfigHintHeading' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'Input.ConfigHintTrue' | translate }}</li>
+            <li>{{ 'Input.ConfigHintFalse' | translate }}</li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="config-row">
       <div class="column">
-        <h5 class="config-heading">
-          {{ 'Input.ConfigDescHeading' | translate }}
-        </h5>
-        <ul class="end-list">
-          <li>{{ 'Input.ConfigDescTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigDescFalse' | translate }}</li>
-        </ul>
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'Input.ConfigRequiredHeading' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'Input.ConfigRequiredTrue' | translate }}</li>
+            <li>{{ 'Input.ConfigRequiredFalse' | translate }}</li>
+          </ul>
+        </div>
       </div>
       <div class="column">
-        <h5 class="config-heading">
-          {{ 'Input.ConfigPlaceholderHeading' | translate }}
-        </h5>
-        <ul class="end-list">
-          <li>{{ 'Input.ConfigPlaceholderTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigPlaceholderFalse' | translate }}</li>
-        </ul>
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'Input.ConfigErrorHeading' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'Input.ConfigErrorTrue' | translate }}</li>
+            <li>{{ 'Input.ConfigErrorFalse' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'Input.ConfigDescHeading' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'Input.ConfigDescTrue' | translate }}</li>
+            <li>{{ 'Input.ConfigDescFalse' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'Input.ConfigPlaceholderHeading' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'Input.ConfigPlaceholderTrue' | translate }}</li>
+            <li>{{ 'Input.ConfigPlaceholderFalse' | translate }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -109,61 +127,59 @@
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
     ></app-title-slug-url>
-    <h5 class="h5 emphasis subtitles">
-      {{ 'Input.FieldWidth' | translate }}
-    </h5>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/field-width-do.png"
-          alt="{{ 'Input.FieldWidthImgDo' | translate }}"
-        />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-4">
-          {{ 'Input.FieldWidthDoText' | translate }}
-        </p>
+
+    <ng-container
+      *ngFor="let content of designGuideLinesContent; let i = index"
+    >
+      <h5 class="emphasis sub-headings">
+        {{ content.title | translate }}
+      </h5>
+      <p
+        *ngIf="content.description !== ''"
+        class="content-description"
+      >
+        {{ content.description | translate }}
+      </p>
+
+      <div *ngFor="let img of content.doAndDontObjectArray">
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="{{ img.doImgPath }}"
+              alt="{{ img.doImgAlt | translate }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-green"
+              >
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ img.doImgDescription | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="{{ img.dontImgPath }}"
+              alt="{{ img.dontImgAlt | translate }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-red"
+              >
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{ img.dontImgDescription | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/field-width-dont.png"
-          alt="{{ 'Input.FieldWidthImgDont' | translate }}"
-        />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-4">
-          {{ 'Input.FieldWidthDontText' | translate }}
-        </p>
-      </div>
-    </div>
-    <h5 class="h5 emphasis subtitles">
-      {{ 'Input.ErrorsHeading' | translate }}
-    </h5>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/error-do.png"
-          alt="{{ 'Input.ErrorDoImgAlt' | translate }}"
-        />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-5">{{ 'Input.ErrorDoText' | translate }}</p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/error-dont.png"
-          alt="{{ 'Input.ErrorDontImgAlt' | translate }}"
-        />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-7">{{ 'Input.ErrorDontText' | translate }}</p>
-      </div>
-    </div>
-    <h5 class="h5 emphasis subtitles">
+    </ng-container>
+
+    <h5 class="sub-headings">
       {{ 'Input.MaxMinWidthHeading' | translate }}
     </h5>
     <div class="row">
@@ -172,7 +188,9 @@
           src="assets/img/input-content/input-max-width.png"
           alt="{{ 'Input.MaxMinWidthImgAlt' | translate }}"
         />
-        <p class="body3 last">{{ 'Input.MaxMinWidthText' | translate }}</p>
+        <p class="description">
+          {{ 'Input.MaxMinWidthText' | translate }}
+        </p>
       </div>
     </div>
   </section>
@@ -182,15 +200,18 @@
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
     <img
+      class="anatomy-image-container"
       src="assets/img/input-content/input-anatomy.png"
       alt="{{ 'Input.AnatomyImgAlt' | translate }}"
     /><br />
     <ng-container *ngFor="let content of anatomyContentItems; let i = index">
-      <span class="round-purple-num">{{ i + 1 }}</span>
-      <h5 class="h5 emphasis round-purple-num">
-        {{ content.title | translate }}
-      </h5>
-      <p class="body3 subtext-8">{{ content.description | translate }}</p>
+      <div class="anatomy-content-container">
+        <span class="round-purple-num-count">{{ i + 1 }}</span>
+        <h5 class="round-purple-num-heading-text">
+          <strong>{{ content.title | translate }}</strong>
+        </h5>
+        <p class="anatomy-description">{{ content.description | translate }}</p>
+      </div>
     </ng-container>
   </section>
 
@@ -208,238 +229,56 @@
   <section class="content-guidelines">
     <app-title-slug-url
       [config]="headingConfig.contentGuideSlugConfig"
-      lass="h3 emphasis"
     ></app-title-slug-url>
-
-    <h5 class="subtitles">{{ 'Input.WriteLabelsHeading' | translate }}</h5>
-    <p class="body3 subtext-3">
-      {{ 'Input.WriteLabelsSubHeading' | translate }}
-    </p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/label-do-1.png"
-          alt="{{ 'Input.WriteLabelsDoImgAlt1' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-4">
-          {{ 'Input.WriteLabelsDoText1' | translate }}
-        </p>
+    <ng-container
+      *ngFor="let content of contentGuideLinesContent; let i = index"
+    >
+      <h5 class="emphasis sub-headings">
+        {{ content.title | translate }}
+      </h5>
+      <p
+        *ngIf="content.description !== ''"
+        class="content-description"
+      >
+        {{ content.description | translate }}
+      </p>
+      <div *ngFor="let img of content.doAndDontObjectArray">
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="{{ img.doImgPath }}"
+              alt="{{ img.doImgAlt | translate }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-green"
+              >
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ img.doImgDescription | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="{{ img.dontImgPath }}"
+              alt="{{ img.dontImgAlt | translate }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-red"
+              >
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{ img.dontImgDescription | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/label-dont-1.png"
-          alt="{{ 'Input.WriteLabelsDontImgAlt1' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-7">
-          {{ 'Input.WriteLabelsDontText1' | translate }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/label-do-2.png"
-          alt="{{ 'Input.WriteLabelsDoImgAlt2' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-10">
-          {{ 'Input.WriteLabelsDoText2' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/label-dont-2.png"
-          alt="{{ 'Input.WriteLabelsDontImgAlt2' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-6">
-          {{ 'Input.WriteLabelsDontText2' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h5 class="subtitles">{{ 'Input.WriteDescHeading' | translate }}</h5>
-    <p class="body3 subtext-3">{{ 'Input.WriteDescSubHeading' | translate }}</p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/desc-do.png"
-          alt="{{ 'Input.WriteDescDoImgAlt' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-11">
-          {{ 'Input.WriteDescDoText' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/desc-dont.png"
-          alt="{{ 'Input.WriteDescDontImgAlt' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-6">
-          {{ 'Input.WriteDescDontText' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h5 class="subtitles">{{ 'Input.WritePlaceholderHeading' | translate }}</h5>
-    <p class="body3 subtext-1">
-      {{ 'Input.WritePlaceholderSubHeading' | translate }}
-    </p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/placeholder-do-1.png"
-          alt="{{ 'Input.WritePlaceholderDoImgAlt1' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-12">
-          {{ 'Input.WritePlaceholderDoText1' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/placeholder-dont-1.png"
-          alt="{{ 'Input.WritePlaceholderDontImgAlt1' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-9">
-          {{ 'Input.WritePlaceholderDontText1' | translate }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/placeholder-do-2.png"
-          alt="{{ 'Input.WritePlaceholderDoImgAlt2' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-6">
-          {{ 'Input.WritePlaceholderDoText2' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/placeholder-dont-2.png"
-          alt="{{ 'Input.WritePlaceholderDontImgAlt2' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-10">
-          {{ 'Input.WritePlaceholderDontText2' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h5 class="subtitles">{{ 'Input.WriteErrorsHeading' | translate }}</h5>
-    <p class="body3 subtext-1">
-      {{ 'Input.WriteErrorsSubHeading' | translate }}
-    </p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/error-message-do.png"
-          alt="{{ 'Input.WriteErrorsDoImgAlt' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-6">
-          {{ 'Input.WriteErrorsDoText' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/error-message-dont.png"
-          alt="{{ 'Input.WriteErrorsDontImgAlt' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-10">
-          {{ 'Input.WriteErrorsDontText' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h5 class="subtitles">{{ 'Input.NecessaryContentHeading' | translate }}</h5>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/necessary-content-do.png"
-          alt="{{ 'Input.NecessaryContentDoImgAlt' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-6">
-          {{ 'Input.NecessaryContentDoText' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/necessary-content-dont.png"
-          alt="{{ 'Input.NecessaryContentDontImgAlt' | translate }}"
-        /><br />
-        <h5 class="text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-6">
-          {{ 'Input.NecessaryContentDontText' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h5 class="subtitles">{{ 'Input.RequiredFieldsHeading' | translate }}</h5>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/required-field-do.png"
-          alt="{{ 'Input.RequiredFieldsDoImgAlt' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-13">
-          {{ 'Input.RequiredFieldsDoText' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/required-field-dont.png"
-          alt="{{ 'Input.RequiredFieldsDontImgAlt' | translate }}"
-        /><br />
-        <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p class="body3 subtext-13">
-          {{ 'Input.RequiredFieldsDontText' | translate }}
-        </p>
-      </div>
-    </div>
+    </ng-container>
   </section>
 
   <section class="usage-figma">
@@ -448,18 +287,18 @@
     ></app-title-slug-url>
     <div class="row">
       <div class="figma-usage">
-        <h5 class="h5 emphasis subtitles">
+        <h5 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h5>
         <ol>
           <li
-            class="body3"
+            class="body3 emphasis"
             *ngFor="let direction of figmaDirections"
             [innerHtml]="direction | translate"
           ></li>
         </ol>
       </div>
-      <div class="image-container-1">
+      <div class="image-1 image-container-1">
         <img
           src="assets/img/input-content/figma-usage-1.png"
           alt="{{ 'Input.FigmaDirectionsImgAlt' | translate }}"
@@ -468,31 +307,33 @@
     </div>
     <div class="three-column-row">
       <div class="figma-usage">
-        <h5 class="h5 emphasis subtitles">
+        <h5 class="sub-headings">
           {{ 'Input.AccessInputsHeading' | translate }}
         </h5>
         <ol>
           <li
-            class="body3"
+            class="body3 emphasis"
             [innerHTML]="'Input.AccessInputsListItem1' | translate"
           ></li>
           <li
-            class="body3"
+            class="body3 emphasis"
             [innerHTML]="'Input.AccessInputsListItem2' | translate"
           ></li>
         </ol>
       </div>
-      <div class="image-container-2">
-        <img
-          src="assets/img/input-content/figma-usage-2.png"
-          alt="{{ 'Input.AccessInputsImgAlt1' | translate }}"
-        />
-      </div>
-      <div>
-        <img
-          src="assets/img/input-content/figma-usage-3.png"
-          alt="{{ 'Input.AccessInputsImgAlt2' | translate }}"
-        />
+      <div class="image-container-wrapper">
+        <div class="image-2 image-container">
+          <img
+            src="assets/img/input-content/figma-usage-2.png"
+            alt="{{ 'Input.AccessInputsImgAlt1' | translate }}"
+          />
+        </div>
+        <div class="image-3 image-container">
+          <img
+            src="assets/img/input-content/figma-usage-3.png"
+            alt="{{ 'Input.AccessInputsImgAlt2' | translate }}"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -500,42 +341,50 @@
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
-    <h5 class="h5 emphasis subtitles">
-      {{ 'Input.AccessibilityColourHeading' | translate }}
-    </h5>
-    <p class="body3 subtext-1">
-      {{ 'Input.AccessibilityColourText' | translate }}
-    </p>
-    <h5 class="h5 emphasis subtitles">
-      {{ 'Input.AccessibilityKeyboardHeading' | translate }}
-    </h5>
-    <p class="body3 subtext-1">
-      {{ 'Input.AccessibilityKeyboardText' | translate }}
-    </p>
-    <h5 class="h5 emphasis subtitles">
-      {{ 'Input.AccessibilityContentHeading' | translate }}
-    </h5>
-    <ul>
-      <li
-        *ngFor="let content of accessibilityContentItems"
-        [innerHtml]="content | translate"
-        class="body3"
-      ></li>
-    </ul>
-    <h5 class="h5 emphasis subtitles">
-      {{ 'Input.AccessibilityValidationHeading' | translate }}
-    </h5>
-    <ul>
-      <li
-        class="body3 subtext-1"
-        [innerHtml]="'Input.AccessibilityValidationText' | translate"
-      ></li>
-    </ul>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'Input.AccessibilityColourHeading' | translate }}
+      </h5>
+      <p class="body3">
+        {{ 'Input.AccessibilityColourText' | translate }}
+      </p>
+    </div>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'Input.AccessibilityKeyboardHeading' | translate }}
+      </h5>
+      <p class="body3">
+        {{ 'Input.AccessibilityKeyboardText' | translate }}
+      </p>
+    </div>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'Input.AccessibilityContentHeading' | translate }}
+      </h5>
+      <ul>
+        <li
+          *ngFor="let content of accessibilityContentItems"
+          [innerHtml]="content | translate"
+          class="body3"
+        ></li>
+      </ul>
+    </div>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'Input.AccessibilityValidationHeading' | translate }}
+      </h5>
+      <ul>
+        <li
+          class="body3"
+          [innerHtml]="'Input.AccessibilityValidationText' | translate"
+        ></li>
+      </ul>
+    </div>
   </section>
   <section class="research">
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p class="body3 subtext-1">{{ 'Input.ResearchText' | translate }}</p>
+    <p class="body3">{{ 'Input.ResearchText' | translate }}</p>
   </section>
 </div>
