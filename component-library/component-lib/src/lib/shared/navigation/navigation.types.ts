@@ -27,6 +27,7 @@ export interface NavigationItem {
   size?: keyof typeof DSSizes;
   children: NavigationItem[];
   indicator?: NavigationIndicator;
+  border?: boolean;
 }
 
 export interface NavigationItemAccordion extends NavigationItem {
@@ -34,7 +35,8 @@ export interface NavigationItemAccordion extends NavigationItem {
 }
 
 export interface NavigationItemLink extends NavigationItem {
-  icon: string;
+  icon?: string;
+  trailingIcon?: string;
   href: string;
   external?: boolean;
   anchor?: string;

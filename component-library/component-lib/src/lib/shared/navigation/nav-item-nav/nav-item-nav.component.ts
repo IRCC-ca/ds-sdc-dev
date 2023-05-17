@@ -1,4 +1,4 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { Renderer2, Input } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,8 +16,10 @@ export class navItemNavComponent implements OnInit {
     href: '',
     anchor: '', //anchor is true when the url has a hash. Routerlink needs to be null if external. [fragment] needed when it's using #heading etc...
     external: false,
+    border: false,
     label: '',
     icon: '',
+    trailingIcon: '',
     type: 'link',
     children: []
   };
@@ -32,7 +34,23 @@ export class navItemNavComponent implements OnInit {
     type: 'dot'
   }
 
+  constructor(private renderer: Renderer2) {}
+
+  linkClick(e: Event){
+    console.log(e);
+
+      console.log('anchor clicked', this.config.anchor);
+      setTimeout(() => {
+        if(this.config?.anchor){
+        const anchorElement = this.renderer.selectRootElement(`#${this.config.anchor}`, true);
+        anchorElement ? anchorElement.scrollIntoView({ behavior: 'smooth' }) : null;
+        }
+      }, 0);
+
+  }
+
   ngOnInit() {
+    let testThing
     this.id !== '' ? (this.config.id = this.id) : undefined;
     if (this.config.indicator){
       this.indicatorConfig = {
@@ -43,7 +61,7 @@ export class navItemNavComponent implements OnInit {
         icon: this.config.indicator.icon
       }
       this.config.indicator.label ? this.indicatorConfig = {...this.indicatorConfig, type: 'text', label: this.config.indicator.label} : null;
-      this.config.size ? this.indicatorConfig = {...this.indicatorConfig, size: this.config.size} : null;
+      this.size ? this.indicatorConfig = {...this.indicatorConfig, size: this.size} : null;
 
     }
   }

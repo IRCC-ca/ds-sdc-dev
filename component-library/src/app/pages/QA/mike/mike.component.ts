@@ -42,9 +42,8 @@ export class MikeComponent implements OnInit {
 
   indicator: IProgressTagsConfig = {
     id: 'progress_tag',
-    type: 'notStarted',
-    
-  }
+    type: 'notStarted'
+  };
 
   dropdownConfig: IDropdownConfig = {
     id: 'dropdown_test',

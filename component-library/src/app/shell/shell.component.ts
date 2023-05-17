@@ -41,10 +41,11 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.overview',
     external: false,
     id: 'Overview.Heading',
-    icon: '',
+    icon: 'fa-regular fa-user',
+    trailingIcon: 'fa-regular fa-arrow-right',
     type: 'link',
     children: [],
-    indicator: {status: 'information', icon: 'fa-regular fa-circle'}
+    indicator: { status: 'information', icon: 'fa-regular fa-circle' }
   };
   itemAB: NavigationItemLink = {
     label: 'Designers.Heading',
@@ -57,6 +58,7 @@ export class ShellComponent implements OnInit {
   itemAC: NavigationItemLink = {
     label: 'Overview.DeveloperHeading',
     href: 'ROUTES.forDevelopers',
+    anchor: 'themes',
     id: 'Overview.DeveloperHeading',
     icon: '',
     type: 'link',
