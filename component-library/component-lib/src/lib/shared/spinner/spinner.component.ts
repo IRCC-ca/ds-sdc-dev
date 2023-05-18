@@ -79,4 +79,8 @@ export class SpinnerComponent implements OnInit {
       this.config.orientation = 'horizontal';
     }
   }
+
+  getSuccessTitle(): string {
+    return (this.config.label || this.config.description) ? '' : this.text[1];
+  }
 }

@@ -296,24 +296,14 @@ export class MahsaComponent implements OnInit {
     });
 
     this.tagForm.valueChanges.subscribe((value) => {
-      let updatedConfig: IProgressTagsConfig = {
-        id: this.TAG_ID
-        // formGroup: this.tagForm,
-      };
       Object.keys(value).forEach((param) => {
         if (value[param]) {
-          // this.qaTags = { ...this.qaTags, [param]: value[param] };
-          updatedConfig = { ...updatedConfig, [param]: value[param] };
-          this.qaTags = updatedConfig;
+          this.qaTags = { ...this.qaTags, [param]: value[param] };
         }
       });
     });
 
     this.spinnerForm.valueChanges.subscribe((value) => {
-      let updatedConfig: ISpinnerConfig = {
-        id: this.SPINNER_ID
-        // formGroup: this.spinnerForm,
-      };
       Object.keys(value).forEach((param) => {
         if (
           (value['size'] === 'small' || value['size'] === 'extraSmall') &&
@@ -324,9 +314,7 @@ export class MahsaComponent implements OnInit {
         if (!value['label']) delete this.qaSpinner.label;
         if (!value['description']) delete this.qaSpinner.description;
         if (value[param]) {
-          // this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
-          updatedConfig = { ...updatedConfig, [param]: value[param] };
-          this.qaSpinner = updatedConfig;
+          this.qaSpinner = { ...this.qaSpinner, [param]: value[param] };
         }
       });
     });
