@@ -1,16 +1,25 @@
 @import '../../../scss/documentation-pages';
 
-.list-container {
-  padding-left: 0px;
-  line-height: 20px;
-  margin-bottom: 24px;
+.accessibility {
+  .list-container {
+    padding-left: 0px;
+    line-height: 20px;
+    margin-bottom: 24px;
 
-  .list-item {
-    list-style-type: none;
-    padding-bottom: 20px;
+    .list-item {
+      list-style-type: none;
+      padding-bottom: 20px;
+    }
+
+    .list-item:last-child {
+      padding-bottom: 0px;
+    }
   }
-
-  .list-item:last-child {
-    padding-bottom: 0px;
+}
+.usage-figma {
+  .image-1 {
+    margin-left: 60px;
+    width: 264px;
+    height: 316px;
   }
 }

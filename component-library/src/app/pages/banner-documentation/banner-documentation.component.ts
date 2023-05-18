@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
-import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
+import { ContentItem, guideLinesContentType } from '@app/share/lan-switch/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
@@ -59,6 +59,124 @@ export class BannerDocumentationComponent implements OnInit {
     heading: 'h1',
     anchorType: slugAnchorType.primary
   };
+
+  designGuideLinesContent: guideLinesContentType[] = [
+    {
+      title: 'Banner.DesignGuideLines.KeepActionsSimpleLabel',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-actions-do.png',
+          doImgAlt: 'Banner.DesignGuideLines.BannerActionsDoAlt',
+          doImgDescription: 'Banner.DesignGuideLines.BannerActionsDoText',
+          dontImgPath: 'assets/img/banner-content/banner-actions-dont.png',
+          dontImgAlt: 'Banner.DesignGuideLines.BannerActionsDontAlt',
+          dontImgDescription: 'Banner.DesignGuideLines.BannerActionsDontText'
+        },
+      ]
+    },
+    {
+      title: 'Banner.DesignGuideLines.UseOneBannerAtATimeLabel',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-count-do.png',
+          doImgAlt: 'Banner.DesignGuideLines.BannerCountDoAlt',
+          doImgDescription: 'Banner.DesignGuideLines.BannerCountDoText',
+          dontImgPath: 'assets/img/banner-content/banner-count-dont.png',
+          dontImgAlt: 'Banner.DesignGuideLines.BannerCountDontAlt',
+          dontImgDescription: 'Banner.DesignGuideLines.BannerCountDontText'
+        },
+      ]
+    },
+    {
+      title: 'Banner.DesignGuideLines.ShowMaximumButtonsLabel',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-button-count-do.png',
+          doImgAlt: 'Banner.DesignGuideLines.bannerButtonCountDoAlt',
+          doImgDescription: 'Banner.DesignGuideLines.bannerButtonCountDoText',
+          dontImgPath: 'assets/img/banner-content/banner-button-count-dont.png',
+          dontImgAlt: 'Banner.DesignGuideLines.bannerButtonCountDoAlt',
+          dontImgDescription: 'Banner.DesignGuideLines.bannerButtonCountDoText'
+        },
+      ]
+    },
+    {
+      title: 'Banner.DesignGuideLines.ProperButtonTypeInGroupLabel',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-button-type-do.png',
+          doImgAlt: 'Banner.DesignGuideLines.bannerButtonTypeDoAlt',
+          doImgDescription: 'Banner.DesignGuideLines.bannerButtonTypeDoText',
+          dontImgPath: 'assets/img/banner-content/banner-button-type-dont.png',
+          dontImgAlt: 'Banner.DesignGuideLines.bannerButtonTypeDontAlt',
+          dontImgDescription: 'Banner.DesignGuideLines.bannerButtonTypeDontText'
+        },
+      ]
+    },
+    {
+      title: 'Banner.DesignGuideLines.BannerCorrectDismissLabel',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-dismiss-do.png',
+          doImgAlt: 'Banner.DesignGuideLines.bannerDismissDoAlt',
+          doImgDescription: 'Banner.DesignGuideLines.bannerDismissDoText',
+          dontImgPath: 'assets/img/banner-content/banner-dismiss-dont.png',
+          dontImgAlt: 'Banner.DesignGuideLines.bannerDismissDontAlt',
+          dontImgDescription: 'Banner.DesignGuideLines.bannerDismissDontText'
+        },
+      ]
+    },
+  ];
+
+  contentGuideLinesContent: guideLinesContentType[] = [
+    {
+      title: 'Banner.ContentGuideLines.UseCorrectCaseHeading',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-use-correct-case-do.png',
+          doImgAlt: 'Banner.ContentGuideLines.BannerUseCorrectCaseDoAlt',
+          doImgDescription: 'Banner.ContentGuideLines.BannerUseCorrectCaseDoText',
+          dontImgPath: 'assets/img/banner-content/banner-use-correct-case-dont.png',
+          dontImgAlt: 'Banner.ContentGuideLines.BannerUseCorrectCaseDontAlt',
+          dontImgDescription: 'Banner.ContentGuideLines.BannerUseCorrectCaseDontText'
+        },
+      ]
+    },
+    {
+      title: 'Banner.ContentGuideLines.EasyToReadTitleHeading',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-title-do.png',
+          doImgAlt: 'Banner.ContentGuideLines.BannerTitleDoAlt',
+          doImgDescription: 'Banner.ContentGuideLines.BannerTitleDoText',
+          dontImgPath: 'assets/img/banner-content/banner-title-dont.png',
+          dontImgAlt: 'Banner.ContentGuideLines.BannerTitleDontAlt',
+          dontImgDescription: 'Banner.ContentGuideLines.BannerTitleDontText'
+        },
+      ]
+    },
+    {
+      title: 'Banner.ContentGuideLines.ProperPunctuationHeading',
+      description: '',
+      doAndDontObjectArray: [
+        {
+          doImgPath: 'assets/img/banner-content/banner-punctuation-do.png',
+          doImgAlt: 'Banner.ContentGuideLines.BannerPunctuationDoAlt',
+          doImgDescription: 'Banner.ContentGuideLines.BannerPunctuationDoText',
+          dontImgPath: 'assets/img/banner-content/banner-punctuation-dont.png',
+          dontImgAlt: 'Banner.ContentGuideLines.BannerPunctuationDontAlt',
+          dontImgDescription: 'Banner.ContentGuideLines.BannerPunctuationDontText'
+        },
+      ]
+    },
+  ];
 
   
 
