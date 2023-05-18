@@ -46,6 +46,11 @@
   .config-row:last-child .column .config-element {
     margin-bottom: 0px;
   }
+
+  ul {
+    margin: 0px;
+    padding-left: 20px;
+  }
 }
 
 .do-dont-container {
@@ -77,7 +82,7 @@
 
     .round-purple-num-heading-text {
       display: inline-block;
-      margin: 0 0 0 8px;
+      margin: 0 0 8px 8px;
       position: relative;
       top: 2px;
     }
@@ -88,12 +93,21 @@
       padding: 9px 15px;
       border-radius: 50%;
     }
+    .conter-and-heading-container {
+      margin: 0 0 8px 0;
+    }
     .anatomy-description {
-      margin: 8px 0 0 0;
+      margin: 0px;
     }
   }
   .anatomy-content-container:last-child {
     margin-bottom: 0px;
+  }
+}
+
+.specs {
+  .specs-description {
+    margin: 24px 0 0 0;
   }
 }
 
@@ -116,45 +130,8 @@
     }
   }
 
-  .three-column-row {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-    @include device.in-tablet-layout() {
-      flex-wrap: wrap;
-    }
-
-    .image-container-wrapper {
-      display: flex;
-      flex-direction: row;
-
-      @include device.in-tablet-layout() {
-        display: flex;
-        flex-direction: column;
-      }
-      @include device.in-phone-layout() {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-  }
-
   .image-container {
     filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
-  }
-
-  .image-1 {
-    max-width: 232px;
-    height: auto;
-  }
-  .image-2 {
-    max-width: 505px;
-    height: auto;
-  }
-  .image-3 {
-    max-width: 239px;
-    height: auto;
   }
 }
 
@@ -173,6 +150,12 @@
   ul {
     margin: 0px;
     padding-left: 20px;
+  }
+}
+
+.research {
+  p {
+    margin: 0px;
   }
 }
 

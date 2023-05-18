@@ -1,1 +1,41 @@
+@use '../../../../../core-library/util/device' as device;
 @import '../../../scss/documentation-pages';
+
+.usage-figma {
+  .three-column-row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include device.in-tablet-layout() {
+      flex-wrap: wrap;
+    }
+
+    .image-container-wrapper {
+      display: flex;
+      flex-direction: row;
+
+      @include device.in-tablet-layout() {
+        display: flex;
+        flex-direction: column;
+      }
+      @include device.in-phone-layout() {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .image-1 {
+    max-width: 232px;
+    height: auto;
+  }
+  .image-2 {
+    max-width: 505px;
+    height: auto;
+  }
+  .image-3 {
+    max-width: 239px;
+    height: auto;
+  }
+}

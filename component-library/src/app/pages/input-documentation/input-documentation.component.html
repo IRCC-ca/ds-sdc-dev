@@ -210,10 +210,12 @@
     /><br />
     <ng-container *ngFor="let content of anatomyContentItems; let i = index">
       <div class="anatomy-content-container">
-        <span class="round-purple-num-count">{{ i + 1 }}</span>
-        <h5 class="round-purple-num-heading-text">
-          <strong>{{ content.title | translate }}</strong>
-        </h5>
+        <div class="conter-and-heading-container">
+          <span class="round-purple-num-count">{{ i + 1 }}</span>
+          <h5 class="round-purple-num-heading-text">
+            <strong>{{ content.title | translate }}</strong>
+          </h5>
+        </div>
         <p class="anatomy-description">{{ content.description | translate }}</p>
       </div>
     </ng-container>
