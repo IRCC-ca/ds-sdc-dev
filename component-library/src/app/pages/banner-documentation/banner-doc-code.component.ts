@@ -105,11 +105,11 @@ export class BannerDocCodeComponent implements OnInit {
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.TrueLabel',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.FalseLabel',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -121,11 +121,11 @@ export class BannerDocCodeComponent implements OnInit {
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.TrueLabel',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.FalseLabel',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -137,11 +137,11 @@ export class BannerDocCodeComponent implements OnInit {
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.TrueLabel',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.FalseLabel',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -153,11 +153,11 @@ export class BannerDocCodeComponent implements OnInit {
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.TrueLabel',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.FalseLabel',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -169,11 +169,11 @@ export class BannerDocCodeComponent implements OnInit {
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.TrueLabel',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.FalseLabel',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -181,15 +181,15 @@ export class BannerDocCodeComponent implements OnInit {
     {
       id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Banner.BannerConfig.ShowSecondaryButtonLabel',
+      label: 'General.ShowSecondaryButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.TrueLabel',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.FalseLabel',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -201,11 +201,11 @@ export class BannerDocCodeComponent implements OnInit {
       size: 'small',
       options: [
         {
-          text: 'Banner.BannerConfig.TrueLabel',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'Banner.BannerConfig.FalseLabel',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]

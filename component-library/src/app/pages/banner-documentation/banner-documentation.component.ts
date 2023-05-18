@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
-import { ContentItem, guideLinesContentType } from '@app/share/lan-switch/interface/content-item.interface';
+import { ContentItem, configContentType, guideLinesContentType } from '@app/share/lan-switch/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
@@ -60,6 +60,45 @@ export class BannerDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
+  configContent: configContentType[] = [
+    {
+      title: "Banner.BannerConfig.SizeLabel",
+      optionsArray: ['Banner.BannerConfig.SmallLabel', 'Input.ConfigSizeLarge']
+    },
+    {
+      title: "General.TypesHeading",
+      optionsArray: ['Banner.InfoHeading', 'Banner.WarningHeading', 'Banner.CriticalHeading', 'Banner.SuccessHeading', 'Banner.GenericHeading']
+    },
+    {
+      title: "Banner.BannerConfig.StateLabel",
+      optionsArray: ['Banner.BannerConfig.DefaultLabel', 'Banner.BannerConfig.HoverLabel', 'Banner.BannerConfig.ActiveLabel', 'Banner.BannerConfig.DisabledLabel', 'Banner.BannerConfig.FocusLabel']
+    },
+    {
+      title: "Banner.BannerConfig.DescriptionLabel",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Banner.BannerConfig.TitleLabel",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Banner.BannerConfig.CloseLabel",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Banner.BannerConfig.CTA1Label",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Banner.BannerConfig.CTA2Label",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Banner.BannerConfig.CTA3Label",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+  ]
+  
   designGuideLinesContent: guideLinesContentType[] = [
     {
       title: 'Banner.DesignGuideLines.KeepActionsSimpleLabel',

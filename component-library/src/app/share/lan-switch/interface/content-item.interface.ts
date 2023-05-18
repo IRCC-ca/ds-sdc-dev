@@ -19,9 +19,16 @@ export interface doAndDontObject {
 }
 
 export interface guideLinesContentType 
-  {
-    title: string;
-    description: string;
-    doAndDontObjectArray: doAndDontObject[]
-  }
+{
+  title: string;
+  description: string;
+  doAndDontObjectArray: doAndDontObject[]
+}
+
+
+export interface configContentType
+{
+  title: string;
+  optionsArray: string[]
+}
 

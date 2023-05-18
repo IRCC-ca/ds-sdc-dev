@@ -40,10 +40,10 @@
 }
 
 .configs {
-  .config-row .column .config-element {
+  .config-row {
     margin-bottom: 24px;
   }
-  .config-row:last-child .column .config-element {
+  .config-row:last-child {
     margin-bottom: 0px;
   }
 

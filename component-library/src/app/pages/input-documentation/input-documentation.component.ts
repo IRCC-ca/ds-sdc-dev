@@ -9,7 +9,7 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
-import { ContentItem, doDontTypes, guideLinesContentType } from '@app/share/lan-switch/interface/content-item.interface';
+import { ContentItem, configContentType, doDontTypes, guideLinesContentType } from '@app/share/lan-switch/interface/content-item.interface';
 import { docPageheadingConfig }  from '@app/share/documentation-page-headings';
 
 @Component({
@@ -183,6 +183,33 @@ export class InputDocumentationComponent implements OnInit {
       ]
     },
   ];
+
+  configContent: configContentType[] = [
+    {
+      title: "Input.ConfigSizeHeading",
+      optionsArray: ['Input.ConfigSizeSmall', 'Input.ConfigSizeLarge']
+    },
+    {
+      title: "Input.ConfigHintHeading",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Input.ConfigRequiredHeading",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Input.ConfigErrorHeading",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Input.ConfigDescHeading",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+    {
+      title: "Input.ConfigPlaceholderHeading",
+      optionsArray: ['General.TrueLabel', 'General.FalseLabel']
+    },
+  ]
 
 
   figmaDirections: string[] = [

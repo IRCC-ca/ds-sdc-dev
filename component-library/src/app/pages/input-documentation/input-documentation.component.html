@@ -49,78 +49,44 @@
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Input.ConfigSizeHeading' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Input.ConfigSizeSmall' | translate }}</li>
-            <li>{{ 'Input.ConfigSizeLarge' | translate }}</li>
-          </ul>
+
+    <ng-container
+      *ngFor="let content of configContent; let count = index; let even = even"
+    >
+      <ng-container
+        class="config-wrapper"
+        *ngIf="even"
+      >
+        <div class="config-row">
+          <div
+            class="column"
+            *ngIf="configContent[count]"
+          >
+            <div class="config-element">
+              <h5 class="sub-headings">
+                {{ configContent[count].title | translate }}
+              </h5>
+              <ul *ngFor="let option of configContent[count].optionsArray">
+                <li>{{ option | translate }}</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="column"
+            *ngIf="configContent[count + 1]"
+          >
+            <div class="config-element">
+              <h5 class="sub-headings">
+                {{ configContent[count + 1].title | translate }}
+              </h5>
+              <ul *ngFor="let option of configContent[count + 1].optionsArray">
+                <li>{{ option | translate }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Input.ConfigHintHeading' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Input.ConfigHintTrue' | translate }}</li>
-            <li>{{ 'Input.ConfigHintFalse' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Input.ConfigRequiredHeading' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Input.ConfigRequiredTrue' | translate }}</li>
-            <li>{{ 'Input.ConfigRequiredFalse' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Input.ConfigErrorHeading' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Input.ConfigErrorTrue' | translate }}</li>
-            <li>{{ 'Input.ConfigErrorFalse' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Input.ConfigDescHeading' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Input.ConfigDescTrue' | translate }}</li>
-            <li>{{ 'Input.ConfigDescFalse' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Input.ConfigPlaceholderHeading' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Input.ConfigPlaceholderTrue' | translate }}</li>
-            <li>{{ 'Input.ConfigPlaceholderFalse' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      </ng-container>
+    </ng-container>
   </section>
 
   <section class="design-guide">

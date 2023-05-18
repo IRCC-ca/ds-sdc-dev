@@ -113,119 +113,44 @@
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.SizeLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.SmallLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.LargeLabel' | translate }}</li>
-          </ul>
+
+    <ng-container
+      *ngFor="let content of configContent; let count = index; let even = even"
+    >
+      <ng-container
+        class="config-wrapper"
+        *ngIf="even"
+      >
+        <div class="config-row">
+          <div
+            class="column"
+            *ngIf="configContent[count]"
+          >
+            <div class="config-element">
+              <h5 class="sub-headings">
+                {{ configContent[count].title | translate }}
+              </h5>
+              <ul *ngFor="let option of configContent[count].optionsArray">
+                <li>{{ option | translate }}</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="column"
+            *ngIf="configContent[count + 1]"
+          >
+            <div class="config-element">
+              <h5 class="sub-headings">
+                {{ configContent[count + 1].title | translate }}
+              </h5>
+              <ul *ngFor="let option of configContent[count + 1].optionsArray">
+                <li>{{ option | translate }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">{{ 'General.TypesHeading' | translate }}</h5>
-          <ul>
-            <li>{{ 'Banner.InfoHeading' | translate }}</li>
-            <li>{{ 'Banner.WarningHeading' | translate }}</li>
-            <li>{{ 'Banner.CriticalHeading' | translate }}</li>
-            <li>{{ 'Banner.SuccessHeading' | translate }}</li>
-            <li>{{ 'Banner.GenericHeading' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.StateLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.DefaultLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.HoverLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.ActiveLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.DisabledLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FocusLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.DescriptionLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.TitleLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.CloseLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.CTA1Label' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.CTA2Label' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.CTA3Label' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      </ng-container>
+    </ng-container>
   </section>
 
   <section class="design-guide">
