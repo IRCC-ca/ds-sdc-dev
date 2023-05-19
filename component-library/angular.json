@@ -84,7 +84,8 @@
               "browserTarget": "component-library:build:production"
             },
             "development": {
-              "browserTarget": "component-library:build:development"
+              "browserTarget": "component-library:build:development",
+              "proxyConfig": "./proxy.conf.js"
             },
             "ci": {
               "progress": false

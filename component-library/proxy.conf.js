@@ -10,9 +10,17 @@ const proxyConfig = [
   {
     context: '/api',
     pathRewrite: { '^/api': '' },
-    target: 'https://api.chucknorris.io',
+    target: 'http://localhost:4200',
     changeOrigin: true,
-    secure: false
+    logLevel: "debug",
+    secure: false.valueOf,
+    bypass: function (req, res, proxyOptions) {
+        if (req.headers.accept.includes('html')) {
+            console.log('Skipping proxy for browser request.');
+            return '/index.html';
+        }
+        req.headers['X-Custom-Header'] = 'yes';
+    }
   }
 ];
 

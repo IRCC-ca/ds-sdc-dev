@@ -31,7 +31,7 @@ import { accordionContainerComponent } from '@app/components/accordion-panel/acc
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { EncapsulatedElementComponent } from '@app/components/encapsulated-element/encapsulated-element.component';
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -70,7 +70,8 @@ import { RequestFormComponent } from '@app/pages/request-form/request-form.compo
     HighlightModule,
     AccessibilityDemoModule,
     TranslateModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   exports: [
     TitleSlugUrlComponent,
@@ -89,4 +90,4 @@ import { RequestFormComponent } from '@app/pages/request-form/request-form.compo
     }
   ]
 })
-export class DsPageModule {}
+export class DsPageModule { }

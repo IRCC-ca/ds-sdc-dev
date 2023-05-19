@@ -22,6 +22,7 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
 import { first } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-request-form',
@@ -248,7 +249,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     private translate: TranslateService,
     private lang: LangSwitchService,
     private requestFormService: RequestFormService
-  ) {}
+  ) { }
   ngAfterViewInit(): void {
     /**
      * Set local storage form data when form values change after init so we're not setting and getting at the same time
@@ -374,8 +375,25 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     }
   }
 
+  private handleExceptions(errorName: HttpErrorResponse) {
+    // handle exception according to the exception name
+    console.log(errorName);
+
+  }
+
   submitForm() {
     const data = localStorage.getItem('requestFormData');
-    this.requestFormService.sendRequestForm(this.email, data);
+    this.requestFormService.sendRequestForm(this.email, data).subscribe({
+      next: () => {
+        console.log("email sent")
+      },
+      error: (error: HttpErrorResponse) => {
+        this.handleExceptions(error)
+      },
+    })
   }
+
+
+
+
 }
