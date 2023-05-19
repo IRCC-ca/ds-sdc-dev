@@ -28,17 +28,22 @@ $selectors: "ircc-cl-lib-error";
 
   .errorText {
     font-size: 14px;
+
     margin: {
       top: 4px;
       bottom: 0px;
-    };
+    }
+
+    ;
   }
 
   .additionalError {
     margin: {
       top: 8px;
       left: 20px;
-    };
+    }
+
+    ;
   }
 }
 
@@ -50,12 +55,13 @@ $selectors: "ircc-cl-lib-error";
   }
 
   .errorText {
-    margin: 8px 0 0px 0;
+    margin: 4px 0 0px 0;
     font-size: 16px;
   }
 
   .additionalError {
     margin-left: 24px;
+
     margin: {
       top: 12px;
       bottom: 0px;
