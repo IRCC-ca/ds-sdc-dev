@@ -1,15 +1,27 @@
-import { EventEmitter, Input, Output, ViewChild, Type } from '@angular/core';
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
 import { NavigationItem, INavigationConfig } from './navigation.types';
+import { Subscription } from 'rxjs';
+import { NavigationService } from './navigation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ircc-cl-lib-navigation',
   templateUrl: './navigation.component.html'
 })
 export class navigationComponent implements OnInit {
-  @Input() config: INavigationConfig = {
+  @Input() id: string = '';
+  @Input() label: string = '';
+  @Input() iconLeading: string = '';
+  @Input() iconTrailing: string = '';
+  @Input() size: keyof typeof DSSizes | undefined;
+  //TODO: NavigationItem and all other interfaces must be renamed starting with 'I'
+  @Input() navigationConfig: Array<NavigationItem> = [];
+
+  flattenNavigation: Array<NavigationItem> = [];
+  config: INavigationConfig = {
     id: '',
     label: '',
     iconLeading: '',
@@ -17,69 +29,72 @@ export class navigationComponent implements OnInit {
     size: 'small',
     navigationConfig: []
   };
+  configSub?: Subscription;
 
-  @Input() id: string = '';
-  @Input() label: string = '';
-  @Input() iconLeading: string = '';
-  @Input() iconTrailing: string = '';
-  @Input() size: keyof typeof DSSizes | undefined;
-  @Input() navigationConfig: Array<NavigationItem> = [];
-
-  flattenNavigation: Array<NavigationItem> = [];
+  constructor (private navService: NavigationService,
+              private router: Router ) { } //TODO: For testing
 
   ngOnInit() {
-    this.id !== '' ? (this.config.id = this.id) : undefined;
-    this.label !== '' ? (this.config.label = this.label) : undefined;
-    this.iconLeading !== ''
-      ? (this.config.iconLeading = this.iconLeading)
-      : undefined;
-    this.iconTrailing !== ''
-      ? (this.config.iconTrailing = this.iconTrailing)
-      : undefined;
-    this.size !== undefined ? (this.config.size = this.size) : undefined;
-    this.navigationConfig.length > 0
-      ? (this.config.navigationConfig = this.navigationConfig)
-      : undefined;
+    this.configSub = this.navService.navConfigObs$.subscribe(response => {
+      this.config = response;
+      console.log('CHANGES BE HAPPENING');
+    });
+    // this.router.events.subscribe(event => {
+    //   console.log(this.config)
+    // });
+    //TODO: Considering making something like this in the service
+    // this.id !== '' ? (this.config.id = this.id) : undefined;
+    // this.label !== '' ? (this.config.label = this.label) : undefined;
+    // this.iconLeading !== ''
+    //   ? (this.config.iconLeading = this.iconLeading)
+    //   : undefined;
+    // this.iconTrailing !== ''
+    //   ? (this.config.iconTrailing = this.iconTrailing)
+    //   : undefined;
+    // this.size !== undefined ? (this.config.size = this.size) : undefined;
+    // this.navigationConfig.length > 0
+    //   ? (this.config.navigationConfig = this.navigationConfig)
+    //   : undefined;
 
-    this.flattenNavigation = this.flatten(this.config.navigationConfig);
+    // this.flattenNavigation = this.flatten(this.config.navigationConfig);
   }
 
-  flatten = (obj: any) => {
-    const stack = [obj];
-    let stackB = [];
-    while (stack?.length > 0) {
-      const currentObj = stack.pop();
-      if (!Array.isArray(currentObj)) {
-        stackB.push(currentObj);
-      }
-      Object.keys(currentObj).forEach((key) => {
-        if (typeof currentObj[key] === 'object' && currentObj[key] !== null) {
-          stack.push(currentObj[key]);
-        }
-      });
-    }
-    return stackB;
-  };
+  // flatten = (obj: any) => {
+  //   const stack = [obj];
+  //   let stackB = [];
+  //   while (stack?.length > 0) {
+  //     const currentObj = stack.pop();
+  //     if (!Array.isArray(currentObj)) {
+  //       stackB.push(currentObj);
+  //     }
+  //     Object.keys(currentObj).forEach((key) => {
+  //       if (typeof currentObj[key] === 'object' && currentObj[key] !== null) {
+  //         stack.push(currentObj[key]);
+  //       }
+  //     });
+  //   }
+  //   return stackB;
+  // };
 
-  findByKey = (items: Array<NavigationItem>, key: string, value: string) => {
-    let returnItem: NavigationItem = {
-      id: '',
-      label: '',
-      type: 'accordion',
-      children: []
-    };
-    returnItem = items.find((element: any) => element[key] === value) || {
-      id: '',
-      label: '',
-      type: 'accordion',
-      children: []
-    };
-    return returnItem;
-  };
+  // findByKey = (items: Array<NavigationItem>, key: string, value: string) => {
+  //   let returnItem: NavigationItem = {
+  //     id: '',
+  //     label: '',
+  //     type: 'accordion',
+  //     children: []
+  //   };
+  //   returnItem = items.find((element: any) => element[key] === value) || {
+  //     id: '',
+  //     label: '',
+  //     type: 'accordion',
+  //     children: []
+  //   };
+  //   return returnItem;
+  // };
 
-  setNavigationItem = (obj: NavigationItem, key: string, value: string) => {
-    obj[key] = value;
-  };
+  // setNavigationItem = (obj: NavigationItem, key: string, value: string) => {
+  //   obj[key] = value;
+  // };
 
   isArray = (obj: any) => {
     return Array.isArray(obj);
@@ -97,6 +112,8 @@ export class navigationComponent implements OnInit {
     );
   };
 
+//These are in THIS component, not in it's own. I.e. the buttons in the actual
+//header are not in a child component.
   clickIconLeading = (event: any) => {
     alert(`Insert Service Here. Button id: ${event}`);
   };

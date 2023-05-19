@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { NavigationItem, NavigationItemHeading } from '../navigation.types';
 import { IIconButtonComponentConfig } from '../../icon-button/icon-button.component';
+import { NavigationService } from '../navigation.service';
+import { Subscription, filter } from 'rxjs';
 
 @Component({
   selector: 'ircc-cl-lib-nav-header',
@@ -33,7 +35,15 @@ export class navItemHeadingComponent implements OnInit {
     }
   };
 
+  navObjectChangeSub = new Subscription;
+
+  constructor(private navEvent: NavigationService) { }
+
   ngOnInit() {
+    // this.navObjectChangeSub = this.navEvent.navObjectChangeObs$.pipe(
+    //   filter(item => (item.id === this.config.id && item.type === 'heading'))).subscribe(response => {
+    //     this.config = response as NavigationItemHeading;
+    //   });
     this.id !== '' ? (this.config.id = this.id) : undefined;
     this.label !== '' ? (this.config.label = this.label) : undefined;
     this.icon !== '' ? (this.config.icon = this.icon) : undefined;

@@ -925,7 +925,7 @@ export const typographys: typography[] = [
   },
   {
     tag: 'h1-emphasis',
-    class: 'h1 emphasis',
+    class: 'ircc-cl-lib-spinnerhasis',
     fontWeight: 'Lato<br/>Bold',
     size: '36px / 2.25rem',
     lineHeight: '52px / 3.25rem<br/>16px / 1 rem',

@@ -1,16 +1,21 @@
-import { Renderer2, Input } from '@angular/core';
+import { Renderer2, Input, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
 
 import { NavigationIndicator, NavigationItemLink } from '../navigation.types';
 import { IIndicatorConfig } from '../../indicator/indicator.component';
+import { NavigationService } from '../navigation.service';
+import { Subscription, filter } from 'rxjs';
 
 @Component({
   selector: 'ircc-cl-lib-nav-item',
   templateUrl: './nav-item-nav.component.html'
 })
+
+//TODO: Fix class name (NavItemNavComponent)
 export class navItemNavComponent implements OnInit {
 
+  //TODO: Pattern is supposed to be that any elements that may not be used should be OPTIONAL
   @Input() config: NavigationItemLink = {
     id: '',
     href: '',
@@ -28,29 +33,29 @@ export class navItemNavComponent implements OnInit {
   @Input() size?: keyof typeof DSSizes;
   @Input() indicator?: NavigationIndicator;
 
-  indicatorConfig : IIndicatorConfig = {
+  indicatorConfig: IIndicatorConfig = {
     category: 'weak',
     purpose: 'status',
     type: 'dot'
   }
 
-  constructor(private renderer: Renderer2) {}
+  navObjectChangeSub = new Subscription;
 
-  linkClick(e: Event){
-      if(!this.config.external){
-        setTimeout(() => {
-          if(this.config?.anchor){
-          const anchorElement = this.renderer.selectRootElement(`#${this.config.anchor}`, true);
-          anchorElement ? anchorElement.scrollIntoView({ behavior: 'smooth' }) : null;
-          }
-        }, 0);
-      }
-      alert(`Insert service here. Click event on nav-item with id: ${this.config.id}`)
-  }
+  constructor(private renderer: Renderer2,
+    private navEvent: NavigationService,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
+    //Used entirely as a workaround for the change detection limitations
+    this.navObjectChangeSub = this.navEvent.itemChangeObs$.pipe(
+      filter(item => (item === this.config.id))).subscribe(() => {
+        this.indicatorConfig.status = this.config.indicator?.status;
+        this.indicatorConfig.icon = this.config.indicator?.icon;
+      });
+
+
     this.id !== '' ? (this.config.id = this.id) : undefined;
-    if (this.config.indicator){
+    if (this.config.indicator) {
       this.indicatorConfig = {
         type: 'dot',
         category: 'weak',
@@ -58,9 +63,19 @@ export class navItemNavComponent implements OnInit {
         status: this.config.indicator.status,
         icon: this.config.indicator.icon
       }
-      this.config.indicator.label ? this.indicatorConfig = {...this.indicatorConfig, type: 'text', label: this.config.indicator.label} : null;
-      this.size ? this.indicatorConfig = {...this.indicatorConfig, size: this.size} : null;
+      this.config.indicator.label ? this.indicatorConfig = { ...this.indicatorConfig, type: 'text', label: this.config.indicator.label } : null;
+      this.size ? this.indicatorConfig = { ...this.indicatorConfig, size: this.size } : null;
+    }
+  }
 
+  linkClick(e: Event) {
+    if (!this.config.external) {
+      setTimeout(() => {
+        if (this.config?.anchor) {
+          const anchorElement = this.renderer.selectRootElement(`#${this.config.anchor}`, true);
+          anchorElement ? anchorElement.scrollIntoView({ behavior: 'smooth' }) : null;
+        }
+      }, 0);
     }
   }
 }
