@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  slugAnchorType,
+  slugTitleURLConfig
+} from '@app/components/title-slug-url/title-slug-url.component';
 import { TranslateService } from '@ngx-translate/core';
 import { IDatePickerConfig } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
@@ -23,12 +26,12 @@ export class DatePickerDocumentationComponent implements OnInit {
     title: 'Interactive Demo',
     anchorType: slugAnchorType.primary
   };
-  
+
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
-    formGroup: this.form,
+    formGroup: this.form
   };
-  
+
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
   }
