@@ -52,8 +52,6 @@ export class RequestFormService {
     email: string,
     body: any
   ): Observable<IRequestFormDataInterface> {
-    console.log('inside sendRequest');
-
     const params = {
       to: email,
       from: 'robert.brice@cic.gc.ca',
@@ -61,9 +59,8 @@ export class RequestFormService {
       text: body,
       html: body,
       headers: {
-        'access-control-allow-origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Accept'
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type'
       }
     };
 
