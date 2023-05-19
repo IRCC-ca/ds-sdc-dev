@@ -90,4 +90,4 @@ import { HttpClientModule } from '@angular/common/http';
     }
   ]
 })
-export class DsPageModule { }
+export class DsPageModule {}

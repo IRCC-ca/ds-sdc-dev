@@ -25,7 +25,7 @@ export class RequestFormService {
   requestFormObs = this.requestFormData.asObservable();
 
   private storageKey: string = 'requestFormData';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   setFormData(data: IRequestFormDataInterface) {
     localStorage.setItem(this.storageKey, JSON.stringify(data));
@@ -48,8 +48,11 @@ export class RequestFormService {
     localStorage.clear();
   }
 
-  sendRequestForm(email: string, body: any): Observable<IRequestFormDataInterface> {
-    console.log("inside sendRequest");
+  sendRequestForm(
+    email: string,
+    body: any
+  ): Observable<IRequestFormDataInterface> {
+    console.log('inside sendRequest');
 
     const params = {
       to: email,
@@ -58,13 +61,15 @@ export class RequestFormService {
       text: body,
       html: body,
       headers: {
-        "access-control-allow-origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Accept"
+        'access-control-allow-origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Accept'
       }
     };
 
-    return this.http.post('https://y4znrkrrvauyccjgllyspxuwhm0mdqpg.lambda-url.ca-central-1.on.aws/', params)
-
+    return this.http.post(
+      'https://y4znrkrrvauyccjgllyspxuwhm0mdqpg.lambda-url.ca-central-1.on.aws/',
+      params
+    );
   }
 }
