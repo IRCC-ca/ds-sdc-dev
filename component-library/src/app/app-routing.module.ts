@@ -78,10 +78,10 @@ const routes: Routes = [
       component: RequestFormComponent,
       title: 'Request-form'
     },
-    { 
+    {
       path: 'datePicker-doc',
       component: DatePickerDocumentationComponent,
-      title: 'DatePicker-doc' 
+      title: 'DatePicker-doc'
     },
 
     // French
@@ -116,10 +116,10 @@ const routes: Routes = [
       component: RequestFormComponent,
       title: 'Request-form-fr'
     },
-    { 
+    {
       path: 'datePicker-doc-fr',
       component: DatePickerDocumentationComponent,
-      title: 'DatePicker-doc-fr' 
+      title: 'DatePicker-doc-fr'
     },
 
     //QA PATHS
