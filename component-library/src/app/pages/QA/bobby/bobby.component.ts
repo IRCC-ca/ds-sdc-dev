@@ -1,4 +1,4 @@
-import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
@@ -102,10 +102,10 @@ export class BobbyComponent implements OnInit {
     testFields: this.testerConfigInput
   };
 
-  constructor(private altLang: LanguageSwitchService) {}
+  constructor(private altLang: LangSwitchService) {}
 
   ngOnInit() {
-    this.altLang.setAltLangLink('bobby-alt');
+    this.altLang.setAltLangLink('bobby');
 
     //******************************************************************************************************** */
     //********************************* Input Component Tester *********************************************** */
