@@ -1,0 +1,109 @@
+@use '../../../../core-library/tokens/sizes';
+@use '../../../../core-library/util/device';
+@use '../../../../core-library/util/color' as color;
+@import '../../scss/grid';
+
+$page-width: 1440px;
+$tablet-padding: 24px;
+$mobile-padding: 16px;
+
+.header {
+  overflow: hidden;
+  top: 0;
+  max-width: $page-width;
+  width: 100%;
+  background: var(--surface1);
+  z-index: 100;
+  position: fixed;
+  border-bottom: 1px solid var(--divider);
+  @include un-tablet-layout {
+    left: 0;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    // h1 {
+    .emphasis {
+      @include un-tablet-layout {
+        padding: 0 $tablet-padding;
+      }
+      @include in-phone-layout {
+        padding: 0 $mobile-padding;
+      }
+    }
+  }
+}
+
+.main-container {
+  &.nav-open {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 0;
+    justify-content: flex-start;
+  }
+
+  &.nav-closed {
+    display: block;
+  }
+
+  &.top {
+    margin-top: 175px;
+    @include un-tablet-layout {
+      margin-top: 180px;
+    }
+  }
+
+  > app-side-nav.left-nav {
+    @include up-laptop-layout {
+      @include col-2;
+    }
+    @include in-desktop-layout {
+      @include col-2;
+      margin-right: -1px;
+    }
+    @include un-tablet-layout {
+      @include col-12;
+    }
+  }
+  .content[role='main'] {
+    box-sizing: border-box;
+    min-height: calc(100vh - 60px);
+
+    @include col-12;
+    @include in-tablet-layout {
+      @include col-12;
+    }
+    @include up-laptop-layout {
+      @include col-10;
+      padding-left: sizes.$fixed-36;
+    }
+    @include in-desktop-layout {
+      padding-left: sizes.$fixed-40;
+    }
+    @include un-tablet-layout {
+      @include col-12;
+      padding: 0 $tablet-padding;
+    }
+    @include in-phone-layout {
+      padding: 0 $mobile-padding;
+    }
+    .page-content {
+      width: 100%;
+      .content-doc-wrapper {
+        box-sizing: border-box;
+        @include device.in-desktop-layout {
+          padding-right: sizes.$fixed-40;
+        }
+        @include device.in-desktop-layout {
+          padding-right: sizes.$fixed-20;
+        }
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

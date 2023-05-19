@@ -14,8 +14,7 @@ import {
 } from './request-form.service';
 import {
   slugAnchorType,
-  slugTitleURLConfig,
-  slugTitleURLType
+  slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
@@ -41,19 +40,17 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
   email = 'ds-form-request@padye.com';
 
   submitRequestTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: 'RequestForm.Title',
+    heading: 'h1',
     anchorType: slugAnchorType.primary
   };
 
   requestCriteriaTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'RequestForm.RequestCriteriaTitle',
     anchorType: slugAnchorType.primary
   };
 
   requestFormTitleSlugConfig: slugTitleURLConfig = {
-    type: slugTitleURLType.secondary,
     title: 'RequestForm.RequestFormTitle',
     anchorType: slugAnchorType.primary
   };

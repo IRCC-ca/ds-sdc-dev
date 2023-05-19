@@ -1,24 +1,34 @@
 <div>
   <div class="header">
     <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
-    <h1 class="emphasis">{{ 'Overview.SubHeading' | translate }}</h1>
-  </div>
-  <main>
-    <div class="main-container top {{ navStatus }}">
-      <div class="app-side-nav left-nav">
+    <div class="container">
+      <h2
+        [ngClass]="{ h4: mobile }"
+        class="strong"
+      >
+        {{ 'Overview.SubHeading' | translate }}
+      </h2>
+      <div>
         <a routerLink="/en/overview">overview</a>
-        <a routerLink="/en/mahsa-en">mashsa</a>
+        <a routerLink="/en/mahsa-en">mahsa</a>
         <a routerLink="/en/michael-en">michael</a>
         <a routerLink="/en/mike-en">mike</a>
         <a routerLink="/en/naseer-en">naseer</a>
-        <a routerLink="/en/bobby-en">bobby</a>
-
         <a routerLink="/en/accessibility-demo">Accessibility Demo</a>
         <a routerLink="/en/banner-doc">Banner Documentation</a>
         <a routerLink="/en/codeview">Codeview</a>
         <a routerLink="/en/button-doc">Button Documentation</a>
         <a routerLink="/en/input-documentation">Input Documentation</a>
       </div>
+    </div>
+  </div>
+  <main>
+    <div class="main-container top {{ navStatus }}">
+      <app-side-nav
+        class="left-nav"
+        [navBarData]="leftNavData"
+        [mobileToggleIcon]="true"
+      ></app-side-nav>
       <div
         class="content"
         role="main"

@@ -2,19 +2,19 @@ import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 
-export enum slugTitleURLType {
-  'primary' = 'primary',
-  'secondary' = 'secondary'
+export enum HeadingType {
+  'h1' = 'h1',
+  'h2' = 'h2'
 }
-
 export enum slugAnchorType {
   'primary' = 'primary',
   'secondary' = 'secondary'
 }
+
 export interface slugTitleURLConfig {
-  type: slugTitleURLType;
   title: string;
-  anchorType: slugAnchorType;
+  heading?: keyof typeof HeadingType;
+  anchorType?: slugAnchorType;
 }
 
 @Component({
@@ -26,8 +26,8 @@ export interface slugTitleURLConfig {
 export class TitleSlugUrlComponent implements AfterContentInit, OnInit {
   @Input()
   config: slugTitleURLConfig = {
-    type: slugTitleURLType.primary,
     title: '',
+    heading: HeadingType.h1,
     anchorType: slugAnchorType.primary
   };
   currentLang = '';

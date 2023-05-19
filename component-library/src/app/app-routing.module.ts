@@ -13,8 +13,7 @@ import { Location } from '@angular/common';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { ForDesignersComponent } from './pages/for-designers/for-designers.component';
 import { ForDevelopersComponent } from './pages/for-developers/for-developers.component';
-// import { PageButtonComponent } from './pages/button/button.component';
-// import { PageUtilitiesComponent } from './pages/utilities/utilities.component';
+import { UtilitiesComponent } from './pages/utilities/utilities.component';
 
 import { Shell } from './shell/shell.service';
 import { codeViewComponent } from '@app/pages/code-view/code-view.component';
@@ -25,6 +24,7 @@ import { NaseerComponent } from './pages/QA/naseer/naseer.component';
 import { AccessibilityDemoComponent } from './pages/QA/accessibility-demo/accessibility-demo.component';
 import { AccessibilityDemoPreviousPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoNextPageComponent } from './pages/QA/accessibility-demo/accessibility-demo-next-page/accessibility-demo-next-page.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { BannerDocCodeComponent } from './pages/banner-documentation/banner-doc-code.component';
 import { ButtonDocCodeComponent } from './pages/button-documentation/button-doc-code.component';
 import { AccessibilityDemoModule } from './pages/QA/accessibility-demo/accessibility-demo.module';

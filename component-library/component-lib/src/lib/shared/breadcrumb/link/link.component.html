@@ -1,10 +1,15 @@
 <ng-container *ngIf="config.href">
-  <a [href]="config.href">{{ config.text | translate }}</a>
+  <a
+    [href]="config.href"
+    tabindex="-1"
+    >{{ config.text | translate }}
+  </a>
 </ng-container>
 <ng-container *ngIf="config.routerLink">
   <a
     type="button"
+    tabindex="-1"
     [routerLink]="config.routerLink"
-    >{{ config.text | translate }}</a
-  >
+    >{{ config.text | translate }}
+  </a>
 </ng-container>

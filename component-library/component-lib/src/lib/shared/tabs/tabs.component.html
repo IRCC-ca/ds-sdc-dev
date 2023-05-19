@@ -9,7 +9,7 @@
         (click)="setSelected(val.id)"
         [attr.aria-label]="val.title + ' selected'"
       >
-        {{ val.title }}
+        {{ val.title || '' | translate }}
       </button>
       <button
         *ngIf="val.id !== config.selected"
@@ -17,7 +17,7 @@
         [id]="val.id"
         (click)="setSelected(val.id)"
       >
-        {{ val.title }}
+        {{ val.title || '' | translate }}
       </button>
     </div>
   </nav>
@@ -30,7 +30,7 @@
             *ngIf="cont.id === config.selected"
             class="content"
           >
-            {{ cont.value }}
+            {{ cont.value || '' | translate }}
           </div>
         </div>
       </div>
