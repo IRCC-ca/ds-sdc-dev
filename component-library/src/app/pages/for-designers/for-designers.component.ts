@@ -71,7 +71,6 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
       type: 'link',
       children: [],
       indicator: { status: 'critical', icon: 'fa-regular fa-square' }
-      }
-    )
+    });
   }
 }

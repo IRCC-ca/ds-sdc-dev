@@ -7,7 +7,10 @@ import {
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
-import { LanguageSwitchButtonService, NavigationService } from 'ircc-ds-angular-component-library';
+import {
+  LanguageSwitchButtonService,
+  NavigationService
+} from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
 import { DisplayLanguages, Languages } from '../share/global-params';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
