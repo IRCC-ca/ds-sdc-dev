@@ -12,7 +12,10 @@ import {
   slugAnchorType,
   slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
-import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
+import {
+  ICodeViewerConfig,
+  stringify
+} from '@app/components/code-viewer/code-viewer.component';
 
 @Component({
   selector: 'app-banner-doc-code',
@@ -45,7 +48,7 @@ export class BannerDocCodeComponent implements OnInit {
 
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    cta: [],
+    cta: []
   };
 
   bannerConfigCodeView: any = {
@@ -69,22 +72,21 @@ export class BannerDocCodeComponent implements OnInit {
         id: 'html',
         title: 'HTML',
         value:
-          `<div>\n`+
-          '  <ircc-cl-lib-banenr [config]="bannerConfig"></ircc-cl-lib-banner>\n'+
+          `<div>\n` +
+          '  <ircc-cl-lib-banenr [config]="bannerConfig"></ircc-cl-lib-banner>\n' +
           '</div>'
-
       },
       {
         id: 'ts',
         title: 'TypeScript',
         value:
-          "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n"+
-          `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`
+          "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n" +
+          `bannerConfig: IBannerConfig = ${stringify(
+            this.bannerConfigCodeView
+          )}`
       }
     ]
   };
-
-
 
   toggles: IRadioInputComponentConfig[] = [
     {
@@ -460,8 +462,8 @@ export class BannerDocCodeComponent implements OnInit {
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
-        "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n"+
-        `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`
+        "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n" +
+        `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`;
     }
   }
 
