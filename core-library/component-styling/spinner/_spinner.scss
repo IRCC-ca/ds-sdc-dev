@@ -50,11 +50,14 @@ $selectors: "ircc-cl-lib-spinner";
       width: 80px;
       height: 80px;
       border-radius: 50%;
+      .spinner-icon {
+        >span>svg {
+          width: 40px;
+          height: 40px;
+        }
+        border: 1px solid red;
+      }
     }
-  }
-  .spinner-icon {
-    width: 40px;
-    height: 40px;
   }
   .horizontal {
     .label {
@@ -79,15 +82,16 @@ $selectors: "ircc-cl-lib-spinner";
       width: 28px;
       height: 28px;
       border-radius: 50%;
+      .spinner-icon {
+        width: 14px;
+        height: 16px;
+        border: 1px solid rgb(0, 26, 255);
+      }
+      .loading-icon {
+        width: 28px;
+        height: 28px;
+      }
     }
-  }
-  .spinner-icon {
-    width: 14px;
-    height: 16px;
-  }
-  .loading-icon {
-    width: 28px;
-    height: 28px;
   }
   .label {
     margin-left: 8px;
@@ -127,14 +131,14 @@ $selectors: "ircc-cl-lib-spinner";
   }
 
   .icon-div {
-    position: relative;
+    // position: relative;
   }
 
   .spinner-icon {
     color: var(--text);
-    position: absolute;
-    top: 25%;
-    left: 25%;
+    // position: absolute;
+    // top: 25%;
+    // left: 25%;
   }
   .animated-icon {
     animation: rotation 1s linear infinite;
@@ -181,6 +185,7 @@ $selectors: "ircc-cl-lib-spinner";
     .spinner-icon {
       width: 12px;
       height: 12px;
+      border: 1px solid pink;
     }
     .loading-icon {
       width: 20px;

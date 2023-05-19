@@ -83,4 +83,7 @@ export class SpinnerComponent implements OnInit {
   getSuccessTitle(): string {
     return (this.config.label || this.config.description) ? '' : this.text[1];
   }
+  getErrorTitle(): string {
+    return (this.config.label || this.config.description) ? '' : this.text[2];
+  }
 }

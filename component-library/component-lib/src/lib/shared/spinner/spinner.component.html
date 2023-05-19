@@ -19,12 +19,15 @@
         <div class="icon-div">
           <!-- <i
             class="fa-check fa-regular spinner-icon"
-            [attr.title]="c(onfig.label || config.description) ? '' : text[1]"
+            [attr.title]="(config.label || config.description) ? '' : text[1]"
           ></i> -->
-          <i
-            class="fa-check fa-regular spinner-icon"
-            [attr.title]="getSuccessTitle()"
-          ></i>
+          <ircc-cl-lib-icon
+            [config]="{
+              FA_keywords: 'fa-check fa-regular',
+              ariaLabel: getSuccessTitle()
+            }"
+            class="spinner-icon"
+          ></ircc-cl-lib-icon>
         </div>
         <div class="text">
           <div
@@ -43,10 +46,17 @@
         class="container"
       >
         <div class="icon-div">
-          <i
+          <!-- <i
             class="fa-exclamation fa-regular spinner-icon"
             [attr.title]="config.label || config.description ? '' : text[2]"
-          ></i>
+          ></i> -->
+          <ircc-cl-lib-icon
+            [config]="{
+              FA_keywords: 'fa-exclamation fa-regular',
+              ariaLabel: getErrorTitle()
+            }"
+            class="spinner-icon"
+          ></ircc-cl-lib-icon>
         </div>
         <div class="text">
           <div
