@@ -8,9 +8,8 @@ describe('DatePickerDocumentationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DatePickerDocumentationComponent ]
-    })
-    .compileComponents();
+      declarations: [DatePickerDocumentationComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DatePickerDocumentationComponent);
     component = fixture.componentInstance;

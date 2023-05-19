@@ -13,8 +13,10 @@ import {
   IRadioInputComponentConfig,
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
-import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
-
+import {
+  ICodeViewerConfig,
+  stringify
+} from '@app/components/code-viewer/code-viewer.component';
 
 export enum LayoutType {
   'fluid' = 'button-container-fluid',
@@ -60,7 +62,7 @@ export class ButtonDocCodeComponent implements OnInit {
     disabled: this.buttonConfig.disabled,
     icon: this.buttonConfig.icon,
     iconDirection: this.buttonConfig.iconDirection,
-    tabIndex: this.buttonConfig.tabIndex,
+    tabIndex: this.buttonConfig.tabIndex
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -72,23 +74,25 @@ export class ButtonDocCodeComponent implements OnInit {
         id: 'html',
         title: 'HTML',
         value:
-          `<div class=${LayoutType.fluid}>\n`+
-          '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n'+
+          `<div class=${LayoutType.fluid}>\n` +
+          '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n' +
           '</div>'
-
       },
       {
         id: 'ts',
         title: 'TypeScript',
         value:
-          "import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';\n"+
-          "import { FormGroup } from '@angular/forms';\n\n"+
-          `buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
+          "import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';\n" +
+          "import { FormGroup } from '@angular/forms';\n\n" +
+          `buttonConfig: IButtonConfig = ${stringify(
+            this.buttonConfigCodeView
+          )}`
       },
       {
         id: 'css',
         title: 'CSS',
-        value: "//By default button Layout is fluid and it matches container width\n"
+        value:
+          '//By default button Layout is fluid and it matches container width\n'
       }
     ]
   };
@@ -195,7 +199,7 @@ export class ButtonDocCodeComponent implements OnInit {
       this.buttonConfig.iconDirection = 'right';
     } else {
       this.buttonConfig.icon = '';
-      this.buttonConfig.iconDirection = undefined
+      this.buttonConfig.iconDirection = undefined;
     }
   }
 
@@ -205,10 +209,10 @@ export class ButtonDocCodeComponent implements OnInit {
   handleLayoutToggle(value: any) {
     if (value['showLayoutToggle'] === 'Fluid') {
       this.layoutFluid = true;
-      this.updateHtmlandCssCodeBlock(LayoutType.fluid)
+      this.updateHtmlandCssCodeBlock(LayoutType.fluid);
     } else {
       this.layoutFluid = false;
-      this.updateHtmlandCssCodeBlock(LayoutType.fixed)
+      this.updateHtmlandCssCodeBlock(LayoutType.fixed);
     }
   }
 
@@ -284,33 +288,32 @@ export class ButtonDocCodeComponent implements OnInit {
     };
   }
 
-  private updateHtmlandCssCodeBlock(layoutStyleClass : LayoutType) {
-    const htmlIndex= this.codeViewConfig?.tab?.findIndex((t) => t.id === 'html')
-    const cssIndex= this.codeViewConfig?.tab?.findIndex((t) => t.id === 'css')
+  private updateHtmlandCssCodeBlock(layoutStyleClass: LayoutType) {
+    const htmlIndex = this.codeViewConfig?.tab?.findIndex(
+      (t) => t.id === 'html'
+    );
+    const cssIndex = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'css');
 
     if (cssIndex === undefined) return;
     if (htmlIndex === undefined) return;
     if (this.codeViewConfig?.tab) {
+      this.codeViewConfig.tab[htmlIndex].value =
+        `<div class=${layoutStyleClass}>\n` +
+        '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n' +
+        '</div>';
 
-        this.codeViewConfig.tab[htmlIndex].value= `<div class=${layoutStyleClass}>\n`+
-          '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n'+
-          "</div>"
-          
-
-        if(layoutStyleClass === LayoutType.fixed) {
-          this.codeViewConfig.tab[cssIndex].value=
-            ".button-container-fixed {\n"+
-              "  max-width: 260px;\n"+
-              "  width: 100%;\n"+
-            "}"
-        }
-        else {
-          this.codeViewConfig.tab[cssIndex].value=
-          "//By default button Layout is fluid and it matches container width\n"
-        }
+      if (layoutStyleClass === LayoutType.fixed) {
+        this.codeViewConfig.tab[cssIndex].value =
+          '.button-container-fixed {\n' +
+          '  max-width: 260px;\n' +
+          '  width: 100%;\n' +
+          '}';
+      } else {
+        this.codeViewConfig.tab[cssIndex].value =
+          '//By default button Layout is fluid and it matches container width\n';
+      }
     }
   }
-
 
   private parseCodeViewConfig() {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
@@ -326,13 +329,13 @@ export class ButtonDocCodeComponent implements OnInit {
       disabled: this.buttonConfig.disabled,
       icon: this.buttonConfig.icon,
       iconDirection: this.buttonConfig.iconDirection,
-      tabIndex: this.buttonConfig.tabIndex,
+      tabIndex: this.buttonConfig.tabIndex
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
-        "import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';\n"+
-        "import { FormGroup } from '@angular/forms';\n\n"+
-        `buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`
+        "import { ButtonColor, IButtonConfig } from 'ircc-ds-angular-component-library';\n" +
+        "import { FormGroup } from '@angular/forms';\n\n" +
+        `buttonConfig: IButtonConfig = ${stringify(this.buttonConfigCodeView)}`;
     }
   }
 
