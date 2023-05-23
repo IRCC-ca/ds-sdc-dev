@@ -50,7 +50,8 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     icon: {
       class: 'fa-solid fa-ellipsis',
       color: 'var(--text-primary)'
-    }
+    },
+    ariaLabel: ''
   };
   overflowLinks?: ILinkComponentConfig[];
   normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
@@ -142,6 +143,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
 
   getMaxHeight(): number {
     const containerElement = this.divRef && this.divRef.nativeElement;
+    if (containerElement == undefined) return 0;
     const tempElement = this.renderer.createElement('p');
     const text = this.renderer.createText('Test');
     this.renderer.appendChild(tempElement, text);
