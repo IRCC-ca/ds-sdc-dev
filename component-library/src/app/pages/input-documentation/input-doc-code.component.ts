@@ -7,7 +7,12 @@ import {
   IRadioInputComponentConfig,
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import {
   ICodeViewerConfig,
   stringify
@@ -36,9 +41,21 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     required: false,
     label: 'Label text',
     desc: 'Description line of text',
+    errorMessages: []
+  };
+
+  inputConfigSingle: IInputComponentConfig = {
+    ...this.inputConfig,
+    id: 'input_single',
+    required: true,
+    errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsRequired' }]
+  };
+
+  inputConfigMulti: IInputComponentConfig = {
+    ...this.inputConfig,
+    id: 'input_multi',
     errorMessages: [
-      { key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' },
-      { key: 'testingError', errorLOV: 'ERROR.testErrorMessage' },
+      { key: 'email', errorLOV: 'ERROR.testErrorMessage' },
       { key: 'maxlength', errorLOV: 'ERROR.fieldExceededMaxLength' }
     ]
   };
@@ -199,6 +216,8 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     ]
   };
 
+  errorState = 'None';
+
   setInputType(value: any) {
     switch (value) {
       case 'password':
@@ -226,6 +245,19 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
       this.inputConfig.id,
       new FormControl()
     );
+    // Two more form controls, one for each combination of validators
+    this.form_interactive_input.addControl(
+      this.inputConfig.id + '_single',
+      new FormControl('', [Validators.required])
+    );
+    this.form_interactive_input.addControl(
+      this.inputConfig.id + '_multi',
+      new FormControl('', [
+        Validators.required,
+        Validators.maxLength(3),
+        Validators.email
+      ])
+    );
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
@@ -251,7 +283,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     this.form_interactive_input.valueChanges.subscribe((value: any) => {
       this.inputConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
-      if (value['error']) this.toggleErrors(value['error']);
+      if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
@@ -281,26 +313,31 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     )
       this.form_interactive_input.get(this.inputConfig.id)?.markAsTouched();
 
+    this.errorState = error;
     switch (error) {
       case 'None':
-        this.form_interactive_input
-          .get(this.inputConfig.id)
-          ?.setErrors({ errors: null });
         this.inputConfigCodeView.errorMessages = undefined;
         break;
       case 'Single':
-        this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
-          invalid: true
-        });
-        this.inputConfigCodeView.errorMessages = this.inputConfig.errorMessages;
+        if (
+          !this.form_interactive_input.get(this.inputConfigSingle.id)?.touched
+        )
+          this.form_interactive_input
+            .get(this.inputConfigSingle.id)
+            ?.markAsTouched();
+        this.inputConfigCodeView.errorMessages =
+          this.inputConfigSingle.errorMessages;
         break;
       case 'Multiple':
-        this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
-          invalid: true,
-          testingError: true,
-          maxlength: { requiredLength: 3, actualLength: 5 }
-        });
-        this.inputConfigCodeView.errorMessages = this.inputConfig.errorMessages;
+        this.form_interactive_input
+          .get(this.inputConfigMulti.id)
+          ?.setValue('test');
+        if (!this.form_interactive_input.get(this.inputConfigMulti.id)?.touched)
+          this.form_interactive_input
+            .get(this.inputConfigMulti.id)
+            ?.markAsTouched();
+        this.inputConfigCodeView.errorMessages =
+          this.inputConfigMulti.errorMessages;
         break;
     }
     this.parseCodeViewConfig();
