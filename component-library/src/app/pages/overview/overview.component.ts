@@ -19,11 +19,11 @@ import {
 })
 export class OverviewComponent implements OnInit, TranslatedPageComponent {
   currentLanguage: string = '';
-  altLangLink = 'overview'; // ROUTE translation path
+  altLangLink = 'overview';
 
   headers = {};
-  body = { title: 'Angular POST Request Example' };
-  url = 'https://3zlx7xw3hfrthsatjdlyqkmq6q0ypbiu.lambda-url.us-east-2.on.aws/';
+  body = { title: 'body_title_field' };
+  url = '{{INSERT_URL_HERE}}';
 
   constructor(
     private translate: TranslateService,
