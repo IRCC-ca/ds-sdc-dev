@@ -32,6 +32,7 @@ import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { RequestFormComponent } from './pages/request-form/request-form.component';
+import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -92,7 +93,7 @@ const routes: Routes = [
     },
     {
       path: 'banner-doc-fr',
-      component: BannerDocCodeComponent,
+      component: BannerDocumentationComponent,
       title: 'Banner-doc-fr'
     },
     {
