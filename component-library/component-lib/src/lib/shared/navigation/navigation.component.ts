@@ -1,11 +1,9 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-
 import { NavigationItem, INavigationConfig } from './navigation.types';
 import { Subscription } from 'rxjs';
 import { NavigationService } from './navigation.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'ircc-cl-lib-navigation',
@@ -31,70 +29,13 @@ export class navigationComponent implements OnInit {
   };
   configSub?: Subscription;
 
-  constructor (private navService: NavigationService,
-              private router: Router ) { } //TODO: For testing
+  constructor (private navService: NavigationService) { }
 
   ngOnInit() {
     this.configSub = this.navService.navConfigObs$.subscribe(response => {
       this.config = response;
-      console.log('CHANGES BE HAPPENING');
     });
-    // this.router.events.subscribe(event => {
-    //   console.log(this.config)
-    // });
-    //TODO: Considering making something like this in the service
-    // this.id !== '' ? (this.config.id = this.id) : undefined;
-    // this.label !== '' ? (this.config.label = this.label) : undefined;
-    // this.iconLeading !== ''
-    //   ? (this.config.iconLeading = this.iconLeading)
-    //   : undefined;
-    // this.iconTrailing !== ''
-    //   ? (this.config.iconTrailing = this.iconTrailing)
-    //   : undefined;
-    // this.size !== undefined ? (this.config.size = this.size) : undefined;
-    // this.navigationConfig.length > 0
-    //   ? (this.config.navigationConfig = this.navigationConfig)
-    //   : undefined;
-
-    // this.flattenNavigation = this.flatten(this.config.navigationConfig);
   }
-
-  // flatten = (obj: any) => {
-  //   const stack = [obj];
-  //   let stackB = [];
-  //   while (stack?.length > 0) {
-  //     const currentObj = stack.pop();
-  //     if (!Array.isArray(currentObj)) {
-  //       stackB.push(currentObj);
-  //     }
-  //     Object.keys(currentObj).forEach((key) => {
-  //       if (typeof currentObj[key] === 'object' && currentObj[key] !== null) {
-  //         stack.push(currentObj[key]);
-  //       }
-  //     });
-  //   }
-  //   return stackB;
-  // };
-
-  // findByKey = (items: Array<NavigationItem>, key: string, value: string) => {
-  //   let returnItem: NavigationItem = {
-  //     id: '',
-  //     label: '',
-  //     type: 'accordion',
-  //     children: []
-  //   };
-  //   returnItem = items.find((element: any) => element[key] === value) || {
-  //     id: '',
-  //     label: '',
-  //     type: 'accordion',
-  //     children: []
-  //   };
-  //   return returnItem;
-  // };
-
-  // setNavigationItem = (obj: NavigationItem, key: string, value: string) => {
-  //   obj[key] = value;
-  // };
 
   isArray = (obj: any) => {
     return Array.isArray(obj);
@@ -115,10 +56,10 @@ export class navigationComponent implements OnInit {
 //These are in THIS component, not in it's own. I.e. the buttons in the actual
 //header are not in a child component.
   clickIconLeading = (event: any) => {
-    alert(`Insert Service Here. Button id: ${event}`);
+    this.navService.navEvent({id: this.config.id, event: event});
   };
   clickIconTrailing = (event: any) => {
-    alert(`Insert Service Here. Button id: ${event}`);
+    this.navService.navEvent({id: this.config.id, event: event});
   };
 
   navigationClass = (): string => {

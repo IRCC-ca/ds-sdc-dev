@@ -1,7 +1,6 @@
 import { Renderer2, Input, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
-
 import { NavigationIndicator, NavigationItemLink } from '../navigation.types';
 import { IIndicatorConfig } from '../../indicator/indicator.component';
 import { NavigationService } from '../navigation.service';
@@ -69,6 +68,7 @@ export class navItemNavComponent implements OnInit {
   }
 
   linkClick(e: Event) {
+    this.navEvent.navEvent({id: this.config.id, event: e}); //Broadcast the event
     if (!this.config.external) {
       setTimeout(() => {
         if (this.config?.anchor) {
