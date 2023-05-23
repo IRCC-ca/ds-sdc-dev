@@ -1,8 +1,6 @@
 @use '~@ircc-ca/ds-sdc-core/index' as ircc-ds;
-@include ircc-ds.theme-init-required(
-  ircc-ds.palette-journeylab(),
+@include ircc-ds.theme-init-required(ircc-ds.palette-journeylab(),
   default,
   large,
-  light
-);
+  dark);
 @include ircc-ds.element-styles();
