@@ -7,7 +7,12 @@ import {
   slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { TranslateService } from '@ngx-translate/core';
-import { ICheckBoxComponentConfig, IDatePickerConfig, IDatePickerErrorMessages, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+import {
+  ICheckBoxComponentConfig,
+  IDatePickerConfig,
+  IDatePickerErrorMessages,
+  IRadioInputComponentConfig
+} from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 
 @Component({
@@ -135,7 +140,7 @@ export class DatePickerDocumentationComponent implements OnInit {
           text: 'No'
         }
       ]
-    },
+    }
     // {
     //   id: 'placeholder',
     //   formGroup: this.form_interactive_input,
@@ -171,7 +176,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       new FormControl()
     );
 
-    this.toggles.forEach(toggle => {
+    this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
         this.form_interactive_input.addControl(
           toggle.id,
@@ -180,7 +185,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       }
     });
 
-    this.checkboxes.forEach(checkbox => {
+    this.checkboxes.forEach((checkbox) => {
       this.form_interactive_input.addControl(checkbox.id, new FormControl());
     });
 
@@ -191,7 +196,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       hint: 'No',
       //Field2
       //Field3
-      error: 'Yes',
+      error: 'Yes'
     });
 
     this.form_interactive_input.valueChanges.subscribe((value: any) => {
@@ -205,13 +210,13 @@ export class DatePickerDocumentationComponent implements OnInit {
   /**
    * Return mapping of Datepicker config from form values
    */
-   private parseToggleConfig(value: any): IDatePickerConfig {
+  private parseToggleConfig(value: any): IDatePickerConfig {
     return {
       ...this.datePickerConfig,
       size: value['size'].toLowerCase(),
       hint: value['hint'] === 'True' ? 'Hint text' : undefined,
       required: value['required'] === 'True',
-      desc: value['desc'] === 'True' ? 'Description line of text' : undefined,
+      desc: value['desc'] === 'True' ? 'Description line of text' : undefined
     };
   }
 
@@ -219,9 +224,16 @@ export class DatePickerDocumentationComponent implements OnInit {
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
-    if (!this.form_interactive_input.get(this.datePickerConfig.id)?.touched && error !== 'None') {
-      this.form_interactive_input.get(this.datePickerConfig.id)?.markAllAsTouched();
-      this.form_interactive_input.get(this.datePickerConfig.id)?.setValidators(Validators.required);
+    if (
+      !this.form_interactive_input.get(this.datePickerConfig.id)?.touched &&
+      error !== 'None'
+    ) {
+      this.form_interactive_input
+        .get(this.datePickerConfig.id)
+        ?.markAllAsTouched();
+      this.form_interactive_input
+        .get(this.datePickerConfig.id)
+        ?.setValidators(Validators.required);
     }
   }
   /**
@@ -230,9 +242,12 @@ export class DatePickerDocumentationComponent implements OnInit {
   private toggleDisabled(disabled: boolean) {
     const datePickerControl: AbstractControl | null =
       this.form_interactive_input.get(this.datePickerConfig.id);
-    if ((disabled && datePickerControl?.disabled) || (!disabled && datePickerControl?.enabled)) {
+    if (
+      (disabled && datePickerControl?.disabled) ||
+      (!disabled && datePickerControl?.enabled)
+    ) {
       return;
-    } 
+    }
     if (disabled) {
       datePickerControl?.disable();
     } else {
@@ -240,8 +255,5 @@ export class DatePickerDocumentationComponent implements OnInit {
     }
   }
 
-  private parseCodeViewConfig() {
-
-  }
-
+  private parseCodeViewConfig() {}
 }
