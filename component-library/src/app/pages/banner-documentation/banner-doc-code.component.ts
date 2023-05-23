@@ -43,11 +43,6 @@ export class BannerDocCodeComponent implements OnInit {
     'showLinkToggle'
   ]);
 
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
-
   bannerConfig: IBannerConfig = {
     id: 'banner',
     cta: []
