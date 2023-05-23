@@ -7,8 +7,6 @@ import { AccessibilityDemoComponent } from './accessibility-demo.component';
 
 const routes: Routes = [
   { path: '', component: AccessibilityDemoComponent, title: 'Personal information' },
-  { path: 'intro', component: AccessibilityDemoIntroPageComponent}, //English
-  { path: 'introduction', component: AccessibilityDemoIntroPageComponent}, //French
   { path: 'begin', component: AccessibilityDemoPreviousPageComponent, title: 'Begin task' }, //English
   { path: 'commencer', component: AccessibilityDemoPreviousPageComponent, title: 'Commencer la tâche' }, //French
   { path: 'completed', component: AccessibilityDemoNextPageComponent, title: 'Task complete' }, //English
