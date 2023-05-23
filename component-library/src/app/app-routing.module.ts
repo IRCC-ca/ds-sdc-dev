@@ -59,9 +59,9 @@ const routes: Routes = [
       title: 'Developers'
     },
     {
-      path: 'banner-doc',
-      component: BannerDocCodeComponent,
-      title: 'Banner-doc'
+      path: 'banner-documentation',
+      component: BannerDocumentationComponent,
+      title: 'Banner-documentation'
     },
     {
       path: 'button-doc',
@@ -92,9 +92,9 @@ const routes: Routes = [
       title: 'Developpeurs'
     },
     {
-      path: 'banner-doc-fr',
+      path: 'banner-documentation-fr',
       component: BannerDocumentationComponent,
-      title: 'Banner-doc-fr'
+      title: 'Banner-documentation'
     },
     {
       path: 'button-doc-fr',
