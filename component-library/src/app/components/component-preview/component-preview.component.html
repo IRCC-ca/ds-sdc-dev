@@ -1,6 +1,6 @@
-<div class="preview-wrapper">
+<div class="preview-wrapper {{ componentType }}">
   <ng-content></ng-content>
-  <jds-button
+  <ircc-cl-lib-button
     *ngIf="copyText"
     [cdkCopyToClipboard]="copyText"
     size="small"
@@ -8,8 +8,8 @@
     class="copy"
   >
     {{ 'Buttons.CopyCode' | translate }}
-  </jds-button>
-  <jds-button
+  </ircc-cl-lib-button>
+  <ircc-cl-lib-button
     *ngIf="copyStyle"
     [cdkCopyToClipboard]="copyStyle"
     size="small"
@@ -17,5 +17,5 @@
     class="copy"
   >
     {{ 'Buttons.CopyStyle' | translate }}
-  </jds-button>
+  </ircc-cl-lib-button>
 </div>
