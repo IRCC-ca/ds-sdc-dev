@@ -217,24 +217,25 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   };
 
   errorState = 'None';
+  currentConfigId = this.inputConfig.id;
 
   setInputType(value: any) {
-    switch (value) {
-      case 'password':
-        this.inputConfig = {
-          ...this.inputConfig,
-          type: 'password',
-          label: 'Password'
-        };
-        break;
-      default:
-        this.inputConfig = {
-          ...this.inputConfig,
-          type: 'text',
-          label: 'Label text'
-        };
-        break;
-    }
+    this.inputConfig = {
+      ...this.inputConfig,
+      type: value == 'password' ? 'password' : 'text',
+      label: value == 'password' ? 'Password' : 'Label text'
+    };
+    this.inputConfigSingle = {
+      ...this.inputConfigSingle,
+      type: value == 'password' ? 'password' : 'text',
+      label: value == 'password' ? 'Password' : 'Label text'
+    };
+    this.inputConfigMulti = {
+      ...this.inputConfigMulti,
+      type: value == 'password' ? 'password' : 'text',
+      label: value == 'password' ? 'Password' : 'Label text'
+    };
+
     this.parseCodeViewConfig();
   }
 
@@ -281,7 +282,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     });
 
     this.form_interactive_input.valueChanges.subscribe((value: any) => {
-      this.inputConfig = this.parseToggleConfig(value);
+      this.parseToggleConfig(value);
       this.parseCodeViewConfig();
       if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) this.toggleDisabled(value['state']);
@@ -291,16 +292,44 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   /**
    * Return mapping of input config from form values
    */
-  private parseToggleConfig(value: any): IInputComponentConfig {
-    return {
-      ...this.inputConfig,
-      size: value['size'].toLowerCase(),
-      hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-      required: value['required'] === 'True',
-      desc: value['desc'] === 'True' ? 'Description line of text' : undefined,
-      placeholder:
-        value['placeholder'] === 'True' ? 'Placeholder text' : undefined
-    };
+  private parseToggleConfig(value: any) {
+    switch (this.errorState) {
+      case 'Single':
+        this.inputConfigSingle = {
+          ...this.inputConfigSingle,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined,
+          placeholder:
+            value['placeholder'] === 'True' ? 'Placeholder text' : undefined
+        };
+        break;
+      case 'Multiple':
+        this.inputConfigMulti = {
+          ...this.inputConfigMulti,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined,
+          placeholder:
+            value['placeholder'] === 'True' ? 'Placeholder text' : undefined
+        };
+        break;
+      default:
+        this.inputConfig = {
+          ...this.inputConfig,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined,
+          placeholder:
+            value['placeholder'] === 'True' ? 'Placeholder text' : undefined
+        };
+    }
   }
 
   /**
@@ -308,33 +337,34 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    */
   private toggleErrors(error: string) {
     if (
-      !this.form_interactive_input.get(this.inputConfig.id)?.touched &&
+      !this.form_interactive_input.get(this.currentConfigId)?.touched &&
       error !== 'None'
     )
-      this.form_interactive_input.get(this.inputConfig.id)?.markAsTouched();
+      this.form_interactive_input.get(this.currentConfigId)?.markAsTouched();
 
     this.errorState = error;
     switch (error) {
       case 'None':
+        this.currentConfigId = this.inputConfig.id;
         this.inputConfigCodeView.errorMessages = undefined;
         break;
       case 'Single':
-        if (
-          !this.form_interactive_input.get(this.inputConfigSingle.id)?.touched
-        )
+        this.currentConfigId = this.inputConfigSingle.id;
+        if (!this.form_interactive_input.get(this.currentConfigId)?.touched)
           this.form_interactive_input
-            .get(this.inputConfigSingle.id)
+            .get(this.currentConfigId)
             ?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigSingle.errorMessages;
         break;
       case 'Multiple':
+        this.currentConfigId = this.inputConfigMulti.id;
         this.form_interactive_input
           .get(this.inputConfigMulti.id)
           ?.setValue('test');
-        if (!this.form_interactive_input.get(this.inputConfigMulti.id)?.touched)
+        if (!this.form_interactive_input.get(this.currentConfigId)?.touched)
           this.form_interactive_input
-            .get(this.inputConfigMulti.id)
+            .get(this.currentConfigId)
             ?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigMulti.errorMessages;
@@ -348,7 +378,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    */
   private toggleDisabled(disabled: boolean) {
     const inputControl: AbstractControl | null =
-      this.form_interactive_input.get(this.inputConfig.id);
+      this.form_interactive_input.get(this.currentConfigId);
     if (
       (disabled && inputControl?.disabled) ||
       (!disabled && inputControl?.enabled)
@@ -365,16 +395,45 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   private parseCodeViewConfig() {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
     if (-1 == index || !index) return;
-    this.inputConfigCodeView = {
-      ...this.inputConfigCodeView,
-      size: this.inputConfig.size,
-      type: this.inputConfig.type,
-      required: this.inputConfig.required,
-      label: this.inputConfig.label,
-      desc: this.inputConfig.desc,
-      hint: this.inputConfig.hint,
-      placeholder: this.inputConfig.placeholder
-    };
+    switch (this.errorState) {
+      case 'Single':
+        this.inputConfigCodeView = {
+          ...this.inputConfigCodeView,
+          size: this.inputConfigSingle.size,
+          type: this.inputConfigSingle.type,
+          required: this.inputConfigSingle.required,
+          label: this.inputConfigSingle.label,
+          desc: this.inputConfigSingle.desc,
+          hint: this.inputConfigSingle.hint,
+          placeholder: this.inputConfigSingle.placeholder
+        };
+        break;
+      case 'Multiple':
+        this.inputConfigCodeView = {
+          ...this.inputConfigCodeView,
+          size: this.inputConfigMulti.size,
+          type: this.inputConfigMulti.type,
+          required: this.inputConfigMulti.required,
+          label: this.inputConfigMulti.label,
+          desc: this.inputConfigMulti.desc,
+          hint: this.inputConfigMulti.hint,
+          placeholder: this.inputConfigMulti.placeholder
+        };
+        break;
+      default:
+        this.inputConfigCodeView = {
+          ...this.inputConfigCodeView,
+          size: this.inputConfig.size,
+          type: this.inputConfig.type,
+          required: this.inputConfig.required,
+          label: this.inputConfig.label,
+          desc: this.inputConfig.desc,
+          hint: this.inputConfig.hint,
+          placeholder: this.inputConfig.placeholder
+        };
+        break;
+    }
+
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value = `
 import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
