@@ -3,6 +3,7 @@ import {
   ElementRef,
   Input,
   OnChanges,
+  OnInit,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
@@ -16,7 +17,7 @@ export interface IIconConfig {
   selector: 'ircc-cl-lib-icon',
   templateUrl: './icon.component.html'
 })
-export class IconComponent implements OnChanges {
+export class IconComponent implements OnChanges, OnInit {
   @ViewChild('iconSpan') iconSpan!: ElementRef;
   @Input() config: IIconConfig = {};
   @Input() ariaLabel?: string;
@@ -30,13 +31,18 @@ export class IconComponent implements OnChanges {
       keys.includes('FA_keywords')
         ? (spanContent += `${change['FA_keywords']}'`)
         : null;
-      keys.includes('ariaLabel')
-        ? (spanContent += ` aria-hidden='${
-            change['ariaLabel'] === ''
-          }' aria-label='${change['ariaLabel']}'`)
-        : null;
       spanContent += `></i>`;
       this.iconSpan.nativeElement.innerHTML = spanContent;
+    }
+  }
+
+  ngOnInit() {
+    if (this.ariaLabel) {
+      this.config.ariaLabel = this.ariaLabel;
+    }
+
+    if (this.config.ariaLabel === '') {
+      delete this.config.ariaLabel
     }
   }
 }
