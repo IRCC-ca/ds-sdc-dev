@@ -1,6 +1,6 @@
-@use "../../../../../core-library/tokens/sizes" as token-size;
-@use "../../../../../core-library/util/size" as size;
-@use "../../../../../core-library/tokens/sizes";
+@use '../../../../../core-library/tokens/sizes' as token-size;
+@use '../../../../../core-library/util/size' as size;
+@use '../../../../../core-library/tokens/sizes';
 
 .container {
   border-radius: 5px;
@@ -9,7 +9,7 @@
   border-color: var(--neutral-border);
   border-style: solid;
 
-  .test_component {
+  .component-wrapper {
     background-color: var(--surface2);
     display: flex;
     justify-content: center;
