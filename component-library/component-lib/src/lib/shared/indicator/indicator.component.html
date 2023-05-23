@@ -38,6 +38,7 @@
   <span
     *ngIf="config.type === 'dot'"
     [ngClass]="[
+      config.icon ? 'dot-icon' : '',
       config.type,
       config.category,
       config.purpose === 'status'
@@ -46,5 +47,9 @@
       config.purpose === 'palette' ? config.palette : ''
     ]"
   >
+    <ircc-cl-lib-icon
+      *ngIf="config?.icon"
+      [config]="{ FA_keywords: config.icon }"
+    ></ircc-cl-lib-icon>
   </span>
 </div>
