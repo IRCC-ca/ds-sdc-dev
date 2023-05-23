@@ -26,7 +26,7 @@ export class HeaderComponent {
    */
   @Input() id = '';
   imageURL = '';
-  aria = '';
+  alt = '';
   govCanadaLink = '';
   govCanadaAlt = '';
 
@@ -53,12 +53,12 @@ export class HeaderComponent {
   setLang(lang: string) {
     if (lang === 'en' || lang === 'en-US') {
       this.imageURL = ENGLISH_BANNER_URL;
-      this.aria = CANADA_LOGO_ARIA_LABEL_ENGLISH;
+      this.alt = CANADA_LOGO_ARIA_LABEL_ENGLISH;
       this.govCanadaLink = HEADER_IMG_LINK_EN;
       this.govCanadaAlt = HEADER_LINK_ATL_EN;
     } else {
       this.imageURL = FRENCH_BANNER_URL;
-      this.aria = CANADA_LOGO_ARIA_LABEL_FRENCH;
+      this.alt = CANADA_LOGO_ARIA_LABEL_FRENCH;
       this.govCanadaLink = HEADER_IMG_LINK_FR;
       this.govCanadaAlt = HEADER_LINK_ALT_FR;
     }
