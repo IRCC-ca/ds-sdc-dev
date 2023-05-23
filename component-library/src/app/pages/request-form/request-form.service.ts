@@ -25,6 +25,8 @@ export class RequestFormService {
   requestFormObs = this.requestFormData.asObservable();
 
   private storageKey: string = 'requestFormData';
+  private url: string =
+    'https://y4znrkrrvauyccjgllyspxuwhm0mdqpg.lambda-url.ca-central-1.on.aws/';
   constructor(private http: HttpClient) {}
 
   setFormData(data: IRequestFormDataInterface) {
@@ -64,9 +66,6 @@ export class RequestFormService {
       }
     };
 
-    return this.http.post(
-      'https://y4znrkrrvauyccjgllyspxuwhm0mdqpg.lambda-url.ca-central-1.on.aws/',
-      params
-    );
+    return this.http.post(this.url, params);
   }
 }
