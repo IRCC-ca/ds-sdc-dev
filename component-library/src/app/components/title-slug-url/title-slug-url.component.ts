@@ -42,8 +42,8 @@ export class TitleSlugUrlComponent implements AfterContentInit, OnInit {
     this.translator.onLangChange.subscribe((event: LangChangeEvent) => {
       this.currentLang = event.lang;
     });
-    
-    if (this.config.heading !== 'h1') this.config.heading='h2'
+
+    if (this.config.heading !== 'h1') this.config.heading = 'h2';
   }
 
   ngAfterContentInit(): void {
