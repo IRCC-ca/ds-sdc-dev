@@ -26,6 +26,7 @@
             [type]="typeControl"
             [id]="config.id"
             [formControlName]="config.id"
+            (keydown.enter)="enterEvent($event)"
             [attr.aria-invalid]="formControl?.invalid"
             [attr.aria-live]="'off'"
             [attr.aria-label]="
