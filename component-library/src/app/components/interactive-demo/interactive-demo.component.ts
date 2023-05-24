@@ -23,6 +23,7 @@ export class InteractiveDemoComponent implements OnInit {
    banner has a white background and rest have a grey background.
   */
   @Input() componentType?: keyof typeof ComponentType;
+  @Input() hasTabs: boolean = true;
 
   accordionConfig: IAccordionContainerConfig = {
     id: 'InteractiveDemoComponentAcccordion',

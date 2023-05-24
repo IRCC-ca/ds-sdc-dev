@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="tabs">
+  <div
+    class="tabs"
+    *ngIf="hasTabs"
+  >
     <ng-content select="[tabs]"></ng-content>
   </div>
   <div class="component_container">
