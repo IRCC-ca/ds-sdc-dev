@@ -4,13 +4,14 @@ import { AccessibilityDemoIntroPageComponent } from './accessibility-demo-intro-
 import { AccessibilityDemoNextPageComponent } from './accessibility-demo-next-page/accessibility-demo-next-page.component';
 import { AccessibilityDemoPreviousPageComponent } from './accessibility-demo-previous-page/accessibility-demo-previous-page.component';
 import { AccessibilityDemoComponent } from './accessibility-demo.component';
+import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 
 const routes: Routes = [
-  { path: '', component: AccessibilityDemoComponent, title: 'Personal information' },
-  { path: 'begin', component: AccessibilityDemoPreviousPageComponent, title: 'Begin task' }, //English
-  { path: 'commencer', component: AccessibilityDemoPreviousPageComponent, title: 'Commencer la tâche' }, //French
-  { path: 'completed', component: AccessibilityDemoNextPageComponent, title: 'Task complete' }, //English
-  { path: 'complete', component: AccessibilityDemoNextPageComponent, title: 'Tâche complète' }, //French
+  { path: '', component: AccessibilityDemoComponent, data: {title: marker('TITLES.PersonalInformation')} },
+  { path: 'begin', component: AccessibilityDemoPreviousPageComponent, data: {title: marker('TITLES.Begin')} }, //English
+  { path: 'commencer', component: AccessibilityDemoPreviousPageComponent, data: {title: marker('TITLES.Begin')} }, //French
+  { path: 'completed', component: AccessibilityDemoNextPageComponent, data: {title: marker('TITLES.Completed')} }, //English
+  { path: 'complete', component: AccessibilityDemoNextPageComponent, data: {title: marker('TITLES.Completed')} }, //French
 ];
 
 @NgModule({
