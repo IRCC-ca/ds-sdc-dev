@@ -644,7 +644,10 @@
     "CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
     "LabelText1": "Label text",
     "LabelText2": "Password"
-
+  },
+  "DatePicker": {
+    "Intro": "The date picker component allows users to input a specific year, month and/or day.",
+    "InteractiveDemoDesc": "Try our date picker component and the configurable options available within it."
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
