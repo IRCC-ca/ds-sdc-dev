@@ -12,7 +12,12 @@ import {
   slugAnchorType,
   slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
-import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
+import {
+  ICodeViewerConfig,
+  stringify
+} from '@app/components/code-viewer/code-viewer.component';
+
+const NUMBER_OF_CTA_ALLOWED : number = 3;
 
 @Component({
   selector: 'app-banner-doc-code',
@@ -22,7 +27,7 @@ import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-v
 export class BannerDocCodeComponent implements OnInit {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
   altLangLink = 'bannerDocumentation';
-
+  
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
@@ -45,7 +50,7 @@ export class BannerDocCodeComponent implements OnInit {
 
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    cta: [],
+    cta: []
   };
 
   bannerConfigCodeView: any = {
@@ -69,22 +74,21 @@ export class BannerDocCodeComponent implements OnInit {
         id: 'html',
         title: 'HTML',
         value:
-          `<div>\n`+
-          '  <ircc-cl-lib-banenr [config]="bannerConfig"></ircc-cl-lib-banner>\n'+
+          `<div>\n` +
+          '  <ircc-cl-lib-banenr [config]="bannerConfig"></ircc-cl-lib-banner>\n' +
           '</div>'
-
       },
       {
         id: 'ts',
         title: 'TypeScript',
         value:
-          "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n"+
-          `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`
+          "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n" +
+          `bannerConfig: IBannerConfig = ${stringify(
+            this.bannerConfigCodeView
+          )}`
       }
     ]
   };
-
-
 
   toggles: IRadioInputComponentConfig[] = [
     {
@@ -347,10 +351,10 @@ export class BannerDocCodeComponent implements OnInit {
   }
 
   /**
-   * Disables/Enables button/link radios (Max 2 allowed on the banner at a time)
+   * Disables/Enables button/link radios (Max 3 allowed on the banner at a time)
    */
   checkCurrentButtonCounter() {
-    if (this.currentButtonSet.size >= 2) {
+    if (this.currentButtonSet.size >= NUMBER_OF_CTA_ALLOWED) {
       this.buttonSetWithAllOptions.forEach((btn) => {
         if (!this.currentButtonSet.has(btn)) {
           this.disableRadio(btn);
@@ -460,8 +464,8 @@ export class BannerDocCodeComponent implements OnInit {
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
-        "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n"+
-        `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`
+        "import { IBannerConfig } from 'ircc-ds-angular-component-library';\n\n" +
+        `bannerConfig: IBannerConfig = ${stringify(this.bannerConfigCodeView)}`;
     }
   }
 

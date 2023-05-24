@@ -29,7 +29,9 @@
   a,
   .link {
     &#{template-const.$escape} {
-      @content;
+      &:not([category]) {
+        @content;
+      }
     }
   }
 }

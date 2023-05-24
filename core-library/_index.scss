@@ -5,9 +5,12 @@
 @use "./tokens/button/nav";
 @use "./tokens/button/primary";
 @use "./tokens/button/secondary";
+@use "./tokens/button/link" as link-btn;
 @use "./tokens/checkbox/checkbox";
 @use "./tokens/radio/radio";
 @use "./tokens/link/link";
+@use "./tokens/link/primary" as link-primary;
+@use "./tokens/link/secondary" as link-secondary;
 @use "./tokens/input/input";
 @use "./tokens/input/textarea";
 @use "./tokens/global/global";
@@ -91,6 +94,7 @@
     @include element(primary);
     @include element(secondary);
     @include element(plain);
+    @include element(link-btn);
     @include element(dropdown);
     @include element(nav);
     @include element(checkbox);
@@ -98,6 +102,8 @@
     @include element(input);
     @include element(textarea);
     @include element(link);
+    @include element(link-primary);
+    @include element(link-secondary);
     @include element(focus);
     @include element(disable);
     @include element(checkbox-component);
@@ -143,6 +149,12 @@
     @include secondary.create();
   } @else if $key == plain {
     @include plain.create();
+  } @else if $key == link-btn {
+    @include link-btn.create();
+  } @else if $key == link-primary {
+    @include link-primary.create();
+  } @else if $key == link-secondary {
+    @include link-secondary.create();
   } @else if $key == dropdown {
     @include dropdown.create();
   } @else if $key == nav {
