@@ -51,6 +51,10 @@
     margin: 0px;
     padding-left: 20px;
   }
+
+  li {
+    font-size: 14px;
+  }
 }
 
 .do-dont-container {
@@ -145,11 +149,15 @@
   }
   .figma-usage {
     max-width: 547px;
-    margin-right: 20px;
+    margin-right: 12px;
 
     @include device.in-tablet-layout() {
       max-width: 444px;
     }
+  }
+
+  ol > li::marker {
+    font-weight: bold;
   }
 
   .image-container {
@@ -157,7 +165,6 @@
   }
 
   .image-1 {
-    margin-left: 60px;
     width: 264px;
     height: 316px;
   }

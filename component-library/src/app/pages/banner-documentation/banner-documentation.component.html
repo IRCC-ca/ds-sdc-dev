@@ -29,7 +29,9 @@
           [config]="infoBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">{{ 'Banner.InfoPrimaryText' | translate }}</p>
+      <p class="body3 description">
+        {{ 'Banner.InfoPrimaryText' | translate }}
+      </p>
     </div>
 
     <!-- Warning Banner Preview -->
@@ -47,7 +49,7 @@
           [config]="warningBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">
+      <p class="body3 description">
         {{ 'Banner.WarningPrimaryText' | translate }}
       </p>
     </div>
@@ -67,7 +69,7 @@
           [config]="criticalBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">
+      <p class="body3 description">
         {{ 'Banner.CriticalPrimaryText' | translate }}
       </p>
     </div>
@@ -87,7 +89,9 @@
           [config]="successBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">{{ 'Banner.SuccessPrimaryText' | translate }}</p>
+      <p class="body3 description">
+        {{ 'Banner.SuccessPrimaryText' | translate }}
+      </p>
     </div>
 
     <!-- generic Banner Preview -->
@@ -105,7 +109,9 @@
           [config]="genericBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">{{ 'Banner.GenericPrimaryText' | translate }}</p>
+      <p class="body3 description">
+        {{ 'Banner.GenericPrimaryText' | translate }}
+      </p>
     </div>
   </section>
 
@@ -159,8 +165,8 @@
             {{ 'Banner.BannerConfig.DescriptionLabel' | translate }}
           </h5>
           <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
       </div>
@@ -172,8 +178,8 @@
             {{ 'Banner.BannerConfig.TitleLabel' | translate }}
           </h5>
           <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
       </div>
@@ -183,8 +189,8 @@
             {{ 'Banner.BannerConfig.CloseLabel' | translate }}
           </h5>
           <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
       </div>
@@ -196,8 +202,8 @@
             {{ 'Banner.BannerConfig.CTA1Label' | translate }}
           </h5>
           <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
       </div>
@@ -207,8 +213,8 @@
             {{ 'Banner.BannerConfig.CTA2Label' | translate }}
           </h5>
           <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
       </div>
@@ -220,8 +226,8 @@
             {{ 'Banner.BannerConfig.CTA3Label' | translate }}
           </h5>
           <ul>
-            <li>{{ 'Banner.BannerConfig.TrueLabel' | translate }}</li>
-            <li>{{ 'Banner.BannerConfig.FalseLabel' | translate }}</li>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
       </div>
@@ -252,7 +258,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerActionsDoText' | translate }}
               </p>
             </div>
@@ -270,7 +276,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.BannerActionsDontText' | translate
                 }}
@@ -296,7 +302,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerCountDoText' | translate }}
               </p>
             </div>
@@ -314,7 +320,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerCountDontText' | translate }}
               </p>
             </div>
@@ -340,7 +346,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonCountDoText' | translate
                 }}
@@ -360,7 +366,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonCountDoText' | translate
                 }}
@@ -390,7 +396,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonTypeDoText' | translate
                 }}
@@ -410,7 +416,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonTypeDontText' | translate
                 }}
@@ -438,7 +444,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.bannerDismissDoText' | translate }}
               </p>
             </div>
@@ -456,7 +462,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerDismissDontText' | translate
                 }}
@@ -476,7 +482,7 @@
           src="assets/img/banner-content/banner-min-max-width.png"
           alt="{{ 'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate }}"
         />
-        <p class="description">
+        <p class="body3 description">
           {{ 'Banner.DesignGuideLines.bannerMinMaxWidthText' | translate }}
         </p>
       </div>
@@ -516,7 +522,7 @@
       src="assets/img/banner-content/banner-specs.png"
       alt="{{ 'Banner.Specs.ImgAlt' | translate }}"
     />
-    <p class="specs-description">
+    <p class="body3 specs-description">
       {{ 'Banner.Specs.Text' | translate }}
     </p>
   </section>
@@ -545,7 +551,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerUseCorrectCaseDoText'
                     | translate
@@ -567,7 +573,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerUseCorrectCaseDontText'
                     | translate
@@ -596,7 +602,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{ 'Banner.ContentGuideLines.BannerTitleDoText' | translate }}
               </p>
             </div>
@@ -614,7 +620,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{ 'Banner.ContentGuideLines.BannerTitleDontText' | translate }}
               </p>
             </div>
@@ -640,7 +646,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerPunctuationDoText' | translate
                 }}
@@ -660,7 +666,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h5>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerPunctuationDontAlt'
                     | translate
@@ -684,7 +690,7 @@
         </h5>
         <ol>
           <li
-            class="body3 emphasis"
+            class="body3"
             *ngFor="let direction of figmaDirections"
             [innerHtml]="direction | translate"
           ></li>
