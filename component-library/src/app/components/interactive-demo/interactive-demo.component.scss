@@ -1,6 +1,7 @@
 @use '../../../../../core-library/tokens/sizes' as token-size;
 @use '../../../../../core-library/util/size' as size;
 @use '../../../../../core-library/tokens/sizes';
+@use '../../../../../core-library/util/device' as device;
 
 .container {
   border-radius: 5px;
@@ -47,6 +48,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 24px;
+
+    @include device.in-phone-layout() {
+      grid-template-columns: 1fr;
+    }
   }
 
   .tabs {

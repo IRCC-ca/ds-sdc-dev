@@ -20,8 +20,16 @@
     display: grid;
     grid-template-columns: 30% auto 30%;
 
+    &.fullWidth {
+      grid-template-columns: auto auto auto;
+    }
+
     @include device.in-phone-layout() {
       grid-template-columns: auto 30% 30%;
+
+      &.fullWidth {
+        grid-template-columns: 100% auto auto;
+      }
     }
 
     .accordion-extra-left {
@@ -32,6 +40,10 @@
 
       @include device.in-phone-layout() {
         grid-column: 2;
+      }
+
+      &:empty {
+        display: none;
       }
     }
 
@@ -52,6 +64,9 @@
       align-items: center;
       @include device.in-phone-layout() {
         grid-column: 3;
+      }
+      &:empty {
+        display: none;
       }
     }
   }

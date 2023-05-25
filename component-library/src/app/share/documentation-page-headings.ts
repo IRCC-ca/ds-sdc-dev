@@ -1,7 +1,6 @@
 import { slugAnchorType } from '@app/components/title-slug-url/title-slug-url.component';
 
-
-export const docPageheadingConfig : any = {
+export const docPageheadingConfig: any = {
   interactiveDemoSlugConfig: {
     title: 'General.InteractiveDemo',
     anchorType: slugAnchorType.primary
@@ -50,5 +49,5 @@ export const docPageheadingConfig : any = {
   researchSlugConfig: {
     title: 'General.ResearchHeading',
     anchorType: slugAnchorType.primary
-  },
-}
+  }
+};
