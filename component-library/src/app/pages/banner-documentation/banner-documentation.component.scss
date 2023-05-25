@@ -166,7 +166,6 @@ p {
     padding-left: 20px;
 
     .list-item {
-      background-color: aquamarine;
       @include typography.fontSet(body, 3, regular);
     }
   }
@@ -220,7 +219,6 @@ p {
       @include typography.fontSet(body, 3, regular);
       list-style-type: none;
       padding-bottom: 20px;
-      background-color: aquamarine;
     }
 
     .list-item:last-child {
