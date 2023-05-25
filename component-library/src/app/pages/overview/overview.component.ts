@@ -23,7 +23,8 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
 
   headers = {};
   body = { title: 'body_title_field' };
-  url = '{{INSERT_URL_HERE}}';
+  url =
+    'https://flyu2zvymhha3je5vnlx7g5z5u0ixvml.lambda-url.ca-central-1.on.aws/';
 
   constructor(
     private translate: TranslateService,
