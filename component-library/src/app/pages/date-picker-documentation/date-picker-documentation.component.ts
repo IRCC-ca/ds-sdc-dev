@@ -144,7 +144,7 @@ export class DatePickerDocumentationComponent implements OnInit {
   ];
   checkboxes: ICheckBoxComponentConfig[] = [
     {
-      id: 'showSelectToggle',
+      id: 'disabled',
       formGroup: this.form_datePicker,
       size: 'small',
       label: 'State',
@@ -200,6 +200,10 @@ export class DatePickerDocumentationComponent implements OnInit {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
+    this.checkboxes.forEach((checkbox) => {
+      this.form_datePicker.addControl(checkbox.id, new FormControl());
+    });
+
     this.form_datePicker.addControl(
       this.datePickerConfig.id,
       new FormControl()
@@ -226,9 +230,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       }
     });
 
-    this.checkboxes.forEach((checkbox) => {
-      this.form_datePicker.addControl(checkbox.id, new FormControl());
-    });
+    
 
     this.form_datePicker.patchValue({
       size: 'Small',
@@ -238,15 +240,18 @@ export class DatePickerDocumentationComponent implements OnInit {
       //Field2
       //Field3
       error: 'No',
-      disabled: false
+      // disabled: false
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
       this.datePickerConfig = this.parseToggleConfig(value);
       console.log('HERE', this.datePickerConfig);
+      console.log("VALUE HERE", value)
       this.parseCodeViewConfig();
       if (value['error']) this.toggleErrors(value['error']);
+      // if (value['disabled'] !== undefined) this.toggleDisabled(value['disabled']);
     });
+
   }
 
   /**
@@ -260,9 +265,10 @@ export class DatePickerDocumentationComponent implements OnInit {
       hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
       required: value['required'] === 'Yes',
       desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined,
-      disabled: value['showSelectToggle'] === true 
-      ? (this.datePickerConfig.disabled = true)
-      : (this.datePickerConfig.disabled = false)
+      disabled: 
+        value['disabled'] === true
+          ? (this.datePickerConfig.disabled = true)
+          : (this.datePickerConfig.disabled = false)
     };
   }
 
@@ -275,21 +281,38 @@ export class DatePickerDocumentationComponent implements OnInit {
       error !== 'None'
     ) {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
+      this.form_datePicker.get(this.datePickerConfig.id + '_dayControl')?.markAsTouched();
+      this.form_datePicker.get(this.datePickerConfig.id + '_monthControl')?.markAsTouched();
+      this.form_datePicker.get(this.datePickerConfig.id + '_yearControl')?.markAsTouched();
+      
       this.errorState = error;
+      this.datePickerConfigCodeView.errorMessages = this.datePickerConfig.errorMessages;
 
-      // this.form_datePicker
-      //   .get(this.datePickerConfig.id)
-      //   ?.setValidators(Validators.required);
-      this.datePickerConfigCodeView.errorMessages =
-        this.datePickerConfig.errorMessages;
-
-      // this.form_datePicker.get(this.datePickerConfig.id)?.setValidators(Validators.required);
-      // const property = this.datePickerConfig.errorMessages?.general?.map(x => console.log('x', x.errorLOV))
-
-      // this.datePickerConfigCodeView.errorMessages = property;
+    } else {
+      this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
+      this.form_datePicker.get(this.datePickerConfig.id + '_dayControl')?.markAsUntouched();
+      this.form_datePicker.get(this.datePickerConfig.id + '_monthControl')?.markAsUntouched();
+      this.form_datePicker.get(this.datePickerConfig.id + '_yearControl')?.markAsUntouched();
     }
-    console.log('error conf', this.datePickerConfig);
     this.parseCodeViewConfig();
+  }
+  /**
+   * Toggle disabled state of input
+   */
+   private toggleDisabled(disabled: boolean) {
+    const datePickerControl: AbstractControl | null =
+      this.form_datePicker.get(this.datePickerConfig.id);
+    if (
+      (disabled && datePickerControl?.disabled) ||
+      (!disabled && datePickerControl?.enabled)
+    )
+      return;
+
+    if (disabled) {
+      datePickerControl?.disable();
+    } else {
+      datePickerControl?.enable();
+    }
   }
 
   private parseCodeViewConfig() {
