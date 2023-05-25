@@ -9,7 +9,10 @@
     ></app-title-slug-url>
     <p>{{ 'DatePicker.InteractiveDemoDesc' | translate }}</p>
     <app-interactive-demo [hasTabs]="false">
-      <div component>
+      <div
+        component
+        class="datePicker-container"
+      >
         <ircc-cl-lib-date-picker
           [config]="datePickerConfig"
         ></ircc-cl-lib-date-picker>
@@ -24,5 +27,6 @@
         </ng-container>
       </ng-container>
     </app-interactive-demo>
+    <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
   </div>
 </div>

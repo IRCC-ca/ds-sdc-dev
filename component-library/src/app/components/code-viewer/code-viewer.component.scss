@@ -23,6 +23,7 @@ $selectors: 'app-code-viewer';
     border: 1px solid var(--border);
     border-radius: 8px;
     width: 100%;
+    margin-top: 24px;
 
     app-accordian-container {
       border-top: 1px solid var(--divider);

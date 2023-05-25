@@ -33,6 +33,7 @@ export interface ISelectConfig {
   labelIconConfig?: ILabelIconConfig;
   topLabel?: string;
   disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
+  disabled?: boolean;
 }
 export interface ISelectOptionsConfig {
   text: string;
