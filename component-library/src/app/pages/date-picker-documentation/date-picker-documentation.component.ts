@@ -230,8 +230,6 @@ export class DatePickerDocumentationComponent implements OnInit {
       }
     });
 
-    
-
     this.form_datePicker.patchValue({
       size: 'Small',
       required: 'Yes',
@@ -239,19 +237,18 @@ export class DatePickerDocumentationComponent implements OnInit {
       hint: 'No',
       //Field2
       //Field3
-      error: 'No',
+      error: 'No'
       // disabled: false
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
       this.datePickerConfig = this.parseToggleConfig(value);
       console.log('HERE', this.datePickerConfig);
-      console.log("VALUE HERE", value)
+      console.log('VALUE HERE', value);
       this.parseCodeViewConfig();
       if (value['error']) this.toggleErrors(value['error']);
       // if (value['disabled'] !== undefined) this.toggleDisabled(value['disabled']);
     });
-
   }
 
   /**
@@ -265,7 +262,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
       required: value['required'] === 'Yes',
       desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined,
-      disabled: 
+      disabled:
         value['disabled'] === true
           ? (this.datePickerConfig.disabled = true)
           : (this.datePickerConfig.disabled = false)
@@ -281,27 +278,40 @@ export class DatePickerDocumentationComponent implements OnInit {
       error !== 'None'
     ) {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
-      this.form_datePicker.get(this.datePickerConfig.id + '_dayControl')?.markAsTouched();
-      this.form_datePicker.get(this.datePickerConfig.id + '_monthControl')?.markAsTouched();
-      this.form_datePicker.get(this.datePickerConfig.id + '_yearControl')?.markAsTouched();
-      
-      this.errorState = error;
-      this.datePickerConfigCodeView.errorMessages = this.datePickerConfig.errorMessages;
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_dayControl')
+        ?.markAsTouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_monthControl')
+        ?.markAsTouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_yearControl')
+        ?.markAsTouched();
 
+      this.errorState = error;
+      this.datePickerConfigCodeView.errorMessages =
+        this.datePickerConfig.errorMessages;
     } else {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
-      this.form_datePicker.get(this.datePickerConfig.id + '_dayControl')?.markAsUntouched();
-      this.form_datePicker.get(this.datePickerConfig.id + '_monthControl')?.markAsUntouched();
-      this.form_datePicker.get(this.datePickerConfig.id + '_yearControl')?.markAsUntouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_dayControl')
+        ?.markAsUntouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_monthControl')
+        ?.markAsUntouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_yearControl')
+        ?.markAsUntouched();
     }
     this.parseCodeViewConfig();
   }
   /**
    * Toggle disabled state of input
    */
-   private toggleDisabled(disabled: boolean) {
-    const datePickerControl: AbstractControl | null =
-      this.form_datePicker.get(this.datePickerConfig.id);
+  private toggleDisabled(disabled: boolean) {
+    const datePickerControl: AbstractControl | null = this.form_datePicker.get(
+      this.datePickerConfig.id
+    );
     if (
       (disabled && datePickerControl?.disabled) ||
       (!disabled && datePickerControl?.enabled)
