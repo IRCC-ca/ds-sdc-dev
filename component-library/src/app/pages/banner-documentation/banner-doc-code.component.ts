@@ -17,8 +17,7 @@ import {
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
 
-const NUMBER_OF_CTA_ALLOWED : number = 3;
-
+const NUMBER_OF_CTA_ALLOWED: number = 3;
 
 @Component({
   selector: 'app-banner-doc-code',
@@ -28,7 +27,7 @@ const NUMBER_OF_CTA_ALLOWED : number = 3;
 export class BannerDocCodeComponent implements OnInit {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
   altLangLink = 'bannerDocumentation';
-  
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
