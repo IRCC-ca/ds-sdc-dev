@@ -1,4 +1,7 @@
-<div class="preview-wrapper {{ componentType }}">
+<div
+  class="preview-wrapper"
+  #componentPreview
+>
   <ng-content></ng-content>
   <ircc-cl-lib-button
     *ngIf="copyText"

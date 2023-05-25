@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
-export enum ComponentType {
-  banner = 'banner',
-  input = 'input'
+export enum BackgroundColor {
+  white = 'white',
+  gray = 'gray'
 }
 
 @Component({
@@ -10,10 +10,18 @@ export enum ComponentType {
   templateUrl: './component-preview.component.html',
   styleUrls: ['./component-preview.component.scss']
 })
-export class ComponentPreviewComponent {
+export class ComponentPreviewComponent implements OnInit {
+  @ViewChild('componentPreview', { static: true }) componentPreview!: ElementRef;
   @Input() copyText?: string;
   @Input() copyStyle?: string;
-  @Input() componentType?: keyof typeof ComponentType;
+  @Input() backgroundColor?: keyof typeof BackgroundColor;
 
-  constructor() {}
+
+  ngOnInit() {
+    if (!this.backgroundColor) this.backgroundColor = BackgroundColor.gray;
+
+    this.backgroundColor === BackgroundColor.white 
+    ? this.componentPreview.nativeElement.style.backgroundColor = ' var(--surface1)' 
+    : this.componentPreview.nativeElement.style.backgroundColor = 'var(--surface2)';
+  }
 }
