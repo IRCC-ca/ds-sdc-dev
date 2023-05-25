@@ -17,6 +17,9 @@ import {
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
 
+const NUMBER_OF_CTA_ALLOWED : number = 3;
+
+
 @Component({
   selector: 'app-banner-doc-code',
   templateUrl: './banner-doc-code.component.html',
@@ -25,7 +28,7 @@ import {
 export class BannerDocCodeComponent implements OnInit {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
   altLangLink = 'bannerDocumentation';
-
+  
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
@@ -349,10 +352,10 @@ export class BannerDocCodeComponent implements OnInit {
   }
 
   /**
-   * Disables/Enables button/link radios (Max 2 allowed on the banner at a time)
+   * Disables/Enables button/link radios (Max 3 allowed on the banner at a time)
    */
   checkCurrentButtonCounter() {
-    if (this.currentButtonSet.size >= 2) {
+    if (this.currentButtonSet.size >= NUMBER_OF_CTA_ALLOWED) {
       this.buttonSetWithAllOptions.forEach((btn) => {
         if (!this.currentButtonSet.has(btn)) {
           this.disableRadio(btn);

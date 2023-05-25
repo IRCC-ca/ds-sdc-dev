@@ -1,0 +1,77 @@
+@use "../../util/color" as color;
+@use "../text" as text;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "../button/button-const" as button-const;
+@use "./link" as link-const;
+@use "../../util/device" as device;
+@use "../sizes" as sizes;
+$secondary: "secondary";
+$default-color: null;
+@mixin tokens($palette: cta) {
+  @include theme.select-attribute($palette, color, $default-color) {
+    --border: var(--text);
+    @include theme.light {
+      @include device.if-hover {
+        --secondary-border-hover: #{color.mix-token($palette, 800)};
+      }
+      --secondary-text: #{color.mix-token($palette, 700)};
+      --secondary-text-disabled: #{color.mix-token($palette, 300)};
+      --secondary-border-active: #{color.mix-token($palette, 900)};
+    }
+    @include theme.dark {
+      @include device.if-hover {
+        --secondary-border-hover: #{color.mix-token($palette, 300)};
+      }
+      --secondary-text: #{color.mix-token($palette, 400)};
+      --secondary-text-disabled: #{color.mix-token($palette, 1000)};
+      --secondary-border-active: #{color.mix-token($palette, 200)};
+    }
+    --text: var(--secondary-text);
+  }
+}
+
+@mixin create(
+  $palette: (
+    cta,
+    critical,
+  )
+) {
+  a,
+  .link {
+    &:where([category="#{$secondary}"]) {
+      @each $key in $palette {
+        @if not $default-color {
+          $default-color: $key !global;
+        }
+        @include tokens($key);
+      }
+      @include layout();
+    }
+  }
+}
+
+@mixin layout() {
+  @include button-const.layout();
+  text-decoration: none;
+  box-shadow: sizes.$border-style;
+  background-color: var(--surface1);
+  @include device.if-hover {
+    background-color: var(--generic-hover);
+  }
+
+  &:active {
+    background-color: var(--generic-active);
+  }
+
+  &:disabled {
+    --text: var(--secondary-text-disabled);
+    color: var(--text);
+    background-color: var(--surface1);
+    border-color: var(--secondary-border-disabled);
+  }
+
+  &:focus {
+    box-shadow: sizes.$border-style, sizes.$focus-shadow;
+  }
+}
