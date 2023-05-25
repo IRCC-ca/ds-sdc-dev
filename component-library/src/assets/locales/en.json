@@ -706,7 +706,7 @@
       "Content": "Description text lorem ipsum dolor sit amet consecteteur adipiscing elit."
     },
     "DesignGuideLines": {
-      "KeepActionsSimpleLabel": "KeepActionsSimple",
+      "KeepActionsSimpleLabel": "Keep actions simple",
       "BannerActionsDoAlt": "A banner that has the label “Minor in Canada” and description text with a “Clear this section” CTA button. The banner uses the teal info styling.",
       "BannerActionsDontAlt": "A banner that has the label “Duplicate file name” and description text written in title case with two CTAs - “Delete file” and “Keep file”. The banner uses the orange warning styling.",
       "BannerActionsDoText" : "Use the banner for simple actions that are not critical to the user’s workflow.",
@@ -754,7 +754,7 @@
     },
     "Specs": {
       "ImgAlt": "Specs displaying the padding and layer measurements within the banner component. Specs are described in the paragraph below.",
-      "Text": "The small banner with fluid layout has 12 pixels of vertical padding and 12 pixels of horizontal padding inside the banner. The icon has a 20-pixel width and height. There are 12 pixels between the icon and banner-content. The layout of the content within the banner adjusts based on the container’s width. The height of the banner si fluid and adjusts based on the amount of content within the banner. The large banner with fluid layout has 16 pixels of vertical padding and 16 pixels of horizontal padding inside the button. The icon has a 24-pixel width and height. There are 12 pixels between the icon and label. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner."
+      "Text": "Alt text description: The small banner with fluid layout has 12 pixels of vertical padding and 12 pixels of horizontal padding inside the banner. The icon has a 20-pixel width and height. There are 12 pixels between the icon and banner-content. The layout of the content within the banner adjusts based on the container’s width. The height of the banner si fluid and adjusts based on the amount of content within the banner. The large banner with fluid layout has 16 pixels of vertical padding and 16 pixels of horizontal padding inside the button. The icon has a 24-pixel width and height. There are 12 pixels between the icon and label. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner."
     },
     "ContentGuideLines": {
       "UseCorrectCaseHeading": "Use the correct case for titles", 
