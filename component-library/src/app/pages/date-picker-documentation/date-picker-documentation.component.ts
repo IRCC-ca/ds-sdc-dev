@@ -30,6 +30,7 @@ export class DatePickerDocumentationComponent implements OnInit {
   currentLanguage: string = '';
   altLangLink = 'datePickerDocumentation';
   form_datePicker = new FormGroup({});
+  errorState = 'None';
 
   datePickerTitleSlugConfig: slugTitleURLConfig = {
     title: 'Date picker',
@@ -203,7 +204,6 @@ export class DatePickerDocumentationComponent implements OnInit {
       this.datePickerConfig.id,
       new FormControl()
     );
-
     this.form_datePicker.addControl(
       this.datePickerConfig.id + '_dayControl',
       new FormControl('', Validators.required)
@@ -237,7 +237,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       hint: 'No',
       //Field2
       //Field3
-      error: 'Yes',
+      error: 'No',
       disabled: false
     });
 
@@ -273,11 +273,20 @@ export class DatePickerDocumentationComponent implements OnInit {
       !this.form_datePicker.get(this.datePickerConfig.id)?.touched &&
       error !== 'None'
     ) {
-      this.form_datePicker.get(this.datePickerConfig.id)?.markAllAsTouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id)
-        ?.setValidators(Validators.required);
+      this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
+      this.errorState = error;
+
+      // this.form_datePicker
+      //   .get(this.datePickerConfig.id)
+      //   ?.setValidators(Validators.required);
+        this.datePickerConfigCodeView.errorMessages = this.datePickerConfig.errorMessages;
+
+      // this.form_datePicker.get(this.datePickerConfig.id)?.setValidators(Validators.required);
+      // const property = this.datePickerConfig.errorMessages?.general?.map(x => console.log('x', x.errorLOV))
+      
+      // this.datePickerConfigCodeView.errorMessages = property;
     }
+    console.log('error conf', this.datePickerConfig)
     this.parseCodeViewConfig();
   }
   /**

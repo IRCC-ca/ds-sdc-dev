@@ -128,6 +128,7 @@ export class DatePickerComponent implements OnInit {
   @Input() maxYear?: number;
   @Input() minYear?: number;
   @Input() unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
+  @Input() disabled?: boolean;
 
   errorIds: IErrorIDs[] = [];
   days: number[] = [];
