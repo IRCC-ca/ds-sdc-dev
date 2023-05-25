@@ -144,7 +144,7 @@ export class DatePickerDocumentationComponent implements OnInit {
   ];
   checkboxes: ICheckBoxComponentConfig[] = [
     {
-      id: 'disabled',
+      id: 'showSelectToggle',
       formGroup: this.form_datePicker,
       size: 'small',
       label: 'State',
@@ -246,7 +246,6 @@ export class DatePickerDocumentationComponent implements OnInit {
       console.log('HERE', this.datePickerConfig);
       this.parseCodeViewConfig();
       if (value['error']) this.toggleErrors(value['error']);
-      // if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
 
@@ -261,7 +260,9 @@ export class DatePickerDocumentationComponent implements OnInit {
       hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
       required: value['required'] === 'Yes',
       desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined,
-      disabled: value['disabled'] === true ? true : false
+      disabled: value['showSelectToggle'] === true 
+      ? (this.datePickerConfig.disabled = true)
+      : (this.datePickerConfig.disabled = false)
     };
   }
 
@@ -289,31 +290,6 @@ export class DatePickerDocumentationComponent implements OnInit {
     }
     console.log('error conf', this.datePickerConfig);
     this.parseCodeViewConfig();
-  }
-  /**
-   * Toggle disabled state of datePicker
-   */
-  private toggleDisabled(disabled: boolean) {
-    console.log(disabled);
-    // if (disabled) {
-    //   this.datePickerConfig.disabled = true
-    // } else {
-    //   this.datePickerConfig.disabled = false
-    // }
-    console.log(this.datePickerConfig);
-    // const datePickerControl: AbstractControl | null =
-    //   this.form_datePicker.get(this.datePickerConfig.id);
-    // if (
-    //   (disabled && datePickerControl?.disabled) ||
-    //   (!disabled && datePickerControl?.enabled)
-    // ) {
-    //   return;
-    // }
-    // if (disabled) {
-    //   datePickerControl?.disable();
-    // } else {
-    //   datePickerControl?.enable();
-    // }
   }
 
   private parseCodeViewConfig() {
