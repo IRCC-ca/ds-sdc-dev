@@ -19,6 +19,7 @@ import {
 
 const NUMBER_OF_CTA_ALLOWED : number = 3;
 
+
 @Component({
   selector: 'app-banner-doc-code',
   templateUrl: './banner-doc-code.component.html',
