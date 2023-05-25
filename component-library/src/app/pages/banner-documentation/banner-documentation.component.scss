@@ -1,4 +1,5 @@
 @use '../../../../../core-library/util/device' as device;
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -15,7 +16,7 @@
   margin-bottom: 0px;
 }
 
-.body3.demo {
+.demo {
   margin-top: 0px;
   margin-bottom: 24px;
 }
@@ -30,12 +31,29 @@
   margin: 12px 0 0 0;
 }
 
+p {
+  @include typography.fontSet(body, 3, regular);
+}
+
 .types {
   .component-preview-container {
     margin-bottom: 24px;
+
+    .description {
+      margin-top: 28px;
+    }
+
+    .component-preview {
+      @include typography.fontSet(heading, 6, regular);
+    }
   }
+
   .component-preview-container:last-child {
     margin-bottom: 0px;
+  }
+
+  .banner-preview {
+    margin-top: 24px;
   }
 }
 
@@ -146,6 +164,11 @@
   ol {
     margin: 12px 0 0 0;
     padding-left: 20px;
+
+    .list-item {
+      background-color: aquamarine;
+      @include typography.fontSet(body, 3, regular);
+    }
   }
   .figma-usage {
     max-width: 547px;
@@ -194,8 +217,10 @@
     margin-bottom: 24px;
 
     .list-item {
+      @include typography.fontSet(body, 3, regular);
       list-style-type: none;
       padding-bottom: 20px;
+      background-color: aquamarine;
     }
 
     .list-item:last-child {
