@@ -1,5 +1,5 @@
 export interface ContentItem {
-    title: string;
-    description: string;
-    number?: number;
-  }
+  title: string;
+  description: string;
+  number?: number;
+}

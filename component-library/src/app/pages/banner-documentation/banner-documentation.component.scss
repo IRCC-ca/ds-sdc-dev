@@ -45,6 +45,7 @@ p {
 
     .component-preview {
       @include typography.fontSet(heading, 6, regular);
+      max-width: 400px;
     }
   }
 
