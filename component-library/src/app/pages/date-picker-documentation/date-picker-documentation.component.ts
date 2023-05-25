@@ -279,14 +279,15 @@ export class DatePickerDocumentationComponent implements OnInit {
       // this.form_datePicker
       //   .get(this.datePickerConfig.id)
       //   ?.setValidators(Validators.required);
-        this.datePickerConfigCodeView.errorMessages = this.datePickerConfig.errorMessages;
+      this.datePickerConfigCodeView.errorMessages =
+        this.datePickerConfig.errorMessages;
 
       // this.form_datePicker.get(this.datePickerConfig.id)?.setValidators(Validators.required);
       // const property = this.datePickerConfig.errorMessages?.general?.map(x => console.log('x', x.errorLOV))
-      
+
       // this.datePickerConfigCodeView.errorMessages = property;
     }
-    console.log('error conf', this.datePickerConfig)
+    console.log('error conf', this.datePickerConfig);
     this.parseCodeViewConfig();
   }
   /**
