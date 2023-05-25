@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
-import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
+import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
