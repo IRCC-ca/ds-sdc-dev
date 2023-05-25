@@ -300,7 +300,7 @@
   },
   "Overview": {
     "Heading": "Aperçu",
-    "SubHeading": "Système de conception IRCC",
+    "SubHeading": "Système De Conception IRCC",
     "Text": "Le système de conception IRCC est une boîte à outils de conception et de code partagés qui fournit un langage visuel, des composants, des modèles et des directives, le tout dans une source de vérité centralisée qui permet aux équipes de produits de créer des expériences évolutives, accessibles et unifiées. Il est personnalisé pour l'expérience du client et de l'agent et permet aux équipes de créer efficacement des services numériques d'immigration cohérents.",
     "DesignerHeading": "Pour les concepteurs",
     "DesignerText": "Découvrez comment démarrer avec la bibliothèque Figma du système de conception IRCC.",
