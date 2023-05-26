@@ -101,20 +101,6 @@ export class BannerDocCodeComponent implements OnInit {
       ]
     },
     {
-      id: 'showCloseToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show close',
-      size: 'small',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
-        }
-      ]
-    },
-    {
       id: 'showTitleToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show title',
@@ -143,6 +129,21 @@ export class BannerDocCodeComponent implements OnInit {
       ]
     },
     {
+      id: 'showCloseToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Show close',
+      size: 'small',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    
+    {
       id: 'showPrimaryButtonToggle',
       formGroup: this.form_interactive_banner,
       label: 'Show primary button',
@@ -157,9 +158,9 @@ export class BannerDocCodeComponent implements OnInit {
       ]
     },
     {
-      id: 'showPlainButtonToggle',
+      id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show plain button',
+      label: 'Show secondary button',
       size: 'small',
       options: [
         {
@@ -171,9 +172,9 @@ export class BannerDocCodeComponent implements OnInit {
       ]
     },
     {
-      id: 'showSecondaryButtonToggle',
+      id: 'showPlainButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show secondary button',
+      label: 'Show plain button',
       size: 'small',
       options: [
         {
