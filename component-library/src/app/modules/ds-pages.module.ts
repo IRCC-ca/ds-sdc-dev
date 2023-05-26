@@ -33,6 +33,7 @@ import { EncapsulatedElementComponent } from '@app/components/encapsulated-eleme
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
 import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
 
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -72,7 +73,8 @@ import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documen
     HighlightModule,
     AccessibilityDemoModule,
     TranslateModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   exports: [
     TitleSlugUrlComponent,
