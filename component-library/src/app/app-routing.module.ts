@@ -32,6 +32,7 @@ import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { RequestFormComponent } from './pages/request-form/request-form.component';
+import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -57,15 +58,20 @@ const routes: Routes = [
       component: ForDevelopersComponent,
       title: 'Developers'
     },
-    {
-      path: 'banner-doc',
-      component: BannerDocCodeComponent,
-      title: 'Banner-doc'
+    { 
+      path: 'utilities',
+      component: UtilitiesComponent,
+      title: 'Utilities'
     },
     {
-      path: 'button-doc',
+      path: 'banner-documentation',
+      component: BannerDocumentationComponent,
+      title: 'Banner-documentation'
+    },
+    {
+      path: 'buttons',
       component: ButtonDocCodeComponent,
-      title: 'Button-doc'
+      title: 'Buttons'
     },
     {
       path: 'input-documentation',
@@ -90,15 +96,20 @@ const routes: Routes = [
       component: ForDevelopersComponent,
       title: 'Developpeurs'
     },
-    {
-      path: 'banner-doc-fr',
-      component: BannerDocCodeComponent,
-      title: 'Banner-doc-fr'
+    { 
+      path: 'utilitaires',
+      component: UtilitiesComponent,
+      title: 'Utilitaires'
     },
     {
-      path: 'button-doc-fr',
+      path: 'banner-documentation-fr',
+      component: BannerDocumentationComponent,
+      title: 'Banner-documentation'
+    },
+    {
+      path: 'boutons',
       component: ButtonDocCodeComponent,
-      title: 'Button-doc-fr'
+      title: 'Boutons'
     },
     {
       path: 'documentation dentree',
