@@ -1,0 +1,32 @@
+<div class="content-doc-wrapper col-12 col-lg-10">
+  <div style="width: 100%">
+    <app-title-slug-url
+      [config]="datePickerTitleSlugConfig"
+    ></app-title-slug-url>
+    <p>{{ 'DatePicker.Intro' | translate }}</p>
+    <app-title-slug-url
+      [config]="interactiveDemoSlugTitleURLConfig"
+    ></app-title-slug-url>
+    <p>{{ 'DatePicker.InteractiveDemoDesc' | translate }}</p>
+    <app-interactive-demo [hasTabs]="false">
+      <div
+        component
+        class="datePicker-container"
+      >
+        <ircc-cl-lib-date-picker
+          [config]="datePickerConfig"
+        ></ircc-cl-lib-date-picker>
+      </div>
+
+      <ng-container toggles>
+        <ng-container *ngFor="let toggle of toggles">
+          <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+        </ng-container>
+        <ng-container *ngFor="let checkbox of checkboxes">
+          <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+        </ng-container>
+      </ng-container>
+    </app-interactive-demo>
+    <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
+  </div>
+</div>

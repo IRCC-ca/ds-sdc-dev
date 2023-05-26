@@ -31,9 +31,10 @@ import { accordionContainerComponent } from '@app/components/accordion-panel/acc
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { EncapsulatedElementComponent } from '@app/components/encapsulated-element/encapsulated-element.component';
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
-import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePickerDocCodeComponent } from '@app/pages/date-picker-documentation/date-picker-doc-code.component';
+import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -61,6 +62,7 @@ import { HttpClientModule } from '@angular/common/http';
     InputDocCodeComponent,
     EncapsulatedElementComponent,
     RequestFormComponent,
+    DatePickerDocCodeComponent,
     DatePickerDocumentationComponent,
     BannerDocumentationComponent
   ],
