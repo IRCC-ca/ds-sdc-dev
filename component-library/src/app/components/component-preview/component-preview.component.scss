@@ -16,13 +16,12 @@
     }
   }
 
-  .banner {
+  .background-white {
     background-color: var(--surface1);
     max-width: 400px;
   }
 
-  .input {
-    max-width: 362px;
-    height: 221px;
+  .background-gray {
+    background-color: var(--surface2);
   }
 }

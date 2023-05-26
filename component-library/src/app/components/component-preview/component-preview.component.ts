@@ -11,7 +11,6 @@ export enum BackgroundColor {
   styleUrls: ['./component-preview.component.scss']
 })
 export class ComponentPreviewComponent implements OnInit {
-  @ViewChild('componentPreview', { static: true }) componentPreview!: ElementRef;
   @Input() copyText?: string;
   @Input() copyStyle?: string;
   @Input() backgroundColor?: keyof typeof BackgroundColor;
@@ -21,7 +20,7 @@ export class ComponentPreviewComponent implements OnInit {
     if (!this.backgroundColor) this.backgroundColor = BackgroundColor.gray;
 
     this.backgroundColor === BackgroundColor.white 
-    ? this.componentPreview.nativeElement.style.backgroundColor = ' var(--surface1)' 
-    : this.componentPreview.nativeElement.style.backgroundColor = 'var(--surface2)';
+    ? BackgroundColor.white 
+    : BackgroundColor.gray;
   }
 }
