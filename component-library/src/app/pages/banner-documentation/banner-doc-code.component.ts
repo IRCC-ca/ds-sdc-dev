@@ -91,112 +91,127 @@ export class BannerDocCodeComponent implements OnInit {
       id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
       size: 'small',
-      label: 'Size',
+      label: 'Banner.BannerConfig.SizeLabel',
       options: [
         {
-          text: 'Small'
+          text: 'Banner.BannerConfig.SmallLabel',
+          value: 'Small'
         },
         {
-          text: 'Large'
+          text: 'Banner.BannerConfig.LargeLabel',
+          value: 'Large'
         }
       ]
     },
     {
       id: 'showTitleToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show title',
+      label: 'Banner.BannerConfig.ShowTitleLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showDescToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show description',
+      label: 'Banner.BannerConfig.ShowDescriptionLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showCloseToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show close',
+      label: 'Banner.BannerConfig.ShowCloseLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
-    
     {
       id: 'showPrimaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show primary button',
+      label: 'Banner.BannerConfig.ShowPrimaryButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show secondary button',
+      label: 'Banner.BannerConfig.ShowSecondaryButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showPlainButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show plain button',
+      label: 'Banner.BannerConfig.ShowPlainButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showLinkToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show link',
+      label: 'Banner.BannerConfig.ShowLinkLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     }
@@ -473,7 +488,7 @@ export class BannerDocCodeComponent implements OnInit {
       if (toggle.options && toggle.options[1].text) {
         this.form_interactive_banner.addControl(
           toggle.id,
-          new FormControl(toggle.options[1].text)
+          new FormControl(toggle.options[1].value)
         );
       }
     });
