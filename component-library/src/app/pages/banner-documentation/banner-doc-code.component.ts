@@ -45,7 +45,8 @@ export class BannerDocCodeComponent implements OnInit {
 
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    cta: []
+    cta: [],
+    size: 'large'
   };
 
   bannerConfigCodeView: any = {
