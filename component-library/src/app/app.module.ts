@@ -18,6 +18,8 @@ import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
 import { ShelldModule } from './shell/shell.module';
 import { DsPageModule } from './modules/ds-pages.module';
 
+import { OverviewService } from '@app/pages/overview/overview.service';
+
 import { APP_BASE_HREF } from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -61,6 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
     ClipboardModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [OverviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

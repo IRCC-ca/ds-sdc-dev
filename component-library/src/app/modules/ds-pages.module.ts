@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleSlugUrlComponent } from '@app/components/title-slug-url/title-slug-url.component';
 import { OverviewComponent } from '@app/pages/overview/overview.component';
+import { overviewExtraComponent } from '@app/pages/overview/overViewExtra.component';
 import { ForDesignersComponent } from '@app/pages/for-designers/for-designers.component';
 import { ForDevelopersComponent } from '@app/pages/for-developers/for-developers.component';
 import { SafeHtmlPipe } from '@app/share/safe-html.pipe';
@@ -23,7 +24,6 @@ import { ComponentPreviewComponent } from '@app/components/component-preview/com
 import { accordionContainerComponent } from '@app/components/accordion-panel/accordion-container.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
-
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -31,6 +31,7 @@ import { RequestFormComponent } from '@app/pages/request-form/request-form.compo
     codeViewerComponent,
     accordionContainerComponent,
     OverviewComponent,
+    overviewExtraComponent,
     ForDesignersComponent,
     SlugifyPipe,
     SafeHtmlPipe,

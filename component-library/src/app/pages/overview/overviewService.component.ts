@@ -4,6 +4,7 @@ import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
 import { HttpClient } from '@angular/common/http';
+import { OverviewService } from './overview.service';
 
 @Component({
   selector: 'app-overview',
@@ -20,11 +21,15 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
   url =
     'https://flyu2zvymhha3je5vnlx7g5z5u0ixvml.lambda-url.ca-central-1.on.aws/';
 
+  responsePromise: any;
+  responseService: any;
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
     private slugify: SlugifyPipe,
-    private http: HttpClient
+    private http: HttpClient,
+    private overviewService: OverviewService
   ) {
     this.currentLanguage = translate.currentLang;
   }
@@ -32,10 +37,15 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
   async ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    console.log(await this.sendRequest());
+    this.body = { title: 'Promise' };
+    this.responsePromise = await this.getDataPromise();
+
+    this.getDataService();
+    this.body = { title: 'Service' };
+    this.overviewService.getData(this.url, this.body);
   }
 
-  async sendRequest() {
+  async getDataPromise() {
     return new Promise((resolve, reject) => {
       this.http.post<any>(this.url, this.body).subscribe({
         next: (data) => {
@@ -45,6 +55,14 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
           reject(`There was an error!: ${error}`);
         }
       });
+    });
+  }
+
+  getDataService() {
+    this.overviewService.dataResponseObs$.subscribe((response: any) => {
+      if (response) {
+        this.responseService = response;
+      }
     });
   }
 }
