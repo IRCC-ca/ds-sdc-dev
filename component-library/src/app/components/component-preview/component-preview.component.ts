@@ -15,12 +15,11 @@ export class ComponentPreviewComponent implements OnInit {
   @Input() copyStyle?: string;
   @Input() backgroundColor?: keyof typeof BackgroundColor;
 
-
   ngOnInit() {
     if (!this.backgroundColor) this.backgroundColor = BackgroundColor.gray;
 
-    this.backgroundColor === BackgroundColor.white 
-    ? BackgroundColor.white 
-    : BackgroundColor.gray;
+    this.backgroundColor === BackgroundColor.white
+      ? BackgroundColor.white
+      : BackgroundColor.gray;
   }
 }

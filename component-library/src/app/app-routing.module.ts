@@ -59,7 +59,7 @@ const routes: Routes = [
       component: ForDevelopersComponent,
       title: 'Developers'
     },
-    { 
+    {
       path: 'utilities',
       component: UtilitiesComponent,
       title: 'Utilities'
@@ -102,7 +102,7 @@ const routes: Routes = [
       component: ForDevelopersComponent,
       title: 'Developpeurs'
     },
-    { 
+    {
       path: 'utilitaires',
       component: UtilitiesComponent,
       title: 'Utilitaires'
