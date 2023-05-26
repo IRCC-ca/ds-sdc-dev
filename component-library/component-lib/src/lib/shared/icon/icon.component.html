@@ -1,10 +1,13 @@
 <span id="ds-icon-container">
-  <span #iconSpan>
+  <span
+    #iconSpan
+    [attr.aria-hidden]="config.ariaLabel ? false : true"
+    [attr.aria-label]="config.ariaLabel ? config.ariaLabel : null"
+    [attr.role]="config.ariaLabel ? 'img' : null"
+  >
     <i
       class="font-icon"
       [ngClass]="config.FA_keywords"
-      [attr.aria-hidden]="config.ariaLabel === ''"
-      [attr.aria-label]="config.ariaLabel"
     ></i>
   </span>
 </span>
