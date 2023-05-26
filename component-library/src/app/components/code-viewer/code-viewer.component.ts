@@ -13,7 +13,10 @@ import {
   ITabConfig
 } from 'ircc-ds-angular-component-library';
 
-import { IAccordionContainerConfig, mobileBehaviourType } from '../accordion-panel/accordion-container.component';
+import {
+  IAccordionContainerConfig,
+  mobileBehaviourType
+} from '../accordion-panel/accordion-container.component';
 
 export interface ICodeViewerConfig {
   id: string;
