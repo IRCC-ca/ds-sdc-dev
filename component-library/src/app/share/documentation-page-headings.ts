@@ -5,7 +5,7 @@ export const docPageheadingConfig: any = {
     title: 'General.InteractiveDemo',
     anchorType: slugAnchorType.primary
   },
-
+  
   typesSlugConfig: {
     title: 'General.TypesHeading',
     anchorType: slugAnchorType.primary

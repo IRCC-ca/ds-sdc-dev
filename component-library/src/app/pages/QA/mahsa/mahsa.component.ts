@@ -32,6 +32,7 @@ export class MahsaComponent implements OnInit {
   SELECT_ID = 'qa_test_select';
   TAB_ID = 'qa-test-tabs';
   SPINNER_ID = 'qa-test-spinner';
+  TAG_ID = 'qa-tag-test';
 
   /** Configs: */
   qaSelect: ISelectConfig = {
@@ -52,7 +53,7 @@ export class MahsaComponent implements OnInit {
   };
 
   qaTags: IProgressTagsConfig = {
-    id: 'tag-test'
+    id: this.TAG_ID
   };
 
   qaSpinner: ISpinnerConfig = {
@@ -287,6 +288,7 @@ export class MahsaComponent implements OnInit {
         if (!value['desc']) delete this.qaSelect.desc;
         if (!value['hint']) delete this.qaSelect.hint;
         if (value[param]) {
+          // this.qaSelect = { ...this.qaSelect, [param]: value[param] }
           updatedConfig = { ...updatedConfig, [param]: value[param] };
           this.qaSelect = updatedConfig;
         }

@@ -3,6 +3,9 @@
   <button (click)="toggleComp('select')">Select Component</button>
   <button (click)="toggleComp('tab')">Tabs Component</button>
   <button (click)="toggleComp('tag')">Tags Component</button>
+  <button (click)="toggleComp('spinnerAcc')">
+    Spinner Component Accessibility
+  </button>
   <button (click)="toggleComp('spinner')">Spinner Component</button>
 </span>
 
@@ -34,7 +37,7 @@
   <br />
 </section>
 
-<section id="spinner">
+<section id="spinnerAcc">
   <h1>Spinner Testing only for Voice-Over or NVDA:</h1>
   <button (click)="hideShowError()">Show/Hide Error</button>
   <button (click)="hideShowSuccess()">Show/Hide Success</button>
@@ -61,6 +64,9 @@
     <br />
   </div>
   <hr />
+</section>
+
+<section id="spinner">
   <h1>Only Spinner Component for Testing:</h1>
   <ircc-cl-lib-spinner [config]="qaSpinner"></ircc-cl-lib-spinner>
   <br />
