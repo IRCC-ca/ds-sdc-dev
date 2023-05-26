@@ -7,7 +7,7 @@ export class OverviewService {
   constructor(private http: HttpClient) {}
 
   private dataResponse = new BehaviorSubject<any>({});
-  
+
   dataResponseObs$ = this.dataResponse.asObservable();
 
   getData(url: string, body: any) {
