@@ -1,5 +1,8 @@
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IndicatorStatus, IndicatorType } from '../indicator/indicator.component';
+import {
+  IndicatorStatus,
+  IndicatorType
+} from '../indicator/indicator.component';
 
 export interface INavigationConfig {
   id: string;
@@ -7,13 +10,14 @@ export interface INavigationConfig {
   iconLeading?: string;
   iconTrailing?: string;
   size: keyof typeof DSSizes;
-  navigationConfig?: Array<NavigationItem>;
+  navigationConfig?: Array<INavigationItem>;
 }
 
 export enum NavigationItemType {
   accordion = 'accordion',
   heading = 'heading',
-  link = 'link'
+  link = 'link',
+  divider = 'divider'
 }
 
 export enum NavigationStatus {
@@ -23,27 +27,27 @@ export enum NavigationStatus {
   locked = 'locked'
 }
 
-export interface NavigationIndicator {
+export interface INavigationIndicator {
   status: keyof typeof IndicatorStatus;
   icon: string;
   label?: string;
 }
 
-export interface NavigationItem {
+export interface INavigationItem {
   id: string;
   label: string;
   type: keyof typeof NavigationItemType;
   size?: keyof typeof DSSizes;
-  children: NavigationItem[];
-  indicator?: NavigationIndicator;
+  children: INavigationItem[];
+  indicator?: INavigationIndicator;
   border?: boolean;
 }
 
-export interface NavigationItemAccordion extends NavigationItem {
+export interface INavigationItemAccordion extends INavigationItem {
   open: boolean;
 }
 
-export interface NavigationItemLink extends NavigationItem {
+export interface INavigationItemLink extends INavigationItem {
   icon?: string;
   trailingIcon?: string;
   href: string;
@@ -51,6 +55,8 @@ export interface NavigationItemLink extends NavigationItem {
   anchor?: string;
 }
 
-export interface NavigationItemHeading extends NavigationItem {
+export interface INavigationItemHeading extends INavigationItem {
   icon: string;
 }
+
+export interface INavigationDivider extends INavigationItem {}

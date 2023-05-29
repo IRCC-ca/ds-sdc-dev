@@ -18,9 +18,10 @@ import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 
 import {
   INavigationConfig,
-  NavigationItemLink,
-  NavigationItemAccordion,
-  NavigationItemHeading
+  INavigationItemLink,
+  INavigationItemAccordion,
+  INavigationItemHeading,
+  INavigationDivider
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -39,7 +40,7 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
-  itemAA: NavigationItemLink = {
+  itemAA: INavigationItemLink = {
     label: 'Overview.Heading',
     href: 'ROUTES.overview',
     external: false,
@@ -50,7 +51,15 @@ export class ShellComponent implements OnInit {
     children: [],
     indicator: { status: 'information', icon: 'fa-regular fa-circle' }
   };
-  itemAB: NavigationItemLink = {
+
+  itemDivider: INavigationDivider = {
+    id: '',
+    label: '',
+    type: 'divider',
+    children: []
+  };
+
+  itemAB: INavigationItemLink = {
     label: 'Designers.Heading',
     href: 'ROUTES.forDesigners',
     id: 'Designers.Heading',
@@ -58,7 +67,7 @@ export class ShellComponent implements OnInit {
     type: 'link',
     children: []
   };
-  itemAC: NavigationItemLink = {
+  itemAC: INavigationItemLink = {
     label: 'Overview.DeveloperHeading',
     href: 'ROUTES.forDevelopers',
     anchor: 'themes',
@@ -67,15 +76,15 @@ export class ShellComponent implements OnInit {
     type: 'link',
     children: []
   };
-  itemA: NavigationItemHeading = {
+  itemA: INavigationItemHeading = {
     id: 'GetStartedHeading',
     label: 'Developers.GetStartedHeading',
     icon: 'fa-light fa-basketball',
     type: 'heading',
-    children: [this.itemAA, this.itemAB, this.itemAC]
+    children: [this.itemAA, this.itemDivider, this.itemAB, this.itemAC]
   };
 
-  mashsa: NavigationItemLink = {
+  mashsa: INavigationItemLink = {
     label: 'mahsa',
     href: 'ROUTES.mahsa',
     id: 'mahsa',
@@ -84,7 +93,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  michael: NavigationItemLink = {
+  michael: INavigationItemLink = {
     label: 'michael',
     href: 'ROUTES.michael',
     id: 'michael',
@@ -93,7 +102,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  naseer: NavigationItemLink = {
+  naseer: INavigationItemLink = {
     label: 'naseer',
     href: 'ROUTES.naseer',
     id: 'naseer',
@@ -102,7 +111,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  mike: NavigationItemLink = {
+  mike: INavigationItemLink = {
     label: 'mike',
     href: 'ROUTES.mike',
     id: 'mike',
@@ -110,7 +119,7 @@ export class ShellComponent implements OnInit {
     type: 'link',
     children: []
   };
-  bobby: NavigationItemLink = {
+  bobby: INavigationItemLink = {
     label: 'bobby',
     href: 'ROUTES.bobby',
     id: 'bobby',
@@ -119,7 +128,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  accessibility: NavigationItemLink = {
+  accessibility: INavigationItemLink = {
     label: 'Accessibility Demo',
     href: '/en/accessibility-demo',
     id: 'accessibility',
@@ -128,7 +137,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  banner: NavigationItemLink = {
+  banner: INavigationItemLink = {
     label: 'Banner Documentation',
     href: '/en/banner-doc',
     id: 'banner',
@@ -137,7 +146,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  codeview: NavigationItemLink = {
+  codeview: INavigationItemLink = {
     label: 'Code Viewer',
     href: '/en/codeview',
     id: 'codeview',
@@ -146,7 +155,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  button: NavigationItemLink = {
+  button: INavigationItemLink = {
     label: 'Button Documentation',
     href: '/en/button-doc',
     id: 'button',
@@ -155,7 +164,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  input: NavigationItemLink = {
+  input: INavigationItemLink = {
     label: 'Input Documentation',
     href: '/en/input-documentation',
     id: 'input',
@@ -164,7 +173,7 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  other: NavigationItemAccordion = {
+  other: INavigationItemAccordion = {
     id: 'other',
     label: 'Other Pages',
     type: 'accordion',
@@ -178,7 +187,7 @@ export class ShellComponent implements OnInit {
     ]
   };
 
-  itemQA: NavigationItemAccordion = {
+  itemQA: INavigationItemAccordion = {
     id: 'qa',
     label: 'QA.header',
     type: 'accordion',
@@ -205,8 +214,6 @@ export class ShellComponent implements OnInit {
   randomHeader: string = '';
   randomFooter: string = '';
 
-  //
-  //
   constructor(
     private translate: TranslateService,
     private altLang: LangSwitchService,

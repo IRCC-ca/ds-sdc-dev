@@ -62,5 +62,6 @@ export * from './lib/shared/navigation/nav-item-heading/nav-item-heading.compone
 export * from './lib/shared/navigation/nav-item-nav/nav-item-nav.component';
 export * from './lib/shared/navigation/nav-item-accordion/nav-item-accordion.component';
 export * from './lib/shared/navigation/nav-item-status/nav-item-status.component';
+export * from './lib/shared/navigation/nav-item-divider/nav-item-divider.component';
 export * from './lib/shared/navigation/navigation.types';
 export * from './lib/shared/navigation/navigation.service';

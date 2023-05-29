@@ -99,6 +99,25 @@
               ></ng-container></ul
           ></ircc-cl-lib-nav-accordion>
         </ng-container>
+
+        <ng-container *ngSwitchCase="'divider'">
+          <ircc-cl-lib-nav-divider
+            [attr.size]="config.size"
+            [config]="item"
+          >
+            asdadasd
+            <ul
+              *ngIf="item.children.length > 0"
+              class="child-navigation"
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  recursiveListTmpl;
+                  context: { list: item.children }
+                "
+              ></ng-container></ul
+          ></ircc-cl-lib-nav-divider>
+        </ng-container>
       </ng-container>
     </li>
   </ng-template>

@@ -1,7 +1,13 @@
 //TODO: Add detailed readme listing how this actually works. People will be SOOOO confused.
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { INavigationConfig, NavigationItem, NavigationItemAccordion, NavigationItemHeading, NavigationItemLink } from './navigation.types';
+import {
+  INavigationConfig,
+  INavigationItem,
+  INavigationItemAccordion,
+  INavigationItemHeading,
+  INavigationItemLink
+} from './navigation.types';
 
 export interface INavItemEvent {
   id: string;
@@ -13,10 +19,10 @@ export interface INavItemEvent {
 })
 export class NavigationService {
   //Used entirely as a workaround for the change detection limitations
-  private itemChangeSubj = new Subject<string>;
+  private itemChangeSubj = new Subject<string>();
   itemChangeObs$ = this.itemChangeSubj.asObservable();
 
-  private navEventSubj = new Subject<INavItemEvent>;
+  private navEventSubj = new Subject<INavItemEvent>();
   navEventObs$ = this.navEventSubj.asObservable(); //Use this for any events we need propagated up to parents
 
   private navConfigSubj = new BehaviorSubject<INavigationConfig>({
@@ -29,7 +35,7 @@ export class NavigationService {
   });
   navConfigObs$ = this.navConfigSubj.asObservable();
 
-  flattenedNavigation: Array<NavigationItem> = [];
+  flattenedNavigation: Array<INavigationItem> = [];
 
   /**
    * Broadcast the config object of the value and flatten the array
@@ -44,8 +50,16 @@ export class NavigationService {
    * General broadcast of an element update
    * @param event
    */
-  setNavItem(update: NavigationItemLink | NavigationItemAccordion | NavigationItemHeading) {
-    this.setNavItemFields(this.findByKey(this.flattenedNavigation, 'id', update.id), update);
+  setNavItem(
+    update:
+      | INavigationItemLink
+      | INavigationItemAccordion
+      | INavigationItemHeading
+  ) {
+    this.setNavItemFields(
+      this.findByKey(this.flattenedNavigation, 'id', update.id),
+      update
+    );
     this.itemChangeSubj.next(update.id); //This is used to get around a change detection problem in the various child components
   }
 
@@ -80,14 +94,18 @@ export class NavigationService {
   };
 
   /**
-   * 
+   *
    * @param items flattened array
    * @param key of the key value pair ('id')
    * @param value id of the piece being searched for (update.id)
-   * @returns 
+   * @returns
    */
-  private findByKey = (items: Array<NavigationItem>, key: string, value: string) => {
-    let returnItem: NavigationItem = {
+  private findByKey = (
+    items: Array<INavigationItem>,
+    key: string,
+    value: string
+  ) => {
+    let returnItem: INavigationItem = {
       id: '',
       label: '',
       type: 'accordion',
@@ -108,9 +126,9 @@ export class NavigationService {
    * @param obj1 object being updated
    * @param obj2 values to put in obj1
    */
-  private setNavItemFields = (obj1: NavigationItem, obj2: NavigationItem) => {
-    Object.keys(obj2).forEach(key => {
+  private setNavItemFields = (obj1: INavigationItem, obj2: INavigationItem) => {
+    Object.keys(obj2).forEach((key) => {
       obj1[key] = obj2[key];
     });
-  }
+  };
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
-import { NavigationItem, NavigationItemHeading } from '../navigation.types';
+import { INavigationItem, INavigationItemHeading } from '../navigation.types';
 import { IIconButtonComponentConfig } from '../../icon-button/icon-button.component';
 import { NavigationService } from '../navigation.service';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './nav-item-heading.component.html'
 })
 export class navItemHeadingComponent implements OnInit {
-  @Input() config: NavigationItemHeading = {
+  @Input() config: INavigationItemHeading = {
     id: '',
     label: '',
     icon: '',
@@ -22,7 +22,7 @@ export class navItemHeadingComponent implements OnInit {
   @Input() id: string = '';
   @Input() label: string = '';
   @Input() icon: string = '';
-  @Input() children: Array<NavigationItem> | undefined;
+  @Input() children: Array<INavigationItem> | undefined;
   @Input() size: keyof typeof DSSizes | undefined;
 
   buttonIcon: IIconButtonComponentConfig = {
@@ -35,9 +35,9 @@ export class navItemHeadingComponent implements OnInit {
     }
   };
 
-  navObjectChangeSub = new Subscription;
+  navObjectChangeSub = new Subscription();
 
-  constructor(private navEvent: NavigationService) { }
+  constructor(private navEvent: NavigationService) {}
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;

@@ -1,7 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { NavigationItem, INavigationConfig } from './navigation.types';
+import { INavigationItem, INavigationConfig } from './navigation.types';
 import { Subscription } from 'rxjs';
 import { NavigationService } from './navigation.service';
 
@@ -16,9 +16,9 @@ export class navigationComponent implements OnInit {
   @Input() iconTrailing: string = '';
   @Input() size: keyof typeof DSSizes | undefined;
   //TODO: NavigationItem and all other interfaces must be renamed starting with 'I'
-  @Input() navigationConfig: Array<NavigationItem> = [];
+  @Input() navigationConfig: Array<INavigationItem> = [];
 
-  flattenNavigation: Array<NavigationItem> = [];
+  flattenNavigation: Array<INavigationItem> = [];
   config: INavigationConfig = {
     id: '',
     label: '',
@@ -29,10 +29,10 @@ export class navigationComponent implements OnInit {
   };
   configSub?: Subscription;
 
-  constructor (private navService: NavigationService) { }
+  constructor(private navService: NavigationService) {}
 
   ngOnInit() {
-    this.configSub = this.navService.navConfigObs$.subscribe(response => {
+    this.configSub = this.navService.navConfigObs$.subscribe((response) => {
       this.config = response;
     });
   }
@@ -53,13 +53,13 @@ export class navigationComponent implements OnInit {
     );
   };
 
-//These are in THIS component, not in it's own. I.e. the buttons in the actual
-//header are not in a child component.
+  //These are in THIS component, not in it's own. I.e. the buttons in the actual
+  //header are not in a child component.
   clickIconLeading = (event: any) => {
-    this.navService.navEvent({id: this.config.id, event: event});
+    this.navService.navEvent({ id: this.config.id, event: event });
   };
   clickIconTrailing = (event: any) => {
-    this.navService.navEvent({id: this.config.id, event: event});
+    this.navService.navEvent({ id: this.config.id, event: event });
   };
 
   navigationClass = (): string => {

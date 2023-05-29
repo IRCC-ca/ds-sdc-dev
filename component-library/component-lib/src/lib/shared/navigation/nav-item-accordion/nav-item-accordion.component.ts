@@ -1,7 +1,7 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
-import { NavigationItemAccordion } from '../navigation.types';
+import { INavigationItemAccordion } from '../navigation.types';
 import { IIconButtonComponentConfig } from '../../icon-button/icon-button.component';
 import { Subscription, filter } from 'rxjs';
 import { NavigationService } from '../navigation.service';
@@ -11,7 +11,7 @@ import { NavigationService } from '../navigation.service';
   templateUrl: './nav-item-accordion.component.html'
 })
 export class navItemAccordionComponent implements OnInit {
-  @Input() config: NavigationItemAccordion = {
+  @Input() config: INavigationItemAccordion = {
     id: '',
     open: false,
     label: '',
@@ -46,16 +46,15 @@ export class navItemAccordionComponent implements OnInit {
     }
   };
 
-  navObjectChangeSub = new Subscription;
+  navObjectChangeSub = new Subscription();
 
-  constructor(private navEvent: NavigationService) { }
+  constructor(private navEvent: NavigationService) {}
 
   ngOnInit() {
     // this.navObjectChangeSub = this.navEvent.navObjectChangeObs$.pipe(
     //   filter(item => (item.id === this.config.id && item.type === 'accordion'))).subscribe(response => {
     //     this.config = response as NavigationItemAccordion;
     //   });
-
 
     this.id !== '' ? (this.config.id = this.id) : undefined;
     this.open !== undefined ? (this.config.open = this.open) : undefined;
@@ -86,6 +85,6 @@ export class navItemAccordionComponent implements OnInit {
 
   openAccordion(event: any) {
     this.config.open = !this.config.open;
-    this.navEvent.navEvent({id: this.config.id, event: event});
+    this.navEvent.navEvent({ id: this.config.id, event: event });
   }
 }
