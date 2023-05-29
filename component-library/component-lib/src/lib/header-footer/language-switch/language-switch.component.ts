@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, EventEmitter, HostListener, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TitleStrategy, Router } from '@angular/router';
 import { LanguageSwitchButtonService } from './language-switch-button.service';
