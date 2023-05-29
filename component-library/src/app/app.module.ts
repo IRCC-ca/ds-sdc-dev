@@ -10,6 +10,8 @@ import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, S
 import { ShellModule } from './shell/shell.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TitleStrategy } from '@angular/router';
+import { CustomPageTitleStrategy } from './@shared/shared-functions/title-strategy';
 import { GalleryModule } from './gallery/gallery.module';
 import { QaModule } from './gallery/QA/qa.module';
 
@@ -41,6 +43,10 @@ import { QaModule } from './gallery/QA/qa.module';
         provide: RouteReuseStrategy,
         useClass: RouteReusableStrategy
       },
+      {
+        provide: TitleStrategy,
+        useClass: CustomPageTitleStrategy
+      }
   ],
   bootstrap: [AppComponent]
 })

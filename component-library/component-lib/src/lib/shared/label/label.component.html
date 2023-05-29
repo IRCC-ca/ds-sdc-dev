@@ -9,7 +9,7 @@
         {{(config.label || '') | translate}}
       </div>
       <div *ngIf="config.iconButton" class="icon_container">
-        <button class="touch_button" category="plain" (click)="iconButtonClick()" role="button" [attr.aria-label]="(config.label | translate) + ' ' + (config.iconButton.ariaText | translate)"></button>
+        <button class="touch_button" category="plain" (click)="iconButtonClick($event)" role="button" [attr.aria-label]="(config.label | translate) + ' ' + (config.iconButton.ariaText | translate)"></button>
         <i [class]="config.iconButton.iconClass"></i>
       </div>
     </span>

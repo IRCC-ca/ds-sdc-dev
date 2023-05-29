@@ -68,10 +68,11 @@ export class LabelComponent implements OnInit {
   }
 
   /**
-   * Output the button press 
+   * Output the button press
    * @param id of the button being pressed (same as component ID)
    */
-  iconButtonClick() {
+  iconButtonClick(event: Event) {
+    event.stopPropagation();
     this.labelButton.buttonPress(this.config.parentID);
   }
 

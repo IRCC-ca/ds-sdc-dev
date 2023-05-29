@@ -8,7 +8,7 @@
           TODO: Should probably change the (keyup) to (onblur) -->
           <input (blur)="onTouchedLabel()" name="{{ config.id }}" class="input-field" placeholder="{{ config.placeholder || '' | translate }}"
             tabindex="0" [ngClass]="config.type === 'password' ? 'input-password-field' : 'input-text-field'"
-            [type]="typeControl" [id]="config.id" [formControlName]="config.id"
+            [type]="typeControl" [id]="config.id" [formControlName]="config.id" (keydown.enter)="enterEvent($event)"
             [attr.aria-invalid]="formControl?.errors" [attr.aria-live]="'off'" [attr.aria-label]="formControl?.invalid && touched
           ? (config.label || '' | translate) + ' ' + 
             (config.desc || '' | translate) + ' ' +

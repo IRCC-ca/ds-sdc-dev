@@ -194,6 +194,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
+  enterEvent(event: Event) {
+    event.preventDefault();
+    this.config.formGroup.get(this.config.id)?.markAsTouched();
+  }
+
   public clearvalue() {
   }
   writeValue(value: string): void {

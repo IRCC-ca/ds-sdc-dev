@@ -30,6 +30,11 @@
     "michael": "michael-fr",
     "michael-alt": "michael-en"
   },
+  "TITLES": {
+    "Begin": "Commencer la tâche",
+    "Completed": "Tâche complète",
+    "PersonalInformation": "Informations personnelles"
+  },
   "BUTTONS": {
     "Back": "Retour",
     "FormInputs": "Components formulaire",
