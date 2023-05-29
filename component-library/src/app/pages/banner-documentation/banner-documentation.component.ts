@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  slugAnchorType,
+  slugTitleURLConfig
+} from '@app/components/title-slug-url/title-slug-url.component';
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
 import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
-import { docPageheadingConfig }  from '@app/share/documentation-page-headings';
+import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 
 @Component({
   selector: 'app-banner-documentation',
@@ -13,44 +16,43 @@ import { docPageheadingConfig }  from '@app/share/documentation-page-headings';
   styleUrls: ['./banner-documentation.component.scss']
 })
 export class BannerDocumentationComponent implements OnInit {
-  
   currentLanguage: string = '';
   altLangLink = 'bannerDocumentation';
   INFO_BANNER_ID = 'info_banner';
   headingConfig = docPageheadingConfig;
-  
+
   infoBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
     title: 'Banner.BannerPreview.Title',
-    content: "Banner.BannerPreview.Content",
+    content: 'Banner.BannerPreview.Content',
     type: 'info'
   };
 
   warningBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
     title: 'Banner.BannerPreview.Title',
-    content: "Banner.BannerPreview.Content",
+    content: 'Banner.BannerPreview.Content',
     type: 'warning'
   };
 
   criticalBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
     title: 'Banner.BannerPreview.Title',
-    content: "Banner.BannerPreview.Content",
+    content: 'Banner.BannerPreview.Content',
     type: 'critical'
   };
 
   successBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
     title: 'Banner.BannerPreview.Title',
-    content: "Banner.BannerPreview.Content",
+    content: 'Banner.BannerPreview.Content',
     type: 'success'
   };
 
   genericBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
     title: 'Banner.BannerPreview.Title',
-    content: "Banner.BannerPreview.Content",
+    content: 'Banner.BannerPreview.Content',
     type: 'generic'
   };
 
@@ -103,11 +105,11 @@ export class BannerDocumentationComponent implements OnInit {
     {
       title: 'Banner.Anatomy.CTAGroupHeading',
       description: 'Banner.Anatomy.CTAGroupText'
-    },
+    }
   ];
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService,
+    private lang: LangSwitchService
   ) {
     this.currentLanguage = translate.currentLang;
   }
@@ -115,5 +117,4 @@ export class BannerDocumentationComponent implements OnInit {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
   }
-
 }

@@ -69,7 +69,7 @@ const routes: Routes = [
     {
       path: 'utilities',
       component: UtilitiesComponent,
-      title: 'Utilities.Title'
+      title: 'Utilities.Heading'
     },
     {
       path: 'banner-documentation',
@@ -107,7 +107,7 @@ const routes: Routes = [
     {
       path: 'utilitaires',
       component: UtilitiesComponent,
-      title: 'Utilities.Title'
+      title: 'Utilities.Heading'
     },
     {
       path: 'banner-documentation-fr',

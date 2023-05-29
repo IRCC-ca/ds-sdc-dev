@@ -329,7 +329,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
 
   private parseCodeViewConfig() {
     //New Method - Using Pointer manipulation
-    let tab = this.codeViewConfig?.tab?.find((t) => t.id === 'ts');
+    const tab = this.codeViewConfig?.tab?.find((t) => t.id === 'ts');
     if (tab) {
       this.inputConfigCodeView = {
         ...this.inputConfigCodeView,

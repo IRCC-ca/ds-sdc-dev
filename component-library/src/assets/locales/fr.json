@@ -21,9 +21,6 @@
     "AccessibilityDemoPrevious": "démo-d'accessibilité-précédent",
     "QATesting": "aq"
   },
-  "Banner": {
-    "Title": "Banners"
-  },
   "Buttons": {
     "Title": "Boutons",
     "Copy": "Copier",
@@ -710,9 +707,9 @@
       "BannerActionsDoText" : "[FR] Use the banner for simple actions that are not critical to the user’s workflow.",
       "BannerActionsDontText" : "[FR] Make the user perform important or critical actions from within a banner. Banners should provide supplementary content and actions that help them understand the surrounding page/task.",
       "UseOneBannerAtATimeLabel":"[FR] Use one banner at a time",
-      "BannerCountDoAlt": "[FR] A banner that has the label “Duplicate file name” and description text. The banner uses the orange warning styling.",    
-      "BannerCountDontAlt": "[FR] There are two banners that have the label “Duplicate file name” and “You don’t need to provide medical exam” along with description text. The first banner uses the orange warning styling. The second banner uses the green success styling.",    
-      "BannerCountDoText": "[FR] Only show one banner at a time in the same section. ",    
+      "BannerCountDoAlt": "[FR] A banner that has the label “Duplicate file name” and description text. The banner uses the orange warning styling.",
+      "BannerCountDontAlt": "[FR] There are two banners that have the label “Duplicate file name” and “You don’t need to provide medical exam” along with description text. The first banner uses the orange warning styling. The second banner uses the green success styling.",
+      "BannerCountDoText": "[FR] Only show one banner at a time in the same section. ",
       "BannerCountDontText": "[FR] Do not stack multiple banners together. ",
       "ShowMaximumButtonsLabel": "[FR] Show maximum three buttons at a time",
       "bannerButtonCountDoAlt": "[FR] A banner that has the label “Proof of relationship” and description text. It is displaying two CTA buttons and one external link. The banner uses the teal info styling.",
@@ -755,10 +752,10 @@
       "Text": "[FR] Alt text description: The small banner with fluid layout has 12 pixels of vertical padding and 12 pixels of horizontal padding inside the banner. The icon has a 20-pixel width and height. There are 12 pixels between the icon and banner-content. The layout of the content within the banner adjusts based on the container’s width. The height of the banner si fluid and adjusts based on the amount of content within the banner. The large banner with fluid layout has 16 pixels of vertical padding and 16 pixels of horizontal padding inside the button. The icon has a 24-pixel width and height. There are 12 pixels between the icon and label. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner."
     },
     "ContentGuideLines": {
-      "UseCorrectCaseHeading": "[FR] Use the correct case for titles", 
-      "BannerUseCorrectCaseDoAlt": "[FR] A banner that has the label “Title text” and description text written in sentence case. The banner uses the blue info styling.", 
-      "BannerUseCorrectCaseDontAlt": "[FR] A banner that has the label “Title text” and description text written in title case. The banner uses the blue info styling.", 
-      "BannerUseCorrectCaseDontText": "[FR]  Write banner title and description in title case.", 
+      "UseCorrectCaseHeading": "[FR] Use the correct case for titles",
+      "BannerUseCorrectCaseDoAlt": "[FR] A banner that has the label “Title text” and description text written in sentence case. The banner uses the blue info styling.",
+      "BannerUseCorrectCaseDontAlt": "[FR] A banner that has the label “Title text” and description text written in title case. The banner uses the blue info styling.",
+      "BannerUseCorrectCaseDontText": "[FR]  Write banner title and description in title case.",
       "EasyToReadTitleHeading": "[FR] Make title easy to understand",
       "BannerTitleDoAlt": "[FR] A banner that has the label “you don’t need to provide medical exam” and description text. The banner uses the green success styling.",
       "BannerTitleDontAlt": "[FR] A banner that has the label “After thorough verification, we have determined you don’t need to provide medical exam.” and description text. The banner uses the green success styling.",
