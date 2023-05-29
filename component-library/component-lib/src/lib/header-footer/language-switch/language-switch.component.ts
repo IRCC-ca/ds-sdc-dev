@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, EventEmitter, HostListener, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { TitleStrategy, Router } from '@angular/router';
 import { LanguageSwitchButtonService } from './language-switch-button.service';
 
 export const LANGUAGE_SWITCH_TEXT_ENGLISH = 'Français';
@@ -28,7 +29,9 @@ export class LanguageSwitchComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private langToggle: LanguageSwitchButtonService,
-    private translate: TranslateService) { 
+    private translate: TranslateService,
+    private titleService : TitleStrategy,
+    private router: Router) {
       this.isMobile = window.innerWidth <= 768; //tablet breakpoint
     }
 
@@ -46,12 +49,13 @@ export class LanguageSwitchComponent implements OnInit {
     this.setText(lang);
     this.translate.onLangChange.subscribe(newLang => {
       console.log(newLang.lang, 'switch');
-      this.setText(newLang.lang);      
+      this.setText(newLang.lang);
     });
   }
 
   switch() {
     this.langToggle.languageToggleClick();
+    this.titleService.updateTitle(this.router.routerState.snapshot);
   }
 
   setText(lang: string) {

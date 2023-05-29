@@ -7,11 +7,11 @@ import { AccessibilityDemoComponent } from './accessibility-demo.component';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 
 const routes: Routes = [
-  { path: '', component: AccessibilityDemoComponent, data: {title: marker('TITLES.PersonalInformation')} },
-  { path: 'begin', component: AccessibilityDemoPreviousPageComponent, data: {title: marker('TITLES.Begin')} }, //English
-  { path: 'commencer', component: AccessibilityDemoPreviousPageComponent, data: {title: marker('TITLES.Begin')} }, //French
-  { path: 'completed', component: AccessibilityDemoNextPageComponent, data: {title: marker('TITLES.Completed')} }, //English
-  { path: 'complete', component: AccessibilityDemoNextPageComponent, data: {title: marker('TITLES.Completed')} }, //French
+  { path: '', component: AccessibilityDemoComponent, title:'TITLES.PersonalInformation'},
+  { path: 'begin', component: AccessibilityDemoPreviousPageComponent, title: 'TITLES.Begin'}, //English
+  { path: 'commencer', component: AccessibilityDemoPreviousPageComponent, title: 'TITLES.Begin' }, //French
+  { path: 'completed', component: AccessibilityDemoNextPageComponent, title: 'TITLES.Completed' }, //English
+  { path: 'complete', component: AccessibilityDemoNextPageComponent, title: 'TITLES.Completed' }, //French
 ];
 
 @NgModule({
