@@ -50,8 +50,16 @@ export function HttpLoaderFactory(
 const routes: Routes = [
   Shell.childRoutes([
     // English
-    { path: 'overview', component: OverviewComponent, title: 'Overview.Heading' },
-    { path: 'designers', component: ForDesignersComponent, title: 'Designers.Heading' },
+    {
+      path: 'overview',
+      component: OverviewComponent,
+      title: 'Overview.Heading'
+    },
+    {
+      path: 'designers',
+      component: ForDesignersComponent,
+      title: 'Designers.Heading'
+    },
     {
       path: 'developers',
       component: ForDevelopersComponent,
@@ -114,16 +122,32 @@ const routes: Routes = [
     //QA PATHS
     { path: 'mahsa-en', component: MahsaComponent, title: 'ROUTES.mahsa' }, //English
     { path: 'mahsa-fr', component: MahsaComponent, title: 'ROUTES.mahsa' }, //French
-    { path: 'michael-en', component: MichaelComponent, title: 'ROUTES.michael' }, //English
-    { path: 'michael-fr', component: MichaelComponent, title: 'ROUTES.michael' }, //French
+    {
+      path: 'michael-en',
+      component: MichaelComponent,
+      title: 'ROUTES.michael'
+    }, //English
+    {
+      path: 'michael-fr',
+      component: MichaelComponent,
+      title: 'ROUTES.michael'
+    }, //French
     { path: 'mike-en', component: MikeComponent, title: 'ROUTES.mike' }, //English
     { path: 'mike-fr', component: MikeComponent, title: 'ROUTES.mike' }, //French
     { path: 'naseer-en', component: NaseerComponent, title: 'ROUTES.naseer' }, //English
     { path: 'naseer-fr', component: NaseerComponent, title: 'ROUTES.naseer' }, //French
     { path: 'bobby-en', component: BobbyComponent, title: 'ROUTES.bobby' }, //English
     { path: 'bobby-fr', component: BobbyComponent, title: 'ROUTES.bobby' }, //French
-    { path: 'codeview', component: codeViewComponent, title: 'ROUTES.codeview' },
-    { path: 'codeview-fr', component: codeViewComponent, title: 'ROUTES.codeview' },
+    {
+      path: 'codeview',
+      component: codeViewComponent,
+      title: 'ROUTES.codeview'
+    },
+    {
+      path: 'codeview-fr',
+      component: codeViewComponent,
+      title: 'ROUTES.codeview'
+    },
 
     {
       path: 'accessibility-demo',
