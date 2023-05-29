@@ -48,7 +48,6 @@ export class LanguageSwitchComponent implements OnInit {
     let lang = this.translate.currentLang;
     this.setText(lang);
     this.translate.onLangChange.subscribe(newLang => {
-      console.log(newLang.lang, 'switch');
       this.setText(newLang.lang);
     });
   }
