@@ -50,80 +50,80 @@ export function HttpLoaderFactory(
 const routes: Routes = [
   Shell.childRoutes([
     // English
-    { path: 'overview', component: OverviewComponent, title: 'Overview' },
-    { path: 'designers', component: ForDesignersComponent, title: 'Designers' },
+    { path: 'overview', component: OverviewComponent, title: 'Overview.Heading' },
+    { path: 'designers', component: ForDesignersComponent, title: 'Designers.Heading' },
     {
       path: 'developers',
       component: ForDevelopersComponent,
-      title: 'Developers'
+      title: 'Developers.Title'
     },
     {
       path: 'banner-doc',
       component: BannerDocCodeComponent,
-      title: 'Banner-doc'
+      title: 'Banner.Title'
     },
     {
       path: 'button-doc',
       component: ButtonDocCodeComponent,
-      title: 'Button-doc'
+      title: 'Buttons.Title'
     },
     {
       path: 'input-documentation',
       component: InputDocumentationComponent,
-      title: 'Input-documentation'
+      title: 'Input.Title'
     },
     {
       path: 'request-form',
       component: RequestFormComponent,
-      title: 'Request-form'
+      title: 'Request-form.Title'
     },
 
     // French
-    { path: 'aperçu', component: OverviewComponent, title: 'Aperçu' },
+    { path: 'aperçu', component: OverviewComponent, title: 'Overview.Heading' },
     {
       path: 'concepteurs',
       component: ForDesignersComponent,
-      title: 'Concepteurs'
+      title: 'Designers.Heading'
     },
     {
       path: 'developpeurs',
       component: ForDevelopersComponent,
-      title: 'Developpeurs'
+      title: 'Developers.Title'
     },
     {
       path: 'banner-doc-fr',
       component: BannerDocCodeComponent,
-      title: 'Banner-doc-fr'
+      title: 'Banner.Title'
     },
     {
       path: 'button-doc-fr',
       component: ButtonDocCodeComponent,
-      title: 'Button-doc-fr'
+      title: 'Buttons.Title'
     },
     {
       path: 'documentation dentree',
       component: InputDocumentationComponent,
-      title: 'Documentation dentree'
+      title: 'Input.Title'
     },
     {
       path: 'request-form-fr',
       component: RequestFormComponent,
-      title: 'Request-form-fr'
+      title: 'Request-form.Title'
     },
 
     //QA PATHS
-    { path: 'mahsa-en', component: MahsaComponent, title: 'Mahsa-en' }, //English
-    { path: 'mahsa-fr', component: MahsaComponent, title: 'Mahsa-fr' }, //French
-    { path: 'michael-en', component: MichaelComponent, title: 'Michael-en' }, //English
-    { path: 'michael-fr', component: MichaelComponent, title: 'Michael-fr' }, //French
-    { path: 'mike-en', component: MikeComponent, title: 'Mike-en' }, //English
-    { path: 'mike-fr', component: MikeComponent, title: 'Mike-fr' }, //French
-    { path: 'naseer-en', component: NaseerComponent, title: 'Naseer-en' }, //English
-    { path: 'naseer-fr', component: NaseerComponent, title: 'Naseer-fr' }, //French
-    { path: 'bobby-en', component: BobbyComponent, title: 'Bobby-en' }, //English
-    { path: 'bobby-fr', component: BobbyComponent, title: 'Bobby-fr' }, //French
-    { path: 'codeview', component: codeViewComponent, title: 'Codeview' },
-    { path: 'codeview-fr', component: codeViewComponent, title: 'Codeview-fr' },
+    { path: 'mahsa-en', component: MahsaComponent, title: 'ROUTES.mahsa' }, //English
+    { path: 'mahsa-fr', component: MahsaComponent, title: 'ROUTES.mahsa' }, //French
+    { path: 'michael-en', component: MichaelComponent, title: 'ROUTES.michael' }, //English
+    { path: 'michael-fr', component: MichaelComponent, title: 'ROUTES.michael' }, //French
+    { path: 'mike-en', component: MikeComponent, title: 'ROUTES.mike' }, //English
+    { path: 'mike-fr', component: MikeComponent, title: 'ROUTES.mike' }, //French
+    { path: 'naseer-en', component: NaseerComponent, title: 'ROUTES.naseer' }, //English
+    { path: 'naseer-fr', component: NaseerComponent, title: 'ROUTES.naseer' }, //French
+    { path: 'bobby-en', component: BobbyComponent, title: 'ROUTES.bobby' }, //English
+    { path: 'bobby-fr', component: BobbyComponent, title: 'ROUTES.bobby' }, //French
+    { path: 'codeview', component: codeViewComponent, title: 'ROUTES.codeview' },
+    { path: 'codeview-fr', component: codeViewComponent, title: 'ROUTES.codeview' },
 
     {
       path: 'accessibility-demo',

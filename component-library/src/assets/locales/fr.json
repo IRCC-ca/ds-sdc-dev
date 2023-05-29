@@ -21,6 +21,9 @@
     "AccessibilityDemoPrevious": "démo-d'accessibilité-précédent",
     "QATesting": "aq"
   },
+  "Banner": {
+    "Title": "Banners"
+  },
   "Buttons": {
     "Title": "Boutons",
     "Copy": "Copier",
@@ -364,6 +367,7 @@
     "FigmaText": "Ce qui précède est une information générale afin de commencer. Vous pouvez trouver des directives d'utilisation Figma plus détaillées spécifiques à chaque partie du système sur leurs pages respectives sur ce site."
   },
   "Developers": {
+    "Title": "[FR] For developers",
     "GetStartedHeading": "Commencer",
     "UsageHeading": "Usage",
     "ThemesHeading": "Themes",

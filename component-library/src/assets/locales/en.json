@@ -21,6 +21,9 @@
     "AccessibilityDemoPrevious": "accessibility-demo-previous",
     "QATesting": "qa"
   },
+  "Banner": {
+    "Title": "Banners"
+  },
   "Buttons": {
     "Title": "Buttons",
     "Copy": "Copy",
@@ -364,6 +367,7 @@
     "FigmaText": "The above is general information in order to get started. You can find more detailed Figma usage guidelines specific to each system part on on their respective pages throughout this site."
   },
   "Developers": {
+    "Title": "For developers",
     "GetStartedHeading": "Getting started",
     "UsageHeading": "Usage",
     "ThemesHeading": "Themes",
@@ -503,7 +507,7 @@
   "DEMO_COMPONENT": {
     "ACCORDION_OPEN": "Hide configurations",
     "ACCORDION_CLOSED": "Show configurations"
-  },  
+  },
   "Input": {
     "Title": "Input",
     "TypesHeading": "Types",
