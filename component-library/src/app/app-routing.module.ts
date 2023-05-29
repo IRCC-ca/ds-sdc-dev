@@ -32,6 +32,7 @@ import { BobbyComponent } from './pages/QA/bobby/bobby.component';
 import { InputDocumentationComponent } from './pages/input-documentation/input-documentation.component';
 import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-code.component';
 import { RequestFormComponent } from './pages/request-form/request-form.component';
+import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -66,12 +67,17 @@ const routes: Routes = [
       title: 'Developers.Title'
     },
     {
-      path: 'banner-doc',
-      component: BannerDocCodeComponent,
+      path: 'utilities',
+      component: UtilitiesComponent,
+      title: 'Utilities.Title'
+    },
+    {
+      path: 'banner-documentation',
+      component: BannerDocumentationComponent,
       title: 'Banner.Title'
     },
     {
-      path: 'button-doc',
+      path: 'buttons',
       component: ButtonDocCodeComponent,
       title: 'Buttons.Title'
     },
@@ -99,12 +105,17 @@ const routes: Routes = [
       title: 'Developers.Title'
     },
     {
-      path: 'banner-doc-fr',
-      component: BannerDocCodeComponent,
+      path: 'utilitaires',
+      component: UtilitiesComponent,
+      title: 'Utilities.Title'
+    },
+    {
+      path: 'banner-documentation-fr',
+      component: BannerDocumentationComponent,
       title: 'Banner.Title'
     },
     {
-      path: 'button-doc-fr',
+      path: 'boutons',
       component: ButtonDocCodeComponent,
       title: 'Buttons.Title'
     },
