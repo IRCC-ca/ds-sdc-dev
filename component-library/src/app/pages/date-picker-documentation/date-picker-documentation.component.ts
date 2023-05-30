@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  slugAnchorType,
+  slugTitleURLConfig
+} from '@app/components/title-slug-url/title-slug-url.component';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
@@ -11,7 +14,6 @@ import { ContentItem } from '@app/share/interface/content-item.interface';
   styleUrls: ['./date-picker-documentation.component.scss']
 })
 export class DatePickerDocumentationComponent implements OnInit {
-
   currentLanguage: string = '';
   altLangLink = 'datePickerDocumentation';
   INFO_BANNER_ID = 'info_banner';
@@ -52,9 +54,9 @@ export class DatePickerDocumentationComponent implements OnInit {
     {
       title: 'DatePicker.Anatomy.ErrMsgHeading',
       description: 'DatePicker.Anatomy.ErrMsgTxt'
-    },
+    }
   ];
-  
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
