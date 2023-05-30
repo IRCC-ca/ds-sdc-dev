@@ -1,6 +1,16 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
-import { IAccordionContainerConfig, mobileBehaviourType } from '../accordion-panel/accordion-container.component';
+import {
+  IAccordionContainerConfig,
+  mobileBehaviourType
+} from '../accordion-panel/accordion-container.component';
 
 export enum InteractiveComponentType {
   banner = 'banner'
@@ -36,7 +46,7 @@ export class InteractiveDemoComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.mobile = window.innerWidth <= 360;
-    if(this.mobile){
+    if (this.mobile) {
       this.accordionConfig.open = false;
     } else {
       this.accordionConfig.open = true;
@@ -45,6 +55,6 @@ export class InteractiveDemoComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.onResize()
+    this.onResize();
   }
 }

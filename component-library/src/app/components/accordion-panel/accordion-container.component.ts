@@ -58,7 +58,8 @@ export class accordionContainerComponent implements OnInit {
     if (this.buttonTextClosed !== '')
       this.config.buttonTextClosed = this.buttonTextClosed;
     if (this.open !== undefined) this.config.open = this.open;
-    if (this.mobileBehaviour !== undefined) this.config.mobileBehaviour = this.mobileBehaviour
+    if (this.mobileBehaviour !== undefined)
+      this.config.mobileBehaviour = this.mobileBehaviour;
   }
 
   openAccordion() {
