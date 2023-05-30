@@ -1,0 +1,163 @@
+@use '../../../../../core-library/util/device' as device;
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
+.content-doc-wrapper { //
+  box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
+
+  img {//
+    width: 100%;
+  }
+}
+
+.intro {//
+  margin-top: 0px;
+  margin-bottom: 0px;
+  @include typography.fontSet(body, 1, regular);
+}
+
+.demo {//
+  margin-top: 0px;
+  margin-bottom: 24px;
+}
+
+.sub-headings {//
+  margin-top: 0px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.description {//
+  margin: 12px 0 0 0;
+}
+
+p {//
+  @include typography.fontSet(body, 3, regular);
+}
+
+.configs {//
+  .config-row {
+    margin-bottom: 24px;
+  }
+  .config-row:last-child {
+    margin-bottom: 0px;
+  }
+
+  ul {
+    margin: 0px;
+    padding-left: 20px;
+  }
+
+  li {
+    font-size: 14px;
+  }
+}
+
+.do-dont-container {//
+  margin-top: 8px;
+
+  .do-dont-heading {
+    margin: 0 0 12px 0;
+  }
+  .text-underline {
+    border-bottom: 1px solid;
+  }
+  .text-color-green {
+    color: var(--success-text);
+  }
+  .text-color-red {
+    color: var(--critical-text);
+  }
+  p {
+    margin: 0px;
+  }
+}
+
+.design-guide {//
+  .wrapper-container {
+    .element-wrapper-container {
+      margin-bottom: 32px;
+    }
+    .element-wrapper-container:last-child {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.anatomy {
+  .anatomy-image-container {
+    margin-bottom: 26px;
+  }
+  .anatomy-content-container {
+    margin-bottom: 22px;
+
+    .round-purple-num-heading-text {
+      display: inline-block;
+      margin: 0 0 8px 8px;
+      position: relative;
+      top: 2px;
+    }
+    .round-purple-num-count {
+      color: var(--purple-9);
+      font-weight: 700;
+      background-color: var(--purple-2);
+      padding: 9px 15px;
+      border-radius: 50%;
+    }
+    .conter-and-heading-container {
+      margin: 0 0 8px 0;
+    }
+    .anatomy-description {
+      margin: 0px;
+    }
+  }
+  .anatomy-content-container:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.specs {
+  .specs-description {
+    margin: 24px 0 0 0;
+  }
+}
+
+.row {//
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  @include device.in-phone-layout() {
+    flex-wrap: wrap;
+  }
+}
+
+.column {//
+  width: 50%;
+
+  @include device.in-phone-layout() {
+    width: 100%;
+  }
+}
+
+.left-column {//
+  margin-right: 12px;
+  @include device.in-phone-layout() {
+    margin-right: 0px;
+  }
+}
+
+.right-column {//
+  margin-left: 12px;
+  @include device.in-phone-layout() {
+    margin-left: 0px;
+    margin-top: 24px;
+  }
+}
+
+.config-row {//
+  //most sections wrap responsively but the config section does not
+  display: flex;
+  justify-content: flex-start;
+}

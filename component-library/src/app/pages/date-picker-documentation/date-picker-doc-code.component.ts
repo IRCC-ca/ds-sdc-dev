@@ -32,17 +32,6 @@ export class DatePickerDocCodeComponent implements OnInit {
   form_datePicker = new FormGroup({});
   errorState = 'None';
 
-  datePickerTitleSlugConfig: slugTitleURLConfig = {
-    title: 'Date picker',
-    heading: 'h1',
-    anchorType: slugAnchorType.primary
-  };
-
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
-
   datePickerErrorMessages: IDatePickerErrorMessages = {
     general: [
       {
