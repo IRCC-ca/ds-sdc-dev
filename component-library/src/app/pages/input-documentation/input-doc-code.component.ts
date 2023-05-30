@@ -242,10 +242,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form.addControl(
-      this.inputConfig.id,
-      new FormControl()
-    );
+    this.form.addControl(this.inputConfig.id, new FormControl());
     // Two more form controls, one for each combination of validators
     this.form.addControl(
       this.inputConfig.id + '_single',
@@ -336,10 +333,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    * Set input field as touched, toggle error states of input
    */
   private toggleErrors(error: string) {
-    if (
-      !this.form.get(this.currentConfigId)?.touched &&
-      error !== 'None'
-    )
+    if (!this.form.get(this.currentConfigId)?.touched && error !== 'None')
       this.form.get(this.currentConfigId)?.markAsTouched();
 
     this.errorState = error;
@@ -351,21 +345,15 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
       case 'Single':
         this.currentConfigId = this.inputConfigSingle.id;
         if (!this.form.get(this.currentConfigId)?.touched)
-          this.form
-            .get(this.currentConfigId)
-            ?.markAsTouched();
+          this.form.get(this.currentConfigId)?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigSingle.errorMessages;
         break;
       case 'Multiple':
         this.currentConfigId = this.inputConfigMulti.id;
-        this.form
-          .get(this.inputConfigMulti.id)
-          ?.setValue('test');
+        this.form.get(this.inputConfigMulti.id)?.setValue('test');
         if (!this.form.get(this.currentConfigId)?.touched)
-          this.form
-            .get(this.currentConfigId)
-            ?.markAsTouched();
+          this.form.get(this.currentConfigId)?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigMulti.errorMessages;
         break;
@@ -377,8 +365,9 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    * Toggle disabled state of input
    */
   private toggleDisabled(disabled: boolean) {
-    const inputControl: AbstractControl | null =
-      this.form.get(this.currentConfigId);
+    const inputControl: AbstractControl | null = this.form.get(
+      this.currentConfigId
+    );
     if (
       (disabled && inputControl?.disabled) ||
       (!disabled && inputControl?.enabled)
