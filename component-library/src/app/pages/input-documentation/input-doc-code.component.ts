@@ -31,11 +31,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
   constructor(private lang: LangSwitchService) {}
 
-  form_interactive_input = new FormGroup({});
+  form = new FormGroup({});
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
-    formGroup: this.form_interactive_input,
+    formGroup: this.form,
     size: 'small',
     type: 'text',
     required: false,
@@ -63,7 +63,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
-      formGroup: this.form_interactive_input,
+      formGroup: this.form,
       size: 'small',
       label: 'Size',
       options: [
@@ -77,7 +77,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'hint',
-      formGroup: this.form_interactive_input,
+      formGroup: this.form,
       size: 'small',
       label: 'Hint',
       options: [
@@ -93,7 +93,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'required',
-      formGroup: this.form_interactive_input,
+      formGroup: this.form,
       size: 'small',
       label: 'Required',
       options: [
@@ -107,7 +107,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'error',
-      formGroup: this.form_interactive_input,
+      formGroup: this.form,
       size: 'small',
       label: 'Error',
       options: [
@@ -124,7 +124,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'desc',
-      formGroup: this.form_interactive_input,
+      formGroup: this.form,
       size: 'small',
       label: 'Description',
       options: [
@@ -140,7 +140,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'placeholder',
-      formGroup: this.form_interactive_input,
+      formGroup: this.form,
       size: 'small',
       label: 'Placeholder',
       options: [
@@ -159,7 +159,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
-      formGroup: this.form_interactive_input,
+      formGroup: this.form,
       size: 'small',
       label: 'State',
       inlineLabel: 'Disabled'
@@ -242,16 +242,16 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form_interactive_input.addControl(
+    this.form.addControl(
       this.inputConfig.id,
       new FormControl()
     );
     // Two more form controls, one for each combination of validators
-    this.form_interactive_input.addControl(
+    this.form.addControl(
       this.inputConfig.id + '_single',
       new FormControl('', [Validators.required])
     );
-    this.form_interactive_input.addControl(
+    this.form.addControl(
       this.inputConfig.id + '_multi',
       new FormControl('', [
         Validators.required,
@@ -262,7 +262,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_interactive_input.addControl(
+        this.form.addControl(
           toggle.id,
           new FormControl(toggle.options[1].text)
         );
@@ -270,10 +270,10 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     });
 
     this.checkboxes.forEach((checkbox) => {
-      this.form_interactive_input.addControl(checkbox.id, new FormControl());
+      this.form.addControl(checkbox.id, new FormControl());
     });
 
-    this.form_interactive_input.patchValue({
+    this.form.patchValue({
       size: 'Small',
       hint: 'False',
       desc: 'True',
@@ -281,7 +281,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
       error: 'None'
     });
 
-    this.form_interactive_input.valueChanges.subscribe((value: any) => {
+    this.form.valueChanges.subscribe((value: any) => {
       this.parseToggleConfig(value);
       this.parseCodeViewConfig();
       if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
@@ -337,10 +337,10 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    */
   private toggleErrors(error: string) {
     if (
-      !this.form_interactive_input.get(this.currentConfigId)?.touched &&
+      !this.form.get(this.currentConfigId)?.touched &&
       error !== 'None'
     )
-      this.form_interactive_input.get(this.currentConfigId)?.markAsTouched();
+      this.form.get(this.currentConfigId)?.markAsTouched();
 
     this.errorState = error;
     switch (error) {
@@ -350,8 +350,8 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
         break;
       case 'Single':
         this.currentConfigId = this.inputConfigSingle.id;
-        if (!this.form_interactive_input.get(this.currentConfigId)?.touched)
-          this.form_interactive_input
+        if (!this.form.get(this.currentConfigId)?.touched)
+          this.form
             .get(this.currentConfigId)
             ?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
@@ -359,11 +359,11 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
         break;
       case 'Multiple':
         this.currentConfigId = this.inputConfigMulti.id;
-        this.form_interactive_input
+        this.form
           .get(this.inputConfigMulti.id)
           ?.setValue('test');
-        if (!this.form_interactive_input.get(this.currentConfigId)?.touched)
-          this.form_interactive_input
+        if (!this.form.get(this.currentConfigId)?.touched)
+          this.form
             .get(this.currentConfigId)
             ?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
@@ -378,7 +378,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    */
   private toggleDisabled(disabled: boolean) {
     const inputControl: AbstractControl | null =
-      this.form_interactive_input.get(this.currentConfigId);
+      this.form.get(this.currentConfigId);
     if (
       (disabled && inputControl?.disabled) ||
       (!disabled && inputControl?.enabled)
