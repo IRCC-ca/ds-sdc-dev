@@ -635,7 +635,7 @@
   },
   "DatePicker": {
     "Intro": "The date picker component allows users to input a specific year, month and/or day.",
-    "InteractiveDemoDesc": "Try our date picker component and the configurable options available within it.",
+    "InteractiveDemoDesc": "Try our <strong>“date picker“</strong> component and the configurable options available within it.",
     "DesignGuideLines": {
       "Maintain": "Maintain default select widths",
       "MaintainDoAlt": "A small date picker in the horizontal layout with consistent widths.",
@@ -712,7 +712,7 @@
       "FigmaDirectionsListItem3": "Never override colours, radius, padding, text size, etc. This way foundational elements are kept consistent.",
       "FigmaDirectionsListItem4": "Never override the asterisk (*) or error icons in order to keep those visual indicators consistent.",
       "AccessInputsHeading": "To access the input field’s state",
-      "FigmaDirectionsSecondItem1": "Click into the input-field subcomponent inside of the form-input component in the Layers palette (left panel).",
+      "FigmaDirectionsSecondItem1": "Click into the <strong>“input-field”</strong> subcomponent inside of the <strong>“form-input”</strong> component in the Layers palette (left panel).",
       "FigmaDirectionsSecondItem2": "From there, you can configure the input field’s content and states in the right panel.",
       "FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a input. These options include size and layout of the component,  allow designers to hide or show the required asterisk, description, hint, field 2, field 3 and error message."
     },

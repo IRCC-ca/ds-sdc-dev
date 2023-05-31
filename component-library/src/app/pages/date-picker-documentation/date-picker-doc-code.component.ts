@@ -168,12 +168,9 @@ export class DatePickerDocCodeComponent implements OnInit {
         id: 'ts',
         title: 'TypeScript',
         value: `
-          import { IDatePickerConfig } from 'ircc-ds-angular-component-library';
-          import { FormGroup } from '@angular/forms';
-          datePickerConfig: IDatePickerConfig = ${stringify(
-            this.datePickerConfigCodeView
-          )}
-        `
+import { IDatePickerConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+datePickerConfig: IDatePickerConfig = ${stringify(this.datePickerConfigCodeView)}`
       }
     ]
   };

@@ -6,7 +6,10 @@
     <app-title-slug-url
       [config]="interactiveDemoSlugTitleURLConfig"
     ></app-title-slug-url>
-    <p class="demo">{{ 'DatePicker.InteractiveDemoDesc' | translate }}</p>
+    <p
+      class="demo"
+      [innerHTML]="'DatePicker.InteractiveDemoDesc' | translate"
+    ></p>
     <app-date-picker-doc-code></app-date-picker-doc-code>
   </section>
 
@@ -114,7 +117,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5 class="do-dont-heading text-underline text-color-green">
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -130,7 +133,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5 class="do-dont-heading text-underline text-color-red">
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -155,7 +158,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5 class="do-dont-heading text-underline text-color-green">
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -173,7 +176,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5 class="do-dont-heading text-underline text-color-red">
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -200,7 +203,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5 class="do-dont-heading text-underline text-color-green">
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -216,7 +219,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5 class="do-dont-heading text-underline text-color-red">
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -273,7 +276,7 @@
 
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h5 class="sub-headings">
           {{ 'DatePicker.ContentGuideLines.UseCorrectCaseHeading' | translate }}
         </h5>
         <div class="row row-container">
@@ -285,9 +288,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -304,9 +305,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -320,7 +319,7 @@
       </div>
 
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h5 class="sub-headings">
           {{ 'DatePicker.ContentGuideLines.WritingLabelsHeading' | translate }}
         </h5>
         <p>{{ 'DatePicker.ContentGuideLines.WritingLabelsTxt' | translate }}</p>
@@ -333,9 +332,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -351,9 +348,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -367,7 +362,7 @@
       </div>
 
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h5 class="sub-headings">
           {{ 'DatePicker.ContentGuideLines.PlaceholderHeading' | translate }}
         </h5>
         <div class="row row-container">
@@ -379,9 +374,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -397,9 +390,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -411,7 +402,7 @@
       </div>
 
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h5 class="sub-headings">
           {{ 'DatePicker.ContentGuideLines.WritingErrHeading' | translate }}
         </h5>
         <p>{{ 'DatePicker.ContentGuideLines.WritingErrTxt' | translate }}</p>
@@ -424,9 +415,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -442,9 +431,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -456,7 +443,7 @@
       </div>
 
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h5 class="sub-headings">
           {{
             'DatePicker.ContentGuideLines.NecessaryContentHeading' | translate
           }}
@@ -470,9 +457,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -491,9 +476,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>
@@ -508,7 +491,7 @@
       </div>
 
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h5 class="sub-headings">
           {{ 'DatePicker.ContentGuideLines.RequiredFieldsHeading' | translate }}
         </h5>
         <div class="row row-container">
@@ -520,9 +503,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-green"
-              >
+              <h5 class="do-dont-heading text-color-green">
                 {{ 'General.DoHeading' | translate }}
               </h5>
               <p>
@@ -540,9 +521,7 @@
               }}"
             />
             <div class="do-dont-container">
-              <h5
-                class="do-dont-heading emphasis text-underline text-color-red"
-              >
+              <h5 class="do-dont-heading text-color-red">
                 {{ 'General.DontHeading' | translate }}
               </h5>
               <p>

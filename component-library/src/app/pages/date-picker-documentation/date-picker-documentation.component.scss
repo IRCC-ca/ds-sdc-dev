@@ -58,10 +58,9 @@ p {
   margin-top: 8px;
 
   .do-dont-heading {
-    margin: 0 0 12px 0;
-  }
-  .text-underline {
+    margin: 0 0 8px 0;
     border-bottom: 1px solid;
+    @include typography.fontSet(heading, 5, emphasis);
   }
   .text-color-green {
     color: var(--success-text);
