@@ -7,6 +7,7 @@ import {
   OnInit,
   PLATFORM_ID
 } from '@angular/core';
+import { Router, TitleStrategy } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchButtonService } from './language-switch-button.service';
 
@@ -31,7 +32,10 @@ export class LanguageSwitchComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private langToggle: LanguageSwitchButtonService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router,
+    private titleService: TitleStrategy
+
   ) {
     this.isMobile = window.innerWidth <= 768; //tablet breakpoint
   }
@@ -56,6 +60,7 @@ export class LanguageSwitchComponent implements OnInit {
 
   switch() {
     this.langToggle.languageToggleClick();
+    this.titleService.updateTitle(this.router.routerState.snapshot);
   }
 
   setText(lang: string) {

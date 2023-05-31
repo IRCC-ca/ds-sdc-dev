@@ -13,7 +13,8 @@ import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-
+import { TitleStrategy } from '@angular/router';
+import { CustomPageTitleStrategy } from './@shared/shared-functions/title-strategy';
 import { LangSwitchComponent } from './share/lan-switch/lang-switch.component';
 import { DsPageModule } from './modules/ds-pages.module';
 
@@ -59,6 +60,12 @@ export function createTranslateLoader(http: HttpClient) {
     ClipboardModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    {
+      provide: TitleStrategy,
+      useClass: CustomPageTitleStrategy
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
