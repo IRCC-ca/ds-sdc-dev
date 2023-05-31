@@ -10,14 +10,7 @@
         [size]="config.size"
         [label]="config?.label || ''"
       >
-        <div
-          [class]="
-            config.open ? 'open accordion-content' : 'close accordion-content'
-          "
-        >
-          <ng-content></ng-content></div
-      ></ircc-cl-lib-nav-header>
-
+      </ircc-cl-lib-nav-header>
 
       <ircc-cl-lib-icon-button
         *ngIf="config.open === true"
@@ -33,6 +26,13 @@
         [config]="buttonIconClose"
         class="close"
       ></ircc-cl-lib-icon-button>
+    </div>
+    <div
+      [class]="
+        config.open ? 'open accordion-content' : 'close accordion-content'
+      "
+    >
+      <ng-content></ng-content>
     </div>
   </div>
 </div>
