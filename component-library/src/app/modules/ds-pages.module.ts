@@ -32,7 +32,8 @@ import { InputDocCodeComponent } from '@app/pages/input-documentation/input-doc-
 import { EncapsulatedElementComponent } from '@app/components/encapsulated-element/encapsulated-element.component';
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
-import { HttpClientModule } from '@angular/common/http';import { IrccDsAngularNavigationModule } from 'ircc-ds-angular-component-library';
+import { HttpClientModule } from '@angular/common/http';
+import { IrccDsAngularNavigationModule } from 'ircc-ds-angular-component-library';
 
 @NgModule({
   declarations: [
