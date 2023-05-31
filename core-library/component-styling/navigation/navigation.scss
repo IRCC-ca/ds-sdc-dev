@@ -9,7 +9,7 @@
 @use "sass:map";
 
 @mixin selector {
-    ircc-cl-lib-navigation#{template-const.$escape} {
+  ircc-cl-lib-navigation#{template-const.$escape} {
     @content;
   }
 }
@@ -21,31 +21,28 @@
 }
 
 @mixin large-styles() {
-
-  .lib-navigation{
+  .lib-navigation {
     padding: 16px;
     width: 280px;
   }
-  
-  h3{
+
+  h3 {
     @include typography.fontSet(heading, 3, emphasis);
     font-size: 28px;
     line-height: 40px;
   }
-  
 }
 
 @mixin small-styles() {
-
-  .lib-navigation{
+  .lib-navigation {
     padding: 16px;
     width: 244px;
   }
 
- h3{
-      @include typography.fontSet(heading, 3, emphasis);
-      font-size: 24px;
-      line-height: 36px;
+  h3 {
+    @include typography.fontSet(heading, 3, emphasis);
+    font-size: 24px;
+    line-height: 36px;
   }
 }
 
@@ -65,68 +62,63 @@
       @include large-styles();
     }
   }
-  .lib-navigation{
+  .lib-navigation {
     padding: 16px;
     padding-top: 8px;
   }
 
   .navigation-content-top,
-  .navigation-content-bottom{
+  .navigation-content-bottom {
     padding-bottom: 0px;
 
-    &:not(:empty){
+    &:not(:empty) {
       padding-bottom: 24px;
     }
   }
 
-
-  .navigation-header{
+  .navigation-header {
     display: grid;
     padding-bottom: 24px;
 
-    ircc-cl-lib-icon{
+    ircc-cl-lib-icon {
       align-self: center;
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
     }
 
-    h3{
-        padding: 0px;
-        margin: 0px;       
+    h3 {
+      padding: 0px;
+      margin: 0px;
     }
 
-    &.header-full{
-
+    &.header-full {
       grid-template-columns: 20px auto 20px;
-  
-      h3{
-          flex:1;
-          justify-self: center;
+
+      h3 {
+        flex: 1;
+        justify-self: center;
       }
     }
 
-    &.header-iconleading{
-
+    &.header-iconleading {
       grid-template-columns: 20px auto 0px;
-  
-      h3{
-          justify-self: flex-start;
+
+      h3 {
+        justify-self: flex-start;
       }
     }
 
-    &.header-icontrailing{
-
+    &.header-icontrailing {
       grid-template-columns: 0px auto 20px;
-  
-      h3{
-          justify-self: flex-start;
+
+      h3 {
+        justify-self: flex-start;
       }
     }
-
   }
 
-  .navigation-area{
+  .navigation-area {
     ul {
       list-style: none;
       margin: 0;
@@ -137,11 +129,10 @@
       padding-bottom: 24px;
     }
 
-    .child-navigation{
+    .child-navigation {
       margin: 0;
       padding: 0px;
       padding-left: 40px;
     }
-  }  
- 
+  }
 }

@@ -21,30 +21,22 @@
 }
 
 @mixin large-styles() {
-  .nav-header-header{
-    h4,h5{
-      @include typography.fontSet(heading, 5, emphasis);
-      font-size: 24px;
-      line-height: 36px;
+  .nav-header-header {
+    h2 {
+      @include typography.fontSet(heading, 4, emphasis);
     }
   }
 }
 
 @mixin small-styles() {
-  
-
-  .nav-header-header{
-    h4,h5{
+  .nav-header-header {
+    h2 {
       @include typography.fontSet(heading, 5, emphasis);
-      font-size: 20px;
-      line-height: 28px;
     }
   }
-  
 }
 
 @mixin layout {
-
   @include size.selector(large) {
     @include large-styles();
 
@@ -61,11 +53,10 @@
     }
   }
 
-  .nav-header-header{
-
+  .nav-header-header {
     padding-bottom: 8px;
 
-    &.grid-header{
+    &.grid-header {
       display: grid;
       grid-template-columns: 30px auto;
 
@@ -75,15 +66,12 @@
       }
     }
 
-    
-
-    h4,h5{
-        align-self: center;
-        padding: 0px;
-        margin: 0px;
-        margin-block-start: 0;
-        margin-block-end: 0;
+    h2 {
+      align-self: center;
+      padding: 0px;
+      margin: 0px;
+      margin-block-start: 0;
+      margin-block-end: 0;
     }
   }
-
 }
