@@ -1,42 +1,42 @@
 @use '../../../../../core-library/util/device' as device;
 @use '~@ircc-ca/ds-sdc-core/typography/typography';
 
-.content-doc-wrapper { //
+.content-doc-wrapper { 
   box-sizing: border-box;
   max-width: 900px;
   margin: 0 auto;
 
-  img {//
+  img {
     width: 100%;
   }
 }
 
-.intro {//
+.intro {
   margin-top: 0px;
   margin-bottom: 0px;
   @include typography.fontSet(body, 1, regular);
 }
 
-.demo {//
+.demo {
   margin-top: 0px;
   margin-bottom: 24px;
 }
 
-.sub-headings {//
+.sub-headings {
   margin-top: 0px;
   margin-bottom: 12px;
-  font-weight: 700;
+  @include typography.fontSet(heading, 5, emphasis);
 }
 
-.description {//
+.description {
   margin: 12px 0 0 0;
 }
 
-p {//
+p {
   @include typography.fontSet(body, 3, regular);
 }
 
-.configs {//
+.configs {
   .config-row {
     margin-bottom: 24px;
   }
@@ -50,11 +50,11 @@ p {//
   }
 
   li {
-    font-size: 14px;
+    @include typography.fontSet(body, 3, regular);
   }
 }
 
-.do-dont-container {//
+.do-dont-container {
   margin-top: 8px;
 
   .do-dont-heading {
@@ -74,7 +74,7 @@ p {//
   }
 }
 
-.design-guide {//
+.design-guide {
   .wrapper-container {
     .element-wrapper-container {
       margin-bottom: 32px;
@@ -123,7 +123,117 @@ p {//
   }
 }
 
-.row {//
+.content-guidelines {
+  .wrapper-container {
+    .element-wrapper-container {
+      margin-bottom: 32px;
+    }
+    .element-wrapper-container:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.usage-figma {
+  .row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  ol {
+    margin: 12px 0 0 0;
+    padding-left: 20px;
+
+    .list-item {
+      @include typography.fontSet(body, 3, regular);
+    }
+  }
+  .figma-usage {
+    max-width: 547px;
+    margin-right: 12px;
+    flex-shrink: inherit;
+
+    @include device.in-tablet-layout() {
+      max-width: 444px;
+    }
+  }
+
+  .figmaUsageList:last-child {
+    margin-bottom: 12px;
+  }
+
+  .inputImgContainer {
+    display: flex;
+    span {
+      display: flex;
+      margin-left: 22px;
+      height: 137px;
+    }
+  }
+
+  .image-container {
+    filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+  }
+
+  .image-1 {
+    width: 264px;
+    height: 316px;
+  }
+
+  .accessInput1 {
+    width: 211px;
+    height: 137px;
+  }
+  .accessInput2 {
+    width: 374px;
+    height: 135px;
+  }
+  .accessInput3 {
+    height: 223px;
+  }
+}
+
+.accessibility {
+  .content-element {
+    margin-bottom: 24px;
+
+    p {
+      margin: 0px;
+    }
+  }
+  .content-element:last-child {
+    margin-bottom: 0px;
+  }
+
+  ul {
+    margin: 0px;
+    padding-left: 20px;
+  }
+
+  .list-container {
+    padding-left: 0px;
+    line-height: 20px;
+    margin-bottom: 24px;
+
+    .list-item {
+      @include typography.fontSet(body, 3, regular);
+      list-style-type: none;
+      padding-bottom: 20px;
+    }
+
+    .list-item:last-child {
+      padding-bottom: 0px;
+    }
+  }
+}
+
+.research {
+  p {
+    margin: 0 0 94px 0;
+  }
+}
+
+.row {
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -133,7 +243,7 @@ p {//
   }
 }
 
-.column {//
+.column {
   width: 50%;
 
   @include device.in-phone-layout() {
@@ -141,14 +251,14 @@ p {//
   }
 }
 
-.left-column {//
+.left-column {
   margin-right: 12px;
   @include device.in-phone-layout() {
     margin-right: 0px;
   }
 }
 
-.right-column {//
+.right-column {
   margin-left: 12px;
   @include device.in-phone-layout() {
     margin-left: 0px;
@@ -156,7 +266,7 @@ p {//
   }
 }
 
-.config-row {//
+.config-row {
   //most sections wrap responsively but the config section does not
   display: flex;
   justify-content: flex-start;

@@ -45,9 +45,6 @@
     "PlainText": "Les boutons simples peuvent être utilisés pour des actions qui nécessitent moins d’attention que celles des boutons principaux ou secondaires. Ils sont également utiles dans les situations où l’interface utilisateur est plus compacte. Ces boutons ne doivent pas être utilisés comme des liens. Utiliser les styles de texte des liens dans ces situations.",
     "PlainCritBtnText": "Bouton simple critique",
     "ConfigurationsHeading": "Configurations",
-    "ConfigSizeHeading": "Format",
-    "ConfigSizeSmall": "Small",
-    "ConfigSizeLarge": "Large",
     "ConfigLayoutHeading": "Disposition",
     "ConfigLayoutFluid": "Fluid",
     "ConfigLayoutFixed": "Fixed",
@@ -116,9 +113,7 @@
     "AccessibilityColourHeading": "Contraste des couleurs",
     "AccessibilityColourText": "Les boutons principaux ont un rapport de contraste des couleurs de 8,88 : 1 et répondent aux normes d’accessibilité AAA selon la version 2.1 des normes WCAG.",
     "AccessibilityKeyboardHeading": "Clavier accessible",
-    "AccessibilityKeyboardText": "Les boutons sont élaborés à l’aide de l’élément bouton HTML original afin de garantir que les éléments interactifs sont accessibles sur le clavier et conformes aux normes AA de la version 2.1 des normes WCAG.",
-    "ResearchHeading": "Recherche",
-    "ResearchText": "À venir."
+    "AccessibilityKeyboardText": "Les boutons sont élaborés à l’aide de l’élément bouton HTML original afin de garantir que les éléments interactifs sont accessibles sur le clavier et conformes aux normes AA de la version 2.1 des normes WCAG."
   },
   "Utilities": {
     "title": {
@@ -264,7 +259,6 @@
     "ColourTableDescriptionRow112": "[FR] The outline used to indicate that an element is in focus.",
     "TypographyTableStyleHeading": "Style",
     "TypographyTableFontWeightHeading": "Police et dimensions",
-    "TypographyTableSizeHeading": "Format",
     "TypographyTableLineHeightHeading": "Hauteur de ligne et espacement des paragraphes",
     "TypographyTableFigmaHeading": "Style de texte Figma",
     "TypographyTableTokenHeading": "Nom du cours",
@@ -511,7 +505,6 @@
     "ContentGuidelinesHeading": "Content guidelines",
     "FigmaHeading": "Usage in Figma",
     "AccessibilityHeading": "Accessibility",
-    "ResearchHeading": "Research",
     "Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
     "InteractiveDemo": "Interactive Demo",
     "InteractiveDemoDesc": "Try our input component and the configurable options available within it.",
@@ -519,9 +512,6 @@
     "SecondaryHeading": "Password input",
     "PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
     "SecondaryText": "The password input allows users to enter their password. The password can be hidden or shown.",
-    "ConfigSizeHeading": "Size",
-    "ConfigSizeSmall": "Small",
-    "ConfigSizeLarge": "Large",
     "ConfigHintHeading": "Hint",
     "ConfigHintTrue": "True",
     "ConfigHintFalse": "False",
@@ -635,9 +625,7 @@
     "AccessibilityContentItem5": "Label that includes an asterisk to indicate the control is required.",
     "AccessibilityContentItem6": "Clear labelling for required fields, including the word “required” in parentheses.",
     "AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
-    "AccessibilityValidationHeading": "Validation",
     "AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
-    "ResearchText": "Coming soon.",
     "CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
     "LabelText1": "Label text",
     "LabelText2": "Password"
@@ -659,7 +647,7 @@
       "Horizontal": "[FR] Use horizontal layout when you have the room",
       "HorizontalDoAlt": "[FR] Date picker field that show validation by highlighting the field red with three error messages underneath.",
       "HorizontalDo": "[FR] Use the horizontal layout when the parent container is wide. Use the vertical layout when the parent container is narrow. The most common place for using vertical is within mobile mockups.",
-      "HorizontalDontAlt": "[FR] ",
+      "HorizontalDontAlt": "[FR] Date picker fields that is in vertical layout when the parent container is wide.",
       "HorizontalDont": "[FR] Use horizontal layout when your form is in a narrow container. Don’t use the vertical layout when you form is in a wide container."
     },
     "Anatomy": {
@@ -714,7 +702,33 @@
       "RequiredFieldsDo": "[FR] In addition to using the required asterisk (*), also add “(required)” at the end of all labels within required fields.",
       "RequiredFieldsDontAlt": "[FR] A date picker fields collect a user’s date of birth with the “Date of birth” label.",
       "RequiredFieldsDont": "[FR] Indicate required fields with only the asterisk (*)."
-    }
+    },
+    "UsageInFigma": {
+      "FigmaDirectionsListItem1": "[FR] From the “Assets” panel, drag in the <strong>“date-picker”</strong> component from the Patterns library.",
+      "FigmaDirectionsListItem2": "[FR] In the right panel, configure the properties and variants to meet your needs.",
+      "FigmaDirectionsListItem3": "[FR] Never override colours, radius, padding, text size, etc. This way foundational elements are kept consistent.",
+      "AccessInputsHeading": "[FR] To access the input field’s state",
+      "FigmaDirectionsSecondItem1": "[FR] Click into the input-field subcomponent inside of the form-input component in the Layers palette (left panel).",
+      "FigmaDirectionsSecondItem2": "[FR] From there, you can configure the input field’s content and states in the right panel.",
+      "FigmaDirectionsListItem4": "[FR] Never override the asterisk (*) or error icons in order to keep those visual indicators consistent.",
+      "FigmaDirectionsImgAlt": "[FR] A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a input. These options include size and layout of the component,  allow designers to hide or show the required asterisk, description, hint, field 2, field 3 and error message."
+    },
+    "Accessibility" : {
+      "ColorContrastTxt": "[FR] All elements within the date picker component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1.",
+      "KeyboardAccessibleTxt": "[FR] Date pickers are developed using the native HTML input element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity. The input can be navigated to and interacted with using a keyboard and receives a visible focus.",
+      "ContentHeading": "[FR] Content",
+      "ColorText4": "[FR] Success banners have a colour contrast ratio of 16.86:1 and passes AAA accessibility standards under WCAG 2.1.",
+      "ColorText5": "[FR] Generic banners have a colour contrast ratio of 16.6:1 and passes AAA accessibility standards under WCAG 2.1.",
+      "KeyboardText": "[FR] Banners are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity.",
+      "ContentTxt1": "[FR] Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
+      "ContentTxt2": "[FR] Headings and labels describe topic or purpose.",
+      "ContentTxt3": "[FR] Labels or instructions are provided when content requires user input.",
+      "ContentTxt4": "[FR] The label, description and hint are placed outside of the form field and are always visible to the user. The content is presented in a logical reading order.",
+      "ContentTxt5": "[FR] Label that includes an asterisk to indicate the control is required.",
+      "ContentTxt6": "[FR] Clear labelling for required fields, including the word “required” in parentheses.",
+      "ContentTxt7": "[FR] Max widths are determined based on allowing a maximum line length of 80 characters."
+    },
+    "Validation": "[FR] If a date picker error is automatically detected, the item that is in error is identified and the error is described to the user in text."
   },
     "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
@@ -856,9 +870,6 @@
       "KeyboardText": "[FR] Banners are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity."
     },
     "BannerConfig": {
-      "SizeLabel": "[FR] Size",
-      "SmallLabel": "[FR] Small",
-      "LargeLabel": "[FR] Large",
       "ShowTitleLabel": "[FR] Show title",
       "ShowDescriptionLabel": "[FR] Show description",
       "ShowCloseLabel": "[FR] Show close",
@@ -905,6 +916,11 @@
     "Description": "[FR] Description",
     "Hint": "[FR] Hint",
     "FieldTwo": "[FR] Field 2",
-    "FieldThree": "[FR] Field 3"
+    "FieldThree": "[FR] Field 3",
+    "ComingSoon": "[FR] Coming soon.",
+    "Validation": "[FR] Validation",
+    "Size": "[FR] Size",
+    "Small": "[FR] Small",
+    "Large": "[FR] Large"
   }
 }

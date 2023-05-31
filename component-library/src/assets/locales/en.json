@@ -45,9 +45,6 @@
     "PlainText": "Plain buttons can be used for actions that require less attention than a primary or secondary button. They are also useful in situations where the UI is more compact. They are not to be used as links. Use the link text styles for those scenarios.",
     "PlainCritBtnText": "Plain critical button",
     "ConfigurationsHeading": "Configurations",
-    "ConfigSizeHeading": "Size",
-    "ConfigSizeSmall": "Small",
-    "ConfigSizeLarge": "Large",
     "ConfigLayoutHeading": "Layout",
     "ConfigLayoutFluid": "Fluid",
     "ConfigLayoutFixed": "Fixed",
@@ -116,9 +113,7 @@
     "AccessibilityColourHeading": "Colour contrast",
     "AccessibilityColourText": "Primary buttons have a colour contrast ratio of 8.88:1 and passes AAA accessibility standards under WCAG 2.1.",
     "AccessibilityKeyboardHeading": "Keyboard accessible",
-    "AccessibilityKeyboardText": "Buttons are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity.",
-    "ResearchHeading": "Research",
-    "ResearchText": "Coming soon."
+    "AccessibilityKeyboardText": "Buttons are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity."
   },
   "Utilities": {
     "title": {
@@ -264,7 +259,6 @@
     "ColourTableDescriptionRow112": "The outline used to indicate that an element is in focus.",
     "TypographyTableStyleHeading": "Style",
     "TypographyTableFontWeightHeading": "Font & weight",
-    "TypographyTableSizeHeading": "Size",
     "TypographyTableLineHeightHeading": "Line height & paragraph spacing",
     "TypographyTableFigmaHeading": "Figma text style",
     "TypographyTableTokenHeading": "Class name",
@@ -514,7 +508,6 @@
     "ContentGuidelinesHeading": "Content guidelines",
     "FigmaHeading": "Usage in Figma",
     "AccessibilityHeading": "Accessibility",
-    "ResearchHeading": "Research",
     "Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
     "InteractiveDemo": "Interactive Demo",
     "InteractiveDemoDesc": "Try our input component and the configurable options available within it.",
@@ -522,9 +515,6 @@
     "SecondaryHeading": "Password input",
     "PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
     "SecondaryText": "The password input allows users to enter their password. The password can be hidden or shown.",
-    "ConfigSizeHeading": "Size",
-    "ConfigSizeSmall": "Small",
-    "ConfigSizeLarge": "Large",
     "ConfigHintHeading": "Hint",
     "ConfigHintTrue": "True",
     "ConfigHintFalse": "False",
@@ -638,9 +628,7 @@
     "AccessibilityContentItem5": "Label that includes an asterisk to indicate the control is required.",
     "AccessibilityContentItem6": "Clear labelling for required fields, including the word “required” in parentheses.",
     "AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
-    "AccessibilityValidationHeading": "Validation",
     "AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
-    "ResearchText": "Coming soon.",
     "CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
     "LabelText1": "Label text",
     "LabelText2": "Password"
@@ -662,7 +650,7 @@
       "Horizontal": "Use horizontal layout when you have the room",
       "HorizontalDoAlt": "Date picker field that show validation by highlighting the field red with three error messages underneath.",
       "HorizontalDo": "Use the horizontal layout when the parent container is wide. Use the vertical layout when the parent container is narrow. The most common place for using vertical is within mobile mockups.",
-      "HorizontalDontAlt": "",
+      "HorizontalDontAlt": "Date picker fields that is in vertical layout when the parent container is wide.",
       "HorizontalDont": "Use horizontal layout when your form is in a narrow container. Don’t use the vertical layout when you form is in a wide container."
     },
     "Anatomy": {
@@ -717,7 +705,33 @@
       "RequiredFieldsDo": "In addition to using the required asterisk (*), also add “(required)” at the end of all labels within required fields.",
       "RequiredFieldsDontAlt": "A date picker fields collect a user’s date of birth with the “Date of birth” label.",
       "RequiredFieldsDont": "Indicate required fields with only the asterisk (*)."
-    }
+    },
+    "UsageInFigma": {
+      "FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“date-picker”</strong> component from the Patterns library.",
+      "FigmaDirectionsListItem2": "In the right panel, configure the properties and variants to meet your needs.",
+      "FigmaDirectionsListItem3": "Never override colours, radius, padding, text size, etc. This way foundational elements are kept consistent.",
+      "FigmaDirectionsListItem4": "Never override the asterisk (*) or error icons in order to keep those visual indicators consistent.",
+      "AccessInputsHeading": "To access the input field’s state",
+      "FigmaDirectionsSecondItem1": "Click into the input-field subcomponent inside of the form-input component in the Layers palette (left panel).",
+      "FigmaDirectionsSecondItem2": "From there, you can configure the input field’s content and states in the right panel.",
+      "FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a input. These options include size and layout of the component,  allow designers to hide or show the required asterisk, description, hint, field 2, field 3 and error message."
+    },
+    "Accessibility" : {
+      "ColorContrastTxt": "All elements within the date picker component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1.",
+      "KeyboardAccessibleTxt": "Date pickers are developed using the native HTML input element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity. The input can be navigated to and interacted with using a keyboard and receives a visible focus.",
+      "ContentHeading": "Content",
+      "ColorText4": "Success banners have a colour contrast ratio of 16.86:1 and passes AAA accessibility standards under WCAG 2.1.",
+      "ColorText5": "Generic banners have a colour contrast ratio of 16.6:1 and passes AAA accessibility standards under WCAG 2.1.",
+      "KeyboardText": "Banners are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity.",
+      "ContentTxt1": "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
+      "ContentTxt2": "Headings and labels describe topic or purpose.",
+      "ContentTxt3": "Labels or instructions are provided when content requires user input.",
+      "ContentTxt4": "The label, description and hint are placed outside of the form field and are always visible to the user. The content is presented in a logical reading order.",
+      "ContentTxt5": "Label that includes an asterisk to indicate the control is required.",
+      "ContentTxt6": "Clear labelling for required fields, including the word “required” in parentheses.",
+      "ContentTxt7": "Max widths are determined based on allowing a maximum line length of 80 characters."
+    },
+    "Validation": "If a date picker error is automatically detected, the item that is in error is identified and the error is described to the user in text."
   },
   "InteractiveDemo": {
     "ConfigAccordionOpen": "Show Configurations",
@@ -862,9 +876,6 @@
       "KeyboardText": "Banners are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity."
     },
     "BannerConfig": {
-      "SizeLabel": "Size",
-      "SmallLabel": "Small",
-      "LargeLabel": "Large",
       "ShowTitleLabel": "Show title",
       "ShowDescriptionLabel": "Show description",
       "ShowCloseLabel": "Show close",
@@ -911,6 +922,11 @@
     "Description": "Description",
     "Hint": "Hint",
     "FieldTwo": "Field 2",
-    "FieldThree": "Field 3"
+    "FieldThree": "Field 3",
+    "ComingSoon": "Coming soon.",
+    "Validation": "Validation",
+    "Size": "Size",
+    "Small": "Small",
+    "Large": "Large"
   }
 }
