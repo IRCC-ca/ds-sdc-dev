@@ -65,7 +65,7 @@ export class DatePickerDocumentationComponent implements OnInit {
   ];
   figmaDirectionsSecond: string[] = [
     'DatePicker.UsageInFigma.FigmaDirectionsSecondItem1',
-    'DatePicker.UsageInFigma.FigmaDirectionsSecondItem2',
+    'DatePicker.UsageInFigma.FigmaDirectionsSecondItem2'
   ];
 
   accessibilityColorContrast: string[] = [
@@ -83,8 +83,8 @@ export class DatePickerDocumentationComponent implements OnInit {
     'DatePicker.Accessibility.ContentTxt4',
     'DatePicker.Accessibility.ContentTxt5',
     'DatePicker.Accessibility.ContentTxt6',
-    'DatePicker.Accessibility.ContentTxt7',
-  ]
+    'DatePicker.Accessibility.ContentTxt7'
+  ];
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
