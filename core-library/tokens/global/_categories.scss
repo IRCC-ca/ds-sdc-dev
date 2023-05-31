@@ -40,7 +40,6 @@
             --#{$palette}-category-background-weak: #{color.mix-token($palette, 1200)};
         }
 
-        --#{$palette}-category-background-weak: #{color.mix-token($palette, 1200)};
         --#{$palette}-category-text: #{color.mix-token($palette, 300)};
         --#{$palette}-category-text-weak: #{color.mix-token(neutral, 1200)};
     }
