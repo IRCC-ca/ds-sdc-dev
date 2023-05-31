@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { SendEmailCommand, SESClient } from '@aws-sdk/client-ses';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 export interface IRequestFormDataInterface {
   ['radio-request-type']?: string;
   ['request-title-text-area']?: string;
@@ -25,7 +24,9 @@ export class RequestFormService {
   requestFormObs = this.requestFormData.asObservable();
 
   private storageKey: string = 'requestFormData';
-  constructor() {}
+  private url: string =
+    'https://y4znrkrrvauyccjgllyspxuwhm0mdqpg.lambda-url.ca-central-1.on.aws/';
+  constructor(private http: HttpClient) {}
 
   setFormData(data: IRequestFormDataInterface) {
     localStorage.setItem(this.storageKey, JSON.stringify(data));
@@ -48,94 +49,22 @@ export class RequestFormService {
     localStorage.clear();
   }
 
-  private sesClient: SESClient | null = null;
-
-  onModuleInit() {
-    this.sesClient = this.createClient();
-  }
-
-  createClient(): SESClient {
-    return new SESClient({
-      region: 'ca-central-1',
-      credentials: {
-        accessKeyId: '',
-        secretAccessKey: ''
-      }
-    });
-  }
-  async sendRequestForm(email: string, body: any) {
-    //configure the email params and body to send
-    const englishEmail = `
-      <p>Design System Request</p>
-      <p>Form Details: </p>
-      <p id="code-en">${body}</p>`;
-    const englishEmailPlain = `
-                      Design System Request
-
-                      Form Details:
-                      
-                      ${body}`;
-
-    let mainBody = '';
-    let mainBodyPlain = '';
-    mainBody = englishEmail;
-    mainBodyPlain = englishEmailPlain;
-
+  sendRequestForm(
+    email: string,
+    body: any
+  ): Observable<IRequestFormDataInterface> {
     const params = {
-      Destination: {
-        ToAddresses: [email]
-      },
-      Message: {
-        Body: {
-          Html: {
-            Charset: 'UTF-8',
-            Data: `
-            <head>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-            <div style="position:absolute; width:740.89px; height:338.75px; left:21.79px; top:97.75px; font-family:'Roboto',sans-serif; font-style:normal; font-weight:normal; font-size:16.7046px;      line-height:19px; color:#000000">
-            ${mainBody}
-            </div>`
-          },
-          Text: {
-            Charset: 'UTF-8',
-            Data: `
-                  ${mainBodyPlain}
-                  `
-          }
-        },
-        Subject: {
-          Charset: 'UTF-8',
-          Data: `Design System Request`
-        }
-      },
-      Source: 'robert.brice@cic.gc.ca'
+      to: email,
+      from: 'robert.brice@cic.gc.ca',
+      subject: 'Design System Request',
+      text: body,
+      html: body,
+      headers: {
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type'
+      }
     };
-    //SES SendEmailCommand method stored as a command for our try block
-    const command = new SendEmailCommand(params);
-    if (!this.sesClient) this.sesClient = this.createClient();
 
-    //uses the send method with our command and sends the email
-    try {
-      await this.sesClient.send(command);
-      console.debug('Email has been sent successfully! :D');
-    } catch (error) {
-      console.debug('Email was not sent due to the following error: ', error);
-    }
+    return this.http.post(this.url, params);
   }
-
-  // saveRequestFormData(
-  //   requestFormData:
-  //     | IRequestFormDataInterface
-  //     | null = null
-  // ): Observable<void> {
-  //   if (requestFormData) {
-  //     this.requestFormData = Object.assign(this.requestFormData, requestFormData)
-  //   }
-
-  //  return this.someBackendService.saveToDb({
-  //      ...this.requestFormData})
-  // }
 }

@@ -13,7 +13,10 @@ import {
   ITabConfig
 } from 'ircc-ds-angular-component-library';
 
-import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
+import {
+  IAccordionContainerConfig,
+  mobileBehaviourType
+} from '../accordion-panel/accordion-container.component';
 
 export interface ICodeViewerConfig {
   id: string;
@@ -43,7 +46,8 @@ export class codeViewerComponent implements OnInit, OnChanges {
 
   accordionConfig: IAccordionContainerConfig = {
     id: 'codeViewerTabsCccordion',
-    open: this.config.openAccordion
+    open: this.config.openAccordion,
+    mobileBehaviour: mobileBehaviourType.column
   };
 
   openAccordion: boolean = false;

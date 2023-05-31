@@ -238,6 +238,14 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 */
   public clearvalue() { }
 
+  /**
+   * Prevents the info button from being triggered and marks the input as touched.
+   * @param event 
+   */
+  enterEvent(event: Event) {
+    event.preventDefault();
+    this.config.formGroup.get(this.config.id)?.markAsTouched();
+  }
 
   /**
    * 

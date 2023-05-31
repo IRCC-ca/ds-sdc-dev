@@ -26,11 +26,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
   constructor(private lang: LangSwitchService) {}
 
-  form_interactive_input = new FormGroup({});
+  formInteractiveInput = new FormGroup({});
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
-    formGroup: this.form_interactive_input,
+    formGroup: this.formInteractiveInput,
     size: 'small',
     type: 'text',
     required: false,
@@ -46,7 +46,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
-      formGroup: this.form_interactive_input,
+      formGroup: this.formInteractiveInput,
       size: 'small',
       label: 'Size',
       options: [
@@ -60,7 +60,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'hint',
-      formGroup: this.form_interactive_input,
+      formGroup: this.formInteractiveInput,
       size: 'small',
       label: 'Hint',
       options: [
@@ -76,7 +76,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'required',
-      formGroup: this.form_interactive_input,
+      formGroup: this.formInteractiveInput,
       size: 'small',
       label: 'Required',
       options: [
@@ -90,7 +90,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'error',
-      formGroup: this.form_interactive_input,
+      formGroup: this.formInteractiveInput,
       size: 'small',
       label: 'Error',
       options: [
@@ -107,7 +107,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'desc',
-      formGroup: this.form_interactive_input,
+      formGroup: this.formInteractiveInput,
       size: 'small',
       label: 'Description',
       options: [
@@ -123,7 +123,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'placeholder',
-      formGroup: this.form_interactive_input,
+      formGroup: this.formInteractiveInput,
       size: 'small',
       label: 'Placeholder',
       options: [
@@ -142,7 +142,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
-      formGroup: this.form_interactive_input,
+      formGroup: this.formInteractiveInput,
       size: 'small',
       label: 'State',
       inlineLabel: 'Disabled'
@@ -222,14 +222,14 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form_interactive_input.addControl(
+    this.formInteractiveInput.addControl(
       this.inputConfig.id,
       new FormControl()
     );
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_interactive_input.addControl(
+        this.formInteractiveInput.addControl(
           toggle.id,
           new FormControl(toggle.options[1].text)
         );
@@ -237,10 +237,10 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     });
 
     this.checkboxes.forEach((checkbox) => {
-      this.form_interactive_input.addControl(checkbox.id, new FormControl());
+      this.formInteractiveInput.addControl(checkbox.id, new FormControl());
     });
 
-    this.form_interactive_input.patchValue({
+    this.formInteractiveInput.patchValue({
       size: 'Small',
       hint: 'False',
       desc: 'True',
@@ -248,7 +248,7 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
       error: 'None'
     });
 
-    this.form_interactive_input.valueChanges.subscribe((value: any) => {
+    this.formInteractiveInput.valueChanges.subscribe((value: any) => {
       this.inputConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
       if (value['error']) this.toggleErrors(value['error']);
@@ -276,26 +276,27 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    */
   private toggleErrors(error: string) {
     if (
-      !this.form_interactive_input.get(this.inputConfig.id)?.touched &&
+      !this.formInteractiveInput.get(this.inputConfig.id)?.touched &&
       error !== 'None'
     )
-      this.form_interactive_input.get(this.inputConfig.id)?.markAsTouched();
+      this.formInteractiveInput.get(this.inputConfig.id)?.markAsTouched();
 
     switch (error) {
       case 'None':
-        this.form_interactive_input
+        this.formInteractiveInput
           .get(this.inputConfig.id)
           ?.setErrors({ errors: null });
+        this.formInteractiveInput.get(this.inputConfig.id)?.markAsUntouched();
         this.inputConfigCodeView.errorMessages = undefined;
         break;
       case 'Single':
-        this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
+        this.formInteractiveInput.get(this.inputConfig.id)?.setErrors({
           invalid: true
         });
         this.inputConfigCodeView.errorMessages = this.inputConfig.errorMessages;
         break;
       case 'Multiple':
-        this.form_interactive_input.get(this.inputConfig.id)?.setErrors({
+        this.formInteractiveInput.get(this.inputConfig.id)?.setErrors({
           invalid: true,
           testingError: true,
           maxlength: { requiredLength: 3, actualLength: 5 }
@@ -310,8 +311,9 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
    * Toggle disabled state of input
    */
   private toggleDisabled(disabled: boolean) {
-    const inputControl: AbstractControl | null =
-      this.form_interactive_input.get(this.inputConfig.id);
+    const inputControl: AbstractControl | null = this.formInteractiveInput.get(
+      this.inputConfig.id
+    );
     if (
       (disabled && inputControl?.disabled) ||
       (!disabled && inputControl?.enabled)
@@ -326,24 +328,25 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   }
 
   private parseCodeViewConfig() {
-    const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
-    if (-1 == index || !index) return;
-    this.inputConfigCodeView = {
-      ...this.inputConfigCodeView,
-      size: this.inputConfig.size,
-      type: this.inputConfig.type,
-      required: this.inputConfig.required,
-      label: this.inputConfig.label,
-      desc: this.inputConfig.desc,
-      hint: this.inputConfig.hint,
-      placeholder: this.inputConfig.placeholder
-    };
-    if (this.codeViewConfig?.tab) {
-      this.codeViewConfig.tab[index].value = `
+    //New Method - Using Pointer manipulation
+    const tab = this.codeViewConfig?.tab?.find((t) => t.id === 'ts');
+    if (tab) {
+      this.inputConfigCodeView = {
+        ...this.inputConfigCodeView,
+        size: this.inputConfig.size,
+        type: this.inputConfig.type,
+        required: this.inputConfig.required,
+        label: this.inputConfig.label,
+        desc: this.inputConfig.desc,
+        hint: this.inputConfig.hint,
+        placeholder: this.inputConfig.placeholder
+      };
+
+      tab.value = `
 import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
 import { FormGroup } from '@angular/forms';
-
-inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`;
+inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}
+`;
     }
   }
 }

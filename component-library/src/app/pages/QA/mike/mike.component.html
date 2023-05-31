@@ -1,6 +1,7 @@
 <h2>Select component for QA:</h2>
 <ircc-cl-lib-progress-tags></ircc-cl-lib-progress-tags>
 <div class="btn-cont">
+  <button (click)="toggleComp('link')">STYLES - Links Buttons</button>
   <button (click)="toggleComp('radio')">Radio Component</button>
   <button (click)="toggleComp('banner')">Banner Component</button>
   <button (click)="toggleComp('hidden')">Hidden Nav Component</button>
@@ -8,6 +9,27 @@
   <button (click)="toggleComp('flyout')">Flyout/Dropdown Component</button>
 </div>
 <hr />
+<section id="link">
+  <h2>Links and buttons</h2>
+  <button category="link">Testing link button</button>
+  <a href="#">Classic link</a>
+  <a
+    href="#"
+    category="primary"
+    >Primary</a
+  >
+  <a
+    href="#"
+    category="secondary"
+    >Secondary</a
+  >
+  <a
+    href="#"
+    category="secondary"
+    color="critical"
+    >Testing critical</a
+  >
+</section>
 <section id="radio">
   <h2>Radio input component</h2>
   <ircc-cl-lib-radio-input [config]="radioConfig"></ircc-cl-lib-radio-input>

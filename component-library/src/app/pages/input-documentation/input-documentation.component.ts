@@ -9,7 +9,7 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
-import { ContentItem } from '@app/share/lan-switch/interface/content-item.interface';
+import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 
 @Component({
   selector: 'app-input-documentation',
@@ -20,6 +20,7 @@ import { ContentItem } from '@app/share/lan-switch/interface/content-item.interf
 export class InputDocumentationComponent implements OnInit {
   currentLanguage: string = '';
   anchorType = slugAnchorType;
+  headingConfig = docPageheadingConfig;
 
   altLangLink = 'inputDocumentation';
 
@@ -47,108 +48,6 @@ export class InputDocumentationComponent implements OnInit {
     heading: 'h1',
     anchorType: slugAnchorType.primary
   };
-
-  interactiveDemoSlugConfig: slugTitleURLConfig = {
-    title: 'Input.InteractiveDemo',
-    anchorType: slugAnchorType.primary
-  };
-
-  typesSlugConfig: slugTitleURLConfig = {
-    title: 'Input.TypesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  configurationSlugConfig: slugTitleURLConfig = {
-    title: 'Input.ConfigurationsHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  guidelineSlugConfig: slugTitleURLConfig = {
-    title: 'Input.DesignGuidelinesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  anatomySlugConfig: slugTitleURLConfig = {
-    title: 'Input.AnatomyHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  specsSlugConfig: slugTitleURLConfig = {
-    title: 'Input.SpecsHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  contentGuideSlugConfig: slugTitleURLConfig = {
-    title: 'Input.ContentGuidelinesHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  figmaSlugConfig: slugTitleURLConfig = {
-    title: 'Input.FigmaHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  accessibilitySlugConfig: slugTitleURLConfig = {
-    title: 'Input.AccessibilityHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  researchSlugConfig: slugTitleURLConfig = {
-    title: 'Input.ResearchHeading',
-    anchorType: slugAnchorType.primary
-  };
-
-  figmaDirections: string[] = [
-    'Input.FigmaDirectionsListItem1',
-    'Input.FigmaDirectionsListItem2',
-    'Input.FigmaDirectionsListItem3',
-    'Input.FigmaDirectionsListItem4'
-  ];
-
-  accessibilityContentItems: string[] = [
-    'Input.AccessibilityContentItem1',
-    'Input.AccessibilityContentItem2',
-    'Input.AccessibilityContentItem3',
-    'Input.AccessibilityContentItem4',
-    'Input.AccessibilityContentItem5',
-    'Input.AccessibilityContentItem6',
-    'Input.AccessibilityContentItem7'
-  ];
-
-  anatomyContentItems: ContentItem[] = [
-    {
-      title: 'Input.AnatomyLabelHeading',
-      description: 'Input.AnatomyLabelText'
-    },
-    {
-      title: 'Input.AnatomyRequiredIndicatorHeading',
-      description: 'Input.AnatomyRequiredIndicatorText'
-    },
-    {
-      title: 'Input.AnatomyDescHeading',
-      description: 'Input.AnatomyDescText'
-    },
-    {
-      title: 'Input.AnatomyHintHeading',
-      description: 'Input.AnatomyHintText'
-    },
-    {
-      title: 'Input.AnatomyInputFieldHeading',
-      description: 'Input.AnatomyInputFieldText'
-    },
-    {
-      title: 'Input.AnatomyInputContentHeading',
-      description: 'Input.AnatomyInputContentText'
-    },
-    {
-      title: 'Input.AnatomyErrorHeading',
-      description: 'Input.AnatomyErrorText'
-    },
-    {
-      title: 'Input.AnatomyPasswordHeading',
-      description: 'Input.AnatomyPasswordText'
-    }
-  ];
 
   constructor(
     private translate: TranslateService,

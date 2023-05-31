@@ -2,11 +2,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IButtonConfig } from 'ircc-ds-angular-component-library';
 
+export enum mobileBehaviourType {
+  fullWidth = 'fullWidth',
+  column = 'column'
+}
 export interface IAccordionContainerConfig {
   id: string;
   buttonText?: string;
   buttonTextClosed?: string;
   open?: boolean;
+  mobileBehaviour?: keyof typeof mobileBehaviourType;
 }
 
 @Component({
@@ -16,12 +21,14 @@ export interface IAccordionContainerConfig {
 })
 export class accordionContainerComponent implements OnInit {
   @Input() config: IAccordionContainerConfig = {
-    id: ''
+    id: '',
+    mobileBehaviour: mobileBehaviourType.column
   };
   @Input() id: string = '';
   @Input() buttonText: string = '';
   @Input() buttonTextClosed: string = '';
   @Input() open?: boolean | undefined;
+  @Input() mobileBehaviour: keyof typeof mobileBehaviourType | undefined;
 
   @Output() getOpen = new EventEmitter<boolean>();
 
@@ -51,6 +58,8 @@ export class accordionContainerComponent implements OnInit {
     if (this.buttonTextClosed !== '')
       this.config.buttonTextClosed = this.buttonTextClosed;
     if (this.open !== undefined) this.config.open = this.open;
+    if (this.mobileBehaviour !== undefined)
+      this.config.mobileBehaviour = this.mobileBehaviour;
   }
 
   openAccordion() {
