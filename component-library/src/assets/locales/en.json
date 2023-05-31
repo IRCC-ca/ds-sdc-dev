@@ -830,5 +830,11 @@
     "DontHeading": "Don't",
     "TrueLabel": "True",
     "FalseLabel": "False"
+  },
+  
+  "TEXTAREA_COMPONENT": {
+    "characters-used-aria-label": "{{currentCharacterCount}} of {{characterLimit}} characters used",
+    "maxLimit": "Maximum character limit reached.",
+    "warningLimit": "Maximum character limit reached in 15 characters."
   }
 }
