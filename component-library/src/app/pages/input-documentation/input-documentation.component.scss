@@ -133,7 +133,7 @@ ul {
   margin-bottom: 0px;
 }
 
-> a {
+>a {
   margin-left: 16px;
   position: relative;
   bottom: 5px;
@@ -173,9 +173,9 @@ h5 {
 
 span {
   &.round-purple-num {
-    color: #592d85;
+    color: var(--purple-9);
     font-weight: 700;
-    background-color: #e1d1f0;
+    background-color: var(--purple-2);
     padding: 9px 15px;
     border-radius: 50%;
   }
