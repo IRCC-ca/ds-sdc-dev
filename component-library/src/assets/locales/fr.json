@@ -633,10 +633,10 @@
   },
   "DatePicker": {
     "Intro": "[FR] The date picker component allows users to input a specific year, month and/or day.",
-    "InteractiveDemoDesc": "[FR] Try our <strong>“date picker“</strong> component and the configurable options available within it.",
+    "InteractiveDemoDesc": "[FR] Try our <strong>date picker</strong> component and the configurable options available within it.",
     "DesignGuideLines": {
       "Maintain": "[FR] Maintain default select widths",
-      "MaintainDoAlt": "FR] A small date picker in the horizontal layout with consistent widths.",
+      "MaintainDoAlt": "[FR] A small date picker in the horizontal layout with consistent widths.",
       "MaintainDoText": "[FR] Maintain the default width of each select dropdown. They are intentionally sized to fit the “unknown” option.",
       "MaintainDontAlt": "[FR] A small date picker in the horizontal layout is best used for the mobile.",
       "MaintainDontText": "[FR] Alter the fixed width of the select dropdowns.",
@@ -677,7 +677,7 @@
       "CorrectOrderDontAlt": "[FR] Date picker fields shown are in incorrect labelling order Month-DD-YYYY.",
       "CorrectOrderDont": "[FR] Change the order of the date picker selects. The order should be YYYY-Month-DD.",
       "WritingLabelsHeading": "[FR] Writing labels",
-      "WritingLabelsTxt": "[FR] Labels are mandatory content for the date picker component. Labels make the purpose of the date picker clear.",
+      "WritingLabelsTxt": "[FR] Labels are mandatory content for the <strong>date picker</strong> component. Labels make the purpose of the date picker clear.",
       "WritingLabelsDoAlt": "[FR] Date picker fields with the “Date of birth (required)” label.",
       "WritingLabelsDo": "[FR] Keep labels as clear and short as possible.",
       "WritingLabelsDontAlt": "[FR] Date picker fields with “The day you were born” label.",
@@ -709,7 +709,7 @@
       "FigmaDirectionsListItem2": "[FR] In the right panel, configure the properties and variants to meet your needs.",
       "FigmaDirectionsListItem3": "[FR] Never override colours, radius, padding, text size, etc. This way foundational elements are kept consistent.",
       "AccessInputsHeading": "[FR] To access the input field’s state",
-      "FigmaDirectionsSecondItem1": "[FR] Click into the  <strong>“input-field”</strong> subcomponent inside of the <strong>“form-input”</strong> component in the Layers palette (left panel).",
+      "FigmaDirectionsSecondItem1": "[FR] Click into the  <strong>input-field</strong> subcomponent inside of the <strong>form-input</strong> component in the Layers palette (left panel).",
       "FigmaDirectionsSecondItem2": "[FR] From there, you can configure the input field’s content and states in the right panel.",
       "FigmaDirectionsListItem4": "[FR] Never override the asterisk (*) or error icons in order to keep those visual indicators consistent.",
       "FigmaDirectionsImgAlt": "[FR] A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a input. These options include size and layout of the component,  allow designers to hide or show the required asterisk, description, hint, field 2, field 3 and error message."

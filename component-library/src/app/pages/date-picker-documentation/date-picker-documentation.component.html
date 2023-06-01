@@ -322,7 +322,11 @@
         <h5 class="sub-headings">
           {{ 'DatePicker.ContentGuideLines.WritingLabelsHeading' | translate }}
         </h5>
-        <p>{{ 'DatePicker.ContentGuideLines.WritingLabelsTxt' | translate }}</p>
+        <p
+          [innerHTML]="
+            'DatePicker.ContentGuideLines.WritingLabelsTxt' | translate
+          "
+        ></p>
         <div class="row row-container">
           <div class="column left-column">
             <img

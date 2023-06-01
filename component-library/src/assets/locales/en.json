@@ -636,7 +636,7 @@
   },
   "DatePicker": {
     "Intro": "The date picker component allows users to input a specific year, month and/or day.",
-    "InteractiveDemoDesc": "Try our <strong>“date picker“</strong> component and the configurable options available within it.",
+    "InteractiveDemoDesc": "Try our <strong>date picker</strong> component and the configurable options available within it.",
     "DesignGuideLines": {
       "Maintain": "Maintain default select widths",
       "MaintainDoAlt": "A small date picker in the horizontal layout with consistent widths.",
@@ -680,7 +680,7 @@
       "CorrectOrderDontAlt": "Date picker fields shown are in incorrect labelling order Month-DD-YYYY.",
       "CorrectOrderDont": "Change the order of the date picker selects. The order should be YYYY-Month-DD.",
       "WritingLabelsHeading": "Writing labels",
-      "WritingLabelsTxt": "Labels are mandatory content for the date picker component. Labels make the purpose of the date picker clear.",
+      "WritingLabelsTxt": "Labels are mandatory content for the <strong>date picker</strong> component. Labels make the purpose of the date picker clear.",
       "WritingLabelsDoAlt": "Date picker fields with the “Date of birth (required)” label.",
       "WritingLabelsDo": "Keep labels as clear and short as possible.",
       "WritingLabelsDontAlt": "Date picker fields with “The day you were born” label.",
@@ -713,7 +713,7 @@
       "FigmaDirectionsListItem3": "Never override colours, radius, padding, text size, etc. This way foundational elements are kept consistent.",
       "FigmaDirectionsListItem4": "Never override the asterisk (*) or error icons in order to keep those visual indicators consistent.",
       "AccessInputsHeading": "To access the input field’s state",
-      "FigmaDirectionsSecondItem1": "Click into the <strong>“input-field”</strong> subcomponent inside of the <strong>“form-input”</strong> component in the Layers palette (left panel).",
+      "FigmaDirectionsSecondItem1": "Click into the <strong>input-field</strong> subcomponent inside of the <strong>form-input</strong> component in the Layers palette (left panel).",
       "FigmaDirectionsSecondItem2": "From there, you can configure the input field’s content and states in the right panel.",
       "FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a input. These options include size and layout of the component,  allow designers to hide or show the required asterisk, description, hint, field 2, field 3 and error message."
     },

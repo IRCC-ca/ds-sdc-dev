@@ -36,6 +36,14 @@ p {
   @include typography.fontSet(body, 3, regular);
 }
 
+ul {
+  margin: 0px;
+  padding-left: 25px;
+  li {
+    @include typography.fontSet(body, 3, regular);
+  }
+}
+
 .configs {
   .config-row {
     margin-bottom: 24px;
@@ -43,14 +51,17 @@ p {
   .config-row:last-child {
     margin-bottom: 0px;
   }
+}
 
-  ul {
-    margin: 0px;
-    padding-left: 20px;
-  }
 
-  li {
-    @include typography.fontSet(body, 3, regular);
+.design-guide {
+  .wrapper-container {
+    .element-wrapper-container {
+      margin-bottom: 32px;
+    }
+    .element-wrapper-container:last-child {
+      margin-bottom: 24px;
+    }
   }
 }
 
@@ -73,23 +84,12 @@ p {
   }
 }
 
-.design-guide {
-  .wrapper-container {
-    .element-wrapper-container {
-      margin-bottom: 32px;
-    }
-    .element-wrapper-container:last-child {
-      margin-bottom: 24px;
-    }
-  }
-}
-
 .anatomy {
   .anatomy-image-container {
     margin-bottom: 26px;
   }
   .anatomy-content-container {
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 
     .round-purple-num-heading-text {
       display: inline-block;
@@ -101,11 +101,11 @@ p {
       color: var(--purple-9);
       font-weight: 700;
       background-color: var(--purple-2);
-      padding: 9px 15px;
+      padding: 9px 14px;
       border-radius: 50%;
     }
     .conter-and-heading-container {
-      margin: 0 0 8px 0;
+      margin: 0 0 6px 0;
     }
     .anatomy-description {
       margin: 0px;
@@ -137,6 +137,15 @@ p {
   .row {
     flex-wrap: wrap;
     justify-content: flex-start;
+    .figma-usage {
+      max-width: 547px;
+      margin-right: 12px;
+      flex-shrink: inherit;
+  
+      @include device.in-tablet-layout() {
+        max-width: 444px;
+      }
+    }
   }
 
   ol {
@@ -147,26 +156,22 @@ p {
       @include typography.fontSet(body, 3, regular);
     }
   }
-  .figma-usage {
-    max-width: 547px;
-    margin-right: 12px;
-    flex-shrink: inherit;
-
-    @include device.in-tablet-layout() {
-      max-width: 444px;
-    }
-  }
-
   .figmaUsageList:last-child {
     margin-bottom: 12px;
   }
 
   .inputImgContainer {
     display: flex;
+    @include device.in-phone-layout() {
+      flex-direction: column;
+    }
     span {
       display: flex;
       margin-left: 22px;
       height: 137px;
+      @include device.in-phone-layout() {
+        margin-left: 0;
+      }
     }
   }
 
@@ -180,10 +185,18 @@ p {
   }
 
   .accessInput1 {
+    @include device.in-phone-layout() {
+      width: 143px;
+      height: 89px;
+    }
     width: 211px;
     height: 137px;
   }
   .accessInput2 {
+    @include device.in-phone-layout() {
+      width: 189px;
+      height: 68px;
+    }
     width: 374px;
     height: 135px;
   }
@@ -202,11 +215,6 @@ p {
   }
   .content-element:last-child {
     margin-bottom: 0px;
-  }
-
-  ul {
-    margin: 0px;
-    padding-left: 20px;
   }
 
   .list-container {
@@ -266,7 +274,6 @@ p {
 }
 
 .config-row {
-  //most sections wrap responsively but the config section does not
   display: flex;
   justify-content: flex-start;
 }
