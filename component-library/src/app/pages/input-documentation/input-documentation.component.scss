@@ -127,6 +127,7 @@ h3 {
 ul {
   margin-top: 0px;
   margin-bottom: 12px;
+  padding-left: 25px;
 }
 
 .end-list {
@@ -255,5 +256,9 @@ span {
   .image-3 {
     max-width: 239px;
     height: auto;
+  }
+
+  ol {
+    padding-left: 20px;
   }
 }
