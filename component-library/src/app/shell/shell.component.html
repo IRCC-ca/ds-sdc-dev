@@ -1,30 +1,12 @@
 <div>
-  <div class="header">
+  <!-- <div class="header">
     <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
-    <!-- <div class="container">
-      <h1 class="emphasis">{{ 'Overview.SubHeading' | translate }}</h1>
-      <div>
-        <a routerLink="/en/overview">overview</a>
-        <a routerLink="/en/mahsa-en">mahsa</a>
-        <a routerLink="/en/michael-en">michael</a>
-        <a routerLink="/en/mike-en">mike</a>
-        <a routerLink="/en/naseer-en">naseer</a>
-        <a routerLink="/en/bobby-en">bobby</a>
-        <a routerLink="/en/accessibility-demo">Accessibility Demo</a>
-        <a routerLink="/en/banner-documentation">Banner Documentation</a>
-        <a routerLink="/en/codeview">Codeview</a>
-        <a routerLink="/en/buttons">Button Documentation</a>
-        <a routerLink="/en/input-documentation">Input Documentation</a>
-      </div>
-    </div> -->
-  </div>
+  </div> -->
   <main>
-    <div class="main-container top {{ navStatus }}">
-      <!-- <app-side-nav
-        [navBarData]="leftNavData"
-        [mobileToggleIcon]="true"
-      ></app-side-nav> -->
-
+    <div
+      class="main-container top {{ navStatus }}"
+      style="margin-top: 0px"
+    >
       <ircc-cl-lib-navigation class="left-nav">
         <div navigationContentTop>
           <div
@@ -53,39 +35,6 @@
           </div>
         </div>
       </ircc-cl-lib-navigation>
-
-      <!-- <ircc-cl-lib-navigation
-        class="left-nav"
-        [config]="navConfigLarge"
-        [attr.size]="navConfigLarge.size"
-      >
-        <div navigationContentTop>
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
-            "
-          >
-            <p>Header projected content</p>
-            <img [src]="randomHeader" />
-          </div>
-        </div>
-        <div navigationContentBottom>
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
-            "
-          >
-            <p>Footer projected content</p>
-            <img [src]="randomFooter" />
-          </div>
-        </div>
-      </ircc-cl-lib-navigation> -->
       <div
         class="content"
         role="main"
@@ -102,4 +51,3 @@
   <!-- Footer -->
   <ircc-cl-lib-footer> </ircc-cl-lib-footer>
 </div>
-<div navigationContentTop><span>Header projected Area</span></div>

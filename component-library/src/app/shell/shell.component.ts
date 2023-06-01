@@ -21,7 +21,8 @@ import {
   INavigationItemLink,
   INavigationItemAccordion,
   INavigationItemHeading,
-  INavigationDivider
+  INavigationDivider,
+  INavigationIndicator
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -81,15 +82,6 @@ export class ShellComponent implements OnInit {
     label: 'Developers.GetStartedHeading',
     icon: 'fa-light fa-basketball',
     type: 'heading',
-    children: [this.itemAA, this.itemDivider, this.itemAB, this.itemAC]
-  };
-
-  mashsa: INavigationItemLink = {
-    label: 'mahsa',
-    href: 'ROUTES.mahsa',
-    id: 'mahsa',
-    icon: '',
-    type: 'link',
     children: []
   };
 
@@ -126,6 +118,15 @@ export class ShellComponent implements OnInit {
     icon: '',
     type: 'link',
     children: []
+  };
+
+  mashsa: INavigationItemLink = {
+    label: 'mahsa',
+    href: 'ROUTES.mahsa',
+    id: 'mahsa',
+    icon: '',
+    type: 'link',
+    children: [this.michael, this.naseer, this.mike]
   };
 
   accessibility: INavigationItemLink = {
@@ -195,20 +196,160 @@ export class ShellComponent implements OnInit {
     open: true
   };
 
+  navQATesting: INavigationItemHeading = {
+    icon: '',
+    id: 'header_link',
+    label: 'Header Title',
+    type: 'heading',
+    children: []
+  };
+
+  navQATestingLinkOne: INavigationItemLink = {
+    label: 'Nav Title',
+    href: 'ROUTES.overview',
+    id: 'input',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkTwo: INavigationItemLink = {
+    label: 'Nav Title',
+    href: '/en/input-documentation',
+    id: 'input',
+    icon: '',
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkThree: INavigationItemLink = {
+    label: 'Nav Title',
+    href: 'ROUTES.bobby',
+    id: 'input',
+    icon: '',
+    type: 'link',
+    children: [],
+    indicator: {
+      status: 'primary',
+      icon: '',
+      label: 'indicator'
+    }
+  };
+
+  navQATestingLinkFour: INavigationItemLink = {
+    label: 'Nav Title',
+    href: 'ROUTES.michael',
+    id: 'input',
+    icon: '',
+    type: 'link',
+    children: [],
+    indicator: {
+      status: 'critical',
+      icon: 'fa-light fa-circle',
+      label: 'indicator'
+    }
+  };
+
+  navQATestingLinkFive: INavigationItemLink = {
+    label: 'Nav Title',
+    href: 'ROUTES.mahsa',
+    id: 'input',
+    icon: 'fa-light fa-circle',
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkSix: INavigationItemLink = {
+    label: 'Nav Title',
+    href: '/en/codeview',
+    id: 'input',
+    trailingIcon: 'fa-light fa-circle',
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkSeven: INavigationItemLink = {
+    label: 'Nav Title',
+    href: 'https://google.com',
+    external: true,
+    id: 'input',
+    icon: 'fa-light fa-circle',
+    trailingIcon: 'fa-light fa-circle',
+    indicator: {
+      status: 'information',
+      icon: 'fa-light fa-circle',
+      label: 'indicator'
+    },
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkLong: INavigationItemLink = {
+    label: 'Nav TitleNav TitleNav TitleNav',
+    href: 'https://google.com',
+    external: true,
+    id: 'input',
+    icon: 'fa-light fa-circle',
+    trailingIcon: 'fa-light fa-circle',
+    indicator: {
+      status: 'information',
+      icon: 'fa-light fa-circle',
+      label: 'indicator'
+    },
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkLongLong: INavigationItemLink = {
+    label: 'Nav TitleNav TitleNav TitleNav',
+    href: '/en/codeview',
+    id: 'input',
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkAccordion: INavigationItemLink = {
+    label: 'Nav Title',
+    href: 'https://google.com',
+    external: true,
+    id: 'input',
+    type: 'link',
+    children: []
+  };
+
+  navQATestingLinkStep: INavigationItemAccordion = {
+    id: 'qa',
+    label: 'Step Title',
+    type: 'accordion',
+    children: [
+      this.navQATestingLinkAccordion,
+      this.navQATestingLinkAccordion,
+      this.navQATestingLinkAccordion
+    ],
+    open: true
+  };
+
   navConfig: INavigationConfig = {
     id: 'shell_nav',
     size: 'small',
-    label: 'Step title',
+    label: 'Nav title',
     iconLeading: 'fa-light fa-arrow-left',
     iconTrailing: 'fa-light fa-arrow-right',
-    navigationConfig: [this.itemA, this.itemQA, this.other]
-  };
-
-  navConfigLarge: INavigationConfig = {
-    id: 'shell_nav',
-    size: 'large',
-    label: 'Step title Large',
-    navigationConfig: [{ ...this.itemA }, { ...this.itemQA }, { ...this.other }]
+    navigationConfig: [
+      this.navQATesting,
+      this.navQATestingLinkOne,
+      this.navQATestingLinkTwo,
+      this.navQATestingLinkThree,
+      this.itemDivider,
+      this.navQATestingLinkFour,
+      this.navQATestingLinkFive,
+      this.navQATestingLinkSix,
+      this.itemDivider,
+      this.navQATestingLinkSeven,
+      this.navQATestingLinkLong,
+      this.navQATestingLinkLongLong,
+      this.navQATestingLinkStep
+    ]
   };
 
   randomHeader: string = '';

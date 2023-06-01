@@ -62,9 +62,13 @@
       @include large-styles();
     }
   }
-  .lib-navigation {
+  
+  .lib-navigation{
     padding: 16px;
     padding-top: 8px;
+    // border: 1px solid black;
+    // background-image: linear-gradient(to bottom, white 0%, white 100%), linear-gradient(to bottom, grey 0%, grey 100%);
+    // background-clip: content-box, padding-box;
   }
 
   .navigation-content-top,
@@ -126,7 +130,7 @@
     }
 
     .parent-navigation > li {
-      padding-bottom: 24px;
+      // padding-bottom: 24px;
     }
 
     .child-navigation {

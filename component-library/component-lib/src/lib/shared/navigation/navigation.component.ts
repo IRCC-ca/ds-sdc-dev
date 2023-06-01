@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { HostListener, Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { INavigationItem, INavigationConfig } from './navigation.types';
@@ -35,6 +35,26 @@ export class navigationComponent implements OnInit {
     this.configSub = this.navService.navConfigObs$.subscribe((response) => {
       this.config = response;
     });
+
+    window.addEventListener('scrol', this.scrolling, true);
+  }
+
+  scrolling() {
+    const box = document.querySelector('.lib-navigation');
+    const rect = box?.getBoundingClientRect();
+
+    if (rect) {
+      const isInViewport =
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <=
+          (window.innerWidth || document.documentElement.clientWidth);
+
+      console.log(isInViewport);
+    }
+    console.log('scrolling');
   }
 
   isArray = (obj: any) => {

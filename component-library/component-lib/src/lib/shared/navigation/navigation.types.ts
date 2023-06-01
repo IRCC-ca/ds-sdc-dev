@@ -53,6 +53,7 @@ export interface INavigationItemLink extends INavigationItem {
   href: string;
   external?: boolean;
   anchor?: string;
+  indicator?: INavigationIndicator;
 }
 
 export interface INavigationItemHeading extends INavigationItem {
