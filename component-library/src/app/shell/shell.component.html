@@ -7,7 +7,10 @@
       class="main-container top {{ navStatus }}"
       style="margin-top: 0px"
     >
-      <ircc-cl-lib-navigation class="left-nav">
+      <ircc-cl-lib-navigation
+        class="left-nav"
+        [attr.size]="navConfig.size"
+      >
         <div navigationContentTop>
           <div
             style="
