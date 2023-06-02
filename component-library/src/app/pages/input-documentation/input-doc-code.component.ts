@@ -190,11 +190,10 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       {
         id: 'ts',
         title: 'TypeScript',
-        value: `
-import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
-import { FormGroup } from '@angular/forms';
-
-inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
+        value: 
+          "import { IInputComponentConfig } from 'ircc-ds-angular-component-library';\r" +
+          "import { FormGroup } from '@angular/forms';\n\n" +
+          `inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
       }
     ]
   };
@@ -342,11 +341,10 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
         placeholder: this.inputConfig.placeholder
       };
 
-      tab.value = `
-import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
-import { FormGroup } from '@angular/forms';
-inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}
-`;
+      tab.value = 
+        "import { IInputComponentConfig } from 'ircc-ds-angular-component-library';\r" +
+        "import { FormGroup } from '@angular/forms';\n\n" +
+        `inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
     }
   }
 }
