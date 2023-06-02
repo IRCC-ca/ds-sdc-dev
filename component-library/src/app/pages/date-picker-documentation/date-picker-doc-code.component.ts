@@ -332,8 +332,8 @@ datePickerConfig: IDatePickerConfig = ${stringify(
 import { IDatePickerConfig } from 'ircc-ds-angular-component-library';
 import { FormGroup } from '@angular/forms';
 datePickerConfig: IDatePickerConfig = ${stringify(
-            this.datePickerConfigCodeView
-          )}
+        this.datePickerConfigCodeView
+      )}
       `;
     }
   }
