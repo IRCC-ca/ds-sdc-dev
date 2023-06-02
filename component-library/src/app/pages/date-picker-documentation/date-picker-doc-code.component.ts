@@ -167,11 +167,11 @@ export class DatePickerDocCodeComponent implements OnInit {
       {
         id: 'ts',
         title: 'TypeScript',
-        value: 
+        value:
           "import { IDatePickerConfig } from 'ircc-ds-angular-component-library';\r" +
           "import { FormGroup } from '@angular/forms';\n\n" +
           `datePickerConfig: IDatePickerConfig = ${stringify(
-          this.datePickerConfigCodeView
+            this.datePickerConfigCodeView
           )}
           `
       }
@@ -329,11 +329,11 @@ export class DatePickerDocCodeComponent implements OnInit {
       unknownDateToggle: this.datePickerConfig.unknownDateToggle
     };
     if (this.codeViewConfig?.tab) {
-      this.codeViewConfig.tab[index].value = 
+      this.codeViewConfig.tab[index].value =
         "import { IDatePickerConfig } from 'ircc-ds-angular-component-library';\r" +
         "import { FormGroup } from '@angular/forms';\n\n" +
         `datePickerConfig: IDatePickerConfig = ${stringify(
-        this.datePickerConfigCodeView
+          this.datePickerConfigCodeView
         )}
         `;
     }
