@@ -25,26 +25,21 @@
             "
             #textareaInput
           >
-123
           </textarea>
           <p
             *ngIf="config.charLimit"
             class="character-count"
             [ngClass]="charLimitStatus"
-            aria-live="polite"
-            attr.aria-label=" {{
-              'TEXTAREA_COMPONENT.characters-used-aria-label'
-                | translate
-                  : {
-                      currentCharacterCount: textareaInput.value.length,
-                      characterLimit: config.charLimit
-                    }
-            }}
-             {{ currentCharacterStatusAria || '' | translate }}"
-            tabindex="0"
           >
             {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>
+          <span
+            class="sr-only"
+            aria-live="polite"
+            role=""
+            attr.aria-label=" 
+             {{ currentCharacterStatusAria }}"
+          ></span>
         </div>
       </div>
 
