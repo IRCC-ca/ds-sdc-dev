@@ -96,6 +96,7 @@ ul {
       margin: 0 0 8px 8px;
       position: relative;
       top: 2px;
+      @include typography.fontSet(heading, 5, emphasis);
     }
     .round-purple-num-count {
       color: var(--purple-9);

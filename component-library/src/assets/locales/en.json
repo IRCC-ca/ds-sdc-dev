@@ -635,6 +635,7 @@
     "LabelText2": "Password"
   },
   "DatePicker": {
+    "Title": "DatePicker-doc",
     "Intro": "The date picker component allows users to input a specific year, month and/or day.",
     "InteractiveDemoDesc": "Try our <strong>date picker</strong> component and the configurable options available within it.",
     "DesignGuideLines": {

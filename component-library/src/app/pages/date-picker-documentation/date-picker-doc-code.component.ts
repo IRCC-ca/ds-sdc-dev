@@ -62,13 +62,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'size',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Size',
+      label: 'General.Size',
       options: [
         {
-          text: 'Small'
+          text: 'General.Small'
         },
         {
-          text: 'Large'
+          text: 'General.Large'
         }
       ]
     },
@@ -76,13 +76,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'required',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Required',
+      label: 'General.Required',
       options: [
         {
-          text: 'Yes'
+          text: 'General.Yes'
         },
         {
-          text: 'No'
+          text: 'General.No'
         }
       ]
     },
@@ -90,13 +90,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'desc',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Description',
+      label: 'General.Description',
       options: [
         {
-          text: 'Yes'
+          text: 'General.Yes'
         },
         {
-          text: 'No'
+          text: 'General.No'
         }
       ]
     },
@@ -104,13 +104,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'hint',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Hint',
+      label: 'General.Hint',
       options: [
         {
-          text: 'Yes'
+          text: 'General.Yes'
         },
         {
-          text: 'No'
+          text: 'General.No'
         }
       ]
     },
@@ -120,13 +120,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'error',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Error message',
+      label: 'Input.AnatomyErrorHeading',
       options: [
         {
-          text: 'Yes'
+          text: 'General.Yes'
         },
         {
-          text: 'No'
+          text: 'General.No'
         }
       ]
     }
@@ -136,7 +136,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'disabled',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'State',
+      label: 'Banner.BannerConfig.StateLabel',
       inlineLabel: 'Disabled'
     }
   ];
@@ -219,13 +219,13 @@ datePickerConfig: IDatePickerConfig = ${stringify(
     });
 
     this.form_datePicker.patchValue({
-      size: 'Small',
-      required: 'Yes',
-      desc: 'Yes',
-      hint: 'No',
+      size: 'General.Small',
+      required: 'General.Yes',
+      desc: 'General.Yes',
+      hint: 'General.No',
       //Field2
       //Field3
-      error: 'No'
+      error: 'General.No'
       // disabled: false
     });
 
@@ -234,7 +234,7 @@ datePickerConfig: IDatePickerConfig = ${stringify(
       console.log('HERE', this.datePickerConfig);
       console.log('VALUE HERE', value);
       this.parseCodeViewConfig();
-      if (value['error']) this.toggleErrors(value['error']);
+      // if (value['error']) this.toggleErrors(value['error']);
       // if (value['disabled'] !== undefined) this.toggleDisabled(value['disabled']);
     });
   }
@@ -329,9 +329,9 @@ datePickerConfig: IDatePickerConfig = ${stringify(
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value = `
-      import { IDatePickerConfig } from 'ircc-ds-angular-component-library';
-          import { FormGroup } from '@angular/forms';
-          datePickerConfig: IDatePickerConfig = ${stringify(
+import { IDatePickerConfig } from 'ircc-ds-angular-component-library';
+import { FormGroup } from '@angular/forms';
+datePickerConfig: IDatePickerConfig = ${stringify(
             this.datePickerConfigCodeView
           )}
       `;

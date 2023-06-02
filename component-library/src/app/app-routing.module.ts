@@ -91,7 +91,7 @@ const routes: Routes = [
     {
       path: 'datePicker-doc',
       component: DatePickerDocumentationComponent,
-      title: 'DatePicker-doc'
+      title: 'DatePicker.Title'
     },
 
     // French
@@ -134,7 +134,7 @@ const routes: Routes = [
     {
       path: 'datePicker-doc-fr',
       component: DatePickerDocumentationComponent,
-      title: 'DatePicker-doc-fr'
+      title: 'DatePicker.Title'
     },
 
     //QA PATHS
