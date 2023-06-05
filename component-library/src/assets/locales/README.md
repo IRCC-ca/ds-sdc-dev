@@ -9,7 +9,7 @@
    npm install -g fast-csv@3.4.0
    npm install -g dot-object@2.1.2
 ## DEVS TO START FROM HERE
-4. Convert en.json and fr.json to DS-String.txt, run the command from \ds-sdc-dev\component-library folder: **npm run translations:toText**
+4. Convert en.json and fr.json to DS-String.txt, run the command from \ds-sdc-dev folder: **npm run translations:toText**
 5. Copy DS-String.txt to excel file, and edit the excel file
 6. Convert DS-String.txt to en.json and fr.json: **npm run translations:toJson**
 7. Other commands:
