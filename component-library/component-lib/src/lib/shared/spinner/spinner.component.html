@@ -17,10 +17,13 @@
         class="container"
       >
         <div class="icon-div">
-          <i
-            class="fa-check fa-regular spinner-icon"
-            title="{{ text[1] }}"
-          ></i>
+          <ircc-cl-lib-icon
+            [config]="{
+              FA_keywords: 'fa-check fa-regular',
+              ariaLabel: getSuccessTitle()
+            }"
+            class="spinner-icon"
+          ></ircc-cl-lib-icon>
         </div>
         <div class="text">
           <div
@@ -39,10 +42,13 @@
         class="container"
       >
         <div class="icon-div">
-          <i
-            class="fa-exclamation fa-regular spinner-icon"
-            title="{{ text[2] }}"
-          ></i>
+          <ircc-cl-lib-icon
+            [config]="{
+              FA_keywords: 'fa-exclamation fa-regular',
+              ariaLabel: getErrorTitle()
+            }"
+            class="spinner-icon"
+          ></ircc-cl-lib-icon>
         </div>
         <div class="text">
           <div
@@ -63,7 +69,7 @@
         <div class="icon-div">
           <img
             src="./src/assets/icons/spinner-states.svg"
-            alt="{{ text[0] }}"
+            [attr.alt]="config.label || config.description ? '' : text[0]"
             class="animated-icon loading-icon"
           />
         </div>

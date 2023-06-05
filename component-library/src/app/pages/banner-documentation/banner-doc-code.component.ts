@@ -43,14 +43,10 @@ export class BannerDocCodeComponent implements OnInit {
     'showLinkToggle'
   ]);
 
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
-
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    cta: []
+    cta: [],
+    size: 'large'
   };
 
   bannerConfigCodeView: any = {
@@ -95,111 +91,127 @@ export class BannerDocCodeComponent implements OnInit {
       id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
       size: 'small',
-      label: 'Size',
+      label: 'Banner.BannerConfig.SizeLabel',
       options: [
         {
-          text: 'Small'
+          text: 'Banner.BannerConfig.SmallLabel',
+          value: 'Small'
         },
         {
-          text: 'Large'
-        }
-      ]
-    },
-    {
-      id: 'showCloseToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show close',
-      size: 'small',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
+          text: 'Banner.BannerConfig.LargeLabel',
+          value: 'Large'
         }
       ]
     },
     {
       id: 'showTitleToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show title',
+      label: 'Banner.BannerConfig.ShowTitleLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showDescToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show description',
+      label: 'Banner.BannerConfig.ShowDescriptionLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showCloseToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Banner.BannerConfig.ShowCloseLabel',
+      size: 'small',
+      options: [
+        {
+          text: 'General.TrueLabel',
+          value: 'True'
+        },
+        {
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showPrimaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show primary button',
+      label: 'Banner.BannerConfig.ShowPrimaryButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
-        }
-      ]
-    },
-    {
-      id: 'showPlainButtonToggle',
-      formGroup: this.form_interactive_banner,
-      label: 'Show plain button',
-      size: 'small',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showSecondaryButtonToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show secondary button',
+      label: 'Banner.BannerConfig.ShowSecondaryButtonLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
+        }
+      ]
+    },
+    {
+      id: 'showPlainButtonToggle',
+      formGroup: this.form_interactive_banner,
+      label: 'Banner.BannerConfig.ShowPlainButtonLabel',
+      size: 'small',
+      options: [
+        {
+          text: 'General.TrueLabel',
+          value: 'True'
+        },
+        {
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'showLinkToggle',
       formGroup: this.form_interactive_banner,
-      label: 'Show link',
+      label: 'Banner.BannerConfig.ShowLinkLabel',
       size: 'small',
       options: [
         {
-          text: 'True'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'False'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     }
@@ -428,6 +440,19 @@ export class BannerDocCodeComponent implements OnInit {
   }
 
   /**
+   * Sets dismissable to true or false and sets ariaDismissable respectively based on radio selection
+   */
+  handleCloseToggle(value: any) {
+    if (value['showCloseToggle'] === 'True') {
+      this.bannerConfig.dismissible = true;
+      this.bannerConfig.ariaDissmissible = 'close';
+    } else {
+      this.bannerConfig.dismissible = false;
+      this.bannerConfig.ariaDissmissible = '';
+    }
+  }
+
+  /**
    * Return mapping of input config from form values
    */
   private parseToggleConfig(value: any): IBannerConfig {
@@ -442,8 +467,7 @@ export class BannerDocCodeComponent implements OnInit {
         value['showDescToggle'] === 'True'
           ? (this.bannerConfig.content =
               'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.')
-          : '',
-      dismissible: value['showCloseToggle'] === 'True' ? true : false
+          : ''
     };
   }
 
@@ -476,7 +500,7 @@ export class BannerDocCodeComponent implements OnInit {
       if (toggle.options && toggle.options[1].text) {
         this.form_interactive_banner.addControl(
           toggle.id,
-          new FormControl(toggle.options[1].text)
+          new FormControl(toggle.options[1].value)
         );
       }
     });
@@ -484,7 +508,9 @@ export class BannerDocCodeComponent implements OnInit {
     this.form_interactive_banner.valueChanges.subscribe((value: any) => {
       this.handlePrimaryButtonToggle(value);
       this.handlePlainButtonToggle(value);
-      this.handleSecondaryButtonToggle(value), this.handleLinkToggle(value);
+      this.handleSecondaryButtonToggle(value);
+      this.handleLinkToggle(value);
+      this.handleCloseToggle(value);
       this.bannerConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });

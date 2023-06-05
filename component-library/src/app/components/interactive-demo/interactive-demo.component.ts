@@ -1,8 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
-import { IAccordionContainerConfig } from '../accordion-panel/accordion-container.component';
+import {
+  IAccordionContainerConfig,
+  mobileBehaviourType
+} from '../accordion-panel/accordion-container.component';
 
-export enum ComponentType {
+export enum InteractiveComponentType {
   banner = 'banner'
 }
 
@@ -22,16 +32,29 @@ export class InteractiveDemoComponent implements OnInit {
    component specifically for Banner in the scss file, since 
    banner has a white background and rest have a grey background.
   */
-  @Input() componentType?: keyof typeof ComponentType;
-
+  @Input() componentType?: keyof typeof InteractiveComponentType;
+  mobile = false;
   accordionConfig: IAccordionContainerConfig = {
     id: 'InteractiveDemoComponentAcccordion',
     open: true,
     buttonText: 'DEMO_COMPONENT.ACCORDION_OPEN',
-    buttonTextClosed: 'DEMO_COMPONENT.ACCORDION_CLOSED'
+    buttonTextClosed: 'DEMO_COMPONENT.ACCORDION_CLOSED',
+    mobileBehaviour: mobileBehaviourType.fullWidth
   };
 
+  /** Listens for screen resizes and sets mobile-tablet boolean */
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.mobile = window.innerWidth <= 360;
+    if (this.mobile) {
+      this.accordionConfig.open = false;
+    } else {
+      this.accordionConfig.open = true;
+    }
+  }
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onResize();
+  }
 }

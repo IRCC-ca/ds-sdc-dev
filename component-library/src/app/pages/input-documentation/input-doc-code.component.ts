@@ -384,6 +384,8 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
   private parseCodeViewConfig() {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
     if (-1 == index || !index) return;
+    // New Method - Using Pointer manipulation
+    const tab = this.codeViewConfig?.tab?.find((t) => t.id === 'ts');
     switch (this.errorState) {
       case 'Single':
         this.inputConfigCodeView = {
@@ -423,12 +425,12 @@ inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`
         break;
     }
 
-    if (this.codeViewConfig?.tab) {
-      this.codeViewConfig.tab[index].value = `
+    if (tab) {
+      tab.value = `
 import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
 import { FormGroup } from '@angular/forms';
-
-inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}`;
+inputConfig: IInputComponentConfig = ${stringify(this.inputConfigCodeView)}
+`;
     }
   }
 }

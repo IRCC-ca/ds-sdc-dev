@@ -1,6 +1,12 @@
-<div id="{{ config.id + '_container' }}">
+<div
+  id="{{ config.id + '_container' }}"
+  class="input-wrapper"
+>
   <form [formGroup]="config.formGroup">
-    <div class="input-container" [ngClass]="config.size">
+    <div
+      class="input-container"
+      [ngClass]="config.size"
+    >
       <div class="input-text">
         <ircc-cl-lib-label
           [config]="labelConfig"
@@ -26,6 +32,7 @@
             [type]="typeControl"
             [id]="config.id"
             [formControlName]="config.id"
+            (keydown.enter)="enterEvent($event)"
             [attr.aria-invalid]="formControl?.invalid"
             [attr.aria-live]="'off'"
             [attr.aria-label]="
@@ -60,7 +67,7 @@
               *ngIf="showPassword"
               role="img"
               attr.aria-label="{{
-                'Input_Component.Password-icon.hide_password_aria-label'
+                'INPUT_COMPONENT.Password-icon.hide_password_aria-label'
                   | translate
               }}"
             >
@@ -70,7 +77,7 @@
               *ngIf="!showPassword"
               role="img"
               attr.aria-label="{{
-                'Input_Component.Password-icon.show_password_aria-label'
+                'INPUT_COMPONENT.Password-icon.show_password_aria-label'
                   | translate
               }}"
             >
@@ -88,7 +95,10 @@
             errorStubText + ': ' + (config.label || '' | translate) + ': '
           }}</span>
           <ng-container *ngFor="let errors of errorIds; let i = index">
-            <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
+            <div
+              *ngIf="formControl?.errors?.[errors.key]"
+              class="radio-errors"
+            >
               <ircc-cl-lib-error
                 [id]="errors.id"
                 [errorLOV]="errors.errorLOV"

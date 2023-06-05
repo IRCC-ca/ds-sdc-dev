@@ -1,14 +1,10 @@
 <div class="content-doc-wrapper">
-  <app-title-slug-url
-    [config]="inputTitleSlugConfig"
-    class="h1 emphasis"
-  ></app-title-slug-url>
+  <app-title-slug-url [config]="inputTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Input.Intro' | translate }}</p>
 
   <section class="interactive-demo">
     <app-title-slug-url
-      [config]="interactiveDemoSlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
     <p class="body3 demo">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
     <app-input-doc-code></app-input-doc-code>
@@ -16,17 +12,15 @@
 
   <section class="types">
     <app-title-slug-url
-      [config]="typesSlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.typesSlugConfig"
     ></app-title-slug-url>
     <h5 class="emphasis type-heading">
       {{ 'Input.PrimaryHeading' | translate }}
     </h5>
     <app-component-preview
-      class="h6"
-      copyStyle="<button category='secondary'>{{
-        'Buttons.SecondaryIBtnText' | translate
-      }}</button>"
+      class="h6 component-preview"
+      copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
+      componentType="input"
     >
       <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
@@ -35,10 +29,9 @@
       {{ 'Input.SecondaryHeading' | translate }}
     </h5>
     <app-component-preview
-      class="h6"
-      copyStyle="<button category='secondary'>{{
-        'Buttons.SecondaryIBtnText' | translate
-      }}</button>"
+      class="h6 component-preview"
+      copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
+      componentType="input"
     >
       <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
     </app-component-preview>
@@ -47,8 +40,7 @@
 
   <section class="configs">
     <app-title-slug-url
-      [config]="configurationSlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
     <div class="config-row">
       <div class="column">
@@ -110,8 +102,7 @@
 
   <section class="design-guide">
     <app-title-slug-url
-      [config]="guidelineSlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.guidelineSlugConfig"
     ></app-title-slug-url>
     <h5 class="h5 emphasis subtitles">
       {{ 'Input.FieldWidth' | translate }}
@@ -183,26 +174,61 @@
 
   <section class="anatomy">
     <app-title-slug-url
-      [config]="anatomySlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
     <img
       src="assets/img/input-content/input-anatomy.png"
       alt="{{ 'Input.AnatomyImgAlt' | translate }}"
     /><br />
-    <ng-container *ngFor="let content of anatomyContentItems; let i = index">
-      <span class="round-purple-num">{{ i + 1 }}</span>
-      <h5 class="h5 emphasis round-purple-num">
-        {{ content.title | translate }}
-      </h5>
-      <p class="body3 subtext-8">{{ content.description | translate }}</p>
-    </ng-container>
+    <span class="round-purple-num">1</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyLabelHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">{{ 'Input.AnatomyLabelText' | translate }}</p>
+    <span class="round-purple-num">2</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyRequiredIndicatorHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">
+      {{ 'Input.AnatomyRequiredIndicatorText' | translate }}
+    </p>
+    <span class="round-purple-num">3</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyDescHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">{{ 'Input.AnatomyDescText' | translate }}</p>
+    <span class="round-purple-num">4</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyHintHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">{{ 'Input.AnatomyHintText' | translate }}</p>
+    <span class="round-purple-num">5</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyInputFieldHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">{{ 'Input.AnatomyInputFieldText' | translate }}</p>
+    <span class="round-purple-num">6</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyInputContentHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">
+      {{ 'Input.AnatomyInputContentText' | translate }}
+    </p>
+    <span class="round-purple-num">7</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyErrorHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">{{ 'Input.AnatomyErrorText' | translate }}</p>
+    <span class="round-purple-num">8</span>
+    <h5 class="h5 emphasis round-purple-num">
+      {{ 'Input.AnatomyPasswordHeading' | translate }}
+    </h5>
+    <p class="body3 anatomy">{{ 'Input.AnatomyPasswordText' | translate }}</p>
   </section>
 
   <section class="specs">
     <app-title-slug-url
-      [config]="specsSlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.specsSlugConfig"
     ></app-title-slug-url>
     <img
       class="single-img"
@@ -213,8 +239,7 @@
 
   <section class="content-guidelines">
     <app-title-slug-url
-      [config]="contentGuideSlugConfig"
-      lass="h3 emphasis"
+      [config]="headingConfig.contentGuideSlugConfig"
     ></app-title-slug-url>
 
     <h5 class="subtitles">{{ 'Input.WriteLabelsHeading' | translate }}</h5>
@@ -450,23 +475,33 @@
 
   <section class="usage-figma">
     <app-title-slug-url
-      [config]="figmaSlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
     <div class="row">
       <div class="figma-usage">
-        <h5 class="h5 emphasis subtitles">
-          {{ 'Input.FigmaDirectionsHeading' | translate }}
+        <h5 class="sub-headings">
+          {{ 'General.FigmaDirectionsHeading' | translate }}
         </h5>
         <ol>
           <li
             class="body3 emphasis"
-            *ngFor="let direction of figmaDirections"
-            [innerHtml]="direction | translate"
+            [innerHTML]="'Input.FigmaDirectionsListItem1' | translate"
+          ></li>
+          <li
+            class="body3 emphasis"
+            [innerHTML]="'Input.FigmaDirectionsListItem2' | translate"
+          ></li>
+          <li
+            class="body3 emphasis"
+            [innerHTML]="'Input.FigmaDirectionsListItem3' | translate"
+          ></li>
+          <li
+            class="body3 emphasis"
+            [innerHTML]="'Input.FigmaDirectionsListItem4' | translate"
           ></li>
         </ol>
       </div>
-      <div class="image-container-1">
+      <div class="image-1 image-container-1">
         <img
           src="assets/img/input-content/figma-usage-1.png"
           alt="{{ 'Input.FigmaDirectionsImgAlt' | translate }}"
@@ -475,7 +510,7 @@
     </div>
     <div class="three-column-row">
       <div class="figma-usage">
-        <h5 class="h5 emphasis subtitles">
+        <h5 class="sub-headings">
           {{ 'Input.AccessInputsHeading' | translate }}
         </h5>
         <ol>
@@ -489,24 +524,25 @@
           ></li>
         </ol>
       </div>
-      <div class="image-container-2">
-        <img
-          src="assets/img/input-content/figma-usage-2.png"
-          alt="{{ 'Input.AccessInputsImgAlt1' | translate }}"
-        />
-      </div>
-      <div>
-        <img
-          src="assets/img/input-content/figma-usage-3.png"
-          alt="{{ 'Input.AccessInputsImgAlt2' | translate }}"
-        />
+      <div class="image-container-wrapper">
+        <div class="image-2 image-container">
+          <img
+            src="assets/img/input-content/figma-usage-2.png"
+            alt="{{ 'Input.AccessInputsImgAlt1' | translate }}"
+          />
+        </div>
+        <div class="image-3 image-container">
+          <img
+            src="assets/img/input-content/figma-usage-3.png"
+            alt="{{ 'Input.AccessInputsImgAlt2' | translate }}"
+          />
+        </div>
       </div>
     </div>
   </section>
   <section class="accessibility">
     <app-title-slug-url
-      [config]="accessibilitySlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
     <h5 class="h5 emphasis subtitles">
       {{ 'Input.AccessibilityColourHeading' | translate }}
@@ -525,8 +561,31 @@
     </h5>
     <ul>
       <li
-        *ngFor="let content of accessibilityContentItems"
-        [innerHtml]="content | translate"
+        [innerHtml]="'Input.AccessibilityContentItem1' | translate"
+        class="body3"
+      ></li>
+      <li
+        [innerHtml]="'Input.AccessibilityContentItem2' | translate"
+        class="body3"
+      ></li>
+      <li
+        [innerHtml]="'Input.AccessibilityContentItem3' | translate"
+        class="body3"
+      ></li>
+      <li
+        [innerHtml]="'Input.AccessibilityContentItem4' | translate"
+        class="body3"
+      ></li>
+      <li
+        [innerHtml]="'Input.AccessibilityContentItem5' | translate"
+        class="body3"
+      ></li>
+      <li
+        [innerHtml]="'Input.AccessibilityContentItem6' | translate"
+        class="body3"
+      ></li>
+      <li
+        [innerHtml]="'Input.AccessibilityContentItem7' | translate"
         class="body3"
       ></li>
     </ul>
@@ -542,8 +601,7 @@
   </section>
   <section class="research">
     <app-title-slug-url
-      [config]="researchSlugConfig"
-      class="h3 emphasis"
+      [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
     <p class="body3 subtext-1">{{ 'Input.ResearchText' | translate }}</p>
   </section>
