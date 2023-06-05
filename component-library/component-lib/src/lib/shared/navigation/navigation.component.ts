@@ -18,7 +18,7 @@ import { NavigationService } from './navigation.service';
   selector: 'ircc-cl-lib-navigation',
   templateUrl: './navigation.component.html'
 })
-export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
+export class navigationComponent implements OnInit, AfterViewInit {
   @ViewChild('navigationHeader', { static: false }) navigationHeader:
     | ElementRef
     | undefined;
@@ -44,8 +44,6 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
   //TODO: NavigationItem and all other interfaces must be renamed starting with 'I'
   @Input() navigationConfig: Array<INavigationItem> = [];
 
-  @Input() imageLoaded: boolean = false;
-
   flattenNavigation: Array<INavigationItem> = [];
   config: INavigationConfig = {
     id: '',
@@ -55,7 +53,8 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
     size: 'small',
     navigationConfig: [],
     scrolling: false,
-    height: '75vh'
+    height: '75vh',
+    marginTop: 0
   };
   configSub?: Subscription;
   scrollTimeout: any;
@@ -114,12 +113,6 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
     return '';
   };
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['imageLoaded'] && this.config.scrolling === true) {
-      this.getHeight();
-    }
-  }
-
   ngAfterViewInit() {
     if (this.config.scrolling === true) {
       this.getHeight();
@@ -137,9 +130,8 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
     if (this.complicatedMaths() === true) {
       console.log('resize');
       this.disableStickyNav();
-      if (this.imageLoaded) {
-        this.setScrollableNavigationArea();
-      }
+      this.setScrollableNavigationArea();
+
       this.listenerResize = this.renderer.listen('window', 'resize', () => {
         this.setScrollableNavigationArea();
       });
@@ -175,7 +167,7 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
       this.renderer.setStyle(
         this.navigationHeader?.nativeElement,
         'top',
-        '0px'
+        `${this.config?.marginTop}px`
       );
 
       this.renderer.addClass(
@@ -185,7 +177,9 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
       this.renderer.setStyle(
         this.navigationContentTop?.nativeElement,
         'top',
-        this.navigationHeader?.nativeElement.offsetHeight + 'px'
+        this.navigationHeader?.nativeElement.offsetHeight +
+          this.config?.marginTop +
+          'px'
       );
 
       this.renderer.setStyle(
@@ -193,6 +187,7 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
         'margin-top',
         this.navigationHeader?.nativeElement.offsetHeight +
           this.navigationContentTop?.nativeElement.offsetHeight +
+          this.config?.marginTop +
           'px'
       );
     } else {
@@ -232,10 +227,12 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
 
     this.renderer.removeStyle(this.navigationContentTop?.nativeElement, 'top');
     this.renderer.removeStyle(this.navigationArea?.nativeElement, 'margin-top');
+    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'height');
   };
 
   disableSetScrollableNavigationArea = () => {
     this.renderer.removeStyle(this.navigationArea?.nativeElement, 'height');
+    this.renderer.removeStyle(this.navigation?.nativeElement, 'height');
     this.renderer.removeStyle(this.navigationArea?.nativeElement, 'overflow-y');
     this.renderer.removeStyle(this.navigationArea?.nativeElement, 'overflow-x');
   };

@@ -41,8 +41,6 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
-  imageLoaded: boolean = false;
-
   itemAA: INavigationItemLink = {
     label: 'Overview.Heading',
     href: 'ROUTES.overview',
@@ -345,7 +343,8 @@ export class ShellComponent implements OnInit {
     id: 'shell_nav',
     size: 'small',
     label: 'Nav title',
-    height: '95vh',
+    height: '90vh',
+    marginTop: 85,
     iconLeading: 'fa-light fa-arrow-left',
     iconTrailing: 'fa-light fa-arrow-right',
     scrolling: true,
@@ -456,8 +455,4 @@ export class ShellComponent implements OnInit {
         : (this.language = DisplayLanguages.English);
     }
   }
-
-  loadImage = () => {
-    this.imageLoaded = true;
-  };
 }

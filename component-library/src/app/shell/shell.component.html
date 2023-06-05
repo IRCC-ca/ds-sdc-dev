@@ -1,14 +1,13 @@
 <div>
-  <!-- <div class="header">
+  <div class="header">
     <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
-  </div> -->
+  </div>
   <main>
     <div
       class="main-container top {{ navStatus }}"
-      style="margin-top: 0px"
+      style="margin-top: 75px"
     >
       <ircc-cl-lib-navigation
-        [imageLoaded]="imageLoaded"
         class="left-nav"
         [attr.size]="navConfig.size"
       >
@@ -19,13 +18,11 @@
               justify-content: center;
               align-items: center;
               flex-direction: column;
+              min-height: 256px;
             "
           >
             <p>Header projected content</p>
-            <img
-              (load)="loadImage()"
-              [src]="randomHeader"
-            />
+            <img [src]="randomHeader" />
           </div>
         </div>
         <div navigationContentBottom>
@@ -35,13 +32,11 @@
               justify-content: center;
               align-items: center;
               flex-direction: column;
+              min-height: 256px;
             "
           >
             <p>Footer projected content</p>
-            <img
-              (load)="loadImage()"
-              [src]="randomFooter"
-            />
+            <img [src]="randomFooter" />
           </div>
         </div>
       </ircc-cl-lib-navigation>

@@ -33,6 +33,7 @@ export class NavigationService {
     height: '',
     size: 'small',
     scrolling: false,
+    marginTop: 0,
     navigationConfig: []
   });
   navConfigObs$ = this.navConfigSubj.asObservable();
