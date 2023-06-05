@@ -6,7 +6,6 @@
   <label
     *ngIf="config.label"
     class="label"
-    tabindex="0"
   >
     <span class="label_field_container">
       <div
@@ -41,14 +40,12 @@
   <p
     *ngIf="config.desc"
     class="input-desc"
-    tabindex="0"
   >
     {{ config.desc || '' | translate }}
   </p>
   <p
     *ngIf="config.hint"
     class="input-hint"
-    tabindex="0"
   >
     {{ config.hint | translate }}
   </p>
