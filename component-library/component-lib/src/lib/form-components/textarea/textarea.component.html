@@ -20,8 +20,26 @@
             tabindex="0"
             [id]="config.id"
             [formControlName]="config.id"
+            [attr.aria-live]="'off'"
             [attr.aria-label]="
-              'Textarea Input' + ' ' + (config.placeholder || '' | translate)
+              config.charLimit
+                ? (config.label || '' | translate) +
+                  ' ' +
+                  (config.desc || '' | translate) +
+                  ' ' +
+                  (config.hint || '' | translate) +
+                  ' ' +
+                  (config.placeholder || '' | translate) +
+                  charLength +
+                  '/' +
+                  config.charLimit
+                : (config.label || '' | translate) +
+                  ' ' +
+                  (config.desc || '' | translate) +
+                  ' ' +
+                  (config.hint || '' | translate) +
+                  ' ' +
+                  (config.placeholder || '' | translate)
             "
             #textareaInput
           >
@@ -30,15 +48,14 @@
             *ngIf="config.charLimit"
             class="character-count"
             [ngClass]="charLimitStatus"
+            [attr.aria-live]="'off'"
           >
             {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>
           <span
             class="sr-only"
-            aria-live="polite"
-            role=""
-            attr.aria-label=" 
-             {{ currentCharacterStatusAria }}"
+            [attr.aria-live]="'polite'"
+            [attr.aria-label]="currentCharacterStatusAria"
           ></span>
         </div>
       </div>

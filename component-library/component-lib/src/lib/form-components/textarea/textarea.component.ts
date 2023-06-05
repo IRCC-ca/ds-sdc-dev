@@ -74,6 +74,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = [];
   charLimitStatus = '';
   currentCharacterStatusAria = '';
+  charLength= 0
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
@@ -110,13 +111,15 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
 
     if (this.config.formGroup.controls[this.config.id].value) {
-      this.characterCountStatus(
-        this.config.formGroup.controls[this.config.id].value.length
-      );
+      this.charLength = this.config.formGroup.controls[this.config.id].value.length;
+      this.characterCountStatus(this.charLength);
     }
 
     this.config.formGroup.valueChanges.subscribe((change) => {
-      this.characterCountStatus(change[this.config.id]?.length);
+      this.charLength = change[this.config.id]?.length;
+      if(this.charLength === undefined) this.charLength = 0;
+      this.characterCountStatus(this.charLength);
+      
     });
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
