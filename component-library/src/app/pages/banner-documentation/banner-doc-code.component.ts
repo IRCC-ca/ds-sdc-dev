@@ -91,14 +91,14 @@ export class BannerDocCodeComponent implements OnInit {
       id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
       size: 'small',
-      label: 'Banner.BannerConfig.SizeLabel',
+      label: 'General.Size',
       options: [
         {
-          text: 'Banner.BannerConfig.SmallLabel',
+          text: 'General.Small',
           value: 'Small'
         },
         {
-          text: 'Banner.BannerConfig.LargeLabel',
+          text: 'General.Large',
           value: 'Large'
         }
       ]

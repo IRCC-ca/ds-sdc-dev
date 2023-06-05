@@ -33,6 +33,8 @@ import { EncapsulatedElementComponent } from '@app/components/encapsulated-eleme
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePickerDocCodeComponent } from '@app/pages/date-picker-documentation/date-picker-doc-code.component';
+import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -60,6 +62,8 @@ import { HttpClientModule } from '@angular/common/http';
     InputDocCodeComponent,
     EncapsulatedElementComponent,
     RequestFormComponent,
+    DatePickerDocCodeComponent,
+    DatePickerDocumentationComponent,
     BannerDocumentationComponent
   ],
   imports: [

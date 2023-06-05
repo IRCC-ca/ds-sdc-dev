@@ -32,6 +32,7 @@ export class InteractiveDemoComponent implements OnInit {
    component specifically for Banner in the scss file, since 
    banner has a white background and rest have a grey background.
   */
+  @Input() hasTabs: boolean = true;
   @Input() componentType?: keyof typeof InteractiveComponentType;
   mobile = false;
   accordionConfig: IAccordionContainerConfig = {
