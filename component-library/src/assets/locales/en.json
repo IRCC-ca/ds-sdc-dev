@@ -929,6 +929,8 @@
     "Validation": "Validation",
     "Size": "Size",
     "Small": "Small",
-    "Large": "Large"
+    "Large": "Large",
+    "Label": "Label Text (required)",
+    "Desc": "Description line of text"
   }
 }

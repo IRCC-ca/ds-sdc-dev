@@ -44,9 +44,9 @@ export class DatePickerDocCodeComponent implements OnInit {
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
     formGroup: this.form_datePicker,
-    label: 'This is Label',
+    label: 'General.Label',
     required: true,
-    desc: 'Description line of text',
+    desc: 'General.Desc',
     size: 'small',
     errorMessages: this.datePickerErrorMessages,
     unknownDateToggle: {
@@ -65,10 +65,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Size',
       options: [
         {
-          text: 'General.Small'
+          text: 'General.Small',
+          value: 'Small'
         },
         {
-          text: 'General.Large'
+          text: 'General.Large',
+          value: 'Large'
         }
       ]
     },
@@ -79,10 +81,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Required',
       options: [
         {
-          text: 'General.Yes'
+          text: 'General.Yes',
+          value: 'Yes'
         },
         {
-          text: 'General.No'
+          text: 'General.No',
+          value: 'No'
         }
       ]
     },
@@ -93,10 +97,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Description',
       options: [
         {
-          text: 'General.Yes'
+          text: 'General.Yes',
+          value: 'Yes'
         },
         {
-          text: 'General.No'
+          text: 'General.No',
+          value: 'No'
         }
       ]
     },
@@ -107,10 +113,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Hint',
       options: [
         {
-          text: 'General.Yes'
+          text: 'General.Yes',
+          value: 'Yes'
         },
         {
-          text: 'General.No'
+          text: 'General.No',
+          value: 'No'
         }
       ]
     },
@@ -123,10 +131,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'Input.AnatomyErrorHeading',
       options: [
         {
-          text: 'General.Yes'
+          text: 'General.Yes',
+          value: 'Yes'
         },
         {
-          text: 'General.No'
+          text: 'General.No',
+          value: 'No'
         }
       ]
     }
@@ -214,20 +224,20 @@ export class DatePickerDocCodeComponent implements OnInit {
       if (toggle.options && toggle.options[1].text) {
         this.form_datePicker.addControl(
           toggle.id,
-          new FormControl(toggle.options[1].text)
+          new FormControl(toggle.options[1].value)
         );
       }
     });
 
     this.form_datePicker.patchValue({
-      size: 'General.Small',
-      required: 'General.Yes',
-      desc: 'General.Yes',
-      hint: 'General.No',
+      size: 'Small',
+      required: 'Yes',
+      desc: 'Yes',
+      hint: 'No',
       //Field2
       //Field3
-      error: 'General.No'
-      // disabled: false
+      error: 'No',
+      disabled: false
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
