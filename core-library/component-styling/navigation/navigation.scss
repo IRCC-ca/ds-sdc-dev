@@ -139,4 +139,15 @@
       padding-left: 40px;
     }
   }
+
+  *.position-absolute{
+    position: absolute !important;
+  }
+
+  *.position-fixed{
+    position: fixed !important;
+    width: inherit;
+    background-color: white;
+    z-index: 9999;
+  }
 }

@@ -2,11 +2,12 @@
   [id]="config.id"
   [attr.size]="config.size"
   class="lib-navigation"
-  style="height: 100vh"
+  #navigation
 >
   <div
     class="navigation-header"
     [class]="navigationClass()"
+    #navigationHeader
   >
     <ircc-cl-lib-icon
       class="icon-leading"
@@ -23,10 +24,13 @@
   </div>
 
   <!-- prettier-ignore -->
-  <div class="navigation-content-top"><ng-content select="[navigationContentTop]"></ng-content></div>
+  <div class="navigation-content-top" #navigationContentTop ><ng-content select="[navigationContentTop]"></ng-content></div>
 
   <!-- TODO: Document this like crazy - recursive templating is cool, but EXTREMELY unusual -->
-  <div class="navigation-area">
+  <div
+    class="navigation-area"
+    #navigationArea
+  >
     <ul class="parent-navigation">
       <ng-container
         *ngTemplateOutlet="
@@ -106,7 +110,6 @@
             [attr.size]="config.size"
             [config]="item"
           >
-            asdadasd
             <ul
               *ngIf="item.children.length > 0"
               class="child-navigation"
@@ -124,5 +127,5 @@
   </ng-template>
 
   <!-- prettier-ignore -->
-  <div class="navigation-content-bottom"><ng-content select="[navigationContentBottom]"></ng-content></div>
+  <div class="navigation-content-bottom" #navigationContentBottom><ng-content select="[navigationContentBottom]"></ng-content></div>
 </div>

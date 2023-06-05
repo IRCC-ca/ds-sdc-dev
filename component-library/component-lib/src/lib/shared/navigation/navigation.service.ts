@@ -30,6 +30,7 @@ export class NavigationService {
     label: '',
     iconLeading: '',
     iconTrailing: '',
+    height: '',
     size: 'small',
     navigationConfig: []
   });

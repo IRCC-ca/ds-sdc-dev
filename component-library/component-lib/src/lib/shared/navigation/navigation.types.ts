@@ -10,6 +10,7 @@ export interface INavigationConfig {
   iconLeading?: string;
   iconTrailing?: string;
   size: keyof typeof DSSizes;
+  height: string;
   navigationConfig?: Array<INavigationItem>;
 }
 

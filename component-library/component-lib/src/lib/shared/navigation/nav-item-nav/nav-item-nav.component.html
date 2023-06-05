@@ -32,6 +32,7 @@
     </ng-container>
     <ng-template #externalLink>
       <a
+        target="_blank"
         [attr.href]="
           config?.href + (config?.anchor ? '#' + config.anchor : '') || ''
             | translate

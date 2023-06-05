@@ -41,6 +41,8 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
+  imageLoaded: boolean = false;
+
   itemAA: INavigationItemLink = {
     label: 'Overview.Heading',
     href: 'ROUTES.overview',
@@ -210,7 +212,12 @@ export class ShellComponent implements OnInit {
     id: 'input',
     icon: '',
     type: 'link',
-    children: []
+    children: [],
+    indicator: {
+      status: 'critical',
+      icon: 'fa-light fa-circle',
+      label: 'Not Started'
+    }
   };
 
   navQATestingLinkTwo: INavigationItemLink = {
@@ -219,7 +226,12 @@ export class ShellComponent implements OnInit {
     id: 'input',
     icon: '',
     type: 'link',
-    children: []
+    children: [],
+    indicator: {
+      status: 'primary',
+      icon: 'fa-solid fa-circle-half-stroke',
+      label: 'Not Complete'
+    }
   };
 
   navQATestingLinkThree: INavigationItemLink = {
@@ -230,9 +242,9 @@ export class ShellComponent implements OnInit {
     type: 'link',
     children: [],
     indicator: {
-      status: 'primary',
-      icon: '',
-      label: 'indicator'
+      status: 'information',
+      icon: 'fa-solid fa-circle',
+      label: 'Complete'
     }
   };
 
@@ -270,15 +282,14 @@ export class ShellComponent implements OnInit {
 
   navQATestingLinkSeven: INavigationItemLink = {
     label: 'Nav Title',
-    href: 'https://google.com',
-    external: true,
+    href: 'ROUTES.mahsa',
     id: 'input',
     icon: 'fa-light fa-circle',
     trailingIcon: 'fa-light fa-circle',
     indicator: {
       status: 'information',
       icon: 'fa-light fa-circle',
-      label: 'indicator'
+      label: ''
     },
     type: 'link',
     children: []
@@ -324,7 +335,8 @@ export class ShellComponent implements OnInit {
     children: [
       this.navQATestingLinkAccordion,
       this.navQATestingLinkAccordion,
-      this.navQATestingLinkAccordion
+      this.navQATestingLinkAccordion,
+      this.navQATestingLinkSeven
     ],
     open: true
   };
@@ -333,9 +345,11 @@ export class ShellComponent implements OnInit {
     id: 'shell_nav',
     size: 'small',
     label: 'Nav title',
+    height: '95vh',
     iconLeading: 'fa-light fa-arrow-left',
     iconTrailing: 'fa-light fa-arrow-right',
     navigationConfig: [
+      this.itemDivider,
       this.navQATesting,
       this.navQATestingLinkOne,
       this.navQATestingLinkTwo,
@@ -441,4 +455,8 @@ export class ShellComponent implements OnInit {
         : (this.language = DisplayLanguages.English);
     }
   }
+
+  loadImage = () => {
+    this.imageLoaded = true;
+  };
 }

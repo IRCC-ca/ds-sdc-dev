@@ -8,6 +8,7 @@
       style="margin-top: 0px"
     >
       <ircc-cl-lib-navigation
+        [imageLoaded]="imageLoaded"
         class="left-nav"
         [attr.size]="navConfig.size"
       >
@@ -21,7 +22,10 @@
             "
           >
             <p>Header projected content</p>
-            <img [src]="randomHeader" />
+            <img
+              (load)="loadImage()"
+              [src]="randomHeader"
+            />
           </div>
         </div>
         <div navigationContentBottom>
@@ -34,7 +38,10 @@
             "
           >
             <p>Footer projected content</p>
-            <img [src]="randomFooter" />
+            <img
+              (load)="loadImage()"
+              [src]="randomFooter"
+            />
           </div>
         </div>
       </ircc-cl-lib-navigation>

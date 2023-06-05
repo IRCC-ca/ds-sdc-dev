@@ -1,4 +1,13 @@
-import { HostListener, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  Renderer2,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { INavigationItem, INavigationConfig } from './navigation.types';
@@ -9,7 +18,24 @@ import { NavigationService } from './navigation.service';
   selector: 'ircc-cl-lib-navigation',
   templateUrl: './navigation.component.html'
 })
-export class navigationComponent implements OnInit {
+export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
+  @ViewChild('navigationHeader', { static: false }) navigationHeader:
+    | ElementRef
+    | undefined;
+
+  @ViewChild('navigationContentTop', { static: false }) navigationContentTop:
+    | ElementRef
+    | undefined;
+
+  @ViewChild('navigationContentBottom', { static: false })
+  navigationContentBottom: ElementRef | undefined;
+
+  @ViewChild('navigationArea', { static: false })
+  navigationArea: ElementRef | undefined;
+
+  @ViewChild('navigation', { static: false })
+  navigation: ElementRef | undefined;
+
   @Input() id: string = '';
   @Input() label: string = '';
   @Input() iconLeading: string = '';
@@ -18,6 +44,8 @@ export class navigationComponent implements OnInit {
   //TODO: NavigationItem and all other interfaces must be renamed starting with 'I'
   @Input() navigationConfig: Array<INavigationItem> = [];
 
+  @Input() imageLoaded: boolean = false;
+
   flattenNavigation: Array<INavigationItem> = [];
   config: INavigationConfig = {
     id: '',
@@ -25,36 +53,21 @@ export class navigationComponent implements OnInit {
     iconLeading: '',
     iconTrailing: '',
     size: 'small',
-    navigationConfig: []
+    navigationConfig: [],
+    height: '75vh'
   };
   configSub?: Subscription;
+  scrollTimeout: any;
 
-  constructor(private navService: NavigationService) {}
+  constructor(
+    private navService: NavigationService,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit() {
     this.configSub = this.navService.navConfigObs$.subscribe((response) => {
       this.config = response;
     });
-
-    window.addEventListener('scrol', this.scrolling, true);
-  }
-
-  scrolling() {
-    const box = document.querySelector('.lib-navigation');
-    const rect = box?.getBoundingClientRect();
-
-    if (rect) {
-      const isInViewport =
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <=
-          (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <=
-          (window.innerWidth || document.documentElement.clientWidth);
-
-      console.log(isInViewport);
-    }
-    console.log('scrolling');
   }
 
   isArray = (obj: any) => {
@@ -96,5 +109,119 @@ export class navigationComponent implements OnInit {
     }
 
     return '';
+  };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['imageLoaded']) {
+      this.setScrollableNavigationArea();
+    }
+  }
+
+  ngAfterViewInit() {
+    if (this.imageLoaded) {
+      this.setScrollableNavigationArea();
+    }
+    this.renderer.listen('window', 'resize', () =>
+      this.setScrollableNavigationArea()
+    );
+    // this.setStickyNav();
+    // this.renderer.listen('window', 'scroll', () => this.scrolling());
+  }
+
+  scrolling = (): void => {
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
+    this.scrollTimeout = setTimeout(
+      (() => {
+        this.setStickyNav();
+      }).bind(this),
+      50
+    );
+  };
+
+  setStickyNav = () => {
+    if (
+      window.pageYOffset > this.navigationHeader?.nativeElement.offsetHeight
+    ) {
+      this.renderer.addClass(
+        this.navigationHeader?.nativeElement,
+        'position-fixed'
+      );
+      this.renderer.setStyle(
+        this.navigationHeader?.nativeElement,
+        'top',
+        '0px'
+      );
+
+      this.renderer.addClass(
+        this.navigationContentTop?.nativeElement,
+        'position-fixed'
+      );
+      this.renderer.setStyle(
+        this.navigationContentTop?.nativeElement,
+        'top',
+        this.navigationHeader?.nativeElement.offsetHeight + 'px'
+      );
+
+      this.renderer.setStyle(
+        this.navigationArea?.nativeElement,
+        'margin-top',
+        this.navigationHeader?.nativeElement.offsetHeight +
+          this.navigationContentTop?.nativeElement.offsetHeight +
+          'px'
+      );
+    } else {
+      this.renderer.removeClass(
+        this.navigationHeader?.nativeElement,
+        'position-fixed'
+      );
+      this.renderer.removeStyle(this.navigationHeader?.nativeElement, 'top');
+
+      this.renderer.removeClass(
+        this.navigationContentTop?.nativeElement,
+        'position-fixed'
+      );
+
+      this.renderer.removeStyle(
+        this.navigationContentTop?.nativeElement,
+        'top'
+      );
+      this.renderer.removeStyle(
+        this.navigationArea?.nativeElement,
+        'margin-top'
+      );
+    }
+  };
+
+  setScrollableNavigationArea = () => {
+    this.renderer.setStyle(
+      this.navigation?.nativeElement,
+      'height',
+      this.config.height
+    );
+
+    let usableHeight =
+      this.navigation?.nativeElement.offsetHeight -
+      (this.navigationHeader?.nativeElement.offsetHeight +
+        this.navigationContentTop?.nativeElement.offsetHeight +
+        this.navigationContentBottom?.nativeElement.offsetHeight);
+
+    this.renderer.setStyle(
+      this.navigationArea?.nativeElement,
+      'height',
+      usableHeight + 'px'
+    );
+
+    this.renderer.setStyle(
+      this.navigationArea?.nativeElement,
+      'overflow-y',
+      'auto'
+    );
+    this.renderer.setStyle(
+      this.navigationArea?.nativeElement,
+      'overflow-x',
+      'clip'
+    );
   };
 }
