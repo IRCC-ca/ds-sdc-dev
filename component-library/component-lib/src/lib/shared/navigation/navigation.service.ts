@@ -32,6 +32,7 @@ export class NavigationService {
     iconTrailing: '',
     height: '',
     size: 'small',
+    scrolling: false,
     navigationConfig: []
   });
   navConfigObs$ = this.navConfigSubj.asObservable();

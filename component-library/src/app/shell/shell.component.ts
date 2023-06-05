@@ -348,6 +348,7 @@ export class ShellComponent implements OnInit {
     height: '95vh',
     iconLeading: 'fa-light fa-arrow-left',
     iconTrailing: 'fa-light fa-arrow-right',
+    scrolling: true,
     navigationConfig: [
       this.itemDivider,
       this.navQATesting,

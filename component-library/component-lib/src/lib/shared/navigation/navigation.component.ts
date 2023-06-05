@@ -54,11 +54,14 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
     iconTrailing: '',
     size: 'small',
     navigationConfig: [],
+    scrolling: false,
     height: '75vh'
   };
   configSub?: Subscription;
   scrollTimeout: any;
 
+  listenerScroll = () => {};
+  listenerResize = () => {};
   constructor(
     private navService: NavigationService,
     private renderer: Renderer2
@@ -112,21 +115,42 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
   };
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['imageLoaded']) {
-      this.setScrollableNavigationArea();
+    if (changes['imageLoaded'] && this.config.scrolling === true) {
+      this.getHeight();
     }
   }
 
   ngAfterViewInit() {
-    if (this.imageLoaded) {
-      this.setScrollableNavigationArea();
+    if (this.config.scrolling === true) {
+      this.getHeight();
+      this.renderer.listen('window', 'resize', () => {
+        this.getHeight();
+      });
     }
-    this.renderer.listen('window', 'resize', () =>
-      this.setScrollableNavigationArea()
-    );
-    // this.setStickyNav();
-    // this.renderer.listen('window', 'scroll', () => this.scrolling());
   }
+
+  getHeight = () => {
+    this.listenerScroll();
+    this.listenerResize();
+
+    console.log('getHeight');
+    if (this.complicatedMaths() === true) {
+      console.log('resize');
+      this.disableStickyNav();
+      if (this.imageLoaded) {
+        this.setScrollableNavigationArea();
+      }
+      this.listenerResize = this.renderer.listen('window', 'resize', () => {
+        this.setScrollableNavigationArea();
+      });
+    } else if (this.complicatedMaths() === false) {
+      this.disableSetScrollableNavigationArea();
+      this.setStickyNav();
+      this.listenerScroll = this.renderer.listen('window', 'scroll', () => {
+        this.scrolling();
+      });
+    }
+  };
 
   scrolling = (): void => {
     if (this.scrollTimeout) {
@@ -192,6 +216,40 @@ export class navigationComponent implements OnInit, AfterViewInit, OnChanges {
         'margin-top'
       );
     }
+  };
+
+  disableStickyNav = () => {
+    this.renderer.removeClass(
+      this.navigationHeader?.nativeElement,
+      'position-fixed'
+    );
+    this.renderer.removeStyle(this.navigationHeader?.nativeElement, 'top');
+
+    this.renderer.removeClass(
+      this.navigationContentTop?.nativeElement,
+      'position-fixed'
+    );
+
+    this.renderer.removeStyle(this.navigationContentTop?.nativeElement, 'top');
+    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'margin-top');
+  };
+
+  disableSetScrollableNavigationArea = () => {
+    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'height');
+    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'overflow-y');
+    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'overflow-x');
+  };
+
+  complicatedMaths = (): boolean => {
+    let windowheight = window.innerHeight;
+
+    let usableHeight =
+      windowheight -
+      (this.navigationHeader?.nativeElement.offsetHeight +
+        this.navigationContentTop?.nativeElement.offsetHeight +
+        this.navigationContentBottom?.nativeElement.offsetHeight);
+
+    return usableHeight > windowheight / 2 ? true : false;
   };
 
   setScrollableNavigationArea = () => {

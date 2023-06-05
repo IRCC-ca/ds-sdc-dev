@@ -11,6 +11,7 @@ export interface INavigationConfig {
   iconTrailing?: string;
   size: keyof typeof DSSizes;
   height: string;
+  scrolling: boolean;
   navigationConfig?: Array<INavigationItem>;
 }
 
