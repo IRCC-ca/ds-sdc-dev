@@ -78,6 +78,9 @@ export interface IDatePickerConfig {
   maxYear?: number;
   minYear?: number;
   unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
+  yearSelectShow?: boolean;
+  monthSelectShow?: boolean;
+  daySelectShow?: boolean;
 }
 
 export interface IDatePickerUnknownDateToggleConfig {
@@ -127,6 +130,9 @@ export class DatePickerComponent implements OnInit {
   @Input() maxYear?: number;
   @Input() minYear?: number;
   @Input() unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
+  @Input() yearSelectShow?: boolean= true
+  @Input() monthSelectShow?: boolean = true;
+  @Input() daySelectShow?: boolean= true;
 
   errorIds: IErrorIDs[] = [];
   days: number[] = [];
@@ -186,7 +192,7 @@ export class DatePickerComponent implements OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig
+      this.config.labelIconConfig,
     );
 
     //set config from individual options, if present
@@ -202,7 +208,9 @@ export class DatePickerComponent implements OnInit {
     if (this.minYear) this.config.minYear = this.minYear;
     if (this.unknownDateToggle)
       this.config.unknownDateToggle = this.unknownDateToggle;
-
+    if (this.yearSelectShow) this.config.yearSelectShow = this.yearSelectShow;
+    if (this.monthSelectShow) this.config.monthSelectShow = this.monthSelectShow;
+    if (this.daySelectShow) this.config.daySelectShow = this.daySelectShow;
     //Set the ids for the dropdowns
     this.dropDownConfigs.day.id =
       this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION;

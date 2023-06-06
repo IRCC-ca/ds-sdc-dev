@@ -53,7 +53,9 @@ export class DatePickerDocCodeComponent implements OnInit {
       dayUnknown: true,
       monthUnknown: true,
       yearUnknown: true
-    }
+    },
+    monthSelectShow: true,
+    daySelectShow: true
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -121,8 +123,38 @@ export class DatePickerDocCodeComponent implements OnInit {
         }
       ]
     },
-    //Field 2
-    //Field 3
+    {
+      id: 'monthSelectShow',
+      formGroup: this.form_datePicker,
+      size: 'small',
+      label: 'General.FieldTwo',
+      options: [
+        {
+          text: 'General.Yes',
+          value: 'Yes'
+        },
+        {
+          text: 'General.No',
+          value: 'No'
+        }
+      ]
+    },
+    {
+      id: 'daySelectShow',
+      formGroup: this.form_datePicker,
+      size: 'small',
+      label: 'General.FieldThree',
+      options: [
+        {
+          text: 'General.Yes',
+          value: 'Yes'
+        },
+        {
+          text: 'General.No',
+          value: 'No'
+        }
+      ]
+    },
     {
       id: 'error',
       formGroup: this.form_datePicker,
@@ -159,7 +191,9 @@ export class DatePickerDocCodeComponent implements OnInit {
     required: this.datePickerConfig.required,
     desc: this.datePickerConfig.desc,
     errorMessages: undefined,
-    unknownDateToggle: this.datePickerConfig.unknownDateToggle
+    unknownDateToggle: this.datePickerConfig.unknownDateToggle,
+    monthSelectShow: this.datePickerConfig.monthSelectShow,
+    daySelectShow: this.datePickerConfig.daySelectShow
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -232,8 +266,8 @@ export class DatePickerDocCodeComponent implements OnInit {
       required: 'Yes',
       desc: 'Yes',
       hint: 'No',
-      //Field2
-      //Field3
+      monthSelectShow: 'Yes',
+      daySelectShow: 'Yes',
       error: 'No'
     });
 
@@ -253,6 +287,8 @@ export class DatePickerDocCodeComponent implements OnInit {
       ...this.datePickerConfig,
       size: value['size'].toLowerCase(),
       hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
+      monthSelectShow: value['monthSelectShow'] === 'Yes',
+      daySelectShow: value['daySelectShow'] === 'Yes',
       required: value['required'] === 'Yes',
       desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
     };
@@ -336,7 +372,9 @@ export class DatePickerDocCodeComponent implements OnInit {
       required: this.datePickerConfig.required,
       desc: this.datePickerConfig.desc,
       errorMessages: undefined,
-      unknownDateToggle: this.datePickerConfig.unknownDateToggle
+      unknownDateToggle: this.datePickerConfig.unknownDateToggle,
+      monthSelectShow: this.datePickerConfig.monthSelectShow,
+      daySelectShow: this.datePickerConfig.daySelectShow
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
