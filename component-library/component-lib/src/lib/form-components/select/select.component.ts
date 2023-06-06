@@ -61,6 +61,21 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     id: '',
     formGroup: new FormGroup({})
   };
+  @Input() id: string = '';
+  @Input() formGroup: FormGroup;
+  @Input() size?: keyof typeof DSSizes;
+  @Input() label?: string;
+  @Input() desc?: string;
+  @Input() hint?: string;
+  @Input() placeholder?: string;
+  @Input() required?: boolean;
+  @Input() options?: ISelectOptionsConfig[];
+  @Input() errorMessages?: IErrorPairs[];
+  @Input() topLabel?: string;
+  @Input() disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
+  @Input() disabled?: boolean;
+  labelIconConfig?: ILabelIconConfig;
+
   formControl?: AbstractControl;
   errorAria = '';
 
@@ -128,6 +143,21 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.labelIconConfig,
       this.config.topLabel
     );
+
+    //set config from individual options, if present
+    if (this.formGroup) this.config.formGroup = this.formGroup;
+    if (this.id) this.config.id = this.id;
+    if (this.size) this.config.size = this.size;
+    if (this.label) this.config.label = this.label;
+    if (this.desc) this.config.desc = this.desc;
+    if (this.hint) this.config.hint = this.hint;
+    if (this.placeholder) this.config.placeholder = this.placeholder;
+    if (this.required) this.config.required = this.required;
+    if (this.options) this.config.options = this.options;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+    if (this.topLabel) this.config.topLabel = this.topLabel;
+    if (this.disableError) this.config.disableError = this.disableError;
+    if (this.disabled) this.config.disabled = this.disabled;
 
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
