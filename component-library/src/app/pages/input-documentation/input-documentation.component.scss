@@ -258,7 +258,7 @@ span {
 
 .list-item {
   font-size: 14px;
-  @include typography.fontSet(body, 3, emphasis);
+  @include typography.fontSet(body, 3, regular);
 }
 
 .three-column-row {
