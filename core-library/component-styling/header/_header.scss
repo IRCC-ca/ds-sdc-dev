@@ -40,6 +40,7 @@
       align-self: center;
       width: 296.47px;
       padding: 0;
+      margin: 24px 0;
 
       @include device.in-phone-layout() {
         width: 249px;
@@ -101,6 +102,7 @@
       margin-right: -8px;
       margin-left: -8px;
     }
+
     //allows headerLine to span entire view width even when the margin is applied to the header container
     @media (max-width: 979px) {
       margin-right: -8px;
