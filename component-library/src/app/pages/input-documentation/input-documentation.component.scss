@@ -224,6 +224,10 @@ span {
 }
 
 .usage-figma {
+  ol {
+    padding-left: 20px;
+  }
+
   .three-column-row {
     display: flex;
     justify-content: space-between;
