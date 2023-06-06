@@ -215,6 +215,16 @@
     left: -58px;
     padding: 8px 0;
     position: absolute;
+
+    ircc-cl-lib-breadcrumb-link {
+      a {
+        --link-text: var(--grey-12);
+
+        &:hover {
+          color: var(--grey-12);
+        }
+      }
+    }
   }
 
   @include size.selector(small) {
