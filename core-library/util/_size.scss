@@ -14,7 +14,7 @@ $sizes: (small, large);
 
 /// Content included within this mixin will only be included if the size aligns to the value passed
 /// @param {String} $value key from $sizes list, when size aligns to $value, content will display
-@mixin selector($value: small) {
+@mixin select($value: small) {
   @include theme.select-attribute(
     $value: $value,
     $attribute: size,

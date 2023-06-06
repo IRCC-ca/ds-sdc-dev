@@ -52,7 +52,7 @@ $selectors: "ircc-cl-lib-spinner";
       border-radius: 50%;
       .spinner-icon {
         align-self: center;
-        >#ds-icon-container>span>svg {
+        > #ds-icon-container > span > svg {
           width: 40px;
           height: 40px;
         }
@@ -83,7 +83,7 @@ $selectors: "ircc-cl-lib-spinner";
       height: 28px;
       border-radius: 50%;
       .spinner-icon {
-        >#ds-icon-container>span>svg {
+        > #ds-icon-container > span > svg {
           width: 14px;
           height: 16px;
         }
@@ -156,14 +156,14 @@ $selectors: "ircc-cl-lib-spinner";
     color: var(--text-placeholder);
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-large();
     .small {
       @include size-small();
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include size-small();
     .large {
       @include size-large();
@@ -182,14 +182,14 @@ $selectors: "ircc-cl-lib-spinner";
         border-radius: 50%;
         .spinner-icon {
           align-self: flex-end;
-          >#ds-icon-container>span>svg {
+          > #ds-icon-container > span > svg {
             width: 12px;
             height: 12px;
           }
         }
       }
     }
-    
+
     .loading-icon {
       width: 20px;
       height: 20px;

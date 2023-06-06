@@ -33,8 +33,6 @@ $selectors: "ircc-cl-lib-error";
       top: 4px;
       bottom: 0px;
     }
-
-    ;
   }
 
   .additionalError {
@@ -42,8 +40,6 @@ $selectors: "ircc-cl-lib-error";
       top: 8px;
       left: 20px;
     }
-
-    ;
   }
 }
 
@@ -70,7 +66,7 @@ $selectors: "ircc-cl-lib-error";
 }
 
 @mixin layout {
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {
@@ -78,7 +74,7 @@ $selectors: "ircc-cl-lib-error";
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
