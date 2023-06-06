@@ -1,4 +1,6 @@
 @use '../../../../../core-library/util/device' as device;
+@use '../../../../../core-library/tokens/template-const' as template-const;
+@use '../../../../../core-library/layout/layout-grid' as layout-grid;
 @use '~@ircc-ca/ds-sdc-core/typography/typography';
 
 .content-doc-wrapper {
@@ -223,61 +225,46 @@ span {
   justify-content: flex-start;
 }
 
-.usage-figma {
-  .row {
-    flex-wrap: wrap;
-    justify-content: flex-start;
+.figma-usage {
+  .figma-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+
+    @include device.in-tablet-layout() {
+      grid-template-columns: 1fr;
+    }
+
+    .column-1 {
+      max-width: 547px;
+
+      @include device.in-tablet-layout() {
+        max-width: 444px;
+      }
+
+    }
+
+    .image-1 {
+      max-width: 232px;
+      height: auto;
+    }
   }
 
   ol {
     padding-left: 20px;
     margin: 0px;
-
-    .list-item {
-      font-size: 14px;
-      @include typography.fontSet(body, 3, emphasis);
-    }
   }
+}
 
-  .figma-usage {
-    max-width: 547px;
-    margin-right: 20px;
-    flex-shrink: inherit;
+.list-item {
+  font-size: 14px;
+  @include typography.fontSet(body, 3, emphasis);
+}
 
-    @include device.in-tablet-layout() {
-      max-width: 444px;
-    }
-  }
-
-  .three-column-row {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-    @include device.in-tablet-layout() {
-      flex-wrap: wrap;
-    }
-
-    .image-container-wrapper {
-      display: flex;
-      flex-direction: row;
-
-      @include device.in-tablet-layout() {
-        display: flex;
-        flex-direction: column;
-      }
-
-      @include device.in-phone-layout() {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-  }
-
-  .image-1 {
-    max-width: 232px;
-    height: auto;
-  }
+.three-column-row {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
   .image-2 {
     max-width: 505px;
@@ -287,5 +274,24 @@ span {
   .image-3 {
     max-width: 239px;
     height: auto;
+  }
+
+  @include device.in-tablet-layout() {
+    flex-wrap: wrap;
+  }
+
+  .image-container-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    @include device.in-tablet-layout() {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include device.in-phone-layout() {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

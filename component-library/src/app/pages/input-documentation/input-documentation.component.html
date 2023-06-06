@@ -476,12 +476,12 @@
     </div>
   </section>
 
-  <section class="usage-figma">
+  <section class="figma-usage">
     <app-title-slug-url
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
-    <div class="row">
-      <div class="figma-usage">
+    <div class="figma-row">
+      <div class="column-1">
         <h5 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h5>
@@ -504,7 +504,7 @@
           ></li>
         </ol>
       </div>
-      <div class="image-1 image-container-1">
+      <div class="column-2 image-1">
         <img
           src="assets/img/input-content/figma-usage-1.png"
           alt="{{ 'Input.FigmaDirectionsImgAlt' | translate }}"
@@ -518,11 +518,11 @@
         </h5>
         <ol>
           <li
-            class="body3 emphasis"
+            class="list-item"
             [innerHTML]="'Input.AccessInputsListItem1' | translate"
           ></li>
           <li
-            class="body3 emphasis"
+            class="list-item"
             [innerHTML]="'Input.AccessInputsListItem2' | translate"
           ></li>
         </ol>
