@@ -2,17 +2,17 @@
 
 ## STEPS to import translations / strings
 
-1. Copy / Paste these three columns [termID] [en] [fr]" into a new workbook
-2. Save as "UNICODE TEXT" into this folder. (e.g. DS-Strings.txt)
-3. Install required packages fast-csv and dot-object
+* Copy / Paste these three columns [termID] [en] [fr]" into a new workbook
+* Save as "UNICODE TEXT" into this folder. (e.g. DS-Strings.txt)
+* Install required packages fast-csv and dot-object
    On WORK laptop, run: npm config set registry http://njes1s7739:8081/artifactory/api/npm/eserv-web-npm
    npm install -g fast-csv@3.4.0
    npm install -g dot-object@2.1.2
 ## DEVS TO START FROM HERE
-4. Convert en.json and fr.json to DS-String.txt, run the command from \ds-sdc-dev folder: **npm run translations:toText**
-5. Copy DS-String.txt to excel file, and edit the excel file
-6. Convert DS-String.txt to en.json and fr.json: **npm run translations:toJson**
-7. Other commands:
+* To convert en.json and fr.json to DS-String.txt, run the command from \ds-sdc-dev folder: **npm run translations:toText**
+* If a csv file does not exist - copy/paste DS-String.txt to excel file, and then edit the excel file with all translation updates
+* After updating the csv file, to update en.json and fr.json - copy/paste the csv columns into DS-String.txt and run: **npm run translations:toJson**
+* Other commands:
    Extract translation text from html to template.json: **npm run translations:extract**
 
 ### DO NOT EDIT 'en.json' or 'fr.json'
