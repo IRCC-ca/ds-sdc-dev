@@ -349,6 +349,10 @@ export class ShellComponent implements OnInit {
     iconTrailing: 'fa-light fa-arrow-right',
     scrolling: true,
     navigationConfig: [
+      this.navQATesting,
+      this.navQATestingLinkOne,
+      this.navQATestingLinkTwo,
+      this.navQATestingLinkThree,
       this.itemDivider,
       this.navQATesting,
       this.navQATestingLinkOne,

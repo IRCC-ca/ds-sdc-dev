@@ -33,6 +33,9 @@ export class navigationComponent implements OnInit, AfterViewInit {
   @ViewChild('navigationArea', { static: false })
   navigationArea: ElementRef | undefined;
 
+  @ViewChild('navigationAreaScroll', { static: false })
+  navigationAreaScroll: ElementRef | undefined;
+
   @ViewChild('navigation', { static: false })
   navigation: ElementRef | undefined;
 
@@ -126,9 +129,7 @@ export class navigationComponent implements OnInit, AfterViewInit {
     this.listenerScroll();
     this.listenerResize();
 
-    console.log('getHeight');
     if (this.complicatedMaths() === true) {
-      console.log('resize');
       this.disableStickyNav();
       this.setScrollableNavigationArea();
 
@@ -170,23 +171,10 @@ export class navigationComponent implements OnInit, AfterViewInit {
         `${this.config?.marginTop}px`
       );
 
-      this.renderer.addClass(
-        this.navigationContentTop?.nativeElement,
-        'position-fixed'
-      );
       this.renderer.setStyle(
-        this.navigationContentTop?.nativeElement,
-        'top',
-        this.navigationHeader?.nativeElement.offsetHeight +
-          this.config?.marginTop +
-          'px'
-      );
-
-      this.renderer.setStyle(
-        this.navigationArea?.nativeElement,
+        this.navigationAreaScroll?.nativeElement,
         'margin-top',
         this.navigationHeader?.nativeElement.offsetHeight +
-          this.navigationContentTop?.nativeElement.offsetHeight +
           this.config?.marginTop +
           'px'
       );
@@ -196,18 +184,8 @@ export class navigationComponent implements OnInit, AfterViewInit {
         'position-fixed'
       );
       this.renderer.removeStyle(this.navigationHeader?.nativeElement, 'top');
-
-      this.renderer.removeClass(
-        this.navigationContentTop?.nativeElement,
-        'position-fixed'
-      );
-
       this.renderer.removeStyle(
-        this.navigationContentTop?.nativeElement,
-        'top'
-      );
-      this.renderer.removeStyle(
-        this.navigationArea?.nativeElement,
+        this.navigationAreaScroll?.nativeElement,
         'margin-top'
       );
     }
@@ -219,22 +197,27 @@ export class navigationComponent implements OnInit, AfterViewInit {
       'position-fixed'
     );
     this.renderer.removeStyle(this.navigationHeader?.nativeElement, 'top');
-
-    this.renderer.removeClass(
-      this.navigationContentTop?.nativeElement,
-      'position-fixed'
+    this.renderer.removeStyle(
+      this.navigationAreaScroll?.nativeElement,
+      'margin-top'
     );
-
-    this.renderer.removeStyle(this.navigationContentTop?.nativeElement, 'top');
-    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'margin-top');
     this.renderer.removeStyle(this.navigationArea?.nativeElement, 'height');
   };
 
   disableSetScrollableNavigationArea = () => {
-    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'height');
+    this.renderer.removeStyle(
+      this.navigationAreaScroll?.nativeElement,
+      'height'
+    );
     this.renderer.removeStyle(this.navigation?.nativeElement, 'height');
-    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'overflow-y');
-    this.renderer.removeStyle(this.navigationArea?.nativeElement, 'overflow-x');
+    this.renderer.removeStyle(
+      this.navigationAreaScroll?.nativeElement,
+      'overflow-y'
+    );
+    this.renderer.removeStyle(
+      this.navigationAreaScroll?.nativeElement,
+      'overflow-x'
+    );
   };
 
   complicatedMaths = (): boolean => {
@@ -258,23 +241,21 @@ export class navigationComponent implements OnInit, AfterViewInit {
 
     let usableHeight =
       this.navigation?.nativeElement.offsetHeight -
-      (this.navigationHeader?.nativeElement.offsetHeight +
-        this.navigationContentTop?.nativeElement.offsetHeight +
-        this.navigationContentBottom?.nativeElement.offsetHeight);
+      this.navigationHeader?.nativeElement.offsetHeight;
 
     this.renderer.setStyle(
-      this.navigationArea?.nativeElement,
+      this.navigationAreaScroll?.nativeElement,
       'height',
       usableHeight + 'px'
     );
 
     this.renderer.setStyle(
-      this.navigationArea?.nativeElement,
+      this.navigationAreaScroll?.nativeElement,
       'overflow-y',
       'auto'
     );
     this.renderer.setStyle(
-      this.navigationArea?.nativeElement,
+      this.navigationAreaScroll?.nativeElement,
       'overflow-x',
       'clip'
     );
