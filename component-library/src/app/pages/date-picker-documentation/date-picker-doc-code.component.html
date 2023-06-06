@@ -1,16 +1,11 @@
-<app-interactive-demo>
-  <ircc-cl-lib-tabs
-    tabs
-    (valueChange)="setInputType($event)"
-    [config]="demoTabsConfig"
-  >
-  </ircc-cl-lib-tabs>
+<app-interactive-demo [hasTabs]="false">
   <div
     component
-    class="input-container"
-    #input
+    class="datePicker-container"
   >
-    <ircc-cl-lib-input [config]="inputConfig"></ircc-cl-lib-input>
+    <ircc-cl-lib-date-picker
+      [config]="datePickerConfig"
+    ></ircc-cl-lib-date-picker>
   </div>
   <ng-container toggles>
     <ng-container *ngFor="let toggle of toggles">

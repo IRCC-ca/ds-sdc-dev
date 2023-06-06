@@ -1,7 +1,7 @@
 @use '../../../../../core-library/util/device' as device;
 @use '~@ircc-ca/ds-sdc-core/typography/typography';
 
-.content-doc-wrapper {
+.content-doc-wrapper { 
   box-sizing: border-box;
   max-width: 900px;
   margin: 0 auto;
@@ -11,9 +11,10 @@
   }
 }
 
-.body1.intro {
+.intro {
   margin-top: 0px;
   margin-bottom: 0px;
+  @include typography.fontSet(body, 1, regular);
 }
 
 .demo {
@@ -24,7 +25,7 @@
 .sub-headings {
   margin-top: 0px;
   margin-bottom: 12px;
-  font-weight: 700;
+  @include typography.fontSet(heading, 5, emphasis);
 }
 
 .description {
@@ -35,26 +36,11 @@ p {
   @include typography.fontSet(body, 3, regular);
 }
 
-.types {
-  .component-preview-container {
-    margin-bottom: 24px;
-
-    .description {
-      margin-top: 28px;
-    }
-
-    .component-preview {
-      @include typography.fontSet(heading, 6, regular);
-      max-width: 400px;
-    }
-  }
-
-  .component-preview-container:last-child {
-    margin-bottom: 0px;
-  }
-
-  .banner-preview {
-    margin-top: 24px;
+ul {
+  margin: 0px;
+  padding-left: 25px;
+  li {
+    @include typography.fontSet(body, 3, regular);
   }
 }
 
@@ -65,36 +51,8 @@ p {
   .config-row:last-child {
     margin-bottom: 0px;
   }
-
-  ul {
-    margin: 0px;
-    padding-left: 25px;
-  }
-
-  li {
-    font-size: 14px;
-  }
 }
 
-.do-dont-container {
-  margin-top: 8px;
-
-  .do-dont-heading {
-    margin: 0 0 12px 0;
-  }
-  .text-underline {
-    border-bottom: 1px solid;
-  }
-  .text-color-green {
-    color: var(--success-text);
-  }
-  .text-color-red {
-    color: var(--critical-text);
-  }
-  p {
-    margin: 0px;
-  }
-}
 
 .design-guide {
   .wrapper-container {
@@ -107,14 +65,22 @@ p {
   }
 }
 
-.content-guidelines {
-  .wrapper-container {
-    .element-wrapper-container {
-      margin-bottom: 32px;
-    }
-    .element-wrapper-container:last-child {
-      margin-bottom: 0px;
-    }
+.do-dont-container {
+  margin-top: 8px;
+
+  .do-dont-heading {
+    margin: 0 0 8px 0;
+    border-bottom: 1px solid;
+    @include typography.fontSet(heading, 5, emphasis);
+  }
+  .text-color-green {
+    color: var(--success-text);
+  }
+  .text-color-red {
+    color: var(--critical-text);
+  }
+  p {
+    margin: 0px;
   }
 }
 
@@ -123,23 +89,24 @@ p {
     margin-bottom: 26px;
   }
   .anatomy-content-container {
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 
     .round-purple-num-heading-text {
       display: inline-block;
       margin: 0 0 8px 8px;
       position: relative;
       top: 2px;
+      @include typography.fontSet(heading, 5, emphasis);
     }
     .round-purple-num-count {
       color: var(--purple-9);
       font-weight: 700;
       background-color: var(--purple-2);
-      padding: 9px 15px;
+      padding: 9px 14px;
       border-radius: 50%;
     }
     .conter-and-heading-container {
-      margin: 0 0 8px 0;
+      margin: 0 0 6px 0;
     }
     .anatomy-description {
       margin: 0px;
@@ -156,10 +123,30 @@ p {
   }
 }
 
+.content-guidelines {
+  .wrapper-container {
+    .element-wrapper-container {
+      margin-bottom: 32px;
+    }
+    .element-wrapper-container:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
 .usage-figma {
   .row {
     flex-wrap: wrap;
     justify-content: flex-start;
+    .figma-usage {
+      max-width: 547px;
+      margin-right: 12px;
+      flex-shrink: inherit;
+  
+      @include device.in-tablet-layout() {
+        max-width: 444px;
+      }
+    }
   }
 
   ol {
@@ -170,18 +157,23 @@ p {
       @include typography.fontSet(body, 3, regular);
     }
   }
-  .figma-usage {
-    max-width: 547px;
-    margin-right: 12px;
-    flex-shrink: inherit;
-
-    @include device.in-tablet-layout() {
-      max-width: 444px;
-    }
+  .figmaUsageList:last-child {
+    margin-bottom: 12px;
   }
 
-  ol > li::marker {
-    font-weight: bold;
+  .inputImgContainer {
+    display: flex;
+    @include device.in-phone-layout() {
+      flex-direction: column;
+    }
+    span {
+      display: flex;
+      margin-left: 22px;
+      height: 137px;
+      @include device.in-phone-layout() {
+        margin-left: 0;
+      }
+    }
   }
 
   .image-container {
@@ -191,6 +183,26 @@ p {
   .image-1 {
     width: 264px;
     height: 316px;
+  }
+
+  .accessInput1 {
+    @include device.in-phone-layout() {
+      width: 143px;
+      height: 89px;
+    }
+    width: 211px;
+    height: 137px;
+  }
+  .accessInput2 {
+    @include device.in-phone-layout() {
+      width: 189px;
+      height: 68px;
+    }
+    width: 374px;
+    height: 135px;
+  }
+  .accessInput3 {
+    height: 223px;
   }
 }
 
@@ -204,11 +216,6 @@ p {
   }
   .content-element:last-child {
     margin-bottom: 0px;
-  }
-
-  ul {
-    margin: 0px;
-    padding-left: 25px;
   }
 
   .list-container {
@@ -230,7 +237,7 @@ p {
 
 .research {
   p {
-    margin: 0px;
+    margin: 0 0 94px 0;
   }
 }
 
@@ -268,24 +275,6 @@ p {
 }
 
 .config-row {
-  //most sections wrap responsively but the config section does not
   display: flex;
   justify-content: flex-start;
-}
-
-.accessibility {
-  .list-container {
-    padding-left: 0px;
-    line-height: 20px;
-    margin-bottom: 24px;
-
-    .list-item {
-      list-style-type: none;
-      padding-bottom: 20px;
-    }
-
-    .list-item:last-child {
-      padding-bottom: 0px;
-    }
-  }
 }
