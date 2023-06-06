@@ -60,7 +60,16 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
 
   @Input() id = '';
   @Input() formGroup = this.formGroupEmpty;
+  @Input() size?: keyof typeof DSSizes;
+  @Input() label?: string;
+  @Input() desc?: string;
+  @Input() hint?: string;
+  @Input() placeholder?: string;
+  @Input() required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
   @Input() charLimit = '';
+  @Input() resizable?: keyof typeof ResizableTypes;
+  @Input() errorMessages?: IErrorPairs[];
+  @Input() errorIcon?: IErrorIconConfig;
 
   disabled = false;
   focusState = false;
@@ -79,17 +88,20 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   private onChange?: (value: any) => void;
 
   ngOnInit(): void {
-    if (this.id !== '') {
-      this.config.id = this.id;
-    }
-
-    if (this.formGroup !== this.formGroupEmpty) {
-      this.config.formGroup = this.formGroup;
-    }
-
-    if (this.charLimit !== '') {
-      this.config.charLimit = this.charLimit;
-    }
+    
+    //set config from individual options, if present
+    if (this.id !== '') this.config.id = this.id;
+    if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
+    if (this.charLimit !== '') this.config.charLimit = this.charLimit;
+    if (this.size) this.config.size = this.size;
+    if (this.label) this.config.label = this.label;
+    if (this.desc) this.config.desc = this.desc;
+    if (this.hint) this.config.hint = this.hint;
+    if (this.placeholder) this.config.placeholder = this.placeholder;
+    if (this.required) this.config.required = this.required;
+    if (this.resizable) this.config.resizable = this.resizable;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+    if (this.errorIcon) this.config.errorIcon = this.errorIcon;
 
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
