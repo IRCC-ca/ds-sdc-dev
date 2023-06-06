@@ -58,7 +58,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       dayUnknown: true,
       monthUnknown: true,
       yearUnknown: true
-    },
+    }
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -239,13 +239,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       hint: 'No',
       //Field2
       //Field3
-      error: 'No',
+      error: 'No'
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
       this.datePickerConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
-      if ((value['error'])) this.toggleErrors(value['error']);
+      if (value['error']) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
@@ -259,16 +259,17 @@ export class DatePickerDocCodeComponent implements OnInit {
       size: value['size'].toLowerCase(),
       hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
       required: value['required'] === 'Yes',
-      desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined,
+      desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
     };
-  };
+  }
 
   /**
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
     if (
-      !this.form_datePicker.get(this.datePickerConfig.id)?.touched && error === 'Yes'
+      !this.form_datePicker.get(this.datePickerConfig.id)?.touched &&
+      error === 'Yes'
     ) {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
       this.form_datePicker
@@ -284,7 +285,6 @@ export class DatePickerDocCodeComponent implements OnInit {
       this.errorState = error;
       this.datePickerConfigCodeView.errorMessages =
         this.datePickerConfig.errorMessages;
-      
     } else {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
       this.form_datePicker
@@ -298,17 +298,19 @@ export class DatePickerDocCodeComponent implements OnInit {
         ?.markAsUntouched();
     }
     this.parseCodeViewConfig();
-  };
-  
+  }
+
   /**
    * Toggle disabled state of input
    */
   private toggleDisabled(disabled: boolean) {
+    const datePickerYearControl =
+      this.form_datePicker.controls['datePicker_yearControl'];
+    const datePickerMonthControl =
+      this.form_datePicker.controls['datePicker_monthControl'];
+    const datePickerDayControl =
+      this.form_datePicker.controls['datePicker_dayControl'];
 
-    const datePickerYearControl = this.form_datePicker.controls['datePicker_yearControl'];
-    const datePickerMonthControl = this.form_datePicker.controls['datePicker_monthControl'];
-    const datePickerDayControl = this.form_datePicker.controls['datePicker_dayControl'];
- 
     const datePickerControl: AbstractControl | null = this.form_datePicker.get(
       this.datePickerConfig.id
     );
@@ -329,7 +331,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       datePickerMonthControl.enable();
       datePickerDayControl.enable();
     }
-  };
+  }
 
   private parseCodeViewConfig() {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
