@@ -34,13 +34,8 @@ export class DatePickerDocCodeComponent implements OnInit {
 
   datePickerErrorMessages: IDatePickerErrorMessages = {
     general: [
-      // {
-      //   key: 'required',
-      //   errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
-      // }
       {
-        key: 'maxLength',
-        // errorLOV: 'RequestForm.fieldExceededMaxLength'
+        key: 'required',
         errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
       }
     ]
@@ -267,10 +262,7 @@ export class DatePickerDocCodeComponent implements OnInit {
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
-    if (
-      !this.form_datePicker.get(this.datePickerConfig.id)?.touched &&
-      error === 'Yes'
-    ) {
+    if (error === 'Yes') {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
       this.form_datePicker
         .get(this.datePickerConfig.id + '_dayControl')
