@@ -74,6 +74,14 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   */
   @Input() type: keyof typeof InputTypes = InputTypes.password;
 
+  @Input() size?: keyof typeof DSSizes;
+  @Input() label?: string;
+  @Input() hint?: string;
+  @Input() desc?: string;
+  @Input() required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
+  @Input() placeholder?: string;
+  @Input() errorMessages?: IErrorPairs[];
+
   disabled = false;
   focusState = false;
   showPassword?: boolean;
@@ -122,14 +130,22 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.config.required,
       this.config.labelIconConfig
     );
-
-    if (this.id !== '') {
-      this.config.id = this.id;
-    }
-
+    
+    //set config from individual options, if present
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
     }
+    if (this.id !== '') {
+      this.config.id = this.id;
+    }
+    if (this.size) this.config.size = this.size;
+    if (this.label) this.config.label = this.label;
+    if (this.hint) this.config.hint = this.hint;
+    if (this.desc) this.config.desc = this.desc;
+    if (this.required) this.config.required = this.required;
+    if (this.placeholder) this.config.placeholder = this.placeholder;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+    if (this.type) this.config.type = this.type;
 
     if (!this.config.type) {
       this.config.type = InputTypes.text;
