@@ -562,7 +562,7 @@
     <h5 class="h5 emphasis subtitles">
       {{ 'Input.AccessibilityContentHeading' | translate }}
     </h5>
-    <ul>
+    <ul class="content-list">
       <li
         [innerHtml]="'Input.AccessibilityContentItem1' | translate"
         class="body3"
@@ -592,12 +592,12 @@
         class="body3"
       ></li>
     </ul>
-    <h5 class="h5 emphasis subtitles">
+    <h5 class="validation-heading">
       {{ 'Input.AccessibilityValidationHeading' | translate }}
     </h5>
-    <ul>
+    <ul class="validation-list">
       <li
-        class="body3 subtext-1"
+        class="body3 last"
         [innerHtml]="'Input.AccessibilityValidationText' | translate"
       ></li>
     </ul>
@@ -606,6 +606,6 @@
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p class="body3 subtext-1">{{ 'Input.ResearchText' | translate }}</p>
+    <p class="body3">{{ 'Input.ResearchText' | translate }}</p>
   </section>
 </div>

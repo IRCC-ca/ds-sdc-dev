@@ -32,11 +32,6 @@ h3 {
   margin-bottom: 0px;
 }
 
-.body3.demo {
-  margin-top: 0px;
-  margin-bottom: 24px;
-}
-
 .subtitles {
   margin-bottom: 12px;
 }
@@ -46,101 +41,108 @@ h3 {
   height: 221px;
 }
 
-.body3.specsDesc {
-  @include typography.fontSet(body, 3, regular);
-  margin: 24px 0 0 0;
-}
+.body3 {
+  &.demo {
+    margin-top: 0px;
+    margin-bottom: 24px;
+  }
 
-.body3.subtext-1 {
-  margin-top: 12px;
-  margin-bottom: 24px;
-}
 
-.body3.subtext-2 {
-  margin-top: 12px;
-  margin-bottom: 32px;
-}
+  &.specsDesc {
+    @include typography.fontSet(body, 3, regular);
+    margin: 24px 0 0 0;
+  }
 
-.body3.subtext-3 {
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
+  &.subtext-1 {
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
 
-.body3.subtext-4 {
-  margin-top: 8px;
-  margin-bottom: 32px;
-}
+  &.subtext-2 {
+    margin-top: 12px;
+    margin-bottom: 32px;
+  }
 
-.body3.subtext-5 {
-  margin-top: 8px;
-  margin-bottom: 24px;
-}
+  &.subtext-3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
 
-.body3.subtext-6 {
-  margin-top: 8px;
-  margin-bottom: 48px;
-}
+  &.subtext-4 {
+    margin-top: 8px;
+    margin-bottom: 32px;
+  }
 
-.body3.subtext-7 {
-  margin-top: 8px;
-  margin-bottom: 44px;
-}
+  &.subtext-5 {
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
 
-.body3.subtext-8 {
-  margin-top: 8px;
-  margin-bottom: 0px;
-}
+  &.subtext-6 {
+    margin-top: 8px;
+    margin-bottom: 48px;
+  }
 
-.body3.subtext-9 {
-  margin-top: 8px;
-  margin-bottom: 12px;
-}
+  &.subtext-7 {
+    margin-top: 8px;
+    margin-bottom: 44px;
+  }
 
-.body3.subtext-10 {
-  margin-top: 8px;
-  margin-bottom: 68px;
-}
+  &.subtext-8 {
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
 
-.body3.subtext-11 {
-  margin-top: 8px;
-  margin-bottom: 88px;
-}
+  &.subtext-9 {
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
 
-.body3.subtext-12 {
-  margin-top: 8px;
-  margin-bottom: 52px;
-}
+  &.subtext-10 {
+    margin-top: 8px;
+    margin-bottom: 68px;
+  }
 
-.body3.subtext-13 {
-  margin-top: 8px;
-  margin-bottom: 0px;
-}
+  &.subtext-11 {
+    margin-top: 8px;
+    margin-bottom: 88px;
+  }
 
-.body3.last {
-  margin-top: 12px;
-  margin-bottom: 0px;
-}
+  &.subtext-13 {
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
 
-.body3.anatomy {
-  margin-bottom: 0px;
-  margin-top: 8px;
-}
+  &.last {
+    margin-top: 12px;
+    margin-bottom: 0px;
+  }
 
+  &.anatomy {
+    margin-bottom: 0px;
+    margin-top: 8px;
+  }
+}
 
 .config-heading {
   margin-top: 24px;
   margin-bottom: 12px;
 }
 
-ul {
-  margin-top: 0px;
-  margin-bottom: 12px;
-  padding-left: 25px;
+.config-row {
+  ul {
+    margin-top: 0px;
+    margin-bottom: 12px;
+    padding-left: 25px;
+
+    &.end-list {
+      margin-bottom: 0px;
+    }
+  }
+
 }
 
-.end-list {
-  margin-bottom: 0px;
-}
+
 
 >a {
   margin-left: 16px;
@@ -293,5 +295,23 @@ span {
       display: flex;
       flex-direction: column;
     }
+  }
+}
+
+.accessibility {
+
+  .validation-heading {
+    margin: 0;
+  }
+
+  .content-list {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    padding: 0 20px;
+  }
+
+  .validation-list {
+    margin: 12px 0 0 0;
+    padding: 0 20px;
   }
 }
