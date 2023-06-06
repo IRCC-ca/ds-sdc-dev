@@ -68,6 +68,17 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   };
   @Input() id = '';
   @Input() formGroup = this.formGroupEmpty;
+  @Input() size?: keyof typeof DSSizes;
+  @Input() label?: string;
+  @Input() desc?: string;
+  @Input() hint?: string;
+  @Input() required?: boolean;
+  @Input() options?: IRadioInputOption[];
+  @Input() disabled?: boolean;
+  @Input() error?: true;
+  @Input() validators?: ValidatorFn[];
+  @Input() helpText?: string;
+  @Input() errorMessages?: IErrorPairs[];
 
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
@@ -122,9 +133,21 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       this.config.labelIconConfig
     );
 
+    //set config from individual options, if present
     if (this.id !== '') this.config.id = this.id;
-    if (this.formGroup !== this.formGroupEmpty)
-      this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
+    if (this.size) this.config.size = this.size;
+    if (this.label) this.config.label = this.label;
+    if (this.desc) this.config.desc = this.desc;
+    if (this.hint) this.config.hint = this.hint;
+    if (this.required) this.config.required = this.required;
+    if (this.options) this.config.options = this.options;
+    if (this.disabled) this.config.disabled = this.disabled;
+    if (this.error) this.config.error = this.error;
+    if (this.validators) this.config.validators = this.validators;
+    if (this.helpText) this.config.helpText = this.helpText;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
