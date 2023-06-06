@@ -7,14 +7,14 @@
 @use "sass:map";
 $selectors: "ircc-cl-lib-error";
 
-@mixin selectors {
+@mixin selector {
   #{$selectors}#{template-const.$escape} {
     @content;
   }
 }
 
 @mixin create {
-  @include selectors() {
+  @include selector() {
     @include layout();
   }
 }

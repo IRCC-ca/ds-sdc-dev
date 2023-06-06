@@ -7,7 +7,7 @@
 @use "../../util/color";
 @use "../../util/size";
 
-@mixin selectors {
+@mixin selector {
   a:any-link,
   #{button-const.$selectors}:where(:not([category])) {
     &#{template-const.$escape}:where(nav *) {
@@ -17,7 +17,7 @@
 }
 
 @mixin create {
-  @include selectors() {
+  @include selector() {
     @include layout();
     @include layout-tab();
   }

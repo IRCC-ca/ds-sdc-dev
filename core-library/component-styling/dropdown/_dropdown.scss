@@ -8,14 +8,14 @@
 @use "../../tokens/text" as text;
 @use "sass:map";
 
-@mixin selectors {
+@mixin selector {
   ircc-cl-lib-dropdown#{template-const.$escape} {
     @content;
   }
 }
 
 @mixin create {
-  @include selectors() {
+  @include selector() {
     @include layout();
   }
 }

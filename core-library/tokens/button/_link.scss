@@ -52,7 +52,7 @@ $default-color: null;
     critical,
   )
 ) {
-  @include button-const.selectors() {
+  @include button-const.selector() {
     &:where([category="#{$link}"]) {
       @each $key in $palette {
         @if not $default-color {

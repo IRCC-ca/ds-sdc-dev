@@ -14,7 +14,7 @@ $selectors: "button";
   }
 }
 
-@mixin selectors {
+@mixin selector {
   #{$selectors}#{template-const.$escape} {
     @content;
   }
