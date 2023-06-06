@@ -113,10 +113,6 @@
 
         }
       }
-
-      .sr-only {
-        @include a11y.sr-only;
-      }
     }
   }
 

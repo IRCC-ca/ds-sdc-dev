@@ -30,9 +30,7 @@
                   (config.hint || '' | translate) +
                   ' ' +
                   (config.placeholder || '' | translate) +
-                  charLength +
-                  '/' +
-                  config.charLimit
+                  currentCharacterStatusAria
                 : (config.label || '' | translate) +
                   ' ' +
                   (config.desc || '' | translate) +
@@ -52,11 +50,6 @@
           >
             {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>
-          <span
-            class="sr-only"
-            [attr.aria-live]="'polite'"
-            [attr.aria-label]="currentCharacterStatusAria"
-          ></span>
         </div>
       </div>
 
