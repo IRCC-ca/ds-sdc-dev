@@ -204,22 +204,6 @@ export class navigationComponent implements OnInit, AfterViewInit {
     this.renderer.removeStyle(this.navigationArea?.nativeElement, 'height');
   };
 
-  disableSetScrollableNavigationArea = () => {
-    this.renderer.removeStyle(
-      this.navigationAreaScroll?.nativeElement,
-      'height'
-    );
-    this.renderer.removeStyle(this.navigation?.nativeElement, 'height');
-    this.renderer.removeStyle(
-      this.navigationAreaScroll?.nativeElement,
-      'overflow-y'
-    );
-    this.renderer.removeStyle(
-      this.navigationAreaScroll?.nativeElement,
-      'overflow-x'
-    );
-  };
-
   complicatedMaths = (): boolean => {
     let windowheight = window.innerHeight;
 
@@ -239,25 +223,21 @@ export class navigationComponent implements OnInit, AfterViewInit {
       this.config.height
     );
 
-    let usableHeight =
-      this.navigation?.nativeElement.offsetHeight -
-      this.navigationHeader?.nativeElement.offsetHeight;
-
     this.renderer.setStyle(
-      this.navigationAreaScroll?.nativeElement,
-      'height',
-      usableHeight + 'px'
-    );
-
-    this.renderer.setStyle(
-      this.navigationAreaScroll?.nativeElement,
+      this.navigation?.nativeElement,
       'overflow-y',
       'auto'
     );
     this.renderer.setStyle(
-      this.navigationAreaScroll?.nativeElement,
+      this.navigation?.nativeElement,
       'overflow-x',
       'clip'
     );
+  };
+
+  disableSetScrollableNavigationArea = () => {
+    this.renderer.removeStyle(this.navigation?.nativeElement, 'height');
+    this.renderer.removeStyle(this.navigation?.nativeElement, 'overflow-y');
+    this.renderer.removeStyle(this.navigation?.nativeElement, 'overflow-x');
   };
 }
