@@ -34,8 +34,13 @@ export class DatePickerDocCodeComponent implements OnInit {
 
   datePickerErrorMessages: IDatePickerErrorMessages = {
     general: [
+      // {
+      //   key: 'required',
+      //   errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+      // }
       {
-        key: 'required',
+        key: 'maxLength',
+        // errorLOV: 'RequestForm.fieldExceededMaxLength'
         errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
       }
     ]
@@ -54,7 +59,6 @@ export class DatePickerDocCodeComponent implements OnInit {
       monthUnknown: true,
       yearUnknown: true
     },
-    disabled: false
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -143,7 +147,7 @@ export class DatePickerDocCodeComponent implements OnInit {
   ];
   checkboxes: ICheckBoxComponentConfig[] = [
     {
-      id: 'disabled',
+      id: 'state',
       formGroup: this.form_datePicker,
       size: 'small',
       label: 'Banner.BannerConfig.StateLabel',
@@ -159,7 +163,6 @@ export class DatePickerDocCodeComponent implements OnInit {
     label: this.datePickerConfig.label,
     required: this.datePickerConfig.required,
     desc: this.datePickerConfig.desc,
-    disabled: this.datePickerConfig.disabled,
     errorMessages: undefined,
     unknownDateToggle: this.datePickerConfig.unknownDateToggle
   };
@@ -237,16 +240,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       //Field2
       //Field3
       error: 'No',
-      disabled: false
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
       this.datePickerConfig = this.parseToggleConfig(value);
-      console.log('HERE', this.datePickerConfig);
-      console.log('VALUE HERE', value);
       this.parseCodeViewConfig();
-      // if (value['error']) this.toggleErrors(value['error']);
-      // if (value['disabled'] !== undefined) this.toggleDisabled(value['disabled']);
+      if ((value['error'])) this.toggleErrors(value['error']);
+      if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
 
@@ -254,27 +254,21 @@ export class DatePickerDocCodeComponent implements OnInit {
    * Return mapping of Datepicker config from form values
    */
   private parseToggleConfig(value: any): IDatePickerConfig {
-    console.log('Value', value);
     return {
       ...this.datePickerConfig,
       size: value['size'].toLowerCase(),
       hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
       required: value['required'] === 'Yes',
       desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined,
-      disabled:
-        value['disabled'] === true
-          ? (this.datePickerConfig.disabled = true)
-          : (this.datePickerConfig.disabled = false)
     };
-  }
+  };
 
   /**
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
     if (
-      !this.form_datePicker.get(this.datePickerConfig.id)?.touched &&
-      error !== 'None'
+      !this.form_datePicker.get(this.datePickerConfig.id)?.touched && error === 'Yes'
     ) {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
       this.form_datePicker
@@ -290,6 +284,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       this.errorState = error;
       this.datePickerConfigCodeView.errorMessages =
         this.datePickerConfig.errorMessages;
+      
     } else {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
       this.form_datePicker
@@ -303,11 +298,17 @@ export class DatePickerDocCodeComponent implements OnInit {
         ?.markAsUntouched();
     }
     this.parseCodeViewConfig();
-  }
+  };
+  
   /**
    * Toggle disabled state of input
    */
   private toggleDisabled(disabled: boolean) {
+
+    const datePickerYearControl = this.form_datePicker.controls['datePicker_yearControl'];
+    const datePickerMonthControl = this.form_datePicker.controls['datePicker_monthControl'];
+    const datePickerDayControl = this.form_datePicker.controls['datePicker_dayControl'];
+ 
     const datePickerControl: AbstractControl | null = this.form_datePicker.get(
       this.datePickerConfig.id
     );
@@ -319,10 +320,16 @@ export class DatePickerDocCodeComponent implements OnInit {
 
     if (disabled) {
       datePickerControl?.disable();
+      datePickerYearControl.disable();
+      datePickerMonthControl.disable();
+      datePickerDayControl.disable();
     } else {
       datePickerControl?.enable();
+      datePickerYearControl.enable();
+      datePickerMonthControl.enable();
+      datePickerDayControl.enable();
     }
-  }
+  };
 
   private parseCodeViewConfig() {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
@@ -334,7 +341,6 @@ export class DatePickerDocCodeComponent implements OnInit {
       hint: this.datePickerConfig.hint,
       required: this.datePickerConfig.required,
       desc: this.datePickerConfig.desc,
-      disabled: this.datePickerConfig.disabled,
       errorMessages: undefined,
       unknownDateToggle: this.datePickerConfig.unknownDateToggle
     };
