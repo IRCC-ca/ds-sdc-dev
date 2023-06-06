@@ -146,7 +146,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
     //set config from individual options, if present
     if (this.formGroup) this.config.formGroup = this.formGroup;
-    if (this.id) this.config.id = this.id;
+    if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
     if (this.desc) this.config.desc = this.desc;
