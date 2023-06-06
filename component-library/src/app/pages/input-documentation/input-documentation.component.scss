@@ -224,8 +224,29 @@ span {
 }
 
 .usage-figma {
+  .row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
   ol {
     padding-left: 20px;
+    margin: 0px;
+
+    .list-item {
+      font-size: 14px;
+      @include typography.fontSet(body, 3, emphasis);
+    }
+  }
+
+  .figma-usage {
+    max-width: 547px;
+    margin-right: 20px;
+    flex-shrink: inherit;
+
+    @include device.in-tablet-layout() {
+      max-width: 444px;
+    }
   }
 
   .three-column-row {
