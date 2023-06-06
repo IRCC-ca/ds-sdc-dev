@@ -305,6 +305,7 @@ span {
   }
 
   .content-list {
+    @include typography.fontSet(body, 3, regular);
     margin-top: 12px;
     margin-bottom: 24px;
     padding: 0 20px;
