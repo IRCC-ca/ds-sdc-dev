@@ -61,8 +61,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     id: '',
     formGroup: new FormGroup({})
   };
-  @Input() id: string = '';
-  @Input() formGroup: FormGroup;
+  @Input() id?: string = '';
+  @Input() formGroup?: FormGroup;
   @Input() size?: keyof typeof DSSizes;
   @Input() label?: string;
   @Input() desc?: string;
