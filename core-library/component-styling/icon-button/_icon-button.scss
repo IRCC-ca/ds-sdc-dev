@@ -32,15 +32,25 @@
   }
 }
 
-@mixin critical-lg {
+@mixin lg {
+  > span {
+    width: 24px;
+    height: 24px;
+  }
+
   svg {
-    width: 21px;
+    height: 24px;
   }
 }
 
-@mixin critical-sm {
+@mixin sm {
+  > span {
+    width: 20px;
+    height: 20px;
+  }
+
   svg {
-    width: 18px;
+    height: 20px;
   }
 }
 
@@ -73,27 +83,13 @@
     &.large {
       padding: 10px;
 
-      > span {
-        width: 24px;
-        height: 24px;
-      }
-
-      svg {
-        height: 24px;
-      }
+      @include lg;
     }
 
     &.small {
       padding: 10px;
 
-      > span {
-        width: 20px;
-        height: 20px;
-      }
-
-      svg {
-        height: 20px;
-      }
+      @include sm;
     }
 
     &.extraSmall {
@@ -109,34 +105,19 @@
       }
     }
 
+
+    @include size.select(large) {
+      @include lg;
+    }
+
+    @include size.select(small) {
+      @include sm;
+    }
+
     &.primary {
       // If SVG shows up blurry, slightly lower height to achieve optimal result
       &.large {
         @include primary-lg;
-      }
-    }
-
-    &.custom {
-      &.large {
-        @include primary-lg;
-      }
-
-      &.small {
-        @include primary-sm;
-      }
-
-      &.extraSmall {
-        svg {
-          width: 10px;
-        }
-      }
-
-      @include size.select(large) {
-        @include primary-lg;
-      }
-
-      @include size.select(small) {
-        @include primary-sm;
       }
     }
   }
