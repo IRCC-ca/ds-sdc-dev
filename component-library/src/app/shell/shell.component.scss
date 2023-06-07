@@ -112,7 +112,7 @@ $mobile-padding: 16px;
       width: 100%;
 
       .version {
-        margin: 14px 0 10px 0;
+        margin: 0;
         @include typography.fontSet(body, 3, regular);
       }
 
