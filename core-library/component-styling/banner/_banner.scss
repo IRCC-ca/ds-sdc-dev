@@ -97,7 +97,7 @@
 }
 
 @mixin layout {
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {
@@ -105,7 +105,7 @@
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
@@ -208,8 +208,12 @@
   }
 
   @keyframes fadeout {
-    0% { opacity: 1 };
-    100% { opacity: 0 };
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 
   .noDisplay {

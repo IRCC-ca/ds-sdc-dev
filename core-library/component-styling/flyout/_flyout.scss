@@ -9,14 +9,14 @@
 @use "../../util/accessibility" as a11y;
 @use "sass:map";
 
-@mixin selectors {
+@mixin selector {
   ircc-cl-lib-flyout#{template-const.$escape} {
     @content;
   }
 }
 
 @mixin create {
-  @include selectors() {
+  @include selector() {
     @include layout();
   }
 }
@@ -74,14 +74,14 @@
     }
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles;
     .small {
       @include small-styles;
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles;
     .large {
       @include large-styles;

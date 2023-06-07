@@ -10,12 +10,17 @@
     "deploy-build": "cd component-library/component-lib && ng build ircc-ds-angular-component-library && cd .. && ng build",
     "deploy-qa-to-s3": "node ./deploy-qa-to-s3.js",
     "prepare": "husky install",
-    "compodoc": "npx compodoc -p tsconfig.doc.json -s"
+    "compodoc": "npx compodoc -p tsconfig.doc.json -s",
+    "translations:toJson": "cd component-library && node ./src/assets/locales/ngx-translation-extract.js -r -i src/assets/locales/DS-Strings.txt -l en,fr -o src/assets/locales",
+    "translations:toText": "cd component-library && node src/assets/locales/ngx-translation-extract.js -l en,fr -i src/assets/locales/ -o src/assets/locales/DS-Strings.txt --clean ",
+    "translations:extract": "cd component-library && ngx-translate-extract --input ./src --output ./src/assets/locales/en.json ./src/assets/locales/fr.json --clean --sort --format namespaced-json --marker _"
   },
   "type": "module",
   "devDependencies": {
     "@compodoc/compodoc": "^1.1.19",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "fast-csv": "~4.3.6",
+    "dot-object": "~2.1.4"
   },
   "dependencies": {
     "@angular/cli": "^14.2.11",

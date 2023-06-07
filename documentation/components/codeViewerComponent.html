@@ -964,14 +964,14 @@ export class codeViewerComponent implements OnInit {
 @use &#x27;sass:map&#x27;;
 $selectors: &#x27;app-code-viewer&#x27;;
 
-@mixin selectors {
+@mixin selector {
   #{$selectors}#{template-const.$escape} {
     @content;
   }
 }
 
 @mixin create {
-  @include selectors() {
+  @include selector() {
     @include layout();
   }
 }

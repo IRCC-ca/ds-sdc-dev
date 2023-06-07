@@ -10,7 +10,6 @@
     "test": "npm run write:env -s && ng test",
     "test:ci": "npm run write:env -s && npm run lint -s && ng run component-library:test:ci",
     "e2e": "npm run write:env -s && ng e2e",
-    "translations:extract": "ngx-translate-extract --input ./src --output ./src/translations/template.json --format=json --clean --sort",
     "docs": "hads ./docs -o",
     "write:env": "ngx-scripts env npm_package_version",
     "generate": "ng generate",

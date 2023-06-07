@@ -243,7 +243,7 @@ $color: grey, red, orange, blue, green, purple, teal, navy;
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include size-sm();
 
     .large {
@@ -251,7 +251,7 @@ $color: grey, red, orange, blue, green, purple, teal, navy;
     }
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-lg();
 
     .small {

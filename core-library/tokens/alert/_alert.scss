@@ -3,16 +3,13 @@
 @use "../../util/color";
 @use "../template-const";
 
-@mixin create(
-  $palette: (
-    neutral,
+@mixin create($palette: (neutral,
     critical,
     success,
     information,
     warning,
     primary,
-  )
-) {
+  )) {
   @at-root {
     #{template-const.$root-selectors} {
       @each $key in $palette {
@@ -24,22 +21,28 @@
 
 @mixin tokens($palette) {
   @include theme.light() {
-    @if $palette == neutral {
+    @if $palette ==neutral {
       --#{$palette}-alert-background: #{color.mix-token($palette, 200)};
-    } @else {
+    }
+
+    @else {
       --#{$palette}-alert-background: #{color.mix-token($palette, 100)};
     }
+
     --#{$palette}-alert-border: #{color.mix-token($palette, 700)};
     --#{$palette}-alert-icon: #{color.mix-token($palette, 800)};
   }
 
   @include theme.dark() {
-    @if $palette == neutral {
-      --#{$palette}-alert-background: #{color.mix-token($palette, 200)};
-    } @else {
-      --#{$palette}-alert-background: #{color.mix-token($palette, 100)};
+    @if $palette ==neutral {
+      --#{$palette}-alert-background: #{color.mix-token($palette, 1100)};
     }
-    --#{$palette}-alert-border: #{color.mix-token($palette, 700)};
-    --#{$palette}-alert-icon: #{color.mix-token($palette, 800)};
+
+    @else {
+      --#{$palette}-alert-background: #{color.mix-token($palette, 1200)};
+    }
+
+    --#{$palette}-alert-border: #{color.mix-token($palette, 600)};
+    --#{$palette}-alert-icon: #{color.mix-token($palette, 500)};
   }
 }

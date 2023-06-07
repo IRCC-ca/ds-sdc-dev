@@ -106,11 +106,11 @@
         }
       }
 
-      @include size.selector(large) {
+      @include size.select(large) {
         @include primary-lg;
       }
 
-      @include size.selector(small) {
+      @include size.select(small) {
         @include primary-sm;
       }
     }
@@ -124,11 +124,11 @@
         @include critical-sm;
       }
 
-      @include size.selector(large) {
+      @include size.select(large) {
         @include critical-lg;
       }
 
-      @include size.selector(small) {
+      @include size.select(small) {
         @include critical-sm;
       }
     }
@@ -148,11 +148,11 @@
         }
       }
 
-      @include size.selector(large) {
+      @include size.select(large) {
         @include primary-lg;
       }
 
-      @include size.selector(small) {
+      @include size.select(small) {
         @include primary-sm;
       }
     }
