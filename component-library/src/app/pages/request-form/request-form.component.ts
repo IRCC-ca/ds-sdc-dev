@@ -249,7 +249,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     private translate: TranslateService,
     private lang: LangSwitchService,
     private requestFormService: RequestFormService
-  ) { }
+  ) {}
   ngAfterViewInit(): void {
     /**
      * Set local storage form data when form values change after init so we're not setting and getting at the same time
