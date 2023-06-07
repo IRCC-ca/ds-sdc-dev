@@ -42,6 +42,14 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     baseUrlKey: '',
     type: 'href'
   };
+
+  @Input() id? = '';
+  @Input() size?: keyof typeof DSSizes;
+  @Input() type?: keyof typeof LinkType;
+  // Translation key of base url segment
+  @Input() baseUrlKey?: string;
+
+
   baseUrl = '';
   separatorIcon: IIconButtonComponentConfig = {
     id: 'breadcrumb_separator',
@@ -70,6 +78,12 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   ) {}
 
   ngOnInit() {
+    //set config from individual options, if present
+    if(this.id && this.id !== '') this.config.id = this.id;
+    if(this.size) this.config.size = this.size;
+    if(this.type) this.config.type = this.type;
+    if(this.baseUrlKey) this.config.baseUrlKey = this.baseUrlKey
+
     this.createLinks();
     this.separatorIcon.size = this.config.size;
     this.maxHeight = this.getMaxHeight();
