@@ -50,7 +50,6 @@ export class LabelComponent implements OnInit {
   @Input() topLabel?: string;
   @Input() touched?: boolean;
 
-
   labelIconText = '';
 
   constructor(
