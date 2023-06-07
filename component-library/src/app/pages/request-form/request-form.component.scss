@@ -1,4 +1,5 @@
 @use "../../../../../core-library/util/device" as device;
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -23,6 +24,7 @@ h3 {
 .body1.intro {
   margin-top: 0px;
   margin-bottom: 24px;
+  @include typography.fontSet(body, 1, regular);
 }
 
 .body3.subtext-1 {
