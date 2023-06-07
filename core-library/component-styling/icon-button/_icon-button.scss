@@ -22,13 +22,13 @@
 
 @mixin primary-lg {
   svg {
-    width: 15px;
+    height: 23px;
   }
 }
 
 @mixin primary-sm {
   svg {
-    width: 13px;
+    height: 20px;
   }
 }
 
@@ -64,11 +64,21 @@
       justify-content: center;
     }
 
+    #ds-icon-container {
+      > span {
+        display: flex;
+      }
+    }
+
     &.large {
       padding: 10px;
 
       > span {
         width: 24px;
+        height: 24px;
+      }
+
+      svg {
         height: 24px;
       }
     }
@@ -80,6 +90,10 @@
         width: 20px;
         height: 20px;
       }
+
+      svg {
+        height: 20px;
+      }
     }
 
     &.extraSmall {
@@ -89,47 +103,16 @@
         width: 16px;
         height: 16px;
       }
+
+      svg {
+        height: 16px;
+      }
     }
 
     &.primary {
+      // If SVG shows up blurry, slightly lower height to achieve optimal result
       &.large {
         @include primary-lg;
-      }
-
-      &.small {
-        @include primary-sm;
-      }
-
-      &.extraSmall {
-        svg {
-          width: 10px;
-        }
-      }
-
-      @include size.select(large) {
-        @include primary-lg;
-      }
-
-      @include size.select(small) {
-        @include primary-sm;
-      }
-    }
-
-    &.critical {
-      &.large {
-        @include critical-lg;
-      }
-
-      &.small {
-        @include critical-sm;
-      }
-
-      @include size.select(large) {
-        @include critical-lg;
-      }
-
-      @include size.select(small) {
-        @include critical-sm;
       }
     }
 
