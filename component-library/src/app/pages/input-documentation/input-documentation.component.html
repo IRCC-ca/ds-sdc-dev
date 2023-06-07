@@ -235,6 +235,9 @@
       src="assets/img/input-content/input-specs.png"
       alt="{{ 'Input.SpecsImgAlt' | translate }}"
     />
+    <p class="body3 specsDesc">
+      {{ 'Input.SpecsImgDesc' | translate }}
+    </p>
   </section>
 
   <section class="content-guidelines">
@@ -329,7 +332,7 @@
     </div>
 
     <h5 class="subtitles">{{ 'Input.WritePlaceholderHeading' | translate }}</h5>
-    <p class="body3 subtext-1">
+    <p class="body3 subtext-3">
       {{ 'Input.WritePlaceholderSubHeading' | translate }}
     </p>
     <div class="row">
@@ -386,7 +389,7 @@
     </div>
 
     <h5 class="subtitles">{{ 'Input.WriteErrorsHeading' | translate }}</h5>
-    <p class="body3 subtext-1">
+    <p class="body3 subtext-3">
       {{ 'Input.WriteErrorsSubHeading' | translate }}
     </p>
     <div class="row">
@@ -473,35 +476,35 @@
     </div>
   </section>
 
-  <section class="usage-figma">
+  <section class="figma-usage">
     <app-title-slug-url
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
-    <div class="row">
-      <div class="figma-usage">
+    <div class="figma-row">
+      <div class="column-1">
         <h5 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h5>
-        <ol>
+        <ol class="figma-list">
           <li
-            class="body3"
+            class="list-item"
             [innerHTML]="'Input.FigmaDirectionsListItem1' | translate"
           ></li>
           <li
-            class="body3"
+            class="list-item"
             [innerHTML]="'Input.FigmaDirectionsListItem2' | translate"
           ></li>
           <li
-            class="body3"
+            class="list-item"
             [innerHTML]="'Input.FigmaDirectionsListItem3' | translate"
           ></li>
           <li
-            class="body3"
+            class="list-item"
             [innerHTML]="'Input.FigmaDirectionsListItem4' | translate"
           ></li>
         </ol>
       </div>
-      <div class="image-1 image-container-1">
+      <div class="column-2 image-1">
         <img
           src="assets/img/input-content/figma-usage-1.png"
           alt="{{ 'Input.FigmaDirectionsImgAlt' | translate }}"
@@ -515,11 +518,11 @@
         </h5>
         <ol>
           <li
-            class="body3"
+            class="list-item"
             [innerHTML]="'Input.AccessInputsListItem1' | translate"
           ></li>
           <li
-            class="body3"
+            class="list-item"
             [innerHTML]="'Input.AccessInputsListItem2' | translate"
           ></li>
         </ol>
@@ -559,42 +562,21 @@
     <h5 class="h5 emphasis subtitles">
       {{ 'Input.AccessibilityContentHeading' | translate }}
     </h5>
-    <ul>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem1' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem2' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem3' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem4' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem5' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem6' | translate"
-        class="body3"
-      ></li>
-      <li
-        [innerHtml]="'Input.AccessibilityContentItem7' | translate"
-        class="body3"
-      ></li>
+    <ul class="content-list">
+      <li [innerHtml]="'Input.AccessibilityContentItem1' | translate"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
+      <li [innerHtml]="'Input.AccessibilityContentItem7' | translate"></li>
     </ul>
-    <h5 class="h5 emphasis subtitles">
+    <h5 class="validation-heading">
       {{ 'General.Validation' | translate }}
     </h5>
-    <ul>
+    <ul class="validation-list">
       <li
-        class="body3 subtext-1"
+        class="body3 last"
         [innerHtml]="'Input.AccessibilityValidationText' | translate"
       ></li>
     </ul>
@@ -603,6 +585,6 @@
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p class="body3 subtext-1">{{ 'General.ComingSoon' | translate }}</p>
+    <p class="body3">{{ 'General.ComingSoon' | translate }}</p>
   </section>
 </div>

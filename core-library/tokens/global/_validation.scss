@@ -15,46 +15,55 @@
 
 @mixin tokens($palette) {
     @include theme.light() {
-        @if $palette == neutral {
+        @if $palette ==neutral {
             --#{$palette}-background-weak: #{color.mix-token($palette, 200)};
             --#{$palette}-background-weak-active: #{color.mix-token($palette, 400)};
             --#{$palette}-background-weak-hover: #{color.mix-token($palette, 300)};
             --#{$palette}-background-weak-disabled: #{color.mix-token($palette, 200, 0.5)};
-        } @else {
+        }
+
+        @else {
             --#{$palette}-background-weak: #{color.mix-token($palette, 100)};
             --#{$palette}-background-weak-active: #{color.mix-token($palette, 300)};
             --#{$palette}-background-weak-hover: #{color.mix-token($palette, 200)};
             --#{$palette}-background-weak-disabled: #{color.mix-token($palette, 100, 0.5)};
         }
+
         --#{$palette}-background: #{color.mix-token($palette, 700)};
         --#{$palette}-background-active: #{color.mix-token($palette, 900)};
         --#{$palette}-background-disabled: #{color.mix-token($palette, 300)};
         --#{$palette}-border: #{color.mix-token($palette, 700)};
         --#{$palette}-border-disabled: #{color.mix-token($palette, 300)};
         --#{$palette}-text: #{color.mix-token($palette, 900)};
+
         @media (any-hover: hover) {
             --#{$palette}-background-hover: #{color.mix-token($palette, 800)};
             --#{$palette}-border-hover: #{color.mix-token($palette, 800)};
         }
     }
+
     @include theme.dark() {
-        @if $palette == neutral {
+        @if $palette ==neutral {
             --#{$palette}-background-weak: #{color.mix-token($palette, 1100)};
             --#{$palette}-background-weak-active: #{color.mix-token($palette, 900)};
             --#{$palette}-background-weak-hover: #{color.mix-token($palette, 1000)};
             --#{$palette}-background-weak-disabled: #{color.mix-token($palette, 1100, 0.5)};
-        } @else {
+        }
+
+        @else {
             --#{$palette}-background-weak: #{color.mix-token($palette, 1200)};
             --#{$palette}-background-weak-active: #{color.mix-token($palette, 1000)};
             --#{$palette}-background-weak-hover: #{color.mix-token($palette, 1100)};
             --#{$palette}-background-weak-disabled: #{color.mix-token($palette, 1200, 0.5)};
-            }
+        }
+
         --#{$palette}-background: #{color.mix-token($palette, 600)};
         --#{$palette}-background-active: #{color.mix-token($palette, 400)};
         --#{$palette}-background-disabled: #{color.mix-token($palette, 1000)};
         --#{$palette}-border: #{color.mix-token($palette, 600)};
         --#{$palette}-border-disabled: #{color.mix-token($palette, 1000)};
-        --#{$palette}-text: #{color.mix-token($palette, 400)};
+        --#{$palette}-text: #{color.mix-token($palette, 500)};
+
         @media (any-hover: hover) {
             --#{$palette}-background-hover: #{color.mix-token($palette, 500)};
             --#{$palette}-border-hover: #{color.mix-token($palette, 500)};
