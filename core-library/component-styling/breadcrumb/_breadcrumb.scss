@@ -217,7 +217,7 @@
     position: absolute;
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include size-sm();
 
     .large {
@@ -225,7 +225,7 @@
     }
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-lg();
 
     .small {

@@ -1,32 +1,31 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../template-const' as template-const;
-@use '../sizes' as sizes;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "../sizes" as sizes;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
 
 @mixin common {
-    width: 100%;
-    border-style: solid;
-    border-width: sizes.$fixed-1;
-    border-radius: sizes.$border-radius;
-    color: var(--text-primary);
+  width: 100%;
+  border-style: solid;
+  border-width: sizes.$fixed-1;
+  border-radius: sizes.$border-radius;
+  color: var(--text-primary);
 
-    @include size.selector(small) {
-        @extend .body3;
-    }
+  @include size.select(small) {
+    @extend .body3;
+  }
 
-    @include size.selector(large) {
-        @extend .body2;
-    }
+  @include size.select(large) {
+    @extend .body2;
+  }
 
-    &:focus {
-        outline-width: sizes.$fixed-2;
-        outline-offset: sizes.$fixed-2;
-    }
+  &:focus {
+    outline-width: sizes.$fixed-2;
+    outline-offset: sizes.$fixed-2;
+  }
 
-    &::placeholder {
-        color: var(--text-placeholder);
-    }
-    
+  &::placeholder {
+    color: var(--text-placeholder);
+  }
 }
