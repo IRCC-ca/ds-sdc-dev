@@ -116,7 +116,6 @@ export class BannerComponent implements OnInit {
     if (this.size) this.config.size = this.size;
     if (this.ariaDissmissible) this.config.ariaDissmissible = this.ariaDissmissible;
 
-
     this.iconConfig.id = this.config?.id + '_closeBtn';
     this.textId = this.config?.id + '_text';
 
