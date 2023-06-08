@@ -1,23 +1,23 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
 @use "../../util/accessibility" as a11y;
-@use 'sass:map';
+@use "sass:map";
 
 @mixin selector {
   ircc-cl-lib-input#{template-const.$escape} {
-      @content;
+    @content;
   }
 }
 
 @mixin create {
   @include selector() {
-      @include layout();
+    @include layout();
   }
 }
 
@@ -41,13 +41,13 @@
 
 @mixin size-small() {
   .input-password-field {
-    padding: 10px 44px 10px 12px; 
+    padding: 10px 44px 10px 12px;
     margin-top: 4px;
     height: 42px;
   }
 
   .input-text-field {
-    padding: 10px 12px 10px 12px; 
+    padding: 10px 12px 10px 12px;
     margin-top: 4px;
     height: 42px;
   }
@@ -63,26 +63,25 @@
 }
 
 @mixin layout {
-
   .input-container {
     user-select: none;
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-large();
     .small {
-      @include size-small()
+      @include size-small();
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include size-small();
     .large {
-      @include size-large()
+      @include size-large();
     }
   }
 
-  .input-content-area{
+  .input-content-area {
     position: relative;
     .input-password-field {
       box-sizing: border-box;
@@ -102,21 +101,24 @@
       align-self: flex-end;
       margin-bottom: 0px;
       background: transparent;
-      z-index: 1;
+      z-index: 10;
       color: var(--text-primary);
     }
 
     button:disabled {
       color: var(--text-disabled);
     }
-
   }
 
   .check-error {
     padding: 8px 0;
   }
 
+  .input-wrapper {
+    padding: 0 3px 0 0;
+  }
+
   .sr-only {
-      @include a11y.sr-only;
+    @include a11y.sr-only;
   }
 }

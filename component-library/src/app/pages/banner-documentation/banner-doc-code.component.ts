@@ -91,14 +91,14 @@ export class BannerDocCodeComponent implements OnInit {
       id: 'showSizeToggle',
       formGroup: this.form_interactive_banner,
       size: 'small',
-      label: 'Banner.BannerConfig.SizeLabel',
+      label: 'General.Size',
       options: [
         {
-          text: 'Banner.BannerConfig.SmallLabel',
+          text: 'General.Small',
           value: 'Small'
         },
         {
-          text: 'Banner.BannerConfig.LargeLabel',
+          text: 'General.Large',
           value: 'Large'
         }
       ]
@@ -440,6 +440,19 @@ export class BannerDocCodeComponent implements OnInit {
   }
 
   /**
+   * Sets dismissable to true or false and sets ariaDismissable respectively based on radio selection
+   */
+  handleCloseToggle(value: any) {
+    if (value['showCloseToggle'] === 'True') {
+      this.bannerConfig.dismissible = true;
+      this.bannerConfig.ariaDissmissible = 'close';
+    } else {
+      this.bannerConfig.dismissible = false;
+      this.bannerConfig.ariaDissmissible = '';
+    }
+  }
+
+  /**
    * Return mapping of input config from form values
    */
   private parseToggleConfig(value: any): IBannerConfig {
@@ -454,8 +467,7 @@ export class BannerDocCodeComponent implements OnInit {
         value['showDescToggle'] === 'True'
           ? (this.bannerConfig.content =
               'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.')
-          : '',
-      dismissible: value['showCloseToggle'] === 'True' ? true : false
+          : ''
     };
   }
 
@@ -496,7 +508,9 @@ export class BannerDocCodeComponent implements OnInit {
     this.form_interactive_banner.valueChanges.subscribe((value: any) => {
       this.handlePrimaryButtonToggle(value);
       this.handlePlainButtonToggle(value);
-      this.handleSecondaryButtonToggle(value), this.handleLinkToggle(value);
+      this.handleSecondaryButtonToggle(value);
+      this.handleLinkToggle(value);
+      this.handleCloseToggle(value);
       this.bannerConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });

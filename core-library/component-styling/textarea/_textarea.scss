@@ -1,13 +1,12 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
-@use "../../util/accessibility" as a11y;
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
 
 @mixin selector {
   ircc-cl-lib-textarea#{template-const.$escape} {
@@ -22,10 +21,9 @@
 }
 
 @mixin size-large() {
-
   .textarea-field {
     min-height: 78px;
-    padding: 14px 16px 14px 20px; 
+    padding: 14px 16px 14px 20px;
     margin-top: 8px;
     font-size: 16px;
     line-height: 24px;
@@ -39,10 +37,9 @@
 }
 
 @mixin size-small() {
-
   .textarea-field {
     min-height: 62px;
-    padding: 10px 16px 10px 14px; 
+    padding: 10px 16px 10px 14px;
     margin-top: 4px;
     font-size: 14px;
     line-height: 20px;
@@ -60,7 +57,7 @@
 }
 
 @mixin at-resize($value: none) {
-  .resize-#{$value}{
+  .resize-#{$value} {
     textarea {
       resize: $value;
     }
@@ -68,18 +65,17 @@
 }
 
 @mixin layout {
-
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-large();
     .small {
-        @include size-small()
+      @include size-small();
     }
   }
-    
-  @include size.selector(small) {
+
+  @include size.select(small) {
     @include size-small();
     .large {
-      @include size-large()
+      @include size-large();
     }
   }
 
@@ -100,17 +96,14 @@
         color: var(--warning-text);
       }
 
-
       textarea {
         display: block;
         box-sizing: border-box;
 
         &:disabled {
-
           &::placeholder {
-            color: var(--text-disabled)
+            color: var(--text-disabled);
           }
-
         }
       }
     }

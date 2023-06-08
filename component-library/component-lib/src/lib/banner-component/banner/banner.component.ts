@@ -52,9 +52,11 @@ export class BannerComponent implements OnInit {
   lineVisible = true;
   textId = '';
 
-  @Input() config?: IBannerConfig;
+  @Input() config: IBannerConfig = {
+    id: ''
+  };
   @Input() id?: string;
-  @Input() ariaDissmissible?: string = 'close';
+  @Input() ariaDissmissible?: string;
 
   @Output() btnEvent = new EventEmitter();
 
@@ -106,8 +108,14 @@ export class BannerComponent implements OnInit {
       });
     }
 
-    if (this.config && !this.config.ariaDissmissible) {
+    if (this.ariaDissmissible) {
       this.config.ariaDissmissible = this.ariaDissmissible;
+    }
+
+    if (!this.config.ariaDissmissible || this.config.ariaDissmissible === '') {
+      if (this.config.dismissible) {
+        this.config.ariaDissmissible = 'close';
+      }
     }
   }
 

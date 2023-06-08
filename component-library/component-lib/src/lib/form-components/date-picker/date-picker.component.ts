@@ -78,6 +78,7 @@ export interface IDatePickerConfig {
   maxYear?: number;
   minYear?: number;
   unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
+  disabled?: boolean;
 }
 
 export interface IDatePickerUnknownDateToggleConfig {
@@ -127,6 +128,7 @@ export class DatePickerComponent implements OnInit {
   @Input() maxYear?: number;
   @Input() minYear?: number;
   @Input() unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
+  @Input() disabled?: boolean;
 
   errorIds: IErrorIDs[] = [];
   days: number[] = [];
@@ -145,7 +147,8 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true
+      disableError: true,
+      disabled: false
     },
     month: {
       id: '',
@@ -153,7 +156,8 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true
+      disableError: true,
+      disabled: false
     },
     year: {
       id: '',
@@ -161,7 +165,8 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true
+      disableError: true,
+      disabled: false
     }
   };
 
@@ -222,6 +227,12 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.day.topLabel = this.config.label;
     this.dropDownConfigs.month.topLabel = this.config.label;
     this.dropDownConfigs.year.topLabel = this.config.label;
+
+    if (this.config.disabled) {
+      this.dropDownConfigs.day.disabled = true;
+      this.dropDownConfigs.month.disabled = true;
+      this.dropDownConfigs.year.disabled = true;
+    }
 
     if (this.config.errorMessages?.general) {
       this.errorIds = this.standAloneFunctions.getErrorIds(

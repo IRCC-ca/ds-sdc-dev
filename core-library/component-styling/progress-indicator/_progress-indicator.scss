@@ -22,146 +22,149 @@
 }
 
 @mixin large-styles() {
-    button.tags-btn {
-        @include typography.fontSet(body, 3, regular);
-        &:where([selected])::after {
-            transform: translateY(sizes.$fixed-0);
-        }
-    }
-    button.tags-btn-plus {
-        @include typography.fontSet(body, 3, regular); 
-        padding-bottom: 4px;
-    }
-    .stepTitle {
-        @include typography.fontSet(heading, 5, regular);
-        margin-bottom: 8px;
+  button.tags-btn {
+    @include typography.fontSet(body, 3, regular);
+    &:where([selected])::after {
+      transform: translateY(sizes.$fixed-0);
     }
   }
+  button.tags-btn-plus {
+    @include typography.fontSet(body, 3, regular);
+    padding-bottom: 4px;
+  }
+  .stepTitle {
+    @include typography.fontSet(heading, 5, regular);
+    margin-bottom: 8px;
+  }
+}
 
 @mixin small-styles() {
-    button.tags-btn {
-        @include typography.fontSet(body, 4, regular);
-        &:where([selected])::after {
-            transform: translateY(sizes.$fixed-0);
-        }
+  button.tags-btn {
+    @include typography.fontSet(body, 4, regular);
+    &:where([selected])::after {
+      transform: translateY(sizes.$fixed-0);
     }
-    button.tags-btn-plus {
-        @include typography.fontSet(body, 4, regular);
-        padding-bottom: 4px;
+  }
+  button.tags-btn-plus {
+    @include typography.fontSet(body, 4, regular);
+    padding-bottom: 4px;
+  }
+  .stepTitle {
+    @include typography.fontSet(heading, 6, regular);
+    margin-bottom: 4px;
+  }
+}
+
+@mixin layout {
+  .horizontal {
+    padding-top: 3.5px;
+    padding-left: 5.5px;
+    display: flex;
+    overflow-x: auto;
+    justify-content: space-between;
+    .container-plus-line {
+      width: 100%;
     }
-    .stepTitle {
-        @include typography.fontSet(heading, 6, regular);
-        margin-bottom: 4px;
+    .line {
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-bottom-color: var(--divider);
+      width: 100%;
+    }
+    .green-line {
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-bottom-color: var(--success-border);
+      width: 100%;
+    }
+  }
+  .vertical {
+    padding-top: 3.5px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    .container-plus-line {
+      height: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    .line {
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-left-color: var(--divider);
+      margin-right: 16px;
+      height: 100%;
+      justify-self: flex-start;
+    }
+    .green-line {
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-left-color: var(--success-border);
+      margin-right: 16px;
+    }
+  }
+  .container {
+    padding: 0;
+    margin-right: 16px;
+    margin-bottom: 16px;
+
+    .except-line {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    @include device.if-hover {
+      background: var(--generic-hover);
+      border-radius: 4px;
+      outline: 2px solid var(--generic-hover);
+      &:where([selected])::after {
+        background: var(--generic-hover);
+      }
+    }
+    &:active {
+      background: var(--generic-active);
+      border-radius: 4px;
+      outline: 2px solid var(--generic-active);
+      &:where([selected])::after {
+        background: var(--generic-active);
+      }
+    }
+    &:disabled {
+      background: var(--surface1);
+      outline: 2px solid var(--surface1);
+      .stepTitle {
+        color: var(--text-disabled);
+      }
+    }
+    &:focus {
+      border-radius: 4px;
     }
   }
 
-@mixin layout {
-    .horizontal {
-        padding-top: 3.5px;
-        padding-left: 5.5px;
-        display: flex;
-        overflow-x: auto;
-        justify-content: space-between;
-        .container-plus-line {
-            width: 100%;
-        }
-        .line {
-            border-bottom-style: solid;
-            border-bottom-width: 1px;
-            border-bottom-color: var(--divider);
-            width: 100%;
-        }
-        .green-line {
-            border-bottom-style: solid;
-            border-bottom-width: 1px;
-            border-bottom-color: var(--success-border);
-            width: 100%;
-        }
-    }
-    .vertical {
-        padding-top: 3.5px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        .container-plus-line {
-            height: 100%;
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-        }
-        .line {
-            border-left-style: solid;
-            border-left-width: 1px;
-            border-left-color: var(--divider);
-            margin-right: 16px;
-            height: 100%;
-            justify-self: flex-start;
-        }
-        .green-line {
-            border-left-style: solid;
-            border-left-width: 1px;
-            border-left-color: var(--success-border);
-            margin-right: 16px;
-        }
-    }
-    .container {
-        padding: 0;
-        margin-right: 16px;
-        margin-bottom: 16px;
+  button.tags-btn {
+    color: var(--text-secondary);
+    padding: 0 0 0 2px;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  button.tags-btn-plus {
+    color: var(--text-secondary);
+    padding: 0 0 0 2px;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  .stepTitle {
+    padding-left: 2px;
+    margin-top: 4px;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
 
-        .except-line {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-        }
-
-        @include device.if-hover {
-            background: var(--generic-hover);
-            border-radius: 4px;
-            outline: 2px solid var(--generic-hover);
-            &:where([selected])::after {
-                background: var(--generic-hover);
-            }
-        } &:active {
-            background: var(--generic-active);
-            border-radius: 4px;
-            outline: 2px solid var(--generic-active);
-            &:where([selected])::after {
-                background: var(--generic-active);
-            }
-        } &:disabled {
-            background: var(--surface1);
-            outline: 2px solid var(--surface1);
-            .stepTitle {
-                color: var(--text-disabled);
-            }
-        } &:focus {
-            border-radius: 4px;
-        }
-    }
-    
-    button.tags-btn {
-        color: var(--text-secondary);
-        padding: 0 0 0 2px;
-        background-color: transparent;
-        pointer-events: none;
-    }
-    button.tags-btn-plus {
-        color: var(--text-secondary);
-        padding: 0 0 0 2px;
-        background-color: transparent;
-        pointer-events: none;
-    }
-    .stepTitle {
-        padding-left: 2px;
-        margin-top: 4px;
-        color: var(--text-primary);
-        white-space: nowrap;
-    }
-
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {
@@ -169,11 +172,11 @@
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
       @include large-styles();
     }
-}
+  }
 }
