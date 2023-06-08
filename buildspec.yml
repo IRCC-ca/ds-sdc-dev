@@ -14,7 +14,7 @@ phases:
       - export LAST_MODIFIED_DATE=$(date -u +"%Y-%m-%d")
       - echo $LAST_MODIFIED_DATE
       - touch date-modified.json
-      - echo "{\"LASTDATEMODIFIED\":\"$LAST_MODIFIED_DATE\"}" >| date_modified.json
+      - printf "{\"LASTDATEMODIFIED\":\"$LAST_MODIFIED_DATE\"}" >| date_modified.json
       - echo `cat date-modified.json`
       - cd ..
       - cd ..
