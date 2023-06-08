@@ -1,4 +1,4 @@
-import  LASTDATEMODIFIED  from '../assets/date-modified.json';
+import LASTDATEMODIFIED from '../assets/date-modified.json';
 
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
