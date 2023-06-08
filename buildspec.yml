@@ -11,7 +11,7 @@ phases:
       - echo "Setting Date Modified"
       - cd component-library/src/assets
       - export LAST_MODIFIED_DATE=$(date +%Y-%m-%d)
-      - echo "{\"LASTDATEMODIFIED\": \"$LAST_MODIFIED_DATE\"}" > last_modified.json
+      - printf '{"LASTDATEMODIFIED":"%s"}' '\"$LAST_MODIFIED_DATE\"}' > last_modified.json
       - echo `cat date-modified.json`
       - cd ..
       - cd ..
