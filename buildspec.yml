@@ -9,8 +9,8 @@ phases:
   pre_build:
     commands:
       - echo "Setting Date Modified"
-      - rm -rfv date-modified.json
       - cd component-library/src/assets
+      - rm -rfv date-modified.json
       - export LAST_MODIFIED_DATE=$(date -u +"%Y-%m-%d")
       - echo $LAST_MODIFIED_DATE
       - echo "{\"LASTDATEMODIFIED\":\"$LAST_MODIFIED_DATE\"}" >| date_modified.json
