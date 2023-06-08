@@ -15,6 +15,7 @@ import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
 import { DisplayLanguages, Languages } from '../share/global-params';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
+import { environment } from '../../environments/environment'
 
 import {
   INavigationConfig,
@@ -31,6 +32,7 @@ import {
   styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent implements OnInit {
+  dateModified = environment.dateModified
   title = 'ds-sdc-doc';
   leftNavData: ISideNavDataInterface[];
   mobile = false;

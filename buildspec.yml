@@ -8,6 +8,12 @@ phases:
       - echo '-k' > ~/.curlrc
   pre_build:
     commands:
+      - echo "Setting Date Modified"
+      - cd component-library/src/assets
+      - export LAST_MODIFIED_DATE=$(date +%Y-%m-%d)
+      - echo "{\"LASTDATEMODIFIED\": \"$LAST_MODIFIED_DATE\"}" > date-modified.json
+      - cd ..
+      - cd ..
       - echo installing dependencies...
       - n 16.16.0
       - npm i -g @angular/cli@14.1.3
