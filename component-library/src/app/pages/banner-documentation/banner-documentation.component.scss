@@ -84,6 +84,7 @@ p {
   }
   .text-underline {
     border-bottom: 1px solid;
+    padding-bottom: 4px;
   }
   .text-color-green {
     color: var(--success-text);
@@ -127,7 +128,7 @@ p {
 
     .round-purple-num-heading-text {
       display: inline-block;
-      margin: 0 0 8px 8px;
+      margin: 0 0 2px 8px;
       position: relative;
       top: 2px;
     }
@@ -135,11 +136,15 @@ p {
       color: var(--purple-9);
       font-weight: 700;
       background-color: var(--purple-2);
-      padding: 9px 15px;
       border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
     }
     .conter-and-heading-container {
-      margin: 0 0 8px 0;
+      margin: 0 0 6px 0;
+      display: inline-flex;
     }
     .anatomy-description {
       margin: 0px;

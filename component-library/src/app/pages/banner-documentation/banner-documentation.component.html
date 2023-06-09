@@ -21,7 +21,7 @@
       </h5>
       <app-component-preview
         class="component-preview"
-        copyText="<ircc-cl-lib-banner type='info'></ircc-cl-lib-banner>"
+        copyStyle="<ircc-cl-lib-banner type='info'></ircc-cl-lib-banner>"
         componentType="banner"
         backgroundColor="white"
       >
@@ -42,7 +42,7 @@
       </h5>
       <app-component-preview
         class="component-preview"
-        copyText="<ircc-cl-lib-banner type='warning'></ircc-cl-lib-banner>"
+        copyStyle="<ircc-cl-lib-banner type='warning'></ircc-cl-lib-banner>"
         componentType="banner"
         backgroundColor="white"
       >
@@ -63,7 +63,7 @@
       </h5>
       <app-component-preview
         class="component-preview"
-        copyText="<ircc-cl-lib-banner type='critical'></ircc-cl-lib-banner>"
+        copyStyle="<ircc-cl-lib-banner type='critical'></ircc-cl-lib-banner>"
         componentType="banner"
         backgroundColor="white"
       >
@@ -84,7 +84,7 @@
       </h5>
       <app-component-preview
         class="component-preview"
-        copyText="<ircc-cl-lib-banner type='success'></ircc-cl-lib-banner>"
+        copyStyle="<ircc-cl-lib-banner type='success'></ircc-cl-lib-banner>"
         componentType="banner"
         backgroundColor="white"
       >
@@ -105,7 +105,7 @@
       </h5>
       <app-component-preview
         class="component-preview"
-        copyText="<ircc-cl-lib-banner type='generic'></ircc-cl-lib-banner>"
+        copyStyle="<ircc-cl-lib-banner type='generic'></ircc-cl-lib-banner>"
         componentType="banner"
         backgroundColor="white"
       >
@@ -362,7 +362,7 @@
             <img
               src="assets/img/banner-content/banner-button-count-dont.png"
               alt="{{
-                'Banner.DesignGuideLines.bannerButtonCountDoAlt' | translate
+                'Banner.DesignGuideLines.bannerButtonCountDontAlt' | translate
               }}"
             />
             <div class="do-dont-container">
@@ -373,7 +373,8 @@
               </h5>
               <p>
                 {{
-                  'Banner.DesignGuideLines.bannerButtonCountDoText' | translate
+                  'Banner.DesignGuideLines.bannerButtonCountDontText'
+                    | translate
                 }}
               </p>
             </div>
@@ -506,7 +507,7 @@
     <ng-container *ngFor="let content of anatomyContentItems; let i = index">
       <div class="anatomy-content-container">
         <div class="conter-and-heading-container">
-          <span class="round-purple-num-count">{{ i + 1 }}</span>
+          <div class="round-purple-num-count">{{ i + 1 }}</div>
           <h5 class="round-purple-num-heading-text">
             <strong>{{ content.title | translate }}</strong>
           </h5>
