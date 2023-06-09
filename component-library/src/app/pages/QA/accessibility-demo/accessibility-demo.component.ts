@@ -143,8 +143,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     desc: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.DESC',
     labelIconConfig: {
       iconClass: 'fa-light fa-circle-info',
-      ariaText:
-        'ACC_DEMO.MORE_INFO'
+      ariaText: 'ACC_DEMO.MORE_INFO'
     },
     errorMessages: [
       {
@@ -176,8 +175,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     label: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL',
     labelIconConfig: {
       iconClass: 'fa-light fa-circle-info',
-      ariaText:
-        'ACC_DEMO.MORE_INFO'
+      ariaText: 'ACC_DEMO.MORE_INFO'
     },
     options: [
       {
