@@ -52,7 +52,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
   };
 
   requestFormTitleSlugConfig: slugTitleURLConfig = {
-    title: 'RequestForm.RequestFormTitle',
+    title: 'General.RequestFormTitle',
     anchorType: slugAnchorType.primary
   };
 
@@ -88,7 +88,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'RequestForm.requiredRadioError'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ],
     size: 'small',
@@ -103,18 +103,18 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     required: true,
     options: [
       {
-        text: 'RequestForm.urgentOption1',
+        text: 'General.Yes',
         value: 'Y'
       },
       {
-        text: 'RequestForm.urgentOption2',
+        text: 'General.No',
         value: 'N'
       }
     ],
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'RequestForm.requiredRadioError'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ],
     size: 'small',
@@ -134,11 +134,11 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'RequestForm.requiredTextAreaError'
+        errorLOV: 'ERROR.requiredTextAreaError'
       },
       {
         key: 'maxLength',
-        errorLOV: 'RequestForm.fieldExceededMaxLength'
+        errorLOV: 'ERROR.fieldExceededMaxLength'
       }
     ]
     // errorIcon?: IErrorIconConfig;
@@ -155,11 +155,11 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'RequestForm.requiredTextAreaError'
+        errorLOV: 'ERROR.requiredTextAreaError'
       }
       // {
       //   key: 'maxLength',
-      //   errorLOV: 'RequestForm.fieldExceededMaxLength'
+      //   errorLOV: 'ERROR.fieldExceededMaxLength'
       // }
     ]
     // errorIcon?: IErrorIconConfig;
@@ -176,11 +176,11 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'RequestForm.requiredTextAreaError'
+        errorLOV: 'ERROR.requiredTextAreaError'
       }
       // {
       //   key: 'maxLength',
-      //   errorLOV: 'RequestForm.fieldExceededMaxLength'
+      //   errorLOV: 'ERROR.fieldExceededMaxLength'
       // }
     ]
     // errorIcon?: IErrorIconConfig;
@@ -208,11 +208,11 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'RequestForm.requiredTextAreaError'
+        errorLOV: 'ERROR.requiredTextAreaError'
       }
       // {
       //   key: 'maxLength',
-      //   errorLOV: 'RequestForm.fieldExceededMaxLength'
+      //   errorLOV: 'ERROR.fieldExceededMaxLength'
       // }
     ]
     // errorIcon?: IErrorIconConfig;

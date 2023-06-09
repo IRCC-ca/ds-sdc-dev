@@ -17,7 +17,7 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   rightNavData: ISideNavDataInterface[];
   rightNavDataRaw: string[] = [
     // list of all right nav items
-    'Overview.DeveloperHeading',
+    'General.DeveloperHeading',
     'Developers.GetStartedHeading',
     'Developers.UsageHeading',
     'Developers.ThemesHeading',
@@ -34,7 +34,7 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   paragraph3: string = 'npm install @ircc-ca/ds-sdc-core@patch';
   placeholder: string = '<code block/>';
   overViewDeveloperSlug: slugTitleURLConfig = {
-    title: 'Overview.DeveloperHeading',
+    title: 'General.DeveloperHeading',
     heading: 'h1'
   };
   developerStartedSlug: slugTitleURLConfig = {

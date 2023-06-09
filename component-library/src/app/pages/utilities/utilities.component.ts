@@ -45,10 +45,10 @@ export class UtilitiesComponent implements OnInit, TranslatedPageComponent {
     heading: 'h1'
   };
   utilitiesColorSlug: slugTitleURLConfig = {
-    title: 'Utilities.ColourHeading'
+    title: 'General.ColourHeading'
   };
   utilitiesTypographySlug: slugTitleURLConfig = {
-    title: 'Utilities.TypographyHeading'
+    title: 'General.TypographyHeading'
   };
   utilitiesSpacingSlug: slugTitleURLConfig = {
     title: 'Utilities.SpacingHeading'

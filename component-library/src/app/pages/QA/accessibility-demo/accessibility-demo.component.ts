@@ -144,7 +144,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     labelIconConfig: {
       iconClass: 'fa-light fa-circle-info',
       ariaText:
-        'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.LABEL_INFO_BUTTON_ARIA'
+        'ACC_DEMO.MORE_INFO'
     },
     errorMessages: [
       {
@@ -177,7 +177,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     labelIconConfig: {
       iconClass: 'fa-light fa-circle-info',
       ariaText:
-        'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL_INFO_BUTTON_ARIA'
+        'ACC_DEMO.MORE_INFO'
     },
     options: [
       {
@@ -196,7 +196,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ]
   };
@@ -254,7 +254,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ]
   };
@@ -269,7 +269,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ]
   };
