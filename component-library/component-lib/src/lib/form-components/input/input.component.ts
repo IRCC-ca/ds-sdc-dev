@@ -96,9 +96,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   showPassword?: boolean;
   typeControl: keyof typeof InputTypes = InputTypes.text;
   ariaText = '';
-  btnAriaLabel = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.btnTypePasswordAriaLabel : ARIA_TEXT_EN.btnTypePasswordAriaLabel
-  btnAriaLabelHide = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.btnTypePasswordHideAriaLabel : ARIA_TEXT_EN.btnTypePasswordHideAriaLabel
-  brnAriaLabelShow = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.btnTypePasswordShowAriaLabel : ARIA_TEXT_EN.btnTypePasswordShowAriaLabel
+  btnAriaLabel = '';
+  btnAriaLabelHide = '';
+  brnAriaLabelShow = '';
   errorIds: IErrorIDs[] = [];
   errorAria = '';
   formControl?: AbstractControl;
@@ -211,8 +211,15 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     this.getAriaErrorText();
     if (lang === 'en' || lang === 'en-US') {
       this.errorStubText = ERROR_TEXT_STUB_EN;
+      this.btnAriaLabel = ARIA_TEXT_EN.btnTypePasswordAriaLabel;
+      this.btnAriaLabelHide = ARIA_TEXT_EN.btnTypePasswordHideAriaLabel
+      this.brnAriaLabelShow = ARIA_TEXT_EN.btnTypePasswordShowAriaLabel
+
     } else {
       this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.btnAriaLabel = ARIA_TEXT_FR.btnTypePasswordAriaLabel
+      this.btnAriaLabelHide = ARIA_TEXT_FR.btnTypePasswordHideAriaLabel
+      this.brnAriaLabelShow = ARIA_TEXT_FR.btnTypePasswordShowAriaLabel
     }
   }
 
