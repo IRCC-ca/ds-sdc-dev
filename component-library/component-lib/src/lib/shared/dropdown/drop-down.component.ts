@@ -46,7 +46,6 @@ export class DropdownComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.btnAriaLabel = this.translate.currentLang === 'fr' ? DROPDOWN_FR : DROPDOWN_EN
     if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label !== '') this.config.label = this.label;
@@ -67,7 +66,25 @@ export class DropdownComponent implements OnInit {
     }
 
     if (this.config.flyout) this.flyoutConfig = this.config.flyout;
+
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe((change) => {
+      this.setLang(change.lang);
+    });
   }
+
+    /**
+  * setLang(lang: string) if a function which accepts a string value.
+  * This value currently needs to be 'en' or 'en-US' to trigger English translations otherwise
+  * french translations will be triggered.
+  */
+    setLang(lang: string) {
+      if (lang === 'en' || lang === 'en-US') {
+        this.btnAriaLabel = DROPDOWN_EN
+      } else {
+        this.btnAriaLabel = DROPDOWN_FR
+      }
+    }
 
   selectedOption(e: Event) {
     //if it receives it's event info it selects the index - if not closes flyout
