@@ -16,28 +16,27 @@
           <textarea
             class="textarea-field"
             maxlength="{{ config.charLimit }}"
-            placeholder="{{ config.placeholder || '' | translate }}"
-            tabindex="0"
+            placeholder="{{
+              announceCharStatusChangeAria
+                ? ''
+                : (config.placeholder || '' | translate)
+            }}"
             [id]="config.id"
+            tabindex="0"
+            (blur)="onBlur()"
             [formControlName]="config.id"
-            [attr.aria-live]="'off'"
             [attr.aria-label]="
-              config.charLimit
-                ? (config.label || '' | translate) +
-                  ' ' +
-                  (config.desc || '' | translate) +
-                  ' ' +
-                  (config.hint || '' | translate) +
-                  ' ' +
-                  (config.placeholder || '' | translate) +
-                  currentCharacterStatusAria
+              announceCharStatusChangeAria
+                ? currentCharacterStatusAria
                 : (config.label || '' | translate) +
                   ' ' +
                   (config.desc || '' | translate) +
                   ' ' +
                   (config.hint || '' | translate) +
                   ' ' +
-                  (config.placeholder || '' | translate)
+                  (config.placeholder || '' | translate) +
+                  ' ' +
+                  formatCharacterUsedString(charLength)
             "
             #textareaInput
           >
@@ -46,7 +45,6 @@
             *ngIf="config.charLimit"
             class="character-count"
             [ngClass]="charLimitStatus"
-            [attr.aria-live]="'off'"
           >
             {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>

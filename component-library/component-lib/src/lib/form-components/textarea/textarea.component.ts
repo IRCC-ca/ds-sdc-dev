@@ -74,7 +74,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = [];
   charLimitStatus = '';
   currentCharacterStatusAria = '';
-  charLength= 0
+  announceCharStatusChangeAria : boolean = false;
+  charLength : number = -1;
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
@@ -102,6 +103,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
       this.config.charLimit = this.charLimit;
     }
 
+    if (this.config.charLimit != '' && this.config.charLimit) {
+      this.charLength = 0;
+    }
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -112,13 +117,11 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
 
     if (this.config.formGroup.controls[this.config.id].value) {
       this.charLength = this.config.formGroup.controls[this.config.id].value.length;
-      this.characterCountStatus(this.charLength);
+      this.characterCountStatus(this.config.formGroup.controls[this.config.id].value.length);
     }
 
     this.config.formGroup.valueChanges.subscribe((change) => {
-      this.charLength = change[this.config.id]?.length;
-      if(this.charLength === undefined) this.charLength = 0;
-      this.characterCountStatus(this.charLength);
+      this.characterCountStatus(change[this.config.id]?.length);
       
     });
 
@@ -159,11 +162,13 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
         (currLang === 'en' || currLang === 'en-US') 
         ? (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_EN) 
         : (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_FR);
+        this.announceCharStatusChangeAria = true;
       } else if (Number(this.config?.charLimit) - currCharCount == 15) {
         this.charLimitStatus = 'warningLimit';
         (currLang === 'en' || currLang === 'en-US') 
         ? (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_EN) 
         : (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_FR);
+        this.announceCharStatusChangeAria = true;
       } else if (Number(this.config?.charLimit) - currCharCount < 15) {
         this.charLimitStatus = 'warningLimit';
         this.currentCharacterStatusAria = '';
@@ -172,6 +177,23 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
         this.currentCharacterStatusAria = '';
       }
     }
+  }
+
+  onBlur() {
+    this.announceCharStatusChangeAria = false;
+    if (this.config.formGroup.controls[this.config.id].value) {
+      this.charLength = this.config.formGroup.controls[this.config.id].value.length;
+    }
+  }
+
+  formatCharacterUsedString(currentLength :  number) : string {
+    var formatedString = ''
+    var currentLengthString = currentLength.toString()
+    if (currentLengthString === '-1' || this.config.charLimit === '' || !this.config.charLimit) {
+      return formatedString;
+    }
+    formatedString = currentLengthString + "/" + this.config.charLimit
+    return formatedString;
   }
 
   public clearvalue() {}
