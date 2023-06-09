@@ -3,21 +3,25 @@ import { DSSizes } from "../../../shared/constants/jl-components.constants";
 import { ButtonCategories } from '../button/button.component';
 import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
 import { IFlyoutConfig } from '../flyout/flyout.component';
+import { TranslateService } from '@ngx-translate/core';
 export interface IDropdownConfig {
-    id: string;
-    label?: string;
-    size?: keyof typeof DSSizes;
-    category?: keyof typeof ButtonCategories;
-    placeholderText?: string;
-    disabled?: boolean;
-    icon?: IIconButtonIconConfig;
-    flyout?: IFlyoutConfig;
+  id: string;
+  label?: string;
+  size?: keyof typeof DSSizes;
+  category?: keyof typeof ButtonCategories;
+  placeholderText?: string;
+  disabled?: boolean;
+  icon?: IIconButtonIconConfig;
+  flyout?: IFlyoutConfig;
 }
+export const DROPDOWN_EN = 'Dropdown'
+export const DROPDOWN_FR = 'Menu Deroulant'
 @Component({
   selector: 'ircc-cl-lib-dropdown',
   templateUrl: './drop-down.component.html'
 })
 export class DropdownComponent implements OnInit {
+  constructor(private translate: TranslateService) { }
 
   @Input() config: IDropdownConfig = {
     id: ''
@@ -30,10 +34,11 @@ export class DropdownComponent implements OnInit {
   @Input() disabled?: boolean;
   @Input() category?: keyof typeof ButtonCategories;
 
+  btnAriaLabel = ''
   showPlaceholder: boolean = false;
   selected: boolean = false;
 
-  flyoutConfig : IFlyoutConfig = {
+  flyoutConfig: IFlyoutConfig = {
     id: this.config.id + '_flyout',
     options: [{
       value: 'Options empty'
@@ -41,6 +46,7 @@ export class DropdownComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.btnAriaLabel = this.translate.currentLang === 'fr' ? DROPDOWN_FR : DROPDOWN_EN
     if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label !== '') this.config.label = this.label;
@@ -60,17 +66,17 @@ export class DropdownComponent implements OnInit {
       this.showPlaceholder = true;
     }
 
-    if(this.config.flyout) this.flyoutConfig = this.config.flyout;
+    if (this.config.flyout) this.flyoutConfig = this.config.flyout;
   }
 
   selectedOption(e: Event) {
     //if it receives it's event info it selects the index - if not closes flyout
-    if(e){
+    if (e) {
       this.showPlaceholder = false;
       this.config.label = e.toString();
       this.selected = !this.selected;
       this.clearFlyoutFocus(); //clear the flyout focus if the flyout is closed.
-    }else{
+    } else {
       this.toggleFlyout(false);
     }
   }
@@ -83,7 +89,7 @@ export class DropdownComponent implements OnInit {
    */
   toggleFlyout(status: boolean, e?: FocusEvent) {
     let target = e?.relatedTarget as HTMLElement;
-    if(!target?.id.includes(this.config.id) || !e){
+    if (!target?.id.includes(this.config.id) || !e) {
       this.selected = status;
       !status && this.clearFlyoutFocus(); //clear the flyout focus if the flyout is closed.
     }
