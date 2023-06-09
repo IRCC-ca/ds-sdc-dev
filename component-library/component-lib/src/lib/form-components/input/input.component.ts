@@ -39,8 +39,6 @@ export enum InputTypes {
 }
 
 export const ARIA_TEXT_EN = {
-  ariaText: 'Text Input',
-  ariaPassword: 'Password Input',
   btnTypePasswordAriaLabel: 'password eye icon',
   btnTypePasswordShowAriaLabel: 'display password text',
   btnTypePasswordHideAriaLabel: 'mark password text'
@@ -48,8 +46,6 @@ export const ARIA_TEXT_EN = {
 }
 
 export const ARIA_TEXT_FR = {
-  ariaText: 'Text Input',
-  ariaPassword: 'Password Input',
   btnTypePasswordAriaLabel: 'password eye icon',
   btnTypePasswordShowAriaLabel: 'afficher le texte du mot de passe',
   btnTypePasswordHideAriaLabel: 'masquer le texte du mot de passe'
@@ -153,11 +149,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (!this.config.type) {
       this.config.type = InputTypes.text;
-      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaText : ARIA_TEXT_EN.ariaText
     } else if (this.config.type === InputTypes.password) {
       this.showPassword = false;
       this.typeControl = InputTypes.password;
-      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaPassword : ARIA_TEXT_EN.ariaPassword
     }
 
     this.type === InputTypes.text
@@ -254,10 +248,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (this.showPassword) {
       this.typeControl = InputTypes.text;
-      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaText : ARIA_TEXT_EN.ariaText;
     } else {
       this.typeControl = InputTypes.password;
-      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaPassword : ARIA_TEXT_EN.ariaPassword;
     }
   }
 
