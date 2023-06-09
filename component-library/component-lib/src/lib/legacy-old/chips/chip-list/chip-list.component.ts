@@ -10,7 +10,7 @@ export class ChipListComponent implements OnInit {
   chipContentText?: string;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   removeChipItem(chipIdx: number) {
     this.chipList?.splice(chipIdx, 1);

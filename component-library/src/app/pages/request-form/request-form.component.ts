@@ -260,7 +260,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
     this.form.addControl(
