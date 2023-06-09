@@ -48,7 +48,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
     category: 'custom',
     size: this.config?.size,
     icon: {
-      class: 'fa-solid fa-ellipsis',
+      class: 'fa-light fa-ellipsis',
       color: 'var(--text-primary)'
     },
     ariaLabel: ''
