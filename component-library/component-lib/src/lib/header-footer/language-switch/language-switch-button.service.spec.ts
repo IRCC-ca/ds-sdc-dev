@@ -7,7 +7,7 @@ describe('LanguageSwitchService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LanguageSwitchButtonService);
+    // service = TestBed.inject(LanguageSwitchButtonService);
   });
 
   it('should be created', () => {

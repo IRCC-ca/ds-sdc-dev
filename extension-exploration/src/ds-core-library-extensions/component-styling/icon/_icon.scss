@@ -1,0 +1,23 @@
+@use '../../tokens/template-const' as template-const;
+@use '../../typography/typography';
+ 
+@mixin selector {
+    ircc-cl-lib-icon#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+    .font-icon {
+        &::before {
+            --font-unicode: inherit;
+            @include typography.fonts-FA-variable-icon(--font-unicode);
+        }
+    }
+}

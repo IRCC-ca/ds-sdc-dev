@@ -1,0 +1,138 @@
+@use "../../../util/color"as color;
+@use "../../../util/theme"as theme;
+@use "../../../util/device"as device;
+@use "../../../util/size"as size;
+@use "../../../tokens/template-const"as template-const;
+@use "../../../tokens/sizes"as token-size;
+@use "../../../typography/typography"as typography;
+@use "../../../tokens/text"as text;
+@use "sass:map";
+
+@mixin selector {
+    lib-form-checkbox#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+// For size small overwrite
+@mixin size-sm {
+  .checkbox {
+    &__label, &__error, &__description {
+      font-size: 0.875rem;
+    }
+
+    &__hint {
+      color: var(--text-placeholder);
+    }
+  }
+}
+
+@mixin layout {
+
+  .checkbox {
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__layout {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &__input {
+      flex: none
+    }
+
+    &__label {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding-left: 0px;
+      display: flex;
+      gap: 0.25rem;
+
+      &--disabled {
+        color: var(--text-disabled);
+      }
+    }
+    
+    &__shift {
+      margin-top: 0.35rem
+    }
+
+    &__required-icon {
+      color: var(--critical-text);
+      font-size: 1rem;
+      align-self: flex-start;
+      svg {
+        margin-bottom: 0.35rem
+      }
+    }
+
+    &__description {
+      margin: 0;
+      margin-top: 0.25rem;
+      padding: 0;
+    }
+
+    &__error {
+      color: var(--critical-text);
+
+      &::before {
+        content: "";
+        position: relative;
+        left: 0;
+        height: 0.8rem;
+        width: 0.8rem;
+        display: inline-block;
+        background-image: url("/assets/lib-assets/icons/circle-empty-alert.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        color: var(--critical-text);
+        font-weight: 400;
+      }
+    }
+
+    &__hint {
+      color: var(--text-placeholder);
+      margin-bottom: token-size.$fixed-8;
+      margin-top: 0;
+    }
+
+    &__required-star {
+      color: var(--critical-text);
+      font-weight: 400;
+      line-height: 16px;
+      justify-self: flex-start;
+      margin-right: 5px;
+      font-size: 16px;
+    }
+  }
+
+  @include size.selector(small) {
+    @include size-sm();
+  }
+
+  @include size.selector(large) {
+    .small {
+      @include size-sm();
+    }
+  }
+
+  .sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}

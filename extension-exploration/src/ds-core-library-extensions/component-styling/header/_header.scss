@@ -1,0 +1,88 @@
+@use '../../tokens/sizes';
+@use '../../layout/layout-grid';
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as token-size;
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+    ircc-cl-lib-header#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+
+    .heading {
+        container-type: inline-size;
+        container-name: header-container;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+
+        #canada-home-img-link {
+            height: 75px;
+            padding: 0;
+            @include device.if-hover {
+                background-color: transparent;
+            }
+        }
+
+        .image-container {
+            //outline: solid 4px red;
+            align-self: center;
+            width: 296.47px;
+            padding: 0;
+
+            @include device.in-phone-layout(){
+                width: 249px;
+                margin-left: 8px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                // margin-top: 24px;
+                // margin-bottom: 24px;    
+                object-fit: contain;
+            }
+        }
+        .languageSwitch {
+            justify-self: end;
+            align-self: center;
+            @include device.in-phone-layout(){
+                margin-right: 8px;
+            }
+        }
+    }
+        
+        @container header-container (width: calc(100vw - 16px)) {
+            .image-container {
+                margin-left: 12px;
+            }
+
+            .languageSwitch {
+                margin-right: 12px;
+            }
+        }
+    
+    .headerLine {
+        color: var(--header-line);
+        border-width: sizes.$fixed-2;
+        border-style: solid;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

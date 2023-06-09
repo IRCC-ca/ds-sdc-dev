@@ -1,0 +1,179 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "../../tokens/partial/focus" as focus;
+@use "sass:map";
+
+@mixin selector {
+  ircc-cl-lib-breadcrumb#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+// For size small overwrite
+@mixin size-sm {
+  ircc-cl-lib-breadcrumb-link {
+    a,
+    ircc-cl-lib-button .text {
+      @include typography.fontSize(map.get(text.$body, level), 3);
+    }
+
+    &.breadcrumb-root {
+      margin-right: 4px;
+    }
+
+    &.breadcrumb-item {
+      margin: 0 4px;
+    }
+  }
+
+  p {
+    @include typography.fontSize(map.get(text.$body, level), 3);
+
+    &.breadcrumb-child {
+      margin-left: 8px;
+    }
+  }
+
+  svg.fa-chevron-right {
+    font-size: 12px;
+    bottom: 0;
+    padding: 0 2px;
+  }
+}
+
+@mixin size-lg {
+  ircc-cl-lib-breadcrumb-link {
+    margin-right: 8px;
+
+    a,
+    ircc-cl-lib-button .text {
+      @include typography.fontSize(map.get(text.$body, level), 2);
+    }
+
+    &.breadcrumb-item {
+      margin-left: 8px;
+    }
+
+    &.breadcrumb-root {
+      padding: 4px 8px 4px 0;
+    }
+  }
+
+  p {
+    @include typography.fontSize(map.get(text.$body, level), 2);
+
+    margin: 0;
+
+    &.breadcrumb-child {
+      margin-left: 11px;
+      padding: 4px;
+    }
+  }
+
+  svg.fa-chevron-right {
+    font-size: 20px;
+    bottom: -2px;
+    padding: 0 4px;
+  }
+}
+
+@mixin layout {
+  padding: 6px 0;
+
+  ircc-cl-lib-breadcrumb-link {
+    border-radius: 4px;
+
+    &:focus,
+    &:focus-visible {
+      @include focus.layout();
+    }
+
+    &.breadcrumb-item {
+      padding: 4px 8px;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    ircc-cl-lib-button {
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
+
+      button {
+        line-height: 1rem !important;
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  p {
+    display: inline-block;
+  }
+
+  svg.fa-chevron-right {
+    color: color.mix-token(neutral, 500);
+    position: relative;
+  }
+
+  ircc-cl-lib-button {
+    button {
+      padding: 0;
+
+      .text {
+        font-family: Inter, serif;
+      }
+
+      &:hover {
+        color: var(--link-text-hover);
+      }
+
+      &:visited {
+        color: var(--link-cta-text-visited);
+      }
+
+      &:active {
+        color: var(--link-text-active);
+      }
+    }
+  }
+
+  @include size.selector(small) {
+    @include size-sm();
+
+    .large {
+      @include size-lg();
+    }
+  }
+
+  @include size.selector(large) {
+    @include size-lg();
+
+    .small {
+      @include size-sm();
+    }
+  }
+}

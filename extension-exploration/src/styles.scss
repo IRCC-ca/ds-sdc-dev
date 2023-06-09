@@ -1,0 +1,20 @@
+@use "../../core-library/index" as ircc-ds;
+
+@use "./ds-core-library-extensions/tokens/button/link" as link-btn;
+@use "./ds-core-library-extensions/tokens/link/link";
+@use "./ds-core-library-extensions/tokens/link/primary" as link-primary;
+@use "./ds-core-library-extensions/tokens/link/secondary" as link-secondary;
+
+//initialization of the DS
+@include ircc-ds.theme-init-required(
+  ircc-ds.palette-journeylab(),
+  default,
+  large,
+  light
+);
+@include ircc-ds.element-styles();
+
+//extensions
+@include link-btn.create();
+@include link-primary.create();
+@include link-secondary.create();

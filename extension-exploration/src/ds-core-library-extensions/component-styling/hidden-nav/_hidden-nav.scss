@@ -1,0 +1,39 @@
+@use '../../tokens/sizes';
+@use '../../layout/layout-grid';
+@use '../../util/color' as color;
+@use '../../util/theme' as theme;
+@use '../../util/device' as device;
+@use '../../util/size' as size;
+@use '../../tokens/template-const' as template-const;
+@use '../../tokens/sizes' as token-size;
+@use '../../typography/typography' as typography;
+@use '../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+    ircc-cl-lib-hidden-nav#{template-const.$escape} {
+        @content;
+    }
+}
+
+@mixin create {
+    @include selector() {
+        @include layout();
+    }
+}
+
+@mixin layout {
+    #hidden-nav-container{
+        button {
+            position: absolute;
+            left: 50%;
+            top: -100%;
+            text-decoration: none;
+            &:focus {
+                top: 2%;
+            }
+        }
+    }
+
+}
+

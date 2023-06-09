@@ -1,31 +1,31 @@
-@forward '~@fontsource/lato/scss/mixins' as Lato-*;
-@forward '~@fontsource/inter/scss/mixins' as Inter-*;
-@forward './fa-wrapper' as FA-*;
-@use './fa-wrapper' as FA;
-@use '../tokens/text' as text;
-@use '~@fontsource/lato/scss/mixins' as Lato;
-@use '~@fontsource/inter/scss/mixins' as Inter;
+@forward "../node_modules/@fontsource/lato/scss/mixins" as Lato-*;
+@forward "../node_modules/@fontsource/inter/scss/mixins" as Inter-*;
+@forward "./fa-wrapper" as FA-*;
+@use "./fa-wrapper" as FA;
+@use "../tokens/text" as text;
+@use "../node_modules/@fontsource/lato/scss/mixins" as Lato;
+@use "../node_modules/@fontsource/inter/scss/mixins" as Inter;
 
 /// Creates heading font
 @mixin create-headings {
-    @include Lato.fontFace(
-        $weight: map-get(text.$heading, weight, regular),
-        $display: auto,
-        $style: normal,
-        $fontDir: '~@fontsource/lato/files',
-        $fontName: map-get(text.$heading, family)
-    );
+  @include Lato.fontFace(
+    $weight: map-get(text.$heading, weight, regular),
+    $display: auto,
+    $style: normal,
+    $fontDir: "~@fontsource/lato/files",
+    $fontName: map-get(text.$heading, family)
+  );
 }
 
 /// Creates body font
 @mixin create-body() {
-    @include Inter.fontFace(
-        $weight: map-get(text.$body, weight, regular),
-        $display: auto,
-        $style: normal,
-        $fontDir: '~@fontsource/inter/files',
-        $fontName: map-get(text.$body, family)
-    );
+  @include Inter.fontFace(
+    $weight: map-get(text.$body, weight, regular),
+    $display: auto,
+    $style: normal,
+    $fontDir: "~@fontsource/inter/files",
+    $fontName: map-get(text.$body, family)
+  );
 }
 
 // @mixin create-body() {
@@ -40,6 +40,6 @@
 
 /// Creates fonts used in design system
 @mixin create() {
-    @include create-body();
-    @include create-headings();
+  @include create-body();
+  @include create-headings();
 }

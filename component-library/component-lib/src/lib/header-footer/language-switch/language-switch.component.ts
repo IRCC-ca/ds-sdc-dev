@@ -35,7 +35,6 @@ export class LanguageSwitchComponent implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private titleService: TitleStrategy
-
   ) {
     this.isMobile = window.innerWidth <= 360; //phone breakpoint
   }

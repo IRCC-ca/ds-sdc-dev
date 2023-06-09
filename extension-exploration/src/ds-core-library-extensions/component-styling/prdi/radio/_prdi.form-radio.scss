@@ -1,0 +1,118 @@
+@use '../../../util/color'as color;
+@use '../../../util/theme'as theme;
+@use '../../../util/device'as device;
+@use '../../../util/size'as size;
+@use '../../../tokens/template-const'as template-const;
+@use '../../../tokens/sizes'as token-size;
+@use '../../../typography/typography'as typography;
+@use '../../../tokens/text'as text;
+@use 'sass:map';
+
+@mixin selector {
+    lib-form-radio#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin small-styles() {
+  .form-radio {
+    &__label {
+      font-size: 1rem;
+    }
+  }
+}
+
+@mixin large-styles() {
+ 
+}
+
+@mixin layout {
+  .form-radio {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__label {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    &__shift {
+      margin-top: 0.35rem
+    }
+
+    &__required-icon {
+      color: var(--critical-text);
+      font-size: 1rem;
+      align-self: flex-start;
+      svg {
+        margin-bottom: 0.35rem
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &__options {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    &__option {
+      margin: 0;
+    }
+
+    &__error {
+      color: var(--critical-text);
+
+      &::before {
+        content: "";
+        position: relative;
+        left: 0;
+        height: 0.8rem;
+        width: 0.8rem;
+        display: inline-block;
+        background-image: url("/assets/lib-assets/icons/circle-empty-alert.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        color: var(--critical-text);
+        font-weight: 400;
+      }
+    }
+  }
+
+  @include size.selector(small) {
+    @include small-styles();
+    .large {
+      @include large-styles();
+    }
+  }
+
+  @include size.selector(large) {
+    @include large-styles();
+    .small {
+      @include small-styles();
+    }
+  }
+
+  .sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}

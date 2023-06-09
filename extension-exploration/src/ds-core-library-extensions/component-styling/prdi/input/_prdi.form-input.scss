@@ -1,0 +1,133 @@
+@use '../../../util/color' as color;
+@use '../../../util/theme' as theme;
+@use '../../../util/device' as device;
+@use '../../../util/size' as size;
+@use '../../../tokens/template-const' as template-const;
+@use '../../../tokens/sizes' as token-size;
+@use '../../../typography/typography' as typography;
+@use '../../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+  lib-form-input#{template-const.$escape} {
+      @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+      @include layout();
+  }
+}
+
+@mixin size-large() {}
+
+@mixin size-small() {
+
+  .form-input {
+    &__label {
+      font-size: 1rem;
+    }
+
+    &__help-text, &__errors {
+      font-size: 0.875rem;
+    }
+  }
+
+}
+
+@mixin layout {
+
+  .form-input {
+    user-select: none;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+
+    &__label {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding-left: 0px;
+      
+      &--disabled {
+        color: var(--text-disabled);
+      }
+    }
+    
+    &__label-info {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    &__shift {
+      margin-top: 0.35rem
+    }
+
+    &__required-icon {
+      color: var(--critical-text);
+      font-size: 1rem;
+      align-self: flex-start;
+      svg {
+        margin-bottom: 0.35rem
+      }
+    }
+
+    &__help-text, &__hint {
+      color: #6F6F71;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    &__field-container {
+      position: relative;
+    }
+    
+    &__field {
+      width: 100%;
+    }
+
+    &__password-hide {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    &__errors {
+      color: var(--critical-text);
+
+      &::before {
+        content: "";
+        position: relative;
+        left: 0;
+        height: 0.8rem;
+        width: 0.8rem;
+        display: inline-block;
+        background-image: url("/assets/lib-assets/icons/circle-empty-alert.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        color: var(--critical-text);
+        font-weight: 400;
+      }
+    }
+  }
+
+  @include size.selector(large) {
+    @include size-large();
+  }
+
+  @include size.selector(small) {
+    @include size-small();
+  }
+
+  .sr-only {
+      clip: rect(0 0 0 0); 
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap; 
+      width: 1px;
+  }
+}

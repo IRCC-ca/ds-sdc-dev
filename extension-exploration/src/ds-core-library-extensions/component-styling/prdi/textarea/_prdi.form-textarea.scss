@@ -1,0 +1,120 @@
+@use '../../../util/color' as color;
+@use '../../../util/theme' as theme;
+@use '../../../util/device' as device;
+@use '../../../util/size' as size;
+@use '../../../tokens/template-const' as template-const;
+@use '../../../tokens/sizes' as token-size;
+@use '../../../typography/typography' as typography;
+@use '../../../tokens/text' as text;
+@use 'sass:map';
+
+@mixin selector {
+    lib-form-textarea#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin size-large() {
+
+}
+
+@mixin size-small() {
+
+  .form-textarea {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__label {
+      font-size: 1rem;
+    }
+
+    &__field {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+@mixin at-resize($value: none) {
+  .resize-#{$value}{
+    textarea {
+      resize: $value;
+    }
+  }
+}
+
+@mixin layout {
+
+  .form-textarea {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__label {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    &__shift {
+      margin-top: 0.35rem
+    }
+
+    &__required-icon {
+      color: var(--critical-text);
+      font-size: 1rem;
+      align-self: flex-start;
+      svg {
+        margin-bottom: 0.35rem
+      }
+    }
+
+    &__field {
+      font-size: 1rem;
+    }
+
+    &__error {
+      color: var(--critical-text);
+
+      &::before {
+        content: "";
+        position: relative;
+        left: 0;
+        height: 0.8rem;
+        width: 0.8rem;
+        display: inline-block;
+        background-image: url("/assets/lib-assets/icons/circle-empty-alert.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        color: var(--critical-text);
+        font-weight: 400;
+      }
+    }
+  }
+
+  @include size.selector(large) {
+    @include size-large();
+    .small {
+        @include size-small()
+    }
+  }
+    
+  @include size.selector(small) {
+    @include size-small();
+    .large {
+      @include size-large()
+    }
+  }
+
+  @include at-resize(none);
+  @include at-resize(both);
+  @include at-resize(horizontal);
+  @include at-resize(vertical);
+}
