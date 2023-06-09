@@ -380,6 +380,7 @@
   },
   "ERROR": {
     "fieldIsInvalid": "Ce champ est invalide.",
+    "fieldIsRequired": "Ce champ est obligatoire.",
     "fieldExceededMaxLength": "Ce champ a dépassé la longueur maximale.",
     "testErrorMessage": "Tester le message d'erreur.",
     "errorMessage": "Message d'erreur"
