@@ -37,6 +37,23 @@ export enum InputTypes {
   text = 'text',
   password = 'password'
 }
+
+export const ARIA_TEXT_EN = {
+  ariaText: 'Text Input',
+  ariaPassword: 'Password Input',
+  btnTypePasswordAriaLabel: 'password eye icon',
+  btnTypePasswordShowAriaLabel: 'display password text',
+  btnTypePasswordHideAriaLabel: 'mark password text'
+
+}
+
+export const ARIA_TEXT_FR = {
+  ariaText: 'Text Input',
+  ariaPassword: 'Password Input',
+  btnTypePasswordAriaLabel: 'password eye icon',
+  btnTypePasswordShowAriaLabel: 'afficher le texte du mot de passe',
+  btnTypePasswordHideAriaLabel: 'masquer le texte du mot de passe'
+}
 @Component({
   selector: 'ircc-cl-lib-input',
   templateUrl: './input.component.html',
@@ -78,7 +95,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   focusState = false;
   showPassword?: boolean;
   typeControl: keyof typeof InputTypes = InputTypes.text;
-  ariaText = 'Text Input';
+  ariaText = '';
+  btnAriaLabel = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.btnTypePasswordAriaLabel : ARIA_TEXT_EN.btnTypePasswordAriaLabel
+  btnAriaLabelHide = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.btnTypePasswordHideAriaLabel : ARIA_TEXT_EN.btnTypePasswordHideAriaLabel
+  brnAriaLabelShow = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.btnTypePasswordShowAriaLabel : ARIA_TEXT_EN.btnTypePasswordShowAriaLabel
   errorIds: IErrorIDs[] = [];
   errorAria = '';
   formControl?: AbstractControl;
@@ -133,10 +153,11 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (!this.config.type) {
       this.config.type = InputTypes.text;
+      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaText : ARIA_TEXT_EN.ariaText
     } else if (this.config.type === InputTypes.password) {
       this.showPassword = false;
       this.typeControl = InputTypes.password;
-      this.ariaText = 'Password Input';
+      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaPassword : ARIA_TEXT_EN.ariaPassword
     }
 
     this.type === InputTypes.text
@@ -226,10 +247,10 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (this.showPassword) {
       this.typeControl = InputTypes.text;
-      this.ariaText = 'Text Input';
+      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaText : ARIA_TEXT_EN.ariaText;
     } else {
       this.typeControl = InputTypes.password;
-      this.ariaText = 'Password Input';
+      this.ariaText = this.translate.currentLang === 'fr' ? ARIA_TEXT_FR.ariaPassword : ARIA_TEXT_EN.ariaPassword;
     }
   }
 
