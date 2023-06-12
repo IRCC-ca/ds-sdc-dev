@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components.constants";
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { ButtonCategories } from '../button/button.component';
 import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
 import { IFlyoutConfig } from '../flyout/flyout.component';
@@ -14,14 +14,17 @@ export interface IDropdownConfig {
   icon?: IIconButtonIconConfig;
   flyout?: IFlyoutConfig;
 }
-export const DROPDOWN_EN = 'Dropdown'
-export const DROPDOWN_FR = 'Menu Deroulant'
+
+export const DROPDOWN_ARIA = {
+  en: 'Dropdown',
+  fr: 'Menu Deroulant'
+};
 @Component({
   selector: 'ircc-cl-lib-dropdown',
   templateUrl: './drop-down.component.html'
 })
 export class DropdownComponent implements OnInit {
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService) {}
 
   @Input() config: IDropdownConfig = {
     id: ''
@@ -34,16 +37,18 @@ export class DropdownComponent implements OnInit {
   @Input() disabled?: boolean;
   @Input() category?: keyof typeof ButtonCategories;
 
-  btnAriaLabel = ''
+  btnAriaLabel = '';
   showPlaceholder: boolean = false;
   selected: boolean = false;
 
   flyoutConfig: IFlyoutConfig = {
     id: this.config.id + '_flyout',
-    options: [{
-      value: 'Options empty'
-    }]
-  }
+    options: [
+      {
+        value: 'Options empty'
+      }
+    ]
+  };
 
   ngOnInit() {
     if (this.id !== '') this.config.id = this.id;
@@ -73,18 +78,18 @@ export class DropdownComponent implements OnInit {
     });
   }
 
-    /**
-  * setLang(lang: string) if a function which accepts a string value.
-  * This value currently needs to be 'en' or 'en-US' to trigger English translations otherwise
-  * french translations will be triggered.
-  */
-    setLang(lang: string) {
-      if (lang === 'en' || lang === 'en-US') {
-        this.btnAriaLabel = DROPDOWN_EN
-      } else {
-        this.btnAriaLabel = DROPDOWN_FR
-      }
+  /**
+   * setLang(lang: string) if a function which accepts a string value.
+   * This value currently needs to be 'en' or 'en-US' to trigger English translations otherwise
+   * french translations will be triggered.
+   */
+  setLang(lang: string) {
+    if (lang === 'en' || lang === 'en-US') {
+      this.btnAriaLabel = DROPDOWN_ARIA.en;
+    } else {
+      this.btnAriaLabel = DROPDOWN_ARIA.fr;
     }
+  }
 
   selectedOption(e: Event) {
     //if it receives it's event info it selects the index - if not closes flyout
@@ -117,7 +122,7 @@ export class DropdownComponent implements OnInit {
    */
   clearFlyoutFocus() {
     if (this.config?.flyout?.options) {
-      this.config.flyout.options.forEach(i => {
+      this.config.flyout.options.forEach((i) => {
         i.active = false;
       });
     }
