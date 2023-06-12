@@ -87,10 +87,10 @@ p {
     padding-bottom: 4px;
   }
   .text-color-green {
-    color: var(--success-text);
+    color: var(--green-8);
   }
   .text-color-red {
-    color: var(--critical-text);
+    color: var(--red-7);
   }
   p {
     margin: 0px;
@@ -142,7 +142,7 @@ p {
       line-height: 32px;
       text-align: center;
     }
-    .conter-and-heading-container {
+    .counter-and-heading-container {
       margin: 0 0 6px 0;
       display: inline-flex;
     }
