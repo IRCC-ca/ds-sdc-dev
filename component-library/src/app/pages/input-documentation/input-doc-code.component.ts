@@ -48,13 +48,13 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'size',
       formGroup: this.formInteractiveInput,
       size: 'small',
-      label: 'Size',
+      label: 'General.Size',
       options: [
         {
-          text: 'Small'
+          text: 'General.Small'
         },
         {
-          text: 'Large'
+          text: 'General.Large'
         }
       ]
     },
@@ -62,14 +62,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'hint',
       formGroup: this.formInteractiveInput,
       size: 'small',
-      label: 'Hint',
+      label: 'General.Hint',
       options: [
         {
-          text: 'Show',
+          text: 'General.Show',
           value: 'True'
         },
         {
-          text: 'Hide',
+          text: 'General.Hide',
           value: 'False'
         }
       ]
@@ -78,13 +78,13 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'required',
       formGroup: this.formInteractiveInput,
       size: 'small',
-      label: 'Required',
+      label: 'General.Required',
       options: [
         {
-          text: 'True'
+          text: 'General.True'
         },
         {
-          text: 'False'
+          text: 'General.False'
         }
       ]
     },
@@ -92,16 +92,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'error',
       formGroup: this.formInteractiveInput,
       size: 'small',
-      label: 'Error',
+      label: 'ERROR.errorMessage',
       options: [
         {
-          text: 'None'
+          text: 'General.NoneErr'
         },
         {
-          text: 'Single'
+          text: 'General.SingleErr'
         },
         {
-          text: 'Multiple'
+          text: 'General.MultipleErr'
         }
       ]
     },
@@ -109,14 +109,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'desc',
       formGroup: this.formInteractiveInput,
       size: 'small',
-      label: 'Description',
+      label: 'General.Description',
       options: [
         {
-          text: 'Show',
+          text: 'General.Show',
           value: 'True'
         },
         {
-          text: 'Hide',
+          text: 'General.Hide',
           value: 'False'
         }
       ]
@@ -125,14 +125,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'placeholder',
       formGroup: this.formInteractiveInput,
       size: 'small',
-      label: 'Placeholder',
+      label: 'General.Placeholder',
       options: [
         {
-          text: 'Show',
+          text: 'General.Show',
           value: 'True'
         },
         {
-          text: 'Hide',
+          text: 'General.Hide',
           value: 'False'
         }
       ]
@@ -144,7 +144,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'state',
       formGroup: this.formInteractiveInput,
       size: 'small',
-      label: 'State',
+      label: 'General.StateLabel',
       inlineLabel: 'Disabled'
     }
   ];
@@ -155,11 +155,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     tab: [
       {
         id: 'basic',
-        title: 'Basic'
+        title: 'General.Basic'
       },
       {
         id: 'password',
-        title: 'Password'
+        title: 'General.Password'
       }
     ]
   };
