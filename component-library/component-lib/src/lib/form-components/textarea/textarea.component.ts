@@ -15,6 +15,7 @@ import {
   ILabelIconConfig
 } from '../../shared/label/label.component';
 import { IErrorIconConfig } from '../error/error.component';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface ITextareaComponentConfig {
   formGroup: FormGroup;
@@ -37,6 +38,14 @@ export enum ResizableTypes {
   horizontal = 'password',
   both = 'both',
   none = 'none'
+}
+
+export const TEXT_AREA_ARIA_TEXT_EN = {
+  charsUsedAriaLabel: `{{currentCharacterCount}} of {{characterLimit}}`,
+}
+
+export const TEXT_AREA_ARIA_TEXT_FR = {
+  charsUsedAriaLabel: `{{currentCharacterCount}} of {{characterLimit}}`,
 }
 
 @Component({
@@ -71,8 +80,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     formGroup: this.config.formGroup,
     parentID: ''
   };
+  textAreaAriaLabel = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions) {}
+  constructor(public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService) { }
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -119,7 +130,29 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
       this.config.required,
       this.config.labelIconConfig
     );
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe((change) => {
+      this.setLang(change.lang);
+    });
   }
+
+/**
+* setLang detects changes to the language toggle to serve the correct aria error text
+*/
+setLang(lang: string) {
+  if (lang === 'en' || lang === 'en-US') {
+    this.textAreaAriaLabel = this.translate.instant(TEXT_AREA_ARIA_TEXT_EN.charsUsedAriaLabel, {
+      currentCharacterCount: this.formGroup.value.length,
+      characterLimit: this.config.charLimit
+    });
+
+  } else {
+    this.textAreaAriaLabel = this.translate.instant(TEXT_AREA_ARIA_TEXT_FR.charsUsedAriaLabel, {
+      currentCharacterCount: this.formGroup.value.length,
+      characterLimit: this.config.charLimit
+    });
+  }
+}
 
   ngOnChanges() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -156,8 +189,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  public clearvalue() {}
-  writeValue(value: string): void {}
+  public clearvalue() { }
+  writeValue(value: string): void { }
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
