@@ -23,9 +23,6 @@
 	},
 	"Buttons": {
 		"Title": "Buttons",
-		"Copy": "Copy",
-		"CopyStyle": "Copy style",
-		"CopyURL": "Copy URL",
 		"Intro": "Buttons trigger an action or navigate to another page. They have multiple styles and configurations for various needs. They call attention to actions the user should take to progress through a flow.",
 		"IntroAlert": "This UI element is currently available in our styles package only. The component version is coming soon.",
 		"PrimaryHeading": "Primary",
@@ -87,6 +84,10 @@
 		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a button.",
 		"AccessibilityColourText": "Primary buttons have a colour contrast ratio of 8.88:1 and passes AAA accessibility standards under WCAG 2.1.",
 		"AccessibilityKeyboardText": "Buttons are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity."
+	},
+	"CodeView": {
+		"B": "B",
+		"C": "C"
 	},
 	"Utilities": {
 		"sub-titles": {
@@ -663,14 +664,10 @@
 		"Title": "Banners",
 		"Intro": "Banners provide valuable supporting content to the user conveying a specific sentiment (warning, success, informational, etc.) and can be used to help the user complete a task or better understand the content they are viewing.",
 		"InteractiveDemoDesc": "Try our banner component and the configurable options available within it.",
-		"InfoHeading": "Info",
 		"InfoPrimaryText": "Info banners are used to convey important general information.",
-		"WarningHeading": "Warning",
 		"WarningPrimaryText": "Warning banners are used to convey important warnings.",
 		"CriticalPrimaryText": "Critical banners are used to convey critical information or errors.",
-		"SuccessHeading": "Success",
 		"SuccessPrimaryText": "Success banners are used to convey successful actions or validations.",
-		"GenericHeading": "Generic",
 		"GenericPrimaryText": "Generic banners are used when an alert sentiment is not appropriate for displaying a message to the user.",
 		"BannerPreview": {
 			"Content": "Description text lorem ipsum dolor sit amet consecteteur adipiscing elit."
@@ -762,8 +759,6 @@
 			"ShowPlainButtonLabel": "Show plain button",
 			"ShowLinkLabel": "Show link",
 			"DefaultLabel": "Default",
-			"TitleLabel": "Title",
-			"CloseLabel": "Close",
 			"CTA1Label": "CTA 1",
 			"CTA2Label": "CTA 2 (if CTA 1 is set to true)",
 			"CTA3Label": "CTA 3 (if CTA 1 is set to true)"
@@ -834,6 +829,18 @@
 		"RequiredFieldsHeading": "Required fields",
 		"NecessaryContentHeading": "Using necessary content",
 		"TitleHeading": "Title text",
-		"RequestFormTitle": "Request Form"
+		"RequestFormTitle": "Request Form",
+		"CopyStyle": "Copy style",
+		"Copy": "Copy",
+		"CopyURL": "Copy URL",
+		"InfoHeading": "Info",
+		"WarningHeading": "Warning",
+		"SuccessHeading": "Success",
+		"GenericHeading": "Generic",
+		"TitleLabel": "Title",
+		"CloseLabel": "Close"
+	},
+	"Generic": {
+		"DefaultLabel": "Default"
 	}
 }

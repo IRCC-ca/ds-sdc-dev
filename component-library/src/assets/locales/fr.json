@@ -23,9 +23,6 @@
 	},
 	"Buttons": {
 		"Title": "Boutons",
-		"Copy": "Copier",
-		"CopyStyle": "Copy style",
-		"CopyURL": "Copier l’URL",
 		"Intro": "Les boutons déclenchent une action ou permettent de naviguer vers une autre page. Ils ont de multiples styles et configurations selon les besoins variés. Ils attirent l’attention sur les actions que l’utilisateur doit effectuer pour progresser dans un flux.",
 		"IntroAlert": "Cet élément de l’interface utilisateur est actuellement disponible uniquement dans le prologiciel des styles. Il sera bientôt offert pour le progiciel des composantes.",
 		"PrimaryHeading": "Principal",
@@ -87,6 +84,10 @@
 		"FigmaDirectionsImgAlt": "Une capture d’écran du panneau de conception de Figma. Le panneau de conception affiche les options de configuration parmi lesquelles les concepteurs peuvent choisir lorsqu’ils personnalisent un bouton.",
 		"AccessibilityColourText": "Les boutons principaux ont un rapport de contraste des couleurs de 8,88 : 1 et répondent aux normes d’accessibilité AAA selon la version 2.1 des normes WCAG.",
 		"AccessibilityKeyboardText": "Les boutons sont élaborés à l’aide de l’élément bouton HTML original afin de garantir que les éléments interactifs sont accessibles sur le clavier et conformes aux normes AA de la version 2.1 des normes WCAG."
+	},
+	"CodeView": {
+		"B": "B",
+		"C": "C"
 	},
 	"Utilities": {
 		"sub-titles": {
@@ -663,14 +664,10 @@
 		"Title": "[FR] Banners",
 		"Intro": "[FR] Banners provide valuable supporting content to the user conveying a specific sentiment (warning, success, informational, etc.) and can be used to help the user complete a task or better understand the content they are viewing.",
 		"InteractiveDemoDesc": "[FR] Try our banner component and the configurable options available within it.",
-		"InfoHeading": "[FR] Info",
 		"InfoPrimaryText": "[FR] Info banners are used to convey important general information.",
-		"WarningHeading": "[FR] Warning",
 		"WarningPrimaryText": "W[FR] arning banners are used to convey important warnings.",
 		"CriticalPrimaryText": "[FR] Critical banners are used to convey critical information or errors.",
-		"SuccessHeading": "[FR] Success",
 		"SuccessPrimaryText": "[FR] Success banners are used to convey successful actions or validations.",
-		"GenericHeading": "[FR] Generic",
 		"GenericPrimaryText": "[FR] Generic banners are used when an alert sentiment is not appropriate for displaying a message to the user.",
 		"BannerPreview": {
 			"Content": "[FR] Description text lorem ipsum dolor sit amet consecteteur adipiscing elit."
@@ -762,8 +759,6 @@
 			"ShowPlainButtonLabel": "[FR] Show plain button",
 			"ShowLinkLabel": "[FR] Show link",
 			"DefaultLabel": "[FR] Default",
-			"TitleLabel": "[FR] Title",
-			"CloseLabel": "[FR] Close",
 			"CTA1Label": "[FR] CTA 1",
 			"CTA2Label": "[FR] CTA 2 (if CTA 1 is set to true)",
 			"CTA3Label": "[FR] CTA 3 (if CTA 1 is set to true)"
@@ -834,6 +829,18 @@
 		"RequiredFieldsHeading": "[FR] Required fields",
 		"NecessaryContentHeading": "[FR] Using necessary content",
 		"TitleHeading": "[FR] Title text",
-		"RequestFormTitle": "[FR] Request Form"
+		"RequestFormTitle": "[FR] Request Form",
+		"CopyStyle": "[FR] Copy style",
+		"Copy": "Copier",
+		"CopyURL": "Copier l’URL",
+		"InfoHeading": "[FR] Info",
+		"WarningHeading": "[FR] Warning",
+		"SuccessHeading": "[FR] Success",
+		"GenericHeading": "[FR] Generic",
+		"TitleLabel": "[FR] Title",
+		"CloseLabel": "[FR] Close"
+	},
+	"Generic": {
+		"DefaultLabel": "[FR] Default"
 	}
 }
