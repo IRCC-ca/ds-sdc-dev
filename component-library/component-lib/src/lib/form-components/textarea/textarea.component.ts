@@ -45,7 +45,6 @@ export enum ResizableTypes {
   both = 'both',
   none = 'none'
 }
-
 @Component({
   selector: 'ircc-cl-lib-textarea',
   templateUrl: './textarea.component.html',
@@ -80,6 +79,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     formGroup: this.config.formGroup,
     parentID: ''
   };
+  textAreaAriaLabel = '';
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -179,6 +179,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
   }
 
+<<<<<<< HEAD
   onBlur() {
     this.announceCharStatusChangeAria = false;
     if (this.config.formGroup.controls[this.config.id].value) {
@@ -198,6 +199,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
 
   public clearvalue() {}
   writeValue(value: string): void {}
+=======
+  public clearvalue() { }
+  writeValue(value: string): void { }
+>>>>>>> 09855e5f (text area constants)
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
