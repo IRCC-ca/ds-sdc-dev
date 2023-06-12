@@ -859,10 +859,8 @@
 		"WarningHeading": "[FR] Warning",
 		"SuccessHeading": "[FR] Success",
 		"GenericHeading": "[FR] Generic",
+		"DefaultLabel": "[FR] Default",
 		"TitleLabel": "[FR] Title",
 		"CloseLabel": "[FR] Close"
-	},
-	"Generic": {
-		"DefaultLabel": "[FR] Default"
 	}
 }

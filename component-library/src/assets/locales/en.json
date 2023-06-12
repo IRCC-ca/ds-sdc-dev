@@ -859,10 +859,8 @@
 		"WarningHeading": "Warning",
 		"SuccessHeading": "Success",
 		"GenericHeading": "Generic",
+		"DefaultLabel": "Default",
 		"TitleLabel": "Title",
 		"CloseLabel": "Close"
-	},
-	"Generic": {
-		"DefaultLabel": "Default"
 	}
 }
