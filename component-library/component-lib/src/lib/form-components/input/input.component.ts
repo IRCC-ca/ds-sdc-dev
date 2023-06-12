@@ -90,7 +90,6 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   focusState = false;
   showPassword?: boolean;
   typeControl: keyof typeof InputTypes = InputTypes.text;
-  ariaText = '';
   btnAriaLabel = '';
   btnAriaLabelHide = '';
   brnAriaLabelShow = '';
