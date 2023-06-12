@@ -663,7 +663,7 @@
 	"Banner": {
 		"Title": "Banners",
 		"Intro": "Banners provide valuable supporting content to the user conveying a specific sentiment (warning, success, informational, etc.) and can be used to help the user complete a task or better understand the content they are viewing.",
-		"InteractiveDemoDesc": "Try our banner component and the configurable options available within it.",
+		"InteractiveDemoDesc": "Try our <strong>banner</strong> component and the configurable options available within it.",
 		"InfoPrimaryText": "Info banners are used to convey important general information.",
 		"WarningPrimaryText": "Warning banners are used to convey important warnings.",
 		"CriticalPrimaryText": "Critical banners are used to convey critical information or errors.",
@@ -718,7 +718,7 @@
 		},
 		"Specs": {
 			"ImgAlt": "Specs displaying the padding and layer measurements within the banner component. Specs are described in the paragraph below.",
-			"Text": "The small banner with fluid layout has 12 pixels of vertical padding and 12 pixels of horizontal padding inside the banner. The icon has a 20-pixel width and height. There are 12 pixels between the icon and banner-content. The layout of the content within the banner adjusts based on the container’s width. The height of the banner si fluid and adjusts based on the amount of content within the banner. The large banner with fluid layout has 16 pixels of vertical padding and 16 pixels of horizontal padding inside the button. The icon has a 24-pixel width and height. There are 12 pixels between the icon and label. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner."
+			"Text": "The small banner with fluid layout has 12 pixels of vertical padding and 12 pixels of horizontal padding inside the banner. The icon has a 20-pixel width and height. There are 12 pixels between the icon and banner-content. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner. The large banner with fluid layout has 16 pixels of vertical padding and 16 pixels of horizontal padding inside the button. The icon has a 24-pixel width and height. There are 12 pixels between the icon and label. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner."
 		},
 		"ContentGuideLines": {
 			"UseCorrectCaseHeading": "Use the correct case for titles",
@@ -745,7 +745,7 @@
 		"Accessibility": {
 			"ColorText1": "Info banners have a colour contrast ratio of 16.6:1 and passes AAA accessibility standards under WCAG 2.1.",
 			"ColorText2": "Warning banners have a colour contrast ratio of 16.45:1 and passes AAA accessibility standards under WCAG 2.1.",
-			"ColorText3": "Critical banners have a colour contrast ratio of 15.58:1 and passes AAA accessibility standards under WCAG 2.1.",
+			"ColorText3": "Critical banners have a colour contrast ratio of 15.85:1 and passes AAA accessibility standards under WCAG 2.1.",
 			"ColorText4": "Success banners have a colour contrast ratio of 16.86:1 and passes AAA accessibility standards under WCAG 2.1.",
 			"ColorText5": "Generic banners have a colour contrast ratio of 16.6:1 and passes AAA accessibility standards under WCAG 2.1.",
 			"KeyboardText": "Banners are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity."
