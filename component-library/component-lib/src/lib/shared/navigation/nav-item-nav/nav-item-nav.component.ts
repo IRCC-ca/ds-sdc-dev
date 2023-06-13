@@ -2,7 +2,9 @@ import {
   Renderer2,
   Input,
   SimpleChanges,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
@@ -18,6 +20,14 @@ import { Subscription, filter } from 'rxjs';
 
 //TODO: Fix class name (NavItemNavComponent)
 export class navItemNavComponent implements OnInit {
+  @ViewChild('externalLinkA', { static: false }) externalLinkA:
+    | ElementRef
+    | undefined;
+
+  @ViewChild('internalLink', { static: false }) internalLink:
+    | ElementRef
+    | undefined;
+
   //TODO: Pattern is supposed to be that any elements that may not be used should be OPTIONAL
   @Input() config: INavigationItemLink = {
     id: '',
@@ -39,7 +49,8 @@ export class navItemNavComponent implements OnInit {
   indicatorConfig: IIndicatorConfig = {
     category: 'weak',
     purpose: 'status',
-    type: 'dot'
+    type: 'dot',
+    tabIndex: -1
   };
 
   navObjectChangeSub = new Subscription();
@@ -66,19 +77,22 @@ export class navItemNavComponent implements OnInit {
         category: 'weak',
         purpose: 'status',
         status: this.config.indicator.status,
-        icon: this.config.indicator.icon
+        icon: this.config.indicator.icon,
+        tabIndex: -1
       };
       this.config.indicator.label
         ? (this.indicatorConfig = {
             ...this.indicatorConfig,
             type: 'text',
-            label: this.config.indicator.label
+            label: this.config.indicator.label,
+            tabIndex: -1
           })
         : null;
       this.size
         ? (this.indicatorConfig = { ...this.indicatorConfig, size: this.size })
         : null;
     }
+    this.size !== undefined ? (this.config.size = this.size) : undefined;
   }
 
   linkClick(e: Event) {
@@ -95,6 +109,14 @@ export class navItemNavComponent implements OnInit {
             : null;
         }
       }, 0);
+    }
+  }
+
+  enterPress(event: any) {
+    if (this.config.external) {
+      this.externalLinkA?.nativeElement.click();
+    } else {
+      this.internalLink?.nativeElement.click();
     }
   }
 }

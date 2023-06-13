@@ -27,7 +27,7 @@
 }
 
 @mixin layout {
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {
@@ -35,7 +35,7 @@
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
@@ -43,11 +43,11 @@
     }
   }
 
-  .accordion-nav{
+  .accordion-nav {
     display: grid;
     grid-template-columns: 190px auto;
 
-    ircc-cl-lib-icon-button{
+    ircc-cl-lib-icon-button {
       align-self: self-start;
       justify-self: self-end;
 
@@ -59,19 +59,19 @@
       //   align-self: self-start;
       // }
 
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
     }
   }
 
-  .accordion-content{
-    &.open{
+  .accordion-content {
+    &.open {
       display: block;
     }
 
-    &.close{
+    &.close {
       display: none;
     }
-  } 
+  }
 }

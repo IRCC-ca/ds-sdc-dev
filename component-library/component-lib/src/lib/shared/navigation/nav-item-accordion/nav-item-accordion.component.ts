@@ -87,4 +87,8 @@ export class navItemAccordionComponent implements OnInit {
     this.config.open = !this.config.open;
     this.navEvent.navEvent({ id: this.config.id, event: event });
   }
+
+  enterPress(event: any) {
+    this.config.open = !this.config.open;
+  }
 }

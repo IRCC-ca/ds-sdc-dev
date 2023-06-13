@@ -9,7 +9,7 @@
 @use "sass:map";
 
 @mixin selector {
-    ircc-cl-lib-nav-divider#{template-const.$escape} {
+  ircc-cl-lib-nav-divider#{template-const.$escape} {
     @content;
   }
 }
@@ -21,14 +21,13 @@
 }
 
 @mixin large-styles() {
-  
 }
 
 @mixin small-styles() {
 }
 
 @mixin layout {
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {
@@ -36,19 +35,18 @@
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
       @include large-styles();
     }
   }
-  
+
   .nav-seperator {
     width: 100%;
     background: var(--divider);
     height: 1px;
     margin: 22px 0px;
   }
- 
 }

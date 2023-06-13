@@ -30,18 +30,18 @@
 
       .icon-trailing {
         margin-left: 16px;
-        svg {
-          width: 16px;
-          height: 16px;
-        }
+        // svg {
+        //   width: 16px;
+        //   height: 16px;
+        // }
       }
 
-      .icon-left {
-        svg {
-          width: 20px;
-          height: 20px;
-        }
-      }
+      // .icon-left {
+      //   svg {
+      //     width: 20px;
+      //     height: 20px;
+      //   }
+      // }
 
       &.active-link {
         p {
@@ -66,20 +66,9 @@
         span {
           display: flex;
         }
-        svg {
-          width: 12px;
-          height: 12px;
-        }
       }
 
-      .icon-left {
-        svg {
-          width: 16px;
-          height: 16px;
-        }
-      }
-
-      &.active-link {
+      a &.active-link {
         p {
           @include typography.fontSet(heading, 6, emphasis);
           margin-right: 8px;
@@ -90,7 +79,7 @@
 }
 
 @mixin layout {
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {
@@ -98,7 +87,7 @@
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
@@ -143,6 +132,10 @@
       &[disabled] {
         color: var(--text-disabled);
         pointer-events: none;
+      }
+
+      &:visited {
+        color: var(--text-primary);
       }
 
       &.active-link {

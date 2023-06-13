@@ -13,11 +13,13 @@
       class="icon-leading"
       [config]="{ FA_keywords: config?.iconLeading || '' }"
       (click)="clickIconLeading(config.id + '_icon_leading')"
+      [attr.size]="config.size"
     ></ircc-cl-lib-icon>
     <h3>{{ config?.label || '' | translate }}</h3>
     <ircc-cl-lib-icon
       [id]="config.id + '_icon_trailing'"
       class="icon-trailing"
+      [attr.size]="config.size"
       [config]="{ FA_keywords: config?.iconTrailing || '' }"
       (click)="clickIconTrailing(config.id + '_icon_trailing')"
     ></ircc-cl-lib-icon>
@@ -68,8 +70,8 @@
           ></ng-container>
 
           <!--Type Link-->
-          <ng-container *ngSwitchCase="'link'"
-            ><ircc-cl-lib-nav-item
+          <ng-container *ngSwitchCase="'link'">
+            <ircc-cl-lib-nav-item
               [attr.size]="config.size"
               [size]="config.size"
               [config]="item"

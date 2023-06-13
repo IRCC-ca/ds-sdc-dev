@@ -47,7 +47,7 @@
 }
 
 @mixin layout {
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {
@@ -55,15 +55,15 @@
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
       @include large-styles();
     }
   }
-  
-  .lib-navigation{
+
+  .lib-navigation {
     padding: 16px;
     padding-top: 8px;
     // border: 1px solid black;
@@ -101,7 +101,7 @@
 
       h3 {
         flex: 1;
-        justify-self: center;
+        justify-self: flex-start;
       }
     }
 
@@ -129,10 +129,6 @@
       padding: 0;
     }
 
-    .parent-navigation > li {
-      // padding-bottom: 24px;
-    }
-
     .child-navigation {
       margin: 0;
       padding: 0px;
@@ -140,11 +136,11 @@
     }
   }
 
-  *.position-absolute{
+  *.position-absolute {
     position: absolute !important;
   }
 
-  *.position-fixed{
+  *.position-fixed {
     position: fixed !important;
     width: inherit;
     background-color: white;
