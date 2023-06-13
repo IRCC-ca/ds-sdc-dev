@@ -77,7 +77,9 @@ export interface IDatePickerConfig {
   maxYear?: number;
   minYear?: number;
   unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
-  disabled?: boolean;
+  yearSelectShow?: boolean;
+  monthSelectShow?: boolean;
+  daySelectShow?: boolean;
 }
 
 export interface IDatePickerUnknownDateToggleConfig {
@@ -127,7 +129,9 @@ export class DatePickerComponent implements OnInit {
   @Input() maxYear?: number;
   @Input() minYear?: number;
   @Input() unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
-  @Input() disabled?: boolean;
+  @Input() yearSelectShow?: boolean= true
+  @Input() monthSelectShow?: boolean = true;
+  @Input() daySelectShow?: boolean= true;
 
   errorIds: IErrorIDs[] = [];
   days: number[] = [];
@@ -146,8 +150,7 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true,
-      disabled: false
+      disableError: true
     },
     month: {
       id: '',
@@ -155,8 +158,7 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true,
-      disabled: false
+      disableError: true
     },
     year: {
       id: '',
@@ -164,8 +166,7 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true,
-      disabled: false
+      disableError: true
     }
   };
 
@@ -190,7 +191,7 @@ export class DatePickerComponent implements OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig
+      this.config.labelIconConfig,
     );
 
     //set config from individual options, if present
@@ -206,7 +207,9 @@ export class DatePickerComponent implements OnInit {
     if (this.minYear) this.config.minYear = this.minYear;
     if (this.unknownDateToggle)
       this.config.unknownDateToggle = this.unknownDateToggle;
-
+    if (this.yearSelectShow) this.config.yearSelectShow = this.yearSelectShow;
+    if (this.monthSelectShow) this.config.monthSelectShow = this.monthSelectShow;
+    if (this.daySelectShow) this.config.daySelectShow = this.daySelectShow;
     //Set the ids for the dropdowns
     this.dropDownConfigs.day.id =
       this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION;
@@ -226,12 +229,6 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.day.topLabel = this.config.label;
     this.dropDownConfigs.month.topLabel = this.config.label;
     this.dropDownConfigs.year.topLabel = this.config.label;
-
-    if (this.config.disabled) {
-      this.dropDownConfigs.day.disabled = true;
-      this.dropDownConfigs.month.disabled = true;
-      this.dropDownConfigs.year.disabled = true;
-    }
 
     if (this.config.errorMessages?.general) {
       this.errorIds = this.standAloneFunctions.getErrorIds(

@@ -54,7 +54,8 @@ export class DatePickerDocCodeComponent implements OnInit {
       monthUnknown: true,
       yearUnknown: true
     },
-    disabled: false
+    monthSelectShow: true,
+    daySelectShow: true
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -122,8 +123,38 @@ export class DatePickerDocCodeComponent implements OnInit {
         }
       ]
     },
-    //Field 2
-    //Field 3
+    {
+      id: 'monthSelectShow',
+      formGroup: this.form_datePicker,
+      size: 'small',
+      label: 'General.FieldTwo',
+      options: [
+        {
+          text: 'General.Yes',
+          value: 'Yes'
+        },
+        {
+          text: 'General.No',
+          value: 'No'
+        }
+      ]
+    },
+    {
+      id: 'daySelectShow',
+      formGroup: this.form_datePicker,
+      size: 'small',
+      label: 'General.FieldThree',
+      options: [
+        {
+          text: 'General.Yes',
+          value: 'Yes'
+        },
+        {
+          text: 'General.No',
+          value: 'No'
+        }
+      ]
+    },
     {
       id: 'error',
       formGroup: this.form_datePicker,
@@ -143,7 +174,7 @@ export class DatePickerDocCodeComponent implements OnInit {
   ];
   checkboxes: ICheckBoxComponentConfig[] = [
     {
-      id: 'disabled',
+      id: 'state',
       formGroup: this.form_datePicker,
       size: 'small',
       label: 'Banner.BannerConfig.StateLabel',
@@ -159,9 +190,10 @@ export class DatePickerDocCodeComponent implements OnInit {
     label: this.datePickerConfig.label,
     required: this.datePickerConfig.required,
     desc: this.datePickerConfig.desc,
-    disabled: this.datePickerConfig.disabled,
     errorMessages: undefined,
-    unknownDateToggle: this.datePickerConfig.unknownDateToggle
+    unknownDateToggle: this.datePickerConfig.unknownDateToggle,
+    monthSelectShow: this.datePickerConfig.monthSelectShow,
+    daySelectShow: this.datePickerConfig.daySelectShow
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -234,19 +266,16 @@ export class DatePickerDocCodeComponent implements OnInit {
       required: 'Yes',
       desc: 'Yes',
       hint: 'No',
-      //Field2
-      //Field3
-      error: 'No',
-      disabled: false
+      monthSelectShow: 'Yes',
+      daySelectShow: 'Yes',
+      error: 'No'
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
       this.datePickerConfig = this.parseToggleConfig(value);
-      console.log('HERE', this.datePickerConfig);
-      console.log('VALUE HERE', value);
       this.parseCodeViewConfig();
-      // if (value['error']) this.toggleErrors(value['error']);
-      // if (value['disabled'] !== undefined) this.toggleDisabled(value['disabled']);
+      if (value['error']) this.toggleErrors(value['error']);
+      if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
 
@@ -254,17 +283,14 @@ export class DatePickerDocCodeComponent implements OnInit {
    * Return mapping of Datepicker config from form values
    */
   private parseToggleConfig(value: any): IDatePickerConfig {
-    console.log('Value', value);
     return {
       ...this.datePickerConfig,
       size: value['size'].toLowerCase(),
       hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
+      monthSelectShow: value['monthSelectShow'] === 'Yes',
+      daySelectShow: value['daySelectShow'] === 'Yes',
       required: value['required'] === 'Yes',
-      desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined,
-      disabled:
-        value['disabled'] === true
-          ? (this.datePickerConfig.disabled = true)
-          : (this.datePickerConfig.disabled = false)
+      desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
     };
   }
 
@@ -272,10 +298,7 @@ export class DatePickerDocCodeComponent implements OnInit {
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
-    if (
-      !this.form_datePicker.get(this.datePickerConfig.id)?.touched &&
-      error !== 'None'
-    ) {
+    if (error === 'Yes') {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
       this.form_datePicker
         .get(this.datePickerConfig.id + '_dayControl')
@@ -304,10 +327,18 @@ export class DatePickerDocCodeComponent implements OnInit {
     }
     this.parseCodeViewConfig();
   }
+
   /**
    * Toggle disabled state of input
    */
   private toggleDisabled(disabled: boolean) {
+    const datePickerYearControl =
+      this.form_datePicker.controls['datePicker_yearControl'];
+    const datePickerMonthControl =
+      this.form_datePicker.controls['datePicker_monthControl'];
+    const datePickerDayControl =
+      this.form_datePicker.controls['datePicker_dayControl'];
+
     const datePickerControl: AbstractControl | null = this.form_datePicker.get(
       this.datePickerConfig.id
     );
@@ -319,8 +350,14 @@ export class DatePickerDocCodeComponent implements OnInit {
 
     if (disabled) {
       datePickerControl?.disable();
+      datePickerYearControl.disable();
+      datePickerMonthControl.disable();
+      datePickerDayControl.disable();
     } else {
       datePickerControl?.enable();
+      datePickerYearControl.enable();
+      datePickerMonthControl.enable();
+      datePickerDayControl.enable();
     }
   }
 
@@ -334,9 +371,10 @@ export class DatePickerDocCodeComponent implements OnInit {
       hint: this.datePickerConfig.hint,
       required: this.datePickerConfig.required,
       desc: this.datePickerConfig.desc,
-      disabled: this.datePickerConfig.disabled,
       errorMessages: undefined,
-      unknownDateToggle: this.datePickerConfig.unknownDateToggle
+      unknownDateToggle: this.datePickerConfig.unknownDateToggle,
+      monthSelectShow: this.datePickerConfig.monthSelectShow,
+      daySelectShow: this.datePickerConfig.daySelectShow
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
