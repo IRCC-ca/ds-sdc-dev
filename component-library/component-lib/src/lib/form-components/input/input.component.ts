@@ -92,7 +92,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   typeControl: keyof typeof InputTypes = InputTypes.text;
   btnAriaLabel = '';
   btnAriaLabelHide = '';
-  brnAriaLabelShow = '';
+  btnAriaLabelShow = '';
   errorIds: IErrorIDs[] = [];
   errorAria = '';
   formControl?: AbstractControl;
@@ -205,12 +205,12 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       this.errorStubText = ERROR_TEXT_STUB.en;
       this.btnAriaLabel = ARIA_TEXT.en.btnTypePasswordAriaLabel;
       this.btnAriaLabelHide = ARIA_TEXT.en.btnTypePasswordHideAriaLabel;
-      this.brnAriaLabelShow = ARIA_TEXT.en.btnTypePasswordShowAriaLabel;
+      this.btnAriaLabelShow = ARIA_TEXT.en.btnTypePasswordShowAriaLabel;
     } else {
       this.errorStubText = ERROR_TEXT_STUB.fr;
       this.btnAriaLabel = ARIA_TEXT.fr.btnTypePasswordAriaLabel;
       this.btnAriaLabelHide = ARIA_TEXT.fr.btnTypePasswordHideAriaLabel;
-      this.brnAriaLabelShow = ARIA_TEXT.fr.btnTypePasswordShowAriaLabel;
+      this.btnAriaLabelShow = ARIA_TEXT.fr.btnTypePasswordShowAriaLabel;
     }
   }
 
