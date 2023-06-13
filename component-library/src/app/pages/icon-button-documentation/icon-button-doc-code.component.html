@@ -16,14 +16,15 @@
           [config]="iconBtnConfig"
         ></ircc-cl-lib-icon-button>
       </div>
-  <ng-container toggles>
-    <ng-container *ngFor="let toggle of toggles">
-      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
-    </ng-container>
-    <ng-container *ngFor="let checkbox of checkboxes">
-      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
-    </ng-container>
-  </ng-container>
+      <ng-container toggles>
+        <ng-container *ngFor="let toggle of toggles">
+          <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+        </ng-container>
+        <ng-container *ngFor="let checkbox of checkboxes">
+          <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+        </ng-container>
+      </ng-container>
     </app-interactive-demo>
   </div>
   <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
+</div>

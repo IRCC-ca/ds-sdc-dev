@@ -88,7 +88,7 @@ export class IconButtonDocCodeComponent implements OnInit {
           value: 'Large'
         }
       ]
-    },
+    }
   ];
 
   checkboxes: ICheckBoxComponentConfig[] = [
@@ -112,7 +112,7 @@ export class IconButtonDocCodeComponent implements OnInit {
       {
         id: 'critical',
         title: 'Critical'
-      },
+      }
     ]
   };
 
@@ -157,7 +157,10 @@ export class IconButtonDocCodeComponent implements OnInit {
     return {
       ...this.iconBtnConfig,
       size: value['showSizeToggle'].toLowerCase(),
-      category: value === 'primary' ? (this.iconBtnConfig.category = 'primary') : (this.iconBtnConfig.category = 'critical'),
+      category:
+        value === 'primary'
+          ? (this.iconBtnConfig.category = 'primary')
+          : (this.iconBtnConfig.category = 'critical'),
       disabled:
         value['disabled'] === true
           ? (this.iconBtnConfig.disabled = true)
@@ -174,21 +177,25 @@ export class IconButtonDocCodeComponent implements OnInit {
       category: this.iconBtnConfig.category,
       size: this.iconBtnConfig.size,
       disabled: this.iconBtnConfig.disabled
-      
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
         "import { IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';\n\n" +
-        `iconBtnConfig: IIconButtonComponentConfig = ${stringify(this.iconBtnConfigCodeView)}`;
+        `iconBtnConfig: IIconButtonComponentConfig = ${stringify(
+          this.iconBtnConfigCodeView
+        )}`;
     }
   }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-    
+
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
-        this.form_interactive_iconBtn.addControl(checkbox.id, new FormControl());
+        this.form_interactive_iconBtn.addControl(
+          checkbox.id,
+          new FormControl()
+        );
       }
     });
 
@@ -202,7 +209,7 @@ export class IconButtonDocCodeComponent implements OnInit {
     });
 
     this.form_interactive_iconBtn.valueChanges.subscribe((value: any) => {
-      this.iconBtnConfig = this.parseToggleConfig(value)
+      this.iconBtnConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
   }
