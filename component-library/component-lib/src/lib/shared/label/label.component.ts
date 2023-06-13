@@ -24,11 +24,15 @@ export interface ILabelConfig {
   touched?: boolean;
 }
 
-export const ERROR_TEXT_STUB_EN = 'Error';
-export const ERROR_TEXT_STUB_FR = 'Erreur';
+export const ERROR_TEXT_STUB = {
+  en: 'Error',
+  fr: 'Erreur'
+};
 
-export const HELP_ICON_ALT_EN = ', more information';
-export const HELP_ICON_ALT_FR = ", plus d'information";
+export const HELP_ICON_ALT = {
+  en: ', more information',
+  fr: ", plus d'information"
+};
 
 @Component({
   selector: 'ircc-cl-lib-label',
@@ -57,10 +61,10 @@ export class LabelComponent implements OnInit {
   setLang(lang: string) {
     if (lang === 'en' || lang === 'en-US') {
       // this.errorStubText = ERROR_TEXT_STUB_EN;
-      this.labelIconText = HELP_ICON_ALT_EN;
+      this.labelIconText = HELP_ICON_ALT.en;
     } else {
       // this.errorStubText = ERROR_TEXT_STUB_FR;
-      this.labelIconText = HELP_ICON_ALT_FR;
+      this.labelIconText = HELP_ICON_ALT.fr;
     }
   }
 

@@ -54,6 +54,8 @@
 
 !.idea/codeStyleSettings.xml
 
+/core-library/.idea
+
 .project
 
 .classpath

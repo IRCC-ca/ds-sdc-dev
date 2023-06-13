@@ -13,8 +13,7 @@ import {
   StandAloneFunctions
 } from '../../../shared/functions/stand-alone.functions';
 import {
-  ERROR_TEXT_STUB_EN,
-  ERROR_TEXT_STUB_FR,
+  ERROR_TEXT_STUB,
   ILabelConfig,
   ILabelIconConfig
 } from '../../shared/label/label.component';
@@ -172,9 +171,9 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
   setLang(lang: string) {
     this.getAriaErrorText();
     if (lang === 'en' || lang === 'en-US') {
-      this.errorStubText = ERROR_TEXT_STUB_EN;
+      this.errorStubText = ERROR_TEXT_STUB.en;
     } else {
-      this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.errorStubText = ERROR_TEXT_STUB.fr;
     }
   }
 

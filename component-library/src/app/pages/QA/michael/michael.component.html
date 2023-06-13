@@ -4,6 +4,7 @@
   <button (click)="toggleComp('breadcrumb')">Breadcrumb Component</button>
   <button (click)="toggleComp('checkbox')">Checkbox Component</button>
   <button (click)="toggleComp('input')">Input Component</button>
+  <button (click)="toggleComp('icon-btn')">Icon Button Component</button>
 </div>
 <hr />
 <section
@@ -52,4 +53,12 @@
   <button (click)="buttonActions('removeInputError')">
     Remove Input Errors
   </button>
+</section>
+<section
+  id="icon-btn"
+  *ngIf="activeSection === 'icon-btn'"
+>
+  <h2>Icon Button</h2>
+  <ircc-cl-lib-icon-button [config]="qaIconBtnConfig"></ircc-cl-lib-icon-button>
+  <app-auto-tester [config]="testIconBtnComponentConfig"></app-auto-tester>
 </section>

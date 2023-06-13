@@ -38,7 +38,8 @@ export class codeViewerComponent implements OnInit, OnChanges {
 
   tabConfig: ITabNavConfig = {
     id: 'codeViewerTabs',
-    showContent: false
+    showContent: false,
+    size: 'small'
   };
   selectedTab: any = {
     title: ''
