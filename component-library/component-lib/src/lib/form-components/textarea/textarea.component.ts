@@ -45,7 +45,6 @@ export enum ResizableTypes {
   both = 'both',
   none = 'none'
 }
-
 @Component({
   selector: 'ircc-cl-lib-textarea',
   templateUrl: './textarea.component.html',
@@ -80,6 +79,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     formGroup: this.config.formGroup,
     parentID: ''
   };
+  textAreaAriaLabel = '';
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
