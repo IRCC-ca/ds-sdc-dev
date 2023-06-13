@@ -232,7 +232,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
   countryOfBirthSelectConfig: ISelectConfig = {
     id: 'contry_of_birth_select',
     formGroup: this.form,
-    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
+    placeholder: 'General.Placeholder',
     label: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.LABEL',
     required: true,
     options: [
@@ -262,7 +262,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.LABEL',
     required: true,
-    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
+    placeholder: 'General.Placeholder',
     options: [], //Set in init
     errorMessages: [
       {

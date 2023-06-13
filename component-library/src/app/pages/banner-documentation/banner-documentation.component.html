@@ -6,7 +6,10 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p class="demo">{{ 'Banner.InteractiveDemoDesc' | translate }}</p>
+    <p
+      class="demo"
+      [innerHtml]="'Banner.InteractiveDemoDesc' | translate"
+    ></p>
     <app-banner-doc-code></app-banner-doc-code>
   </section>
 
@@ -373,7 +376,8 @@
               </h5>
               <p>
                 {{
-                  'Banner.DesignGuideLines.bannerButtonCountDoText' | translate
+                  'Banner.DesignGuideLines.bannerButtonCountDontText'
+                    | translate
                 }}
               </p>
             </div>
@@ -671,7 +675,7 @@
               </h5>
               <p>
                 {{
-                  'Banner.ContentGuideLines.BannerPunctuationDontAlt'
+                  'Banner.ContentGuideLines.BannerPunctuationDontText'
                     | translate
                 }}
               </p>

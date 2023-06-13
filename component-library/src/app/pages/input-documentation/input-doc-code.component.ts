@@ -51,10 +51,12 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Size',
       options: [
         {
-          text: 'General.Small'
+          text: 'General.Small',
+          value: 'Small'
         },
         {
-          text: 'General.Large'
+          text: 'General.Large',
+          value: 'Large'
         }
       ]
     },
@@ -81,10 +83,10 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Required',
       options: [
         {
-          text: 'General.True'
+          text: 'True',
         },
         {
-          text: 'General.False'
+          text: 'Flase'
         }
       ]
     },
@@ -95,13 +97,13 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'ERROR.errorMessage',
       options: [
         {
-          text: 'General.NoneErr'
+          text: 'None'
         },
         {
-          text: 'General.SingleErr'
+          text: 'Single'
         },
         {
-          text: 'General.MultipleErr'
+          text: 'Multiple'
         }
       ]
     },
