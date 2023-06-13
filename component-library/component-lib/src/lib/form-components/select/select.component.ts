@@ -12,8 +12,7 @@ import {
   StandAloneFunctions
 } from '../../../shared/functions/stand-alone.functions';
 import {
-  ERROR_TEXT_STUB_EN,
-  ERROR_TEXT_STUB_FR,
+  ERROR_TEXT_STUB,
   ILabelConfig,
   ILabelIconConfig
 } from '../../shared/label/label.component';
@@ -72,10 +71,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService
-  ) { }
+  ) {}
 
-  onChange = (formValue: string) => { };
-  onTouched = () => { };
+  onChange = (formValue: string) => {};
+  onTouched = () => {};
   writeValue(formValue: any) {
     // this.form.get('formControl')?.setValue(formValue);
   }
@@ -178,9 +177,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   setLang(lang: string) {
     this.getAriaErrorText();
     if (lang === 'en' || lang === 'en-US') {
-      this.errorStubText = ERROR_TEXT_STUB_EN;
+      this.errorStubText = ERROR_TEXT_STUB.en;
     } else {
-      this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.errorStubText = ERROR_TEXT_STUB.fr;
     }
   }
 }

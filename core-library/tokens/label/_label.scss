@@ -1,29 +1,26 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../template-const' as template-const;
-@use '../sizes' as sizes;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use './label-const' as label-const;
-
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "../sizes" as sizes;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "./label-const" as label-const;
 
 @mixin create {
-         @include input-text-selector() {
-                @include label-const.common();
-                @include label-const.valid();
-                @include label-const.invalid();
-                @include textPadding();
-         }
+  @include input-text-selector() {
+    @include label-const.common();
+    @include label-const.valid();
+    @include label-const.invalid();
+    @include textPadding();
+  }
 }
 
 @mixin textPadding {
+  @include size.select(small) {
+    padding: sizes.$fixed-10 sizes.$fixed-12;
+  }
 
-    @include size.selector(small) {
-        padding: sizes.$fixed-10 sizes.$fixed-12;
-    }
-
-    @include size.selector(large) {
-        padding: sizes.$fixed-14 sizes.$fixed-12;
-    }
-
+  @include size.select(large) {
+    padding: sizes.$fixed-14 sizes.$fixed-12;
+  }
 }
