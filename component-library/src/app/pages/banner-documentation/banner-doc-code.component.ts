@@ -71,7 +71,7 @@ export class BannerDocCodeComponent implements OnInit {
         title: 'HTML',
         value:
           `<div>\n` +
-          '  <ircc-cl-lib-banenr [config]="bannerConfig"></ircc-cl-lib-banner>\n' +
+          '  <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>\n' +
           '</div>'
       },
       {
