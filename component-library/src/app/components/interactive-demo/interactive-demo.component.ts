@@ -13,7 +13,8 @@ import {
 } from '../accordion-panel/accordion-container.component';
 
 export enum InteractiveComponentType {
-  banner = 'banner'
+  banner = 'banner',
+  iconBtn = 'icon-button'
 }
 
 @Component({
