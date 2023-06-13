@@ -1,4 +1,24 @@
-:host {
+@use "../../../../../core-library/util/theme" as theme;
+@use "../../../../../core-library/util/size" as size;
+@use "../../../../../core-library/tokens/template-const";
+@use "sass:map";
+$selectors: "app-info-text-small";
+
+@mixin selector {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin layout {
+  color: var(--information-text);
+
   small {
     margin-left: 6px;
   }
