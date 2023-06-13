@@ -1,0 +1,90 @@
+<div
+  class="{{ config.size }} {{ config.orientation }}"
+  id="{{ config.id }}"
+  aria-live="polite"
+>
+  <div
+    class="spinner-container"
+    [ngClass]="{
+      active: config.type === 'active',
+      success: config.type === 'success',
+      critical: config.type === 'critical'
+    }"
+  >
+    <ng-container [ngSwitch]="config.type">
+      <div
+        *ngSwitchCase="'success'"
+        class="container"
+      >
+        <div class="icon-div">
+          <ircc-cl-lib-icon
+            [config]="{
+              FA_keywords: 'fa-check fa-regular',
+              ariaLabel: getSuccessTitle()
+            }"
+            class="spinner-icon"
+          ></ircc-cl-lib-icon>
+        </div>
+        <div class="text">
+          <div
+            class="label"
+            [innerHTML]="config.label"
+          ></div>
+          <div
+            *ngIf="config.size === 'large'"
+            class="desc"
+            [innerHTML]="config.description"
+          ></div>
+        </div>
+      </div>
+      <div
+        *ngSwitchCase="'critical'"
+        class="container"
+      >
+        <div class="icon-div">
+          <ircc-cl-lib-icon
+            [config]="{
+              FA_keywords: 'fa-exclamation fa-regular',
+              ariaLabel: getErrorTitle()
+            }"
+            class="spinner-icon"
+          ></ircc-cl-lib-icon>
+        </div>
+        <div class="text">
+          <div
+            class="label"
+            [innerHTML]="config.label"
+          ></div>
+          <div
+            *ngIf="config.size === 'large'"
+            class="desc"
+            [innerHTML]="config.description"
+          ></div>
+        </div>
+      </div>
+      <div
+        *ngSwitchDefault
+        class="container"
+      >
+        <div class="icon-div">
+          <img
+            src="./src/assets/icons/spinner-states.svg"
+            [attr.alt]="config.label || config.description ? '' : text[0]"
+            class="animated-icon loading-icon"
+          />
+        </div>
+        <div class="text">
+          <div
+            class="label"
+            [innerHTML]="config.label"
+          ></div>
+          <div
+            *ngIf="config.size === 'large'"
+            class="desc"
+            [innerHTML]="config.description"
+          ></div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

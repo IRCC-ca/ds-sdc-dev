@@ -1,0 +1,10 @@
+@use "../../core-library/index" as ircc-ds;
+
+//initialization of the DS
+@include ircc-ds.theme-init-required(
+  ircc-ds.palette-journeylab(),
+  default,
+  large,
+  light
+);
+@include ircc-ds.element-styles();

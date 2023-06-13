@@ -69,4 +69,28 @@ $default-color: null;
         background-color: var(--primary-background-disabled);
         color: var(--primary-text-disabled);
     }
+
+    border-radius: 5px;
+    transition: all 0.5s linear;
+
+    &:hover{
+        animation-name: example;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes example {
+    0% { 
+        background-color: rgba(255, 0, 0, 1);
+    }
+
+    50% {
+
+        background-color: rgba(79, 220, 74, 1);
+    }
+
+    100% { 
+        background-color: rgba(251, 7, 217, 1);
+    }
 }

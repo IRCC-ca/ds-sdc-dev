@@ -1,9 +1,11 @@
 @use "../../core-library/index" as ircc-ds;
 
-@use "./ds-core-library-extensions/tokens/button/link" as link-btn;
+@use "./ds-core-library-extensions/tokens/button/primary" as link-btn;
 @use "./ds-core-library-extensions/tokens/link/link";
 @use "./ds-core-library-extensions/tokens/link/primary" as link-primary;
 @use "./ds-core-library-extensions/tokens/link/secondary" as link-secondary;
+@use "./ds-core-library-extensions/component-styling/prdi/input/prdi.form-input"
+  as form-input;
 
 //initialization of the DS
 @include ircc-ds.theme-init-required(
@@ -18,3 +20,4 @@
 @include link-btn.create();
 @include link-primary.create();
 @include link-secondary.create();
+@include form-input.create();

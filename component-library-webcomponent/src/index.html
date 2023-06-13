@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ComponentLibraryWebcomponent</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script
+      src="https://kit.fontawesome.com/8e16e0c619.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form [formGroup]="form">
+      <ircc-cl-lib-input></ircc-cl-lib-input>
+    </form>
+  </body>
+
+  <script>
+    document.body.onload = addElement;
+    function addElement() {
+      const form = new FormGroup();
+
+      const input = document.querySelector("ircc-cl-lib-input");
+      input.config = {
+        id: "input",
+        size: "small",
+        type: "text",
+        required: false,
+        formGroup: form,
+        label: "Label text",
+        desc: "Description line of text",
+        errorMessages: [
+          { key: "invalid", errorLOV: "ERROR.fieldIsInvalid" },
+          { key: "testingError", errorLOV: "ERROR.testErrorMessage" },
+          { key: "maxlength", errorLOV: "ERROR.fieldExceededMaxLength" },
+        ],
+      };
+    }
+  </script>
+
+  <!-- <script>
+
+<ircc-cl-lib-icon-button></ircc-cl-lib-icon-button>
+<ircc-cl-lib-button>buttonText</ircc-cl-lib-button>
+<ircc-cl-lib-icon></ircc-cl-lib-icon>
+
+export interface IInputComponentConfig {
+  label?: string;
+  hint?: string;
+  desc?: string;
+  required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
+  placeholder?: string;
+  type?: keyof typeof InputTypes;
+  id: string;
+  size?: keyof typeof DSSizes;
+  formGroup: FormGroup;
+  errorMessages?: IErrorPairs[];
+  labelIconConfig?: ILabelIconConfig;
+}
+
+
+
+    document.body.onload = addElement;
+
+    function addElement() {
+      const iconButton = document.querySelector("ircc-cl-lib-icon-button");
+      iconButton.config = {
+        id: "breadcrumb_separator",
+        category: "custom",
+        size: this.config?.size,
+        icon: {
+          class: "fa-solid fa-ellipsis",
+          color: "var(--text-primary)",
+        },
+        ariaLabel: "",
+      };
+
+      const button = document.querySelector("ircc-cl-lib-button");
+      button.config = {
+        id: "asd",
+        category: "secondary", //primary = 'primary',secondary = 'secondary',plain = 'plain'
+        size: "small", //large
+        color: "critical", //critical
+      };
+      button.addEventListener("btnAction", (event) => console.log(event));
+
+      const icon = document.querySelector("ircc-cl-lib-icon");
+      icon.config = {
+        FA_keywords: "fa-solid fa-user",
+      };
+    }
+  </script> -->
+</html>

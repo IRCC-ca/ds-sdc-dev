@@ -3,10 +3,27 @@
 @use '../../../util/device' as device;
 @use '../../../util/size' as size;
 @use '../../../tokens/template-const' as template-const;
-@use '../../../tokens/sizes' as token-size;
-@use '../../../typography/typography' as typography;
-@use '../../../tokens/text' as text;
+@use '../../../../../../core-library/tokens/sizes' as token-size;
+// @use '../../../typography/typography' as typography;
+@use "../../../../../../core-library/typography/typography" as typography;
+@use '../../../../../../core-library/tokens/text' as text;
 @use 'sass:map';
+
+
+
+.test{
+
+  font-size: 12px;
+
+
+  @include tablet() {
+    font-size: 15px;
+  }
+
+  @include desktop() {
+    font-size: 20px;
+  }
+}
 
 @mixin selector {
   lib-form-input#{template-const.$escape} {
