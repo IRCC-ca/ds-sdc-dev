@@ -5,7 +5,10 @@ import {
   IBreadcrumbConfig,
   ICheckBoxComponentConfig,
   IIndicatorConfig,
-  IInputComponentConfig
+  IInputComponentConfig,
+  IIconButtonComponentConfig,
+  CLASS_X_MARK,
+  CLASS_TRASHCAN
 } from 'ircc-ds-angular-component-library';
 import {
   IAutoTestComponentConfig,
@@ -23,6 +26,7 @@ export class MichaelComponent implements OnInit {
   form_0: FormGroup = new FormGroup({});
   form_1: FormGroup = new FormGroup({});
   form_2: FormGroup = new FormGroup({});
+  form_3: FormGroup = new FormGroup({});
   CHECKBOX_ID = 'qa_test_checkbox';
   qaCheckboxConfig: IInputComponentConfig = {
     id: this.CHECKBOX_ID,
@@ -409,6 +413,52 @@ export class MichaelComponent implements OnInit {
     testFields: this.testerIndicatorFieldConfig
   };
 
+  qaIconBtnConfig: IIconButtonComponentConfig = {
+    category: 'primary',
+    id: 'icon-btn-tester',
+    size: 'large'
+  };
+
+  testerIconBtnFieldConfig: IAutoTestConfigObject = {
+    selects: [
+      {
+        id: 'size',
+        label: 'Size',
+        formGroup: this.form_3,
+        options: [
+          {
+            text: 'large'
+          },
+          {
+            text: 'small'
+          },
+          {
+            text: 'extraSmall'
+          }
+        ]
+      },
+      {
+        id: 'category',
+        label: 'Category',
+        formGroup: this.form_3,
+        options: [
+          {
+            text: 'primary'
+          },
+          {
+            text: 'critical'
+          }
+        ]
+      }
+    ]
+  };
+
+  testIconBtnComponentConfig: IAutoTestComponentConfig = {
+    id: 'michael_icon_btn_tester',
+    formGroup: this.form_3,
+    testFields: this.testerIconBtnFieldConfig
+  };
+
   constructor(private lang: LangSwitchService) {}
 
   ngOnInit() {
@@ -528,6 +578,39 @@ export class MichaelComponent implements OnInit {
       size: 'large',
       purpose: 'status',
       palette: 'generic'
+    });
+
+    // Auto tester component configs - Icon Button
+    this.testerIconBtnFieldConfig.selects?.forEach((i) => {
+      this.form_3.addControl(i.id, new FormControl());
+    });
+    this.form_3.addControl(
+      this.testIconBtnComponentConfig.id,
+      new FormControl()
+    );
+    this.form_3.valueChanges.subscribe((x) => {
+      let updatedConfig: IIconButtonComponentConfig = {
+        ...this.qaIconBtnConfig
+      };
+      for (const param in x) {
+        if (x[param] === null) continue;
+        updatedConfig = { ...updatedConfig, [param]: x[param] };
+        if (param === 'category') {
+          updatedConfig = {
+            ...updatedConfig,
+            icon: {
+              class: x[param] == 'primary' ? CLASS_X_MARK : CLASS_TRASHCAN,
+              color:
+                x[param] == 'primary'
+                  ? 'var(--primary-text)'
+                  : 'var(--critical-text)'
+            }
+          };
+        }
+        // console.log('updatedConfig: ', updatedConfig);
+
+        this.qaIconBtnConfig = updatedConfig;
+      }
     });
   }
 

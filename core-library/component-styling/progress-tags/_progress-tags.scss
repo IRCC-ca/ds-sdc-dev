@@ -62,14 +62,14 @@
 }
 
 @mixin layout {
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
     .small {
       @include small-styles();
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
     .large {
       @include large-styles();

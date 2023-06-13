@@ -91,7 +91,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
         errorLOV: 'RequestForm.requiredRadioError'
       }
     ],
-    size: 'large',
+    size: 'small',
     disabled: false,
     error: true
   };
@@ -117,7 +117,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
         errorLOV: 'RequestForm.requiredRadioError'
       }
     ],
-    size: 'large',
+    size: 'small',
     disabled: false,
     error: true
   };
@@ -130,7 +130,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     required: true,
     charLimit: '50',
     resizable: 'vertical',
-    size: 'large',
+    size: 'small',
     errorMessages: [
       {
         key: 'required',
@@ -151,7 +151,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     desc: 'RequestForm.requestDetailsDesc',
     required: true,
     resizable: 'vertical',
-    size: 'large',
+    size: 'small',
     errorMessages: [
       {
         key: 'required',
@@ -172,7 +172,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     desc: 'RequestForm.useCaseDesc',
     required: true,
     resizable: 'vertical',
-    size: 'large',
+    size: 'small',
     errorMessages: [
       {
         key: 'required',
@@ -193,7 +193,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     desc: 'RequestForm.referencesCaseDesc',
     hint: 'RequestForm.referencesHint',
     resizable: 'vertical',
-    size: 'large'
+    size: 'small'
     // errorMessages?: IErrorPairs[];
     // errorIcon?: IErrorIconConfig;
   };
@@ -204,7 +204,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     label: 'RequestForm.urgentDetailsLabel',
     required: true,
     resizable: 'vertical',
-    size: 'large',
+    size: 'small',
     errorMessages: [
       {
         key: 'required',
@@ -233,7 +233,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     label: 'RequestForm.requestedDateLabel',
     desc: 'RequestForm.requestedDateDesc',
     required: true,
-    size: 'large',
+    size: 'small',
     errorMessages: this.datePickerErrorMessages,
     minYear: 2023
   };

@@ -1,13 +1,13 @@
-@use '../../util/color'as color;
-@use '../../util/theme'as theme;
-@use '../../util/device'as device;
-@use '../../util/size'as size;
-@use '../../tokens/template-const'as template-const;
-@use '../../tokens/sizes'as token-size;
-@use '../../typography/typography'as typography;
-@use '../../tokens/text'as text;
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
 @use "../../util/accessibility" as a11y;
-@use 'sass:map';
+@use "sass:map";
 
 @mixin selector {
   ircc-cl-lib-radio-input#{template-const.$escape} {
@@ -36,7 +36,6 @@
 @mixin layout {
   div.radio {
     display: flex;
-    margin-left: -12px;
     margin-bottom: 8px;
 
     input {
@@ -63,7 +62,7 @@
     font-size: 16px;
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include small-styles();
 
     .large {
@@ -71,7 +70,7 @@
     }
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include large-styles();
 
     .small {

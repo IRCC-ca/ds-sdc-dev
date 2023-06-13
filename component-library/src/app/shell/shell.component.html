@@ -1,6 +1,14 @@
 <div>
   <div class="header">
     <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
+    <div class="container">
+      <h2
+        [ngClass]="{ h4: mobile }"
+        class="strong"
+      >
+        {{ 'Overview.SubHeading' | translate }}
+      </h2>
+    </div>
   </div>
   <main>
     <div

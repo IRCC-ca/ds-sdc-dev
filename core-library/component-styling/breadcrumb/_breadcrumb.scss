@@ -17,8 +17,6 @@
 
 @mixin create {
   @include selector() {
-    --breadcrumb-neutral-grey: #{color.mix-token(neutral, 500)};
-
     @include layout();
   }
 }
@@ -54,7 +52,7 @@
     padding: 0 2px;
   }
 
-  div.overflow_menu {
+  div.overflow-menu {
     top: 44px;
   }
 }
@@ -94,7 +92,7 @@
     padding: 0 4px;
   }
 
-  div.overflow_menu {
+  div.overflow-menu {
     top: 48px;
   }
 }
@@ -207,9 +205,9 @@
     align-items: center;
   }
 
-  div.overflow_menu {
+  div.overflow-menu {
     width: 197px;
-    border: 1px solid var(--breadcrumb-neutral-grey);
+    border: 1px solid var(--grey-5);
     border-radius: 4px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     background: var(--surface1);
@@ -219,7 +217,7 @@
     position: absolute;
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include size-sm();
 
     .large {
@@ -227,7 +225,7 @@
     }
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-lg();
 
     .small {
