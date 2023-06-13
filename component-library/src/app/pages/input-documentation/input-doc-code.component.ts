@@ -100,7 +100,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Required',
       options: [
         {
-          text: 'True',
+          text: 'True'
         },
         {
           text: 'False'
