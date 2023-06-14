@@ -20,18 +20,20 @@ $selectors: "ircc-cl-lib-error";
 }
 
 @mixin small-styles() {
+  &.errorContainer, .errorContainer {
+    padding-top: 4px;
+  }
   .errorIcon {
     height: 16px;
     width: 16px;
-    margin-top: 4px;
   }
 
   .errorText {
     font-size: 14px;
 
     margin: {
-      top: 4px;
-      bottom: 0px;
+      top: 0;
+      bottom: 0;
     }
   }
 
@@ -44,14 +46,16 @@ $selectors: "ircc-cl-lib-error";
 }
 
 @mixin large-styles() {
+  &.errorContainer , .errorContainer {
+    padding-top: 8px;
+  }
   .errorIcon {
     height: 20px;
     width: 20px;
-    margin-top: 4px;
   }
 
   .errorText {
-    margin: 4px 0 0px 0;
+    margin: 0;
     font-size: 16px;
   }
 
@@ -85,10 +89,11 @@ $selectors: "ircc-cl-lib-error";
   .errorContainer {
     display: flex;
     color: var(--critical-text);
-    align-items: center;
+    align-items: flex-start;
   }
 
   .errorIcon {
+    margin-top: 4px;
     margin-right: 4px;
   }
 }
