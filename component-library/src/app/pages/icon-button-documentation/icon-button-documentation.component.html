@@ -56,4 +56,48 @@
       </p>
     </div>
   </section>
+  <section class="configs">
+    <app-title-slug-url
+      [config]="headingConfig.configurationSlugConfig"
+    ></app-title-slug-url>
+    <div class="config-row">
+      <div class="column">
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'General.Size' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'General.ExtraSmall' | translate }}</li>
+            <li>{{ 'General.Small' | translate }}</li>
+            <li>{{ 'General.Large' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <div class="config-element">
+          <h5 class="sub-headings">{{ 'General.TypesHeading' | translate }}</h5>
+          <ul>
+            <li>{{ 'General.Primary' | translate }}</li>
+            <li>{{ 'General.Critical' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <div class="config-element">
+          <h5 class="sub-headings">
+            {{ 'General.StateLabel' | translate }}
+          </h5>
+          <ul>
+            <li>{{ 'General.DefaultLabel' | translate }}</li>
+            <li>{{ 'General.HoverLabel' | translate }}</li>
+            <li>{{ 'General.ActiveLabel' | translate }}</li>
+            <li>{{ 'General.DisabledLabel' | translate }}</li>
+            <li>{{ 'General.FocusLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>    
 </div>

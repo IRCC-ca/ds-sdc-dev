@@ -57,3 +57,35 @@ p {
     margin-top: 24px;
   }
 }
+
+.configs {
+  .config-row {
+    margin-bottom: 24px;
+  }
+  .config-row:last-child {
+    margin-bottom: 0px;
+  }
+
+  ul {
+    margin: 0px;
+    padding-left: 25px;
+  }
+
+  li {
+    font-size: 14px;
+  }
+}
+
+.config-row {
+  //most sections wrap responsively but the config section does not
+  display: flex;
+  justify-content: flex-start;
+}
+
+.column {
+  width: 50%;
+
+  @include device.in-phone-layout() {
+    width: 100%;
+  }
+}
