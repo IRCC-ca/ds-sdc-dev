@@ -8,6 +8,7 @@
 @use '../app/components/accordion-panel/accordion-container.component.scss' as
   accordion-container;
 @use '../app/components/info-text-small/info-text-small.component' as info-text-small;
+@use '../app/components/component-preview/component-preview.component' as component-preview;
 
 @import 'component-lib/styles';
 @import 'grid';
@@ -17,6 +18,7 @@
 @include code-viewer.create();
 @include accordion-container.create();
 @include info-text-small.create();
+@include component-preview.create();
 
 // // Enable Bootstrap row & column support.
 @include make-grid-columns();
