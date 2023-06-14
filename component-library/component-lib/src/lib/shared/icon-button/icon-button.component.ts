@@ -51,7 +51,7 @@ export class IconButtonComponent implements OnInit {
     }
   };
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (this.id) this.config.id = this.id;
     if (this.category) this.config.category = this.category;
     if (this.size) this.config.size = this.size;

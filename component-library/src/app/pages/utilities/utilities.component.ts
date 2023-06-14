@@ -29,8 +29,8 @@ export class UtilitiesComponent implements OnInit, TranslatedPageComponent {
   rightNavDataRaw: string[] = [
     // list of all right nav items
     'Utilities.Heading',
-    'LeftSideNav.sub-titles.colours',
-    'LeftSideNav.sub-titles.typography',
+    'General.ColourHeading',
+    'General.TypographyHeading',
     'Utilities.SpacingHeading',
     'Utilities.BreakpointsHeading'
   ];
@@ -45,10 +45,10 @@ export class UtilitiesComponent implements OnInit, TranslatedPageComponent {
     heading: 'h1'
   };
   utilitiesColorSlug: slugTitleURLConfig = {
-    title: 'Utilities.ColourHeading'
+    title: 'General.ColourHeading'
   };
   utilitiesTypographySlug: slugTitleURLConfig = {
-    title: 'Utilities.TypographyHeading'
+    title: 'General.TypographyHeading'
   };
   utilitiesSpacingSlug: slugTitleURLConfig = {
     title: 'Utilities.SpacingHeading'

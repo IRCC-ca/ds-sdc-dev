@@ -48,13 +48,13 @@ export class SideNavConfig {
         path: 'ROUTES.overview'
       },
       {
-        text: 'Overview.DeveloperHeading',
+        text: 'General.DeveloperHeading',
         type: ItemType.Link,
         category: ItemCategory.subTitle,
         path: 'ROUTES.forDevelopers'
       },
       {
-        text: 'Designers.Heading',
+        text: 'General.DesignerHeading',
         type: ItemType.Link,
         category: ItemCategory.subTitle,
         path: 'ROUTES.forDesigners'

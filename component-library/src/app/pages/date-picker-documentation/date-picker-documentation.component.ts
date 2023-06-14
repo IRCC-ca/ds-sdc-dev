@@ -20,47 +20,42 @@ export class DatePickerDocumentationComponent implements OnInit {
   headingConfig = docPageheadingConfig;
 
   datePickerTitleSlugConfig: slugTitleURLConfig = {
-    title: 'Date picker',
+    title: 'DatePicker.MainTitle',
     heading: 'h1',
-    anchorType: slugAnchorType.primary
-  };
-
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
     anchorType: slugAnchorType.primary
   };
 
   anatomyContentItems: ContentItem[] = [
     {
-      title: 'DatePicker.Anatomy.LabelHeading',
-      description: 'DatePicker.Anatomy.LabelTxt'
+      title: 'General.LabelHeading',
+      description: 'General.AnatomyLabelText'
     },
     {
-      title: 'DatePicker.Anatomy.RequiredIndicatorHeading',
-      description: 'DatePicker.Anatomy.RequiredIndicatorTxt'
+      title: 'General.RequiredIndicatorHeading',
+      description: 'General.RequiredIndicatorTxt'
     },
     {
-      title: 'DatePicker.Anatomy.DescHeading',
-      description: 'DatePicker.Anatomy.DescTxt'
+      title: 'General.DescriptionHeading',
+      description: 'General.AnatomyDescText'
     },
     {
       title: 'DatePicker.Anatomy.HintHeading',
-      description: 'DatePicker.Anatomy.HintTxt'
+      description: 'General.AnatomyHintText'
     },
     {
       title: 'DatePicker.Anatomy.SelectCompoHeading',
       description: 'DatePicker.Anatomy.SelectCompoTxt'
     },
     {
-      title: 'DatePicker.Anatomy.ErrMsgHeading',
-      description: 'DatePicker.Anatomy.ErrMsgTxt'
+      title: 'ERROR.errorMessage',
+      description: 'General.AnatomyErrorText'
     }
   ];
 
   figmaDirections: string[] = [
     'DatePicker.UsageInFigma.FigmaDirectionsListItem1',
-    'DatePicker.UsageInFigma.FigmaDirectionsListItem2',
-    'DatePicker.UsageInFigma.FigmaDirectionsListItem3',
+    'General.FigmaDirectionsListItem2',
+    'General.FigmaDirectionsListItem3',
     'DatePicker.UsageInFigma.FigmaDirectionsListItem4'
   ];
   figmaDirectionsSecond: string[] = [

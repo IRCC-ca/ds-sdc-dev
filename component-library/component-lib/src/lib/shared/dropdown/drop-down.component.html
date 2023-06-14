@@ -4,7 +4,7 @@
 >
   <button
     aria-live="polite"
-    attr.aria-label="{{ 'Dropdown' || '' | translate }}"
+    attr.aria-label= "{{ btnAriaLabel }}"
     [id]="config.id"
     (click)="toggleFlyout(!selected)"
     [disabled]="config.disabled"
@@ -22,9 +22,9 @@
         *ngIf="showPlaceholder"
         class="placholder-text"
       >
-        {{ config.placeholderText }}
+        {{ config.placeholderText || '' | translate }}
       </p>
-      <p class="label-text">{{ config.label }}</p>
+      <p class="label-text">{{ config.label || '' | translate }}</p>
     </div>
     <div
       *ngIf="!selected"

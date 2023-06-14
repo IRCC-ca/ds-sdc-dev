@@ -1,5 +1,7 @@
-
-<div id="{{ config?.id }}" [ngClass]="['errorContainer', config?.size ?? '']">
+<div
+  id="{{ config?.id }}"
+  [ngClass]="['errorContainer', config?.size ?? '']"
+>
   <i
     *ngIf="config?.id?.endsWith('error0')"
     [ngClass]="
@@ -15,4 +17,4 @@
   >
     {{ config?.errorLOV || '' | translate }}
   </p>
-
+</div>

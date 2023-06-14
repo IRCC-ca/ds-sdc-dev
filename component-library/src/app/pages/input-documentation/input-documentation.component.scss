@@ -51,6 +51,10 @@ h3 {
     @include typography.fontSet(body, 3, regular);
     margin: 24px 0 0 0;
   }
+  &.specsDesc2 {
+    @include typography.fontSet(body, 3, regular);
+    margin: 12px 0 0 0;
+  }
 
   &.subtext-1 {
     margin-top: 12px;

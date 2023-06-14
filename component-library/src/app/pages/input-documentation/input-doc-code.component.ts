@@ -65,13 +65,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'size',
       formGroup: this.form,
       size: 'small',
-      label: 'Size',
+      label: 'General.Size',
       options: [
         {
-          text: 'Small'
+          text: 'General.Small',
+          value: 'Small'
         },
         {
-          text: 'Large'
+          text: 'General.Large',
+          value: 'Large'
         }
       ]
     },
@@ -79,14 +81,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'hint',
       formGroup: this.form,
       size: 'small',
-      label: 'Hint',
+      label: 'General.Hint',
       options: [
         {
-          text: 'Show',
+          text: 'General.Show',
           value: 'True'
         },
         {
-          text: 'Hide',
+          text: 'General.Hide',
           value: 'False'
         }
       ]
@@ -95,7 +97,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'required',
       formGroup: this.form,
       size: 'small',
-      label: 'Required',
+      label: 'General.Required',
       options: [
         {
           text: 'True'
@@ -109,7 +111,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'error',
       formGroup: this.form,
       size: 'small',
-      label: 'Error',
+      label: 'ERROR.errorMessage',
       options: [
         {
           text: 'None'
@@ -126,14 +128,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'desc',
       formGroup: this.form,
       size: 'small',
-      label: 'Description',
+      label: 'General.Description',
       options: [
         {
-          text: 'Show',
+          text: 'General.Show',
           value: 'True'
         },
         {
-          text: 'Hide',
+          text: 'General.Hide',
           value: 'False'
         }
       ]
@@ -142,14 +144,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'placeholder',
       formGroup: this.form,
       size: 'small',
-      label: 'Placeholder',
+      label: 'General.Placeholder',
       options: [
         {
-          text: 'Show',
+          text: 'General.Show',
           value: 'True'
         },
         {
-          text: 'Hide',
+          text: 'General.Hide',
           value: 'False'
         }
       ]
@@ -161,7 +163,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'state',
       formGroup: this.form,
       size: 'small',
-      label: 'State',
+      label: 'General.StateLabel',
       inlineLabel: 'Disabled'
     }
   ];
@@ -172,11 +174,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     tab: [
       {
         id: 'basic',
-        title: 'Basic'
+        title: 'General.Basic'
       },
       {
         id: 'password',
-        title: 'Password'
+        title: 'General.Password'
       }
     ]
   };

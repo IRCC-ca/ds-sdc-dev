@@ -143,8 +143,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     desc: 'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.DESC',
     labelIconConfig: {
       iconClass: 'fa-light fa-circle-info',
-      ariaText:
-        'ACC_DEMO.PERSONAL_INFO.FAMILY_NAME_INPUT.LABEL_INFO_BUTTON_ARIA'
+      ariaText: 'ACC_DEMO.MORE_INFO'
     },
     errorMessages: [
       {
@@ -176,8 +175,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     label: 'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL',
     labelIconConfig: {
       iconClass: 'fa-light fa-circle-info',
-      ariaText:
-        'ACC_DEMO.PERSONAL_INFO.SEX_AT_BIRTH_RADIO.LABEL_INFO_BUTTON_ARIA'
+      ariaText: 'ACC_DEMO.MORE_INFO'
     },
     options: [
       {
@@ -196,7 +194,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ]
   };
@@ -234,7 +232,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
   countryOfBirthSelectConfig: ISelectConfig = {
     id: 'contry_of_birth_select',
     formGroup: this.form,
-    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
+    placeholder: 'General.Placeholder',
     label: 'ACC_DEMO.PERSONAL_INFO.COUNTRY_OF_BIRTH.LABEL',
     required: true,
     options: [
@@ -254,7 +252,7 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ]
   };
@@ -264,12 +262,12 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.CITY_OF_BIRTH.LABEL',
     required: true,
-    placeholder: 'SELECT.GENERIC_PLACEHOLDER',
+    placeholder: 'General.Placeholder',
     options: [], //Set in init
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.SELECTS_RADIO_REQUIRED'
+        errorLOV: 'ERROR.requiredRadioError'
       }
     ]
   };

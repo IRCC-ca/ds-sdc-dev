@@ -45,7 +45,7 @@ export class ProgressTagsComponent implements OnInit {
 
   constructor(private translate: TranslateService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (this.id) this.config.id = this.id;
     if (this.type) this.config.type = this.type;
     if (this.size) this.config.size = this.size;

@@ -22,7 +22,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   infoBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
     type: 'info',
     size: 'small'
@@ -30,7 +30,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   warningBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
     type: 'warning',
     size: 'small'
@@ -38,7 +38,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   criticalBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
     type: 'critical',
     size: 'small'
@@ -46,7 +46,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   successBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
     type: 'success',
     size: 'small'
@@ -54,7 +54,7 @@ export class BannerDocumentationComponent implements OnInit {
 
   genericBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
     type: 'generic',
     size: 'small'
@@ -68,8 +68,8 @@ export class BannerDocumentationComponent implements OnInit {
 
   figmaDirections: string[] = [
     'Banner.UsageInFigma.FigmaDirectionsListItem1',
-    'Banner.UsageInFigma.FigmaDirectionsListItem2',
-    'Banner.UsageInFigma.FigmaDirectionsListItem3',
+    'General.FigmaDirectionsListItem2',
+    'General.FigmaDirectionsListItem3',
     'Banner.UsageInFigma.FigmaDirectionsListItem4'
   ];
 
@@ -95,7 +95,7 @@ export class BannerDocumentationComponent implements OnInit {
       description: 'Banner.Anatomy.BannerBarText'
     },
     {
-      title: 'Banner.Anatomy.TitleHeading',
+      title: 'General.TitleHeading',
       description: 'Banner.Anatomy.TitleText'
     },
     {

@@ -1325,7 +1325,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   private onTouch?: () &#x3D;&gt; void;
   private onChange?: (value: any) &#x3D;&gt; void;
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (this.id !&#x3D;&#x3D; &#x27;&#x27;) {
       this.config.id &#x3D; this.id;
     }

@@ -3,12 +3,10 @@ import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ISelectConfig } from '../select/select.component';
 import {
-  ERROR_TEXT_STUB_EN,
-  ERROR_TEXT_STUB_FR,
+  ERROR_TEXT_STUB,
   ILabelConfig,
   ILabelIconConfig
 } from '../../shared/label/label.component';
-import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import {
@@ -78,7 +76,9 @@ export interface IDatePickerConfig {
   maxYear?: number;
   minYear?: number;
   unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
-  disabled?: boolean;
+  yearSelectShow?: boolean;
+  monthSelectShow?: boolean;
+  daySelectShow?: boolean;
 }
 
 export interface IDatePickerUnknownDateToggleConfig {
@@ -128,7 +128,9 @@ export class DatePickerComponent implements OnInit {
   @Input() maxYear?: number;
   @Input() minYear?: number;
   @Input() unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
-  @Input() disabled?: boolean;
+  @Input() yearSelectShow?: boolean= true
+  @Input() monthSelectShow?: boolean = true;
+  @Input() daySelectShow?: boolean= true;
 
   errorIds: IErrorIDs[] = [];
   days: number[] = [];
@@ -147,8 +149,7 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true,
-      disabled: false
+      disableError: true
     },
     month: {
       id: '',
@@ -156,8 +157,7 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true,
-      disabled: false
+      disableError: true
     },
     year: {
       id: '',
@@ -165,8 +165,7 @@ export class DatePickerComponent implements OnInit {
       label: '',
       options: [],
       size: 'large',
-      disableError: true,
-      disabled: false
+      disableError: true
     }
   };
 
@@ -191,7 +190,7 @@ export class DatePickerComponent implements OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig
+      this.config.labelIconConfig,
     );
 
     //set config from individual options, if present
@@ -207,7 +206,9 @@ export class DatePickerComponent implements OnInit {
     if (this.minYear) this.config.minYear = this.minYear;
     if (this.unknownDateToggle)
       this.config.unknownDateToggle = this.unknownDateToggle;
-
+    if (this.yearSelectShow) this.config.yearSelectShow = this.yearSelectShow;
+    if (this.monthSelectShow) this.config.monthSelectShow = this.monthSelectShow;
+    if (this.daySelectShow) this.config.daySelectShow = this.daySelectShow;
     //Set the ids for the dropdowns
     this.dropDownConfigs.day.id =
       this.config.id + DATE_PICKER_DAY_CONTROL_ID_EXTENSION;
@@ -227,12 +228,6 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.day.topLabel = this.config.label;
     this.dropDownConfigs.month.topLabel = this.config.label;
     this.dropDownConfigs.year.topLabel = this.config.label;
-
-    if (this.config.disabled) {
-      this.dropDownConfigs.day.disabled = true;
-      this.dropDownConfigs.month.disabled = true;
-      this.dropDownConfigs.year.disabled = true;
-    }
 
     if (this.config.errorMessages?.general) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
@@ -442,7 +437,7 @@ export class DatePickerComponent implements OnInit {
       this.dropDownConfigs.month.placeholder = DATE_PICKER_PLACEHOLDER_MONTH_EN;
       this.dropDownConfigs.year.placeholder = DATE_PICKER_PLACEHOLDER_YEAR_EN;
 
-      this.errorStubText = ERROR_TEXT_STUB_EN;
+      this.errorStubText = ERROR_TEXT_STUB.en;
     } else {
       this.dropDownConfigs.day.label = DATE_PICKER_LABELS_FR[0];
       this.dropDownConfigs.month.label = DATE_PICKER_LABELS_FR[1];
@@ -452,7 +447,7 @@ export class DatePickerComponent implements OnInit {
       this.dropDownConfigs.month.placeholder = DATE_PICKER_PLACEHOLDER_MONTH_FR;
       this.dropDownConfigs.year.placeholder = DATE_PICKER_PLACEHOLDER_YEAR_FR;
 
-      this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.errorStubText = ERROR_TEXT_STUB.fr;
     }
   }
 
