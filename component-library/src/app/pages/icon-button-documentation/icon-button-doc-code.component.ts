@@ -3,7 +3,10 @@ import {
   ICheckBoxComponentConfig,
   IIconButtonComponentConfig,
   IRadioInputComponentConfig,
-  ITabNavConfig
+  ITabNavConfig,
+  CLASS_X_MARK,
+  CLASS_TRASHCAN,
+  IconButtonCategories
 } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -25,22 +28,71 @@ export class IconButtonDocCodeComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
-  ) {}
+  ) { }
 
   form_interactive_iconBtn = new FormGroup({});
 
   iconBtnConfig: IIconButtonComponentConfig = {
     id: 'icon-button',
-    category: 'primary',
-    size: 'extraSmall',
+    category: IconButtonCategories.primary,
+    size: 'small',
     disabled: false
+  };
+
+  toggles: IRadioInputComponentConfig[] = [
+    {
+      id: 'sizeToggle',
+      formGroup: this.form_interactive_iconBtn,
+      size: 'small',
+      label: 'General.Size',
+      options: [
+        {
+          text: 'General.ExtraSmall',
+          value: 'extraSmall'
+        },
+        {
+          text: 'General.Small',
+          value: 'small'
+        },
+        {
+          text: 'General.Large',
+          value: 'large'
+        }
+      ]
+    }
+  ];
+
+  checkboxes: ICheckBoxComponentConfig[] = [
+    {
+      id: 'stateToggle',
+      formGroup: this.form_interactive_iconBtn,
+      label: 'General.StateLabel',
+      size: 'small',
+      inlineLabel: 'Disabled'
+    }
+  ];
+
+  demoTabsConfig: ITabNavConfig = {
+    id: 'demoTabs',
+    size: 'small',
+    tab: [
+      {
+        id: 'primary',
+        title: 'Buttons.PrimaryHeading'
+      },
+      {
+        id: 'critical',
+        title: 'General.Critical'
+      }
+    ]
   };
 
   iconBtnConfigCodeView: any = {
     id: this.iconBtnConfig.id,
     category: this.iconBtnConfig.category,
     size: this.iconBtnConfig.size,
-    disabled: this.iconBtnConfig.disabled
+    disabled: this.iconBtnConfig.disabled,
+    icon: this.iconBtnConfig.icon
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -61,60 +113,14 @@ export class IconButtonDocCodeComponent implements OnInit {
         title: 'TypeScript',
         value:
           "import { IIconButtonComponentConfig } from 'ircc-ds-angular-component-library';\n\n" +
-          `iconBtnConfig: IBannIIconButtonComponentConfigerConfig = ${stringify(
+          `iconBtnConfig: IIconButtonComponentConfig = ${stringify(
             this.iconBtnConfigCodeView
           )}`
       }
     ]
   };
 
-  toggles: IRadioInputComponentConfig[] = [
-    {
-      id: 'showSizeToggle',
-      formGroup: this.form_interactive_iconBtn,
-      size: 'small',
-      label: 'General.Size',
-      options: [
-        {
-          text: 'General.ExtraSmall',
-          value: 'Extra small'
-        },
-        {
-          text: 'General.Small',
-          value: 'Small'
-        },
-        {
-          text: 'General.Large',
-          value: 'Large'
-        }
-      ]
-    }
-  ];
 
-  checkboxes: ICheckBoxComponentConfig[] = [
-    {
-      id: 'showSelectToggle',
-      formGroup: this.form_interactive_iconBtn,
-      label: 'State',
-      size: 'small',
-      inlineLabel: 'Disabled'
-    }
-  ];
-
-  demoTabsConfig: ITabNavConfig = {
-    id: 'demoTabs',
-    size: 'small',
-    tab: [
-      {
-        id: 'primary',
-        title: 'Primary'
-      },
-      {
-        id: 'critical',
-        title: 'Critical'
-      }
-    ]
-  };
 
   /**
    * Set iconBtn type based on the tab selected
@@ -122,47 +128,31 @@ export class IconButtonDocCodeComponent implements OnInit {
   setIconBtnCategory(value: any) {
     if (value === 'primary') {
       this.iconBtnConfig.category = 'primary';
-    } else if (value === 'critical') {
+      this.iconBtnConfig.icon = {
+        class: CLASS_X_MARK,
+        color: 'var(--text-primary)'
+      }
+    } else if (value === 'critical'){
       this.iconBtnConfig.category = 'critical';
+      this.iconBtnConfig.icon = {
+          class: CLASS_TRASHCAN,
+          color: 'var(--critical-text)'  
+      }
     }
+    console.log("setIconConf",this.iconBtnConfig);
+    
     this.parseCodeViewConfig();
-  }
-
-  /**
-   * disable radio button based on id
-   */
-  disableRadio(name: string) {
-    this.toggles.forEach((item) => {
-      if (item.id === name) {
-        item.disabled = true;
-      }
-    });
-  }
-
-  /**
-   * enable radio button based on id
-   */
-  enableRadio(name: string) {
-    this.toggles.forEach((item) => {
-      if (item.id === name) {
-        item.disabled = false;
-      }
-    });
   }
 
   /**
    * Return mapping of iconBtnConfig from form values
    */
-  private parseToggleConfig(value: any): IIconButtonComponentConfig {
+  private parseToggleConfig(value: any): IIconButtonComponentConfig {   
     return {
       ...this.iconBtnConfig,
-      size: value['showSizeToggle'].toLowerCase(),
-      category:
-        value === 'primary'
-          ? (this.iconBtnConfig.category = 'primary')
-          : (this.iconBtnConfig.category = 'critical'),
+      size: value['sizeToggle'],
       disabled:
-        value['disabled'] === true
+        value['stateToggle'] === true
           ? (this.iconBtnConfig.disabled = true)
           : (this.iconBtnConfig.disabled = false)
     };
@@ -176,7 +166,8 @@ export class IconButtonDocCodeComponent implements OnInit {
       id: this.iconBtnConfig.id,
       category: this.iconBtnConfig.category,
       size: this.iconBtnConfig.size,
-      disabled: this.iconBtnConfig.disabled
+      disabled: this.iconBtnConfig.disabled,
+      icon:this.iconBtnConfig.icon
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =

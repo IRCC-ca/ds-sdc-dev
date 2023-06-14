@@ -12,4 +12,48 @@
     ></p>
     <app-icon-button-doc-code></app-icon-button-doc-code>
   </section>
+    <section class="types">
+    <app-title-slug-url
+      [config]="headingConfig.typesSlugConfig"
+    ></app-title-slug-url>
+    <!-- Primary icon btn Preview -->
+    <div class="component-preview-container">
+      <h5 class="sub-headings">
+        {{ 'General.Primary' | translate }}
+      </h5>
+      <app-component-preview
+        class="component-preview"
+        copyStyle="<ircc-cl-lib-icon-button category='primary'></ircc-cl-lib-icon-button>"
+        componentType="iconBtn"
+      >
+        <ircc-cl-lib-icon-button
+          class="icon-btn-preview"
+          [config]="primaryIconBtnConfig"
+        ></ircc-cl-lib-icon-button>
+      </app-component-preview>
+      <p class="description">
+        {{ 'IconButtonDocumentation.PrimaryText' | translate }}
+      </p>
+    </div>
+
+    <!-- Critical icon btn Preview -->
+    <div class="component-preview-container">
+      <h5 class="sub-headings">
+        {{ 'General.Critical' | translate }}
+      </h5>
+      <app-component-preview
+        class="component-preview"
+        copyStyle="<ircc-cl-lib-icon-button category='critical'></ircc-cl-lib-icon-button>"
+        componentType="iconBtn"
+      >
+        <ircc-cl-lib-icon-button
+          class="icon-btn-preview"
+          [config]="criticalIconConfig"
+        ></ircc-cl-lib-icon-button>
+      </app-component-preview>
+      <p class="description">
+        {{ 'IconButtonDocumentation.CriticalText' | translate }}
+      </p>
+    </div>
+  </section>
 </div>

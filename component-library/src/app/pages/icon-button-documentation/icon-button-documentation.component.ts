@@ -6,6 +6,7 @@ import {
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@ngx-translate/core';
+import { IIconButtonComponentConfig, IconButtonCategories } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-icon-button-documentation',
@@ -22,6 +23,21 @@ export class IconButtonDocumentationComponent implements OnInit {
     heading: 'h1',
     anchorType: slugAnchorType.primary
   };
+
+  primaryIconBtnConfig: IIconButtonComponentConfig = {
+    id: 'icon-button',
+    category: IconButtonCategories.primary,
+    size: 'small',
+    disabled: false
+  }
+
+  criticalIconConfig: IIconButtonComponentConfig = {
+    id: 'icon-button',
+    category: IconButtonCategories.critical,
+    size: 'small',
+    disabled: false
+  }
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService

@@ -1,0 +1,59 @@
+@use '../../../../../core-library/util/device' as device;
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
+.content-doc-wrapper {
+  box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+  }
+}
+
+.body1.intro {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.demo {
+  margin-top: 0px;
+  margin-bottom: 24px;
+}
+
+.sub-headings {
+  margin-top: 0px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.description {
+  margin: 12px 0 0 0;
+}
+
+p {
+  @include typography.fontSet(body, 3, regular);
+}
+
+.types {
+  .component-preview-container {
+    margin-bottom: 24px;
+
+    .description {
+      margin-top: 28px;
+    }
+
+    .component-preview {
+      @include typography.fontSet(heading, 6, regular);
+      max-width: 400px;
+    }
+  }
+
+  .component-preview-container:last-child {
+    margin-bottom: 0px;
+  }
+
+  .icon-btn-preview {
+    margin-top: 24px;
+  }
+}
