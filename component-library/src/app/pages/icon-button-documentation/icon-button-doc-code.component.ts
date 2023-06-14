@@ -28,7 +28,7 @@ export class IconButtonDocCodeComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
-  ) { }
+  ) {}
 
   form_interactive_iconBtn = new FormGroup({});
 
@@ -120,8 +120,6 @@ export class IconButtonDocCodeComponent implements OnInit {
     ]
   };
 
-
-
   /**
    * Set iconBtn type based on the tab selected
    */
@@ -131,23 +129,23 @@ export class IconButtonDocCodeComponent implements OnInit {
       this.iconBtnConfig.icon = {
         class: CLASS_X_MARK,
         color: 'var(--text-primary)'
-      }
-    } else if (value === 'critical'){
+      };
+    } else if (value === 'critical') {
       this.iconBtnConfig.category = 'critical';
       this.iconBtnConfig.icon = {
-          class: CLASS_TRASHCAN,
-          color: 'var(--critical-text)'  
-      }
+        class: CLASS_TRASHCAN,
+        color: 'var(--critical-text)'
+      };
     }
-    console.log("setIconConf",this.iconBtnConfig);
-    
+    console.log('setIconConf', this.iconBtnConfig);
+
     this.parseCodeViewConfig();
   }
 
   /**
    * Return mapping of iconBtnConfig from form values
    */
-  private parseToggleConfig(value: any): IIconButtonComponentConfig {   
+  private parseToggleConfig(value: any): IIconButtonComponentConfig {
     return {
       ...this.iconBtnConfig,
       size: value['sizeToggle'],
@@ -167,7 +165,7 @@ export class IconButtonDocCodeComponent implements OnInit {
       category: this.iconBtnConfig.category,
       size: this.iconBtnConfig.size,
       disabled: this.iconBtnConfig.disabled,
-      icon:this.iconBtnConfig.icon
+      icon: this.iconBtnConfig.icon
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
