@@ -29,8 +29,8 @@ export class UtilitiesComponent implements OnInit, TranslatedPageComponent {
   rightNavDataRaw: string[] = [
     // list of all right nav items
     'Utilities.Heading',
-    'LeftSideNav.sub-titles.colours',
-    'LeftSideNav.sub-titles.typography',
+    'General.ColourHeading',
+    'General.TypographyHeading',
     'Utilities.SpacingHeading',
     'Utilities.BreakpointsHeading'
   ];
