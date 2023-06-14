@@ -21,18 +21,6 @@
   }
 }
 
-@mixin small-styles() {
-  .radio-buttons {
-    padding: 4px 0 0 0;
-  }
-}
-
-@mixin large-styles() {
-  .radio-buttons {
-    padding: 8px 0 0 0;
-  }
-}
-
 @mixin layout {
   div.radio {
     display: flex;
@@ -60,22 +48,6 @@
 
   .large_label {
     font-size: 16px;
-  }
-
-  @include size.select(small) {
-    @include small-styles();
-
-    .large {
-      @include large-styles();
-    }
-  }
-
-  @include size.select(large) {
-    @include large-styles();
-
-    .small {
-      @include small-styles();
-    }
   }
 
   .sr-only {

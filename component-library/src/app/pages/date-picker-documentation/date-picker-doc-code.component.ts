@@ -37,6 +37,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       {
         key: 'required',
         errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+        // errorLOV: 'ERROR.requiredTextAreaError'
       }
     ]
   };
@@ -44,9 +45,9 @@ export class DatePickerDocCodeComponent implements OnInit {
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
     formGroup: this.form_datePicker,
-    label: 'General.Label',
+    label: 'Label text',
     required: true,
-    desc: 'General.Desc',
+    desc: 'Description line of text',
     size: 'small',
     errorMessages: this.datePickerErrorMessages,
     unknownDateToggle: {

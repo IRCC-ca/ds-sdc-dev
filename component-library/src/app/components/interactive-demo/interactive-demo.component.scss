@@ -5,7 +5,6 @@
 
 .container {
   border-radius: 5px;
-  padding-bottom: 4px;
   border-width: sizes.$fixed-1;
   border-color: var(--neutral-border);
   border-style: solid;
@@ -19,6 +18,7 @@
     white-space: normal;
     min-height: 180px;
     border-top: sizes.$fixed-1 solid var(--divider);
+    margin-bottom: 4px;
   }
 
   .banner {
@@ -44,10 +44,10 @@
   }
 
   .toggles {
-    margin: 16px 28px 24px;
+    margin: 4px 28px 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 24px;
+    row-gap: 16px;
 
     @include device.in-phone-layout() {
       grid-template-columns: 1fr;
