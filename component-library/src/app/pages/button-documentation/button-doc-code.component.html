@@ -1,5 +1,11 @@
 <div class="content-doc-wrapper col-12 col-lg-10">
-  <div style="width: 100%">
+  <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
+  <p class="body1 intro">{{ 'Buttons.Intro' | translate }}</p>
+  <app-info-text-small>
+    {{ 'Buttons.IntroAlert' | translate }}
+  </app-info-text-small>
+
+  <section class="interactive-demo">
     <app-title-slug-url
       [config]="interactiveDemoSlugTitleURLConfig"
     ></app-title-slug-url>
@@ -38,7 +44,83 @@
         </ng-container>
       </ng-container>
     </app-interactive-demo>
-  </div>
 
-  <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
+    <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
+  </section>
+
+  <section class="types">
+    <app-title-slug-url
+      [config]="headingConfig.typesSlugConfig"
+    ></app-title-slug-url>
+    <h5 class="sub-headings">
+      {{ 'Buttons.PrimaryHeading' | translate }}
+    </h5>
+    <app-component-preview
+      copyText="<button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>"
+    >
+      <button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>
+    </app-component-preview>
+    <p>{{ 'Buttons.PrimaryText' | translate }}</p>
+    <h5>{{ 'Buttons.SecondaryHeading' | translate }}</h5>
+    <app-component-preview
+      copyText="<button category='secondary'>{{
+        'Buttons.SecondaryIBtnText' | translate
+      }}</button>"
+    >
+      <button category="secondary">
+        {{ 'Buttons.SecondaryIBtnText' | translate }}
+      </button>
+    </app-component-preview>
+    <p>{{ 'Buttons.SecondaryText' | translate }}</p>
+    <h5>{{ 'Buttons.CriticalHeading' | translate }}</h5>
+    <app-component-preview
+      copyText="<button color='critical'>{{
+        'Buttons.CriticalBtnText' | translate
+      }}</button>"
+    >
+      <button color="critical">
+        {{ 'Buttons.CriticalBtnText' | translate }}
+      </button>
+    </app-component-preview>
+    <p>{{ 'Buttons.CriticalText' | translate }}</p>
+    <h5>{{ 'Buttons.PlainHeading' | translate }}</h5>
+    <app-component-preview
+      [style.width]="'300px'"
+      copyText="<button category='plain'>{{
+        'Buttons.PlainBtnText' | translate
+      }}</button>"
+    >
+      <button category="plain">{{ 'Buttons.PlainBtnText' | translate }}</button>
+    </app-component-preview>
+    <app-component-preview
+      [style.width]="'300px'"
+      copyText="<button category='plain' color='critical'>{{
+        'Buttons.PlainCritBtnText' | translate
+      }}</button>"
+    >
+      <button
+        category="plain"
+        color="critical"
+      >
+        {{ 'Buttons.PlainCritBtnText' | translate }}
+      </button>
+    </app-component-preview>
+    <p>{{ 'Buttons.PlainText' | translate }}</p>
+  </section>
+
+  <section class="configs"></section>
+
+  <section class="design-guide"></section>
+
+  <section class="anatomy"></section>
+
+  <section class="specs"></section>
+
+  <section class="content-guidelines"></section>
+
+  <section class="usage-figma"></section>
+
+  <section class="accessibility"></section>
+
+  <section class="research"></section>
 </div>

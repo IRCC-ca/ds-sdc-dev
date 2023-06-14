@@ -17,6 +17,7 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 
 export enum LayoutType {
   'fluid' = 'button-container-fluid',
@@ -187,6 +188,12 @@ export class ButtonDocCodeComponent implements OnInit {
       }
     ]
   };
+  pageTitleSlugConfig: slugTitleURLConfig = {
+    title: 'Buttons.Title',
+    heading: 'h1',
+    anchorType: slugAnchorType.primary
+  };
+  headingConfig = docPageheadingConfig;
 
   /**
    * position icon based on config
