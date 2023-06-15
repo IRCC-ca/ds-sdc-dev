@@ -100,4 +100,211 @@
       </div>
     </div>
   </section>
+  <section class="design-guide">
+    <app-title-slug-url
+      [config]="headingConfig.guidelineSlugConfig"
+    ></app-title-slug-url>
+
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h5 class="emphasis sub-headings">
+          {{ 'IconButtonDocumentation.OrganizeIcons' | translate }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/icon-btn-content/org-icon.png"
+              alt="{{
+                'IconButtonDocumentation.OrganizeIconsAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-green"
+              >
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'IconButtonDocumentation.OrganizeIconsDoText' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/icon-btn-content/org-icon-dont.png"
+              alt="{{
+                'IconButtonDocumentation.OrganizeIconsDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-red"
+              >
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'IconButtonDocumentation.OrganizeIconsDontText' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="emphasis sub-headings">
+          {{ 'IconButtonDocumentation.CreateConsistent' | translate }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/icon-btn-content/create-btn-do.png"
+              alt="{{ 'IconButtonDocumentation.CreateIconsDoAlt' | translate }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-green"
+              >
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'IconButtonDocumentation.CreateIconsDoText' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/icon-btn-content/create-btn-dont.png"
+              alt="{{
+                'IconButtonDocumentation.CreateIconsDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-red"
+              >
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'IconButtonDocumentation.CreateIconsDontText' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="emphasis sub-headings">
+          {{ 'IconButtonDocumentation.UseCriticalDestruction' | translate }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/icon-btn-content/use-critical-do.png"
+              alt="{{
+                'IconButtonDocumentation.UseCriticalDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-green"
+              >
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'IconButtonDocumentation.UseCriticalDoText' | translate
+                }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/icon-btn-content/use-critical-dont.png"
+              alt="{{
+                'IconButtonDocumentation.UseCriticalDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-red"
+              >
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'IconButtonDocumentation.UseCriticalDontText'
+                    | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="emphasis sub-headings">
+          {{
+            'IconButtonDocumentation.EasyUnderStandHeading' | translate
+          }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/icon-btn-content/easy-icon-do.png"
+              alt="{{
+                'IconButtonDocumentation.EasyUnderStandDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-green"
+              >
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'IconButtonDocumentation.EasyUnderStandDoText' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/icon-btn-content/easy-icon-do.png"
+              alt="{{
+                'IconButtonDocumentation.EasyUnderStandDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5
+                class="do-dont-heading emphasis text-underline text-color-red"
+              >
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'IconButtonDocumentation.EasyUnderStandDontText' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="sub-headings">
+      {{ 'IconButtonDocumentation.SpacingHeading' | translate }}
+    </h5>
+    <div class="row">
+      <div [style.max-width]="'100%'">
+        <img
+          src="assets/img/icon-btn-content/icon-spacing.png"
+          alt="{{ 'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate }}"
+        />
+        <p class="description">
+          {{ 'IconButtonDocumentation.SpacingText' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
 </div>
