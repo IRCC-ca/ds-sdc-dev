@@ -58,7 +58,9 @@
     <app-component-preview
       copyText="<button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>"
     >
-      <button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>
+      <ircc-cl-lib-button [config]="buttonTypeConfigs['primary']">
+        {{ 'Buttons.PrimaryBtnText' | translate }}
+      </ircc-cl-lib-button>
     </app-component-preview>
     <p>{{ 'Buttons.PrimaryText' | translate }}</p>
     <h5>{{ 'Buttons.SecondaryHeading' | translate }}</h5>
@@ -67,43 +69,40 @@
         'Buttons.SecondaryIBtnText' | translate
       }}</button>"
     >
-      <button category="secondary">
+      <ircc-cl-lib-button [config]="buttonTypeConfigs['secondary']">
         {{ 'Buttons.SecondaryIBtnText' | translate }}
-      </button>
+      </ircc-cl-lib-button>
     </app-component-preview>
     <p>{{ 'Buttons.SecondaryText' | translate }}</p>
-    <h5>{{ 'Buttons.CriticalHeading' | translate }}</h5>
+    <h5>{{ 'General.CriticalHeading' | translate }}</h5>
     <app-component-preview
       copyText="<button color='critical'>{{
         'Buttons.CriticalBtnText' | translate
       }}</button>"
     >
-      <button color="critical">
+      <ircc-cl-lib-button [config]="buttonTypeConfigs['critical']">
         {{ 'Buttons.CriticalBtnText' | translate }}
-      </button>
+      </ircc-cl-lib-button>
     </app-component-preview>
     <p>{{ 'Buttons.CriticalText' | translate }}</p>
     <h5>{{ 'Buttons.PlainHeading' | translate }}</h5>
     <app-component-preview
-      [style.width]="'300px'"
       copyText="<button category='plain'>{{
         'Buttons.PlainBtnText' | translate
       }}</button>"
     >
-      <button category="plain">{{ 'Buttons.PlainBtnText' | translate }}</button>
+      <ircc-cl-lib-button [config]="buttonTypeConfigs['plain']">
+        {{ 'Buttons.PlainBtnText' | translate }}
+      </ircc-cl-lib-button>
     </app-component-preview>
     <app-component-preview
-      [style.width]="'300px'"
       copyText="<button category='plain' color='critical'>{{
         'Buttons.PlainCritBtnText' | translate
       }}</button>"
     >
-      <button
-        category="plain"
-        color="critical"
-      >
+      <ircc-cl-lib-button [config]="buttonTypeConfigs['plain_critical']">
         {{ 'Buttons.PlainCritBtnText' | translate }}
-      </button>
+      </ircc-cl-lib-button>
     </app-component-preview>
     <p>{{ 'Buttons.PlainText' | translate }}</p>
   </section>

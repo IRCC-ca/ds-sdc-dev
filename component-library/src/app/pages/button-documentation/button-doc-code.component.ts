@@ -194,6 +194,38 @@ export class ButtonDocCodeComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
   headingConfig = docPageheadingConfig;
+  buttonTypeConfigs: { [key: string]: IButtonConfig } = {
+    primary: {
+      id: 'type_primary',
+      category: 'primary',
+      color: 'CTA',
+      size: 'large'
+    },
+    secondary: {
+      id: 'type_secondary',
+      category: 'secondary',
+      color: 'CTA',
+      size: 'large'
+    },
+    critical: {
+      id: 'type_critical',
+      category: 'primary',
+      color: 'critical',
+      size: 'large'
+    },
+    plain: {
+      id: 'type_plain0',
+      category: 'plain',
+      color: 'CTA',
+      size: 'large'
+    },
+    plain_critical: {
+      id: 'type_plain_critical',
+      category: 'plain',
+      color: 'critical',
+      size: 'large'
+    }
+  };
 
   /**
    * position icon based on config
