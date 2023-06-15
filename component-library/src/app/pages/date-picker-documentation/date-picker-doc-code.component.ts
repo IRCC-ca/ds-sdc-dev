@@ -128,7 +128,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'monthSelectShow',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'General.FieldTwo',
+      label: 'General.Month',
       options: [
         {
           text: 'General.Yes',
@@ -144,7 +144,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'daySelectShow',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'General.FieldThree',
+      label: 'General.Day',
       options: [
         {
           text: 'General.Yes',
