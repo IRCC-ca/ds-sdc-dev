@@ -63,7 +63,7 @@
 
   .item1 {
     align-self: center;
-
+    padding: 14px 0 10px 0;
     @include device.in-phone-layout () {
       margin-left: sizes.$fixed-8;
     }

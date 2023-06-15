@@ -33,14 +33,13 @@
       display: flex;
       justify-content: space-between;
       margin: 0;
-      padding: 0;
+      padding: 24px 0;
     }
 
     .image-container {
       align-self: center;
       width: 296.47px;
       padding: 0;
-      margin: 24px 0;
 
       @include device.in-phone-layout() {
         width: 249px;
@@ -76,9 +75,6 @@
   //container query which applies margins if the container is 16px less than the view width
   // i.e. if the header is spanning almost the entire screen then we will indent the image and lang toggle so they aren't cut off
   @container header-container (width > 90vw) {
-    .image-container {
-      margin-left: 20px;
-    }
 
     .languageSwitch {
       margin-right: 20px;
