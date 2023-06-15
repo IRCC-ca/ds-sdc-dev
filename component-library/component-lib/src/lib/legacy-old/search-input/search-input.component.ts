@@ -23,7 +23,7 @@ export class SearchInputComponent implements OnInit {
   searchInputControl = new FormControl();
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     console.log('testing');
   }
 }

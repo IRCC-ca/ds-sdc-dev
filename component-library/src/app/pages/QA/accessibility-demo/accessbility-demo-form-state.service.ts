@@ -14,14 +14,14 @@ export class AccessbilityDemoFormStateService {
     selected: 1,
     steps: [
       {
-        title: 'ACC_DEMO.STEPPER.STEP1',
+        title: 'ACC_DEMO.BACKGROUNDINFO',
         tagConfig: {
           id: 'progress_indicator_step1',
           type: 'success'
         }
       },
       {
-        title: 'ACC_DEMO.STEPPER.STEP2',
+        title: 'ACC_DEMO.PERSONAL_INFO.H1',
         tagConfig: {
           id: 'progress_indicator_step2',
           type: 'primary'
