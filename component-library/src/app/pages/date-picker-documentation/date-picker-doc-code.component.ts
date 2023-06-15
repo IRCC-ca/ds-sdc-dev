@@ -159,7 +159,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'error',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Input.AnatomyErrorHeading',
+      label: 'ERROR.errorMessage',
       options: [
         {
           text: 'General.Yes',
@@ -177,7 +177,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'state',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Banner.BannerConfig.StateLabel',
+      label: 'General.StateLabel',
       inlineLabel: 'Disabled'
     }
   ];

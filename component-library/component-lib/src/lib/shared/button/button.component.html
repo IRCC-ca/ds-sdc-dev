@@ -9,10 +9,16 @@
   (click)="clickEvent(config.id)"
   class="lib-button"
   [id]="config.id"
->   <div class="button-content-container">
-        <span class="icon" *ngIf="config.icon">
-            <ircc-cl-lib-icon [config]="{'FA_keywords':config.icon}"></ircc-cl-lib-icon>
-        </span>
-        <span class="text"><ng-content></ng-content></span>
-    </div>
+>
+  <div class="button-content-container">
+    <span
+      class="icon"
+      *ngIf="config.icon"
+    >
+      <ircc-cl-lib-icon
+        [config]="{ FA_keywords: config.icon }"
+      ></ircc-cl-lib-icon>
+    </span>
+    <span class="text"><ng-content></ng-content></span>
+  </div>
 </button>

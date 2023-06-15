@@ -9,5 +9,5 @@ export class SecondaryChipsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 }

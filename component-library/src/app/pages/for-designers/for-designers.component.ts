@@ -17,7 +17,7 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
   rightNavData: ISideNavDataInterface[];
   rightNavDataRaw: string[] = [
     // list of all right nav items
-    'Designers.Heading',
+    'General.DesignerHeading',
     'Designers.AboutHeading',
     'Designers.AccessHeading',
     'Designers.InstallFontsHeading',
@@ -28,7 +28,7 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'forDesigners';
 
   designerHeadingSlug: slugTitleURLConfig = {
-    title: 'Designers.Heading',
+    title: 'General.DesignerHeading',
     heading: 'h1'
   };
   designerAboutHeadingSlug: slugTitleURLConfig = {
