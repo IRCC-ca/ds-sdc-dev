@@ -107,7 +107,47 @@
     <p>{{ 'Buttons.PlainText' | translate }}</p>
   </section>
 
-  <section class="configs"></section>
+  <section class="configs">
+    <app-title-slug-url
+      [config]="headingConfig.configurationSlugConfig"
+    ></app-title-slug-url>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h5 class="sub-headings">
+          {{ 'General.Size' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Small' | translate }}</li>
+          <li>{{ 'General.Large' | translate }}</li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-6">
+        <h5 [style.margin-top]="0">{{ 'General.Layout' | translate }}</h5>
+        <ul>
+          <li>{{ 'Buttons.ConfigLayoutFluid' | translate }}</li>
+          <li>{{ 'Buttons.ConfigLayoutFixed' | translate }}</li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-6">
+        <h5>{{ 'Buttons.ConfigIconHeading' | translate }}</h5>
+        <ul>
+          <li>{{ 'Buttons.ConfigIconNone' | translate }}</li>
+          <li>{{ 'Buttons.ConfigIconLeading' | translate }}</li>
+          <li>{{ 'Buttons.ConfigIconTrailing' | translate }}</li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-6">
+        <h5>{{ 'General.StateLabel' | translate }}</h5>
+        <ul>
+          <li>{{ 'General.DefaultLabel' | translate }}</li>
+          <li>{{ 'General.HoverLabel' | translate }}</li>
+          <li>{{ 'General.ActiveLabel' | translate }}</li>
+          <li>{{ 'General.DisabledLabel' | translate }}</li>
+          <li>{{ 'General.FocusLabel' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <section class="design-guide"></section>
 
