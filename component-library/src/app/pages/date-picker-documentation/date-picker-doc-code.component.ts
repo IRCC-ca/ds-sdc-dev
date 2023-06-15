@@ -36,8 +36,7 @@ export class DatePickerDocCodeComponent implements OnInit {
     general: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
-        // errorLOV: 'ERROR.requiredTextAreaError'
+        errorLOV: 'ERROR.requiredTextAreaError'
       }
     ]
   };
