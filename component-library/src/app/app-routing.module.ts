@@ -30,6 +30,7 @@ import { InputDocumentationComponent } from './pages/input-documentation/input-d
 import { RequestFormComponent } from './pages/request-form/request-form.component';
 import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 import { DatePickerDocumentationComponent } from './pages/date-picker-documentation/date-picker-documentation.component';
+import { IconButtonDocumentationComponent } from './pages/icon-button-documentation/icon-button-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -93,6 +94,11 @@ const routes: Routes = [
       component: DatePickerDocumentationComponent,
       title: 'DatePicker.Title'
     },
+    {
+      path: 'icon-button-documentation',
+      component: IconButtonDocumentationComponent,
+      title: 'IconButtonDocumentation.Title'
+    },
 
     // French
     { path: 'aperçu', component: OverviewComponent, title: 'Overview.Heading' },
@@ -135,6 +141,11 @@ const routes: Routes = [
       path: 'datePicker-doc-fr',
       component: DatePickerDocumentationComponent,
       title: 'DatePicker.Title'
+    },
+    {
+      path: 'icon-button-documentation-fr',
+      component: IconButtonDocumentationComponent,
+      title: 'IconButtonDocumentation.Title'
     },
 
     //QA PATHS

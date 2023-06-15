@@ -20,6 +20,7 @@ import { DsPageModule } from './modules/ds-pages.module';
 
 import { APP_BASE_HREF } from '@angular/common';
 
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locales/', '.json');
 }
@@ -27,8 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LangSwitchComponent
-    // TestComponent
+    LangSwitchComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,4 +68,4 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

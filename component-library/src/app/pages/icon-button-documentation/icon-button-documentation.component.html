@@ -1,0 +1,15 @@
+<div class="content-doc-wrapper">
+  <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
+  <p class="body1 intro">{{ 'IconButtonDocumentation.Intro' | translate }}</p>
+
+  <section class="interactive-demo">
+    <app-title-slug-url
+      [config]="headingConfig.interactiveDemoSlugConfig"
+    ></app-title-slug-url>
+    <p
+      class="demo"
+      [innerHTML]="'IconButtonDocumentation.InteractiveDemoDesc' | translate"
+    ></p>
+    <app-banner-doc-code></app-banner-doc-code>
+  </section>
+</div>
