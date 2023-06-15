@@ -207,3 +207,41 @@ p {
     width: 100%;
   }
 }
+
+.figma-usage {
+  .figma-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    @include device.in-tablet-layout() {
+      grid-template-columns: 1fr;
+    }
+
+    .figma-column {
+      max-width: 547px;
+
+      @include device.in-tablet-layout() {
+        max-width: 444px;
+      }
+    }
+
+    .image-1 {
+      max-width: 232px;
+      height: auto;
+    }
+  }
+
+  ol {
+    padding-left: 20px;
+    margin: 0 0 12px 0;
+  }
+}
+
+.list-item {
+  font-size: 14px;
+  @include typography.fontSet(body, 3, regular);
+
+  ::last-child {
+    margin-bottom: 12px;
+  }
+}
