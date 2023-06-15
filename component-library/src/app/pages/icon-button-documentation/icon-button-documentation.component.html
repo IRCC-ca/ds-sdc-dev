@@ -296,4 +296,69 @@
       </div>
     </div>
   </section>
+  <section class="anatomy">
+    <app-title-slug-url
+      [config]="headingConfig.anatomySlugConfig"
+    ></app-title-slug-url>
+    <img
+      class="anatomy-image-container"
+      src="assets/img/icon-btn-content/anatomy-image-button.png"
+      alt="{{ 'Banner.Anatomy.ImgAlt' | translate }}"
+    /><br />
+    <div class="anatomy-content-container">
+      <div class="counter-and-heading-container">
+        <div class="round-purple-num-count">1</div>
+        <h5 class="round-purple-num-heading-text">
+          <strong>{{
+            'IconButtonDocumentation.AnatomyHeading' | translate
+          }}</strong>
+        </h5>
+      </div>
+      <p class="anatomy-description">
+        {{ 'IconButtonDocumentation.AnatomyText' | translate }}
+      </p>
+    </div>
+  </section>
+  <section class="specs">
+    <app-title-slug-url
+      [config]="headingConfig.specsSlugConfig"
+    ></app-title-slug-url>
+    <img
+      class="single-img"
+      src="assets/img/icon-btn-content/spec-image.png"
+      alt="{{ 'IconButtonDocumentation.SpecsImgAlt' | translate }}"
+    />
+    <p class="specs-description">
+      {{ 'IconButtonDocumentation.SpecsText' | translate }}
+    </p>
+  </section>
+  <section class="figma-usage">
+    <app-title-slug-url
+      [config]="headingConfig.figmaSlugConfig"
+    ></app-title-slug-url>
+    <div class="figma-row">
+      <div class="figma-column">
+        <h5 class="sub-headings">
+          {{ 'General.FigmaDirectionsHeading' | translate }}
+        </h5>
+        <ol>
+          <li
+            class="list-item"
+            *ngFor="let direction of figmaDirections"
+            [innerHtml]="direction | translate"
+          ></li>
+        </ol>
+      </div>
+      <div class="image-container-wrapper">
+        <div class="image-1 image-container">
+          <img
+            src="assets/img/icon-btn-content/figma.png"
+            alt="{{
+              'IconButtonDocumentation.FigmaDirectionsImgAlt' | translate
+            }}"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

@@ -10,7 +10,7 @@ import {
   IIconButtonComponentConfig,
   IconButtonCategories
 } from 'ircc-ds-angular-component-library';
-
+import { ContentItem } from '@app/share/interface/content-item.interface';
 @Component({
   selector: 'app-icon-button-documentation',
   templateUrl: './icon-button-documentation.component.html',
@@ -40,6 +40,20 @@ export class IconButtonDocumentationComponent implements OnInit {
     size: 'small',
     disabled: false
   };
+
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'IconButtonDocumentation.AnatomyHeading',
+      description: 'IconButtonDocumentation.AnatomyText'
+    }
+  ];
+
+  figmaDirections: string[] = [
+    'IconButtonDocumentation.FigmaDirectionsListItem1',
+    'IconButtonDocumentation.FigmaDirectionsListItem2',
+    'IconButtonDocumentation.FigmaDirectionsListItem3',
+    'IconButtonDocumentation.FigmaDirectionsListItem4'
+  ];
 
   constructor(
     private translate: TranslateService,

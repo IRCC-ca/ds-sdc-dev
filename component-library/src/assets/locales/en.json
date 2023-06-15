@@ -893,6 +893,15 @@
 		"EasyUnderStandDontAlt": "A file uploader showing required document with a primary icon button showing a “plus” icon. It is unclear what the plus icon will do.",
 		"EasyUnderStandDontText": "Use the icon button when the icon is ambiguous and may be better understood when accompanied by a label.",
 		"SpacingHeading": "Spacing for icon button groups",
-		"SpacingText": "An icon button group is a set of icon buttons that have a contextual relationship. To create consistency with how these actions are visually related, consistent spacing rules should be followed. Large icon button groups should have 4 pixels between buttons, small icon button groups should have 4 pixels between buttons and extra small icon button groups should have 16 pixels between buttons."
+		"SpacingText": "An icon button group is a set of icon buttons that have a contextual relationship. To create consistency with how these actions are visually related, consistent spacing rules should be followed. Large icon button groups should have 4 pixels between buttons, small icon button groups should have 4 pixels between buttons and extra small icon button groups should have 16 pixels between buttons.",
+		"AnatomyHeading": "Icon",
+		"AnatomyText": "The icon uses the icon component and can be replaced with any Font Awesome icon. The icon button also has a container used for displaying hover, active and focus states around the icon.",
+		"SpecsImgAlt": "Specs displaying the padding and layer measurements within the icon button component. Specs are described in the paragraph below.",
+		"SpecsText": "The extra small button with fixed layout has no pixels of vertical padding and horizontal padding inside the button. The icon has a 16 pixel width and height. The small button with fixed layout has 10 pixels of vertical padding and  horizontal padding inside the button. The icon has a 20 pixel width and height. The large button with fluid layout has 14 pixels of vertical padding and horizontal padding inside the button. The icon has a 24 pixel width and height. ",
+		"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the “icon-button” component from the Components library.",
+		"FigmaDirectionsListItem2": "In the right panel, configure the properties and variants to meet your needs. ",
+		"FigmaDirectionsListItem3": "Never override colours, radius, padding, icon size, etc. This way foundational elements are kept consistent. ",
+		"FigmaDirectionsListItem4": "Designers can change the Font Awesome keyword to update the icon in the icon-button to any Font Awesome icon.",
+		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing an icon button."
 	}
 }
