@@ -33,7 +33,8 @@
 		"Codeview": "[FR]  Codeview",
 		"ButtonDocumentation": "[FR]  Button Documentation",
 		"InputDocumentation": "[FR]  Input Documentation",
-		"DatePickerDocumentation": "[FR]  Date Picker Documentation"
+		"DatePickerDocumentation": "[FR]  Date Picker Documentation",
+		"IconButtonDocumentation": "[FR] Icon Button Documentation"
 	},
 	"Buttons": {
 		"Title": "Boutons",
@@ -870,6 +871,28 @@
 		"Intro": "[FR] Icon buttons can be used for a single, well-understood action that can be clearly communicated with a stand-alone icon.",
 		"InteractiveDemoDesc": "[FR]Try our icon button component and the configurable options available within it.",
 		"PrimaryText": "[FR] Primary icon buttons are used to highlight important and easy-to-understand actions. It can be used in a group of icon buttons.",
-		"CriticalText": "[FR] Critical icon buttons are often used for destructive actions like deleting user-contributed content."
+		"CriticalText": "[FR] Critical icon buttons are often used for destructive actions like deleting user-contributed content.",
+		"OrganizeIcons": "[FR] Organize icon button groups",
+		"OrganizeIconsAlt": "[FR] A document viewer tool bar with pagination icons, zoom icons and resize icons grouped and separeted.",
+		"OrganizeIconsDoText": "[FR] Logically organize icon buttons that have a contextual relationship by keeping related actions together and unrelated actions separated either by white space or dividers.",
+		"OrganizeIconsDontAlt": "[FR] A document viewer tool bar with pagination icons, zoom icons and resize icons together in a row.",
+		"OrganizeIconsDontText": "[FR] Keep unrelated icon button actions together if it is possible to organize groups of actions.",
+		"CreateConsistent": "[FR] Create consistent button groups",
+		"CreateIconsDoAlt": "[FR] A critical dialog with title “Do you want to delete this file?” along with a description text, a secondary button “Cancel” and critical button “Delete file”.",
+		"CreateIconsDoText": "[FR] Create button groups using the same types of button components.",
+		"CreateIconsDontAlt": "[FR] A critical dialog with title “Do you want to delete this file?” along with a description text, a secondary button “Cancel” and critical icon button “Delete”.",
+		"CreateIconsDontText": "[FR] Create button groups using different types of button components.",
+		"UseCriticalDestruction": "[FR] Use critical icon button for destructive actions",
+		"UseCriticalDoAlt": "[FR] A card with title, “Proof of acceptance” that has a document attached. There is a red critical icon button displaying a trash icon to delete the file.",
+		"UseCriticalDoText": "[FR] Use the critical icon button type to signify actions that are destructive.",
+		"UseCriticalDontAlt": "[FR] A card with title, “Proof of acceptance” that has a document attached. There is a black primary icon button displaying a trash icon to delete the file.",
+		"UseCriticalDontText": "[FR] Use the primary icon button type for an action that is destructive.",
+		"EasyUnderStandHeading": "Easy to understand icons",
+		"EasyUnderStandDoAlt": "A modal with title “Surname” along with description text, a primary icon button showing an ‘X’ in the corner that allows the user to close the modal.",
+		"EasyUnderStandDoText": "Use the icon button without accompanying text when the icon is common and easily understood.",
+		"EasyUnderStandDontAlt": "A file uploader showing required document with a primary icon button showing a “plus” icon. It is unclear what the plus icon will do.",
+		"EasyUnderStandDontText": "Use the icon button when the icon is ambiguous and may be better understood when accompanied by a label.",
+		"SpacingHeading": "Spacing for icon button groups",
+		"SpacingText": "An icon button group is a set of icon buttons that have a contextual relationship. To create consistency with how these actions are visually related, consistent spacing rules should be followed. Large icon button groups should have 4 pixels between buttons, small icon button groups should have 4 pixels between buttons and extra small icon button groups should have 16 pixels between buttons."
 	}
 }
