@@ -556,7 +556,6 @@
 		"AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
 		"AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
 		"CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
-		"LabelText1": "Label text",
 		"LabelText2": "Password"
 	},
 	"DatePicker": {
@@ -811,7 +810,7 @@
 		"ExtraSmall": "[FR] Extra small",
 		"Small": "[FR] Small",
 		"Large": "[FR] Large",
-		"Label": "[FR] Label Text (required)",
+		"Label": "[FR] Label Text",
 		"Desc": "[FR] Description line of text",
 		"Show": "[FR] Show",
 		"Hide": "[FR] Hide",

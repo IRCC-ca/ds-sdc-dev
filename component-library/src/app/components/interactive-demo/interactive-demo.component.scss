@@ -18,7 +18,7 @@
     white-space: normal;
     min-height: 180px;
     border-top: sizes.$fixed-1 solid var(--divider);
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
 
   .banner {
@@ -44,10 +44,10 @@
   }
 
   .toggles {
-    margin: 4px 28px 20px;
+    margin: 8px 28px 28px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 16px;
+    row-gap: 24px;
 
     @include device.in-phone-layout() {
       grid-template-columns: 1fr;

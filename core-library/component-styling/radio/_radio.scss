@@ -25,6 +25,9 @@
   div.radio {
     display: flex;
     margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     input {
       justify-self: center;
