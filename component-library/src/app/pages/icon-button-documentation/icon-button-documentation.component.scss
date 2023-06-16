@@ -236,6 +236,32 @@ p {
     margin: 0 0 12px 0;
   }
 }
+.accessibility {
+    .content-element {
+    margin-bottom: 24px;
+
+    p {
+      margin: 8px 0
+    }
+  }
+  .content-element:last-child {
+    margin-bottom: 0px;
+  }
+
+  .content-list {
+    padding-left: 20px;
+    line-height: 20px;
+    margin-bottom: 24px;
+
+    .list-item {
+      padding-bottom: 8px;
+    }
+
+    .list-item:last-child {
+      padding-bottom: 0px;
+    }
+  }
+}
 
 .list-item {
   font-size: 14px;

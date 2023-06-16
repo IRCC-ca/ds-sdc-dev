@@ -864,7 +864,8 @@
 		"GenericHeading": "Generic",
 		"DefaultLabel": "Default",
 		"TitleLabel": "Title",
-		"CloseLabel": "Close"
+		"CloseLabel": "Close",
+		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
 		"Title": "Icon Button Documentation",
@@ -902,6 +903,13 @@
 		"FigmaDirectionsListItem2": "In the right panel, configure the properties and variants to meet your needs. ",
 		"FigmaDirectionsListItem3": "Never override colours, radius, padding, icon size, etc. This way foundational elements are kept consistent. ",
 		"FigmaDirectionsListItem4": "Designers can change the Font Awesome keyword to update the icon in the icon-button to any Font Awesome icon.",
-		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing an icon button."
+		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing an icon button.",
+		"AccessibilityColourText1": "Primary icon buttons have a colour contrast ratio of 18.08:1 and passes AAA accessibility standards under WCAG 2.1.",
+		"AccessibilityColourText2": "Critical icon buttons have a colour contrast ratio of 7.03:1 and passes AAA accessibility standards under WCAG 2.1.",
+		"AccessibilityKeyboardText": "Icon buttons are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity.",
+		"AccessibilityContentItem1": "Built for keyboard use, all interactive elements should be focusable and show focus visual indicators to guide the interaction.",
+		"AccessibilityContentItem2": "Since Icon buttons only render an icon, it must pass the aria-label prop, so screen readers can give meaning to the button.",
+		"AccessibilityContentItem3": "Prevent keyboard traps. Every element that can be focused on using the keyboard can be unfocused using the keyboard.",
+		"LabellingText": "Icon buttons should have labels programmatically associated to them so the purpose of the icon button’s action is clear to screen reader users."
 	}
 }
