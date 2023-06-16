@@ -42,4 +42,23 @@
 h5 {
   margin-top: 0;
   margin-bottom: 12px;
+
+  &.round-purple-num {
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 22px;
+    margin-bottom: 0;
+    position: relative;
+    top: 2px;
+  }
+}
+
+span {
+  &.round-purple-num {
+    color: var(--purple-9);
+    font-weight: 700;
+    background-color: var(--purple-2);
+    padding: 9px 15px;
+    border-radius: 50%;
+  }
 }

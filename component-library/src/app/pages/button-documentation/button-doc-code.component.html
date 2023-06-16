@@ -244,7 +244,28 @@
     <p>{{ 'Buttons.MinMaxWidthText' | translate }}</p>
   </section>
 
-  <section class="anatomy"></section>
+  <section class="anatomy">
+    <app-title-slug-url
+      [config]="headingConfig.anatomySlugConfig"
+    ></app-title-slug-url>
+    <img
+      src="assets/img/button-content/anatomy-image-button.jpg"
+      alt="{{ 'Buttons.AnatomyImgAlt' | translate }}"
+    /><br />
+    <span class="round-purple-num">1</span>
+    <h5 class="round-purple-num">
+      {{ 'Buttons.AnatomyBGHeading' | translate }}
+    </h5>
+    <p [style.margin-bottom]="0">{{ 'Buttons.AnatomyBGText' | translate }}</p>
+    <span class="round-purple-num">2</span>
+    <h5 class="round-purple-num">
+      {{ 'Buttons.ConfigIconHeading' | translate }}
+    </h5>
+    <p [style.margin-bottom]="0">{{ 'Buttons.AnatomyIconText' | translate }}</p>
+    <span class="round-purple-num">3</span>
+    <h5 class="round-purple-num">{{ 'General.LabelHeading' | translate }}</h5>
+    <p>{{ 'Buttons.AnatomyLblText' | translate }}</p>
+  </section>
 
   <section class="specs"></section>
 
