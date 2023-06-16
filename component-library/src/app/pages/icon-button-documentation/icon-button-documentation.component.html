@@ -361,4 +361,62 @@
       </div>
     </div>
   </section>
+  <section class="accessibility">
+    <app-title-slug-url
+      [config]="headingConfig.accessibilitySlugConfig"
+    ></app-title-slug-url>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'General.AccessibilityColourHeading' | translate }}
+      </h5>
+      <p class="body3 subtext-1">
+        {{ 'IconButtonDocumentation.AccessibilityColourText1' | translate }}
+      </p>
+      <p class="body3 subtext-1">
+        {{ 'IconButtonDocumentation.AccessibilityColourText2' | translate }}
+      </p>
+    </div>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'General.AccessibilityKeyboardHeading' | translate }}
+      </h5>
+      <p class="body3 subtext-1">
+        {{ 'IconButtonDocumentation.AccessibilityKeyboardText' | translate }}
+      </p>
+      <ul class="content-list">
+        <li
+          class="list-item"
+          [innerHtml]="
+            'IconButtonDocumentation.AccessibilityContentItem1' | translate
+          "
+        ></li>
+        <li
+          class="list-item"
+          [innerHtml]="
+            'IconButtonDocumentation.AccessibilityContentItem2' | translate
+          "
+        ></li>
+        <li
+          class="list-item"
+          [innerHtml]="
+            'IconButtonDocumentation.AccessibilityContentItem3' | translate
+          "
+        ></li>
+      </ul>
+    </div>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'General.Labelling' | translate }}
+      </h5>
+      <p class="body3 subtext-1">
+        {{ 'IconButtonDocumentation.LabellingText' | translate }}
+      </p>
+    </div>
+  </section>
+  <section class="research">
+    <app-title-slug-url
+      [config]="headingConfig.researchSlugConfig"
+    ></app-title-slug-url>
+    <p class="body3">{{ 'General.ComingSoon' | translate }}</p>
+  </section>
 </div>
