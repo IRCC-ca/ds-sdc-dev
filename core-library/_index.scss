@@ -51,6 +51,11 @@
 @use "./component-styling/language-switch/language-switch";
 @use "./component-styling/flyout/flyout";
 @use "./component-styling/flyout-option/flyout-option";
+@use "./component-styling/navigation/navigation";
+@use "./component-styling/navigation/navigation-accordion";
+@use "./component-styling/navigation/navigation-header";
+@use "./component-styling/navigation/navigation-item";
+@use "./component-styling/navigation/navigation-divider";
 @use "./typography/fa-wrapper";
 
 @forward "./theme/theme" as theme-*;
@@ -135,6 +140,11 @@
     @include element(spinner-component);
     @include element(flyout);
     @include element(flyout-option);
+    @include element(navigation);
+    @include element(navigation-accordion);
+    @include element(navigation-header);
+    @include element(navigation-item);
+    @include element(navigation-divider);
   } @else {
     @each $key in $include {
       @include element($key);
@@ -231,5 +241,16 @@
     @include flyout.create();
   } @else if $key == flyout-option {
     @include flyout-option.create();
+  } @else if $key == navigation {
+    @include navigation.create();
+  } @else if $key == navigation-accordion {
+    @include navigation-accordion.create();
+  } @else if $key == navigation-header {
+    @include navigation-header.create();
+  } @else if $key == navigation-item {
+    @include navigation-item.create();
+  }
+  @else if $key == navigation-divider {
+    @include navigation-divider.create();
   }
 }

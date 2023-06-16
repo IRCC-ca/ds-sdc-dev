@@ -17,7 +17,8 @@ import {
   IRadioInputComponentConfig,
   IHiddenNavConfig,
   IIconConfig,
-  IDropdownConfig
+  IDropdownConfig,
+  IProgressTagsConfig
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -37,6 +38,11 @@ export class MikeComponent implements OnInit {
 
   qaBanner: IBannerConfig = {
     id: this.BANNER_ID
+  };
+
+  indicator: IProgressTagsConfig = {
+    id: 'progress_tag',
+    type: 'notStarted'
   };
 
   dropdownConfig: IDropdownConfig = {

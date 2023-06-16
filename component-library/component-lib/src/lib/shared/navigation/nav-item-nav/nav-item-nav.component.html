@@ -1,0 +1,76 @@
+<div
+  tabindex="1"
+  [id]="config.id"
+  class="lib-nav-item"
+  [ngClass]="config?.border ? 'border-left' : null"
+  (keydown.enter)="enterPress($event)"
+>
+  <div>
+    <ng-container *ngIf="config?.external !== true; else externalLink">
+      <a
+        [routerLink]="config?.href || '' | translate"
+        [fragment]="config?.anchor"
+        [routerLinkActive]="'active-link'"
+        (click)="linkClick($event)"
+        #internalLink
+      >
+        <ircc-cl-lib-icon
+          [attr.size]="config.size"
+          tabindex="-1"
+          *ngIf="config?.icon"
+          class="icon-left"
+          [config]="{ FA_keywords: config?.icon || '' }"
+        ></ircc-cl-lib-icon>
+        <p>{{ config?.label || '' | translate }} {{ config.size }}</p>
+        <ircc-cl-lib-indicator
+          [attr.size]="config.size"
+          tabindex="-1"
+          *ngIf="config?.indicator"
+          [config]="indicatorConfig"
+        ></ircc-cl-lib-indicator>
+        <ircc-cl-lib-icon
+          [attr.size]="config.size"
+          tabindex="-1"
+          *ngIf="config?.trailingIcon"
+          class="icon-trailing"
+          [config]="{ FA_keywords: config?.trailingIcon || '' }"
+        ></ircc-cl-lib-icon>
+      </a>
+    </ng-container>
+    <ng-template #externalLink>
+      <a
+        #externalLinkA
+        target="_blank"
+        [attr.href]="
+          config?.href + (config?.anchor ? '#' + config.anchor : '') || ''
+            | translate
+        "
+      >
+        <ircc-cl-lib-icon
+          [attr.size]="config.size"
+          tabindex="-1"
+          *ngIf="config?.icon"
+          class="icon-left"
+          [config]="{ FA_keywords: config?.icon || '' }"
+        ></ircc-cl-lib-icon>
+        <p>{{ config?.label || '' | translate }} {{ config.size }}</p>
+        <ircc-cl-lib-indicator
+          [attr.size]="config.size"
+          tabindex="-1"
+          *ngIf="config?.indicator"
+          [config]="indicatorConfig"
+        ></ircc-cl-lib-indicator>
+        <ircc-cl-lib-icon
+          [attr.size]="config.size"
+          tabindex="-1"
+          *ngIf="config?.trailingIcon"
+          class="icon-trailing"
+          [config]="{ FA_keywords: config?.trailingIcon || '' }"
+        ></ircc-cl-lib-icon>
+      </a>
+    </ng-template>
+  </div>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</div>

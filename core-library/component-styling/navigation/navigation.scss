@@ -1,0 +1,149 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selector {
+  ircc-cl-lib-navigation#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin large-styles() {
+  .lib-navigation {
+    padding: 16px;
+    width: 280px;
+  }
+
+  h3 {
+    @include typography.fontSet(heading, 3, emphasis);
+    font-size: 28px;
+    line-height: 40px;
+  }
+}
+
+@mixin small-styles() {
+  .lib-navigation {
+    padding: 16px;
+    width: 244px;
+  }
+
+  h3 {
+    @include typography.fontSet(heading, 3, emphasis);
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
+
+@mixin layout {
+  @include size.select(large) {
+    @include large-styles();
+
+    .small {
+      @include small-styles();
+    }
+  }
+
+  @include size.select(small) {
+    @include small-styles();
+
+    .large {
+      @include large-styles();
+    }
+  }
+
+  .lib-navigation {
+    padding: 16px;
+    padding-top: 8px;
+    // border: 1px solid black;
+    // background-image: linear-gradient(to bottom, white 0%, white 100%), linear-gradient(to bottom, grey 0%, grey 100%);
+    // background-clip: content-box, padding-box;
+  }
+
+  .navigation-content-top,
+  .navigation-content-bottom {
+    padding-bottom: 0px;
+
+    &:not(:empty) {
+      padding-bottom: 24px;
+    }
+  }
+
+  .navigation-header {
+    display: grid;
+    padding-bottom: 24px;
+
+    ircc-cl-lib-icon {
+      align-self: center;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    h3 {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    &.header-full {
+      grid-template-columns: 20px auto 20px;
+
+      h3 {
+        flex: 1;
+        justify-self: flex-start;
+      }
+    }
+
+    &.header-iconleading {
+      grid-template-columns: 20px auto 0px;
+
+      h3 {
+        justify-self: flex-start;
+      }
+    }
+
+    &.header-icontrailing {
+      grid-template-columns: 0px auto 20px;
+
+      h3 {
+        justify-self: flex-start;
+      }
+    }
+  }
+
+  .navigation-area {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .child-navigation {
+      margin: 0;
+      padding: 0px;
+      padding-left: 40px;
+    }
+  }
+
+  *.position-absolute {
+    position: absolute !important;
+  }
+
+  *.position-fixed {
+    position: fixed !important;
+    width: inherit;
+    background-color: white;
+    z-index: 9999;
+  }
+}
