@@ -9,28 +9,69 @@
         {{ 'Overview.SubHeading' | translate }}
       </h2>
       <div>
-        <a routerLink="/en/overview">overview</a>
-        <a routerLink="/en/mahsa-en">mahsa</a>
-        <a routerLink="/en/michael-en">michael</a>
-        <a routerLink="/en/mike-en">mike</a>
-        <a routerLink="/en/naseer-en">naseer</a>
-        <a routerLink="/en/bobby-en">bobby</a>
-        <a routerLink="/en/accessibility-demo">Accessibility Demo</a>
-        <a routerLink="/en/banner-documentation">Banner Documentation</a>
-        <a routerLink="/en/codeview">Codeview</a>
-        <a routerLink="/en/buttons">Button Documentation</a>
-        <a routerLink="/en/input-documentation">Input Documentation</a>
-        <a routerLink="/en/datePicker-doc">Date Picker Documentation</a>
+        <a routerLink="/en/overview">{{ 'Link.Overview' | translate }}</a>
+        <a routerLink="/en/mahsa-en">{{ 'Link.Mahsa' | translate }}</a>
+        <a routerLink="/en/michael-en">{{ 'Link.Michael' | translate }}</a>
+        <a routerLink="/en/mike-en">{{ 'Link.Mike' | translate }}</a>
+        <a routerLink="/en/naseer-en">{{ 'Link.Naseer' | translate }}</a>
+        <a routerLink="/en/bobby-en">{{ 'Link.Bobby' | translate }}</a>
+        <a routerLink="/en/accessibility-demo">{{
+          'Link.AccessibilityDemo' | translate
+        }}</a>
+        <a routerLink="/en/banner-documentation">{{
+          'Link.BannerDocumentation' | translate
+        }}</a>
+        <a routerLink="/en/codeview">{{ 'Link.Codeview' | translate }}</a>
+        <a routerLink="/en/buttons">{{
+          'Link.ButtonDocumentation' | translate
+        }}</a>
+        <a routerLink="/en/input-documentation">{{
+          'Link.InputDocumentation' | translate
+        }}</a>
+        <a routerLink="/en/datePicker-doc">{{
+          'Link.DatePickerDocumentation' | translate
+        }}</a>
       </div>
     </div>
   </div>
   <main>
-    <div class="main-container top {{ navStatus }}">
-      <app-side-nav
+    <div
+      class="main-container top {{ navStatus }}"
+      style="margin-top: 200px"
+    >
+      <ircc-cl-lib-navigation
         class="left-nav"
-        [navBarData]="leftNavData"
-        [mobileToggleIcon]="true"
-      ></app-side-nav>
+        [attr.size]="navConfig.size"
+      >
+        <div navigationContentTop>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              min-height: 256px;
+            "
+          >
+            <p>Header projected content</p>
+            <img [src]="randomHeader" />
+          </div>
+        </div>
+        <div navigationContentBottom>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              min-height: 256px;
+            "
+          >
+            <p>Footer projected content</p>
+            <img [src]="randomFooter" />
+          </div>
+        </div>
+      </ircc-cl-lib-navigation>
       <div
         class="content"
         role="main"

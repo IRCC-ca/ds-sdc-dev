@@ -51,21 +51,21 @@
         </ul>
       </div>
       <div class="column">
-        <h5>{{ 'Input.ConfigHintHeading' | translate }}</h5>
+        <h5>{{ 'General.Hint' | translate }}</h5>
         <ul>
-          <li>{{ 'Input.ConfigHintTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigHintFalse' | translate }}</li>
+          <li>{{ 'General.TrueLabel' | translate }}</li>
+          <li>{{ 'General.FalseLabel' | translate }}</li>
         </ul>
       </div>
     </div>
     <div class="config-row">
       <div class="column">
         <h5 class="config-heading">
-          {{ 'Input.ConfigRequiredHeading' | translate }}
+          {{ 'General.Required' | translate }}
         </h5>
         <ul>
-          <li>{{ 'Input.ConfigRequiredTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigRequiredFalse' | translate }}</li>
+          <li>{{ 'General.TrueLabel' | translate }}</li>
+          <li>{{ 'General.FalseLabel' | translate }}</li>
         </ul>
       </div>
       <div class="column">
@@ -73,28 +73,28 @@
           {{ 'Input.ConfigErrorHeading' | translate }}
         </h5>
         <ul>
-          <li>{{ 'Input.ConfigErrorTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigErrorFalse' | translate }}</li>
+          <li>{{ 'General.TrueLabel' | translate }}</li>
+          <li>{{ 'General.FalseLabel' | translate }}</li>
         </ul>
       </div>
     </div>
     <div class="config-row">
       <div class="column">
         <h5 class="config-heading">
-          {{ 'Input.ConfigDescHeading' | translate }}
+          {{ 'General.DescriptionHeading' | translate }}
         </h5>
         <ul class="end-list">
-          <li>{{ 'Input.ConfigDescTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigDescFalse' | translate }}</li>
+          <li>{{ 'General.TrueLabel' | translate }}</li>
+          <li>{{ 'General.FalseLabel' | translate }}</li>
         </ul>
       </div>
       <div class="column">
         <h5 class="config-heading">
-          {{ 'Input.ConfigPlaceholderHeading' | translate }}
+          {{ 'General.Placeholder' | translate }}
         </h5>
         <ul class="end-list">
-          <li>{{ 'Input.ConfigPlaceholderTrue' | translate }}</li>
-          <li>{{ 'Input.ConfigPlaceholderFalse' | translate }}</li>
+          <li>{{ 'General.TrueLabel' | translate }}</li>
+          <li>{{ 'General.FalseLabel' | translate }}</li>
         </ul>
       </div>
     </div>
@@ -114,7 +114,7 @@
           alt="{{ 'Input.FieldWidthImgDo' | translate }}"
         />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-4">
           {{ 'Input.FieldWidthDoText' | translate }}
@@ -126,7 +126,7 @@
           alt="{{ 'Input.FieldWidthImgDont' | translate }}"
         />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-4">
           {{ 'Input.FieldWidthDontText' | translate }}
@@ -143,7 +143,7 @@
           alt="{{ 'Input.ErrorDoImgAlt' | translate }}"
         />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-5">{{ 'Input.ErrorDoText' | translate }}</p>
       </div>
@@ -153,13 +153,13 @@
           alt="{{ 'Input.ErrorDontImgAlt' | translate }}"
         />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-7">{{ 'Input.ErrorDontText' | translate }}</p>
       </div>
     </div>
     <h5 class="h5 emphasis subtitles">
-      {{ 'Input.MaxMinWidthHeading' | translate }}
+      {{ 'General.MaxMinWidthHeading' | translate }}
     </h5>
     <div class="row">
       <div [style.max-width]="'100%'">
@@ -177,53 +177,74 @@
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
     <img
+      class="anatomy-image-container"
       src="assets/img/input-content/input-anatomy.png"
       alt="{{ 'Input.AnatomyImgAlt' | translate }}"
     /><br />
-    <span class="round-purple-num">1</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyLabelHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyLabelText' | translate }}</p>
-    <span class="round-purple-num">2</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyRequiredIndicatorHeading' | translate }}
-    </h5>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">1</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'General.LabelHeading' | translate }}
+      </h5>
+    </div>
+    <p class="body3 anatomy">{{ 'General.AnatomyLabelText' | translate }}</p>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">2</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'General.RequiredIndicatorHeading' | translate }}
+      </h5>
+    </div>
     <p class="body3 anatomy">
-      {{ 'Input.AnatomyRequiredIndicatorText' | translate }}
+      {{ 'General.RequiredIndicatorTxt' | translate }}
     </p>
-    <span class="round-purple-num">3</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyDescHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyDescText' | translate }}</p>
-    <span class="round-purple-num">4</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyHintHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyHintText' | translate }}</p>
-    <span class="round-purple-num">5</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyInputFieldHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyInputFieldText' | translate }}</p>
-    <span class="round-purple-num">6</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyInputContentHeading' | translate }}
-    </h5>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">3</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'General.DescriptionHeading' | translate }}
+      </h5>
+    </div>
+    <p class="body3 anatomy">{{ 'General.AnatomyDescText' | translate }}</p>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">4</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'General.Hint' | translate }}
+      </h5>
+    </div>
+    <p class="body3 anatomy">{{ 'General.AnatomyHintText' | translate }}</p>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">5</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'General.InputField' | translate }}
+      </h5>
+    </div>
+    <p class="body3 anatomy">
+      {{ 'Input.AnatomyInputFieldText' | translate }}
+    </p>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">6</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'Input.AnatomyInputContentHeading' | translate }}
+      </h5>
+    </div>
     <p class="body3 anatomy">
       {{ 'Input.AnatomyInputContentText' | translate }}
     </p>
-    <span class="round-purple-num">7</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyErrorHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyErrorText' | translate }}</p>
-    <span class="round-purple-num">8</span>
-    <h5 class="h5 emphasis round-purple-num">
-      {{ 'Input.AnatomyPasswordHeading' | translate }}
-    </h5>
-    <p class="body3 anatomy">{{ 'Input.AnatomyPasswordText' | translate }}</p>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">7</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'ERROR.errorMessage' | translate }}
+      </h5>
+    </div>
+    <p class="body3 anatomy">{{ 'General.AnatomyErrorText' | translate }}</p>
+    <div class="counter-and-heading-container">
+      <div class="round-purple-num">8</div>
+      <h5 class="h5 emphasis round-purple-num-heading">
+        {{ 'Input.AnatomyPasswordHeading' | translate }}
+      </h5>
+    </div>
+    <p class="body3 anatomy">
+      {{ 'Input.AnatomyPasswordText' | translate }}
+    </p>
   </section>
 
   <section class="specs">
@@ -236,7 +257,10 @@
       alt="{{ 'Input.SpecsImgAlt' | translate }}"
     />
     <p class="body3 specsDesc">
-      {{ 'Input.SpecsImgDesc' | translate }}
+      {{ 'Input.SpecsImgDesc1' | translate }}
+    </p>
+    <p class="body3 specsDesc2">
+      {{ 'Input.SpecsImgDesc2' | translate }}
     </p>
   </section>
 
@@ -245,7 +269,7 @@
       [config]="headingConfig.contentGuideSlugConfig"
     ></app-title-slug-url>
 
-    <h5 class="subtitles">{{ 'Input.WriteLabelsHeading' | translate }}</h5>
+    <h5 class="subtitles">{{ 'General.WriteLabelsHeading' | translate }}</h5>
     <p class="body3 subtext-3">
       {{ 'Input.WriteLabelsSubHeading' | translate }}
     </p>
@@ -256,7 +280,7 @@
           alt="{{ 'Input.WriteLabelsDoImgAlt1' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-4">
           {{ 'Input.WriteLabelsDoText1' | translate }}
@@ -268,7 +292,7 @@
           alt="{{ 'Input.WriteLabelsDontImgAlt1' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-7">
           {{ 'Input.WriteLabelsDontText1' | translate }}
@@ -282,7 +306,7 @@
           alt="{{ 'Input.WriteLabelsDoImgAlt2' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-10">
           {{ 'Input.WriteLabelsDoText2' | translate }}
@@ -294,7 +318,7 @@
           alt="{{ 'Input.WriteLabelsDontImgAlt2' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-6">
           {{ 'Input.WriteLabelsDontText2' | translate }}
@@ -311,7 +335,7 @@
           alt="{{ 'Input.WriteDescDoImgAlt' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-11">
           {{ 'Input.WriteDescDoText' | translate }}
@@ -323,7 +347,7 @@
           alt="{{ 'Input.WriteDescDontImgAlt' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-6">
           {{ 'Input.WriteDescDontText' | translate }}
@@ -342,7 +366,7 @@
           alt="{{ 'Input.WritePlaceholderDoImgAlt1' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-12">
           {{ 'Input.WritePlaceholderDoText1' | translate }}
@@ -354,7 +378,7 @@
           alt="{{ 'Input.WritePlaceholderDontImgAlt1' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-9">
           {{ 'Input.WritePlaceholderDontText1' | translate }}
@@ -368,7 +392,7 @@
           alt="{{ 'Input.WritePlaceholderDoImgAlt2' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-6">
           {{ 'Input.WritePlaceholderDoText2' | translate }}
@@ -380,7 +404,7 @@
           alt="{{ 'Input.WritePlaceholderDontImgAlt2' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-10">
           {{ 'Input.WritePlaceholderDontText2' | translate }}
@@ -388,7 +412,7 @@
       </div>
     </div>
 
-    <h5 class="subtitles">{{ 'Input.WriteErrorsHeading' | translate }}</h5>
+    <h5 class="subtitles">{{ 'ERROR.WritingErrHeading' | translate }}</h5>
     <p class="body3 subtext-3">
       {{ 'Input.WriteErrorsSubHeading' | translate }}
     </p>
@@ -399,7 +423,7 @@
           alt="{{ 'Input.WriteErrorsDoImgAlt' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-6">
           {{ 'Input.WriteErrorsDoText' | translate }}
@@ -411,7 +435,7 @@
           alt="{{ 'Input.WriteErrorsDontImgAlt' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-10">
           {{ 'Input.WriteErrorsDontText' | translate }}
@@ -419,7 +443,9 @@
       </div>
     </div>
 
-    <h5 class="subtitles">{{ 'Input.NecessaryContentHeading' | translate }}</h5>
+    <h5 class="subtitles">
+      {{ 'General.NecessaryContentHeading' | translate }}
+    </h5>
     <div class="row">
       <div class="column left-column">
         <img
@@ -427,7 +453,7 @@
           alt="{{ 'Input.NecessaryContentDoImgAlt' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-6">
           {{ 'Input.NecessaryContentDoText' | translate }}
@@ -439,7 +465,7 @@
           alt="{{ 'Input.NecessaryContentDontImgAlt' | translate }}"
         /><br />
         <h5 class="text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-6">
           {{ 'Input.NecessaryContentDontText' | translate }}
@@ -447,7 +473,7 @@
       </div>
     </div>
 
-    <h5 class="subtitles">{{ 'Input.RequiredFieldsHeading' | translate }}</h5>
+    <h5 class="subtitles">{{ 'General.RequiredFieldsHeading' | translate }}</h5>
     <div class="row">
       <div class="column left-column">
         <img
@@ -455,7 +481,7 @@
           alt="{{ 'Input.RequiredFieldsDoImgAlt' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-green">
-          {{ 'Input.DoHeading' | translate }}
+          {{ 'General.DoHeading' | translate }}
         </h5>
         <p class="body3 subtext-13">
           {{ 'Input.RequiredFieldsDoText' | translate }}
@@ -467,7 +493,7 @@
           alt="{{ 'Input.RequiredFieldsDontImgAlt' | translate }}"
         /><br />
         <h5 class="h5 emphasis text-underline text-color-red">
-          {{ 'Input.DontHeading' | translate }}
+          {{ 'General.DontHeading' | translate }}
         </h5>
         <p class="body3 subtext-13">
           {{ 'Input.RequiredFieldsDontText' | translate }}
@@ -492,11 +518,11 @@
           ></li>
           <li
             class="list-item"
-            [innerHTML]="'Input.FigmaDirectionsListItem2' | translate"
+            [innerHTML]="'General.FigmaDirectionsListItem2' | translate"
           ></li>
           <li
             class="list-item"
-            [innerHTML]="'Input.FigmaDirectionsListItem3' | translate"
+            [innerHTML]="'General.FigmaDirectionsListItem3' | translate"
           ></li>
           <li
             class="list-item"
@@ -548,19 +574,19 @@
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
     <h5 class="h5 emphasis subtitles">
-      {{ 'Input.AccessibilityColourHeading' | translate }}
+      {{ 'General.AccessibilityColourHeading' | translate }}
     </h5>
     <p class="body3 subtext-1">
       {{ 'Input.AccessibilityColourText' | translate }}
     </p>
     <h5 class="h5 emphasis subtitles">
-      {{ 'Input.AccessibilityKeyboardHeading' | translate }}
+      {{ 'General.AccessibilityKeyboardHeading' | translate }}
     </h5>
     <p class="body3 subtext-1">
       {{ 'Input.AccessibilityKeyboardText' | translate }}
     </p>
     <h5 class="h5 emphasis subtitles">
-      {{ 'Input.AccessibilityContentHeading' | translate }}
+      {{ 'General.ContentHeading' | translate }}
     </h5>
     <ul class="content-list">
       <li [innerHtml]="'Input.AccessibilityContentItem1' | translate"></li>

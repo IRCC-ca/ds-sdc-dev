@@ -6,7 +6,6 @@ import {
 import { IBannerConfig } from 'ircc-ds-angular-component-library';
 import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
-import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 
@@ -23,37 +22,42 @@ export class BannerDocumentationComponent implements OnInit {
 
   infoBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
-    type: 'info'
+    type: 'info',
+    size: 'small'
   };
 
   warningBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
-    type: 'warning'
+    type: 'warning',
+    size: 'small'
   };
 
   criticalBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
-    type: 'critical'
+    type: 'critical',
+    size: 'small'
   };
 
   successBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
-    type: 'success'
+    type: 'success',
+    size: 'small'
   };
 
   genericBannerConfig: IBannerConfig = {
     id: this.INFO_BANNER_ID,
-    title: 'Banner.BannerPreview.Title',
+    title: 'General.TitleHeading',
     content: 'Banner.BannerPreview.Content',
-    type: 'generic'
+    type: 'generic',
+    size: 'small'
   };
 
   pageTitleSlugConfig: slugTitleURLConfig = {
@@ -64,8 +68,8 @@ export class BannerDocumentationComponent implements OnInit {
 
   figmaDirections: string[] = [
     'Banner.UsageInFigma.FigmaDirectionsListItem1',
-    'Banner.UsageInFigma.FigmaDirectionsListItem2',
-    'Banner.UsageInFigma.FigmaDirectionsListItem3',
+    'General.FigmaDirectionsListItem2',
+    'General.FigmaDirectionsListItem3',
     'Banner.UsageInFigma.FigmaDirectionsListItem4'
   ];
 
@@ -91,7 +95,7 @@ export class BannerDocumentationComponent implements OnInit {
       description: 'Banner.Anatomy.BannerBarText'
     },
     {
-      title: 'Banner.Anatomy.TitleHeading',
+      title: 'General.TitleHeading',
       description: 'Banner.Anatomy.TitleText'
     },
     {

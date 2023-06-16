@@ -1,7 +1,7 @@
 @use '../../../../../core-library/util/device' as device;
 @use '~@ircc-ca/ds-sdc-core/typography/typography';
 
-.content-doc-wrapper { 
+.content-doc-wrapper {
   box-sizing: border-box;
   max-width: 900px;
   margin: 0 auto;
@@ -53,7 +53,6 @@ ul {
   }
 }
 
-
 .design-guide {
   .wrapper-container {
     .element-wrapper-container {
@@ -74,10 +73,10 @@ ul {
     @include typography.fontSet(heading, 5, emphasis);
   }
   .text-color-green {
-    color: var(--success-text);
+    color: var(--green-8);
   }
   .text-color-red {
-    color: var(--critical-text);
+    color: var(--red-7);
   }
   p {
     margin: 0px;
@@ -102,11 +101,15 @@ ul {
       color: var(--purple-9);
       font-weight: 700;
       background-color: var(--purple-2);
-      padding: 9px 14px;
       border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
     }
-    .conter-and-heading-container {
+    .counter-and-heading-container {
       margin: 0 0 6px 0;
+      display: inline-flex;
     }
     .anatomy-description {
       margin: 0px;
@@ -142,7 +145,7 @@ ul {
       max-width: 547px;
       margin-right: 12px;
       flex-shrink: inherit;
-  
+
       @include device.in-tablet-layout() {
         max-width: 444px;
       }

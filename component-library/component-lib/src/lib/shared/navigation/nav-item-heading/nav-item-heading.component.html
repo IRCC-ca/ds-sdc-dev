@@ -1,0 +1,16 @@
+<div [id]="config.id">
+  <div
+    class="nav-header-header"
+    [class]="config.icon.length > 0 ? 'grid-header' : ''"
+  >
+    <ircc-cl-lib-icon
+      *ngIf="config.icon.length > 0"
+      [config]="{ FA_keywords: config.icon }"
+      [attr.size]="config.size"
+    ></ircc-cl-lib-icon>
+    <h2>{{ config?.label || '' | translate }}</h2>
+  </div>
+  <div class="nav-header-content">
+    <ng-content></ng-content>
+  </div>
+</div>

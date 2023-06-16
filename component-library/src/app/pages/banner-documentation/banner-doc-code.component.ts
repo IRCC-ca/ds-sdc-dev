@@ -223,23 +223,23 @@ export class BannerDocCodeComponent implements OnInit {
     tab: [
       {
         id: 'info',
-        title: 'Info'
+        title: 'General.InfoHeading'
       },
       {
         id: 'warning',
-        title: 'Warning'
+        title: 'General.WarningHeading'
       },
       {
         id: 'critical',
-        title: 'Critical'
+        title: 'General.CriticalHeading'
       },
       {
         id: 'success',
-        title: 'Success'
+        title: 'General.SuccessHeading'
       },
       {
         id: 'generic',
-        title: 'Generic'
+        title: 'General.GenericHeading'
       }
     ]
   };

@@ -15,6 +15,13 @@ import {
   ILabelIconConfig
 } from '../../shared/label/label.component';
 import { IErrorIconConfig } from '../error/error.component';
+import { TranslateService } from '@ngx-translate/core';
+
+export const MAX_CHAR_LIMIT_EN = 'Maximum character limit reached.';
+export const MAX_CHAR_LIMIT_FR = 'Limite maximale de caractères atteinte.';
+
+export const WARNING_CHAR_LIMIT_EN = 'Maximum character limit reached in 15 characters.';
+export const WARNING_CHAR_LIMIT_FR = 'Limite maximale de caractères atteinte en 15 caractères.';
 
 export interface ITextareaComponentConfig {
   formGroup: FormGroup;
@@ -38,7 +45,6 @@ export enum ResizableTypes {
   both = 'both',
   none = 'none'
 }
-
 @Component({
   selector: 'ircc-cl-lib-textarea',
   templateUrl: './textarea.component.html',
@@ -76,12 +82,18 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = [];
   charLimitStatus = '';
   currentCharacterStatusAria = '';
+  announceCharStatusChangeAria : boolean = false;
+  charLength : number = -1;
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
   };
+  textAreaAriaLabel = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions) {}
+  constructor(
+    public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService
+    ) {}
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -103,6 +115,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
     if (this.errorIcon) this.config.errorIcon = this.errorIcon;
 
+    if (this.config.charLimit != '' && this.config.charLimit) {
+      this.charLength = 0;
+    }
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -112,13 +128,13 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
 
     if (this.config.formGroup.controls[this.config.id].value) {
-      this.characterCountStatus(
-        this.config.formGroup.controls[this.config.id].value.length
-      );
+      this.charLength = this.config.formGroup.controls[this.config.id].value.length;
+      this.characterCountStatus(this.config.formGroup.controls[this.config.id].value.length);
     }
 
     this.config.formGroup.valueChanges.subscribe((change) => {
       this.characterCountStatus(change[this.config.id]?.length);
+      
     });
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -151,13 +167,20 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   }
 
   characterCountStatus(currCharCount: any) {
+    let currLang = this.translate.currentLang;
     if (this.config?.charLimit) {
       if (this.config?.charLimit == currCharCount) {
         this.charLimitStatus = 'maxLimit';
-        this.currentCharacterStatusAria = 'TEXTAREA_COMPONENT.maxLimit';
+        (currLang === 'en' || currLang === 'en-US') 
+        ? (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_EN) 
+        : (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_FR);
+        this.announceCharStatusChangeAria = true;
       } else if (Number(this.config?.charLimit) - currCharCount == 15) {
         this.charLimitStatus = 'warningLimit';
-        this.currentCharacterStatusAria = 'TEXTAREA_COMPONENT.warningLimit';
+        (currLang === 'en' || currLang === 'en-US') 
+        ? (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_EN) 
+        : (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_FR);
+        this.announceCharStatusChangeAria = true;
       } else if (Number(this.config?.charLimit) - currCharCount < 15) {
         this.charLimitStatus = 'warningLimit';
         this.currentCharacterStatusAria = '';
@@ -166,6 +189,23 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
         this.currentCharacterStatusAria = '';
       }
     }
+  }
+
+  onBlur() {
+    this.announceCharStatusChangeAria = false;
+    if (this.config.formGroup.controls[this.config.id].value) {
+      this.charLength = this.config.formGroup.controls[this.config.id].value.length;
+    }
+  }
+
+  formatCharacterUsedString(currentLength :  number) : string {
+    var formatedString = ''
+    var currentLengthString = currentLength.toString()
+    if (currentLengthString === '-1' || this.config.charLimit === '' || !this.config.charLimit) {
+      return formatedString;
+    }
+    formatedString = currentLengthString + "/" + this.config.charLimit
+    return formatedString;
   }
 
   public clearvalue() {}

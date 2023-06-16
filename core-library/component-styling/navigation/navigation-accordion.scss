@@ -1,0 +1,77 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selector {
+  ircc-cl-lib-nav-accordion#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin large-styles() {
+}
+
+@mixin small-styles() {
+}
+
+@mixin layout {
+  @include size.select(large) {
+    @include large-styles();
+
+    .small {
+      @include small-styles();
+    }
+  }
+
+  @include size.select(small) {
+    @include small-styles();
+
+    .large {
+      @include large-styles();
+    }
+  }
+
+  .accordion-nav {
+    display: grid;
+    grid-template-columns: 190px auto;
+
+    ircc-cl-lib-icon-button {
+      align-self: self-start;
+      justify-self: self-end;
+
+      // &.open {
+      //   align-self: self-start;
+      // }
+
+      // &.close {
+      //   align-self: self-start;
+      // }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .accordion-content {
+    &.open {
+      display: block;
+    }
+
+    &.close {
+      display: none;
+    }
+  }
+}

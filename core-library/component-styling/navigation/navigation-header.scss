@@ -1,0 +1,77 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selector {
+  ircc-cl-lib-nav-header#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin large-styles() {
+  .nav-header-header {
+    h2 {
+      @include typography.fontSet(heading, 4, emphasis);
+    }
+  }
+}
+
+@mixin small-styles() {
+  .nav-header-header {
+    h2 {
+      @include typography.fontSet(heading, 5, emphasis);
+    }
+  }
+}
+
+@mixin layout {
+  @include size.select(large) {
+    @include large-styles();
+
+    .small {
+      @include small-styles();
+    }
+  }
+
+  @include size.select(small) {
+    @include small-styles();
+
+    .large {
+      @include large-styles();
+    }
+  }
+
+  .nav-header-header {
+    padding-bottom: 8px;
+
+    &.grid-header {
+      display: grid;
+      grid-template-columns: 30px auto;
+
+      ircc-cl-lib-icon {
+        align-self: center;
+        justify-self: flex-start;
+      }
+    }
+
+    h2 {
+      align-self: center;
+      padding: 0px;
+      margin: 0px;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+  }
+}

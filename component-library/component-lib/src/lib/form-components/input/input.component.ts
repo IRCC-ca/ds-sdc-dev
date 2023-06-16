@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -12,8 +12,7 @@ import {
   StandAloneFunctions
 } from '../../../shared/functions/stand-alone.functions';
 import {
-  ERROR_TEXT_STUB_EN,
-  ERROR_TEXT_STUB_FR,
+  ERROR_TEXT_STUB,
   ILabelConfig,
   ILabelIconConfig
 } from '../../shared/label/label.component';
@@ -37,6 +36,20 @@ export enum InputTypes {
   text = 'text',
   password = 'password'
 }
+
+export const ARIA_TEXT = {
+  en: {
+    btnTypePasswordAriaLabel: 'password eye icon',
+    btnTypePasswordShowAriaLabel: 'display password text',
+    btnTypePasswordHideAriaLabel: 'mark password text'
+  },
+  fr: {
+    btnTypePasswordAriaLabel: "icône d'oeil de mot de passe",
+    btnTypePasswordShowAriaLabel: 'afficher le texte du mot de passe',
+    btnTypePasswordHideAriaLabel: 'mark password text'
+  }
+};
+
 @Component({
   selector: 'ircc-cl-lib-input',
   templateUrl: './input.component.html',
@@ -48,30 +61,29 @@ export enum InputTypes {
     }
   ]
 })
-
-export class InputComponent implements ControlValueAccessor, OnInit {
+export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   formGroupEmpty: FormGroup = new FormGroup({});
   /**
    * Note: DON'T include default values of '' unless it REALLY makes sense to do so - instead, make them optional.
    * The config input is where you declare the inputs desired properties such as labels, hints, descriptions, etc. where only the id and form group are mandatory properties. Refer to IInputComponentConfig interface.
-*/
+   */
   @Input() config: IInputComponentConfig = {
     id: '',
     formGroup: new FormGroup({})
   };
   /**
-* The input id is used to identify the component uniquely for subscribing to value changes and errors
-*/
+   * The input id is used to identify the component uniquely for subscribing to value changes and errors
+   */
   @Input() id = '';
 
   /**
-  * FormGroup aggregates the values of each child FormControl into one object, with each control name as the key. It calculates its status by reducing the status values of its children. For example, if one of the controls in a group is invalid, the entire group becomes invalid.
-  */
+   * FormGroup aggregates the values of each child FormControl into one object, with each control name as the key. It calculates its status by reducing the status values of its children. For example, if one of the controls in a group is invalid, the entire group becomes invalid.
+   */
   @Input() formGroup = this.formGroupEmpty;
 
   /**
-  * Type refers to the 2 different input options: basic text or password as the password type has additional configuration
-  */
+   * Type refers to the 2 different input options: basic text or password as the password type has additional configuration
+   */
   @Input() type: keyof typeof InputTypes = InputTypes.password;
 
   @Input() size?: keyof typeof DSSizes;
@@ -86,7 +98,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   focusState = false;
   showPassword?: boolean;
   typeControl: keyof typeof InputTypes = InputTypes.text;
-  ariaText = 'Text Input';
+  btnAriaLabel = '';
+  btnAriaLabelHide = '';
+  btnAriaLabelShow = '';
   errorIds: IErrorIDs[] = [];
   errorAria = '';
   formControl?: AbstractControl;
@@ -100,15 +114,15 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService
-  ) { }
+  ) {}
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
   private onChange?: (value: any) => void;
 
   /**
- * When the page loads, we initialize the form with it's controls, labels, and config, and detect value changes and errors. setLang detects changes to the language toggle to serve the correct text
- */
+   * When the page loads, we initialize the form with it's controls, labels, and config, and detect value changes and errors. setLang detects changes to the language toggle to serve the correct text
+   */
   ngOnInit() {
     const retControl = this.config.formGroup.get(this.config.id);
     if (retControl) {
@@ -152,7 +166,6 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     } else if (this.config.type === InputTypes.password) {
       this.showPassword = false;
       this.typeControl = InputTypes.password;
-      this.ariaText = 'Password Input';
     }
 
     this.type === InputTypes.text
@@ -200,20 +213,26 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     this.getAriaErrorText();
   }
   /**
-* setLang detects changes to the language toggle to serve the correct aria error text
-*/
+   * setLang detects changes to the language toggle to serve the correct aria error text
+   */
   setLang(lang: string) {
     this.getAriaErrorText();
     if (lang === 'en' || lang === 'en-US') {
-      this.errorStubText = ERROR_TEXT_STUB_EN;
+      this.errorStubText = ERROR_TEXT_STUB.en;
+      this.btnAriaLabel = ARIA_TEXT.en.btnTypePasswordAriaLabel;
+      this.btnAriaLabelHide = ARIA_TEXT.en.btnTypePasswordHideAriaLabel;
+      this.btnAriaLabelShow = ARIA_TEXT.en.btnTypePasswordShowAriaLabel;
     } else {
-      this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.errorStubText = ERROR_TEXT_STUB.fr;
+      this.btnAriaLabel = ARIA_TEXT.fr.btnTypePasswordAriaLabel;
+      this.btnAriaLabelHide = ARIA_TEXT.fr.btnTypePasswordHideAriaLabel;
+      this.btnAriaLabelShow = ARIA_TEXT.fr.btnTypePasswordShowAriaLabel;
     }
   }
 
   /**
-  * A lifecycle hook that is called when any data-bound property of a directive changes.
-  */
+   * A lifecycle hook that is called when any data-bound property of a directive changes.
+   */
   ngOnChanges() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
@@ -228,8 +247,8 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   }
 
   /**
-  * Apply focus state
-  */
+   * Apply focus state
+   */
   public focusInput(focusValue: boolean): void {
     this.focusState = !focusValue;
   }
@@ -242,21 +261,16 @@ export class InputComponent implements ControlValueAccessor, OnInit {
 
     if (this.showPassword) {
       this.typeControl = InputTypes.text;
-      this.ariaText = 'Text Input';
     } else {
       this.typeControl = InputTypes.password;
-      this.ariaText = 'Password Input';
     }
   }
 
-  /**
-* 
-*/
-  public clearvalue() { }
+  public clearvalue() {}
 
   /**
    * Prevents the info button from being triggered and marks the input as touched.
-   * @param event 
+   * @param event
    */
   enterEvent(event: Event) {
     event.preventDefault();
@@ -264,29 +278,21 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   }
 
   /**
-   * 
+   *
    */
-  writeValue(value: string): void { }
+  writeValue(value: string): void {}
 
-
-  /**
-   * 
-   */
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
-
-  /**
- * 
- */
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
 
   /**
- * Apply a disabled state
- */
+   * Apply a disabled state
+   */
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
   }

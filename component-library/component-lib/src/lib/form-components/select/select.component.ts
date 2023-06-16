@@ -12,8 +12,7 @@ import {
   StandAloneFunctions
 } from '../../../shared/functions/stand-alone.functions';
 import {
-  ERROR_TEXT_STUB_EN,
-  ERROR_TEXT_STUB_FR,
+  ERROR_TEXT_STUB,
   ILabelConfig,
   ILabelIconConfig
 } from '../../shared/label/label.component';
@@ -33,7 +32,6 @@ export interface ISelectConfig {
   labelIconConfig?: ILabelIconConfig;
   topLabel?: string;
   disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
-  disabled?: boolean;
 }
 export interface ISelectOptionsConfig {
   text: string;
@@ -73,7 +71,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() errorMessages?: IErrorPairs[];
   @Input() topLabel?: string;
   @Input() disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
-  @Input() disabled?: boolean;
   labelIconConfig?: ILabelIconConfig;
 
   formControl?: AbstractControl;
@@ -88,10 +85,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService
-  ) { }
+  ) {}
 
-  onChange = (formValue: string) => { };
-  onTouched = () => { };
+  onChange = (formValue: string) => {};
+  onTouched = () => {};
   writeValue(formValue: any) {
     // this.form.get('formControl')?.setValue(formValue);
   }
@@ -157,7 +154,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
     if (this.topLabel) this.config.topLabel = this.topLabel;
     if (this.disableError) this.config.disableError = this.disableError;
-    if (this.disabled) this.config.disabled = this.disabled;
 
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
@@ -209,9 +205,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   setLang(lang: string) {
     this.getAriaErrorText();
     if (lang === 'en' || lang === 'en-US') {
-      this.errorStubText = ERROR_TEXT_STUB_EN;
+      this.errorStubText = ERROR_TEXT_STUB.en;
     } else {
-      this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.errorStubText = ERROR_TEXT_STUB.fr;
     }
   }
 }
