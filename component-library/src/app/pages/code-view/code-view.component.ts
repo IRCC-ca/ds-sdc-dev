@@ -26,7 +26,7 @@ export class codeViewComponent implements OnInit, TranslatedPageComponent {
     this.currentLanguage = translate.currentLang;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
     this.setTabsC();
   }

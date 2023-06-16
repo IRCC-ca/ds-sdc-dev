@@ -1,6 +1,13 @@
-<div class="chip-item" tabindex="0" (keydown.enter)="onEnterKeyPress()">
+<div
+  class="chip-item"
+  tabindex="0"
+  (keydown.enter)="onEnterKeyPress()"
+>
   <span class="chip-text">{{ chipContent || '' }}</span>
-  <span class="icon-container" (click)="onIconClick()">
+  <span
+    class="icon-container"
+    (click)="onIconClick()"
+  >
     <i class="fa-solid fa-circle-xmark clickable-icon"></i>
   </span>
 </div>

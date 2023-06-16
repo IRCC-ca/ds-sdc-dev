@@ -56,12 +56,12 @@ const routes: Routes = [
     {
       path: 'designers',
       component: ForDesignersComponent,
-      title: 'Designers.Heading'
+      title: 'General.DesignerHeading'
     },
     {
       path: 'developers',
       component: ForDevelopersComponent,
-      title: 'Developers.Title'
+      title: 'General.DeveloperHeading'
     },
     {
       path: 'utilities',
@@ -86,7 +86,7 @@ const routes: Routes = [
     {
       path: 'request-form',
       component: RequestFormComponent,
-      title: 'Request-form.Title'
+      title: 'General.RequestFormTitle'
     },
     {
       path: 'datePicker-doc',
@@ -99,12 +99,12 @@ const routes: Routes = [
     {
       path: 'concepteurs',
       component: ForDesignersComponent,
-      title: 'Designers.Heading'
+      title: 'General.DesignerHeading'
     },
     {
       path: 'developpeurs',
       component: ForDevelopersComponent,
-      title: 'Developers.Title'
+      title: 'General.DeveloperHeading'
     },
     {
       path: 'utilitaires',
@@ -129,7 +129,7 @@ const routes: Routes = [
     {
       path: 'request-form-fr',
       component: RequestFormComponent,
-      title: 'Request-form.Title'
+      title: 'General.RequestFormTitle'
     },
     {
       path: 'datePicker-doc-fr',

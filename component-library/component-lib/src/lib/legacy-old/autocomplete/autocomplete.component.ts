@@ -203,7 +203,7 @@ export class AutocompleteComponent implements OnInit, DoCheck {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.selectedOptions = [];
     this.originalOptions = this.options.slice(0);
     this.selectedOptions = this.savedSelectedOptions;
