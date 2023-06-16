@@ -33,3 +33,33 @@ app-root {
   margin: 0 auto;
   overflow: hidden;
 }
+
+// To be moved to page template
+.page-content {
+  .content-doc-wrapper {
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+h5 {
+  &.text-underline {
+    border-bottom: 1px solid;
+    margin: 8px 0;
+  }
+  &.text-color-green {
+    color: var(--success-text);
+  }
+  &.text-color-red {
+    color: var(--critical-text);
+  }
+  &.round-purple-num {
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 22px;
+    margin-bottom: 0;
+    position: relative;
+    top: 2px;
+  }
+}

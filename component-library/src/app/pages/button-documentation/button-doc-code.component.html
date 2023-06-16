@@ -149,7 +149,100 @@
     </div>
   </section>
 
-  <section class="design-guide"></section>
+  <section class="design-guide">
+    <app-title-slug-url
+      [config]="headingConfig.guidelineSlugConfig"
+    ></app-title-slug-url>
+    <h5 [style.margin-top]="0">{{ 'Buttons.HierarchyHeading' | translate }}</h5>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <img
+          src="assets/img/button-content/btn-do-1.jpg"
+          alt="{{ 'Buttons.HierarchyDoImgAlt' | translate }}"
+        />
+        <h5 class="text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p>{{ 'General.ButtonTypeDoText' | translate }}</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <img
+          src="assets/img/button-content/btn-do-2.jpg"
+          alt="{{ 'Buttons.HierarchyDontImgAlt' | translate }}"
+        />
+        <h5 class="text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.HierarchyDontText' | translate }}</p>
+      </div>
+    </div>
+    <h5 [style.margin-top]="'16px'">
+      {{ 'Buttons.DestructiveHeading' | translate }}
+    </h5>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <img
+          src="assets/img/button-content/btn-do-3.jpg"
+          alt="{{ 'Buttons.DestructiveDoImgAlt' | translate }}"
+        />
+        <h5 class="text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.DestructiveDoText' | translate }}</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <img
+          src="assets/img/button-content/btn-do-4.jpg"
+          alt="{{ 'Buttons.DestructiveDontImgAlt' | translate }}"
+        />
+        <h5 class="text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.DestructiveDontText' | translate }}</p>
+      </div>
+    </div>
+    <h5 [style.margin-top]="'16px'">
+      {{ 'Buttons.PlainBtnTexts' | translate }}
+    </h5>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <img
+          src="assets/img/button-content/btn-do-5.jpg"
+          alt="{{ 'Buttons.PlainDoImgAlt' | translate }}"
+        />
+        <h5 class="text-underline text-color-green">
+          {{ 'General.DoHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.PlainDoText' | translate }}</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <img
+          src="assets/img/button-content/btn-do-6.jpg"
+          alt="{{ 'Buttons.PlainDontImgAlt' | translate }}"
+        />
+        <h5 class="text-underline text-color-red">
+          {{ 'General.DontHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.PlainDontText' | translate }}</p>
+      </div>
+    </div>
+    <h5 [style.margin-top]="'14px'">
+      {{ 'Buttons.SpacingGroupsHeading' | translate }}
+    </h5>
+    <img
+      src="assets/img/button-content/button-design-spacing.jpg"
+      alt="{{ 'Buttons.SpacingGroupsImgAlt' | translate }}"
+    />
+    <p>{{ 'Buttons.SpacingGroupsText' | translate }}</p>
+    <h5 [style.margin-top]="'14px'">
+      {{ 'General.MaxMinWidthHeading' | translate }}
+    </h5>
+    <img
+      src="assets/img/button-content/button-design-width.jpg"
+      alt="{{ 'Buttons.MinMaxWidthImgAlt' | translate }}"
+    />
+    <p>{{ 'Buttons.MinMaxWidthText' | translate }}</p>
+  </section>
 
   <section class="anatomy"></section>
 

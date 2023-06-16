@@ -1,4 +1,5 @@
-@use '../../../../../core-library/util/device' as device;
+@use "../../../../../core-library/util/device" as device;
+@use "../../../scss/grid";
 
 .button-container-fluid {
   padding: auto;
@@ -26,4 +27,19 @@
     grid-row-start: 2;
     grid-row-end: 2;
   }
+}
+
+@include grid.up-phone-layout() {
+  .col-md-6:nth-child(odd) {
+    padding-right: 12px;
+  }
+
+  .col-md-6:nth-child(even) {
+    padding-left: 12px;
+  }
+}
+
+h5 {
+  margin-top: 0;
+  margin-bottom: 12px;
 }
