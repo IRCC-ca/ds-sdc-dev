@@ -34,6 +34,9 @@
         min-width: 136px;
       }
     }
+    .radio-errors {
+      min-width: 136px;
+    }
   }
 
   @media (min-width: 529px) {
@@ -69,6 +72,9 @@
       .select-day {
         min-width: 124px;
       }
+    }
+    .radio-errors {
+      min-width: 124px;
     }
   }
 
@@ -128,6 +134,9 @@
         margin-bottom: 12px;
       }
     }
+    .radio-errors {
+      width: 124px;
+    }
   }
 
   @media (min-width: 529px) {
@@ -135,6 +144,7 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
+      margin-top: 4px;
 
       .select-month {
         margin-left: 12px;

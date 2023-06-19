@@ -556,7 +556,6 @@
 		"AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
 		"AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
 		"CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
-		"LabelText1": "Label text",
 		"LabelText2": "Password"
 	},
 	"DatePicker": {
@@ -803,15 +802,15 @@
 		"No": "No",
 		"Description": "Description",
 		"Hint": "Hint",
-		"FieldTwo": "Field 2",
-		"FieldThree": "Field 3",
+		"Month": "Show Month",
+		"Day": "Show Day",
 		"ComingSoon": "Coming soon.",
 		"Validation": "Validation",
 		"Size": "Size",
 		"ExtraSmall": "Extra small",
 		"Small": "Small",
 		"Large": "Large",
-		"Label": "Label Text (required)",
+		"Label": "Label Text",
 		"Desc": "Description line of text",
 		"Show": "Show",
 		"Hide": "Hide",
@@ -822,8 +821,9 @@
 		"Placeholder": "Placeholder",
 		"Basic": "Basic",
 		"Password": "Password",
+		"Primary": "Primary",
+		"Critical": "Critical",
 		"StateLabel": "State",
-		"CriticalHeading": "Critical",
 		"HoverLabel": "Hover",
 		"ActiveLabel": "Active",
 		"DisabledLabel": "Disabled",
@@ -868,6 +868,8 @@
 	"IconButtonDocumentation": {
 		"Title": "Icon Button Documentation",
 		"Intro": "Icon buttons can be used for a single, well-understood action that can be clearly communicated with a stand-alone icon.",
-		"InteractiveDemoDesc": "Try our icon button component and the configurable options available within it."
+		"InteractiveDemoDesc": "Try our icon button component and the configurable options available within it.",
+		"PrimaryText": "Primary icon buttons are used to highlight important and easy-to-understand actions. It can be used in a group of icon buttons.",
+		"CriticalText": "Critical icon buttons are often used for destructive actions like deleting user-contributed content."
 	}
 }

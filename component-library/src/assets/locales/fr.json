@@ -556,7 +556,6 @@
 		"AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
 		"AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
 		"CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
-		"LabelText1": "Label text",
 		"LabelText2": "Password"
 	},
 	"DatePicker": {
@@ -803,15 +802,15 @@
 		"No": "[FR] No",
 		"Description": "[FR] Description",
 		"Hint": "[FR] Hint",
-		"FieldTwo": "[FR] Field 2",
-		"FieldThree": "[FR] Field 3",
+		"Month": "[FR] Show Month",
+		"Day": "[FR] Show Day",
 		"ComingSoon": "[FR] Coming soon.",
 		"Validation": "[FR] Validation",
 		"Size": "[FR] Size",
 		"ExtraSmall": "[FR] Extra small",
 		"Small": "[FR] Small",
 		"Large": "[FR] Large",
-		"Label": "[FR] Label Text (required)",
+		"Label": "[FR] Label Text",
 		"Desc": "[FR] Description line of text",
 		"Show": "[FR] Show",
 		"Hide": "[FR] Hide",
@@ -822,8 +821,9 @@
 		"Placeholder": "[FR] Placeholder",
 		"Basic": "[FR] Basic",
 		"Password": "[FR] Password",
+		"Primary": "Principal",
+		"Critical": "Critique",
 		"StateLabel": "[FR] State",
-		"CriticalHeading": "[FR] Critical",
 		"HoverLabel": "[FR] Hover",
 		"ActiveLabel": "[FR] Active",
 		"DisabledLabel": "[FR] Disabled",
@@ -868,6 +868,8 @@
 	"IconButtonDocumentation": {
 		"Title": "[FR] Icon Button Documentation",
 		"Intro": "[FR] Icon buttons can be used for a single, well-understood action that can be clearly communicated with a stand-alone icon.",
-		"InteractiveDemoDesc": "[FR]Try our icon button component and the configurable options available within it."
+		"InteractiveDemoDesc": "[FR]Try our icon button component and the configurable options available within it.",
+		"PrimaryText": "[FR] Primary icon buttons are used to highlight important and easy-to-understand actions. It can be used in a group of icon buttons.",
+		"CriticalText": "[FR] Critical icon buttons are often used for destructive actions like deleting user-contributed content."
 	}
 }
