@@ -41,6 +41,7 @@ export class MikeComponent implements OnInit {
 
   dropdownConfig: IDropdownConfig = {
     id: 'dropdown_test',
+    category: 'secondary',
     flyout: {
       id: 'dropdown_test_flyout',
       options: [
