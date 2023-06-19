@@ -1,19 +1,20 @@
 // // /* You can add global styles to this file, and also import other style files */
 
-@use '../../../core-library/tokens/sizes';
-@use '../../../core-library/util/device';
-@use '../../../core-library/util/color' as color;
-@use 'sass:map';
-@use '../app/components/code-viewer/code-viewer.component.scss' as code-viewer;
-@use '../app/components/accordion-panel/accordion-container.component.scss' as
+@use "../../../core-library/tokens/sizes";
+@use "../../../core-library/util/device";
+@use "../../../core-library/util/color" as color;
+@use "../../../core-library/typography/typography";
+@use "sass:map";
+@use "../app/components/code-viewer/code-viewer.component.scss" as code-viewer;
+@use "../app/components/accordion-panel/accordion-container.component.scss" as
   accordion-container;
-@use '../app/components/info-text-small/info-text-small.component' as info-text-small;
-@use '../app/components/component-preview/component-preview.component' as component-preview;
+@use "../app/components/info-text-small/info-text-small.component" as info-text-small;
+@use "../app/components/component-preview/component-preview.component" as component-preview;
 
-@import 'component-lib/styles';
-@import 'grid';
-@import 'table';
-@import '../../../core-library/layout/layout-grid';
+@import "component-lib/styles";
+@import "grid";
+@import "table";
+@import "../../../core-library/layout/layout-grid";
 
 @include code-viewer.create();
 @include accordion-container.create();
@@ -48,12 +49,15 @@ h5 {
     border-bottom: 1px solid;
     margin: 8px 0;
   }
+
   &.text-color-green {
     color: var(--success-text);
   }
+
   &.text-color-red {
     color: var(--critical-text);
   }
+
   &.round-purple-num {
     display: inline-block;
     margin-left: 8px;

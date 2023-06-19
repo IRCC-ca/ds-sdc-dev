@@ -52,59 +52,74 @@
     <app-title-slug-url
       [config]="headingConfig.typesSlugConfig"
     ></app-title-slug-url>
-    <h5 class="sub-headings">
-      {{ 'Buttons.PrimaryHeading' | translate }}
-    </h5>
-    <app-component-preview
-      copyText="<button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>"
-    >
-      <ircc-cl-lib-button [config]="buttonTypeConfigs['primary']">
-        {{ 'Buttons.PrimaryBtnText' | translate }}
-      </ircc-cl-lib-button>
-    </app-component-preview>
-    <p>{{ 'Buttons.PrimaryText' | translate }}</p>
-    <h5>{{ 'Buttons.SecondaryHeading' | translate }}</h5>
-    <app-component-preview
-      copyText="<button category='secondary'>{{
-        'Buttons.SecondaryIBtnText' | translate
-      }}</button>"
-    >
-      <ircc-cl-lib-button [config]="buttonTypeConfigs['secondary']">
-        {{ 'Buttons.SecondaryIBtnText' | translate }}
-      </ircc-cl-lib-button>
-    </app-component-preview>
-    <p>{{ 'Buttons.SecondaryText' | translate }}</p>
-    <h5>{{ 'General.CriticalHeading' | translate }}</h5>
-    <app-component-preview
-      copyText="<button color='critical'>{{
-        'Buttons.CriticalBtnText' | translate
-      }}</button>"
-    >
-      <ircc-cl-lib-button [config]="buttonTypeConfigs['critical']">
-        {{ 'Buttons.CriticalBtnText' | translate }}
-      </ircc-cl-lib-button>
-    </app-component-preview>
-    <p>{{ 'Buttons.CriticalText' | translate }}</p>
-    <h5>{{ 'Buttons.PlainHeading' | translate }}</h5>
-    <app-component-preview
-      copyText="<button category='plain'>{{
-        'Buttons.PlainBtnText' | translate
-      }}</button>"
-    >
-      <ircc-cl-lib-button [config]="buttonTypeConfigs['plain']">
-        {{ 'Buttons.PlainBtnText' | translate }}
-      </ircc-cl-lib-button>
-    </app-component-preview>
-    <app-component-preview
-      copyText="<button category='plain' color='critical'>{{
-        'Buttons.PlainCritBtnText' | translate
-      }}</button>"
-    >
-      <ircc-cl-lib-button [config]="buttonTypeConfigs['plain_critical']">
-        {{ 'Buttons.PlainCritBtnText' | translate }}
-      </ircc-cl-lib-button>
-    </app-component-preview>
-    <p>{{ 'Buttons.PlainText' | translate }}</p>
+
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h5>
+          {{ 'Buttons.PrimaryHeading' | translate }}
+        </h5>
+        <app-component-preview
+          copyText="<button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>"
+        >
+          <ircc-cl-lib-button [config]="buttonTypeConfigs['primary']">
+            {{ 'Buttons.PrimaryBtnText' | translate }}
+          </ircc-cl-lib-button>
+        </app-component-preview>
+        <p>{{ 'Buttons.PrimaryText' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h5>
+          {{ 'Buttons.SecondaryHeading' | translate }}
+        </h5>
+        <app-component-preview
+          copyText="<button category='secondary'>{{
+            'Buttons.SecondaryIBtnText' | translate
+          }}</button>"
+        >
+          <ircc-cl-lib-button [config]="buttonTypeConfigs['secondary']">
+            {{ 'Buttons.SecondaryIBtnText' | translate }}
+          </ircc-cl-lib-button>
+        </app-component-preview>
+        <p>{{ 'Buttons.SecondaryText' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h5>
+          {{ 'General.CriticalHeading' | translate }}
+        </h5>
+        <app-component-preview
+          copyText="<button color='critical'>{{
+            'Buttons.CriticalBtnText' | translate
+          }}</button>"
+        >
+          <ircc-cl-lib-button [config]="buttonTypeConfigs['critical']">
+            {{ 'Buttons.CriticalBtnText' | translate }}
+          </ircc-cl-lib-button>
+        </app-component-preview>
+        <p>{{ 'Buttons.CriticalText' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h5>{{ 'Buttons.PlainHeading' | translate }}</h5>
+        <app-component-preview
+          copyText="<button category='plain'>{{
+            'Buttons.PlainBtnText' | translate
+          }}</button>"
+        >
+          <ircc-cl-lib-button [config]="buttonTypeConfigs['plain']">
+            {{ 'Buttons.PlainBtnText' | translate }}
+          </ircc-cl-lib-button>
+        </app-component-preview>
+        <app-component-preview
+          copyText="<button category='plain' color='critical'>{{
+            'Buttons.PlainCritBtnText' | translate
+          }}</button>"
+        >
+          <ircc-cl-lib-button [config]="buttonTypeConfigs['plain_critical']">
+            {{ 'Buttons.PlainCritBtnText' | translate }}
+          </ircc-cl-lib-button>
+        </app-component-preview>
+        <p>{{ 'Buttons.PlainText' | translate }}</p>
+      </div>
+    </div>
   </section>
 
   <section class="configs">
@@ -113,7 +128,7 @@
     ></app-title-slug-url>
     <div class="row">
       <div class="col-12 col-md-6">
-        <h5 class="sub-headings">
+        <h5>
           {{ 'General.Size' | translate }}
         </h5>
         <ul>
@@ -122,13 +137,13 @@
         </ul>
       </div>
       <div class="col-12 col-md-6">
-        <h5 [style.margin-top]="0">{{ 'General.Layout' | translate }}</h5>
+        <h5>{{ 'General.Layout' | translate }}</h5>
         <ul>
           <li>{{ 'Buttons.ConfigLayoutFluid' | translate }}</li>
           <li>{{ 'Buttons.ConfigLayoutFixed' | translate }}</li>
         </ul>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 pt_8">
         <h5>{{ 'Buttons.ConfigIconHeading' | translate }}</h5>
         <ul>
           <li>{{ 'Buttons.ConfigIconNone' | translate }}</li>
@@ -136,7 +151,7 @@
           <li>{{ 'Buttons.ConfigIconTrailing' | translate }}</li>
         </ul>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 pt_8">
         <h5>{{ 'General.StateLabel' | translate }}</h5>
         <ul>
           <li>{{ 'General.DefaultLabel' | translate }}</li>
@@ -153,179 +168,213 @@
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
     ></app-title-slug-url>
-    <h5 [style.margin-top]="0">{{ 'Buttons.HierarchyHeading' | translate }}</h5>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/btn-do-1.jpg"
-          alt="{{ 'Buttons.HierarchyDoImgAlt' | translate }}"
-        />
-        <h5 class="text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
+    <div class="wrapper-container">
+      <div class="element-wrapper-container do-dont-container">
+        <h5>
+          {{ 'Buttons.HierarchyHeading' | translate }}
         </h5>
-        <p>{{ 'General.ButtonTypeDoText' | translate }}</p>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/btn-do-1.jpg"
+              alt="{{ 'Buttons.HierarchyDoImgAlt' | translate }}"
+            />
+            <h5 class="text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h5>
+            <p>{{ 'General.ButtonTypeDoText' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/btn-do-2.jpg"
+              alt="{{ 'Buttons.HierarchyDontImgAlt' | translate }}"
+            />
+            <h5 class="text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.HierarchyDontText' | translate }}</p>
+          </div>
+        </div>
       </div>
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/btn-do-2.jpg"
-          alt="{{ 'Buttons.HierarchyDontImgAlt' | translate }}"
-        />
-        <h5 class="text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
+      <div class="element-wrapper-container pt_8 do-dont-container">
+        <h5>
+          {{ 'Buttons.DestructiveHeading' | translate }}
         </h5>
-        <p>{{ 'Buttons.HierarchyDontText' | translate }}</p>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/btn-do-3.jpg"
+              alt="{{ 'Buttons.DestructiveDoImgAlt' | translate }}"
+            />
+            <h5 class="text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.DestructiveDoText' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/btn-do-4.jpg"
+              alt="{{ 'Buttons.DestructiveDontImgAlt' | translate }}"
+            />
+            <h5 class="text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.DestructiveDontText' | translate }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container pt_8 do-dont-container">
+        <h5>
+          {{ 'Buttons.PlainBtnTexts' | translate }}
+        </h5>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/btn-do-5.jpg"
+              alt="{{ 'Buttons.PlainDoImgAlt' | translate }}"
+            />
+            <h5 class="text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.PlainDoText' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/btn-do-6.jpg"
+              alt="{{ 'Buttons.PlainDontImgAlt' | translate }}"
+            />
+            <h5 class="text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.PlainDontText' | translate }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h5>
+          {{ 'Buttons.SpacingGroupsHeading' | translate }}
+        </h5>
+        <img
+          src="assets/img/button-content/button-design-spacing.jpg"
+          alt="{{ 'Buttons.SpacingGroupsImgAlt' | translate }}"
+        />
+        <p class="mt_12">{{ 'Buttons.SpacingGroupsText' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h5>
+          {{ 'General.MaxMinWidthHeading' | translate }}
+        </h5>
+        <img
+          src="assets/img/button-content/button-design-width.jpg"
+          alt="{{ 'Buttons.MinMaxWidthImgAlt' | translate }}"
+        />
+        <p class="mt_12">{{ 'Buttons.MinMaxWidthText' | translate }}</p>
       </div>
     </div>
-    <h5 [style.margin-top]="'16px'">
-      {{ 'Buttons.DestructiveHeading' | translate }}
-    </h5>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/btn-do-3.jpg"
-          alt="{{ 'Buttons.DestructiveDoImgAlt' | translate }}"
-        />
-        <h5 class="text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.DestructiveDoText' | translate }}</p>
-      </div>
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/btn-do-4.jpg"
-          alt="{{ 'Buttons.DestructiveDontImgAlt' | translate }}"
-        />
-        <h5 class="text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.DestructiveDontText' | translate }}</p>
-      </div>
-    </div>
-    <h5 [style.margin-top]="'16px'">
-      {{ 'Buttons.PlainBtnTexts' | translate }}
-    </h5>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/btn-do-5.jpg"
-          alt="{{ 'Buttons.PlainDoImgAlt' | translate }}"
-        />
-        <h5 class="text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.PlainDoText' | translate }}</p>
-      </div>
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/btn-do-6.jpg"
-          alt="{{ 'Buttons.PlainDontImgAlt' | translate }}"
-        />
-        <h5 class="text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.PlainDontText' | translate }}</p>
-      </div>
-    </div>
-    <h5 [style.margin-top]="'14px'">
-      {{ 'Buttons.SpacingGroupsHeading' | translate }}
-    </h5>
-    <img
-      src="assets/img/button-content/button-design-spacing.jpg"
-      alt="{{ 'Buttons.SpacingGroupsImgAlt' | translate }}"
-    />
-    <p>{{ 'Buttons.SpacingGroupsText' | translate }}</p>
-    <h5 [style.margin-top]="'14px'">
-      {{ 'General.MaxMinWidthHeading' | translate }}
-    </h5>
-    <img
-      src="assets/img/button-content/button-design-width.jpg"
-      alt="{{ 'Buttons.MinMaxWidthImgAlt' | translate }}"
-    />
-    <p>{{ 'Buttons.MinMaxWidthText' | translate }}</p>
   </section>
 
   <section class="anatomy">
     <app-title-slug-url
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
-    <img
-      src="assets/img/button-content/anatomy-image-button.jpg"
-      alt="{{ 'Buttons.AnatomyImgAlt' | translate }}"
-    /><br />
-    <span class="round-purple-num">1</span>
-    <h5 class="round-purple-num">
-      {{ 'Buttons.AnatomyBGHeading' | translate }}
-    </h5>
-    <p [style.margin-bottom]="0">{{ 'Buttons.AnatomyBGText' | translate }}</p>
-    <span class="round-purple-num">2</span>
-    <h5 class="round-purple-num">
-      {{ 'Buttons.ConfigIconHeading' | translate }}
-    </h5>
-    <p [style.margin-bottom]="0">{{ 'Buttons.AnatomyIconText' | translate }}</p>
-    <span class="round-purple-num">3</span>
-    <h5 class="round-purple-num">{{ 'General.LabelHeading' | translate }}</h5>
-    <p>{{ 'Buttons.AnatomyLblText' | translate }}</p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/button-content/anatomy-image-button.jpg"
+          alt="{{ 'Buttons.AnatomyImgAlt' | translate }}"
+        /><br />
+      </div>
+      <div class="element-wrapper-container">
+        <span class="round-purple-num">1</span>
+        <h5 class="round-purple-num sub-headings">
+          {{ 'Buttons.AnatomyBGHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.AnatomyBGText' | translate }}</p>
+        <span class="round-purple-num">2</span>
+        <h5 class="round-purple-num sub-headings">
+          {{ 'Buttons.ConfigIconHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.AnatomyIconText' | translate }}</p>
+        <span class="round-purple-num">3</span>
+        <h5 class="round-purple-num sub-headings">
+          {{ 'General.LabelHeading' | translate }}
+        </h5>
+        <p>{{ 'Buttons.AnatomyLblText' | translate }}</p>
+      </div>
+    </div>
   </section>
 
   <section class="specs">
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
     ></app-title-slug-url>
-    <img
-      src="assets/img/button-content/button-specs.jpg"
-      alt="{{ 'Buttons.SpecsImgAlt' | translate }}"
-    />
-    <p>{{ 'Buttons.SpecsText' | translate }}</p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/button-content/button-specs.jpg"
+          alt="{{ 'Buttons.SpecsImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <p>{{ 'Buttons.SpecsText' | translate }}</p>
+      </div>
+    </div>
   </section>
 
   <section class="content-guidelines">
     <app-title-slug-url
       [config]="headingConfig.contentGuideSlugConfig"
     ></app-title-slug-url>
-    <h5 [style.margin-top]="0">{{ 'Buttons.CaseHeading' | translate }}</h5>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/button-content-guide-1.jpg"
-          alt="{{ 'Buttons.CaseDoImgAlt' | translate }}"
-        /><br />
-        <h5 class="text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.CaseDoText' | translate }}</p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container do-dont-container">
+        <h5>{{ 'Buttons.CaseHeading' | translate }}</h5>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/button-content-guide-1.jpg"
+              alt="{{ 'Buttons.CaseDoImgAlt' | translate }}"
+            /><br />
+            <h5 class="text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.CaseDoText' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/button-content-guide-2.jpg"
+              alt="{{ 'Buttons.CaseDontImgAlt' | translate }}"
+            /><br />
+            <h5 class="text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.CaseDontText' | translate }}</p>
+          </div>
+        </div>
       </div>
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/button-content-guide-2.jpg"
-          alt="{{ 'Buttons.CaseDontImgAlt' | translate }}"
-        /><br />
-        <h5 class="text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.CaseDontText' | translate }}</p>
-      </div>
-    </div>
-    <h5>{{ 'Buttons.DescriptiveHeading' | translate }}</h5>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/button-content-guide-3.jpg"
-          alt="{{ 'Buttons.DescriptiveDoImgAlt' | translate }}"
-        /><br />
-        <h5 class="text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.DescriptiveDoText' | translate }}</p>
-      </div>
-      <div class="col-12 col-md-6">
-        <img
-          src="assets/img/button-content/button-content-guide-4.jpg"
-          alt="{{ 'Buttons.DescriptiveDontImgAlt' | translate }}"
-        /><br />
-        <h5 class="text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h5>
-        <p>{{ 'Buttons.DescriptiveDontText' | translate }}</p>
+      <div class="element-wrapper-container pt_8 do-dont-container">
+        <h5>{{ 'Buttons.DescriptiveHeading' | translate }}</h5>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/button-content-guide-3.jpg"
+              alt="{{ 'Buttons.DescriptiveDoImgAlt' | translate }}"
+            /><br />
+            <h5 class="text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.DescriptiveDoText' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/button-content/button-content-guide-4.jpg"
+              alt="{{ 'Buttons.DescriptiveDontImgAlt' | translate }}"
+            /><br />
+            <h5 class="text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h5>
+            <p>{{ 'Buttons.DescriptiveDontText' | translate }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -336,13 +385,13 @@
     ></app-title-slug-url>
     <div class="row">
       <div class="col-12 col-md-8">
-        <h5 [style]="'margin-top: 0; margin-bottom: 12px;'">
+        <h5>
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h5>
         <ol>
           <li [innerHtml]="'Buttons.FigmaDirectionsListItem1' | translate"></li>
-          <li [innerHtml]="'Buttons.FigmaDirectionsListItem2' | translate"></li>
-          <li [innerHtml]="'Buttons.FigmaDirectionsListItem3' | translate"></li>
+          <li [innerHtml]="'General.FigmaDirectionsListItem2' | translate"></li>
+          <li [innerHtml]="'General.FigmaDirectionsListItem3' | translate"></li>
           <li [innerHtml]="'Buttons.FigmaDirectionsListItem4' | translate"></li>
         </ol>
       </div>
@@ -359,14 +408,22 @@
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
-    <h5 [style.margin-top]="0">
-      {{ 'General.AccessibilityColourHeading' | translate }}
-    </h5>
-    <p>{{ 'Buttons.AccessibilityColourText' | translate }}</p>
-    <h5 [style.margin-top]="0">
-      {{ 'General.AccessibilityKeyboardHeading' | translate }}
-    </h5>
-    <p>{{ 'Buttons.AccessibilityKeyboardText' | translate }}</p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h5>
+          {{ 'General.AccessibilityColourHeading' | translate }}
+        </h5>
+        <p class="mt_12">{{ 'Buttons.AccessibilityColourText' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h5>
+          {{ 'General.AccessibilityKeyboardHeading' | translate }}
+        </h5>
+        <p class="mt_12">
+          {{ 'Buttons.AccessibilityKeyboardText' | translate }}
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="research">
