@@ -31,11 +31,11 @@
   z-index: 10;
   overflow: visible;
   position: relative;
+  border-radius: 4px;
 }
 
 @mixin selector {
   *:focus-visible {
     @content;
   }
-  
 }

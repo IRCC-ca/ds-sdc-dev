@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { TranslatedPageComponent } from '../translated-page-component';
+import { NavigationService } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-for-designers',
@@ -52,12 +53,24 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private navBarConfig: SideNavConfig
+    private navBarConfig: SideNavConfig,
+    private navService: NavigationService
   ) {
     this.rightNavData = navBarConfig.getRightNavBarConfig(this.rightNavDataRaw);
   }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
+    this.navService.setNavItem({
+      label: 'I AM NOT TRANSLATED',
+      href: 'ROUTES.overview',
+      external: false,
+      id: 'Overview.Heading',
+      icon: 'fa-regular fa-user',
+      trailingIcon: 'fa-regular fa-arrow-right',
+      type: 'link',
+      children: [],
+      indicator: { status: 'critical', icon: 'fa-regular fa-square' }
+    });
   }
 }

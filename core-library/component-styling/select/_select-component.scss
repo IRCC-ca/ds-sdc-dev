@@ -36,9 +36,6 @@ $selectors: "ircc-cl-lib-select";
     color: var(--text-placeholder);
   }
 
-  .select-option {
-    color: black;
-  }
 
   .lib-select {
     margin-top: 8px;
@@ -61,9 +58,6 @@ $selectors: "ircc-cl-lib-select";
     color: var(--text-placeholder);
   }
 
-  .select-option {
-    color: black;
-  }
 
   .lib-select {
     margin-top: 4px;
@@ -99,7 +93,7 @@ $selectors: "ircc-cl-lib-select";
     line-height: 24px;
     color: var(--text);
     border-radius: token-size.$border-radius;
-    background-color: var(--surface1);
+    background-color: transparent;
     border-color: var(--border);
     border-width: 1px;
     width: 100%;
@@ -133,7 +127,7 @@ $selectors: "ircc-cl-lib-select";
   }
 
   .select-option {
-    color: black;
+    color: var(--grey-12);
   }
 
   .select-clicked {

@@ -35,12 +35,43 @@
     </div>
   </div>
   <main>
-    <div class="main-container top {{ navStatus }}">
-      <app-side-nav
+    <div
+      class="main-container top {{ navStatus }}"
+      style="margin-top: 200px"
+    >
+      <ircc-cl-lib-navigation
         class="left-nav"
-        [navBarData]="leftNavData"
-        [mobileToggleIcon]="true"
-      ></app-side-nav>
+        [attr.size]="navConfig.size"
+      >
+        <div navigationContentTop>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              min-height: 256px;
+            "
+          >
+            <p>Header projected content</p>
+            <img [src]="randomHeader" />
+          </div>
+        </div>
+        <div navigationContentBottom>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              min-height: 256px;
+            "
+          >
+            <p>Footer projected content</p>
+            <img [src]="randomFooter" />
+          </div>
+        </div>
+      </ircc-cl-lib-navigation>
       <div
         class="content"
         role="main"
