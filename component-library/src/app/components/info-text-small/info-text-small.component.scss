@@ -17,6 +17,7 @@ $selectors: "app-info-text-small";
 }
 
 @mixin layout {
+  display: flex;
   color: var(--information-text);
 
   small {

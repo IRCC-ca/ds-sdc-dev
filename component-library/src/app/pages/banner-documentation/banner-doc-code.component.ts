@@ -231,7 +231,7 @@ export class BannerDocCodeComponent implements OnInit {
       },
       {
         id: 'critical',
-        title: 'General.CriticalHeading'
+        title: 'General.Critical'
       },
       {
         id: 'success',
