@@ -8,6 +8,7 @@
         [id]="val.id"
         (click)="setSelected(val.id)"
         [attr.aria-label]="val.title + ' selected'"
+        category="plain"
       >
         {{ val.title || '' | translate }}
       </button>
@@ -16,6 +17,7 @@
         class="tabs-btn"
         [id]="val.id"
         (click)="setSelected(val.id)"
+        category="plain"
       >
         {{ val.title || '' | translate }}
       </button>

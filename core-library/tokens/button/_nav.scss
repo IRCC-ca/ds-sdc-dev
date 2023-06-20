@@ -10,7 +10,7 @@
 @mixin selector {
   nav#{template-const.$escape} {
     a:any-link,
-    #{button-const.$selectors}:where(:not([category])) {
+    #{button-const.$selectors}:where([category="plain"]) {
       @content;
     }
   }
