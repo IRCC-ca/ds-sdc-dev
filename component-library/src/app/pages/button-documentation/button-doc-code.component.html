@@ -10,6 +10,7 @@
       [config]="interactiveDemoSlugTitleURLConfig"
     ></app-title-slug-url>
     <p
+      class="body3"
       [innerHtml]="
         'General.InteractiveDemoDesc' | translate : { component: 'button' }
       "
@@ -69,7 +70,7 @@
             {{ 'Buttons.PrimaryBtnText' | translate }}
           </ircc-cl-lib-button>
         </app-component-preview>
-        <p>{{ 'Buttons.PrimaryText' | translate }}</p>
+        <p class="body3">{{ 'Buttons.PrimaryText' | translate }}</p>
       </div>
       <div class="element-wrapper-container">
         <h5>
@@ -84,7 +85,7 @@
             {{ 'Buttons.SecondaryIBtnText' | translate }}
           </ircc-cl-lib-button>
         </app-component-preview>
-        <p>{{ 'Buttons.SecondaryText' | translate }}</p>
+        <p class="body3">{{ 'Buttons.SecondaryText' | translate }}</p>
       </div>
       <div class="element-wrapper-container">
         <h5>
@@ -99,7 +100,7 @@
             {{ 'Buttons.CriticalBtnText' | translate }}
           </ircc-cl-lib-button>
         </app-component-preview>
-        <p>{{ 'Buttons.CriticalText' | translate }}</p>
+        <p class="body3">{{ 'Buttons.CriticalText' | translate }}</p>
       </div>
       <div class="element-wrapper-container">
         <h5>{{ 'Buttons.PlainHeading' | translate }}</h5>
@@ -121,7 +122,12 @@
             {{ 'Buttons.PlainCritBtnText' | translate }}
           </ircc-cl-lib-button>
         </app-component-preview>
-        <p>{{ 'Buttons.PlainText' | translate }}</p>
+        <p
+          class="body3"
+          [innerHtml]="'Buttons.PlainText' | translate"
+        >
+          {{ 'Buttons.PlainText' | translate }}
+        </p>
       </div>
     </div>
   </section>
@@ -186,7 +192,7 @@
             <h5 class="text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h5>
-            <p>{{ 'General.ButtonTypeDoText' | translate }}</p>
+            <p class="body3">{{ 'General.ButtonTypeDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
             <img
@@ -196,7 +202,7 @@
             <h5 class="text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.HierarchyDontText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.HierarchyDontText' | translate }}</p>
           </div>
         </div>
       </div>
@@ -213,7 +219,7 @@
             <h5 class="text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.DestructiveDoText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.DestructiveDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
             <img
@@ -223,7 +229,7 @@
             <h5 class="text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.DestructiveDontText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.DestructiveDontText' | translate }}</p>
           </div>
         </div>
       </div>
@@ -240,7 +246,7 @@
             <h5 class="text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.PlainDoText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.PlainDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
             <img
@@ -250,7 +256,7 @@
             <h5 class="text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.PlainDontText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.PlainDontText' | translate }}</p>
           </div>
         </div>
       </div>
@@ -293,17 +299,17 @@
         <h5 class="round-purple-num sub-headings">
           {{ 'Buttons.AnatomyBGHeading' | translate }}
         </h5>
-        <p>{{ 'Buttons.AnatomyBGText' | translate }}</p>
+        <p class="body3">{{ 'Buttons.AnatomyBGText' | translate }}</p>
         <span class="round-purple-num">2</span>
         <h5 class="round-purple-num sub-headings">
           {{ 'Buttons.ConfigIconHeading' | translate }}
         </h5>
-        <p>{{ 'Buttons.AnatomyIconText' | translate }}</p>
+        <p class="body3">{{ 'Buttons.AnatomyIconText' | translate }}</p>
         <span class="round-purple-num">3</span>
         <h5 class="round-purple-num sub-headings">
           {{ 'General.LabelHeading' | translate }}
         </h5>
-        <p>{{ 'Buttons.AnatomyLblText' | translate }}</p>
+        <p class="body3">{{ 'Buttons.AnatomyLblText' | translate }}</p>
       </div>
     </div>
   </section>
@@ -316,8 +322,11 @@
       <div class="element-wrapper-container">
         <img
           src="assets/img/button-content/button-specs.jpg"
-          alt="{{ 'Buttons.SpecsText' | translate }}"
+          alt="{{ 'Buttons.SpecsImgAlt' | translate }}"
         />
+      </div>
+      <div class="element-wrapper-container">
+        <p>{{ 'Buttons.SpecsText' | translate }}</p>
       </div>
     </div>
   </section>
@@ -338,7 +347,7 @@
             <h5 class="text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.CaseDoText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.CaseDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
             <img
@@ -348,7 +357,7 @@
             <h5 class="text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.CaseDontText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.CaseDontText' | translate }}</p>
           </div>
         </div>
       </div>
@@ -363,7 +372,7 @@
             <h5 class="text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.DescriptiveDoText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.DescriptiveDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
             <img
@@ -373,7 +382,7 @@
             <h5 class="text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h5>
-            <p>{{ 'Buttons.DescriptiveDontText' | translate }}</p>
+            <p class="body3">{{ 'Buttons.DescriptiveDontText' | translate }}</p>
           </div>
         </div>
       </div>
@@ -431,6 +440,6 @@
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p>{{ 'General.ComingSoon' | translate }}</p>
+    <p class="body3">{{ 'General.ComingSoon' | translate }}</p>
   </section>
 </div>
