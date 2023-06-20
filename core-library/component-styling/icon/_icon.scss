@@ -1,18 +1,51 @@
-@use '../../tokens/template-const' as template-const;
-@use '../../typography/typography';
- 
+@use "../../tokens/template-const" as template-const;
+@use "../../typography/typography";
+@use "../../util/size" as size;
+
 @mixin selector {
-    ircc-cl-lib-icon#{template-const.$escape} {
-        @content;
-    }
+  ircc-cl-lib-icon#{template-const.$escape} {
+    @content;
+  }
 }
 
 @mixin create {
-    @include selector() {
-        @include layout();
-    }
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin large-styles() {
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+@mixin small-styles() {
+  svg {
+    height: 16px;
+    width: 16px;
+  }
 }
 
 @mixin layout {
+  @include size.select(large) {
+    @include large-styles();
 
+    .small {
+      @include small-styles();
+    }
+  }
+
+  @include size.select(small) {
+    @include small-styles();
+
+    .large {
+      @include large-styles();
+    }
+  }
+
+  span {
+    display: flex;
+  }
 }

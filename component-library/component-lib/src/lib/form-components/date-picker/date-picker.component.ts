@@ -7,7 +7,6 @@ import {
   ILabelConfig,
   ILabelIconConfig
 } from '../../shared/label/label.component';
-import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import {

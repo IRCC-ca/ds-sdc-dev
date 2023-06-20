@@ -32,7 +32,7 @@ export class InputDocumentationComponent implements OnInit {
   basicInputConfig: IInputComponentConfig = {
     id: this.BASIC_INPUT_ID,
     formGroup: this.form_input,
-    label: 'Input.LabelText1',
+    label: 'General.Label',
     type: 'text'
   };
 
@@ -57,7 +57,7 @@ export class InputDocumentationComponent implements OnInit {
     this.currentLanguage = translate.currentLang;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
     this.form_input.addControl(this.BASIC_INPUT_ID, new FormControl());
     this.form_input.addControl(this.PASSWORD_INPUT_ID, new FormControl());

@@ -55,3 +55,14 @@ export * from './lib/shared/breadcrumb/link/link.component';
 export * from './lib/shared/spinner/spinner.component';
 export * from './lib/shared/flyout/flyout.component';
 export * from './lib/shared/flyout-option/flyout-option.component';
+
+/** Navigation Components */
+export * from './lib/shared/navigation/ircc-ds-angular-navigation.module';
+export * from './lib/shared/navigation/navigation.component';
+export * from './lib/shared/navigation/nav-item-heading/nav-item-heading.component';
+export * from './lib/shared/navigation/nav-item-nav/nav-item-nav.component';
+export * from './lib/shared/navigation/nav-item-accordion/nav-item-accordion.component';
+export * from './lib/shared/navigation/nav-item-status/nav-item-status.component';
+export * from './lib/shared/navigation/nav-item-divider/nav-item-divider.component';
+export * from './lib/shared/navigation/navigation.types';
+export * from './lib/shared/navigation/navigation.service';

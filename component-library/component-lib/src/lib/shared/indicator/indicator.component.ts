@@ -51,6 +51,7 @@ export interface IIndicatorConfig {
   size?: keyof typeof DSSizes;
   type: keyof typeof IndicatorType;
   icon?: string;
+  tabIndex?: number | undefined;
   category: keyof typeof IndicatorTreatment; // Treatment
   purpose: keyof typeof IndicatorPurpose;
   status?: keyof typeof IndicatorStatus; // Sentiment
@@ -66,8 +67,10 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() config: IIndicatorConfig = {
     type: 'text',
     category: IndicatorTreatment.weak,
-    purpose: IndicatorPurpose.status
+    purpose: IndicatorPurpose.status,
+    tabIndex: 0
   };
+  @Input() tabIndex = undefined;
   @ViewChild('label') label?: ElementRef<HTMLDivElement>;
   EIndicatorStatus = IndicatorStatus;
   rounded?: boolean;
@@ -76,6 +79,10 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit() {
     this.checkLabelRounded();
     this.checkNumber();
+
+    this.tabIndex !== undefined
+      ? (this.config.tabIndex = this.tabIndex)
+      : undefined;
   }
 
   ngAfterViewInit() {

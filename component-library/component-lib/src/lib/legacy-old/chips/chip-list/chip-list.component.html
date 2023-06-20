@@ -1,4 +1,7 @@
-<form #form="ngForm" (ngSubmit)="onSubmit()">
+<form
+  #form="ngForm"
+  (ngSubmit)="onSubmit()"
+>
   <ircc-cl-lib-input
     name="chipContentText"
     [(ngModel)]="chipContentText"

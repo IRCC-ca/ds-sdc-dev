@@ -36,7 +36,7 @@ export class DatePickerDocCodeComponent implements OnInit {
     general: [
       {
         key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+        errorLOV: 'ERROR.requiredTextAreaError'
       }
     ]
   };
@@ -44,9 +44,9 @@ export class DatePickerDocCodeComponent implements OnInit {
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
     formGroup: this.form_datePicker,
-    label: 'General.Label',
+    label: 'Label text',
     required: true,
-    desc: 'General.Desc',
+    desc: 'Description line of text',
     size: 'small',
     errorMessages: this.datePickerErrorMessages,
     unknownDateToggle: {
@@ -127,7 +127,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'monthSelectShow',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'General.FieldTwo',
+      label: 'General.Month',
       options: [
         {
           text: 'General.Yes',
@@ -143,7 +143,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'daySelectShow',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'General.FieldThree',
+      label: 'General.Day',
       options: [
         {
           text: 'General.Yes',
@@ -159,7 +159,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'error',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Input.AnatomyErrorHeading',
+      label: 'ERROR.errorMessage',
       options: [
         {
           text: 'General.Yes',
@@ -177,7 +177,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       id: 'state',
       formGroup: this.form_datePicker,
       size: 'small',
-      label: 'Banner.BannerConfig.StateLabel',
+      label: 'General.StateLabel',
       inlineLabel: 'Disabled'
     }
   ];

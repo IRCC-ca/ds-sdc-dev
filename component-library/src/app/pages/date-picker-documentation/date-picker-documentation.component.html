@@ -4,7 +4,7 @@
 
   <section class="interactive-demo">
     <app-title-slug-url
-      [config]="interactiveDemoSlugTitleURLConfig"
+      [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
     <p
       class="demo"
@@ -67,7 +67,7 @@
       </div>
       <div class="column">
         <h5 class="sub-headings">
-          {{ 'General.FieldTwo' | translate }}
+          {{ 'General.Month' | translate }}
         </h5>
         <ul>
           <li>{{ 'General.Yes' | translate }}</li>
@@ -78,7 +78,7 @@
     <div class="config-row">
       <div class="column">
         <h5 class="sub-headings">
-          {{ 'General.FieldThree' | translate }}
+          {{ 'General.Day' | translate }}
         </h5>
         <ul>
           <li>{{ 'General.Yes' | translate }}</li>
@@ -320,7 +320,7 @@
 
       <div class="element-wrapper-container">
         <h5 class="sub-headings">
-          {{ 'DatePicker.ContentGuideLines.WritingLabelsHeading' | translate }}
+          {{ 'General.WriteLabelsHeading' | translate }}
         </h5>
         <p
           [innerHTML]="
@@ -407,7 +407,7 @@
 
       <div class="element-wrapper-container">
         <h5 class="sub-headings">
-          {{ 'DatePicker.ContentGuideLines.WritingErrHeading' | translate }}
+          {{ 'ERROR.WritingErrHeading' | translate }}
         </h5>
         <p>{{ 'DatePicker.ContentGuideLines.WritingErrTxt' | translate }}</p>
         <div class="row row-container">
@@ -448,9 +448,7 @@
 
       <div class="element-wrapper-container">
         <h5 class="sub-headings">
-          {{
-            'DatePicker.ContentGuideLines.NecessaryContentHeading' | translate
-          }}
+          {{ 'General.NecessaryContentHeading' | translate }}
         </h5>
         <div class="row row-container">
           <div class="column left-column">
@@ -496,7 +494,7 @@
 
       <div class="element-wrapper-container">
         <h5 class="sub-headings">
-          {{ 'DatePicker.ContentGuideLines.RequiredFieldsHeading' | translate }}
+          {{ 'General.RequiredFieldsHeading' | translate }}
         </h5>
         <div class="row row-container">
           <div class="column left-column">
@@ -616,14 +614,14 @@
     ></app-title-slug-url>
     <div class="content-element">
       <h5 class="sub-headings">
-        {{ 'Input.AccessibilityColourHeading' | translate }}
+        {{ 'General.AccessibilityColourHeading' | translate }}
       </h5>
       <p>{{ 'DatePicker.Accessibility.ColorContrastTxt' | translate }}</p>
     </div>
 
     <div class="content-element">
       <h5 class="sub-headings">
-        {{ 'Input.AccessibilityKeyboardHeading' | translate }}
+        {{ 'General.AccessibilityKeyboardHeading' | translate }}
       </h5>
       <p>
         {{ 'DatePicker.Accessibility.KeyboardAccessibleTxt' | translate }}
@@ -631,7 +629,7 @@
     </div>
     <div class="content-element">
       <h5 class="sub-headings">
-        {{ 'DatePicker.Accessibility.ContentHeading' | translate }}
+        {{ 'General.ContentHeading' | translate }}
       </h5>
       <ul>
         <li

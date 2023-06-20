@@ -2,12 +2,18 @@
   class="checkbox-container"
   [formGroup]="config.formGroup"
 >
-  <div class="checkbox-container" [ngClass]="config.size">
+  <div
+    class="checkbox-container"
+    [ngClass]="config.size"
+  >
     <ircc-cl-lib-label
       [config]="labelConfig"
       [attr.size]="config.size"
     ></ircc-cl-lib-label>
-    <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
+    <div
+      class="checkbox-layout"
+      [ngClass]="{ error: getErrorState() }"
+    >
       <div class="checkbox">
         <input
           [attr.aria-live]="'off'"
@@ -71,7 +77,10 @@
           errorStubText + ': ' + (config.label || '' | translate) + ': '
         }}</span>
         <ng-container *ngFor="let errors of errorIds; let i = index">
-          <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
+          <div
+            *ngIf="formControl?.errors?.[errors.key]"
+            class="radio-errors"
+          >
             <ircc-cl-lib-error
               [id]="errors.id"
               [errorLOV]="errors.errorLOV"
