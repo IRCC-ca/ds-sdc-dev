@@ -79,12 +79,15 @@
         <div class="content-area-responsive">
           <div class="page-content">
             <router-outlet></router-outlet>
-            <p>{{ 'Home.DateModified' | translate }}: 2023-02-10</p>
+            <!-- Footer -->
+            <ircc-cl-lib-footer>
+              <p class="version">
+                {{ 'Home.DateModified' | translate }}: 2023-02-10
+              </p>
+            </ircc-cl-lib-footer>
           </div>
         </div>
       </div>
     </div>
   </main>
-  <!-- Footer -->
-  <ircc-cl-lib-footer> </ircc-cl-lib-footer>
 </div>
