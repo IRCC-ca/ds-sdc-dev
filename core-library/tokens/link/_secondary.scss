@@ -61,7 +61,7 @@ $default-color: null;
 
 @mixin layout() {
   @include button-const.layout();
-  --text: var(--secondary-text);
+  --text: var(--secondary-btn-text);
   text-decoration: none;
   box-shadow: sizes.$border-style;
   background-color: var(--surface1);
@@ -74,8 +74,7 @@ $default-color: null;
   }
 
   &:disabled {
-    --text: var(--secondary-text-disabled);
-    color: var(--text);
+    --text: var(--secondary-btn-text-disabled);
     background-color: var(--surface1);
     border-color: var(--secondary-border-disabled);
   }

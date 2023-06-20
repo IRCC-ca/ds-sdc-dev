@@ -2,10 +2,10 @@
 @use "./typography/typography" as typography;
 @use "./paint/paint" as paint;
 @use "./tokens/button/plain";
-@use "./tokens/button/nav";
 @use "./tokens/button/button-tokens";
 @use "./tokens/button/primary";
 @use "./tokens/button/secondary";
+@use "./tokens/button/nav";
 @use "./tokens/button/link" as link-btn;
 @use "./tokens/checkbox/checkbox";
 @use "./tokens/radio/radio";

@@ -62,7 +62,6 @@ $default-color: null;
   --text: var(--link-btn-text);
   background-color: transparent;
   text-decoration: underline;
-  color: var(--text);
   @include device.if-hover {
     background: var(--generic-hover);
   }
@@ -73,7 +72,6 @@ $default-color: null;
 
   &:disabled {
     --text: var(--link-btn-text-disabled);
-    color: var(--text);
     background: var(--surface1);
   }
 }

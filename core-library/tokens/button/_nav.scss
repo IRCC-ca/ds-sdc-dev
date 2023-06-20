@@ -10,7 +10,7 @@
 @mixin selector {
   nav#{template-const.$escape} {
     a:any-link,
-    #{button-const.$selectors}:where([category="plain"]) {
+    #{button-const.$selectors}:where(:not([category])) {
       @content;
     }
   }
@@ -18,7 +18,6 @@
 
 @mixin create {
   @include selector() {
-    @include layout();
     @include layout-tab();
   }
 }
@@ -68,9 +67,4 @@
       background: var(--navigation-disabled);
     }
   }
-}
-
-@mixin layout() {
-  @include button-const.layout();
-  @include layout-tab();
 }

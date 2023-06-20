@@ -59,7 +59,7 @@ $secondary: "secondary";
 
 @mixin layout() {
   @include button-const.layout();
-  --text: var(--secondary-text);
+  --text: var(--secondary-btn-text);
   box-shadow: sizes.$border-style;
   background-color: var(--surface1);
 
@@ -72,8 +72,7 @@ $secondary: "secondary";
   }
 
   &:disabled {
-    --text: var(--secondary-text-disabled);
-    color: var(--text);
+    --text: var(--secondary-btn-text-disabled);
     background-color: var(--surface1);
     border-color: var(--secondary-border-disabled);
   }

@@ -62,7 +62,7 @@ $default-color: null;
 
 @mixin layout() {
   @include button-const.layout();
-  --text: var(--primary-text);
+  --text: var(--primary-btn-text);
   background-color: var(--primary-background);
 
   @include device.if-hover {
@@ -75,6 +75,6 @@ $default-color: null;
 
   &:disabled {
     background-color: var(--primary-background-disabled);
-    color: var(--primary-text-disabled);
+    --text: var(--primary-btn-text-disabled);
   }
 }
