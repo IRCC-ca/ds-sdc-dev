@@ -352,6 +352,7 @@
 		"ReleasesTitle3": "[FR] To install a full release:"
 	},
 	"ERROR": {
+		"fieldIsRequired": "[FR] This field is required.",
 		"fieldIsInvalid": "Ce champ est invalide.",
 		"fieldExceededMaxLength": "Ce champ a dépassé la longueur maximale.",
 		"requiredTextAreaError": "[FR] This field is required.",

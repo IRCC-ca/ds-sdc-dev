@@ -352,6 +352,7 @@
 		"ReleasesTitle3": "To install a full release:"
 	},
 	"ERROR": {
+		"fieldIsRequired": "This field is required.",
 		"fieldIsInvalid": "This field is invalid.",
 		"fieldExceededMaxLength": "This field has exceeded max length.",
 		"requiredTextAreaError": "This field is required.",
