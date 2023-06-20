@@ -33,13 +33,12 @@
       display: flex;
       justify-content: space-between;
       margin: 0;
-      padding: 24px 0;
     }
 
     .image-container {
       align-self: center;
       width: 296.47px;
-      padding: 0;
+      padding: 24px 0;
 
       @include device.in-phone-layout() {
         width: 249px;
