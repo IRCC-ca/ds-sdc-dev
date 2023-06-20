@@ -8,9 +8,9 @@
 @use "../../util/size";
 
 @mixin selector {
-  a:any-link,
-  #{button-const.$selectors}:where(:not([category])) {
-    &#{template-const.$escape}:where(nav *) {
+  nav#{template-const.$escape} {
+    a:any-link,
+    #{button-const.$selectors}:where(:not([category])) {
       @content;
     }
   }
@@ -18,7 +18,7 @@
 
 @mixin create {
   @include selector() {
-    @include layout();
+    @include button-const.layout();
     @include layout-tab();
   }
 }
@@ -68,9 +68,4 @@
       background: var(--navigation-disabled);
     }
   }
-}
-
-@mixin layout() {
-  @include button-const.layout();
-  @include layout-tab();
 }

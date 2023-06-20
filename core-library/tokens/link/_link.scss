@@ -5,26 +5,6 @@
 @use "../../util/device" as device;
 @use "sass:map";
 
-@mixin tokens($cta-palette, $visited-palette, $focus-palette) {
-  @include theme.light {
-    @include device.if-hover {
-      --link-text-hover: #{color.mix-token($focus-palette, 800)};
-    }
-    --link-text: #{color.mix-token($cta-palette, 700)};
-    --link-text-active: #{color.mix-token($cta-palette, 900)};
-    --link-text-visited: #{color.mix-token($visited-palette, 800)};
-  }
-
-  @include theme.dark {
-    @include device.if-hover {
-      --link-text-hover: #{color.mix-token($focus-palette, 500)};
-    }
-    --link-text: #{color.mix-token($cta-palette, 400)};
-    --link-text-active: #{color.mix-token($cta-palette, 300)};
-    --link-text-visited: #{color.mix-token($visited-palette, 500)};
-  }
-}
-
 @mixin anchor-selector {
   a,
   .link {
@@ -36,20 +16,51 @@
   }
 }
 
-@mixin create(
-  $palette: (
-    cta: cta,
-    visited: visited,
-    focus: focus,
-  )
-) {
+@mixin create() {
+  @include tokens();
   @include anchor-selector() {
-    @include tokens(
-      map.get($palette, cta),
-      map.get($palette, visited),
-      map.get($palette, focus)
-    );
     @include layout();
+  }
+}
+
+@mixin light-colors($cta: cta, $visited: visited, $focus: focus) {
+  @include device.if-hover {
+    --link-text-hover: #{color.mix-token($focus, 800)};
+  }
+  --link-text: #{color.mix-token($cta, 700)};
+  --link-text-active: #{color.mix-token($cta, 900)};
+  --link-text-visited: #{color.mix-token($visited, 800)};
+}
+
+@mixin dark-colors($cta: cta, $visited: visited, $focus: focus) {
+  @include device.if-hover {
+    --link-text-hover: #{color.mix-token($focus, 500)};
+  }
+  --link-text: #{color.mix-token($cta, 400)};
+  --link-text-active: #{color.mix-token($cta, 300)};
+  --link-text-visited: #{color.mix-token($visited, 500)};
+}
+
+@mixin tokens(
+  $cta-palette: cta,
+  $visited-palette: visited,
+  $focus-palette: focus
+) {
+  html {
+    @include light-colors($cta-palette, $visited-palette, $focus-palette);
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors($cta-palette, $visited-palette, $focus-palette);
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors($cta-palette, $visited-palette, $focus-palette);
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors($cta-palette, $visited-palette, $focus-palette);
+    }
   }
 }
 
