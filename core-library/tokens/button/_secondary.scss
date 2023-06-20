@@ -15,7 +15,8 @@ $secondary: "secondary";
         @include b-tokens.light-colors(critical, neutral);
         @include layout();
       }
-      &:not([color]) {
+      &:not([color]),
+      &:where([color="cta"]) {
         @include layout();
       }
     }
@@ -29,7 +30,8 @@ $secondary: "secondary";
         @include b-tokens.dark-colors(critical, neutral);
         @include layout();
       }
-      &:not([color]) {
+      &:not([color]),
+      &:where([color="cta"]) {
         @include layout();
       }
     }
