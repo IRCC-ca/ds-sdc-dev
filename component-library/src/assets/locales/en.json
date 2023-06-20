@@ -557,6 +557,7 @@
 		"AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
 		"AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
 		"CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
+		"LabelText1": "Label text",
 		"LabelText2": "Password"
 	},
 	"DatePicker": {
@@ -788,6 +789,7 @@
 		"SpecsHeading": "Specs",
 		"ContentGuidelinesHeading": "Content guidelines",
 		"FigmaHeading": "Usage in Figma",
+		"CriticalHeading": "Critical",
 		"AccessibilityHeading": "Accessibility",
 		"ResearchHeading": "Research",
 		"FigmaDirectionsHeading": "Directions for use",
