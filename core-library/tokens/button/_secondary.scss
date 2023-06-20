@@ -13,6 +13,7 @@ $secondary: "secondary";
     &:where([category="#{$secondary}"]) {
       &:where([color="critical"]) {
         @include b-tokens.light-colors(critical, neutral);
+        @include b-tokens.dark-colors(critical, neutral);
         @include layout();
       }
       &:not([color]) {
