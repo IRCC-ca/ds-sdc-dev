@@ -13,13 +13,15 @@ $default-color: null;
   @include button-const.selector() {
     &:where([category="#{$primary}"]),
     &:not([category]) {
-      &:where([color="critical"]) {
-        @include b-tokens.light-colors(critical, neutral);
-        @include layout();
-      }
-      &:not([color]),
-      &:where([color="cta"]) {
-        @include layout();
+      &:where(:not(nav *)) {
+        &:where([color="critical"]) {
+          @include b-tokens.light-colors(critical, neutral);
+          @include layout();
+        }
+        &:not([color]),
+        &:where([color="cta"]) {
+          @include layout();
+        }
       }
     }
   }
