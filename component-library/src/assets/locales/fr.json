@@ -863,7 +863,8 @@
 		"GenericHeading": "[FR] Generic",
 		"DefaultLabel": "[FR] Default",
 		"TitleLabel": "[FR] Title",
-		"CloseLabel": "[FR] Close"
+		"CloseLabel": "[FR] Close",
+		"InteractiveDemoDesc": "[FR] Try our <strong>{{component}}</strong> component and the configurable options available within it."
 	},
 	"IconButtonDocumentation": {
 		"Title": "[FR] Icon Button Documentation",

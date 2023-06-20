@@ -1,4 +1,4 @@
-<div class="content-doc-wrapper col-12 col-lg-10">
+<div class="content-doc-wrapper">
   <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Buttons.Intro' | translate }}</p>
   <app-info-text-small>
@@ -9,7 +9,11 @@
     <app-title-slug-url
       [config]="interactiveDemoSlugTitleURLConfig"
     ></app-title-slug-url>
-
+    <p
+      [innerHtml]="
+        'General.InteractiveDemoDesc' | translate : { component: 'button' }
+      "
+    ></p>
     <app-interactive-demo>
       <ircc-cl-lib-tabs
         tabs
@@ -312,11 +316,8 @@
       <div class="element-wrapper-container">
         <img
           src="assets/img/button-content/button-specs.jpg"
-          alt="{{ 'Buttons.SpecsImgAlt' | translate }}"
+          alt="{{ 'Buttons.SpecsText' | translate }}"
         />
-      </div>
-      <div class="element-wrapper-container">
-        <p>{{ 'Buttons.SpecsText' | translate }}</p>
       </div>
     </div>
   </section>
@@ -430,6 +431,6 @@
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p>{{ 'Buttons.ResearchText' | translate }}</p>
+    <p>{{ 'General.ComingSoon' | translate }}</p>
   </section>
 </div>

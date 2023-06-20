@@ -38,6 +38,10 @@ app-root {
 // To be moved to page template
 .page-content {
   .content-doc-wrapper {
+    box-sizing: border-box;
+    max-width: 900px;
+    margin: 0 auto;
+
     img {
       max-width: 100%;
     }
