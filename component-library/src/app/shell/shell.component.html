@@ -1,7 +1,9 @@
 <div>
   <div class="header">
-    <ircc-cl-lib-header [id]="'header'"></ircc-cl-lib-header>
-    <ircc-cl-lib-theme-switch></ircc-cl-lib-theme-switch>
+    <ircc-cl-lib-header
+      [id]="'header'"
+      [themeToggle]="true "
+    ></ircc-cl-lib-header>
     <div class="container">
       <h2
         [ngClass]="{ h4: mobile }"
@@ -31,7 +33,8 @@
         class="left-nav"
         [navBarData]="leftNavData"
         [mobileToggleIcon]="true"
-      ></app-side-nav>
+      >
+      </app-side-nav>
       <div
         class="content"
         role="main"

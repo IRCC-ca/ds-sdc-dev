@@ -10,18 +10,51 @@
 $secondary: "secondary";
 $default-color: null;
 
-@mixin create() {
+@mixin light-colors() {
   a,
   .link {
     &:where([category="#{$secondary}"]) {
       &:where([color="critical"]) {
         @include b-tokens.light-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]) {
+        @include layout();
+      }
+    }
+  }
+}
+
+@mixin dark-colors() {
+  a,
+  .link {
+    &:where([category="#{$secondary}"]) {
+      &:where([color="critical"]) {
         @include b-tokens.dark-colors(critical, neutral);
         @include layout();
       }
       &:not([color]) {
         @include layout();
       }
+    }
+  }
+}
+
+@mixin create() {
+  html {
+    @include light-colors();
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors();
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors();
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors();
     }
   }
 }

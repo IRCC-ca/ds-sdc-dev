@@ -16,14 +16,14 @@ export class ThemeSwitchComponent {
     this.darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     this.isDarkTheme = this.darkModeQuery.matches;
     this.isDarkTheme ? this.currentTheme = 'dark' : this.currentTheme = 'light';
-    this.currentTheme === 'dark' ? this.previousTheme = 'light' : this.previousTheme = 'dark';
+    this.currentTheme === 'dark' ? this.previousTheme = 'Light' : this.previousTheme = 'Dark';
     this.darkModeQuery.addEventListener('change', this.handleDarkModeChange.bind(this));
   }
 
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
     this.isDarkTheme ? this.currentTheme = 'dark' : this.currentTheme = 'light';
-    this.currentTheme === 'dark' ? this.previousTheme = 'light' : this.previousTheme = 'dark';
+    this.currentTheme === 'dark' ? this.previousTheme = 'Light' : this.previousTheme = 'Dark';
     this.renderer.setAttribute(document.documentElement, 'scheme', this.currentTheme);
     this.darkModeQuery.removeEventListener('change', this.handleDarkModeChange.bind(this));
   }
@@ -31,6 +31,6 @@ export class ThemeSwitchComponent {
   handleDarkModeChange(event: MediaQueryListEvent) {
     this.isDarkTheme = event.matches;
     this.isDarkTheme ? this.currentTheme = 'dark' : this.currentTheme = 'light';
-    this.currentTheme === 'dark' ? this.previousTheme = 'light' : this.previousTheme = 'dark';
+    this.currentTheme === 'dark' ? this.previousTheme = 'Light' : this.previousTheme = 'Dark';
 }
 }

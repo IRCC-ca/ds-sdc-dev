@@ -65,11 +65,15 @@
     .languageSwitch {
       justify-self: end;
       align-self: center;
-
       @include device.in-phone-layout() {
         margin-right: 16px;
       }
     }
+  }
+
+  ircc-cl-lib-theme-switch {
+    justify-self: end;
+    align-self: center;
   }
 
   //container query which applies margins if the container is 16px less than the view width

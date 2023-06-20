@@ -8,9 +8,9 @@
 @use "../../util/size";
 
 @mixin selector {
-  a:any-link,
-  #{button-const.$selectors}:where(:not([category])) {
-    &#{template-const.$escape}:where(nav *) {
+  nav#{template-const.$escape} {
+    a:any-link,
+    #{button-const.$selectors}:where(:not([category])) {
       @content;
     }
   }

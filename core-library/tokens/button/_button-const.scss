@@ -1,5 +1,6 @@
 @use "../../util/theme" as theme;
 @use "../../util/size" as size;
+@use "../../typography/typography" as text;
 @use "../sizes" as token-size;
 @use "../template-const";
 $selectors: "button";
@@ -43,10 +44,10 @@ $selectors: "button";
 }
 @mixin button-size {
   @include size.select(small) {
-    @extend .h6;
+    @include text.fontSet(heading, 6, regular);
   }
 
   @include size.select(large) {
-    @extend .h5;
+    @include text.fontSet(heading, 5, regular);
   }
 }
