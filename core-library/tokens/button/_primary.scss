@@ -12,16 +12,14 @@ $default-color: null;
 @mixin light-colors() {
   @include button-const.selector() {
     &:where([category="#{$primary}"]),
-    &:not([category]) {
-      &:where(:not(nav *)) {
-        &:where([color="critical"]) {
-          @include b-tokens.light-colors(critical, neutral);
-          @include layout();
-        }
-        &:not([color]),
-        &:where([color="cta"]) {
-          @include layout();
-        }
+    &:not([category]):where(:not(nav *)) {
+      &:where([color="critical"]) {
+        @include b-tokens.light-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]),
+      &:where([color="cta"]) {
+        @include layout();
       }
     }
   }
@@ -30,16 +28,14 @@ $default-color: null;
 @mixin dark-colors() {
   @include button-const.selector() {
     &:where([category="#{$primary}"]),
-    &:not([category]) {
-      &:where(:not(nav *)) {
-        &:where([color="critical"]) {
-          @include b-tokens.dark-colors(critical, neutral);
-          @include layout();
-        }
-        &:not([color]),
-        &:where([color="cta"]) {
-          @include layout();
-        }
+    &:not([category]):where(:not(nav *)) {
+      &:where([color="critical"]) {
+        @include b-tokens.dark-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]),
+      &:where([color="cta"]) {
+        @include layout();
       }
     }
   }
