@@ -56,15 +56,24 @@ h5 {
       top: 2px;
     }
   }
+
+  &.text-underline {
+    margin-bottom: 10px;
+  }
 }
 
 span {
   &.round-purple-num {
+    @include typography.fontSet(body, 3, emphasis);
+
+    display: inline-block;
     color: var(--purple-9);
-    font-weight: 700;
     background-color: var(--purple-2);
-    padding: 9px 15px;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
+    text-align: center;
   }
 }
 
@@ -108,4 +117,46 @@ span {
 
 .mt_12 {
   margin-top: 12px;
+}
+
+.configs {
+  ul {
+    margin: 0;
+    padding-left: 24px;
+
+    @include typography.fontSet(body, 3, regular);
+  }
+
+  .row {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.interactive-demo {
+  p {
+    margin-bottom: 24px;
+  }
+}
+
+.types {
+  p {
+    margin-top: 12px;
+  }
+}
+
+.anatomy {
+  p {
+    margin-top: 6px;
+  }
+}
+
+.usage-figma {
+  ol {
+    @include typography.fontSet(body, 3, regular);
+
+    margin: 12px 0 0;
+    padding-left: 24px;
+  }
 }

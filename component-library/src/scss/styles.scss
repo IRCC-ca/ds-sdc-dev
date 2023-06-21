@@ -51,15 +51,16 @@ app-root {
 h5 {
   &.text-underline {
     border-bottom: 1px solid;
+    padding-bottom: 2px;
     margin: 8px 0;
   }
 
   &.text-color-green {
-    color: var(--success-text);
+    color: var(--green-8);
   }
 
   &.text-color-red {
-    color: var(--critical-text);
+    color: var(--red-7);
   }
 
   &.round-purple-num {
