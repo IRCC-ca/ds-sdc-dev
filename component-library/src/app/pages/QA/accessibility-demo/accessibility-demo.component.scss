@@ -22,11 +22,7 @@
     width: 100%;
 
     .header_stepper_container {
-      @media (min-width: 980px) {
-        margin-left: 164px;
-      }
-
-      max-width: 1036px;
+      max-width: 872px;
 
       .stepper {
         margin-top: 40px;
@@ -76,8 +72,7 @@
 
   .content_container {
     @media (min-width: 980px) {
-      margin-left: 164px;
-      margin-right: 164px;
+      margin: 24px 24px 24px 0;
     }
 
     @media (max-width: 979px) {

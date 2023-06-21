@@ -110,6 +110,8 @@ $mobile-padding: 16px;
     }
 
     .date-modified-container {
+      width: 872px;
+      margin: auto;
       margin-top: 80px;
       margin-bottom: 48px;
 
@@ -122,6 +124,7 @@ $mobile-padding: 16px;
 
     .page-content {
       width: 100%;
+      max-width: 872px;
 
       .content-doc-wrapper {
         box-sizing: border-box;

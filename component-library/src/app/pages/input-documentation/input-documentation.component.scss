@@ -5,7 +5,7 @@
 
 .content-doc-wrapper {
   box-sizing: border-box;
-  max-width: 900px;
+  max-width: 872px;
   margin: 0 auto;
 
   img {
@@ -244,6 +244,10 @@ h5 {
     grid-template-columns: 2fr 1fr;
 
     @include device.in-tablet-layout() {
+      grid-template-columns: 1fr;
+    }
+
+    @include device.in-phone-layout() {
       grid-template-columns: 1fr;
     }
 
