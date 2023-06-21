@@ -1,7 +1,7 @@
 @use 'src/scss/grid';
 @use "../../../../../core-library/tokens/sizes" as ircc-ds-sizes;
 
-$footer-height: 240px;
+$footer-height: 350px;
 
 :host {
   position: relative;

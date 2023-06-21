@@ -1,8 +1,8 @@
-@use '../util/color';
-@use 'sass:list';
-@use '../tokens/text';
+@use "../util/color";
+@use "sass:list";
+@use "../tokens/text";
 
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 /** This snapin is intended as a stop-gap during development,
 it is included due to popular demand to create a bridge with the Material Design System to reduce visual conflicts
@@ -25,7 +25,7 @@ Optimizations and improvements are welcome as PR's at <https://github.com/IRCC-c
 $mat-typography: ircc-mat.material-typography();
 $mat-color: ircc-mat.material-colors();
 @include mat.core($mat-typography);
-@include theme.light() {
+html {
     $my-theme: mat.define-light-theme(
         (
             color: $mat-color,
@@ -33,7 +33,7 @@ $mat-color: ircc-mat.material-colors();
     );
     // include desired material component mixins here with $my-theme
 }
-@include theme.dark() {
+html[scheme='dark'] {
     $my-theme: mat.define-dark-theme(
         (
             color: $mat-color,
@@ -45,170 +45,147 @@ $mat-color: ircc-mat.material-colors();
 
 $lightness-breakpoint: 55%;
 @function get-contrast($palette, $level) {
-    $lightness: list.nth((color.get-raw-color($palette, $level)), 3);
-    @if $lightness < $lightness-breakpoint {
-        @return color.mix-token(neutral, 100);
-    } @else {
-        @return color.mix-token(neutral, 1200);
-    }
+  $lightness: list.nth((color.get-raw-color($palette, $level)), 3);
+  @if $lightness < $lightness-breakpoint {
+    @return color.mix-token(neutral, 100);
+  } @else {
+    @return color.mix-token(neutral, 1200);
+  }
 }
 
 /// Defines a material formatted palette
 @function format-palette($palette) {
-    @return (
-        50: color.mix-token($palette, 100),
-        100: color.mix-token($palette, 200),
-        200: color.mix-token($palette, 300),
-        300: color.mix-token($palette, 400),
-        400: color.mix-token($palette, 500),
-        500: color.mix-token($palette, 600),
-        600: color.mix-token($palette, 700),
-        700: color.mix-token($palette, 800),
-        800: color.mix-token($palette, 900),
-        900: color.mix-token($palette, 1000),
-        contrast: (
-            50: get-contrast($palette, 100),
-            100: get-contrast($palette, 200),
-            200: get-contrast($palette, 300),
-            300: get-contrast($palette, 400),
-            400: get-contrast($palette, 500),
-            500: get-contrast($palette, 600),
-            600: get-contrast($palette, 700),
-            700: get-contrast($palette, 800),
-            800: get-contrast($palette, 900),
-            900: get-contrast($palette, 1000),
-        )
-    );
+  @return (
+    50: color.mix-token($palette, 100),
+    100: color.mix-token($palette, 200),
+    200: color.mix-token($palette, 300),
+    300: color.mix-token($palette, 400),
+    400: color.mix-token($palette, 500),
+    500: color.mix-token($palette, 600),
+    600: color.mix-token($palette, 700),
+    700: color.mix-token($palette, 800),
+    800: color.mix-token($palette, 900),
+    900: color.mix-token($palette, 1000),
+    contrast: (
+      50: get-contrast($palette, 100),
+      100: get-contrast($palette, 200),
+      200: get-contrast($palette, 300),
+      300: get-contrast($palette, 400),
+      400: get-contrast($palette, 500),
+      500: get-contrast($palette, 600),
+      600: get-contrast($palette, 700),
+      700: get-contrast($palette, 800),
+      800: get-contrast($palette, 900),
+      900: get-contrast($palette, 1000),
+    )
+  );
 }
 
 @function material-colors() {
-    @return (
-        primary: mat.define-palette(format-palette(cta)),
-        accent: mat.define-palette(format-palette(active)),
-        warn: mat.define-palette(format-palette(critical))
-    );
+  @return (
+    primary: mat.define-palette(format-palette(cta)),
+    accent: mat.define-palette(format-palette(active)),
+    warn: mat.define-palette(format-palette(critical))
+  );
 }
 
 @function material-typography() {
-    @return mat.define-typography-config(
+  @return mat.define-typography-config(
+    $font-family: map-get(text.$body, family),
+    $display-4:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 1, font-size),
+        $line-height: map-get(text.$heading, level, 1, line-height),
+        $font-weight: map-get(text.$heading, weight, emphasis)
+      ),
+    $display-3:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 2, font-size),
+        $line-height: map-get(text.$heading, level, 2, line-height),
+        $font-weight: map-get(text.$heading, weight, emphasis)
+      ),
+    $display-2:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 3, font-size),
+        $line-height: map-get(text.$heading, level, 3, line-height),
+        $font-weight: map-get(text.$heading, weight, emphasis)
+      ),
+    $display-1:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 4, font-size),
+        $line-height: map-get(text.$heading, level, 4, line-height),
+        $font-weight: map-get(text.$heading, weight, emphasis)
+      ),
+    $headline:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 1, font-size),
+        $line-height: map-get(text.$heading, level, 1, line-height),
+        $font-weight: map-get(text.$heading, weight, regular)
+      ),
+    $title:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 2, font-size),
+        $line-height: map-get(text.$heading, level, 2, line-height),
+        $font-weight: map-get(text.$heading, weight, regular)
+      ),
+    $subheading-1:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 4, font-size),
+        $line-height: map-get(text.$heading, level, 4, line-height),
+        $font-weight: map-get(text.$heading, weight, regular)
+      ),
+    $subheading-2:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 3, font-size),
+        $line-height: map-get(text.$heading, level, 3, line-height),
+        $font-weight: map-get(text.$heading, weight, regular)
+      ),
+    $body-1:
+      mat.define-typography-level(
         $font-family: map-get(text.$body, family),
-        $display-4:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 1, font-size),
-                $line-height: map-get(text.$heading, level, 1, line-height),
-                $font-weight: map-get(text.$heading, weight, emphasis)
-            ),
-        $display-3:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 2, font-size),
-                $line-height: map-get(text.$heading, level, 2, line-height),
-                $font-weight: map-get(text.$heading, weight, emphasis)
-            ),
-        $display-2:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 3, font-size),
-                $line-height: map-get(text.$heading, level, 3, line-height),
-                $font-weight: map-get(text.$heading, weight, emphasis)
-            ),
-        $display-1:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 4, font-size),
-                $line-height: map-get(text.$heading, level, 4, line-height),
-                $font-weight: map-get(text.$heading, weight, emphasis)
-            ),
-        $headline:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 1, font-size),
-                $line-height: map-get(text.$heading, level, 1, line-height),
-                $font-weight: map-get(text.$heading, weight, regular)
-            ),
-        $title:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 2, font-size),
-                $line-height: map-get(text.$heading, level, 2, line-height),
-                $font-weight: map-get(text.$heading, weight, regular)
-            ),
-        $subheading-1:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 4, font-size),
-                $line-height: map-get(text.$heading, level, 4, line-height),
-                $font-weight: map-get(text.$heading, weight, regular)
-            ),
-        $subheading-2:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 3, font-size),
-                $line-height: map-get(text.$heading, level, 3, line-height),
-                $font-weight: map-get(text.$heading, weight, regular)
-            ),
-        $body-1:
-            mat.define-typography-level(
-                $font-family: map-get(text.$body, family),
-                $font-size:
-                    map-get(text.$body, level, text.get-level(body), font-size),
-                $line-height:
-                    map-get(
-                        text.$body,
-                        level,
-                        text.get-level(body),
-                        line-height
-                    ),
-                $font-weight: map-get(text.$body, weight, regular)
-            ),
-        $body-2:
-            mat.define-typography-level(
-                $font-family: map-get(text.$body, family),
-                $font-size:
-                    map-get(text.$body, level, text.get-level(body), font-size),
-                $line-height:
-                    map-get(
-                        text.$body,
-                        level,
-                        text.get-level(body),
-                        line-height
-                    ),
-                $font-weight: map-get(text.$body, weight, emphasis)
-            ),
-        $caption:
-            mat.define-typography-level(
-                $font-family: map-get(text.$body, family),
-                $font-size:
-                    map-get(
-                        text.$body,
-                        level,
-                        text.get-level(body) + 1,
-                        font-size
-                    ),
-                $line-height:
-                    map-get(
-                        text.$body,
-                        level,
-                        text.get-level(body) + 1,
-                        line-height
-                    ),
-                $font-weight: map-get(text.$body, weight, regular)
-            ),
-        $button:
-            mat.define-typography-level(
-                $font-family: map-get(text.$heading, family),
-                $font-size: map-get(text.$heading, level, 6, font-size),
-                $line-height: text.$relative-child-1-5,
-                $font-weight: map-get(text.$heading, weight, emphasis)
-            ),
-        $input:
-            mat.define-typography-level(
-                $font-family: map-get(text.$body, family),
-                $font-size:
-                    map-get(text.$body, level, text.get-level(body), font-size),
-                $line-height: text.$relative-child-1-5,
-                $font-weight: map-get(text.$body, weight, regular)
-            )
-    );
+        $font-size: map-get(text.$body, level, text.get-level(body), font-size),
+        $line-height:
+          map-get(text.$body, level, text.get-level(body), line-height),
+        $font-weight: map-get(text.$body, weight, regular)
+      ),
+    $body-2:
+      mat.define-typography-level(
+        $font-family: map-get(text.$body, family),
+        $font-size: map-get(text.$body, level, text.get-level(body), font-size),
+        $line-height:
+          map-get(text.$body, level, text.get-level(body), line-height),
+        $font-weight: map-get(text.$body, weight, emphasis)
+      ),
+    $caption:
+      mat.define-typography-level(
+        $font-family: map-get(text.$body, family),
+        $font-size:
+          map-get(text.$body, level, text.get-level(body) + 1, font-size),
+        $line-height:
+          map-get(text.$body, level, text.get-level(body) + 1, line-height),
+        $font-weight: map-get(text.$body, weight, regular)
+      ),
+    $button:
+      mat.define-typography-level(
+        $font-family: map-get(text.$heading, family),
+        $font-size: map-get(text.$heading, level, 6, font-size),
+        $line-height: text.$relative-child-1-5,
+        $font-weight: map-get(text.$heading, weight, emphasis)
+      ),
+    $input:
+      mat.define-typography-level(
+        $font-family: map-get(text.$body, family),
+        $font-size: map-get(text.$body, level, text.get-level(body), font-size),
+        $line-height: text.$relative-child-1-5,
+        $font-weight: map-get(text.$body, weight, regular)
+      )
+  );
 }

@@ -25,6 +25,7 @@ export class HeaderComponent {
    * All IDs must be unique and can be used to specifically target an element within your project.
    */
   @Input() id = '';
+  @Input() themeToggle? = false;
   imageURL = '';
   alt = '';
   govCanadaLink = '';

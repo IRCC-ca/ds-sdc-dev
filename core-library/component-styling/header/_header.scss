@@ -33,13 +33,12 @@
       display: flex;
       justify-content: space-between;
       margin: 0;
-      padding: 0;
     }
 
     .image-container {
       align-self: center;
       width: 296.47px;
-      padding: 0;
+      padding: 24px 0;
 
       @include device.in-phone-layout() {
         width: 249px;
@@ -65,19 +64,20 @@
     .languageSwitch {
       justify-self: end;
       align-self: center;
-
       @include device.in-phone-layout() {
         margin-right: 16px;
       }
     }
   }
 
+  ircc-cl-lib-theme-switch {
+    justify-self: end;
+    align-self: center;
+  }
+
   //container query which applies margins if the container is 16px less than the view width
   // i.e. if the header is spanning almost the entire screen then we will indent the image and lang toggle so they aren't cut off
   @container header-container (width > 90vw) {
-    .image-container {
-      margin-left: 20px;
-    }
 
     .languageSwitch {
       margin-right: 20px;
@@ -101,6 +101,7 @@
       margin-right: -8px;
       margin-left: -8px;
     }
+
     //allows headerLine to span entire view width even when the margin is applied to the header container
     @media (max-width: 979px) {
       margin-right: -8px;

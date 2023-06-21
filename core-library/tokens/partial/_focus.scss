@@ -4,23 +4,37 @@
 @use "../template-const" as template-const;
 @use "../sizes" as sizes;
 
+@mixin light-colors($palette) {
+  --focus-border: #{color.mix-token($palette, 700)};
+}
+
+@mixin dark-colors($palette) {
+  --focus-border: #{color.mix-token($palette, 600)};
+}
+
 @mixin tokens($palette) {
-  @include theme.light {
-    --focus-border: #{color.mix-token($palette, 700)};
+  html {
+    @include light-colors($palette);
   }
-  @include theme.dark {
-    --focus-border: #{color.mix-token($palette, 600)};
+
+  html[scheme="dark"] {
+    @include dark-colors($palette);
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors($palette);
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors($palette);
+    }
   }
 }
 
 @mixin create($palette: focus) {
+  @include tokens($palette);
   @include selector {
     @include layout();
-  }
-  @at-root {
-    #{template-const.$root-selectors} {
-      @include tokens($palette);
-    }
   }
 }
 
