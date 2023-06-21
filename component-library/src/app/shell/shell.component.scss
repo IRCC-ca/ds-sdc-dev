@@ -109,13 +109,22 @@ $mobile-padding: 16px;
       padding: 0 $mobile-padding;
     }
 
+    .date-modified-container {
+      width: 872px;
+      margin: auto;
+      margin-top: 80px;
+      margin-bottom: 48px;
+
+      .date-modified {
+        @include typography.fontSet(body, 3, regular);
+        padding: 14px 0 10px 0;
+        margin: 0
+      }
+    }
+
     .page-content {
       width: 100%;
-
-      .version {
-        margin: 0;
-        @include typography.fontSet(body, 3, regular);
-      }
+      max-width: 872px;
 
       .content-doc-wrapper {
         box-sizing: border-box;
