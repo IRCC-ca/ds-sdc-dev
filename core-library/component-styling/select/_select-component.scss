@@ -136,7 +136,6 @@ $selectors: "ircc-cl-lib-select";
     }
   }
 
-  select:invalid,
   select.ng-invalid.ng-touched {
     border-color: var(--critical-border);
     background-color: var(--critical-background-weak);
