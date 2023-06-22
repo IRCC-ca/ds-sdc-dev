@@ -37,9 +37,9 @@ export class IconComponent implements OnChanges, OnInit {
   }
 
   ngOnInit() {
-    if (this.ariaLabel) {
-      this.config.ariaLabel = this.ariaLabel;
-    }
+     //set config from individual options, if present
+    if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
+    if (this.FA_keywords) this.config.FA_keywords = this.FA_keywords;
 
     if (this.config.ariaLabel === '') {
       delete this.config.ariaLabel

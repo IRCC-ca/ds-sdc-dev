@@ -56,6 +56,13 @@ export class BannerComponent implements OnInit {
     id: ''
   };
   @Input() id?: string;
+  @Input() title?: string;
+  @Input() content?: string;
+  @Input() type?: keyof typeof BannerType;
+  @Input() rounded?: boolean;
+  @Input() dismissible?: boolean;
+  @Input() cta?: ICTAConfig[];
+  @Input() size?: keyof typeof BannerSize;
   @Input() ariaDissmissible?: string;
 
   @Output() btnEvent = new EventEmitter();
@@ -98,6 +105,17 @@ export class BannerComponent implements OnInit {
   }
 
   ngOnInit() {
+    //set config from individual options, if present
+    if (this.id) this.config.id = this.id;
+    if (this.title) this.config.title = this.title;
+    if (this.content) this.config.content = this.content;
+    if (this.type) this.config.type = this.type;
+    if (this.rounded) this.config.rounded = this.rounded;
+    if (this.dismissible) this.config.dismissible = this.dismissible;
+    if (this.cta) this.config.cta = this.cta;
+    if (this.size) this.config.size = this.size;
+    if (this.ariaDissmissible) this.config.ariaDissmissible = this.ariaDissmissible;
+
     this.iconConfig.id = this.config?.id + '_closeBtn';
     this.textId = this.config?.id + '_text';
 
@@ -108,9 +126,6 @@ export class BannerComponent implements OnInit {
       });
     }
 
-    if (this.ariaDissmissible) {
-      this.config.ariaDissmissible = this.ariaDissmissible;
-    }
 
     if (!this.config.ariaDissmissible || this.config.ariaDissmissible === '') {
       if (this.config.dismissible) {

@@ -36,6 +36,9 @@ export class DropdownComponent implements OnInit {
   @Input() placeholderText?: string = '';
   @Input() disabled?: boolean;
   @Input() category?: keyof typeof ButtonCategories;
+  @Input() icon?: IIconButtonIconConfig;
+  @Input() flyout?: IFlyoutConfig;
+
 
   btnAriaLabel = '';
   showPlaceholder: boolean = false;
@@ -51,8 +54,11 @@ export class DropdownComponent implements OnInit {
   };
 
   ngOnInit() {
+    //set config from individual options, if present
     if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size = this.size;
+    if (this.icon) this.config.icon = this.icon;
+    if (this.flyout) this.config.flyout = this.flyout;
     if (this.label !== '') this.config.label = this.label;
     if (this.placeholderText !== '')
       this.config.placeholderText = this.placeholderText;

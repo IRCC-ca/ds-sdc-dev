@@ -41,13 +41,16 @@ export class SpinnerComponent implements OnInit {
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
-    if (!this.config.orientation) this.config.orientation = 'horizontal';
-    if (!this.config.size) this.config.size = 'large';
-
-    if (this.id) this.config.id = this.id;
+    //set config from individual options, if present
+    if (this.id !== '') this.config.id = this.id;
     if (this.type) this.config.type = this.type;
     if (this.size) this.config.size = this.size;
     if (this.orientation) this.config.orientation = this.orientation;
+    if (this.label !== '') this.config.label = this.label;
+    if (this.description !== '') this.config.description = this.description;
+    
+    if (!this.config.orientation) this.config.orientation = 'horizontal';
+    if (!this.config.size) this.config.size = 'large';
     this.removeVertical();
 
     this.setTypeTitle();
