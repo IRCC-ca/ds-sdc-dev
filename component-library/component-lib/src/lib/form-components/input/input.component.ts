@@ -139,9 +139,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
     // if (this.type) this.config.type = this.type;
 
-    this.type === InputTypes.text
-      ? (this.showPassword = false)
-      : (this.showPassword = true);
+
   }
 
   //Removed '!' and added null case in onChange
@@ -161,6 +159,10 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
+    
+    this.type === InputTypes.text
+    ? (this.showPassword = false)
+    : (this.showPassword = true);
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
