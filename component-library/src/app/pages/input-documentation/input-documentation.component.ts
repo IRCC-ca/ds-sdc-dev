@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IInputComponentConfig, InputTypes } from 'ircc-ds-angular-component-library';
+import {
+  IInputComponentConfig,
+  InputTypes
+} from 'ircc-ds-angular-component-library';
 
 import {
   slugAnchorType,
