@@ -137,9 +137,6 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     if (this.required) this.config.required = this.required;
     if (this.placeholder) this.config.placeholder = this.placeholder;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
-    // if (this.type) this.config.type = this.type;
-
-
   }
 
   //Removed '!' and added null case in onChange
