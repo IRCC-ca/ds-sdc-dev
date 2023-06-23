@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IInputComponentConfig } from 'ircc-ds-angular-component-library';
+import { IInputComponentConfig, InputTypes } from 'ircc-ds-angular-component-library';
 
 import {
   slugAnchorType,
@@ -33,14 +33,14 @@ export class InputDocumentationComponent implements OnInit {
     id: this.BASIC_INPUT_ID,
     formGroup: this.form_input,
     label: 'General.Label',
-    type: 'text'
+    type: InputTypes.text
   };
 
   passwordInputConfig: IInputComponentConfig = {
     id: this.PASSWORD_INPUT_ID,
     formGroup: this.form_input,
     label: 'Input.LabelText2',
-    type: 'password'
+    type: InputTypes.password
   };
 
   inputTitleSlugConfig: slugTitleURLConfig = {
