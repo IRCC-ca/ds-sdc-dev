@@ -55,7 +55,7 @@
 }
 
 @mixin layout {
-  > button {
+  > button[category="plain"].icon-btn {
     border-radius: 50%;
 
     &:focus {
@@ -74,7 +74,7 @@
       justify-content: center;
     }
 
-    #ds-icon-container {
+    .ds-icon-container {
       > span {
         display: flex;
       }
@@ -105,7 +105,6 @@
       }
     }
 
-
     @include size.select(large) {
       @include lg;
     }
@@ -122,3 +121,4 @@
     }
   }
 }
+

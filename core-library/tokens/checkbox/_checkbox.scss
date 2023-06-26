@@ -96,7 +96,6 @@
 }
 
 @mixin invalid {
-  &:invalid,
   &.ng-invalid.ng-touched,
   &.error {
     --border: var(--critical-border);

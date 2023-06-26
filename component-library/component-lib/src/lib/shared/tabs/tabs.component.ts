@@ -23,6 +23,12 @@ export class TabsComponent implements OnInit {
     id: '',
     showContent: true
   };
+  @Input() id?: string;
+  @Input() tab?: ITabConfig[];
+  @Input() size?: keyof typeof DSSizes;
+  @Input() selected?: string;
+  @Input() showContent?: boolean;
+
   @Output() valueChange = new EventEmitter<string>();
 
   constructor(
@@ -30,6 +36,14 @@ export class TabsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //set config from individual options, if present
+    if (this.id) this.config.id = this.id;
+    if (this.tab) this.config.tab = this.tab;
+    if (this.size) this.config.size = this.size;
+    if (this.selected) this.config.selected = this.selected;
+    if (this.showContent) this.config.showContent = this.showContent;
+
+
     if (this.config.selected === undefined && this.config.tab) {
       this.config.selected = this.config.tab[0].id;
       this.valueChange.emit(this.config.selected);

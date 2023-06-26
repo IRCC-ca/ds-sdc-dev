@@ -43,6 +43,17 @@ export class LabelComponent implements OnInit {
     formGroup: new FormGroup({}),
     parentID: ''
   };
+  @Input() formGroup?: FormGroup;
+  @Input() errorMessages?: IErrorPairs[];
+  @Input() parentID?: string;
+  @Input() label?: string;
+  @Input() desc?: string;
+  @Input() hint?: string;
+  @Input() required?: boolean;
+  @Input() iconButton?: ILabelIconConfig;
+  @Input() topLabel?: string;
+  @Input() touched?: boolean;
+
   labelIconText = '';
 
   constructor(
@@ -52,6 +63,19 @@ export class LabelComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //set config from individual options, if present
+    if (this.formGroup) this.config.formGroup = this.formGroup;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+    if (this.parentID) this.config.parentID = this.parentID;
+    if (this.label) this.config.label = this.label;
+    if (this.desc) this.config.desc = this.desc;
+    if (this.hint) this.config.hint = this.hint;
+    if (this.required) this.config.required = this.required;
+    if (this.iconButton) this.config.iconButton = this.iconButton;
+    if (this.topLabel) this.config.topLabel = this.topLabel;
+    if (this.touched) this.config.touched = this.touched;
+
+
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);

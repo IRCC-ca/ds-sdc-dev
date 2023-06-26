@@ -33,6 +33,12 @@ export class ProgressIndicatorComponent implements OnInit {
     orientation: 'horizontal'
   };
 
+  @Input() id?: string;
+  @Input() size?: keyof typeof DSSizes;
+  @Input() orientation?: keyof typeof Orientations;
+  @Input() steps?: IStepConfig[];
+  @Input() selected?: number;
+
   @Output() tabClick: EventEmitter<any> = new EventEmitter();
 
   tabConfig: ITabConfig = {
@@ -49,6 +55,13 @@ export class ProgressIndicatorComponent implements OnInit {
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
+    //set config from individual options, if present
+    if (this.id) this.config.id = this.id;
+    if (this.size) this.config.size = this.size;
+    if (this.orientation) this.config.orientation = this.orientation;
+    if (this.steps) this.config.steps = this.steps;
+    if (this.selected) this.config.selected = this.selected;
+
     if (!this.config.orientation) this.config.orientation = 'horizontal';
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
