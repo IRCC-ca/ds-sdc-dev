@@ -54,6 +54,7 @@
 
   div.overflow-menu {
     top: 44px;
+    left: -50px;
   }
 }
 
@@ -94,6 +95,7 @@
 
   div.overflow-menu {
     top: 48px;
+    left: -43px;
   }
 }
 
@@ -212,7 +214,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     background: var(--surface1);
     z-index: 99;
-    left: -58px;
+    left: -43px;
     padding: 8px 0;
     position: absolute;
 
