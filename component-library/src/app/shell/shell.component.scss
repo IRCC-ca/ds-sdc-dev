@@ -66,7 +66,7 @@ $mobile-padding: 16px;
     }
   }
 
-  >app-side-nav.left-nav {
+  > app-side-nav.left-nav {
     @include up-laptop-layout {
       @include col-2;
     }
@@ -118,7 +118,7 @@ $mobile-padding: 16px;
       .date-modified {
         @include typography.fontSet(body, 3, regular);
         padding: 14px 0 10px 0;
-        margin: 0
+        margin: 0;
       }
     }
 
@@ -141,6 +141,14 @@ $mobile-padding: 16px;
           max-width: 100%;
         }
       }
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    #accordionNav .accordion-nav h2 {
+      margin-left: 22px;
     }
   }
 }

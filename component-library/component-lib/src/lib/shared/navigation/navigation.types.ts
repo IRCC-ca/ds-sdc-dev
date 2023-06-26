@@ -48,6 +48,7 @@ export interface INavigationItem {
 
 export interface INavigationItemAccordion extends INavigationItem {
   open: boolean;
+  icon?: string;
 }
 
 export interface INavigationItemLink extends INavigationItem {
@@ -56,6 +57,7 @@ export interface INavigationItemLink extends INavigationItem {
   href: string;
   external?: boolean;
   anchor?: string;
+  header?: boolean;
   indicator?: INavigationIndicator;
 }
 

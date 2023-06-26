@@ -8,7 +8,11 @@ import {
 } from '@angular/core';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
-import { INavigationIndicator, INavigationItemLink } from '../navigation.types';
+import {
+  INavigationIndicator,
+  INavigationItemHeading,
+  INavigationItemLink
+} from '../navigation.types';
 import { IIndicatorConfig } from '../../indicator/indicator.component';
 import { NavigationService } from '../navigation.service';
 import { Subscription, filter } from 'rxjs';
@@ -39,7 +43,8 @@ export class navItemNavComponent implements OnInit {
     icon: '',
     trailingIcon: '',
     type: 'link',
-    children: []
+    children: [],
+    header: false
   };
 
   @Input() id: string = '';
@@ -51,6 +56,14 @@ export class navItemNavComponent implements OnInit {
     purpose: 'status',
     type: 'dot',
     tabIndex: -1
+  };
+
+  headerConfig: INavigationItemHeading = {
+    icon: '',
+    id: 'header_link',
+    label: 'Header Title',
+    type: 'heading',
+    children: []
   };
 
   navObjectChangeSub = new Subscription();

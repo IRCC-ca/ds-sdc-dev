@@ -23,6 +23,7 @@ export class navItemAccordionComponent implements OnInit {
   @Input() open: boolean | undefined;
   @Input() label: string = '';
   @Input() size: keyof typeof DSSizes | undefined;
+  @Input() icon: string = '';
 
   headerID: string = '';
 
@@ -60,6 +61,9 @@ export class navItemAccordionComponent implements OnInit {
     this.open !== undefined ? (this.config.open = this.open) : undefined;
     this.label !== '' ? (this.config.label = this.label) : undefined;
     this.size !== undefined ? (this.config.size = this.size) : undefined;
+    this.icon !== '' ? (this.config.icon = this.icon) : undefined;
+
+    console.log(this.config);
 
     this.headerID = `${this.config.id}_header`;
     this.buttonIconOpen = {
