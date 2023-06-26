@@ -24,13 +24,13 @@
 @mixin size-large() {
   .input-password-field {
     margin-top: 8px;
-    height: 54px;
+    height: 52px;
     padding-right: 56px;
   }
 
   .input-text-field {
     margin-top: 8px;
-    height: 54px;
+    height: 52px;
   }
 
   .input-content-area > button.passwordIcon {
@@ -43,13 +43,13 @@
   .input-password-field {
     padding: 10px 44px 10px 12px;
     margin-top: 4px;
-    height: 42px;
+    height: 40px;
   }
 
   .input-text-field {
     padding: 10px 12px 10px 12px;
     margin-top: 4px;
-    height: 42px;
+    height: 40px;
   }
 
   .input-content-area > button.passwordIcon {
