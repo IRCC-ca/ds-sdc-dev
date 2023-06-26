@@ -578,13 +578,14 @@ export class MichaelComponent implements OnInit {
           };
         }
       }
+      this.indicatorConfig = updatedConfig;
+
       // Update form label field
       if (this.form_2.get('label')?.value !== updatedConfig.label) {
         this.form_2.patchValue({
           label: updatedConfig.label
         });
       }
-      this.indicatorConfig = updatedConfig;
     });
     this.form_2.patchValue({
       category: 'strong',
