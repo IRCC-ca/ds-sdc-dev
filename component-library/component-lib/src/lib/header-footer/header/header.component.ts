@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
+import { GOV_CANADA_LOGO } from './header-const.component'
 export const ENGLISH_BANNER_URL =
   'https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg';
 export const FRENCH_BANNER_URL =
@@ -24,9 +24,11 @@ export class HeaderComponent {
    */
   @Input() id = '';
   @Input() themeToggle? = false;
-  imageURL = '';
   alt = '';
   govCanadaLink = '';
+  isDarkTheme: boolean = false;
+  lightLogo = GOV_CANADA_LOGO.LightTheme
+  darkLogo = GOV_CANADA_LOGO.DarkTheme
 
   constructor(private translate: TranslateService) {}
 
@@ -50,11 +52,9 @@ export class HeaderComponent {
   */
   setLang(lang: string) {
     if (lang === 'en' || lang === 'en-US') {
-      this.imageURL = ENGLISH_BANNER_URL;
       this.alt = CANADA_LOGO_ARIA_LABEL_ENGLISH;
       this.govCanadaLink = HEADER_IMG_LINK_EN;
     } else {
-      this.imageURL = FRENCH_BANNER_URL;
       this.alt = CANADA_LOGO_ARIA_LABEL_FRENCH;
       this.govCanadaLink = HEADER_IMG_LINK_FR;
     }
