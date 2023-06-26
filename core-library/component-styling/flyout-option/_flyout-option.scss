@@ -37,7 +37,7 @@
 }
 
 @mixin layout {
-  ircc-cl-lib-button {
+  #opt-cont > ircc-cl-lib-button {
     .lib-button {
       display: block;
       overflow: visible;
