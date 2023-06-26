@@ -3,7 +3,7 @@
   role="banner"
   [id]="id"
 >
-  <div class="header-content" [ngClass]="{ 'dark': isDarkTheme }">
+  <div class="header-content">
     <div class="image-container">
       <a
         href="{{ govCanadaLink }}"
@@ -14,7 +14,7 @@
         tabindex="0"
       >
         <img
-          [src]="isDarkTheme ? darkLogo : lightLogo"
+          [src]="logo"
           alt="{{ alt }}"
           property="logo"
         />
