@@ -114,7 +114,30 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService
-  ) {}
+  ) {
+    //set config from individual options, if present
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    }
+    if (this.id !== '') {
+      this.config.id = this.id;
+    }
+
+    if (!this.config.type) {
+      this.config.type = InputTypes.text;
+    } else if (this.config.type === InputTypes.password) {
+      this.showPassword = false;
+      this.typeControl = InputTypes.password;
+    }
+
+    if (this.size) this.config.size = this.size;
+    if (this.label) this.config.label = this.label;
+    if (this.hint) this.config.hint = this.hint;
+    if (this.desc) this.config.desc = this.desc;
+    if (this.required) this.config.required = this.required;
+    if (this.placeholder) this.config.placeholder = this.placeholder;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+  }
 
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
@@ -133,6 +156,10 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
+    
+    this.type === InputTypes.text
+    ? (this.showPassword = false)
+    : (this.showPassword = true);
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
@@ -144,33 +171,6 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       this.config.required,
       this.config.labelIconConfig
     );
-    
-    //set config from individual options, if present
-    if (this.formGroup !== this.formGroupEmpty) {
-      this.config.formGroup = this.formGroup;
-    }
-    if (this.id !== '') {
-      this.config.id = this.id;
-    }
-    if (this.size) this.config.size = this.size;
-    if (this.label) this.config.label = this.label;
-    if (this.hint) this.config.hint = this.hint;
-    if (this.desc) this.config.desc = this.desc;
-    if (this.required) this.config.required = this.required;
-    if (this.placeholder) this.config.placeholder = this.placeholder;
-    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
-    if (this.type) this.config.type = this.type;
-
-    if (!this.config.type) {
-      this.config.type = InputTypes.text;
-    } else if (this.config.type === InputTypes.password) {
-      this.showPassword = false;
-      this.typeControl = InputTypes.password;
-    }
-
-    this.type === InputTypes.text
-      ? (this.showPassword = false)
-      : (this.showPassword = true);
 
     //set disable to true when form is disabled
     this.config.formGroup.valueChanges.subscribe((change) => {
