@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GOV_CANADA_LOGO } from './header-const.component'
+import { ThemeSwitchService } from '../theme-switch/theme-switch.service';
 export const ENGLISH_BANNER_URL =
   'https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-en.svg';
 export const FRENCH_BANNER_URL =
@@ -16,7 +17,7 @@ export const CANADA_LOGO_ARIA_LABEL_FRENCH =
   selector: 'ircc-cl-lib-header',
   templateUrl: './header.component.html'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   /**
    * This is the ID of the header component. Will be applied as the ID of the header Element within the custom element.
    *
@@ -26,11 +27,12 @@ export class HeaderComponent {
   @Input() themeToggle? = false;
   alt = '';
   govCanadaLink = '';
-  isDarkTheme: boolean = false;
   lightLogo = GOV_CANADA_LOGO.LightTheme
   darkLogo = GOV_CANADA_LOGO.DarkTheme
+  logo: string = this.lightLogo;
 
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService,
+    private themeService: ThemeSwitchService) {}
 
   /**
   * ngOnInit() lifecycle method run immediately when the component is initialized. c
@@ -43,6 +45,17 @@ export class HeaderComponent {
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
+
+    this.updateHeaderImage();
+    this.themeService.themeChanged.subscribe((darkModeEnabled: boolean) => {
+      this.updateHeaderImage();
+    });
+  }
+
+  updateHeaderImage(): void {
+    this.logo = this.themeService.darkModeEnabled
+      ? this.darkLogo
+      : this.lightLogo;
   }
 
   /**
