@@ -568,6 +568,14 @@ export class MichaelComponent implements OnInit {
               ? 1
               : Number(updatedConfig?.label)
           };
+        } else if (
+          updatedConfig?.type === 'text' &&
+          (!updatedConfig.label || updatedConfig.label === 1)
+        ) {
+          updatedConfig = {
+            ...updatedConfig,
+            label: 'Label'
+          };
         }
       }
       this.indicatorConfig = updatedConfig;
