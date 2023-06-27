@@ -74,6 +74,7 @@ export class ShellComponent implements OnInit {
     id: 'accordionNav',
     label: 'Required forms',
     type: 'accordion',
+    icon: 'fa-solid fa-circle-half-stroke',
     children: [this.imm5406, this.imm5669]
   };
 

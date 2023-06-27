@@ -133,10 +133,20 @@
       margin: 0;
       padding: 0px;
 
-      & a,
-      & h2,
-      & h5 {
-        padding-left: 40px;
+      &.indent-0 {
+        & a,
+        & h2,
+        & h5 {
+          padding-left: 20px;
+        }
+      }
+
+      &.indent-1 {
+        & a,
+        & h2,
+        & h5 {
+          padding-left: 40px;
+        }
       }
     }
   }

@@ -38,7 +38,7 @@
         <ng-container
           *ngTemplateOutlet="
             recursiveListTmpl;
-            context: { list: this.config.navigationConfig }
+            context: { list: this.config.navigationConfig, index: 0 }
           "
         ></ng-container>
       </ul>
@@ -47,6 +47,7 @@
     <ng-template
       #recursiveListTmpl
       let-list="list"
+      let-index="index"
     >
       <li *ngFor="let item of list">
         <ng-container [ngSwitch]="item.type">
@@ -60,11 +61,12 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
+                [class]="'indent-' + index"
               >
                 <ng-container
                   *ngTemplateOutlet="
                     recursiveListTmpl;
-                    context: { list: item.children }
+                    context: { list: item.children, index: setIndex(index) }
                   "
                 ></ng-container></ul></ircc-cl-lib-nav-header
           ></ng-container>
@@ -79,11 +81,12 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
+                [class]="'indent-' + index"
               >
                 <ng-container
                   *ngTemplateOutlet="
                     recursiveListTmpl;
-                    context: { list: item.children }
+                    context: { list: item.children, index: setIndex(index) }
                   "
                 ></ng-container></ul></ircc-cl-lib-nav-item
           ></ng-container>
@@ -98,11 +101,12 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
+                [class]="'indent-' + index"
               >
                 <ng-container
                   *ngTemplateOutlet="
                     recursiveListTmpl;
-                    context: { list: item.children }
+                    context: { list: item.children, index: setIndex(index) }
                   "
                 ></ng-container></ul
             ></ircc-cl-lib-nav-accordion>
@@ -116,11 +120,12 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
+                [class]="'indent-' + index"
               >
                 <ng-container
                   *ngTemplateOutlet="
                     recursiveListTmpl;
-                    context: { list: item.children }
+                    context: { list: item.children, index: setIndex(index) }
                   "
                 ></ng-container></ul
             ></ircc-cl-lib-nav-divider>
