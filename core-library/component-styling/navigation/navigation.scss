@@ -132,7 +132,12 @@
     .child-navigation {
       margin: 0;
       padding: 0px;
-      padding-left: 40px;
+
+      & a,
+      & h2,
+      & h5 {
+        padding-left: 40px;
+      }
     }
   }
 

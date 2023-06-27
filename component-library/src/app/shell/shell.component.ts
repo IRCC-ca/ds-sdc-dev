@@ -43,20 +43,6 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
-  imm008: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 0008',
-    type: 'link',
-    children: [],
-    href: '/en/overview',
-
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-regular fa-circle'
-    },
-    header: true
-  };
-
   imm5406: INavigationItemLink = {
     id: 'accordionNav',
     label: 'IMM 5406',
@@ -83,12 +69,32 @@ export class ShellComponent implements OnInit {
     header: true
   };
 
+  accordionNav1: INavigationItemAccordion = {
+    open: true,
+    id: 'accordionNav',
+    label: 'Required forms',
+    type: 'accordion',
+    children: [this.imm5406, this.imm5669]
+  };
+
+  imm008: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'IMM 0008',
+    type: 'link',
+    children: [],
+    href: '/en/overview',
+    indicator: {
+      status: 'neutral',
+      icon: 'fa-regular fa-circle'
+    },
+    header: true
+  };
   accordionNav: INavigationItemAccordion = {
     open: true,
     id: 'accordionNav',
     label: 'Required forms',
     type: 'accordion',
-    children: [this.imm008, this.imm5406, this.imm5669]
+    children: [this.imm008, this.accordionNav1]
   };
 
   requiredPDF: INavigationItemLink = {
