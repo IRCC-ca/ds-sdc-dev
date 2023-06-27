@@ -51,7 +51,7 @@
 		"PlainHeading": "Simple",
 		"PlainBtnText": "Bouton simple",
 		"PlainBtnTexts": "Boutons simples",
-		"PlainText": "Les boutons simples peuvent être utilisés pour des actions qui nécessitent moins d’attention que celles des boutons principaux ou secondaires. Ils sont également utiles dans les situations où l’interface utilisateur est plus compacte. Ces boutons ne doivent pas être utilisés comme des liens. Utiliser les styles de texte des liens dans ces situations.",
+		"PlainText": "Les boutons simples peuvent être utilisés pour des actions qui nécessitent moins d’attention que celles des boutons principaux ou secondaires. Ils sont également utiles dans les situations où l’interface utilisateur est plus compacte. Ces boutons ne doivent pas être utilisés comme des liens. Utiliser les <a href='#'>styles de texte des liens</a> dans ces situations.",
 		"PlainCritBtnText": "Bouton simple critique",
 		"ConfigLayoutFluid": "Fluid",
 		"ConfigLayoutFixed": "Fixed",
@@ -868,6 +868,7 @@
 		"DefaultLabel": "[FR] Default",
 		"TitleLabel": "[FR] Title",
 		"CloseLabel": "[FR] Close",
+		"InteractiveDemoDesc": "[FR] Try our <strong>{{component}}</strong> component and the configurable options available within it.",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {

@@ -51,7 +51,7 @@
 		"PlainHeading": "Plain",
 		"PlainBtnText": "Plain button",
 		"PlainBtnTexts": "Plain buttons",
-		"PlainText": "Plain buttons can be used for actions that require less attention than a primary or secondary button. They are also useful in situations where the UI is more compact. They are not to be used as links. Use the link text styles for those scenarios.",
+		"PlainText": "Plain buttons can be used for actions that require less attention than a primary or secondary button. They are also useful in situations where the UI is more compact. They are not to be used as links. Use the <a href='#'>link text styles</a> for those scenarios.",
 		"PlainCritBtnText": "Plain critical button",
 		"ConfigLayoutFluid": "Fluid",
 		"ConfigLayoutFixed": "Fixed",
@@ -868,6 +868,7 @@
 		"DefaultLabel": "Default",
 		"TitleLabel": "Title",
 		"CloseLabel": "Close",
+		"InteractiveDemoDesc": "Try our <strong>{{component}}</strong> component and the configurable options available within it.",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
