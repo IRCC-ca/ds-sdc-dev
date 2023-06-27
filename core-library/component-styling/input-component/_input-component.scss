@@ -24,16 +24,16 @@
 @mixin size-large() {
   .input-password-field {
     margin-top: 8px;
-    height: 54px;
+    height: 52px;
     padding-right: 56px;
   }
 
   .input-text-field {
     margin-top: 8px;
-    height: 54px;
+    height: 52px;
   }
 
-  .passwordIcon {
+  .input-content-area > button.passwordIcon {
     font-size: 20px;
     padding: 12px 16px 12px 16px;
   }
@@ -43,16 +43,16 @@
   .input-password-field {
     padding: 10px 44px 10px 12px;
     margin-top: 4px;
-    height: 42px;
+    height: 40px;
   }
 
   .input-text-field {
     padding: 10px 12px 10px 12px;
     margin-top: 4px;
-    height: 42px;
+    height: 40px;
   }
 
-  .passwordIcon {
+  .input-content-area > button.passwordIcon {
     font-size: 16px;
     padding: 6px 12px 6px 12px;
   }
@@ -96,7 +96,7 @@
       resize: none;
     }
 
-    .passwordIcon {
+    > button.passwordIcon {
       position: absolute;
       top: 56%;
       right: 0px;

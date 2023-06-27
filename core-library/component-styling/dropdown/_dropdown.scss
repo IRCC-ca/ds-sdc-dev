@@ -21,47 +21,53 @@
 }
 
 @mixin size-large() {
-  .dropdown {
-    padding: 12px 21px 12px 20px;
-    font-size: 20px;
-    min-height: 54px;
-    line-height: 24px;
-  }
+  &.content-container,
+  .content-container {
+    .dropdown {
+      padding: 12px 21px 12px 20px;
+      font-size: 20px;
+      min-height: 54px;
+      line-height: 24px;
+    }
 
-  .custom-chevron {
-    font-size: 20px;
-  }
+    .custom-chevron {
+      font-size: 20px;
+    }
 
-  .placholder-text {
-    font-size: 20px;
-  }
+    .placholder-text {
+      font-size: 20px;
+    }
 
-  .custom-icon {
-    width: 24px;
-    height: 24px;
+    .custom-icon {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
 @mixin size-small() {
-  .dropdown {
-    padding: 10px;
-    padding: 8px 17px 8px 16px;
-    min-height: 42px;
-    line-height: 20px;
-    font-size: 16px;
-  }
+  &.content-container,
+  .content-container {
+    .dropdown {
+      padding: 10px;
+      padding: 8px 17px 8px 16px;
+      min-height: 42px;
+      line-height: 20px;
+      font-size: 16px;
+    }
 
-  .custom-chevron {
-    font-size: 16px;
-  }
+    .custom-chevron {
+      font-size: 16px;
+    }
 
-  .placholder-text {
-    font-size: 16px;
-  }
+    .placholder-text {
+      font-size: 16px;
+    }
 
-  .custom-icon {
-    width: 20px;
-    height: 20px;
+    .custom-icon {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 

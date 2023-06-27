@@ -37,22 +37,22 @@
 }
 
 @mixin layout {
-  ircc-cl-lib-button {
-    .lib-button {
-      display: block;
-      overflow: visible;
-      padding: 0;
-
-      &:hover {
-        background: none;
-      }
-    }
-  }
-
   .option {
     &-container {
       margin: 0;
       padding: 0;
+
+      > ircc-cl-lib-button {
+        .lib-button {
+          display: block;
+          overflow: visible;
+          padding: 0;
+
+          &:hover {
+            background: none;
+          }
+        }
+      }
     }
 
     &-contents {
