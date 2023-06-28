@@ -294,7 +294,7 @@ export class BannerDocCodeComponent implements OnInit {
     };
 
     const linkExample: ICTAConfig = {
-      text: 'Link',
+      text: 'Link Text',
       type: 'link'
     };
 

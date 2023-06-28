@@ -80,8 +80,8 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() palette?: keyof typeof IndicatorPalette; // Colour
   @Input() ariaLabel?: string; // Aria label line of value
   @Input() tabIndex = undefined;
-  
-  @ViewChild('label') label?: ElementRef<HTMLDivElement>;
+
+  @ViewChild('label', { static: false }) label?: ElementRef<HTMLDivElement>;
   EIndicatorStatus = IndicatorStatus;
   rounded?: boolean;
   abbr?: boolean; // Display abbr tag when text is truncated
@@ -97,7 +97,6 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
     if (this.palette) this.config.palette = this.palette;
     if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
 
-
     this.checkLabelRounded();
     this.checkNumber();
 
@@ -107,13 +106,14 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit() {
-    this.checkLabelLength();
+    setTimeout(() => this.checkLabelLength());
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.checkNumber();
     this.checkLabelRounded();
     this.checkLabelLength();
+    setTimeout(() => this.checkLabelLength());
   }
 
   // Check if number exceeds 99
@@ -136,6 +136,7 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
 
   // Check if div exceeds 200px
   private checkLabelLength() {
+    if (this.config.type !== 'text') return;
     // Max 200px - padding 8px x2
     this.abbr = <boolean>(
       (this.label?.nativeElement?.offsetWidth &&
