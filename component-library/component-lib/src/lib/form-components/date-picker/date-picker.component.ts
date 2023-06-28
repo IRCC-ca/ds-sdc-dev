@@ -342,8 +342,11 @@ export class DatePickerComponent implements OnInit {
       this.config.desc,
       this.config.hint,
       this.config.required,
-      this.config.labelIconConfig
-    );
+      this.config.labelIconConfig,
+      );
+      this.dropDownConfigs.day.size = this.config.size;
+      this.dropDownConfigs.month.size = this.config.size;
+      this.dropDownConfigs.year.size = this.config.size;
   }
 
   ngAfterViewInit() {

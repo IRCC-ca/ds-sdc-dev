@@ -214,6 +214,8 @@ h5 {
 
 .column {
   width: 50%;
+  display: flex;
+  flex-direction: column;
 
   @include device.in-phone-layout() {
     width: 100%;

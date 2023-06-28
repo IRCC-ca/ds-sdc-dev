@@ -51,6 +51,10 @@
       height: 44px;
     }
   }
+
+  .extra_padding {
+    margin-bottom: 8px;
+  }
 }
 
 @mixin size-small() {
@@ -70,13 +74,13 @@
   .required-star {
     font-size: 12px;
   }
+
+  .extra_padding {
+    margin-bottom: 4px;
+  }
 }
 
 @mixin layout {
-  .extra_padding {
-    margin-bottom: 8px;
-  }
-
   .label_container {
     user-select: none;
     width: fit-content;

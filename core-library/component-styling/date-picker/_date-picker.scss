@@ -41,6 +41,7 @@
 
   @media (min-width: 529px) {
     .all-select-container {
+      margin-top: 8px;
       .select-year {
         width: 136px;
       }
@@ -80,6 +81,7 @@
 
   @media (min-width: 529px) {
     .all-select-container {
+      margin-top: 4px;
       .select-year {
         width: 124px;
       }
@@ -144,7 +146,6 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      margin-top: 4px;
 
       .select-month {
         margin-left: 12px;
