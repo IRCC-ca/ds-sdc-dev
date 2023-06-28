@@ -39,6 +39,13 @@
   }
 }
 
+p {
+  &.intro {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+}
+
 h5 {
   margin-top: 0;
   margin-bottom: 12px;
@@ -136,6 +143,7 @@ span {
 
 .interactive-demo {
   p {
+    margin-top: 0;
     margin-bottom: 24px;
   }
 }
@@ -143,6 +151,7 @@ span {
 .types {
   p {
     margin-top: 12px;
+    margin-bottom: 0;
   }
 }
 

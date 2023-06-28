@@ -14,7 +14,8 @@ import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/i
 export class InfoTextSmallComponent implements OnInit, TranslatedPageComponent {
   circleInfoIcon: IIconConfig = {
     FA_keywords: 'fa-light fa-circle-info',
-    ariaLabel: ''
+    ariaLabel: '',
+    size: 'small'
   };
 
   altLangLink = 'infoTextSmall';

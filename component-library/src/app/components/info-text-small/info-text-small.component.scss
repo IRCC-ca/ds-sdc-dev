@@ -1,6 +1,7 @@
 @use "../../../../../core-library/util/theme" as theme;
 @use "../../../../../core-library/util/size" as size;
 @use "../../../../../core-library/tokens/template-const";
+@use "../../../../../core-library/typography/typography";
 @use "sass:map";
 $selectors: "app-info-text-small";
 
@@ -19,8 +20,12 @@ $selectors: "app-info-text-small";
 @mixin layout {
   display: flex;
   color: var(--information-text);
+  align-items: center;
 
-  small {
-    margin-left: 6px;
+  p {
+    color: var(--information-text);
+    margin: 0 0 0 6px;
+
+    @include typography.fontSet(body, 3, regular);
   }
 }

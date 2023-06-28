@@ -94,7 +94,7 @@
 		"DescriptiveDontText": "Rédiger des descriptions d’étiquettes de bouton qui sont statiques et qui ne décrivent pas une action.",
 		"DescriptiveDontImgAlt": "Un bouton dont l’étiquette indique « Documents ».",
 		"FigmaDirectionsListItem1": "Dans le panneau des ressources, faire glisser le composant « bouton » à partir de la bibliothèque des composants.",
-		"FigmaDirectionsListItem4": "Si une icône est utilisée, les concepteurs peuvent <a class='link' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>modifier</a> le mot-clé de Font Awesome afin de mettre à jour l’icône du bouton pour n’importe quelle icône de Font Awesome.",
+		"FigmaDirectionsListItem4": "Si une icône est utilisée, les concepteurs peuvent <a class='link no-underline' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>modifier</a> le mot-clé de Font Awesome afin de mettre à jour l’icône du bouton pour n’importe quelle icône de Font Awesome.",
 		"FigmaDirectionsImgAlt": "Une capture d’écran du panneau de conception de Figma. Le panneau de conception affiche les options de configuration parmi lesquelles les concepteurs peuvent choisir lorsqu’ils personnalisent un bouton.",
 		"AccessibilityColourText": "Les boutons principaux ont un rapport de contraste des couleurs de 8,88 : 1 et répondent aux normes d’accessibilité AAA selon la version 2.1 des normes WCAG.",
 		"AccessibilityKeyboardText": "Les boutons sont élaborés à l’aide de l’élément bouton HTML original afin de garantir que les éléments interactifs sont accessibles sur le clavier et conformes aux normes AA de la version 2.1 des normes WCAG."

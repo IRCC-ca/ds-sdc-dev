@@ -94,7 +94,7 @@
 		"DescriptiveDontText": "Write button labels that are static and don't describe an action.",
 		"DescriptiveDontImgAlt": "A button that has the label “Documents”.",
 		"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“button”</strong> component from the Components library.",
-		"FigmaDirectionsListItem4": "If an icon is used, designers can <a class='link' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>change the Font Awesome keyword</a> to update the icon in the button to any Font Awesome icon.",
+		"FigmaDirectionsListItem4": "If an icon is used, designers can <a class='link no-underline' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>change the Font Awesome keyword</a> to update the icon in the button to any Font Awesome icon.",
 		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a button.",
 		"AccessibilityColourText": "Primary buttons have a colour contrast ratio of 8.88:1 and passes AAA accessibility standards under WCAG 2.1.",
 		"AccessibilityKeyboardText": "Buttons are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity."

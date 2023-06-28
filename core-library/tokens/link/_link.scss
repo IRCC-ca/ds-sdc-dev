@@ -69,6 +69,10 @@
   padding: sizes.$fixed-2 sizes.$fixed-4;
   display: inline;
 
+  &.no-underline {
+    text-decoration: none;
+  }
+
   &:link {
     color: var(--link-text);
   }
