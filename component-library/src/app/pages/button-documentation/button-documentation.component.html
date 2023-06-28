@@ -156,7 +156,7 @@
               src="assets/img/button-content/btn-do-1.jpg"
               alt="{{ 'Buttons.HierarchyDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green">
+            <h5 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
             </h5>
             <p class="body3">{{ 'General.ButtonTypeDoText' | translate }}</p>
@@ -166,7 +166,7 @@
               src="assets/img/button-content/btn-do-2.jpg"
               alt="{{ 'Buttons.HierarchyDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red">
+            <h5 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.HierarchyDontText' | translate }}</p>
@@ -183,7 +183,7 @@
               src="assets/img/button-content/btn-do-3.jpg"
               alt="{{ 'Buttons.DestructiveDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green">
+            <h5 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.DestructiveDoText' | translate }}</p>
@@ -193,7 +193,7 @@
               src="assets/img/button-content/btn-do-4.jpg"
               alt="{{ 'Buttons.DestructiveDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red">
+            <h5 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.DestructiveDontText' | translate }}</p>
@@ -210,7 +210,7 @@
               src="assets/img/button-content/btn-do-5.jpg"
               alt="{{ 'Buttons.PlainDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green">
+            <h5 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.PlainDoText' | translate }}</p>
@@ -220,7 +220,7 @@
               src="assets/img/button-content/btn-do-6.jpg"
               alt="{{ 'Buttons.PlainDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red">
+            <h5 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.PlainDontText' | translate }}</p>
@@ -310,8 +310,8 @@
             <img
               src="assets/img/button-content/button-content-guide-1.jpg"
               alt="{{ 'Buttons.CaseDoImgAlt' | translate }}"
-            /><br />
-            <h5 class="text-underline text-color-green">
+            />
+            <h5 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.CaseDoText' | translate }}</p>
@@ -320,8 +320,8 @@
             <img
               src="assets/img/button-content/button-content-guide-2.jpg"
               alt="{{ 'Buttons.CaseDontImgAlt' | translate }}"
-            /><br />
-            <h5 class="text-underline text-color-red">
+            />
+            <h5 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.CaseDontText' | translate }}</p>
@@ -335,8 +335,8 @@
             <img
               src="assets/img/button-content/button-content-guide-3.jpg"
               alt="{{ 'Buttons.DescriptiveDoImgAlt' | translate }}"
-            /><br />
-            <h5 class="text-underline text-color-green">
+            />
+            <h5 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.DescriptiveDoText' | translate }}</p>
@@ -345,8 +345,8 @@
             <img
               src="assets/img/button-content/button-content-guide-4.jpg"
               alt="{{ 'Buttons.DescriptiveDontImgAlt' | translate }}"
-            /><br />
-            <h5 class="text-underline text-color-red">
+            />
+            <h5 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
             </h5>
             <p class="body3">{{ 'Buttons.DescriptiveDontText' | translate }}</p>
@@ -369,7 +369,11 @@
           <li [innerHtml]="'Buttons.FigmaDirectionsListItem1' | translate"></li>
           <li [innerHtml]="'General.FigmaDirectionsListItem2' | translate"></li>
           <li [innerHtml]="'General.FigmaDirectionsListItem3' | translate"></li>
-          <li [innerHtml]="'Buttons.FigmaDirectionsListItem4' | translate"></li>
+          <li>
+            <app-encapsulated-element
+              [injectedHtml]="'Buttons.FigmaDirectionsListItem4' | translate"
+            ></app-encapsulated-element>
+          </li>
         </ol>
       </div>
       <div class="col-12 col-md-4">
