@@ -22,6 +22,7 @@
 @mixin size-large() {
   @media (max-width: 530px) {
     .all-select-container {
+      margin-top: 8px;
       .select-year {
         min-width: 136px;
       }
@@ -60,6 +61,7 @@
 @mixin size-small() {
   @media (max-width: 530px) {
     .all-select-container {
+      margin-top: 4px;
       .select-year {
         min-width: 124px;
         margin-bottom: 12px;

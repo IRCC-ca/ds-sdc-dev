@@ -22,6 +22,7 @@ $selectors: "ircc-cl-lib-error";
 @mixin small-styles() {
   &.errorContainer, .errorContainer {
     padding-top: 4px;
+    height: 20px;
   }
   .errorIcon {
     height: 16px;
@@ -48,6 +49,7 @@ $selectors: "ircc-cl-lib-error";
 @mixin large-styles() {
   &.errorContainer , .errorContainer {
     padding-top: 8px;
+    height: 24px;
   }
   .errorIcon {
     height: 20px;
