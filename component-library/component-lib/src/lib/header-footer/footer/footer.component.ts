@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GOV_CANADA_LOGOS } from '../header-footer-const.component';
 import { ThemeSwitchService } from '../theme-switch/theme-switch.service';
+import { Subscription } from 'rxjs';
 
 export const GOV_LOGO_ALT_TEXT_EN = 'Canada wordmark';
 export const GOV_LOGO_ALT_TEXT_FR = 'FR Canada wordmark';
@@ -16,23 +17,24 @@ export class FooterComponent {
   footerLightLogo = GOV_CANADA_LOGOS.footerLightLogo
   footerDarkLogo = GOV_CANADA_LOGOS.footerDarkLogo
   logo: string = this.footerLightLogo;
+  private subscription: Subscription;
 
-  constructor(private translate: TranslateService, private themeService: ThemeSwitchService) { }
+  constructor(private translate: TranslateService, private themeService: ThemeSwitchService) {
+    this.subscription = this.themeService.isDarkMode$.subscribe((response) => {
+      this.updateFooterImage(response)
+    });  
+   }
 
   ngOnInit() {
     this.setLang(this.translate.currentLang);
-    this.updateFooterImage();
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
-    });
-
-    this.themeService.themeChanged.subscribe((darkModeEnabled: boolean) => {
-      this.updateFooterImage();
+      // this.updateFooterImage();
     });
   }
 
-  updateFooterImage() {
-      this.logo = this.themeService.darkModeEnabled
+  updateFooterImage(res: boolean) {
+      this.logo = res
         ? this.footerDarkLogo
         : this.footerLightLogo;
     
@@ -44,5 +46,9 @@ export class FooterComponent {
     } else {
       this.altImage = GOV_LOGO_ALT_TEXT_FR;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

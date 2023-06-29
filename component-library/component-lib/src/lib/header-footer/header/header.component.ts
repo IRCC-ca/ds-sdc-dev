@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GOV_CANADA_LOGOS } from '../header-footer-const.component'
 import { ThemeSwitchService } from '../theme-switch/theme-switch.service';
+import { Subscription } from 'rxjs';
 
 export const HEADER_IMG_LINK_EN = 'https://www.canada.ca/en.html';
 export const HEADER_IMG_LINK_FR = 'https://www.canada.ca/fr.html';
@@ -28,11 +29,17 @@ export class HeaderComponent implements OnInit {
   headerLightLogoFrench = GOV_CANADA_LOGOS.headerLightLogoFrench
   headerDarkLogo = GOV_CANADA_LOGOS.headerDarkLogo
   headerDarkLogoFrench = GOV_CANADA_LOGOS.headerDarkLogoFrench
-
-  logo: string = this.headerLightLogo;
-
+  logo: string = '';
+  private subscription: Subscription
+  
   constructor(private translate: TranslateService,
-    private themeService: ThemeSwitchService) { }
+    private themeService: ThemeSwitchService) {
+      this.subscription = this.themeService.isDarkMode$.subscribe((response) => {
+        this.updateHeaderImage(response)
+        console.log(this.logo);
+        
+      });  
+    }
 
   /**
   * ngOnInit() lifecycle method run immediately when the component is initialized. c
@@ -42,25 +49,21 @@ export class HeaderComponent implements OnInit {
   */
   ngOnInit() {
     this.setLang(this.translate.currentLang);
-    this.updateHeaderImage();
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
-      this.updateHeaderImage();
-    });
-
-    this.themeService.themeChanged.subscribe((darkModeEnabled: boolean) => {
-      this.updateHeaderImage();
+      
+      // this.updateHeaderImage();
     });
   }
 
-  updateHeaderImage() {
+  updateHeaderImage(res: boolean) {
     let locale = this.translate.currentLang
     if (locale === 'en' || locale === 'en-US') {
-      this.logo = this.themeService.darkModeEnabled
+      this.logo = res
         ? this.headerDarkLogo
         : this.headerLightLogo;
     } else {
-      this.logo = this.themeService.darkModeEnabled
+      this.logo = res
       ? this.headerDarkLogoFrench
       : this.headerLightLogoFrench;
     }
@@ -79,5 +82,9 @@ export class HeaderComponent implements OnInit {
       this.alt = CANADA_LOGO_ARIA_LABEL_FRENCH;
       this.govCanadaLink = HEADER_IMG_LINK_FR;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
