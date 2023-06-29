@@ -38,7 +38,11 @@ export class IconButtonDocumentationComponent implements OnInit {
     id: 'icon-button',
     category: IconButtonCategories.critical,
     size: 'small',
-    disabled: false
+    disabled: false,
+    icon: {
+      class: 'fa-solid fa-xmark',
+      color: 'var(--text-primary)'
+    }
   };
 
   anatomyContentItems: ContentItem[] = [
