@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GOV_CANADA_LOGOS } from '../header-footer-const.component'
-import { ThemeSwitchService } from '../theme-switch/theme-switch.service';
 import { Subscription } from 'rxjs';
+import { LanguageHeaderFooterSwitchService } from '../language-switch/language-header-footer-switch.service';
 
 export const HEADER_IMG_LINK_EN = 'https://www.canada.ca/en.html';
 export const HEADER_IMG_LINK_FR = 'https://www.canada.ca/fr.html';
@@ -31,28 +31,26 @@ export class HeaderComponent implements OnInit {
   headerDarkLogoFrench = GOV_CANADA_LOGOS.headerDarkLogoFrench
   logo: string = '';
   private subscription: Subscription
-  
+  isDarkMode: boolean = false;
   constructor(private translate: TranslateService,
-    private themeService: ThemeSwitchService) {
-      this.subscription = this.themeService.isDarkMode$.subscribe((response) => {
-        this.updateHeaderImage(response)
-        console.log(this.logo);
-        
-      });  
-    }
+    private languageHeaderFooterSwitch: LanguageHeaderFooterSwitchService) {
+    this.subscription = this.languageHeaderFooterSwitch.isDarkMode$.subscribe((response) => {
+      this.updateHeaderImage(response)
+      this.isDarkMode = response
+    });
+  }
 
   /**
   * ngOnInit() lifecycle method run immediately when the component is initialized. c
   *
-  * For Header Component the ngOnInit() checks for current url Language and subscribes to changes. Appropriate translations
-  * will be pulled as a result and content will be displayed in the users selected language.
+  * For Header Component the ngOnInit() checks for current url Language and subscribes to changes. Appropriate translations will be pulled as a result and content will be displayed in the users selected language.
+  * When language changes update the Header and Footer images to display logos based on language and preferred color scheme based on the dark mode subscription in the constructor
   */
   ngOnInit() {
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
-      
-      // this.updateHeaderImage();
+      this.updateHeaderImage(this.isDarkMode);
     });
   }
 
@@ -64,8 +62,8 @@ export class HeaderComponent implements OnInit {
         : this.headerLightLogo;
     } else {
       this.logo = res
-      ? this.headerDarkLogoFrench
-      : this.headerLightLogoFrench;
+        ? this.headerDarkLogoFrench
+        : this.headerLightLogoFrench;
     }
   }
 

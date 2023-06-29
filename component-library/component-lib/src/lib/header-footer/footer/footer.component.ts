@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { GOV_CANADA_LOGOS } from '../header-footer-const.component';
-import { ThemeSwitchService } from '../theme-switch/theme-switch.service';
+
 import { Subscription } from 'rxjs';
+import { LanguageHeaderFooterSwitchService } from '../language-switch/language-header-footer-switch.service';
 
 export const GOV_LOGO_ALT_TEXT_EN = 'Canada wordmark';
 export const GOV_LOGO_ALT_TEXT_FR = 'FR Canada wordmark';
@@ -17,27 +18,29 @@ export class FooterComponent {
   footerLightLogo = GOV_CANADA_LOGOS.footerLightLogo
   footerDarkLogo = GOV_CANADA_LOGOS.footerDarkLogo
   logo: string = this.footerLightLogo;
+  isDarkMode: boolean = false;
   private subscription: Subscription;
 
-  constructor(private translate: TranslateService, private themeService: ThemeSwitchService) {
-    this.subscription = this.themeService.isDarkMode$.subscribe((response) => {
+  constructor(private translate: TranslateService, private languageHeaderFooterSwitch: LanguageHeaderFooterSwitchService) {
+    this.subscription = this.languageHeaderFooterSwitch.isDarkMode$.subscribe((response) => {
       this.updateFooterImage(response)
-    });  
-   }
+      this.isDarkMode = response
+    });
+  }
 
   ngOnInit() {
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
-      // this.updateFooterImage();
+      this.updateFooterImage(this.isDarkMode);
     });
   }
 
   updateFooterImage(res: boolean) {
-      this.logo = res
-        ? this.footerDarkLogo
-        : this.footerLightLogo;
-    
+    this.logo = res
+      ? this.footerDarkLogo
+      : this.footerLightLogo;
+
   }
 
   setLang(lang: string) {
