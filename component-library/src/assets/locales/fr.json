@@ -95,7 +95,7 @@
 		"DescriptiveDontText": "Rédiger des descriptions d’étiquettes de bouton qui sont statiques et qui ne décrivent pas une action.",
 		"DescriptiveDontImgAlt": "Un bouton dont l’étiquette indique « Documents ».",
 		"FigmaDirectionsListItem1": "Dans le panneau des ressources, faire glisser le composant « bouton » à partir de la bibliothèque des composants.",
-		"FigmaDirectionsListItem4": "Si une icône est utilisée, les concepteurs peuvent <a class='link' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>modifier</a> le mot-clé de Font Awesome afin de mettre à jour l’icône du bouton pour n’importe quelle icône de Font Awesome.",
+		"FigmaDirectionsListItem4": "Si une icône est utilisée, les concepteurs peuvent <a class='link no-underline' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>modifier</a> le mot-clé de Font Awesome afin de mettre à jour l’icône du bouton pour n’importe quelle icône de Font Awesome.",
 		"FigmaDirectionsImgAlt": "Une capture d’écran du panneau de conception de Figma. Le panneau de conception affiche les options de configuration parmi lesquelles les concepteurs peuvent choisir lorsqu’ils personnalisent un bouton.",
 		"AccessibilityColourText": "Les boutons principaux ont un rapport de contraste des couleurs de 8,88 : 1 et répondent aux normes d’accessibilité AAA selon la version 2.1 des normes WCAG.",
 		"AccessibilityKeyboardText": "Les boutons sont élaborés à l’aide de l’élément bouton HTML original afin de garantir que les éléments interactifs sont accessibles sur le clavier et conformes aux normes AA de la version 2.1 des normes WCAG."
@@ -872,9 +872,9 @@
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
-		"Title": "[FR] Icon Button Documentation",
+		"Title": "[FR] Icon Button",
 		"Intro": "[FR] Icon buttons can be used for a single, well-understood action that can be clearly communicated with a stand-alone icon.",
-		"InteractiveDemoDesc": "[FR]Try our icon button component and the configurable options available within it.",
+		"InteractiveDemoDesc": "[FR]Try our <strong>icon button</strong> component and the configurable options available within it.",
 		"PrimaryText": "[FR] Primary icon buttons are used to highlight important and easy-to-understand actions. It can be used in a group of icon buttons.",
 		"CriticalText": "[FR] Critical icon buttons are often used for destructive actions like deleting user-contributed content.",
 		"OrganizeIcons": "[FR] Organize icon button groups",
@@ -903,7 +903,7 @@
 		"AnatomyText": "The icon uses the icon component and can be replaced with any Font Awesome icon. The icon button also has a container used for displaying hover, active and focus states around the icon.",
 		"SpecsImgAlt": "Specs displaying the padding and layer measurements within the icon button component. Specs are described in the paragraph below.",
 		"SpecsText": "The extra small button with fixed layout has no pixels of vertical padding and horizontal padding inside the button. The icon has a 16 pixel width and height. The small button with fixed layout has 10 pixels of vertical padding and horizontal padding inside the button. The icon has a 20 pixel width and height. The large button with fluid layout has 14 pixels of vertical padding and horizontal padding inside the button. The icon has a 24 pixel width and height.",
-		"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the “icon-button” component from the Components library.",
+		"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“icon-button”</strong> component from the Components library.",
 		"FigmaDirectionsListItem2": "In the right panel, configure the properties and variants to meet your needs.",
 		"FigmaDirectionsListItem3": "Never override colours, radius, padding, icon size, etc. This way foundational elements are kept consistent. ",
 		"FigmaDirectionsListItem4": "Designers can change the Font Awesome keyword to update the icon in the icon-button to any Font Awesome icon.",

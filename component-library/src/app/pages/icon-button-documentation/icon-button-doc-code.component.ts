@@ -36,7 +36,11 @@ export class IconButtonDocCodeComponent implements OnInit {
     id: 'icon-button',
     category: IconButtonCategories.primary,
     size: 'small',
-    disabled: false
+    disabled: false,
+    icon: {
+      class: 'fa-solid fa-xmark',
+      color: 'var(--text-primary)'
+    }
   };
 
   toggles: IRadioInputComponentConfig[] = [
