@@ -20,10 +20,7 @@ import { environment } from '../../environments/environment';
 import {
   INavigationConfig,
   INavigationItemLink,
-  INavigationItemAccordion,
-  INavigationItemHeading,
-  INavigationDivider,
-  INavigationIndicator
+  INavigationItemAccordion
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -92,6 +89,99 @@ export class ShellComponent implements OnInit {
     iconTrailing: 'fa-regular fa-arrow-right',
     header: true
   };
+
+  overviewPage: INavigationItemLink = {
+    id: 'overviewPageNavItem',
+    label: ' Overview ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.overview'
+  };
+
+  forDeveloperPage: INavigationItemLink = {
+    id: 'forDeveloperPagenNavItem',
+    label: 'For developers',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.forDevelopers'
+  };
+
+  forDesignersPage: INavigationItemLink = {
+    id: 'forDesignersPageNavItem',
+    label: 'For designers',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.forDesigners'
+  };
+
+  utilPage: INavigationItemLink = {
+    id: 'utilPageNavItem',
+    label: ' Utilities ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.utilities'
+  };
+
+  buttonsPage: INavigationItemLink = {
+    id: 'buttonsPageNavItem',
+    label: ' Buttons ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.buttons'
+  };
+
+  bannerPage: INavigationItemLink = {
+    id: 'bannerPageNavItem',
+    label: ' Banner ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.banner'
+  };
+
+  inputPage: INavigationItemLink = {
+    id: 'inputPageNavItem',
+    label: ' Input ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.input'
+  };
+
+  datePickerPage: INavigationItemLink = {
+    id: 'datePickerPageNavItem',
+    label: ' Date Picker ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.datePicker'
+  };
+
+  gettingStartedNav: INavigationItemAccordion = {
+    open: true,
+    id: 'gettingStartedNavAccordian',
+    label: 'Getting Started',
+    type: 'accordion',
+    children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
+  };
+
+  foundationsNav: INavigationItemAccordion = {
+    open: true,
+    id: 'foundationsNavAccordian',
+    label: 'Foundations',
+    type: 'accordion',
+    children: [this.utilPage]
+  };
+
+  componentNav: INavigationItemAccordion = {
+    open: true,
+    id: 'componentNavAccordian',
+    label: 'Components',
+    type: 'accordion',
+    children: [
+      this.buttonsPage,
+      this.bannerPage,
+      this.inputPage,
+      this.datePickerPage
+    ]
+  };
   accordionNav: INavigationItemAccordion = {
     open: true,
     id: 'accordionNav',
@@ -124,7 +214,12 @@ export class ShellComponent implements OnInit {
     height: '50vh',
     marginTop: 182,
     scrolling: false,
-    navigationConfig: [this.accordionNav, this.requiredPDF, this.addForms]
+    // navigationConfig: [this.accordionNav, this.requiredPDF, this.addForms]
+    navigationConfig: [
+      this.gettingStartedNav,
+      this.foundationsNav,
+      this.componentNav
+    ]
   };
 
   randomHeader: string = '';
