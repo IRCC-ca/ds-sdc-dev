@@ -1,240 +1,158 @@
-@use '../../util/theme'as theme;
-@use '../../util/size'as size;
-@use '../../tokens/sizes'as token-size;
-@use '../../tokens/template-const';
-@use '../../typography/typography'as typography;
-@use '../../tokens/text'as text;
-@use 'sass:map';
-$selectors: 'lib-select';
+@use "../../util/theme" as theme;
+@use "../../util/size" as size;
+@use "../../tokens/sizes" as token-size;
+@use "../../tokens/template-const";
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "../../util/accessibility" as a11y;
+@use "sass:map";
+$selectors: "ircc-cl-lib-select";
 
-@mixin selectors {
-	#{$selectors}#{template-const.$escape} {
-		@content;
-	}
+@mixin selector {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
 }
 
 @mixin create {
-	@include selectors() {
-		@include layout();
-	}
+  @include selector() {
+    @include layout();
+  }
 }
 
 @mixin size-large() {
-	.required-star {
-		font-size: 16px;
-		line-height: 16px;
-		justify-self: flex-start;
-		margin-right: 5px;
-	}
+  .custom-select {
+    padding: 14px 12px;
+    font-size: 20px;
+    height: 52px;
+  }
 
-	.select-label {
-		@include typography.fontSize(map.get(text.$heading, level), 5);
-		font-weight: 700;
-		font-family: 'Lato';
-	}
+  .custom-chevron {
+    font-size: 20px;
+  }
 
-	.select-hint {
-		margin: 12px 0 8px 0;
-	}
+  .select-placeholder {
+    @include typography.fontSet(body, 2, regular);
+    color: var(--text-placeholder);
+  }
 
-	.select-error {
-		color: var(--critical-text);
-		margin-top: 8px;
-	}
 
-	.custom-select {
-		padding: 12px 21px 12px 20px;
-		font-size: 20px;
-		height: 52px;
-	}
-
-	.custom-chevron {
-		margin-left: -40px;
-	}
-
-	.select-placeholder {
-		font-size: 16px;
-		color: var(--text-placeholder)
-	}
-
-	.select-option {
-		color: black
-	}
+  .lib-select {
+    margin-top: 8px;
+  }
 }
 
 @mixin size-small() {
-	.required-star {
-		font-size: 12px;
-		line-height: 16px;
-		justify-self: flex-start;
-		margin-right: 4px;
-	}
+  .custom-select {
+    padding: 10px 12px;
+    font-size: 16px;
+    height: 40px;
+  }
 
-	.select-label {
-		@include typography.fontSize(map.get(text.$heading, level), 6);
-		font-weight: 700;
-		font-family: 'Lato';
-	}
+  .custom-chevron {
+    font-size: 16px;
+  }
 
-	.select-desc {
-		font-size: 14px;
-		line-height: 20px;
-	}
+  .select-placeholder {
+    @include typography.fontSet(body, 3, regular);
+    color: var(--text-placeholder);
+  }
 
-	.select-hint {
-		margin: 8px 0 4px 0;
-		font-size: 14px;
-	}
 
-	.select-error {
-		color: var(--critical-text);
-		margin-top: 4px;
-	}
-
-	.custom-select {
-		padding: 8px 10px 8px 17px;
-		font-size: 16px;
-		height: 40px;
-	}
-
-	.custom-chevron {
-		margin-left: -29px;
-	}
-
-	.select-placeholder {
-		font-size: 14px;
-		color: var(--text-placeholder)
-	}
-
-	.select-option {
-		color: black
-	}
+  .lib-select {
+    margin-top: 4px;
+  }
 }
 
 @mixin layout {
-	@include size.selector(large) {
-		@include size-large();
+  @include size.select(large) {
+    @include size-large();
 
-		.small {
-			@include size-small()
-		}
-	}
+    .small {
+      @include size-small();
+    }
+  }
 
-	@include size.selector(small) {
-		@include size-small();
+  @include size.select(small) {
+    @include size-small();
 
-		.large {
-			@include size-large()
-		}
-	}
+    .large {
+      @include size-large();
+    }
+  }
 
-	.required-div {
-		display: flex;
+  .select-wrapper {
+    padding: 0 5px 0 0;
+  }
 
-		.required-star {
-			color: var(--critical-text);
-			font-weight: 400;
-			line-height: 16px;
-			justify-self: flex-start;
-		}
-	}
+  .select-error i {
+    margin-right: 4px;
+  }
 
-	.select-label {
-		display: flex;
-		margin-bottom: 0;
-	}
+  select {
+    line-height: 24px;
+    color: var(--text);
+    border-radius: token-size.$border-radius;
+    background-color: transparent;
+    border-color: var(--border);
+    border-width: 1px;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+  }
 
-	.select-desc {
-		margin-top: 4px;
-		margin-bottom: 0;
-	}
+  .custom-chevron {
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+    pointer-events: none;
+    font-weight: 300;
+    color: var(--text);
+    margin-left: -31px;
+  }
 
-	.select-hint {
-		color: var(--text-placeholder);
-	}
+  .ircc-cl-lib-select {
+    display: flex;
+    align-items: center;
 
-	.select-exclamation {
-		margin-right: 4px;
-	}
+    .activited-select {
+      color: var(--text-primary);
+    }
+  }
 
-	.select-error {
-		color: var(--critical-text);
-		margin-top: 0;
-	}
+  .select-placeholder {
+    color: var(--text-placeholder);
+  }
 
-	.select-error i {
-		margin-right: 4px;
-	}
+  .select-option {
+    color: var(--grey-12);
+  }
 
-	select {
-		line-height: 24px;
-		color: var(--text);
-		border-radius: token-size.$border-radius;
-		// showing but not
-		border-color: var(--border);
-		width: 100%;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
+  .select-clicked {
+    .custom-chevron {
+      transform: rotateZ(180deg);
+    }
+  }
 
-		// @include dropdown-size();
-	}
+  select.ng-invalid.ng-touched {
+    border-color: var(--critical-border);
+    background-color: var(--critical-background-weak);
+    &:active {
+      background-color: var(--critical-background-weak-hover);
+    }
+  }
 
-	.custom-chevron {
-		cursor: pointer;
-		pointer-events: none;
-		font-weight: 300;
-		font-size: 20px;
-		color: var(--text);
-	}
+  select:disabled {
+    --border: var(--border-disabled);
+  }
 
-	.lib-select {
-		display: flex;
-		align-items: center;
-	}
+  option {
+    background: var(--surface1);
+  }
 
-	.select-placeholder {
-		color: var(--text-placeholder);
-		font-weight: 400;
-		font-family: 'Inter';
-	}
-
-	.select-option {
-		color: black;
-	}
-
-	select:invalid,
-	select.ng-invalid.ng-touched {
-		border-color: var(--critical-border);
-		background-color: var(--critical-background-weak);
-	}
-
-	select:disabled {
-		--border: var(--border-disabled);
-	}
-
-	.activited-select {
-		color: var(--text-primary);
-	}
-
-	.sr-only {
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
-	}
+  .sr-only {
+    @include a11y.sr-only;
+  }
 }
-
-
-// @mixin dropdown-size {
-//     @include size.selector(small) {
-//         @extend .h6;
-//     }
-
-//     @include size.selector(large) {
-//         @extend .h5;
-//     }
-// }

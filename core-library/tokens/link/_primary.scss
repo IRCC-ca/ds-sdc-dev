@@ -1,0 +1,78 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "../button/button-const";
+@use "../../util/device" as device;
+@use "../button/button-tokens" as b-tokens;
+@use "sass:map";
+
+$primary: "primary";
+$default-color: null;
+
+@mixin light-colors() {
+  a,
+  .link {
+    &:where([category="#{$primary}"]) {
+      &:where([color="critical"]) {
+        @include b-tokens.light-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]) {
+        @include layout();
+      }
+    }
+  }
+}
+
+@mixin dark-colors() {
+  a,
+  .link {
+    &:where([category="#{$primary}"]) {
+      &:where([color="critical"]) {
+        @include b-tokens.dark-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]) {
+        @include layout();
+      }
+    }
+  }
+}
+
+@mixin create() {
+  html {
+    @include light-colors();
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors();
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors();
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors();
+    }
+  }
+}
+
+@mixin layout() {
+  @include button-const.layout();
+  --text: var(--primary-btn-text);
+  text-decoration: none;
+  background-color: var(--primary-background);
+  @include device.if-hover {
+    background-color: var(--primary-background-hover);
+  }
+
+  &:active {
+    background-color: var(--primary-background-active);
+  }
+
+  &:disabled {
+    background-color: var(--primary-background-disabled);
+    --text: var(--primary-btn-text-disabled);
+  }
+}

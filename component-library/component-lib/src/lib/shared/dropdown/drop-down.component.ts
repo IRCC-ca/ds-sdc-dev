@@ -1,26 +1,136 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { ButtonCategories } from '../button/button.component';
+import { IIconButtonIconConfig } from '../icon-button/icon-button.component';
+import { IFlyoutConfig } from '../flyout/flyout.component';
+import { TranslateService } from '@ngx-translate/core';
+export interface IDropdownConfig {
+  id: string;
+  label?: string;
+  size?: keyof typeof DSSizes;
+  category?: keyof typeof ButtonCategories;
+  placeholderText?: string;
+  disabled?: boolean;
+  icon?: IIconButtonIconConfig;
+  flyout?: IFlyoutConfig;
+}
 
+export const DROPDOWN_ARIA = {
+  en: 'Dropdown',
+  fr: 'Menu Deroulant'
+};
 @Component({
-  selector: 'lib-dropdown',
+  selector: 'ircc-cl-lib-dropdown',
   templateUrl: './drop-down.component.html'
 })
 export class DropdownComponent implements OnInit {
+  constructor(private translate: TranslateService) {}
 
-  @Input() size? : keyof typeof DSSizes;
-  @Input() labelText? : string;
-  @Input() placeholderText? : string;
+  @Input() config: IDropdownConfig = {
+    id: ''
+  };
 
-  showPlaceholder : boolean = false;
+  @Input() id: string = '';
+  @Input() size?: keyof typeof DSSizes;
+  @Input() label?: string = '';
+  @Input() placeholderText?: string = '';
+  @Input() disabled?: boolean;
+  @Input() category?: keyof typeof ButtonCategories;
+  @Input() icon?: IIconButtonIconConfig;
+  @Input() flyout?: IFlyoutConfig;
 
-  constructor() { }
 
-  ngOnInit(): void {
-    if (!this.labelText || this.labelText.trim().length == 0) {
-      if (!this.placeholderText) {
-        this.placeholderText = "Default";
+  btnAriaLabel = '';
+  showPlaceholder: boolean = false;
+  selected: boolean = false;
+
+  flyoutConfig: IFlyoutConfig = {
+    id: this.config.id + '_flyout',
+    options: [
+      {
+        value: 'Options empty'
+      }
+    ]
+  };
+
+  ngOnInit() {
+    //set config from individual options, if present
+    if (this.id !== '') this.config.id = this.id;
+    if (this.size) this.config.size = this.size;
+    if (this.icon) this.config.icon = this.icon;
+    if (this.flyout) this.config.flyout = this.flyout;
+    if (this.label !== '') this.config.label = this.label;
+    if (this.placeholderText !== '')
+      this.config.placeholderText = this.placeholderText;
+    if (this.disabled !== undefined) this.config.disabled = this.disabled;
+    this.category === undefined
+      ? undefined
+      : (this.config.category = this.category);
+
+    if (!this.config.category) this.config.category = ButtonCategories.primary;
+
+    if (!this.config.label || this.config.label.trim().length == 0) {
+      if (!this.config.placeholderText) {
+        this.config.placeholderText = 'Default';
       }
       this.showPlaceholder = true;
+    }
+
+    if (this.config.flyout) this.flyoutConfig = this.config.flyout;
+
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe((change) => {
+      this.setLang(change.lang);
+    });
+  }
+
+  /**
+   * setLang(lang: string) if a function which accepts a string value.
+   * This value currently needs to be 'en' or 'en-US' to trigger English translations otherwise
+   * french translations will be triggered.
+   */
+  setLang(lang: string) {
+    if (lang === 'en' || lang === 'en-US') {
+      this.btnAriaLabel = DROPDOWN_ARIA.en;
+    } else {
+      this.btnAriaLabel = DROPDOWN_ARIA.fr;
+    }
+  }
+
+  selectedOption(e: Event) {
+    //if it receives it's event info it selects the index - if not closes flyout
+    if (e) {
+      this.showPlaceholder = false;
+      this.config.label = e.toString();
+      this.selected = !this.selected;
+      this.clearFlyoutFocus(); //clear the flyout focus if the flyout is closed.
+    } else {
+      this.toggleFlyout(false);
+    }
+  }
+
+  /**
+   * function receives a truthy value which determines wether it closes or opens,
+   * but also looks for FocusEvent to check if flyout is being interacted with
+   * @param status
+   * @param e
+   */
+  toggleFlyout(status: boolean, e?: FocusEvent) {
+    let target = e?.relatedTarget as HTMLElement;
+    if (!target?.id.includes(this.config.id) || !e) {
+      this.selected = status;
+      !status && this.clearFlyoutFocus(); //clear the flyout focus if the flyout is closed.
+    }
+  }
+
+  /**
+   * Clear the flyout active state
+   */
+  clearFlyoutFocus() {
+    if (this.config?.flyout?.options) {
+      this.config.flyout.options.forEach((i) => {
+        i.active = false;
+      });
     }
   }
 }

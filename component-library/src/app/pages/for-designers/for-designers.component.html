@@ -1,0 +1,149 @@
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url [config]="designerHeadingSlug"></app-title-slug-url>
+  <p class="design-txt">{{ 'Designers.HeadingText' | translate }}</p>
+
+  <app-title-slug-url [config]="designerAboutHeadingSlug"></app-title-slug-url>
+  <p class="descriptions">{{ 'Designers.AboutText1' | translate }}</p>
+
+  <p class="descriptions about last">
+    <app-encapsulated-element
+      [injectedHtml]="'Designers.AboutText2' | translate"
+    ></app-encapsulated-element>
+  </p>
+
+  <app-title-slug-url [config]="designerAccessHeadingSlug"></app-title-slug-url>
+  <p class="descriptions">{{ 'Designers.AccessText1' | translate }}</p>
+  <ol class="descriptions">
+    <li>
+      <app-encapsulated-element
+        [injectedHtml]="'Designers.AccessListItem1' | translate"
+      ></app-encapsulated-element>
+    </li>
+    <li>
+      <app-encapsulated-element
+        [injectedHtml]="'Designers.AccessListItem2' | translate"
+      ></app-encapsulated-element>
+    </li>
+    <li>
+      <app-encapsulated-element
+        [injectedHtml]="'Designers.AccessListItem3' | translate"
+      ></app-encapsulated-element>
+    </li>
+    <li>{{ 'Designers.AccessListItem4' | translate }}</li>
+    <li>{{ 'Designers.AccessListItem5' | translate }}</li>
+    <li [innerHTML]="'Designers.AccessListItem6' | translate"></li>
+  </ol>
+  <p class="descriptions">{{ 'Designers.AccessText2' | translate }}</p>
+  <p class="descriptions last">{{ 'Designers.AccessText3' | translate }}</p>
+  <img
+    src="assets/img/forDesigner-content/for-designers-img-1.jpg"
+    alt="{{ 'Designers.FigmaImg1AltText' | translate }}"
+  />
+
+  <app-title-slug-url [config]="designerInstallFontSlug"></app-title-slug-url>
+  <p class="descriptions">{{ 'Designers.InstallFontsText1' | translate }}</p>
+  <p class="descriptions last">
+    <app-encapsulated-element
+      [injectedHtml]="'Designers.InstallFontsLink' | translate"
+    ></app-encapsulated-element>
+  </p>
+
+  <app-title-slug-url
+    [config]="designerUsingStylesHeadingSlug"
+  ></app-title-slug-url>
+  <p class="descriptions">{{ 'Designers.UsingStylesText1' | translate }}</p>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <p class="descriptions">
+        {{ 'Designers.UsingStylesStrokeText1' | translate }}
+      </p>
+      <ol class="descriptions">
+        <li
+          [innerHTML]="'Designers.UsingStylesStrokeListItem1' | translate"
+        ></li>
+        <li>{{ 'Designers.UsingStylesStrokeListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesStrokeListItem3' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesStrokeListItem4' | translate }}</li>
+      </ol>
+      <p class="descriptions last">
+        <app-encapsulated-element
+          [injectedHtml]="'Designers.UsingStylesStrokeText2' | translate"
+        ></app-encapsulated-element>
+      </p>
+      <img
+        src="assets/img/forDesigner-content/for-designers-img-2.jpg"
+        alt="{{ 'Designers.UsingStylesStrokeImgAltText' | translate }}"
+      />
+    </div>
+
+    <div class="col-12 col-md-6">
+      <p class="descriptions">
+        {{ 'Designers.UsingStylesTextText1' | translate }}
+      </p>
+      <ol class="descriptions">
+        <li [innerHTML]="'Designers.UsingStylesTextListItem1' | translate"></li>
+        <li>{{ 'Designers.UsingStylesTextListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesTextListItem3' | translate }}</li>
+        <li>{{ 'Designers.UsingStylesTextListItem4' | translate }}</li>
+      </ol>
+      <p class="descriptions last">
+        <app-encapsulated-element
+          [injectedHtml]="'Designers.UsingStylesTextText2' | translate"
+        ></app-encapsulated-element>
+      </p>
+      <img
+        src="assets/img/forDesigner-content/for-designers-img-3.jpg"
+        alt="{{ 'Designers.UsingStylesTextImgAltText' | translate }}"
+      />
+    </div>
+  </div>
+
+  <app-title-slug-url
+    [config]="designerUsingComponentsHeadingSlug"
+  ></app-title-slug-url>
+  <p class="descriptions">{{ 'Designers.UsingComponentsText1' | translate }}</p>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <p class="descriptions">
+        {{ 'Designers.UsingComponentsInsertText1' | translate }}
+      </p>
+      <ol class="descriptions last">
+        <li
+          [innerHTML]="'Designers.UsingComponentsInsertListItem1' | translate"
+        ></li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem3' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem4' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsInsertListItem5' | translate }}</li>
+      </ol>
+      <img
+        src="assets/img/forDesigner-content/for-designers-img-4.jpg"
+        alt="{{ 'Designers.UsingComponentsInsertImgAlt' | translate }}"
+      />
+    </div>
+
+    <div class="col-12 col-md-6">
+      <p class="descriptions">
+        {{ 'Designers.UsingComponentsConfigureText1' | translate }}
+      </p>
+      <ol class="descriptions last">
+        <li>{{ 'Designers.UsingComponentsConfigureListItem1' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsConfigureListItem2' | translate }}</li>
+        <li>{{ 'Designers.UsingComponentsConfigureListItem3' | translate }}</li>
+      </ol>
+      <img
+        src="assets/img/forDesigner-content/for-designers-img-5.jpg"
+        alt="{{ 'Designers.UsingComponentsConfigureImgAlt' | translate }}"
+      />
+    </div>
+  </div>
+
+  <app-title-slug-url [config]="designerFigmaHeadingSlug"></app-title-slug-url>
+  <p class="descriptions last">{{ 'Designers.FigmaText' | translate }}</p>
+</div>
+
+<app-side-nav
+  class="right-nav col-12 col-lg-3 col-xl-2"
+  [navBarData]="rightNavData"
+></app-side-nav>

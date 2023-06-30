@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
 import { IconComponent } from './icon/icon.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { ProgressTagsComponent } from "./progress-tags/progress-tags.component";
-import { DropdownComponent } from "./dropdown/drop-down.component";
+import { ProgressTagsComponent } from './progress-tags/progress-tags.component';
+import { DropdownComponent } from './dropdown/drop-down.component';
 import { LabelComponent } from './label/label.component';
-import { ProgressIndicatorComponent } from "./progress-indicator/progress-indicator.component";
-import { BreadcrumbComponent } from "./breadcrumb/breadcrumb.component";
-import { BreadcrumbLinkComponent } from "./breadcrumb/link/link.component";
+import { ProgressIndicatorComponent } from './progress-indicator/progress-indicator.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { BreadcrumbLinkComponent } from './breadcrumb/link/link.component';
+import { IndicatorComponent } from './indicator/indicator.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { DomChangeDirective } from '../../shared/directives/dom-change.directive';
+import { FlyoutComponent } from './flyout/flyout.component';
+import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
+
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -19,23 +25,21 @@ const IrccDsSharedComponents = [
   BreadcrumbLinkComponent,
   IconComponent,
   IconButtonComponent,
+  IndicatorComponent,
   TabsComponent,
   ProgressTagsComponent,
   DropdownComponent,
   LabelComponent,
   ProgressTagsComponent,
-  ProgressIndicatorComponent
+  ProgressIndicatorComponent,
+  SpinnerComponent,
+  FlyoutComponent,
+  FlyoutOptionComponent,
 ];
 
 @NgModule({
-  declarations: [
-    ...IrccDsSharedComponents
-  ],
-  imports: [
-    CommonModule,
-    TranslateModule,
-    RouterModule
-  ],
+  declarations: [...IrccDsSharedComponents, DomChangeDirective],
+  imports: [CommonModule, TranslateModule, RouterModule],
   exports: [
     CommonModule,
     TranslateModule,
@@ -43,4 +47,4 @@ const IrccDsSharedComponents = [
     ...IrccDsSharedComponents
   ]
 })
-export class IrccDsAngularComponentsSharedModule { }
+export class IrccDsAngularComponentsSharedModule {}

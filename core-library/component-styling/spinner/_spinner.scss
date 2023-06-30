@@ -1,0 +1,203 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/size" as size;
+@use "../../tokens/template-const";
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "../../util/device" as device;
+@use "../../tokens/sizes";
+@use "sass:map";
+$selectors: "ircc-cl-lib-spinner";
+
+@mixin selector {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin types($status) {
+  .#{$status} {
+    .icon-div {
+      background-color: var(--#{$status}-background-weak);
+    }
+    .spinner-icon {
+      --text: var(--#{$status}-text);
+    }
+  }
+}
+
+@mixin size-large() {
+  .vertical {
+    .label {
+      margin: {
+        top: 16px;
+        bottom: 4px;
+      }
+    }
+    .icon-div {
+      width: 80px;
+    }
+  }
+  .spinner-container {
+    height: 80px;
+    .icon-div {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      .spinner-icon {
+        align-self: center;
+        > .ds-icon-container > span > svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+  .horizontal {
+    .label {
+      margin: {
+        left: 16px;
+        bottom: 4px;
+      }
+    }
+    .desc {
+      margin-left: 16px;
+    }
+  }
+  .label {
+    @include typography.fontSet(heading, 4, emphasis);
+  }
+}
+
+@mixin size-small() {
+  .spinner-container {
+    height: 28px;
+    .icon-div {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      .spinner-icon {
+        > .ds-icon-container > span > svg {
+          width: 14px;
+          height: 16px;
+        }
+      }
+      .loading-icon {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+  .label {
+    margin-left: 8px;
+    margin-bottom: 0;
+    @include typography.fontSet(body, 1, regular);
+  }
+}
+
+@mixin layout {
+  .horizontal {
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  .vertical {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .spinner-container {
+    border-radius: 50%;
+    width: 100%;
+  }
+
+  .icon-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .spinner-icon {
+    color: var(--text);
+  }
+  .animated-icon {
+    animation: rotation 1s linear infinite;
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(359deg);
+      }
+    }
+  }
+
+  .desc {
+    color: var(--text-placeholder);
+  }
+
+  @include size.select(large) {
+    @include size-large();
+    .small {
+      @include size-small();
+    }
+  }
+
+  @include size.select(small) {
+    @include size-small();
+    .large {
+      @include size-large();
+    }
+  }
+
+  @include types(success);
+  @include types(critical);
+
+  .extraSmall {
+    .spinner-container {
+      height: 20px;
+      .icon-div {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        .spinner-icon {
+          align-self: flex-end;
+          > .ds-icon-container > span > svg {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+    }
+
+    .loading-icon {
+      width: 20px;
+      height: 20px;
+    }
+    .label {
+      margin-left: 8px;
+      margin-bottom: 0;
+      @include typography.fontSet(body, 3, regular);
+    }
+  }
+}

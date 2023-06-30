@@ -1,188 +1,182 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../template-const' as template-const;
-@use '../sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../text' as text;
-@use 'sass:map';
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../template-const" as template-const;
+@use "../sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../text" as text;
+@use "sass:map";
 
 @mixin selector {
-    input[type='checkbox']#{template-const.$escape} {
-        @content;
-    }
+  input[type="checkbox"]#{template-const.$escape} {
+    @content;
+  }
 }
 
 @mixin create {
-    @include selector() {
-        @include layout();
-    }
+  @include selector() {
+    @include layout();
+  }
 }
 
 @mixin layout {
-    border-radius: token-size.$border-radius;
-    appearance: none;
-    margin-right: token-size.$fixed-12;
-    margin-left: 0;
-    box-sizing: border-box;
-    box-shadow: token-size.$border-style;
-    vertical-align: middle;
-    cursor: pointer;
-    display: inline-flex;
-    padding: 0;
+  border-radius: token-size.$border-radius;
+  appearance: none;
+  margin-right: token-size.$fixed-12;
+  margin-left: 0;
+  box-sizing: border-box;
+  box-shadow: token-size.$border-style;
+  vertical-align: middle;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 0;
 
-    @include checkbox-size();
+  @include checkbox-size();
+
+  & + label {
+    padding-left: 8px;
+    width: 130px;
+    height: 20px;
+    font-style: normal;
+    @include typography.fontSet(body, 3, regular);
+    color: var(--text-primary);
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+  }
+
+  @include device.if-hover {
+    color: var(--formcontrol-hover);
+  }
+  &:active {
+    background-color: var(--generic-active);
+  }
+
+  &:disabled {
+    --border: var(--border-disabled);
+    cursor: not-allowed;
 
     & + label {
-        padding-left: 8px;
-        width: 130px;
-        height: 20px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
-        color: var(--text-primary);
-        flex: none;
-        order: 0;
-        flex-grow: 1;
+      color: var(--text-disabled);
     }
 
-    @include device.if-hover {
-        color: var(--formcontrol-hover);
-    }
     &:active {
-        background-color: var(--generic-active);
+      --border: var(--border-disabled);
+      background-color: var(--surface1);
+    }
+  }
+
+  &:checked,
+  &:indeterminate {
+    @include device.if-hover {
+      background-color: var(--formcontrol-hover);
     }
 
+    &:active {
+      background-color: var(--formcontrol-hover);
+    }
     &:disabled {
-        --border: var(--border-disabled);
-        cursor: not-allowed;
-
-        & + label {
-            color: var(--text-disabled);
-        }
-
-        &:active {
-            --border: var(--border-disabled);
-            background-color: var(--surface1);
-        }
+      background-color: var(--formcontrol-disabled);
     }
+  }
 
-    &:checked,
-    &:indeterminate {
-        @include device.if-hover {
-            background-color: var(--formcontrol-hover);
-        }
-
-        &:active {
-            background-color: var(--formcontrol-hover);
-        }
-        &:disabled {
-            background-color: var(--formcontrol-disabled);
-        }
-    }
-
-    @include checked();
-    @include invalid();
-    @include mixed-state();
+  @include checked();
+  @include invalid();
+  @include mixed-state();
 }
 
 @mixin checked {
-    &:checked {
-        box-shadow: none;
-        background-color: var(--formcontrol);
+  &:checked {
+    box-shadow: none;
+    background-color: var(--formcontrol);
 
-        @include create-icon('\f00c');
-    }
+    @include create-icon("\f00c");
+  }
 }
 
 @mixin invalid {
-    &:invalid, &.ng-invalid.ng-touched, &.error {
-        --border: var(--critical-border);
-        background-color: var(--critical-background-weak);
+  &.ng-invalid.ng-touched,
+  &.error {
+    --border: var(--critical-border);
+    background-color: var(--critical-background-weak);
 
-        @include device.if-hover {
-            --border: var(--critical-border-hover);
-            background-color: var(--critical-background-weak-hover);
-        }
-
-        &:active {
-            --border: var(--critical-border-hover);
-            background-color: var(--critical-background-weak-active);
-        }
-        &:indeterminate,
-        &:checked {
-            box-shadow: none;
-            background-color: var(--critical-background);
-
-            @include device.if-hover {
-                background-color: var(--critical-background-hover);
-            }
-
-            &:active {
-                background-color: var(--critical-background-active);
-            }
-        }
+    @include device.if-hover {
+      --border: var(--critical-border-hover);
+      background-color: var(--critical-background-weak-hover);
     }
+
+    &:active {
+      --border: var(--critical-border-hover);
+      background-color: var(--critical-background-weak-active);
+    }
+    &:indeterminate,
+    &:checked {
+      box-shadow: none;
+      background-color: var(--critical-background);
+
+      @include device.if-hover {
+        background-color: var(--critical-background-hover);
+      }
+
+      &:active {
+        background-color: var(--critical-background-active);
+      }
+    }
+  }
 }
 
 @mixin mixed-state {
-    &:indeterminate,
-    &.mixed:checked {
-        box-shadow: none;
-        background-color: var(--formcontrol);
+  &:indeterminate,
+  &.mixed:checked {
+    box-shadow: none;
+    background-color: var(--formcontrol);
 
-        @include create-icon('\f068');
-    }
+    @include create-icon("\f068");
+  }
 }
 
 @mixin checkbox-size {
-    @include size.selector(small) {
-        width: token-size.$relative-1-25;
-        height: token-size.$relative-1-25;
+  @include size.select(small) {
+    width: token-size.$relative-1-25;
+    height: token-size.$relative-1-25;
 
-        &:checked::before,
-        &:indeterminate::before {
-            @include icon-size(
-                token-size.$relative-0-875,
-                token-size.$relative-1,
-                2
-            );
-        }
+    &:checked::before,
+    &:indeterminate::before {
+      @include icon-size(token-size.$relative-0-875, token-size.$relative-1, 2);
     }
+  }
 
-    @include size.selector(large) {
-        width: token-size.$relative-1-5;
-        height: token-size.$relative-1-5;
+  @include size.select(large) {
+    width: token-size.$relative-1-5;
+    height: token-size.$relative-1-5;
 
-        &:checked::before,
-        &:indeterminate::before {
-            @include icon-size(
-                token-size.$relative-1-125,
-                token-size.$relative-1-25,
-                1
-            );
-        }
+    &:checked::before,
+    &:indeterminate::before {
+      @include icon-size(
+        token-size.$relative-1-125,
+        token-size.$relative-1-25,
+        1
+      );
     }
+  }
 }
 
 @mixin icon-size($width, $height, $level) {
-    width: $width;
-    height: $height;
-    left: calc(50% - $width / 2);
-    top: calc(50% - $height / 2);
-    font-size: map.get(text.$body, level, $level, font-size);
-    line-height: map.get(text.$body, level, $level, font-size);
+  width: $width;
+  height: $height;
+  left: calc(50% - $width / 2);
+  top: calc(50% - $height / 2);
+  font-size: map.get(text.$body, level, $level, font-size);
+  line-height: map.get(text.$body, level, $level, font-size);
 }
 
 @mixin create-icon($content) {
-    &::before {
-        content: $content;
-        color: var(--surface1);
-        position: relative;
+  &::before {
+    content: $content;
+    color: var(--surface1);
+    position: relative;
 
-        @extend .fa-regular;
-    }
+    @extend .fa-regular;
+  }
 }

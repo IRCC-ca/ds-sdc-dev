@@ -21,7 +21,8 @@ import { InputComponent } from '../../form-components/input/input.component';
 //add them in using the template.
 import { ChipItemComponent } from '../chips/chip-item/chip-item.component';
 
-interface IOption { //Changed: Interfaces should ALWAYS start with 'I'.
+interface IOption {
+  //Changed: Interfaces should ALWAYS start with 'I'.
   text: string;
   value: string;
 }
@@ -202,7 +203,7 @@ export class AutocompleteComponent implements OnInit, DoCheck {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.selectedOptions = [];
     this.originalOptions = this.options.slice(0);
     this.selectedOptions = this.savedSelectedOptions;

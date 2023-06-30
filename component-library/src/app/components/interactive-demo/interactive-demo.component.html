@@ -1,0 +1,20 @@
+<div class="container">
+  <div
+    class="tabs"
+    *ngIf="hasTabs"
+  >
+    <ng-content select="[tabs]"></ng-content>
+  </div>
+  <div class="component_container">
+    <div class="component-wrapper {{ componentType }}">
+      <ng-content select="[component]"></ng-content>
+    </div>
+  </div>
+  <div class="toggles-accordion">
+    <app-accordian-container [config]="accordionConfig">
+      <div class="toggles">
+        <ng-content select="[toggles]"></ng-content>
+      </div>
+    </app-accordian-container>
+  </div>
+</div>

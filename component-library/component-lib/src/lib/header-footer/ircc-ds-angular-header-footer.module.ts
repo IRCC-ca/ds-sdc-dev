@@ -7,18 +7,18 @@ import { IrccDsAngularComponentsSharedModule } from '../shared/ircc-ds-angular-c
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HiddenNavComponent } from './hidden-nav/hidden-nav.component';
+import { ThemeSwitchComponent } from './theme-switch/theme-switch.component';
 
 const IrccDsHeaderFooterComponents = [
   HeaderComponent,
   FooterComponent,
   LanguageSwitchComponent,
-  HiddenNavComponent
+  HiddenNavComponent,
+  ThemeSwitchComponent
 ];
 
 @NgModule({
-  declarations: [
-    ...IrccDsHeaderFooterComponents
-  ],
+  declarations: [...IrccDsHeaderFooterComponents],
   imports: [
     CommonModule,
     IrccDsAngularComponentsSharedModule,
@@ -26,8 +26,6 @@ const IrccDsHeaderFooterComponents = [
     FormsModule,
     ReactiveFormsModule
   ],
-  exports: [
-    ...IrccDsHeaderFooterComponents
-  ]
+  exports: [...IrccDsHeaderFooterComponents]
 })
-export class IrccDsAngularHeaderFooterModule { }
+export class IrccDsAngularHeaderFooterModule {}

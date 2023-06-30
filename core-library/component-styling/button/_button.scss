@@ -1,15 +1,15 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
 
 @mixin selector {
-  lib-button#{template-const.$escape} {
+  ircc-cl-lib-button#{template-const.$escape} {
     @content;
   }
 }
@@ -21,28 +21,42 @@
 }
 
 @mixin layout {
-
-  > button {
+  .lib-button {
+    display: flex;
+    justify-content: space-around;
     width: 100%;
-    .icon, .text {
-      display: inline-block;
-    }
 
-    .icon {
-      font-weight: 300;
+    .button-content-container {
+      width: 100%;
+      justify-content: center;
     }
 
     &.right {
+      .button-content-container {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+      }
       .icon {
         padding-left: 8px;
       }
     }
 
     &.left {
+      .button-content-container {
+        display: flex;
+        align-items: center;
+      }
       .icon {
         padding-right: 8px;
       }
     }
-    
+
+    .icon {
+      font-weight: 300;
+    }
+    .text {
+      text-align: left;
+    }
   }
 }

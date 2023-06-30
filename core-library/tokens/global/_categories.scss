@@ -1,0 +1,66 @@
+@use "../../util/device";
+@use "../../util/theme";
+@use "../../util/color";
+@use "../template-const";
+
+@mixin create(
+  $palette: (
+    grey,
+    red,
+    orange,
+    blue,
+    green,
+    purple,
+    teal,
+    navy,
+  )
+) {
+  @each $key in $palette {
+    @include tokens($key);
+  }
+}
+
+@mixin light-colors($palette) {
+  --#{$palette}-category-background: #{color.mix-token($palette, 700)};
+
+  @if ($palette ==grey) {
+    --#{$palette}-category-background-weak: #{color.mix-token($palette, 200)};
+  } @else {
+    --#{$palette}-category-background-weak: #{color.mix-token($palette, 100)};
+  }
+
+  --#{$palette}-category-text: #{color.mix-token($palette, 900)};
+  --#{$palette}-category-text-weak: #{color.mix-token(neutral, 100)};
+}
+
+@mixin dark-colors($palette) {
+  --#{$palette}-category-background: #{color.mix-token($palette, 500)};
+
+  @if ($palette ==grey) {
+    --#{$palette}-category-background-weak: #{color.mix-token($palette, 1100)};
+  } @else {
+    --#{$palette}-category-background-weak: #{color.mix-token($palette, 1200)};
+  }
+
+  --#{$palette}-category-text: #{color.mix-token($palette, 300)};
+  --#{$palette}-category-text-weak: #{color.mix-token(neutral, 1200)};
+}
+
+@mixin tokens($palette) {
+  html {
+    @include light-colors($palette);
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors($palette);
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors($palette);
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors($palette);
+    }
+  }
+}

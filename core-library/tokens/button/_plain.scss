@@ -1,70 +1,78 @@
-@use '../../util/color' as color;
-@use '../text' as text;
-@use '../../util/theme' as theme;
-@use '../template-const' as template-const;
-@use './button-const' as button-const;
-@use '../../util/device' as device;
-@use '../sizes' as sizes;
+@use "../../util/color" as color;
+@use "../text" as text;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "./button-const" as button-const;
+@use "./button-tokens" as b-tokens;
+@use "../../util/device" as device;
+@use "../sizes" as sizes;
 
-$plain: 'plain';
+$plain: "plain";
 $default-color: null;
 
-@mixin tokens($palette) {
-    @include theme.select-attribute($palette, color, $default-color) {
-        @include theme.light {
-            --plain-text: #{color.mix-token($palette, 700)};
-            --plain-text-disabled: #{color.mix-token($palette, 300)};
-        }
-        @include theme.dark {
-            --plain-text: #{color.mix-token($palette, 400)};
-            --plain-text-disabled: #{color.mix-token($palette, 900)};
-        }
-        --text: var(--plain-text);
-        --link-text: #{color.mix-token(cta, 700)};
-        --link-text-hover: #{color.mix-token(focus, 800)};
-        --link-text-active: #{color.mix-token(cta, 900)};
-        --link-text-visited: #{color.mix-token(visited, 500)};
+@mixin light-colors() {
+  @include button-const.selector() {
+    &:where([category="#{$plain}"]) {
+      &:where([color="critical"]) {
+        @include b-tokens.light-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]),
+      &:where([color="cta"]) {
+        @include layout();
+      }
     }
+  }
+}
+
+@mixin dark-colors() {
+  @include button-const.selector() {
+    &:where([category="#{$plain}"]) {
+      &:where([color="critical"]) {
+        @include b-tokens.dark-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]),
+      &:where([color="cta"]) {
+        @include layout();
+      }
+    }
+  }
+}
+
+@mixin create() {
+  html {
+    @include light-colors();
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors();
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors();
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors();
+    }
+  }
 }
 
 @mixin layout() {
-    @include button-const.layout();
+  --text: var(--plain-btn-text);
+  @include button-const.layout();
+  background-color: transparent;
+  @include device.if-hover {
+    background: var(--generic-hover);
+  }
 
-    background-color: transparent;
-    color: var(--text);
-    @include device.if-hover {
-        background: var(--generic-hover);
-    }
+  &:active {
+    background: var(--generic-active);
+  }
 
-    &:active {
-        background: var(--generic-active);
-    }
-
-    &:disabled {
-        --text: var(--plain-text-disabled);
-        color: var(--text);
-        background: var(--surface1);
-    }
-    }
-
-/// create the layout and tokens for a plain button
-/// @param {List} $palette: a list of palettes desired, reflective of the role
-@mixin create(
-    $palette: (
-        cta,
-        critical,
-    )
-) {
-    @include button-const.selectors() {
-        &:where([category='#{$plain}']) {
-            @each $key in $palette {
-                @if not $default-color{
-                    $default-color: $key !global;
-                }
-                @include tokens($key);
-            }
-            @include layout();
-        }
-
-    }
+  &:disabled {
+    --text: var(--plain-btn-text-disabled);
+    background: var(--surface1);
+  }
 }

@@ -1,54 +1,134 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
-import { ILinkComponentConfig } from "./link/link.component";
-import { TranslateService } from "@ngx-translate/core";
-import { StandAloneFunctions } from "../../../shared/functions/stand-alone.functions";
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+  HostListener,
+  ElementRef,
+  AfterViewInit,
+  Renderer2,
+  ChangeDetectorRef,
+  ViewChild
+} from '@angular/core';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { ILinkComponentConfig } from './link/link.component';
+import { TranslateService } from '@ngx-translate/core';
+import { StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
+import { IIconButtonComponentConfig } from '../icon-button/icon-button.component';
 
 export enum LinkType {
   href = 'href',
-  routerLink = 'routerLink',
+  routerLink = 'routerLink'
 }
 
 export interface IBreadcrumbConfig {
-  id: string,
-  size?: keyof typeof DSSizes,
+  id: string;
+  size?: keyof typeof DSSizes;
   type: keyof typeof LinkType;
   // Translation key of base url segment
   baseUrlKey: string;
   // The mid-layer navigation to the ancestor links, the previous pages that lead to users to the child page
-  links?: ILinkComponentConfig[],
+  links?: ILinkComponentConfig[];
 }
 
 @Component({
-  selector: 'lib-breadcrumb',
+  selector: 'ircc-cl-lib-breadcrumb',
   templateUrl: './breadcrumb.component.html'
 })
-export class BreadcrumbComponent implements OnInit, OnChanges {
+export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() config: IBreadcrumbConfig = {
     id: '',
     baseUrlKey: '',
     type: 'href'
   };
+
+  @Input() id? = '';
+  @Input() size?: keyof typeof DSSizes;
+  @Input() type?: keyof typeof LinkType;
+  // Translation key of base url segment
+  @Input() baseUrlKey?: string;
+
+
   baseUrl = '';
-  constructor(private translate: TranslateService, private standalone: StandAloneFunctions) {}
+  separatorIcon: IIconButtonComponentConfig = {
+    id: 'breadcrumb_separator',
+    category: 'custom',
+    size: this.config?.size,
+    icon: {
+      class: 'fa-light fa-ellipsis',
+      color: 'var(--text-primary)'
+    },
+    ariaLabel: ''
+  };
+  overflowLinks?: ILinkComponentConfig[];
+  normalLinks?: ILinkComponentConfig[]; // Links that are not overflow
+  displayOverflow = false;
+  private maxHeight: number = 0; // Max height of element in px
+  @ViewChild('breadcrumb_div', { static: false })
+  divRef?: ElementRef<HTMLDivElement>;
+  @ViewChild('breadcrumb_child', { static: false })
+  childRef?: ElementRef<HTMLParagraphElement>;
+  isChildOverflow: boolean = false;
+  constructor(
+    private translate: TranslateService,
+    private standalone: StandAloneFunctions,
+    private renderer: Renderer2,
+    private changeRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
+    //set config from individual options, if present
+    if(this.id && this.id !== '') this.config.id = this.id;
+    if(this.size) this.config.size = this.size;
+    if(this.type) this.config.type = this.type;
+    if(this.baseUrlKey) this.config.baseUrlKey = this.baseUrlKey
+
     this.createLinks();
+    this.separatorIcon.size = this.config.size;
+    this.maxHeight = this.getMaxHeight();
+    this.separatorIcon.ariaLabel = this.translate.instant(
+      'ACC_DEMO.BREADCRUMB_COMPONENT.ADDITIONAL_LINKS'
+    );
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.createOverflows();
+      this.isChildOverflow = this.getChildOverflow();
+      this.changeRef.detectChanges();
+    }, 500);
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    // If changing size, update max height
+    if (
+      !changes['config'].firstChange &&
+      changes['config'].currentValue.size !==
+        changes['config'].previousValue.size
+    ) {
+      this.maxHeight = this.getMaxHeight();
+    }
+    // If changing link type, recreate all links
+    if (
+      !changes['config'].firstChange &&
+      changes['config'].currentValue.type !==
+        changes['config'].previousValue.type
+    ) {
+      this.createLinks();
+    }
     if (this.config?.links && this.config?.links.length > 0) {
       if (this.config.type == 'routerLink') {
-        this.config?.links.forEach(link => {
+        this.config?.links.forEach((link) => {
           delete link.href;
-        })
+        });
       } else {
-        this.config?.links.forEach(link => {
+        this.config?.links.forEach((link) => {
           delete link.routerLink;
-        })
+        });
       }
     }
-    this.createLinks();
+    this.separatorIcon.size = this.config.size;
   }
 
   /**
@@ -61,12 +141,76 @@ export class BreadcrumbComponent implements OnInit, OnChanges {
       this.config?.links.forEach((link, i) => {
         if (i === 0) {
           link[this.config.type] = this.baseUrl;
-          prev = link[this.config.type]
+          prev = link[this.config.type];
         } else if (link.linkKey) {
-          link[this.config.type] = prev + this.translate.instant(link.linkKey) + '/'
-          prev = link[this.config.type]
+          link[this.config.type] =
+            prev + this.translate.instant(link.linkKey) + '/';
+          prev = link[this.config.type];
         }
-      })
+        link.overflow = false;
+      });
+
+      this.overflowLinks = this.config?.links.filter((link) => link.overflow);
+      this.normalLinks = this.config?.links.filter((link) => !link.overflow);
+    }
+  }
+
+  getMaxHeight(): number {
+    const containerElement = this.divRef && this.divRef.nativeElement;
+    if (containerElement == undefined) return 0;
+    const tempElement = this.renderer.createElement('p');
+    const text = this.renderer.createText('Test');
+    this.renderer.appendChild(tempElement, text);
+    this.renderer.addClass(tempElement, 'breadcrumb-child');
+    this.renderer.appendChild(containerElement, tempElement);
+    const maxHeight = tempElement.offsetHeight;
+    this.renderer.removeChild(containerElement, tempElement);
+    // Calculate based on elipsis icon size to p tag ratio
+    return maxHeight * 1.375;
+  }
+
+  createOverflows() {
+    if (
+      this.divRef &&
+      this.divRef?.nativeElement.offsetHeight <= this.maxHeight
+    )
+      return;
+
+    if (this.config.links && this.config.links.length > 1) {
+      const linksLength = this.config.links.length;
+
+      const overflow = this.config?.links.find(
+        (link, i) => i > 0 && i < linksLength - 1 && !link.overflow
+      );
+      if (overflow) overflow.overflow = true;
+
+      this.overflowLinks = this.config?.links.filter((link) => link.overflow);
+      this.normalLinks = this.config?.links.filter((link) => !link.overflow);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.overflowLinks = [];
+    this.normalLinks = [];
+    this.createLinks();
+    this.createOverflows();
+    this.isChildOverflow = this.getChildOverflow();
+  }
+
+  flipOverflow(buttonId: string) {
+    this.displayOverflow = !this.displayOverflow;
+  }
+
+  // Check if child page title overflows to 2nd line
+  getChildOverflow(): boolean {
+    if (this.childRef) {
+      return (
+        this.childRef.nativeElement.offsetWidth <
+        this.childRef.nativeElement.scrollWidth
+      );
+    } else {
+      return false;
     }
   }
 }

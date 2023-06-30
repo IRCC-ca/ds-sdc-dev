@@ -63,9 +63,9 @@ $grey: (
 
 $navy: (
     100: (
-        220deg,
-        67%,
-        96%,
+        218deg,
+        71%,
+        97%,
     ),
     200: (
         218deg,
@@ -189,9 +189,9 @@ $blue: (
 
 $red: (
     100: (
-        355deg,
-        57%,
-        95%,
+        359deg,
+        55%,
+        96%,
     ),
     200: (
         0deg,
@@ -252,9 +252,9 @@ $red: (
 
 $orange: (
     100: (
-        28deg,
-        57%,
-        95%,
+        29deg,
+        55%,
+        96%,
     ),
     200: (
         28deg,
@@ -282,7 +282,7 @@ $orange: (
         56%,
     ),
     700: (
-        29deg,
+        28deg,
         82%,
         48%,
     ),
@@ -316,8 +316,8 @@ $orange: (
 $teal: (
     100: (
         194deg,
-        57%,
-        95%,
+        55%,
+        96%,
     ),
     200: (
         193deg,
@@ -378,9 +378,9 @@ $teal: (
 
 $green: (
     100: (
-        152deg,
-        57%,
-        95%,
+        150deg,
+        55%,
+        96%,
     ),
     200: (
         151deg,
@@ -441,9 +441,9 @@ $green: (
 
 $purple: (
     100: (
-        272deg,
-        57%,
-        95%,
+        270deg,
+        55%,
+        96%,
     ),
     200: (
         271deg,
@@ -515,7 +515,15 @@ $purple: (
             success: $green,
             focus: $blue,
             visited: $purple,
-            primary: $blue
+            primary: $blue,
+            blue: $blue,
+            red: $red,
+            orange: $orange,
+            green: $green,
+            teal: $teal,
+            purple: $purple,
+            navy: $navy,
+            grey: $grey
         ),
         greyscale: (
             neutral: $grey,
@@ -527,7 +535,15 @@ $purple: (
             success: $grey,
             focus: $grey,
             visited: $grey,
-            primary: $grey
+            primary: $grey,
+            blue: $grey,
+            red: $grey,
+            orange: $grey,
+            green: $grey,
+            teal: $grey,
+            purple: $grey,
+            navy: $grey,
+            grey: $grey
         )
     );
 }
@@ -544,7 +560,15 @@ $purple: (
             success: $purple,
             focus: $purple,
             visited: $purple,
-            primary: $purple
+            primary: $purple,
+            blue: $blue,
+            red: $red,
+            orange: $orange,
+            green: $green,
+            teal: $teal,
+            purple: $purple,
+            navy: $navy,
+            grey: $grey
         )
     );
 }

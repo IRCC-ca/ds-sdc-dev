@@ -1,0 +1,85 @@
+@use "../../util/color" as color;
+@use "../text" as text;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "../button/button-const" as button-const;
+@use "./link" as link-const;
+@use "../../util/device" as device;
+@use "../button/button-tokens" as b-tokens;
+@use "../sizes" as sizes;
+$secondary: "secondary";
+$default-color: null;
+
+@mixin light-colors() {
+  a,
+  .link {
+    &:where([category="#{$secondary}"]) {
+      &:where([color="critical"]) {
+        @include b-tokens.light-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]) {
+        @include layout();
+      }
+    }
+  }
+}
+
+@mixin dark-colors() {
+  a,
+  .link {
+    &:where([category="#{$secondary}"]) {
+      &:where([color="critical"]) {
+        @include b-tokens.dark-colors(critical, neutral);
+        @include layout();
+      }
+      &:not([color]) {
+        @include layout();
+      }
+    }
+  }
+}
+
+@mixin create() {
+  html {
+    @include light-colors();
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors();
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors();
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors();
+    }
+  }
+}
+
+@mixin layout() {
+  @include button-const.layout();
+  --text: var(--secondary-btn-text);
+  text-decoration: none;
+  box-shadow: sizes.$border-style;
+  background-color: var(--surface1);
+  @include device.if-hover {
+    background-color: var(--generic-hover);
+  }
+
+  &:active {
+    background-color: var(--generic-active);
+  }
+
+  &:disabled {
+    --text: var(--secondary-btn-text-disabled);
+    background-color: var(--surface1);
+    border-color: var(--secondary-border-disabled);
+  }
+
+  &:focus {
+    box-shadow: sizes.$border-style, sizes.$focus-shadow;
+  }
+}

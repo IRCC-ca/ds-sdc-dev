@@ -1,0 +1,110 @@
+<h2>Select component for QA:</h2>
+<ircc-cl-lib-theme-switch></ircc-cl-lib-theme-switch>
+<ircc-cl-lib-progress-tags></ircc-cl-lib-progress-tags>
+<div class="btn-cont">
+  <button (click)="toggleComp('link')">STYLES - Links Buttons</button>
+  <button (click)="toggleComp('radio')">Radio Component</button>
+  <button (click)="toggleComp('banner')">Banner Component</button>
+  <button (click)="toggleComp('hidden')">Hidden Nav Component</button>
+  <button (click)="toggleComp('icon')">Icon Component</button>
+  <button (click)="toggleComp('flyout')">Flyout/Dropdown Component</button>
+</div>
+<hr />
+<section id="link">
+  <h2>Links and buttons</h2>
+  <button category="link">Testing link button</button>
+  <a href="#">Classic link</a>
+  <a
+    href="#"
+    category="primary"
+    >Primary</a
+  >
+  <a
+    href="#"
+    category="secondary"
+    >Secondary</a
+  >
+  <a
+    href="#"
+    category="secondary"
+    color="critical"
+    >Testing critical</a
+  >
+</section>
+<section id="radio">
+  <h2>Radio input component</h2>
+  <ircc-cl-lib-radio-input [config]="radioConfig"></ircc-cl-lib-radio-input>
+  <button (click)="triggerError()">Toggle Errors (1, 2 or 0)</button>
+  <button (click)="toggleDisable()">Disable/Enable radio 1</button>
+  <app-auto-tester [config]="radioTestConfig"></app-auto-tester>
+</section>
+<section id="banner">
+  <h2>Banner component</h2>
+  <p>
+    Note: banner resize will need to be tested to see if line dissapears if
+    text-content is only one line
+  </p>
+  <h3>Banner config:</h3>
+  <app-auto-tester [config]="testComponentConfig"></app-auto-tester>
+  <ircc-cl-lib-banner [config]="qaBanner"></ircc-cl-lib-banner>
+  <hr />
+  <h3>CTA config:</h3>
+  <app-auto-tester [config]="ctaTestConfig"></app-auto-tester>
+</section>
+<section id="hidden">
+  <h2>Hidden Nav</h2>
+  <ircc-cl-lib-hidden-nav [config]="hiddenNavConfig"></ircc-cl-lib-hidden-nav>
+  <h2>This heading has no id</h2>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+    perspiciatis?
+  </p>
+  <p>
+    Nam quia hic repellat ea facilis, magnam perferendis voluptatem expedita.
+  </p>
+  <p>Minus illo provident facilis eaque harum optio veniam corrupti nulla?</p>
+  <h2 id="t1">Test 1</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum commodi
+    pariatur, a cumque deserunt unde velit ad distinctio, placeat ipsa
+    accusantium eligendi dolorum debitis soluta adipisci rem labore,
+    exercitationem obcaecati!
+  </p>
+  <p>
+    Architecto repellendus odio perferendis, sit minus explicabo hic. Corrupti
+    quia porro amet vel blanditiis aliquid neque provident qui reprehenderit
+    necessitatibus! Officiis ducimus, repudiandae necessitatibus reprehenderit
+    ab labore porro magnam alias.
+  </p>
+  <p>
+    Reiciendis sunt adipisci saepe, perspiciatis expedita ad ex exercitationem
+    illum accusantium voluptatibus tempore culpa explicabo repellendus
+    molestiae, delectus atque, quas eum. Eius error consectetur rem saepe
+    eligendi vel odio beatae?
+  </p>
+  <p>
+    Accusantium recusandae dolore quae rem, veritatis optio et dignissimos nisi
+    ad sit asperiores ipsum explicabo laudantium vitae a repellendus unde non
+    quod eum ipsa, qui culpa magni architecto? Accusantium, reiciendis!
+  </p>
+  <h2 id="t2">Test 2</h2>
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia sunt error
+    ullam deleniti ex, laboriosam amet maiores, fugit et asperiores, sequi culpa
+    quae atque rerum.
+  </p>
+</section>
+<section id="icon">
+  <ircc-cl-lib-icon
+    [config]="iconConfig"
+    (click)="iconClick()"
+  ></ircc-cl-lib-icon>
+</section>
+<section id="flyout">
+  <ircc-cl-lib-dropdown [config]="dropdownConfig"></ircc-cl-lib-dropdown>
+  <ircc-cl-lib-button
+    class="sizeBtn"
+    (click)="toggleSize()"
+    >Toggle large/small</ircc-cl-lib-button
+  >
+</section>

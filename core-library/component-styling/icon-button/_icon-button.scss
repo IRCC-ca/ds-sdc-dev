@@ -9,7 +9,7 @@
 @use "sass:map";
 
 @mixin selector {
-  lib-icon-button#{template-const.$escape} {
+  ircc-cl-lib-icon-button#{template-const.$escape} {
     @content;
   }
 }
@@ -22,30 +22,40 @@
 
 @mixin primary-lg {
   svg {
-    width: 15px;
+    height: 23px;
   }
 }
 
 @mixin primary-sm {
   svg {
-    width: 13px;
+    height: 20px;
   }
 }
 
-@mixin critical-lg {
+@mixin lg {
+  > span {
+    width: 24px;
+    height: 24px;
+  }
+
   svg {
-    width: 21px;
+    height: 24px;
   }
 }
 
-@mixin critical-sm {
+@mixin sm {
+  > span {
+    width: 20px;
+    height: 20px;
+  }
+
   svg {
-    width: 18px;
+    height: 20px;
   }
 }
 
 @mixin layout {
-  > button {
+  > button[category="plain"].icon-btn {
     border-radius: 50%;
 
     &:focus {
@@ -54,7 +64,7 @@
 
     &:disabled {
       svg {
-        color: var(--text-disabled) !important;
+        color: var(--text-disabled);
       }
     }
 
@@ -64,22 +74,22 @@
       justify-content: center;
     }
 
+    .ds-icon-container {
+      > span {
+        display: flex;
+      }
+    }
+
     &.large {
       padding: 10px;
 
-      > span {
-        width: 24px;
-        height: 24px;
-      }
+      @include lg;
     }
 
     &.small {
       padding: 10px;
 
-      > span {
-        width: 20px;
-        height: 20px;
-      }
+      @include sm;
     }
 
     &.extraSmall {
@@ -89,72 +99,26 @@
         width: 16px;
         height: 16px;
       }
+
+      svg {
+        height: 16px;
+      }
+    }
+
+    @include size.select(large) {
+      @include lg;
+    }
+
+    @include size.select(small) {
+      @include sm;
     }
 
     &.primary {
+      // If SVG shows up blurry, slightly lower height to achieve optimal result
       &.large {
         @include primary-lg;
-      }
-
-      &.small {
-        @include primary-sm;
-      }
-
-      &.extraSmall {
-        svg {
-          width: 10px;
-        }
-      }
-
-      @include size.selector(large) {
-        @include primary-lg;
-      }
-
-      @include size.selector(small) {
-        @include primary-sm;
-      }
-    }
-
-    &.critical {
-      &.large {
-        @include critical-lg;
-      }
-
-      &.small {
-        @include critical-sm;
-      }
-
-      @include size.selector(large) {
-        @include critical-lg;
-      }
-
-      @include size.selector(small) {
-        @include critical-sm;
-      }
-    }
-
-    &.custom {
-      &.large {
-        @include primary-lg;
-      }
-
-      &.small {
-        @include primary-sm;
-      }
-
-      &.extraSmall {
-        svg {
-          width: 10px;
-        }
-      }
-
-      @include size.selector(large) {
-        @include primary-lg;
-      }
-
-      @include size.selector(small) {
-        @include primary-sm;
       }
     }
   }
 }
+

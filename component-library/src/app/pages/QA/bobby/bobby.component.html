@@ -1,0 +1,10 @@
+<h2>Click the Component you want to test</h2>
+
+<button (click)="buttonActions('inputComponent')">Input Component</button>
+
+<ng-container *ngIf="showInputComponent === true">
+  <h2>Input Component</h2>
+  <ircc-cl-lib-input [config]="qaInput"></ircc-cl-lib-input>
+  <app-auto-tester [config]="testInputComponentConfig"></app-auto-tester>
+  <button (click)="buttonActions('disable-input')">Disable</button>
+</ng-container>

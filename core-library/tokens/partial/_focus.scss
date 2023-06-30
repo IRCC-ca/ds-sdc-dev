@@ -1,40 +1,55 @@
 /* stylelint-disable selector-max-universal */
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../template-const' as template-const;
-@use '../sizes' as sizes;
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../template-const" as template-const;
+@use "../sizes" as sizes;
+
+@mixin light-colors($palette) {
+  --focus-border: #{color.mix-token($palette, 700)};
+}
+
+@mixin dark-colors($palette) {
+  --focus-border: #{color.mix-token($palette, 600)};
+}
 
 @mixin tokens($palette) {
-    @include theme.light {
-        --focus-border: #{color.mix-token($palette, 700)};
-        --focus-border-weak: #{color.mix-token($palette, 200)};
+  html {
+    @include light-colors($palette);
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors($palette);
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors($palette);
     }
-    @include theme.dark {
-        --focus-border: #{color.mix-token($palette, 600)};
-        --focus-border-weak: #{color.mix-token($palette, 1100)};
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors($palette);
     }
+  }
 }
 
 @mixin create($palette: focus) {
-    @include selector {
-        @include layout();
-    }
-    @at-root {
-        #{template-const.$root-selectors} {
-        @include tokens($palette);
-        }
-    }
+  @include tokens($palette);
+  @include selector {
+    @include layout();
+  }
 }
 
 @mixin layout {
-    outline: var(--focus-border) solid sizes.$outline-width;
-    outline-offset: sizes.$outline-width;
-    box-shadow: sizes.$focus-shadow;
-    z-index: 10;
+  outline: var(--focus-border) solid sizes.$outline-width;
+  outline-offset: sizes.$outline-width;
+  box-shadow: sizes.$focus-shadow;
+  z-index: 10;
+  overflow: visible;
+  position: relative;
+  border-radius: 4px;
 }
 
 @mixin selector {
-    *:focus-visible {
-        @content;
-    }
+  *:focus-visible {
+    @content;
+  }
 }

@@ -1,0 +1,20 @@
+section {
+  display: none;
+}
+
+.btn-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.show {
+  display: block;
+}
+
+.sizeBtn {
+  display: block;
+  margin-top: 1rem;
+}

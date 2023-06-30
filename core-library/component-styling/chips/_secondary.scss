@@ -1,4 +1,5 @@
 @use '../../tokens/template-const' as template-const;
+@use '../../typography/typography' as typography;
  
 @mixin selector {
     lib-secondary-chips#{template-const.$escape} {
@@ -14,17 +15,13 @@
 
 @mixin layout {
 .secondary-chip {
-    font-family: 'Inter';
+    @include typography.fontSet(body, 3, regular);
     font-style: normal;
-    font-weight: 400;
-    font-size: 0.75rem;
-    line-height: 20px;
     border-style: solid;
     border-width: 1.5px;
     border-radius: 4px;
     //taken from component stylehseet will need to updated border-color: $ircc-ca-disabled-border;
     //color: $ircc-ca-hover-border;
-    font-weight: 400;
     display: flex;
     align-items: center;
     height: 28px;

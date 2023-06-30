@@ -1,38 +1,69 @@
-@use '../../util/device';
-@use '../../util/theme';
-@use '../../util/color';
-@use '../template-const';
+@use "../../util/device";
+@use "../../util/theme";
+@use "../../util/color";
+@use "../template-const";
 
 @mixin create($palette: focus) {
-    @at-root {
-        #{template-const.$root-selectors} {
-            @include tokens($palette);
-        }
-    }
+  @include tokens($palette);
 }
+
+@mixin light-colors($palette) {
+  @include device.if-hover {
+    --navigation-hover: #{color.mix-token($palette, 800)};
+    --navigation-weak-hover: #{color.mix-token($palette, 200)};
+    --formcontrol-hover: #{color.mix-token($palette, 800)};
+    --formcontrol-weak-hover: #{color.mix-token($palette, 200)};
+  }
+
+  --navigation: #{color.mix-token($palette, 700)};
+  --navigation-active: #{color.mix-token($palette, 900)};
+  --navigation-weak: #{color.mix-token($palette, 100)};
+  --navigation-weak-active: #{color.mix-token($palette, 300)};
+  --navigation-disabled: #{color.mix-token($palette, 300)};
+  --formcontrol: #{color.mix-token($palette, 700)};
+  --formcontrol-active: #{color.mix-token($palette, 900)};
+  --formcontrol-disabled: #{color.mix-token($palette, 300)};
+  --formcontrol-weak: #{color.mix-token($palette, 100)};
+  --formcontrol-weak-active: #{color.mix-token($palette, 300)};
+  --text-disabled: #{color.mix-token($palette, 100)};
+}
+
+@mixin dark-colors($palette) {
+  @include device.if-hover {
+    --navigation-hover: #{color.mix-token($palette, 500)};
+    --navigation-weak-hover: #{color.mix-token($palette, 1100)};
+    --formcontrol-hover: #{color.mix-token($palette, 500)};
+    --formcontrol-weak-hover: #{color.mix-token($palette, 1100)};
+  }
+
+  --navigation: #{color.mix-token($palette, 600)};
+  --navigation-active: #{color.mix-token($palette, 400)};
+  --navigation-weak: #{color.mix-token($palette, 1200)};
+  --navigation-weak-active: #{color.mix-token($palette, 1000)};
+  --navigation-disabled: #{color.mix-token($palette, 1000)};
+  --formcontrol: #{color.mix-token($palette, 600)};
+  --formcontrol-active: #{color.mix-token($palette, 400)};
+  --formcontrol-disabled: #{color.mix-token($palette, 1000)};
+  --formcontrol-weak: #{color.mix-token($palette, 1200)};
+  --formcontrol-weak-active: #{color.mix-token($palette, 1000)};
+  --text-disabled: #{color.mix-token($palette, 1200)};
+}
+
 @mixin tokens($palette: focus) {
-    @include theme.light() {
-        --navigation: #{color.mix-token($palette, 700)};
-        --navigation-weak: #{color.mix-token($palette, 100)};
-        --navigation-disabled: #{color.mix-token($palette, 300)};
-        --formcontrol: #{color.mix-token($palette, 700)};
-        --formcontrol-disabled: #{color.mix-token($palette, 300)};
-        @media (any-hover: hover) {
-            --navigation-hover: #{color.mix-token($palette, 800)};
-            --navigation-weak-hover: #{color.mix-token($palette, 200)};
-            --formcontrol-hover: #{color.mix-token($palette, 800)};
-        }
+  html {
+    @include light-colors($palette);
+  }
+
+  html[scheme="dark"] {
+    @include dark-colors($palette);
+  }
+
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors($palette);
     }
-    @include theme.dark() {
-        --navigation: #{color.mix-token($palette, 600)};
-        --navigation-weak: #{color.mix-token($palette, 1200)};
-        --navigation-disabled: #{color.mix-token($palette, 1000)};
-        --formcontrol: #{color.mix-token($palette, 600)};
-        --formcontrol-disabled: #{color.mix-token($palette, 1000)};
-        @media (any-hover: hover) {
-            --navigation-hover: #{color.mix-token($palette, 500)};
-            --navigation-weak-hover: #{color.mix-token($palette,1100)};
-            --formcontrol-hover: #{color.mix-token($palette, 500)};
-        }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors($palette);
     }
+  }
 }

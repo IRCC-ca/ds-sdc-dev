@@ -1,36 +1,58 @@
-<div [class]="config.orientation" class="main-container">
-  <div class="container-plus-line" *ngFor="let step of config.steps; let i = index">
-    <nav class="progress-nav" role="navigation">
+<div
+  [class]="config.orientation"
+  class="main-container"
+>
+  <div
+    class="container-plus-line"
+    *ngFor="let step of config.steps; let i = index"
+  >
+    <nav
+      class="progress-nav"
+      role="navigation"
+    >
       <button
-        role="tab" 
-        class="container" 
-        [ngClass]="config.size" 
+        role="tab"
+        class="container"
+        [ngClass]="config.size"
         category="plain"
-        [attr.disabled] = "step.tagConfig.type === 'locked' ? 'disabled' : null"
-        (click)="tabClickFn(i)">
+        [attr.disabled]="step.tagConfig.type === 'locked' ? 'disabled' : null"
+        (click)="tabClickFn(i)"
+      >
         <div class="except-line">
           <button
             tabindex="-1"
-            *ngIf="i === config.selected" selected 
-            class="tags-btn" 
-            [id]="(config.id + '_step_' + i)"
-            [attr.aria-label]="stepText + ' ' + (i + 1) + ' selected'">
-            {{(stepText + ' ' + (i + 1))}}
+            *ngIf="i === config.selected"
+            selected
+            class="tags-btn"
+            [id]="config.id + '_step_' + i"
+            [attr.aria-label]="stepText + ' ' + (i + 1) + ' selected'"
+          >
+            {{ stepText + ' ' + (i + 1) }}
           </button>
           <button
             tabindex="-1"
-            *ngIf="i !== config.selected" 
-            class="tags-btn-plus" [id]="(config.id + '_step_' + i)"
-            [attr.aria-label]="stepText + ' ' + (i + 1)">
-            {{(stepText + ' ' + (i + 1))}}
+            *ngIf="i !== config.selected"
+            class="tags-btn-plus"
+            [id]="config.id + '_step_' + i"
+            [attr.aria-label]="stepText + ' ' + (i + 1)"
+          >
+            {{ stepText + ' ' + (i + 1) }}
           </button>
-          <span class="stepTitle" [innerHTML]="step.title || '' | translate"></span>
-          <div [ngClass]="{'small': config.size === 'small' }" >
-            <lib-progress-tags [config]="step.tagConfig"></lib-progress-tags>
+          <span
+            class="stepTitle"
+            [innerHTML]="step.title || '' | translate"
+          ></span>
+          <div [ngClass]="{ small: config.size === 'small' }">
+            <ircc-cl-lib-progress-tags
+              [config]="step.tagConfig"
+            ></ircc-cl-lib-progress-tags>
           </div>
         </div>
       </button>
     </nav>
-    <div [ngClass]="{'green-line': step.tagConfig.type === 'success'}" class="line"></div>
+    <div
+      [ngClass]="{ 'green-line': step.tagConfig.type === 'success' }"
+      class="line"
+    ></div>
   </div>
 </div>

@@ -1,153 +1,91 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "../../util/accessibility" as a11y;
+@use "sass:map";
 
 @mixin selector {
-  lib-input#{template-const.$escape} {
-      @content;
+  ircc-cl-lib-input#{template-const.$escape} {
+    @content;
   }
 }
 
 @mixin create {
   @include selector() {
-      @include layout();
+    @include layout();
   }
 }
 
 @mixin size-large() {
-  .input-label {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .input-desc {
-    font-size: 16px;
-  }
-
-  .input-hint {
-    font-size: 16px;
-    margin: 12px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 16px;
-  }
-
   .input-password-field {
     margin-top: 8px;
-    height: 54px;
+    height: 52px;
     padding-right: 56px;
   }
 
   .input-text-field {
     margin-top: 8px;
-    height: 54px;
+    height: 52px;
   }
 
-  .passwordIcon {
+  .input-content-area > button.passwordIcon {
     font-size: 20px;
     padding: 12px 16px 12px 16px;
   }
 }
 
 @mixin size-small() {
-
-  .input-label {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .input-desc {
-    font-size: 14px;
-  }
-
-  .input-hint {
-    font-size: 14px;
-    margin: 8px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 12px;
-  }
-
-
   .input-password-field {
-    padding: 10px 44px 10px 12px; 
+    padding: 10px 44px 10px 12px;
     margin-top: 4px;
-    height: 42px;
+    height: 40px;
   }
 
   .input-text-field {
-    padding: 10px 12px 10px 12px; 
+    padding: 10px 12px 10px 12px;
     margin-top: 4px;
-    height: 42px;
+    height: 40px;
   }
 
-  .passwordIcon {
+  .input-content-area > button.passwordIcon {
     font-size: 16px;
     padding: 6px 12px 6px 12px;
   }
 
-  lib-error {
+  ircc-cl-lib-error {
     font-size: 14px;
   }
 }
 
 @mixin layout {
-
   .input-container {
     user-select: none;
-
-    .input-text {
-      width: 100%;
-      display: grid;
-      position: relative;
-
-      .input-label {
-        display: flex;
-        font-family: 'Lato'
-      }
-      .input-desc {
-        margin: 4px 0px 0px 0px;
-      }
-
-      .input-hint {
-        color: #6F6F71;
-      }
-      .required-field-container {
-        display: flex;
-        .required-star {
-          color: var(--critical-text);
-          font-weight: 400;
-          line-height: 16px;
-          justify-self:flex-start;
-          margin-right: 5px;
-        }
-      }
-    }
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-large();
     .small {
-      @include size-small()
+      @include size-small();
     }
   }
 
-  @include size.selector(small) {
+  @include size.select(small) {
     @include size-small();
     .large {
-      @include size-large()
+      @include size-large();
     }
   }
 
-  .input-content-area{
+  .input-field {
+    background-color: transparent;
+  }
+
+  .input-content-area {
     position: relative;
     .input-password-field {
       box-sizing: border-box;
@@ -158,7 +96,7 @@
       resize: none;
     }
 
-    .passwordIcon {
+    > button.passwordIcon {
       position: absolute;
       top: 56%;
       right: 0px;
@@ -167,27 +105,24 @@
       align-self: flex-end;
       margin-bottom: 0px;
       background: transparent;
-      z-index: 1;
+      z-index: 10;
       color: var(--text-primary);
     }
 
     button:disabled {
       color: var(--text-disabled);
     }
-
   }
 
   .check-error {
     padding: 8px 0;
   }
 
+  .input-wrapper {
+    padding: 0 3px 0 0;
+  }
+
   .sr-only {
-      clip: rect(0 0 0 0); 
-      clip-path: inset(50%);
-      height: 1px;
-      overflow: hidden;
-      position: absolute;
-      white-space: nowrap; 
-      width: 1px;
+    @include a11y.sr-only;
   }
 }

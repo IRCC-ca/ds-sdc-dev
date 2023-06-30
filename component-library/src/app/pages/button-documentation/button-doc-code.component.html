@@ -1,0 +1,44 @@
+<div class="content-doc-wrapper col-12 col-lg-10">
+  <div style="width: 100%">
+    <app-title-slug-url
+      [config]="interactiveDemoSlugTitleURLConfig"
+    ></app-title-slug-url>
+
+    <app-interactive-demo>
+      <ircc-cl-lib-tabs
+        tabs
+        (valueChange)="setButtonCategory($event)"
+        [config]="demoTabsConfig"
+      >
+      </ircc-cl-lib-tabs>
+      <div
+        *ngIf="layoutFluid"
+        component
+        class="button-container-fluid"
+      >
+        <ircc-cl-lib-button [config]="buttonConfig">Default</ircc-cl-lib-button>
+      </div>
+
+      <div
+        *ngIf="!layoutFluid"
+        component
+        class="button-container-fixed"
+      >
+        <ircc-cl-lib-button [config]="buttonConfig">Default</ircc-cl-lib-button>
+      </div>
+      <ng-container toggles>
+        <ng-container *ngFor="let toggle of toggles">
+          <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+        </ng-container>
+        <ng-container *ngFor="let checkbox of checkboxes">
+          <ircc-cl-lib-checkbox
+            class="checkbox"
+            [config]="checkbox"
+          ></ircc-cl-lib-checkbox>
+        </ng-container>
+      </ng-container>
+    </app-interactive-demo>
+  </div>
+
+  <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
+</div>

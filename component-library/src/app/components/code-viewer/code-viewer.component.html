@@ -1,0 +1,30 @@
+<div
+  [id]="config.id"
+  class="code-viewer"
+>
+  <ircc-cl-lib-tabs
+    class="tabs-component"
+    [config]="tabConfig"
+    (valueChange)="getSelectedTab($event)"
+  ></ircc-cl-lib-tabs>
+  <app-accordian-container
+    [config]="accordionConfig"
+    [open]="openAccordion"
+  >
+    <ircc-cl-lib-button
+      extraRight
+      [config]="buttonConfigCopy"
+      [cdkCopyToClipboard]="selectedTab.value"
+      class="tabs-btn"
+    >
+      {{ 'General.CopyCode' | translate }}
+    </ircc-cl-lib-button>
+
+    <app-resizable-container
+      (getHeight)="getHeight($event)"
+      [setHeight]="height"
+      [minHeight]="minHeightResizeContainer"
+    >
+      <pre><code [highlight]="selectedTab.value"> </code></pre></app-resizable-container
+  ></app-accordian-container>
+</div>

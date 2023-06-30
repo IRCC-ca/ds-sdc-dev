@@ -1,15 +1,15 @@
-@use '../../util/color' as color;
-@use '../../util/theme' as theme;
-@use '../../util/device' as device;
-@use '../../util/size' as size;
-@use '../../tokens/template-const' as template-const;
-@use '../../tokens/sizes' as token-size;
-@use '../../typography/typography' as typography;
-@use '../../tokens/text' as text;
-@use 'sass:map';
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
 
 @mixin selector {
-  lib-textarea#{template-const.$escape} {
+  ircc-cl-lib-textarea#{template-const.$escape} {
     @content;
   }
 }
@@ -21,27 +21,9 @@
 }
 
 @mixin size-large() {
-  .textarea-label {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .textarea-desc {
-    font-size: 16px;
-  }
-
-  .textarea-hint {
-    font-size: 16px;
-    margin: 12px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 16px;
-  }
-
   .textarea-field {
     min-height: 78px;
-    padding: 14px 16px 14px 20px; 
+    padding: 14px 16px 14px 20px;
     margin-top: 8px;
     font-size: 16px;
     line-height: 24px;
@@ -52,34 +34,12 @@
     margin-top: 8px;
     margin-bottom: 0px;
   }
-
-  // }
 }
 
 @mixin size-small() {
-
-  .textarea-label {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .textarea-desc {
-    font-size: 14px;
-  }
-
-  .textarea-hint {
-    font-size: 14px;
-    margin: 8px 0px 0px 0px;
-  }
-
-  .required-star {
-    font-size: 12px;
-  }
-
-
   .textarea-field {
     min-height: 62px;
-    padding: 10px 16px 10px 14px; 
+    padding: 10px 16px 10px 14px;
     margin-top: 4px;
     font-size: 14px;
     line-height: 20px;
@@ -91,13 +51,13 @@
     margin-bottom: 0px;
   }
 
-  lib-error {
+  ircc-cl-lib-error {
     font-size: 14px;
   }
 }
 
 @mixin at-resize($value: none) {
-  .resize-#{$value}{
+  .resize-#{$value} {
     textarea {
       resize: $value;
     }
@@ -105,43 +65,21 @@
 }
 
 @mixin layout {
-
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-large();
     .small {
-        @include size-small()
+      @include size-small();
     }
   }
-    
-  @include size.selector(small) {
+
+  @include size.select(small) {
     @include size-small();
     .large {
-      @include size-large()
+      @include size-large();
     }
   }
 
   .textarea-container {
-    .textarea-label {
-      display: flex;
-      font-family: 'Lato'
-    }
-    .textarea-desc {
-      margin: 4px 0px 0px 0px;
-    }
-    .textarea-hint {
-      color: #6F6F71;
-    }
-    .required-field-container {
-      display: flex;
-      .required-star {
-          color: var(--critical-text);
-          font-weight: 400;
-          line-height: 16px;
-          justify-self:flex-start;
-          margin-right: 5px;
-      }
-    }
-
     .content-area {
       display: block;
 
@@ -158,10 +96,15 @@
         color: var(--warning-text);
       }
 
-
       textarea {
         display: block;
         box-sizing: border-box;
+
+        &:disabled {
+          &::placeholder {
+            color: var(--text-disabled);
+          }
+        }
       }
     }
   }

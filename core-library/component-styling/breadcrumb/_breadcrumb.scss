@@ -10,7 +10,7 @@
 @use "sass:map";
 
 @mixin selector {
-  lib-breadcrumb#{template-const.$escape} {
+  ircc-cl-lib-breadcrumb#{template-const.$escape} {
     @content;
   }
 }
@@ -23,10 +23,10 @@
 
 // For size small overwrite
 @mixin size-sm {
-  lib-breadcrumb-link {
+  ircc-cl-lib-breadcrumb-link {
     a,
-    lib-button .text {
-      @include typography.fontSize(map.get(text.$body, level), 3);
+    ircc-cl-lib-button .text {
+      @include typography.fontSet(body, 3, regular);
     }
 
     &.breadcrumb-root {
@@ -39,7 +39,7 @@
   }
 
   p {
-    @include typography.fontSize(map.get(text.$body, level), 3);
+    @include typography.fontSet(body, 3, regular);
 
     &.breadcrumb-child {
       margin-left: 8px;
@@ -51,15 +51,20 @@
     bottom: 0;
     padding: 0 2px;
   }
+
+  div.overflow-menu {
+    top: 44px;
+    left: -50px;
+  }
 }
 
 @mixin size-lg {
-  lib-breadcrumb-link {
-    margin-right: 8px;
+  ircc-cl-lib-breadcrumb-link {
+    margin-right: 4px;
 
     a,
-    lib-button .text {
-      @include typography.fontSize(map.get(text.$body, level), 2);
+    ircc-cl-lib-button .text {
+      @include typography.fontSet(body, 2, regular);
     }
 
     &.breadcrumb-item {
@@ -72,12 +77,12 @@
   }
 
   p {
-    @include typography.fontSize(map.get(text.$body, level), 2);
+    @include typography.fontSet(body, 2, regular);
 
     margin: 0;
 
     &.breadcrumb-child {
-      margin-left: 11px;
+      margin-left: 8px;
       padding: 4px;
     }
   }
@@ -87,12 +92,25 @@
     bottom: -2px;
     padding: 0 4px;
   }
+
+  div.overflow-menu {
+    top: 48px;
+    left: -43px;
+  }
 }
 
 @mixin layout {
+  display: block;
   padding: 6px 0;
+  position: relative;
 
-  lib-breadcrumb-link {
+  > div {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  ircc-cl-lib-breadcrumb-link {
     border-radius: 4px;
 
     &:focus,
@@ -104,6 +122,16 @@
       padding: 4px 8px;
     }
 
+    &.breadcrumb-overflow {
+      display: block;
+      margin-right: 0;
+      padding: 8px 16px;
+
+      &:active {
+        background: var(--generic-active);
+      }
+    }
+
     a {
       text-decoration: none;
       padding: 0;
@@ -111,16 +139,21 @@
       &:focus {
         outline: none;
       }
+
+      &:hover,
+      &:active {
+        background: none;
+      }
     }
 
-    lib-button {
+    ircc-cl-lib-button {
       &:focus,
       &:focus-visible {
         outline: none;
       }
 
       button {
-        line-height: 1rem !important;
+        line-height: 1rem;
 
         &:focus,
         &:focus-visible {
@@ -132,27 +165,29 @@
 
   p {
     display: inline-block;
+
+    &.breadcrumb-child {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 
   svg.fa-chevron-right {
-    color: color.mix-token(neutral, 500);
+    color: var(--text-disabled);
     position: relative;
   }
 
-  lib-button {
+  ircc-cl-lib-button {
     button {
       padding: 0;
-
-      .text {
-        font-family: Inter, serif;
-      }
 
       &:hover {
         color: var(--link-text-hover);
       }
 
       &:visited {
-        color: var(--link-cta-text-visited);
+        color: var(--link-text-visited);
       }
 
       &:active {
@@ -161,7 +196,47 @@
     }
   }
 
-  @include size.selector(small) {
+  lib-icon-button.elipsis-icon {
+    display: inline-block;
+    position: relative;
+  }
+
+  div.overflow-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  div.overflow-menu {
+    width: 197px;
+    border: 1px solid var(--grey-5);
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background: var(--surface1);
+    z-index: 99;
+    left: -43px;
+    padding: 8px 0;
+    position: absolute;
+
+    ircc-cl-lib-breadcrumb-link {
+      &:hover {
+        background-color: var(--generic-active);
+      }
+
+      a {
+        padding: 0;
+
+        --link-text: var(--grey-12);
+
+        &:hover {
+          color: var(--grey-12);
+          background: none;
+        }
+      }
+    }
+  }
+
+  @include size.select(small) {
     @include size-sm();
 
     .large {
@@ -169,7 +244,7 @@
     }
   }
 
-  @include size.selector(large) {
+  @include size.select(large) {
     @include size-lg();
 
     .small {

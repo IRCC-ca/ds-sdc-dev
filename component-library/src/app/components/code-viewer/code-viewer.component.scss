@@ -1,0 +1,41 @@
+@use '../../../../../core-library/util/theme' as theme;
+@use '../../../../../core-library/util/size' as size;
+@use '../../../../../core-library/tokens/template-const';
+
+@use 'sass:map';
+$selectors: 'app-code-viewer';
+
+@mixin selector {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin layout {
+  display: block;
+  .code-viewer {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 24px;
+
+    app-accordian-container {
+      border-top: 1px solid var(--divider);
+      display: block;
+      padding-left: 20px;
+    }
+    pre,
+    code {
+      overflow: auto;
+      width: 100%;
+      height: 100%;
+      white-space: pre;
+    }
+  }
+}

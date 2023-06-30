@@ -1,0 +1,37 @@
+<app-interactive-demo>
+  <ircc-cl-lib-tabs
+    tabs
+    (valueChange)="setInputType($event)"
+    [config]="demoTabsConfig"
+  >
+  </ircc-cl-lib-tabs>
+  <div
+    component
+    class="input-container"
+    #input
+  >
+    <ng-container [ngSwitch]="errorState">
+      <ircc-cl-lib-input
+        *ngSwitchDefault
+        [config]="inputConfig"
+      ></ircc-cl-lib-input>
+      <ircc-cl-lib-input
+        *ngSwitchCase="'Single'"
+        [config]="inputConfigSingle"
+      ></ircc-cl-lib-input>
+      <ircc-cl-lib-input
+        *ngSwitchCase="'Multiple'"
+        [config]="inputConfigMulti"
+      ></ircc-cl-lib-input>
+    </ng-container>
+  </div>
+  <ng-container toggles>
+    <ng-container *ngFor="let toggle of toggles">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxes">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+</app-interactive-demo>
+<app-code-viewer [config]="codeViewConfig"></app-code-viewer>

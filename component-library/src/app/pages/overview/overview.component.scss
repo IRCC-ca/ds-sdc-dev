@@ -1,0 +1,62 @@
+@use 'src/scss/grid';
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
+:host {
+  @include grid.row;
+
+  >.content-doc-wrapper {
+    @include grid.col-12;
+
+    @include grid.up-laptop-layout {
+      @include grid.col-12;
+    }
+
+    .sub-title {
+      margin-bottom: 24px;
+    }
+
+    .overviewTxt {
+      @include typography.fontSet(body, 1, regular);
+      margin: 0;
+    }
+
+    .wrapper-container {
+      margin-top: 64px;
+
+      >.box {
+        padding-bottom: 12px;
+
+        // This can be replaced by Bootstrap's gutter
+        &:nth-child(1) {
+          @include grid.up-phone-layout {
+            padding-right: 6px;
+          }
+        }
+
+        &:nth-child(2) {
+          @include grid.up-phone-layout {
+            padding-left: 6px;
+          }
+        }
+      }
+
+      .for-designers,
+      .for-devs {
+        // min-height: 174px;
+        border: 1px solid;
+        border-color: var(--divider);
+        border-radius: 12px;
+        padding: 20px 24px 44px 24px;
+
+        h3 {
+          margin: 0;
+        }
+
+        .boxtxt {
+          margin: 10px 0 12px 0;
+          @include typography.fontSet(body, 2, regular);
+        }
+      }
+    }
+  }
+}

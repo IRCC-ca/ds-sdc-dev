@@ -1,4 +1,7 @@
-<div class="autocomplete-container" [ngClass]="{ error: error }">
+<div
+  class="autocomplete-container"
+  [ngClass]="{ error: error }"
+>
   <div>
     <!-- <jl-pr-sclp-input
       [label]="title"
@@ -7,13 +10,12 @@
       [error]="error"
       (valueChange)="valueChange($event)"
     > -->
-      <lib-chip-item
-        *ngFor="let option of selectedOptions; let index = index"
-        [chipContent]="option['text']"
-        (iconClickEvent)="removeChipItem(index)"
-      ></lib-chip-item
-    >
-  <!-- </jl-pr-sclp-input> -->
+    <lib-chip-item
+      *ngFor="let option of selectedOptions; let index = index"
+      [chipContent]="option['text']"
+      (iconClickEvent)="removeChipItem(index)"
+    ></lib-chip-item>
+    <!-- </jl-pr-sclp-input> -->
   </div>
 
   <div
@@ -28,7 +30,9 @@
       [tabindex]="0"
       [ngClass]="emptyResults === false ? '' : 'hide-option'"
     >
-      <p class="select-target">{{ 'AllOptionsForAutocomplete' | translate}} {{ title | translate }}s</p>
+      <p class="select-target">
+        {{ 'AllOptionsForAutocomplete' | translate }} {{ title | translate }}s
+      </p>
     </div>
     <div
       class="option autocomplete-target"

@@ -1,23 +1,28 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DSSizes } from "../../../shared/constants/jl-components/jl-components.constants/jl-components.constants";
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormGroup,
+  NG_VALUE_ACCESSOR
+} from '@angular/forms';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IErrorPairs } from '../../../shared/interfaces/component-configs';
-import { IErrorIDs, StandAloneFunctions } from '../../../shared/functions/stand-alone.functions';
-import { ERROR_TEXT_STUB_EN, ERROR_TEXT_STUB_FR, ILabelConfig, ILabelIconConfig } from '../../shared/label/label.component';
-import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
+import {
+  IErrorIDs,
+  StandAloneFunctions
+} from '../../../shared/functions/stand-alone.functions';
+import {
+  ERROR_TEXT_STUB,
+  ILabelConfig,
+  ILabelIconConfig
+} from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
 
-// export declare enum SelectType {
-//   secondary = "secondary",
-//   primary = "primary",
-//   plain = "plain",
-// }
 export interface ISelectConfig {
   id: string;
   formGroup: FormGroup;
   label?: string;
   options?: ISelectOptionsConfig[];
-  // category?: keyof typeof SelectType;
   required?: boolean;
   hint?: string;
   desc?: string;
@@ -26,6 +31,7 @@ export interface ISelectConfig {
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
   topLabel?: string;
+  disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
 }
 export interface ISelectOptionsConfig {
   text: string;
@@ -33,7 +39,7 @@ export interface ISelectOptionsConfig {
 }
 
 @Component({
-  selector: 'lib-select',
+  selector: 'ircc-cl-lib-select',
   templateUrl: './select.component.html',
   providers: [
     {
@@ -46,16 +52,29 @@ export interface ISelectOptionsConfig {
 export class SelectComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorIds: IErrorIDs[] = [];
-  activiatedSelect: boolean = false
+  activiatedSelect: boolean = false;
+  rotateChevron: boolean = false;
 
   @Input() config: ISelectConfig = {
     id: '',
-    formGroup: new FormGroup({}),
-    // category: 'secondary',
+    formGroup: new FormGroup({})
   };
+  @Input() id = '';
+  @Input() formGroup?: FormGroup;
+  @Input() size?: keyof typeof DSSizes;
+  @Input() label?: string;
+  @Input() desc?: string;
+  @Input() hint?: string;
+  @Input() placeholder?: string;
+  @Input() required?: boolean;
+  @Input() options?: ISelectOptionsConfig[];
+  @Input() errorMessages?: IErrorPairs[];
+  @Input() topLabel?: string;
+  @Input() disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
+  labelIconConfig?: ILabelIconConfig;
+
   formControl?: AbstractControl;
   errorAria = '';
-
 
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
@@ -63,11 +82,13 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   };
   errorStubText = '';
 
-  constructor(public standAloneFunctions: StandAloneFunctions,
-              private translate: TranslateService) { }
+  constructor(
+    public standAloneFunctions: StandAloneFunctions,
+    private translate: TranslateService
+  ) {}
 
-  onChange = (formValue: string) => { };
-  onTouched = () => { };
+  onChange = (formValue: string) => {};
+  onTouched = () => {};
   writeValue(formValue: any) {
     // this.form.get('formControl')?.setValue(formValue);
   }
@@ -89,6 +110,15 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     this.activiatedSelect = true;
   }
 
+  onClicked() {
+    this.rotateChevron = !this.rotateChevron;
+  }
+
+  onBlur() {
+    this.touched = true;
+    this.rotateChevron = false;
+  }
+
   ngOnInit() {
     const retControl = this.config.formGroup.get(this.config.id);
     if (retControl) {
@@ -96,7 +126,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
 
     this.setLang(this.translate.currentLang);
-    this.translate.onLangChange.subscribe(change => {
+    this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -108,14 +138,35 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.hint,
       this.config.required,
       this.config.labelIconConfig,
-      this.config.topLabel);
+      this.config.topLabel
+    );
+
+    //set config from individual options, if present
+    if (this.formGroup) this.config.formGroup = this.formGroup;
+    if (this.id !== '') this.config.id = this.id;
+    if (this.size) this.config.size = this.size;
+    if (this.label) this.config.label = this.label;
+    if (this.desc) this.config.desc = this.desc;
+    if (this.hint) this.config.hint = this.hint;
+    if (this.placeholder) this.config.placeholder = this.placeholder;
+    if (this.required) this.config.required = this.required;
+    if (this.options) this.config.options = this.options;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+    if (this.topLabel) this.config.topLabel = this.topLabel;
+    if (this.disableError) this.config.disableError = this.disableError;
 
     if (this.config.errorMessages) {
-      this.errorIds = this.standAloneFunctions.getErrorIds(this.config.formGroup, this.config.id, this.config.errorMessages);
+      this.errorIds = this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
   }
 
-  ngOnChanges() {
+  //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
+  //TODO: Replace this with something less blunt
+  ngDoCheck() {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
@@ -125,16 +176,21 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.hint,
       this.config.required,
       this.config.labelIconConfig,
-      this.config.topLabel);
+      this.config.topLabel
+    );
   }
 
   /**
- * Get the aria error text for the label
- */
+   * Get the aria error text for the label
+   */
   getAriaErrorText() {
     if (this.config.errorMessages) {
       this.formControl?.markAsDirty();
-      this.errorAria = this.standAloneFunctions.getErrorAria(this.config.formGroup, this.config.id, this.config.errorMessages);
+      this.errorAria = this.standAloneFunctions.getErrorAria(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
     }
   }
 
@@ -148,11 +204,10 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   setLang(lang: string) {
     this.getAriaErrorText();
-    if ((lang === 'en') || (lang === 'en-US')) {
-      this.errorStubText = ERROR_TEXT_STUB_EN;
-
+    if (lang === 'en' || lang === 'en-US') {
+      this.errorStubText = ERROR_TEXT_STUB.en;
     } else {
-      this.errorStubText = ERROR_TEXT_STUB_FR;
+      this.errorStubText = ERROR_TEXT_STUB.fr;
     }
   }
 }

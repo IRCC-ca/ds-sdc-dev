@@ -1,53 +1,53 @@
-@use '../../util/theme' as theme;
-@use '../../util/size' as size;
-@use '../sizes' as token-size;
-@use '../template-const';
-$selectors: 'button';
+@use "../../util/theme" as theme;
+@use "../../util/size" as size;
+@use "../../typography/typography" as text;
+@use "../sizes" as token-size;
+@use "../template-const";
+$selectors: "button";
 
 @mixin button-size-padding {
-    @include size.selector(small) {
-        padding: token-size.$small-padding;
-    }
+  @include size.select(small) {
+    padding: token-size.$small-padding;
+  }
 
-    @include size.selector(large) {
-        padding: token-size.$large-padding;
-    }
+  @include size.select(large) {
+    padding: token-size.$large-padding;
+  }
 }
 
-@mixin selectors {
-        #{$selectors}#{template-const.$escape} {
-            @content;
-        }
+@mixin selector {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
 }
 
 @mixin layout {
-    border-radius: token-size.$border-radius;
-    border-style: none;
-    justify-content: center;
-    max-width: token-size.$max-button-width;
-    cursor: pointer;
+  border-radius: token-size.$border-radius;
+  border-style: none;
+  justify-content: center;
+  cursor: pointer;
 
-    @include button-size();
-    @include button-size-padding();
+  @include button-size();
+  @include button-size-padding();
 
-    color: var(--text);
+  color: var(--text);
 }
 
 @mixin layout-round {
-    border-radius: token-size.$border-radius-circle;
-    border-style: none;
-    justify-content: center;
-    aspect-ratio: 1 / 1;
-    @include button-size();
+  border-radius: token-size.$border-radius-circle;
+  border-style: none;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  @include button-size();
 
-    color: var(--text);
+  color: var(--text);
 }
 @mixin button-size {
-    @include size.selector(small) {
-        @extend .h6;
-    }
+  @include size.select(small) {
+    @include text.fontSet(heading, 6, regular);
+  }
 
-    @include size.selector(large) {
-        @extend .h5;
-    }
+  @include size.select(large) {
+    @include text.fontSet(heading, 5, regular);
+  }
 }

@@ -1,0 +1,283 @@
+@use '../../../../../core-library/util/device' as device;
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+
+.content-doc-wrapper {
+  box-sizing: border-box;
+  max-width: 872px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+  }
+}
+
+.intro {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  @include typography.fontSet(body, 1, regular);
+}
+
+.demo {
+  margin-top: 0px;
+  margin-bottom: 24px;
+}
+
+.sub-headings {
+  margin-top: 0px;
+  margin-bottom: 12px;
+  @include typography.fontSet(heading, 5, emphasis);
+}
+
+.description {
+  margin: 12px 0 0 0;
+}
+
+p {
+  @include typography.fontSet(body, 3, regular);
+}
+
+ul {
+  margin: 0px;
+  padding-left: 25px;
+  li {
+    @include typography.fontSet(body, 3, regular);
+  }
+}
+
+.configs {
+  .config-row {
+    margin-bottom: 24px;
+  }
+  .config-row:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.design-guide {
+  .wrapper-container {
+    .element-wrapper-container {
+      margin-bottom: 32px;
+    }
+    .element-wrapper-container:last-child {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.do-dont-container {
+  margin-top: 8px;
+
+  .do-dont-heading {
+    margin: 0 0 8px 0;
+    border-bottom: 1px solid;
+    @include typography.fontSet(heading, 5, emphasis);
+  }
+  .text-color-green {
+    color: var(--green-8);
+  }
+  .text-color-red {
+    color: var(--red-7);
+  }
+  p {
+    margin: 0px;
+  }
+}
+
+.anatomy {
+  .anatomy-image-container {
+    margin-bottom: 26px;
+  }
+  .anatomy-content-container {
+    margin-bottom: 24px;
+
+    .round-purple-num-heading-text {
+      display: inline-block;
+      margin: 0 0 8px 8px;
+      position: relative;
+      top: 2px;
+      @include typography.fontSet(heading, 5, emphasis);
+    }
+    .round-purple-num-count {
+      color: var(--purple-9);
+      font-weight: 700;
+      background-color: var(--purple-2);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+    }
+    .counter-and-heading-container {
+      margin: 0 0 6px 0;
+      display: inline-flex;
+    }
+    .anatomy-description {
+      margin: 0px;
+    }
+  }
+  .anatomy-content-container:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.specs {
+  .specs-description {
+    margin: 24px 0 0 0;
+  }
+}
+
+.content-guidelines {
+  .wrapper-container {
+    .element-wrapper-container {
+      margin-bottom: 32px;
+    }
+    .element-wrapper-container:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.usage-figma {
+  .row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .figma-usage {
+      max-width: 547px;
+      margin-right: 12px;
+      flex-shrink: inherit;
+
+      @include device.in-tablet-layout() {
+        max-width: 444px;
+      }
+    }
+  }
+
+  ol {
+    margin: 12px 0 0 0;
+    padding-left: 20px;
+
+    .list-item {
+      @include typography.fontSet(body, 3, regular);
+    }
+  }
+  .figmaUsageList:last-child {
+    margin-bottom: 12px;
+  }
+
+  .inputImgContainer {
+    display: flex;
+    @include device.in-phone-layout() {
+      flex-direction: column;
+    }
+    span {
+      display: flex;
+      margin-left: 22px;
+      height: 137px;
+      @include device.in-phone-layout() {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .image-container {
+    filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+  }
+
+  .image-1 {
+    width: 264px;
+    height: 316px;
+  }
+
+  .accessInput1 {
+    @include device.in-phone-layout() {
+      width: 143px;
+      height: 89px;
+    }
+    width: 211px;
+    height: 137px;
+  }
+  .accessInput2 {
+    @include device.in-phone-layout() {
+      width: 189px;
+      height: 68px;
+    }
+    width: 374px;
+    height: 135px;
+  }
+  .accessInput3 {
+    height: 223px;
+  }
+}
+
+.accessibility {
+  .content-element {
+    margin-bottom: 24px;
+
+    p {
+      margin: 0px;
+    }
+  }
+  .content-element:last-child {
+    margin-bottom: 0px;
+  }
+
+  .list-container {
+    padding-left: 0px;
+    line-height: 20px;
+    margin-bottom: 24px;
+
+    .list-item {
+      @include typography.fontSet(body, 3, regular);
+      list-style-type: none;
+      padding-bottom: 20px;
+    }
+
+    .list-item:last-child {
+      padding-bottom: 0px;
+    }
+  }
+}
+
+.research {
+  p {
+    margin: 0 0 94px 0;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  @include device.in-phone-layout() {
+    flex-wrap: wrap;
+  }
+}
+
+.column {
+  width: 50%;
+
+  @include device.in-phone-layout() {
+    width: 100%;
+  }
+}
+
+.left-column {
+  margin-right: 12px;
+  @include device.in-phone-layout() {
+    margin-right: 0px;
+  }
+}
+
+.right-column {
+  margin-left: 12px;
+  @include device.in-phone-layout() {
+    margin-left: 0px;
+    margin-top: 24px;
+  }
+}
+
+.config-row {
+  display: flex;
+  justify-content: flex-start;
+}

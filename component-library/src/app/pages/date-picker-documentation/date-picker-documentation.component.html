@@ -1,0 +1,659 @@
+<div class="content-doc-wrapper">
+  <app-title-slug-url [config]="datePickerTitleSlugConfig"></app-title-slug-url>
+  <p class="intro">{{ 'DatePicker.Intro' | translate }}</p>
+
+  <section class="interactive-demo">
+    <app-title-slug-url
+      [config]="headingConfig.interactiveDemoSlugConfig"
+    ></app-title-slug-url>
+    <p
+      class="demo"
+      [innerHTML]="'DatePicker.InteractiveDemoDesc' | translate"
+    ></p>
+    <app-date-picker-doc-code></app-date-picker-doc-code>
+  </section>
+
+  <section class="configs">
+    <app-title-slug-url
+      [config]="headingConfig.configurationSlugConfig"
+    ></app-title-slug-url>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="sub-headings">
+          {{ 'General.Size' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Small' | translate }}</li>
+          <li>{{ 'General.Large' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="sub-headings">{{ 'General.Layout' | translate }}</h5>
+        <ul>
+          <li>{{ 'General.Horizontal' | translate }}</li>
+          <li>{{ 'General.Vertical' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="sub-headings">
+          {{ 'General.Required' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Yes' | translate }}</li>
+          <li>{{ 'General.No' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="sub-headings">
+          {{ 'General.Description' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Yes' | translate }}</li>
+          <li>{{ 'General.No' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="sub-headings">
+          {{ 'General.Hint' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Yes' | translate }}</li>
+          <li>{{ 'General.No' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="sub-headings">
+          {{ 'General.Month' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Yes' | translate }}</li>
+          <li>{{ 'General.No' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="config-row">
+      <div class="column">
+        <h5 class="sub-headings">
+          {{ 'General.Day' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Yes' | translate }}</li>
+          <li>{{ 'General.No' | translate }}</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h5 class="sub-headings">
+          {{ 'ERROR.errorMessage' | translate }}
+        </h5>
+        <ul>
+          <li>{{ 'General.Yes' | translate }}</li>
+          <li>{{ 'General.No' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="design-guide">
+    <app-title-slug-url
+      [config]="headingConfig.guidelineSlugConfig"
+    ></app-title-slug-url>
+
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'DatePicker.DesignGuideLines.Maintain' | translate }}
+        </h5>
+
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/maintain-do.png"
+              alt="{{
+                'DatePicker.DesignGuideLines.MaintainDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.DesignGuideLines.MaintainDoText' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/maintain-dont.png"
+              alt="{{
+                'DatePicker.DesignGuideLines.MaintainDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.DesignGuideLines.MaintainDontText' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'DatePicker.DesignGuideLines.ErrorValidation' | translate }}
+        </h5>
+
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/err-validation-do.png"
+              alt="{{
+                'DatePicker.DesignGuideLines.ErrorValidationDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.DesignGuideLines.ErrorValidationDo' | translate
+                }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/err-validation-dont.png"
+              alt="{{
+                'DatePicker.DesignGuideLines.ErrorValidationDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.DesignGuideLines.ErrorValidationDont' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'DatePicker.DesignGuideLines.Horizontal' | translate }}
+        </h5>
+
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/horizontal-do.png"
+              alt="{{
+                'DatePicker.DesignGuideLines.HorizontalDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.DesignGuideLines.HorizontalDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/horizontal-dont.png"
+              alt="{{
+                'DatePicker.DesignGuideLines.HorizontalDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.DesignGuideLines.HorizontalDont' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="anatomy">
+    <app-title-slug-url
+      [config]="headingConfig.anatomySlugConfig"
+    ></app-title-slug-url>
+    <img
+      class="anatomy-image-container"
+      src="assets/img/datePicker-content/anatomy.png"
+      alt="{{ 'DatePicker.Anatomy.ImgAlt' | translate }}"
+    /><br />
+    <ng-container *ngFor="let content of anatomyContentItems; let i = index">
+      <div class="anatomy-content-container">
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">{{ i + 1 }}</div>
+          <h5 class="round-purple-num-heading-text">
+            {{ content.title | translate }}
+          </h5>
+        </div>
+        <p class="anatomy-description">
+          {{ content.description | translate }}
+        </p>
+      </div>
+    </ng-container>
+  </section>
+  <section class="specs">
+    <app-title-slug-url
+      [config]="headingConfig.specsSlugConfig"
+    ></app-title-slug-url>
+    <img
+      class="single-img"
+      src="assets/img/datePicker-content/specs.png"
+      alt="{{ 'DatePicker.Specs.ImgAlt' | translate }}"
+    />
+    <p class="specs-description">
+      {{ 'DatePicker.Specs.Text' | translate }}
+    </p>
+  </section>
+
+  <section class="content-guidelines">
+    <app-title-slug-url
+      [config]="headingConfig.contentGuideSlugConfig"
+    ></app-title-slug-url>
+
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'DatePicker.ContentGuideLines.UseCorrectCaseHeading' | translate }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/correct-order-do.png"
+              alt="{{
+                'Banner.ContentGuideLines.CorrectOrderDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.ContentGuideLines.CorrectOrderDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/correct-order-dont.png"
+              alt="{{
+                'Banner.ContentGuideLines.BannerUseCorrectCaseDontAlt'
+                  | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.ContentGuideLines.CorrectOrderDont' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'General.WriteLabelsHeading' | translate }}
+        </h5>
+        <p
+          [innerHTML]="
+            'DatePicker.ContentGuideLines.WritingLabelsTxt' | translate
+          "
+        ></p>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/labels-do.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.WritingLabelsDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.ContentGuideLines.WritingLabelsDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/labels-dont.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.WritingLabelsDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.ContentGuideLines.WritingLabelsDont' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'DatePicker.ContentGuideLines.PlaceholderHeading' | translate }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/placeholder-do.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.PlaceholderDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.ContentGuideLines.PlaceholderDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/placeholder-dont.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.PlaceholderDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.ContentGuideLines.PlaceholderDont' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'ERROR.WritingErrHeading' | translate }}
+        </h5>
+        <p>{{ 'DatePicker.ContentGuideLines.WritingErrTxt' | translate }}</p>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/writing-err-do.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.WritingErrDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.ContentGuideLines.WritingErrDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/writing-err-dont.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.WritingErrDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{ 'DatePicker.ContentGuideLines.WritingErrDont' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'General.NecessaryContentHeading' | translate }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/necessary-content-do.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.NecessaryContentDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.ContentGuideLines.NecessaryContentDo' | translate
+                }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/necessary-content-dont.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.NecessaryContentDontAlt'
+                  | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.ContentGuideLines.NecessaryContentDont'
+                    | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container">
+        <h5 class="sub-headings">
+          {{ 'General.RequiredFieldsHeading' | translate }}
+        </h5>
+        <div class="row row-container">
+          <div class="column left-column">
+            <img
+              src="assets/img/datePicker-content/required-field-do.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.RequiredFieldsDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.ContentGuideLines.RequiredFieldsDo' | translate
+                }}
+              </p>
+            </div>
+          </div>
+          <div class="column right-column">
+            <img
+              src="assets/img/datePicker-content/required-field-dont.png"
+              alt="{{
+                'DatePicker.ContentGuideLines.RequiredFieldsDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-container">
+              <h5 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h5>
+              <p>
+                {{
+                  'DatePicker.ContentGuideLines.RequiredFieldsDont' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usage-figma">
+    <app-title-slug-url
+      [config]="headingConfig.figmaSlugConfig"
+    ></app-title-slug-url>
+    <div class="row">
+      <div class="figma-usage">
+        <h5 class="sub-headings">
+          {{ 'General.FigmaDirectionsHeading' | translate }}
+        </h5>
+        <ol>
+          <li
+            class="list-item"
+            *ngFor="let direction of figmaDirections"
+            [innerHtml]="direction | translate"
+          ></li>
+        </ol>
+      </div>
+      <div class="image-container-wrapper">
+        <div class="image-1 image-container">
+          <img
+            src="assets/img/datePicker-content/direction-figma.png"
+            alt="{{
+              'DatePicker.UsageInFigma.FigmaDirectionsImgAlt' | translate
+            }}"
+          />
+        </div>
+      </div>
+      <div class="figma-usage">
+        <h5 class="sub-headings">
+          {{ 'DatePicker.UsageInFigma.AccessInputsHeading' | translate }}
+        </h5>
+        <ol>
+          <li
+            class="list-item figmaUsageList"
+            *ngFor="let direction of figmaDirectionsSecond"
+            [innerHtml]="direction | translate"
+          ></li>
+        </ol>
+      </div>
+      <div class="inputImgContainer">
+        <span>
+          <div class="accessInput1 image-container">
+            <img
+              src="assets/img/datePicker-content/access-input1.png"
+              alt="{{
+                'DatePicker.UsageInFigma.FigmaDirectionsImgAlt' | translate
+              }}"
+            />
+          </div>
+          <div class="accessInput2 image-container">
+            <img
+              src="assets/img/datePicker-content/access-input2.png"
+              alt="{{
+                'DatePicker.UsageInFigma.FigmaDirectionsImgAlt' | translate
+              }}"
+            />
+          </div>
+        </span>
+        <div class="image-1 accessInput3 image-container">
+          <img
+            src="assets/img/datePicker-content/access-input3.png"
+            alt="{{
+              'DatePicker.UsageInFigma.FigmaDirectionsImgAlt' | translate
+            }}"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="accessibility">
+    <app-title-slug-url
+      [config]="headingConfig.accessibilitySlugConfig"
+    ></app-title-slug-url>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'General.AccessibilityColourHeading' | translate }}
+      </h5>
+      <p>{{ 'DatePicker.Accessibility.ColorContrastTxt' | translate }}</p>
+    </div>
+
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'General.AccessibilityKeyboardHeading' | translate }}
+      </h5>
+      <p>
+        {{ 'DatePicker.Accessibility.KeyboardAccessibleTxt' | translate }}
+      </p>
+    </div>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'General.ContentHeading' | translate }}
+      </h5>
+      <ul>
+        <li
+          class="list-item"
+          *ngFor="let item of accessibilityContent"
+          [innerHtml]="item | translate"
+        ></li>
+      </ul>
+    </div>
+    <div class="content-element">
+      <h5 class="sub-headings">
+        {{ 'General.Validation' | translate }}
+      </h5>
+
+      <ul>
+        <li class="list-item">{{ 'DatePicker.Validation' | translate }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="research">
+    <app-title-slug-url
+      [config]="headingConfig.researchSlugConfig"
+    ></app-title-slug-url>
+    <p>{{ 'General.ComingSoon' | translate }}</p>
+  </section>
+</div>

@@ -1,0 +1,263 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "../../tokens/partial/focus" as focus;
+@use "sass:map";
+
+// Mapping of status & palette when category strong
+$status: critical, success, information, warning, primary, neutral;
+$color: grey, red, orange, blue, green, purple, teal, navy;
+
+@mixin selector {
+  ircc-cl-lib-indicator#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin size-sm {
+  .text {
+    padding: 2px 8px;
+    border-radius: 11px;
+
+    @include typography.fontSet(body, 4, emphasis);
+
+    &.rounded {
+      min-width: 8px;
+      border-radius: 50%;
+    }
+
+    > svg {
+      width: 12px;
+    }
+  }
+
+  .number {
+    padding: 2px 5px;
+
+    > span {
+      min-width: 14px;
+    }
+
+    @include typography.fontSet(body, 4, emphasis);
+
+    &.num-lg {
+      padding: 2px 8px;
+      border-radius: 11px;
+    }
+  }
+
+  .dot:not(.dot-icon) {
+    width: 6px;
+    height: 6px;
+  }
+
+  .dot-icon {
+    width: 20px;
+    height: 20px;
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+@mixin size-lg {
+  .text {
+    padding: 4px 8px;
+    border-radius: 15px;
+
+    @include typography.fontSet(body, 3, emphasis);
+
+    &.rounded {
+      padding: 4px 8px;
+      min-width: 12px;
+      border-radius: 50%;
+    }
+
+    > svg {
+      width: 16px;
+    }
+  }
+
+  .number {
+    padding: 4px 5px;
+
+    > span {
+      min-width: 18px;
+    }
+
+    @include typography.fontSet(body, 3, emphasis);
+
+    &.num-lg {
+      padding: 4px 8px;
+      border-radius: 15px;
+    }
+  }
+
+  .dot:not(.dot-icon) {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dot-icon {
+    width: 28px;
+    height: 28px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+@mixin coloration($palette, $type) {
+  @if $type == validation {
+    &.strong {
+      &.#{$palette} {
+        background: var(--#{$palette}-background);
+      }
+    }
+
+    &.weak {
+      &.#{$palette} {
+        background: var(--#{$palette}-background-weak);
+        color: var(--#{$palette}-text);
+      }
+    }
+  }
+
+  @if $type == colors {
+    &.strong {
+      &.#{$palette} {
+        background: var(--#{$palette}-category-background);
+      }
+    }
+
+    &.weak {
+      &.#{$palette} {
+        background: var(--#{$palette}-category-background-weak);
+        color: var(--#{$palette}-category-text);
+      }
+    }
+  }
+}
+
+@mixin layout {
+  display: inline-block;
+
+  .text {
+    @each $palette in $status {
+      @include coloration($palette, validation);
+    }
+
+    @each $palette in $color {
+      @include coloration($palette, colors);
+    }
+  }
+
+  .number,
+  .dot {
+    @each $palette in $status {
+      @include coloration($palette, validation);
+    }
+  }
+
+  .text,
+  .number {
+    &.strong {
+      color: var(--grey-category-text-weak);
+    }
+  }
+
+  .number,
+  .dot {
+    border-radius: 50%;
+  }
+
+  .dot:not(.dot-icon) {
+    display: block;
+  }
+
+  .dot-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.strong {
+      svg {
+        color: var(--surface1);
+      }
+    }
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    svg {
+      display: block;
+      margin-right: 4px;
+    }
+
+    &.abbr {
+      max-width: 184px; // 200 - 8x2
+      overflow: hidden;
+    }
+
+    span {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+
+      &.abbr {
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .number {
+    display: flex;
+    text-align: center;
+
+    span {
+      display: block;
+      overflow: hidden;
+    }
+
+    // Force hiding icon when change from text to number
+    > svg {
+      display: none;
+    }
+  }
+
+  @include size.select(small) {
+    @include size-sm();
+
+    .large {
+      @include size-lg();
+    }
+  }
+
+  @include size.select(large) {
+    @include size-lg();
+
+    .small {
+      @include size-sm();
+    }
+  }
+
+  .rounded {
+    border-radius: 50%;
+  }
+}

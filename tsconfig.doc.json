@@ -1,0 +1,10 @@
+{
+  "include": [
+    "component-library/component-lib/src/lib/**/*.ts",
+    "component-library/component-lib/src/lib/**/**/*.ts",
+    "component-library/component-lib/src/lib/shared/**/**/*.ts",
+  ],
+  "exclude": [
+    "src/**/*.spec.ts"
+  ]
+}

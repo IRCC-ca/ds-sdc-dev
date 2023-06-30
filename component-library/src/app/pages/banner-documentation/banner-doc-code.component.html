@@ -1,0 +1,29 @@
+<div class="content-doc-wrapper col-12 col-lg-10">
+  <div style="width: 100%">
+    <app-interactive-demo componentType="banner">
+      <ircc-cl-lib-tabs
+        tabs
+        (valueChange)="setBannerType($event)"
+        [config]="demoTabsConfig"
+      >
+      </ircc-cl-lib-tabs>
+      <div
+        component
+        class="banner-container"
+        #banner
+      >
+        <ircc-cl-lib-banner
+          (btnEvent)="bannerClose($event)"
+          [config]="bannerConfig"
+        ></ircc-cl-lib-banner>
+      </div>
+      <ng-container
+        toggles
+        *ngFor="let toggle of toggles"
+      >
+        <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+      </ng-container>
+    </app-interactive-demo>
+  </div>
+  <app-code-viewer [config]="codeViewConfig"></app-code-viewer>
+</div>

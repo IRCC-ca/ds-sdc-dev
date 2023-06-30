@@ -1,29 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  IrccDsAngularComponentsSharedModule,
+  IrccDsAngularHeaderFooterModule,
+  IrccDsAngularNavigationModule
+} from 'ircc-ds-angular-component-library';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { I18nModule } from '@app/i18n';
-import { ShellComponent } from './shell.component';
-import { HeaderComponent } from './header/header.component';
-import { SharedModule } from '@app/@shared';
-import { IrccDsAngularHeaderFooterModule } from 'ircc-ds-angular-component-library';
 
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule,
-    NgbModule,
-    I18nModule,
-    RouterModule,
-    SharedModule,
-    IrccDsAngularHeaderFooterModule
+    IrccDsAngularComponentsSharedModule,
+    IrccDsAngularHeaderFooterModule,
+    IrccDsAngularNavigationModule,
+    TranslateModule
   ],
-  declarations: [
-    HeaderComponent,
-    ShellComponent
+  exports: [
+    IrccDsAngularComponentsSharedModule,
+    IrccDsAngularHeaderFooterModule,
+    TranslateModule
   ]
 })
-export class ShellModule {
-}
+export class ShelldModule {}

@@ -54,6 +54,8 @@
 
 !.idea/codeStyleSettings.xml
 
+/core-library/.idea
+
 .project
 
 .classpath
@@ -120,7 +122,7 @@ xcuserdata/
 
 /component-library/cypress/videos/
 
-
+/component-library/src/assets/locales/DS-Strings.txt
 
 # Storybook static
 

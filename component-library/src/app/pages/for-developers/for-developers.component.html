@@ -1,0 +1,139 @@
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url
+    [config]="overViewDeveloperSlug"
+    class="for-developers"
+  ></app-title-slug-url>
+  <p
+    [translate]="'Overview.DeveloperPackageTxt'"
+    class="dev-txt"
+  ></p>
+  <app-title-slug-url
+    [config]="developerStartedSlug"
+    class="getting-started"
+  ></app-title-slug-url>
+  <p class="descriptions started">
+    <app-encapsulated-element
+      [injectedHtml]="'Developers.GetStartedTxt' | translate"
+    ></app-encapsulated-element>
+  </p>
+  <app-title-slug-url [config]="developerUsageSlug"></app-title-slug-url>
+  <p
+    [translate]="'Developers.UsageTxt'"
+    class="descriptions"
+  ></p>
+  <p
+    [translate]="'Developers.UsageTitle1'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(paragraph1)"
+    ></button>
+    <p class="code">{{ paragraph1 }}</p>
+  </div>
+  <p
+    [translate]="'Developers.UsageTitle2'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(paragraph1)"
+    ></button>
+    <p class="code">{{ paragraph1 }}</p>
+  </div>
+  <app-title-slug-url [config]="developerThemesSlug"></app-title-slug-url>
+  <p
+    class="descriptions"
+    [translate]="'Developers.ThemesTxt'"
+  ></p>
+  <p
+    [translate]="'Developers.ThemesTitle1'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(placeholder)"
+    ></button>
+    <p class="code">{{ placeholder }}</p>
+  </div>
+  <p
+    [translate]="'Developers.ThemesTitle2'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(placeholder)"
+    ></button>
+    <p class="code">{{ placeholder }}</p>
+  </div>
+  <p
+    [translate]="'Developers.ThemesTitle3'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(placeholder)"
+    ></button>
+    <p class="code">{{ placeholder }}</p>
+  </div>
+
+  <app-title-slug-url [config]="developerFontAwesomeSlug"></app-title-slug-url>
+  <p
+    [translate]="'Developers.FontAwesomeTxt'"
+    class="descriptions"
+  ></p>
+  <div class="code-box awesome">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(placeholder)"
+    ></button>
+    <p class="code">{{ placeholder }}</p>
+  </div>
+  <app-title-slug-url [config]="developerReleasesSlug"></app-title-slug-url>
+  <p
+    [translate]="'Developers.ReleasesTxt'"
+    class="descriptions"
+  ></p>
+  <p
+    [translate]="'Developers.ReleasesTitle1'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(placeholder)"
+    ></button>
+    <p class="code">{{ placeholder }}</p>
+  </div>
+  <p
+    [translate]="'Developers.ReleasesTitle2'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(placeholder)"
+    ></button>
+    <p class="code">{{ placeholder }}</p>
+  </div>
+  <p
+    [translate]="'Developers.ReleasesTitle3'"
+    class="code-title"
+  ></p>
+  <div class="code-box">
+    <button
+      [translate]="'General.Copy'"
+      (click)="copyToClipboard(placeholder)"
+    ></button>
+    <p class="code">{{ placeholder }}</p>
+  </div>
+</div>
+<app-side-nav
+  class="right-nav col-12 col-lg-3 col-xl-2"
+  [navBarData]="rightNavData"
+></app-side-nav>

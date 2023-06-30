@@ -1,0 +1,42 @@
+@use '~@ircc-ca/ds-sdc-core/typography/typography';
+$radius: 6px;
+table {
+  border: 1px solid var(--border);
+  border-spacing: 0;
+  border-radius: $radius;
+  max-width: 100%;
+  display: inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  th, td {
+    padding: 16px;
+    border: 1px solid;
+    border-color: var(--divider);
+  }
+  th {
+    @include typography.fontSet(heading, 6, emphasis);
+    text-align: left;
+    &:first-child {
+      border-radius: $radius 0 0 0;
+    }
+    &:last-child {
+      border-radius: 0 $radius 0 0;
+    }
+  }
+  tr {
+    @include typography.fontSet(body, 3, regular);
+  }
+  tr:last-child {
+    > td {
+      &:first-child {
+        border-radius: 0 0 0 $radius;
+      }
+      &:last-child {
+        border-radius: 0 0 $radius 0;
+      }
+    }
+  }
+  td {
+    vertical-align: top;
+  }
+}

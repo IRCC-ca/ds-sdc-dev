@@ -1,0 +1,43 @@
+<div
+  [id]="config.id"
+  class="lib-nav-item"
+>
+  <div class="accordion-panel">
+    <div
+      class="accordion-nav"
+      tabindex="1"
+      (keydown.enter)="enterPress($event)"
+    >
+      <ircc-cl-lib-nav-header
+        [id]="headerID"
+        [attr.size]="config.size"
+        [size]="config.size"
+        [label]="config?.label || ''"
+        [iconLeading]="config?.iconLeading || ''"
+      >
+      </ircc-cl-lib-nav-header>
+
+      <ircc-cl-lib-icon-button
+        *ngIf="config.open === true"
+        (clickEvent)="openAccordion($event)"
+        [config]="buttonIconOpen"
+        [attr.size]="config.size"
+        class="open"
+      ></ircc-cl-lib-icon-button>
+      <ircc-cl-lib-icon-button
+        *ngIf="config.open === false"
+        (clickEvent)="openAccordion($event)"
+        [attr.size]="config.size"
+        [config]="buttonIconClose"
+        class="close"
+      ></ircc-cl-lib-icon-button>
+    </div>
+    <div
+      [class]="
+        config.open ? 'open accordion-content' : 'close accordion-content'
+      "
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

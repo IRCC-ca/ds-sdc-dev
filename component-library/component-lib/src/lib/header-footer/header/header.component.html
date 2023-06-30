@@ -1,19 +1,32 @@
-<header class="heading" role="banner" [id]="id">
-      <div class="image-container">
+<header
+  class="heading"
+  role="banner"
+  [id]="id"
+>
+  <div class="header-content">
+    <div class="image-container">
       <a
-        href="{{govCanadaLink}}"
+        href="{{ govCanadaLink }}"
         id="canada-home-img-link"
         target="_blank"
         property="url"
         role="link"
         tabindex="0"
-        attr.aria-label="{{govCanadaAlt}}"
-        >
-            <img src="{{imageURL}}" attr.aria-label="{{aria}}" property="logo">
-        </a>
-      </div>
-        <div class="languageSwitch">
-            <lib-language-switch [id]="id + '_langToggle'"></lib-language-switch>
-        </div>
+      >
+        <img
+          src="{{ imageURL }}"
+          alt="{{ alt }}"
+          property="logo"
+        />
+      </a>
+    </div>
+
+    <div class="languageSwitch">
+      <ircc-cl-lib-language-switch
+        [id]="id + '_langToggle'"
+      ></ircc-cl-lib-language-switch>
+      <ircc-cl-lib-theme-switch *ngIf="themeToggle"></ircc-cl-lib-theme-switch>
+    </div>
+  </div>
+  <hr class="headerLine" />
 </header>
-<hr class="headerLine"/>

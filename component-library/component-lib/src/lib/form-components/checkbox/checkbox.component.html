@@ -1,41 +1,90 @@
-<form class="checkbox-container" [formGroup]="config.formGroup"
-  (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)">
-  <div class="checkbox-container" [ngClass]="config.size">
-    <lib-label [config]="labelConfig"></lib-label>
-    <div class="checkbox-layout" [ngClass]="{ error: getErrorState() }">
+<form
+  class="checkbox-container"
+  [formGroup]="config.formGroup"
+>
+  <div
+    class="checkbox-container"
+    [ngClass]="config.size"
+  >
+    <ircc-cl-lib-label
+      [config]="labelConfig"
+      [attr.size]="config.size"
+    ></ircc-cl-lib-label>
+    <div
+      class="checkbox-layout"
+      [ngClass]="{ error: getErrorState() }"
+    >
       <div class="checkbox">
-        <input [attr.aria-live]="'off'" (blur)="touched = true" id="{{config.id}}" class="check"
-          [ngClass]="{ mixed: config.mixed, focus: !config.disableFocus, error: getErrorState()}"
-          [attr.size]="config.size" type="checkbox" [formControlName]="config.id"
-          [attr.aria-invalid]="formControl?.errors" 
+        <input
+          [attr.aria-live]="'off'"
+          (blur)="touched = true"
+          id="{{ config.id }}"
+          class="check"
+          (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
+          [ngClass]="{
+            mixed: config.mixed,
+            focus: !config.disableFocus,
+            error: getErrorState()
+          }"
+          [attr.size]="config.size"
+          type="checkbox"
+          [formControlName]="config.id"
+          [attr.aria-invalid]="formControl?.invalid"
           [attr.aria-label]="
-          formControl?.invalid && touched
-          ? (config.label || '' | translate) + ' ' +
-          (config.desc || '' | translate) + ' ' +
-          (config.helpText || '' | translate) + ' ' +
-          (config.inlineLabel || '' | translate) + ' ' +
-            errorStubText + ' ' + errorAria
-          :
-            (config.label || '' | translate) + ' ' +
-            (config.desc || '' | translate) + ' ' +
-            (config.helpText || '' | translate) + ' ' +
-            (config.inlineLabel || '' | translate)            
-        "/>
+            formControl?.invalid && touched
+              ? (config.label || '' | translate) +
+                ' ' +
+                (config.desc || '' | translate) +
+                ' ' +
+                (config.helpText || '' | translate) +
+                ' ' +
+                (config.inlineLabel || '' | translate) +
+                ' ' +
+                errorStubText +
+                ' ' +
+                errorAria
+              : (config.label || '' | translate) +
+                ' ' +
+                (config.desc || '' | translate) +
+                ' ' +
+                (config.helpText || '' | translate) +
+                ' ' +
+                (config.inlineLabel || '' | translate)
+          "
+        />
         <span class="checkmark"></span>
       </div>
-      <label [attr.aria-live]="'off'" class="label" [for]="config.id" [id]="config.id + '_label'"
-
-        [ngClass]="{'disabled-label': isDisabled, 'small': config.size === 'small', 'makeBold': config.inlineLabelBold}">{{config.inlineLabel
-        || '' | translate}}
+      <label
+        [attr.aria-live]="'off'"
+        class="checkbox-desc-label"
+        [for]="config.id"
+        [id]="config.id + '_label'"
+        [ngClass]="{
+          'disabled-label': isDisabled,
+          small: config.size === 'small',
+          makeBold: config.inlineLabelBold
+        }"
+        >{{ config.inlineLabel || '' | translate }}
       </label>
     </div>
-    <div >
-      <div *ngIf="(formControl?.touched) && formControl?.invalid" class="check-error"
-        [ngClass]="{'small': config.size === 'small' }">
-        <span class="sr-only">{{(errorStubText + ': ' + ((config.label || '') | translate) + ': ')}}</span>
+    <div aria-live="polite">
+      <div
+        *ngIf="formControl?.touched && formControl?.invalid"
+        class="check-error"
+        [ngClass]="{ small: config.size === 'small' }"
+      >
+        <span class="sr-only">{{
+          errorStubText + ': ' + (config.label || '' | translate) + ': '
+        }}</span>
         <ng-container *ngFor="let errors of errorIds; let i = index">
-          <div *ngIf="formControl?.errors?.[errors.key]" class="radio-errors">
-            <lib-error [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+          <div
+            *ngIf="formControl?.errors?.[errors.key]"
+            class="radio-errors"
+          >
+            <ircc-cl-lib-error
+              [id]="errors.id"
+              [errorLOV]="errors.errorLOV"
+            ></ircc-cl-lib-error>
           </div>
         </ng-container>
       </div>

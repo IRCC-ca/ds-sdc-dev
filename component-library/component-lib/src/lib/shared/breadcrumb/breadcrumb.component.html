@@ -1,15 +1,70 @@
-<div class="{{config?.size}}">
-  <ng-container *ngFor="let link of config?.links; first as first; last as last; index as i">
+<div
+  class="{{ config.size }}"
+  (domChange)="createOverflows()"
+  #breadcrumb_div
+>
+  <ng-container
+    *ngFor="let link of normalLinks; first as first; last as last; index as i"
+  >
     <ng-container *ngIf="first">
-      <lib-breadcrumb-link tabindex="0" class="breadcrumb-root" [config]="link"></lib-breadcrumb-link>
+      <ircc-cl-lib-breadcrumb-link
+        tabindex="0"
+        class="breadcrumb-root"
+        [config]="link"
+      ></ircc-cl-lib-breadcrumb-link>
+      <div
+        *ngIf="overflowLinks && overflowLinks.length > 0"
+        class="overflow-container"
+      >
+        <ircc-cl-lib-icon
+          [config]="{ FA_keywords: 'fa-light fa-chevron-right' }"
+          id="overflow"
+        ></ircc-cl-lib-icon>
+        <ircc-cl-lib-icon-button
+          (clickEvent)="flipOverflow($event)"
+          class="elipsis-icon"
+          [config]="separatorIcon"
+        ></ircc-cl-lib-icon-button>
+        <div
+          class="overflow-menu"
+          *ngIf="displayOverflow && overflowLinks && overflowLinks.length > 0"
+        >
+          <ng-container *ngFor="let link of overflowLinks">
+            <ircc-cl-lib-breadcrumb-link
+              tabindex="0"
+              class="breadcrumb-overflow"
+              [config]="link"
+            ></ircc-cl-lib-breadcrumb-link>
+          </ng-container>
+        </div>
+      </div>
     </ng-container>
     <ng-container *ngIf="!first && !last">
-      <lib-icon class="fa-solid fa-chevron-right"></lib-icon>
-      <lib-breadcrumb-link tabindex="0" class="breadcrumb-item" [config]="link"></lib-breadcrumb-link>
+      <ircc-cl-lib-icon
+        [config]="{ FA_keywords: 'fa-light fa-chevron-right' }"
+      ></ircc-cl-lib-icon>
+      <ircc-cl-lib-breadcrumb-link
+        tabindex="0"
+        class="breadcrumb-item"
+        [config]="link"
+      ></ircc-cl-lib-breadcrumb-link>
     </ng-container>
     <ng-container *ngIf="last">
-      <lib-icon class="fa-solid fa-chevron-right"></lib-icon>
-      <p class="breadcrumb-child">{{link.text}}</p>
+      <ircc-cl-lib-icon
+        [config]="{ FA_keywords: 'fa-light fa-chevron-right' }"
+        class=""
+      ></ircc-cl-lib-icon>
+      <p
+        class="breadcrumb-child"
+        #breadcrumb_child
+      >
+        <span *ngIf="!isChildOverflow">{{ link.text }}</span>
+        <abbr
+          *ngIf="isChildOverflow"
+          [title]="link.text"
+          >{{ link.text }}</abbr
+        >
+      </p>
     </ng-container>
   </ng-container>
 </div>

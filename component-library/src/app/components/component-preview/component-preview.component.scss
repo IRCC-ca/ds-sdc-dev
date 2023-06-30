@@ -1,0 +1,27 @@
+:host {
+  display: block;
+
+  .preview-wrapper {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 170px;
+
+    ircc-cl-lib-button.copy {
+      margin-top: 10px;
+    }
+  }
+
+  .background-white {
+    background-color: var(--surface1);
+    max-width: 400px;
+  }
+
+  .background-gray {
+    background-color: var(--surface2);
+  }
+}

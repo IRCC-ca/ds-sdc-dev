@@ -1,0 +1,21 @@
+<div class="preview-wrapper background-{{ backgroundColor }}">
+  <ng-content></ng-content>
+  <ircc-cl-lib-button
+    *ngIf="copyText"
+    [cdkCopyToClipboard]="copyText"
+    size="small"
+    category="plain"
+    class="copy"
+  >
+    {{ 'General.CopyCode' | translate }}
+  </ircc-cl-lib-button>
+  <ircc-cl-lib-button
+    *ngIf="copyStyle"
+    [cdkCopyToClipboard]="copyStyle"
+    size="small"
+    category="plain"
+    class="copy"
+  >
+    {{ 'General.CopyStyle' | translate }}
+  </ircc-cl-lib-button>
+</div>

@@ -1,39 +1,58 @@
-@use '../../util/device';
-@use '../../util/theme';
-@use '../../util/color';
-@use '../template-const';
+@use "../../util/device";
+@use "../../util/theme";
+@use "../../util/color";
+@use "../template-const";
 
-@mixin create($palette: (neutral, critical, success, information, warning, primary)) {
-    @at-root {
-        #{template-const.$root-selectors} {
-            @each $key in $palette {
-                @include tokens($key);
-            }
-        }
-    }
+@mixin create(
+  $palette: (
+    neutral,
+    critical,
+    success,
+    information,
+    warning,
+    primary,
+  )
+) {
+  @each $key in $palette {
+    @include tokens($key);
+  }
+}
+
+@mixin light-colors($palette) {
+  @if $palette ==neutral {
+    --#{$palette}-alert-background: #{color.mix-token($palette, 200)};
+  } @else {
+    --#{$palette}-alert-background: #{color.mix-token($palette, 100)};
+  }
+  --#{$palette}-alert-border: #{color.mix-token($palette, 700)};
+  --#{$palette}-alert-icon: #{color.mix-token($palette, 800)};
+}
+
+@mixin dark-colors($palette) {
+  @if $palette ==neutral {
+    --#{$palette}-alert-background: #{color.mix-token($palette, 1100)};
+  } @else {
+    --#{$palette}-alert-background: #{color.mix-token($palette, 1200)};
+  }
+  --#{$palette}-alert-border: #{color.mix-token($palette, 600)};
+  --#{$palette}-alert-icon: #{color.mix-token($palette, 500)};
 }
 
 @mixin tokens($palette) {
-    @include theme.light() {
-        @if $palette == neutral {
-            --#{$palette}-alert-background: #{color.mix-token($palette, 200)};
-        } @else {
-            --#{$palette}-alert-background: #{color.mix-token($palette, 100)};
-        }
-        --#{$palette}-alert-border: #{color.mix-token($palette, 700)};
-        --#{$palette}-alert-icon: #{color.mix-token($palette, 800)};
-        --#{$palette}-alert-text: #{color.mix-token($palette, 900)};
-    }
+  html {
+    @include light-colors($palette);
+  }
 
-    @include theme.dark() {
-        @if $palette == neutral {
-            --#{$palette}-alert-background: #{color.mix-token($palette, 200)};
-        } @else {
-            --#{$palette}-alert-background: #{color.mix-token($palette, 100)};
-        }
-        --#{$palette}-alert-border: #{color.mix-token($palette, 700)};
-        --#{$palette}-alert-icon: #{color.mix-token($palette, 800)};
-        --#{$palette}-alert-text: #{color.mix-token($palette, 900)};
-    }
+  html[scheme="dark"] {
+    @include dark-colors($palette);
+  }
 
+  html[scheme="system"] {
+    @media (prefers-color-scheme: light) {
+      @include light-colors($palette);
+    }
+    @media (prefers-color-scheme: dark) {
+      @include dark-colors($palette);
+    }
+  }
 }

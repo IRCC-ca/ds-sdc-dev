@@ -1,42 +1,73 @@
 <div>
   <form [formGroup]="config.formGroup">
-    <div class="textarea-container" ngClass="{{config.size}} resize-{{config.resizable}}">
+    <div
+      class="textarea-container"
+      ngClass="{{ config.size }} resize-{{ config.resizable }}"
+    >
       <div>
-        <label *ngIf="config.label" class="textarea-label" [attr.aria-label]="
-          config.formGroup.get(config.id)?.invalid && config.formGroup.get(config.id)?.dirty
-          ? (config.label || '' | translate) + ' ' +
-          (config.desc || '' | translate) + ' ' +
-          ('Error: ' + standAloneFunctions.getErrorAria(config.formGroup, config.id, (config.errorMessages || []))) + ' ' +
-          (config.hint || '' | translate)
-          : (config.label || '' | translate)  + ' ' +
-          (config.desc || '' | translate) + ' ' +
-          (config.hint || '' | translate)
-        ">
-        <div class="required-field-container" *ngIf="config.required">
-            <i class="fa-regular fa-asterisk required-star"></i>{{(config.label || '') | translate}}
-        </div>
-        <div *ngIf="!config.required">
-          {{(config.label || '') | translate}}
-        </div>
-        </label>
-        <p *ngIf="config.desc" class="textarea-desc">{{(config.desc || '') | translate}}</p>
-        <p *ngIf="config.hint" class="textarea-hint">{{ config.hint | translate }}</p>
-        <div class="content-area" [ngClass]="focusState === true ? 'focus' : ''">
-          <textarea class="textarea-field" maxlength="{{config.charLimit}}" placeholder="{{ (config.placeholder || '') | translate }}" tabindex="0"
-            [id]="config.id" [formControlName]="config.id" [attr.aria-label]="'Textarea Input' + ' ' + (config.placeholder || '' | translate)" #textareaInput>123
+        <ircc-cl-lib-label
+          [config]="labelConfig"
+          [attr.size]="config.size"
+        ></ircc-cl-lib-label>
+        <div
+          class="content-area"
+          [ngClass]="focusState === true ? 'focus' : ''"
+        >
+          <textarea
+            class="textarea-field"
+            maxlength="{{ config.charLimit }}"
+            placeholder="{{
+              announceCharStatusChangeAria
+                ? ''
+                : (config.placeholder || '' | translate)
+            }}"
+            [id]="config.id"
+            tabindex="0"
+            (blur)="onBlur()"
+            [formControlName]="config.id"
+            [attr.aria-label]="
+              announceCharStatusChangeAria
+                ? currentCharacterStatusAria
+                : (config.label || '' | translate) +
+                  ' ' +
+                  (config.desc || '' | translate) +
+                  ' ' +
+                  (config.hint || '' | translate) +
+                  ' ' +
+                  (config.placeholder || '' | translate) +
+                  ' ' +
+                  formatCharacterUsedString(charLength)
+            "
+            #textareaInput
+          >
           </textarea>
-          <p *ngIf="config.charLimit" class="character-count" [ngClass]="charLimitStatus" aria-live="polite"
-            attr.aria-label=" {{ 'TEXTAREA_COMPONENT.characters-used-aria-label' | translate: { currentCharacterCount: textareaInput.value.length, characterLimit: config.charLimit} }}
-             {{(currentCharacterStatusAria || '') | translate}}"
-            tabindex="0" >{{textareaInput.value.length}}/{{config.charLimit}}
+          <p
+            *ngIf="config.charLimit"
+            class="character-count"
+            [ngClass]="charLimitStatus"
+          >
+            {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>
         </div>
       </div>
 
-      <div *ngIf="(config.formGroup.get(config.id)?.touched) && config.formGroup.get(config.id)?.invalid" class="check-error">
+      <div
+        *ngIf="
+          config.formGroup.get(config.id)?.touched &&
+          config.formGroup.get(config.id)?.invalid
+        "
+        class="check-error"
+      >
         <ng-container *ngFor="let errors of errorIds; let i = index">
-          <div *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]" class="radio-errors">
-            <lib-error [size]="config?.size" [id]="errors.id" [errorLOV]="errors.errorLOV"></lib-error>
+          <div
+            *ngIf="config.formGroup.get(config.id)?.errors?.[errors.key]"
+            class="radio-errors"
+          >
+            <ircc-cl-lib-error
+              [size]="config.size"
+              [id]="errors.id"
+              [errorLOV]="errors.errorLOV"
+            ></ircc-cl-lib-error>
           </div>
         </ng-container>
       </div>
