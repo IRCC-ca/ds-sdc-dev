@@ -20,7 +20,7 @@ import { environment } from '../../environments/environment';
 import {
   INavigationConfig,
   INavigationItemLink,
-  INavigationItemAccordion,
+  INavigationItemAccordion
 } from 'ircc-ds-angular-component-library';
 
 @Component({
