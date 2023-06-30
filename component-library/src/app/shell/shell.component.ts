@@ -21,9 +21,6 @@ import {
   INavigationConfig,
   INavigationItemLink,
   INavigationItemAccordion,
-  INavigationItemHeading,
-  INavigationDivider,
-  INavigationIndicator
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -94,7 +91,7 @@ export class ShellComponent implements OnInit {
   };
 
   overviewPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'overviewPageNavItem',
     label: ' Overview ',
     type: 'link',
     children: [],
@@ -102,7 +99,7 @@ export class ShellComponent implements OnInit {
   };
 
   forDeveloperPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'forDeveloperPagenNavItem',
     label: 'For developers',
     type: 'link',
     children: [],
@@ -110,7 +107,7 @@ export class ShellComponent implements OnInit {
   };
 
   forDesignersPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'forDesignersPageNavItem',
     label: 'For designers',
     type: 'link',
     children: [],
@@ -118,7 +115,7 @@ export class ShellComponent implements OnInit {
   };
 
   utilPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'utilPageNavItem',
     label: ' Utilities ',
     type: 'link',
     children: [],
@@ -126,7 +123,7 @@ export class ShellComponent implements OnInit {
   };
 
   buttonsPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'buttonsPageNavItem',
     label: ' Buttons ',
     type: 'link',
     children: [],
@@ -134,7 +131,7 @@ export class ShellComponent implements OnInit {
   };
 
   bannerPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'bannerPageNavItem',
     label: ' Banner ',
     type: 'link',
     children: [],
@@ -142,7 +139,7 @@ export class ShellComponent implements OnInit {
   };
 
   inputPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'inputPageNavItem',
     label: ' Input ',
     type: 'link',
     children: [],
@@ -150,7 +147,7 @@ export class ShellComponent implements OnInit {
   };
 
   datePickerPage: INavigationItemLink = {
-    id: 'accordionNav',
+    id: 'datePickerPageNavItem',
     label: ' Date Picker ',
     type: 'link',
     children: [],
@@ -159,7 +156,7 @@ export class ShellComponent implements OnInit {
 
   gettingStartedNav: INavigationItemAccordion = {
     open: true,
-    id: 'accordionNav',
+    id: 'gettingStartedNavAccordian',
     label: 'Getting Started',
     type: 'accordion',
     children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
@@ -167,7 +164,7 @@ export class ShellComponent implements OnInit {
 
   foundationsNav: INavigationItemAccordion = {
     open: true,
-    id: 'accordionNav',
+    id: 'foundationsNavAccordian',
     label: 'Foundations',
     type: 'accordion',
     children: [this.utilPage]
@@ -175,7 +172,7 @@ export class ShellComponent implements OnInit {
 
   componentNav: INavigationItemAccordion = {
     open: true,
-    id: 'accordionNav',
+    id: 'componentNavAccordian',
     label: 'Components',
     type: 'accordion',
     children: [
