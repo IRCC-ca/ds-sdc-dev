@@ -66,8 +66,8 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
       href: 'ROUTES.overview',
       external: false,
       id: 'Overview.Heading',
-      icon: 'fa-regular fa-user',
-      trailingIcon: 'fa-regular fa-arrow-right',
+      iconLeading: 'fa-regular fa-user',
+      iconTrailing: 'fa-regular fa-arrow-right',
       type: 'link',
       children: [],
       indicator: { status: 'critical', icon: 'fa-regular fa-square' }

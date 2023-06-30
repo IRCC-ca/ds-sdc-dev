@@ -240,4 +240,8 @@ export class navigationComponent implements OnInit, AfterViewInit {
     this.renderer.removeStyle(this.navigation?.nativeElement, 'overflow-y');
     this.renderer.removeStyle(this.navigation?.nativeElement, 'overflow-x');
   };
+
+  setIndex = (index: number): number => {
+    return (index += 1);
+  };
 }

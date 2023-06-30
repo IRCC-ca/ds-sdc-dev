@@ -43,328 +43,88 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
-  itemAA: INavigationItemLink = {
-    label: 'Overview.Heading',
-    href: 'ROUTES.overview',
-    external: false,
-    id: 'Overview.Heading',
-    icon: 'fa-regular fa-user',
-    trailingIcon: 'fa-regular fa-arrow-right',
+  imm5406: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'IMM 5406',
     type: 'link',
     children: [],
-    indicator: { status: 'information', icon: 'fa-regular fa-circle' }
+    href: '/en/developers',
+    indicator: {
+      status: 'neutral',
+      icon: 'fa-solid fa-circle-half-stroke'
+    },
+    header: true
   };
 
-  itemDivider: INavigationDivider = {
-    id: '',
-    label: '',
-    type: 'divider',
-    children: []
+  imm5669: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'IMM 5669',
+    type: 'link',
+    children: [],
+    href: '/en/mahsa-en',
+    indicator: {
+      status: 'neutral',
+      icon: 'fa-solid fa-circle'
+    },
+    header: true
   };
 
-  itemAB: INavigationItemLink = {
-    label: 'Designers.Heading',
-    href: 'ROUTES.forDesigners',
-    id: 'Designers.Heading',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-  itemAC: INavigationItemLink = {
-    label: 'Overview.DeveloperHeading',
-    href: 'ROUTES.forDevelopers',
-    anchor: 'themes',
-    id: 'Overview.DeveloperHeading',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-  itemA: INavigationItemHeading = {
-    id: 'GetStartedHeading',
-    label: 'Developers.GetStartedHeading',
-    icon: 'fa-light fa-basketball',
-    type: 'heading',
-    children: []
-  };
-
-  michael: INavigationItemLink = {
-    label: 'michael',
-    href: 'ROUTES.michael',
-    id: 'michael',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  naseer: INavigationItemLink = {
-    label: 'naseer',
-    href: 'ROUTES.naseer',
-    id: 'naseer',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  mike: INavigationItemLink = {
-    label: 'mike',
-    href: 'ROUTES.mike',
-    id: 'mike',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-  bobby: INavigationItemLink = {
-    label: 'bobby',
-    href: 'ROUTES.bobby',
-    id: 'bobby',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  mashsa: INavigationItemLink = {
-    label: 'mahsa',
-    href: 'ROUTES.mahsa',
-    id: 'mahsa',
-    icon: '',
-    type: 'link',
-    children: [this.michael, this.naseer, this.mike]
-  };
-
-  accessibility: INavigationItemLink = {
-    label: 'Accessibility Demo',
-    href: '/en/accessibility-demo',
-    id: 'accessibility',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  banner: INavigationItemLink = {
-    label: 'Banner Documentation',
-    href: '/en/banner-doc',
-    id: 'banner',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  codeview: INavigationItemLink = {
-    label: 'Code Viewer',
-    href: '/en/codeview',
-    id: 'codeview',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  button: INavigationItemLink = {
-    label: 'Button Documentation',
-    href: '/en/button-doc',
-    id: 'button',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  input: INavigationItemLink = {
-    label: 'Input Documentation',
-    href: '/en/input-documentation',
-    id: 'input',
-    icon: '',
-    type: 'link',
-    children: []
-  };
-
-  other: INavigationItemAccordion = {
-    id: 'other',
-    label: 'Other Pages',
-    type: 'accordion',
+  accordionNav1: INavigationItemAccordion = {
     open: true,
-    children: [
-      this.accessibility,
-      this.banner,
-      this.codeview,
-      this.button,
-      this.input
-    ]
-  };
-
-  itemQA: INavigationItemAccordion = {
-    id: 'qa',
-    label: 'QA.header',
+    id: 'accordionNav',
+    label: 'Required forms',
     type: 'accordion',
-    children: [this.mashsa, this.michael, this.naseer, this.mike, this.bobby],
-    open: true
+    iconLeading: 'fa-solid fa-circle-half-stroke',
+    children: [this.imm5406, this.imm5669]
   };
 
-  navQATesting: INavigationItemHeading = {
-    icon: '',
-    id: 'header_link',
-    label: 'Header Title',
-    type: 'heading',
-    children: []
-  };
-
-  navQATestingLinkOne: INavigationItemLink = {
-    label: 'Nav Title',
-    href: 'ROUTES.overview',
-    id: 'input',
-    icon: '',
+  imm008: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'IMM 0008',
     type: 'link',
     children: [],
+    href: '/en/overview',
     indicator: {
-      status: 'critical',
-      icon: 'fa-light fa-circle',
-      label: 'Not Started'
-    }
-  };
-
-  navQATestingLinkTwo: INavigationItemLink = {
-    label: 'Nav Title',
-    href: '/en/input-documentation',
-    id: 'input',
-    icon: '',
-    type: 'link',
-    children: [],
-    indicator: {
-      status: 'primary',
-      icon: 'fa-solid fa-circle-half-stroke',
-      label: 'Not Complete'
-    }
-  };
-
-  navQATestingLinkThree: INavigationItemLink = {
-    label: 'Nav Title',
-    href: 'ROUTES.bobby',
-    id: 'input',
-    icon: '',
-    type: 'link',
-    children: [],
-    indicator: {
-      status: 'information',
-      icon: 'fa-solid fa-circle',
-      label: 'Complete'
-    }
-  };
-
-  navQATestingLinkFour: INavigationItemLink = {
-    label: 'Nav Title',
-    href: 'ROUTES.michael',
-    id: 'input',
-    icon: '',
-    type: 'link',
-    children: [],
-    indicator: {
-      status: 'critical',
-      icon: 'fa-light fa-circle',
-      label: 'indicator'
-    }
-  };
-
-  navQATestingLinkFive: INavigationItemLink = {
-    label: 'Nav Title',
-    href: 'ROUTES.mahsa',
-    id: 'input',
-    icon: 'fa-light fa-circle',
-    type: 'link',
-    children: []
-  };
-
-  navQATestingLinkSix: INavigationItemLink = {
-    label: 'Nav Title',
-    href: '/en/codeview',
-    id: 'input',
-    trailingIcon: 'fa-light fa-circle',
-    type: 'link',
-    children: []
-  };
-
-  navQATestingLinkSeven: INavigationItemLink = {
-    label: 'Nav Title',
-    href: 'ROUTES.mahsa',
-    id: 'input',
-    icon: 'fa-light fa-circle',
-    trailingIcon: 'fa-light fa-circle',
-    indicator: {
-      status: 'information',
-      icon: 'fa-light fa-circle',
-      label: ''
+      status: 'neutral',
+      icon: 'fa-regular fa-circle'
     },
-    type: 'link',
-    children: []
+    iconLeading: 'fa-regular fa-user',
+    iconTrailing: 'fa-regular fa-arrow-right',
+    header: true
   };
-
-  navQATestingLinkLong: INavigationItemLink = {
-    label: 'Nav TitleNav TitleNav TitleNav',
-    href: 'https://google.com',
-    external: true,
-    id: 'input',
-    icon: 'fa-light fa-circle',
-    trailingIcon: 'fa-light fa-circle',
-    indicator: {
-      status: 'information',
-      icon: 'fa-light fa-circle',
-      label: 'indicator'
-    },
-    type: 'link',
-    children: []
-  };
-
-  navQATestingLinkLongLong: INavigationItemLink = {
-    label: 'Nav TitleNav TitleNav TitleNav',
-    href: '/en/codeview',
-    id: 'input',
-    type: 'link',
-    children: []
-  };
-
-  navQATestingLinkAccordion: INavigationItemLink = {
-    label: 'Nav Title',
-    href: 'https://google.com',
-    external: true,
-    id: 'input',
-    type: 'link',
-    children: []
-  };
-
-  navQATestingLinkStep: INavigationItemAccordion = {
-    id: 'qa',
-    label: 'Step Title',
+  accordionNav: INavigationItemAccordion = {
+    open: true,
+    id: 'accordionNav',
+    label: 'Required forms',
     type: 'accordion',
-    children: [
-      this.navQATestingLinkAccordion,
-      this.navQATestingLinkAccordion,
-      this.navQATestingLinkAccordion,
-      this.navQATestingLinkSeven
-    ],
-    open: true
+    children: [this.imm008, this.accordionNav1]
+  };
+
+  requiredPDF: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'Required PDF Forms',
+    type: 'link',
+    children: [],
+    href: '/en/naseer-en',
+    header: true
+  };
+
+  addForms: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'Additonal Forms',
+    type: 'link',
+    children: [],
+    href: '/en/bobby-en',
+    header: true
   };
 
   navConfig: INavigationConfig = {
     id: 'shell_nav',
     size: 'small',
-    label: 'Nav title',
-    height: '90vh',
+    height: '50vh',
     marginTop: 182,
-    iconLeading: 'fa-light fa-arrow-left',
-    iconTrailing: 'fa-light fa-arrow-right',
-    scrolling: true,
-    navigationConfig: [
-      // this.navQATesting,
-      // this.navQATestingLinkOne,
-      // this.navQATestingLinkTwo,
-      // this.navQATestingLinkThree,
-      // this.itemDivider,
-      this.navQATestingLinkFour,
-      this.navQATestingLinkFive,
-      this.navQATestingLinkSix,
-      this.itemDivider,
-      this.navQATestingLinkSeven,
-      this.navQATestingLinkLong,
-      this.navQATestingLinkLongLong,
-      this.navQATestingLinkStep
-    ]
+    scrolling: false,
+    navigationConfig: [this.accordionNav, this.requiredPDF, this.addForms]
   };
 
   randomHeader: string = '';
