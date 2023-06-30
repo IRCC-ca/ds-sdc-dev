@@ -98,7 +98,7 @@ export class ShellComponent implements OnInit {
     label: ' Overview ',
     type: 'link',
     children: [],
-    href: 'ROUTES.overview',
+    href: 'ROUTES.overview'
   };
 
   forDeveloperPage: INavigationItemLink = {
@@ -106,7 +106,7 @@ export class ShellComponent implements OnInit {
     label: 'For developers',
     type: 'link',
     children: [],
-    href: 'ROUTES.forDevelopers',
+    href: 'ROUTES.forDevelopers'
   };
 
   forDesignersPage: INavigationItemLink = {
@@ -114,7 +114,7 @@ export class ShellComponent implements OnInit {
     label: 'For designers',
     type: 'link',
     children: [],
-    href: 'ROUTES.forDesigners',
+    href: 'ROUTES.forDesigners'
   };
 
   utilPage: INavigationItemLink = {
@@ -122,7 +122,7 @@ export class ShellComponent implements OnInit {
     label: ' Utilities ',
     type: 'link',
     children: [],
-    href: 'ROUTES.utilities',
+    href: 'ROUTES.utilities'
   };
 
   buttonsPage: INavigationItemLink = {
@@ -130,7 +130,7 @@ export class ShellComponent implements OnInit {
     label: ' Buttons ',
     type: 'link',
     children: [],
-    href: 'ROUTES.buttons',
+    href: 'ROUTES.buttons'
   };
 
   bannerPage: INavigationItemLink = {
@@ -138,7 +138,7 @@ export class ShellComponent implements OnInit {
     label: ' Banner ',
     type: 'link',
     children: [],
-    href: 'ROUTES.banner',
+    href: 'ROUTES.banner'
   };
 
   inputPage: INavigationItemLink = {
@@ -146,7 +146,7 @@ export class ShellComponent implements OnInit {
     label: ' Input ',
     type: 'link',
     children: [],
-    href: 'ROUTES.input',
+    href: 'ROUTES.input'
   };
 
   datePickerPage: INavigationItemLink = {
@@ -154,7 +154,7 @@ export class ShellComponent implements OnInit {
     label: ' Date Picker ',
     type: 'link',
     children: [],
-    href: 'ROUTES.datePicker',
+    href: 'ROUTES.datePicker'
   };
 
   gettingStartedNav: INavigationItemAccordion = {
@@ -178,7 +178,12 @@ export class ShellComponent implements OnInit {
     id: 'accordionNav',
     label: 'Components',
     type: 'accordion',
-    children: [this.buttonsPage, this.bannerPage, this.inputPage, this.datePickerPage]
+    children: [
+      this.buttonsPage,
+      this.bannerPage,
+      this.inputPage,
+      this.datePickerPage
+    ]
   };
   accordionNav: INavigationItemAccordion = {
     open: true,
@@ -188,7 +193,6 @@ export class ShellComponent implements OnInit {
     children: [this.imm008, this.accordionNav1]
   };
 
-  
   requiredPDF: INavigationItemLink = {
     id: 'accordionNav',
     label: 'Required PDF Forms',
@@ -214,7 +218,11 @@ export class ShellComponent implements OnInit {
     marginTop: 182,
     scrolling: false,
     // navigationConfig: [this.accordionNav, this.requiredPDF, this.addForms]
-    navigationConfig: [this.gettingStartedNav, this.foundationsNav, this.componentNav]
+    navigationConfig: [
+      this.gettingStartedNav,
+      this.foundationsNav,
+      this.componentNav
+    ]
   };
 
   randomHeader: string = '';
