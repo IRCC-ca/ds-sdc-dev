@@ -17,9 +17,9 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.icon"
+          *ngIf="config?.iconLeading"
           class="icon-left"
-          [config]="{ FA_keywords: config?.icon || '' }"
+          [config]="{ FA_keywords: config?.iconLeading || '' }"
         ></ircc-cl-lib-icon>
         <p *ngIf="config?.header !== true">
           {{ config?.label || '' | translate }}
@@ -46,9 +46,9 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.trailingIcon"
+          *ngIf="config?.iconTrailing"
           class="icon-trailing"
-          [config]="{ FA_keywords: config?.trailingIcon || '' }"
+          [config]="{ FA_keywords: config?.iconTrailing || '' }"
         ></ircc-cl-lib-icon>
       </a>
     </ng-container>
@@ -64,9 +64,9 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.icon"
+          *ngIf="config?.iconLeading"
           class="icon-left"
-          [config]="{ FA_keywords: config?.icon || '' }"
+          [config]="{ FA_keywords: config?.iconLeading || '' }"
         ></ircc-cl-lib-icon>
         <p>{{ config?.label || '' | translate }} {{ config.size }}</p>
         <ircc-cl-lib-indicator
@@ -78,9 +78,9 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.trailingIcon"
+          *ngIf="config?.iconTrailing"
           class="icon-trailing"
-          [config]="{ FA_keywords: config?.trailingIcon || '' }"
+          [config]="{ FA_keywords: config?.iconTrailing || '' }"
         ></ircc-cl-lib-icon>
       </a>
     </ng-template>

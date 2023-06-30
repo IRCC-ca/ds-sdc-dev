@@ -74,7 +74,7 @@ export class ShellComponent implements OnInit {
     id: 'accordionNav',
     label: 'Required forms',
     type: 'accordion',
-    icon: 'fa-solid fa-circle-half-stroke',
+    iconLeading: 'fa-solid fa-circle-half-stroke',
     children: [this.imm5406, this.imm5669]
   };
 
@@ -88,6 +88,8 @@ export class ShellComponent implements OnInit {
       status: 'neutral',
       icon: 'fa-regular fa-circle'
     },
+    iconLeading: 'fa-regular fa-user',
+    iconTrailing: 'fa-regular fa-arrow-right',
     header: true
   };
   accordionNav: INavigationItemAccordion = {

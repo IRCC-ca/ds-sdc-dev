@@ -48,12 +48,12 @@ export interface INavigationItem {
 
 export interface INavigationItemAccordion extends INavigationItem {
   open: boolean;
-  icon?: string;
+  iconLeading?: string;
 }
 
 export interface INavigationItemLink extends INavigationItem {
-  icon?: string;
-  trailingIcon?: string;
+  iconLeading?: string;
+  iconTrailing?: string;
   href: string;
   external?: boolean;
   anchor?: string;
@@ -62,7 +62,7 @@ export interface INavigationItemLink extends INavigationItem {
 }
 
 export interface INavigationItemHeading extends INavigationItem {
-  icon: string;
+  iconLeading: string;
 }
 
 export interface INavigationDivider extends INavigationItem {}

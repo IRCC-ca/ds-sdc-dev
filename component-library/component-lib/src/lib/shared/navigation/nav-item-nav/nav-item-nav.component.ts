@@ -40,8 +40,8 @@ export class navItemNavComponent implements OnInit {
     external: false,
     border: false,
     label: '',
-    icon: '',
-    trailingIcon: '',
+    iconLeading: '',
+    iconTrailing: '',
     type: 'link',
     children: [],
     header: false
@@ -59,7 +59,7 @@ export class navItemNavComponent implements OnInit {
   };
 
   headerConfig: INavigationItemHeading = {
-    icon: '',
+    iconLeading: '',
     id: 'header_link',
     label: 'Header Title',
     type: 'heading',
