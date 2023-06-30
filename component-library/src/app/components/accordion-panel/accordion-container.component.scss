@@ -2,6 +2,7 @@
 @use '../../../../../core-library/tokens/sizes' as sizes;
 @use '../../../../../core-library/layout/layout-grid' as layout-grid;
 @use '../../../../../core-library/util/device' as device;
+@use '../../../scss/grid';
 
 @mixin selector {
   app-accordian-container#{template-const.$escape} {
@@ -22,6 +23,17 @@
 
     &.fullWidth {
       grid-template-columns: auto auto auto;
+    }
+
+    &.no-extra-left {
+      @include grid.in-phone-layout {
+        grid-template-columns: auto auto;
+
+        .accordion-expand-button {
+          grid-column: 1;
+          justify-content: start;
+        }
+      }
     }
 
     @include device.in-phone-layout() {
