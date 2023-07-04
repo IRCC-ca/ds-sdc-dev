@@ -149,8 +149,6 @@ export class BannerComponent implements OnInit {
       }
     }
 
-    this.config.show = true;
-
     this.configSub = this.bannerService.bannerSubjObs$.subscribe((response) => {
       if (this.config.id === response.id) {
         this.config = response;
