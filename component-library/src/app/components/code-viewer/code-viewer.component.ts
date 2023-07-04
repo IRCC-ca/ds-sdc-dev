@@ -115,10 +115,6 @@ export class codeViewerComponent implements OnInit, OnChanges {
   getHeight(height: number) {
     this.height = height;
   }
-
-  toggleTest() {
-    this.bannerService.toggleBanner('banner', true);
-  }
 }
 
 /**
