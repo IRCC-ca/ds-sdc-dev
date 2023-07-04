@@ -11,7 +11,7 @@
       >
         {{ 'Overview.SubHeading' | translate }}
       </h2>
-      <div>
+      <!-- <div>
         <a routerLink="/en/overview">{{ 'Link.Overview' | translate }}</a>
         <a routerLink="/en/mahsa-en">{{ 'Link.Mahsa' | translate }}</a>
         <a routerLink="/en/michael-en">{{ 'Link.Michael' | translate }}</a>
@@ -34,7 +34,7 @@
         <a routerLink="/en/datePicker-doc">{{
           'Link.DatePickerDocumentation' | translate
         }}</a>
-      </div>
+      </div> -->
     </div>
   </div>
   <main>
@@ -46,34 +46,6 @@
         class="left-nav"
         [attr.size]="navConfig.size"
       >
-        <div navigationContentTop>
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
-              min-height: 256px;
-            "
-          >
-            <p>Header projected content</p>
-            <img [src]="randomHeader" />
-          </div>
-        </div>
-        <div navigationContentBottom>
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
-              min-height: 256px;
-            "
-          >
-            <p>Footer projected content</p>
-            <img [src]="randomFooter" />
-          </div>
-        </div>
       </ircc-cl-lib-navigation>
       <div
         class="content"

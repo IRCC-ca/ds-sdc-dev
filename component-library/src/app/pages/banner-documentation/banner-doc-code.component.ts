@@ -294,7 +294,7 @@ export class BannerDocCodeComponent implements OnInit {
     };
 
     const linkExample: ICTAConfig = {
-      text: 'Link Text',
+      text: 'Link-Text',
       type: 'link'
     };
 
@@ -307,7 +307,7 @@ export class BannerDocCodeComponent implements OnInit {
       else if (text === 'Secondary')
         this.bannerConfig?.cta?.push(secondaryExample);
       else if (text === 'Plain') this.bannerConfig?.cta?.push(plainExample);
-      else if (text === 'Link') this.bannerConfig?.cta?.push(linkExample);
+      else if (text === 'Link-Text') this.bannerConfig?.cta?.push(linkExample);
     }
   }
 
@@ -429,11 +429,11 @@ export class BannerDocCodeComponent implements OnInit {
    */
   handleLinkToggle(value: any) {
     if (value['showLinkToggle'] === 'True') {
-      this.addItemtoCTAList('Link');
+      this.addItemtoCTAList('Link-Text');
       this.currentButtonSet.add('showLinkToggle');
       this.checkCurrentButtonCounter();
     } else {
-      this.removeItemFromCTAList('Link');
+      this.removeItemFromCTAList('Link-Text');
       this.currentButtonSet.delete('showLinkToggle');
       this.checkCurrentButtonCounter();
     }
