@@ -1,4 +1,3 @@
-//TODO: Add detailed readme listing how this actually works. People will be SOOOO confused.
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { IBannerConfig } from './banner.component';
