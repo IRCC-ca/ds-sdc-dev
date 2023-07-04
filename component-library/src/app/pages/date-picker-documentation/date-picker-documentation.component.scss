@@ -59,7 +59,7 @@ ul {
       margin-bottom: 32px;
     }
     .element-wrapper-container:last-child {
-      margin-bottom: 24px;
+      margin-bottom: 0;
     }
   }
 }
@@ -68,6 +68,7 @@ ul {
   margin-top: 8px;
 
   .do-dont-heading {
+    padding-bottom: 4px;
     margin: 0 0 8px 0;
     border-bottom: 1px solid;
     @include typography.fontSet(heading, 5, emphasis);
@@ -88,11 +89,11 @@ ul {
     margin-bottom: 26px;
   }
   .anatomy-content-container {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 
     .round-purple-num-heading-text {
       display: inline-block;
-      margin: 0 0 8px 8px;
+      margin: 0 0 2px 8px;
       position: relative;
       top: 2px;
       @include typography.fontSet(heading, 5, emphasis);
@@ -121,8 +122,11 @@ ul {
 }
 
 .specs {
-  .specs-description {
+  .specs-description1 {
     margin: 24px 0 0 0;
+  }
+  .specs-description2 {
+    margin: 8px 0 0 0;
   }
 }
 
@@ -143,8 +147,11 @@ ul {
     justify-content: flex-start;
     .figma-usage {
       max-width: 547px;
-      margin-right: 12px;
+      margin-right: 56px;
       flex-shrink: inherit;
+      .accessInputHeading {
+        margin-top: 24px;
+      }
 
       @include device.in-tablet-layout() {
         max-width: 444px;
@@ -172,6 +179,7 @@ ul {
     span {
       display: flex;
       margin-left: 22px;
+      margin-right: 36px;
       height: 137px;
       @include device.in-phone-layout() {
         margin-left: 0;
@@ -184,12 +192,8 @@ ul {
   }
 
   .image-1 {
-    width: 176px;
+    width: 167px;
     height: 257px;
-  }
-  .image-3 {
-    width: 210px;
-    height: 223px;
   }
 
   .accessInput1 {
@@ -209,6 +213,11 @@ ul {
     height: 135px;
   }
   .accessInput3 {
+    // @include device.in-phone-layout() {
+    //   width: 143px;
+    //   height: 89px;
+    // }
+    width: 210px;
     height: 223px;
   }
 }
@@ -244,7 +253,7 @@ ul {
 
 .research {
   p {
-    margin: 0 0 94px 0;
+    margin: 0;
   }
 }
 

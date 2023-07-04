@@ -88,7 +88,7 @@ h3 {
 
   &.subtext-7 {
     margin-top: 8px;
-    margin-bottom: 44px;
+    margin-bottom: 12px;
   }
 
   &.subtext-8 {
@@ -108,7 +108,12 @@ h3 {
 
   &.subtext-11 {
     margin-top: 8px;
-    margin-bottom: 88px;
+    margin-bottom: 52px;
+  }
+
+  &.subtext-12 {
+    margin-top: 8px;
+    margin-bottom: 32px;
   }
 
   &.subtext-13 {
@@ -122,12 +127,12 @@ h3 {
   }
 
   &.anatomy {
-    margin-bottom: 22px;
-    margin-top: 8px;
+    margin-bottom: 20px;
+    margin-top: 6px;
   }
   &.anatomy:last-child {
     margin-bottom: 0px;
-    margin-top: 8px;
+    margin-top: 6px;
   }
 }
 
@@ -166,6 +171,7 @@ h5 {
     border-bottom: 1px solid;
     margin-top: 8px;
     margin-bottom: 0px;
+    padding-bottom: 4px;
   }
 
   &.text-color-green {
@@ -328,5 +334,11 @@ h5 {
   .validation-list {
     margin: 12px 0 0 0;
     padding: 0 20px;
+  }
+}
+
+.research {
+  p {
+    margin: 0;
   }
 }

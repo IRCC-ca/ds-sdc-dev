@@ -9,6 +9,10 @@
 		"forDevelopers": "developers",
 		"utilities": "utilities",
 		"buttons": "buttons",
+		"banner": "banner-documentation",
+		"input": "input-documentation",
+		"datePicker": "datePicker-doc",
+		"iconButton": "icon-button-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
 		"mahsa": "mahsa-en",
@@ -33,7 +37,8 @@
 		"Codeview": "Codeview",
 		"ButtonDocumentation": "Button Documentation",
 		"InputDocumentation": "Input Documentation",
-		"DatePickerDocumentation": "Date Picker Documentation"
+		"DatePickerDocumentation": "Date Picker Documentation",
+		"IconButtonDocumentation": "Icon Button Documentation"
 	},
 	"Buttons": {
 		"Title": "Buttons",
@@ -50,7 +55,7 @@
 		"PlainHeading": "Plain",
 		"PlainBtnText": "Plain button",
 		"PlainBtnTexts": "Plain buttons",
-		"PlainText": "Plain buttons can be used for actions that require less attention than a primary or secondary button. They are also useful in situations where the UI is more compact. They are not to be used as links. Use the link text styles for those scenarios.",
+		"PlainText": "Plain buttons can be used for actions that require less attention than a primary or secondary button. They are also useful in situations where the UI is more compact. They are not to be used as links. Use the <a href='#'>link text styles</a> for those scenarios.",
 		"PlainCritBtnText": "Plain critical button",
 		"ConfigLayoutFluid": "Fluid",
 		"ConfigLayoutFixed": "Fixed",
@@ -94,7 +99,7 @@
 		"DescriptiveDontText": "Write button labels that are static and don't describe an action.",
 		"DescriptiveDontImgAlt": "A button that has the label “Documents”.",
 		"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“button”</strong> component from the Components library.",
-		"FigmaDirectionsListItem4": "If an icon is used, designers can <a class='link' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>change the Font Awesome keyword</a> to update the icon in the button to any Font Awesome icon.",
+		"FigmaDirectionsListItem4": "If an icon is used, designers can <a class='link no-underline' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>change the Font Awesome keyword</a> to update the icon in the button to any Font Awesome icon.",
 		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a button.",
 		"AccessibilityColourText": "Primary buttons have a colour contrast ratio of 8.88:1 and passes AAA accessibility standards under WCAG 2.1.",
 		"AccessibilityKeyboardText": "Buttons are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity."
@@ -351,6 +356,7 @@
 		"ReleasesTitle3": "To install a full release:"
 	},
 	"ERROR": {
+		"fieldIsRequired": "This field is required.",
 		"fieldIsInvalid": "This field is invalid.",
 		"fieldExceededMaxLength": "This field has exceeded max length.",
 		"requiredTextAreaError": "This field is required.",
@@ -556,6 +562,7 @@
 		"AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
 		"AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
 		"CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
+		"LabelText1": "Label text",
 		"LabelText2": "Password"
 	},
 	"DatePicker": {
@@ -588,7 +595,8 @@
 		},
 		"Specs": {
 			"ImgAlt": "Specs displaying the padding and layer measurements within the date picker component. Specs are described in the paragraph below.",
-			"Text": "The small horizontal date picker has 396 pixels fixed width and default height is 120 pixels and hugs content. Each field has consistent widths of 124 pixels, heights of 68 pixels and horizontal padding of 12 pixels. The icon has a 16 pixel width and height. The small vertical date picker has 152 pixels fixed width and default height is 304 pixels and hugs content. Each field has consistent widths of 124 pixels, heights of 68 pixels and vertical padding of 12 pixels. The large horizontal date picker has 432 pixels fixed width and default height is 148 pixels and hugs content. Each field has consistent widths of 136 pixels, heights of 88 pixels and horizontal padding of 12 pixels. The large vertical date picker has 180 pixels fixed width and default height is 376 pixels and hugs content. Each field has consistent widths of 180 pixels, heights of 88 pixels and horizontal padding of 12 pixels."
+			"Text1": "The small horizontal date picker has 396 pixels fixed width and default height is 172 pixels and hugs content. The label text is 24 pixels in height with a fluid width. The required indicator is 12 pixels wide. There are 4 pixels of padding between the required indicator and the label. The description is 20 pixels in height with a fluid width. There are 4 pixels of padding between the label and the description. The hint text is 20 pixels in height with a fluid width. There are 8 pixels of padding between the hint text and the description. There are 4 pixels of padding between the hint text and the fields. Each field has consistent widths of 124 pixels, heights of 68 pixels and horizontal padding of 12 pixels. There are 4 pixels between the The dropdown icon has a 16 pixel width and height. The large horizontal date picker has 396 pixels fixed width and default height is 220 pixels and hugs content. The label text is 28 pixels in height with a fluid width. The required indicator is 12 pixels wide. There are 4 pixels of padding between the required indicator and the label. The description is 24 pixels in height with a fluid width. There are 4 pixels of padding between the label and the description. The hint text is 24 pixels in height with a fluid width. There are 12 pixels of padding between the hint text and the description. There are 8 pixels of padding between the hint text and the fields. Each field has consistent widths of 136 pixels, heights of 88 pixels and horizontal padding of 12 pixels. There are 4 pixels The dropdown icon has a 16 pixel width and height. ",
+			"Text2": "The small vertical date picker has 152 pixels fixed width and default height is 332 pixels and hugs content. The label text is 24 pixels in height with a fluid width. The required indicator is 12 pixels wide. There are 4 pixels of padding between the required indicator and the label. The description is 20 pixels in height with a fluid width. There are 4 pixels of padding between the label and the description. The hint text is 20 pixels in height with a fluid width. There are 8 pixels of padding between the hint text and the description. There are 4 pixels of padding between the hint text and the fields. Each field has consistent widths of 162 pixels, heights of 68 pixels and vertical padding of 12 pixels. The large vertical date picker has 420 pixels fixed width and default height is 148 pixels and hugs content. The label text is 28 pixels in height with a fluid width. The required indicator is 12 pixels wide. There are 4 pixels of padding between the required indicator and the label. The description is 24 pixels in height with a fluid width. There are 4 pixels of padding between the label and the description. The hint text is 24 pixels in height with a fluid width. There are 12 pixels of padding between the hint text and the description. There are 8 pixels of padding between the hint text and the fields. Each field has consistent widths of 220 pixels, heights of 88 pixels and horizontal padding of 12 pixels. "
 		},
 		"ContentGuideLines": {
 			"UseCorrectCaseHeading": "Use the correct order",
@@ -732,7 +740,7 @@
 		},
 		"Specs": {
 			"ImgAlt": "Specs displaying the padding and layer measurements within the banner component. Specs are described in the paragraph below.",
-			"Text": "The small banner with fluid layout has 12 pixels of vertical padding and 12 pixels of horizontal padding inside the banner. The icon has a 20-pixel width and height. There are 12 pixels between the icon and banner-content. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner. The large banner with fluid layout has 16 pixels of vertical padding and 16 pixels of horizontal padding inside the button. The icon has a 24-pixel width and height. There are 12 pixels between the icon and label. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner."
+			"Text": "Alt text description: The small banner with fluid layout has 12 pixels of vertical padding and 12 pixels of horizontal padding inside the banner. The icon has a 20-pixel width and height. There are 12 pixels between the icon and banner-content. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner. The large banner with fluid layout has 16 pixels of vertical padding and 16 pixels of horizontal padding inside the button. The icon has a 24-pixel width and height. There are 12 pixels between the icon and label. The layout of the content within the banner adjusts based on the container’s width. The height of the banner is fluid and adjusts based on the amount of content within the banner."
 		},
 		"ContentGuideLines": {
 			"UseCorrectCaseHeading": "Use the correct case for titles",
@@ -787,6 +795,7 @@
 		"SpecsHeading": "Specs",
 		"ContentGuidelinesHeading": "Content guidelines",
 		"FigmaHeading": "Usage in Figma",
+		"CriticalHeading": "Critical",
 		"AccessibilityHeading": "Accessibility",
 		"ResearchHeading": "Research",
 		"FigmaDirectionsHeading": "Directions for use",
@@ -863,13 +872,53 @@
 		"GenericHeading": "Generic",
 		"DefaultLabel": "Default",
 		"TitleLabel": "Title",
-		"CloseLabel": "Close"
+		"CloseLabel": "Close",
+		"InteractiveDemoDesc": "Try our <strong>{{component}}</strong> component and the configurable options available within it.",
+		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
-		"Title": "Icon Button Documentation",
+		"Title": "Icon Button",
 		"Intro": "Icon buttons can be used for a single, well-understood action that can be clearly communicated with a stand-alone icon.",
-		"InteractiveDemoDesc": "Try our icon button component and the configurable options available within it.",
+		"InteractiveDemoDesc": "Try our <strong>icon button</strong> component and the configurable options available within it.",
 		"PrimaryText": "Primary icon buttons are used to highlight important and easy-to-understand actions. It can be used in a group of icon buttons.",
-		"CriticalText": "Critical icon buttons are often used for destructive actions like deleting user-contributed content."
+		"CriticalText": "Critical icon buttons are often used for destructive actions like deleting user-contributed content.",
+		"OrganizeIcons": "Organize icon button groups",
+		"OrganizeIconsAlt": "A document viewer tool bar with pagination icons, zoom icons and resize icons grouped and separeted.",
+		"OrganizeIconsDoText": "Logically organize icon buttons that have a contextual relationship by keeping related actions together and unrelated actions separated either by white space or dividers.",
+		"OrganizeIconsDontAlt": "A document viewer tool bar with pagination icons, zoom icons and resize icons together in a row.",
+		"OrganizeIconsDontText": "Keep unrelated icon button actions together if it is possible to organize groups of actions.",
+		"CreateConsistent": "Create consistent button groups",
+		"CreateIconsDoAlt": "A critical dialog with title “Do you want to delete this file?” along with a description text, a secondary button “Cancel” and critical button “Delete file”.",
+		"CreateIconsDoText": "Create button groups using the same types of button components.",
+		"CreateIconsDontAlt": "A critical dialog with title “Do you want to delete this file?” along with a description text, a secondary button “Cancel” and critical icon button “Delete”.",
+		"CreateIconsDontText": "Create button groups using different types of button components.",
+		"UseCriticalDestruction": "Use critical icon button for destructive actions",
+		"UseCriticalDoAlt": "A card with title, “Proof of acceptance” that has a document attached. There is a red critical icon button displaying a trash icon to delete the file.",
+		"UseCriticalDoText": "Use the critical icon button type to signify actions that are destructive.",
+		"UseCriticalDontAlt": "A card with title, “Proof of acceptance” that has a document attached. There is a black primary icon button displaying a trash icon to delete the file.",
+		"UseCriticalDontText": "Use the primary icon button type for an action that is destructive.",
+		"EasyUnderStandHeading": "Easy to understand icons",
+		"EasyUnderStandDoAlt": "A modal with title “Surname” along with description text, a primary icon button showing an ‘X’ in the corner that allows the user to close the modal.",
+		"EasyUnderStandDoText": "Use the icon button without accompanying text when the icon is common and easily understood.",
+		"EasyUnderStandDontAlt": "A file uploader showing required document with a primary icon button showing a “plus” icon. It is unclear what the plus icon will do.",
+		"EasyUnderStandDontText": "Use the icon button when the icon is ambiguous and may be better understood when accompanied by a label.",
+		"SpacingHeading": "Spacing for icon button groups",
+		"SpacingText": "An icon button group is a set of icon buttons that have a contextual relationship. To create consistency with how these actions are visually related, consistent spacing rules should be followed. Large icon button groups should have 4 pixels between buttons, small icon button groups should have 4 pixels between buttons and extra small icon button groups should have 16 pixels between buttons.",
+		"AnatomyHeading": "Icon",
+		"AnatomyText": "The icon uses the icon component and can be replaced with any Font Awesome icon. The icon button also has a container used for displaying hover, active and focus states around the icon.",
+		"SpecsImgAlt": "Specs displaying the padding and layer measurements within the icon button component. Specs are described in the paragraph below.",
+		"SpecsText": "The extra small button with fixed layout has no pixels of vertical padding and horizontal padding inside the button. The icon has a 16 pixel width and height. The small button with fixed layout has 10 pixels of vertical padding and  horizontal padding inside the button. The icon has a 20 pixel width and height. The large button with fluid layout has 14 pixels of vertical padding and horizontal padding inside the button. The icon has a 24 pixel width and height. ",
+		"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“icon-button”</strong> component from the Components library.",
+		"FigmaDirectionsListItem2": "In the right panel, configure the properties and variants to meet your needs. ",
+		"FigmaDirectionsListItem3": "Never override colours, radius, padding, icon size, etc. This way foundational elements are kept consistent. ",
+		"FigmaDirectionsListItem4": "Designers can change the Font Awesome keyword to update the icon in the icon-button to any Font Awesome icon.",
+		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing an icon button.",
+		"AccessibilityColourText1": "Primary icon buttons have a colour contrast ratio of 18.08:1 and passes AAA accessibility standards under WCAG 2.1.",
+		"AccessibilityColourText2": "Critical icon buttons have a colour contrast ratio of 7.03:1 and passes AAA accessibility standards under WCAG 2.1.",
+		"AccessibilityKeyboardText": "Icon buttons are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity.",
+		"AccessibilityContentItem1": "Built for keyboard use, all interactive elements should be focusable and show focus visual indicators to guide the interaction.",
+		"AccessibilityContentItem2": "Since Icon buttons only render an icon, it must pass the aria-label prop, so screen readers can give meaning to the button.",
+		"AccessibilityContentItem3": "Prevent keyboard traps. Every element that can be focused on using the keyboard can be unfocused using the keyboard.",
+		"LabellingText": "Icon buttons should have labels programmatically associated to them so the purpose of the icon button’s action is clear to screen reader users."
 	}
 }
