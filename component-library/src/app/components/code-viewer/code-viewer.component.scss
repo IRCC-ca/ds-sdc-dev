@@ -19,6 +19,7 @@ $selectors: 'app-code-viewer';
 
 @mixin layout {
   display: block;
+
   .code-viewer {
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -28,8 +29,8 @@ $selectors: 'app-code-viewer';
     app-accordian-container {
       border-top: 1px solid var(--divider);
       display: block;
-      padding-left: 20px;
     }
+
     pre,
     code {
       overflow: auto;
