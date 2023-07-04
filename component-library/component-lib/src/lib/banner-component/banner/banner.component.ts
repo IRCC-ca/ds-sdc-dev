@@ -1,9 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import {
   IIconButtonComponentConfig,
   IIconButtonIconConfig
 } from '../../shared/icon-button/icon-button.component';
 import { IButtonConfig } from '../../shared/button/button.component';
+import { BannerService } from './banner.service';
+import { Subscription } from 'rxjs';
 
 export enum BannerType {
   '' = '',
@@ -39,6 +50,7 @@ export interface IBannerConfig {
   type?: keyof typeof BannerType;
   rounded?: boolean;
   dismissible?: boolean;
+  show?: boolean;
   cta?: ICTAConfig[];
   size?: keyof typeof BannerSize;
   ariaDissmissible?: string;
@@ -49,11 +61,15 @@ export interface IBannerConfig {
   templateUrl: './banner.component.html'
 })
 export class BannerComponent implements OnInit {
+  @ViewChild('banner', { static: false })
+  banner: ElementRef | undefined;
+
   lineVisible = true;
   textId = '';
 
   @Input() config: IBannerConfig = {
-    id: ''
+    id: '',
+    show: true
   };
   @Input() id?: string;
   @Input() title?: string;
@@ -67,6 +83,9 @@ export class BannerComponent implements OnInit {
 
   @Output() btnEvent = new EventEmitter();
 
+  configSub?: Subscription;
+  configSubToggle?: Subscription;
+
   iconConfig: IIconButtonComponentConfig = {
     id: '', //id is set in ngOnInit
     category: 'custom',
@@ -77,16 +96,8 @@ export class BannerComponent implements OnInit {
   };
 
   eventHandler(emitValue: string) {
-    console.log(emitValue);
     if (this.config?.id) {
-      let banner = document.getElementById(this.config?.id);
-      banner?.classList.add('bannerDismissed');
-      setTimeout(function () {
-        banner?.classList.add('noDisplay');
-        banner?.classList.remove('bannerDismissed');
-      }, 700);
-      this.btnEvent?.emit(this.config.id);
-      banner?.classList.remove('noDisplay');
+      this.bannerService.toggleBanner(this.config.id, false);
     }
   }
 
@@ -104,6 +115,11 @@ export class BannerComponent implements OnInit {
     }
   }
 
+  constructor(
+    private bannerService: BannerService,
+    private renderer: Renderer2
+  ) {}
+
   ngOnInit() {
     //set config from individual options, if present
     if (this.id) this.config.id = this.id;
@@ -114,7 +130,8 @@ export class BannerComponent implements OnInit {
     if (this.dismissible) this.config.dismissible = this.dismissible;
     if (this.cta) this.config.cta = this.cta;
     if (this.size) this.config.size = this.size;
-    if (this.ariaDissmissible) this.config.ariaDissmissible = this.ariaDissmissible;
+    if (this.ariaDissmissible)
+      this.config.ariaDissmissible = this.ariaDissmissible;
 
     this.iconConfig.id = this.config?.id + '_closeBtn';
     this.textId = this.config?.id + '_text';
@@ -126,10 +143,45 @@ export class BannerComponent implements OnInit {
       });
     }
 
-
     if (!this.config.ariaDissmissible || this.config.ariaDissmissible === '') {
       if (this.config.dismissible) {
         this.config.ariaDissmissible = 'close';
+      }
+    }
+
+    this.config.show = true;
+
+    this.configSub = this.bannerService.bannerSubjObs$.subscribe((response) => {
+      if (this.config.id === response.id) {
+        this.config = response;
+      }
+    });
+    this.configSubToggle = this.bannerService.toggleSubjObs$.subscribe(
+      (response) => {
+        if (this.config.id === response.id) {
+          this.toggleVisible(response.value);
+        }
+      }
+    );
+  }
+
+  toggleVisible(value: boolean) {
+    if (this.banner?.nativeElement) {
+      if (value === false) {
+        this.renderer.addClass(this.banner.nativeElement, 'bannerDismissed');
+        this.btnEvent?.emit(this.config.id);
+        setTimeout(() => {
+          if (this.banner?.nativeElement) {
+            this.renderer.removeClass(
+              this.banner.nativeElement,
+              'bannerDismissed'
+            );
+            this.renderer.addClass(this.banner.nativeElement, 'noDisplay');
+          }
+        }, 700);
+      } else {
+        this.renderer.removeClass(this.banner.nativeElement, 'bannerDismissed');
+        this.renderer.removeClass(this.banner.nativeElement, 'noDisplay');
       }
     }
   }

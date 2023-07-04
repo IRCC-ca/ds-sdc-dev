@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   IBannerConfig,
+  BannerService,
   ICTAConfig,
   IRadioInputComponentConfig,
   ITabNavConfig
@@ -16,6 +17,7 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { Subscription } from 'rxjs';
 
 const NUMBER_OF_CTA_ALLOWED: number = 3;
 
@@ -30,7 +32,8 @@ export class BannerDocCodeComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService
+    private lang: LangSwitchService,
+    private bannerService: BannerService
   ) {}
 
   form_interactive_banner = new FormGroup({});
@@ -60,6 +63,8 @@ export class BannerDocCodeComponent implements OnInit {
     size: this.bannerConfig.size,
     ariaDissmissible: this.bannerConfig.ariaDissmissible
   };
+
+  configSubToggle?: Subscription;
 
   codeViewConfig: ICodeViewerConfig = {
     id: 'banner-code-viewer',
@@ -346,21 +351,14 @@ export class BannerDocCodeComponent implements OnInit {
     });
   }
 
-  /**
-   * Handles banner dismiss animation
-   */
-  bannerClose(event: Event) {
-    const bannerContainer = this.banner.nativeElement.querySelector(
-      `#${event}`
-    );
-    setTimeout(function () {
-      bannerContainer?.classList.remove('noDisplay');
-      bannerContainer?.classList.add('bannerDismissed');
-      setTimeout(function () {
-        bannerContainer?.classList.remove('bannerDismissed');
-      }, 700);
-    }, 700);
-  }
+  // /**
+  //  * Handles banner dismiss animation
+  //  */
+  // bannerClose(event: Event) {
+  //   setTimeout(() => {
+  //     this.bannerService.toggleBanner(this.bannerConfig.id);
+  //   }, 2000);
+  // }
 
   /**
    * Disables/Enables button/link radios (Max 3 allowed on the banner at a time)
@@ -511,8 +509,18 @@ export class BannerDocCodeComponent implements OnInit {
       this.handleSecondaryButtonToggle(value);
       this.handleLinkToggle(value);
       this.handleCloseToggle(value);
-      this.bannerConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
+      this.bannerService.setBanner(this.parseToggleConfig(value));
     });
+
+    this.configSubToggle = this.bannerService.toggleSubjObs$.subscribe(
+      (response) => {
+        if (this.bannerConfig.id === response.id && response.value === false) {
+          setTimeout(() => {
+            this.bannerService.toggleBanner(this.bannerConfig.id, true);
+          }, 2000);
+        }
+      }
+    );
   }
 }

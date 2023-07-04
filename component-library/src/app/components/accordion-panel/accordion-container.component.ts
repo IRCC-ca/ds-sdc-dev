@@ -43,7 +43,6 @@ export class accordionContainerComponent implements OnInit {
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
-    console.log(this.config);
     if (this.config.buttonText === '' || this.config.buttonText === undefined)
       this.config.buttonText = 'Accordion.HideCode';
 

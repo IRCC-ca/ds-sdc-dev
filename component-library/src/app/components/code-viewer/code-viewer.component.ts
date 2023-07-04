@@ -10,7 +10,8 @@ import {
 import {
   IButtonConfig,
   ITabNavConfig,
-  ITabConfig
+  ITabConfig,
+  BannerService
 } from 'ircc-ds-angular-component-library';
 
 import {
@@ -62,6 +63,8 @@ export class codeViewerComponent implements OnInit, OnChanges {
     ariaLabel: 'Click to copy the code'
   };
 
+  constructor(private bannerService: BannerService) {}
+
   ngOnInit() {
     this.setupComponent();
   }
@@ -111,6 +114,10 @@ export class codeViewerComponent implements OnInit, OnChanges {
 
   getHeight(height: number) {
     this.height = height;
+  }
+
+  toggleTest() {
+    this.bannerService.toggleBanner('banner', true);
   }
 }
 
