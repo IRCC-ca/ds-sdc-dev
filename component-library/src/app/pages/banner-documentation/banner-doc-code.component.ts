@@ -351,15 +351,6 @@ export class BannerDocCodeComponent implements OnInit {
     });
   }
 
-  // /**
-  //  * Handles banner dismiss animation
-  //  */
-  // bannerClose(event: Event) {
-  //   setTimeout(() => {
-  //     this.bannerService.toggleBanner(this.bannerConfig.id);
-  //   }, 2000);
-  // }
-
   /**
    * Disables/Enables button/link radios (Max 3 allowed on the banner at a time)
    */

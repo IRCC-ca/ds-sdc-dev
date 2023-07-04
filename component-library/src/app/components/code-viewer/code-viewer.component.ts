@@ -10,8 +10,7 @@ import {
 import {
   IButtonConfig,
   ITabNavConfig,
-  ITabConfig,
-  BannerService
+  ITabConfig
 } from 'ircc-ds-angular-component-library';
 
 import {
@@ -63,7 +62,7 @@ export class codeViewerComponent implements OnInit, OnChanges {
     ariaLabel: 'Click to copy the code'
   };
 
-  constructor(private bannerService: BannerService) {}
+  constructor() {}
 
   ngOnInit() {
     this.setupComponent();
