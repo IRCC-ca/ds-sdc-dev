@@ -154,6 +154,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.datePicker'
   };
 
+  iconBtnPage: INavigationItemLink = {
+    id: 'iconBtnPageNavItem',
+    label: ' Icon Button ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.iconButton'
+  };
+
   gettingStartedNav: INavigationItemAccordion = {
     open: true,
     id: 'gettingStartedNavAccordian',
@@ -179,7 +187,8 @@ export class ShellComponent implements OnInit {
       this.buttonsPage,
       this.bannerPage,
       this.inputPage,
-      this.datePickerPage
+      this.datePickerPage,
+      this.iconBtnPage
     ]
   };
   accordionNav: INavigationItemAccordion = {
