@@ -240,6 +240,18 @@ p {
 .accessibility {
     .content-element {
     margin-bottom: 24px;
+    
+    p.accessible-color {
+      margin: 0;
+    }
+    
+    p.accessible-color:last-child {
+        padding-top: 8px;
+      }
+
+    p.accessible {
+      margin: 0px;
+    }
   }
   .content-element:last-child {
     margin-bottom: 0px;
@@ -251,12 +263,12 @@ p {
     margin-bottom: 24px;
 
     .list-item {
-      padding-bottom: 8px;
+      padding: 0;
       @include typography.fontSet(body, 3, regular);
     }
 
-    .list-item:last-child {
-      padding-bottom: 0px;
+    .list-item:first-child {
+      margin: 8px 0 0 0;
     }
   }
 }
