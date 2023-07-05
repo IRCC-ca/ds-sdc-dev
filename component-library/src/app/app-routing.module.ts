@@ -30,6 +30,7 @@ import { InputDocumentationComponent } from './pages/input-documentation/input-d
 import { RequestFormComponent } from './pages/request-form/request-form.component';
 import { BannerDocumentationComponent } from './pages/banner-documentation/banner-documentation.component';
 import { DatePickerDocumentationComponent } from './pages/date-picker-documentation/date-picker-documentation.component';
+import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -75,7 +76,7 @@ const routes: Routes = [
     },
     {
       path: 'buttons',
-      component: ButtonDocCodeComponent,
+      component: ButtonDocumentationComponent,
       title: 'Buttons.Title'
     },
     {
