@@ -213,10 +213,10 @@ ul {
     height: 135px;
   }
   .accessInput3 {
-    // @include device.in-phone-layout() {
-    //   width: 143px;
-    //   height: 89px;
-    // }
+    @include device.in-phone-layout() {
+      width: 167px;
+      height: 257px;
+    }
     width: 210px;
     height: 223px;
   }
