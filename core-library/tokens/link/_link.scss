@@ -8,7 +8,7 @@
 @mixin anchor-selector {
   a,
   .link {
-    &#{template-const.$escape} {
+    &#{template-const.$escape}:not(nav *) {
       &:not([category]) {
         @content;
       }
