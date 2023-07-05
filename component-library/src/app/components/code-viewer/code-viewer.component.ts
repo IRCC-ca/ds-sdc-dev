@@ -62,6 +62,8 @@ export class codeViewerComponent implements OnInit, OnChanges {
     ariaLabel: 'Click to copy the code'
   };
 
+  constructor() {}
+
   ngOnInit() {
     this.setupComponent();
   }

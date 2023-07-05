@@ -65,8 +65,6 @@ export class navItemAccordionComponent implements OnInit {
       ? (this.config.iconLeading = this.iconLeading)
       : undefined;
 
-    console.log(this.config);
-
     this.headerID = `${this.config.id}_header`;
     this.buttonIconOpen = {
       id: `${this.config.id}_button_open`,
