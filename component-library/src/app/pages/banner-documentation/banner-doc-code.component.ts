@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   IBannerConfig,
+  BannerService,
   ICTAConfig,
   IRadioInputComponentConfig,
   ITabNavConfig
@@ -16,6 +17,7 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { Subscription } from 'rxjs';
 
 const NUMBER_OF_CTA_ALLOWED: number = 3;
 
@@ -30,7 +32,8 @@ export class BannerDocCodeComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService
+    private lang: LangSwitchService,
+    private bannerService: BannerService
   ) {}
 
   form_interactive_banner = new FormGroup({});
@@ -60,6 +63,8 @@ export class BannerDocCodeComponent implements OnInit {
     size: this.bannerConfig.size,
     ariaDissmissible: this.bannerConfig.ariaDissmissible
   };
+
+  configSubToggle?: Subscription;
 
   codeViewConfig: ICodeViewerConfig = {
     id: 'banner-code-viewer',
@@ -294,7 +299,7 @@ export class BannerDocCodeComponent implements OnInit {
     };
 
     const linkExample: ICTAConfig = {
-      text: 'Link Text',
+      text: 'Link-Text',
       type: 'link'
     };
 
@@ -307,7 +312,7 @@ export class BannerDocCodeComponent implements OnInit {
       else if (text === 'Secondary')
         this.bannerConfig?.cta?.push(secondaryExample);
       else if (text === 'Plain') this.bannerConfig?.cta?.push(plainExample);
-      else if (text === 'Link') this.bannerConfig?.cta?.push(linkExample);
+      else if (text === 'Link-Text') this.bannerConfig?.cta?.push(linkExample);
     }
   }
 
@@ -344,22 +349,6 @@ export class BannerDocCodeComponent implements OnInit {
         item.disabled = false;
       }
     });
-  }
-
-  /**
-   * Handles banner dismiss animation
-   */
-  bannerClose(event: Event) {
-    const bannerContainer = this.banner.nativeElement.querySelector(
-      `#${event}`
-    );
-    setTimeout(function () {
-      bannerContainer?.classList.remove('noDisplay');
-      bannerContainer?.classList.add('bannerDismissed');
-      setTimeout(function () {
-        bannerContainer?.classList.remove('bannerDismissed');
-      }, 700);
-    }, 700);
   }
 
   /**
@@ -429,11 +418,11 @@ export class BannerDocCodeComponent implements OnInit {
    */
   handleLinkToggle(value: any) {
     if (value['showLinkToggle'] === 'True') {
-      this.addItemtoCTAList('Link');
+      this.addItemtoCTAList('Link-Text');
       this.currentButtonSet.add('showLinkToggle');
       this.checkCurrentButtonCounter();
     } else {
-      this.removeItemFromCTAList('Link');
+      this.removeItemFromCTAList('Link-Text');
       this.currentButtonSet.delete('showLinkToggle');
       this.checkCurrentButtonCounter();
     }
@@ -511,8 +500,18 @@ export class BannerDocCodeComponent implements OnInit {
       this.handleSecondaryButtonToggle(value);
       this.handleLinkToggle(value);
       this.handleCloseToggle(value);
-      this.bannerConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
+      this.bannerService.setBanner(this.parseToggleConfig(value));
     });
+
+    this.configSubToggle = this.bannerService.toggleSubjObs$.subscribe(
+      (response) => {
+        if (this.bannerConfig.id === response.id && response.value === false) {
+          setTimeout(() => {
+            this.bannerService.toggleBanner(this.bannerConfig.id, true);
+          }, 2000);
+        }
+      }
+    );
   }
 }

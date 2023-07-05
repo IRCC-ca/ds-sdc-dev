@@ -129,10 +129,31 @@
       padding: 0;
     }
 
+    h2 {
+      font-weight: 700;
+    }
+
     .child-navigation {
       margin: 0;
       padding: 0px;
-      padding-left: 40px;
+
+      &.indent-0 {
+        & a {
+          padding-left: 20px;
+        }
+      }
+
+      &.indent-1 {
+        & a {
+          padding-left: 40px;
+        }
+      }
+
+      &.indent-2 {
+        & a {
+          padding-left: 60px;
+        }
+      }
     }
   }
 

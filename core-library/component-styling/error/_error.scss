@@ -40,7 +40,7 @@ $selectors: "ircc-cl-lib-error";
 
   .additionalError {
     margin: {
-      top: 8px;
+      top: 4px;
       left: 20px;
     }
   }
@@ -65,7 +65,7 @@ $selectors: "ircc-cl-lib-error";
     margin-left: 24px;
 
     margin: {
-      top: 12px;
+      top: 4px;
       bottom: 0px;
     }
   }
@@ -90,12 +90,11 @@ $selectors: "ircc-cl-lib-error";
 
   .errorContainer {
     display: flex;
-    color: var(--red-7);
-    align-items: flex-start;
+    color: var(--critical-text);
+    align-items: center;
   }
 
   .errorIcon {
-    margin-top: 4px;
     margin-right: 4px;
   }
 }

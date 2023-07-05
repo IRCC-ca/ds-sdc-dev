@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IButtonConfig } from 'ircc-ds-angular-component-library';
 
@@ -19,7 +28,7 @@ export interface IAccordionContainerConfig {
   templateUrl: './accordion-container.component.html',
   styleUrls: ['./accordion-container.component.scss']
 })
-export class accordionContainerComponent implements OnInit {
+export class accordionContainerComponent implements OnInit, AfterViewInit {
   @Input() config: IAccordionContainerConfig = {
     id: '',
     mobileBehaviour: mobileBehaviourType.column
@@ -29,6 +38,10 @@ export class accordionContainerComponent implements OnInit {
   @Input() buttonTextClosed: string = '';
   @Input() open?: boolean | undefined;
   @Input() mobileBehaviour: keyof typeof mobileBehaviourType | undefined;
+  @ViewChild('extraLeft') extraLeftRef!: ElementRef;
+  @ViewChild('extraRight') extraRightRef!: ElementRef;
+  noExtraLeft: boolean = false;
+  noExtraRight: boolean = false;
 
   @Output() getOpen = new EventEmitter<boolean>();
 
@@ -43,7 +56,6 @@ export class accordionContainerComponent implements OnInit {
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
-    console.log(this.config);
     if (this.config.buttonText === '' || this.config.buttonText === undefined)
       this.config.buttonText = 'Accordion.HideCode';
 
@@ -62,8 +74,24 @@ export class accordionContainerComponent implements OnInit {
       this.config.mobileBehaviour = this.mobileBehaviour;
   }
 
+  ngAfterViewInit() {
+    this.noExtraLeft = this.extraLeftRef?.nativeElement.childElementCount === 0;
+    this.noExtraRight =
+      this.extraRightRef?.nativeElement.childElementCount === 0;
+  }
+
   openAccordion() {
     this.config.open = !this.config.open;
     this.getOpen.emit(this.config.open);
+  }
+
+  getExtraClass(): string {
+    if (this.noExtraLeft && this.noExtraRight) {
+      return 'no-extra';
+    } else if (this.noExtraLeft && !this.noExtraRight) {
+      return 'no-extra-left';
+    } else {
+      return 'no-extra-right';
+    }
   }
 }
