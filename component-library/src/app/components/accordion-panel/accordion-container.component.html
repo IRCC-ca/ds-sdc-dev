@@ -1,9 +1,12 @@
 <div class="accordion-panel">
-  <div class="accordion-nav {{ config.mobileBehaviour }}">
+  <div
+    class="accordion-nav {{ config.mobileBehaviour }}"
+    [ngClass]="getExtraClass()"
+  >
     <!-- this projection area will appear to the left of the accordion open button-->
     <!-- Prettier ignore is added to avoid white spaces being added -->
     <!-- prettier-ignore -->
-    <div class="accordion-extra-left"><ng-content select="[extraLeft]"></ng-content></div>
+    <div class="accordion-extra-left" #extraLeft><ng-content select="[extraLeft]"></ng-content></div>
     <div class="accordion-expand-button">
       <ircc-cl-lib-button
         *ngIf="config.open === true"
@@ -26,7 +29,7 @@
     <!-- this projection area will appear to the right of the accordion open button-->
     <!-- Prettier ignore is added to avoid white spaces being added -->
     <!-- prettier-ignore -->
-    <div class="accordion-extra-right"><ng-content select="[extraRight]"></ng-content></div>
+    <div class="accordion-extra-right" #extraRight><ng-content select="[extraRight]"></ng-content></div>
   </div>
   <div
     [class]="config.open ? 'open accordion-content' : 'close accordion-content'"

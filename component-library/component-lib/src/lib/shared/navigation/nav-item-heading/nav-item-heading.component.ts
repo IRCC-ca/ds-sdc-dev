@@ -13,7 +13,7 @@ export class navItemHeadingComponent implements OnInit {
   @Input() config: INavigationItemHeading = {
     id: '',
     label: '',
-    icon: '',
+    iconLeading: '',
     size: 'small',
     type: 'heading',
     children: []
@@ -21,7 +21,7 @@ export class navItemHeadingComponent implements OnInit {
 
   @Input() id: string = '';
   @Input() label: string = '';
-  @Input() icon: string = '';
+  @Input() iconLeading: string = '';
   @Input() children: Array<INavigationItem> | undefined;
   @Input() size: keyof typeof DSSizes | undefined;
 
@@ -30,7 +30,7 @@ export class navItemHeadingComponent implements OnInit {
     category: 'custom',
     size: this.config?.size,
     icon: {
-      class: this.config?.icon,
+      class: this.config?.iconLeading,
       color: 'var(--text-primary)'
     }
   };
@@ -42,7 +42,9 @@ export class navItemHeadingComponent implements OnInit {
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
     this.label !== '' ? (this.config.label = this.label) : undefined;
-    this.icon !== '' ? (this.config.icon = this.icon) : undefined;
+    this.iconLeading !== ''
+      ? (this.config.iconLeading = this.iconLeading)
+      : undefined;
     this.children !== undefined
       ? (this.config.children = this.children)
       : undefined;
@@ -53,7 +55,7 @@ export class navItemHeadingComponent implements OnInit {
       category: 'custom',
       size: this.config?.size,
       icon: {
-        class: this.config?.icon,
+        class: this.config?.iconLeading,
         color: 'var(--text-primary)'
       }
     };
