@@ -344,8 +344,12 @@ export class MahsaComponent implements OnInit {
       this.qaSelect?.formGroup
         .get('smallErrorMessages')
         ?.setErrors({ testingError: true });
-    } else if (this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'Invalid') {
-      this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({ invalid: true });
+    } else if (
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'Invalid'
+    ) {
+      this.qaSelect?.formGroup
+        .get('smallErrorMessages')
+        ?.setErrors({ invalid: true });
     } else {
       this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({
         testingError: true,
@@ -368,8 +372,12 @@ export class MahsaComponent implements OnInit {
       this.qaSelect?.formGroup
         .get('largeErrorMessages')
         ?.setErrors({ testingError: true });
-    } else if (this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'Invalid') {
-      this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({ invalid: true });
+    } else if (
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'Invalid'
+    ) {
+      this.qaSelect?.formGroup
+        .get('largeErrorMessages')
+        ?.setErrors({ invalid: true });
     } else {
       this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({
         testingError: true,
