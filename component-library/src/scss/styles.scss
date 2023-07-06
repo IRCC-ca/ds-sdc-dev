@@ -1,20 +1,25 @@
 // // /* You can add global styles to this file, and also import other style files */
 
-@use '../../../core-library/tokens/sizes';
-@use '../../../core-library/util/device';
-@use '../../../core-library/util/color' as color;
-@use 'sass:map';
-@use '../app/components/code-viewer/code-viewer.component.scss' as code-viewer;
-@use '../app/components/accordion-panel/accordion-container.component.scss' as
+@use "../../../core-library/tokens/sizes";
+@use "../../../core-library/util/device";
+@use "../../../core-library/util/color" as color;
+@use "../../../core-library/typography/typography";
+@use "sass:map";
+@use "../app/components/code-viewer/code-viewer.component.scss" as code-viewer;
+@use "../app/components/accordion-panel/accordion-container.component.scss" as
   accordion-container;
+@use "../app/components/info-text-small/info-text-small.component" as info-text-small;
+@use "../app/components/component-preview/component-preview.component" as component-preview;
 
-@import 'component-lib/styles';
-@import 'grid';
-@import 'table';
-@import '../../../core-library/layout/layout-grid';
+@import "component-lib/styles";
+@import "grid";
+@import "table";
+@import "../../../core-library/layout/layout-grid";
 
 @include code-viewer.create();
 @include accordion-container.create();
+@include info-text-small.create();
+@include component-preview.create();
 
 // // Enable Bootstrap row & column support.
 @include make-grid-columns();
@@ -28,4 +33,43 @@ app-root {
   max-width: $page-width;
   margin: 0 auto;
   overflow: hidden;
+}
+
+// To be moved to page template
+.page-content {
+  .content-doc-wrapper {
+    box-sizing: border-box;
+    max-width: 900px;
+    margin: 0 auto;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
+
+h5 {
+  &.text-underline {
+    border-bottom: 1px solid;
+    padding-bottom: 4px;
+    margin: 8px 0;
+  }
+
+  &.text-color-green {
+    color: var(--green-8);
+  }
+
+  &.text-color-red {
+    color: var(--red-7);
+  }
+
+  &.round-purple-num {
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 22px;
+    margin-bottom: 0;
+    position: relative;
+    top: 2px;
+  }
 }

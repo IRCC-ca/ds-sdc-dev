@@ -8,7 +8,7 @@
 @mixin anchor-selector {
   a,
   .link {
-    &#{template-const.$escape} {
+    &#{template-const.$escape}:not(nav *) {
       &:not([category]) {
         @content;
       }
@@ -68,6 +68,10 @@
   border-radius: sizes.$border-radius;
   padding: sizes.$fixed-2 sizes.$fixed-4;
   display: inline;
+
+  &.no-underline {
+    text-decoration: none;
+  }
 
   &:link {
     color: var(--link-text);

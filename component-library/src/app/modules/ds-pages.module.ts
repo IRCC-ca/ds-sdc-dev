@@ -39,6 +39,7 @@ import { DatePickerDocCodeComponent } from '@app/pages/date-picker-documentation
 import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
 import { IconButtonDocumentationComponent } from '@app/pages/icon-button-documentation/icon-button-documentation.component';
 import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation/icon-button-doc-code.component';
+import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -60,6 +61,7 @@ import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation
     BannerDocCodeComponent,
     InteractiveDemoComponent,
     ButtonDocCodeComponent,
+    ButtonDocumentationComponent,
     InputDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,

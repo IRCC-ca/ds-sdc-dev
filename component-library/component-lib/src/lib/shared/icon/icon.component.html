@@ -1,4 +1,7 @@
-<span class="ds-icon-container">
+<span
+  class="ds-icon-container"
+  [ngClass]="config.size"
+>
   <span
     #iconSpan
     [attr.aria-hidden]="config.ariaLabel ? false : true"

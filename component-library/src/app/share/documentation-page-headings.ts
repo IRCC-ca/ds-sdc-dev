@@ -1,6 +1,21 @@
-import { slugAnchorType } from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  slugAnchorType,
+  slugTitleURLConfig
+} from '@app/components/title-slug-url/title-slug-url.component';
 
-export const docPageheadingConfig: any = {
+interface headingConfigs {
+  interactiveDemoSlugConfig: slugTitleURLConfig;
+  typesSlugConfig: slugTitleURLConfig;
+  configurationSlugConfig: slugTitleURLConfig;
+  guidelineSlugConfig: slugTitleURLConfig;
+  anatomySlugConfig: slugTitleURLConfig;
+  specsSlugConfig: slugTitleURLConfig;
+  contentGuideSlugConfig: slugTitleURLConfig;
+  figmaSlugConfig: slugTitleURLConfig;
+  accessibilitySlugConfig: slugTitleURLConfig;
+  researchSlugConfig: slugTitleURLConfig;
+}
+export const docPageheadingConfig: headingConfigs = {
   interactiveDemoSlugConfig: {
     title: 'General.InteractiveDemo',
     anchorType: slugAnchorType.primary

@@ -81,7 +81,7 @@ $mobile-padding: 16px;
     }
   }
 
-  .content[role='main'] {
+  .content-router-outlet {
     box-sizing: border-box;
     min-height: calc(100vh - 60px);
 

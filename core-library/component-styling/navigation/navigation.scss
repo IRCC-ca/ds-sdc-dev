@@ -129,23 +129,29 @@
       padding: 0;
     }
 
+    h2 {
+      font-weight: 700;
+    }
+
     .child-navigation {
       margin: 0;
       padding: 0px;
 
       &.indent-0 {
-        & a,
-        & h2,
-        & h5 {
+        & a {
           padding-left: 20px;
         }
       }
 
       &.indent-1 {
-        & a,
-        & h2,
-        & h5 {
+        & a {
           padding-left: 40px;
+        }
+      }
+
+      &.indent-2 {
+        & a {
+          padding-left: 60px;
         }
       }
     }

@@ -10,6 +10,7 @@ export * from './shared/constants/jl-components.constants';
 /** Banner Component **/
 export * from './lib/banner-component/ircc-ds-angular-banner.module';
 export * from './lib/banner-component/banner/banner.component';
+export * from './lib/banner-component/banner/banner.service';
 
 /** Form Input Components **/
 export * from './lib/form-components/ircc-ds-angular-form-components.module';
