@@ -17,11 +17,26 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.icon"
+          *ngIf="config?.iconLeading"
           class="icon-left"
-          [config]="{ FA_keywords: config?.icon || '' }"
+          [config]="{ FA_keywords: config?.iconLeading || '' }"
         ></ircc-cl-lib-icon>
-        <p>{{ config?.label || '' | translate }} {{ config.size }}</p>
+        <p *ngIf="config?.header !== true">
+          {{ config?.label || '' | translate }}
+        </p>
+        <h2
+          *ngIf="config?.header === true"
+          class="h5"
+        >
+          {{ config?.label || '' | translate }}
+        </h2>
+        <!-- <ircc-cl-lib-nav-header
+          [attr.size]="config.size"
+          [size]="config.size"
+          [label]=""
+          *ngIf="config?.header === true"
+        >
+        </ircc-cl-lib-nav-header> -->
         <ircc-cl-lib-indicator
           [attr.size]="config.size"
           tabindex="-1"
@@ -31,9 +46,9 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.trailingIcon"
+          *ngIf="config?.iconTrailing"
           class="icon-trailing"
-          [config]="{ FA_keywords: config?.trailingIcon || '' }"
+          [config]="{ FA_keywords: config?.iconTrailing || '' }"
         ></ircc-cl-lib-icon>
       </a>
     </ng-container>
@@ -49,9 +64,9 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.icon"
+          *ngIf="config?.iconLeading"
           class="icon-left"
-          [config]="{ FA_keywords: config?.icon || '' }"
+          [config]="{ FA_keywords: config?.iconLeading || '' }"
         ></ircc-cl-lib-icon>
         <p>{{ config?.label || '' | translate }} {{ config.size }}</p>
         <ircc-cl-lib-indicator
@@ -63,9 +78,9 @@
         <ircc-cl-lib-icon
           [attr.size]="config.size"
           tabindex="-1"
-          *ngIf="config?.trailingIcon"
+          *ngIf="config?.iconTrailing"
           class="icon-trailing"
-          [config]="{ FA_keywords: config?.trailingIcon || '' }"
+          [config]="{ FA_keywords: config?.iconTrailing || '' }"
         ></ircc-cl-lib-icon>
       </a>
     </ng-template>
