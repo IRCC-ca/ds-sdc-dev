@@ -6,7 +6,7 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import { Router, IsActiveMatchOptions } from '@angular/router';
+import { IsActiveMatchOptions } from '@angular/router';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
 import {
