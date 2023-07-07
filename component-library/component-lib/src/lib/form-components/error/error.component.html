@@ -1,6 +1,8 @@
 <div
+  class="errorComponent"
+  class="{{ config?.size }}"
   id="{{ config?.id }}"
-  [ngClass]="['errorContainer', config?.size ?? '']"
+  [ngClass]="{ errorContainer: config?.id?.endsWith('error0') }"
 >
   <i
     *ngIf="config?.id?.endsWith('error0')"
