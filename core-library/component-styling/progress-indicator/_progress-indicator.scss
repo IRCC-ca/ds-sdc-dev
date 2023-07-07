@@ -23,34 +23,34 @@
 
 @mixin large-styles() {
   button.tags-btn {
-    @include typography.fontSet(body, 3, regular);
+    @include typography.fontSet(body, 3, emphasis);
     &:where([selected])::after {
       transform: translateY(sizes.$fixed-0);
     }
   }
   button.tags-btn-plus {
-    @include typography.fontSet(body, 3, regular);
+    @include typography.fontSet(body, 3, emphasis);
     padding-bottom: 4px;
   }
   .stepTitle {
-    @include typography.fontSet(heading, 5, regular);
+    @include typography.fontSet(heading, 5, emphasis);
     margin-bottom: 8px;
   }
 }
 
 @mixin small-styles() {
   button.tags-btn {
-    @include typography.fontSet(body, 4, regular);
+    @include typography.fontSet(body, 4, emphasis);
     &:where([selected])::after {
       transform: translateY(sizes.$fixed-0);
     }
   }
   button.tags-btn-plus {
-    @include typography.fontSet(body, 4, regular);
+    @include typography.fontSet(body, 4, emphasis);
     padding-bottom: 4px;
   }
   .stepTitle {
-    @include typography.fontSet(heading, 6, regular);
+    @include typography.fontSet(heading, 6, emphasis);
     margin-bottom: 4px;
   }
 }
