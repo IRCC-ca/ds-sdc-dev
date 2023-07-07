@@ -80,8 +80,7 @@ export class navItemNavComponent implements OnInit {
   constructor(
     private renderer: Renderer2,
     private navEvent: NavigationService,
-    private cdr: ChangeDetectorRef,
-    private router: Router
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
