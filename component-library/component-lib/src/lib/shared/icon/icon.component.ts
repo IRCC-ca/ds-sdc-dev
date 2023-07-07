@@ -37,6 +37,9 @@ export class IconComponent implements OnChanges, OnInit {
       spanContent += `></i>`;
       this.iconSpan.nativeElement.innerHTML = spanContent;
     }
+
+    if (changes['size'] && !changes['size'].firstChange)
+      this.config.size = this.size;
   }
 
   ngOnInit() {
