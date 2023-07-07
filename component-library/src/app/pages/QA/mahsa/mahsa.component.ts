@@ -69,12 +69,14 @@ export class MahsaComponent implements OnInit {
         label: 'Small Error',
         errorMessages: [
           { key: 'maxlength', errorLOV: 'ERROR.errorMessage' },
+          { key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' },
           { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
           { text: 'Maxlength' },
           { text: 'TestingError' },
-          { text: 'Both Errors' }
+          { text: 'Invalid' },
+          { text: 'All Errors' }
         ],
         size: 'small'
       },
@@ -84,12 +86,14 @@ export class MahsaComponent implements OnInit {
         label: 'Large Error',
         errorMessages: [
           { key: 'maxlength', errorLOV: 'ERROR.errorMessage' },
+          { key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' },
           { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
         options: [
           { text: 'Maxlength' },
           { text: 'TestingError' },
-          { text: 'Both Errors' }
+          { text: 'Invalid' },
+          { text: 'All Errors' }
         ],
         size: 'large'
       },
@@ -340,10 +344,17 @@ export class MahsaComponent implements OnInit {
       this.qaSelect?.formGroup
         .get('smallErrorMessages')
         ?.setErrors({ testingError: true });
+    } else if (
+      this.qaSelect?.formGroup.get('smallErrorMessages')?.value === 'Invalid'
+    ) {
+      this.qaSelect?.formGroup
+        .get('smallErrorMessages')
+        ?.setErrors({ invalid: true });
     } else {
       this.qaSelect?.formGroup.get('smallErrorMessages')?.setErrors({
         testingError: true,
-        maxlength: { requiredLength: 3, actualLength: 5 }
+        maxlength: { requiredLength: 3, actualLength: 5 },
+        invalid: true
       });
     }
   }
@@ -361,10 +372,17 @@ export class MahsaComponent implements OnInit {
       this.qaSelect?.formGroup
         .get('largeErrorMessages')
         ?.setErrors({ testingError: true });
+    } else if (
+      this.qaSelect?.formGroup.get('largeErrorMessages')?.value === 'Invalid'
+    ) {
+      this.qaSelect?.formGroup
+        .get('largeErrorMessages')
+        ?.setErrors({ invalid: true });
     } else {
       this.qaSelect?.formGroup.get('largeErrorMessages')?.setErrors({
         testingError: true,
-        maxlength: { requiredLength: 3, actualLength: 5 }
+        maxlength: { requiredLength: 3, actualLength: 5 },
+        invalid: true
       });
     }
   }
