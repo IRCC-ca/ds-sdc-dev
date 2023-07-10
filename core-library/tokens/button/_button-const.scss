@@ -27,6 +27,10 @@ $selectors: "button";
   justify-content: center;
   cursor: pointer;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   @include button-size();
   @include button-size-padding();
 
