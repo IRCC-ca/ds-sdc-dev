@@ -64,7 +64,7 @@ $default-color: null;
   --text: var(--secondary-btn-text);
   text-decoration: none;
   box-shadow: sizes.$border-style;
-  background-color: var(--surface1);
+  background-color: transparent);
   @include device.if-hover {
     background-color: var(--generic-hover);
   }
@@ -75,7 +75,7 @@ $default-color: null;
 
   &:disabled {
     --text: var(--secondary-btn-text-disabled);
-    background-color: var(--surface1);
+    background-color: transparent;
     border-color: var(--secondary-border-disabled);
   }
 
