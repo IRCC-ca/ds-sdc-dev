@@ -61,7 +61,7 @@ $secondary: "secondary";
   @include button-const.layout();
   --text: var(--secondary-btn-text);
   box-shadow: sizes.$border-style;
-  background-color: var(--surface1);
+  background-color: transparent;
 
   @include device.if-hover {
     background-color: var(--generic-hover);
@@ -73,7 +73,7 @@ $secondary: "secondary";
 
   &:disabled {
     --text: var(--secondary-btn-text-disabled);
-    background-color: var(--surface1);
+    background-color: transparent;
     border-color: var(--secondary-border-disabled);
   }
 
