@@ -73,6 +73,5 @@ $default-color: null;
 
   &:disabled {
     --text: var(--plain-btn-text-disabled);
-    background: var(--surface1);
   }
 }
