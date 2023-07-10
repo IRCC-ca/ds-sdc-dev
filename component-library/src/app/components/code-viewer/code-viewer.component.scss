@@ -21,6 +21,7 @@ $selectors: 'app-code-viewer';
   display: block;
 
   .code-viewer {
+    box-sizing: border-box;
     border: 1px solid var(--border);
     border-radius: 8px;
     width: 100%;
