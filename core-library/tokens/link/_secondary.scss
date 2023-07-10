@@ -62,6 +62,7 @@ $default-color: null;
 @mixin layout() {
   @include button-const.layout();
   --text: var(--secondary-btn-text);
+  border: 1px solid var(--text);
   text-decoration: none;
   box-shadow: sizes.$border-style;
   background-color: transparent;
@@ -75,8 +76,9 @@ $default-color: null;
 
   &:disabled {
     --text: var(--secondary-btn-text-disabled);
-    background-color: transparent;
-    border-color: var(--secondary-border-disabled);
+    @include device.if-hover {
+      background-color: transparent;
+    }
   }
 
   &:focus {
