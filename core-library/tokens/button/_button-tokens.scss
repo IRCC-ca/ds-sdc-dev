@@ -22,6 +22,7 @@
   --secondary-btn-text: #{color.mix-token($palette, 700)};
   --secondary-btn-text-disabled: #{color.mix-token($palette, 300)};
   --secondary-border-active: #{color.mix-token($palette, 900)};
+  --secondary-border-disabled: #{color.mix-token($palette, 300)};
 
   --plain-btn-text: #{color.mix-token($palette, 700)};
   --plain-btn-text-disabled: #{color.mix-token($palette, 300)};
@@ -45,6 +46,7 @@
   --secondary-btn-text: #{color.mix-token($palette, 400)};
   --secondary-btn-text-disabled: #{color.mix-token($palette, 900)};
   --secondary-border-active: #{color.mix-token($palette, 200)};
+  --secondary-border-disabled: #{color.mix-token($palette, 300)};
 
   --plain-btn-text: #{color.mix-token($palette, 400)};
   --plain-btn-text-disabled: #{color.mix-token($palette, 900)};
