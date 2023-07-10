@@ -74,7 +74,7 @@ $secondary: "secondary";
 
   &:disabled {
     --text: var(--secondary-btn-text-disabled);
-    box-shadow: none;
+    box-shadow: 0px 0px 0px 1px var(--text) inset;
     @include device.if-hover {
       background-color: transparent;
     }
