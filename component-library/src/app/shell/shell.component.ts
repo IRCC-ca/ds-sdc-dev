@@ -40,56 +40,6 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
-  imm5406: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 5406',
-    type: 'link',
-    children: [],
-    href: '/en/developers',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-solid fa-circle-half-stroke'
-    },
-    header: true
-  };
-
-  imm5669: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 5669',
-    type: 'link',
-    children: [],
-    href: '/en/mahsa-en',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-solid fa-circle'
-    },
-    header: true
-  };
-
-  accordionNav1: INavigationItemAccordion = {
-    open: true,
-    id: 'accordionNav',
-    label: 'Required forms',
-    type: 'accordion',
-    iconLeading: 'fa-solid fa-circle-half-stroke',
-    children: [this.imm5406, this.imm5669]
-  };
-
-  imm008: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 0008',
-    type: 'link',
-    children: [],
-    href: '/en/overview',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-regular fa-circle'
-    },
-    iconLeading: 'fa-regular fa-user',
-    iconTrailing: 'fa-regular fa-arrow-right',
-    header: true
-  };
-
   overviewPage: INavigationItemLink = {
     id: 'overviewPageNavItem',
     label: ' Overview ',
@@ -98,11 +48,29 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.overview'
   };
 
+  forDeveloperPageAnchorOne: INavigationItemLink = {
+    id: 'forDeveloperPageStartedNavItem',
+    label: 'Getting Started',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.forDevelopers',
+    anchor: 'getting-started'
+  };
+
+  forDeveloperPageAnchorTwo: INavigationItemLink = {
+    id: 'forDeveloperPageUsageNavItem',
+    label: 'Usage',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.forDevelopers',
+    anchor: 'usage'
+  };
+
   forDeveloperPage: INavigationItemLink = {
     id: 'forDeveloperPagenNavItem',
     label: 'For developers',
     type: 'link',
-    children: [],
+    children: [this.forDeveloperPageAnchorOne, this.forDeveloperPageAnchorTwo],
     href: 'ROUTES.forDevelopers'
   };
 
@@ -191,30 +159,58 @@ export class ShellComponent implements OnInit {
       this.iconBtnPage
     ]
   };
-  accordionNav: INavigationItemAccordion = {
+
+  mahsaNav: INavigationItemLink = {
+    id: 'mahsaNav',
+    label: 'Mahsa',
+    type: 'link',
+    children: [],
+    href: '/en/mahsa-en'
+  };
+  michaelNav: INavigationItemLink = {
+    id: 'michaelNav',
+    label: 'Michael',
+    type: 'link',
+    children: [],
+    href: '/en/michael-en'
+  };
+
+  mikeNav: INavigationItemLink = {
+    id: 'mikeNav',
+    label: 'Mike',
+    type: 'link',
+    children: [],
+    href: '/en/mike-en'
+  };
+
+  naseerNav: INavigationItemLink = {
+    id: 'naseerNav',
+    label: 'Naseer',
+    type: 'link',
+    children: [],
+    href: '/en/naseer-en'
+  };
+
+  bobbyNav: INavigationItemLink = {
+    id: 'bobbyNav',
+    label: 'Bobby',
+    type: 'link',
+    children: [],
+    href: '/en/bobby-en'
+  };
+
+  qaNav: INavigationItemAccordion = {
     open: true,
-    id: 'accordionNav',
-    label: 'Required forms',
+    id: 'QA',
+    label: 'QA Pages',
     type: 'accordion',
-    children: [this.imm008, this.accordionNav1]
-  };
-
-  requiredPDF: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'Required PDF Forms',
-    type: 'link',
-    children: [],
-    href: '/en/naseer-en',
-    header: true
-  };
-
-  addForms: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'Additonal Forms',
-    type: 'link',
-    children: [],
-    href: '/en/bobby-en',
-    header: true
+    children: [
+      this.mahsaNav,
+      this.michaelNav,
+      this.mikeNav,
+      this.naseerNav,
+      this.bobbyNav
+    ]
   };
 
   navConfig: INavigationConfig = {
@@ -223,11 +219,11 @@ export class ShellComponent implements OnInit {
     height: '50vh',
     marginTop: 182,
     scrolling: false,
-    // navigationConfig: [this.accordionNav, this.requiredPDF, this.addForms]
     navigationConfig: [
       this.gettingStartedNav,
       this.foundationsNav,
-      this.componentNav
+      this.componentNav,
+      this.qaNav
     ]
   };
 
