@@ -67,3 +67,7 @@ export * from './lib/shared/navigation/nav-item-status/nav-item-status.component
 export * from './lib/shared/navigation/nav-item-divider/nav-item-divider.component';
 export * from './lib/shared/navigation/navigation.types';
 export * from './lib/shared/navigation/navigation.service';
+
+/** Drag And Drop */
+export * from './lib/drag-drop/ircc-ds-angular-drag-drop.module';
+export * from './lib/drag-drop/drag-drop-container/drag-drop-container.component';

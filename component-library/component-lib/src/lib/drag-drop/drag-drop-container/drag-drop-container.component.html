@@ -1,0 +1,45 @@
+<div>Drag n Drop</div>
+<!-- (cdkDropListDropped)="drop($event)" -->
+<div class="example-list">
+  <ircc-cl-lib-button
+    *ngFor="let movie of components"
+    cdkDrag
+  >
+    {{ movie.id }}</ircc-cl-lib-button
+  >
+  <!-- <container
+    class="example-box"
+   
+  >
+  </container> -->
+</div>
+
+<!-- <ng-container *ngTemplateOutlet="devModeTemplate"> </ng-container>
+
+<ng-template #content>
+  <div
+    class="example-box"
+    *ngFor="let movie of movies"
+    cdkDrag
+  >
+    {{ movie }}
+  </div>
+</ng-template>
+
+<ng-template #devModeTemplate>
+  <ng-container *ngIf="devMode; else other_content">
+    <div
+      cdkDropList
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <ng-container *ngTemplateOutlet="content"> </ng-container>
+    </div>
+  </ng-container>
+  <ng-template #other_content> If isValid is false </ng-template>
+
+  <ng-container #other_content>
+    <div class="example-list">
+      <ng-container *ngTemplateOutlet="content">
+      </ng-container></div></ng-container
+></ng-template> -->
