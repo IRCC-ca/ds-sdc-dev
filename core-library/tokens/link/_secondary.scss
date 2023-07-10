@@ -64,7 +64,7 @@ $default-color: null;
   --text: var(--secondary-btn-text);
   text-decoration: none;
   box-shadow: sizes.$border-style;
-  background-color: transparent);
+  background-color: transparent;
   @include device.if-hover {
     background-color: var(--generic-hover);
   }
