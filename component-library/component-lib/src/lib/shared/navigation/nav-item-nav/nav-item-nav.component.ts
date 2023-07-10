@@ -6,6 +6,7 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
+import { IsActiveMatchOptions } from '@angular/router';
 import { DSSizes } from '../../../../shared/constants/jl-components.constants';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -64,6 +65,14 @@ export class navItemNavComponent implements OnInit {
     label: 'Header Title',
     type: 'heading',
     children: []
+  };
+
+  // Check if current url's fragment match
+  fragMatchOptions: IsActiveMatchOptions = {
+      queryParams: 'ignored',
+      matrixParams: 'exact',
+      paths: 'exact',
+      fragment: 'exact'
   };
 
   navObjectChangeSub = new Subscription();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
+import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
   slugAnchorType,
@@ -17,6 +17,7 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 
 export enum LayoutType {
   'fluid' = 'button-container-fluid',
@@ -26,7 +27,7 @@ export enum LayoutType {
 @Component({
   selector: 'app-button-doc-code',
   templateUrl: './button-doc-code.component.html',
-  styleUrls: ['./button-doc-code.component.scss']
+  styleUrls: ['./button-documentation.component.scss']
 })
 export class ButtonDocCodeComponent implements OnInit {
   altLangLink = 'buttonDocumentation';
@@ -38,11 +39,6 @@ export class ButtonDocCodeComponent implements OnInit {
   ) {}
 
   form_interactive_button = new FormGroup({});
-
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
 
   buttonConfig: IButtonConfig = {
     id: 'button',

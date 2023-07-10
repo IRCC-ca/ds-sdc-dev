@@ -11,6 +11,7 @@
         [routerLink]="config?.href || '' | translate"
         [fragment]="config?.anchor"
         [routerLinkActive]="'active-link'"
+        [routerLinkActiveOptions]="fragMatchOptions"
         (click)="linkClick($event)"
         #internalLink
       >

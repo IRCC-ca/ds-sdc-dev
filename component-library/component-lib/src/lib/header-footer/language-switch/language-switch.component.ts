@@ -44,7 +44,7 @@ export class LanguageSwitchComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   handleResize(e: any) {
     if (isPlatformBrowser(this.platformId)) {
-      this.isMobile = window.innerWidth <= 360; //tablet breakpoint
+      this.isMobile = window.innerWidth <= 768; //tablet breakpoint
       this.setText(this.translate.currentLang);
     }
   }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
 export enum ButtonCategories {
   primary = 'primary',
@@ -30,7 +31,7 @@ export enum ButtonIconDirection {
 export interface IButtonConfig {
   id: string;
   category?: keyof typeof ButtonCategories;
-  size?: keyof typeof ButtonSize;
+  size?: keyof typeof DSSizes;
   color?: keyof typeof ButtonColor;
   ariaLabel?: string;
   disabled?: boolean;
@@ -49,7 +50,7 @@ export class ButtonComponent {
   };
   @Input() id = '';
   @Input() category?: keyof typeof ButtonCategories;
-  @Input() size?: keyof typeof ButtonSize;
+  @Input() size?: keyof typeof DSSizes;
   @Input() color?: keyof typeof ButtonColor;
   @Input() ariaLabel?: string;
   @Input() disabled?: boolean;

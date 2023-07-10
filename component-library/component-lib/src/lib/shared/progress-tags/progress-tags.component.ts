@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
 export const TAG_LABELS_EN = [
-  'In Progress',
+  'In progress',
   'Completed',
   'Error',
   'Locked',
