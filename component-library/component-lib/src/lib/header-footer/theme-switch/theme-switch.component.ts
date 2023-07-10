@@ -20,12 +20,6 @@ export class ThemeSwitchComponent {
     this.isDarkTheme ? this.currentTheme = 'dark' : this.currentTheme = 'light';
     this.currentTheme === 'dark' ? this.previousTheme = 'Light' : this.previousTheme = 'Dark';
     this.darkModeQuery.addEventListener('change', this.handleDarkModeChange.bind(this));
-    
-    // this.subscription = this.themeService.isDarkMode$.subscribe(() => {
-      //Kris suggested we need to track two booleans, one for system preference and the other for toggle
-      //currently, there is a bug when toggle is used and then system preference is changed, where the logo base64 string is correct but the system theme does not switch.
-      //To reproduce, toggle system preference, toggle theme switch, and then toggle system preference again - it breaks.
-      // });
   }
 
   toggleTheme() {
