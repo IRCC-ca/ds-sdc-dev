@@ -74,6 +74,9 @@ $secondary: "secondary";
 
   &:disabled {
     --text: var(--secondary-btn-text-disabled);
+    @include device.if-hover {
+      background-color: transparent;
+    }
   }
 
   &:focus {
