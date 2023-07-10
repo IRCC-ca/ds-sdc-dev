@@ -1,8 +1,9 @@
-@use '~@ircc-ca/ds-sdc-core/typography/typography';
-@use '../../../../core-library/tokens/sizes';
-@use '../../../../core-library/util/device';
-@use '../../../../core-library/util/color' as color;
-@import '../../scss/grid';
+@use "@ircc-ca/ds-sdc-core/typography/typography";
+@use "../../../../core-library/tokens/sizes";
+@use "../../../../core-library/util/device";
+@use "../../../../core-library/util/color" as color;
+
+@import "../../scss/grid";
 
 $page-width: 1440px;
 $tablet-padding: 24px;
@@ -73,6 +74,7 @@ $mobile-padding: 16px;
 
     @include in-desktop-layout {
       @include col-2;
+
       margin-right: -1px;
     }
 
@@ -85,14 +87,13 @@ $mobile-padding: 16px;
     box-sizing: border-box;
     min-height: calc(100vh - 60px);
 
-    @include col-12;
-
     @include in-tablet-layout {
       @include col-12;
     }
 
     @include up-laptop-layout {
-      @include col-10;
+      width: 100%;
+      max-width: calc(100% - 276px);
       padding-left: sizes.$fixed-36;
     }
 
@@ -102,6 +103,7 @@ $mobile-padding: 16px;
 
     @include un-tablet-layout {
       @include col-12;
+
       padding: 0 $tablet-padding;
     }
 
@@ -117,7 +119,8 @@ $mobile-padding: 16px;
 
       .date-modified {
         @include typography.fontSet(body, 3, regular);
-        padding: 14px 0 10px 0;
+
+        padding: 14px 0 10px;
         margin: 0;
       }
     }
