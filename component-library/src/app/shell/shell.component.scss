@@ -47,6 +47,10 @@ $mobile-padding: 16px;
   }
 }
 
+.content-area-responsive {
+  justify-content: flex-start;
+}
+
 .main-container {
   &.nav-open {
     display: flex;
@@ -113,7 +117,6 @@ $mobile-padding: 16px;
 
     .date-modified-container {
       width: 872px;
-      margin: auto;
       margin-top: 80px;
       margin-bottom: 48px;
 
