@@ -90,7 +90,6 @@ export class navItemHeadingComponent implements OnInit {
       classes += ' remove-bold';
     }
 
-    // console.log(this.config?.bold);
 
     return classes;
   }
