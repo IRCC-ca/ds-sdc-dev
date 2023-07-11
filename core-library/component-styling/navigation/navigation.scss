@@ -21,11 +21,6 @@
 }
 
 @mixin large-styles() {
-  .lib-navigation {
-    padding: 16px;
-    width: 280px;
-  }
-
   h3 {
     @include typography.fontSet(heading, 3, emphasis);
     font-size: 28px;
@@ -34,11 +29,6 @@
 }
 
 @mixin small-styles() {
-  .lib-navigation {
-    padding: 16px;
-    width: 244px;
-  }
-
   h3 {
     @include typography.fontSet(heading, 3, emphasis);
     font-size: 24px;
@@ -64,8 +54,9 @@
   }
 
   .lib-navigation {
-    padding: 16px;
-    padding-top: 8px;
+    padding: 0;
+    width: 100%;
+
     // border: 1px solid black;
     // background-image: linear-gradient(to bottom, white 0%, white 100%), linear-gradient(to bottom, grey 0%, grey 100%);
     // background-clip: content-box, padding-box;
@@ -139,19 +130,19 @@
 
       &.indent-0 {
         & a {
-          padding-left: 20px;
+          padding-left: 40px;
         }
       }
 
       &.indent-1 {
         & a {
-          padding-left: 40px;
+          padding-left: 60px;
         }
       }
 
       &.indent-2 {
         & a {
-          padding-left: 60px;
+          padding-left: 80px;
         }
       }
     }

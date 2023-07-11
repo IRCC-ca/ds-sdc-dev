@@ -61,7 +61,7 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
-                [class]="'indent-' + index"
+                [class]="getPaddingChildrenPadding(index)"
               >
                 <ng-container
                   *ngTemplateOutlet="
@@ -81,7 +81,7 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
-                [class]="'indent-' + index"
+                [class]="getPaddingChildrenPadding(index)"
               >
                 <ng-container
                   *ngTemplateOutlet="
@@ -101,7 +101,7 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
-                [class]="'indent-' + index"
+                [class]="getPaddingChildrenPadding(index)"
               >
                 <ng-container
                   *ngTemplateOutlet="
@@ -120,7 +120,7 @@
               <ul
                 *ngIf="item.children.length > 0"
                 class="child-navigation"
-                [class]="'indent-' + index"
+                [class]="getPaddingChildrenPadding(index)"
               >
                 <ng-container
                   *ngTemplateOutlet="

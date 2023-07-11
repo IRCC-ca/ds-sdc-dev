@@ -8,6 +8,8 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import {
+  DSSizes,
+  NavigationItemType,
   LanguageHeaderFooterSwitchService,
   NavigationService
 } from 'ircc-ds-angular-component-library';
@@ -39,56 +41,6 @@ export class ShellComponent implements OnInit {
   altLangURL: string = '';
   altPathKey: string = '';
   language: string = this.translate.currentLang;
-
-  imm5406: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 5406',
-    type: 'link',
-    children: [],
-    href: '/en/developers',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-solid fa-circle-half-stroke'
-    },
-    header: true
-  };
-
-  imm5669: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 5669',
-    type: 'link',
-    children: [],
-    href: '/en/mahsa-en',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-solid fa-circle'
-    },
-    header: true
-  };
-
-  accordionNav1: INavigationItemAccordion = {
-    open: true,
-    id: 'accordionNav',
-    label: 'Required forms',
-    type: 'accordion',
-    iconLeading: 'fa-solid fa-circle-half-stroke',
-    children: [this.imm5406, this.imm5669]
-  };
-
-  imm008: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 0008',
-    type: 'link',
-    children: [],
-    href: '/en/overview',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-regular fa-circle'
-    },
-    iconLeading: 'fa-regular fa-user',
-    iconTrailing: 'fa-regular fa-arrow-right',
-    header: true
-  };
 
   overviewPage: INavigationItemLink = {
     id: 'overviewPageNavItem',
@@ -191,13 +143,6 @@ export class ShellComponent implements OnInit {
       this.iconBtnPage
     ]
   };
-  accordionNav: INavigationItemAccordion = {
-    open: true,
-    id: 'accordionNav',
-    label: 'Required forms',
-    type: 'accordion',
-    children: [this.imm008, this.accordionNav1]
-  };
 
   requiredPDF: INavigationItemLink = {
     id: 'accordionNav',
@@ -223,7 +168,6 @@ export class ShellComponent implements OnInit {
     height: '50vh',
     marginTop: 182,
     scrolling: false,
-    // navigationConfig: [this.accordionNav, this.requiredPDF, this.addForms]
     navigationConfig: [
       this.gettingStartedNav,
       this.foundationsNav,

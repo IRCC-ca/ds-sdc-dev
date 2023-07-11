@@ -13,6 +13,7 @@ export interface INavigationConfig {
   height: string;
   marginTop: number;
   scrolling: boolean;
+  childrenPadding?: boolean;
   navigationConfig?: Array<INavigationItem>;
 }
 
@@ -49,6 +50,8 @@ export interface INavigationItem {
 export interface INavigationItemAccordion extends INavigationItem {
   open: boolean;
   iconLeading?: string;
+  leftPadding?: boolean;
+  bold?: boolean;
 }
 
 export interface INavigationItemLink extends INavigationItem {
@@ -63,6 +66,8 @@ export interface INavigationItemLink extends INavigationItem {
 
 export interface INavigationItemHeading extends INavigationItem {
   iconLeading: string;
+  leftPadding?: boolean;
+  bold?: boolean;
 }
 
 export interface INavigationDivider extends INavigationItem {}
