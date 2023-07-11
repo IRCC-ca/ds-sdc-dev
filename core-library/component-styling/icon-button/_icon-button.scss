@@ -22,7 +22,7 @@
 
 @mixin primary-lg {
   svg {
-    height: 23px;
+    height: 24px; // Test to verify blurry issue on Mac
   }
 }
 
