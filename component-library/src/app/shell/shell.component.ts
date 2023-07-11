@@ -306,11 +306,11 @@ export class ShellComponent implements OnInit {
     href: '/en/overview',
     anchor: 'declarationAnchor',
     header: true,
-    // iconTrailing: 'fa-regular fa-circle-xmark',
-    indicator: {
-      icon: 'fa-regular fa-circle-xmark',
-      status: 'critical'
-    },
+    iconTrailing: 'fa-regular fa-circle-xmark',
+    // indicator: {
+    //   icon: 'fa-regular fa-circle-xmark',
+    //   status: 'critical'
+    // },
     children: []
   };
 
