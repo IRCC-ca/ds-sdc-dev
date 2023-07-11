@@ -60,8 +60,9 @@ $secondary: "secondary";
 @mixin layout() {
   @include button-const.layout();
   --text: var(--secondary-btn-text);
+  border: 1px solid var(--text);
   box-shadow: sizes.$border-style;
-  background-color: var(--surface1);
+  background-color: transparent;
 
   @include device.if-hover {
     background-color: var(--generic-hover);
@@ -73,8 +74,10 @@ $secondary: "secondary";
 
   &:disabled {
     --text: var(--secondary-btn-text-disabled);
-    background-color: var(--surface1);
-    border-color: var(--secondary-border-disabled);
+    box-shadow: 0px 0px 0px 1px var(--text) inset;
+    @include device.if-hover {
+      background-color: transparent;
+    }
   }
 
   &:focus {

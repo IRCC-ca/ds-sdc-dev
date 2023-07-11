@@ -9,8 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import {
   DSSizes,
-  LanguageSwitchButtonService,
   NavigationItemType,
+  LanguageHeaderFooterSwitchService,
   NavigationService
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
@@ -42,307 +42,136 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
-  // overviewPage: INavigationItemLink = {
-  //   id: 'overviewPageNavItem',
-  //   label: ' Overview ',
-  //   type: 'link',
-  //   children: [],
-  //   iconTrailing: 'fa-light fa-check',
-  //   indicator: {
-  //     status: 'critical',
-  //     icon: 'fa-light fa-check',
-  //     label: 'label'
-  //   },
-  //   href: 'ROUTES.overview'
-  // };
+  overviewPage: INavigationItemLink = {
+    id: 'overviewPageNavItem',
+    label: ' Overview ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.overview'
+  };
 
-  // forDeveloperPageAnchorOne: INavigationItemLink = {
-  //   id: 'forDeveloperPageStartedNavItem',
-  //   label: 'Getting Started',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.forDevelopers',
-  //   anchor: 'getting-started'
-  // };
+  forDeveloperPage: INavigationItemLink = {
+    id: 'forDeveloperPagenNavItem',
+    label: 'For developers',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.forDevelopers'
+  };
 
-  // forDeveloperPageAnchorTwo: INavigationItemLink = {
-  //   id: 'forDeveloperPageUsageNavItem',
-  //   label: 'Usage',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.forDevelopers',
-  //   anchor: 'usage'
-  // };
+  forDesignersPage: INavigationItemLink = {
+    id: 'forDesignersPageNavItem',
+    label: 'For designers',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.forDesigners'
+  };
 
-  // forDeveloperPage: INavigationItemLink = {
-  //   id: 'forDeveloperPagenNavItem',
-  //   label: 'For developers',
-  //   type: 'link',
-  //   children: [this.forDeveloperPageAnchorOne, this.forDeveloperPageAnchorTwo],
-  //   href: 'ROUTES.forDevelopers'
-  // };
+  utilPage: INavigationItemLink = {
+    id: 'utilPageNavItem',
+    label: ' Utilities ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.utilities'
+  };
 
-  // forDesignersPage: INavigationItemLink = {
-  //   id: 'forDesignersPageNavItem',
-  //   label: 'For designers',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.forDesigners'
-  // };
-
-  // utilPage: INavigationItemLink = {
-  //   id: 'utilPageNavItem',
-  //   label: ' Utilities ',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.utilities'
-  // };
-
-  // buttonsPage: INavigationItemLink = {
-  //   id: 'buttonsPageNavItem',
-  //   label: ' Buttons ',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.buttons'
-  // };
-
-  // bannerPage: INavigationItemLink = {
-  //   id: 'bannerPageNavItem',
-  //   label: ' Banner ',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.banner'
-  // };
-
-  // inputPage: INavigationItemLink = {
-  //   id: 'inputPageNavItem',
-  //   label: ' Input ',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.input'
-  // };
-
-  // datePickerPage: INavigationItemLink = {
-  //   id: 'datePickerPageNavItem',
-  //   label: ' Date Picker ',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.datePicker'
-  // };
-
-  // iconBtnPage: INavigationItemLink = {
-  //   id: 'iconBtnPageNavItem',
-  //   label: ' Icon Button ',
-  //   type: 'link',
-  //   children: [],
-  //   href: 'ROUTES.iconButton'
-  // };
-
-  // gettingStartedNav: INavigationItemAccordion = {
-  //   open: true,
-  //   id: 'gettingStartedNavAccordian',
-  //   label: 'Getting Started',
-  //   type: 'accordion',
-  //   children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
-  // };
-
-  // foundationsNav: INavigationItemAccordion = {
-  //   open: true,
-  //   id: 'foundationsNavAccordian',
-  //   label: 'Foundations',
-  //   type: 'accordion',
-  //   children: [this.utilPage]
-  // };
-
-  // componentNav: INavigationItemAccordion = {
-  //   open: true,
-  //   id: 'componentNavAccordian',
-  //   label: 'Components',
-  //   type: 'accordion',
-  //   children: [
-  //     this.buttonsPage,
-  //     this.bannerPage,
-  //     this.inputPage,
-  //     this.datePickerPage,
-  //     this.iconBtnPage
-  //   ]
-  // };
-
-  // mahsaNav: INavigationItemLink = {
-  //   id: 'mahsaNav',
-  //   label: 'Mahsa',
-  //   type: 'link',
-  //   children: [],
-  //   href: '/en/mahsa-en'
-  // };
-  // michaelNav: INavigationItemLink = {
-  //   id: 'michaelNav',
-  //   label: 'Michael',
-  //   type: 'link',
-  //   children: [],
-  //   href: '/en/michael-en'
-  // };
-
-  // mikeNav: INavigationItemLink = {
-  //   id: 'mikeNav',
-  //   label: 'Mike',
-  //   type: 'link',
-  //   children: [],
-  //   href: '/en/mike-en'
-  // };
-
-  // naseerNav: INavigationItemLink = {
-  //   id: 'naseerNav',
-  //   label: 'Naseer',
-  //   type: 'link',
-  //   children: [],
-  //   href: '/en/naseer-en'
-  // };
-
-  // bobbyNav: INavigationItemLink = {
-  //   id: 'bobbyNav',
-  //   label: 'Bobby',
-  //   type: 'link',
-  //   children: [],
-  //   href: '/en/bobby-en'
-  // };
-
-  // qaNav: INavigationItemAccordion = {
-  //   open: true,
-  //   id: 'QA',
-  //   label: 'QA Pages',
-  //   type: 'accordion',
-  //   children: [
-  //     this.mahsaNav,
-  //     this.michaelNav,
-  //     this.mikeNav,
-  //     this.naseerNav,
-  //     this.bobbyNav
-  //   ]
-  // };
+  buttonsPage: INavigationItemLink = {
+    id: 'buttonsPageNavItem',
+    label: ' Buttons ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.buttons'
+  };
 
   bannerPage: INavigationItemLink = {
     id: 'bannerPageNavItem',
     label: ' Banner ',
     type: 'link',
-    header: true,
     children: [],
-    border: true,
-    href: 'ROUTES.banner',
-    indicator: {
-      icon: 'fa-light fa-check uncompleted-state',
-      status: 'success'
-    }
+    href: 'ROUTES.banner'
   };
 
-  bannerPageTwo: INavigationItemLink = {
-    id: 'bannerPageNavItem',
-    label: ' Banner ',
+  inputPage: INavigationItemLink = {
+    id: 'inputPageNavItem',
+    label: ' Input ',
     type: 'link',
-    header: true,
     children: [],
-    border: true,
-    href: '/en/overview',
-    indicator: {
-      icon: 'fa-light fa-check uncompleted-state',
-      status: 'success'
-    }
+    href: 'ROUTES.input'
   };
 
-  requiredFormsAccordion: INavigationItemAccordion = {
-    id: 'requiredFormsAccordion',
-    label: 'Required forms',
-    type: NavigationItemType.accordion,
+  datePickerPage: INavigationItemLink = {
+    id: 'datePickerPageNavItem',
+    label: ' Date Picker ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.datePicker'
+  };
+
+  iconBtnPage: INavigationItemLink = {
+    id: 'iconBtnPageNavItem',
+    label: ' Icon Button ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.iconButton'
+  };
+
+  gettingStartedNav: INavigationItemAccordion = {
     open: true,
-    children: [this.bannerPage, this.bannerPageTwo],
-    leftPadding: true,
-    bold: false
+    id: 'gettingStartedNavAccordian',
+    label: 'Getting Started',
+    type: 'accordion',
+    children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
   };
 
-  requiredPdfForms: INavigationItemLink = {
-    id: 'requiredPdfForms',
-    label: 'Required PDF forms',
-    type: NavigationItemType.link,
-    href: window.location.pathname,
-    anchor: 'requiredPdfFormsAnchor',
-    header: true,
-    indicator: {
-      icon: 'fa-light fa-check uncompleted-state',
-      status: 'success'
-    },
-    children: []
+  foundationsNav: INavigationItemAccordion = {
+    open: true,
+    id: 'foundationsNavAccordian',
+    label: 'Foundations',
+    type: 'accordion',
+    children: [this.utilPage]
   };
 
-  additionalForms: INavigationItemLink = {
-    id: 'additionalForms',
-    label: 'Additional forms',
-    type: NavigationItemType.link,
-    href: window.location.pathname,
-    anchor: 'additionalFormsAnchor',
-    header: true,
+  componentNav: INavigationItemAccordion = {
+    open: true,
+    id: 'componentNavAccordian',
+    label: 'Components',
+    type: 'accordion',
+    children: [
+      this.buttonsPage,
+      this.bannerPage,
+      this.inputPage,
+      this.datePickerPage,
+      this.iconBtnPage
+    ]
+  };
+
+  requiredPDF: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'Required PDF Forms',
+    type: 'link',
     children: [],
-    indicator: {
-      icon: 'fa-thin fa-circle',
-      status: 'information'
-    }
+    href: '/en/naseer-en',
+    header: true
   };
 
-  supportingDocuments: INavigationItemLink = {
-    id: 'supportingDocuments',
-    label: 'Supporting documents',
-    type: NavigationItemType.link,
-    href: window.location.pathname,
-    anchor: 'supportingDocumentsAnchor',
-    header: true,
-    indicator: {
-      icon: 'fa-regular fa-circle uncompleted-state',
-      status: 'neutral'
-    },
-    children: []
-  };
-
-  additionalSupportingDocuments: INavigationItemLink = {
-    id: 'additionalSupportingDocuments',
-    label: 'Additional supporting documents',
-    type: NavigationItemType.link,
-    href: window.location.pathname,
-    anchor: 'additionalSupportingDocumentsAnchor',
-    header: true,
+  addForms: INavigationItemLink = {
+    id: 'accordionNav',
+    label: 'Additonal Forms',
+    type: 'link',
     children: [],
-    indicator: {
-      icon: 'fa-sharp fa-solid fa-circle-half-stroke',
-      status: 'warning'
-    }
-  };
-
-  declaration: INavigationItemLink = {
-    id: 'declaration',
-    label: 'Declaration',
-    type: NavigationItemType.link,
-    href: '/en/overview',
-    anchor: 'declarationAnchor',
-    header: true,
-    iconTrailing: 'fa-regular fa-circle-xmark',
-    // indicator: {
-    //   icon: 'fa-regular fa-circle-xmark',
-    //   status: 'critical'
-    // },
-    children: []
+    href: '/en/bobby-en',
+    header: true
   };
 
   navConfig: INavigationConfig = {
-    id: 'intakeSideNav',
+    id: 'shell_nav',
     size: 'small',
-    height: '100vh',
-    marginTop: 0,
-    scrolling: true,
+    height: '50vh',
+    marginTop: 182,
+    scrolling: false,
     navigationConfig: [
-      this.requiredFormsAccordion,
-      this.requiredPdfForms,
-      this.additionalForms,
-      this.supportingDocuments,
-      this.additionalSupportingDocuments,
-      this.declaration
+      this.gettingStartedNav,
+      this.foundationsNav,
+      this.componentNav
     ]
   };
 
@@ -352,7 +181,7 @@ export class ShellComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private altLang: LangSwitchService,
-    private languageSwitchButton: LanguageSwitchButtonService,
+    private languageSwitchButton: LanguageHeaderFooterSwitchService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: object,
     private navBarConfig: SideNavConfig,

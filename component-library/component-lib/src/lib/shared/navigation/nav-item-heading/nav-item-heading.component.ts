@@ -60,6 +60,8 @@ export class navItemHeadingComponent implements OnInit {
       this.config.bold = true;
     }
 
+    console.log(this.config.leftPadding);
+
     this.buttonIcon = {
       id: `${this.config.id}_button`,
       category: 'custom',
@@ -73,6 +75,8 @@ export class navItemHeadingComponent implements OnInit {
 
   getClasses(): string {
     let classes = '';
+
+    console.log(this.config);
 
     if (this.config.iconLeading.length > 0) {
       classes += 'grid-header';

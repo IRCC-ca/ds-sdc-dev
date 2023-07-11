@@ -1,4 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
+// import { ThemeSwitchService } from './theme-switch.service';
+
 
 @Component({
   selector: 'ircc-cl-lib-theme-switch',
@@ -10,7 +12,7 @@ export class ThemeSwitchComponent {
   previousTheme = '';
   darkModeQuery : any;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
     this.darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -28,9 +30,9 @@ export class ThemeSwitchComponent {
     this.darkModeQuery.removeEventListener('change', this.handleDarkModeChange.bind(this));
   }
 
-  handleDarkModeChange(event: MediaQueryListEvent) {
+  handleDarkModeChange(event: MediaQueryListEvent) { 
     this.isDarkTheme = event.matches;
     this.isDarkTheme ? this.currentTheme = 'dark' : this.currentTheme = 'light';
     this.currentTheme === 'dark' ? this.previousTheme = 'Light' : this.previousTheme = 'Dark';
-}
+  }
 }

@@ -73,6 +73,8 @@ $default-color: null;
 
   &:disabled {
     --text: var(--plain-btn-text-disabled);
-    background: var(--surface1);
+    @include device.if-hover {
+      background: transparent;
+    }
   }
 }

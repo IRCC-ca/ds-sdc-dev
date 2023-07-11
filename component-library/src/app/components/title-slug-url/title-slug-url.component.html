@@ -21,6 +21,8 @@
     cdkCopyToClipboard="{{ windowOrigin }}{{ windowPathname }}#{{
       config.title | translate | SlugifyPipe
     }}"
+    tabindex="-1"
+    aria-hidden="true"
   >
     {{ 'General.CopyURL' | translate }}
   </ircc-cl-lib-button>

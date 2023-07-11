@@ -22,6 +22,7 @@
 @mixin size-large() {
   @media (max-width: 530px) {
     .all-select-container {
+      margin-top: 8px;
       .select-year {
         min-width: 136px;
       }
@@ -41,6 +42,7 @@
 
   @media (min-width: 529px) {
     .all-select-container {
+      margin-top: 8px;
       .select-year {
         width: 136px;
       }
@@ -59,6 +61,7 @@
 @mixin size-small() {
   @media (max-width: 530px) {
     .all-select-container {
+      margin-top: 4px;
       .select-year {
         min-width: 124px;
         margin-bottom: 12px;
@@ -80,6 +83,7 @@
 
   @media (min-width: 529px) {
     .all-select-container {
+      margin-top: 4px;
       .select-year {
         width: 124px;
       }
@@ -144,7 +148,6 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      margin-top: 4px;
 
       .select-month {
         margin-left: 12px;

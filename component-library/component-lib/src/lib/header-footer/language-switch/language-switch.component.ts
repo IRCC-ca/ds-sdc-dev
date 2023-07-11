@@ -9,7 +9,8 @@ import {
 } from '@angular/core';
 import { Router, TitleStrategy } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageSwitchButtonService } from './language-switch-button.service';
+import { LanguageHeaderFooterSwitchService } from './language-header-footer-switch.service';
+
 
 export const LANGUAGE_SWITCH_TEXT_ENGLISH = 'Français';
 export const LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE = 'FR';
@@ -31,7 +32,7 @@ export class LanguageSwitchComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private langToggle: LanguageSwitchButtonService,
+    private langToggle: LanguageHeaderFooterSwitchService,
     private translate: TranslateService,
     private router: Router,
     private titleService: TitleStrategy
