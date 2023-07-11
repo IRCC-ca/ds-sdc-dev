@@ -73,6 +73,14 @@ export class navigationComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.configSub = this.navService.navConfigObs$.subscribe((response) => {
       this.config = response;
+
+      console.log(this.config?.childrenPadding);
+      if (
+        this.config?.childrenPadding != true &&
+        this.config?.childrenPadding != false
+      ) {
+        this.config.childrenPadding = true;
+      }
     });
   }
 

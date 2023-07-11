@@ -336,7 +336,6 @@ export class ShellComponent implements OnInit {
     height: '100vh',
     marginTop: 0,
     scrolling: true,
-    childrenPadding: false,
     navigationConfig: [
       this.requiredFormsAccordion,
       this.requiredPdfForms,
