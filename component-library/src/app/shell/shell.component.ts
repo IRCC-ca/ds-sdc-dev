@@ -8,7 +8,7 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import {
-  LanguageSwitchButtonService,
+  LanguageHeaderFooterSwitchService,
   NavigationService
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
@@ -237,7 +237,7 @@ export class ShellComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private altLang: LangSwitchService,
-    private languageSwitchButton: LanguageSwitchButtonService,
+    private languageSwitchButton: LanguageHeaderFooterSwitchService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: object,
     private navBarConfig: SideNavConfig,
