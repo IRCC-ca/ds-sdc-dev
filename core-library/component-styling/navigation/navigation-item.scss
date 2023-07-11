@@ -28,20 +28,13 @@
         @include typography.fontSet(heading, 5, regular);
       }
 
-      .icon-trailing {
-        margin-left: 16px;
-        // svg {
-        //   width: 16px;
-        //   height: 16px;
-        // }
+      h2 {
+        @include typography.fontSet(heading, 4, emphasis);
       }
 
-      // .icon-left {
-      //   svg {
-      //     width: 20px;
-      //     height: 20px;
-      //   }
-      // }
+      .icon-trailing {
+        margin-left: 16px;
+      }
 
       &.active-link {
         p {
@@ -59,6 +52,10 @@
       p {
         margin-right: 8px;
         @include typography.fontSet(heading, 6, regular);
+      }
+
+      h2 {
+        @include typography.fontSet(heading, 5, emphasis);
       }
 
       .icon-trailing {
@@ -114,7 +111,7 @@
       color: var(--text-primary);
       border-radius: 0;
       align-items: center;
-      padding: 12px 16px 12px 24px;
+      padding: 12px 10px 12px 24px;
       border-left: 4px solid transparent;
 
       &.active-link {

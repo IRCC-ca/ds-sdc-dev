@@ -16,7 +16,8 @@ export class navItemHeadingComponent implements OnInit {
     iconLeading: '',
     size: 'small',
     type: 'heading',
-    children: []
+    children: [],
+    bold: false
   };
 
   @Input() id: string = '';
@@ -25,6 +26,7 @@ export class navItemHeadingComponent implements OnInit {
   @Input() children: Array<INavigationItem> | undefined;
   @Input() size: keyof typeof DSSizes | undefined;
   @Input() leftPadding: boolean | undefined;
+  @Input() bold: boolean | undefined;
 
   buttonIcon: IIconButtonComponentConfig = {
     id: `${this.config.id}-button`,
@@ -53,6 +55,7 @@ export class navItemHeadingComponent implements OnInit {
     this.leftPadding !== undefined
       ? (this.config.leftPadding = this.leftPadding)
       : undefined;
+    this.bold !== undefined ? (this.config.bold = this.bold) : undefined;
 
     this.buttonIcon = {
       id: `${this.config.id}_button`,
@@ -74,6 +77,10 @@ export class navItemHeadingComponent implements OnInit {
 
     if (this.config?.leftPadding === true) {
       classes += ' left-padding';
+    }
+
+    if (this.config?.bold === false) {
+      classes += ' remove-bold';
     }
 
     return classes;

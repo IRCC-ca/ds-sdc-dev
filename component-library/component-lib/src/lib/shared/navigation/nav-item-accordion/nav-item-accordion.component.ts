@@ -18,7 +18,8 @@ export class navItemAccordionComponent implements OnInit {
     size: 'small',
     type: 'accordion',
     children: [],
-    leftPadding: false
+    leftPadding: false,
+    bold: true
   };
   @Input() id: string = '';
   @Input() open: boolean | undefined;
@@ -26,6 +27,7 @@ export class navItemAccordionComponent implements OnInit {
   @Input() size: keyof typeof DSSizes | undefined;
   @Input() iconLeading: string = '';
   @Input() leftPadding: boolean | undefined;
+  @Input() bold: boolean | undefined;
 
   headerID: string = '';
 
@@ -61,6 +63,7 @@ export class navItemAccordionComponent implements OnInit {
 
     this.id !== '' ? (this.config.id = this.id) : undefined;
     this.open !== undefined ? (this.config.open = this.open) : undefined;
+    this.bold !== undefined ? (this.config.bold = this.bold) : undefined;
     this.leftPadding !== undefined
       ? (this.config.leftPadding = this.leftPadding)
       : undefined;

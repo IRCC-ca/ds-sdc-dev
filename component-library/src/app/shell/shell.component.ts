@@ -221,12 +221,25 @@ export class ShellComponent implements OnInit {
   //   ]
   // };
 
+  bannerPage: INavigationItemLink = {
+    id: 'bannerPageNavItem',
+    label: ' Banner ',
+    type: 'link',
+    header: true,
+    children: [],
+    href: 'ROUTES.banner',
+    indicator: {
+      icon: 'fa-light fa-check uncompleted-state',
+      status: 'success'
+    }
+  };
+
   requiredFormsAccordion: INavigationItemAccordion = {
     id: 'requiredFormsAccordion',
     label: 'Required forms',
     type: NavigationItemType.accordion,
     open: true,
-    children: [],
+    children: [this.bannerPage],
     leftPadding: true
   };
 
@@ -293,6 +306,7 @@ export class ShellComponent implements OnInit {
     href: '/en/overview',
     anchor: 'declarationAnchor',
     header: true,
+    // iconTrailing: 'fa-regular fa-circle-xmark',
     indicator: {
       icon: 'fa-regular fa-circle-xmark',
       status: 'critical'
@@ -308,17 +322,18 @@ export class ShellComponent implements OnInit {
     header: true,
     indicator: {
       icon: 'fa-regular fa-circle-xmark',
-      status: 'critical'
+      status: 'neutral'
     },
     children: []
   };
 
   navConfig: INavigationConfig = {
     id: 'intakeSideNav',
-    size: 'small',
+    size: 'large',
     height: '100vh',
     marginTop: 0,
     scrolling: true,
+    childrenPadding: false,
     navigationConfig: [
       this.requiredFormsAccordion,
       this.requiredPdfForms,
