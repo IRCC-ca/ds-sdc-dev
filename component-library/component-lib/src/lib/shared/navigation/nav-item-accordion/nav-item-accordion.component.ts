@@ -73,7 +73,6 @@ export class navItemAccordionComponent implements OnInit {
       ? (this.config.leftPadding = this.leftPadding)
       : undefined;
 
-    console.log(this.config.leftPadding);
 
     this.label !== '' ? (this.config.label = this.label) : undefined;
     this.size !== undefined ? (this.config.size = this.size) : undefined;
