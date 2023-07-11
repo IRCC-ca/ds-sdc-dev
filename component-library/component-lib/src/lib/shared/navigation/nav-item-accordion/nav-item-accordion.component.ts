@@ -64,6 +64,11 @@ export class navItemAccordionComponent implements OnInit {
     this.id !== '' ? (this.config.id = this.id) : undefined;
     this.open !== undefined ? (this.config.open = this.open) : undefined;
     this.bold !== undefined ? (this.config.bold = this.bold) : undefined;
+
+    if (this.config?.bold != true && this.config?.bold != false) {
+      this.config.bold = true;
+    }
+
     this.leftPadding !== undefined
       ? (this.config.leftPadding = this.leftPadding)
       : undefined;

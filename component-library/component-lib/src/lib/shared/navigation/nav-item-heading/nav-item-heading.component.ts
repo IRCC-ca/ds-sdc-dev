@@ -56,6 +56,9 @@ export class navItemHeadingComponent implements OnInit {
       ? (this.config.leftPadding = this.leftPadding)
       : undefined;
     this.bold !== undefined ? (this.config.bold = this.bold) : undefined;
+    if (this.config?.bold != true && this.config?.bold != false) {
+      this.config.bold = true;
+    }
 
     this.buttonIcon = {
       id: `${this.config.id}_button`,
@@ -82,6 +85,8 @@ export class navItemHeadingComponent implements OnInit {
     if (this.config?.bold === false) {
       classes += ' remove-bold';
     }
+
+    // console.log(this.config?.bold);
 
     return classes;
   }

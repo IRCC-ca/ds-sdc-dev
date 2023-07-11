@@ -34,6 +34,7 @@
 
       .icon-trailing {
         margin-left: auto;
+        padding-right: 2px;
       }
 
       &.active-link {
@@ -59,10 +60,8 @@
       }
 
       .icon-trailing {
-        margin-left: 8px;
-        span {
-          display: flex;
-        }
+        margin-left: auto;
+        padding-right: 2px;
       }
 
       a &.active-link {
@@ -126,6 +125,9 @@
 
       p {
         margin: 0;
+        flex: 1;
+      }
+      h2 {
         flex: 1;
       }
 

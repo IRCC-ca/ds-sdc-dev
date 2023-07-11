@@ -227,7 +227,22 @@ export class ShellComponent implements OnInit {
     type: 'link',
     header: true,
     children: [],
+    border: true,
     href: 'ROUTES.banner',
+    indicator: {
+      icon: 'fa-light fa-check uncompleted-state',
+      status: 'success'
+    }
+  };
+
+  bannerPageTwo: INavigationItemLink = {
+    id: 'bannerPageNavItem',
+    label: ' Banner ',
+    type: 'link',
+    header: true,
+    children: [],
+    border: true,
+    href: '/en/overview',
     indicator: {
       icon: 'fa-light fa-check uncompleted-state',
       status: 'success'
@@ -239,8 +254,9 @@ export class ShellComponent implements OnInit {
     label: 'Required forms',
     type: NavigationItemType.accordion,
     open: true,
-    children: [this.bannerPage],
-    leftPadding: true
+    children: [this.bannerPage, this.bannerPageTwo],
+    leftPadding: true,
+    bold: false
   };
 
   requiredPdfForms: INavigationItemLink = {
@@ -314,22 +330,9 @@ export class ShellComponent implements OnInit {
     children: []
   };
 
-  declarationTest: INavigationItemLink = {
-    id: 'declaration',
-    label: 'Declaration',
-    type: NavigationItemType.link,
-    href: '/en/overview',
-    header: true,
-    indicator: {
-      icon: 'fa-regular fa-circle-xmark',
-      status: 'neutral'
-    },
-    children: []
-  };
-
   navConfig: INavigationConfig = {
     id: 'intakeSideNav',
-    size: 'large',
+    size: 'small',
     height: '100vh',
     marginTop: 0,
     scrolling: true,
@@ -340,8 +343,7 @@ export class ShellComponent implements OnInit {
       this.additionalForms,
       this.supportingDocuments,
       this.additionalSupportingDocuments,
-      this.declaration,
-      this.declarationTest
+      this.declaration
     ]
   };
 
