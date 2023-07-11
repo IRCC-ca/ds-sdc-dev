@@ -103,7 +103,9 @@
     align-items: center;
 
     &.border-left {
-      border-left: 4px solid var(--grey-5);
+      a {
+        border-left: 4px solid var(--grey-5);
+      }
     }
     a {
       display: flex;

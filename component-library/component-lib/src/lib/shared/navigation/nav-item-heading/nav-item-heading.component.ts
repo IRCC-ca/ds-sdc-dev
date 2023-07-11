@@ -24,6 +24,7 @@ export class navItemHeadingComponent implements OnInit {
   @Input() iconLeading: string = '';
   @Input() children: Array<INavigationItem> | undefined;
   @Input() size: keyof typeof DSSizes | undefined;
+  @Input() leftPadding: boolean | undefined;
 
   buttonIcon: IIconButtonComponentConfig = {
     id: `${this.config.id}-button`,
@@ -49,6 +50,9 @@ export class navItemHeadingComponent implements OnInit {
       ? (this.config.children = this.children)
       : undefined;
     this.size !== undefined ? (this.config.size = this.size) : undefined;
+    this.leftPadding !== undefined
+      ? (this.config.leftPadding = this.leftPadding)
+      : undefined;
 
     this.buttonIcon = {
       id: `${this.config.id}_button`,
@@ -59,5 +63,19 @@ export class navItemHeadingComponent implements OnInit {
         color: 'var(--text-primary)'
       }
     };
+  }
+
+  getClasses(): string {
+    let classes = '';
+
+    if (this.config.iconLeading.length > 0) {
+      classes += 'grid-header';
+    }
+
+    if (this.config?.leftPadding === true) {
+      classes += ' left-padding';
+    }
+
+    return classes;
   }
 }
