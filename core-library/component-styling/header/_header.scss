@@ -75,7 +75,7 @@
     align-self: center;
   }
 
-  //container query which applies margins if90 the container is 16px less than the view width
+  //container query which applies margins if the container is 16px less than the view width
   // i.e. if the header is spanning almost the entire screen then we will indent the image and lang toggle so they aren't cut off
   @container header-container (width > 95vw) {
     .languageSwitch {
