@@ -10,6 +10,7 @@
     "start": "cd component-library && ng serve",
     "lint": "cd component-library && ng lint --fix",
     "publish-beta": "cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish --tag beta",
+    "publish-full": "cd component-library/component-lib && ng build && cd ../dist/ircc-ds-angular-component-library && npm publish",
     "deploy-build": "cd component-library/component-lib && ng build ircc-ds-angular-component-library && cd .. && ng build",
     "deploy-qa-to-s3": "node ./deploy-qa-to-s3.js",
     "prepare": "husky install",
