@@ -22,10 +22,15 @@ $selectors: "button";
 }
 
 @mixin layout {
+  &[fill-container] {
+    width: 100%;
+  }
+
   border-radius: token-size.$border-radius;
   border-style: none;
   justify-content: center;
   cursor: pointer;
+  max-width: 400px;
 
   &:disabled {
     cursor: not-allowed;
@@ -49,9 +54,11 @@ $selectors: "button";
 @mixin button-size {
   @include size.select(small) {
     @include text.fontSet(heading, 6, regular);
+    min-width: 52px;
   }
 
   @include size.select(large) {
     @include text.fontSet(heading, 5, regular);
+    mix-width: 64px;
   }
 }
