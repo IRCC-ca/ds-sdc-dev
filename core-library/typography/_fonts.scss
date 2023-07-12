@@ -5,6 +5,7 @@
 @use "../tokens/text" as text;
 @use "@fontsource/lato/scss/mixins" as Lato;
 @use "@fontsource/inter/scss/mixins" as Inter;
+@use "sass:map";
 
 /// Creates heading font
 @mixin create-headings {
