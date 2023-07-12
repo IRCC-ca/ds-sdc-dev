@@ -66,6 +66,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.forDesigners'
   };
 
+  requestFormPage: INavigationItemLink = {
+    id: 'requestFormPageNavItem',
+    label: ' Submit a request ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.requestForm'
+  };
+
   utilPage: INavigationItemLink = {
     id: 'utilPageNavItem',
     label: ' Utilities ',
@@ -119,7 +127,12 @@ export class ShellComponent implements OnInit {
     id: 'gettingStartedNavAccordian',
     label: 'Getting Started',
     type: 'accordion',
-    children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
+    children: [
+      this.overviewPage,
+      this.forDeveloperPage,
+      this.forDesignersPage,
+      this.requestFormPage
+    ]
   };
 
   foundationsNav: INavigationItemAccordion = {
