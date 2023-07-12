@@ -14,7 +14,7 @@
         tabindex="0"
       >
         <img
-          src="{{ imageURL }}"
+          [src]="logo"
           alt="{{ alt }}"
           property="logo"
         />
@@ -29,4 +29,6 @@
     </div>
   </div>
   <hr class="headerLine" />
+
+  <ng-content select="[headerContent]"></ng-content>
 </header>

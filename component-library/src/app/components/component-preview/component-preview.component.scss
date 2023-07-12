@@ -1,8 +1,27 @@
-:host {
+@use "../../../../../core-library/util/theme" as theme;
+@use "../../../../../core-library/util/size" as size;
+@use "../../../../../component-library/src/scss/grid" as grid;
+@use "../../../../../core-library/tokens/template-const";
+@use "sass:map";
+$selectors: "app-component-preview";
+
+@mixin selector {
+  #{$selectors}#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin layout {
   display: block;
 
   .preview-wrapper {
-    width: 100%;
+    min-width: 300px;
     height: 100%;
     display: inline-flex;
     flex-wrap: wrap;
@@ -10,6 +29,10 @@
     justify-content: center;
     flex-direction: column;
     min-height: 170px;
+
+    @include grid.un-tablet-layout {
+      width: 100%;
+    }
 
     ircc-cl-lib-button.copy {
       margin-top: 10px;

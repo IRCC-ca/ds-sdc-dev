@@ -20,8 +20,12 @@ $selectors: "ircc-cl-lib-error";
 }
 
 @mixin small-styles() {
+  &.errorComponent, .errorComponent {
+    line-height: 20px;
+    margin-top: 8px;
+  }
   &.errorContainer, .errorContainer {
-    padding-top: 4px;
+    margin-top: 4px;
   }
   .errorIcon {
     height: 16px;
@@ -38,16 +42,17 @@ $selectors: "ircc-cl-lib-error";
   }
 
   .additionalError {
-    margin: {
-      top: 8px;
-      left: 20px;
-    }
+    margin-left: 20px;
   }
 }
 
 @mixin large-styles() {
+  &.errorComponent, .errorComponent {
+    line-height: 24px;
+    margin-top: 12px;
+  }
   &.errorContainer , .errorContainer {
-    padding-top: 8px;
+    margin-top: 8px;
   }
   .errorIcon {
     height: 20px;
@@ -60,10 +65,8 @@ $selectors: "ircc-cl-lib-error";
   }
 
   .additionalError {
-    margin-left: 24px;
-
     margin: {
-      top: 12px;
+      left: 24px;
       bottom: 0px;
     }
   }
@@ -86,14 +89,13 @@ $selectors: "ircc-cl-lib-error";
     }
   }
 
-  .errorContainer {
+  .errorComponent {
     display: flex;
-    color: var(--red-7);
-    align-items: flex-start;
+    color: var(--critical-text);
+    align-items: center;
   }
 
   .errorIcon {
-    margin-top: 4px;
     margin-right: 4px;
   }
 }

@@ -44,7 +44,6 @@ p {
     }
 
     .component-preview {
-      @include typography.fontSet(heading, 6, regular);
       max-width: 400px;
     }
   }
@@ -80,7 +79,7 @@ p {
   margin-top: 8px;
 
   .do-dont-heading {
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
   }
   .text-underline {
     border-bottom: 1px solid;
@@ -124,7 +123,7 @@ p {
     margin-bottom: 26px;
   }
   .anatomy-content-container {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 
     .round-purple-num-heading-text {
       display: inline-block;
@@ -247,6 +246,8 @@ p {
 
 .column {
   width: 50%;
+  display: flex;
+  flex-direction: column;
 
   @include device.in-phone-layout() {
     width: 100%;

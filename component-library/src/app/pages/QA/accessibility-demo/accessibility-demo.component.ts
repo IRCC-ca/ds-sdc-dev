@@ -19,7 +19,7 @@ import {
   ISelectConfig,
   ISelectOptionsConfig,
   LabelButtonService,
-  LanguageSwitchButtonService
+  LanguageHeaderFooterSwitchService
 } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitchService } from '../@shared/language-switch/language-switch.service';
@@ -310,7 +310,6 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
   constructor(
     private translate: TranslateService,
     private altLang: LanguageSwitchService,
-    private languageSwitchButton: LanguageSwitchButtonService,
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
     private labelButton: LabelButtonService,

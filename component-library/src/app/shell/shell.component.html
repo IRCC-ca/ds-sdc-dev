@@ -2,55 +2,34 @@
   <div class="header">
     <ircc-cl-lib-header
       [id]="'header'"
-      [themeToggle]="true"
-    ></ircc-cl-lib-header>
-    <div class="container">
-      <h2
-        [ngClass]="{ h4: mobile }"
-        class="strong"
+      [themeToggle]="false"
+    >
+      <div
+        class="container"
+        headerContent
       >
-        {{ 'Overview.SubHeading' | translate }}
-      </h2>
-      <!-- <div>
-        <a routerLink="/en/overview">{{ 'Link.Overview' | translate }}</a>
-        <a routerLink="/en/mahsa-en">{{ 'Link.Mahsa' | translate }}</a>
-        <a routerLink="/en/michael-en">{{ 'Link.Michael' | translate }}</a>
-        <a routerLink="/en/mike-en">{{ 'Link.Mike' | translate }}</a>
-        <a routerLink="/en/naseer-en">{{ 'Link.Naseer' | translate }}</a>
-        <a routerLink="/en/bobby-en">{{ 'Link.Bobby' | translate }}</a>
-        <a routerLink="/en/accessibility-demo">{{
-          'Link.AccessibilityDemo' | translate
-        }}</a>
-        <a routerLink="/en/banner-documentation">{{
-          'Link.BannerDocumentation' | translate
-        }}</a>
-        <a routerLink="/en/codeview">{{ 'Link.Codeview' | translate }}</a>
-        <a routerLink="/en/buttons">{{
-          'Link.ButtonDocumentation' | translate
-        }}</a>
-        <a routerLink="/en/input-documentation">{{
-          'Link.InputDocumentation' | translate
-        }}</a>
-        <a routerLink="/en/datePicker-doc">{{
-          'Link.DatePickerDocumentation' | translate
-        }}</a>
-      </div> -->
-    </div>
+        <h2
+          [ngClass]="{ h4: mobile }"
+          class="strong"
+        >
+          {{ 'Overview.SubHeading' | translate }}
+        </h2>
+      </div>
+    </ircc-cl-lib-header>
   </div>
   <main>
     <div
       class="main-container top {{ navStatus }}"
       style="margin-top: 200px"
     >
-      <ircc-cl-lib-navigation
-        class="left-nav"
-        [attr.size]="navConfig.size"
-      >
-      </ircc-cl-lib-navigation>
-      <div
-        class="content"
-        role="main"
-      >
+      <nav>
+        <ircc-cl-lib-navigation
+          class="left-nav"
+          [attr.size]="navConfig.size"
+        >
+        </ircc-cl-lib-navigation>
+      </nav>
+      <div class="content-router-outlet">
         <div class="content-area-responsive">
           <div class="page-content">
             <router-outlet></router-outlet>

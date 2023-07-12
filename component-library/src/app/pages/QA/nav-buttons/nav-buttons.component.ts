@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
 import {
   ButtonCategories,
-  LanguageSwitchButtonService
+  LanguageHeaderFooterSwitchService
 } from 'ircc-ds-angular-component-library';
 import { TranslateService } from '@ngx-translate/core';
 import { NavigationEnd } from '@angular/router';
@@ -36,7 +36,7 @@ export class NavButtonsComponent implements OnInit {
   constructor(
     private router: Router,
     private translate: TranslateService,
-    private languageSwitchButton: LanguageSwitchButtonService
+    private languageSwitchButton: LanguageHeaderFooterSwitchService
   ) {}
 
   ngOnInit() {

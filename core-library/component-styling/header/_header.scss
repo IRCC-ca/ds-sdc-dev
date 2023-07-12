@@ -77,10 +77,13 @@
 
   //container query which applies margins if the container is 16px less than the view width
   // i.e. if the header is spanning almost the entire screen then we will indent the image and lang toggle so they aren't cut off
-  @container header-container (width > 90vw) {
-
+  @container header-container (width > 95vw) {
     .languageSwitch {
       margin-right: 20px;
+    }
+
+    img {
+      margin-left: 20px;
     }
 
     .headerLine {

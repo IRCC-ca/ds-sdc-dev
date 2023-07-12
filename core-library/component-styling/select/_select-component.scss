@@ -33,7 +33,6 @@ $selectors: "ircc-cl-lib-select";
 
   .select-placeholder {
     @include typography.fontSet(body, 2, regular);
-    color: var(--text-placeholder);
   }
 
 
@@ -55,7 +54,6 @@ $selectors: "ircc-cl-lib-select";
 
   .select-placeholder {
     @include typography.fontSet(body, 3, regular);
-    color: var(--text-placeholder);
   }
 
 
@@ -81,10 +79,6 @@ $selectors: "ircc-cl-lib-select";
     }
   }
 
-  .select-wrapper {
-    padding: 0 5px 0 0;
-  }
-
   .select-error i {
     margin-right: 4px;
   }
@@ -94,8 +88,7 @@ $selectors: "ircc-cl-lib-select";
     color: var(--text);
     border-radius: token-size.$border-radius;
     background-color: transparent;
-    border-color: var(--border);
-    border-width: 1px;
+    border: 1px solid var(--border);
     width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -123,7 +116,8 @@ $selectors: "ircc-cl-lib-select";
   }
 
   .select-placeholder {
-    color: var(--text-placeholder);
+    --text: var(--text-placeholder);
+    color: var(--text);
   }
 
   .select-option {
@@ -145,7 +139,8 @@ $selectors: "ircc-cl-lib-select";
   }
 
   select:disabled {
-    --border: var(--border-disabled);
+    border-color: var(--border-disabled);
+    --text: var(--text-disabled);
   }
 
   option {

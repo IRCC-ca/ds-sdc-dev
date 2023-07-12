@@ -1,7 +1,7 @@
 <div [id]="config.id">
   <div
     class="nav-header-header"
-    [class]="config.iconLeading.length > 0 ? 'grid-header' : ''"
+    [class]="getClasses()"
   >
     <ircc-cl-lib-icon
       *ngIf="config.iconLeading.length > 0"

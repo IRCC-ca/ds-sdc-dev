@@ -8,7 +8,9 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import {
-  LanguageSwitchButtonService,
+  DSSizes,
+  NavigationItemType,
+  LanguageHeaderFooterSwitchService,
   NavigationService
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
@@ -20,10 +22,7 @@ import { environment } from '../../environments/environment';
 import {
   INavigationConfig,
   INavigationItemLink,
-  INavigationItemAccordion,
-  INavigationItemHeading,
-  INavigationDivider,
-  INavigationIndicator
+  INavigationItemAccordion
 } from 'ircc-ds-angular-component-library';
 
 @Component({
@@ -43,61 +42,106 @@ export class ShellComponent implements OnInit {
   altPathKey: string = '';
   language: string = this.translate.currentLang;
 
-  imm5406: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 5406',
+  overviewPage: INavigationItemLink = {
+    id: 'overviewPageNavItem',
+    label: ' Overview ',
     type: 'link',
     children: [],
-    href: '/en/developers',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-solid fa-circle-half-stroke'
-    },
-    header: true
+    href: 'ROUTES.overview'
   };
 
-  imm5669: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 5669',
+  forDeveloperPage: INavigationItemLink = {
+    id: 'forDeveloperPagenNavItem',
+    label: 'For developers',
     type: 'link',
     children: [],
-    href: '/en/mahsa-en',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-solid fa-circle'
-    },
-    header: true
+    href: 'ROUTES.forDevelopers'
   };
 
-  accordionNav1: INavigationItemAccordion = {
+  forDesignersPage: INavigationItemLink = {
+    id: 'forDesignersPageNavItem',
+    label: 'For designers',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.forDesigners'
+  };
+
+  utilPage: INavigationItemLink = {
+    id: 'utilPageNavItem',
+    label: ' Utilities ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.utilities'
+  };
+
+  buttonsPage: INavigationItemLink = {
+    id: 'buttonsPageNavItem',
+    label: ' Buttons ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.buttons'
+  };
+
+  bannerPage: INavigationItemLink = {
+    id: 'bannerPageNavItem',
+    label: ' Banner ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.banner'
+  };
+
+  inputPage: INavigationItemLink = {
+    id: 'inputPageNavItem',
+    label: ' Input ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.input'
+  };
+
+  datePickerPage: INavigationItemLink = {
+    id: 'datePickerPageNavItem',
+    label: ' Date Picker ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.datePicker'
+  };
+
+  iconBtnPage: INavigationItemLink = {
+    id: 'iconBtnPageNavItem',
+    label: ' Icon Button ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.iconButton'
+  };
+
+  gettingStartedNav: INavigationItemAccordion = {
     open: true,
-    id: 'accordionNav',
-    label: 'Required forms',
+    id: 'gettingStartedNavAccordian',
+    label: 'Getting Started',
     type: 'accordion',
-    iconLeading: 'fa-solid fa-circle-half-stroke',
-    children: [this.imm5406, this.imm5669]
+    children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
   };
 
-  imm008: INavigationItemLink = {
-    id: 'accordionNav',
-    label: 'IMM 0008',
-    type: 'link',
-    children: [],
-    href: '/en/overview',
-    indicator: {
-      status: 'neutral',
-      icon: 'fa-regular fa-circle'
-    },
-    iconLeading: 'fa-regular fa-user',
-    iconTrailing: 'fa-regular fa-arrow-right',
-    header: true
-  };
-  accordionNav: INavigationItemAccordion = {
+  foundationsNav: INavigationItemAccordion = {
     open: true,
-    id: 'accordionNav',
-    label: 'Required forms',
+    id: 'foundationsNavAccordian',
+    label: 'Foundations',
     type: 'accordion',
-    children: [this.imm008, this.accordionNav1]
+    children: [this.utilPage]
+  };
+
+  componentNav: INavigationItemAccordion = {
+    open: true,
+    id: 'componentNavAccordian',
+    label: 'Components',
+    type: 'accordion',
+    children: [
+      this.buttonsPage,
+      this.bannerPage,
+      this.inputPage,
+      this.datePickerPage,
+      this.iconBtnPage
+    ]
   };
 
   requiredPDF: INavigationItemLink = {
@@ -124,7 +168,11 @@ export class ShellComponent implements OnInit {
     height: '50vh',
     marginTop: 182,
     scrolling: false,
-    navigationConfig: [this.accordionNav, this.requiredPDF, this.addForms]
+    navigationConfig: [
+      this.gettingStartedNav,
+      this.foundationsNav,
+      this.componentNav
+    ]
   };
 
   randomHeader: string = '';
@@ -133,7 +181,7 @@ export class ShellComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private altLang: LangSwitchService,
-    private languageSwitchButton: LanguageSwitchButtonService,
+    private languageSwitchButton: LanguageHeaderFooterSwitchService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: object,
     private navBarConfig: SideNavConfig,

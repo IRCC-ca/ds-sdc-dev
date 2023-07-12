@@ -37,6 +37,9 @@ import { IrccDsAngularNavigationModule } from 'ircc-ds-angular-component-library
 
 import { DatePickerDocCodeComponent } from '@app/pages/date-picker-documentation/date-picker-doc-code.component';
 import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
+import { IconButtonDocumentationComponent } from '@app/pages/icon-button-documentation/icon-button-documentation.component';
+import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation/icon-button-doc-code.component';
+import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -58,6 +61,7 @@ import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documen
     BannerDocCodeComponent,
     InteractiveDemoComponent,
     ButtonDocCodeComponent,
+    ButtonDocumentationComponent,
     InputDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
@@ -66,7 +70,9 @@ import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documen
     RequestFormComponent,
     DatePickerDocCodeComponent,
     DatePickerDocumentationComponent,
-    BannerDocumentationComponent
+    BannerDocumentationComponent,
+    IconButtonDocumentationComponent,
+    IconButtonDocCodeComponent
   ],
   imports: [
     CommonModule,

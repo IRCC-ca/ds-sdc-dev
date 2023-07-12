@@ -10,6 +10,7 @@ export * from './shared/constants/jl-components.constants';
 /** Banner Component **/
 export * from './lib/banner-component/ircc-ds-angular-banner.module';
 export * from './lib/banner-component/banner/banner.component';
+export * from './lib/banner-component/banner/banner.service';
 
 /** Form Input Components **/
 export * from './lib/form-components/ircc-ds-angular-form-components.module';
@@ -26,7 +27,7 @@ export * from './lib/header-footer/ircc-ds-angular-header-footer.module';
 export * from './lib/header-footer/footer/footer.component';
 export * from './lib/header-footer/header/header.component';
 export * from './lib/header-footer/language-switch/language-switch.component';
-export * from './lib/header-footer/language-switch/language-switch-button.service';
+export * from './lib/header-footer/language-switch/language-header-footer-switch.service';
 export * from './lib/header-footer/hidden-nav/hidden-nav.component';
 export * from './lib/header-footer/theme-switch/theme-switch.component';
 

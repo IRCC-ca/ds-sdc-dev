@@ -57,7 +57,8 @@ export class navigationComponent implements OnInit, AfterViewInit {
     navigationConfig: [],
     scrolling: false,
     height: '75vh',
-    marginTop: 0
+    marginTop: 0,
+    childrenPadding: true
   };
   configSub?: Subscription;
   scrollTimeout: any;
@@ -72,7 +73,23 @@ export class navigationComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.configSub = this.navService.navConfigObs$.subscribe((response) => {
       this.config = response;
+      if (
+        this.config?.childrenPadding != true &&
+        this.config?.childrenPadding != false
+      ) {
+        this.config.childrenPadding = true;
+      }
     });
+  }
+
+  getPaddingChildrenPadding(index: number): string {
+    let classes = '';
+
+    if (this.config?.childrenPadding === true) {
+      classes += 'indent-' + index;
+    }
+
+    return classes;
   }
 
   isArray = (obj: any) => {

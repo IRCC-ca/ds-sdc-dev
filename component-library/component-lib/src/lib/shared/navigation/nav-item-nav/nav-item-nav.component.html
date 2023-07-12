@@ -2,7 +2,9 @@
   tabindex="1"
   [id]="config.id"
   class="lib-nav-item"
-  [ngClass]="config?.border ? 'border-left' : null"
+  [ngClass]="
+    config?.border || (config?.anchor?.length || '') > 0 ? 'border-left' : null
+  "
   (keydown.enter)="enterPress($event)"
 >
   <div>
@@ -11,6 +13,7 @@
         [routerLink]="config?.href || '' | translate"
         [fragment]="config?.anchor"
         [routerLinkActive]="'active-link'"
+        [routerLinkActiveOptions]="fragMatchOptions"
         (click)="linkClick($event)"
         #internalLink
       >

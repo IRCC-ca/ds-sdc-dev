@@ -61,16 +61,5 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-    this.navService.setNavItem({
-      label: 'I AM NOT TRANSLATED',
-      href: 'ROUTES.overview',
-      external: false,
-      id: 'Overview.Heading',
-      iconLeading: 'fa-regular fa-user',
-      iconTrailing: 'fa-regular fa-arrow-right',
-      type: 'link',
-      children: [],
-      indicator: { status: 'critical', icon: 'fa-regular fa-square' }
-    });
   }
 }
