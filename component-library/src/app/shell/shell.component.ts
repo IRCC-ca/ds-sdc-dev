@@ -127,7 +127,12 @@ export class ShellComponent implements OnInit {
     id: 'gettingStartedNavAccordian',
     label: 'Getting Started',
     type: 'accordion',
-    children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage, this.requestFormPage]
+    children: [
+      this.overviewPage,
+      this.forDeveloperPage,
+      this.forDesignersPage,
+      this.requestFormPage
+    ]
   };
 
   foundationsNav: INavigationItemAccordion = {
