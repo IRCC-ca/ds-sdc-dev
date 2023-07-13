@@ -84,11 +84,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Hint',
       options: [
         {
-          text: 'General.Show',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'General.Hide',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -114,13 +114,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'ERROR.errorMessage',
       options: [
         {
-          text: 'None'
+          text: 'General.FalseLabel',
+          value: 'None'
         },
         {
-          text: 'Single'
+          text: 'General.MultipleErrors',
+          value: 'Multiple'
         },
         {
-          text: 'Multiple'
+          text: 'General.TrueLabel',
+          value: 'Single'
         }
       ]
     },
@@ -131,11 +134,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Description',
       options: [
         {
-          text: 'General.Show',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'General.Hide',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -147,11 +150,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Placeholder',
       options: [
         {
-          text: 'General.Show',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'General.Hide',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -226,17 +229,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     this.inputConfig = {
       ...this.inputConfig,
       type: value == 'password' ? 'password' : 'text',
-      label: value == 'password' ? 'Password' : 'Label text'
     };
     this.inputConfigSingle = {
       ...this.inputConfigSingle,
       type: value == 'password' ? 'password' : 'text',
-      label: value == 'password' ? 'Password' : 'Label text'
     };
     this.inputConfigMulti = {
       ...this.inputConfigMulti,
       type: value == 'password' ? 'password' : 'text',
-      label: value == 'password' ? 'Password' : 'Label text'
     };
 
     this.parseCodeViewConfig();
