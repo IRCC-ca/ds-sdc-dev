@@ -6,7 +6,7 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p class="body3 demo">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
+    <p class="body3 demo" [innerHTML]="'Input.InteractiveDemoDesc' | translate"></p>
     <app-input-doc-code></app-input-doc-code>
   </section>
 
