@@ -228,15 +228,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   setInputType(value: any) {
     this.inputConfig = {
       ...this.inputConfig,
-      type: value == 'password' ? 'password' : 'text',
+      type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigSingle = {
       ...this.inputConfigSingle,
-      type: value == 'password' ? 'password' : 'text',
+      type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigMulti = {
       ...this.inputConfigMulti,
-      type: value == 'password' ? 'password' : 'text',
+      type: value == 'password' ? 'password' : 'text'
     };
 
     this.parseCodeViewConfig();
