@@ -38,6 +38,7 @@ export interface IButtonConfig {
   icon?: string;
   iconDirection?: keyof typeof ButtonIconDirection;
   tabIndex?: number;
+  fill?: boolean;
 }
 
 @Component({
@@ -57,6 +58,7 @@ export class ButtonComponent {
   @Input() icon?: string;
   @Input() iconDirection?: keyof typeof ButtonIconDirection;
   @Input() tabIndex?: number;
+  @Input() fill?: boolean;
 
   @Output() btnAction: EventEmitter<any> = new EventEmitter();
 
@@ -76,6 +78,7 @@ export class ButtonComponent {
     this.tabIndex !== undefined
       ? (this.config.tabIndex = this.tabIndex)
       : undefined;
+    this.fill !== undefined ? (this.config.fill = this.fill) : undefined;
     if (this.icon || this.config.icon) {
       this.config.icon = this.icon ? this.icon : this.config.icon;
       this.config.iconDirection = this.iconDirection
