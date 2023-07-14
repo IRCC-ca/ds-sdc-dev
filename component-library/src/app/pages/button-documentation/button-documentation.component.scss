@@ -1,6 +1,9 @@
 @use "../../../../../core-library/util/device" as device;
 @use "../../../scss/grid";
+@use "../../../scss/page";
 @use "@ircc-ca/ds-sdc-core/typography/typography";
+
+@include page.template;
 
 .button-container-fluid {
   padding-top: 54px;

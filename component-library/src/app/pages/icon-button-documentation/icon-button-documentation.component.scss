@@ -1,15 +1,8 @@
 @use '../../../../../core-library/util/device' as device;
+@use "../../../scss/page";
 @use '@ircc-ca/ds-sdc-core/typography/typography';
 
-.content-doc-wrapper {
-  box-sizing: border-box;
-  max-width: 900px;
-  margin: 0 auto;
-
-  img {
-    width: 100%;
-  }
-}
+@include page.template;
 
 .body1.intro {
   margin-top: 0px;
