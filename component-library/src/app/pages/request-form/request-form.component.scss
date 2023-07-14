@@ -1,5 +1,5 @@
 @use "../../../../../core-library/util/device" as device;
-@use '~@ircc-ca/ds-sdc-core/typography/typography';
+@use '@ircc-ca/ds-sdc-core/typography/typography';
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -72,4 +72,12 @@ h3 {
 .submit-request-container {
   margin-top: 48px;
   max-width: 139px;
+}
+
+// Move to page template
+h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+
+  @include typography.fontSet(heading, 5, emphasis);
 }
