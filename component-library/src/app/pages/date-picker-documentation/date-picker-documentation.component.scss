@@ -1,5 +1,5 @@
 @use '../../../../../core-library/util/device' as device;
-@use '~@ircc-ca/ds-sdc-core/typography/typography';
+@use '@ircc-ca/ds-sdc-core/typography/typography';
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -295,4 +295,29 @@ ul {
 .config-row {
   display: flex;
   justify-content: flex-start;
+}
+
+// To be moved to page template mixin
+h3,
+h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
+
+  @include typography.fontSet(heading, 5, emphasis);
+
+  &.round-purple-num {
+    display: inline-block;
+    margin-left: 8px;
+    margin-bottom: 0;
+    position: relative;
+
+    &:not(:nth-child(2)) {
+      margin-top: 22px;
+      top: 2px;
+    }
+  }
+
+  &.text-underline {
+    margin-bottom: 8px;
+  }
 }

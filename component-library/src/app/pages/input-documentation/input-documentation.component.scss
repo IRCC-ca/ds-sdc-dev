@@ -1,7 +1,7 @@
-@use '../../../../../core-library/util/device' as device;
-@use '../../../../../core-library/tokens/template-const' as template-const;
-@use '../../../../../core-library/layout/layout-grid' as layout-grid;
-@use '~@ircc-ca/ds-sdc-core/typography/typography';
+@use "../../../../../core-library/util/device" as device;
+@use "../../../../../core-library/tokens/template-const" as template-const;
+@use "../../../../../core-library/layout/layout-grid" as layout-grid;
+@use "@ircc-ca/ds-sdc-core/typography/typography";
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -13,23 +13,9 @@
   }
 }
 
-h3 {
-  display: inline-block;
-  font-weight: 700;
-
-  &.primary {
-    font-size: 36px;
-  }
-
-  &.secondary {
-    font-size: 28px;
-    margin-top: 60px;
-  }
-}
-
 .body1.intro {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .subtitles {
@@ -43,17 +29,20 @@ h3 {
 
 .body3 {
   &.demo {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 24px;
   }
 
   &.specsDesc {
     @include typography.fontSet(body, 3, regular);
-    margin: 24px 0 0 0;
+
+    margin: 24px 0 0;
   }
+
   &.specsDesc2 {
     @include typography.fontSet(body, 3, regular);
-    margin: 12px 0 0 0;
+
+    margin: 12px 0 0;
   }
 
   &.subtext-1 {
@@ -93,7 +82,7 @@ h3 {
 
   &.subtext-8 {
     margin-top: 8px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   &.subtext-9 {
@@ -118,20 +107,21 @@ h3 {
 
   &.subtext-13 {
     margin-top: 8px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   &.last {
     margin-top: 12px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   &.anatomy {
     margin-bottom: 20px;
     margin-top: 6px;
   }
+
   &.anatomy:last-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     margin-top: 6px;
   }
 }
@@ -143,12 +133,12 @@ h3 {
 
 .config-row {
   ul {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 12px;
     padding-left: 25px;
 
     &.end-list {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 }
@@ -162,10 +152,13 @@ h3 {
   cursor: pointer;
 }
 
-h5 {
-  font-weight: 700;
+h5,
+h4,
+h3 {
+  margin-top: 0;
   margin-bottom: 12px;
-  margin-top: 0px;
+
+  @include typography.fontSet(heading, 5, emphasis);
 
   &.text-underline {
     border-bottom: 1px solid;
@@ -281,6 +274,7 @@ h5 {
 
 .list-item {
   font-size: 14px;
+
   @include typography.fontSet(body, 3, regular);
 }
 
@@ -326,6 +320,7 @@ h5 {
 
   .content-list {
     @include typography.fontSet(body, 3, regular);
+
     margin-top: 12px;
     margin-bottom: 24px;
     padding: 0 20px;

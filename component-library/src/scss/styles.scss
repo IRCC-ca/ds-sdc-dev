@@ -49,7 +49,9 @@ app-root {
   }
 }
 
-h5 {
+h5,
+h3,
+h4 {
   &.text-underline {
     border-bottom: 1px solid;
     padding-bottom: 4px;
