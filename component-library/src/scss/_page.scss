@@ -1,0 +1,39 @@
+@mixin template {
+  .content-doc-wrapper {
+    box-sizing: border-box;
+    max-width: 872px;
+    margin: 0 auto;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  h5,
+  h3,
+  h4 {
+    &.text-underline {
+      border-bottom: 1px solid;
+      padding-bottom: 4px;
+      margin: 8px 0;
+    }
+
+    &.text-color-green {
+      color: var(--green-8);
+    }
+
+    &.text-color-red {
+      color: var(--red-7);
+    }
+
+    &.round-purple-num {
+      display: inline-block;
+      margin-left: 8px;
+      margin-top: 22px;
+      margin-bottom: 0;
+      position: relative;
+      top: 2px;
+    }
+  }
+}

@@ -1,17 +1,10 @@
 @use "../../../../../core-library/util/device" as device;
 @use "../../../../../core-library/tokens/template-const" as template-const;
 @use "../../../../../core-library/layout/layout-grid" as layout-grid;
+@use "../../../scss/page";
 @use "@ircc-ca/ds-sdc-core/typography/typography";
 
-.content-doc-wrapper {
-  box-sizing: border-box;
-  max-width: 872px;
-  margin: 0 auto;
-
-  img {
-    width: 100%;
-  }
-}
+@include page.template;
 
 .body1.intro {
   margin-top: 0;
