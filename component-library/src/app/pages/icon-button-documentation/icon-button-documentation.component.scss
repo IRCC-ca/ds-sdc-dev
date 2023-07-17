@@ -20,10 +20,6 @@
   font-weight: 700;
 }
 
-p {
-  @include typography.fontSet(body, 3, regular);
-}
-
 .types {
   .component-preview-container {
     margin-bottom: 24px;
@@ -72,19 +68,6 @@ p {
   .do-dont-heading {
     margin: 0 0 8px 0;
   }
-  .text-underline {
-    border-bottom: 1px solid;
-    padding-bottom: 4px;
-  }
-  .text-color-green {
-    color: var(--green-8);
-  }
-  .text-color-red {
-    color: var(--red-7);
-  }
-  p {
-    margin: 0px;
-  }
 }
 
 .design-guide {
@@ -119,16 +102,7 @@ p {
       position: relative;
       top: 2px;
     }
-    .round-purple-num-count {
-      color: var(--purple-9);
-      font-weight: 700;
-      background-color: var(--purple-2);
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      line-height: 32px;
-      text-align: center;
-    }
+
     .counter-and-heading-container {
       margin: 0 0 6px 0;
       display: inline-flex;
@@ -145,16 +119,6 @@ p {
 .specs {
   .specs-description {
     margin: 24px 0 0 0;
-  }
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-
-  @include device.in-phone-layout() {
-    flex-wrap: wrap;
   }
 }
 

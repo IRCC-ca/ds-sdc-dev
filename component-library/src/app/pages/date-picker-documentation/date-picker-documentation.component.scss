@@ -87,16 +87,7 @@ ul {
       top: 2px;
       @include typography.fontSet(heading, 5, emphasis);
     }
-    .round-purple-num-count {
-      color: var(--purple-9);
-      font-weight: 700;
-      background-color: var(--purple-2);
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      line-height: 32px;
-      text-align: center;
-    }
+
     .counter-and-heading-container {
       margin: 0 0 6px 0;
       display: inline-flex;
