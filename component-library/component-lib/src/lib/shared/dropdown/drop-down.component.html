@@ -1,10 +1,11 @@
 <div
   class="content-container"
   [ngClass]="config.size"
+  role="application"
 >
   <button
     aria-live="polite"
-    attr.aria-label= "{{ btnAriaLabel }}"
+    attr.aria-label="{{ btnAriaLabel }}"
     [id]="config.id"
     (click)="toggleFlyout(!selected)"
     [disabled]="config.disabled"
