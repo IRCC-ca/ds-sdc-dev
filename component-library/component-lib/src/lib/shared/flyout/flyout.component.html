@@ -14,11 +14,11 @@
       (click)="optionSelected(index)"
       [id]="config.id + '_option_' + (index + 1)"
     ></ircc-cl-lib-flyout-option>
+    <span
+      id="sr"
+      class="sr-only"
+      aria-live="polite"
+      >{{ currentSelected }}</span
+    >
   </div>
 </div>
-<span
-  id="sr"
-  class="sr-only"
-  aria-live="polite"
-  >{{ a11yText }}{{currentSelected}}</span
->
