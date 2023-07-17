@@ -27,6 +27,7 @@
 
   &::placeholder {
     color: var(--text-placeholder);
+    opacity: 1;//To fix the color opacity issue on Firefox
   }
 }
 
@@ -52,6 +53,9 @@
   &:disabled {
     border-color: var(--border-disabled);
     color: var(--text-disabled);
+    &::placeholder {
+      color: var(--text-disabled);
+    }
   }
 }
 
