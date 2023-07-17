@@ -5,9 +5,9 @@
   <ircc-cl-lib-button
     [category]="'plain'"
     [id]="config.id ? config.id : ''"
-    role="option"
     [tabIndex]="-1"
     [attr.aria-hidden]="config.disabled ? true : null"
+    [attr.role]="config.disabled ? 'none' : 'option'"
   >
     <div class="option-contents">
       <p class="option-text">{{ config.value || '' | translate }}</p>
