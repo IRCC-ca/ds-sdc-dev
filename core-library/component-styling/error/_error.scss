@@ -20,12 +20,10 @@ $selectors: "ircc-cl-lib-error";
 }
 
 @mixin small-styles() {
-  &.errorComponent, .errorComponent {
+  &.errorComponent,
+  .errorComponent {
     line-height: 20px;
     margin-top: 8px;
-  }
-  &.errorContainer, .errorContainer {
-    margin-top: 4px;
   }
   .errorIcon {
     height: 16px;
@@ -47,13 +45,12 @@ $selectors: "ircc-cl-lib-error";
 }
 
 @mixin large-styles() {
-  &.errorComponent, .errorComponent {
+  &.errorComponent,
+  .errorComponent {
     line-height: 24px;
     margin-top: 12px;
   }
-  &.errorContainer , .errorContainer {
-    margin-top: 8px;
-  }
+
   .errorIcon {
     height: 20px;
     width: 20px;
