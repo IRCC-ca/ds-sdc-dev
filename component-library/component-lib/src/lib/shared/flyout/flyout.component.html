@@ -13,12 +13,13 @@
       [size]="config.size"
       (click)="optionSelected(index)"
       [id]="config.id + '_option_' + (index + 1)"
+      [attr.aria-hidden]="option.disabled ? true : null"
     ></ircc-cl-lib-flyout-option>
-    <span
-      id="sr"
-      class="sr-only"
-      aria-live="polite"
-      >{{ a11yText }}</span
-    >
   </div>
 </div>
+<span
+  id="sr"
+  class="sr-only"
+  aria-live="polite"
+  >{{ a11yText }}</span
+>
