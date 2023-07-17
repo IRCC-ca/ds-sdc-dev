@@ -83,7 +83,7 @@ export class FlyoutComponent implements OnInit {
     }
   }
 
-  @HostListener('document:keydown.s', ['$event'])
+  @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
     event.preventDefault();
     if (this.config.options) {
@@ -100,7 +100,7 @@ export class FlyoutComponent implements OnInit {
     }
   }
 
-  @HostListener('document:keydown.w', ['$event'])
+  @HostListener('document:keydown.arrowup', ['$event'])
   onArrowUp(event: KeyboardEvent) {
     event.preventDefault();
     if (this.config.options) {
@@ -127,11 +127,6 @@ export class FlyoutComponent implements OnInit {
     this.selectedIndex != -1
       ? this.optionSelected(this.selectedIndex)
       : this.isSelected.emit(null);
-  }
-
-  @HostListener('document:keypress.down', ['$event'])
-  onKeyPress(event: KeyboardEvent) {
-    console.log('testing this one');
   }
 
   //takes in the active index from HostListeners and sets the config option to active state which triggers styling

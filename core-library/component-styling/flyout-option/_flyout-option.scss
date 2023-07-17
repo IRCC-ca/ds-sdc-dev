@@ -53,6 +53,10 @@
           }
         }
       }
+
+      &:where(> button:focus) {
+        background-color: green;
+      }
     }
 
     &-contents {
