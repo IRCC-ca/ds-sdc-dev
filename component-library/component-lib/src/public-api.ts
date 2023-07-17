@@ -50,6 +50,7 @@ export * from './lib/shared/label/label.component';
 export * from './lib/shared/progress-tags/progress-tags.component';
 export * from './lib/shared/progress-indicator/progress-indicator.component';
 export * from './lib/shared/dropdown/drop-down.component';
+export * from './lib/shared/multi-checkbox/multi-checkbox.component';
 export * from './lib/shared/label/label-button.service';
 export * from './lib/shared/breadcrumb/breadcrumb.component';
 export * from './lib/shared/breadcrumb/link/link.component';
