@@ -1,4 +1,7 @@
-<div class="{{ config?.size }} flyout-container">
+<div
+  class="{{ config?.size }} flyout-container"
+  role="toolbar"
+>
   <div
     #option
     *ngFor="let option of config?.options; let index = index"

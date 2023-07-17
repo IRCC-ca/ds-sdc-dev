@@ -85,7 +85,6 @@ export class FlyoutComponent implements OnInit {
 
   @HostListener('document:keydown.arrowdown', ['$event'])
   onArrowDown(event: KeyboardEvent) {
-    console.log('ARROW DOWN');
     event.preventDefault();
     if (this.config.options) {
       let foundClickable = false;
