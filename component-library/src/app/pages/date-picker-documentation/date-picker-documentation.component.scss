@@ -25,10 +25,6 @@
   margin: 12px 0 0 0;
 }
 
-p {
-  @include typography.fontSet(body, 3, regular);
-}
-
 ul {
   margin: 0px;
   padding-left: 25px;
@@ -250,16 +246,6 @@ ul {
   }
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-
-  @include device.in-phone-layout() {
-    flex-wrap: wrap;
-  }
-}
-
 .column {
   width: 50%;
   display: flex;
@@ -288,29 +274,4 @@ ul {
 .config-row {
   display: flex;
   justify-content: flex-start;
-}
-
-// To be moved to page template mixin
-h3,
-h4 {
-  margin-top: 0;
-  margin-bottom: 12px;
-
-  @include typography.fontSet(heading, 5, emphasis);
-
-  &.round-purple-num {
-    display: inline-block;
-    margin-left: 8px;
-    margin-bottom: 0;
-    position: relative;
-
-    &:not(:nth-child(2)) {
-      margin-top: 22px;
-      top: 2px;
-    }
-  }
-
-  &.text-underline {
-    margin-bottom: 8px;
-  }
 }
