@@ -50,6 +50,10 @@
     }
   }
 
+  p {
+    @include typography.fontSet(body, 3, regular);
+  }
+
   // Numbered bullet points
   span {
     &.round-purple-num {
@@ -105,6 +109,12 @@
 
     .col-md-6:nth-child(even) {
       padding-left: 12px;
+    }
+  }
+
+  @include grid.in-phone-layout {
+    .col-md-6:not(:last-child) {
+      margin-bottom: 24px;
     }
   }
 
