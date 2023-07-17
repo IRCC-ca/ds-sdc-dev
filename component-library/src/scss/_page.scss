@@ -1,3 +1,6 @@
+@use "@ircc-ca/ds-sdc-core/typography/typography";
+@use "grid";
+
 @mixin template {
   .content-doc-wrapper {
     box-sizing: border-box;
@@ -13,6 +16,11 @@
   h5,
   h3,
   h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+
+    @include typography.fontSet(heading, 5, emphasis);
+
     &.text-underline {
       border-bottom: 1px solid;
       padding-bottom: 4px;
@@ -30,10 +38,62 @@
     &.round-purple-num {
       display: inline-block;
       margin-left: 8px;
-      margin-top: 22px;
       margin-bottom: 0;
       position: relative;
       top: 2px;
+
+      &:not(:nth-child(2)) {
+        margin-top: 22px;
+        top: 2px;
+      }
+    }
+  }
+
+  // Numbered bullet points
+  span {
+    &.round-purple-num {
+      @include typography.fontSet(body, 3, emphasis);
+
+      display: inline-block;
+      color: var(--purple-9);
+      background-color: var(--purple-2);
+      line-height: 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+    }
+  }
+
+  // Spacing
+  .pt_8 {
+    padding-top: 8px;
+
+    &.col-md-6 {
+      padding-top: 0;
+
+      @include grid.up-phone-layout {
+        padding-top: 8px;
+      }
+    }
+  }
+
+  .mt_8 {
+    margin-top: 8px;
+  }
+
+  .mt_12 {
+    margin-top: 12px;
+  }
+
+  // Container
+  .wrapper-container {
+    .element-wrapper-container {
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

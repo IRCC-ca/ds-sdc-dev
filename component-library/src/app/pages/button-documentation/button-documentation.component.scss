@@ -49,45 +49,6 @@ p {
   }
 }
 
-h3,
-h4 {
-  margin-top: 0;
-  margin-bottom: 12px;
-
-  @include typography.fontSet(heading, 5, emphasis);
-
-  &.round-purple-num {
-    display: inline-block;
-    margin-left: 8px;
-    margin-bottom: 0;
-    position: relative;
-
-    &:not(:nth-child(2)) {
-      margin-top: 22px;
-      top: 2px;
-    }
-  }
-
-  &.text-underline {
-    margin-bottom: 8px;
-  }
-}
-
-span {
-  &.round-purple-num {
-    @include typography.fontSet(body, 3, emphasis);
-
-    display: inline-block;
-    color: var(--purple-9);
-    background-color: var(--purple-2);
-    line-height: 32px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    text-align: center;
-  }
-}
-
 .specs,
 .do-dont-container {
   p {
@@ -101,37 +62,6 @@ span {
   p {
     margin-bottom: 0;
   }
-}
-
-.wrapper-container {
-  .element-wrapper-container {
-    margin-bottom: 24px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-// Utility classes should move to page template
-.pt_8 {
-  padding-top: 8px;
-
-  &.col-md-6 {
-    padding-top: 0;
-
-    @include grid.up-phone-layout {
-      padding-top: 8px;
-    }
-  }
-}
-
-.mt_8 {
-  margin-top: 8px;
-}
-
-.mt_12 {
-  margin-top: 12px;
 }
 
 .configs {
