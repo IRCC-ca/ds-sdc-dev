@@ -10,6 +10,7 @@
     img {
       display: block;
       max-width: 100%;
+      width: 100%;
     }
   }
 
@@ -96,4 +97,15 @@
       }
     }
   }
+
+  @include grid.up-phone-layout() {
+    .col-md-6:nth-child(odd) {
+      padding-right: 12px;
+    }
+
+    .col-md-6:nth-child(even) {
+      padding-left: 12px;
+    }
+  }
+
 }
