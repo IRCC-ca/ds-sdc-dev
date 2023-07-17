@@ -83,7 +83,7 @@ export class FlyoutComponent implements OnInit {
     }
   }
 
-  @HostListener('document:keydown.arrowdown', ['$event'])
+  @HostListener('document:keydown.s', ['$event'])
   onArrowDown(event: KeyboardEvent) {
     event.preventDefault();
     if (this.config.options) {
@@ -100,7 +100,7 @@ export class FlyoutComponent implements OnInit {
     }
   }
 
-  @HostListener('document:keydown.arrowup', ['$event'])
+  @HostListener('document:keydown.w', ['$event'])
   onArrowUp(event: KeyboardEvent) {
     event.preventDefault();
     if (this.config.options) {
