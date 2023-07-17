@@ -53,10 +53,6 @@
           }
         }
       }
-
-      &:where(> ircc-cl-lib-button > .lib-button:focus) {
-        background-color: green;
-      }
     }
 
     &-contents {
