@@ -7,7 +7,7 @@
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
     <p
-      class="demo"
+      class="demo body3"
       [innerHTML]="'Banner.InteractiveDemoDesc' | translate"
     ></p>
     <app-banner-doc-code></app-banner-doc-code>
@@ -33,7 +33,7 @@
           [config]="infoBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">
+      <p class="description body3">
         {{ 'Banner.InfoPrimaryText' | translate }}
       </p>
     </div>
@@ -54,7 +54,7 @@
           [config]="warningBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">
+      <p class="description body3">
         {{ 'Banner.WarningPrimaryText' | translate }}
       </p>
     </div>
@@ -75,7 +75,7 @@
           [config]="criticalBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">
+      <p class="description body3">
         {{ 'Banner.CriticalPrimaryText' | translate }}
       </p>
     </div>
@@ -96,7 +96,7 @@
           [config]="successBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">
+      <p class="description body3">
         {{ 'Banner.SuccessPrimaryText' | translate }}
       </p>
     </div>
@@ -117,7 +117,7 @@
           [config]="genericBannerConfig"
         ></ircc-cl-lib-banner>
       </app-component-preview>
-      <p class="description">
+      <p class="description body3">
         {{ 'Banner.GenericPrimaryText' | translate }}
       </p>
     </div>
@@ -254,8 +254,8 @@
         <h3 class="h5 emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.KeepActionsSimpleLabel' | translate }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-actions-do.png"
               alt="{{
@@ -268,12 +268,12 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerActionsDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-actions-dont.png"
               alt="{{
@@ -286,7 +286,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.BannerActionsDontText' | translate
                 }}
@@ -300,8 +300,8 @@
         <h3 class="h5 emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.UseOneBannerAtATimeLabel' | translate }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-count-do.png"
               alt="{{ 'Banner.DesignGuideLines.BannerCountDoAlt' | translate }}"
@@ -312,12 +312,12 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerCountDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-count-dont.png"
               alt="{{
@@ -330,7 +330,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerCountDontText' | translate }}
               </p>
             </div>
@@ -342,8 +342,8 @@
         <h3 class="h5 emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.ShowMaximumButtonsLabel' | translate }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-count-do.png"
               alt="{{
@@ -356,14 +356,14 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonCountDoText' | translate
                 }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-count-dont.png"
               alt="{{
@@ -376,7 +376,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonCountDontText'
                     | translate
@@ -393,8 +393,8 @@
             'Banner.DesignGuideLines.ProperButtonTypeInGroupLabel' | translate
           }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-type-do.png"
               alt="{{
@@ -407,12 +407,12 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{ 'General.ButtonTypeDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-type-dont.png"
               alt="{{
@@ -425,7 +425,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonTypeDontText' | translate
                 }}
@@ -439,8 +439,8 @@
         <h3 class="h5 emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.BannerCorrectDismissLabel' | translate }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-dismiss-do.png"
               alt="{{
@@ -453,12 +453,12 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.bannerDismissDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-dismiss-dont.png"
               alt="{{
@@ -471,7 +471,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerDismissDontText' | translate
                 }}
@@ -491,7 +491,7 @@
           src="assets/img/banner-content/banner-min-max-width.png"
           alt="{{ 'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate }}"
         />
-        <p class="description">
+        <p class="description body3">
           {{ 'Banner.DesignGuideLines.bannerMinMaxWidthText' | translate }}
         </p>
       </div>
@@ -515,7 +515,7 @@
             <strong>{{ content.title | translate }}</strong>
           </h3>
         </div>
-        <p class="anatomy-description">
+        <p class="anatomy-description body3">
           {{ content.description | translate }}
         </p>
       </div>
@@ -531,7 +531,7 @@
       src="assets/img/banner-content/banner-specs.png"
       alt="{{ 'Banner.Specs.ImgAlt' | translate }}"
     />
-    <p class="specs-description">
+    <p class="specs-description body3">
       {{ 'Banner.Specs.Text' | translate }}
     </p>
   </section>
@@ -546,8 +546,8 @@
         <h3 class="h5 emphasis sub-headings">
           {{ 'Banner.ContentGuideLines.UseCorrectCaseHeading' | translate }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-use-correct-case-do.png"
               alt="{{
@@ -560,7 +560,7 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerUseCorrectCaseDoText'
                     | translate
@@ -568,7 +568,7 @@
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-use-correct-case-dont.png"
               alt="{{
@@ -582,7 +582,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerUseCorrectCaseDontText'
                     | translate
@@ -597,8 +597,8 @@
         <h3 class="h5 emphasis sub-headings">
           {{ 'Banner.ContentGuideLines.EasyToReadTitleHeading' | translate }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-title-do.png"
               alt="{{
@@ -611,12 +611,12 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{ 'Banner.ContentGuideLines.BannerTitleDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-title-dont.png"
               alt="{{
@@ -629,7 +629,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{ 'Banner.ContentGuideLines.BannerTitleDontText' | translate }}
               </p>
             </div>
@@ -641,8 +641,8 @@
         <h3 class="h5 emphasis sub-headings">
           {{ 'Banner.ContentGuideLines.ProperPunctuationHeading' | translate }}
         </h3>
-        <div class="row row-container">
-          <div class="column left-column">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-punctuation-do.png"
               alt="{{
@@ -655,14 +655,14 @@
               >
                 {{ 'General.DoHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerPunctuationDoText' | translate
                 }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-punctuation-dont.png"
               alt="{{
@@ -675,7 +675,7 @@
               >
                 {{ 'General.DontHeading' | translate }}
               </h4>
-              <p>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerPunctuationDontText'
                     | translate
@@ -737,7 +737,7 @@
       <h3 class="h5 sub-headings">
         {{ 'General.AccessibilityKeyboardHeading' | translate }}
       </h3>
-      <p>
+      <p class="body3">
         {{ 'Banner.Accessibility.KeyboardText' | translate }}
       </p>
     </div>
@@ -747,6 +747,6 @@
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p>{{ 'General.ComingSoon' | translate }}</p>
+    <p class="body3">{{ 'General.ComingSoon' | translate }}</p>
   </section>
 </div>
