@@ -129,6 +129,9 @@ export class FlyoutComponent implements OnInit {
       : this.isSelected.emit(null);
   }
 
+  testFunc() {
+    console.log('yo');
+  }
   //takes in the active index from HostListeners and sets the config option to active state which triggers styling
   highlightIndex(el_id: any) {
     if (el_id) {
