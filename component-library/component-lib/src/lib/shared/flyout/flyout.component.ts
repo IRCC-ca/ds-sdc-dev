@@ -145,7 +145,7 @@ export class FlyoutComponent implements OnInit {
 
           this.a11yText = option.value;
           //updates a11yText to indicate currently selected item if scrolling through flyout again
-          if (option.selected) this.a11yText += this.currentSelected;
+          if (option.selected) this.a11yText = this.a11yText + this.currentSelected;
         } else {
           option.active = false;
         }
