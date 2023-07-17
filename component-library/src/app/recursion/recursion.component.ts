@@ -97,7 +97,7 @@ export class RecursionComponent implements OnInit {
   }
 
   setChildren(obj1: IRecursionItem) {
-    let newValues: IRecursionItemAccordion = {
+    const newValues: IRecursionItemAccordion = {
       id: obj1.id,
       check: true,
       type: 'IRecursionItemAccordion',
@@ -112,7 +112,7 @@ export class RecursionComponent implements OnInit {
     console.log(obj1);
 
     if (obj1.children) {
-      for (let children of obj1?.children) {
+      for (const children of obj1?.children) {
         this.setChildren(children);
       }
     }
@@ -126,7 +126,7 @@ export class RecursionComponent implements OnInit {
 
   private flatten = (obj: any) => {
     const stack = [obj];
-    let stackB = [];
+    const stackB = [];
     while (stack?.length > 0) {
       const currentObj = stack.pop();
       if (!Array.isArray(currentObj)) {
