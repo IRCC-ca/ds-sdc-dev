@@ -259,17 +259,23 @@
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
     ></app-title-slug-url>
-    <img
-      class="single-img"
-      src="assets/img/datePicker-content/specs.png"
-      alt="{{ 'DatePicker.Specs.ImgAlt' | translate }}"
-    />
-    <p class="specs-description1">
-      {{ 'DatePicker.Specs.Text1' | translate }}
-    </p>
-    <p class="specs-description2">
-      {{ 'DatePicker.Specs.Text2' | translate }}
-    </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          class="single-img"
+          src="assets/img/datePicker-content/specs.png"
+          alt="{{ 'DatePicker.Specs.ImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <p>
+          {{ 'DatePicker.Specs.Text1' | translate }}
+        </p>
+        <p class="specs-description2">
+          {{ 'DatePicker.Specs.Text2' | translate }}
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="content-guidelines">

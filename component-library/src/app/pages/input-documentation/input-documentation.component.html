@@ -14,30 +14,33 @@
     <app-title-slug-url
       [config]="headingConfig.typesSlugConfig"
     ></app-title-slug-url>
-    <h3 class="emphasis type-heading">
-      {{ 'Input.PrimaryHeading' | translate }}
-    </h3>
-    <app-component-preview
-      class="h6 component-preview"
-      copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
-      componentType="input"
-    >
-      <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
-    </app-component-preview>
-    <p class="body3 subtext-1">{{ 'Input.PrimaryText' | translate }}</p>
-    <h3 class="emphasis type-sub-heading">
-      {{ 'Input.SecondaryHeading' | translate }}
-    </h3>
-    <app-component-preview
-      class="h6 component-preview"
-      copyText="<ircc-cl-lib-input type='password'></ircc-cl-lib-input>"
-      componentType="input"
-    >
-      <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
-    </app-component-preview>
-    <p class="body3 last">{{ 'Input.SecondaryText' | translate }}</p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="emphasis type-heading">
+          {{ 'Input.PrimaryHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="h6 component-preview"
+          copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
+        >
+          <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
+        </app-component-preview>
+        <p class="body3 subtext-1">{{ 'Input.PrimaryText' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="emphasis type-sub-heading">
+          {{ 'Input.SecondaryHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="h6 component-preview"
+          copyText="<ircc-cl-lib-input type='password'></ircc-cl-lib-input>"
+        >
+          <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
+        </app-component-preview>
+        <p class="body3 last">{{ 'Input.SecondaryText' | translate }}</p>
+      </div>
+    </div>
   </section>
-
   <section class="configs">
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"

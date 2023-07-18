@@ -4,11 +4,6 @@
 
 @include page.template;
 
-.demo {
-  margin-top: 0px;
-  margin-bottom: 24px;
-}
-
 .sub-headings {
   margin-top: 0px;
   margin-bottom: 12px;
@@ -18,10 +13,6 @@
 .types {
   .component-preview-container {
     margin-bottom: 24px;
-
-  .description {
-    margin: 12px 0 0 0;
-  }
 
     .component-preview {
       @include typography.fontSet(heading, 6, regular);

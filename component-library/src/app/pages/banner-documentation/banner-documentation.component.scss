@@ -4,11 +4,6 @@
 
 @include page.template;
 
-.demo {
-  margin-top: 0px;
-  margin-bottom: 24px;
-}
-
 .sub-headings {
   margin-top: 0px;
   margin-bottom: 12px;
@@ -23,12 +18,9 @@
   .component-preview-container {
     margin-bottom: 24px;
 
-    .description {
-      margin-top: 28px;
-    }
-
     .component-preview {
       max-width: 400px;
+      padding-bottom: 16px;
     }
   }
 
