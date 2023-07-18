@@ -27,9 +27,9 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
   config: IMultiCheckboxConfig = {
     id: '',
     parent: {
-      id: 'parent',
+      id: 'parent1',
       formGroup: this.form,
-      label: 'Parent',
+      label: 'Parent1',
       size: 'small'
       // mixed: false
     },
@@ -38,6 +38,31 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         id: 'child1',
         formGroup: this.form,
         label: 'Child1',
+        size: 'small'
+      }
+    ]
+  };
+
+  config2: IMultiCheckboxConfig = {
+    id: '',
+    parent: {
+      id: 'parent2',
+      formGroup: this.form,
+      label: 'Parent2',
+      size: 'small'
+      // mixed: false
+    },
+    children: [
+      {
+        id: 'child2',
+        formGroup: this.form,
+        label: 'child2',
+        size: 'small'
+      },
+      {
+        id: 'child22',
+        formGroup: this.form,
+        label: 'child22',
         size: 'small'
       }
     ]
@@ -52,14 +77,5 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-
-    this.form.addControl(
-      this.config.parent.id,
-      new FormControl(false, Validators.required)
-    );
-
-    this.config.children?.forEach((res) => {
-      this.form.addControl(res.id, new FormControl(false, Validators.required));
-    });
   }
 }

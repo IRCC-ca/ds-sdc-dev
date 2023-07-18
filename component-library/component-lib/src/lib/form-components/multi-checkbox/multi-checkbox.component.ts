@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ICheckBoxComponentConfig } from '../../../public-api';
 import { MultiCheckboxService } from './multi-checkbox.service';
@@ -39,21 +39,60 @@ export class MultiCheckboxComponent implements OnInit {
   constructor(private multicheckboxService: MultiCheckboxService) {}
 
   ngOnInit() {
+    this.config.parent.formGroup.addControl(
+      this.config.parent.id,
+      new FormControl('', Validators.required)
+    );
+
+    this.config.children?.forEach((res) => {
+      res.formGroup.addControl(
+        res.id,
+        new FormControl('', Validators.required)
+      );
+    });
+
     this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
       (response) => {
-        if (response.id === this.config.parent.id) {
-          this.config.children?.forEach((res) => {
-            res.formGroup.get(res.id)?.setValue(response.event);
-          });
-        } else if (
-          this.config.children?.findIndex((child) => {
-            child.id === response.id;
-          })
-        ) {
-          console.log('Clicked');
-          // this.config.parent.label += 'Child Clicked';
-          // this.config.parent.size = 'large';
-          this.config.parent.mixed = true;
+        if (this.config.children) {
+          if (response.id === this.config.parent.id) {
+            this.config.children?.forEach((res) => {
+              this.multicheckboxService.checkEvent({
+                id: res.id,
+                event: response.event
+              });
+            });
+            this.config.parent.mixed = false;
+          } else if (
+            this.config.children?.findIndex((child) => {
+              return child.id === response.id;
+            }) > -1
+          ) {
+            let positive = 0;
+            let negative = 0;
+
+            this.config.children?.forEach((res) => {
+              res.formGroup.get(res.id)?.value === true
+                ? positive++
+                : negative++;
+            });
+
+            if (positive > 0 && negative > 0) {
+              this.config.parent.formGroup
+                .get(this.config.parent.id)
+                ?.patchValue(true, { emitEvent: false });
+              this.config.parent.mixed = true;
+            } else if (positive > 0 && negative == 0) {
+              this.config.parent.formGroup
+                .get(this.config.parent.id)
+                ?.patchValue(true, { emitEvent: false });
+              this.config.parent.mixed = false;
+            } else if (positive == 0 && negative > 0) {
+              this.config.parent.formGroup
+                .get(this.config.parent.id)
+                ?.patchValue(false, { emitEvent: false });
+              this.config.parent.mixed = false;
+            }
+          }
         }
       }
     );

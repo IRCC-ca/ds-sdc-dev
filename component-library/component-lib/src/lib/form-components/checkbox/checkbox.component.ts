@@ -115,17 +115,22 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   ngOnInit() {
     this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
       (response) => {
-        console.log('response for multiCheckboxEventObs sub', response);
-        // console.log('event: ', response.event)
+        if (response.id === this.config.id) {
+          this.config.formGroup
+            .get(this.config.id)
+            ?.patchValue(response.event, { emitEvent: false });
+        }
       }
     );
 
-    const retControl = this.config.formGroup.get(this.config.id);
-
-    if (retControl) {
-      this.formControl = retControl;
-      // retControl.setValue(false, { emitEvent: false });
-    }
+    this.config.formGroup
+      .get(this.config.id)
+      ?.valueChanges.subscribe((event) => {
+        this.multicheckboxService.checkEvent({
+          id: this.config.id,
+          event: event
+        });
+      });
 
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
@@ -234,28 +239,9 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   clickEvent() {
-    this.config.formGroup.get(this.config.id)?.markAsTouched();
-    this.config.formGroup.updateValueAndValidity();
-
-    let val = this.config.formGroup.get(this.config.id)!.value;
-    if(val != null) {
-      console.log('id', this.config.formGroup.get(this.config.id));
-      console.log('value', val);
-      console.log("valid", this.config.formGroup.get(this.config.id)!.valid);
-      this.multicheckboxService.checkEvent({
-        id: this.config.id,
-        event: val
-      });
-    }
-
-    // if (this.config !== null && this.config.formGroup !== null) {
-    //   if (
-    //     this.config.formGroup.get(this.config.id).value !== null &&
-    //     this.config.id !== null &&
-    //     this.config.formGroup.get(this.config.id) !== null
-    //   ) {
-    //     console.log('id', this.config.formGroup.get(this.config.id));
-    //   }
-    // }
+    // this.multicheckboxService.checkEvent({
+    //   id: this.config.id,
+    //   event: event
+    // });
   }
 }
