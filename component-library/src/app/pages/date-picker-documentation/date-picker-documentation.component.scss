@@ -4,12 +4,6 @@
 
 @include page.template;
 
-.intro {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  @include typography.fontSet(body, 1, regular);
-}
-
 .demo {
   margin-top: 0px;
   margin-bottom: 24px;
