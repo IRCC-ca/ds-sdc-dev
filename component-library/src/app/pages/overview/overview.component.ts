@@ -30,7 +30,7 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
       id: 'parent',
       formGroup: this.form,
       label: 'Parent',
-      size: 'small',
+      size: 'small'
       // mixed: false
     },
     children: [
@@ -41,7 +41,7 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         size: 'small'
       }
     ]
-  }
+  };
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
@@ -58,10 +58,8 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
       new FormControl('', Validators.required)
     );
 
-    this.config.children?.forEach(res => {
-      this.form.addControl(
-        res.id, new FormControl('', Validators.required)
-      );
+    this.config.children?.forEach((res) => {
+      this.form.addControl(res.id, new FormControl('', Validators.required));
     });
   }
 }
