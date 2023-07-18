@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { TextareaComponent } from './textarea/textarea.component';
 import { SelectComponent } from './select/select.component';
+import { MultiCheckboxComponent } from './multi-checkbox/multi-checkbox.component';
 
 const IrccDsAngularFormComponents = [
   CheckboxComponent,
@@ -18,7 +19,8 @@ const IrccDsAngularFormComponents = [
   RadioInputComponent,
   DatePickerComponent,
   TextareaComponent,
-  SelectComponent
+  SelectComponent,
+  MultiCheckboxComponent
 ];
 
 @NgModule({

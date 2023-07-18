@@ -17,13 +17,15 @@ import {
   ILabelIconConfig
 } from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
+import { MultiCheckboxService } from '../multi-checkbox/multi-checkbox.service';
+import { Subscription } from 'rxjs';
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
   label?: string;
   required?: boolean;
   size?: keyof typeof DSSizes | DSSizes;
-  mixed?: true;
+  mixed?: boolean;
   disableFocus?: boolean; //Default is true
   inlineLabel?: string;
   inlineLabelBold?: boolean;
@@ -48,12 +50,14 @@ export interface ICheckBoxComponentConfig {
 })
 export class CheckboxComponent implements ControlValueAccessor, OnInit {
   formGroupEmpty: FormGroup = new FormGroup({});
+  configSub?: Subscription;
 
   //TODO: Add output - consider using a formControl as output rather than anything else. Many different approaches are possible
   @Input() config: ICheckBoxComponentConfig = {
     id: '',
     formGroup: this.formGroupEmpty,
-    size: DSSizes.large
+    size: DSSizes.large,
+    label: ''
   };
 
   @Input() formGroup = this.formGroupEmpty;
@@ -84,7 +88,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private multicheckboxService: MultiCheckboxService
   ) {}
 
   onTouch = () => {};
@@ -108,7 +113,19 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
+    this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe((response) => {
+      console.log("response for multiCheckboxEventObs sub",response);
+    });
+    
     const retControl = this.config.formGroup.get(this.config.id);
+    
+    if (retControl) {
+      retControl.valueChanges.subscribe((res) => {
+        this.config.formGroup.get(this.config.id)?.markAsTouched();
+        this.multicheckboxService.checkEvent({id: this.config.id, event: this.config.formGroup.get(this.config.id)?.value});
+      });
+    }
+
     if (retControl) {
       this.formControl = retControl;
     }
@@ -217,4 +234,9 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       false
     );
   }
+
+  // clickEvent() {
+  //   this.config.formGroup.get(this.config.id)?.markAsTouched();
+  //   this.multicheckboxService.checkEvent({id: this.config.id, event: this.config.formGroup.get(this.config.id)?.value})
+  // }
 }

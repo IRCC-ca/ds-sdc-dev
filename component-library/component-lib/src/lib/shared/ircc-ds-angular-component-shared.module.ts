@@ -17,7 +17,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { DomChangeDirective } from '../../shared/directives/dom-change.directive';
 import { FlyoutComponent } from './flyout/flyout.component';
 import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
-import { MultiCheckboxComponent } from './multi-checkbox/multi-checkbox.component';
 
 
 const IrccDsSharedComponents = [
@@ -36,7 +35,6 @@ const IrccDsSharedComponents = [
   SpinnerComponent,
   FlyoutComponent,
   FlyoutOptionComponent,
-  MultiCheckboxComponent
 ];
 
 @NgModule({

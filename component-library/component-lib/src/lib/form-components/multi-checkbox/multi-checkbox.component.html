@@ -1,0 +1,6 @@
+<p>multi-checkbox works!</p>
+
+<ircc-cl-lib-checkbox [config]="config.parent"></ircc-cl-lib-checkbox>
+<ng-container *ngFor="let child of config.children">
+  <ircc-cl-lib-checkbox [config]="child"></ircc-cl-lib-checkbox>
+</ng-container>
