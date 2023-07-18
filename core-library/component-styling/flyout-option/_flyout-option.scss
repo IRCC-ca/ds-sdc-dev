@@ -51,6 +51,11 @@
           &:hover {
             background: none;
           }
+
+          &:focus-visible {
+            outline: none;
+            background: var(--generic-hover);
+          }
         }
       }
     }
