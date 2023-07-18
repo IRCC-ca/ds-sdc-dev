@@ -1,6 +1,18 @@
 @use "@ircc-ca/ds-sdc-core/typography/typography";
 @use "grid";
 
+$round-purple-num-size: 32px;
+
+@mixin round-purple-num {
+  color: var(--purple-9);
+  background-color: var(--purple-2);
+  border-radius: 50%;
+  width: $round-purple-num-size;
+  height: $round-purple-num-size;
+  line-height: $round-purple-num-size;
+  text-align: center;
+}
+
 @mixin template {
   .content-doc-wrapper {
     box-sizing: border-box;
@@ -9,7 +21,6 @@
 
     img {
       display: block;
-      max-width: 100%;
       width: 100%;
     }
   }
@@ -52,6 +63,11 @@
 
   p {
     @include typography.fontSet(body, 3, regular);
+
+    &.intro.body1 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   // Numbered bullet points
@@ -60,25 +76,15 @@
       @include typography.fontSet(body, 3, emphasis);
 
       display: inline-block;
-      color: var(--purple-9);
-      background-color: var(--purple-2);
-      line-height: 32px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      text-align: center;
+
+      @include round-purple-num;
     }
   }
 
   div.round-purple-num-count {
-    color: var(--purple-9);
     font-weight: 700;
-    background-color: var(--purple-2);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
+
+    @include round-purple-num;
   }
 
   // Spacing
@@ -128,4 +134,6 @@
       margin-bottom: 24px;
     }
   }
+
+  // Section
 }
