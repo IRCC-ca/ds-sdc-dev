@@ -16,11 +16,6 @@
 }
 
 .body3 {
-  &.demo {
-    margin-top: 0;
-    margin-bottom: 24px;
-  }
-
   &.specsDesc {
     @include typography.fontSet(body, 3, regular);
 
@@ -225,7 +220,7 @@ div.round-purple-num {
 
   ol {
     padding-left: 20px;
-    margin: 0px;
+    margin: 0;
   }
 }
 
@@ -284,7 +279,7 @@ div.round-purple-num {
   }
 
   .validation-list {
-    margin: 12px 0 0 0;
+    margin: 12px 0 0;
     padding: 0 20px;
   }
 }

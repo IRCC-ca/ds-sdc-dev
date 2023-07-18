@@ -4,11 +4,6 @@
 
 @include page.template;
 
-.demo {
-  margin-top: 0px;
-  margin-bottom: 24px;
-}
-
 .sub-headings {
   margin-top: 0px;
   margin-bottom: 12px;
@@ -96,9 +91,6 @@ ul {
 }
 
 .specs {
-  .specs-description1 {
-    margin: 24px 0 0 0;
-  }
   .specs-description2 {
     margin: 8px 0 0 0;
   }

@@ -136,4 +136,25 @@ $round-purple-num-size: 32px;
   }
 
   // Section
+  section {
+    &.interactive-demo {
+      p {
+        margin-top: 0;
+        margin-bottom: 24px;
+      }
+    }
+
+    &.types {
+      p {
+        margin-top: 12px;
+        margin-bottom: 0;
+      }
+    }
+
+    &.specs {
+      p {
+        margin: 0;
+      }
+    }
+  }
 }
