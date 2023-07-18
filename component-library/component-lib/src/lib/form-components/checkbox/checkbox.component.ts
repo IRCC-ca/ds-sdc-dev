@@ -113,21 +113,18 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
-    this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe((response) => {
-      console.log("response for multiCheckboxEventObs sub",response);
-    });
-    
+    this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
+      (response) => {
+        console.log('response for multiCheckboxEventObs sub', response);
+        // console.log('event: ', response.event)
+      }
+    );
+
     const retControl = this.config.formGroup.get(this.config.id);
-    
-    if (retControl) {
-      retControl.valueChanges.subscribe((res) => {
-        this.config.formGroup.get(this.config.id)?.markAsTouched();
-        this.multicheckboxService.checkEvent({id: this.config.id, event: this.config.formGroup.get(this.config.id)?.value});
-      });
-    }
 
     if (retControl) {
       this.formControl = retControl;
+      // retControl.setValue(false, { emitEvent: false });
     }
 
     this.setLang(this.translate.currentLang);
@@ -157,15 +154,16 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.mixed) this.config.mixed = this.mixed;
     if (this.disableFocus) this.config.disableFocus = this.disableFocus;
     if (this.inlineLabel) this.config.inlineLabel = this.inlineLabel;
-    if (this.inlineLabelBold) this.config.inlineLabelBold = this.inlineLabelBold;
+    if (this.inlineLabelBold)
+      this.config.inlineLabelBold = this.inlineLabelBold;
     if (this.helpText) this.config.helpText = this.helpText;
-    if (this.customErrorText) this.config.customErrorText = this.customErrorText;
+    if (this.customErrorText)
+      this.config.customErrorText = this.customErrorText;
     if (this.desc) this.config.desc = this.desc;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
-    
-    
+
     if (!this.config?.size) this.config.size = DSSizes.large;
-    
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -235,8 +233,29 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     );
   }
 
-  // clickEvent() {
-  //   this.config.formGroup.get(this.config.id)?.markAsTouched();
-  //   this.multicheckboxService.checkEvent({id: this.config.id, event: this.config.formGroup.get(this.config.id)?.value})
-  // }
+  clickEvent() {
+    this.config.formGroup.get(this.config.id)?.markAsTouched();
+    this.config.formGroup.updateValueAndValidity();
+
+    let val = this.config.formGroup.get(this.config.id)!.value;
+    if(val != null) {
+      console.log('id', this.config.formGroup.get(this.config.id));
+      console.log('value', val);
+      console.log("valid", this.config.formGroup.get(this.config.id)!.valid);
+      this.multicheckboxService.checkEvent({
+        id: this.config.id,
+        event: val
+      });
+    }
+
+    // if (this.config !== null && this.config.formGroup !== null) {
+    //   if (
+    //     this.config.formGroup.get(this.config.id).value !== null &&
+    //     this.config.id !== null &&
+    //     this.config.formGroup.get(this.config.id) !== null
+    //   ) {
+    //     console.log('id', this.config.formGroup.get(this.config.id));
+    //   }
+    // }
+  }
 }

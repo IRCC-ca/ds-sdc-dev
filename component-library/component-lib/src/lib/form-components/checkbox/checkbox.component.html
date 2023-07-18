@@ -20,6 +20,7 @@
           (blur)="touched = true"
           id="{{ config.id }}"
           class="check"
+          (click)="clickEvent()"
           [ngClass]="{
             mixed: config.mixed,
             focus: !config.disableFocus,

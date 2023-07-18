@@ -55,11 +55,11 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
 
     this.form.addControl(
       this.config.parent.id,
-      new FormControl('', Validators.required)
+      new FormControl(false, Validators.required)
     );
 
     this.config.children?.forEach((res) => {
-      this.form.addControl(res.id, new FormControl('', Validators.required));
+      this.form.addControl(res.id, new FormControl(false, Validators.required));
     });
   }
 }
