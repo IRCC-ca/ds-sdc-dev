@@ -57,7 +57,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     id: '',
     formGroup: this.formGroupEmpty,
     size: DSSizes.large,
-    label: ''
+    label: '',
+    inlineLabel: ''
   };
 
   @Input() formGroup = this.formGroupEmpty;

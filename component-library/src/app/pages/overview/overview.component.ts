@@ -27,17 +27,16 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
   config: IMultiCheckboxConfig = {
     id: '',
     parent: {
-      id: 'parent1',
+      id: 'meat',
       formGroup: this.form,
-      label: 'Parent1',
+      inlineLabel: 'Meat',
       size: 'small'
-      // mixed: false
     },
     children: [
       {
-        id: 'child1',
+        id: 'pepperoni',
         formGroup: this.form,
-        label: 'Child1',
+        inlineLabel: 'Pepperoni',
         size: 'small'
       }
     ]
@@ -46,23 +45,28 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
   config2: IMultiCheckboxConfig = {
     id: '',
     parent: {
-      id: 'parent2',
+      id: 'vegetables',
       formGroup: this.form,
-      label: 'Parent2',
+      inlineLabel: 'Vegetables',
       size: 'small'
-      // mixed: false
     },
     children: [
       {
-        id: 'child2',
+        id: 'mashrooms',
         formGroup: this.form,
-        label: 'child2',
+        inlineLabel: 'Mashrooms',
         size: 'small'
       },
       {
-        id: 'child22',
+        id: 'onions',
         formGroup: this.form,
-        label: 'child22',
+        inlineLabel: 'Onions',
+        size: 'small'
+      },
+      {
+        id: 'olives',
+        formGroup: this.form,
+        inlineLabel: 'Olives',
         size: 'small'
       }
     ]
