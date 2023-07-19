@@ -42,7 +42,7 @@ ul {
   }
 }
 
-.do-dont-container {
+.do-dont-desc {
   margin-top: 8px;
 
   .do-dont-heading {
@@ -50,15 +50,6 @@ ul {
     margin: 0 0 8px 0;
     border-bottom: 1px solid;
     @include typography.fontSet(heading, 5, emphasis);
-  }
-  .text-color-green {
-    color: var(--green-8);
-  }
-  .text-color-red {
-    color: var(--red-7);
-  }
-  p {
-    margin: 0px;
   }
 }
 

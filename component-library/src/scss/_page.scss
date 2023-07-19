@@ -152,9 +152,25 @@ $round-purple-num-size: 32px;
     }
 
     &.specs {
-      p {
-        margin: 0;
+      p:nth-child(1) {
+        margin: 24px 0 0;
       }
+    }
+
+    &.anatomy,
+    &.design-guide,
+    &.accessibility {
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Do Donts
+  .do-dont-container,
+  .do-dont-desc {
+    p {
+      margin: 0;
     }
   }
 }
