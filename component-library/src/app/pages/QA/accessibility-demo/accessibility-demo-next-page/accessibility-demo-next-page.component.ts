@@ -21,6 +21,16 @@ export class AccessibilityDemoNextPageComponent implements OnInit, OnDestroy {
   altPathKey = '';
   altLangURL = '';
 
+  nextHNConfig = {
+    id: 'next_hidden_nav',
+    skipLinks: [
+      {
+        title: 'Skip to main content',
+        href: 'ds-cont'
+      }
+    ]
+  };
+
   constructor(
     private router: Router,
     private progressIndicator: AccessbilityDemoFormStateService,
@@ -52,6 +62,7 @@ export class AccessibilityDemoNextPageComponent implements OnInit, OnDestroy {
         this.progressIndicatorConfig = response;
       });
   }
+
 
   progressTabButtonEvent(event: Event) {
     const eventInt = parseInt(event.toString());
