@@ -52,7 +52,8 @@
             background: none;
           }
 
-          &:focus-visible {
+          &:focus-visible,
+          &:focus {
             outline: none;
             background: var(--generic-hover);
           }
