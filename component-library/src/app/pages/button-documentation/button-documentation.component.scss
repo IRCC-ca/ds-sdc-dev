@@ -5,59 +5,10 @@
 
 @include page.template;
 
-.button-container-fluid {
-  padding-top: 54px;
-  padding-bottom: 54px;
-}
-
-.button-container-fixed {
-  max-width: 260px;
-  width: 100%;
-  padding: auto;
-  padding-top: 54px;
-  padding-bottom: 54px;
-}
-
-.checkbox {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
-
-  @include device.in-phone-layout() {
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
-  }
-}
-
 .configs {
-  ul {
-    margin: 0;
-    padding-left: 24px;
-
-    @include typography.fontSet(body, 3, regular);
-  }
-
   .row {
     &:not(:last-child) {
       margin-bottom: 24px;
     }
-  }
-}
-
-.anatomy {
-  p {
-    margin-top: 6px;
-  }
-}
-
-.usage-figma {
-  ol {
-    @include typography.fontSet(body, 3, regular);
-
-    margin: 12px 0 0;
-    padding-left: 24px;
   }
 }
