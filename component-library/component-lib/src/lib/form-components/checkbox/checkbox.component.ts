@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -181,7 +181,15 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     //Get the error text when the formControl value changes
     this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
       this.getAriaErrorText();
+      // console.log("errors", this.config.formGroup.get(this.config.id)?.errors);
     });
+    console.log("id", this.config.formGroup.get(this.config.id));
+    if (this.config.formGroup.get(this.config.id)?.valid) {
+      
+      console.log('required')
+      this.config.formGroup.get(this.config.id)?.setErrors({ invalid: true });
+    };
+
   }
 
   ngOnChanges() {
@@ -245,4 +253,31 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     //   event: event
     // });
   }
+
+  ariaAccess(): string {
+
+    let returnVal = '';
+    if (this.config.label)
+    returnVal += this.translate.instant(this.config.label || '' ) + ' ';
+    if (this.config.desc)
+    returnVal += this.translate.instant(this.config.desc || '' ) + ' ';
+    if (this.config.helpText)
+    returnVal += this.translate.instant(this.config.helpText || '' ) + ' ';
+    if (this.config.inlineLabel)
+    returnVal += this.translate.instant(this.config.inlineLabel || '' ) + ' ';
+    
+    if (this.config.mixed) {
+      returnVal += "Mixed checkbox";
+    }
+
+    if (
+      this.config.formGroup.get(this.config.id)?.invalid &&
+      this.config.formGroup.get(this.config.id)?.touched
+    ) {
+      returnVal += this.errorStubText;
+      returnVal += this.errorAria;
+    }
+    return returnVal;
+  };
+
 }

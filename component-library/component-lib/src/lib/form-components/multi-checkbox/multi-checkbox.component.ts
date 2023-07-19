@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ICheckBoxComponentConfig } from '../../../public-api';
+import { ICheckBoxComponentConfig, IErrorPairs } from '../../../public-api';
 import { MultiCheckboxService } from './multi-checkbox.service';
 
 export interface IMultiCheckboxConfig {
   id: string;
   parent: ICheckBoxComponentConfig;
   children?: ICheckBoxComponentConfig[];
+  errorMessages?: IErrorPairs[];
 }
 
 @Component({
@@ -18,6 +19,7 @@ export interface IMultiCheckboxConfig {
 export class MultiCheckboxComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   configSub?: Subscription;
+  errorSub?: Subscription;
 
   @Input() config: IMultiCheckboxConfig = {
     id: '',
@@ -96,5 +98,14 @@ export class MultiCheckboxComponent implements OnInit {
         }
       }
     );
+
+    this.errorSub = this.multicheckboxService.multiCheckboxErrorobs$.subscribe((response) => {
+      if (this.config.children) {
+        console.log(response);
+      }
+      if (this.config.parent) {
+        console.log(response);
+      }
+    })
   }
 }

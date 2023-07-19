@@ -30,27 +30,7 @@
           type="checkbox"
           [formControlName]="config.id"
           [attr.aria-invalid]="formControl?.invalid"
-          [attr.aria-label]="
-            formControl?.invalid && touched
-              ? (config.label || '' | translate) +
-                ' ' +
-                (config.desc || '' | translate) +
-                ' ' +
-                (config.helpText || '' | translate) +
-                ' ' +
-                (config.inlineLabel || '' | translate) +
-                ' ' +
-                errorStubText +
-                ' ' +
-                errorAria
-              : (config.label || '' | translate) +
-                ' ' +
-                (config.desc || '' | translate) +
-                ' ' +
-                (config.helpText || '' | translate) +
-                ' ' +
-                (config.inlineLabel || '' | translate)
-          "
+          [attr.aria-label]="ariaAccess()"
         />
         <span class="checkmark"></span>
       </div>

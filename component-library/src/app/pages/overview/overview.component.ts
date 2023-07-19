@@ -55,13 +55,15 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         id: 'mashrooms',
         formGroup: this.form,
         inlineLabel: 'Mashrooms',
-        size: 'small'
+        size: 'small',
+        errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
       },
       {
         id: 'onions',
         formGroup: this.form,
         inlineLabel: 'Onions',
-        size: 'small'
+        size: 'small',
+        errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsInvalid' }]
       },
       {
         id: 'olives',
@@ -69,7 +71,8 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         inlineLabel: 'Olives',
         size: 'small'
       }
-    ]
+    ],
+    
   };
   constructor(
     private translate: TranslateService,

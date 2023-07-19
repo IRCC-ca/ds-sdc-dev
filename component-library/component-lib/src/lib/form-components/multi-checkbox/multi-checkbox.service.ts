@@ -24,4 +24,11 @@ export class MultiCheckboxService {
     this.multiCheckboxEventSubj.next(event);
   }
 
+  private multiCheckboxErrorSubj = new Subject<ImultiCheckboxEvent>();
+  multiCheckboxErrorobs$ = this.multiCheckboxErrorSubj.asObservable();
+
+  errorEvent(event: ImultiCheckboxEvent) {
+    this.multiCheckboxErrorSubj.next(event);
+  }
+
 }
