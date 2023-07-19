@@ -8,6 +8,7 @@
     [tabIndex]="-1"
     [attr.aria-hidden]="config.disabled ? true : null"
     [attr.role]="config.disabled ? 'none' : 'option'"
+    [fill]="true"
   >
     <div class="option-contents">
       <p class="option-text">{{ config.value || '' | translate }}</p>
