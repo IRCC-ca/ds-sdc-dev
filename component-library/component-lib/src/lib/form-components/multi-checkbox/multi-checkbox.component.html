@@ -15,3 +15,15 @@
     <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
   </div>
 </ng-template>
+
+<ng-container *ngFor="let errors of errorIds; let i = index">
+  <div
+    *ngIf="errorIds.length > 0"
+    class="radio-errors"
+  >
+    <ircc-cl-lib-error
+      [id]="errors.id"
+      [errorLOV]="errors.errorLOV"
+    ></ircc-cl-lib-error>
+  </div>
+</ng-container>

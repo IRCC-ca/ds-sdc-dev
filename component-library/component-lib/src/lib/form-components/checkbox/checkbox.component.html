@@ -17,7 +17,6 @@
       <div class="checkbox">
         <input
           [attr.aria-live]="'off'"
-          (blur)="touched = true"
           id="{{ config.id }}"
           class="check"
           (click)="clickEvent()"
@@ -49,16 +48,17 @@
     </div>
     <div aria-live="polite">
       <div
-        *ngIf="formControl?.touched && formControl?.invalid"
+        *ngIf="getErrorState()"
         class="check-error"
         [ngClass]="{ small: config.size === 'small' }"
       >
         <span class="sr-only">{{
           errorStubText + ': ' + (config.label || '' | translate) + ': '
         }}</span>
+
         <ng-container *ngFor="let errors of errorIds; let i = index">
           <div
-            *ngIf="formControl?.errors?.[errors.key]"
+            *ngIf="errorIds.length > 0"
             class="radio-errors"
           >
             <ircc-cl-lib-error

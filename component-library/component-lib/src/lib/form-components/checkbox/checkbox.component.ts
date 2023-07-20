@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, forwardRef, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -48,7 +55,9 @@ export interface ICheckBoxComponentConfig {
     }
   ]
 })
-export class CheckboxComponent implements ControlValueAccessor, OnInit {
+export class CheckboxComponent
+  implements ControlValueAccessor, OnInit, OnChanges
+{
   formGroupEmpty: FormGroup = new FormGroup({});
   configSub?: Subscription;
 
@@ -176,20 +185,19 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
         this.config.id,
         this.config.errorMessages
       );
+
+      this.errorIds.forEach((errorId) => {
+        this.multicheckboxService.errorEvent({
+          id: this.config.id,
+          event: errorId
+        });
+      });
     }
 
     //Get the error text when the formControl value changes
     this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
       this.getAriaErrorText();
-      // console.log("errors", this.config.formGroup.get(this.config.id)?.errors);
     });
-    console.log("id", this.config.formGroup.get(this.config.id));
-    if (this.config.formGroup.get(this.config.id)?.valid) {
-      
-      console.log('required')
-      this.config.formGroup.get(this.config.id)?.setErrors({ invalid: true });
-    };
-
   }
 
   ngOnChanges() {
@@ -247,27 +255,21 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     );
   }
 
-  clickEvent() {
-    // this.multicheckboxService.checkEvent({
-    //   id: this.config.id,
-    //   event: event
-    // });
-  }
+  clickEvent() {}
 
   ariaAccess(): string {
-
     let returnVal = '';
     if (this.config.label)
-    returnVal += this.translate.instant(this.config.label || '' ) + ' ';
+      returnVal += this.translate.instant(this.config.label || '') + ' ';
     if (this.config.desc)
-    returnVal += this.translate.instant(this.config.desc || '' ) + ' ';
+      returnVal += this.translate.instant(this.config.desc || '') + ' ';
     if (this.config.helpText)
-    returnVal += this.translate.instant(this.config.helpText || '' ) + ' ';
+      returnVal += this.translate.instant(this.config.helpText || '') + ' ';
     if (this.config.inlineLabel)
-    returnVal += this.translate.instant(this.config.inlineLabel || '' ) + ' ';
-    
+      returnVal += this.translate.instant(this.config.inlineLabel || '') + ' ';
+
     if (this.config.mixed) {
-      returnVal += "Mixed checkbox";
+      returnVal += 'Mixed checkbox';
     }
 
     if (
@@ -278,6 +280,5 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
       returnVal += this.errorAria;
     }
     return returnVal;
-  };
-
+  }
 }

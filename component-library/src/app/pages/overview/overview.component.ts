@@ -30,7 +30,8 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
       id: 'meat',
       formGroup: this.form,
       inlineLabel: 'Meat',
-      size: 'small'
+      size: 'small',
+      errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
     },
     children: [
       {
@@ -39,7 +40,8 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         inlineLabel: 'Pepperoni',
         size: 'small'
       }
-    ]
+    ],
+    errorMessages: []
   };
 
   config2: IMultiCheckboxConfig = {
@@ -55,15 +57,13 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         id: 'mashrooms',
         formGroup: this.form,
         inlineLabel: 'Mashrooms',
-        size: 'small',
-        errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
+        size: 'small'
       },
       {
         id: 'onions',
         formGroup: this.form,
         inlineLabel: 'Onions',
-        size: 'small',
-        errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsInvalid' }]
+        size: 'small'
       },
       {
         id: 'olives',
@@ -72,7 +72,7 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         size: 'small'
       }
     ],
-    
+    errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
   };
   constructor(
     private translate: TranslateService,
