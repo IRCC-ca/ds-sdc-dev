@@ -122,6 +122,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.iconButton'
   };
 
+  multiCheckboxPage: INavigationItemLink = {
+    id: 'multiCheckboxPageNavItem',
+    label: ' Multi Checkbox ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.multiCheckbox'
+  };
+
   gettingStartedNav: INavigationItemAccordion = {
     open: true,
     id: 'gettingStartedNavAccordian',
@@ -153,7 +161,8 @@ export class ShellComponent implements OnInit {
       this.bannerPage,
       this.inputPage,
       this.datePickerPage,
-      this.iconBtnPage
+      this.iconBtnPage,
+      this.multiCheckboxPage
     ]
   };
 

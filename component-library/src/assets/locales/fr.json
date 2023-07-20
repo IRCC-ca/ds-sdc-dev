@@ -14,6 +14,7 @@
 		"input": "documentation dentree",
 		"datePicker": "datePicker-doc-fr",
 		"iconButton": "icon-button-documentation-fr",
+		"multiCheckbox": "multi-checkbox-documentation-fr",
 		"contact": "contactez",
 		"codeview": "codeview-fr",
 		"mahsa": "mahsa-fr",
@@ -362,7 +363,7 @@
 		"fieldExceededMaxLength": "Ce champ a dépassé la longueur maximale.",
 		"requiredTextAreaError": "[FR] This field is required.",
 		"testErrorMessage": "Tester le message d'erreur.",
-		"errorMessage": "Message d'erreur",
+		"errorMessage": "D'erreur",
 		"requiredRadioError": "[FR] No selection has been made. Please select an option",
 		"WritingErrHeading": "[FR] Writing error messages"
 	},
@@ -478,7 +479,7 @@
 	"Input": {
 		"Title": "Input",
 		"Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
-		"InteractiveDemoDesc": "Try our input component and the configurable options available within it.",
+		"InteractiveDemoDesc": "Try our <strong>input</strong> component and the configurable options available within it.",
 		"PrimaryHeading": "Basic input",
 		"SecondaryHeading": "Password input",
 		"PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
@@ -828,6 +829,7 @@
 		"NoneErr": "[FR] None",
 		"SingleErr": "[FR] Single",
 		"MultipleErr": "[FR] Multiple",
+		"MultipleErrors": "[FR] Multiple errors",
 		"Placeholder": "[FR] Placeholder",
 		"Basic": "[FR] Basic",
 		"Password": "[FR] Password",
@@ -921,5 +923,8 @@
 		"AccessibilityContentItem2": "Since Icon buttons only render an icon, it must pass the aria-label prop, so screen readers can give meaning to the button.",
 		"AccessibilityContentItem3": "Prevent keyboard traps. Every element that can be focused on using the keyboard can be unfocused using the keyboard.",
 		"LabellingText": "Icon buttons should have labels programmatically associated to them so the purpose of the icon button’s action is clear to screen reader users."
+	},
+	"MultiCheckboxDocumentation": {
+		"Title": "[FR] MultiCheckbox-doc"
 	}
 }
