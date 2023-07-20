@@ -122,6 +122,15 @@ $round-purple-num-size: 32px;
     margin-top: 12px;
   }
 
+  .mb_12 {
+    margin-bottom: 12px;
+  }
+
+  .align-btm {
+    display: flex;
+    align-items: flex-end;
+  }
+
   // Container
   .wrapper-container {
     .element-wrapper-container {
@@ -166,8 +175,16 @@ $round-purple-num-size: 32px;
     }
 
     &.specs {
-      p:nth-child(1) {
-        margin: 24px 0 0;
+      p {
+        margin-bottom: 0;
+
+        &:nth-child(1) {
+          margin: 24px 0 0;
+        }
+
+        &:not(:nth-child(1)) {
+          margin-top: 12px;
+        }
       }
     }
 
@@ -183,6 +200,13 @@ $round-purple-num-size: 32px;
     &.anatomy {
       p {
         margin-top: 6px;
+      }
+
+      h3.round-purple-num-heading {
+        display: inline-block;
+        margin: 0 0 2px 8px;
+        position: relative;
+        top: 2px;
       }
     }
 
