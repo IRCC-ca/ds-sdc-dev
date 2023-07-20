@@ -67,14 +67,21 @@ $selectors: "ircc-cl-lib-tabs";
 
   .page-nav {
     display: flex;
-  }
 
-  .tabs-btn {
-    margin-right: 4px;
-    font-weight: 400;
-    background: transparent;
-    &:where([selected]) {
-      font-weight: 700;
+    .tabs-btn {
+      font-weight: 400;
+      background: transparent;
+      margin-right: 4px;
+
+      &:where([selected]) {
+        font-weight: 700;
+      }
+    }
+
+    > div:last-child {
+      .tabs-btn {
+        margin-right: 0;
+      }
     }
   }
 }
