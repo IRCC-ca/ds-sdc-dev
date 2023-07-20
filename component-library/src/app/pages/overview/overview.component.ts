@@ -31,7 +31,7 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
       formGroup: this.form,
       inlineLabel: 'Meat',
       size: 'small',
-      errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
+      // errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
     },
     children: [
       {
@@ -72,7 +72,8 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
         size: 'small'
       }
     ],
-    errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
+    errorMessages: []
+    // errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
   };
   constructor(
     private translate: TranslateService,
