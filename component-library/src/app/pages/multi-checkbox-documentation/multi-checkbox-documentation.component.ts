@@ -12,8 +12,9 @@ import { TranslatedPageComponent } from '../translated-page-component';
   styleUrls: ['./multi-checkbox-documentation.component.scss'],
   providers: [SlugifyPipe]
 })
-export class MultiCheckboxDocumentationComponent implements OnInit, TranslatedPageComponent {
-
+export class MultiCheckboxDocumentationComponent
+  implements OnInit, TranslatedPageComponent
+{
   currentLanguage: string = '';
   altLangLink = 'multi-checkbox-documentation';
   form: FormGroup = new FormGroup({});
@@ -74,12 +75,11 @@ export class MultiCheckboxDocumentationComponent implements OnInit, TranslatedPa
     private translate: TranslateService,
     private lang: LangSwitchService,
     private slugify: SlugifyPipe
-  ) { 
+  ) {
     this.currentLanguage = translate.currentLang;
   }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
   }
-
 }

@@ -8,9 +8,8 @@ describe('MultiCheckboxDocumentationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MultiCheckboxDocumentationComponent ]
-    })
-    .compileComponents();
+      declarations: [MultiCheckboxDocumentationComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MultiCheckboxDocumentationComponent);
     component = fixture.componentInstance;
