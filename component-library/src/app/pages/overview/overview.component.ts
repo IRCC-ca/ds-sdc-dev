@@ -30,7 +30,7 @@ export class OverviewComponent implements OnInit, TranslatedPageComponent {
       id: 'meat',
       formGroup: this.form,
       inlineLabel: 'Meat',
-      size: 'small',
+      size: 'small'
       // errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
     },
     children: [
