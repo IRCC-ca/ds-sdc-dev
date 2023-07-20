@@ -4,11 +4,3 @@
 @use "@ircc-ca/ds-sdc-core/typography/typography";
 
 @include page.template;
-
-.configs {
-  .row {
-    &:not(:last-child) {
-      margin-bottom: 24px;
-    }
-  }
-}
