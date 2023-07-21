@@ -324,6 +324,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       this.form_datePicker
         .get(this.datePickerConfig.id + '_yearControl')
         ?.markAsUntouched();
+      this.datePickerConfigCodeView.errorMessages = undefined;
     }
     this.parseCodeViewConfig();
   }
@@ -371,7 +372,6 @@ export class DatePickerDocCodeComponent implements OnInit {
       hint: this.datePickerConfig.hint,
       required: this.datePickerConfig.required,
       desc: this.datePickerConfig.desc,
-      errorMessages: this.datePickerConfig.errorMessages,
       unknownDateToggle: this.datePickerConfig.unknownDateToggle,
       monthSelectShow: this.datePickerConfig.monthSelectShow,
       daySelectShow: this.datePickerConfig.daySelectShow,
