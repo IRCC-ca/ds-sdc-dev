@@ -30,7 +30,7 @@ export class DatePickerDocCodeComponent implements OnInit {
   currentLanguage: string = '';
   altLangLink = 'datePickerDocCode';
   form_datePicker = new FormGroup({});
-  errorState = 'None';
+  errorState = 'No';
 
   datePickerErrorMessages: IDatePickerErrorMessages = {
     general: [
@@ -193,7 +193,8 @@ export class DatePickerDocCodeComponent implements OnInit {
     errorMessages: undefined,
     unknownDateToggle: this.datePickerConfig.unknownDateToggle,
     monthSelectShow: this.datePickerConfig.monthSelectShow,
-    daySelectShow: this.datePickerConfig.daySelectShow
+    daySelectShow: this.datePickerConfig.daySelectShow,
+    // state: false
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -301,15 +302,14 @@ export class DatePickerDocCodeComponent implements OnInit {
     if (error === 'Yes') {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
       this.form_datePicker
-        .get(this.datePickerConfig.id + '_dayControl')
-        ?.markAsTouched();
+      .get(this.datePickerConfig.id + '_dayControl')
+      ?.markAsTouched();
       this.form_datePicker
-        .get(this.datePickerConfig.id + '_monthControl')
-        ?.markAsTouched();
+      .get(this.datePickerConfig.id + '_monthControl')
+      ?.markAsTouched();
       this.form_datePicker
-        .get(this.datePickerConfig.id + '_yearControl')
-        ?.markAsTouched();
-
+      .get(this.datePickerConfig.id + '_yearControl')
+      ?.markAsTouched();
       this.errorState = error;
       this.datePickerConfigCodeView.errorMessages =
         this.datePickerConfig.errorMessages;
@@ -371,10 +371,11 @@ export class DatePickerDocCodeComponent implements OnInit {
       hint: this.datePickerConfig.hint,
       required: this.datePickerConfig.required,
       desc: this.datePickerConfig.desc,
-      errorMessages: undefined,
+      errorMessages: this.datePickerConfig.errorMessages,
       unknownDateToggle: this.datePickerConfig.unknownDateToggle,
       monthSelectShow: this.datePickerConfig.monthSelectShow,
-      daySelectShow: this.datePickerConfig.daySelectShow
+      daySelectShow: this.datePickerConfig.daySelectShow,
+      // state: true
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
