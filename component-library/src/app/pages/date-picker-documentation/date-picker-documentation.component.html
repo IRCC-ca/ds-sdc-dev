@@ -17,82 +17,84 @@
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="config-row">
-      <div class="column">
-        <h3 class="sub-headings">
-          {{ 'General.Size' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Small' | translate }}</li>
-          <li>{{ 'General.Large' | translate }}</li>
-        </ul>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
+            {{ 'General.Size' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Small' | translate }}</li>
+            <li>{{ 'General.Large' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">{{ 'General.Layout' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.Horizontal' | translate }}</li>
+            <li>{{ 'General.Vertical' | translate }}</li>
+          </ul>
+        </div>
       </div>
-      <div class="column">
-        <h3 class="sub-headings">{{ 'General.Layout' | translate }}</h3>
-        <ul>
-          <li>{{ 'General.Horizontal' | translate }}</li>
-          <li>{{ 'General.Vertical' | translate }}</li>
-        </ul>
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
+            {{ 'General.Required' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Yes' | translate }}</li>
+            <li>{{ 'General.No' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
+            {{ 'General.Description' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Yes' | translate }}</li>
+            <li>{{ 'General.No' | translate }}</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <h3 class="sub-headings">
-          {{ 'General.Required' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Yes' | translate }}</li>
-          <li>{{ 'General.No' | translate }}</li>
-        </ul>
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
+            {{ 'General.Hint' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Yes' | translate }}</li>
+            <li>{{ 'General.No' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
+            {{ 'General.Month' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Yes' | translate }}</li>
+            <li>{{ 'General.No' | translate }}</li>
+          </ul>
+        </div>
       </div>
-      <div class="column">
-        <h3 class="sub-headings">
-          {{ 'General.Description' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Yes' | translate }}</li>
-          <li>{{ 'General.No' | translate }}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <h3 class="sub-headings">
-          {{ 'General.Hint' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Yes' | translate }}</li>
-          <li>{{ 'General.No' | translate }}</li>
-        </ul>
-      </div>
-      <div class="column">
-        <h3 class="sub-headings">
-          {{ 'General.Month' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Yes' | translate }}</li>
-          <li>{{ 'General.No' | translate }}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <h3 class="sub-headings">
-          {{ 'General.Day' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Yes' | translate }}</li>
-          <li>{{ 'General.No' | translate }}</li>
-        </ul>
-      </div>
-      <div class="column">
-        <h3 class="sub-headings">
-          {{ 'ERROR.errorMessage' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Yes' | translate }}</li>
-          <li>{{ 'General.No' | translate }}</li>
-        </ul>
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
+            {{ 'General.Day' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Yes' | translate }}</li>
+            <li>{{ 'General.No' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
+            {{ 'ERROR.errorMessage' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Yes' | translate }}</li>
+            <li>{{ 'General.No' | translate }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -143,8 +145,7 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="sub-headings">
           {{ 'DatePicker.DesignGuideLines.ErrorValidation' | translate }}
         </h3>
@@ -188,8 +189,7 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="sub-headings">
           {{ 'DatePicker.DesignGuideLines.Horizontal' | translate }}
         </h3>
@@ -236,24 +236,29 @@
     <app-title-slug-url
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
-    <img
-      class="anatomy-image-container"
-      src="assets/img/datePicker-content/anatomy.png"
-      alt="{{ 'DatePicker.Anatomy.ImgAlt' | translate }}"
-    />
-    <ng-container *ngFor="let content of anatomyContentItems; let i = index">
-      <div class="anatomy-content-container">
-        <div class="counter-and-heading-container">
-          <div class="round-purple-num-count">{{ i + 1 }}</div>
-          <h3 class="round-purple-num-heading-text">
-            {{ content.title | translate }}
-          </h3>
-        </div>
-        <p class="anatomy-description">
-          {{ content.description | translate }}
-        </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/datePicker-content/anatomy.png"
+          alt="{{ 'DatePicker.Anatomy.ImgAlt' | translate }}"
+        />
       </div>
-    </ng-container>
+      <div class="element-wrapper-container">
+        <ng-container *ngFor="let content of anatomyContentItems; let i = index">
+          <div class="anatomy-content-container">
+            <div class="counter-and-heading-container">
+              <div class="round-purple-num-count">{{ i + 1 }}</div>
+              <h3 class="round-purple-num">
+                {{ content.title | translate }}
+              </h3>
+            </div>
+            <p class="anatomy-description">
+              {{ content.description | translate }}
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
   </section>
   <section class="specs">
     <app-title-slug-url
@@ -327,7 +332,7 @@
         </div>
       </div>
 
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="sub-headings">
           {{ 'General.WriteLabelsHeading' | translate }}
         </h3>
@@ -374,7 +379,7 @@
         </div>
       </div>
 
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="sub-headings">
           {{ 'DatePicker.ContentGuideLines.PlaceholderHeading' | translate }}
         </h3>
@@ -414,7 +419,7 @@
         </div>
       </div>
 
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="sub-headings">
           {{ 'ERROR.WritingErrHeading' | translate }}
         </h3>
@@ -455,7 +460,7 @@
         </div>
       </div>
 
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="sub-headings">
           {{ 'General.NecessaryContentHeading' | translate }}
         </h3>
@@ -501,7 +506,7 @@
         </div>
       </div>
 
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="sub-headings">
           {{ 'General.RequiredFieldsHeading' | translate }}
         </h3>
@@ -552,7 +557,7 @@
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
     <div class="row">
-      <div class="figma-usage">
+      <div class="col-12 col-md-8">
         <h3 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h3>
@@ -564,7 +569,7 @@
           ></li>
         </ol>
       </div>
-      <div class="image-container-wrapper">
+      <div class="col-12 col-md-4 justify-ctr">
         <div class="image-1 image-container">
           <img
             src="assets/img/datePicker-content/direction-figma.png"
@@ -574,7 +579,9 @@
           />
         </div>
       </div>
-      <div class="figma-usage">
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8">
         <h3 class="sub-headings accessInputHeading">
           {{ 'DatePicker.UsageInFigma.AccessInputsHeading' | translate }}
         </h3>
@@ -586,9 +593,11 @@
           ></li>
         </ol>
       </div>
-      <div class="inputImgContainer">
-        <span>
-          <div class="accessInput1 image-container">
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-8 access-input-1-2">
+        <div class="row">
+          <div class="col-12 col-md-4">
             <img
               src="assets/img/datePicker-content/access-input1.png"
               alt="{{
@@ -596,7 +605,7 @@
               }}"
             />
           </div>
-          <div class="accessInput2 image-container">
+          <div class="col-12 col-md-8">
             <img
               src="assets/img/datePicker-content/access-input2.png"
               alt="{{
@@ -604,7 +613,9 @@
               }}"
             />
           </div>
-        </span>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
         <div class="accessInput3 image-container">
           <img
             src="assets/img/datePicker-content/access-input3.png"

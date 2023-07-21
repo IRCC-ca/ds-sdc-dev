@@ -33,7 +33,8 @@ $round-purple-num-size: 32px;
 
     @include typography.fontSet(heading, 5, emphasis);
 
-    &.text-underline {
+    &.text-underline,
+    &.do-dont-heading {
       border-bottom: 1px solid;
       padding-bottom: 4px;
       margin: 8px 0;
@@ -131,6 +132,11 @@ $round-purple-num-size: 32px;
     align-items: flex-end;
   }
 
+  .justify-ctr {
+    display: flex;
+    justify-content: center;
+  }
+
   // Container
   .wrapper-container {
     .element-wrapper-container {
@@ -208,6 +214,14 @@ $round-purple-num-size: 32px;
         position: relative;
         top: 2px;
       }
+
+      .anatomy-content-container {
+        margin-bottom: 20px;
+
+        .counter-and-heading-container {
+          display: flex;
+        }
+      }
     }
 
     &.accessibility {
@@ -217,6 +231,7 @@ $round-purple-num-size: 32px;
         .list-item {
           list-style-type: none;
           padding-bottom: 20px;
+
           &:last-child {
             padding-bottom: 0;
           }
