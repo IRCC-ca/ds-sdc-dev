@@ -4,24 +4,6 @@
 
 @include page.template;
 
-.sub-headings {
-  margin-top: 0px;
-  margin-bottom: 12px;
-  @include typography.fontSet(heading, 5, emphasis);
-}
-
-.description {
-  margin: 12px 0 0 0;
-}
-
-ul {
-  margin: 0px;
-  padding-left: 25px;
-  li {
-    @include typography.fontSet(body, 3, regular);
-  }
-}
-
 .configs {
   .config-row {
     margin-bottom: 24px;
