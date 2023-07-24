@@ -63,7 +63,6 @@ export class AccessibilityDemoNextPageComponent implements OnInit, OnDestroy {
       });
   }
 
-
   progressTabButtonEvent(event: Event) {
     const eventInt = parseInt(event.toString());
     if (this.progressIndicatorConfig.selected !== undefined) {
