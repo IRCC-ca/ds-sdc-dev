@@ -62,8 +62,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     type: 'info',
     rounded: false,
     dismissible: false,
-    size: 'small',
-    cta: []
+    size: 'small'
   };
 
   typeOfRequestRadioConfig: IRadioInputComponentConfig = {
