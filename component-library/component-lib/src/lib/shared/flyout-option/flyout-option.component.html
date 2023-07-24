@@ -12,7 +12,10 @@
     [maxWidthOverride]="true"
   >
     <div class="option-contents">
-      <p class="option-text">{{ config.value || '' | translate }}</p>
+      <p class="option-text">
+        {{ config.value || '' | translate }}
+        <span class="sr-only"> testing this</span>
+      </p>
       <div *ngIf="config.selected">
         <span class="fa-solid fa-check option-check"></span>
       </div>
