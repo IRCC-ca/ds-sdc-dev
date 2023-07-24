@@ -1,9 +1,4 @@
-<div
-  class="{{ config?.size }} flyout-container"
-  role="menu"
-  (keydown)="testFunc()"
-  (keypress)="testFunc()"
->
+<div class="{{ config?.size }} flyout-container">
   <div
     #option
     *ngFor="let option of config?.options; let index = index"

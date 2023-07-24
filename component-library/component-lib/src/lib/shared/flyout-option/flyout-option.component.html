@@ -14,7 +14,9 @@
     <div class="option-contents">
       <p class="option-text">
         {{ config.value || '' | translate }}
-        <span class="sr-only"> testing this</span>
+        <span class="sr-only"
+          >&nbsp;{{ config.selected ? currentlySelected : '' }}</span
+        >
       </p>
       <div *ngIf="config.selected">
         <span class="fa-solid fa-check option-check"></span>

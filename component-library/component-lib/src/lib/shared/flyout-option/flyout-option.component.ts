@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 
 export enum IFlyoutOptionType {
@@ -18,6 +19,11 @@ export interface IFlyoutOptionConfig {
   type?: keyof typeof IFlyoutOptionType,
   clickable?: boolean,
   size?: keyof typeof DSSizes
+};
+
+export const FLYOUT_CURRENT_SELECTED = {
+  en: ' currently selected',
+  fr: ' actuellement selectionne'
 };
 
 @Component({
@@ -40,7 +46,18 @@ export class FlyoutOptionComponent implements OnInit {
   @Input() type?: keyof typeof IFlyoutOptionType;
   @Input() clickable?: boolean;
 
-  constructor() { }
+  currentlySelected: string = '';
+
+    /**
+   * setLang detects changes to the language toggle to serve the correct aria error text
+   */
+    setLang(lang: string) {
+      lang === 'en' || lang === 'en-US'
+        ? (this.currentlySelected = FLYOUT_CURRENT_SELECTED.en)
+        : (this.currentlySelected = FLYOUT_CURRENT_SELECTED.fr);
+    }
+
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
      //set config from individual options, if present
@@ -59,6 +76,11 @@ export class FlyoutOptionComponent implements OnInit {
     } else {
       this.config.clickable = false;
     }
+
+    this.setLang(this.translate.currentLang);
+    this.translate.onLangChange.subscribe((change) => {
+      this.setLang(change.lang);
+    });
   };
 
 };

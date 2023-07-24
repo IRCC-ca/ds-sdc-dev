@@ -26,17 +26,13 @@ export interface IFlyoutConfig {
   type?: keyof typeof IFlyoutSelectTypes;
   size?: keyof typeof DSSizes;
 }
-export const FLYOUT_CURRENT_SELECTED = {
-  en: ' currently selected',
-  fr: ' actuellement selectionne'
-};
 
 @Component({
   selector: 'ircc-cl-lib-flyout',
   templateUrl: './flyout.component.html'
 })
 export class FlyoutComponent implements OnInit {
-  constructor(private translate: TranslateService) {}
+  constructor() {}
   @ViewChildren('option') optionContainers: QueryList<ElementRef> =
     new QueryList<ElementRef>();
 
@@ -55,7 +51,7 @@ export class FlyoutComponent implements OnInit {
 
   selectedIndex: number = -1;
   a11yText: string = '';
-  currentSelected: string = '';
+
 
   ngOnInit() {
     if (this.config.type === undefined) this.config.type = 'single';
@@ -66,10 +62,6 @@ export class FlyoutComponent implements OnInit {
     if (this.type) this.config.type = this.type;
     if (this.size) this.config.size = this.size;
 
-    this.setLang(this.translate.currentLang);
-    this.translate.onLangChange.subscribe((change) => {
-      this.setLang(change.lang);
-    });
   }
 
   @HostListener('document:click', ['$event'])
@@ -129,9 +121,6 @@ export class FlyoutComponent implements OnInit {
       : this.isSelected.emit(null);
   }
 
-  testFunc() {
-    console.log('yo');
-  }
   //takes in the active index from HostListeners and sets the config option to active state which triggers styling
   highlightIndex(el_id: any) {
     if (el_id) {
@@ -148,22 +137,13 @@ export class FlyoutComponent implements OnInit {
 
           this.a11yText = option.value;
           //updates a11yText to indicate currently selected item if scrolling through flyout again
-          if (option.selected) this.a11yText = this.a11yText + this.currentSelected;
-        } else {
-          option.active = false;
+          if (!option.selected) option.active = false;
         }
       });
     }
   }
 
-  /**
-   * setLang detects changes to the language toggle to serve the correct aria error text
-   */
-  setLang(lang: string) {
-    lang === 'en' || lang === 'en-US'
-      ? (this.currentSelected = FLYOUT_CURRENT_SELECTED.en)
-      : (this.currentSelected = FLYOUT_CURRENT_SELECTED.fr);
-  }
+
 
   //clears all selections by setting the option.selected to false
   clearOptions() {
