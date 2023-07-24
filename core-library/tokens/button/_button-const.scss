@@ -26,6 +26,10 @@ $selectors: "button";
     width: 100%;
   }
 
+  &[no-max-w] {
+    max-width: 100%;
+  }
+
   border-radius: token-size.$border-radius;
   border-style: none;
   justify-content: center;
