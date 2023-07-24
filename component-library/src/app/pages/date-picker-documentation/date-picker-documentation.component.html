@@ -581,7 +581,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-8 mb_12">
         <h3 class="sub-headings accessInputHeading">
           {{ 'DatePicker.UsageInFigma.AccessInputsHeading' | translate }}
         </h3>
@@ -632,41 +632,41 @@
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
-    <div class="content-element">
-      <h3 class="sub-headings">
-        {{ 'General.AccessibilityColourHeading' | translate }}
-      </h3>
-      <p>{{ 'DatePicker.Accessibility.ColorContrastTxt' | translate }}</p>
-    </div>
-
-    <div class="content-element">
-      <h3 class="sub-headings">
-        {{ 'General.AccessibilityKeyboardHeading' | translate }}
-      </h3>
-      <p>
-        {{ 'DatePicker.Accessibility.KeyboardAccessibleTxt' | translate }}
-      </p>
-    </div>
-    <div class="content-element">
-      <h3 class="sub-headings">
-        {{ 'General.ContentHeading' | translate }}
-      </h3>
-      <ul>
-        <li
-          class="list-item"
-          *ngFor="let item of accessibilityContent"
-          [innerHtml]="item | translate"
-        ></li>
-      </ul>
-    </div>
-    <div class="content-element">
-      <h3 class="sub-headings">
-        {{ 'General.Validation' | translate }}
-      </h3>
-
-      <ul>
-        <li class="list-item">{{ 'DatePicker.Validation' | translate }}</li>
-      </ul>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.AccessibilityColourHeading' | translate }}
+        </h3>
+        <p>{{ 'DatePicker.Accessibility.ColorContrastTxt' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.AccessibilityKeyboardHeading' | translate }}
+        </h3>
+        <p>
+          {{ 'DatePicker.Accessibility.KeyboardAccessibleTxt' | translate }}
+        </p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.ContentHeading' | translate }}
+        </h3>
+        <ul>
+          <li
+            class="list-item"
+            *ngFor="let item of accessibilityContent"
+            [innerHtml]="item | translate"
+          ></li>
+        </ul>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.Validation' | translate }}
+        </h3>
+        <ul>
+          <li class="list-item">{{ 'DatePicker.Validation' | translate }}</li>
+        </ul>
+      </div>
     </div>
   </section>
 
