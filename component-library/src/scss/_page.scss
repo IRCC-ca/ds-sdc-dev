@@ -237,6 +237,12 @@ $round-purple-num-size: 32px;
           }
         }
       }
+
+      .element-wrapper-container {
+        > p:not(:nth-child(2)) {
+          margin-top: 8px;
+        }
+      }
     }
   }
 
