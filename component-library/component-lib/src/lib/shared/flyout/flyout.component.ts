@@ -7,11 +7,10 @@ import {
   HostListener,
   ViewChildren,
   ElementRef,
-  QueryList
+  Renderer2
 } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
-import { TranslateService } from '@ngx-translate/core';
 
 export enum IFlyoutSelectTypes {
   single = 'single',
@@ -32,9 +31,7 @@ export interface IFlyoutConfig {
   templateUrl: './flyout.component.html'
 })
 export class FlyoutComponent implements OnInit {
-  constructor() {}
-  @ViewChildren('option') optionContainers: QueryList<ElementRef> =
-    new QueryList<ElementRef>();
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
   @Input() config: IFlyoutConfig = {
     id: ''
@@ -51,6 +48,7 @@ export class FlyoutComponent implements OnInit {
 
   selectedIndex: number = -1;
   a11yText: string = '';
+  optionContainers : Array<HTMLElement> = [];
 
 
   ngOnInit() {
@@ -62,6 +60,10 @@ export class FlyoutComponent implements OnInit {
     if (this.type) this.config.type = this.type;
     if (this.size) this.config.size = this.size;
 
+  }
+
+  ngAfterViewInit() {
+   this.optionContainers = this.elementRef.nativeElement.querySelectorAll('.flyout-option-container');
   }
 
   @HostListener('document:click', ['$event'])
@@ -127,20 +129,28 @@ export class FlyoutComponent implements OnInit {
       this.config.options?.forEach((option) => {
         if (option.id === el_id) {
           option.active = true;
-          this.optionContainers
-            .toArray()
-            [this.selectedIndex]?.nativeElement?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'end'
-            });
-          console.log('HERE', option.value);
-
           this.a11yText = option.value;
-          //updates a11yText to indicate currently selected item if scrolling through flyout again
-          if (!option.selected) option.active = false;
+        } else {
+          option.active = false;
         }
       });
-    }
+
+      const el = this.elementRef.nativeElement.querySelector(`#${el_id}`);
+            const flyoutContainer = this.elementRef.nativeElement.querySelector('.flyout-container');
+
+      if (el && flyoutContainer) {
+        const elRect = el.getBoundingClientRect();
+        const containerRect = flyoutContainer.getBoundingClientRect();
+
+        if (elRect.bottom > containerRect.bottom) {
+          // Scroll down if the element is below the container's visible area
+          flyoutContainer.scrollTop += (elRect.bottom - containerRect.bottom);
+        } else if (elRect.top < containerRect.top) {
+          // Scroll up if the element is above the container's visible area
+          flyoutContainer.scrollTop -= (containerRect.top - elRect.top);
+        }
+      }
+        }
   }
 
 

@@ -1,11 +1,13 @@
-<div class="{{ config?.size }} flyout-container">
+<div
+  class="{{ config?.size }} flyout-container"
+  #flyoutContainer
+>
   <div
-    #option
     *ngFor="let option of config?.options; let index = index"
     [ngClass]="{
       'flyout-option-container': option.clickable !== false,
       'disabled-option': option.disabled === true,
-      selected: option.active
+      'active-option': option.active === true
     }"
   >
     <ircc-cl-lib-flyout-option
