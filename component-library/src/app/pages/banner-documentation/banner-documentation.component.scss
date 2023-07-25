@@ -14,27 +14,3 @@
     margin-top: 24px;
   }
 }
-
-.anatomy {
-  .anatomy-content-container {
-    margin-bottom: 20px;
-
-    .round-purple-num-heading-text {
-      display: inline-block;
-      margin: 0 0 2px 8px;
-      position: relative;
-      top: 2px;
-    }
-
-    .counter-and-heading-container {
-      margin: 0 0 6px 0;
-      display: inline-flex;
-    }
-    .anatomy-description {
-      margin: 0px;
-    }
-  }
-  .anatomy-content-container:last-child {
-    margin-bottom: 0px;
-  }
-}
