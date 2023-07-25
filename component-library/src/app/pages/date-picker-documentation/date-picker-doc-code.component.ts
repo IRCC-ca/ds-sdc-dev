@@ -194,7 +194,7 @@ export class DatePickerDocCodeComponent implements OnInit {
     errorMessages: undefined,
     unknownDateToggle: this.datePickerConfig.unknownDateToggle,
     monthSelectShow: this.datePickerConfig.monthSelectShow,
-    daySelectShow: this.datePickerConfig.daySelectShow,
+    daySelectShow: this.datePickerConfig.daySelectShow
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -215,7 +215,9 @@ export class DatePickerDocCodeComponent implements OnInit {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `datePickerConfig: IDatePickerConfig = ${stringify(
             this.datePickerConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(this.stateTxt(this.state))}
+          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
+            this.stateTxt(this.state)
+          )}
           `
       }
     ]
@@ -232,12 +234,12 @@ export class DatePickerDocCodeComponent implements OnInit {
   stateTxt(disabled: boolean): string {
     const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
     const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
-    return disabled ? DISABLE  : ENABLE;
+    return disabled ? DISABLE : ENABLE;
   }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-    
+
     this.form_datePicker.addControl(
       this.datePickerConfig.id,
       new FormControl()
@@ -266,7 +268,7 @@ export class DatePickerDocCodeComponent implements OnInit {
     this.checkboxes.forEach((checkbox) => {
       this.form_datePicker.addControl(checkbox.id, new FormControl());
     });
-              
+
     this.form_datePicker.patchValue({
       size: 'Small',
       required: 'Yes',
@@ -310,14 +312,14 @@ export class DatePickerDocCodeComponent implements OnInit {
     if (error === 'Yes') {
       this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
       this.form_datePicker
-      .get(this.datePickerConfig.id + '_dayControl')
-      ?.markAsTouched();
+        .get(this.datePickerConfig.id + '_dayControl')
+        ?.markAsTouched();
       this.form_datePicker
-      .get(this.datePickerConfig.id + '_monthControl')
-      ?.markAsTouched();
+        .get(this.datePickerConfig.id + '_monthControl')
+        ?.markAsTouched();
       this.form_datePicker
-      .get(this.datePickerConfig.id + '_yearControl')
-      ?.markAsTouched();
+        .get(this.datePickerConfig.id + '_yearControl')
+        ?.markAsTouched();
       this.errorState = error;
       this.datePickerConfigCodeView.errorMessages =
         this.datePickerConfig.errorMessages;
@@ -382,7 +384,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       desc: this.datePickerConfig.desc,
       unknownDateToggle: this.datePickerConfig.unknownDateToggle,
       monthSelectShow: this.datePickerConfig.monthSelectShow,
-      daySelectShow: this.datePickerConfig.daySelectShow,
+      daySelectShow: this.datePickerConfig.daySelectShow
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
@@ -390,7 +392,9 @@ export class DatePickerDocCodeComponent implements OnInit {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `datePickerConfig: IDatePickerConfig = ${stringify(
           this.datePickerConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(this.stateTxt(this.state))}
+        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
+          this.stateTxt(this.state)
+        )}
         `;
     }
   }
