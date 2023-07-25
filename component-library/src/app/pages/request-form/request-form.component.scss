@@ -1,5 +1,10 @@
 @use "../../../../../core-library/util/device" as device;
 @use '@ircc-ca/ds-sdc-core/typography/typography';
+@use 'src/scss/grid';
+
+:host {
+  @include grid.row;
+}
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -63,10 +68,11 @@ h3 {
 
 }
 
-.banner-container {
+.banner-wrapper {
   margin-top: 24px;
   max-width: 552px;
   height: 84px;
+  line-height: 20px;
 }
 
 .submit-request-container {
