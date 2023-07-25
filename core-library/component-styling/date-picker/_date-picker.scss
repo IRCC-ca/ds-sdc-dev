@@ -22,7 +22,7 @@
 @mixin size-large() {
   @media (max-width: 530px) {
     .all-select-container {
-      margin-top: 8px;
+      margin-top: 12px;
       .select-year {
         min-width: 136px;
       }
@@ -42,7 +42,7 @@
 
   @media (min-width: 529px) {
     .all-select-container {
-      margin-top: 8px;
+      margin-top: 12px;
       .select-year {
         width: 136px;
       }
@@ -61,7 +61,7 @@
 @mixin size-small() {
   @media (max-width: 530px) {
     .all-select-container {
-      margin-top: 4px;
+      margin-top: 8px;
       .select-year {
         min-width: 124px;
         margin-bottom: 12px;
@@ -83,7 +83,7 @@
 
   @media (min-width: 529px) {
     .all-select-container {
-      margin-top: 4px;
+      margin-top: 8px;
       .select-year {
         width: 124px;
       }
