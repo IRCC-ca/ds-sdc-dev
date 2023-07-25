@@ -215,7 +215,7 @@ export class DatePickerDocCodeComponent implements OnInit {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `datePickerConfig: IDatePickerConfig = ${stringify(
             this.datePickerConfigCodeView
-          )} \n //Note: Setting formControl to disabled/enabled triggers disabled/enabled state styling automatically \n ${JSON.stringify(this.stateTxt(this.state))}
+          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(this.stateTxt(this.state))}
           `
       }
     ]
@@ -230,7 +230,6 @@ export class DatePickerDocCodeComponent implements OnInit {
   }
 
   stateTxt(disabled: boolean): string {
-    disabled = this.state
     const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
     const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
     return disabled ? DISABLE  : ENABLE;
@@ -279,13 +278,13 @@ export class DatePickerDocCodeComponent implements OnInit {
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
-      this.datePickerConfig = this.parseToggleConfig(value);
-      this.parseCodeViewConfig();
       if (value['error']) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) {
         this.toggleDisabled(value['state']);
         this.state = value['state'];
       }
+      this.datePickerConfig = this.parseToggleConfig(value);
+      this.parseCodeViewConfig();
     });
   }
 
@@ -391,7 +390,7 @@ export class DatePickerDocCodeComponent implements OnInit {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `datePickerConfig: IDatePickerConfig = ${stringify(
           this.datePickerConfigCodeView
-        )} \n //Note: Setting formControl to disabled/enabled triggers disabled/enabled state styling automatically \n ${JSON.stringify(this.stateTxt(this.state))}
+        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(this.stateTxt(this.state))}
         `;
     }
   }
