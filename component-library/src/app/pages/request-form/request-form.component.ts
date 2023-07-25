@@ -23,6 +23,8 @@ import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
 import { first } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
+import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 
 @Component({
   selector: 'app-request-form',
@@ -31,6 +33,14 @@ import { HttpErrorResponse } from '@angular/common/http';
   providers: [SlugifyPipe]
 })
 export class RequestFormComponent implements OnInit, AfterViewInit {
+  rightNavData: ISideNavDataInterface[];
+  rightNavDataRaw: string[] = [
+    // list of all right nav items
+    'RequestForm.Title',
+    'RequestForm.RequestCriteriaTitle',
+    'General.RequestFormTitle'
+  ];
+
   altLangLink = 'requestForm';
   form = new FormGroup({});
   showUseCase: boolean = false;
@@ -62,8 +72,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     type: 'info',
     rounded: false,
     dismissible: false,
-    size: 'small',
-    cta: []
+    size: 'small'
   };
 
   typeOfRequestRadioConfig: IRadioInputComponentConfig = {
@@ -248,8 +257,13 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private requestFormService: RequestFormService
-  ) {}
+    private requestFormService: RequestFormService,
+    private navBarConfig: SideNavConfig
+  ) {
+    this.rightNavData = this.navBarConfig.getRightNavBarConfig(
+      this.rightNavDataRaw
+    );
+  }
   ngAfterViewInit(): void {
     /**
      * Set local storage form data when form values change after init so we're not setting and getting at the same time

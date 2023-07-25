@@ -362,7 +362,7 @@
 		"fieldExceededMaxLength": "This field has exceeded max length.",
 		"requiredTextAreaError": "This field is required.",
 		"testErrorMessage": "Test error message.",
-		"errorMessage": "Error message",
+		"errorMessage": "Error",
 		"requiredRadioError": "No selection has been made. Please select an option",
 		"WritingErrHeading": "Writing error messages"
 	},
@@ -478,7 +478,7 @@
 	"Input": {
 		"Title": "Input",
 		"Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
-		"InteractiveDemoDesc": "Try our input component and the configurable options available within it.",
+		"InteractiveDemoDesc": "Try our <strong>input</strong> component and the configurable options available within it.",
 		"PrimaryHeading": "Basic input",
 		"SecondaryHeading": "Password input",
 		"PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
@@ -828,6 +828,7 @@
 		"NoneErr": "None",
 		"SingleErr": "Single",
 		"MultipleErr": "Multiple",
+		"MultipleErrors": "Multiple errors",
 		"Placeholder": "Placeholder",
 		"Basic": "Basic",
 		"Password": "Password",
