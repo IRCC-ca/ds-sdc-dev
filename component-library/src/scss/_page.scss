@@ -216,7 +216,9 @@ $round-purple-num-size: 32px;
       }
 
       .anatomy-content-container {
-        margin-bottom: 20px;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
 
         .counter-and-heading-container {
           display: flex;
