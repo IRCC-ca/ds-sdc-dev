@@ -253,7 +253,6 @@ export class BannerDocCodeComponent implements OnInit {
    * Set banner type based on the tab selected
    */
   setBannerType(value: any) {
-    console.log(value);
     if (value === 'info') {
       this.bannerConfig.type = 'info';
     } else if (value === 'warning') {
