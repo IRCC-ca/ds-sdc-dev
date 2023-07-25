@@ -265,6 +265,7 @@ export class BannerDocCodeComponent implements OnInit {
       this.bannerConfig.type = 'critical';
     }
     this.parseCodeViewConfig();
+    this.bannerService.setBanner(this.bannerConfig);
   }
 
   /**

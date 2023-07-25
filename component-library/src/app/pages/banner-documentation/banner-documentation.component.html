@@ -475,7 +475,9 @@
         <div>
           <img
             src="assets/img/banner-content/banner-min-max-width.png"
-            alt="{{ 'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate }}"
+            alt="{{
+              'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate
+            }}"
           />
           <p class="description body3">
             {{ 'Banner.DesignGuideLines.bannerMinMaxWidthText' | translate }}
@@ -497,7 +499,9 @@
         />
       </div>
       <div class="element-wrapper-container">
-        <ng-container *ngFor="let content of anatomyContentItems; let i = index">
+        <ng-container
+          *ngFor="let content of anatomyContentItems; let i = index"
+        >
           <div class="anatomy-content-container">
             <div class="counter-and-heading-container">
               <div class="round-purple-num-count">{{ i + 1 }}</div>
@@ -532,8 +536,6 @@
         </p>
       </div>
     </div>
-
-
   </section>
 
   <section class="content-guidelines">
