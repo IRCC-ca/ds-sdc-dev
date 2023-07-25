@@ -62,10 +62,6 @@
     }
   }
 
-  div.check-error {
-    margin-top: token-size.$fixed-8;
-  }
-
   @include size.select(small) {
     @include size-sm();
   }
