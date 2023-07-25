@@ -6,7 +6,10 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p class="body3 demo">{{ 'Input.InteractiveDemoDesc' | translate }}</p>
+    <p
+      class="body3 demo"
+      [innerHTML]="'Input.InteractiveDemoDesc' | translate"
+    ></p>
     <app-input-doc-code></app-input-doc-code>
   </section>
 
@@ -14,88 +17,93 @@
     <app-title-slug-url
       [config]="headingConfig.typesSlugConfig"
     ></app-title-slug-url>
-    <h3 class="emphasis type-heading">
-      {{ 'Input.PrimaryHeading' | translate }}
-    </h3>
-    <app-component-preview
-      class="h6 component-preview"
-      copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
-      componentType="input"
-    >
-      <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
-    </app-component-preview>
-    <p class="body3 subtext-1">{{ 'Input.PrimaryText' | translate }}</p>
-    <h3 class="emphasis type-sub-heading">
-      {{ 'Input.SecondaryHeading' | translate }}
-    </h3>
-    <app-component-preview
-      class="h6 component-preview"
-      copyText="<ircc-cl-lib-input type='password'></ircc-cl-lib-input>"
-      componentType="input"
-    >
-      <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
-    </app-component-preview>
-    <p class="body3 last">{{ 'Input.SecondaryText' | translate }}</p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="emphasis type-heading">
+          {{ 'Input.PrimaryHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="h6 component-preview"
+          copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
+        >
+          <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
+        </app-component-preview>
+        <p class="body3 subtext-1">{{ 'Input.PrimaryText' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="emphasis type-sub-heading">
+          {{ 'Input.SecondaryHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="h6 component-preview"
+          copyText="<ircc-cl-lib-input type='password'></ircc-cl-lib-input>"
+        >
+          <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
+        </app-component-preview>
+        <p class="body3 last">{{ 'Input.SecondaryText' | translate }}</p>
+      </div>
+    </div>
   </section>
-
   <section class="configs">
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="config-row">
-      <div class="column">
-        <h3>{{ 'General.Size' | translate }}</h3>
-        <ul>
-          <li>{{ 'General.Small' | translate }}</li>
-          <li>{{ 'General.Large' | translate }}</li>
-        </ul>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3>{{ 'General.Size' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.Small' | translate }}</li>
+            <li>{{ 'General.Large' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3>{{ 'General.Hint' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
       </div>
-      <div class="column">
-        <h3>{{ 'General.Hint' | translate }}</h3>
-        <ul>
-          <li>{{ 'General.TrueLabel' | translate }}</li>
-          <li>{{ 'General.FalseLabel' | translate }}</li>
-        </ul>
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="config-heading">
+            {{ 'General.Required' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3 class="config-heading">
+            {{ 'Input.ConfigErrorHeading' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <h3 class="config-heading">
-          {{ 'General.Required' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.TrueLabel' | translate }}</li>
-          <li>{{ 'General.FalseLabel' | translate }}</li>
-        </ul>
-      </div>
-      <div class="column">
-        <h3 class="config-heading">
-          {{ 'Input.ConfigErrorHeading' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.TrueLabel' | translate }}</li>
-          <li>{{ 'General.FalseLabel' | translate }}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <h3 class="config-heading">
-          {{ 'General.DescriptionHeading' | translate }}
-        </h3>
-        <ul class="end-list">
-          <li>{{ 'General.TrueLabel' | translate }}</li>
-          <li>{{ 'General.FalseLabel' | translate }}</li>
-        </ul>
-      </div>
-      <div class="column">
-        <h3 class="config-heading">
-          {{ 'General.Placeholder' | translate }}
-        </h3>
-        <ul class="end-list">
-          <li>{{ 'General.TrueLabel' | translate }}</li>
-          <li>{{ 'General.FalseLabel' | translate }}</li>
-        </ul>
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="config-heading">
+            {{ 'General.DescriptionHeading' | translate }}
+          </h3>
+          <ul class="end-list">
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3 class="config-heading">
+            {{ 'General.Placeholder' | translate }}
+          </h3>
+          <ul class="end-list">
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -104,70 +112,81 @@
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
     ></app-title-slug-url>
-    <h3 class="emphasis subtitles">
-      {{ 'Input.FieldWidth' | translate }}
-    </h3>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/field-width-do.png"
-          alt="{{ 'Input.FieldWidthImgDo' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-4">
-          {{ 'Input.FieldWidthDoText' | translate }}
-        </p>
+    <div class="wrapper-container do-dont-container">
+      <div class="element-wrapper-container">
+        <h3 class="emphasis subtitles">
+          {{ 'Input.FieldWidth' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/field-width-do.png"
+              alt="{{ 'Input.FieldWidthImgDo' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-4">
+              {{ 'Input.FieldWidthDoText' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/field-width-dont.png"
+              alt="{{ 'Input.FieldWidthImgDont' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-4">
+              {{ 'Input.FieldWidthDontText' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/field-width-dont.png"
-          alt="{{ 'Input.FieldWidthImgDont' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-4">
-          {{ 'Input.FieldWidthDontText' | translate }}
-        </p>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'Input.ErrorsHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/error-do.png"
+              alt="{{ 'Input.ErrorDoImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-5">{{ 'Input.ErrorDoText' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/error-dont.png"
+              alt="{{ 'Input.ErrorDontImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Input.ErrorDontText' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-    <h3 class="h5 emphasis subtitles">
-      {{ 'Input.ErrorsHeading' | translate }}
-    </h3>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/error-do.png"
-          alt="{{ 'Input.ErrorDoImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-5">{{ 'Input.ErrorDoText' | translate }}</p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/error-dont.png"
-          alt="{{ 'Input.ErrorDontImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-7">{{ 'Input.ErrorDontText' | translate }}</p>
-      </div>
-    </div>
-    <h3 class="h5 emphasis subtitles">
-      {{ 'General.MaxMinWidthHeading' | translate }}
-    </h3>
-    <div class="row">
-      <div [style.max-width]="'100%'">
-        <img
-          src="assets/img/input-content/input-max-width.png"
-          alt="{{ 'Input.MaxMinWidthImgAlt' | translate }}"
-        />
-        <p class="body3 last">{{ 'Input.MaxMinWidthText' | translate }}</p>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.MaxMinWidthHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div [style.max-width]="'100%'">
+            <img
+              src="assets/img/input-content/input-max-width.png"
+              alt="{{ 'Input.MaxMinWidthImgAlt' | translate }}"
+              class="mb_12"
+            />
+            <p>{{ 'Input.MaxMinWidthText' | translate }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -176,328 +195,357 @@
     <app-title-slug-url
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
-    <img
-      class="anatomy-image-container"
-      src="assets/img/input-content/input-anatomy.png"
-      alt="{{ 'Input.AnatomyImgAlt' | translate }}"
-    /><br />
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">1</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'General.LabelHeading' | translate }}
-      </h3>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/input-content/input-anatomy.png"
+          alt="{{ 'Input.AnatomyImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">1</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.LabelHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">{{ 'General.AnatomyLabelText' | translate }}</p>
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">2</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.RequiredIndicatorHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'General.RequiredIndicatorTxt' | translate }}
+        </p>
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">3</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.DescriptionHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">{{ 'General.AnatomyDescText' | translate }}</p>
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">4</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.Hint' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">{{ 'General.AnatomyHintText' | translate }}</p>
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">5</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.InputField' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'Input.AnatomyInputFieldText' | translate }}
+        </p>
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">6</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'Input.AnatomyInputContentHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'Input.AnatomyInputContentText' | translate }}
+        </p>
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">7</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'ERROR.errorMessage' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">{{ 'General.AnatomyErrorText' | translate }}</p>
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">8</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'Input.AnatomyPasswordHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'Input.AnatomyPasswordText' | translate }}
+        </p>
+      </div>
     </div>
-    <p class="body3 anatomy">{{ 'General.AnatomyLabelText' | translate }}</p>
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">2</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'General.RequiredIndicatorHeading' | translate }}
-      </h3>
-    </div>
-    <p class="body3 anatomy">
-      {{ 'General.RequiredIndicatorTxt' | translate }}
-    </p>
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">3</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'General.DescriptionHeading' | translate }}
-      </h3>
-    </div>
-    <p class="body3 anatomy">{{ 'General.AnatomyDescText' | translate }}</p>
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">4</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'General.Hint' | translate }}
-      </h3>
-    </div>
-    <p class="body3 anatomy">{{ 'General.AnatomyHintText' | translate }}</p>
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">5</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'General.InputField' | translate }}
-      </h3>
-    </div>
-    <p class="body3 anatomy">
-      {{ 'Input.AnatomyInputFieldText' | translate }}
-    </p>
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">6</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'Input.AnatomyInputContentHeading' | translate }}
-      </h3>
-    </div>
-    <p class="body3 anatomy">
-      {{ 'Input.AnatomyInputContentText' | translate }}
-    </p>
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">7</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'ERROR.errorMessage' | translate }}
-      </h3>
-    </div>
-    <p class="body3 anatomy">{{ 'General.AnatomyErrorText' | translate }}</p>
-    <div class="counter-and-heading-container">
-      <div class="round-purple-num">8</div>
-      <h3 class="h5 emphasis round-purple-num-heading">
-        {{ 'Input.AnatomyPasswordHeading' | translate }}
-      </h3>
-    </div>
-    <p class="body3 anatomy">
-      {{ 'Input.AnatomyPasswordText' | translate }}
-    </p>
+
+
   </section>
 
   <section class="specs">
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
     ></app-title-slug-url>
-    <img
-      class="single-img"
-      src="assets/img/input-content/input-specs.png"
-      alt="{{ 'Input.SpecsImgAlt' | translate }}"
-    />
-    <p class="body3 specsDesc">
-      {{ 'Input.SpecsImgDesc1' | translate }}
-    </p>
-    <p class="body3 specsDesc2">
-      {{ 'Input.SpecsImgDesc2' | translate }}
-    </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          class="single-img"
+          src="assets/img/input-content/input-specs.png"
+          alt="{{ 'Input.SpecsImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <p>{{ 'Input.SpecsImgDesc1' | translate }}</p>
+        <p>{{ 'Input.SpecsImgDesc2' | translate }}</p>
+      </div>
+    </div>
   </section>
 
   <section class="content-guidelines">
     <app-title-slug-url
       [config]="headingConfig.contentGuideSlugConfig"
     ></app-title-slug-url>
-
-    <h3 class="subtitles">{{ 'General.WriteLabelsHeading' | translate }}</h3>
-    <p class="body3 subtext-3">
-      {{ 'Input.WriteLabelsSubHeading' | translate }}
-    </p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/label-do-1.png"
-          alt="{{ 'Input.WriteLabelsDoImgAlt1' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-4">
-          {{ 'Input.WriteLabelsDoText1' | translate }}
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'General.WriteLabelsHeading' | translate }}
+        </h3>
+        <p class="body3 subtext-3">
+          {{ 'Input.WriteLabelsSubHeading' | translate }}
         </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/label-do-1.png"
+              alt="{{ 'Input.WriteLabelsDoImgAlt1' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-4">
+              {{ 'Input.WriteLabelsDoText1' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/label-dont-1.png"
+              alt="{{ 'Input.WriteLabelsDontImgAlt1' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Input.WriteLabelsDontText1' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/label-dont-1.png"
-          alt="{{ 'Input.WriteLabelsDontImgAlt1' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-7">
-          {{ 'Input.WriteLabelsDontText1' | translate }}
-        </p>
+      <div class="element-wrapper-container do-dont-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/label-do-2.png"
+              alt="{{ 'Input.WriteLabelsDoImgAlt2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Input.WriteLabelsDoText2' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/label-dont-2.png"
+              alt="{{ 'Input.WriteLabelsDontImgAlt2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Input.WriteLabelsDontText2' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/label-do-2.png"
-          alt="{{ 'Input.WriteLabelsDoImgAlt2' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-12">
-          {{ 'Input.WriteLabelsDoText2' | translate }}
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">{{ 'Input.WriteDescHeading' | translate }}</h3>
+        <p class="body3 subtext-3">
+          {{ 'Input.WriteDescSubHeading' | translate }}
         </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/desc-do.png"
+              alt="{{ 'Input.WriteDescDoImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-11">
+              {{ 'Input.WriteDescDoText' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/desc-dont.png"
+              alt="{{ 'Input.WriteDescDontImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Input.WriteDescDontText' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/label-dont-2.png"
-          alt="{{ 'Input.WriteLabelsDontImgAlt2' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-12">
-          {{ 'Input.WriteLabelsDontText2' | translate }}
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'Input.WritePlaceholderHeading' | translate }}
+        </h3>
+        <p class="body3 subtext-3">
+          {{ 'Input.WritePlaceholderSubHeading' | translate }}
         </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/placeholder-do-1.png"
+              alt="{{ 'Input.WritePlaceholderDoImgAlt1' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Input.WritePlaceholderDoText1' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/placeholder-dont-1.png"
+              alt="{{ 'Input.WritePlaceholderDontImgAlt1' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-9">
+              {{ 'Input.WritePlaceholderDontText1' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <h3 class="subtitles">{{ 'Input.WriteDescHeading' | translate }}</h3>
-    <p class="body3 subtext-3">{{ 'Input.WriteDescSubHeading' | translate }}</p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/desc-do.png"
-          alt="{{ 'Input.WriteDescDoImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-11">
-          {{ 'Input.WriteDescDoText' | translate }}
-        </p>
+      <div class="element-wrapper-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/placeholder-do-2.png"
+              alt="{{ 'Input.WritePlaceholderDoImgAlt2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Input.WritePlaceholderDoText2' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/input-content/placeholder-dont-2.png"
+              alt="{{ 'Input.WritePlaceholderDontImgAlt2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-11">
+              {{ 'Input.WritePlaceholderDontText2' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/desc-dont.png"
-          alt="{{ 'Input.WriteDescDontImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-12">
-          {{ 'Input.WriteDescDontText' | translate }}
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">{{ 'ERROR.WritingErrHeading' | translate }}</h3>
+        <p class="body3 subtext-3">
+          {{ 'Input.WriteErrorsSubHeading' | translate }}
         </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/error-message-do.png"
+              alt="{{ 'Input.WriteErrorsDoImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Input.WriteErrorsDoText' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/error-message-dont.png"
+              alt="{{ 'Input.WriteErrorsDontImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-11">
+              {{ 'Input.WriteErrorsDontText' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <h3 class="subtitles">{{ 'Input.WritePlaceholderHeading' | translate }}</h3>
-    <p class="body3 subtext-3">
-      {{ 'Input.WritePlaceholderSubHeading' | translate }}
-    </p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/placeholder-do-1.png"
-          alt="{{ 'Input.WritePlaceholderDoImgAlt1' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-12">
-          {{ 'Input.WritePlaceholderDoText1' | translate }}
-        </p>
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'General.NecessaryContentHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/necessary-content-do.png"
+              alt="{{ 'Input.NecessaryContentDoImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Input.NecessaryContentDoText' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/necessary-content-dont.png"
+              alt="{{ 'Input.NecessaryContentDontImgAlt' | translate }}"
+            />
+            <h4 class="text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-11">
+              {{ 'Input.NecessaryContentDontText' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/placeholder-dont-1.png"
-          alt="{{ 'Input.WritePlaceholderDontImgAlt1' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-9">
-          {{ 'Input.WritePlaceholderDontText1' | translate }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/placeholder-do-2.png"
-          alt="{{ 'Input.WritePlaceholderDoImgAlt2' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-12">
-          {{ 'Input.WritePlaceholderDoText2' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/placeholder-dont-2.png"
-          alt="{{ 'Input.WritePlaceholderDontImgAlt2' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-11">
-          {{ 'Input.WritePlaceholderDontText2' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h3 class="subtitles">{{ 'ERROR.WritingErrHeading' | translate }}</h3>
-    <p class="body3 subtext-3">
-      {{ 'Input.WriteErrorsSubHeading' | translate }}
-    </p>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/error-message-do.png"
-          alt="{{ 'Input.WriteErrorsDoImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-12">
-          {{ 'Input.WriteErrorsDoText' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/error-message-dont.png"
-          alt="{{ 'Input.WriteErrorsDontImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-11">
-          {{ 'Input.WriteErrorsDontText' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h3 class="subtitles">
-      {{ 'General.NecessaryContentHeading' | translate }}
-    </h3>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/necessary-content-do.png"
-          alt="{{ 'Input.NecessaryContentDoImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-12">
-          {{ 'Input.NecessaryContentDoText' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/necessary-content-dont.png"
-          alt="{{ 'Input.NecessaryContentDontImgAlt' | translate }}"
-        />
-        <h4 class="text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-11">
-          {{ 'Input.NecessaryContentDontText' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <h3 class="subtitles">{{ 'General.RequiredFieldsHeading' | translate }}</h3>
-    <div class="row">
-      <div class="column left-column">
-        <img
-          src="assets/img/input-content/required-field-do.png"
-          alt="{{ 'Input.RequiredFieldsDoImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-green">
-          {{ 'General.DoHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-13">
-          {{ 'Input.RequiredFieldsDoText' | translate }}
-        </p>
-      </div>
-      <div class="column right-column">
-        <img
-          src="assets/img/input-content/required-field-dont.png"
-          alt="{{ 'Input.RequiredFieldsDontImgAlt' | translate }}"
-        />
-        <h4 class="emphasis text-underline text-color-red">
-          {{ 'General.DontHeading' | translate }}
-        </h4>
-        <p class="body3 subtext-13">
-          {{ 'Input.RequiredFieldsDontText' | translate }}
-        </p>
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'General.RequiredFieldsHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/required-field-do.png"
+              alt="{{ 'Input.RequiredFieldsDoImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-13">
+              {{ 'Input.RequiredFieldsDoText' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/input-content/required-field-dont.png"
+              alt="{{ 'Input.RequiredFieldsDontImgAlt' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-13">
+              {{ 'Input.RequiredFieldsDontText' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -506,8 +554,8 @@
     <app-title-slug-url
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
-    <div class="figma-row">
-      <div class="column-1">
+    <div class="row">
+      <div class="col-12 col-md-8">
         <h3 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h3>
@@ -530,15 +578,15 @@
           ></li>
         </ol>
       </div>
-      <div class="column-2 image-1">
+      <div class="col-12 col-md-4">
         <img
           src="assets/img/input-content/figma-usage-1.png"
           alt="{{ 'Input.FigmaDirectionsImgAlt' | translate }}"
         />
       </div>
     </div>
-    <div class="three-column-row">
-      <div class="figma-usage">
+    <div class="row">
+      <div class="col-12 col-md-8">
         <h3 class="sub-headings">
           {{ 'Input.AccessInputsHeading' | translate }}
         </h3>
@@ -552,20 +600,16 @@
             [innerHTML]="'Input.AccessInputsListItem2' | translate"
           ></li>
         </ol>
+        <img
+          src="assets/img/input-content/figma-usage-2.png"
+          alt="{{ 'Input.AccessInputsImgAlt1' | translate }}"
+        />
       </div>
-      <div class="image-container-wrapper">
-        <div class="image-2 image-container">
-          <img
-            src="assets/img/input-content/figma-usage-2.png"
-            alt="{{ 'Input.AccessInputsImgAlt1' | translate }}"
-          />
-        </div>
-        <div class="image-3 image-container">
-          <img
-            src="assets/img/input-content/figma-usage-3.png"
-            alt="{{ 'Input.AccessInputsImgAlt2' | translate }}"
-          />
-        </div>
+      <div class="col-12 col-md-4 align-btm">
+        <img
+          src="assets/img/input-content/figma-usage-3.png"
+          alt="{{ 'Input.AccessInputsImgAlt2' | translate }}"
+        />
       </div>
     </div>
   </section>
@@ -573,39 +617,49 @@
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
-    <h3 class="h5 emphasis subtitles">
-      {{ 'General.AccessibilityColourHeading' | translate }}
-    </h3>
-    <p class="body3 subtext-1">
-      {{ 'Input.AccessibilityColourText' | translate }}
-    </p>
-    <h3 class="h5 emphasis subtitles">
-      {{ 'General.AccessibilityKeyboardHeading' | translate }}
-    </h3>
-    <p class="body3 subtext-1">
-      {{ 'Input.AccessibilityKeyboardText' | translate }}
-    </p>
-    <h3 class="h5 emphasis subtitles">
-      {{ 'General.ContentHeading' | translate }}
-    </h3>
-    <ul class="content-list">
-      <li [innerHtml]="'Input.AccessibilityContentItem1' | translate"></li>
-      <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
-      <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
-      <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
-      <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
-      <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
-      <li [innerHtml]="'Input.AccessibilityContentItem7' | translate"></li>
-    </ul>
-    <h3 class="validation-heading">
-      {{ 'General.Validation' | translate }}
-    </h3>
-    <ul class="validation-list">
-      <li
-        class="body3 last"
-        [innerHtml]="'Input.AccessibilityValidationText' | translate"
-      ></li>
-    </ul>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.AccessibilityColourHeading' | translate }}
+        </h3>
+        <p class="body3 subtext-1">
+          {{ 'Input.AccessibilityColourText' | translate }}
+        </p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.AccessibilityKeyboardHeading' | translate }}
+        </h3>
+        <p class="body3 subtext-1">
+          {{ 'Input.AccessibilityKeyboardText' | translate }}
+        </p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.ContentHeading' | translate }}
+        </h3>
+        <ul class="content-list">
+          <li [innerHtml]="'Input.AccessibilityContentItem1' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem7' | translate"></li>
+        </ul>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="validation-heading">
+          {{ 'General.Validation' | translate }}
+        </h3>
+        <ul class="validation-list">
+          <li
+            class="body3 last"
+            [innerHtml]="'Input.AccessibilityValidationText' | translate"
+          ></li>
+        </ul>
+      </div>
+    </div>
   </section>
   <section class="research">
     <app-title-slug-url

@@ -127,12 +127,7 @@ export class ShellComponent implements OnInit {
     id: 'gettingStartedNavAccordian',
     label: 'Getting Started',
     type: 'accordion',
-    children: [
-      this.overviewPage,
-      this.forDeveloperPage,
-      this.forDesignersPage,
-      this.requestFormPage
-    ]
+    children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
   };
 
   foundationsNav: INavigationItemAccordion = {
@@ -155,6 +150,14 @@ export class ShellComponent implements OnInit {
       this.datePickerPage,
       this.iconBtnPage
     ]
+  };
+
+  supportNav: INavigationItemAccordion = {
+    open: true,
+    id: 'supportNavAccordian',
+    label: 'Support',
+    type: 'accordion',
+    children: [this.requestFormPage]
   };
 
   requiredPDF: INavigationItemLink = {
@@ -184,7 +187,8 @@ export class ShellComponent implements OnInit {
     navigationConfig: [
       this.gettingStartedNav,
       this.foundationsNav,
-      this.componentNav
+      this.componentNav,
+      this.supportNav
     ]
   };
 
