@@ -1,5 +1,6 @@
 @use "../../util/theme" as theme;
 @use "../../util/size" as size;
+@use '../../util/device'as device;
 @use "../../tokens/sizes" as token-size;
 @use "../../tokens/template-const";
 @use "../../typography/typography" as typography;
@@ -28,6 +29,12 @@ $selectors: "ircc-cl-lib-error";
   .errorIcon {
     height: 16px;
     width: 16px;
+    @include device.in-tablet-layout {
+      margin-top: 2px;
+  }
+    @include device.in-phone-layout {
+      margin-top: 2px;
+    }
   }
 
   .errorText {
@@ -90,6 +97,15 @@ $selectors: "ircc-cl-lib-error";
     display: flex;
     color: var(--critical-text);
     align-items: center;
+    @include device.in-tablet-layout {
+      display: flex;
+      align-items: flex-start;
+    }
+    @include device.in-phone-layout {
+      display: flex;
+      align-items: flex-start;
+    }
+
   }
 
   .errorIcon {
