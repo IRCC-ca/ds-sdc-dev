@@ -13,10 +13,10 @@ import { LanguageHeaderFooterSwitchService } from './language-header-footer-swit
 
 
 export const LANGUAGE_SWITCH_TEXT_ENGLISH = 'Français';
-export const LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE = 'FR';
+export const LANGUAGE_SWITCH_TEXT_ENGLISH_MOBILE = '<abbr title="Français">FR</abbr>';
 
 export const LANGUAGE_SWITCH_TEXT_FRENCH = 'English';
-export const LANGUAGE_SWITCH_TEXT_FRENCH_MOBILE = 'EN';
+export const LANGUAGE_SWITCH_TEXT_FRENCH_MOBILE = '<abbr title="English">EN</abbr>';
 
 @Component({
   selector: 'ircc-cl-lib-language-switch',

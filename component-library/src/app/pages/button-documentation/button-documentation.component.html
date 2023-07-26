@@ -1,9 +1,6 @@
 <div class="content-doc-wrapper">
   <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Buttons.Intro' | translate }}</p>
-  <app-info-text-small>
-    {{ 'Buttons.IntroAlert' | translate }}
-  </app-info-text-small>
 
   <section class="interactive-demo">
     <app-title-slug-url
@@ -101,42 +98,44 @@
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <h3>
-          {{ 'General.Size' | translate }}
-        </h3>
-        <ul>
-          <li>{{ 'General.Small' | translate }}</li>
-          <li>{{ 'General.Large' | translate }}</li>
-        </ul>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3>
+            {{ 'General.Size' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Small' | translate }}</li>
+            <li>{{ 'General.Large' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3>{{ 'General.Layout' | translate }}</h3>
+          <ul>
+            <li>{{ 'Buttons.ConfigLayoutFluid' | translate }}</li>
+            <li>{{ 'Buttons.ConfigLayoutFixed' | translate }}</li>
+          </ul>
+        </div>
       </div>
-      <div class="col-12 col-md-6">
-        <h3>{{ 'General.Layout' | translate }}</h3>
-        <ul>
-          <li>{{ 'Buttons.ConfigLayoutFluid' | translate }}</li>
-          <li>{{ 'Buttons.ConfigLayoutFixed' | translate }}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <h3>{{ 'Buttons.ConfigIconHeading' | translate }}</h3>
-        <ul>
-          <li>{{ 'Buttons.ConfigIconNone' | translate }}</li>
-          <li>{{ 'Buttons.ConfigIconLeading' | translate }}</li>
-          <li>{{ 'Buttons.ConfigIconTrailing' | translate }}</li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-6">
-        <h3>{{ 'General.StateLabel' | translate }}</h3>
-        <ul>
-          <li>{{ 'General.DefaultLabel' | translate }}</li>
-          <li>{{ 'General.HoverLabel' | translate }}</li>
-          <li>{{ 'General.ActiveLabel' | translate }}</li>
-          <li>{{ 'General.DisabledLabel' | translate }}</li>
-          <li>{{ 'General.FocusLabel' | translate }}</li>
-        </ul>
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3>{{ 'Buttons.ConfigIconHeading' | translate }}</h3>
+          <ul>
+            <li>{{ 'Buttons.ConfigIconNone' | translate }}</li>
+            <li>{{ 'Buttons.ConfigIconLeading' | translate }}</li>
+            <li>{{ 'Buttons.ConfigIconTrailing' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3>{{ 'General.StateLabel' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.DefaultLabel' | translate }}</li>
+            <li>{{ 'General.HoverLabel' | translate }}</li>
+            <li>{{ 'General.ActiveLabel' | translate }}</li>
+            <li>{{ 'General.DisabledLabel' | translate }}</li>
+            <li>{{ 'General.FocusLabel' | translate }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>

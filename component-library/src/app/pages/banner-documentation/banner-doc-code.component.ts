@@ -265,6 +265,7 @@ export class BannerDocCodeComponent implements OnInit {
       this.bannerConfig.type = 'critical';
     }
     this.parseCodeViewConfig();
+    this.bannerService.setBanner(this.bannerConfig);
   }
 
   /**
@@ -495,6 +496,7 @@ export class BannerDocCodeComponent implements OnInit {
     });
 
     this.form_interactive_banner.valueChanges.subscribe((value: any) => {
+      this.bannerConfig = this.parseToggleConfig(value);
       this.handlePrimaryButtonToggle(value);
       this.handlePlainButtonToggle(value);
       this.handleSecondaryButtonToggle(value);

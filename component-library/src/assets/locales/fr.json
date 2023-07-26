@@ -14,6 +14,7 @@
 		"input": "documentation dentree",
 		"datePicker": "datePicker-doc-fr",
 		"iconButton": "icon-button-documentation-fr",
+		"multiCheckbox": "multi-checkbox-documentation-fr",
 		"contact": "contactez",
 		"codeview": "codeview-fr",
 		"mahsa": "mahsa-fr",
@@ -922,5 +923,8 @@
 		"AccessibilityContentItem2": "Since Icon buttons only render an icon, it must pass the aria-label prop, so screen readers can give meaning to the button.",
 		"AccessibilityContentItem3": "Prevent keyboard traps. Every element that can be focused on using the keyboard can be unfocused using the keyboard.",
 		"LabellingText": "Icon buttons should have labels programmatically associated to them so the purpose of the icon button’s action is clear to screen reader users."
+	},
+	"MultiCheckboxDocumentation": {
+		"Title": "[FR] MultiCheckbox-doc"
 	}
 }
