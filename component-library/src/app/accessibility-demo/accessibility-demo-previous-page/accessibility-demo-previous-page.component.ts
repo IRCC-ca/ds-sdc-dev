@@ -17,6 +17,16 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
     id: '',
   }
 
+  previousHNConfig = {
+    id: 'hidden_nav',
+    skipLinks: [
+      {
+        title: 'Skip to main content',
+        href: 'ds-cont'
+      }
+    ]
+  }
+
   hamburgerDialogXButtonConfig: IIconButtonComponentConfig = {
     id: 'hamburger_dialog_x_button',
     category: 'custom',
@@ -26,7 +36,7 @@ export class AccessibilityDemoPreviousPageComponent implements OnInit {
       color: 'var(--text-primary)'
     }
   };
-  
+
   altPathKey = '';
   altLangURL = '';
 

@@ -20,6 +20,16 @@ export class AccessibilityDemoNextPageComponent implements OnInit {
   altPathKey = '';
   altLangURL = ''
 
+  nextHNConfig = {
+    id: 'hidden_nav',
+    skipLinks: [
+      {
+        title: 'Skip to main content',
+        href: 'ds-cont'
+      }
+    ]
+  }
+
   constructor(private translate: TranslateService,
               private altLang: LanguageSwitchService) { }
 

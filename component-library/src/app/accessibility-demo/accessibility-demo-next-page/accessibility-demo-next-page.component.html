@@ -1,9 +1,9 @@
-
-<h1></h1>
+<lib-hidden-nav [config]="nextHNConfig"></lib-hidden-nav>
+<div id="ds-cont">
 <p class="h2 complete">{{'ACC_DEMO.NEXT_PAGE_COMPLETE' | translate}}</p>
 <div class="button-container">
     <button [routerLink]="getPreviousButtonLink" (click)="clearForm()">{{'ACC_DEMO.ADJACENT_PAGES_BUTTONS.FINISHED' | translate}}</button>
-</div>
+</div></div>
 <lib-footer [id]="'footer'">
     <span>{{ "Version" | translate }}</span>
 </lib-footer>
