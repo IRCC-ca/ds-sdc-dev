@@ -1,19 +1,24 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ICheckBoxComponentConfig, IErrorPairs } from '../../../public-api';
-import { MultiCheckboxService } from './multi-checkbox.service';
+import { ICheckBoxComponentConfig, IErrorPairs, MultiCheckboxService } from '../../../public-api';
 
 import {
   IErrorIDs,
   StandAloneFunctions
 } from '../../../shared/functions/stand-alone.functions';
 
+export interface IErrorPairsMutltiCheckBox {
+  id: string;
+  key: string;
+  errorLOV: string;
+}
+
 export interface IMultiCheckboxConfig {
   id: string;
   parent: ICheckBoxComponentConfig;
   children?: ICheckBoxComponentConfig[];
-  errorMessages: IErrorPairs[];
+  errorMessages: IErrorPairsMutltiCheckBox[];
 }
 
 @Component({
@@ -48,25 +53,7 @@ export class MultiCheckboxComponent implements OnInit {
   constructor(
     private multicheckboxService: MultiCheckboxService,
     public standAloneFunctions: StandAloneFunctions
-  ) {}
-
-  ngOnInit() {
-    this.config.parent.formGroup.addControl(
-      this.config.parent.id,
-      new FormControl('', Validators.required)
-    );
-
-    this.config.children?.forEach((res) => {
-      res.formGroup.addControl(
-        res.id,
-        new FormControl('', Validators.required)
-      );
-
-      res.formGroup.get(res.id)?.statusChanges.subscribe((ERROR) => {
-        console.log(ERROR);
-      });
-    });
-
+  ) {
     this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
       (response) => {
         if (this.config.children) {
@@ -116,24 +103,58 @@ export class MultiCheckboxComponent implements OnInit {
     this.errorSub = this.multicheckboxService.multiCheckboxErrorobs$.subscribe(
       (response) => {
         if (response.id === this.config.parent.id) {
-          this.config?.errorMessages.push(response.event);
+          if (
+            response.event.hasOwnProperty('remove') &&
+            response.event.remove === true
+          ) {
+            this.removeResponseFromError(response);
+          } else {
+            this.config?.errorMessages.push(response.event);
+          }
         } else if (
           this.config.children &&
           this.config.children?.findIndex((child) => {
             return child.id === response.id;
           }) > -1
         ) {
-          this.config?.errorMessages.push(response.event);
+          if (
+            response.event.hasOwnProperty('remove') &&
+            response.event.remove === true
+          ) {
+            let newErrorMessages = new Array<IErrorPairsMutltiCheckBox>();
+
+            this.config.errorMessages.forEach((error) => {
+              if (error.id != response.id) {
+                newErrorMessages.push(error);
+              }
+            });
+
+            this.config.errorMessages = newErrorMessages;
+          } else {
+            this.config?.errorMessages.push(response.event);
+          }
         }
 
-        if (this.config.errorMessages) {
-          this.errorIds = this.standAloneFunctions.getErrorIds(
-            this.config.parent.formGroup,
-            this.config.parent.id,
-            this.config.errorMessages
-          );
-        }
+        this.config.errorMessages = this.config.errorMessages.filter(
+          (value, index, self) =>
+            index ===
+            self.findIndex((t) => {
+              return (
+                t.key === value.key &&
+                t.errorLOV === value.errorLOV &&
+                t.id == value.id
+              );
+            })
+        );
       }
     );
+  }
+
+  ngOnInit() {}
+
+  removeResponseFromError(response: any) {
+    this.config.errorMessages = this.config.errorMessages.filter((item) => {
+      item?.key !== response.id;
+    });
   }
 }

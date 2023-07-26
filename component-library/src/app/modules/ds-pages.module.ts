@@ -42,6 +42,8 @@ import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -89,7 +91,9 @@ import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-d
     IrccDsAngularNavigationModule,
     TranslateModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     TitleSlugUrlComponent,

@@ -16,9 +16,9 @@
   </div>
 </ng-template>
 
-<ng-container *ngFor="let errors of errorIds; let i = index">
+<ng-container *ngFor="let errors of this.config.errorMessages; let i = index">
   <div
-    *ngIf="errorIds.length > 0"
+    *ngIf="errorIds.length > -1"
     class="radio-errors"
   >
     <ircc-cl-lib-error

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
-import { FormGroup } from '@angular/forms';
-import { IMultiCheckboxConfig } from 'dist/ircc-ds-angular-component-library/lib/form-components/multi-checkbox/multi-checkbox.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IMultiCheckboxConfig } from 'ircc-ds-angular-component-library';
+import { MultiCheckboxService } from 'ircc-ds-angular-component-library';
 import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
@@ -49,9 +50,9 @@ export class MultiCheckboxDocumentationComponent
     },
     children: [
       {
-        id: 'mashrooms',
+        id: 'mushrooms',
         formGroup: this.form,
-        inlineLabel: 'Mashrooms',
+        inlineLabel: 'Mushrooms',
         size: 'small'
       },
       {
@@ -74,12 +75,47 @@ export class MultiCheckboxDocumentationComponent
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private slugify: SlugifyPipe
+    private slugify: SlugifyPipe,
+    private multicheckboxService: MultiCheckboxService
   ) {
     this.currentLanguage = translate.currentLang;
   }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
+
+    this.config.parent.formGroup.addControl(
+      this.config.parent.id,
+      new FormControl(false)
+    );
+
+    this.config.children?.forEach((res) => {
+      res.formGroup.addControl(
+        res.id,
+        new FormControl(false, Validators.requiredTrue)
+      );
+    });
+
+    this.config2.parent.formGroup.addControl(
+      this.config2.parent.id,
+      new FormControl(false)
+    );
+
+    this.config2.children?.forEach((res) => {
+      res.formGroup.addControl(
+        res.id,
+        new FormControl(false, Validators.requiredTrue)
+      );
+    });
+  }
+
+  submitForm() {
+    for (const field in this.form.controls) {
+      this.multicheckboxService.checkField(
+        this.form.get(field),
+        field,
+        `Field ${field} is required`
+      );
+    }
   }
 }
