@@ -255,7 +255,9 @@ export class CheckboxComponent
     );
   }
 
-  clickEvent() {}
+  clickEvent() {
+    this.standAloneFunctions.wasTouched(this.config.formGroup, this.config.id);
+  }
 
   ariaAccess(): string {
     let returnVal = '';
