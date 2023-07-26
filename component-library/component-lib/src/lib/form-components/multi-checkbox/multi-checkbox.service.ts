@@ -35,20 +35,42 @@ export class MultiCheckboxService {
   checkField(
     control: AbstractControl<any, any> | null,
     field: string,
-    errorMessage: string
+    errorMessage: string,
+    errorKey?: string
   ) {
+    //is the control valid
     if (control?.valid === false) {
-      for (const error in control.errors) {
-        this.errorEvent({
-          id: field,
-          event: {
+      if (control.errors) {
+        // is the function checking for a specific error
+        if (errorKey === undefined) {
+          // function is checking all the errors, loop them and send them
+          Object.entries(control.errors).map(([key, value]) => {
+            this.errorEvent({
+              id: field,
+              event: {
+                id: field,
+                key: key,
+                errorLOV: errorMessage
+              }
+            });
+          });
+        }
+
+        // function is checking a specific error, check to see if it's there
+        else if (control.errors.hasOwnProperty(errorKey)) {
+          this.errorEvent({
             id: field,
-            key: error,
-            errorLOV: errorMessage
-          }
-        });
+            event: {
+              id: field,
+              key: errorKey,
+              errorLOV: errorMessage
+            }
+          });
+        }
       }
-    } else {
+    }
+    // control is valid remove error
+    else {
       this.errorEvent({
         id: field,
         event: { remove: true }

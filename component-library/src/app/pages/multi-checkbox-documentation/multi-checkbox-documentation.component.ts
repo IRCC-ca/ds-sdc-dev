@@ -114,8 +114,14 @@ export class MultiCheckboxDocumentationComponent
       this.multicheckboxService.checkField(
         this.form.get(field),
         field,
-        `Field ${field} is required`
+        `Field ${field} is required`,
+        'required'
       );
+      // this.multicheckboxService.checkField(
+      //   this.form.get(field),
+      //   field,
+      //   `Field ${field} has an error state`
+      // );
     }
   }
 }
