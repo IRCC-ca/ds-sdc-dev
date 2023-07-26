@@ -14,6 +14,7 @@
 		"input": "input-documentation",
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
+		"multiCheckbox": "multi-checkbox-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
 		"mahsa": "mahsa-en",
@@ -922,5 +923,8 @@
 		"AccessibilityContentItem2": "Since Icon buttons only render an icon, it must pass the aria-label prop, so screen readers can give meaning to the button.",
 		"AccessibilityContentItem3": "Prevent keyboard traps. Every element that can be focused on using the keyboard can be unfocused using the keyboard.",
 		"LabellingText": "Icon buttons should have labels programmatically associated to them so the purpose of the icon button’s action is clear to screen reader users."
+	},
+	"MultiCheckboxDocumentation": {
+		"Title": "MultiCheckbox-doc"
 	}
 }
