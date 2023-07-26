@@ -1,5 +1,5 @@
 @use '../../../../../core-library/util/device' as device;
-@use '~@ircc-ca/ds-sdc-core/typography/typography';
+@use '@ircc-ca/ds-sdc-core/typography/typography';
 
 .content-doc-wrapper {
   box-sizing: border-box;
@@ -237,11 +237,11 @@ p {
 .accessibility {
     .content-element {
     margin-bottom: 24px;
-    
+
     p.accessible-color {
       margin: 0;
     }
-    
+
     p.accessible-color:last-child {
         padding-top: 8px;
       }
@@ -270,11 +270,15 @@ p {
   }
 }
 
-// .list-item {
-//   font-size: 14px;
-//   @include typography.fontSet(body, 3, regular);
+// To be moved to page template mixin
+h3,
+h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
 
-//   ::last-child {
-//     margin-bottom: 12px;
-//   }
-// }
+  @include typography.fontSet(heading, 5, emphasis);
+
+  &.text-underline {
+    margin-bottom: 8px;
+  }
+}
