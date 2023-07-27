@@ -195,9 +195,18 @@ export class CheckboxComponent
     }
 
     //Get the error text when the formControl value changes
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
-      this.getAriaErrorText();
-    });
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((error) => {
+        this.getAriaErrorText();
+
+        if (error === 'VALID') {
+          this.multicheckboxService.errorEvent({
+            id: this.config.id,
+            event: { remove: true }
+          });
+        }
+      });
   }
 
   ngOnChanges() {
@@ -257,6 +266,7 @@ export class CheckboxComponent
 
   clickEvent() {
     this.standAloneFunctions.wasTouched(this.config.formGroup, this.config.id);
+    console.log(this.config.formGroup.get(this.config.id)?.valid);
   }
 
   ariaAccess(): string {
