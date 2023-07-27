@@ -40,6 +40,10 @@ import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documen
 import { IconButtonDocumentationComponent } from '@app/pages/icon-button-documentation/icon-button-documentation.component';
 import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation/icon-button-doc-code.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
+import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -72,7 +76,8 @@ import { ButtonDocumentationComponent } from '@app/pages/button-documentation/bu
     DatePickerDocumentationComponent,
     BannerDocumentationComponent,
     IconButtonDocumentationComponent,
-    IconButtonDocCodeComponent
+    IconButtonDocCodeComponent,
+    MultiCheckboxDocumentationComponent
   ],
   imports: [
     CommonModule,
@@ -86,7 +91,9 @@ import { ButtonDocumentationComponent } from '@app/pages/button-documentation/bu
     IrccDsAngularNavigationModule,
     TranslateModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     TitleSlugUrlComponent,
