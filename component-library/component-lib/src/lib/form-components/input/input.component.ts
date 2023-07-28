@@ -34,7 +34,8 @@ export interface IInputComponentConfig {
 
 export enum InputTypes {
   text = 'text',
-  password = 'password'
+  password = 'password',
+  autocomplete = 'autocomplete'
 }
 
 export const ARIA_TEXT = {
@@ -156,10 +157,10 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
-    
+
     this.type === InputTypes.text
-    ? (this.showPassword = false)
-    : (this.showPassword = true);
+      ? (this.showPassword = false)
+      : (this.showPassword = true);
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,

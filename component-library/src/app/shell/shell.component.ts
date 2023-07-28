@@ -130,6 +130,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.multiCheckbox'
   };
 
+  autoCompletePage: INavigationItemLink = {
+    id: 'autoCompletePageNavItem',
+    label: ' AutoComplete ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.autocomplete'
+  };
+
   gettingStartedNav: INavigationItemAccordion = {
     open: true,
     id: 'gettingStartedNavAccordian',
@@ -152,11 +160,12 @@ export class ShellComponent implements OnInit {
     label: 'Components',
     type: 'accordion',
     children: [
-      this.buttonsPage,
+      this.autoCompletePage,
       this.bannerPage,
-      this.inputPage,
+      this.buttonsPage,
       this.datePickerPage,
       this.iconBtnPage,
+      this.inputPage,
       this.multiCheckboxPage
     ]
   };

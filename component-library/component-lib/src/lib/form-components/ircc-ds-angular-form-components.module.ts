@@ -11,6 +11,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { TextareaComponent } from './textarea/textarea.component';
 import { SelectComponent } from './select/select.component';
 import { MultiCheckboxComponent } from './multi-checkbox/multi-checkbox.component';
+import { AutoCompleteComponent } from './autocomplete/autocomplete.component';
 
 const IrccDsAngularFormComponents = [
   CheckboxComponent,
@@ -20,7 +21,8 @@ const IrccDsAngularFormComponents = [
   DatePickerComponent,
   TextareaComponent,
   SelectComponent,
-  MultiCheckboxComponent
+  MultiCheckboxComponent,
+  AutoCompleteComponent
 ];
 
 @NgModule({
