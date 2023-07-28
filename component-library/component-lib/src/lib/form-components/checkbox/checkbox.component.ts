@@ -266,7 +266,6 @@ export class CheckboxComponent
 
   clickEvent() {
     this.standAloneFunctions.wasTouched(this.config.formGroup, this.config.id);
-    console.log(this.config.formGroup.get(this.config.id)?.valid);
   }
 
   ariaAccess(): string {
