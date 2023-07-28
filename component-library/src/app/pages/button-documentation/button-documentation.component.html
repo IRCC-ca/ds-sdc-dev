@@ -231,7 +231,11 @@
           {{ 'Buttons.SpacingGroupsHeading' | translate }}
         </h3>
         <img
-          src="assets/img/button-content/button-design-spacing.jpg"
+          [src]="
+            mobile
+              ? 'assets/img/button-content/button-design-spacing-mob.jpg'
+              : 'assets/img/button-content/button-design-spacing.jpg'
+          "
           alt="{{ 'Buttons.SpacingGroupsImgAlt' | translate }}"
         />
         <p class="body3 mt_12">{{ 'Buttons.SpacingGroupsText' | translate }}</p>
@@ -241,7 +245,11 @@
           {{ 'General.MaxMinWidthHeading' | translate }}
         </h3>
         <img
-          src="assets/img/button-content/button-design-width.jpg"
+          [src]="
+            mobile
+              ? 'assets/img/button-content/button-design-width-mob.jpg'
+              : 'assets/img/button-content/button-design-width.jpg'
+          "
           alt="{{ 'Buttons.MinMaxWidthImgAlt' | translate }}"
         />
         <p class="body3 mt_12">{{ 'Buttons.MinMaxWidthText' | translate }}</p>
@@ -256,7 +264,11 @@
     <div class="wrapper-container">
       <div class="element-wrapper-container">
         <img
-          src="assets/img/button-content/anatomy-image-button.jpg"
+          [src]="
+            mobile
+              ? 'assets/img/button-content/anatomy-image-button-mob.jpg'
+              : 'assets/img/button-content/anatomy-image-button.jpg'
+          "
           alt="{{ 'Buttons.AnatomyImgAlt' | translate }}"
         />
       </div>
@@ -287,7 +299,11 @@
     <div class="wrapper-container">
       <div class="element-wrapper-container">
         <img
-          src="assets/img/button-content/button-specs.jpg"
+          [src]="
+            mobile
+              ? 'assets/img/button-content/button-specs-mob.jpg'
+              : 'assets/img/button-content/button-specs.jpg'
+          "
           alt="{{ 'Buttons.SpecsImgAlt' | translate }}"
         />
       </div>
