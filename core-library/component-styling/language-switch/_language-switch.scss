@@ -16,9 +16,18 @@
 }
 
 @mixin layout {
-  button {
+  a {
+    padding: 0;
     margin-bottom: 28px;
     margin-top: 24px;
     margin-left: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    @include typography.fontSet(body, 2, regular);
+    color: var(--link-text);;
+      &:visited {
+        color: var(--link-text-visited);
+      }
+    
   }
 }
