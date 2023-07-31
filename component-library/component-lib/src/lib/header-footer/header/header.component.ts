@@ -25,10 +25,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input() themeToggle? = false;
   alt = '';
   govCanadaLink = '';
-  headerLightLogo = GOV_CANADA_LOGOS.headerLightLogo;
-  headerLightLogoFrench = GOV_CANADA_LOGOS.headerLightLogoFrench;
-  headerDarkLogo = GOV_CANADA_LOGOS.headerDarkLogo;
-  headerDarkLogoFrench = GOV_CANADA_LOGOS.headerDarkLogoFrench;
   logo: string = '';
   private subscription: Subscription;
   isDarkMode: boolean = false;
@@ -61,9 +57,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   updateHeaderImage(res: boolean) {
     const locale = this.translate.currentLang;
     if (locale === 'en' || locale === 'en-US') {
-      this.logo = res ? this.headerDarkLogo : this.headerLightLogo;
+      this.logo = res
+        ? encodeURIComponent(GOV_CANADA_LOGOS.headerDarkLogo)
+        : encodeURIComponent(GOV_CANADA_LOGOS.headerLightLogo);
     } else {
-      this.logo = res ? this.headerDarkLogoFrench : this.headerLightLogoFrench;
+      this.logo = res
+        ? encodeURIComponent(GOV_CANADA_LOGOS.headerDarkLogoFrench)
+        : encodeURIComponent(GOV_CANADA_LOGOS.headerLightLogoFrench);
     }
   }
 
