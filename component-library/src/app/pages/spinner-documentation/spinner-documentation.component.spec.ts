@@ -8,9 +8,8 @@ describe('SpinnerDocumentationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SpinnerDocumentationComponent ]
-    })
-    .compileComponents();
+      declarations: [SpinnerDocumentationComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SpinnerDocumentationComponent);
     component = fixture.componentInstance;

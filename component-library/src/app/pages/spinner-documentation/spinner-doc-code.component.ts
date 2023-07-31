@@ -125,7 +125,7 @@ export class SpinnerDocCodeComponent implements OnInit {
           value: 'horizontal'
         }
       ]
-    },
+    }
   ];
 
   spinnerConfigCodeView: any = {
@@ -171,10 +171,7 @@ export class SpinnerDocCodeComponent implements OnInit {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form_spinner.addControl(
-      this.spinnerConfig.id,
-      new FormControl()
-    );
+    this.form_spinner.addControl(this.spinnerConfig.id, new FormControl());
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
@@ -207,7 +204,10 @@ export class SpinnerDocCodeComponent implements OnInit {
       ...this.spinnerConfig,
       size: value['sizeToggle'],
       label: value['label'] === 'True' ? 'label text' : undefined,
-      description: value['description'] === 'True' ? 'Description line of text' : undefined,
+      description:
+        value['description'] === 'True'
+          ? 'Description line of text'
+          : undefined,
       type: value['type'],
       orientation: value['orientation']
     };
@@ -226,11 +226,11 @@ export class SpinnerDocCodeComponent implements OnInit {
     };
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
-      "import { ISpinnerConfig } from 'ircc-ds-angular-component-library';\n\n" +
-      `spinnerConfig: ISpinnerConfig = ${stringify(
-        this.spinnerConfigCodeView
-      )} 
-      `
+        "import { ISpinnerConfig } from 'ircc-ds-angular-component-library';\n\n" +
+        `spinnerConfig: ISpinnerConfig = ${stringify(
+          this.spinnerConfigCodeView
+        )} 
+      `;
     }
   }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { slugAnchorType, slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
+import {
+  slugAnchorType,
+  slugTitleURLConfig
+} from '@app/components/title-slug-url/title-slug-url.component';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
@@ -53,10 +56,9 @@ export class SpinnerDocumentationComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
   }
-
 }
