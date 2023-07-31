@@ -24,10 +24,10 @@
     cursor: pointer;
     text-decoration: underline;
     @include typography.fontSet(body, 2, regular);
-    color: var(--link-text);;
-      &:visited {
-        color: var(--link-text-visited);
-      }
+    color: var(--link-text);
     
+    &:visited {
+        color: var(--link-text-visited);
+      } 
   }
 }
