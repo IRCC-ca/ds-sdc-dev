@@ -15,6 +15,7 @@
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
 		"multiCheckbox": "multi-checkbox-documentation",
+		"spinner": "spinner-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
 		"mahsa": "mahsa-en",
@@ -555,13 +556,11 @@
 		"AccessInputsImgAlt2": "A screenshot of the design panel from Figma. With the “input-field” subcomponent selected, designers can choose from its configuration options. These options include the type of field, the type of content populated within the field, whether the field is in an error state and the state of the field.",
 		"AccessibilityColourText": "All elements within the input component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1.",
 		"AccessibilityKeyboardText": "Inputs are developed using the native HTML input element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity. The input can be navigated to and interacted with using a keyboard and receives a visible focus.",
-		"AccessibilityContentItem1": "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
 		"AccessibilityContentItem2": "Headings and labels describe topic or purpose.",
 		"AccessibilityContentItem3": "Labels or instructions are provided when content requires user input.",
 		"AccessibilityContentItem4": "The label, description and hint are placed outside of the form field and are always visible to the user. The content is presented in a logical reading order.",
 		"AccessibilityContentItem5": "Label that includes an asterisk to indicate the control is required.",
 		"AccessibilityContentItem6": "Clear labelling for required fields, including the word “required” in parentheses.",
-		"AccessibilityContentItem7": "Max widths are determined based on allowing a maximum line length of 80 characters.",
 		"AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
 		"CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
 		"LabelText1": "Label text",
@@ -644,13 +643,11 @@
 			"ColorText4": "Success banners have a colour contrast ratio of 16.86:1 and passes AAA accessibility standards under WCAG 2.1.",
 			"ColorText5": "Generic banners have a colour contrast ratio of 16.6:1 and passes AAA accessibility standards under WCAG 2.1.",
 			"KeyboardText": "Banners are developed using the native HTML button element to ensure interactive elements are keyboard accessible and pass WCAG 2.1 AA conformity.",
-			"ContentTxt1": "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
 			"ContentTxt2": "Headings and labels describe topic or purpose.",
 			"ContentTxt3": "Labels or instructions are provided when content requires user input.",
 			"ContentTxt4": "The label, description and hint are placed outside of the form field and are always visible to the user. The content is presented in a logical reading order.",
 			"ContentTxt5": "Label that includes an asterisk to indicate the control is required.",
-			"ContentTxt6": "Clear labelling for required fields, including the word “required” in parentheses.",
-			"ContentTxt7": "Max widths are determined based on allowing a maximum line length of 80 characters."
+			"ContentTxt6": "Clear labelling for required fields, including the word “required” in parentheses."
 		},
 		"Validation": "If a date picker error is automatically detected, the item that is in error is identified and the error is described to the user in text."
 	},
@@ -721,7 +718,7 @@
 			"bannerDismissDontAlt": "A banner that has the label “You’re almost done with your profile” and description text with a CTA button that says “Dismiss”. The banner uses the teal info styling.",
 			"bannerDismissDoText": "Use the close icon button to close the banner.",
 			"bannerDismissDontText": "Don’t use CTA button to close the banner.",
-			"bannerMinMaxWidthAlt": "Alt text: Specs displaying the minimum and maximum widths of the banner component. Widths are described in the paragraph below.",
+			"bannerMinMaxWidthAlt": "Specs displaying the minimum and maximum widths of the banner component. Widths are described in the paragraph below.",
 			"bannerMinMaxWidthText": "Small banners have a maximum width of 600 pixels and a minimum width of 300 pixels. Large banners have a maximum width of 680 pixels and a minimum width of 340 pixels. "
 		},
 		"Anatomy": {
@@ -812,6 +809,7 @@
 		"Yes": "Yes",
 		"No": "No",
 		"Description": "Description",
+		"DescriptionOptional": "Description (optional)",
 		"Hint": "Hint",
 		"Month": "Show Month",
 		"Day": "Show Day",
@@ -822,6 +820,7 @@
 		"Small": "Small",
 		"Large": "Large",
 		"Label": "Label Text",
+		"LabelOptional": "Label (optional)",
 		"Desc": "Description line of text",
 		"Show": "Show",
 		"Hide": "Hide",
@@ -864,6 +863,8 @@
 		"WriteLabelsHeading": "Writing labels",
 		"RequiredFieldsHeading": "Required fields",
 		"NecessaryContentHeading": "Using necessary content",
+		"AccessibilityContentItem1": "Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
+		"AccessibilityContentItemMax": "Max widths are determined based on allowing a maximum line length of 80 characters.",
 		"TitleHeading": "Title text",
 		"RequestFormTitle": "Request Form",
 		"CopyStyle": "Copy style",
@@ -926,5 +927,84 @@
 	},
 	"MultiCheckboxDocumentation": {
 		"Title": "MultiCheckbox-doc"
+	},
+	"Spinner": {
+		"Title": "Spinner-doc",
+		"MainTitle": "Spinner",
+		"SpinnerAnatomy": "Indicates the state of the loading sequence (active, success, error).",
+		"LabelAnatomy": "Assistive text that tells the user what content or action is being waited upon.",
+		"DescriptionAnatomy": "Further explains the label, limited to only be used in the large size.",
+		"UsageInFigma": {
+			"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“spinner”</strong> component from the Components library.",
+			"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing the spinner component. These options include size and allow designers choose the spinner size, label, description, states and layout."
+		},
+		"AccessibilityContentItem2": "Labels describe topic or purpose.",
+		"AccessibilityContentItem3": "Descriptions are provided when content requires additional clarity.",
+		"AccessibilityContentItem4": "The label and description are placed outside of the spinner and are always visible to the user. The content is presented in a logical reading order.",
+		"Intro": "Spinners provide a visual cue that an action is processing awaiting a course of change, a result or displaying new content.",
+		"InteractiveDemoDesc": "Try our <strong>spinner</strong> component and the configurable options available within it.",
+		"DesignGuideLines": {
+			"UseSpinner": "When to use the spinner",
+			"UseSpinnerDoTxt": "Use the Spinner if the expected wait time is perceptible — typically more than a second but less than 10 secs.",
+			"UseSpinnerDontTxt": "Use Spinner if the action taking place is meant to occur in less than one second.",
+			"UseSpinnerDoAlt": "A loading page with the large spinner component in active state positioned in the middle of the page. The label is “Loading your applications” and the description is “Please do not close your browser”.",
+			"UseSpinnerDontAlt": "A loading page with the large spinner component in active state positioned in the middle of the page. The label is “Your applications are currently in review...” and the description is “Please do not close your browser”.",
+			"InlineLoading": "Inline loading",
+			"InlineLoadingDoTxt": "Use the extra small or small sized spinner for inline loading.",
+			"InlineLoadingDontTxt": "Use a large sized spinner for inline loading.",
+			"InlineLoadingDoAlt": "A primary button in active state with a cursor above it and a small spinner component in active state on its right side. The primary button’s label is “Sign up”. ",
+			"InlineLoadingDontAlt": "A primary button in active state with a cursor above it and a large spinner component in active state on its right side. The primary button’s label is “Sign up”. ",
+			"PageLoad": "Whole page loading",
+			"PageLoadDoTxt": "Use the large spinner for full page loading",
+			"PageLoadDontTxt": "Use the smaller sized spinners for full page loading.",
+			"PageLoadDoAlt": "A loading page with a large spinner component in active state positioned in the middle of the page The large spinner’s label is “Submitting your application...” and its description says “Please do not close your browser.”",
+			"PageLoadDontAlt": "A loading page with a small spinner component in active state positioned in the middle of the page. The small spinner’s label is “Submitting your application...” and there is no description. ",
+			"ShowOneSpinner": "Show one spinner at a time",
+			"ShowOneSpinnerDoTxt": "Show one Spinner at a time and where the content is being updated to showcase where results will appear.",
+			"ShowOneSpinnerDontTxt": "Show more than one Spinner at a time to avoid an overly-busy interface. ",
+			"ShowOneSpinnerDoAlt": "An application form with 2 form inputs and a cursor hovering over a primary button. The primary buttons label is “Save & Continue”. There is an extra small spinner in active state beside the button. ",
+			"ShowOneSpinnerDontAlt": "An application form with 2 form inputs and a cursor hovering over a primary button. The primary buttons label is “Save & Continue”. The first input forms label is “Primary Office (required)” and its description is “Please select your primary office”. The option “Canada” is selected and there is an extra small sized spinner in active state at the end of the input field. The second input forms label is “Country of Residence” and its description is “Please select your country of residence” The option “Ottawa” is selected and there is a small spinner at the end of the input field."
+		},
+		"MaxMinWidthImgAlt": "Specs displaying the minimum and maximum widths of the spinner component. Widths are described in the paragraph below.",
+		"MaxMinWidthText": "Small spinner has a maximum width of 420 pixels. Extra small spinner has a maximum width of 300 pixels. Large spinner has a maximum width of 500 pixels. ",
+		"Anatomy": {
+			"ImgAlt": "The parts that makeup the spinner compoennt. The parts are described in the content below."
+		},
+		"Specs": {
+			"ImgAlt": "Specs displaying the padding and layer measurements within the spinner component. Specs are described in the paragraph below.",
+			"Text1": "The extra small spinner container has a fixed width and a fluid height. The spinner itself has a fixed uniform width and height of 20px. The label is set to fill. There is an 8 pixels of padding between the extra small spinner and the label. ",
+			"Text2": "The small spinner container has a fixed width and a fluid height. The spinner itself has a fixed uniform width and height of 28px. The label is set to fill. There is an 8 pixels of padding between the small spinner and the label. ",
+			"Text3": "The large spinner container has a fixed width and a fluid height. The spinner itself has a fixed uniform width and height of 80px. The text container is set to fill and contains the label and description. There is a 16 pixel padding between the large spinner and the text container. In the text container, the label is 36px in height and has an 8px padding above it. The description is  24px in height and has an 8px padding below it. There is a 4px padding between the label and description."
+		},
+		"ContentGuideLines": {
+			"WritingLabelsTxt": "Labels are optional content for the spinner component and are available to be shown at each size. Labels make the purpose of the spinner clear.",
+			"WritingLabelsDo1": "Write labels that are appropriate for the task and clear.",
+			"WritingLabelsDont1": "Provide vague labels that lack clarity.",
+			"WritingLabelsDoAlt1": "A modal labeled “Application Management” and a small spinner in active state positioned in the centre of the modal. The spinner’s label is “Loading information...”",
+			"WritingLabelsDontAlt1": "A modal labeled “Application Management” and a small spinner in active state positioned in the centre of the modal. The spinner’s label is “Waiting...”",
+			"WritingLabelsDo2": "Keep labels as clear and short as possible.",
+			"WritingLabelsDont2": "Write longer than necessary labels. Do not truncate labels.",
+			"WritingLabelsDoAlt2": "A page titled “My Applications” and an extra small spinner in active state positioned to the right of the page title. The extra small spinner’s label is “Connecting to server...”",
+			"WritingLabelsDontAlt2": "A page titled “My Applications” and an extra small spinner in active state positioned to the right of the page title. The extra small spinner’s label is “Waiting to connect to server to enable access...”",
+			"IncludeLabel": "When to include label",
+			"IncludeLabelDo": "Include the label with the spinner when the action being waited upon is not obvious.",
+			"IncludeLabelDont": "Show the spinner without the label if there is ambiguity.",
+			"IncludeLabelDoAlt": "A modal labeled “Application Management” and a small spinner in active state positioned in the centre of the modal. The spinner’s label is “Loading information...”",
+			"IncludeLabelDontAlt": "A modal labeled “Application Management” and a small spinner in active state positioned in the centre of the modal. There is no label on the spinner.",
+			"NotIncludeLabel": "When to not include label",
+			"NotIncludeLabelDo": "Exclude a label when context about what is being loaded is provided by other elements on the page.",
+			"NotIncludeLabelDont": "Include the label when the user can rely on other information to convey the action that is being loaded.",
+			"NotIncludeLabelDoAlt": "A primary button in active state with a cursor above it and a small spinner component in active state on its right side. The primary button’s label is “Sign up”. ",
+			"NotIncludeLabelDontAlt": "A primary button in active state with a cursor above it and a small spinner in active state with a label saying “Creating an account” on its right side. The primary button’s label is “Sign up”. ",
+			"WriteDescTxt": "Write a short description to provide further clarity on the action the user is waiting for. Include all the relevant information required, but try to keep the description concise. Descriptions are only available at the large size.",
+			"WriteDescDo": "Include all additional and relevant information in the description that can provide extra clarity to the user.",
+			"WriteDescDont": "Include a description when additional instructions or details are not needed to clarify. ",
+			"WriteDescDoAlt": "A loading page with the large spinner component in active state positioned in the middle of the page. The label is “Loading your applications” and the description is “Please do not close your browser”.",
+			"WriteDescDontAlt": "A loading page with the large spinner component in active state positioned in the middle of the page. The label is “Loading notes, please wait” and the description is “Please wait, loading will be completed momentarily”."
+		},
+		"Accessibility": {
+			"ColorContrastTxt": "All elements within the spinner component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1."
+		},
+		"Validation": "If an error is automatically detected, the item that is in error is identified and the error is described to the user in text."
 	}
 }

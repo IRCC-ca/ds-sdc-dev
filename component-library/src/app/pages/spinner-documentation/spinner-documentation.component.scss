@@ -1,0 +1,35 @@
+@use '../../../../../core-library/util/device' as device;
+@use "../../../scss/page";
+@use "../../../scss/grid";
+@use '@ircc-ca/ds-sdc-core/typography/typography';
+
+@include page.template;
+
+.usage-figma {
+
+  // .image-container {
+  //   filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+  // }
+
+  .image-1 {
+    max-width: 239px;
+  }
+
+  // .here {
+  //   display: flex;
+  //   flex-wrap: nowrap;
+  //     width: 100%;
+
+  //   @include device.in-tablet-layout {
+  //     display: flex;
+  //     flex-wrap: nowrap;
+  //     width: 100%;
+  //   }
+  //   @include device.in-phone-layout {
+  //     display: flex;
+  //     flex-wrap: nowrap;
+  //     width: 100%;
+
+  //   }
+  // }
+}

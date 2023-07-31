@@ -33,6 +33,7 @@ import { DatePickerDocumentationComponent } from './pages/date-picker-documentat
 import { IconButtonDocumentationComponent } from './pages/icon-button-documentation/icon-button-documentation.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { MultiCheckboxDocumentationComponent } from './pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
+import { SpinnerDocumentationComponent } from './pages/spinner-documentation/spinner-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -106,6 +107,11 @@ const routes: Routes = [
       component: MultiCheckboxDocumentationComponent,
       title: 'MultiCheckboxDocumentation.Title'
     },
+    {
+      path: 'spinner-documentation',
+      component: SpinnerDocumentationComponent,
+      title: 'Spinner.Title'
+    },
 
     // French
     { path: 'aperçu', component: OverviewComponent, title: 'Overview.Heading' },
@@ -158,6 +164,11 @@ const routes: Routes = [
       path: 'multi-checkbox-documentation-fr',
       component: MultiCheckboxDocumentationComponent,
       title: 'MultiCheckboxDocumentation.Title'
+    },
+    {
+      path: 'spinner-documentation-fr',
+      component: SpinnerDocumentationComponent,
+      title: 'Spinner.Title'
     },
 
     //QA PATHS
