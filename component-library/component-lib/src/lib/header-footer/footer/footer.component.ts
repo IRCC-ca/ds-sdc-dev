@@ -15,9 +15,7 @@ export const GOV_LOGO_ALT_TEXT_FR = 'FR Canada wordmark';
 export class FooterComponent {
   @Input() id = '';
   altImage = '';
-  footerLightLogo = GOV_CANADA_LOGOS.footerLightLogo
-  footerDarkLogo = GOV_CANADA_LOGOS.footerDarkLogo
-  logo: string = this.footerLightLogo;
+  logo: string = encodeURIComponent(GOV_CANADA_LOGOS.footerLightLogo);
   isDarkMode: boolean = false;
   private subscription: Subscription;
 
@@ -38,9 +36,8 @@ export class FooterComponent {
 
   updateFooterImage(res: boolean) {
     this.logo = res
-      ? this.footerDarkLogo
-      : this.footerLightLogo;
-
+      ? encodeURIComponent(GOV_CANADA_LOGOS.footerDarkLogo)
+      : encodeURIComponent(GOV_CANADA_LOGOS.footerLightLogo);
   }
 
   setLang(lang: string) {
