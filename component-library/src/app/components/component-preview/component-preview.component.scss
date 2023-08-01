@@ -21,7 +21,8 @@ $selectors: "app-component-preview";
   display: block;
 
   .preview-wrapper {
-    min-width: 300px;
+    box-sizing: border-box;
+    padding: 0 64px;
     height: 100%;
     display: inline-flex;
     flex-wrap: wrap;

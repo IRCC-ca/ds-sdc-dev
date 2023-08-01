@@ -4,3 +4,11 @@
 @use "@ircc-ca/ds-sdc-core/typography/typography";
 
 @include page.template;
+
+img.button-figma-usage {
+  max-width: 224px;
+
+  @include grid.in-phone-layout() {
+    margin-top: 24px;
+  }
+}

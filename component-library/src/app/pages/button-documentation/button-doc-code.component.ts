@@ -83,12 +83,6 @@ export class ButtonDocCodeComponent implements OnInit {
           `buttonConfig: IButtonConfig = ${stringify(
             this.buttonConfigCodeView
           )}`
-      },
-      {
-        id: 'css',
-        title: 'CSS',
-        value:
-          '//By default button Layout is fluid and it matches container width\n'
       }
     ]
   };
