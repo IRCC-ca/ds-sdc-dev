@@ -32,6 +32,7 @@ import { BannerDocumentationComponent } from './pages/banner-documentation/banne
 import { DatePickerDocumentationComponent } from './pages/date-picker-documentation/date-picker-documentation.component';
 import { IconButtonDocumentationComponent } from './pages/icon-button-documentation/icon-button-documentation.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
+import { SelectDocumentationComponent } from './pages/select-documentation/select-documentation.component';
 import { MultiCheckboxDocumentationComponent } from './pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 
 export function HttpLoaderFactory(
@@ -87,6 +88,11 @@ const routes: Routes = [
       title: 'Input.Title'
     },
     {
+      path: 'select-documentation',
+      component: SelectDocumentationComponent,
+      title: 'Select (needs translation)'
+    },
+    {
       path: 'request-form',
       component: RequestFormComponent,
       title: 'General.RequestFormTitle'
@@ -128,6 +134,11 @@ const routes: Routes = [
       path: 'banner-documentation-fr',
       component: BannerDocumentationComponent,
       title: 'Banner.Title'
+    },
+    {
+      path: 'select-documentation-fr',
+      component: SelectDocumentationComponent,
+      title: 'Select (needs translation)'
     },
     {
       path: 'boutons',

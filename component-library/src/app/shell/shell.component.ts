@@ -106,6 +106,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.input'
   };
 
+  selectPage: INavigationItemLink = {
+    id: 'selectPageNavItem',
+    label: ' Select ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.select'
+  };
+
   datePickerPage: INavigationItemLink = {
     id: 'datePickerPageNavItem',
     label: ' Date Picker ',
@@ -155,6 +163,7 @@ export class ShellComponent implements OnInit {
       this.buttonsPage,
       this.bannerPage,
       this.inputPage,
+      this.selectPage,
       this.datePickerPage,
       this.iconBtnPage,
       this.multiCheckboxPage
