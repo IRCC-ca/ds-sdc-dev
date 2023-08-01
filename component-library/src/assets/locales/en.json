@@ -835,6 +835,7 @@
 		"Primary": "Primary",
 		"Critical": "Critical",
 		"StateLabel": "State",
+		"StatesLabel": "States",
 		"HoverLabel": "Hover",
 		"ActiveLabel": "Active",
 		"DisabledLabel": "Disabled",

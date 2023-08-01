@@ -94,7 +94,7 @@ export class SpinnerDocCodeComponent implements OnInit {
       id: 'type',
       formGroup: this.form_spinner,
       size: 'small',
-      label: 'General.StateLabel',
+      label: 'General.StatesLabel',
       options: [
         {
           text: 'General.ActiveLabel',
