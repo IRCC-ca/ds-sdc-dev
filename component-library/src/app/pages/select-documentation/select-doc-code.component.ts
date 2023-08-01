@@ -206,7 +206,6 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
   errorState = 'None';
   currentConfigId = this.selectConfig.id;
 
-
   stateTxt(disabled: boolean): string {
     const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
     const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
@@ -267,16 +266,15 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Return mapping of input config from form values
    */
   private parseToggleConfig(value: any) {
-        this.selectConfig = {
-          ...this.selectConfig,
-          size: value['size'].toLowerCase(),
-          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: value['required'] === 'True',
-          desc:
-            value['desc'] === 'True' ? 'Description line of text' : undefined,
-          placeholder:
-            value['placeholder'] === 'True' ? 'Placeholder text' : undefined
-        }
+    this.selectConfig = {
+      ...this.selectConfig,
+      size: value['size'].toLowerCase(),
+      hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+      required: value['required'] === 'True',
+      desc: value['desc'] === 'True' ? 'Description line of text' : undefined,
+      placeholder:
+        value['placeholder'] === 'True' ? 'Placeholder text' : undefined
+    };
   }
 
   /**
@@ -288,8 +286,8 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.errorState = error;
 
-        this.currentConfigId = this.selectConfig.id;
-        this.selectConfigCodeView.errorMessages = undefined;
+    this.currentConfigId = this.selectConfig.id;
+    this.selectConfigCodeView.errorMessages = undefined;
 
     this.parseCodeViewConfig();
   }
@@ -320,15 +318,15 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
     // New Method - Using Pointer manipulation
     const tab = this.codeViewConfig?.tab?.find((t) => t.id === 'ts');
 
-        this.selectConfigCodeView = {
-          ...this.selectConfigCodeView,
-          size: this.selectConfig.size,
-          required: this.selectConfig.required,
-          label: this.selectConfig.label,
-          desc: this.selectConfig.desc,
-          hint: this.selectConfig.hint,
-          placeholder: this.selectConfig.placeholder
-        };
+    this.selectConfigCodeView = {
+      ...this.selectConfigCodeView,
+      size: this.selectConfig.size,
+      required: this.selectConfig.required,
+      label: this.selectConfig.label,
+      desc: this.selectConfig.desc,
+      hint: this.selectConfig.hint,
+      placeholder: this.selectConfig.placeholder
+    };
 
     if (tab) {
       tab.value =

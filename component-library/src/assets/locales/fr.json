@@ -12,6 +12,7 @@
 		"buttons": "boutons",
 		"banner": "banner-documentation-fr",
 		"input": "documentation-dentree",
+		"select": "select-documentation-fr",
 		"datePicker": "datePicker-doc-fr",
 		"iconButton": "icon-button-documentation-fr",
 		"multiCheckbox": "multi-checkbox-documentation-fr",
@@ -1007,8 +1008,5 @@
 			"ColorContrastTxt": "All elements within the spinner component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1."
 		},
 		"Validation": "If an error is automatically detected, the item that is in error is identified and the error is described to the user in text."
-	},
-	"Test": {
-		"test": "Teste"
 	}
 }

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import {
-  ISelectConfig
-} from 'ircc-ds-angular-component-library';
+import { ISelectConfig } from 'ircc-ds-angular-component-library';
 
 import {
   slugAnchorType,
