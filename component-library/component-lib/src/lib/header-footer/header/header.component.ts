@@ -58,12 +58,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const locale = this.translate.currentLang;
     if (locale === 'en' || locale === 'en-US') {
       this.logo = res
-        ? encodeURIComponent(GOV_CANADA_LOGOS.headerDarkLogo)
-        : encodeURIComponent(GOV_CANADA_LOGOS.headerLightLogo);
+        ? GOV_CANADA_LOGOS.headerDarkLogo
+        : GOV_CANADA_LOGOS.headerLightLogo;
     } else {
       this.logo = res
-        ? encodeURIComponent(GOV_CANADA_LOGOS.headerDarkLogoFrench)
-        : encodeURIComponent(GOV_CANADA_LOGOS.headerLightLogoFrench);
+        ? GOV_CANADA_LOGOS.headerDarkLogoFrench
+        : GOV_CANADA_LOGOS.headerLightLogoFrench;
     }
   }
 
