@@ -7,7 +7,7 @@
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
     <p
-      class="demo"
+      class="demo body3"
       [innerHTML]="'Banner.InteractiveDemoDesc' | translate"
     ></p>
     <app-banner-doc-code></app-banner-doc-code>
@@ -17,109 +17,107 @@
     <app-title-slug-url
       [config]="headingConfig.typesSlugConfig"
     ></app-title-slug-url>
-    <!-- Info Banner Preview -->
-    <div class="component-preview-container">
-      <h5 class="sub-headings">
-        {{ 'General.InfoHeading' | translate }}
-      </h5>
-      <app-component-preview
-        class="component-preview"
-        copyStyle="<ircc-cl-lib-banner type='info'></ircc-cl-lib-banner>"
-        componentType="banner"
-        backgroundColor="white"
-      >
-        <ircc-cl-lib-banner
-          class="banner-preview"
-          [config]="infoBannerConfig"
-        ></ircc-cl-lib-banner>
-      </app-component-preview>
-      <p class="description">
-        {{ 'Banner.InfoPrimaryText' | translate }}
-      </p>
-    </div>
-
-    <!-- Warning Banner Preview -->
-    <div class="component-preview-container">
-      <h5 class="sub-headings">
-        {{ 'General.WarningHeading' | translate }}
-      </h5>
-      <app-component-preview
-        class="component-preview"
-        copyStyle="<ircc-cl-lib-banner type='warning'></ircc-cl-lib-banner>"
-        componentType="banner"
-        backgroundColor="white"
-      >
-        <ircc-cl-lib-banner
-          class="banner-preview"
-          [config]="warningBannerConfig"
-        ></ircc-cl-lib-banner>
-      </app-component-preview>
-      <p class="description">
-        {{ 'Banner.WarningPrimaryText' | translate }}
-      </p>
-    </div>
-
-    <!-- Critical Banner Preview -->
-    <div class="component-preview-container">
-      <h5 class="sub-headings">
-        {{ 'General.Critical' | translate }}
-      </h5>
-      <app-component-preview
-        class="component-preview"
-        copyStyle="<ircc-cl-lib-banner type='critical'></ircc-cl-lib-banner>"
-        componentType="banner"
-        backgroundColor="white"
-      >
-        <ircc-cl-lib-banner
-          class="banner-preview"
-          [config]="criticalBannerConfig"
-        ></ircc-cl-lib-banner>
-      </app-component-preview>
-      <p class="description">
-        {{ 'Banner.CriticalPrimaryText' | translate }}
-      </p>
-    </div>
-
-    <!-- Success Banner Preview -->
-    <div class="component-preview-container">
-      <h5 class="sub-headings">
-        {{ 'General.SuccessHeading' | translate }}
-      </h5>
-      <app-component-preview
-        class="component-preview"
-        copyStyle="<ircc-cl-lib-banner type='success'></ircc-cl-lib-banner>"
-        componentType="banner"
-        backgroundColor="white"
-      >
-        <ircc-cl-lib-banner
-          class="banner-preview"
-          [config]="successBannerConfig"
-        ></ircc-cl-lib-banner>
-      </app-component-preview>
-      <p class="description">
-        {{ 'Banner.SuccessPrimaryText' | translate }}
-      </p>
-    </div>
-
-    <!-- generic Banner Preview -->
-    <div class="component-preview-container">
-      <h5 class="sub-headings">
-        {{ 'General.GenericHeading' | translate }}
-      </h5>
-      <app-component-preview
-        class="component-preview"
-        copyStyle="<ircc-cl-lib-banner type='generic'></ircc-cl-lib-banner>"
-        componentType="banner"
-        backgroundColor="white"
-      >
-        <ircc-cl-lib-banner
-          class="banner-preview"
-          [config]="genericBannerConfig"
-        ></ircc-cl-lib-banner>
-      </app-component-preview>
-      <p class="description">
-        {{ 'Banner.GenericPrimaryText' | translate }}
-      </p>
+    <div class="wrapper-container">
+      <!-- Info Banner Preview -->
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.InfoHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="component-preview"
+          copyStyle="<ircc-cl-lib-banner type='info'></ircc-cl-lib-banner>"
+          componentType="banner"
+          backgroundColor="white"
+        >
+          <ircc-cl-lib-banner
+            class="banner-preview"
+            [config]="infoBannerConfig"
+          ></ircc-cl-lib-banner>
+        </app-component-preview>
+        <p class="description body3">
+          {{ 'Banner.InfoPrimaryText' | translate }}
+        </p>
+      </div>
+      <!-- Warning Banner Preview -->
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.WarningHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="component-preview"
+          copyStyle="<ircc-cl-lib-banner type='warning'></ircc-cl-lib-banner>"
+          componentType="banner"
+          backgroundColor="white"
+        >
+          <ircc-cl-lib-banner
+            class="banner-preview"
+            [config]="warningBannerConfig"
+          ></ircc-cl-lib-banner>
+        </app-component-preview>
+        <p class="description body3">
+          {{ 'Banner.WarningPrimaryText' | translate }}
+        </p>
+      </div>
+      <!-- Critical Banner Preview -->
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.Critical' | translate }}
+        </h3>
+        <app-component-preview
+          class="component-preview"
+          copyStyle="<ircc-cl-lib-banner type='critical'></ircc-cl-lib-banner>"
+          componentType="banner"
+          backgroundColor="white"
+        >
+          <ircc-cl-lib-banner
+            class="banner-preview"
+            [config]="criticalBannerConfig"
+          ></ircc-cl-lib-banner>
+        </app-component-preview>
+        <p class="description body3">
+          {{ 'Banner.CriticalPrimaryText' | translate }}
+        </p>
+      </div>
+      <!-- Success Banner Preview -->
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.SuccessHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="component-preview"
+          copyStyle="<ircc-cl-lib-banner type='success'></ircc-cl-lib-banner>"
+          componentType="banner"
+          backgroundColor="white"
+        >
+          <ircc-cl-lib-banner
+            class="banner-preview"
+            [config]="successBannerConfig"
+          ></ircc-cl-lib-banner>
+        </app-component-preview>
+        <p class="description body3">
+          {{ 'Banner.SuccessPrimaryText' | translate }}
+        </p>
+      </div>
+      <!-- Generic Banner Preview -->
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.GenericHeading' | translate }}
+        </h3>
+        <app-component-preview
+          class="component-preview"
+          copyStyle="<ircc-cl-lib-banner type='generic'></ircc-cl-lib-banner>"
+          componentType="banner"
+          backgroundColor="white"
+        >
+          <ircc-cl-lib-banner
+            class="banner-preview"
+            [config]="genericBannerConfig"
+          ></ircc-cl-lib-banner>
+        </app-component-preview>
+        <p class="description body3">
+          {{ 'Banner.GenericPrimaryText' | translate }}
+        </p>
+      </div>
     </div>
   </section>
 
@@ -127,116 +125,112 @@
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'General.Size' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.Small' | translate }}</li>
-            <li>{{ 'General.Large' | translate }}</li>
-          </ul>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'General.Size' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.Small' | translate }}</li>
+              <li>{{ 'General.Large' | translate }}</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'General.TypesHeading' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.InfoHeading' | translate }}</li>
+              <li>{{ 'General.WarningHeading' | translate }}</li>
+              <li>{{ 'General.Critical' | translate }}</li>
+              <li>{{ 'General.SuccessHeading' | translate }}</li>
+              <li>{{ 'General.GenericHeading' | translate }}</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">{{ 'General.TypesHeading' | translate }}</h5>
-          <ul>
-            <li>{{ 'General.InfoHeading' | translate }}</li>
-            <li>{{ 'General.WarningHeading' | translate }}</li>
-            <li>{{ 'General.Critical' | translate }}</li>
-            <li>{{ 'General.SuccessHeading' | translate }}</li>
-            <li>{{ 'General.GenericHeading' | translate }}</li>
-          </ul>
+      <div class="element-wrapper-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'General.StateLabel' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.DefaultLabel' | translate }}</li>
+              <li>{{ 'General.HoverLabel' | translate }}</li>
+              <li>{{ 'General.ActiveLabel' | translate }}</li>
+              <li>{{ 'General.DisabledLabel' | translate }}</li>
+              <li>{{ 'General.FocusLabel' | translate }}</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'General.Description' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.TrueLabel' | translate }}</li>
+              <li>{{ 'General.FalseLabel' | translate }}</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'General.StateLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.DefaultLabel' | translate }}</li>
-            <li>{{ 'General.HoverLabel' | translate }}</li>
-            <li>{{ 'General.ActiveLabel' | translate }}</li>
-            <li>{{ 'General.DisabledLabel' | translate }}</li>
-            <li>{{ 'General.FocusLabel' | translate }}</li>
-          </ul>
+      <div class="element-wrapper-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'General.TitleLabel' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.TrueLabel' | translate }}</li>
+              <li>{{ 'General.FalseLabel' | translate }}</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'General.CloseLabel' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.TrueLabel' | translate }}</li>
+              <li>{{ 'General.FalseLabel' | translate }}</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'General.Description' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.TrueLabel' | translate }}</li>
-            <li>{{ 'General.FalseLabel' | translate }}</li>
-          </ul>
+      <div class="element-wrapper-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'Banner.BannerConfig.CTA1Label' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.TrueLabel' | translate }}</li>
+              <li>{{ 'General.FalseLabel' | translate }}</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'Banner.BannerConfig.CTA2Label' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.TrueLabel' | translate }}</li>
+              <li>{{ 'General.FalseLabel' | translate }}</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'General.TitleLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.TrueLabel' | translate }}</li>
-            <li>{{ 'General.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'General.CloseLabel' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.TrueLabel' | translate }}</li>
-            <li>{{ 'General.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.CTA1Label' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.TrueLabel' | translate }}</li>
-            <li>{{ 'General.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.CTA2Label' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.TrueLabel' | translate }}</li>
-            <li>{{ 'General.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
-            {{ 'Banner.BannerConfig.CTA3Label' | translate }}
-          </h5>
-          <ul>
-            <li>{{ 'General.TrueLabel' | translate }}</li>
-            <li>{{ 'General.FalseLabel' | translate }}</li>
-          </ul>
+      <div class="element-wrapper-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h3 class="sub-headings">
+              {{ 'Banner.BannerConfig.CTA3Label' | translate }}
+            </h3>
+            <ul>
+              <li>{{ 'General.TrueLabel' | translate }}</li>
+              <li>{{ 'General.FalseLabel' | translate }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -249,42 +243,42 @@
 
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h3 class="emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.KeepActionsSimpleLabel' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-actions-do.png"
               alt="{{
                 'Banner.DesignGuideLines.BannerActionsDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerActionsDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-actions-dont.png"
               alt="{{
                 'Banner.DesignGuideLines.BannerActionsDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.BannerActionsDontText' | translate
                 }}
@@ -293,88 +287,86 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+      <div class="element-wrapper-container mt_8">
+        <h3 class="emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.UseOneBannerAtATimeLabel' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-count-do.png"
               alt="{{ 'Banner.DesignGuideLines.BannerCountDoAlt' | translate }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerCountDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-count-dont.png"
               alt="{{
                 'Banner.DesignGuideLines.BannerCountDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.BannerCountDontText' | translate }}
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+      <div class="element-wrapper-container mt_8">
+        <h3 class="emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.ShowMaximumButtonsLabel' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-count-do.png"
               alt="{{
                 'Banner.DesignGuideLines.bannerButtonCountDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonCountDoText' | translate
                 }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-count-dont.png"
               alt="{{
                 'Banner.DesignGuideLines.bannerButtonCountDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonCountDontText'
                     | translate
@@ -384,46 +376,45 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+      <div class="element-wrapper-container mt_8">
+        <h3 class="emphasis sub-headings">
           {{
             'Banner.DesignGuideLines.ProperButtonTypeInGroupLabel' | translate
           }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-type-do.png"
               alt="{{
                 'Banner.DesignGuideLines.bannerButtonTypeDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{ 'General.ButtonTypeDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-button-type-dont.png"
               alt="{{
                 'Banner.DesignGuideLines.bannerButtonTypeDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerButtonTypeDontText' | translate
                 }}
@@ -432,44 +423,43 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+      <div class="element-wrapper-container mt_8">
+        <h3 class="emphasis sub-headings">
           {{ 'Banner.DesignGuideLines.BannerCorrectDismissLabel' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-dismiss-do.png"
               alt="{{
                 'Banner.DesignGuideLines.bannerDismissDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{ 'Banner.DesignGuideLines.bannerDismissDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-dismiss-dont.png"
               alt="{{
                 'Banner.DesignGuideLines.bannerDismissDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.DesignGuideLines.bannerDismissDontText' | translate
                 }}
@@ -478,20 +468,21 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <h5 class="sub-headings">
-      {{ 'General.MaxMinWidthHeading' | translate }}
-    </h5>
-    <div class="row">
-      <div [style.max-width]="'100%'">
-        <img
-          src="assets/img/banner-content/banner-min-max-width.png"
-          alt="{{ 'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate }}"
-        />
-        <p class="description">
-          {{ 'Banner.DesignGuideLines.bannerMinMaxWidthText' | translate }}
-        </p>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.MaxMinWidthHeading' | translate }}
+        </h3>
+        <div>
+          <img
+            src="assets/img/banner-content/banner-min-max-width.png"
+            alt="{{
+              'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate
+            }}"
+          />
+          <p class="description body3">
+            {{ 'Banner.DesignGuideLines.bannerMinMaxWidthText' | translate }}
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -500,38 +491,51 @@
     <app-title-slug-url
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
-    <img
-      class="anatomy-image-container"
-      src="assets/img/banner-content/banner-anatomy.png"
-      alt="{{ 'Banner.Anatomy.ImgAlt' | translate }}"
-    /><br />
-    <ng-container *ngFor="let content of anatomyContentItems; let i = index">
-      <div class="anatomy-content-container">
-        <div class="counter-and-heading-container">
-          <div class="round-purple-num-count">{{ i + 1 }}</div>
-          <h5 class="round-purple-num-heading-text">
-            <strong>{{ content.title | translate }}</strong>
-          </h5>
-        </div>
-        <p class="anatomy-description">
-          {{ content.description | translate }}
-        </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/banner-content/banner-anatomy.png"
+          alt="{{ 'Banner.Anatomy.ImgAlt' | translate }}"
+        />
       </div>
-    </ng-container>
+      <div class="element-wrapper-container">
+        <ng-container
+          *ngFor="let content of anatomyContentItems; let i = index"
+        >
+          <div class="anatomy-content-container">
+            <div class="counter-and-heading-container">
+              <div class="round-purple-num-count">{{ i + 1 }}</div>
+              <h3 class="round-purple-num-heading">
+                <strong>{{ content.title | translate }}</strong>
+              </h3>
+            </div>
+            <p class="anatomy-description body3">
+              {{ content.description | translate }}
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
   </section>
 
   <section class="specs">
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
     ></app-title-slug-url>
-    <img
-      class="single-img"
-      src="assets/img/banner-content/banner-specs.png"
-      alt="{{ 'Banner.Specs.ImgAlt' | translate }}"
-    />
-    <p class="specs-description">
-      {{ 'Banner.Specs.Text' | translate }}
-    </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          class="single-img"
+          src="assets/img/banner-content/banner-specs.png"
+          alt="{{ 'Banner.Specs.ImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <p class="specs-description body3">
+          {{ 'Banner.Specs.Text' | translate }}
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="content-guidelines">
@@ -541,24 +545,24 @@
 
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h3 class="emphasis sub-headings">
           {{ 'Banner.ContentGuideLines.UseCorrectCaseHeading' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-use-correct-case-do.png"
               alt="{{
                 'Banner.ContentGuideLines.BannerUseCorrectCaseDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerUseCorrectCaseDoText'
                     | translate
@@ -566,7 +570,7 @@
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-use-correct-case-dont.png"
               alt="{{
@@ -574,13 +578,13 @@
                   | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerUseCorrectCaseDontText'
                     | translate
@@ -592,42 +596,42 @@
       </div>
 
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h3 class="emphasis sub-headings">
           {{ 'Banner.ContentGuideLines.EasyToReadTitleHeading' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-title-do.png"
               alt="{{
                 'Banner.ContentGuideLines.BannerTitleDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{ 'Banner.ContentGuideLines.BannerTitleDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-title-dont.png"
               alt="{{
                 'Banner.ContentGuideLines.BannerTitleDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{ 'Banner.ContentGuideLines.BannerTitleDontText' | translate }}
               </p>
             </div>
@@ -636,44 +640,44 @@
       </div>
 
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h3 class="emphasis sub-headings">
           {{ 'Banner.ContentGuideLines.ProperPunctuationHeading' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-punctuation-do.png"
               alt="{{
                 'Banner.ContentGuideLines.BannerPunctuationDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerPunctuationDoText' | translate
                 }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/banner-content/banner-punctuation-dont.png"
               alt="{{
                 'Banner.ContentGuideLines.BannerPunctuationDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
-              <p>
+              </h4>
+              <p class="body3">
                 {{
                   'Banner.ContentGuideLines.BannerPunctuationDontText'
                     | translate
@@ -691,10 +695,10 @@
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
     <div class="row">
-      <div class="figma-usage">
-        <h5 class="sub-headings">
+      <div class="col-12 col-md-8">
+        <h3 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
-        </h5>
+        </h3>
         <ol>
           <li
             class="list-item"
@@ -703,7 +707,7 @@
           ></li>
         </ol>
       </div>
-      <div class="image-container-wrapper">
+      <div class="col-12 col-md-4">
         <div class="image-1 image-container">
           <img
             src="assets/img/banner-content/banner-figma-directions-for-use.png"
@@ -718,26 +722,27 @@
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
-    <div class="content-element">
-      <h5 class="sub-headings">
-        {{ 'General.AccessibilityColourHeading' | translate }}
-      </h5>
-      <ol class="list-container">
-        <li
-          class="list-item"
-          *ngFor="let item of accessibilityColorContrast"
-          [innerHtml]="item | translate"
-        ></li>
-      </ol>
-    </div>
-
-    <div class="content-element">
-      <h5 class="sub-headings">
-        {{ 'General.AccessibilityKeyboardHeading' | translate }}
-      </h5>
-      <p>
-        {{ 'Banner.Accessibility.KeyboardText' | translate }}
-      </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.AccessibilityColourHeading' | translate }}
+        </h3>
+        <ul class="list-container">
+          <li
+            class="list-item"
+            *ngFor="let item of accessibilityColorContrast"
+            [innerHtml]="item | translate"
+          ></li>
+        </ul>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.AccessibilityKeyboardHeading' | translate }}
+        </h3>
+        <p class="body3">
+          {{ 'Banner.Accessibility.KeyboardText' | translate }}
+        </p>
+      </div>
     </div>
   </section>
 
@@ -745,6 +750,6 @@
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p>{{ 'General.ComingSoon' | translate }}</p>
+    <p class="body3">{{ 'General.ComingSoon' | translate }}</p>
   </section>
 </div>

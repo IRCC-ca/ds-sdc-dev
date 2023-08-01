@@ -6,6 +6,7 @@
   <label
     *ngIf="config.label"
     class="label"
+    [attr.for]="config.parentID"
   >
     <span class="label_field_container">
       <div

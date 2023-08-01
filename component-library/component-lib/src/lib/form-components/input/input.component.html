@@ -60,20 +60,20 @@
             class="passwordIcon"
             (click)="hideShow()"
             [disabled]="disabled"
-            attr.aria-label={{btnAriaLabel}}
+            attr.aria-label="{{ btnAriaLabel }}"
             aria-live="polite"
           >
             <div
               *ngIf="showPassword"
               role="img"
-              attr.aria-label="{{btnAriaLabelHide}}"
+              attr.aria-label="{{ btnAriaLabelHide }}"
             >
               <i class="fa-solid fa-eye-slash"></i>
             </div>
             <div
               *ngIf="!showPassword"
               role="img"
-              attr.aria-label="{{btnAriaLabelShow}}"
+              attr.aria-label="{{ btnAriaLabelShow }}"
             >
               <i class="fa-solid fa-eye"></i>
             </div>
@@ -96,6 +96,7 @@
               <ircc-cl-lib-error
                 [id]="errors.id"
                 [errorLOV]="errors.errorLOV"
+                [attr.size]="config.size"
               ></ircc-cl-lib-error>
             </div>
           </ng-container>

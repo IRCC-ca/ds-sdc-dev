@@ -16,79 +16,74 @@
     <app-title-slug-url
       [config]="headingConfig.typesSlugConfig"
     ></app-title-slug-url>
-    <!-- Primary icon btn Preview -->
-    <div class="component-preview-container">
-      <h5 class="sub-headings">
-        {{ 'General.Primary' | translate }}
-      </h5>
-      <app-component-preview
-        class="component-preview"
-        copyStyle="<ircc-cl-lib-icon-button category='primary'></ircc-cl-lib-icon-button>"
-        componentType="iconBtn"
-      >
-        <ircc-cl-lib-icon-button
-          class="icon-btn-preview"
-          [config]="primaryIconBtnConfig"
-        ></ircc-cl-lib-icon-button>
-      </app-component-preview>
-      <p class="description">
-        {{ 'IconButtonDocumentation.PrimaryText' | translate }}
-      </p>
-    </div>
-
-    <!-- Critical icon btn Preview -->
-    <div class="component-preview-container">
-      <h5 class="sub-headings">
-        {{ 'General.Critical' | translate }}
-      </h5>
-      <app-component-preview
-        class="component-preview"
-        copyStyle="<ircc-cl-lib-icon-button category='critical'></ircc-cl-lib-icon-button>"
-        componentType="iconBtn"
-      >
-        <ircc-cl-lib-icon-button
-          class="icon-btn-preview"
-          [config]="criticalIconConfig"
-        ></ircc-cl-lib-icon-button>
-      </app-component-preview>
-      <p class="description">
-        {{ 'IconButtonDocumentation.CriticalText' | translate }}
-      </p>
+    <div class="wrapper-container">
+      <!-- Primary icon btn Preview -->
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.Primary' | translate }}
+        </h3>
+        <app-component-preview
+          class="component-preview"
+          copyStyle="<ircc-cl-lib-icon-button category='primary'></ircc-cl-lib-icon-button>"
+        >
+          <ircc-cl-lib-icon-button
+            class="icon-btn-preview"
+            [config]="primaryIconBtnConfig"
+          ></ircc-cl-lib-icon-button>
+        </app-component-preview>
+        <p class="description">
+          {{ 'IconButtonDocumentation.PrimaryText' | translate }}
+        </p>
+      </div>
+      <!-- Critical icon btn Preview -->
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.Critical' | translate }}
+        </h3>
+        <app-component-preview
+          class="component-preview"
+          copyStyle="<ircc-cl-lib-icon-button category='critical'></ircc-cl-lib-icon-button>"
+        >
+          <ircc-cl-lib-icon-button
+            class="icon-btn-preview"
+            [config]="criticalIconConfig"
+          ></ircc-cl-lib-icon-button>
+        </app-component-preview>
+        <p class="description">
+          {{ 'IconButtonDocumentation.CriticalText' | translate }}
+        </p>
+      </div>
     </div>
   </section>
   <section class="configs">
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
             {{ 'General.Size' | translate }}
-          </h5>
+          </h3>
           <ul>
             <li>{{ 'General.ExtraSmall' | translate }}</li>
             <li>{{ 'General.Small' | translate }}</li>
             <li>{{ 'General.Large' | translate }}</li>
           </ul>
         </div>
-      </div>
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">{{ 'General.TypesHeading' | translate }}</h5>
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">{{ 'General.TypesHeading' | translate }}</h3>
           <ul>
             <li>{{ 'General.Primary' | translate }}</li>
             <li>{{ 'General.Critical' | translate }}</li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="config-row">
-      <div class="column">
-        <div class="config-element">
-          <h5 class="sub-headings">
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3 class="sub-headings">
             {{ 'General.StateLabel' | translate }}
-          </h5>
+          </h3>
           <ul>
             <li>{{ 'General.DefaultLabel' | translate }}</li>
             <li>{{ 'General.HoverLabel' | translate }}</li>
@@ -107,39 +102,39 @@
 
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+        <h3 class="emphasis sub-headings">
           {{ 'IconButtonDocumentation.OrganizeIcons' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/org-icon.png"
               alt="{{ 'IconButtonDocumentation.OrganizeIconsAlt' | translate }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{ 'IconButtonDocumentation.OrganizeIconsDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/org-icon-dont.png"
               alt="{{
                 'IconButtonDocumentation.OrganizeIconsDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{
                   'IconButtonDocumentation.OrganizeIconsDontText' | translate
@@ -149,41 +144,40 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+      <div class="element-wrapper-container pt_8">
+        <h3 class="emphasis sub-headings">
           {{ 'IconButtonDocumentation.CreateConsistent' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/create-btn-do.png"
               alt="{{ 'IconButtonDocumentation.CreateIconsDoAlt' | translate }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{ 'IconButtonDocumentation.CreateIconsDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/create-btn-dont.png"
               alt="{{
                 'IconButtonDocumentation.CreateIconsDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{ 'IconButtonDocumentation.CreateIconsDontText' | translate }}
               </p>
@@ -191,41 +185,40 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+      <div class="element-wrapper-container pt_8">
+        <h3 class="emphasis sub-headings">
           {{ 'IconButtonDocumentation.UseCriticalDestruction' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/use-critical-do.png"
               alt="{{ 'IconButtonDocumentation.UseCriticalDoAlt' | translate }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{ 'IconButtonDocumentation.UseCriticalDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/use-critical-dont.png"
               alt="{{
                 'IconButtonDocumentation.UseCriticalDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{ 'IconButtonDocumentation.UseCriticalDontText' | translate }}
               </p>
@@ -233,43 +226,42 @@
           </div>
         </div>
       </div>
-
-      <div class="element-wrapper-container">
-        <h5 class="emphasis sub-headings">
+      <div class="element-wrapper-container pt_8">
+        <h3 class="emphasis sub-headings">
           {{ 'IconButtonDocumentation.EasyUnderStandHeading' | translate }}
-        </h5>
-        <div class="row row-container">
-          <div class="column left-column">
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/easy-icon-do.png"
               alt="{{
                 'IconButtonDocumentation.EasyUnderStandDoAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-green"
               >
                 {{ 'General.DoHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{ 'IconButtonDocumentation.EasyUnderStandDoText' | translate }}
               </p>
             </div>
           </div>
-          <div class="column right-column">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/icon-btn-content/easy-icon-do.png"
               alt="{{
                 'IconButtonDocumentation.EasyUnderStandDontAlt' | translate
               }}"
             />
-            <div class="do-dont-container">
-              <h5
+            <div class="do-dont-desc">
+              <h4
                 class="do-dont-heading emphasis text-underline text-color-red"
               >
                 {{ 'General.DontHeading' | translate }}
-              </h5>
+              </h4>
               <p>
                 {{
                   'IconButtonDocumentation.EasyUnderStandDontText' | translate
@@ -279,20 +271,23 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <h5 class="sub-headings">
-      {{ 'IconButtonDocumentation.SpacingHeading' | translate }}
-    </h5>
-    <div class="row">
-      <div [style.max-width]="'100%'">
-        <img
-          src="assets/img/icon-btn-content/icon-spacing.png"
-          alt="{{ 'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate }}"
-        />
-        <p class="description">
-          {{ 'IconButtonDocumentation.SpacingText' | translate }}
-        </p>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'IconButtonDocumentation.SpacingHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div [style.max-width]="'100%'">
+            <img
+              src="assets/img/icon-btn-content/icon-spacing.png"
+              alt="{{
+                'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate
+              }}"
+            />
+            <p class="description">
+              {{ 'IconButtonDocumentation.SpacingText' | translate }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -300,47 +295,55 @@
     <app-title-slug-url
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
-    <img
-      class="anatomy-image-container"
-      src="assets/img/icon-btn-content/anatomy-image-button.png"
-      alt="{{ 'Banner.Anatomy.ImgAlt' | translate }}"
-    />
-    <div class="anatomy-content-container">
-      <div class="counter-and-heading-container">
-        <div class="round-purple-num-count">1</div>
-        <h5 class="round-purple-num-heading-text">
-          <strong>{{
-            'IconButtonDocumentation.AnatomyHeading' | translate
-          }}</strong>
-        </h5>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          class="anatomy-image-container"
+          src="assets/img/icon-btn-content/anatomy-image-button.png"
+          alt="{{ 'Banner.Anatomy.ImgAlt' | translate }}"
+        />
       </div>
-      <p class="anatomy-description">
-        {{ 'IconButtonDocumentation.AnatomyText' | translate }}
-      </p>
+      <div class="element-wrapper-container anatomy-content-container">
+        <div class="counter-and-heading-container">
+          <div class="round-purple-num-count">1</div>
+          <h3 class="round-purple-num-heading">
+            {{ 'IconButtonDocumentation.AnatomyHeading' | translate }}
+          </h3>
+        </div>
+        <p class="anatomy-description">
+          {{ 'IconButtonDocumentation.AnatomyText' | translate }}
+        </p>
+      </div>
     </div>
   </section>
   <section class="specs">
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
     ></app-title-slug-url>
-    <img
-      class="single-img"
-      src="assets/img/icon-btn-content/spec-image.png"
-      alt="{{ 'IconButtonDocumentation.SpecsImgAlt' | translate }}"
-    />
-    <p class="specs-description">
-      {{ 'IconButtonDocumentation.SpecsText' | translate }}
-    </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          class="single-img"
+          src="assets/img/icon-btn-content/spec-image.png"
+          alt="{{ 'IconButtonDocumentation.SpecsImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <p class="specs-description">
+          {{ 'IconButtonDocumentation.SpecsText' | translate }}
+        </p>
+      </div>
+    </div>
   </section>
   <section class="figma-usage">
     <app-title-slug-url
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
-    <div class="figma-row">
-      <div class="figma-column">
-        <h5 class="sub-headings">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <h3 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
-        </h5>
+        </h3>
         <ol>
           <li
             class="list-item"
@@ -349,7 +352,7 @@
           ></li>
         </ol>
       </div>
-      <div class="image-container-wrapper">
+      <div class="col-12 col-md-4">
         <div class="image-1 image-container">
           <img
             src="assets/img/icon-btn-content/figma.png"
@@ -365,52 +368,54 @@
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
-    <div class="content-element">
-      <h5 class="sub-headings">
-        {{ 'General.AccessibilityColourHeading' | translate }}
-      </h5>
-      <p class="accessible-color">
-        {{ 'IconButtonDocumentation.AccessibilityColourText1' | translate }}
-      </p>
-      <p class="accessible-color">
-        {{ 'IconButtonDocumentation.AccessibilityColourText2' | translate }}
-      </p>
-    </div>
-    <div class="content-element">
-      <h5 class="sub-headings">
-        {{ 'General.AccessibilityKeyboardHeading' | translate }}
-      </h5>
-      <p class="accessible">
-        {{ 'IconButtonDocumentation.AccessibilityKeyboardText' | translate }}
-      </p>
-      <ul class="content-list">
-        <li
-          class="list-item"
-          [innerHtml]="
-            'IconButtonDocumentation.AccessibilityContentItem1' | translate
-          "
-        ></li>
-        <li
-          class="list-item"
-          [innerHtml]="
-            'IconButtonDocumentation.AccessibilityContentItem2' | translate
-          "
-        ></li>
-        <li
-          class="list-item"
-          [innerHtml]="
-            'IconButtonDocumentation.AccessibilityContentItem3' | translate
-          "
-        ></li>
-      </ul>
-    </div>
-    <div class="content-element">
-      <h5 class="sub-headings">
-        {{ 'General.Labelling' | translate }}
-      </h5>
-      <p>
-        {{ 'IconButtonDocumentation.LabellingText' | translate }}
-      </p>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.AccessibilityColourHeading' | translate }}
+        </h3>
+        <p class="accessible-color">
+          {{ 'IconButtonDocumentation.AccessibilityColourText1' | translate }}
+        </p>
+        <p class="accessible-color">
+          {{ 'IconButtonDocumentation.AccessibilityColourText2' | translate }}
+        </p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.AccessibilityKeyboardHeading' | translate }}
+        </h3>
+        <p class="accessible">
+          {{ 'IconButtonDocumentation.AccessibilityKeyboardText' | translate }}
+        </p>
+        <ul class="content-list mt_8">
+          <li
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.AccessibilityContentItem1' | translate
+            "
+          ></li>
+          <li
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.AccessibilityContentItem2' | translate
+            "
+          ></li>
+          <li
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.AccessibilityContentItem3' | translate
+            "
+          ></li>
+        </ul>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="sub-headings">
+          {{ 'General.Labelling' | translate }}
+        </h3>
+        <p>
+          {{ 'IconButtonDocumentation.LabellingText' | translate }}
+        </p>
+      </div>
     </div>
   </section>
   <section class="research">

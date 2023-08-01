@@ -80,6 +80,17 @@ export class SideNavConfig {
         type: ItemType.Link,
         category: ItemCategory.subTitle,
         path: 'ROUTES.buttons'
+      },
+      {
+        text: 'LeftSideNav.title.support',
+        type: ItemType.Link,
+        category: ItemCategory.Title
+      },
+      {
+        text: 'RequestForm.Title',
+        type: ItemType.Link,
+        category: ItemCategory.subTitle,
+        path: 'ROUTES.requestForm'
       }
     ];
   }

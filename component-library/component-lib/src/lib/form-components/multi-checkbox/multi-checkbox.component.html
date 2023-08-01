@@ -1,0 +1,29 @@
+<div class="parent-checkbox">
+  <ircc-cl-lib-checkbox [config]="config.parent"></ircc-cl-lib-checkbox>
+  <ng-container *ngFor="let child of config.children">
+    <ng-container
+      *ngTemplateOutlet="recursiveListTmpl; context: { checkBoxConfig: child }"
+    ></ng-container>
+  </ng-container>
+</div>
+
+<ng-template
+  #recursiveListTmpl
+  let-checkBoxConfig="checkBoxConfig"
+>
+  <div class="child-checkbox">
+    <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
+  </div>
+</ng-template>
+
+<ng-container *ngFor="let errors of this.config.errorMessages; let i = index">
+  <div
+    *ngIf="errorIds.length > -1"
+    class="radio-errors"
+  >
+    <ircc-cl-lib-error
+      [id]="errors.id"
+      [errorLOV]="errors.errorLOV"
+    ></ircc-cl-lib-error>
+  </div>
+</ng-container>

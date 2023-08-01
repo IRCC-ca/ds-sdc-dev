@@ -1,9 +1,6 @@
-<button
-  category="link"
-  role="link"
+<a
   [id]="id"
   (click)="switch()"
   id="language-toggle"
->
-  {{ text }}
-</button>
+  [innerHTML]="text"
+></a>

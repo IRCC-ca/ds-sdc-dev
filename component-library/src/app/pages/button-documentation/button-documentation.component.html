@@ -1,9 +1,6 @@
 <div class="content-doc-wrapper">
   <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Buttons.Intro' | translate }}</p>
-  <app-info-text-small>
-    {{ 'Buttons.IntroAlert' | translate }}
-  </app-info-text-small>
 
   <section class="interactive-demo">
     <app-title-slug-url
@@ -25,9 +22,9 @@
 
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h5>
+        <h3>
           {{ 'Buttons.PrimaryHeading' | translate }}
-        </h5>
+        </h3>
         <app-component-preview
           copyText="<button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>"
         >
@@ -38,9 +35,9 @@
         <p class="body3">{{ 'Buttons.PrimaryText' | translate }}</p>
       </div>
       <div class="element-wrapper-container">
-        <h5>
+        <h3>
           {{ 'Buttons.SecondaryHeading' | translate }}
-        </h5>
+        </h3>
         <app-component-preview
           copyText="<button category='secondary'>{{
             'Buttons.SecondaryIBtnText' | translate
@@ -53,9 +50,9 @@
         <p class="body3">{{ 'Buttons.SecondaryText' | translate }}</p>
       </div>
       <div class="element-wrapper-container">
-        <h5>
+        <h3>
           {{ 'General.Critical' | translate }}
-        </h5>
+        </h3>
         <app-component-preview
           copyText="<button color='critical'>{{
             'Buttons.CriticalBtnText' | translate
@@ -68,7 +65,7 @@
         <p class="body3">{{ 'Buttons.CriticalText' | translate }}</p>
       </div>
       <div class="element-wrapper-container">
-        <h5>{{ 'Buttons.PlainHeading' | translate }}</h5>
+        <h3>{{ 'Buttons.PlainHeading' | translate }}</h3>
         <app-component-preview
           copyText="<button category='plain'>{{
             'Buttons.PlainBtnText' | translate
@@ -101,42 +98,44 @@
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <h5>
-          {{ 'General.Size' | translate }}
-        </h5>
-        <ul>
-          <li>{{ 'General.Small' | translate }}</li>
-          <li>{{ 'General.Large' | translate }}</li>
-        </ul>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3>
+            {{ 'General.Size' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Small' | translate }}</li>
+            <li>{{ 'General.Large' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3>{{ 'General.Layout' | translate }}</h3>
+          <ul>
+            <li>{{ 'Buttons.ConfigLayoutFluid' | translate }}</li>
+            <li>{{ 'Buttons.ConfigLayoutFixed' | translate }}</li>
+          </ul>
+        </div>
       </div>
-      <div class="col-12 col-md-6">
-        <h5>{{ 'General.Layout' | translate }}</h5>
-        <ul>
-          <li>{{ 'Buttons.ConfigLayoutFluid' | translate }}</li>
-          <li>{{ 'Buttons.ConfigLayoutFixed' | translate }}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <h5>{{ 'Buttons.ConfigIconHeading' | translate }}</h5>
-        <ul>
-          <li>{{ 'Buttons.ConfigIconNone' | translate }}</li>
-          <li>{{ 'Buttons.ConfigIconLeading' | translate }}</li>
-          <li>{{ 'Buttons.ConfigIconTrailing' | translate }}</li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-6">
-        <h5>{{ 'General.StateLabel' | translate }}</h5>
-        <ul>
-          <li>{{ 'General.DefaultLabel' | translate }}</li>
-          <li>{{ 'General.HoverLabel' | translate }}</li>
-          <li>{{ 'General.ActiveLabel' | translate }}</li>
-          <li>{{ 'General.DisabledLabel' | translate }}</li>
-          <li>{{ 'General.FocusLabel' | translate }}</li>
-        </ul>
+      <div class="row element-wrapper-container">
+        <div class="col-12 col-md-6">
+          <h3>{{ 'Buttons.ConfigIconHeading' | translate }}</h3>
+          <ul>
+            <li>{{ 'Buttons.ConfigIconNone' | translate }}</li>
+            <li>{{ 'Buttons.ConfigIconLeading' | translate }}</li>
+            <li>{{ 'Buttons.ConfigIconTrailing' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6">
+          <h3>{{ 'General.StateLabel' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.DefaultLabel' | translate }}</li>
+            <li>{{ 'General.HoverLabel' | translate }}</li>
+            <li>{{ 'General.ActiveLabel' | translate }}</li>
+            <li>{{ 'General.DisabledLabel' | translate }}</li>
+            <li>{{ 'General.FocusLabel' | translate }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -147,18 +146,18 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container do-dont-container">
-        <h5>
+        <h3>
           {{ 'Buttons.HierarchyHeading' | translate }}
-        </h5>
+        </h3>
         <div class="row">
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/btn-do-1.jpg"
               alt="{{ 'Buttons.HierarchyDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green mt_8">
+            <h4 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'General.ButtonTypeDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
@@ -166,26 +165,26 @@
               src="assets/img/button-content/btn-do-2.jpg"
               alt="{{ 'Buttons.HierarchyDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red mt_8">
+            <h4 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.HierarchyDontText' | translate }}</p>
           </div>
         </div>
       </div>
       <div class="element-wrapper-container pt_8 do-dont-container">
-        <h5>
+        <h3>
           {{ 'Buttons.DestructiveHeading' | translate }}
-        </h5>
+        </h3>
         <div class="row">
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/btn-do-3.jpg"
               alt="{{ 'Buttons.DestructiveDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green mt_8">
+            <h4 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.DestructiveDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
@@ -193,26 +192,26 @@
               src="assets/img/button-content/btn-do-4.jpg"
               alt="{{ 'Buttons.DestructiveDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red mt_8">
+            <h4 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.DestructiveDontText' | translate }}</p>
           </div>
         </div>
       </div>
       <div class="element-wrapper-container pt_8 do-dont-container">
-        <h5>
+        <h3>
           {{ 'Buttons.PlainBtnTexts' | translate }}
-        </h5>
+        </h3>
         <div class="row">
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/btn-do-5.jpg"
               alt="{{ 'Buttons.PlainDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green mt_8">
+            <h4 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.PlainDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
@@ -220,17 +219,17 @@
               src="assets/img/button-content/btn-do-6.jpg"
               alt="{{ 'Buttons.PlainDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red mt_8">
+            <h4 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.PlainDontText' | translate }}</p>
           </div>
         </div>
       </div>
       <div class="element-wrapper-container">
-        <h5>
+        <h3>
           {{ 'Buttons.SpacingGroupsHeading' | translate }}
-        </h5>
+        </h3>
         <img
           src="assets/img/button-content/button-design-spacing.jpg"
           alt="{{ 'Buttons.SpacingGroupsImgAlt' | translate }}"
@@ -238,9 +237,9 @@
         <p class="body3 mt_12">{{ 'Buttons.SpacingGroupsText' | translate }}</p>
       </div>
       <div class="element-wrapper-container">
-        <h5>
+        <h3>
           {{ 'General.MaxMinWidthHeading' | translate }}
-        </h5>
+        </h3>
         <img
           src="assets/img/button-content/button-design-width.jpg"
           alt="{{ 'Buttons.MinMaxWidthImgAlt' | translate }}"
@@ -259,23 +258,23 @@
         <img
           src="assets/img/button-content/anatomy-image-button.jpg"
           alt="{{ 'Buttons.AnatomyImgAlt' | translate }}"
-        /><br />
+        />
       </div>
       <div class="element-wrapper-container">
         <span class="round-purple-num">1</span>
-        <h5 class="round-purple-num sub-headings">
+        <h3 class="round-purple-num sub-headings">
           {{ 'Buttons.AnatomyBGHeading' | translate }}
-        </h5>
+        </h3>
         <p class="body3">{{ 'Buttons.AnatomyBGText' | translate }}</p>
         <span class="round-purple-num">2</span>
-        <h5 class="round-purple-num sub-headings">
+        <h3 class="round-purple-num sub-headings">
           {{ 'Buttons.ConfigIconHeading' | translate }}
-        </h5>
+        </h3>
         <p class="body3">{{ 'Buttons.AnatomyIconText' | translate }}</p>
         <span class="round-purple-num">3</span>
-        <h5 class="round-purple-num sub-headings">
+        <h3 class="round-purple-num sub-headings">
           {{ 'General.LabelHeading' | translate }}
-        </h5>
+        </h3>
         <p class="body3">{{ 'Buttons.AnatomyLblText' | translate }}</p>
       </div>
     </div>
@@ -304,16 +303,16 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container do-dont-container">
-        <h5>{{ 'Buttons.CaseHeading' | translate }}</h5>
+        <h3>{{ 'Buttons.CaseHeading' | translate }}</h3>
         <div class="row">
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/button-content-guide-1.jpg"
               alt="{{ 'Buttons.CaseDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green mt_8">
+            <h4 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.CaseDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
@@ -321,24 +320,24 @@
               src="assets/img/button-content/button-content-guide-2.jpg"
               alt="{{ 'Buttons.CaseDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red mt_8">
+            <h4 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.CaseDontText' | translate }}</p>
           </div>
         </div>
       </div>
       <div class="element-wrapper-container pt_8 do-dont-container">
-        <h5>{{ 'Buttons.DescriptiveHeading' | translate }}</h5>
+        <h3>{{ 'Buttons.DescriptiveHeading' | translate }}</h3>
         <div class="row">
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/button-content-guide-3.jpg"
               alt="{{ 'Buttons.DescriptiveDoImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-green mt_8">
+            <h4 class="text-underline text-color-green mt_8">
               {{ 'General.DoHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.DescriptiveDoText' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
@@ -346,9 +345,9 @@
               src="assets/img/button-content/button-content-guide-4.jpg"
               alt="{{ 'Buttons.DescriptiveDontImgAlt' | translate }}"
             />
-            <h5 class="text-underline text-color-red mt_8">
+            <h4 class="text-underline text-color-red mt_8">
               {{ 'General.DontHeading' | translate }}
-            </h5>
+            </h4>
             <p class="body3">{{ 'Buttons.DescriptiveDontText' | translate }}</p>
           </div>
         </div>
@@ -362,9 +361,9 @@
     ></app-title-slug-url>
     <div class="row">
       <div class="col-12 col-md-8">
-        <h5>
+        <h3>
           {{ 'General.FigmaDirectionsHeading' | translate }}
-        </h5>
+        </h3>
         <ol>
           <li [innerHtml]="'Buttons.FigmaDirectionsListItem1' | translate"></li>
           <li [innerHtml]="'General.FigmaDirectionsListItem2' | translate"></li>
@@ -391,17 +390,17 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h5>
+        <h3>
           {{ 'General.AccessibilityColourHeading' | translate }}
-        </h5>
+        </h3>
         <p class="body3 mt_12">
           {{ 'Buttons.AccessibilityColourText' | translate }}
         </p>
       </div>
       <div class="element-wrapper-container">
-        <h5>
+        <h3>
           {{ 'General.AccessibilityKeyboardHeading' | translate }}
-        </h5>
+        </h3>
         <p class="body3 mt_12">
           {{ 'Buttons.AccessibilityKeyboardText' | translate }}
         </p>

@@ -72,7 +72,7 @@
     }
 
     &.breadcrumb-root {
-      padding: 4px 8px 4px 0;
+      padding: 4px 8px;
     }
   }
 
@@ -170,6 +170,10 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+
+      abbr {
+        text-decoration: none;
+      }
     }
   }
 
@@ -211,7 +215,7 @@
     width: 197px;
     border: 1px solid var(--grey-5);
     border-radius: 4px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 10%);
     background: var(--surface1);
     z-index: 99;
     left: -43px;

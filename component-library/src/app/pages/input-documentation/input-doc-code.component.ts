@@ -28,10 +28,10 @@ import {
 })
 export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'inputDocumentation';
+  form = new FormGroup({});
+  state: boolean = false;
 
   constructor(private lang: LangSwitchService) {}
-
-  form = new FormGroup({});
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
@@ -84,11 +84,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Hint',
       options: [
         {
-          text: 'General.Show',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'General.Hide',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -114,13 +114,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'ERROR.errorMessage',
       options: [
         {
-          text: 'None'
+          text: 'General.FalseLabel',
+          value: 'None'
         },
         {
-          text: 'Single'
+          text: 'General.MultipleErrors',
+          value: 'Multiple'
         },
         {
-          text: 'Multiple'
+          text: 'General.TrueLabel',
+          value: 'Single'
         }
       ]
     },
@@ -131,11 +134,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Description',
       options: [
         {
-          text: 'General.Show',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'General.Hide',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -147,11 +150,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Placeholder',
       options: [
         {
-          text: 'General.Show',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'General.Hide',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -214,7 +217,10 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `inputConfig: IInputComponentConfig = ${stringify(
             this.inputConfigCodeView
-          )}`
+          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
+            this.stateTxt(this.state)
+          )}
+          `
       }
     ]
   };
@@ -225,21 +231,24 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   setInputType(value: any) {
     this.inputConfig = {
       ...this.inputConfig,
-      type: value == 'password' ? 'password' : 'text',
-      label: value == 'password' ? 'Password' : 'Label text'
+      type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigSingle = {
       ...this.inputConfigSingle,
-      type: value == 'password' ? 'password' : 'text',
-      label: value == 'password' ? 'Password' : 'Label text'
+      type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigMulti = {
       ...this.inputConfigMulti,
-      type: value == 'password' ? 'password' : 'text',
-      label: value == 'password' ? 'Password' : 'Label text'
+      type: value == 'password' ? 'password' : 'text'
     };
 
     this.parseCodeViewConfig();
+  }
+
+  stateTxt(disabled: boolean): string {
+    const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
+    const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
+    return disabled ? DISABLE : ENABLE;
   }
 
   ngOnInit() {
@@ -282,10 +291,13 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     });
 
     this.form.valueChanges.subscribe((value: any) => {
+      if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
+      if (value['state'] !== undefined) {
+        this.toggleDisabled(value['state']);
+        this.state = value['state'];
+      }
       this.parseToggleConfig(value);
       this.parseCodeViewConfig();
-      if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
-      if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
 
@@ -434,7 +446,10 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `inputConfig: IInputComponentConfig = ${stringify(
           this.inputConfigCodeView
-        )}`;
+        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
+          this.stateTxt(this.state)
+        )}
+        `;
     }
   }
 }

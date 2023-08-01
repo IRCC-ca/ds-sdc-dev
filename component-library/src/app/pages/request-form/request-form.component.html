@@ -1,10 +1,10 @@
-<div class="content-doc-wrapper">
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url
     [config]="submitRequestTitleSlugConfig"
     class="h1 emphasis"
   ></app-title-slug-url>
   <p class="body1 intro">{{ 'RequestForm.Intro' | translate }}</p>
-  <div class="banner-container">
+  <div class="banner-wrapper">
     <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
   </div>
 
@@ -16,15 +16,15 @@
     <p class="body3 subtext-1">
       {{ 'RequestForm.requestCriteriaSubText1' | translate }}
     </p>
-    <h5 class="emphasis sub-heading-1">
+    <h3 class="emphasis sub-heading-1">
       {{ 'RequestForm.requestCriteriaSubHeading1' | translate }}
-    </h5>
+    </h3>
     <p class="body3 subtext-2">
       {{ 'RequestForm.requestCriteriaSubText2' | translate }}
     </p>
-    <h5 class="emphasis sub-heading-1">
+    <h3 class="emphasis sub-heading-1">
       {{ 'RequestForm.requestCriteriaSubHeading2' | translate }}
-    </h5>
+    </h3>
     <p class="body3 subtext-3">
       {{ 'RequestForm.requestCriteriaSubText3' | translate }}
     </p>
@@ -97,3 +97,7 @@
     </div>
   </section>
 </div>
+<app-side-nav
+  class="right-nav col-12 col-lg-3 col-xl-2"
+  [navBarData]="rightNavData"
+></app-side-nav>

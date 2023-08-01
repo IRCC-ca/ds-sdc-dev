@@ -9,6 +9,7 @@
   (click)="clickEvent(config.id)"
   class="lib-button"
   [id]="config.id"
+  [attr.fill-container]="config.fill ? true : null"
 >
   <div class="button-content-container">
     <span

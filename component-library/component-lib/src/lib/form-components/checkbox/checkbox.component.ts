@@ -1,4 +1,11 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -17,13 +24,15 @@ import {
   ILabelIconConfig
 } from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
+import { MultiCheckboxService } from '../multi-checkbox/multi-checkbox.service';
+import { Subscription } from 'rxjs';
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
   label?: string;
   required?: boolean;
   size?: keyof typeof DSSizes | DSSizes;
-  mixed?: true;
+  mixed?: boolean;
   disableFocus?: boolean; //Default is true
   inlineLabel?: string;
   inlineLabelBold?: boolean;
@@ -46,14 +55,19 @@ export interface ICheckBoxComponentConfig {
     }
   ]
 })
-export class CheckboxComponent implements ControlValueAccessor, OnInit {
+export class CheckboxComponent
+  implements ControlValueAccessor, OnInit, OnChanges
+{
   formGroupEmpty: FormGroup = new FormGroup({});
+  configSub?: Subscription;
 
   //TODO: Add output - consider using a formControl as output rather than anything else. Many different approaches are possible
   @Input() config: ICheckBoxComponentConfig = {
     id: '',
     formGroup: this.formGroupEmpty,
-    size: DSSizes.large
+    size: DSSizes.large,
+    label: '',
+    inlineLabel: ''
   };
 
   @Input() formGroup = this.formGroupEmpty;
@@ -84,7 +98,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private multicheckboxService: MultiCheckboxService
   ) {}
 
   onTouch = () => {};
@@ -108,10 +123,24 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
-    const retControl = this.config.formGroup.get(this.config.id);
-    if (retControl) {
-      this.formControl = retControl;
-    }
+    this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
+      (response) => {
+        if (response.id === this.config.id) {
+          this.config.formGroup
+            .get(this.config.id)
+            ?.patchValue(response.event, { emitEvent: false });
+        }
+      }
+    );
+
+    this.config.formGroup
+      .get(this.config.id)
+      ?.valueChanges.subscribe((event) => {
+        this.multicheckboxService.checkEvent({
+          id: this.config.id,
+          event: event
+        });
+      });
 
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
@@ -140,21 +169,29 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.mixed) this.config.mixed = this.mixed;
     if (this.disableFocus) this.config.disableFocus = this.disableFocus;
     if (this.inlineLabel) this.config.inlineLabel = this.inlineLabel;
-    if (this.inlineLabelBold) this.config.inlineLabelBold = this.inlineLabelBold;
+    if (this.inlineLabelBold)
+      this.config.inlineLabelBold = this.inlineLabelBold;
     if (this.helpText) this.config.helpText = this.helpText;
-    if (this.customErrorText) this.config.customErrorText = this.customErrorText;
+    if (this.customErrorText)
+      this.config.customErrorText = this.customErrorText;
     if (this.desc) this.config.desc = this.desc;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
-    
-    
+
     if (!this.config?.size) this.config.size = DSSizes.large;
-    
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
         this.config.id,
         this.config.errorMessages
       );
+
+      this.errorIds.forEach((errorId) => {
+        this.multicheckboxService.errorEvent({
+          id: this.config.id,
+          event: errorId
+        });
+      });
     }
 
     //Get the error text when the formControl value changes
@@ -216,5 +253,32 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
         this.config.formGroup.get(this.config.id)?.invalid) ??
       false
     );
+  }
+
+  clickEvent() {}
+
+  ariaAccess(): string {
+    let returnVal = '';
+    if (this.config.label)
+      returnVal += this.translate.instant(this.config.label || '') + ' ';
+    if (this.config.desc)
+      returnVal += this.translate.instant(this.config.desc || '') + ' ';
+    if (this.config.helpText)
+      returnVal += this.translate.instant(this.config.helpText || '') + ' ';
+    if (this.config.inlineLabel)
+      returnVal += this.translate.instant(this.config.inlineLabel || '') + ' ';
+
+    if (this.config.mixed) {
+      returnVal += 'Mixed checkbox';
+    }
+
+    if (
+      this.config.formGroup.get(this.config.id)?.invalid &&
+      this.config.formGroup.get(this.config.id)?.touched
+    ) {
+      returnVal += this.errorStubText;
+      returnVal += this.errorAria;
+    }
+    return returnVal;
   }
 }
