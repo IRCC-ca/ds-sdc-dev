@@ -14,6 +14,10 @@ $round-purple-num-size: 32px;
 }
 
 @mixin template {
+  :host {
+    @include grid.row;
+  }
+
   .content-doc-wrapper {
     box-sizing: border-box;
     max-width: 872px;
