@@ -282,26 +282,13 @@ export class ButtonDocCodeComponent implements OnInit {
     const htmlIndex = this.codeViewConfig?.tab?.findIndex(
       (t) => t.id === 'html'
     );
-    const cssIndex = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'css');
 
-    if (cssIndex === undefined) return;
     if (htmlIndex === undefined) return;
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[htmlIndex].value =
         `<div class=${layoutStyleClass}>\n` +
         '  <ircc-cl-lib-button [config]="buttonConfig"></ircc-cl-lib-button>\n' +
         '</div>';
-
-      if (layoutStyleClass === LayoutType.fixed) {
-        this.codeViewConfig.tab[cssIndex].value =
-          '.button-container-fixed {\n' +
-          '  max-width: 260px;\n' +
-          '  width: 100%;\n' +
-          '}';
-      } else {
-        this.codeViewConfig.tab[cssIndex].value =
-          '//By default button Layout is fluid and it matches container width\n';
-      }
     }
   }
 
