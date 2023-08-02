@@ -38,22 +38,6 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
     formGroup: this.form
   };
 
-  inputConfigSingle: ISelectConfig = {
-    ...this.selectConfig,
-    id: 'select_single',
-    required: true,
-    errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsRequired' }]
-  };
-
-  inputConfigMulti: ISelectConfig = {
-    ...this.selectConfig,
-    id: 'select_multi',
-    errorMessages: [
-      { key: 'email', errorLOV: 'ERROR.testErrorMessage' },
-      { key: 'maxlength', errorLOV: 'ERROR.fieldExceededMaxLength' }
-    ]
-  };
-
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
