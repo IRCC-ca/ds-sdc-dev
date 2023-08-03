@@ -29,31 +29,14 @@
 
     * {
       grid-column: auto / span 1
-    }
-
-    ;
+    };
 
     align-items: center;
 
     img {
-      padding: 14px 0;
-
-      ;
+      padding: 14px 1.07px 10px 0;
       height: 16px;
-
-      @include device.in-phone-layout {
-        min-width: 100px;
-        height: 22.93px;
-
-        margin: {
-          top: 24px;
-          right: 9.07px;
-          left: 16px;
-          bottom: 28.48px;
-        }
-
-        ;
-      }
+      width: 67.136px;
     }
   }
 
