@@ -20,6 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/icon/icon.component';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { IsActiveMatchOptions } from '@angular/router';
+import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 
 @Component({
   selector: 'app-side-nav',
@@ -41,7 +42,7 @@ import { IsActiveMatchOptions } from '@angular/router';
 })
 export class SideNavComponent implements OnInit, AfterViewChecked {
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
-  @Input() navBarData: ISideNavDataInterface[] = [];
+  @Input() rightNavLOVs: string[] = [];
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -79,6 +80,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     });
   }
 
+  navBarData: ISideNavDataInterface[] = [];
   currentLanguage: string = '';
   mobile = false; // If window is under mobile view
   showMenu = true; // If show or hide side menu
@@ -101,7 +103,11 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     fragment: 'exact'
   };
 
-  constructor(private el: ElementRef, private translate: TranslateService) {
+  constructor(
+    private el: ElementRef,
+    private translate: TranslateService,
+    private navBarConfig: SideNavConfig
+  ) {
     if (el?.nativeElement?.className) {
       this.navClassName = el?.nativeElement?.classList[0];
     }
@@ -111,6 +117,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     // See node_modules/@ircc-ca/ds-sdc-core/tokens/_sizes.scss:3
     this.currentLanguage = this.translate.currentLang;
     this.showActive = this.el?.nativeElement.classList[0] === 'left-nav';
+    this.navBarData = this.navBarConfig.getRightNavBarConfig(this.rightNavLOVs);
     if (this.mobileToggleIcon) {
       this.toggleMobile();
     }

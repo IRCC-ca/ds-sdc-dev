@@ -7,8 +7,6 @@ import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { ContentItem } from '@app/share/interface/content-item.interface';
-import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
-import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 
 @Component({
   selector: 'app-date-picker-documentation',
@@ -82,8 +80,7 @@ export class DatePickerDocumentationComponent implements OnInit {
     'DatePicker.Accessibility.ContentTxt6',
     'DatePicker.Accessibility.ContentTxt7'
   ];
-  rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [
+  rightNavData: string[] = [
     // list of all right nav items
     'DatePicker.MainTitle',
     'General.InteractiveDemo',
@@ -98,11 +95,8 @@ export class DatePickerDocumentationComponent implements OnInit {
   ];
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService,
-    private navBarConfig: SideNavConfig
-  ) {
-    this.rightNavData = navBarConfig.getRightNavBarConfig(this.rightNavDataRaw);
-  }
+    private lang: LangSwitchService
+  ) {}
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
