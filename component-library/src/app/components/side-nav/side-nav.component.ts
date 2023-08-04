@@ -59,7 +59,8 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     const height =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
-    const sideNavTitles = document.querySelectorAll('h2');
+    const sideNavTitles: NodeListOf<HTMLHeadElement> =
+      document.querySelectorAll('app-title-slug-url h1, app-title-slug-url h2');
     const sideNavLinks = document.querySelectorAll('ircc-cl-lib-nav-item a');
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
