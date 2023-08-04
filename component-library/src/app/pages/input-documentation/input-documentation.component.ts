@@ -36,14 +36,16 @@ export class InputDocumentationComponent implements OnInit {
     id: this.BASIC_INPUT_ID,
     formGroup: this.form_input,
     label: 'General.Label',
-    type: InputTypes.text
+    type: InputTypes.text,
+    size: 'small'
   };
 
   passwordInputConfig: IInputComponentConfig = {
     id: this.PASSWORD_INPUT_ID,
     formGroup: this.form_input,
     label: 'Input.LabelText2',
-    type: InputTypes.password
+    type: InputTypes.password,
+    size: 'small'
   };
 
   inputTitleSlugConfig: slugTitleURLConfig = {
