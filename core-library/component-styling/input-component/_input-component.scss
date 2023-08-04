@@ -23,7 +23,6 @@
 
 @mixin size-large() {
   .input-password-field {
-    margin-top: 8px;
     height: 52px;
     padding-right: 56px;
   }
@@ -41,7 +40,6 @@
 @mixin size-small() {
   .input-password-field {
     padding: 10px 44px 10px 12px;
-    margin-top: 4px;
     height: 40px;
   }
 
