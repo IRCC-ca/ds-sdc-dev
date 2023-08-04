@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
@@ -15,6 +15,7 @@ import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 })
 export class ButtonDocumentationComponent implements OnInit {
   altLangLink = 'buttonDocumentation';
+  mobile: boolean = false;
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
@@ -66,5 +67,11 @@ export class ButtonDocumentationComponent implements OnInit {
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
+    this.mobile = window.innerWidth <= 768;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.mobile = window.innerWidth <= 768;
   }
 }
