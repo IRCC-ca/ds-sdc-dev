@@ -21,6 +21,11 @@ import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/i
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { IsActiveMatchOptions } from '@angular/router';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
+import {
+  INavigationItemLink,
+  NavigationItemType,
+  DSSizes
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-side-nav',
@@ -44,6 +49,9 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
   @Input() rightNavLOVs: string[] = [];
 
+  /**
+   * Add active state to side nav item when scroll in to page section
+   */
   @HostListener('window:scroll', [])
   onWindowScroll() {
     let current = '';
@@ -52,7 +60,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
     const sideNavTitles = document.querySelectorAll('h2');
-    const sideNavLinks = document.querySelectorAll('.right-nav a');
+    const sideNavLinks = document.querySelectorAll('ircc-cl-lib-nav-item a');
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -64,7 +72,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     if (window.scrollY >= height)
       current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute('id')}`; //runs through links to set current active link
     sideNavLinks.forEach((link) => {
-      link.classList.remove('active');
+      link.classList.remove('active-link');
       //blur required to remove focus from previous link if it was clicked
       if (document.activeElement instanceof HTMLElement)
         document.activeElement.blur();
@@ -74,7 +82,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         link instanceof HTMLElement
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
-        link.classList.add('active');
+        link.classList.add('active-link');
         link.focus();
       }
     });
@@ -106,7 +114,8 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   constructor(
     private el: ElementRef,
     private translate: TranslateService,
-    private navBarConfig: SideNavConfig
+    private navBarConfig: SideNavConfig,
+    private slugify: SlugifyPipe
   ) {
     if (el?.nativeElement?.className) {
       this.navClassName = el?.nativeElement?.classList[0];
@@ -178,5 +187,25 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         this.navStatus = 'nav-open';
       }
     }
+  }
+
+  getINavigationItemLinkFromISideNavData(
+    data: ISideNavDataInterface
+  ): INavigationItemLink {
+    const label = this.translate.instant(data.text);
+    let anchor = this.translate.instant(data.path ?? '');
+    anchor = this.slugify.transform(anchor);
+
+    return {
+      id: 'nav-item-' + anchor,
+      href: '.',
+      anchor: anchor,
+      label: label,
+      type: NavigationItemType.link,
+      size: DSSizes.small,
+      border: false,
+      external: false,
+      children: []
+    };
   }
 }
