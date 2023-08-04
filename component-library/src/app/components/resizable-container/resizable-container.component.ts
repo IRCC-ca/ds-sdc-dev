@@ -32,7 +32,7 @@ export class resizableContainerComponent implements AfterViewInit {
   resizeButtonConfig: IIconButtonComponentConfig = {
     id: 'resize_button',
     category: 'custom',
-    size: 'small',
+    size: 'extraSmall',
     ariaLabel: 'RESIZE_ARIA',
     icon: {
       class: 'fa-regular fa-grip-lines',
