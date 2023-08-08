@@ -28,14 +28,14 @@ import {
 })
 export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'inputDocumentation';
-  form = new FormGroup({});
+  formInput = new FormGroup({});
   state: boolean = false;
 
   constructor(private lang: LangSwitchService) {}
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
-    formGroup: this.form,
+    formGroup: this.formInput,
     size: 'small',
     type: 'text',
     required: false,
@@ -63,7 +63,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -79,7 +79,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'hint',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Hint',
       options: [
@@ -95,7 +95,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'required',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Required',
       options: [
@@ -109,7 +109,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'error',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'ERROR.errorMessage',
       options: [
@@ -129,7 +129,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'desc',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Description',
       options: [
@@ -145,7 +145,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'placeholder',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Placeholder',
       options: [
@@ -164,7 +164,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.StateLabel',
       inlineLabel: 'Disabled'
@@ -254,13 +254,13 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form.addControl(this.inputConfig.id, new FormControl());
+    this.formInput.addControl(this.inputConfig.id, new FormControl());
     // Two more form controls, one for each combination of validators
-    this.form.addControl(
+    this.formInput.addControl(
       this.inputConfig.id + '_single',
       new FormControl('', [Validators.required])
     );
-    this.form.addControl(
+    this.formInput.addControl(
       this.inputConfig.id + '_multi',
       new FormControl('', [
         Validators.required,
@@ -271,7 +271,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form.addControl(
+        this.formInput.addControl(
           toggle.id,
           new FormControl(toggle.options[1].text)
         );
@@ -279,10 +279,10 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     });
 
     this.checkboxes.forEach((checkbox) => {
-      this.form.addControl(checkbox.id, new FormControl());
+      this.formInput.addControl(checkbox.id, new FormControl());
     });
 
-    this.form.patchValue({
+    this.formInput.patchValue({
       size: 'Small',
       hint: 'False',
       desc: 'True',
@@ -290,7 +290,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       error: 'None'
     });
 
-    this.form.valueChanges.subscribe((value: any) => {
+    this.formInput.valueChanges.subscribe((value: any) => {
       if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) {
         this.toggleDisabled(value['state']);
@@ -348,8 +348,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Set input field as touched, toggle error states of input
    */
   private toggleErrors(error: string) {
-    if (!this.form.get(this.currentConfigId)?.touched && error !== 'None')
-      this.form.get(this.currentConfigId)?.markAsTouched();
+    if (!this.formInput.get(this.currentConfigId)?.touched && error !== 'None')
+      this.formInput.get(this.currentConfigId)?.markAsTouched();
 
     this.errorState = error;
     switch (error) {
@@ -359,16 +359,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         break;
       case 'Single':
         this.currentConfigId = this.inputConfigSingle.id;
-        if (!this.form.get(this.currentConfigId)?.touched)
-          this.form.get(this.currentConfigId)?.markAsTouched();
+        if (!this.formInput.get(this.currentConfigId)?.touched)
+          this.formInput.get(this.currentConfigId)?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigSingle.errorMessages;
         break;
       case 'Multiple':
         this.currentConfigId = this.inputConfigMulti.id;
-        this.form.get(this.inputConfigMulti.id)?.setValue('test');
-        if (!this.form.get(this.currentConfigId)?.touched)
-          this.form.get(this.currentConfigId)?.markAsTouched();
+        this.formInput.get(this.inputConfigMulti.id)?.setValue('test');
+        if (!this.formInput.get(this.currentConfigId)?.touched)
+          this.formInput.get(this.currentConfigId)?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigMulti.errorMessages;
         break;
@@ -380,7 +380,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Toggle disabled state of input
    */
   private toggleDisabled(disabled: boolean) {
-    const inputControl: AbstractControl | null = this.form.get(
+    const inputControl: AbstractControl | null = this.formInput.get(
       this.currentConfigId
     );
     if (

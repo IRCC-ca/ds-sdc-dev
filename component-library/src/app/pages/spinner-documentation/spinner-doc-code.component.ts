@@ -26,7 +26,7 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 export class SpinnerDocCodeComponent implements OnInit {
   currentLanguage: string = '';
   altLangLink = 'spinnerDocCode';
-  form_spinner = new FormGroup({});
+  formSpinner = new FormGroup({});
 
   spinnerConfig: ISpinnerConfig = {
     id: 'spinner',
@@ -40,7 +40,7 @@ export class SpinnerDocCodeComponent implements OnInit {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'sizeToggle',
-      formGroup: this.form_spinner,
+      formGroup: this.formSpinner,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -60,7 +60,7 @@ export class SpinnerDocCodeComponent implements OnInit {
     },
     {
       id: 'label',
-      formGroup: this.form_spinner,
+      formGroup: this.formSpinner,
       size: 'small',
       label: 'General.LabelHeading',
       options: [
@@ -76,7 +76,7 @@ export class SpinnerDocCodeComponent implements OnInit {
     },
     {
       id: 'description',
-      formGroup: this.form_spinner,
+      formGroup: this.formSpinner,
       size: 'small',
       label: 'General.Description',
       options: [
@@ -92,7 +92,7 @@ export class SpinnerDocCodeComponent implements OnInit {
     },
     {
       id: 'type',
-      formGroup: this.form_spinner,
+      formGroup: this.formSpinner,
       size: 'small',
       label: 'General.StatesLabel',
       options: [
@@ -112,7 +112,7 @@ export class SpinnerDocCodeComponent implements OnInit {
     },
     {
       id: 'orientation',
-      formGroup: this.form_spinner,
+      formGroup: this.formSpinner,
       size: 'small',
       label: 'General.Layout',
       options: [
@@ -171,18 +171,18 @@ export class SpinnerDocCodeComponent implements OnInit {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form_spinner.addControl(this.spinnerConfig.id, new FormControl());
+    this.formSpinner.addControl(this.spinnerConfig.id, new FormControl());
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_spinner.addControl(
+        this.formSpinner.addControl(
           toggle.id,
           new FormControl(toggle.options[1].value)
         );
       }
     });
 
-    this.form_spinner.patchValue({
+    this.formSpinner.patchValue({
       size: 'Small',
       label: 'False',
       description: 'False',
@@ -190,7 +190,7 @@ export class SpinnerDocCodeComponent implements OnInit {
       orientation: 'horizontal'
     });
 
-    this.form_spinner.valueChanges.subscribe((value: any) => {
+    this.formSpinner.valueChanges.subscribe((value: any) => {
       this.spinnerConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
