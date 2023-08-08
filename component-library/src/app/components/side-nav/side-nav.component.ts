@@ -193,7 +193,6 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   getINavigationItemLinkFromISideNavData(
     data: ISideNavDataInterface
   ): INavigationItemLink {
-    const label = this.translate.instant(data.text);
     let anchor = this.translate.instant(data.path ?? '');
     anchor = this.slugify.transform(anchor);
 
@@ -201,7 +200,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       id: 'nav-item-' + anchor,
       href: '.',
       anchor: anchor,
-      label: label,
+      label: data.text,
       type: NavigationItemType.link,
       size: DSSizes.small,
       border: false,

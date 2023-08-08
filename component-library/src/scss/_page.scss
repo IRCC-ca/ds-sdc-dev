@@ -2,6 +2,7 @@
 @use "grid";
 
 $round-purple-num-size: 32px;
+$selector-exclusion: "app-button-doc-code";
 
 @mixin round-purple-num {
   color: var(--purple-9);
@@ -14,7 +15,7 @@ $round-purple-num-size: 32px;
 }
 
 @mixin template {
-  :host {
+  :host:not(#{$selector-exclusion}) {
     @include grid.row;
   }
 
