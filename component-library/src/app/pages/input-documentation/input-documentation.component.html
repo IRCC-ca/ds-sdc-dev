@@ -7,8 +7,10 @@
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
     <p
-      class="body3 demo"
-      [innerHTML]="'Input.InteractiveDemoDesc' | translate"
+      class="body3"
+      [innerHtml]="
+        'General.InteractiveDemoDesc' | translate : { component: 'input' }
+      "
     ></p>
     <app-input-doc-code></app-input-doc-code>
   </section>

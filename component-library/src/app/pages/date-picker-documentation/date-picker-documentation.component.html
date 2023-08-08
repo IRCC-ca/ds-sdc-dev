@@ -7,8 +7,10 @@
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
     <p
-      class="demo"
-      [innerHTML]="'DatePicker.InteractiveDemoDesc' | translate"
+      class="body3"
+      [innerHtml]="
+        'General.InteractiveDemoDesc' | translate : { component: 'date picker' }
+      "
     ></p>
     <app-date-picker-doc-code></app-date-picker-doc-code>
   </section>

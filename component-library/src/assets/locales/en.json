@@ -481,7 +481,6 @@
 	"Input": {
 		"Title": "Input",
 		"Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
-		"InteractiveDemoDesc": "Try our <strong>input</strong> component and the configurable options available within it.",
 		"PrimaryHeading": "Basic input",
 		"SecondaryHeading": "Password input",
 		"PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
@@ -571,7 +570,6 @@
 		"MainTitle": "Date picker",
 		"Title": "DatePicker-doc",
 		"Intro": "The date picker component allows users to input a specific year, month and/or day.",
-		"InteractiveDemoDesc": "Try our <strong>date picker</strong> component and the configurable options available within it.",
 		"DesignGuideLines": {
 			"Maintain": "Maintain default select widths",
 			"MaintainDoAlt": "A small date picker in the horizontal layout with consistent widths.",
@@ -685,7 +683,6 @@
 	"Banner": {
 		"Title": "Banners",
 		"Intro": "Banners provide valuable supporting content to the user conveying a specific sentiment (warning, success, informational, etc.) and can be used to help the user complete a task or better understand the content they are viewing.",
-		"InteractiveDemoDesc": "Try our <strong>banner</strong> component and the configurable options available within it.",
 		"InfoPrimaryText": "Info banners are used to convey important general information.",
 		"WarningPrimaryText": "Warning banners are used to convey important warnings.",
 		"CriticalPrimaryText": "Critical banners are used to convey critical information or errors.",
@@ -885,7 +882,6 @@
 	"IconButtonDocumentation": {
 		"Title": "Icon Button",
 		"Intro": "Icon buttons can be used for a single, well-understood action that can be clearly communicated with a stand-alone icon.",
-		"InteractiveDemoDesc": "Try our <strong>icon button</strong> component and the configurable options available within it.",
 		"PrimaryText": "Primary icon buttons are used to highlight important and easy-to-understand actions. It can be used in a group of icon buttons.",
 		"CriticalText": "Critical icon buttons are often used for destructive actions like deleting user-contributed content.",
 		"OrganizeIcons": "Organize icon button groups",
@@ -944,7 +940,6 @@
 		"AccessibilityContentItem3": "Descriptions are provided when content requires additional clarity.",
 		"AccessibilityContentItem4": "The label and description are placed outside of the spinner and are always visible to the user. The content is presented in a logical reading order.",
 		"Intro": "Spinners provide a visual cue that an action is processing awaiting a course of change, a result or displaying new content.",
-		"InteractiveDemoDesc": "Try our <strong>spinner</strong> component and the configurable options available within it.",
 		"DesignGuideLines": {
 			"UseSpinner": "When to use the spinner",
 			"UseSpinnerDoTxt": "Use the Spinner if the expected wait time is perceptible — typically more than a second but less than 10 secs.",
@@ -1008,5 +1003,9 @@
 			"ColorContrastTxt": "All elements within the spinner component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1."
 		},
 		"Validation": "If an error is automatically detected, the item that is in error is identified and the error is described to the user in text."
+	},
+	"Select": {
+		"Title": "Select",
+		"Intro": "Selects are most commonly used for users to make an individual selection from a list of options."
 	}
 }
