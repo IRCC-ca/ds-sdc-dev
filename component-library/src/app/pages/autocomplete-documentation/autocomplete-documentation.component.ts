@@ -3,9 +3,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IMultiCheckboxConfig } from 'ircc-ds-angular-component-library';
+import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';
 import { MultiCheckboxService } from 'ircc-ds-angular-component-library';
 import { TranslatedPageComponent } from '../translated-page-component';
+
+import TestArrays from './TestArrays';
 
 @Component({
   selector: 'app-autocomplete-documentation',
@@ -20,6 +22,19 @@ export class AutocompleteDocumentationComponent
   altLangLink = 'autocomplete';
   form: FormGroup = new FormGroup({});
 
+  testArrays = TestArrays;
+
+  config: IAutocompleteComponent = {
+    id: 'auto-complete',
+    formGroup: this.form,
+    label: 'label',
+    hint: 'hint',
+    desc: 'desc',
+    placeholder: 'placeholder',
+    size: 'small',
+    suggestions: this.testArrays.quotes
+  };
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
@@ -31,6 +46,9 @@ export class AutocompleteDocumentationComponent
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
+
+    this.config.formGroup.addControl(this.config.id, new FormControl());
+    //'', Validators.required
   }
 
   submitForm() {

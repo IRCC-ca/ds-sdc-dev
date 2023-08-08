@@ -6,6 +6,7 @@
 export * from './shared/functions/stand-alone.functions';
 export * from './shared/interfaces/component-configs';
 export * from './shared/constants/jl-components.constants';
+export * from './shared/pipes/autocomplete.pipe';
 
 /** Banner Component **/
 export * from './lib/banner-component/ircc-ds-angular-banner.module';

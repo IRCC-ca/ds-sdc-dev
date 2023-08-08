@@ -1,4 +1,12 @@
-import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Output
+} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -17,6 +25,7 @@ import {
   ILabelIconConfig
 } from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -42,12 +51,14 @@ export const ARIA_TEXT = {
   en: {
     btnTypePasswordAriaLabel: 'password eye icon',
     btnTypePasswordShowAriaLabel: 'display password text',
-    btnTypePasswordHideAriaLabel: 'mark password text'
+    btnTypePasswordHideAriaLabel: 'mark password text',
+    btnTypeAutoCompleteClear: 'clear text'
   },
   fr: {
     btnTypePasswordAriaLabel: "icône d'oeil de mot de passe",
     btnTypePasswordShowAriaLabel: 'afficher le texte du mot de passe',
-    btnTypePasswordHideAriaLabel: 'mark password text'
+    btnTypePasswordHideAriaLabel: 'mark password text',
+    btnTypeAutoCompleteClear: 'Effacer le texte'
   }
 };
 
@@ -94,6 +105,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   @Input() required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
   @Input() placeholder?: string;
   @Input() errorMessages?: IErrorPairs[];
+  @Output() focusEvent = new EventEmitter();
 
   disabled = false;
   focusState = false;
@@ -102,6 +114,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   btnAriaLabel = '';
   btnAriaLabelHide = '';
   btnAriaLabelShow = '';
+  btnAriaTypeAutoCompleteClear = '';
   errorIds: IErrorIDs[] = [];
   errorAria = '';
   formControl?: AbstractControl;
@@ -111,6 +124,16 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   };
   touched = false;
   errorStubText = '';
+
+  buttonAutoCompleteClear: IIconButtonComponentConfig = {
+    id: `${this.config.id}-button-autocomplete`,
+    category: 'custom',
+    size: 'extraSmall',
+    icon: {
+      class: 'fa-solid fa-circle-xmark',
+      color: 'var(--neutral-text)'
+    }
+  };
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -190,6 +213,11 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
       this.getAriaErrorText();
     });
+
+    // if (this.config.type === 'autocomplete') {
+    //   this.buttonAutoCompleteClear.id = `button-${this.config.id}-clear`;
+    //   console.log(this.btnAriaTypeAutoCompleteClear);
+    // }
   }
 
   /**
@@ -212,7 +240,13 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   onTouchedLabel() {
     this.touched = true;
     this.getAriaErrorText();
+    this.focusEvent.emit(false);
   }
+
+  onFocus() {
+    this.focusEvent.emit(true);
+  }
+
   /**
    * setLang detects changes to the language toggle to serve the correct aria error text
    */
@@ -223,11 +257,13 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       this.btnAriaLabel = ARIA_TEXT.en.btnTypePasswordAriaLabel;
       this.btnAriaLabelHide = ARIA_TEXT.en.btnTypePasswordHideAriaLabel;
       this.btnAriaLabelShow = ARIA_TEXT.en.btnTypePasswordShowAriaLabel;
+      this.btnAriaTypeAutoCompleteClear = ARIA_TEXT.en.btnTypeAutoCompleteClear;
     } else {
       this.errorStubText = ERROR_TEXT_STUB.fr;
       this.btnAriaLabel = ARIA_TEXT.fr.btnTypePasswordAriaLabel;
       this.btnAriaLabelHide = ARIA_TEXT.fr.btnTypePasswordHideAriaLabel;
       this.btnAriaLabelShow = ARIA_TEXT.fr.btnTypePasswordShowAriaLabel;
+      this.btnAriaTypeAutoCompleteClear = ARIA_TEXT.en.btnTypeAutoCompleteClear;
     }
   }
 
@@ -267,7 +303,11 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     }
   }
 
-  public clearvalue() {}
+  public clearvalue() {
+    // console.log(this.config.formGroup.controls);
+    this.config.formGroup.controls[this.config.id].setValue('');
+    this.focusEvent.emit(true);
+  }
 
   /**
    * Prevents the info button from being triggered and marks the input as touched.
@@ -307,5 +347,13 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
         this.config.formGroup.get(this.config.id)?.invalid) ??
       false
     );
+  }
+
+  get getValueLength(): number {
+    if (this.config.formGroup.get(this.config.id)?.value) {
+      return this.config.formGroup.get(this.config.id)?.value.length;
+    } else {
+      return 0;
+    }
   }
 }
