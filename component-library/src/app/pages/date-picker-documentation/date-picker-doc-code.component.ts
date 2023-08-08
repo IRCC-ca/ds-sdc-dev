@@ -240,10 +240,7 @@ export class DatePickerDocCodeComponent implements OnInit {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.formDatePicker.addControl(
-      this.datePickerConfig.id,
-      new FormControl()
-    );
+    this.formDatePicker.addControl(this.datePickerConfig.id, new FormControl());
     this.formDatePicker.addControl(
       this.datePickerConfig.id + '_dayControl',
       new FormControl('', Validators.required)

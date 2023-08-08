@@ -181,10 +181,7 @@ export class IconButtonDocCodeComponent implements OnInit {
 
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
-        this.formIconBtn.addControl(
-          checkbox.id,
-          new FormControl()
-        );
+        this.formIconBtn.addControl(checkbox.id, new FormControl());
       }
     });
 
