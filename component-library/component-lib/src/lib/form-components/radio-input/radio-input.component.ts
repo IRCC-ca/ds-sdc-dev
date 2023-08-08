@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -55,7 +55,9 @@ export interface IRadioInputOption {
     }
   ]
 })
-export class RadioInputComponent implements OnInit, ControlValueAccessor {
+export class RadioInputComponent
+  implements OnInit, OnChanges, ControlValueAccessor
+{
   formGroupEmpty = new FormGroup({});
   touched = false;
   errorIds: IErrorIDs[] = [];
@@ -134,7 +136,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
 
     //set config from individual options, if present
     if (this.id !== '') this.config.id = this.id;
-    if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty)
+      this.config.formGroup = this.formGroup;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
     if (this.desc) this.config.desc = this.desc;
@@ -154,6 +157,10 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
         this.config.errorMessages
       );
     }
+
+    this.formControl?.statusChanges.subscribe((status) => {
+      this.getAriaErrorText();
+    });
   }
 
   ngOnChanges() {
