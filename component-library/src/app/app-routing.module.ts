@@ -138,7 +138,7 @@ const routes: Routes = [
     {
       path: 'select-documentation-fr',
       component: SelectDocumentationComponent,
-      title: 'Select (needs translation)'
+      title: 'Select.Title'
     },
     {
       path: 'boutons',
