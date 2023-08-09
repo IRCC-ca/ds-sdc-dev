@@ -7,6 +7,8 @@ interface headingConfigs {
   interactiveDemoSlugConfig: slugTitleURLConfig;
   typesSlugConfig: slugTitleURLConfig;
   configurationSlugConfig: slugTitleURLConfig;
+  configurationMainSlugConfig: slugTitleURLConfig;
+  configurationSubSlugConfig: slugTitleURLConfig;
   guidelineSlugConfig: slugTitleURLConfig;
   anatomySlugConfig: slugTitleURLConfig;
   specsSlugConfig: slugTitleURLConfig;
@@ -28,6 +30,16 @@ export const docPageheadingConfig: headingConfigs = {
 
   configurationSlugConfig: {
     title: 'General.ConfigurationsHeading',
+    anchorType: slugAnchorType.primary
+  },
+
+  configurationMainSlugConfig: {
+    title: 'General.ConfigurationsMain',
+    anchorType: slugAnchorType.primary
+  },
+
+  configurationSubSlugConfig: {
+    title: 'General.ConfigurationsSub',
     anchorType: slugAnchorType.primary
   },
 

@@ -35,7 +35,23 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
 
   selectConfig: ISelectConfig = {
     id: 'select',
-    formGroup: this.form
+    formGroup: this.form,
+    desc: 'Description line of text',
+    required: true,
+    label: 'Label text',
+    options: [
+      {text: 'Item 1'},
+      {text: 'Item 2'},
+      {text: 'Item 3'}
+    ],
+    size: 'small',
+    placeholder: 'Default'
+  };
+
+  errorSelectConfig: ISelectConfig = {
+    ...this.selectConfig,
+    id: 'select_error',
+    errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsRequired' }]
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -89,19 +105,13 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'error',
       formGroup: this.form,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
-          text: 'General.FalseLabel',
-          value: 'None'
+          text: 'True'
         },
         {
-          text: 'General.MultipleErrors',
-          value: 'Multiple'
-        },
-        {
-          text: 'General.TrueLabel',
-          value: 'Single'
+          text: 'False'
         }
       ]
     },
@@ -110,22 +120,6 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       formGroup: this.form,
       size: 'small',
       label: 'General.Description',
-      options: [
-        {
-          text: 'General.TrueLabel',
-          value: 'True'
-        },
-        {
-          text: 'General.FalseLabel',
-          value: 'False'
-        }
-      ]
-    },
-    {
-      id: 'placeholder',
-      formGroup: this.form,
-      size: 'small',
-      label: 'General.Placeholder',
       options: [
         {
           text: 'General.TrueLabel',
@@ -157,6 +151,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
     label: this.selectConfig.label,
     desc: this.selectConfig.desc,
     hint: this.selectConfig.hint,
+    options: this.selectConfig.options,
     placeholder: this.selectConfig.placeholder,
     errorMessages: undefined
   };
@@ -199,20 +194,14 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form.addControl(this.selectConfig.id, new FormControl());
+    this.form.addControl(this.selectConfig.id, new FormControl(''));
     // Two more form controls, one for each combination of validators
     this.form.addControl(
-      this.selectConfig.id + '_single',
+      this.errorSelectConfig.id,
       new FormControl('', [Validators.required])
     );
-    this.form.addControl(
-      this.selectConfig.id + '_multi',
-      new FormControl('', [
-        Validators.required,
-        Validators.maxLength(3),
-        Validators.email
-      ])
-    );
+    // Two more form controls, one for each combination of validators
+    console.log(this.form);
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
@@ -231,8 +220,8 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       size: 'Small',
       hint: 'False',
       desc: 'True',
-      placeholder: 'False',
-      error: 'None'
+      error: 'False',
+      required: 'True'
     });
 
     this.form.valueChanges.subscribe((value: any) => {
@@ -250,15 +239,27 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Return mapping of input config from form values
    */
   private parseToggleConfig(value: any) {
-    this.selectConfig = {
-      ...this.selectConfig,
-      size: value['size'].toLowerCase(),
-      hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-      required: value['required'] === 'True',
-      desc: value['desc'] === 'True' ? 'Description line of text' : undefined,
-      placeholder:
-        value['placeholder'] === 'True' ? 'Placeholder text' : undefined
-    };
+    switch (this.errorState) {
+      case 'True':
+        this.errorSelectConfig = {
+          ...this.errorSelectConfig,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined,
+        };
+        break;
+      default:
+        this.selectConfig = {
+          ...this.selectConfig,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined,
+        };
+    }
   }
 
   /**
@@ -269,10 +270,19 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       this.form.get(this.currentConfigId)?.markAsTouched();
 
     this.errorState = error;
-
-    this.currentConfigId = this.selectConfig.id;
-    this.selectConfigCodeView.errorMessages = undefined;
-
+    switch (error) {
+      case 'False':
+        this.currentConfigId = this.selectConfig.id;
+        this.selectConfigCodeView.errorMessages = undefined;
+        break;
+      case 'True':
+        this.currentConfigId = this.errorSelectConfig.id;
+        if (!this.form.get(this.currentConfigId)?.touched)
+          this.form.get(this.currentConfigId)?.markAsTouched();
+        this.selectConfigCodeView.errorMessages =
+          this.errorSelectConfig.errorMessages;
+        break;
+    }
     this.parseCodeViewConfig();
   }
 
@@ -309,7 +319,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: this.selectConfig.label,
       desc: this.selectConfig.desc,
       hint: this.selectConfig.hint,
-      placeholder: this.selectConfig.placeholder
+      errorMessages: this.selectConfig.errorMessages
     };
 
     if (tab) {

@@ -5,3 +5,8 @@
 @use '@ircc-ca/ds-sdc-core/typography/typography';
 
 @include page.template;
+
+.images {
+  display: flex;
+  gap: 14px;
+}

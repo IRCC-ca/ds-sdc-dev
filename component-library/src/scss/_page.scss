@@ -1,5 +1,5 @@
-@use "@ircc-ca/ds-sdc-core/typography/typography";
-@use "grid";
+@use '@ircc-ca/ds-sdc-core/typography/typography';
+@use 'grid';
 
 $round-purple-num-size: 32px;
 
@@ -206,6 +206,9 @@ $round-purple-num-size: 32px;
     &.anatomy {
       p {
         margin-top: 6px;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
       }
 
       h3.round-purple-num-heading {

@@ -1,10 +1,19 @@
-<app-interactive-demo>
+<app-interactive-demo [hasTabs]="false">
   <div
     component
     class="select-container"
     #select
   >
-    <ircc-cl-lib-select [config]="selectConfig"></ircc-cl-lib-select>
+    <ng-container [ngSwitch]="errorState">
+      <ircc-cl-lib-select
+        *ngSwitchDefault
+        [config]="selectConfig"
+      ></ircc-cl-lib-select>
+      <ircc-cl-lib-select
+        *ngSwitchCase="'True'"
+        [config]="errorSelectConfig"
+      ></ircc-cl-lib-select>
+    </ng-container>
   </div>
   <ng-container toggles>
     <ng-container *ngFor="let toggle of toggles">

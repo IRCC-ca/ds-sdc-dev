@@ -34,10 +34,22 @@ export class SelectDocumentationComponent implements OnInit {
   };
 
   selectTitleSlugConfig: slugTitleURLConfig = {
-    title: 'Input.Title',
+    title: 'Select.Title',
     heading: 'h1',
     anchorType: slugAnchorType.primary
   };
+
+  figmaDirections: string[] = [
+    'Input.FigmaDirectionsListItem1',
+    'General.FigmaDirectionsListItem2',
+    'General.FigmaDirectionsListItem3',
+    'Input.FigmaDirectionsListItem4'
+  ];
+  figmaDirectionsSecond: string[] = [
+    'Input.AccessInputsListItem1',
+    'Select.FigmaAccess2',
+    'Select.FigmaAccess3'
+  ];
 
   constructor(
     private translate: TranslateService,
