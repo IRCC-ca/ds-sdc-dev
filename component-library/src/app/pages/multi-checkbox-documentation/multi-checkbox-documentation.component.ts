@@ -3,9 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  IMultiCheckboxConfig
-} from 'ircc-ds-angular-component-library';
+import { IMultiCheckboxConfig } from 'ircc-ds-angular-component-library';
 import { MultiCheckboxService } from 'ircc-ds-angular-component-library';
 import { TranslatedPageComponent } from '../translated-page-component';
 
