@@ -23,13 +23,11 @@
 
 @mixin size-large() {
   .input-password-field {
-    margin-top: 8px;
     height: 52px;
     padding-right: 56px;
   }
 
   .input-text-field {
-    margin-top: 12px;
     height: 52px;
   }
 
@@ -42,13 +40,11 @@
 @mixin size-small() {
   .input-password-field {
     padding: 10px 44px 10px 12px;
-    margin-top: 4px;
     height: 40px;
   }
 
   .input-text-field {
     padding: 10px 12px 10px 12px;
-    margin-top: 8px;
     height: 40px;
   }
 
@@ -114,9 +110,6 @@
     }
   }
 
-  .check-error {
-    padding: 8px 0;
-  }
 
   .input-wrapper {
     padding: 0 3px 0 0;
