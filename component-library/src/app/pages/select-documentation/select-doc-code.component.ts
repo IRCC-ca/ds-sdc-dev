@@ -39,11 +39,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
     desc: 'Description line of text',
     required: true,
     label: 'Label text',
-    options: [
-      {text: 'Item 1'},
-      {text: 'Item 2'},
-      {text: 'Item 3'}
-    ],
+    options: [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }],
     size: 'small',
     placeholder: 'Default'
   };
@@ -247,7 +243,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
           required: value['required'] === 'True',
           desc:
-            value['desc'] === 'True' ? 'Description line of text' : undefined,
+            value['desc'] === 'True' ? 'Description line of text' : undefined
         };
         break;
       default:
@@ -257,7 +253,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
           required: value['required'] === 'True',
           desc:
-            value['desc'] === 'True' ? 'Description line of text' : undefined,
+            value['desc'] === 'True' ? 'Description line of text' : undefined
         };
     }
   }
