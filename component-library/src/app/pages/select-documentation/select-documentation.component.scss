@@ -9,7 +9,5 @@
 .images {
   display: flex;
   gap: 14px;
-  .img2 {
-    justify-self: center;
-  }
+  align-items: center;
 }
