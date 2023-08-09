@@ -39,7 +39,7 @@
 
 @mixin size-small() {
   .input-password-field {
-    padding: 10px 12px 10px 12px;
+    padding: 10px 32px 10px 12px;
     height: 40px;
   }
 
@@ -112,7 +112,7 @@
 
 
   .input-wrapper {
-    padding: 0 3px 0 0;
+    padding: 0;
   }
 
   .sr-only {
