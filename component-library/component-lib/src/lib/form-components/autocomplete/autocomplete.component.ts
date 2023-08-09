@@ -1,12 +1,16 @@
 import {
+  AfterContentChecked,
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
   SecurityContext,
+  SimpleChanges,
   ViewChild,
   ViewChildren
 } from '@angular/core';
@@ -30,7 +34,7 @@ export interface IAutocompleteComponent {
   size: keyof typeof DSSizes;
   formGroup: FormGroup;
   suggestions: string[];
-  maxItems?: number;
+  required?: boolean;
   errorMessages?: IErrorPairs[];
 }
 
@@ -44,7 +48,9 @@ export enum matchType {
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.css']
 })
-export class AutoCompleteComponent implements OnInit {
+export class AutoCompleteComponent
+  implements OnInit, OnChanges, AfterContentChecked
+{
   @ViewChild('inputAutocomplete', { static: false }) inputAutocomplete:
     | ElementRef
     | undefined;
@@ -58,8 +64,7 @@ export class AutoCompleteComponent implements OnInit {
     hint: 'hint',
     desc: 'desc',
     size: 'small',
-    suggestions: [],
-    maxItems: 5
+    suggestions: []
   };
 
   matchType?: keyof typeof matchType = 'infix';
@@ -68,13 +73,8 @@ export class AutoCompleteComponent implements OnInit {
   @Input() formGroup = this.formGroupEmpty;
 
   inputComponent: IInputComponentConfig = {
-    id: '',
-    formGroup: this.formGroupEmpty,
-    label: '',
-    hint: '',
-    desc: '',
-    type: 'autocomplete',
-    size: this.config.size
+    ...this.config,
+    type: 'autocomplete'
   };
 
   flyout: IFlyoutConfig = {
@@ -84,14 +84,27 @@ export class AutoCompleteComponent implements OnInit {
     size: this.config.size
   };
 
-  constructor(private domSanitizer: DomSanitizer) {}
+  constructor(
+    private domSanitizer: DomSanitizer,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.inputComponent = {
+      ...this.config,
+      type: 'autocomplete'
+    };
+
+    this.flyout.size = this.config.size;
+  }
+
+  ngAfterContentChecked() {
+    this.changeDetectorRef.detectChanges();
+  }
 
   ngOnInit() {
     if (this.formGroup !== this.formGroupEmpty) {
       this.config.formGroup = this.formGroup;
-    }
-    if (!this.config.maxItems) {
-      this.config.maxItems = 5;
     }
 
     this.inputComponent.id = this.config.id;
@@ -115,7 +128,7 @@ export class AutoCompleteComponent implements OnInit {
     this.config.formGroup
       .get(this.config.id)
       ?.valueChanges.subscribe((data) => {
-        if (data.length === 0) {
+        if (null || data.length === 0) {
           this.flyout.selected = '';
           this.flyout.options = [];
           this.flyout.options = this.config.suggestions.map((suggestion) => {
@@ -128,6 +141,11 @@ export class AutoCompleteComponent implements OnInit {
           this.validateInternal(data);
         }
       });
+
+    this.inputComponent = {
+      ...this.config,
+      type: 'autocomplete'
+    };
   }
 
   spreadFlyoutOption(value: string): IFlyoutOptionConfig {
@@ -155,8 +173,6 @@ export class AutoCompleteComponent implements OnInit {
         SecurityContext.HTML,
         event.replace(/<[^>]*>/g, '')
       );
-      console.log(event);
-      console.log(eventString);
       this.config.formGroup.get(this.config.id)?.setValue(eventString);
       this.showSuggestions = false;
     }

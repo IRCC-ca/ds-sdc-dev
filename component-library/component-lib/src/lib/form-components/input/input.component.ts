@@ -164,8 +164,12 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   }
 
   //Removed '!' and added null case in onChange
-  private onTouch?: () => void;
-  private onChange?: (value: any) => void;
+  private onTouch?: () => { returnvoid };
+  private onChange?: (value: any) => this.hello();
+
+  hello(): void {
+    console.log('hello');
+  }
 
   /**
    * When the page loads, we initialize the form with it's controls, labels, and config, and detect value changes and errors. setLang detects changes to the language toggle to serve the correct text
@@ -244,7 +248,9 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   }
 
   onFocus() {
-    this.focusEvent.emit(true);
+    if (!this.config.formGroup.get(this.config.id)?.disabled) {
+      this.focusEvent.emit(true);
+    }
   }
 
   /**
@@ -316,6 +322,13 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   enterEvent(event: Event) {
     event.preventDefault();
     this.config.formGroup.get(this.config.id)?.markAsTouched();
+    this.focusEvent.emit(false);
+  }
+
+  escapeEvent(event: Event) {
+    event.preventDefault();
+    this.config.formGroup.get(this.config.id)?.markAsTouched();
+    this.focusEvent.emit(false);
   }
 
   /**

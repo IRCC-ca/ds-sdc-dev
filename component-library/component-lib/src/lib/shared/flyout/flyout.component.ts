@@ -26,7 +26,7 @@ export enum IFlyoutSelectTypes {
 
 export interface IFlyoutConfig {
   id: string;
-  options?: IFlyoutOptionConfig[];
+  options: IFlyoutOptionConfig[];
   disabled?: boolean;
   selected?: string;
   selection?: [] | number;

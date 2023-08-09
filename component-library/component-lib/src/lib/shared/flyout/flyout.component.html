@@ -1,6 +1,6 @@
 <div
   *ngIf="
-    config.type !== 'autocomplete' || config.options.length < 100;
+    config.type !== 'autocomplete' || config.options.length < 10;
     else auto_flyout
   "
 >
@@ -17,9 +17,13 @@
         selected: option.active
       }"
     >
-      <ng-container
-        *ngTemplateOutlet="options; context: { config: option, index: index }"
-      ></ng-container>
+      <ircc-cl-lib-flyout-option
+        [config]="option"
+        [value]="option.value | autocomplete : config.selected"
+        [size]="option.size"
+        (click)="optionSelected(index)"
+        [id]="option.id + '_option_' + (index + 1)"
+      ></ircc-cl-lib-flyout-option>
     </div>
   </div>
 </div>
