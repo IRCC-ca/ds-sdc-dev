@@ -4,8 +4,7 @@ import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
-  IMultiCheckboxConfig,
-  ISelectConfig
+  IMultiCheckboxConfig
 } from 'ircc-ds-angular-component-library';
 import { MultiCheckboxService } from 'ircc-ds-angular-component-library';
 import { TranslatedPageComponent } from '../translated-page-component';
@@ -23,12 +22,6 @@ export class MultiCheckboxDocumentationComponent
   altLangLink = 'multi-checkbox-documentation';
   form: FormGroup = new FormGroup({});
 
-  selectConfig: ISelectConfig = {
-    id: 'select_conf',
-    options: [{ text: 'op1' }, { text: 'op2' }, { text: 'op3' }],
-    placeholder: 'test',
-    formGroup: this.form
-  };
   config: IMultiCheckboxConfig = {
     id: '',
     parent: {
