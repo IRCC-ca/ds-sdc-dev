@@ -90,7 +90,7 @@ const routes: Routes = [
     {
       path: 'select-documentation',
       component: SelectDocumentationComponent,
-      title: 'Select (needs translation)'
+      title: 'Select.Title'
     },
     {
       path: 'request-form',
