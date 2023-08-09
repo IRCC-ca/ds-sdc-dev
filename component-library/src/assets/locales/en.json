@@ -1076,7 +1076,8 @@
 			"MinMax": "Specs displaying the minimum and maximum widths of the select component. Widths are described in the paragraph below.",
 			"Usage1": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing a select component. These options include size and allow designers to hide or show the required asterisk, label, description, hint, character count and error message.",
 			"Usage2": "A screenshot of the layer panel from Figma. The selected layer displayed is the “input-field” subcomponent within the “form-input” component.",
-			"Usage3": "A screenshot of the design panel from Figma. With the “input-field” subcomponent selected, designers can choose from its configuration options. These options include the type, size, content, error and state."
+			"Usage3": "A screenshot of the design panel from Figma. With the “input-field” subcomponent selected, designers can choose from its configuration options. These options include the type, size, content, error and state.",
+			"UsageScreenshot": "A screenshot of the form-input component with the input-field layer selected in the component."
 		},
 		"AccesiblityPopulatedContentItem": "Populated and placeholder content are placed inside of the select and are always visible to the user."
 	}
