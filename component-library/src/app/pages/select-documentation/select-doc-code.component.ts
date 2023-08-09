@@ -315,7 +315,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: this.selectConfig.label,
       desc: this.selectConfig.desc,
       hint: this.selectConfig.hint,
-      errorMessages: this.selectConfig.errorMessages
+      errorMessages: this.errorState ? this.errorSelectConfig.errorMessages : undefined
     };
 
     if (tab) {
