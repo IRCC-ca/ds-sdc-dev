@@ -21,11 +21,6 @@ export class ButtonDocumentationComponent implements OnInit {
     private lang: LangSwitchService
   ) {}
 
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
-
   pageTitleSlugConfig: slugTitleURLConfig = {
     title: 'Buttons.Title',
     heading: 'h1',
