@@ -30,7 +30,7 @@ $selectors: "app-component-preview";
     flex-direction: column;
     min-height: 170px;
 
-    @include grid.un-tablet-layout {
+    @include grid.in-phone-layout {
       width: 100%;
     }
 
