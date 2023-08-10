@@ -36,7 +36,7 @@
 		"Mike": "Mike",
 		"Naseer": "Naseer",
 		"Bobby": "Bobby",
-		"AccessibilityDemo": "Démo d'accessibilité",
+		"AccessibilityDemo": "Demo d'accessibilité",
 		"BannerDocumentation": "Documentation de la bannière",
 		"Codeview": "Comeew",
 		"ButtonDocumentation": "Documentation des boutones",
@@ -47,6 +47,7 @@
 	"Buttons": {
 		"Title": "Boutons",
 		"Intro": "Les boutons déclenchent une action ou permettent de naviguer vers une autre page. Ils ont de multiples styles et configurations selon les besoins variés. Ils attirent l’attention sur les actions que l’utilisateur doit effectuer pour progresser dans un flux.",
+		"InteractiveDemoDesc": "Essayez notre composant <strong>bouton</strong> et les options configurables disponibles.",
 		"IntroAlert": "Cet élément de l’interface utilisateur est actuellement disponible uniquement dans le prologiciel des styles. Il sera bientôt offert pour le progiciel des composantes.",
 		"PrimaryHeading": "Principal",
 		"PrimaryBtnText": "Bouton principal",
@@ -61,12 +62,12 @@
 		"PlainBtnTexts": "Boutons simples",
 		"PlainText": "Les boutons simples peuvent être utilisés pour des actions qui nécessitent moins d’attention que celles des boutons principaux ou secondaires. Ils sont également utiles dans les situations où l’interface utilisateur est plus compacte. Ces boutons ne doivent pas être utilisés comme des liens. Utiliser les <a href='#'>styles de texte des liens</a> dans ces situations.",
 		"PlainCritBtnText": "Bouton simple critique",
-		"ConfigLayoutFluid": "Fluid",
-		"ConfigLayoutFixed": "Fixed",
+		"ConfigLayoutFluid": "Fluide",
+		"ConfigLayoutFixed": "Fixé",
 		"ConfigIconHeading": "Icône",
-		"ConfigIconNone": "None",
-		"ConfigIconLeading": "Leading",
-		"ConfigIconTrailing": "Trailing",
+		"ConfigIconNone": "Aucun",
+		"ConfigIconLeading": "Menant",
+		"ConfigIconTrailing": "Fuite",
 		"HierarchyHeading": "Hiérarchie",
 		"HierarchyDoImgAlt": "Une interface utilisateur utilisant plusieurs types de boutons. Il y a un bouton principal, un bouton secondaire et un bouton simple, pour créer une hiérarchie visuelle.",
 		"HierarchyDontText": "L’utilisation de plusieurs boutons principaux dans une même page ou section.",
@@ -151,7 +152,7 @@
 		"ColourTableDescriptionRow13": "Bordure du bouton secondaire.",
 		"ColourTableDescriptionRow14": "Bordure du bouton secondaire dans l'état de survol.",
 		"ColourTableDescriptionRow15": "Bordure du bouton secondaire à l'état actif.",
-		"ColourTableDescriptionRow16": "Bordure du bouton secondaire lors de l'état handicapé.",
+		"ColourTableDescriptionRow16": "Bordure du bouton secondaire lors de l'état désactivé.",
 		"ColourTableDescriptionRow17": "Texte et icône dans le bouton secondaire.",
 		"ColourTableDescriptionRow18": "Texte et icône dans l'état désactivé du bouton secondaire.",
 		"ColourTableDescriptionRow19": "Bordure du bouton secondaire en utilisant le rôle de couleur critique.",
@@ -173,7 +174,7 @@
 		"ColourTableDescriptionRow35": "Contexte des bannières d'alerte avec le sentiment de succès.",
 		"ColourTableDescriptionRow36": "Border des bannières alertes avec le sentiment de succès.",
 		"ColourTableDescriptionRow37": "Icône en bannières alertes avec le sentiment de succès.",
-		"ColourTableDescriptionRow38": "Contexte des bannières d'alerte avec le sentiment d'information.",
+		"ColourTableDescriptionRow38": "Contexte des bannières d'alerte avec le sentiment de l'information.",
 		"ColourTableDescriptionRow39": "Border des bannières d'alerte avec le sentiment d'information.",
 		"ColourTableDescriptionRow40": "Icône en bannières d'alerte avec le sentiment d'information.",
 		"ColourTableDescriptionRow41": "Contexte des éléments de formulaire sélectionnés lors de l'affichage d'une erreur.",
@@ -188,7 +189,7 @@
 		"ColourTableDescriptionRow50": "Border des éléments de forme non sélectionnés tout en affichant une erreur et dans un état de survol.",
 		"ColourTableDescriptionRow51": "Border des éléments de formulaire non sélectionnés lors de l'affichage d'une erreur et dans un état désactivé.",
 		"ColourTableDescriptionRow52": "Texte utilisé pour les messages d'erreur.",
-		"ColourTableDescriptionRow53": "Contexte des éléments de forme sélectionnés lors de l'affichage du succès.",
+		"ColourTableDescriptionRow53": "Contexte des éléments de forme sélectionnés tout en affichant le succès.",
 		"ColourTableDescriptionRow54": "Contexte des éléments de forme sélectionnés lors de l'affichage du succès et dans l'état de survol.",
 		"ColourTableDescriptionRow55": "Contexte des éléments de forme sélectionnés lors de l'affichage du succès et à l'état actif.",
 		"ColourTableDescriptionRow56": "Contexte des éléments de forme sélectionnés lors de l'affichage du succès et à l'état désactivé.",
@@ -202,7 +203,7 @@
 		"ColourTableDescriptionRow64": "Texte utilisé pour les messages de réussite.",
 		"ColourTableDescriptionRow65": "Contexte des éléments de forme sélectionnés tout en affichant l'avertissement.",
 		"ColourTableDescriptionRow66": "Contexte des éléments de forme sélectionnés tout en affichant l'avertissement et dans l'état de survol.",
-		"ColourTableDescriptionRow67": "Contexte des éléments de forme sélectionnés lors de l'affichage de l'avertissement et à l'état actif.",
+		"ColourTableDescriptionRow67": "Contexte des éléments de forme sélectionnés tout en affichant l'avertissement et à l'état actif.",
 		"ColourTableDescriptionRow68": "Contexte des éléments de forme sélectionnés lors de l'affichage de l'avertissement et à l'état désactivé.",
 		"ColourTableDescriptionRow69": "Contexte des éléments de forme non sélectionnés tout en affichant un avertissement.",
 		"ColourTableDescriptionRow70": "Contexte des éléments de forme non sélectionnés tout en affichant l'avertissement et dans l'état de survol.",
@@ -220,15 +221,15 @@
 		"ColourTableDescriptionRow82": "Contexte des éléments de formulaire non sélectionnés lors de l'affichage des informations et dans l'état de survol.",
 		"ColourTableDescriptionRow83": "Contexte des éléments de formulaire non sélectionnés lors de l'affichage des informations et à l'état actif.",
 		"ColourTableDescriptionRow84": "Contexte des éléments de formulaire non sélectionnés lors de l'affichage des informations et à l'état désactivé.",
-		"ColourTableDescriptionRow85": "Bordure des éléments de formulaire non sélectionnés lors de l'affichage des informations.",
+		"ColourTableDescriptionRow85": "Border des éléments de formulaire non sélectionnés lors de l'affichage des informations.",
 		"ColourTableDescriptionRow86": "Border des éléments de formulaire non sélectionnés lors de l'affichage des informations et dans un état de survol.",
 		"ColourTableDescriptionRow87": "Border des éléments de formulaire non sélectionnés lors de l'affichage des informations et dans un état désactivé.",
 		"ColourTableDescriptionRow88": "Texte utilisé pour les messages d'information.",
 		"ColourTableDescriptionRow89": "Contexte principal de la page.",
 		"ColourTableDescriptionRow90": "Peut être utilisé pour les panneaux latéraux, les têtes de mât, les pieds de page si vous utilisez une couleur différente de la BG principale souhaitée.",
-		"ColourTableDescriptionRow91": "Utilisé pour les surfaces qui superposent temporairement sur le produit principal - menus de mouche, fenêtres modales, menus déroulants, etc.",
-		"ColourTableDescriptionRow92": "Remplissez en arrière-plan sur des éléments interactifs qui n'ont pas de remplissage lorsqu'ils survolent à l'état de volants.",
-		"ColourTableDescriptionRow93": "Remplissez en arrière-plan sur des éléments interactifs qui n'ont pas de remplissage lors de l'état actif.",
+		"ColourTableDescriptionRow91": "Utilisé pour les surfaces qui se superposent temporairement sur le produit principal - menus de mouche, fenêtres modales, menus déroulants, etc.",
+		"ColourTableDescriptionRow92": "Remplissage d'arrière-plan sur des éléments interactifs qui n'ont pas de remplissage lorsqu'ils survolent à l'état de volants.",
+		"ColourTableDescriptionRow93": "Remplissez en arrière-plan sur des éléments interactifs qui n'ont pas de remplissage lorsqu'ils sont à l'état actif.",
 		"ColourTableDescriptionRow94": "Aperçu générique et accessible. Peut être utilisé pour décrire les champs d'entrée, les tables, etc.",
 		"ColourTableDescriptionRow95": "Aperçu générique et accessible dans l'état de survol. Peut être utilisé pour décrire les champs d'entrée, etc.",
 		"ColourTableDescriptionRow96": "Aperçu générique et accessible à l'état désactivé. Peut être utilisé pour décrire les champs d'entrée, etc.",
@@ -387,7 +388,7 @@
 		"NEXT_PAGE": "Ceci est un exemple d'une page suivante - il est simplement là à des fins de démonstration et n'est pas configuré pour une accessibilité correcte. Notez la mise à jour de l'indicateur de progression en haut de la page. Vous pouvez naviguer en utilisant l'indicateur de progression",
 		"ERRORS": {
 			"FAMILY_NAME_REQUIRED": "Ce champ est vide. Veuillez saisir un nom de famille",
-			"DOB_NO_SELECTION_REQUIRED": "Aucune sélection n'a été faite. Veuillez remplir les champs pour compléter votre date de naissance.",
+			"DOB_NO_SELECTION_REQUIRED": "Aucune sélection n'a été faite. Veuillez remplir les champs pour terminer votre date de naissance.",
 			"DOB_REQUIRED": "Veuillez remplir les champs manquants pour terminer votre date de naissance.",
 			"DECLARATION_REQUIRED": "Aucune sélection n'a été faite. Veuillez faire une sélection pour compléter votre déclaration",
 			"DECLARATION_CUSTOM": "Vous devez accepter de continuer"
@@ -406,7 +407,7 @@
 			"FAMILY_NAME_INPUT": {
 				"LABEL": "Nom de famille (requis)",
 				"DESC": "Ceci est votre nom de famille ou votre nom",
-				"BANNER": "Si vous n'avez pas de nom de famille, fournissez tous vos noms donnés dans le domaine du nom de famille et laissez le champ des noms donnés vide.",
+				"BANNER": "Si vous n'avez pas de nom de famille, fournissez tous vos noms donnés dans le champ de nom de famille et laissez le champ des noms donnés vide.",
 				"BANNER_CLOSE": "Bannière d'informations sur le nom de famille. Fermer"
 			},
 			"GIVEN_NAME_INPUT": {
@@ -482,10 +483,11 @@
 	"Input": {
 		"Title": "Saisir",
 		"Intro": "Le composant d'entrée fournit des champs qui permettent aux utilisateurs de saisir des informations. Le composant d'entrée fournit plusieurs options configurables pour communiquer clairement les exigences du formulaire pour de nombreuses cas d'utilisation.",
+		"InteractiveDemoDesc": "Essayez notre composant <strong>entrée</strong> et les options configurables disponibles.",
 		"PrimaryHeading": "Entrée de base",
 		"SecondaryHeading": "Entrée de mot de passe",
 		"PrimaryText": "L'entrée de base permet l'entrée d'informations à une seule ligne. Le composant de formulaire est configurable pour s'adapter à divers cas d'utilisation et dispositions. Voir les configurations disponibles ci-dessous.",
-		"SecondaryText": "L'entrée de mot de passe permet aux utilisateurs de saisir leur mot de passe. Le mot de passe peut être caché ou affiché.",
+		"SecondaryText": "L'entrée de mot de passe permet aux utilisateurs d'entrer leur mot de passe. Le mot de passe peut être caché ou affiché.",
 		"ConfigErrorHeading": "Erreur",
 		"ConfigPlaceholderHeading": "Espace réservé",
 		"FieldWidth": "Largeurs de champ",
@@ -521,14 +523,14 @@
 		"WriteDescDoText": "Incluez toutes les informations pertinentes dans la description.",
 		"WriteDescDontImgAlt": "Un champ de saisie pour collecter l'adresse e-mail de l'utilisateur. L'étiquette est «Adresse e-mail (requise)». Le champ de saisie est vide.",
 		"WriteDescDontText": "Incluez une description lorsque des instructions ou des détails supplémentaires ne sont pas nécessaires pour clarifier comment remplir correctement le terrain.",
-		"WritePlaceholderSubHeading": "Le texte du placement apparaît dans le champ de saisie. Utilisez-le uniquement là où il est nécessaire pour accélérer la compréhension par un utilisateur des informations qu'il doit fournir. Le texte de l'espace réservé peut être un exemple du type de valeur attendue qui doit être saisi, soit afficher le format exact de ce qui doit être saisi.",
+		"WritePlaceholderSubHeading": "Le texte de l'espace réservé apparaît dans le champ de saisie. Utilisez-le uniquement là où il est nécessaire pour accélérer la compréhension par un utilisateur des informations qu'il doit fournir. Le texte de l'espace réservé peut être un exemple du type de valeur attendue qui doit être saisi, soit afficher le format exact de ce qui doit être saisi.",
 		"WritePlaceholderDoImgAlt1": "Un champ de saisie pour collecter le numéro d'identification des étudiants de l'utilisateur. L'étiquette est «numéro d'identification des élèves (requis)». La description est «Entrez votre numéro d'identification à 9 chiffres trouvé dans votre profil». Le champ de saisie contient du texte d'espace réservé. Le texte du placement est «Ex: 301297423»",
 		"WritePlaceholderDoText1": "Fournissez du texte de placement comme exemple spécifique de la valeur attendue, dans un champ de saisie.",
-		"WritePlaceholderDontImgAlt1": "Un champ de saisie pour collecter l'adresse e-mail de l'utilisateur. L'étiquette est «Adresse e-mail (requise)». Le champ de saisie contient du texte d'espace réservé. Le texte du placement est «Johnsmith@email.com»",
+		"WritePlaceholderDontImgAlt1": "Un champ de saisie pour collecter l'adresse e-mail de l'utilisateur. L'étiquette est «Adresse e-mail (requise)». Le champ de saisie contient du texte d'espace réservé. Le texte du placement est «johnsmith@email.com»",
 		"WritePlaceholderDontText1": "Utilisez le texte de placement lorsque la valeur attendue est déjà évidente pour l'utilisateur ou où l'exemple donne l'impression que le champ a déjà été terminé.",
 		"WritePlaceholderDoImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée contiennent du texte d'espace réservé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDoText2": "Fournissez du texte de placement pour afficher le format exact requis, dans un champ de saisie.",
-		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont du texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
+		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont un texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDontText2": "Remplacez le texte de l'indice avec le texte de l'espace réservé.",
 		"WriteErrorsDoImgAlt": "Un champ de saisie pour collecter le nom de famille de l'utilisateur. L'étiquette est «Nom de famille (obligatoire)». La description est «Ceci est votre nom de famille ou votre nom.» Le message d'erreur est «Ce champ est vide. Veuillez saisir un nom de famille.",
 		"WriteErrorsDoText": "Fournissez du texte d'erreur utile et guide l'utilisateur sur ce qu'il faut corriger.",
@@ -557,7 +559,7 @@
 		"AccessibilityContentItem5": "L'étiquette qui comprend un astérisque pour indiquer que le contrôle est requis.",
 		"AccessibilityContentItem6": "Étiquetage clair pour les champs requis, y compris le mot «requis» entre parenthèses.",
 		"AccessibilityValidationText": "Si une erreur d'entrée est automatiquement détectée, l'élément qui est en erreur est identifié et l'erreur est décrite à l'utilisateur dans le texte.",
-		"CodeViewer": "Bloc de la visionneuse de code affichant le code HTML et le code TypeScript généré à partir de la démo interactive",
+		"CodeViewer": "Bloc de la visionneuse de code affichant le HTML et le code TypeScript généré à partir de la démo interactive",
 		"LabelText1": "Étiqueter le texte",
 		"LabelText2": "Mot de passe"
 	},
@@ -565,6 +567,7 @@
 		"MainTitle": "Sélecteur de date",
 		"Title": "DatePicker-doc",
 		"Intro": "Le composant Picker Date permet aux utilisateurs de saisir une année, un mois et / ou un jour spécifiques.",
+		"InteractiveDemoDesc": "Essayez notre composant <strong>date picker</strong> et les options configurables disponibles.",
 		"DesignGuideLines": {
 			"Maintain": "Maintenir les largeurs de sélection par défaut",
 			"MaintainDoAlt": "Un petit cueilleur de date dans la disposition horizontale avec des largeurs cohérentes.",
@@ -583,7 +586,7 @@
 			"HorizontalDont": "Utilisez la disposition horizontale lorsque votre formulaire est dans un récipient étroit. N'utilisez pas la disposition verticale lorsque vous formez dans un large récipient."
 		},
 		"Anatomy": {
-			"ImgAlt": "Les pièces qui maquillent le composant de sélecteur de date. Les pièces sont décrites dans le contenu ci-dessous.",
+			"ImgAlt": "Les pièces qui maquillent le composant de sélecteur de dattes. Les pièces sont décrites dans le contenu ci-dessous.",
 			"HintHeading": "Texte d'indice",
 			"SelectCompoHeading": "Sélectionner les composants",
 			"SelectCompoTxt": "La zone avec laquelle l'utilisateur interagit pour ouvrir un menu déroulant pour la sélection de date. Le SELECT prend également en charge le texte d'espace réservé qui s'affiche avant que l'utilisateur ne fasse une sélection."
@@ -619,7 +622,7 @@
 			"NecessaryContentDont": "Ajoutez des couches de contenu inutiles ou redondantes à l'entrée.",
 			"RequiredFieldsDoAlt": "Une date de cueilleur de dates percut la date de naissance d'un utilisateur avec l'étiquette «Date de naissance (requise)».",
 			"RequiredFieldsDo": "En plus d'utiliser l'astérisque requis (*), ajoutez également «(requis)» à la fin de toutes les étiquettes dans les champs requis.",
-			"RequiredFieldsDontAlt": "Une date de cueilleur de dattes collecte la date de naissance d'un utilisateur avec l'étiquette «Date de naissance».",
+			"RequiredFieldsDontAlt": "Une date de cueilleur de dates collecte la date de naissance d'un utilisateur avec l'étiquette «Date de naissance».",
 			"RequiredFieldsDont": "Indiquez les champs requis avec seulement l'astérisque (*)."
 		},
 		"UsageInFigma": {
@@ -676,6 +679,7 @@
 	"Banner": {
 		"Title": "Bannières",
 		"Intro": "Les bannières fournissent un contenu de soutien précieux à l'utilisateur transmettant un sentiment spécifique (avertissement, succès, informationnel, etc.) et peuvent être utilisés pour aider l'utilisateur à accomplir une tâche ou à mieux comprendre le contenu qu'il consulte.",
+		"InteractiveDemoDesc": "Essayez notre composant <strong>bannière</strong> et les options configurables disponibles.",
 		"InfoPrimaryText": "Les bannières d'informations sont utilisées pour transmettre des informations générales importantes.",
 		"WarningPrimaryText": "Des bannières d'avertissement sont utilisées pour transmettre des avertissements importants.",
 		"CriticalPrimaryText": "Des bannières critiques sont utilisées pour transmettre des informations critiques ou des erreurs.",
@@ -882,14 +886,14 @@
 		"DefaultLabel": "Défaut",
 		"TitleLabel": "Titre",
 		"CloseLabel": "Fermer",
-		"InteractiveDemoDesc": "Essayez notre <strong>{{component}}</strong> composant et les options configurables disponibles dans celui-ci.",
 		"Labelling": "Étiquetage"
 	},
 	"IconButtonDocumentation": {
 		"Title": "Bouton d'icône",
 		"Intro": "Les boutons d'icônes peuvent être utilisés pour une seule action bien compris qui peut être clairement communiquée avec une icône autonome.",
+		"InteractiveDemoDesc": "Essayez notre composant <strong>Bouton d'icône</strong> et les options configurables disponibles à l'intérieur.",
 		"PrimaryText": "Les boutons d'icône principaux sont utilisés pour mettre en évidence des actions importantes et faciles à comprendre. Il peut être utilisé dans un groupe de boutons d'icônes.",
-		"CriticalText": "Les boutons d'icônes critiques sont souvent utilisés pour des actions destructrices comme la suppression du contenu contribué par l'utilisateur.",
+		"CriticalText": "Les boutons d'icônes critiques sont souvent utilisés pour des actions destructrices comme la suppression du contenu contribué à l'utilisateur.",
 		"OrganizeIcons": "Organiser les groupes de bouton d'icône",
 		"OrganizeIconsAlt": "Une barre d'outils de visionneuse de documents avec des icônes de pagination, des icônes de zoom et des icônes de redimensionnement groupées et séparées.",
 		"OrganizeIconsDoText": "Organisez logiquement les boutons d'icônes qui ont une relation contextuelle en gardant les actions connexes ensemble et des actions non liées séparées soit par l'espace blanc ou les séparateurs.",
@@ -930,7 +934,7 @@
 		"LabellingText": "Les boutons d'icône doivent avoir des étiquettes par programme qui leur sont associés afin que l'action de l'icône de l'icône soit claire pour l'écran les utilisateurs du lecteur."
 	},
 	"MultiCheckboxDocumentation": {
-		"Title": "Docbox multichette"
+		"Title": "Docbox multiche"
 	},
 	"Spinner": {
 		"Title": "Spinner-DOC",
@@ -945,7 +949,7 @@
 		"AccessibilityContentItem2": "Les étiquettes décrivent le sujet ou le but.",
 		"AccessibilityContentItem3": "Des descriptions sont fournies lorsque le contenu nécessite une clarté supplémentaire.",
 		"AccessibilityContentItem4": "L'étiquette et la description sont placées à l'extérieur du spinner et sont toujours visibles pour l'utilisateur. Le contenu est présenté dans un ordre de lecture logique.",
-		"Intro": "Les filateurs fournissent un repère visuel qu'une action traite en attendant un cours de changement, un résultat ou l'affichage de nouveaux contenus.",
+		"Intro": "Les filateurs fournissent un repère visuel qu'une action traite en attente d'un cours de changement, un résultat ou l'affichage de nouveaux contenus.",
 		"DesignGuideLines": {
 			"UseSpinner": "Quand utiliser le spinner",
 			"UseSpinnerDoTxt": "Utilisez le spinner si le temps d'attente attendu est perceptible - généralement plus d'une seconde mais moins de 10 secondes.",
@@ -963,7 +967,7 @@
 			"PageLoadDoAlt": "Une page de chargement avec un grand composant de spinner à l'état actif positionné au milieu de la page L'étiquette du grand spinner est «soumettre votre application ...» et sa description indique «Veuillez ne pas fermer votre navigateur».",
 			"PageLoadDontAlt": "Une page de chargement avec un petit composant de spinner à l'état actif positionné au milieu de la page. L'étiquette du petit spinner «soumet votre demande ...» et il n'y a pas de description.",
 			"ShowOneSpinner": "Montrez un fileur à la fois",
-			"ShowOneSpinnerDoTxt": "Afficher un spinner à la fois et où le contenu est mis à jour pour présenter où les résultats apparaîtront.",
+			"ShowOneSpinnerDoTxt": "Affichez un spinner à la fois et où le contenu est mis à jour pour présenter où les résultats apparaîtront.",
 			"ShowOneSpinnerDontTxt": "Montrez plus d'un spinner à la fois pour éviter une interface trop fréquente.",
 			"ShowOneSpinnerDoAlt": "Un formulaire d'application avec 2 entrées de formulaire et un curseur planant sur un bouton primaire. L'étiquette des boutons principaux est «Enregistrer et continuer». Il y a un petit fileur supplémentaire à l'état actif à côté du bouton.",
 			"ShowOneSpinnerDontAlt": "Un formulaire d'application avec 2 entrées de formulaire et un curseur planant sur un bouton primaire. L'étiquette des boutons principaux est «Enregistrer et continuer». Le premier étiquette de formulaires d'entrée est «Office principal (requis)» et sa description est «Veuillez sélectionner votre bureau principal». L'option «Canada» est sélectionnée et il y a un fileur de petite taille supplémentaire à l'état actif à la fin du champ d'entrée. Le deuxième étiquette des formulaires d'entrée est «Pays of Residence» et sa description est «Veuillez sélectionner votre pays de résidence», l'option «Ottawa» est sélectionnée et il y a un petit fileur à la fin du champ de saisie."
@@ -1025,7 +1029,7 @@
 		"Specs1": "La petite étiquette de sélection est de 24 pixels de hauteur avec une largeur de fluide. L'indicateur requis mesure 12 pixels de large. Il y a 4 pixels de rembourrage entre l'indicateur requis et l'étiquette. La description a une hauteur de 20 pixels avec une largeur de fluide. Il y a 4 pixels de rembourrage entre l'étiquette et la description. Le texte de l'indice est de 20 pixels de hauteur avec une largeur de fluide. Il y a 8 pixels de rembourrage entre le texte de l'indice et la description. Le champ de saisie de sélection est de 40 pixels de hauteur avec une largeur de fluide. Il y a 4 pixels de rembourrage entre le composant sélectionné et le texte d'indice. Le nombre de caractères est de 20 pixels de hauteur avec une largeur de fluide. Il y a 4 pixels de rembourrage entre le nombre de caractères et le champ de saisie de sélection. Le message d'erreur est de 20 pixels de hauteur avec une largeur de fluide. L'icône d'erreur est de 16 pixels à 16 à 16. Il y a 4 pixels de rembourrage entre l'icône d'erreur et le message d'erreur. Il y a 8 pixels de rembourrage entre le message d'erreur et le nombre de caractères.",
 		"Specs2": "La grande étiquette de sélection est de 28 pixels de hauteur avec une largeur de fluide. L'indicateur requis mesure 16 pixels de large. Il y a 4 pixels de rembourrage entre l'indicateur requis et l'étiquette. La description a une hauteur de 24 pixels avec une largeur de fluide. Il y a 4 pixels de rembourrage entre l'étiquette et la description. Le texte de l'indice est de 24 pixels de hauteur avec une largeur de fluide. Il y a 12 pixels de rembourrage entre le texte de l'indice et la description. Le champ de saisie de sélection est de 52 pixels de hauteur avec une largeur de fluide. Il y a 8 pixels de rembourrage entre le champ de saisie de sélection et le texte d'indice. Le nombre de caractères est de 24 pixels de hauteur avec une largeur de fluide. Il y a 8 pixels de rembourrage entre le nombre de caractères et le champ de saisie de sélection. Le message d'erreur est de 24 pixels de hauteur avec une largeur de fluide. L'icône d'erreur est de 20 à 20 pixels. Il y a 4 pixels de rembourrage entre l'icône d'erreur et le message d'erreur. Il y a 12 pixels de rembourrage entre le message d'erreur et le nombre de caractères.",
 		"MinMax": "Small Select a une largeur maximale de 552 pixels. Grand Select a une largeur maximale de 632 pixels.",
-		"FigmaAccess2": "À partir de là, ouvrez la liste déroulante de la propriété «Type» et sélectionnez «Sélectionner» comme type de champ de saisie",
+		"FigmaAccess2": "À partir de là, ouvrez la liste déroulante de la propriété «Type» et sélectionnez «Sélectionner» comme type de champ d'entrée",
 		"FigmaAccess3": "Vous pouvez ensuite configurer le contenu et les états du Select dans le panneau de droite.",
 		"WritingLabelsText": "Les étiquettes sont un contenu obligatoire pour le composant sélectionné. Les étiquettes indiquent clairement le but du champ.",
 		"WritingPlaceholderText": "Le texte de l'espace réservé apparaît dans la sélection. Utilisez-le uniquement là où il est nécessaire pour accélérer la compréhension par un utilisateur des informations qu'il doit fournir. Le texte de l'espace réservé peut être un exemple du type de valeur attendue qui doit être saisi, soit afficher le format exact de ce qui doit être saisi.",
@@ -1047,14 +1051,14 @@
 		"Dont5": "Comptez sur l'étiquette pour faire tout le travail d'informer un utilisateur de la tâche à effectuer.",
 		"Dont6": "Écrivez plus longtemps que les étiquettes nécessaires. Ne tronquez pas les étiquettes.",
 		"Dont7": "Incluez une description lorsque des instructions ou des détails supplémentaires ne sont pas nécessaires pour clarifier comment faire correctement une sélection.",
-		"Dont8": "Fournissez du texte de l'espace pour afficher le format exact requis.",
+		"Dont8": "Fournissez du texte de placement pour afficher le format exact requis.",
 		"Dont9": "Écrivez des messages d'erreur qui ressemblent à un robot.",
 		"Dont10": "Indiquez les champs requis avec seulement l'astérisque (*).",
 		"Alt": {
 			"Do1": "Un formulaire «Province» sélectionne avec l'Open Dropdown-menu et chaque élément déroulant est un type de texte uniquement.",
 			"Do2": "Un formulaire «Province» sélectionne avec l'Open Dropdown-menu et une option sélectionnée.",
 			"Do3": "Un composant sélectionné qui montre la validation en mettant en évidence le champ rouge avec un message d'erreur en dessous.",
-			"Do4": "Un composant sélectionné qui affiche une option multi-lignes sélectionnée dans Dropdown-MENU. Le composant sélectionné reste à une largeur et une hauteur fixe qui coupe le texte des options sélectionnées dans la zone de texte des composants.",
+			"Do4": "Un composant sélectionné qui affiche une option multi-lignes sélectionnée dans Dropdown-MENU. Le composant sélectionné reste à une largeur et une hauteur fixes qui coupe le texte des options sélectionnées dans la zone de texte des composants.",
 			"Do5": "Un composant sélectionné pour collecter la province / territoire de l'utilisateur dans lequel ils résident. L'étiquette est «Province / territoire (requis)». La description est «Sélectionnez la province ou le territoire dans lequel vous résidez actuellement». Le texte du placement dans le champ de saisie de sélection est «Sélectionnez une option».",
 			"Do6": "Un composant sélectionné qui collecte le type d'organisation de l'utilisateur. L'étiquette est «Type d'organisation (requise)». Le texte du placement dans le SELECT est «Sélectionnez une option».",
 			"Do7": "Un composant sélectionné pour collecter le type d'application de l'utilisateur. L'étiquette est «Type d'application (requise)». La description est «Sélectionnez l'application que vous demandez» Le texte du champ d'espace réservé dans le champ d'entrée est «Sélectionner une option»",
@@ -1064,7 +1068,7 @@
 			"Dont1": "Un formulaire «Province» sélectionne avec l'Open Dropdown-menu et chaque élément déroulant est une icône avec type de texte.",
 			"Dont2": "Un formulaire «Province» sélectionne avec trois options sélectionnées.",
 			"Dont3": "Un composant sélectionné qui utilise uniquement un message d'erreur comme validation.",
-			"Dont4": "Un composant sélectionné qui affiche une option multi-lignes sélectionnée dans Dropdown-MENU. Le composant SELECT est ajusté pour présenter toute l'option sélectionnée.",
+			"Dont4": "Un composant sélectionné qui affiche une option multi-lignes sélectionnée dans Dropdown-MENU. Le composant sélectionné est ajusté pour présenter toute l'option sélectionnée.",
 			"Dont5": "Un composant sélectionné pour collecter la province / territoire de l'utilisateur dans lequel ils résident. L'étiquette est «Province / territoire (requis)». Il n'y a pas de description. Le texte du placement dans le champ de saisie est «Sélectionner une option»",
 			"Dont6": "Un composant sélectionné qui collecte le type d'organisation de l'utilisateur. L'étiquette est «le type d'organisation dans lequel vous travaillez (requis)». Le texte du placement est «Sélectionnez une option».",
 			"Dont7": "Un composant sélectionné pour collecter l'orientation sexuelle de l'utilisateur. L'étiquette est «orientation sexuelle (requise)». La description indique «Sélectionnez votre orientation sexuelle». Le texte du placement dans le champ de saisie est «Sélectionner une option»",
@@ -1076,7 +1080,8 @@
 			"MinMax": "Spécifications affichant les largeurs minimales et maximales du composant sélectionné. Les largeurs sont décrites dans le paragraphe ci-dessous.",
 			"Usage1": "Une capture d'écran du panneau de conception de Figma. Le panneau de conception affiche les options de configuration que les concepteurs peuvent choisir lors de la personnalisation d'un composant sélectionné. Ces options incluent la taille et permettent aux concepteurs de masquer ou d'afficher l'astérisque, l'étiquette, la description, l'indice, le nombre de caractères et le message d'erreur.",
 			"Usage2": "Une capture d'écran du panneau de couche de Figma. La couche sélectionnée affichée est le sous-composant «Field-Field» dans le composant «Form-Input».",
-			"Usage3": "Une capture d'écran du panneau de conception de Figma. Avec le sous-composant «Field-Field» sélectionné, les concepteurs peuvent choisir parmi ses options de configuration. Ces options incluent le type, la taille, le contenu, l'erreur et l'état."
+			"Usage3": "Une capture d'écran du panneau de conception de Figma. Avec le sous-composant «Field-Field» sélectionné, les concepteurs peuvent choisir parmi ses options de configuration. Ces options incluent le type, la taille, le contenu, l'erreur et l'état.",
+			"UsageScreenshot": "Une capture d'écran du composant de formulaire-entrée avec la couche de champ d'entrée sélectionnée dans le composant."
 		},
 		"AccesiblityPopulatedContentItem": "Le contenu de peuplement et d'espace réservé sont placés à l'intérieur de la sélection et sont toujours visibles pour l'utilisateur."
 	}
