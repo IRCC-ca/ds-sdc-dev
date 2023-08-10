@@ -8,6 +8,10 @@
   .component-preview {
     max-width: 236px;
     height: 193px;
+
+     app-component-preview.preview-wrapper {
+      padding: 60px 63px 44px 64px;
+    }
   }
 }
 
@@ -17,3 +21,10 @@
     height: auto;
   }
 }
+
+:host ::ng-deep {
+  app-component-preview .preview-wrapper {
+    padding: 60px 63px 44px 64px;
+  }
+} 
+
