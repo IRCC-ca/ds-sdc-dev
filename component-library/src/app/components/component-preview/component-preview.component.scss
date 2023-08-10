@@ -22,7 +22,8 @@ $selectors: "app-component-preview";
 
   .preview-wrapper {
     box-sizing: border-box;
-    padding: 0 64px;
+    padding-top: 60px;
+    padding-bottom: 44px;
     height: 100%;
     display: inline-flex;
     align-items: center;
@@ -32,6 +33,11 @@ $selectors: "app-component-preview";
 
     @include grid.in-phone-layout {
       width: 100%;
+    }
+
+    @include grid.up-phone-layout {
+      padding-left: 64px;
+      padding-right: 64px;
     }
 
     ircc-cl-lib-button.copy {
