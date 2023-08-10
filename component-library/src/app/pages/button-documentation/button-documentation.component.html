@@ -71,6 +71,7 @@
             'Buttons.PlainBtnText' | translate
           }}</button>"
           [minWidth]="338"
+          [multiConfig]="{ multi: true, position: 'first' }"
         >
           <ircc-cl-lib-button [config]="buttonTypeConfigs['plain']">
             {{ 'Buttons.PlainBtnText' | translate }}
@@ -81,6 +82,7 @@
             'Buttons.PlainCritBtnText' | translate
           }}</button>"
           [minWidth]="338"
+          [multiConfig]="{ multi: true, position: 'last' }"
         >
           <ircc-cl-lib-button [config]="buttonTypeConfigs['plain_critical']">
             {{ 'Buttons.PlainCritBtnText' | translate }}
