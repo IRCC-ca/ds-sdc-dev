@@ -10,14 +10,14 @@ export class autocompletePipe implements PipeTransform {
       return this.sanitize(`${value}`);
     }
     return this.sanitize(
-      `<span class="normal">${this.replace(value, searched)}</span>`
+      `<span class="bolded">${this.replace(value, searched)}</span>`
     );
   }
 
   replace(str: string, searched: string) {
     return str.replace(
       new RegExp(`(${searched})`, 'i'),
-      '<span class="bolded">$1</span>'
+      '<span class="normal">$1</span>'
     );
   }
 

@@ -1,6 +1,6 @@
 <div
   *ngIf="
-    config.type !== 'autocomplete' || config.options.length < 10;
+    config.type !== 'autocomplete' || config.options.length < 50;
     else auto_flyout
   "
 >
@@ -29,38 +29,39 @@
 </div>
 
 <ng-template #auto_flyout>
-  <cdk-virtual-scroll-viewport
-    autosize
-    style="height: 100%"
-    minBufferPx="5"
-    maxBufferPx="56"
-    class="example-viewport"
-    class="{{ config?.size }} flyout-container"
-    #container
-    [style.height]="calculateContainerHeight()"
-  >
-    <div
-      *cdkVirtualFor="
-        let option of config?.options;
-        let index = index;
-        templateCacheSize: 0
-      "
-      class="example-item"
-      [ngClass]="{
-        'flyout-option-container': option.clickable !== false,
-        'disabled-option': option.disabled === true,
-        selected: option.active
-      }"
+  <div class="{{ config?.size }} flyout-container">
+    <cdk-virtual-scroll-viewport
+      autosize
+      style="height: 100%"
+      minBufferPx="5"
+      maxBufferPx="56"
+      class="example-viewport"
+      #container
+      [style.height]="calculateContainerHeight()"
     >
-      <ircc-cl-lib-flyout-option
-        [config]="option"
-        [value]="option.value | autocomplete : config.selected"
-        [size]="option.size"
-        (click)="optionSelected(index)"
-        [id]="option.id + '_option_' + (index + 1)"
-      ></ircc-cl-lib-flyout-option>
-    </div>
-  </cdk-virtual-scroll-viewport>
+      <div
+        *cdkVirtualFor="
+          let option of config?.options;
+          let index = index;
+          templateCacheSize: 0
+        "
+        class="example-item"
+        [ngClass]="{
+          'flyout-option-container': option.clickable !== false,
+          'disabled-option': option.disabled === true,
+          selected: option.active
+        }"
+      >
+        <ircc-cl-lib-flyout-option
+          [config]="option"
+          [value]="option.value | autocomplete : config.selected"
+          [size]="option.size"
+          (click)="optionSelected(index)"
+          [id]="option.id + '_option_' + (index + 1)"
+        ></ircc-cl-lib-flyout-option>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
 </ng-template>
 
 <ng-template

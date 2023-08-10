@@ -128,7 +128,7 @@ export class AutoCompleteComponent
     this.config.formGroup
       .get(this.config.id)
       ?.valueChanges.subscribe((data) => {
-        if (null || data.length === 0) {
+        if (data === null || data.length === 0) {
           this.flyout.selected = '';
           this.flyout.options = [];
           this.flyout.options = this.config.suggestions.map((suggestion) => {
@@ -169,11 +169,12 @@ export class AutoCompleteComponent
 
   isSelected(event: any) {
     if (event !== null) {
-      let eventString = this.domSanitizer.sanitize(
-        SecurityContext.HTML,
-        event.replace(/<[^>]*>/g, '')
-      );
-      this.config.formGroup.get(this.config.id)?.setValue(eventString);
+      const tempDivElement = document.createElement('div');
+      tempDivElement.innerHTML = event || '';
+      const convertedString =
+        tempDivElement.textContent || tempDivElement.innerText || '';
+
+      this.config.formGroup.get(this.config.id)?.setValue(convertedString);
       this.showSuggestions = false;
     }
   }

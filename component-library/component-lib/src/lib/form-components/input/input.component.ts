@@ -1,4 +1,6 @@
 import {
+  AfterContentChecked,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   forwardRef,
@@ -73,7 +75,9 @@ export const ARIA_TEXT = {
     }
   ]
 })
-export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
+export class InputComponent
+  implements ControlValueAccessor, OnInit, OnChanges, AfterContentChecked
+{
   formGroupEmpty: FormGroup = new FormGroup({});
   /**
    * Note: DON'T include default values of '' unless it REALLY makes sense to do so - instead, make them optional.
@@ -137,7 +141,8 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     //set config from individual options, if present
     if (this.formGroup !== this.formGroupEmpty) {
@@ -166,6 +171,10 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   //Removed '!' and added null case in onChange
   private onTouch?: () => void;
   private onChange?: (value: any) => void;
+
+  ngAfterContentChecked() {
+    this.changeDetectorRef.detectChanges();
+  }
 
   /**
    * When the page loads, we initialize the form with it's controls, labels, and config, and detect value changes and errors. setLang detects changes to the language toggle to serve the correct text
@@ -213,11 +222,6 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
       this.getAriaErrorText();
     });
-
-    // if (this.config.type === 'autocomplete') {
-    //   this.buttonAutoCompleteClear.id = `button-${this.config.id}-clear`;
-    //   console.log(this.btnAriaTypeAutoCompleteClear);
-    // }
   }
 
   /**
@@ -283,6 +287,16 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       this.config.required,
       this.config.labelIconConfig
     );
+
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
+    } else {
+      this.errorIds = [];
+    }
   }
 
   /**

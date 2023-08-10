@@ -13,6 +13,8 @@
 }
 
 @mixin layout {
+  position: relative;
+
   button {
     padding: 5px !important;
   }
@@ -23,6 +25,11 @@
   }
 
   input {
-    padding-right: 32 px;
+    padding-right: 35px !important;
+  }
+
+  ircc-cl-lib-flyout {
+    position: absolute;
+    width: 100%;
   }
 }

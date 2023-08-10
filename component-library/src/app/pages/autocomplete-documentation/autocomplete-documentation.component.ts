@@ -42,7 +42,13 @@ export class AutocompleteDocumentationComponent
     placeholder: 'Placeholder',
     size: 'small',
     required: true,
-    suggestions: this.testArrays.quotes
+    suggestions: this.testArrays.quotes,
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'This Field is required'
+      }
+    ]
   };
 
   autocompleteCodeView: any = {
@@ -242,7 +248,13 @@ export class AutocompleteDocumentationComponent
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-    this.config.formGroup.addControl(this.config.id, new FormControl());
+    this.config.formGroup.addControl(
+      this.config.id,
+      new FormControl(null, Validators.required)
+    );
+    if (!this.form.get(this.config.id)?.touched) {
+      this.form.get(this.config.id)?.markAsTouched();
+    }
 
     this.form_interactive_button.valueChanges.subscribe((change) => {
       this.autocompleteCodeView = {
@@ -251,10 +263,10 @@ export class AutocompleteDocumentationComponent
       };
       if (this.codeViewConfig.tab) {
         this.codeViewConfig.tab[1].value =
-          "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n" +
+          "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n//...\n" +
           `config: IAutocompleteComponent = ${stringify(
             this.autocompleteCodeView
-          )}\nthis.config.formGroup.addControl(this.config.id, new FormControl());`;
+          )}\n\nthis.config.formGroup.addControl(this.config.id, new FormControl());\n\n//Note: Setting formControl state triggers disabled/enabled styling automatically \nthis.config.formGroup.get('formControlName')?.enable(); //sets the form control to be enabled`;
       }
     });
 
@@ -325,6 +337,42 @@ export class AutocompleteDocumentationComponent
           ...this.config,
           placeholder: change === 'True' ? 'Placeholder' : ''
         };
+      });
+
+    this.form_interactive_button
+      .get('error')
+      ?.valueChanges.subscribe((change: string) => {
+        if (change === 'True') {
+          this.config.formGroup.removeControl(this.config.id);
+          this.config.formGroup.addControl(
+            this.config.id,
+            new FormControl(null, Validators.required)
+          );
+
+          if (!this.form.get(this.config.id)?.touched) {
+            this.form.get(this.config.id)?.markAsTouched();
+          }
+          this.config = {
+            ...this.config,
+            errorMessages: [
+              {
+                key: 'required',
+                errorLOV: 'This Field is required'
+              }
+            ]
+          };
+        } else {
+          this.config.formGroup.removeControl(this.config.id);
+          this.config.formGroup.addControl(this.config.id, new FormControl());
+
+          if (!this.form.get(this.config.id)?.touched) {
+            this.form.get(this.config.id)?.markAsUntouched();
+          }
+          this.config = {
+            ...this.config,
+            errorMessages: undefined
+          };
+        }
       });
   }
 }
