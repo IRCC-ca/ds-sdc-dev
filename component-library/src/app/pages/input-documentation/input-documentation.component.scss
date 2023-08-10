@@ -23,3 +23,9 @@
     }
   }
 }
+
+:host ::ng-deep {
+  app-component-preview .preview-wrapper {
+    padding: 59px 65px 44px 65px;
+  }
+} 
