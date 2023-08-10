@@ -43,7 +43,7 @@ export class IconButtonComponent implements OnInit {
   iconConfigs: { [key: string]: IIconButtonIconConfig } = {
     primary: {
       class: CLASS_X_MARK,
-      color: 'var(--primary-text)'
+      color: 'var(--text-primary)'
     },
     critical: {
       class: CLASS_TRASHCAN,
