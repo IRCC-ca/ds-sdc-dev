@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { DSViewPortSize } from 'ircc-ds-angular-component-library';
 
 export enum BackgroundColor {
   white = 'white',
@@ -21,6 +22,7 @@ export class ComponentPreviewComponent implements OnInit {
   };
 
   positionClass?: string;
+  mobile: boolean = false;
 
   ngOnInit() {
     if (!this.backgroundColor) this.backgroundColor = BackgroundColor.gray;
@@ -30,5 +32,11 @@ export class ComponentPreviewComponent implements OnInit {
     this.backgroundColor === BackgroundColor.white
       ? BackgroundColor.white
       : BackgroundColor.gray;
+    this.mobile = window.innerWidth < DSViewPortSize.mobile;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.mobile = window.innerWidth < DSViewPortSize.mobile;
   }
 }

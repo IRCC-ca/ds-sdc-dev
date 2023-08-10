@@ -1,6 +1,6 @@
 <div
   class="preview-wrapper background-{{ backgroundColor }} {{ positionClass }}"
-  [style.min-width]="minWidth > 0 ? minWidth + 'px' : 0"
+  [style.min-width]="minWidth > 0 && !mobile ? minWidth + 'px' : 0"
 >
   <ng-content></ng-content>
   <ircc-cl-lib-button
