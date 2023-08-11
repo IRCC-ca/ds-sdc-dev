@@ -6,6 +6,8 @@
 @import "../../scss/grid";
 
 $page-width: 1440px;
+$page-content-width: 1156px;
+$navigation-width-desktop: 230px;
 $tablet-padding: 24px;
 $mobile-padding: 16px;
 
@@ -98,7 +100,7 @@ $mobile-padding: 16px;
 
     @include up-laptop-layout {
       width: 100%;
-      max-width: calc(100% - 276px);
+      max-width: calc(100% - $navigation-width-desktop);
       padding-left: sizes.$fixed-36;
     }
 
@@ -131,7 +133,7 @@ $mobile-padding: 16px;
 
     .page-content {
       width: 100%;
-      max-width: 872px;
+      max-width: $page-content-width;
 
       .content-doc-wrapper {
         box-sizing: border-box;
