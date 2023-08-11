@@ -8,10 +8,6 @@
   .component-preview {
     max-width: 236px;
     height: 193px;
-
-     app-component-preview.preview-wrapper {
-      padding: 60px 63px 44px 64px;
-    }
   }
 }
 
@@ -19,12 +15,6 @@
   .image-1 {
     max-width: 232px;
     height: auto;
-  }
-}
-
-:host ::ng-deep {
-  app-component-preview .preview-wrapper {
-    padding: 60px 63px 44px 64px;
   }
 } 
 

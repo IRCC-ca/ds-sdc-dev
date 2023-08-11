@@ -277,12 +277,11 @@
         </h3>
         <div class="row">
           <div [style.max-width]="'100%'">
-            <img
-              src="assets/img/icon-btn-content/icon-spacing.png"
-              alt="{{
-                'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate
-              }}"
-            />
+            <picture>
+              <source media="(max-width: 768px)" srcset="assets/img/icon-btn-content/icon-spacing-phone-328w.png">
+              <source media="(min-width: 768px)" srcset="assets/img/icon-btn-content/icon-spacing.png">
+              <img src="assets/img/icon-btn-content/icon-spacing.png" alt="{{ 'IconButtonDocumentation.SpacingImgAlt' | translate }}">
+            </picture> 
             <p class="description">
               {{ 'IconButtonDocumentation.SpacingText' | translate }}
             </p>
@@ -297,11 +296,11 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <img
-          class="anatomy-image-container"
-          src="assets/img/icon-btn-content/anatomy-image-button.png"
-          alt="{{ 'Banner.Anatomy.ImgAlt' | translate }}"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/img/icon-btn-content/icon-anatomy-phone.png">
+          <source media="(min-width: 768px)" srcset="assets/img/icon-btn-content/anatomy-image-button.png">
+          <img src="assets/img/icon-btn-content/anatomy-image-button.png" alt="{{ 'IconButtonDocumentation.Anatomy.ImgAlt' | translate }}">
+        </picture> 
       </div>
       <div class="element-wrapper-container anatomy-content-container">
         <div class="counter-and-heading-container">
@@ -322,11 +321,19 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <img
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/img/icon-btn-content/icon-spec-phone-328w.png">
+          <source media="(min-width: 768px)" srcset="assets/img/icon-btn-content/spec-image-872w.png">
+          <img src="assets/img/icon-btn-content/spec-image-872w.png" alt="{{ 'IconButtonDocumentation.SpecsImgAlt' | translate }}">
+        </picture>  
+        <!-- <img
           class="single-img"
-          src="assets/img/icon-btn-content/spec-image.png"
+          src="assets/img/icon-btn-content/spec-image-872w.png"
+          srcset="assets/img/icon-btn-content/icon-spec-phone-328w.png 328w, assets/img/icon-btn-content/spec-image-872w.png 1200w"
+          sizes="(max-width: 400px) 328px,
+          872px"         
           alt="{{ 'IconButtonDocumentation.SpecsImgAlt' | translate }}"
-        />
+        /> -->
       </div>
       <div class="element-wrapper-container">
         <p class="specs-description">
