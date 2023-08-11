@@ -30,15 +30,21 @@ export class DatePickerDocCodeComponent implements OnInit {
   currentLanguage: string = '';
   altLangLink = 'datePickerDocCode';
   form_datePicker = new FormGroup({});
-  errorState = 'No';
   state: boolean = false;
 
-  datePickerErrorMessages: IDatePickerErrorMessages = {
+  datePickerSingleError: IDatePickerErrorMessages = {
     general: [
       {
         key: 'required',
         errorLOV: 'ERROR.requiredTextAreaError'
       }
+    ]
+  };
+  datePickerMultiError: IDatePickerErrorMessages = {
+    general: [
+      { key: 'email', errorLOV: 'ERROR.singleError' },
+      { key: 'email', errorLOV: 'ERROR.additionalError' },
+      { key: 'maxlength', errorLOV: 'ERROR.additionalError' }
     ]
   };
 
@@ -49,7 +55,7 @@ export class DatePickerDocCodeComponent implements OnInit {
     required: true,
     desc: 'Description line of text',
     size: 'small',
-    errorMessages: this.datePickerErrorMessages,
+    errorMessages: {},
     unknownDateToggle: {
       dayUnknown: true,
       monthUnknown: true,
@@ -57,6 +63,18 @@ export class DatePickerDocCodeComponent implements OnInit {
     },
     monthSelectShow: true,
     daySelectShow: true
+  };
+
+  datePickerConfigSingle: IDatePickerConfig = {
+    ...this.datePickerConfig,
+    id: 'datepicker_single',
+    required: true,
+    errorMessages: this.datePickerSingleError
+  };
+  datePickerConfigMulti: IDatePickerConfig = {
+    ...this.datePickerConfig,
+    id: 'datepicker_multi',
+    errorMessages: this.datePickerMultiError
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -163,12 +181,16 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'ERROR.errorMessage',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.NoneErr',
+          value: 'None'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.SingleErr',
+          value: 'Single'
+        },
+        {
+          text: 'General.MultipleErr',
+          value: 'Multiple'
         }
       ]
     }
@@ -223,6 +245,9 @@ export class DatePickerDocCodeComponent implements OnInit {
     ]
   };
 
+  errorState = 'None';
+  currentConfigId = this.datePickerConfig.id;
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
@@ -244,6 +269,18 @@ export class DatePickerDocCodeComponent implements OnInit {
       this.datePickerConfig.id,
       new FormControl()
     );
+    this.form_datePicker.addControl(
+      this.datePickerConfig.id + '_single',
+      new FormControl('', [Validators.required])
+    );
+    // this.form_datePicker.addControl(
+    //   this.datePickerConfig.id + '_multi',
+    //   new FormControl('', [
+    //     Validators.required,
+    //     Validators.maxLength(3),
+    //     Validators.email
+    //   ])
+    // );
     this.form_datePicker.addControl(
       this.datePickerConfig.id + '_dayControl',
       new FormControl('', Validators.required)
@@ -276,7 +313,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       hint: 'No',
       monthSelectShow: 'Yes',
       daySelectShow: 'Yes',
-      error: 'No'
+      error: 'None'
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
@@ -285,7 +322,7 @@ export class DatePickerDocCodeComponent implements OnInit {
         this.toggleDisabled(value['state']);
         this.state = value['state'];
       }
-      this.datePickerConfig = this.parseToggleConfig(value);
+      this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
   }
@@ -293,48 +330,128 @@ export class DatePickerDocCodeComponent implements OnInit {
   /**
    * Return mapping of Datepicker config from form values
    */
-  private parseToggleConfig(value: any): IDatePickerConfig {
-    return {
-      ...this.datePickerConfig,
-      size: value['size'].toLowerCase(),
-      hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
-      monthSelectShow: value['monthSelectShow'] === 'Yes',
-      daySelectShow: value['daySelectShow'] === 'Yes',
-      required: value['required'] === 'Yes',
-      desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
-    };
+  private parseToggleConfig(value: any) {
+    switch (this.errorState) {
+      case 'Single':
+        this.datePickerConfig = {
+          ...this.datePickerConfigSingle,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'Yes',
+          daySelectShow: value['daySelectShow'] === 'Yes',
+          required: value['required'] === 'Yes',
+          desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
+        };
+        break;
+      case 'Multiple':
+        this.datePickerConfigMulti = {
+          ...this.datePickerConfigMulti,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'Yes',
+          daySelectShow: value['daySelectShow'] === 'Yes',
+          required: value['required'] === 'Yes',
+          desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
+        };
+        break;
+      default:
+        this.datePickerConfig = {
+          ...this.datePickerConfig,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'Yes',
+          daySelectShow: value['daySelectShow'] === 'Yes',
+          required: value['required'] === 'Yes',
+          desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
+        };
+    }
   }
 
   /**
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
-    if (error === 'Yes') {
-      this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
+    // if (error === 'Yes') {
+    //   this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
+    //   this.form_datePicker
+    //     .get(this.datePickerConfig.id + '_dayControl')
+    //     ?.markAsTouched();
+    //   this.form_datePicker
+    //     .get(this.datePickerConfig.id + '_monthControl')
+    //     ?.markAsTouched();
+    //   this.form_datePicker
+    //     .get(this.datePickerConfig.id + '_yearControl')
+    //     ?.markAsTouched();
+    //   this.errorState = error;
+    //   this.datePickerConfigCodeView.errorMessages =
+    //     this.datePickerConfig.errorMessages;
+    // } else {
+    //   this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
+    //   this.form_datePicker
+    //     .get(this.datePickerConfig.id + '_dayControl')
+    //     ?.markAsUntouched();
+    //   this.form_datePicker
+    //     .get(this.datePickerConfig.id + '_monthControl')
+    //     ?.markAsUntouched();
+    //   this.form_datePicker
+    //     .get(this.datePickerConfig.id + '_yearControl')
+    //     ?.markAsUntouched();
+    //   this.datePickerConfigCodeView.errorMessages = undefined;
+    // }
+
+    if (!this.form_datePicker.get(this.currentConfigId)?.touched && error !== 'None')
+      this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
       this.form_datePicker
-        .get(this.datePickerConfig.id + '_dayControl')
+        .get(this.currentConfigId + '_dayControl')
         ?.markAsTouched();
       this.form_datePicker
-        .get(this.datePickerConfig.id + '_monthControl')
+        .get(this.currentConfigId + '_monthControl')
         ?.markAsTouched();
       this.form_datePicker
-        .get(this.datePickerConfig.id + '_yearControl')
+        .get(this.currentConfigId + '_yearControl')
         ?.markAsTouched();
-      this.errorState = error;
-      this.datePickerConfigCodeView.errorMessages =
-        this.datePickerConfig.errorMessages;
-    } else {
-      this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_dayControl')
-        ?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_monthControl')
-        ?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_yearControl')
-        ?.markAsUntouched();
-      this.datePickerConfigCodeView.errorMessages = undefined;
+
+    this.errorState = error;
+    switch (error) {
+      case 'None':
+        this.currentConfigId = this.datePickerConfig.id;
+        this.datePickerConfigCodeView.errorMessages = undefined;
+        console.log('None');
+        break;
+      case 'Single': 
+        this.currentConfigId = this.datePickerConfigSingle.id;
+        if (!this.form_datePicker.get(this.currentConfigId)?.touched)
+          this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
+        this.form_datePicker
+          .get(this.currentConfigId + '_dayControl')
+          ?.markAsTouched();
+        this.form_datePicker
+          .get(this.currentConfigId + '_monthControl')
+          ?.markAsTouched();
+        this.form_datePicker
+          .get(this.currentConfigId + '_yearControl')
+          ?.markAsTouched();
+        this.datePickerConfigCodeView.errorMessages =
+          this.datePickerConfigSingle.errorMessages;
+        console.log('Single');
+        break;
+        // case 'Multiple': 
+        // this.currentConfigId = this.datePickerConfigMulti.id;
+        // if (!this.form_datePicker.get(this.currentConfigId)?.touched)
+        //   this.form_datePicker.get(this.currentConfigId)?.markAsTouched();  
+        //   this.form_datePicker
+        //       .get(this.currentConfigId + '_dayControl')
+        //       ?.markAsTouched();
+        //     this.form_datePicker
+        //       .get(this.currentConfigId + '_monthControl')
+        //       ?.markAsTouched();
+        //     this.form_datePicker
+        //       .get(this.currentConfigId + '_yearControl')
+        //       ?.markAsTouched();
+        // this.datePickerConfigCodeView.errorMessages =
+        //   this.datePickerConfigMulti.errorMessages;
+        // console.log('Multiple');
+        // break;
     }
     this.parseCodeViewConfig();
   }

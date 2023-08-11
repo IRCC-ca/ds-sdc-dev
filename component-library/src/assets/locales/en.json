@@ -369,7 +369,9 @@
 		"errorMessage": "Error",
 		"requiredRadioError": "No selection has been made. Please select an option",
 		"WritingErrHeading": "Writing error messages",
-		"WritingErrText": "Error messages inform a user of missing or incorrect information. Write error messages to be helpful, allowing a user to correct their omissions or mistakes."
+		"WritingErrText": "Error messages inform a user of missing or incorrect information. Write error messages to be helpful, allowing a user to correct their omissions or mistakes.",
+		"singleError": "Single error message",
+		"additionalError": "Additional error message"
 	},
 	"Contact": {
 		"Text": "To provide feedback (compliment, comment or complaint) or for any inquiries, contact <a class='link' href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
