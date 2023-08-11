@@ -266,7 +266,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       new FormControl('', [
         Validators.required,
         Validators.maxLength(3),
-        Validators.email,
+        Validators.email
       ])
     );
 

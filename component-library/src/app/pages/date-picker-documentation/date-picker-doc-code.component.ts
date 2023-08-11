@@ -399,17 +399,20 @@ export class DatePickerDocCodeComponent implements OnInit {
     //   this.datePickerConfigCodeView.errorMessages = undefined;
     // }
 
-    if (!this.form_datePicker.get(this.currentConfigId)?.touched && error !== 'None')
+    if (
+      !this.form_datePicker.get(this.currentConfigId)?.touched &&
+      error !== 'None'
+    )
       this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
-      this.form_datePicker
-        .get(this.currentConfigId + '_dayControl')
-        ?.markAsTouched();
-      this.form_datePicker
-        .get(this.currentConfigId + '_monthControl')
-        ?.markAsTouched();
-      this.form_datePicker
-        .get(this.currentConfigId + '_yearControl')
-        ?.markAsTouched();
+    this.form_datePicker
+      .get(this.currentConfigId + '_dayControl')
+      ?.markAsTouched();
+    this.form_datePicker
+      .get(this.currentConfigId + '_monthControl')
+      ?.markAsTouched();
+    this.form_datePicker
+      .get(this.currentConfigId + '_yearControl')
+      ?.markAsTouched();
 
     this.errorState = error;
     switch (error) {
@@ -418,7 +421,7 @@ export class DatePickerDocCodeComponent implements OnInit {
         this.datePickerConfigCodeView.errorMessages = undefined;
         console.log('None');
         break;
-      case 'Single': 
+      case 'Single':
         this.currentConfigId = this.datePickerConfigSingle.id;
         if (!this.form_datePicker.get(this.currentConfigId)?.touched)
           this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
@@ -435,23 +438,23 @@ export class DatePickerDocCodeComponent implements OnInit {
           this.datePickerConfigSingle.errorMessages;
         console.log('Single');
         break;
-        // case 'Multiple': 
-        // this.currentConfigId = this.datePickerConfigMulti.id;
-        // if (!this.form_datePicker.get(this.currentConfigId)?.touched)
-        //   this.form_datePicker.get(this.currentConfigId)?.markAsTouched();  
-        //   this.form_datePicker
-        //       .get(this.currentConfigId + '_dayControl')
-        //       ?.markAsTouched();
-        //     this.form_datePicker
-        //       .get(this.currentConfigId + '_monthControl')
-        //       ?.markAsTouched();
-        //     this.form_datePicker
-        //       .get(this.currentConfigId + '_yearControl')
-        //       ?.markAsTouched();
-        // this.datePickerConfigCodeView.errorMessages =
-        //   this.datePickerConfigMulti.errorMessages;
-        // console.log('Multiple');
-        // break;
+      // case 'Multiple':
+      // this.currentConfigId = this.datePickerConfigMulti.id;
+      // if (!this.form_datePicker.get(this.currentConfigId)?.touched)
+      //   this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
+      //   this.form_datePicker
+      //       .get(this.currentConfigId + '_dayControl')
+      //       ?.markAsTouched();
+      //     this.form_datePicker
+      //       .get(this.currentConfigId + '_monthControl')
+      //       ?.markAsTouched();
+      //     this.form_datePicker
+      //       .get(this.currentConfigId + '_yearControl')
+      //       ?.markAsTouched();
+      // this.datePickerConfigCodeView.errorMessages =
+      //   this.datePickerConfigMulti.errorMessages;
+      // console.log('Multiple');
+      // break;
     }
     this.parseCodeViewConfig();
   }
