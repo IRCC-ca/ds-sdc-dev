@@ -167,7 +167,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       formGroup: this.form,
       size: 'small',
       label: 'General.StateLabel',
-      inlineLabel: 'Disabled'
+      inlineLabel: 'General.DisabledLabel'
     }
   ];
 
