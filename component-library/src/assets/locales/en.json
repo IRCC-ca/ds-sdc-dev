@@ -920,9 +920,7 @@
 		"SpacingText": "An icon button group is a set of icon buttons that have a contextual relationship. To create consistency with how these actions are visually related, consistent spacing rules should be followed. Large icon button groups should have 4 pixels between buttons, small icon button groups should have 4 pixels between buttons and extra small icon button groups should have 16 pixels between buttons.",
 		"SpacingImgAlt": "Spacing for icon button groups shown in various sizes: extra small, small and large. The spacings are described in the content below.",
 		"AnatomyHeading": "Icon",
-		"Anatomy": {
-			"ImgAlt": "The parts that makeup the icon button component. The parts are described in the content below."
-		},
+		"AnatomyImgAlt": "The parts that makeup the icon button component. The parts are described in the content below.",
 		"AnatomyText": "The icon uses the icon component and can be replaced with any Font Awesome icon. The icon button also has a container used for displaying hover, active and focus states around the icon.",
 		"SpecsImgAlt": "Specs displaying the padding and layer measurements within the icon button component. Specs are described in the paragraph below.",
 		"SpecsText": "The extra small button with fixed layout has no pixels of vertical padding and horizontal padding inside the button. The icon has a 16 pixel width and height. The small button with fixed layout has 10 pixels of vertical padding and  horizontal padding inside the button. The icon has a 20 pixel width and height. The large button with fluid layout has 14 pixels of vertical padding and horizontal padding inside the button. The icon has a 24 pixel width and height. ",

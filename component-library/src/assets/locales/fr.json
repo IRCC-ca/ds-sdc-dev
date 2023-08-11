@@ -920,9 +920,7 @@
 		"SpacingText": "Un groupe de bouton d'icône est un ensemble de boutons d'icônes qui ont une relation contextuelle. Pour créer une cohérence avec la façon dont ces actions sont liées visuellement, des règles d'espacement cohérentes doivent être suivies. Les grands groupes de boutons icônes doivent avoir 4 pixels entre les boutons, les petits groupes de boutons icônes doivent avoir 4 pixels entre les boutons et les petits groupes de boutons icônes supplémentaires doivent avoir 16 pixels entre les boutons.",
 		"SpacingImgAlt": "Espacement pour les groupes de bouton d'icône montrés en différentes tailles: Extra petit, petit et grand. Les espacements sont décrits dans le contenu ci-dessous.",
 		"AnatomyHeading": "Icône",
-		"Anatomy": {
-			"ImgAlt": "Les pièces qui constituent le composant du bouton d'icône. Les pièces sont décrites dans le contenu ci-dessous."
-		},
+		"AnatomyImgAlt": "Les pièces qui constituent le composant du bouton d'icône. Les pièces sont décrites dans le contenu ci-dessous.",
 		"AnatomyText": "L'icône utilise le composant icône et peut être remplacée par n'importe quelle icône impressionnante de police. Le bouton ICON a également un conteneur utilisé pour afficher des états de survol, actifs et de mise au point autour de l'icône.",
 		"SpecsImgAlt": "Spécifications affichant les mesures de rembourrage et de couche dans le composant du bouton d'icône. Les spécifications sont décrites dans le paragraphe ci-dessous.",
 		"SpecsText": "Le petit bouton supplémentaire avec disposition fixe n'a pas de pixels de rembourrage vertical et de rembourrage horizontal à l'intérieur du bouton. L'icône a une largeur et une hauteur de 16 pixels. Le petit bouton avec disposition fixe a 10 pixels de rembourrage vertical et de rembourrage horizontal à l'intérieur du bouton. L'icône a une largeur et une hauteur de 20 pixels. Le gros bouton avec disposition du fluide a 14 pixels de rembourrage vertical et de rembourrage horizontal à l'intérieur du bouton. L'icône a une largeur et une hauteur de 24 pixels.",
