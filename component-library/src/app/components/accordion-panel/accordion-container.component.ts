@@ -45,13 +45,6 @@ export class accordionContainerComponent implements OnInit, AfterViewInit {
 
   @Output() getOpen = new EventEmitter<boolean>();
 
-  buttonConfigAcccordion: IButtonConfig = {
-    id: 'accordion-button',
-    category: 'plain',
-    size: 'small',
-    ariaLabel: 'Click to expand the accordion',
-    iconDirection: 'left'
-  };
   buttonConfigAcccordionOpen: IButtonConfig = {
     id: 'accordion-button-open',
     category: 'plain',
@@ -70,6 +63,10 @@ export class accordionContainerComponent implements OnInit, AfterViewInit {
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
+    // Insuring accordion-container btns have unique IDs
+    this.buttonConfigAcccordionOpen.id = this.buttonConfigAcccordionOpen.id + '-' + this.config.id;
+    this.buttonConfigAcccordionClose.id = this.buttonConfigAcccordionClose.id + '-' + this.config.id;
+    
     if (this.config.buttonText === '' || this.config.buttonText === undefined)
       this.config.buttonText = 'Accordion.HideCode';
 
