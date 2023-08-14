@@ -64,9 +64,11 @@ export class accordionContainerComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // Insuring accordion-container btns have unique IDs
-    this.buttonConfigAcccordionOpen.id = this.buttonConfigAcccordionOpen.id + '-' + this.config.id;
-    this.buttonConfigAcccordionClose.id = this.buttonConfigAcccordionClose.id + '-' + this.config.id;
-    
+    this.buttonConfigAcccordionOpen.id =
+      this.buttonConfigAcccordionOpen.id + '-' + this.config.id;
+    this.buttonConfigAcccordionClose.id =
+      this.buttonConfigAcccordionClose.id + '-' + this.config.id;
+
     if (this.config.buttonText === '' || this.config.buttonText === undefined)
       this.config.buttonText = 'Accordion.HideCode';
 
