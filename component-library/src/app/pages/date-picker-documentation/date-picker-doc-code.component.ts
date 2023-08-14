@@ -269,11 +269,13 @@ export class DatePickerDocCodeComponent implements OnInit {
       this.datePickerConfig.id,
       new FormControl()
     );
-    this.form_datePicker.addControl(   // ???
+    this.form_datePicker.addControl(
+      // ???
       this.datePickerConfig.id + '_single',
       new FormControl('', [Validators.required])
     );
-    this.form_datePicker.addControl(   //  ??? 
+    this.form_datePicker.addControl(
+      //  ???
       this.datePickerConfig.id + '_multi',
       new FormControl('', [
         Validators.required,
@@ -439,22 +441,22 @@ export class DatePickerDocCodeComponent implements OnInit {
         console.log('Single');
         break;
       case 'Multiple':
-      this.currentConfigId = this.datePickerConfigMulti.id;
-      if (!this.form_datePicker.get(this.currentConfigId)?.touched)
-        this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
+        this.currentConfigId = this.datePickerConfigMulti.id;
+        if (!this.form_datePicker.get(this.currentConfigId)?.touched)
+          this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
         this.form_datePicker
-            .get(this.currentConfigId + '_dayControl')
-            ?.markAsTouched();
-          this.form_datePicker
-            .get(this.currentConfigId + '_monthControl')
-            ?.markAsTouched();
-          this.form_datePicker
-            .get(this.currentConfigId + '_yearControl')
-            ?.markAsTouched();
-      this.datePickerConfigCodeView.errorMessages =
-        this.datePickerConfigMulti.errorMessages;
-      console.log('Multiple');
-      break;
+          .get(this.currentConfigId + '_dayControl')
+          ?.markAsTouched();
+        this.form_datePicker
+          .get(this.currentConfigId + '_monthControl')
+          ?.markAsTouched();
+        this.form_datePicker
+          .get(this.currentConfigId + '_yearControl')
+          ?.markAsTouched();
+        this.datePickerConfigCodeView.errorMessages =
+          this.datePickerConfigMulti.errorMessages;
+        console.log('Multiple');
+        break;
     }
     this.parseCodeViewConfig();
   }
