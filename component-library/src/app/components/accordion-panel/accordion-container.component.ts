@@ -52,6 +52,20 @@ export class accordionContainerComponent implements OnInit, AfterViewInit {
     ariaLabel: 'Click to expand the accordion',
     iconDirection: 'left'
   };
+  buttonConfigAcccordionOpen: IButtonConfig = {
+    id: 'accordion-button-open',
+    category: 'plain',
+    size: 'small',
+    ariaLabel: 'Click to expand the accordion',
+    iconDirection: 'left'
+  };
+  buttonConfigAcccordionClose: IButtonConfig = {
+    id: 'accordion-button-close',
+    category: 'plain',
+    size: 'small',
+    ariaLabel: 'Click to expand the accordion',
+    iconDirection: 'left'
+  };
 
   constructor(private translate: TranslateService) {}
 
