@@ -51,10 +51,6 @@
       height: 44px;
     }
   }
-
-  .label_container {
-    margin-bottom: token-size.$fixed-12;
-  }
 }
 
 @mixin size-small() {
@@ -74,10 +70,6 @@
   .required-star {
     font-size: 12px;
   }
-
-  .label_container {
-    margin-bottom: token-size.$fixed-8;
-  }
 }
 
 @mixin layout {
@@ -90,6 +82,7 @@
     width: fit-content;
     display: grid;
     position: relative;
+    margin-bottom: token-size.$fixed-8;
 
     .label_field_container {
       display: flex;

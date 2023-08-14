@@ -141,7 +141,7 @@ const routes: Routes = [
       title: 'Buttons.Title'
     },
     {
-      path: 'documentation dentree',
+      path: 'documentation-dentree',
       component: InputDocumentationComponent,
       title: 'Input.Title'
     },

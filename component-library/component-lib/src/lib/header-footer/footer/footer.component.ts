@@ -15,17 +15,20 @@ export const GOV_LOGO_ALT_TEXT_FR = 'FR Canada wordmark';
 export class FooterComponent {
   @Input() id = '';
   altImage = '';
-  footerLightLogo = GOV_CANADA_LOGOS.footerLightLogo
-  footerDarkLogo = GOV_CANADA_LOGOS.footerDarkLogo
-  logo: string = this.footerLightLogo;
+  logo: string = GOV_CANADA_LOGOS.footerLightLogo;
   isDarkMode: boolean = false;
   private subscription: Subscription;
 
-  constructor(private translate: TranslateService, private languageHeaderFooterSwitch: LanguageHeaderFooterSwitchService) {
-    this.subscription = this.languageHeaderFooterSwitch.isDarkMode$.subscribe((response) => {
-      this.updateFooterImage(response)
-      this.isDarkMode = response
-    });
+  constructor(
+    private translate: TranslateService,
+    private languageHeaderFooterSwitch: LanguageHeaderFooterSwitchService
+  ) {
+    this.subscription = this.languageHeaderFooterSwitch.isDarkMode$.subscribe(
+      (response) => {
+        this.updateFooterImage(response);
+        this.isDarkMode = response;
+      }
+    );
   }
 
   ngOnInit() {
@@ -38,9 +41,8 @@ export class FooterComponent {
 
   updateFooterImage(res: boolean) {
     this.logo = res
-      ? this.footerDarkLogo
-      : this.footerLightLogo;
-
+      ? GOV_CANADA_LOGOS.footerDarkLogo
+      : GOV_CANADA_LOGOS.footerLightLogo;
   }
 
   setLang(lang: string) {

@@ -21,10 +21,10 @@ $selectors: "app-component-preview";
   display: block;
 
   .preview-wrapper {
-    min-width: 300px;
+    box-sizing: border-box;
+    padding: 59px 65px 44px 65px;
     height: 100%;
     display: inline-flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     flex-direction: column;

@@ -179,7 +179,7 @@ export class DatePickerDocCodeComponent implements OnInit {
       formGroup: this.form_datePicker,
       size: 'small',
       label: 'General.StateLabel',
-      inlineLabel: 'Disabled'
+      inlineLabel: 'General.DisabledLabel'
     }
   ];
 
