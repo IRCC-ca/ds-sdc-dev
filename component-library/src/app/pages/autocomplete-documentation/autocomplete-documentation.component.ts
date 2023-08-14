@@ -95,39 +95,6 @@ export class AutocompleteDocumentationComponent
     }
   ];
 
-  // toggles: IRadioInputComponentConfig[] = [
-  //   {
-  //     id: 'showSizeToggle',
-  //     formGroup: this.form_interactive_button,
-  //     size: 'small',
-  //     label: 'Size',
-  //     options: [
-  //       {
-  //         text: 'Small'
-  //       },
-  //       {
-  //         text: 'Large'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     id: 'hint',
-  //     formGroup: this.form,
-  //     size: 'small',
-  //     label: 'General.Hint',
-  //     options: [
-  //       {
-  //         text: 'General.TrueLabel',
-  //         value: 'True'
-  //       },
-  //       {
-  //         text: 'General.FalseLabel',
-  //         value: 'False'
-  //       }
-  //     ]
-  //   }
-  // ];
-
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
