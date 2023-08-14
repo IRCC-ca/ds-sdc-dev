@@ -320,7 +320,6 @@ export class InputComponent
   }
 
   public clearvalue() {
-    // console.log(this.config.formGroup.controls);
     this.config.formGroup.controls[this.config.id].setValue('');
     this.focusEvent.emit(true);
   }
