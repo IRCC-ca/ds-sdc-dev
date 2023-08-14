@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
-import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
@@ -15,8 +13,7 @@ import { NavigationService } from 'ircc-ds-angular-component-library';
   providers: [SlugifyPipe]
 })
 export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
-  rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [
+  rightNavData: string[] = [
     // list of all right nav items
     'General.DesignerHeading',
     'Designers.AboutHeading',
@@ -53,11 +50,8 @@ export class ForDesignersComponent implements OnInit, TranslatedPageComponent {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private navBarConfig: SideNavConfig,
     private navService: NavigationService
-  ) {
-    this.rightNavData = navBarConfig.getRightNavBarConfig(this.rightNavDataRaw);
-  }
+  ) {}
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);

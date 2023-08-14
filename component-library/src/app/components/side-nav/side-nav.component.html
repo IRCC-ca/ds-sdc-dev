@@ -25,13 +25,10 @@
         </a>
       </div>
       <div *ngIf="data.category === 'slug-url' && data.path">
-        <a
-          class="menuItems"
-          routerLink="."
-          [routerLinkActive]="showActive ? 'active' : ''"
-          fragment="{{ data.path | translate | SlugifyPipe }}"
-          >{{ data.text | translate }}</a
-        >
+        <ircc-cl-lib-nav-item
+          [config]="getINavigationItemLinkFromISideNavData(data)"
+          [attr.size]="'small'"
+        ></ircc-cl-lib-nav-item>
       </div>
     </div>
   </div>
