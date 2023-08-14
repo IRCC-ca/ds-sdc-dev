@@ -1,15 +1,18 @@
 @use "../../../../../core-library/util/device" as device;
+$color-blue7: var(--navy-7);
+
 .link {
-  color: var(--navy-7);
+  color: $color-blue7;
 
   @include device.if-hover {
     color: var(--navy-8);
-    background-color: var(--generic-hover);
   }
 
   &:focus {
-    box-shadow: none;
-    outline-offset: 0;
+    outline-width: 0px 0px 0px 3px;
+    outline-color: $color-blue7;
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   &:active {
