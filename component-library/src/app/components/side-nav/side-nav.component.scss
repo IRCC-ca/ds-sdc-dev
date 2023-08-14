@@ -5,12 +5,15 @@ $footer-height: 310px;
 
 :host {
   position: relative;
+
   @include grid.col-12;
+
   > jds-font-icon {
     font-size: ircc-ds-sizes.$fixed-24;
     position: fixed;
     top: 123px;
     right: 26px;
+
     @include grid.un-laptop-layout {
       right: ircc-ds-sizes.$fixed-12;
       z-index: 200;
@@ -28,6 +31,7 @@ $footer-height: 310px;
 
   .sidenav-section-wrapper {
     background: var(--surface1);
+
     @include grid.up-laptop-layout {
       position: fixed;
       height: calc(100% - $footer-height);
@@ -43,6 +47,7 @@ $footer-height: 310px;
         padding: 1px 24px;
         box-sizing: border-box;
       }
+
       @include grid.in-phone-layout {
         padding: 1px 16px;
       }
@@ -67,22 +72,28 @@ $footer-height: 310px;
     border-radius: 4px;
     outline-offset: -1px;
     color: var(--text-primary);
+
     &:link {
       text-decoration: none;
     }
+
     &:focus {
       outline: var(--navigation) solid 3px;
     }
+
     &:hover {
       background: var(--generic-hover);
     }
+
     &:active {
       background: var(--generic-active);
     }
+
     &:visited { // Do we have visited state here?!
       // color:black;
       // text-decoration: none;
     }
+
     &:disabled {
       background: var(--surface1);
       outline: none;
@@ -91,16 +102,19 @@ $footer-height: 310px;
     &.active {
       background: var(--navigation-weak);
       outline: var(--navigation) solid 1px;
+
       &:hover {
         background: var(--navigation-weak-hover);
         outline: var(--navigation-hover) solid 1px;
       }
+
       &:focus {
         border: var(--navigation) solid 1px;
         outline: var(--navigation) solid 3px;
         outline-offset: 2px;
         box-shadow: none;
       }
+
       &:disabled {
         background: var(--navigation-weak);
         color: var(--navigation-disabled);
@@ -116,6 +130,12 @@ $footer-height: 310px;
             border-radius: 4px;
             border-left-width: 0;
             padding: 8px 12px;
+            color: var(--text-primary);
+
+            > p {
+              color: var(--text-primary);
+            }
+
             &.active-link {
               background: var(--navigation-weak);
               border-left-width: 0;
