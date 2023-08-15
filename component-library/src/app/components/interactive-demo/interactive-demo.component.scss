@@ -44,7 +44,7 @@
   }
 
   .toggles {
-    margin: 8px 28px 28px;
+    margin: 8px 28px 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 24px;
@@ -52,9 +52,17 @@
     @include device.in-phone-layout() {
       grid-template-columns: 1fr;
     }
+
+    &:last-child {
+      margin-bottom: 28px;
+    }
   }
 
   .tabs {
     padding: 12px 12px 0;
+  }
+
+  .disabled-banner {
+    margin: 0px 28px 28px 28px;
   }
 }
