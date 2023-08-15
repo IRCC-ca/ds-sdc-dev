@@ -42,6 +42,8 @@ import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 
+import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -77,7 +79,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BannerDocumentationComponent,
     IconButtonDocumentationComponent,
     IconButtonDocCodeComponent,
-    MultiCheckboxDocumentationComponent
+    MultiCheckboxDocumentationComponent,
+    AutocompleteDocumentationComponent
   ],
   imports: [
     CommonModule,

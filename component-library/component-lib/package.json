@@ -7,6 +7,8 @@
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0",
+    "@angular/cdk": "^14.2.7",
+    "@angular/cdk-experimental": "^14.2.7",
     "@ircc-ca/ds-sdc-core": "file:../../core-library",
     "@ngx-translate/core": "^14.0.0",
     "@angular/forms": "^14.2.12"

@@ -10,7 +10,7 @@
     <div class="accordion-expand-button">
       <ircc-cl-lib-button
         *ngIf="config.open === true"
-        [config]="buttonConfigAcccordion"
+        [config]="buttonConfigAcccordionOpen"
         icon="fa-light fa-chevron-up"
         (click)="openAccordion()"
       >
@@ -18,7 +18,7 @@
       </ircc-cl-lib-button>
       <ircc-cl-lib-button
         *ngIf="config.open === false"
-        [config]="buttonConfigAcccordion"
+        [config]="buttonConfigAcccordionClose"
         icon="fa-light fa-chevron-down"
         (click)="openAccordion()"
       >
