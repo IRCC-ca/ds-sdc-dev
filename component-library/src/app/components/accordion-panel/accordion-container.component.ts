@@ -1,5 +1,7 @@
 import {
+  AfterContentChecked,
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -28,7 +30,9 @@ export interface IAccordionContainerConfig {
   templateUrl: './accordion-container.component.html',
   styleUrls: ['./accordion-container.component.scss']
 })
-export class accordionContainerComponent implements OnInit, AfterViewInit {
+export class accordionContainerComponent
+  implements OnInit, AfterViewInit, AfterContentChecked
+{
   @Input() config: IAccordionContainerConfig = {
     id: '',
     mobileBehaviour: mobileBehaviourType.column
@@ -60,7 +64,14 @@ export class accordionContainerComponent implements OnInit, AfterViewInit {
     iconDirection: 'left'
   };
 
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
+
+  ngAfterContentChecked() {
+    this.changeDetectorRef.detectChanges();
+  }
 
   ngOnInit() {
     // Insuring accordion-container btns have unique IDs
