@@ -68,7 +68,7 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
     type: 'text',
     category: IndicatorTreatment.weak,
     purpose: IndicatorPurpose.status,
-    tabIndex: 0
+    tabIndex: -1
   };
 
   @Input() size?: keyof typeof DSSizes;
@@ -96,6 +96,7 @@ export class IndicatorComponent implements OnInit, AfterViewInit, OnChanges {
     if (this.status) this.config.status = this.status;
     if (this.palette) this.config.palette = this.palette;
     if (this.ariaLabel) this.config.ariaLabel = this.ariaLabel;
+    if (!this.tabIndex) this.config.tabIndex = -1;
 
     this.checkLabelRounded();
     this.checkNumber();
