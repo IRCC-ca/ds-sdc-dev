@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslatedPageComponent } from '@app/pages/translated-page-component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
+  IBannerConfig,
   ICheckBoxComponentConfig,
   IInputComponentConfig,
   IRadioInputComponentConfig,
@@ -186,6 +187,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
+  };
+
   inputConfigCodeView: any = {
     id: this.inputConfig.id,
     formGroup: `new FormGroup({})`,
@@ -280,6 +290,17 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.checkboxes.forEach((checkbox) => {
       this.form.addControl(checkbox.id, new FormControl());
+    });
+
+    this.form.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
+      }
     });
 
     this.form.patchValue({

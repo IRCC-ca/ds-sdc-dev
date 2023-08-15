@@ -13,6 +13,7 @@ import {
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
 import {
+  IBannerConfig,
   ICheckBoxComponentConfig,
   IDatePickerConfig,
   IDatePickerErrorMessages,
@@ -183,6 +184,15 @@ export class DatePickerDocCodeComponent implements OnInit {
     }
   ];
 
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
+  };
+
   datePickerConfigCodeView: any = {
     id: this.datePickerConfig.id,
     formGroup: `new FormGroup({})`,
@@ -267,6 +277,17 @@ export class DatePickerDocCodeComponent implements OnInit {
     });
     this.checkboxes.forEach((checkbox) => {
       this.form_datePicker.addControl(checkbox.id, new FormControl());
+    });
+
+    this.form_datePicker.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
+      }
     });
 
     this.form_datePicker.patchValue({
