@@ -227,8 +227,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `inputConfig: IInputComponentConfig = ${stringify(
             this.inputConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-            this.stateTxt(this.state)
           )}
           `
       }
@@ -253,12 +251,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     };
 
     this.parseCodeViewConfig();
-  }
-
-  stateTxt(disabled: boolean): string {
-    const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
-    const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
-    return disabled ? DISABLE : ENABLE;
   }
 
   ngOnInit() {
@@ -467,8 +459,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `inputConfig: IInputComponentConfig = ${stringify(
           this.inputConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-          this.stateTxt(this.state)
         )}
         `;
     }

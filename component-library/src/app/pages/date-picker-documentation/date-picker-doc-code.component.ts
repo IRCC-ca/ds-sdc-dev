@@ -225,8 +225,6 @@ export class DatePickerDocCodeComponent implements OnInit {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `datePickerConfig: IDatePickerConfig = ${stringify(
             this.datePickerConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-            this.stateTxt(this.state)
           )}
           `
       }
@@ -239,12 +237,6 @@ export class DatePickerDocCodeComponent implements OnInit {
     private slugify: SlugifyPipe
   ) {
     this.currentLanguage = translate.currentLang;
-  }
-
-  stateTxt(disabled: boolean): string {
-    const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
-    const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
-    return disabled ? DISABLE : ENABLE;
   }
 
   ngOnInit() {
@@ -413,8 +405,7 @@ export class DatePickerDocCodeComponent implements OnInit {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `datePickerConfig: IDatePickerConfig = ${stringify(
           this.datePickerConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-          this.stateTxt(this.state)
+        )}
         )}
         `;
     }
