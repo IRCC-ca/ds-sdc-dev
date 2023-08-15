@@ -16,6 +16,7 @@
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
 		"multiCheckbox": "multi-checkbox-documentation",
+		"autocomplete": "autocomplete-documentation",
 		"spinner": "spinner-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
