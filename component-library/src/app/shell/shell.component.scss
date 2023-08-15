@@ -13,12 +13,9 @@ $mobile-padding: 16px;
 
 .header {
   overflow: hidden;
-  top: 0;
   max-width: $page-width;
   width: 100%;
   background: var(--surface1);
-  z-index: 100;
-  position: fixed;
   border-bottom: 1px solid var(--divider);
 
   @include un-tablet-layout {
@@ -67,11 +64,6 @@ $mobile-padding: 16px;
   }
 
   &.top {
-    margin-top: 175px;
-
-    @include un-tablet-layout {
-      margin-top: 180px;
-    }
   }
 
   > app-side-nav.left-nav {
