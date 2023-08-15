@@ -123,11 +123,6 @@ export class MultiCheckboxDocumentationComponent
         `Field ${field} is required`,
         'required'
       );
-      // this.multicheckboxService.checkField(
-      //   this.form.get(field),
-      //   field,
-      //   `Field ${field} has an error state`
-      // );
     }
   }
 }
