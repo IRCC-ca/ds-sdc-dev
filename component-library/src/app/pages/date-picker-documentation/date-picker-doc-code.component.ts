@@ -15,7 +15,6 @@ import { TranslateService } from '@ngx-translate/core';
 import {
   ICheckBoxComponentConfig,
   IDatePickerConfig,
-  IDatePickerErrorMessages,
   IRadioInputComponentConfig
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
@@ -32,22 +31,6 @@ export class DatePickerDocCodeComponent implements OnInit {
   form_datePicker = new FormGroup({});
   state: boolean = false;
 
-  datePickerSingleError: IDatePickerErrorMessages = {
-    general: [
-      {
-        key: 'required',
-        errorLOV: 'ERROR.singleError'
-      }
-    ]
-  };
-  datePickerMultiError: IDatePickerErrorMessages = {
-    general: [
-      { key: 'email', errorLOV: 'ERROR.singleError' },
-      { key: 'email', errorLOV: 'ERROR.additionalError' },
-      { key: 'maxlength', errorLOV: 'ERROR.additionalError' }
-    ]
-  };
-
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
     formGroup: this.form_datePicker,
@@ -55,7 +38,7 @@ export class DatePickerDocCodeComponent implements OnInit {
     required: true,
     desc: 'Description line of text',
     size: 'small',
-    errorMessages: {},
+    errorMessages: [],
     unknownDateToggle: {
       dayUnknown: true,
       monthUnknown: true,
@@ -69,12 +52,16 @@ export class DatePickerDocCodeComponent implements OnInit {
     ...this.datePickerConfig,
     id: 'datepicker_single',
     required: true,
-    errorMessages: this.datePickerSingleError
+    errorMessages: [{ key: 'required', errorLOV: 'ERROR.singleError' }]
   };
   datePickerConfigMulti: IDatePickerConfig = {
     ...this.datePickerConfig,
     id: 'datepicker_multi',
-    errorMessages: this.datePickerMultiError
+    errorMessages: [
+      { key: 'required', errorLOV: 'ERROR.singleError' },
+      { key: 'required', errorLOV: 'ERROR.additionalError' },
+      { key: 'required', errorLOV: 'ERROR.additionalError' }
+    ]
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -296,6 +283,32 @@ export class DatePickerDocCodeComponent implements OnInit {
       new FormControl('', Validators.required)
     );
 
+    this.form_datePicker.addControl(
+      this.datePickerConfigSingle.id + '_dayControl',
+      new FormControl('', Validators.required)
+    );
+    this.form_datePicker.addControl(
+      this.datePickerConfigSingle.id + '_monthControl',
+      new FormControl('', Validators.required)
+    );
+    this.form_datePicker.addControl(
+      this.datePickerConfigSingle.id + '_yearControl',
+      new FormControl('', Validators.required)
+    );
+
+    this.form_datePicker.addControl(
+      this.datePickerConfigMulti.id + '_dayControl',
+      new FormControl('', Validators.required)
+    );
+    this.form_datePicker.addControl(
+      this.datePickerConfigMulti.id + '_monthControl',
+      new FormControl('', Validators.required)
+    );
+    this.form_datePicker.addControl(
+      this.datePickerConfigMulti.id + '_yearControl',
+      new FormControl('', Validators.required)
+    );
+
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
         this.form_datePicker.addControl(
@@ -319,7 +332,7 @@ export class DatePickerDocCodeComponent implements OnInit {
     });
 
     this.form_datePicker.valueChanges.subscribe((value: any) => {
-      if (value['error']) this.toggleErrors(value['error']);
+      if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) {
         this.toggleDisabled(value['state']);
         this.state = value['state'];
@@ -335,7 +348,7 @@ export class DatePickerDocCodeComponent implements OnInit {
   private parseToggleConfig(value: any) {
     switch (this.errorState) {
       case 'Single':
-        this.datePickerConfig = {
+        this.datePickerConfigSingle = {
           ...this.datePickerConfigSingle,
           size: value['size'].toLowerCase(),
           hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
@@ -373,38 +386,10 @@ export class DatePickerDocCodeComponent implements OnInit {
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
-    // if (error === 'Yes') {
-    //   this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
-    //   this.form_datePicker
-    //     .get(this.datePickerConfig.id + '_dayControl')
-    //     ?.markAsTouched();
-    //   this.form_datePicker
-    //     .get(this.datePickerConfig.id + '_monthControl')
-    //     ?.markAsTouched();
-    //   this.form_datePicker
-    //     .get(this.datePickerConfig.id + '_yearControl')
-    //     ?.markAsTouched();
-    //   this.errorState = error;
-    //   this.datePickerConfigCodeView.errorMessages =
-    //     this.datePickerConfig.errorMessages;
-    // } else {
-    //   this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
-    //   this.form_datePicker
-    //     .get(this.datePickerConfig.id + '_dayControl')
-    //     ?.markAsUntouched();
-    //   this.form_datePicker
-    //     .get(this.datePickerConfig.id + '_monthControl')
-    //     ?.markAsUntouched();
-    //   this.form_datePicker
-    //     .get(this.datePickerConfig.id + '_yearControl')
-    //     ?.markAsUntouched();
-    //   this.datePickerConfigCodeView.errorMessages = undefined;
-    // }
-
     if (
       !this.form_datePicker.get(this.currentConfigId)?.touched &&
       error !== 'None'
-    )
+    ) {
       this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
     this.form_datePicker
       .get(this.currentConfigId + '_dayControl')
@@ -415,17 +400,27 @@ export class DatePickerDocCodeComponent implements OnInit {
     this.form_datePicker
       .get(this.currentConfigId + '_yearControl')
       ?.markAsTouched();
-
+    }
     this.errorState = error;
     switch (error) {
       case 'None':
+        this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_dayControl')
+        ?.markAsUntouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_monthControl')
+        ?.markAsUntouched();
+      this.form_datePicker
+        .get(this.datePickerConfig.id + '_yearControl')
+        ?.markAsUntouched();
         this.currentConfigId = this.datePickerConfig.id;
         this.datePickerConfigCodeView.errorMessages = undefined;
         console.log('None');
         break;
       case 'Single':
         this.currentConfigId = this.datePickerConfigSingle.id;
-        if (!this.form_datePicker.get(this.currentConfigId)?.touched)
+        if (!this.form_datePicker.get(this.currentConfigId)?.touched) {
           this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
         this.form_datePicker
           .get(this.currentConfigId + '_dayControl')
@@ -436,13 +431,14 @@ export class DatePickerDocCodeComponent implements OnInit {
         this.form_datePicker
           .get(this.currentConfigId + '_yearControl')
           ?.markAsTouched();
+        }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigSingle.errorMessages;
         console.log('Single');
         break;
       case 'Multiple':
         this.currentConfigId = this.datePickerConfigMulti.id;
-        if (!this.form_datePicker.get(this.currentConfigId)?.touched)
+        if (!this.form_datePicker.get(this.currentConfigId)?.touched) {
           this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
         this.form_datePicker
           .get(this.currentConfigId + '_dayControl')
@@ -453,6 +449,7 @@ export class DatePickerDocCodeComponent implements OnInit {
         this.form_datePicker
           .get(this.currentConfigId + '_yearControl')
           ?.markAsTouched();
+        }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigMulti.errorMessages;
         console.log('Multiple');

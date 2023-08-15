@@ -4,7 +4,6 @@ import {
   IBannerConfig,
   IButtonConfig,
   IDatePickerConfig,
-  IDatePickerErrorMessages,
   IRadioInputComponentConfig,
   ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
@@ -227,15 +226,6 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     // errorIcon?: IErrorIconConfig;
   };
 
-  datePickerErrorMessages: IDatePickerErrorMessages = {
-    general: [
-      {
-        key: 'required',
-        errorLOV: 'RequestForm.requiredDateError'
-      }
-    ]
-  };
-
   requestedDateDatePickerConfig: IDatePickerConfig = {
     id: 'date-requested-datepicker',
     formGroup: this.form,
@@ -243,7 +233,12 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     desc: 'RequestForm.requestedDateDesc',
     required: true,
     size: 'small',
-    errorMessages: this.datePickerErrorMessages,
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredDateError'
+      }
+    ],
     minYear: 2023
   };
 
