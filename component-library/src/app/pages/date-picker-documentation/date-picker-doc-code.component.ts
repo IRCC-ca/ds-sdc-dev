@@ -391,29 +391,29 @@ export class DatePickerDocCodeComponent implements OnInit {
       error !== 'None'
     ) {
       this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
-    this.form_datePicker
-      .get(this.currentConfigId + '_dayControl')
-      ?.markAsTouched();
-    this.form_datePicker
-      .get(this.currentConfigId + '_monthControl')
-      ?.markAsTouched();
-    this.form_datePicker
-      .get(this.currentConfigId + '_yearControl')
-      ?.markAsTouched();
+      this.form_datePicker
+        .get(this.currentConfigId + '_dayControl')
+        ?.markAsTouched();
+      this.form_datePicker
+        .get(this.currentConfigId + '_monthControl')
+        ?.markAsTouched();
+      this.form_datePicker
+        .get(this.currentConfigId + '_yearControl')
+        ?.markAsTouched();
     }
     this.errorState = error;
     switch (error) {
       case 'None':
         this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_dayControl')
-        ?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_monthControl')
-        ?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_yearControl')
-        ?.markAsUntouched();
+        this.form_datePicker
+          .get(this.datePickerConfig.id + '_dayControl')
+          ?.markAsUntouched();
+        this.form_datePicker
+          .get(this.datePickerConfig.id + '_monthControl')
+          ?.markAsUntouched();
+        this.form_datePicker
+          .get(this.datePickerConfig.id + '_yearControl')
+          ?.markAsUntouched();
         this.currentConfigId = this.datePickerConfig.id;
         this.datePickerConfigCodeView.errorMessages = undefined;
         console.log('None');
@@ -422,15 +422,15 @@ export class DatePickerDocCodeComponent implements OnInit {
         this.currentConfigId = this.datePickerConfigSingle.id;
         if (!this.form_datePicker.get(this.currentConfigId)?.touched) {
           this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
-        this.form_datePicker
-          .get(this.currentConfigId + '_dayControl')
-          ?.markAsTouched();
-        this.form_datePicker
-          .get(this.currentConfigId + '_monthControl')
-          ?.markAsTouched();
-        this.form_datePicker
-          .get(this.currentConfigId + '_yearControl')
-          ?.markAsTouched();
+          this.form_datePicker
+            .get(this.currentConfigId + '_dayControl')
+            ?.markAsTouched();
+          this.form_datePicker
+            .get(this.currentConfigId + '_monthControl')
+            ?.markAsTouched();
+          this.form_datePicker
+            .get(this.currentConfigId + '_yearControl')
+            ?.markAsTouched();
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigSingle.errorMessages;
@@ -440,15 +440,15 @@ export class DatePickerDocCodeComponent implements OnInit {
         this.currentConfigId = this.datePickerConfigMulti.id;
         if (!this.form_datePicker.get(this.currentConfigId)?.touched) {
           this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
-        this.form_datePicker
-          .get(this.currentConfigId + '_dayControl')
-          ?.markAsTouched();
-        this.form_datePicker
-          .get(this.currentConfigId + '_monthControl')
-          ?.markAsTouched();
-        this.form_datePicker
-          .get(this.currentConfigId + '_yearControl')
-          ?.markAsTouched();
+          this.form_datePicker
+            .get(this.currentConfigId + '_dayControl')
+            ?.markAsTouched();
+          this.form_datePicker
+            .get(this.currentConfigId + '_monthControl')
+            ?.markAsTouched();
+          this.form_datePicker
+            .get(this.currentConfigId + '_yearControl')
+            ?.markAsTouched();
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigMulti.errorMessages;
