@@ -88,12 +88,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Required',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
@@ -104,12 +104,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Description',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
@@ -120,12 +120,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Hint',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
@@ -136,12 +136,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Month',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
@@ -152,12 +152,12 @@ export class DatePickerDocCodeComponent implements OnInit {
       label: 'General.Day',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
@@ -323,11 +323,11 @@ export class DatePickerDocCodeComponent implements OnInit {
 
     this.form_datePicker.patchValue({
       size: 'Small',
-      required: 'Yes',
-      desc: 'Yes',
-      hint: 'No',
-      monthSelectShow: 'Yes',
-      daySelectShow: 'Yes',
+      required: 'True',
+      desc: 'True',
+      hint: 'False',
+      monthSelectShow: 'True',
+      daySelectShow: 'True',
       error: 'None'
     });
 
@@ -351,33 +351,33 @@ export class DatePickerDocCodeComponent implements OnInit {
         this.datePickerConfigSingle = {
           ...this.datePickerConfigSingle,
           size: value['size'].toLowerCase(),
-          hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
-          monthSelectShow: value['monthSelectShow'] === 'Yes',
-          daySelectShow: value['daySelectShow'] === 'Yes',
-          required: value['required'] === 'Yes',
-          desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'True',
+          daySelectShow: value['daySelectShow'] === 'True',
+          required: value['required'] === 'True',
+          desc: value['desc'] === 'True' ? 'Description line of text' : undefined
         };
         break;
       case 'Multiple':
         this.datePickerConfigMulti = {
           ...this.datePickerConfigMulti,
           size: value['size'].toLowerCase(),
-          hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
-          monthSelectShow: value['monthSelectShow'] === 'Yes',
-          daySelectShow: value['daySelectShow'] === 'Yes',
-          required: value['required'] === 'Yes',
-          desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'True',
+          daySelectShow: value['daySelectShow'] === 'True',
+          required: value['required'] === 'True',
+          desc: value['desc'] === 'True' ? 'Description line of text' : undefined
         };
         break;
       default:
         this.datePickerConfig = {
           ...this.datePickerConfig,
           size: value['size'].toLowerCase(),
-          hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
-          monthSelectShow: value['monthSelectShow'] === 'Yes',
-          daySelectShow: value['daySelectShow'] === 'Yes',
-          required: value['required'] === 'Yes',
-          desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'True',
+          daySelectShow: value['daySelectShow'] === 'True',
+          required: value['required'] === 'True',
+          desc: value['desc'] === 'True' ? 'Description line of text' : undefined
         };
     }
   }
