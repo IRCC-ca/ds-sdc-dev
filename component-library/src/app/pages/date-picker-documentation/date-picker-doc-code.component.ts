@@ -355,7 +355,8 @@ export class DatePickerDocCodeComponent implements OnInit {
           monthSelectShow: value['monthSelectShow'] === 'True',
           daySelectShow: value['daySelectShow'] === 'True',
           required: value['required'] === 'True',
-          desc: value['desc'] === 'True' ? 'Description line of text' : undefined
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined
         };
         break;
       case 'Multiple':
@@ -366,7 +367,8 @@ export class DatePickerDocCodeComponent implements OnInit {
           monthSelectShow: value['monthSelectShow'] === 'True',
           daySelectShow: value['daySelectShow'] === 'True',
           required: value['required'] === 'True',
-          desc: value['desc'] === 'True' ? 'Description line of text' : undefined
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined
         };
         break;
       default:
@@ -377,7 +379,8 @@ export class DatePickerDocCodeComponent implements OnInit {
           monthSelectShow: value['monthSelectShow'] === 'True',
           daySelectShow: value['daySelectShow'] === 'True',
           required: value['required'] === 'True',
-          desc: value['desc'] === 'True' ? 'Description line of text' : undefined
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined
         };
     }
   }
