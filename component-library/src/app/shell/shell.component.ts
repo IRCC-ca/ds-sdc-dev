@@ -135,7 +135,7 @@ export class ShellComponent implements OnInit {
     children: [],
     href: 'ROUTES.spinner'
   };
-  
+
   autoCompletePage: INavigationItemLink = {
     id: 'autoCompletePageNavItem',
     label: ' AutoComplete ',
@@ -173,7 +173,7 @@ export class ShellComponent implements OnInit {
       this.iconBtnPage,
       this.multiCheckboxPage,
       this.spinnerPage,
-      this.inputPage    
+      this.inputPage
     ]
   };
 
