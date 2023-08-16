@@ -314,7 +314,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       required: this.selectConfig.required,
       label: this.selectConfig.label,
       desc: this.selectConfig.desc,
-      hint: this.selectConfig.hint,
+      hint: this.selectConfig.hint
     };
 
     console.log(this.selectConfigCodeView);
