@@ -43,6 +43,14 @@
     }
 }
 
+/// Content included within this mixin will only be included
+/// if the device is determined to fall within the laptop viewport range.
+@mixin in-laptop-layout {
+    @media only screen and (min-width: sizes.$bp-width-laptop) {
+        @content;
+    }
+}
+
 ///Content included within this mixin will only be included
 /// if the device is determined to fall within the desktop viewport range.
 @mixin in-desktop-layout {
