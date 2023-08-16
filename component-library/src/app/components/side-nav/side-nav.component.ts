@@ -4,7 +4,9 @@ import {
   HostListener,
   Input,
   OnInit,
-  AfterViewChecked
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import {
@@ -92,7 +94,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
 
     // Check if wrapper top has hit top of viewport
     if (this.wrapperTop) {
-      this.wrapperFixed = this.wrapperTop <= window.scrollY;
+      this.wrapperFixed = this.wrapperTop <= window.scrollY - 178;
     }
   }
 
@@ -121,6 +123,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private el: ElementRef,
+    private cdr: ChangeDetectorRef,
     private translate: TranslateService,
     private navBarConfig: SideNavConfig,
     private slugify: SlugifyPipe
@@ -139,13 +142,12 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       this.toggleMobile();
     }
     this.adjustWidth();
-    // Record relative height from top of page for sidenav
-    this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
   }
 
   ngAfterViewChecked() {
-    //fake scroll event when ViewChecked to give focus and active to top link (if not navigating by heading ID)
-    dispatchEvent(new CustomEvent('scroll'));
+    this.cdr.detectChanges();
+    // Record relative height from top of page for sidenav
+    this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
   }
 
   private toggleMobile() {
