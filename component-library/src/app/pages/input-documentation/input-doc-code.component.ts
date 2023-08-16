@@ -49,15 +49,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ...this.inputConfig,
     id: 'input_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsRequired' }]
+    errorMessages: [{ key: 'required', errorLOV: 'ERROR.singleError' }]
   };
 
   inputConfigMulti: IInputComponentConfig = {
     ...this.inputConfig,
     id: 'input_multi',
     errorMessages: [
-      { key: 'email', errorLOV: 'ERROR.testErrorMessage' },
-      { key: 'maxlength', errorLOV: 'ERROR.fieldExceededMaxLength' }
+      { key: 'email', errorLOV: 'ERROR.singleError' },
+      { key: 'email', errorLOV: 'ERROR.additionalError' },
+      { key: 'maxlength', errorLOV: 'ERROR.additionalError' }
     ]
   };
 
@@ -115,16 +116,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'ERROR.errorMessage',
       options: [
         {
-          text: 'General.FalseLabel',
+          text: 'General.NoneErr',
           value: 'None'
         },
         {
-          text: 'General.MultipleErrors',
-          value: 'Multiple'
+          text: 'General.SingleErr',
+          value: 'Single'
         },
         {
-          text: 'General.TrueLabel',
-          value: 'Single'
+          text: 'General.MultipleErr',
+          value: 'Multiple'
         }
       ]
     },

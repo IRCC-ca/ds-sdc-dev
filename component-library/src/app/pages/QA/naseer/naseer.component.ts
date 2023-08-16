@@ -68,22 +68,20 @@ export class NaseerComponent implements OnInit {
       monthUnknown: true,
       yearUnknown: true
     },
-    errorMessages: {
-      general: [
-        {
-          key: 'required',
-          errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
-        },
-        {
-          key: 'required',
-          errorLOV: 'ERROR.testErrorMessage'
-        },
-        {
-          key: 'required',
-          errorLOV: 'ERROR.testErrorMessage'
-        }
-      ]
-    }
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+      },
+      {
+        key: 'required',
+        errorLOV: 'ERROR.testErrorMessage'
+      },
+      {
+        key: 'required',
+        errorLOV: 'ERROR.testErrorMessage'
+      }
+    ]
   };
 
   qaDateOfBirthDatePickerConfig2: IDatePickerConfig = {
@@ -99,22 +97,20 @@ export class NaseerComponent implements OnInit {
       monthUnknown: true,
       yearUnknown: true
     },
-    errorMessages: {
-      general: [
-        {
-          key: 'required',
-          errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
-        },
-        {
-          key: 'required',
-          errorLOV: 'ERROR.testErrorMessage'
-        },
-        {
-          key: 'required',
-          errorLOV: 'ERROR.testErrorMessage'
-        }
-      ]
-    }
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+      },
+      {
+        key: 'required',
+        errorLOV: 'ERROR.testErrorMessage'
+      },
+      {
+        key: 'required',
+        errorLOV: 'ERROR.testErrorMessage'
+      }
+    ]
   };
 
   qaButton: IIconButtonComponentConfig = {
