@@ -6,12 +6,11 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p
-      class="body3"
-      [innerHtml]="
-        'General.InteractiveDemoDesc' | translate : { component: 'select' }
-      "
-    ></p>
+    <p class="body3">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong> {{ ('Select.Title' | translate).toLowerCase() }}</strong>
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
     <app-select-doc-code></app-select-doc-code>
   </section>
   <section class="configs">

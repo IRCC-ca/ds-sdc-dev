@@ -48,7 +48,6 @@
 	"Buttons": {
 		"Title": "Boutons",
 		"Intro": "Les boutons déclenchent une action ou permettent de naviguer vers une autre page. Ils ont de multiples styles et configurations selon les besoins variés. Ils attirent l’attention sur les actions que l’utilisateur doit effectuer pour progresser dans un flux.",
-		"InteractiveDemoDesc": "Essayez notre composant <strong>bouton</strong> et les options configurables disponibles.",
 		"IntroAlert": "Cet élément de l’interface utilisateur est actuellement disponible uniquement dans le prologiciel des styles. Il sera bientôt offert pour le progiciel des composantes.",
 		"PrimaryHeading": "Principal",
 		"PrimaryBtnText": "Bouton principal",
@@ -362,17 +361,17 @@
 		"ReleasesTitle3": "Pour installer une version complète:"
 	},
 	"ERROR": {
-		"fieldIsRequired": "Ce champ est obligatoire. / This field is required.",
-		"fieldIsInvalid": "Ce champ est invalide. / This field is invalid.",
-		"fieldExceededMaxLength": "Ce champ a dépassé la longueur maximale. / This field has exceeded max length.",
-		"requiredTextAreaError": "Ce champ est obligatoire. / This field is required.",
-		"testErrorMessage": "Tester le message d'erreur. / Test error message.",
-		"errorMessage": "D'erreur / Error",
-		"requiredRadioError": "Aucune sélection n'a été faite. veuillez sélectionner une option / No selection has been made. Please select an option",
+		"fieldIsRequired": "Ce champ est obligatoire.",
+		"fieldIsInvalid": "Ce champ est invalide.",
+		"fieldExceededMaxLength": "Ce champ a dépassé la longueur maximale.",
+		"requiredTextAreaError": "Ce champ est obligatoire.",
+		"testErrorMessage": "Tester le message d'erreur.",
+		"errorMessage": "D'erreur",
+		"requiredRadioError": "Aucune sélection n'a été faite. veuillez sélectionner une option",
 		"WritingErrHeading": "Écrire des messages d'erreur",
 		"WritingErrText": "Les messages d'erreur informent un utilisateur d'informations manquantes ou incorrectes. Écrivez des messages d'erreur pour être utiles, permettant à un utilisateur de corriger ses omissions ou leurs erreurs.",
-		"singleError": "Message d'erreur unique / Single error message",
-		"additionalError": "Message d'erreur supplémentaire / Additional error message"
+		"singleError": "Message d'erreur unique",
+		"additionalError": "Message d'erreur supplémentaire"
 	},
 	"Contact": {
 		"Text": "Pour faire part de vos commentaires (compliment, commentaire ou plainte) ou pour toute demande de renseignements, contactez <a class='link' href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
@@ -486,7 +485,6 @@
 	"Input": {
 		"Title": "Saisir",
 		"Intro": "Le composant d'entrée fournit des champs qui permettent aux utilisateurs de saisir des informations. Le composant d'entrée fournit plusieurs options configurables pour communiquer clairement les exigences du formulaire pour de nombreuses cas d'utilisation.",
-		"InteractiveDemoDesc": "Essayez notre composant <strong>entrée</strong> et les options configurables disponibles.",
 		"PrimaryHeading": "Entrée de base",
 		"SecondaryHeading": "Entrée de mot de passe",
 		"PrimaryText": "L'entrée de base permet l'entrée d'informations à une seule ligne. Le composant de formulaire est configurable pour s'adapter à divers cas d'utilisation et dispositions. Voir les configurations disponibles ci-dessous.",
@@ -570,7 +568,6 @@
 		"MainTitle": "Sélecteur de date",
 		"Title": "DatePicker-doc",
 		"Intro": "Le composant Picker Date permet aux utilisateurs de saisir une année, un mois et / ou un jour spécifiques.",
-		"InteractiveDemoDesc": "Essayez notre composant <strong>date picker</strong> et les options configurables disponibles.",
 		"DesignGuideLines": {
 			"Maintain": "Maintenir les largeurs de sélection par défaut",
 			"MaintainDoAlt": "Un petit cueilleur de date dans la disposition horizontale avec des largeurs cohérentes.",
@@ -682,7 +679,6 @@
 	"Banner": {
 		"Title": "Bannières",
 		"Intro": "Les bannières fournissent un contenu de soutien précieux à l'utilisateur transmettant un sentiment spécifique (avertissement, succès, informationnel, etc.) et peuvent être utilisés pour aider l'utilisateur à accomplir une tâche ou à mieux comprendre le contenu qu'il consulte.",
-		"InteractiveDemoDesc": "Essayez notre composant <strong>bannière</strong> et les options configurables disponibles.",
 		"InfoPrimaryText": "Les bannières d'informations sont utilisées pour transmettre des informations générales importantes.",
 		"WarningPrimaryText": "Des bannières d'avertissement sont utilisées pour transmettre des avertissements importants.",
 		"CriticalPrimaryText": "Des bannières critiques sont utilisées pour transmettre des informations critiques ou des erreurs.",
@@ -785,6 +781,8 @@
 	},
 	"General": {
 		"InteractiveDemo": "Démo interactive",
+		"InteractiveDemoDesc1": "Essayez notre",
+		"InteractiveDemoDesc2": " Composant et les options configurables disponibles.",
 		"TypesHeading": "Les types",
 		"ConfigurationsHeading": "Configurations",
 		"ConfigurationsMain": "Configurations (composante principale)",
@@ -898,7 +896,6 @@
 	"IconButtonDocumentation": {
 		"Title": "Bouton d'icône",
 		"Intro": "Les boutons d'icônes peuvent être utilisés pour une seule action bien compris qui peut être clairement communiquée avec une icône autonome.",
-		"InteractiveDemoDesc": "Essayez notre composant <strong>Bouton d'icône</strong> et les options configurables disponibles à l'intérieur.",
 		"PrimaryText": "Les boutons d'icône principaux sont utilisés pour mettre en évidence des actions importantes et faciles à comprendre. Il peut être utilisé dans un groupe de boutons d'icônes.",
 		"CriticalText": "Les boutons d'icônes critiques sont souvent utilisés pour des actions destructrices comme la suppression du contenu contribué par l'utilisateur.",
 		"OrganizeIcons": "Organiser les groupes de bouton d'icône",
