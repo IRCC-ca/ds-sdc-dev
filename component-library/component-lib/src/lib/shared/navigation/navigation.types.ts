@@ -13,6 +13,7 @@ export interface INavigationConfig {
   height: string;
   marginTop: number;
   scrolling: boolean;
+  fixed?: boolean;
   childrenPadding?: boolean;
   navigationConfig?: Array<INavigationItem>;
 }
