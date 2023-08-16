@@ -11,7 +11,6 @@ import {
   IBannerConfig,
   ICheckBoxComponentConfig,
   IDatePickerConfig,
-  IDatePickerErrorMessages,
   IIconButtonComponentConfig,
   IInputComponentConfig,
   IProgressIndicatorConfig,
@@ -199,15 +198,6 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     ]
   };
 
-  datePickerErrorMessages: IDatePickerErrorMessages = {
-    general: [
-      {
-        key: 'required',
-        errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
-      }
-    ]
-  };
-
   sexAtBirthRadioBannerConfig: IBannerConfig = {
     id: 'sex_at_birth_info_banner',
     dismissible: true,
@@ -221,7 +211,12 @@ export class AccessibilityDemoComponent implements OnInit, OnDestroy {
     formGroup: this.form,
     label: 'ACC_DEMO.PERSONAL_INFO.DATE_OF_BIRTH.LABEL',
     required: true,
-    errorMessages: this.datePickerErrorMessages,
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'ACC_DEMO.ERRORS.DOB_REQUIRED'
+      }
+    ],
     unknownDateToggle: {
       dayUnknown: true,
       monthUnknown: true,

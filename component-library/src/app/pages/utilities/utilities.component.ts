@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
-import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-url.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
@@ -25,8 +23,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class UtilitiesComponent implements OnInit, TranslatedPageComponent {
-  rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [
+  rightNavData: string[] = [
     // list of all right nav items
     'Utilities.Heading',
     'General.ColourHeading',
@@ -59,11 +56,8 @@ export class UtilitiesComponent implements OnInit, TranslatedPageComponent {
 
   constructor(
     private translate: TranslateService,
-    private lang: LangSwitchService,
-    private navBarConfig: SideNavConfig
-  ) {
-    this.rightNavData = navBarConfig.getRightNavBarConfig(this.rightNavDataRaw);
-  }
+    private lang: LangSwitchService
+  ) {}
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);

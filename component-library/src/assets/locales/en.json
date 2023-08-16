@@ -16,6 +16,7 @@
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
 		"multiCheckbox": "multi-checkbox-documentation",
+		"autocomplete": "autocomplete-documentation",
 		"spinner": "spinner-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
@@ -888,6 +889,10 @@
 		"DefaultLabel": "Default",
 		"TitleLabel": "Title",
 		"CloseLabel": "Close",
+		"DisabledBannerTitle": "How to access the disabled state for developers",
+		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"",
+		"EnabledBannerTitle": "How to access the enabled state for developers",
+		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {

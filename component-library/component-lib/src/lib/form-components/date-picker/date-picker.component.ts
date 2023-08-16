@@ -71,7 +71,7 @@ export interface IDatePickerConfig {
   required?: boolean;
   hint?: string;
   desc?: string;
-  errorMessages?: IDatePickerErrorMessages;
+  errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
   maxYear?: number;
   minYear?: number;
@@ -85,13 +85,6 @@ export interface IDatePickerUnknownDateToggleConfig {
   dayUnknown?: boolean;
   monthUnknown?: boolean;
   yearUnknown?: boolean;
-}
-
-export interface IDatePickerErrorMessages {
-  general?: IErrorPairs[];
-  day?: IErrorPairs[];
-  month?: IErrorPairs[];
-  year?: IErrorPairs[];
 }
 
 export interface IDatePickerDropDownConfigs {
@@ -124,7 +117,7 @@ export class DatePickerComponent implements OnInit {
   @Input() required?: boolean;
   @Input() hint?: string;
   @Input() desc?: string;
-  @Input() errorMessages?: IDatePickerErrorMessages;
+  @Input() errorMessages?: IErrorPairs[];
   @Input() maxYear?: number;
   @Input() minYear?: number;
   @Input() unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
@@ -185,7 +178,7 @@ export class DatePickerComponent implements OnInit {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
-      this.config.errorMessages?.general,
+      this.config.errorMessages,
       this.config.label,
       this.config.desc,
       this.config.hint,
@@ -229,11 +222,11 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.month.topLabel = this.config.label;
     this.dropDownConfigs.year.topLabel = this.config.label;
 
-    if (this.config.errorMessages?.general) {
+    if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
         this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION,
-        this.config.errorMessages.general
+        this.config.errorMessages
       );
     }
 
