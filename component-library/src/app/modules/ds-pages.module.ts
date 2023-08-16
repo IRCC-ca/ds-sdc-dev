@@ -42,6 +42,8 @@ import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 
+import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
 import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
@@ -81,7 +83,8 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     BannerDocumentationComponent,
     IconButtonDocumentationComponent,
     IconButtonDocCodeComponent,
-    MultiCheckboxDocumentationComponent
+    MultiCheckboxDocumentationComponent,
+    AutocompleteDocumentationComponent
   ],
   imports: [
     CommonModule,

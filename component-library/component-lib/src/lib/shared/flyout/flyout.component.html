@@ -1,24 +1,85 @@
-<div class="{{ config?.size }} flyout-container">
+<div
+  *ngIf="
+    config.type !== 'autocomplete' || config.options.length < 50;
+    else auto_flyout
+  "
+>
   <div
-    #option
-    *ngFor="let option of config?.options; let index = index"
-    [ngClass]="{
-      'flyout-option-container': option.clickable !== false,
-      'disabled-option': option.disabled === true,
-      selected: option.active
-    }"
+    class="{{ config?.size }} flyout-container"
+    #container
   >
-    <ircc-cl-lib-flyout-option
-      [config]="option"
-      [size]="config.size"
-      (click)="optionSelected(index)"
-      [id]="config.id + '_option_' + (index + 1)"
-    ></ircc-cl-lib-flyout-option>
+    <div
+      #option
+      *ngFor="let option of config?.options; let index = index"
+      [ngClass]="{
+        'flyout-option-container': option.clickable !== false,
+        'disabled-option': option.disabled === true,
+        selected: option.active
+      }"
+    >
+      <ircc-cl-lib-flyout-option
+        [config]="option"
+        [value]="option.value | autocomplete : config.selected"
+        [size]="option.size"
+        (click)="optionSelected(index)"
+        [id]="option.id + '_option_' + (index + 1)"
+      ></ircc-cl-lib-flyout-option>
+    </div>
   </div>
 </div>
+
+<ng-template #auto_flyout>
+  <div class="{{ config?.size }} flyout-container">
+    <cdk-virtual-scroll-viewport
+      autosize
+      style="height: 100%"
+      minBufferPx="5"
+      maxBufferPx="56"
+      class="example-viewport"
+      #container
+      [style.height]="calculateContainerHeight()"
+    >
+      <div
+        *cdkVirtualFor="
+          let option of config?.options;
+          let index = index;
+          templateCacheSize: 0
+        "
+        class="example-item"
+        [ngClass]="{
+          'flyout-option-container': option.clickable !== false,
+          'disabled-option': option.disabled === true,
+          selected: option.active
+        }"
+      >
+        <ircc-cl-lib-flyout-option
+          [config]="option"
+          [value]="option.value | autocomplete : config.selected"
+          [size]="option.size"
+          (click)="optionSelected(index)"
+          [id]="option.id + '_option_' + (index + 1)"
+        ></ircc-cl-lib-flyout-option>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</ng-template>
+
+<ng-template
+  #options
+  let-config="config"
+  let-index="index"
+>
+  <ircc-cl-lib-flyout-option
+    [config]="config"
+    [value]="config.value | autocomplete : this.config.selected"
+    [size]="config.size"
+    (click)="optionSelected(index)"
+    [id]="config.id + '_option_' + (index + 1)"
+  ></ircc-cl-lib-flyout-option>
+</ng-template>
 <span
   id="sr"
   class="sr-only"
   aria-live="polite"
-  >{{ a11yText }}{{currentSelected}}</span
+  >{{ a11yText }}{{ currentSelected }}</span
 >

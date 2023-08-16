@@ -1,0 +1,25 @@
+<!-- <ircc-cl-lib-autocomplete [config]="config"></ircc-cl-lib-autocomplete> -->
+
+<app-interactive-demo>
+  <ircc-cl-lib-tabs
+    tabs
+    [config]="demoTabsConfig"
+  >
+  </ircc-cl-lib-tabs>
+  <div component>
+    <ircc-cl-lib-autocomplete [config]="config"></ircc-cl-lib-autocomplete>
+  </div>
+  <ng-container toggles>
+    <ng-container *ngFor="let toggle of toggles">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxes">
+      <ircc-cl-lib-checkbox
+        class="checkbox"
+        [config]="checkbox"
+      ></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+</app-interactive-demo>
+
+<app-code-viewer [config]="codeViewConfig"></app-code-viewer>
