@@ -7,6 +7,7 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { IButtonConfig } from 'ircc-ds-angular-component-library';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
+import { DSViewPortSize } from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-button-documentation',
@@ -20,11 +21,6 @@ export class ButtonDocumentationComponent implements OnInit {
     private translate: TranslateService,
     private lang: LangSwitchService
   ) {}
-
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
 
   pageTitleSlugConfig: slugTitleURLConfig = {
     title: 'Buttons.Title',
@@ -67,11 +63,11 @@ export class ButtonDocumentationComponent implements OnInit {
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-    this.mobile = window.innerWidth <= 768;
+    this.mobile = window.innerWidth < DSViewPortSize.mobile;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.mobile = window.innerWidth <= 768;
+    this.mobile = window.innerWidth < DSViewPortSize.mobile;
   }
 }

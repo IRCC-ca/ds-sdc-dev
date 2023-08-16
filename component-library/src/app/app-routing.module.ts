@@ -34,6 +34,7 @@ import { IconButtonDocumentationComponent } from './pages/icon-button-documentat
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { MultiCheckboxDocumentationComponent } from './pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 import { SpinnerDocumentationComponent } from './pages/spinner-documentation/spinner-documentation.component';
+import { AutocompleteDocumentationComponent } from './pages/autocomplete-documentation/autocomplete-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -112,6 +113,11 @@ const routes: Routes = [
       component: SpinnerDocumentationComponent,
       title: 'Spinner.Title'
     },
+    {
+      path: 'autocomplete-documentation',
+      component: AutocompleteDocumentationComponent,
+      title: 'AutocompleteDocumentation.Title'
+    },
 
     // French
     { path: 'aperçu', component: OverviewComponent, title: 'Overview.Heading' },
@@ -141,7 +147,7 @@ const routes: Routes = [
       title: 'Buttons.Title'
     },
     {
-      path: 'documentation dentree',
+      path: 'documentation-dentree',
       component: InputDocumentationComponent,
       title: 'Input.Title'
     },
@@ -169,6 +175,11 @@ const routes: Routes = [
       path: 'spinner-documentation-fr',
       component: SpinnerDocumentationComponent,
       title: 'Spinner.Title'
+    },
+    {
+      path: 'autocomplete-documentation-fr',
+      component: AutocompleteDocumentationComponent,
+      title: 'AutocompleteDocumentation.Title'
     },
 
     //QA PATHS

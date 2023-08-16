@@ -21,7 +21,7 @@ export interface IIconButtonComponentConfig {
 }
 
 export const CLASS_X_MARK = 'fa-thin fa-xmark';
-export const CLASS_TRASHCAN = 'fa-light fa-trash';
+export const CLASS_TRASHCAN = 'fa-light fa-trash-can';
 @Component({
   selector: 'ircc-cl-lib-icon-button',
   templateUrl: './icon-button.component.html'
@@ -43,7 +43,7 @@ export class IconButtonComponent implements OnInit {
   iconConfigs: { [key: string]: IIconButtonIconConfig } = {
     primary: {
       class: CLASS_X_MARK,
-      color: 'var(--primary-text)'
+      color: 'var(--text-primary)'
     },
     critical: {
       class: CLASS_TRASHCAN,

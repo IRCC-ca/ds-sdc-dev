@@ -4,13 +4,11 @@
 
   <section class="interactive-demo">
     <app-title-slug-url
-      [config]="interactiveDemoSlugTitleURLConfig"
+      [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
     <p
       class="body3"
-      [innerHtml]="
-        'General.InteractiveDemoDesc' | translate : { component: 'button' }
-      "
+      [innerHtml]="'Buttons.InteractiveDemoDesc' | translate"
     ></p>
     <app-button-doc-code></app-button-doc-code>
   </section>
@@ -70,6 +68,8 @@
           copyText="<button category='plain'>{{
             'Buttons.PlainBtnText' | translate
           }}</button>"
+          [minWidth]="338"
+          [multiConfig]="{ multi: true, position: 'first' }"
         >
           <ircc-cl-lib-button [config]="buttonTypeConfigs['plain']">
             {{ 'Buttons.PlainBtnText' | translate }}
@@ -79,6 +79,8 @@
           copyText="<button category='plain' color='critical'>{{
             'Buttons.PlainCritBtnText' | translate
           }}</button>"
+          [minWidth]="338"
+          [multiConfig]="{ multi: true, position: 'last' }"
         >
           <ircc-cl-lib-button [config]="buttonTypeConfigs['plain_critical']">
             {{ 'Buttons.PlainCritBtnText' | translate }}

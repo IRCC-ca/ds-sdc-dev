@@ -43,6 +43,7 @@ import { ButtonDocumentationComponent } from '@app/pages/button-documentation/bu
 import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 import { SpinnerDocCodeComponent } from '@app/pages/spinner-documentation/spinner-doc-code.component';
 import { SpinnerDocumentationComponent } from '@app/pages/spinner-documentation/spinner-documentation.component';
+import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -81,7 +82,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IconButtonDocCodeComponent,
     MultiCheckboxDocumentationComponent,
     SpinnerDocCodeComponent,
-    SpinnerDocumentationComponent
+    SpinnerDocumentationComponent,
+    AutocompleteDocumentationComponent
   ],
   imports: [
     CommonModule,

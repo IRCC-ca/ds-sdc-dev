@@ -72,6 +72,19 @@ export class DatePickerDocumentationComponent implements OnInit {
     'DatePicker.Accessibility.ContentTxt6',
     'General.AccessibilityContentItemMax'
   ];
+  rightNavData: string[] = [
+    // list of all right nav items
+    'DatePicker.MainTitle',
+    'General.InteractiveDemo',
+    'General.ConfigurationsHeading',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.ContentGuidelinesHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
+  ];
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService

@@ -7,21 +7,28 @@ import {
   HostListener,
   ViewChildren,
   ElementRef,
-  QueryList
+  QueryList,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
-import { IFlyoutOptionConfig } from '../flyout-option/flyout-option.component';
+import {
+  FlyoutOptionComponent,
+  IFlyoutOptionConfig
+} from '../flyout-option/flyout-option.component';
 import { TranslateService } from '@ngx-translate/core';
 
 export enum IFlyoutSelectTypes {
   single = 'single',
-  multi = 'multi'
+  multi = 'multi',
+  autocomplete = 'autocomplete'
 }
 
 export interface IFlyoutConfig {
   id: string;
-  options?: IFlyoutOptionConfig[];
+  options: IFlyoutOptionConfig[];
   disabled?: boolean;
+  selected?: string;
   selection?: [] | number;
   type?: keyof typeof IFlyoutSelectTypes;
   size?: keyof typeof DSSizes;
@@ -41,7 +48,8 @@ export class FlyoutComponent implements OnInit {
     new QueryList<ElementRef>();
 
   @Input() config: IFlyoutConfig = {
-    id: ''
+    id: '',
+    options: []
   };
   @Input() id?: string;
   @Input() options?: IFlyoutOptionConfig[];
@@ -59,8 +67,10 @@ export class FlyoutComponent implements OnInit {
 
   ngOnInit() {
     if (this.config.type === undefined) this.config.type = 'single';
+    if (this.config.selected === undefined) this.config.selected = '';
     if (this.id) this.config.id = this.id;
     if (this.options) this.config.options = this.options;
+    if (!this.config.options) this.config.options = [];
     if (this.disabled) this.config.disabled = this.disabled;
     if (this.selection) this.config.selection = this.selection;
     if (this.type) this.config.type = this.type;
@@ -70,6 +80,22 @@ export class FlyoutComponent implements OnInit {
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
+  }
+
+  calculateContainerHeight(): string {
+    let numberOfItems = this.config.options?.length || 0;
+    const itemHeight = 36;
+    const visibleItems = 5;
+
+    if (numberOfItems < 2) {
+      numberOfItems = 1.5;
+    }
+
+    if (numberOfItems && numberOfItems <= visibleItems) {
+      return `${itemHeight * numberOfItems}px`;
+    }
+
+    return `${itemHeight * visibleItems}px`;
   }
 
   @HostListener('document:click', ['$event'])

@@ -1,194 +1,35 @@
-@use '../../tokens/template-const' as template-const;
+@use "../../tokens/template-const" as template-const;
 
 @mixin selector {
-    lib-autocomplete#{template-const.$escape} {
-        @content;
-    }
+  ircc-cl-lib-autocomplete#{template-const.$escape} {
+    @content;
+  }
 }
 
 @mixin create {
-    @include selector() {
-        @include layout();
-    }
+  @include selector() {
+    @include layout();
+  }
 }
 
 @mixin layout {
-//copied from autocomplete scss file - can likely be leveraged (please remove all important tags)
+  position: relative;
 
-// @import '../../assets/scss/partials/variables';
+  button {
+    padding: 5px !important;
+  }
 
-// :host {
-//   ::ng-deep {
-//     .input-content-area {
-//       border-radius: 4px;
-//       border: 1px solid $ircc-ca-border;
-//       display: inline-flex;
-//       flex-wrap: wrap;
-//       row-gap: 16px;
-//       padding: 10px 12px;
+  .autocompleteicon {
+    top: 55% !important;
+    right: 5px !important;
+  }
 
-//       &:focus-visible {
-//         outline: none;
-//       }
-//       &.active {
-//         background-color: $ircc-ca-active-background;
-//       }
-//     }
+  input {
+    padding-right: 35px !important;
+  }
 
-//     jl-pr-sclp-jl-chip-item {
-//       display: inline-block;
-//       margin-right: 8px;
-//     }
-
-//     jl-pr-sclp-input {
-//       .input {
-//         display: inline-block;
-//         width: 100%;
-//         border: none !important;
-//         flex: 1;
-//         padding: 0 !important;
-//         padding-left: 12px;
-//         min-width: 100px !important;
-//         &:focus {
-//           outline: none !important;
-//         }
-//         &:hover {
-//           background-color: transparent !important;
-//         }
-//         &.active {
-//           background-color: transparent !important;
-//         }
-//       }
-//       label {
-//         font-weight: 700;
-//         margin-bottom: 8px !important;
-//       }
-//       .hint-text {
-//         margin-bottom: 4px !important;
-//         font-weight: 400;
-//         font-size: 14px;
-//         color: $ircc-ca-auto-hint-text;
-//       }
-//     }
-//   }
-// }
-
-// .autocomplete-container {
-//   position: relative;
-//   user-select: none;
-
-//   label {
-//     font-weight: 700 !important;
-//   }
-
-//   .autocomplete-options {
-//     background: $light;
-//     font-size: 14px;
-//     line-height: 20px;
-//     color: $ircc-ca-black;
-//     font-family: 'Inter', sans-serif !important;
-//     border-radius: 4px;
-//     border: 1px solid $ircc-ca-border;
-//     z-index: 2;
-//     width: auto;
-//     margin-top: 9px;
-//     box-shadow: 0px 8px 20px $ircc-ca-box-shadow;
-//     max-height: 200px;
-//     overflow-y: scroll;
-//     position: absolute;
-//     width: 100%;
-
-//     &::-webkit-scrollbar {
-//       width: 5px;
-//     }
-
-//     &::-webkit-scrollbar-track {
-//       background: $ircc-ca-white; /* color of the tracking area */
-//     }
-
-//     &::-webkit-scrollbar-thumb {
-//       background-color: $ircc-chip-icon-focus; /* color of the scroll thumb */
-//       border-radius: 20px; /* roundness of the scroll thumb */
-//       border: 3px solid $ircc-chip-icon-focus; /* creates padding around scroll thumb */
-//       margin-right: 5px;
-//     }
-//     &::-webkit-scrollbar-track {
-//       box-shadow: inset 0 0 10px 10px green;
-//       border: solid 3px transparent;
-//     }
-
-//     &.hide {
-//       display: none;
-//     }
-
-//     .option {
-//       margin: 8px 0px;
-//       width: 100%;
-//       padding: 10px 12px;
-
-//       display: grid;
-//       grid-template-areas: 'options';
-//       align-items: center;
-
-//       &.hide-option {
-//         display: none;
-//       }
-
-//       &.active::after {
-//         grid-area: options;
-//         justify-self: end;
-//         content: '';
-//         height: 16px;
-//         width: 14px;
-//         pointer-events: none;
-//         background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIiA/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0ODAiIHZpZXdCb3g9IjAgMCA2NDAgNDgwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGRlc2M+Q3JlYXRlZCB3aXRoIEZhYnJpYy5qcyAzLjYuMzwvZGVzYz4KPGRlZnM+CjwvZGVmcz4KPGcgdHJhbnNmb3JtPSJtYXRyaXgoMS40MyAwIDAgMS40MyAzMjAuMTYgMjM4Ljg3KSIgID4KPHBhdGggc3R5bGU9InN0cm9rZTogbm9uZTsgc3Ryb2tlLXdpZHRoOiAxOyBzdHJva2UtZGFzaGFycmF5OiBub25lOyBzdHJva2UtbGluZWNhcDogYnV0dDsgc3Ryb2tlLWRhc2hvZmZzZXQ6IDA7IHN0cm9rZS1saW5lam9pbjogbWl0ZXI7IHN0cm9rZS1taXRlcmxpbWl0OiA0OyBmaWxsOiByZ2IoNzMsMTE2LDI0NSk7IGZpbGwtcnVsZTogbm9uemVybzsgb3BhY2l0eTogMTsiICB0cmFuc2Zvcm09IiB0cmFuc2xhdGUoLTI1NS45NSwgLTI1Ni4wNSkiIGQ9Ik0gNDcwLjYgMTA1LjQgYyAxMi41IDEyLjUgMTIuNSAzMi44IDAgNDUuMyBsIC0yNTYgMjU2IGMgLTEyLjUgMTIuNSAtMzIuOCAxMi41IC00NS4zIDAgbCAtMTI4IC0xMjggYyAtMTIuNSAtMTIuNSAtMTIuNSAtMzIuOCAwIC00NS4zIHMgMzIuOCAtMTIuNSA0NS4zIDAgTCAxOTIgMzM4LjcgTCA0MjUuNCAxMDUuNCBjIDEyLjUgLTEyLjUgMzIuOCAtMTIuNSA0NS4zIDAgeiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgo8L2c+Cjwvc3ZnPg==');
-//         background-repeat: no-repeat;
-//         background-position: center center;
-//         background-size: 100%;
-//       }
-
-//       &:hover,
-//       &.hoverFirst {
-//         background-color: $ircc-ca-hover-background;
-//         cursor: pointer;
-//       }
-//       &:focus {
-//         outline: none;
-//       }
-//       p {
-//         grid-area: options;
-//         margin: 0;
-//         padding-right: 30px;
-//         color: $ircc-ca-black;
-//         font-family: 'Inter', sans-serif !important;
-//       }
-//     }
-//   }
-
-//   &.large .selected,
-//   &.large .autocomplete-options {
-//     font-size: 16px;
-//     padding: 14px 12px;
-//   }
-
-//   &.error {
-//     .selected {
-//       border-color: $ircc-ca-error;
-//       background: $ircc-ca-error-background;
-
-//       &:hover {
-//         border-color: $ircc-ca-error-border;
-//       }
-
-//       &:focus-visible {
-//         outline: solid 3px $ircc-ca-focus;
-//         // border: ;
-//       }
-//       &.active {
-//         border-color: $ircc-ca-error-border;
-//         background-color: ircc-ca-error-active;
-//       }
-//     }
-//   }
-// }
+  ircc-cl-lib-flyout {
+    position: absolute;
+    width: 100%;
+  }
 }
