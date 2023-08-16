@@ -48,6 +48,8 @@ import {
 export class SideNavComponent implements OnInit, AfterViewChecked {
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
   @Input() rightNavLOVs: string[] = [];
+  wrapperTop?: number; // Relative height from top of side nav to top of page in px
+  wrapperFixed: boolean = false;
 
   /**
    * Add active state to side nav item when scroll in to page section
@@ -87,6 +89,11 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         link.focus();
       }
     });
+
+    // Check if wrapper top has hit top of viewport
+    if (this.wrapperTop) {
+      this.wrapperFixed = this.wrapperTop <= window.scrollY;
+    }
   }
 
   navBarData: ISideNavDataInterface[] = [];
@@ -132,6 +139,8 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       this.toggleMobile();
     }
     this.adjustWidth();
+    // Record relative height from top of page for sidenav
+    this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
   }
 
   ngAfterViewChecked() {
