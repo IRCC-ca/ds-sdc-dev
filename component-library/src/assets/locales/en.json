@@ -16,6 +16,7 @@
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
 		"multiCheckbox": "multi-checkbox-documentation",
+		"autocomplete": "autocomplete-documentation",
 		"spinner": "spinner-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
@@ -47,6 +48,7 @@
 	"Buttons": {
 		"Title": "Buttons",
 		"Intro": "Buttons trigger an action or navigate to another page. They have multiple styles and configurations for various needs. They call attention to actions the user should take to progress through a flow.",
+		"InteractiveDemoDesc": "Try our <strong>button</strong> component and the configurable options available within it.",
 		"IntroAlert": "This UI element is currently available in our styles package only. The component version is coming soon.",
 		"PrimaryHeading": "Primary",
 		"PrimaryBtnText": "Primary button",
@@ -360,15 +362,17 @@
 		"ReleasesTitle3": "To install a full release:"
 	},
 	"ERROR": {
-		"fieldIsRequired": "This field is required.",
-		"fieldIsInvalid": "This field is invalid.",
-		"fieldExceededMaxLength": "This field has exceeded max length.",
-		"requiredTextAreaError": "This field is required.",
-		"testErrorMessage": "Test error message.",
-		"errorMessage": "Error",
-		"requiredRadioError": "No selection has been made. Please select an option",
+		"fieldIsRequired": "This field is required. / Ce champ est obligatoire.",
+		"fieldIsInvalid": "This field is invalid. / Ce champ est invalide.",
+		"fieldExceededMaxLength": "This field has exceeded max length. / Ce champ a dépassé la longueur maximale.",
+		"requiredTextAreaError": "This field is required. / Ce champ est obligatoire.",
+		"testErrorMessage": "Test error message. / Tester le message d'erreur.",
+		"errorMessage": "Error / D'erreur",
+		"requiredRadioError": "No selection has been made. Please select an option / Aucune sélection n'a été faite. veuillez sélectionner une option",
 		"WritingErrHeading": "Writing error messages",
-		"WritingErrText": "Error messages inform a user of missing or incorrect information. Write error messages to be helpful, allowing a user to correct their omissions or mistakes."
+		"WritingErrText": "Error messages inform a user of missing or incorrect information. Write error messages to be helpful, allowing a user to correct their omissions or mistakes.",
+		"singleError": "Single error message / Message d'erreur unique",
+		"additionalError": "Additional error message / Message d'erreur supplémentaire"
 	},
 	"Contact": {
 		"Text": "To provide feedback (compliment, comment or complaint) or for any inquiries, contact <a class='link' href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>."
@@ -482,6 +486,7 @@
 	"Input": {
 		"Title": "Input",
 		"Intro": "The input component provides fields that allow users to enter information. The input component provides several configurable options to clearly communicate form requirements for many use-cases.",
+		"InteractiveDemoDesc": "Try our <strong>input</strong> component and the configurable options available within it.",
 		"PrimaryHeading": "Basic input",
 		"SecondaryHeading": "Password input",
 		"PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
@@ -565,6 +570,7 @@
 		"MainTitle": "Date picker",
 		"Title": "DatePicker-doc",
 		"Intro": "The date picker component allows users to input a specific year, month and/or day.",
+		"InteractiveDemoDesc": "Try our <strong>date picker</strong> component and the configurable options available within it.",
 		"DesignGuideLines": {
 			"Maintain": "Maintain default select widths",
 			"MaintainDoAlt": "A small date picker in the horizontal layout with consistent widths.",
@@ -676,6 +682,7 @@
 	"Banner": {
 		"Title": "Banners",
 		"Intro": "Banners provide valuable supporting content to the user conveying a specific sentiment (warning, success, informational, etc.) and can be used to help the user complete a task or better understand the content they are viewing.",
+		"InteractiveDemoDesc": "Try our <strong>banner</strong> component and the configurable options available within it.",
 		"InfoPrimaryText": "Info banners are used to convey important general information.",
 		"WarningPrimaryText": "Warning banners are used to convey important warnings.",
 		"CriticalPrimaryText": "Critical banners are used to convey critical information or errors.",
@@ -882,12 +889,16 @@
 		"DefaultLabel": "Default",
 		"TitleLabel": "Title",
 		"CloseLabel": "Close",
-		"InteractiveDemoDesc": "Try our <strong>{{component}}</strong> component and the configurable options available within it.",
+		"DisabledBannerTitle": "How to access the disabled state for developers",
+		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"",
+		"EnabledBannerTitle": "How to access the enabled state for developers",
+		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
 		"Title": "Icon Button",
 		"Intro": "Icon buttons can be used for a single, well-understood action that can be clearly communicated with a stand-alone icon.",
+		"InteractiveDemoDesc": "Try our <strong>icon button</strong> component and the configurable options available within it.",
 		"PrimaryText": "Primary icon buttons are used to highlight important and easy-to-understand actions. It can be used in a group of icon buttons.",
 		"CriticalText": "Critical icon buttons are often used for destructive actions like deleting user-contributed content.",
 		"OrganizeIcons": "Organize icon button groups",
@@ -912,7 +923,9 @@
 		"EasyUnderStandDontText": "Use the icon button when the icon is ambiguous and may be better understood when accompanied by a label.",
 		"SpacingHeading": "Spacing for icon button groups",
 		"SpacingText": "An icon button group is a set of icon buttons that have a contextual relationship. To create consistency with how these actions are visually related, consistent spacing rules should be followed. Large icon button groups should have 4 pixels between buttons, small icon button groups should have 4 pixels between buttons and extra small icon button groups should have 16 pixels between buttons.",
+		"SpacingImgAlt": "Spacing for icon button groups shown in various sizes: extra small, small and large. The spacings are described in the content below.",
 		"AnatomyHeading": "Icon",
+		"AnatomyImgAlt": "The parts that makeup the icon button component. The parts are described in the content below.",
 		"AnatomyText": "The icon uses the icon component and can be replaced with any Font Awesome icon. The icon button also has a container used for displaying hover, active and focus states around the icon.",
 		"SpecsImgAlt": "Specs displaying the padding and layer measurements within the icon button component. Specs are described in the paragraph below.",
 		"SpecsText": "The extra small button with fixed layout has no pixels of vertical padding and horizontal padding inside the button. The icon has a 16 pixel width and height. The small button with fixed layout has 10 pixels of vertical padding and  horizontal padding inside the button. The icon has a 20 pixel width and height. The large button with fluid layout has 14 pixels of vertical padding and horizontal padding inside the button. The icon has a 24 pixel width and height. ",
