@@ -8,12 +8,23 @@ $color-blue7: var(--navy-7);
     color: var(--navy-8);
   }
 
-  &:focus {
-    outline-width: 0px 0px 0px 3px;
-    outline-color: $color-blue7;
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
+  // &:focus {
+  //   box-shadow: none;
+  //   outline-offset: 0;
+  // }
+
+  // @-moz-document url-prefix() {
+    // .link
+    &:focus {
+      outline-width: 0px 0px  0px 3px;
+      outline-color: $color-blue7;
+      outline-offset: 2px;
+      border-radius: 4px;
+      // -webkit-appearance: none;
+      // -moz-appearance: none;
+      // appearance: none;
+    }
+  // }
 
   &:active {
     color: var(--navy-9);
