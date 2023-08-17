@@ -198,9 +198,13 @@ $selector-exclusion: "app-button-doc-code";
         }
       }
     }
-
+    &.design-guide {
+      p {
+        margin: 0;
+      }
+    }
+    
     &.anatomy,
-    &.design-guide,
     &.accessibility,
     &.research {
       p {

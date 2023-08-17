@@ -18,3 +18,15 @@
   }
 } 
 
+section {
+  &.accessibility {
+    .element-wrapper-container {
+      p {
+        margin-top: 0;
+        &.accessible {
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
