@@ -13,3 +13,10 @@
     }
   }
 }
+
+.image-1 {
+  @include device.in-phone-layout {
+    width: 179px;
+    height: 152px;
+  }
+}

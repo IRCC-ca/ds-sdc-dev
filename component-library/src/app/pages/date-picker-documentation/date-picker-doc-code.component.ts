@@ -414,7 +414,6 @@ export class DatePickerDocCodeComponent implements OnInit {
           ?.markAsUntouched();
         this.currentConfigId = this.datePickerConfig.id;
         this.datePickerConfigCodeView.errorMessages = undefined;
-        console.log('None');
         break;
       case 'Single':
         this.currentConfigId = this.datePickerConfigSingle.id;
@@ -432,7 +431,6 @@ export class DatePickerDocCodeComponent implements OnInit {
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigSingle.errorMessages;
-        console.log('Single');
         break;
       case 'Multiple':
         this.currentConfigId = this.datePickerConfigMulti.id;
@@ -450,7 +448,6 @@ export class DatePickerDocCodeComponent implements OnInit {
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigMulti.errorMessages;
-        console.log('Multiple');
         break;
     }
     this.parseCodeViewConfig();

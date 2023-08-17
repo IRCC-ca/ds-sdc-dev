@@ -203,10 +203,10 @@ export class SpinnerDocCodeComponent implements OnInit {
     return {
       ...this.spinnerConfig,
       size: value['sizeToggle'],
-      label: value['label'] === 'True' ? 'label text' : undefined,
+      label: value['label'] === 'True' ? 'Label' : undefined,
       description:
-        value['description'] === 'True'
-          ? 'Description line of text'
+        value['description'] === 'True' && value['sizeToggle'] === 'large'
+          ? 'Description'
           : undefined,
       type: value['type'],
       orientation: value['orientation']
