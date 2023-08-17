@@ -3,9 +3,20 @@
     component
     class="datePicker-container"
   >
-    <ircc-cl-lib-date-picker
-      [config]="datePickerConfig"
-    ></ircc-cl-lib-date-picker>
+    <ng-container [ngSwitch]="errorState">
+      <ircc-cl-lib-date-picker
+        *ngSwitchDefault
+        [config]="datePickerConfig"
+      ></ircc-cl-lib-date-picker>
+      <ircc-cl-lib-date-picker
+        *ngSwitchCase="'Single'"
+        [config]="datePickerConfigSingle"
+      ></ircc-cl-lib-date-picker>
+      <ircc-cl-lib-date-picker
+        *ngSwitchCase="'Multiple'"
+        [config]="datePickerConfigMulti"
+      ></ircc-cl-lib-date-picker>
+    </ng-container>
   </div>
   <ng-container toggles>
     <ng-container *ngFor="let toggle of toggles">
