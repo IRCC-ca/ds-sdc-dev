@@ -6,7 +6,9 @@ import {
   OnInit,
   AfterViewChecked,
   AfterViewInit,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ViewChildren,
+  QueryList
 } from '@angular/core';
 
 import {
@@ -65,7 +67,9 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       document.documentElement.clientHeight;
     const sideNavTitles: NodeListOf<HTMLHeadElement> =
       document.querySelectorAll('app-title-slug-url h1, app-title-slug-url h2');
-    const sideNavLinks = document.querySelectorAll('ircc-cl-lib-nav-item a');
+    // Query all side nav anchor tags from current elementRef
+    const sideNavLinks: NodeListOf<HTMLAnchorElement> =
+      this.el.nativeElement.querySelectorAll('ircc-cl-lib-nav-item a');
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
