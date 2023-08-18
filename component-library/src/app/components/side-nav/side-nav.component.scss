@@ -31,6 +31,7 @@ $footer-height: 310px;
 
   .sidenav-section-wrapper {
     background: var(--surface1);
+    box-sizing: border-box;
 
     @include grid.up-laptop-layout {
       padding: 0 6px;
