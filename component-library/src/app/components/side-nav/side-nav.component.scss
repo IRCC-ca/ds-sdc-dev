@@ -32,13 +32,16 @@ $footer-height: 310px;
   .sidenav-section-wrapper {
     background: var(--surface1);
 
+    @include grid.up-laptop-layout {
+      padding: 0 6px;
+    }
+
     &.fixed {
       @include grid.up-laptop-layout {
         position: fixed;
         top: 0;
         height: 100vh;
         overflow-y: auto;
-        padding: 0 8px;
       }
     }
 

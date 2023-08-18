@@ -8,7 +8,7 @@
   [@leftSideNavTrigger]="showMenu ? 'open' : 'close'"
   class="{{ navClassName }} sidenav-section-wrapper {{ navStatus }}"
   [ngClass]="{ fixed: wrapperFixed }"
-  [style.width]="width"
+  [style.width]="wrapperFixed ? width : 'auto'"
 >
   <div *ngFor="let data of navBarData">
     <div class="sidenav-title">
