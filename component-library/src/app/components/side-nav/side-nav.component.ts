@@ -4,7 +4,11 @@ import {
   HostListener,
   Input,
   OnInit,
-  AfterViewChecked
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ViewChildren,
+  QueryList
 } from '@angular/core';
 
 import {
@@ -48,6 +52,8 @@ import {
 export class SideNavComponent implements OnInit, AfterViewChecked {
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
   @Input() rightNavLOVs: string[] = [];
+  wrapperTop?: number; // Relative height from top of side nav to top of page in px
+  wrapperFixed: boolean = false;
 
   /**
    * Add active state to side nav item when scroll in to page section
@@ -61,7 +67,9 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       document.documentElement.clientHeight;
     const sideNavTitles: NodeListOf<HTMLHeadElement> =
       document.querySelectorAll('app-title-slug-url h1, app-title-slug-url h2');
-    const sideNavLinks = document.querySelectorAll('ircc-cl-lib-nav-item a');
+    // Query all side nav anchor tags from current elementRef
+    const sideNavLinks: NodeListOf<HTMLAnchorElement> =
+      this.el.nativeElement.querySelectorAll('ircc-cl-lib-nav-item a');
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -87,6 +95,11 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         link.focus();
       }
     });
+
+    // Check if wrapper top has hit top of viewport
+    if (this.wrapperTop) {
+      this.wrapperFixed = this.wrapperTop <= window.scrollY - 178;
+    }
   }
 
   navBarData: ISideNavDataInterface[] = [];
@@ -114,6 +127,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private el: ElementRef,
+    private cdr: ChangeDetectorRef,
     private translate: TranslateService,
     private navBarConfig: SideNavConfig,
     private slugify: SlugifyPipe
@@ -135,8 +149,9 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    //fake scroll event when ViewChecked to give focus and active to top link (if not navigating by heading ID)
-    dispatchEvent(new CustomEvent('scroll'));
+    this.cdr.detectChanges();
+    // Record relative height from top of page for sidenav
+    this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
   }
 
   private toggleMobile() {

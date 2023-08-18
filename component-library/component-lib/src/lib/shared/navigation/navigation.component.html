@@ -2,6 +2,7 @@
   [id]="config.id"
   [attr.size]="config.size"
   class="lib-navigation"
+  [ngClass]="{ fixed: config.fixed && wrapperFixed }"
   #navigation
 >
   <div

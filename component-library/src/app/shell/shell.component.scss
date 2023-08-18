@@ -7,18 +7,15 @@
 
 $page-width: 1440px;
 $page-content-width: 1156px;
-$navigation-width-desktop: 230px;
+$navigation-width-desktop: 244px;
 $tablet-padding: 24px;
 $mobile-padding: 16px;
 
 .header {
   overflow: hidden;
-  top: 0;
   max-width: $page-width;
   width: 100%;
   background: var(--surface1);
-  z-index: 100;
-  position: fixed;
   border-bottom: 1px solid var(--divider);
 
   @include un-tablet-layout {
@@ -67,11 +64,6 @@ $mobile-padding: 16px;
   }
 
   &.top {
-    margin-top: 175px;
-
-    @include un-tablet-layout {
-      margin-top: 180px;
-    }
   }
 
   > app-side-nav.left-nav {
@@ -87,6 +79,12 @@ $mobile-padding: 16px;
 
     @include un-tablet-layout {
       @include col-12;
+    }
+  }
+
+  > nav {
+    @include up-laptop-layout {
+      width: $navigation-width-desktop;
     }
   }
 
