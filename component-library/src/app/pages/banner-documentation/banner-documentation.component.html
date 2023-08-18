@@ -1,4 +1,4 @@
-<div class="content-doc-wrapper">
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Banner.Intro' | translate }}</p>
 
@@ -474,12 +474,13 @@
         </h3>
         <div>
           <img
+            class="mb_12"
             src="assets/img/banner-content/banner-min-max-width.png"
             alt="{{
               'Banner.DesignGuideLines.bannerMinMaxWidthAlt' | translate
             }}"
           />
-          <p class="description body3">
+          <p>
             {{ 'Banner.DesignGuideLines.bannerMinMaxWidthText' | translate }}
           </p>
         </div>
