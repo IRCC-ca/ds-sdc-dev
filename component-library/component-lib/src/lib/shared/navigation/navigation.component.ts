@@ -62,12 +62,15 @@ export class navigationComponent implements OnInit, AfterViewInit {
   };
   configSub?: Subscription;
   scrollTimeout: any;
+  wrapperTop?: number; // Relative height from top of nav to top of page in px
+  wrapperFixed: boolean = false;
 
   listenerScroll = () => {};
   listenerResize = () => {};
   constructor(
     private navService: NavigationService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {}
 
   ngOnInit() {
@@ -80,6 +83,8 @@ export class navigationComponent implements OnInit, AfterViewInit {
         this.config.childrenPadding = true;
       }
     });
+    // Record relative height from top of page for sidenav
+    this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
   }
 
   getPaddingChildrenPadding(index: number): string {
@@ -138,6 +143,14 @@ export class navigationComponent implements OnInit, AfterViewInit {
       this.getHeight();
       this.renderer.listen('window', 'resize', () => {
         this.getHeight();
+      });
+    }
+    if (this.config.fixed) {
+      this.renderer.listen('window', 'scroll', () => {
+        // Check if navigation top has hit top of viewport
+        if (this.wrapperTop) {
+          this.wrapperFixed = this.wrapperTop <= window.scrollY;
+        }
       });
     }
   }

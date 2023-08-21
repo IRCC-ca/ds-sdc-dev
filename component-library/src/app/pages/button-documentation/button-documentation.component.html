@@ -1,4 +1,4 @@
-<div class="content-doc-wrapper">
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Buttons.Intro' | translate }}</p>
 
@@ -247,6 +247,7 @@
           {{ 'General.MaxMinWidthHeading' | translate }}
         </h3>
         <img
+          class="mb_12"
           [src]="
             mobile
               ? 'assets/img/button-content/button-design-width-mob.jpg'
@@ -254,7 +255,7 @@
           "
           alt="{{ 'Buttons.MinMaxWidthImgAlt' | translate }}"
         />
-        <p class="body3 mt_12">{{ 'Buttons.MinMaxWidthText' | translate }}</p>
+        <p>{{ 'Buttons.MinMaxWidthText' | translate }}</p>
       </div>
     </div>
   </section>
