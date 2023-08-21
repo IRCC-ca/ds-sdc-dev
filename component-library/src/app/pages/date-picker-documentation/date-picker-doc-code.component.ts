@@ -558,7 +558,6 @@ export class DatePickerDocCodeComponent implements OnInit {
         `datePickerConfig: IDatePickerConfig = ${stringify(
           this.datePickerConfigCodeView
         )}
-        )}
         `;
     }
   }
