@@ -47,7 +47,7 @@ export class AutocompleteDocumentationComponent
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'This Field is required'
+        errorLOV: this.translate.instant('ERROR.fieldIsRequired')
       }
     ]
   };
@@ -338,7 +338,7 @@ export class AutocompleteDocumentationComponent
             errorMessages: [
               {
                 key: 'required',
-                errorLOV: 'This Field is required'
+                errorLOV: 'ERROR.fieldIsRequired'
               }
             ]
           };

@@ -18,6 +18,7 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { TranslateService } from '@app/share/templates/parent-template.module';
 
 /**
  * Interactive input demo & code block
@@ -32,7 +33,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   form = new FormGroup({});
   state: boolean = false;
 
-  constructor(private lang: LangSwitchService) {}
+  constructor(private lang: LangSwitchService, private translate: TranslateService) {}
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
@@ -49,16 +50,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ...this.inputConfig,
     id: 'input_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: 'ERROR.singleError' }]
+    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
   };
 
   inputConfigMulti: IInputComponentConfig = {
     ...this.inputConfig,
     id: 'input_multi',
     errorMessages: [
-      { key: 'email', errorLOV: 'ERROR.singleError' },
-      { key: 'email', errorLOV: 'ERROR.additionalError' },
-      { key: 'maxlength', errorLOV: 'ERROR.additionalError' }
+      { key: 'email', errorLOV: this.translate.instant('ERROR.singleError') },
+      { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+      { key: 'maxlength', errorLOV: this.translate.instant('ERROR.additionalError') }
     ]
   };
 

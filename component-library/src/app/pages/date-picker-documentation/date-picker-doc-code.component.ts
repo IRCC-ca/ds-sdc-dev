@@ -53,15 +53,15 @@ export class DatePickerDocCodeComponent implements OnInit {
     ...this.datePickerConfig,
     id: 'datepicker_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: 'ERROR.singleError' }]
+    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
   };
   datePickerConfigMulti: IDatePickerConfig = {
     ...this.datePickerConfig,
     id: 'datepicker_multi',
     errorMessages: [
-      { key: 'required', errorLOV: 'ERROR.singleError' },
-      { key: 'required', errorLOV: 'ERROR.additionalError' },
-      { key: 'required', errorLOV: 'ERROR.additionalError' }
+      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+      { key: 'required', errorLOV: this.translate.instant('ERROR.additionalError') },
+      { key: 'required', errorLOV: this.translate.instant('ERROR.additionalError') }
     ]
   };
 
