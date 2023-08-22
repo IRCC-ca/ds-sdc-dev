@@ -20,7 +20,7 @@ export class MultiCheckboxDocumentationComponent
   implements OnInit, TranslatedPageComponent
 {
   currentLanguage: string = '';
-  altLangLink = 'multi-checkbox-documentation';
+  altLangLink = 'multiCheckbox';
   form: FormGroup = new FormGroup({});
 
   config: IMultiCheckboxConfig = {

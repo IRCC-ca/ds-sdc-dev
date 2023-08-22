@@ -26,8 +26,10 @@ import {
   templateUrl: './input-doc-code.component.html',
   styleUrls: ['./input-doc-code.component.scss']
 })
-export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
-  altLangLink = 'inputDocumentation';
+export class InputDocCodeComponent 
+  implements OnInit, TranslatedPageComponent {
+
+  altLangLink = 'input';
   form = new FormGroup({});
   state: boolean = false;
 

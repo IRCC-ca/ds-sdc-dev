@@ -18,6 +18,7 @@ import {
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
 import { Subscription } from 'rxjs';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 const NUMBER_OF_CTA_ALLOWED: number = 3;
 
@@ -26,9 +27,10 @@ const NUMBER_OF_CTA_ALLOWED: number = 3;
   templateUrl: './banner-doc-code.component.html',
   styleUrls: ['./banner-doc-code.component.scss']
 })
-export class BannerDocCodeComponent implements OnInit {
+export class BannerDocCodeComponent 
+  implements OnInit, TranslatedPageComponent {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
-  altLangLink = 'bannerDocumentation';
+  altLangLink = 'banner';
 
   constructor(
     private translate: TranslateService,

@@ -18,6 +18,7 @@ import {
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 export enum LayoutType {
   'fluid' = 'button-container-fluid',
@@ -29,8 +30,9 @@ export enum LayoutType {
   templateUrl: './button-doc-code.component.html',
   styleUrls: ['./button-documentation.component.scss']
 })
-export class ButtonDocCodeComponent implements OnInit {
-  altLangLink = 'buttonDocumentation';
+export class ButtonDocCodeComponent 
+  implements OnInit, TranslatedPageComponent {
+  altLangLink = 'buttons';
   layoutFluid: boolean = true;
 
   constructor(
