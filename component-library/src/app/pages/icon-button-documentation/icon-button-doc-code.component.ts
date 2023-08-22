@@ -15,15 +15,18 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
   selector: 'app-icon-button-doc-code',
   templateUrl: './icon-button-doc-code.component.html',
   styleUrls: ['./icon-button-doc-code.component.scss']
 })
-export class IconButtonDocCodeComponent implements OnInit {
+export class IconButtonDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   @ViewChild('iconButton', { static: false }) iconButton!: ElementRef;
-  altLangLink = 'iconButtonDocumentation';
+  altLangLink = 'iconButton';
 
   constructor(
     private translate: TranslateService,

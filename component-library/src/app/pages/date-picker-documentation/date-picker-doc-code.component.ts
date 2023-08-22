@@ -18,6 +18,7 @@ import {
   IRadioInputComponentConfig
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
   selector: 'app-date-picker-doc-code',
@@ -25,9 +26,11 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
   styleUrls: ['./date-picker-doc-code.component.scss'],
   providers: [SlugifyPipe]
 })
-export class DatePickerDocCodeComponent implements OnInit {
+export class DatePickerDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   currentLanguage: string = '';
-  altLangLink = 'datePickerDocCode';
+  altLangLink = 'datePicker';
   form_datePicker = new FormGroup({});
   state: boolean = false;
 
@@ -257,12 +260,10 @@ export class DatePickerDocCodeComponent implements OnInit {
       new FormControl()
     );
     this.form_datePicker.addControl(
-      // ???
       this.datePickerConfig.id + '_single',
       new FormControl('', [Validators.required])
     );
     this.form_datePicker.addControl(
-      //  ???
       this.datePickerConfig.id + '_multi',
       new FormControl('', [
         Validators.required,
@@ -419,7 +420,6 @@ export class DatePickerDocCodeComponent implements OnInit {
           ?.markAsUntouched();
         this.currentConfigId = this.datePickerConfig.id;
         this.datePickerConfigCodeView.errorMessages = undefined;
-        console.log('None');
         break;
       case 'Single':
         this.currentConfigId = this.datePickerConfigSingle.id;
@@ -437,7 +437,6 @@ export class DatePickerDocCodeComponent implements OnInit {
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigSingle.errorMessages;
-        console.log('Single');
         break;
       case 'Multiple':
         this.currentConfigId = this.datePickerConfigMulti.id;
@@ -455,7 +454,6 @@ export class DatePickerDocCodeComponent implements OnInit {
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigMulti.errorMessages;
-        console.log('Multiple');
         break;
     }
     this.parseCodeViewConfig();
