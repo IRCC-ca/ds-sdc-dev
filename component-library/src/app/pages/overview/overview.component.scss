@@ -56,6 +56,23 @@
           margin: 10px 0 12px 0;
           @include typography.fontSet(body, 2, regular);
         }
+
+        a {
+          color: var(--navy-7);
+          &:hover {
+            color: var(--blue-8);
+            background-color: transparent;
+          }
+        
+          &:active {
+            color: var(--navy-9);
+            background-color: transparent;
+          }
+        
+          &:visited {
+            color: var(--purple-8);
+          }
+        }
       }
     }
   }
