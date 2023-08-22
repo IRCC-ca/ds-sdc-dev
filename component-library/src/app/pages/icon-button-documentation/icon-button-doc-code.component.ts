@@ -22,8 +22,9 @@ import { TranslatedPageComponent } from '../translated-page-component';
   templateUrl: './icon-button-doc-code.component.html',
   styleUrls: ['./icon-button-doc-code.component.scss']
 })
-export class IconButtonDocCodeComponent 
-  implements OnInit, TranslatedPageComponent {
+export class IconButtonDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   @ViewChild('iconButton', { static: false }) iconButton!: ElementRef;
   altLangLink = 'iconButton';
 

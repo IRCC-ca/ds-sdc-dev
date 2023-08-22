@@ -26,8 +26,9 @@ import { TranslatedPageComponent } from '../translated-page-component';
   styleUrls: ['./date-picker-doc-code.component.scss'],
   providers: [SlugifyPipe]
 })
-export class DatePickerDocCodeComponent 
-  implements OnInit, TranslatedPageComponent {
+export class DatePickerDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   currentLanguage: string = '';
   altLangLink = 'datePicker';
   form_datePicker = new FormGroup({});
@@ -259,12 +260,10 @@ export class DatePickerDocCodeComponent
       new FormControl()
     );
     this.form_datePicker.addControl(
-      // ???
       this.datePickerConfig.id + '_single',
       new FormControl('', [Validators.required])
     );
     this.form_datePicker.addControl(
-      //  ???
       this.datePickerConfig.id + '_multi',
       new FormControl('', [
         Validators.required,
@@ -421,7 +420,6 @@ export class DatePickerDocCodeComponent
           ?.markAsUntouched();
         this.currentConfigId = this.datePickerConfig.id;
         this.datePickerConfigCodeView.errorMessages = undefined;
-        console.log('None');
         break;
       case 'Single':
         this.currentConfigId = this.datePickerConfigSingle.id;
@@ -439,7 +437,6 @@ export class DatePickerDocCodeComponent
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigSingle.errorMessages;
-        console.log('Single');
         break;
       case 'Multiple':
         this.currentConfigId = this.datePickerConfigMulti.id;
@@ -457,7 +454,6 @@ export class DatePickerDocCodeComponent
         }
         this.datePickerConfigCodeView.errorMessages =
           this.datePickerConfigMulti.errorMessages;
-        console.log('Multiple');
         break;
     }
     this.parseCodeViewConfig();

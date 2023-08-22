@@ -27,8 +27,7 @@ const NUMBER_OF_CTA_ALLOWED: number = 3;
   templateUrl: './banner-doc-code.component.html',
   styleUrls: ['./banner-doc-code.component.scss']
 })
-export class BannerDocCodeComponent 
-  implements OnInit, TranslatedPageComponent {
+export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
   altLangLink = 'banner';
 

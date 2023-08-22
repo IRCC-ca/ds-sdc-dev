@@ -30,8 +30,7 @@ export enum LayoutType {
   templateUrl: './button-doc-code.component.html',
   styleUrls: ['./button-documentation.component.scss']
 })
-export class ButtonDocCodeComponent 
-  implements OnInit, TranslatedPageComponent {
+export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'buttons';
   layoutFluid: boolean = true;
 
