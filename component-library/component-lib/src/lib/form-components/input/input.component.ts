@@ -79,6 +79,7 @@ export class InputComponent
   implements ControlValueAccessor, OnInit, OnChanges, AfterContentChecked
 {
   formGroupEmpty: FormGroup = new FormGroup({});
+  inputDisabled: boolean = false;
   /**
    * Note: DON'T include default values of '' unless it REALLY makes sense to do so - instead, make them optional.
    * The config input is where you declare the inputs desired properties such as labels, hints, descriptions, etc. where only the id and form group are mandatory properties. Refer to IInputComponentConfig interface.
@@ -169,8 +170,11 @@ export class InputComponent
   }
 
   //Removed '!' and added null case in onChange
-  private onTouch?: () => void;
-  private onChange?: (value: any) => void;
+  onTouch = () => {};
+  onChange = (value: string) => {
+    console.log(value);
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
 
   ngAfterContentChecked() {
     this.changeDetectorRef.detectChanges();
@@ -184,6 +188,7 @@ export class InputComponent
     if (retControl) {
       this.formControl = retControl;
     }
+    console.log(this.formControl);
 
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
@@ -210,6 +215,10 @@ export class InputComponent
       this.disabled = this.config.formGroup.get(this.config.id)
         ?.disabled as boolean;
     });
+
+    this.config.formGroup.get(this.config.id)?.valueChanges.subscribe((value)=>{
+      console.log(this.formControl, value);
+    })
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -340,16 +349,26 @@ export class InputComponent
     this.focusEvent.emit(false);
   }
 
+  changeValue(event: any){
+    console.log(event.srcElement.value);
+    this.writeValue(event.srcElement.value);
+  }
+
   /**
    *
    */
-  writeValue(value: string): void {}
+  writeValue(value: string): void {
+      console.log('writeValue');
+      this.onChange(value);
+  }
 
   registerOnChange(fn: any): void {
+    console.log('regOnChange');
     this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
+    console.log('regOnTouched');
     this.onTouch = fn;
   }
 
@@ -357,7 +376,14 @@ export class InputComponent
    * Apply a disabled state
    */
   setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled;
+    console.log('setDisabledState');
+    if(isDisabled){
+      this.inputDisabled = true;
+      this.formGroup.get(this.config.id)?.disable();
+    }else{
+      this.inputDisabled = false;
+      this.formGroup.get(this.config.id)?.enable();
+    }
   }
 
   /**

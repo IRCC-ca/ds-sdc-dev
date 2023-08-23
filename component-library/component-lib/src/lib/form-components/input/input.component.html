@@ -24,6 +24,7 @@
           <input
             (blur)="onTouchedLabel()"
             (focus)="onFocus()"
+            (change)="onTouch(); changeValue($event)"
             name="{{ config.id }}"
             class="input-field"
             placeholder="{{ config.placeholder || '' | translate }}"
