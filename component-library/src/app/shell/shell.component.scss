@@ -8,6 +8,7 @@
 $page-width: 1440px;
 $page-content-width: 1156px;
 $navigation-width-desktop: 244px;
+$desktop-padding: 40px;
 $tablet-padding: 24px;
 $mobile-padding: 16px;
 
@@ -94,22 +95,18 @@ $mobile-padding: 16px;
 
     @include in-tablet-layout {
       @include col-12;
+
+      padding: 0 $tablet-padding;
     }
 
     @include up-laptop-layout {
       width: 100%;
       max-width: calc(100% - $navigation-width-desktop);
-      padding-left: sizes.$fixed-36;
-    }
-
-    @include in-desktop-layout {
-      padding-left: sizes.$fixed-40;
+      padding-left: $desktop-padding;
     }
 
     @include un-tablet-layout {
       @include col-12;
-
-      padding: 0 $tablet-padding;
     }
 
     @include in-phone-layout {
