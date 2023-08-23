@@ -31,12 +31,12 @@ export class DatePickerDocCodeComponent
 {
   currentLanguage: string = '';
   altLangLink = 'datePicker';
-  form_datePicker = new FormGroup({});
+  formDatePicker = new FormGroup({});
   state: boolean = false;
 
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
-    formGroup: this.form_datePicker,
+    formGroup: this.formDatePicker,
     label: 'Label text',
     required: true,
     desc: 'Description line of text',
@@ -70,7 +70,7 @@ export class DatePickerDocCodeComponent
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -86,7 +86,7 @@ export class DatePickerDocCodeComponent
     },
     {
       id: 'required',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Required',
       options: [
@@ -102,7 +102,7 @@ export class DatePickerDocCodeComponent
     },
     {
       id: 'desc',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Description',
       options: [
@@ -118,7 +118,7 @@ export class DatePickerDocCodeComponent
     },
     {
       id: 'hint',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Hint',
       options: [
@@ -134,7 +134,7 @@ export class DatePickerDocCodeComponent
     },
     {
       id: 'monthSelectShow',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Month',
       options: [
@@ -150,7 +150,7 @@ export class DatePickerDocCodeComponent
     },
     {
       id: 'daySelectShow',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Day',
       options: [
@@ -166,7 +166,7 @@ export class DatePickerDocCodeComponent
     },
     {
       id: 'error',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'ERROR.errorMessage',
       options: [
@@ -188,7 +188,7 @@ export class DatePickerDocCodeComponent
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.StateLabel',
       inlineLabel: 'General.DisabledLabel'
@@ -255,15 +255,12 @@ export class DatePickerDocCodeComponent
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form_datePicker.addControl(
-      this.datePickerConfig.id,
-      new FormControl()
-    );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(this.datePickerConfig.id, new FormControl());
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_single',
       new FormControl('', [Validators.required])
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_multi',
       new FormControl('', [
         Validators.required,
@@ -271,58 +268,58 @@ export class DatePickerDocCodeComponent
         Validators.email
       ])
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_dayControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_monthControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_yearControl',
       new FormControl('', Validators.required)
     );
 
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfigSingle.id + '_dayControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfigSingle.id + '_monthControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfigSingle.id + '_yearControl',
       new FormControl('', Validators.required)
     );
 
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfigMulti.id + '_dayControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfigMulti.id + '_monthControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfigMulti.id + '_yearControl',
       new FormControl('', Validators.required)
     );
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_datePicker.addControl(
+        this.formDatePicker.addControl(
           toggle.id,
           new FormControl(toggle.options[1].value)
         );
       }
     });
     this.checkboxes.forEach((checkbox) => {
-      this.form_datePicker.addControl(checkbox.id, new FormControl());
+      this.formDatePicker.addControl(checkbox.id, new FormControl());
     });
 
-    this.form_datePicker.patchValue({
+    this.formDatePicker.patchValue({
       size: 'Small',
       required: 'True',
       desc: 'True',
@@ -332,7 +329,7 @@ export class DatePickerDocCodeComponent
       error: 'None'
     });
 
-    this.form_datePicker.valueChanges.subscribe((value: any) => {
+    this.formDatePicker.valueChanges.subscribe((value: any) => {
       if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) {
         this.toggleDisabled(value['state']);
@@ -391,31 +388,31 @@ export class DatePickerDocCodeComponent
    */
   private toggleErrors(error: string) {
     if (
-      !this.form_datePicker.get(this.currentConfigId)?.touched &&
+      !this.formDatePicker.get(this.currentConfigId)?.touched &&
       error !== 'None'
     ) {
-      this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
-      this.form_datePicker
+      this.formDatePicker.get(this.currentConfigId)?.markAsTouched();
+      this.formDatePicker
         .get(this.currentConfigId + '_dayControl')
         ?.markAsTouched();
-      this.form_datePicker
+      this.formDatePicker
         .get(this.currentConfigId + '_monthControl')
         ?.markAsTouched();
-      this.form_datePicker
+      this.formDatePicker
         .get(this.currentConfigId + '_yearControl')
         ?.markAsTouched();
     }
     this.errorState = error;
     switch (error) {
       case 'None':
-        this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
-        this.form_datePicker
+        this.formDatePicker.get(this.datePickerConfig.id)?.markAsUntouched();
+        this.formDatePicker
           .get(this.datePickerConfig.id + '_dayControl')
           ?.markAsUntouched();
-        this.form_datePicker
+        this.formDatePicker
           .get(this.datePickerConfig.id + '_monthControl')
           ?.markAsUntouched();
-        this.form_datePicker
+        this.formDatePicker
           .get(this.datePickerConfig.id + '_yearControl')
           ?.markAsUntouched();
         this.currentConfigId = this.datePickerConfig.id;
@@ -423,15 +420,15 @@ export class DatePickerDocCodeComponent
         break;
       case 'Single':
         this.currentConfigId = this.datePickerConfigSingle.id;
-        if (!this.form_datePicker.get(this.currentConfigId)?.touched) {
-          this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
-          this.form_datePicker
+        if (!this.formDatePicker.get(this.currentConfigId)?.touched) {
+          this.formDatePicker.get(this.currentConfigId)?.markAsTouched();
+          this.formDatePicker
             .get(this.currentConfigId + '_dayControl')
             ?.markAsTouched();
-          this.form_datePicker
+          this.formDatePicker
             .get(this.currentConfigId + '_monthControl')
             ?.markAsTouched();
-          this.form_datePicker
+          this.formDatePicker
             .get(this.currentConfigId + '_yearControl')
             ?.markAsTouched();
         }
@@ -440,15 +437,15 @@ export class DatePickerDocCodeComponent
         break;
       case 'Multiple':
         this.currentConfigId = this.datePickerConfigMulti.id;
-        if (!this.form_datePicker.get(this.currentConfigId)?.touched) {
-          this.form_datePicker.get(this.currentConfigId)?.markAsTouched();
-          this.form_datePicker
+        if (!this.formDatePicker.get(this.currentConfigId)?.touched) {
+          this.formDatePicker.get(this.currentConfigId)?.markAsTouched();
+          this.formDatePicker
             .get(this.currentConfigId + '_dayControl')
             ?.markAsTouched();
-          this.form_datePicker
+          this.formDatePicker
             .get(this.currentConfigId + '_monthControl')
             ?.markAsTouched();
-          this.form_datePicker
+          this.formDatePicker
             .get(this.currentConfigId + '_yearControl')
             ?.markAsTouched();
         }
@@ -464,13 +461,13 @@ export class DatePickerDocCodeComponent
    */
   private toggleDisabled(disabled: boolean) {
     const datePickerYearControl =
-      this.form_datePicker.controls['datePicker_yearControl'];
+      this.formDatePicker.controls['datePicker_yearControl'];
     const datePickerMonthControl =
-      this.form_datePicker.controls['datePicker_monthControl'];
+      this.formDatePicker.controls['datePicker_monthControl'];
     const datePickerDayControl =
-      this.form_datePicker.controls['datePicker_dayControl'];
+      this.formDatePicker.controls['datePicker_dayControl'];
 
-    const datePickerControl: AbstractControl | null = this.form_datePicker.get(
+    const datePickerControl: AbstractControl | null = this.formDatePicker.get(
       this.datePickerConfig.id
     );
     if (

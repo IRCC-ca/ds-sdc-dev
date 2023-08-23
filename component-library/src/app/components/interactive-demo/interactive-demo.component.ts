@@ -14,7 +14,8 @@ import {
 
 export enum InteractiveComponentType {
   banner = 'banner',
-  iconBtn = 'icon-button'
+  iconBtn = 'icon-button',
+  spinner = 'spinner'
 }
 
 @Component({

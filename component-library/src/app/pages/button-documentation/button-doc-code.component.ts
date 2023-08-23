@@ -39,7 +39,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     private lang: LangSwitchService
   ) {}
 
-  form_interactive_button = new FormGroup({});
+  formButton = new FormGroup({});
 
   buttonConfig: IButtonConfig = {
     id: 'button',
@@ -91,7 +91,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'showSelectToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'General.StateLabel',
       size: 'small',
       inlineLabel: 'General.DisabledLabel'
@@ -101,7 +101,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'showSizeToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -117,7 +117,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showCriticalToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'General.CriticalHeading',
       size: 'small',
       options: [
@@ -133,7 +133,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showLayoutToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'General.Layout',
       size: 'small',
       options: [
@@ -149,7 +149,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showIconToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'Buttons.ConfigIconHeading',
       size: 'small',
       options: [
@@ -240,26 +240,26 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     if (toggle.options) {
       switch (toggleID) {
         case 'showIconToggle':
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[0].value)
           );
           break;
         case 'showSizeToggle':
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[1].value)
           );
           break;
         case 'showCriticalToggle':
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[1].value)
           );
           break;
         default: {
           console.log('Default');
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[0].value)
           );
@@ -331,7 +331,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
-        this.form_interactive_button.addControl(checkbox.id, new FormControl());
+        this.formButton.addControl(checkbox.id, new FormControl());
       }
     });
 
@@ -341,7 +341,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
       }
     });
 
-    this.form_interactive_button.valueChanges.subscribe((value: any) => {
+    this.formButton.valueChanges.subscribe((value: any) => {
       this.buttonConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });

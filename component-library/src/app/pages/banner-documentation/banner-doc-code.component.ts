@@ -37,7 +37,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     private bannerService: BannerService
   ) {}
 
-  form_interactive_banner = new FormGroup({});
+  formBanner = new FormGroup({});
 
   currentButtonSet = new Set<string>();
   buttonSetWithAllOptions = new Set<string>([
@@ -95,7 +95,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'showSizeToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -111,7 +111,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showTitleToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowTitleLabel',
       size: 'small',
       options: [
@@ -127,7 +127,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showDescToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowDescriptionLabel',
       size: 'small',
       options: [
@@ -143,7 +143,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showCloseToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowCloseLabel',
       size: 'small',
       options: [
@@ -159,7 +159,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showPrimaryButtonToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowPrimaryButtonLabel',
       size: 'small',
       options: [
@@ -175,7 +175,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showSecondaryButtonToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowSecondaryButtonLabel',
       size: 'small',
       options: [
@@ -191,7 +191,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showPlainButtonToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowPlainButtonLabel',
       size: 'small',
       options: [
@@ -207,7 +207,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'showLinkToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowLinkLabel',
       size: 'small',
       options: [
@@ -489,14 +489,14 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_interactive_banner.addControl(
+        this.formBanner.addControl(
           toggle.id,
           new FormControl(toggle.options[1].value)
         );
       }
     });
 
-    this.form_interactive_banner.valueChanges.subscribe((value: any) => {
+    this.formBanner.valueChanges.subscribe((value: any) => {
       this.bannerConfig = this.parseToggleConfig(value);
       this.handlePrimaryButtonToggle(value);
       this.handlePlainButtonToggle(value);
