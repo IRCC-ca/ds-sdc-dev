@@ -198,7 +198,7 @@ export class IconButtonDocCodeComponent
       }
     });
 
-    this.form_interactive_iconBtn.get(this.checkboxes[0].id)
+    this.formIconBtn.get(this.checkboxes[0].id)
     ?.valueChanges.subscribe((change) => {
       if (change) {
         this.bannerConfig.title='General.DisabledBannerTitle'

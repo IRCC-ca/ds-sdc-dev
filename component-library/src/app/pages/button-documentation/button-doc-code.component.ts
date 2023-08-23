@@ -345,7 +345,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
       }
     });
 
-    this.form_interactive_button.get(this.checkboxes[0].id)
+    this.formButton.get(this.checkboxes[0].id)
     ?.valueChanges.subscribe((change) => {
       if (change) {
         this.bannerConfig.title='General.DisabledBannerTitle'
