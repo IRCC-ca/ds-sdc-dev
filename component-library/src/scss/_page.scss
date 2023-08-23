@@ -23,7 +23,6 @@ $round-purple-num-size: 32px;
   .content-doc-wrapper {
     box-sizing: border-box;
     max-width: 872px;
-    margin: 0 auto;
 
     @include grid.up-laptop-layout {
       padding-right: 40px;
