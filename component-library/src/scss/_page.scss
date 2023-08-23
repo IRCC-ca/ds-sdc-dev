@@ -2,7 +2,6 @@
 @use "grid";
 
 $round-purple-num-size: 32px;
-$selector-exclusion: "app-button-doc-code";
 
 @mixin round-purple-num {
   color: var(--purple-9);
@@ -14,15 +13,19 @@ $selector-exclusion: "app-button-doc-code";
   text-align: center;
 }
 
-@mixin template {
-  :host:not(#{$selector-exclusion}) {
-    @include grid.row;
+@mixin template($d-flex: true) {
+  @if ($d-flex) {
+    :host {
+      @include grid.row;
+    }
   }
 
   .content-doc-wrapper {
     box-sizing: border-box;
-    max-width: 872px;
-    margin: 0 auto;
+
+    @include grid.up-laptop-layout {
+      padding-right: 40px;
+    }
 
     img {
       display: block;
@@ -203,7 +206,7 @@ $selector-exclusion: "app-button-doc-code";
         margin: 0;
       }
     }
-    
+
     &.anatomy,
     &.accessibility,
     &.research {

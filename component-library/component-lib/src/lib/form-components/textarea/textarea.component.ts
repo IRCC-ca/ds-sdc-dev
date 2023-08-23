@@ -133,8 +133,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
 
     this.config.formGroup.valueChanges.subscribe((change) => {
-      this.characterCountStatus(change[this.config.id]?.length);
-      
+        this.characterCountStatus(change[this.config.id]?.length);
     });
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -195,6 +194,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     this.announceCharStatusChangeAria = false;
     if (this.config.formGroup.controls[this.config.id].value) {
       this.charLength = this.config.formGroup.controls[this.config.id].value.length;
+    } else {
+      this.charLength = 0;
     }
   }
 

@@ -16,22 +16,25 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
   selector: 'app-icon-button-doc-code',
   templateUrl: './icon-button-doc-code.component.html',
   styleUrls: ['./icon-button-doc-code.component.scss']
 })
-export class IconButtonDocCodeComponent implements OnInit {
+export class IconButtonDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   @ViewChild('iconButton', { static: false }) iconButton!: ElementRef;
-  altLangLink = 'iconButtonDocumentation';
+  altLangLink = 'iconButton';
 
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
   ) {}
 
-  form_interactive_iconBtn = new FormGroup({});
+  formIconBtn = new FormGroup({});
 
   iconBtnConfig: IIconButtonComponentConfig = {
     id: 'icon-button',
@@ -43,7 +46,7 @@ export class IconButtonDocCodeComponent implements OnInit {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'sizeToggle',
-      formGroup: this.form_interactive_iconBtn,
+      formGroup: this.formIconBtn,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -66,7 +69,7 @@ export class IconButtonDocCodeComponent implements OnInit {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'stateToggle',
-      formGroup: this.form_interactive_iconBtn,
+      formGroup: this.formIconBtn,
       label: 'General.StateLabel',
       size: 'small',
       inlineLabel: 'Disabled'
@@ -191,10 +194,7 @@ export class IconButtonDocCodeComponent implements OnInit {
 
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
-        this.form_interactive_iconBtn.addControl(
-          checkbox.id,
-          new FormControl()
-        );
+        this.formIconBtn.addControl(checkbox.id, new FormControl());
       }
     });
 
@@ -211,14 +211,14 @@ export class IconButtonDocCodeComponent implements OnInit {
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_interactive_iconBtn.addControl(
+        this.formIconBtn.addControl(
           toggle.id,
           new FormControl(toggle.options[1].value)
         );
       }
     });
 
-    this.form_interactive_iconBtn.valueChanges.subscribe((value: any) => {
+    this.formIconBtn.valueChanges.subscribe((value: any) => {
       this.iconBtnConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });

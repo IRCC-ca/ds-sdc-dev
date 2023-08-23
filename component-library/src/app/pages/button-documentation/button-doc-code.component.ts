@@ -19,6 +19,7 @@ import {
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 export enum LayoutType {
   'fluid' = 'button-container-fluid',
@@ -30,8 +31,8 @@ export enum LayoutType {
   templateUrl: './button-doc-code.component.html',
   styleUrls: ['./button-documentation.component.scss']
 })
-export class ButtonDocCodeComponent implements OnInit {
-  altLangLink = 'buttonDocumentation';
+export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
+  altLangLink = 'buttons';
   layoutFluid: boolean = true;
 
   constructor(
@@ -39,7 +40,7 @@ export class ButtonDocCodeComponent implements OnInit {
     private lang: LangSwitchService
   ) {}
 
-  form_interactive_button = new FormGroup({});
+  formButton = new FormGroup({});
 
   buttonConfig: IButtonConfig = {
     id: 'button',
@@ -91,7 +92,7 @@ export class ButtonDocCodeComponent implements OnInit {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'showSelectToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'General.StateLabel',
       size: 'small',
       inlineLabel: 'General.DisabledLabel'
@@ -101,7 +102,7 @@ export class ButtonDocCodeComponent implements OnInit {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'showSizeToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -117,7 +118,7 @@ export class ButtonDocCodeComponent implements OnInit {
     },
     {
       id: 'showCriticalToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'General.CriticalHeading',
       size: 'small',
       options: [
@@ -133,7 +134,7 @@ export class ButtonDocCodeComponent implements OnInit {
     },
     {
       id: 'showLayoutToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'General.Layout',
       size: 'small',
       options: [
@@ -149,7 +150,7 @@ export class ButtonDocCodeComponent implements OnInit {
     },
     {
       id: 'showIconToggle',
-      formGroup: this.form_interactive_button,
+      formGroup: this.formButton,
       label: 'Buttons.ConfigIconHeading',
       size: 'small',
       options: [
@@ -249,26 +250,26 @@ export class ButtonDocCodeComponent implements OnInit {
     if (toggle.options) {
       switch (toggleID) {
         case 'showIconToggle':
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[0].value)
           );
           break;
         case 'showSizeToggle':
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[1].value)
           );
           break;
         case 'showCriticalToggle':
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[1].value)
           );
           break;
         default: {
           console.log('Default');
-          this.form_interactive_button.addControl(
+          this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[0].value)
           );
@@ -340,7 +341,7 @@ export class ButtonDocCodeComponent implements OnInit {
 
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
-        this.form_interactive_button.addControl(checkbox.id, new FormControl());
+        this.formButton.addControl(checkbox.id, new FormControl());
       }
     });
 
@@ -361,7 +362,7 @@ export class ButtonDocCodeComponent implements OnInit {
       }
     });
 
-    this.form_interactive_button.valueChanges.subscribe((value: any) => {
+    this.formButton.valueChanges.subscribe((value: any) => {
       this.buttonConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });

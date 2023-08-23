@@ -1,21 +1,29 @@
-@use 'src/scss/grid';
-@use '~@ircc-ca/ds-sdc-core/typography/typography';
+@use "../../../scss/grid";
+@use "../../../scss/page";
+@use "~@ircc-ca/ds-sdc-core/typography/typography";
 
 :host {
   @include grid.row;
+  @include page.template(false);
+
   .dev-txt {
     @include typography.fontSet(body, 1, regular);
+
     margin: 0;
   }
+
   .descriptions {
     &.started {
       .npmLink {
         padding: 0;
       }
     }
+
     @include typography.fontSet(body, 3, regular);
+
     margin: 0;
   }
+
   .code-title {
     @include typography.fontSet(body, 3, emphasis);
     margin: {
@@ -28,12 +36,14 @@
     &.awesome {
       margin-top: 24px;
     }
-    border: 1px solid var(--border); 
-    padding: 16px; 
+
+    border: 1px solid var(--border);
+    padding: 16px;
     border-radius: 4px;
+
     .code {
       color: var(--text-secondary);
-      font-family: 'Roboto Mono', monospace;
+      font-family: "Roboto Mono", monospace;
       font-size: 14px;
       line-height: 20px;
       white-space: pre-line;
