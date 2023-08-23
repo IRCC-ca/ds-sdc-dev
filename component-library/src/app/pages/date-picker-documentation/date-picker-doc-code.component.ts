@@ -18,6 +18,7 @@ import {
   IRadioInputComponentConfig
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
   selector: 'app-date-picker-doc-code',
@@ -25,9 +26,11 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
   styleUrls: ['./date-picker-doc-code.component.scss'],
   providers: [SlugifyPipe]
 })
-export class DatePickerDocCodeComponent implements OnInit {
+export class DatePickerDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   currentLanguage: string = '';
-  altLangLink = 'datePickerDocCode';
+  altLangLink = 'datePicker';
   formDatePicker = new FormGroup({});
   state: boolean = false;
 

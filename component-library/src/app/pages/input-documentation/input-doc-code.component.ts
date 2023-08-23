@@ -27,7 +27,7 @@ import {
   styleUrls: ['./input-doc-code.component.scss']
 })
 export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
-  altLangLink = 'inputDocumentation';
+  altLangLink = 'input';
   formInput = new FormGroup({});
   state: boolean = false;
 

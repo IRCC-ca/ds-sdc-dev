@@ -206,9 +206,10 @@ export class ShellComponent implements OnInit {
   navConfig: INavigationConfig = {
     id: 'shell_nav',
     size: 'small',
-    height: '50vh',
+    height: '100vh',
     marginTop: 182,
-    scrolling: false,
+    scrolling: true,
+    fixed: true,
     navigationConfig: [
       this.gettingStartedNav,
       this.foundationsNav,
