@@ -18,6 +18,7 @@
 		"multiCheckbox": "multi-checkbox-documentation",
 		"autocomplete": "autocomplete-documentation",
 		"spinner": "spinner-documentation",
+		"progressIndicator": "progress-indicator-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
 		"mahsa": "mahsa-en",
@@ -779,6 +780,9 @@
 			"CTA3Label": "CTA 3 (if CTA 1 is set to true)"
 		}
 	},
+	"Breadcrumb": {
+		"Title": "Breadcrumb"
+	},
 	"General": {
 		"InteractiveDemo": "Interactive Demo",
 		"InteractiveDemoDesc1": "Try our",
@@ -1090,5 +1094,8 @@
 			"UsageScreenshot": "A screenshot of the form-input component with the input-field layer selected in the component."
 		},
 		"AccesiblityPopulatedContentItem": "Populated and placeholder content are placed inside of the select and are always visible to the user."
+	},
+	"ProgressIndicatorDocumentation": {
+		"Title": "progress-indicator-documentation"
 	}
 }
