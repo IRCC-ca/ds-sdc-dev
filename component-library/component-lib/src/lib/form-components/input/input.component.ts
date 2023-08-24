@@ -297,6 +297,9 @@ export class InputComponent
     } else {
       this.errorIds = [];
     }
+
+    if (this.config.type === InputTypes.text)
+      this.typeControl = InputTypes.text;
   }
 
   /**
