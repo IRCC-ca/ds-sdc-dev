@@ -39,7 +39,10 @@ export class IconButtonDocCodeComponent
     id: 'icon-button',
     category: IconButtonCategories.primary,
     size: 'small',
-    disabled: false
+    disabled: false,
+    icon: {
+      class: 'fa-light'
+    }
   };
 
   toggles: IRadioInputComponentConfig[] = [

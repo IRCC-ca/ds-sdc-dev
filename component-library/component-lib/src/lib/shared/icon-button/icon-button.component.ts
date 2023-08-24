@@ -20,7 +20,7 @@ export interface IIconButtonComponentConfig {
   icon?: IIconButtonIconConfig;
 }
 
-export const CLASS_X_MARK = 'fa-thin fa-xmark';
+export const CLASS_X_MARK = 'fa-light fa-xmark';
 export const CLASS_TRASHCAN = 'fa-light fa-trash-can';
 @Component({
   selector: 'ircc-cl-lib-icon-button',
