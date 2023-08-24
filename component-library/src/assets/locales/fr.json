@@ -779,6 +779,9 @@
 			"CTA3Label": "CTA 3 (si CTA 1 est défini sur true)"
 		}
 	},
+	"Breadcrumb": {
+		"Title": "Miette de pain"
+	},
 	"General": {
 		"InteractiveDemo": "Démo interactive",
 		"InteractiveDemoDesc1": "Essayez notre",

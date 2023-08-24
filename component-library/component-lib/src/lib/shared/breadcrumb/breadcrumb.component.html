@@ -1,6 +1,7 @@
 <nav
   class="{{ config.size }}"
   (domChange)="createOverflows()"
+  [attr.aria-label]="'Breadcrumb.Title' | translate"
   #breadcrumb_div
 >
   <ng-container
