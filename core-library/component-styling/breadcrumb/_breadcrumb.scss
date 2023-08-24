@@ -134,7 +134,8 @@
 
     a.breadcrumb-anchor {
       text-decoration: none;
-      padding: 0;
+      border-radius: 4px;
+      padding: 2px 4px;
       color: var(--link-text);
 
       &:focus {
