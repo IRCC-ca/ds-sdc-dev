@@ -13,6 +13,7 @@ import {
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
 import {
+  IBannerConfig,
   ICheckBoxComponentConfig,
   IDatePickerConfig,
   IRadioInputComponentConfig
@@ -55,15 +56,15 @@ export class DatePickerDocCodeComponent
     ...this.datePickerConfig,
     id: 'datepicker_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: 'ERROR.singleError' }]
+    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
   };
   datePickerConfigMulti: IDatePickerConfig = {
     ...this.datePickerConfig,
     id: 'datepicker_multi',
     errorMessages: [
-      { key: 'required', errorLOV: 'ERROR.singleError' },
-      { key: 'required', errorLOV: 'ERROR.additionalError' },
-      { key: 'required', errorLOV: 'ERROR.additionalError' }
+      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+      { key: 'required', errorLOV: this.translate.instant('ERROR.additionalError') },
+      { key: 'required', errorLOV: this.translate.instant('ERROR.additionalError') }
     ]
   };
 
@@ -195,6 +196,15 @@ export class DatePickerDocCodeComponent
     }
   ];
 
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
+  };
+
   datePickerConfigCodeView: any = {
     id: this.datePickerConfig.id,
     formGroup: `new FormGroup({})`,
@@ -227,8 +237,6 @@ export class DatePickerDocCodeComponent
           "import { FormGroup } from '@angular/forms';\n\n" +
           `datePickerConfig: IDatePickerConfig = ${stringify(
             this.datePickerConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-            this.stateTxt(this.state)
           )}
           `
       }
@@ -244,12 +252,6 @@ export class DatePickerDocCodeComponent
     private slugify: SlugifyPipe
   ) {
     this.currentLanguage = translate.currentLang;
-  }
-
-  stateTxt(disabled: boolean): string {
-    const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
-    const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
-    return disabled ? DISABLE : ENABLE;
   }
 
   ngOnInit() {
@@ -317,6 +319,17 @@ export class DatePickerDocCodeComponent
     });
     this.checkboxes.forEach((checkbox) => {
       this.formDatePicker.addControl(checkbox.id, new FormControl());
+    });
+
+    this.formDatePicker.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
+      }
     });
 
     this.formDatePicker.patchValue({
@@ -539,10 +552,7 @@ export class DatePickerDocCodeComponent
         "import { FormGroup } from '@angular/forms';\n\n" +
         `datePickerConfig: IDatePickerConfig = ${stringify(
           this.datePickerConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-          this.stateTxt(this.state)
-        )}
-        `;
+      )}`;
     }
   }
 }

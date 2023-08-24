@@ -6,7 +6,8 @@ import {
   ITabNavConfig,
   CLASS_X_MARK,
   CLASS_TRASHCAN,
-  IconButtonCategories
+  IconButtonCategories,
+  IBannerConfig
 } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -91,6 +92,15 @@ export class IconButtonDocCodeComponent
         title: 'General.Critical'
       }
     ]
+  };
+
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
   };
 
   iconBtnConfigCodeView: any = {
@@ -188,6 +198,17 @@ export class IconButtonDocCodeComponent
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
         this.formIconBtn.addControl(checkbox.id, new FormControl());
+      }
+    });
+
+    this.formIconBtn.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
       }
     });
 

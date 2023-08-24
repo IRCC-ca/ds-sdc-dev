@@ -1,4 +1,7 @@
-<app-interactive-demo componentType="banner">
+<app-interactive-demo
+  componentType="banner"
+  [hasDisabledBanner]="false"
+>
   <ircc-cl-lib-tabs
     tabs
     (valueChange)="setBannerType($event)"

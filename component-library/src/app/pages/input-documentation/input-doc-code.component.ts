@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslatedPageComponent } from '@app/pages/translated-page-component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
+  IBannerConfig,
   ICheckBoxComponentConfig,
   IInputComponentConfig,
   IRadioInputComponentConfig,
@@ -17,6 +18,7 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { TranslateService } from '@app/share/templates/parent-template.module';
 
 /**
  * Interactive input demo & code block
@@ -31,7 +33,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   formInput = new FormGroup({});
   state: boolean = false;
 
-  constructor(private lang: LangSwitchService) {}
+  constructor(private lang: LangSwitchService, private translate: TranslateService) {}
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
@@ -48,16 +50,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ...this.inputConfig,
     id: 'input_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: 'ERROR.singleError' }]
+    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
   };
 
   inputConfigMulti: IInputComponentConfig = {
     ...this.inputConfig,
     id: 'input_multi',
     errorMessages: [
-      { key: 'email', errorLOV: 'ERROR.singleError' },
-      { key: 'email', errorLOV: 'ERROR.additionalError' },
-      { key: 'maxlength', errorLOV: 'ERROR.additionalError' }
+      { key: 'email', errorLOV: this.translate.instant('ERROR.singleError') },
+      { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+      { key: 'maxlength', errorLOV: this.translate.instant('ERROR.additionalError') }
     ]
   };
 
@@ -187,6 +189,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
+  };
+
   inputConfigCodeView: any = {
     id: this.inputConfig.id,
     formGroup: `new FormGroup({})`,
@@ -218,8 +229,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `inputConfig: IInputComponentConfig = ${stringify(
             this.inputConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-            this.stateTxt(this.state)
           )}
           `
       }
@@ -244,12 +253,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     };
 
     this.parseCodeViewConfig();
-  }
-
-  stateTxt(disabled: boolean): string {
-    const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
-    const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
-    return disabled ? DISABLE : ENABLE;
   }
 
   ngOnInit() {
@@ -281,6 +284,17 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.checkboxes.forEach((checkbox) => {
       this.formInput.addControl(checkbox.id, new FormControl());
+    });
+
+    this.formInput.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
+      }
     });
 
     this.formInput.patchValue({
@@ -447,10 +461,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `inputConfig: IInputComponentConfig = ${stringify(
           this.inputConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-          this.stateTxt(this.state)
-        )}
-        `;
+      )}`;
     }
   }
 }
