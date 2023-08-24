@@ -95,11 +95,11 @@ export class IconButtonDocCodeComponent
   };
 
   bannerConfig: IBannerConfig = {
-    id: "banner-disabled-desc",
-    type: "info",
-    size: "small",
-    title:'General.EnabledBannerTitle',
-    content: "General.EnabledBannerContent",
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
     rounded: true
   };
 
@@ -201,16 +201,17 @@ export class IconButtonDocCodeComponent
       }
     });
 
-    this.formIconBtn.get(this.checkboxes[0].id)
-    ?.valueChanges.subscribe((change) => {
-      if (change) {
-        this.bannerConfig.title='General.DisabledBannerTitle'
-        this.bannerConfig.content="General.DisabledBannerContent"
-      } else {
-        this.bannerConfig.title='General.EnabledBannerTitle'
-        this.bannerConfig.content="General.EnabledBannerContent"
-      }
-    });
+    this.formIconBtn
+      .get(this.checkboxes[0].id)
+      ?.valueChanges.subscribe((change) => {
+        if (change) {
+          this.bannerConfig.title = 'General.DisabledBannerTitle';
+          this.bannerConfig.content = 'General.DisabledBannerContent';
+        } else {
+          this.bannerConfig.title = 'General.EnabledBannerTitle';
+          this.bannerConfig.content = 'General.EnabledBannerContent';
+        }
+      });
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
