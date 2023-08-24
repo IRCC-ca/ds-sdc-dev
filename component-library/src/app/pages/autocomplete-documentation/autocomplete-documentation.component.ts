@@ -5,6 +5,7 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   IAutocompleteComponent,
+  IBannerConfig,
   ICheckBoxComponentConfig,
   IRadioInputComponentConfig,
   ITabNavConfig
@@ -46,7 +47,7 @@ export class AutocompleteDocumentationComponent
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'This Field is required'
+        errorLOV: this.translate.instant('ERROR.fieldIsRequired')
       }
     ]
   };
@@ -194,6 +195,15 @@ export class AutocompleteDocumentationComponent
     }
   ];
 
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
+  };
+
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
     size: 'small',
@@ -233,7 +243,7 @@ export class AutocompleteDocumentationComponent
           "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n//...\n" +
           `config: IAutocompleteComponent = ${stringify(
             this.autocompleteCodeView
-          )}\n\nthis.config.formGroup.addControl(this.config.id, new FormControl());\n\n//Note: Setting formControl state triggers disabled/enabled styling automatically \nthis.config.formGroup.get('formControlName')?.enable(); //sets the form control to be enabled`;
+          )}`
       }
     });
 
@@ -247,8 +257,12 @@ export class AutocompleteDocumentationComponent
       ?.valueChanges.subscribe((change) => {
         if (change) {
           this.config.formGroup.get(this.config.id)?.disable(change);
+          this.bannerConfig.title='General.DisabledBannerTitle'
+          this.bannerConfig.content="General.DisabledBannerContent"
         } else {
           this.config.formGroup.get(this.config.id)?.enable(change);
+          this.bannerConfig.title='General.EnabledBannerTitle'
+          this.bannerConfig.content="General.EnabledBannerContent"
         }
       });
 
@@ -324,7 +338,7 @@ export class AutocompleteDocumentationComponent
             errorMessages: [
               {
                 key: 'required',
-                errorLOV: 'This Field is required'
+                errorLOV: 'ERROR.fieldIsRequired'
               }
             ]
           };

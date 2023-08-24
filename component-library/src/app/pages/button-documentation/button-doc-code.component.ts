@@ -8,6 +8,7 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import {
   ButtonColor,
+  IBannerConfig,
   IButtonConfig,
   ICheckBoxComponentConfig,
   IRadioInputComponentConfig,
@@ -188,6 +189,15 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
+  };
+
   /**
    * position icon based on config
    */
@@ -332,6 +342,17 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
         this.formButton.addControl(checkbox.id, new FormControl());
+      }
+    });
+
+    this.formButton.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
       }
     });
 

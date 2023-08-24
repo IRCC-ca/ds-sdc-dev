@@ -888,9 +888,9 @@
 		"TitleLabel": "Title",
 		"CloseLabel": "Close",
 		"DisabledBannerTitle": "How to access the disabled state for developers",
-		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"",
+		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"</code>",
 		"EnabledBannerTitle": "How to access the enabled state for developers",
-		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"",
+		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"</code>",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
