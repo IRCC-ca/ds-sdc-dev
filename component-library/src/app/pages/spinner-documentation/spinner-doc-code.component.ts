@@ -24,7 +24,9 @@ import { TranslatedPageComponent } from '../translated-page-component';
   styleUrls: ['./spinner-doc-code.component.scss'],
   providers: [SlugifyPipe]
 })
-export class SpinnerDocCodeComponent implements OnInit, TranslatedPageComponent {
+export class SpinnerDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   currentLanguage: string = '';
   altLangLink = 'spinner';
   formSpinner = new FormGroup({});
