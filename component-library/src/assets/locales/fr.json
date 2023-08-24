@@ -492,7 +492,7 @@
 		"ConfigErrorHeading": "Erreur",
 		"ConfigPlaceholderHeading": "Espace réservé",
 		"FieldWidth": "Largeurs de champ",
-		"FieldWidthImgDo": "Un champ de saisie large pour taper un nom de pays et un champ de saisie étroit pour taper un an.",
+		"FieldWidthImgDo": "Un large champ de saisie pour taper un nom de pays et un champ de saisie étroit pour taper un an.",
 		"FieldWidthDoText": "Utilisez des largeurs de champ qui conviennent au type de contenu recueilli.",
 		"FieldWidthImgDont": "Un champ de saisie étroit pour taper un nom de pays et un large champ de saisie pour taper un an.",
 		"FieldWidthDontText": "Utilisez des largeurs de champ arbitraires qui ne sont pas dimensionnées en fonction de la largeur de la valeur attendue.",
@@ -560,7 +560,7 @@
 		"AccessibilityContentItem5": "L'étiquette qui comprend un astérisque pour indiquer que le contrôle est requis.",
 		"AccessibilityContentItem6": "Étiquetage clair pour les champs requis, y compris le mot «requis» entre parenthèses.",
 		"AccessibilityValidationText": "Si une erreur d'entrée est automatiquement détectée, l'élément qui est en erreur est identifié et l'erreur est décrite à l'utilisateur dans le texte.",
-		"CodeViewer": "Bloc de la visionneuse de code affichant le HTML et le code TypeScript généré à partir de la démo interactive",
+		"CodeViewer": "Bloc de la visionneuse de code affichant le code HTML et le code TypeScript généré à partir de la démo interactive",
 		"LabelText1": "Étiqueter le texte",
 		"LabelText2": "Mot de passe"
 	},
@@ -607,7 +607,7 @@
 			"WritingLabelsDo": "Gardez les étiquettes aussi claires et courtes que possible.",
 			"WritingLabelsDontAlt": "Date Picker Fields avec l'étiquette «Le jour où vous êtes né».",
 			"WritingLabelsDont": "Écrivez des étiquettes difficiles à comprendre ou des étiquettes qui sont plus longues que nécessaire.",
-			"PlaceholderHeading": "Utilisez le texte du placeur dans les déroutes sélectionnées",
+			"PlaceholderHeading": "Utilisez le texte du Payholder dans les listes déroulantes sélectionnées",
 			"PlaceholderDoAlt": "Champs de cueilleurs de date avec l'étiquette «Date de naissance» et le texte d'espace réservé dans les champs.",
 			"PlaceholderDo": "Fournissez du texte de placement pour afficher le format exact requis, dans une liste déroulante sélectionnée.",
 			"PlaceholderDontAlt": "Un sélecteur de date qui n'a pas de texte d'espace réservé à l'intérieur des listes déroulantes sélectionnées.",
@@ -716,7 +716,7 @@
 			"bannerMinMaxWidthText": "Les petites bannières ont une largeur maximale de 600 pixels et une largeur minimale de 300 pixels. Les grandes bannières ont une largeur maximale de 680 pixels et une largeur minimale de 340 pixels."
 		},
 		"Anatomy": {
-			"ImgAlt": "Les pièces qui constituent la composante de la bannière. Les pièces sont décrites dans le contenu ci-dessous.",
+			"ImgAlt": "Les pièces qui constituent le composant de la bannière. Les pièces sont décrites dans le contenu ci-dessous.",
 			"ContainerHeading": "Récipient",
 			"ContainerText": "La limite de la bannière. Le conteneur peut afficher divers styles et peut être réglé sur n'importe quelle largeur fixe souhaitée.",
 			"BannerIconTypeHeading": "Icône de type bannière",
@@ -760,7 +760,7 @@
 		"Accessibility": {
 			"ColorText1": "Les bannières d'informations ont un rapport de contraste de couleur de 16,6: 1 et passe les normes d'accessibilité AAA sous WCAG 2.1.",
 			"ColorText2": "Les bannières d'avertissement ont un rapport de contraste des couleurs de 16,45: 1 et passe les normes d'accessibilité AAA sous WCAG 2.1.",
-			"ColorText3": "Les bannières critiques ont un rapport de contraste des couleurs de 15,85: 1 et passe les normes d'accessibilité AAA sous WCAG 2.1.",
+			"ColorText3": "Les bannières critiques ont un rapport de contraste des couleurs de 15,85: 1 et transmettent les normes d'accessibilité AAA sous WCAG 2.1.",
 			"ColorText4": "Les bannières de réussite ont un rapport de contraste des couleurs de 16,86: 1 et passe les normes d'accessibilité AAA sous WCAG 2.1.",
 			"ColorText5": "Les bannières génériques ont un rapport de contraste des couleurs de 16,6: 1 et passe les normes d'accessibilité AAA sous WCAG 2.1.",
 			"KeyboardText": "Les bannières sont développées à l'aide de l'élément de bouton HTML natif pour s'assurer que les éléments interactifs sont accessibles au clavier et passent la conformité WCAG 2.1 AA."
@@ -771,7 +771,7 @@
 			"ShowCloseLabel": "Se rapprocher",
 			"ShowPrimaryButtonLabel": "Afficher le bouton primaire",
 			"ShowSecondaryButtonLabel": "Afficher le bouton secondaire",
-			"ShowPlainButtonLabel": "Afficher le bouton simple",
+			"ShowPlainButtonLabel": "Afficher le bouton Plain",
 			"ShowLinkLabel": "Montrer le lien",
 			"DefaultLabel": "Défaut",
 			"CTA1Label": "CTA 1",
@@ -790,7 +790,7 @@
 		"ConfigurationsHeading": "Configurations",
 		"ConfigurationsMain": "Configurations (composante principale)",
 		"ConfigurationsSub": "Configurations (sous-composant)",
-		"DesignGuidelinesHeading": "Concevoir des directives",
+		"DesignGuidelinesHeading": "Lignes directrices de conception",
 		"AnatomyHeading": "Anatomie",
 		"SpecsHeading": "Spécifications",
 		"Populated": "Peuplé",
@@ -891,16 +891,16 @@
 		"TitleLabel": "Titre",
 		"CloseLabel": "Fermer",
 		"DisabledBannerTitle": "Comment accéder à l'état handicapé pour les développeurs",
-		"DisabledBannerContent": "La définition de l'état de contrôle de formulaire déclenche automatiquement le style désactivé / activé <br> \"this.formGroupName.get('FormControlName')?.disable(); //définit le contrôle de formulaire à désactiver\"",
+		"DisabledBannerContent": "La définition de l'état de contrôle de formulaire déclenche automatiquement le style désactivé / activé <br> <code>\"this.formGroupName.get('FormControlName')?.disable(); //définit le contrôle de formulaire à désactiver\"</code>",
 		"EnabledBannerTitle": "Comment accéder à l'état activé pour les développeurs",
-		"EnabledBannerContent": "La définition de l'état de contrôle de formulaire déclenche automatiquement le style désactivé / activé <br> \"this.formGroupName.get('FormControlName')?.enable(); //définit le contrôle de formulaire à activer\"",
+		"EnabledBannerContent": "La définition de l'état de contrôle de formulaire déclenche automatiquement le style désactivé / activé <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //définit le contrôle de formulaire à activer\"</code>",
 		"Labelling": "Étiquetage"
 	},
 	"IconButtonDocumentation": {
 		"Title": "Bouton d'icône",
 		"Intro": "Les boutons d'icônes peuvent être utilisés pour une seule action bien compris qui peut être clairement communiquée avec une icône autonome.",
 		"PrimaryText": "Les boutons d'icône principaux sont utilisés pour mettre en évidence des actions importantes et faciles à comprendre. Il peut être utilisé dans un groupe de boutons d'icônes.",
-		"CriticalText": "Les boutons d'icônes critiques sont souvent utilisés pour des actions destructrices comme la suppression du contenu contribué par l'utilisateur.",
+		"CriticalText": "Les boutons d'icônes critiques sont souvent utilisés pour des actions destructrices comme la suppression du contenu contribué à l'utilisateur.",
 		"OrganizeIcons": "Organiser les groupes de bouton d'icône",
 		"OrganizeIconsAlt": "Une barre d'outils de visionneuse de documents avec des icônes de pagination, des icônes de zoom et des icônes de redimensionnement groupées et séparées.",
 		"OrganizeIconsDoText": "Organisez logiquement les boutons d'icônes qui ont une relation contextuelle en gardant les actions connexes ensemble et des actions non liées séparées soit par l'espace blanc ou les séparateurs.",
@@ -943,7 +943,7 @@
 		"LabellingText": "Les boutons d'icône doivent avoir des étiquettes par programme qui leur sont associés afin que l'action de l'icône de l'icône soit claire pour l'écran les utilisateurs du lecteur."
 	},
 	"MultiCheckboxDocumentation": {
-		"Title": "Docbox multichette"
+		"Title": "Docbox multiche"
 	},
 	"Spinner": {
 		"Title": "Spinner-DOC",
@@ -958,7 +958,7 @@
 		"AccessibilityContentItem2": "Les étiquettes décrivent le sujet ou le but.",
 		"AccessibilityContentItem3": "Des descriptions sont fournies lorsque le contenu nécessite une clarté supplémentaire.",
 		"AccessibilityContentItem4": "L'étiquette et la description sont placées à l'extérieur du spinner et sont toujours visibles pour l'utilisateur. Le contenu est présenté dans un ordre de lecture logique.",
-		"Intro": "Les filateurs fournissent un repère visuel qu'une action traite en attente d'un cours de changement, un résultat ou l'affichage de nouveaux contenus.",
+		"Intro": "Les filateurs fournissent un repère visuel qu'une action traite en attendant un cours de changement, un résultat ou l'affichage de nouveaux contenus.",
 		"DesignGuideLines": {
 			"UseSpinner": "Quand utiliser le spinner",
 			"UseSpinnerDoTxt": "Utilisez le spinner si le temps d'attente attendu est perceptible - généralement plus d'une seconde mais moins de 10 secondes.",

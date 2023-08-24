@@ -177,6 +177,6 @@
     color: var(--surface1);
     position: relative;
 
-    @extend .fa-regular;
+    @extend %fa-regular;
   }
 }
