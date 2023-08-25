@@ -779,6 +779,9 @@
 			"CTA3Label": "CTA 3 (if CTA 1 is set to true)"
 		}
 	},
+	"Breadcrumb": {
+		"Title": "Breadcrumb"
+	},
 	"General": {
 		"InteractiveDemo": "Interactive Demo",
 		"InteractiveDemoDesc1": "Try our",
