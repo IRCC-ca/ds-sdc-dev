@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
-import { ICodeViewerConfig, stringify } from '@app/components/code-viewer/code-viewer.component';
+import {
+  ICodeViewerConfig,
+  stringify
+} from '@app/components/code-viewer/code-viewer.component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
-import { IProgressIndicatorConfig, IRadioInputComponentConfig } from 'ircc-ds-angular-component-library';
+import {
+  IProgressIndicatorConfig,
+  IRadioInputComponentConfig
+} from 'ircc-ds-angular-component-library';
 import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
@@ -15,8 +21,8 @@ import { TranslatedPageComponent } from '../translated-page-component';
   providers: [SlugifyPipe]
 })
 export class ProgressIndicatorDocCodeComponent
-  implements OnInit, TranslatedPageComponent {
-
+  implements OnInit, TranslatedPageComponent
+{
   currentLanguage: string = '';
   altLangLink = 'progressIndicator';
   formProgressIndicator = new FormGroup({});
@@ -25,7 +31,7 @@ export class ProgressIndicatorDocCodeComponent
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progressIndicator',
     size: 'small',
-    orientation:'horizontal',
+    orientation: 'horizontal',
     steps: [
       {
         title: 'Step title',
@@ -118,7 +124,7 @@ export class ProgressIndicatorDocCodeComponent
           value: 'False'
         }
       ]
-    },
+    }
   ];
 
   progressIndicatorConfigCodeView: any = {
@@ -161,8 +167,11 @@ export class ProgressIndicatorDocCodeComponent
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.formProgressIndicator.addControl(this.progressIndicatorConfig.id, new FormControl());
-  
+    this.formProgressIndicator.addControl(
+      this.progressIndicatorConfig.id,
+      new FormControl()
+    );
+
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
         this.formProgressIndicator.addControl(
@@ -190,7 +199,7 @@ export class ProgressIndicatorDocCodeComponent
     return {
       ...this.progressIndicatorConfig,
       size: value['sizeToggle'],
-      orientation: value['orientation'],
+      orientation: value['orientation']
       // gated: value['gated'] === 'Flase',
       // step3: value['step3'] === 'True',
       // step4: value['step4'] === 'True'
