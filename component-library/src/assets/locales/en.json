@@ -16,8 +16,10 @@
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
 		"multiCheckbox": "multi-checkbox-documentation",
+		"checkbox": "checkbox-documentation",
 		"autocomplete": "autocomplete-documentation",
 		"spinner": "spinner-documentation",
+		"progressIndicator": "progress-indicator-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
 		"mahsa": "mahsa-en",
@@ -894,6 +896,10 @@
 		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"</code>",
 		"EnabledBannerTitle": "How to access the enabled state for developers",
 		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"</code>",
+		"Step3": "Step 3",
+		"Step4": "Step 4",
+		"stepTitle": "Step title",
+		"Gated": "Gated",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
@@ -1093,5 +1099,16 @@
 			"UsageScreenshot": "A screenshot of the form-input component with the input-field layer selected in the component."
 		},
 		"AccesiblityPopulatedContentItem": "Populated and placeholder content are placed inside of the select and are always visible to the user."
+	},
+	"ProgressIndicatorDocumentation": {
+		"Title": "progress-indicator-documentation"
+	},
+	"ProgressIndicator": {
+		"MainTitle": "Progress Indicator",
+		"Intro": "Progress indicator are most commonly used to provide a way for clients and officers to make a range of selections (zero, one, or multiple).",
+		"InteractiveDemoDesc": "Try our progress indicator component and the configurable options available within it."
+	},
+	"Checkbox": {
+		"Title": "Checkbox"
 	}
 }
