@@ -1,1 +1,17 @@
-<p>progress-indicator-documentation works!</p>
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url
+    [config]="progressIndictorTitleSlugConfig"
+  ></app-title-slug-url>
+  <p class="intro body1">{{ 'ProgressIndicator.Intro' | translate }}</p>
+
+  <section class="interactive-demo">
+    <app-title-slug-url
+      [config]="headingConfig.interactiveDemoSlugConfig"
+    ></app-title-slug-url>
+    <p
+      class="demo"
+      [innerHTML]="'ProgressIndicator.InteractiveDemoDesc' | translate"
+    ></p>
+    <app-progress-indicator-doc-code></app-progress-indicator-doc-code>
+  </section>
+</div>
