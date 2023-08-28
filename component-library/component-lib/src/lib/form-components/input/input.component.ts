@@ -80,7 +80,6 @@ export class InputComponent
   implements ControlValueAccessor, OnInit, OnChanges, AfterContentChecked
 {
   formGroupEmpty: FormGroup = new FormGroup({});
-  inputDisabled: boolean = false;
   /**
    * Note: DON'T include default values of '' unless it REALLY makes sense to do so - instead, make them optional.
    * The config input is where you declare the inputs desired properties such as labels, hints, descriptions, etc. where only the id and form group are mandatory properties. Refer to IInputComponentConfig interface.
@@ -194,7 +193,6 @@ export class InputComponent
     if (retControl) {
       this.formControl = retControl;
     }
-    console.log(this.formControl);
 
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
@@ -222,9 +220,6 @@ export class InputComponent
         ?.disabled as boolean;
     });
 
-    this.config.formGroup.get(this.config.id)?.valueChanges.subscribe((value)=>{
-      console.log(this.formControl, value);
-    })
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -376,21 +371,15 @@ export class InputComponent
     this.onTouch();
   }
 
-  /**
-   *
-   */
   writeValue(value: string): void {
-      console.log('writeValue');
       this.onChange(value);
   }
 
   registerOnChange(fn: any): void {
-    console.log('regOnChange');
     this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    console.log('regOnTouched');
     this.onTouch = fn;
   }
 
