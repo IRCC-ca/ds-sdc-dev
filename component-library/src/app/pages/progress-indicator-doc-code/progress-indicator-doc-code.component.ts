@@ -25,20 +25,39 @@ export class ProgressIndicatorDocCodeComponent
 {
   currentLanguage: string = '';
   altLangLink = 'progressIndicator';
-  formProgressIndicator = new FormGroup({});
-  state: boolean = false;
+  formProgressIndicator: FormGroup = new FormGroup({});
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
-    id: 'progressIndicator',
+    id: 'progress_indicator',
     size: 'small',
     orientation: 'horizontal',
     steps: [
       {
-        title: 'Step title',
+        title: 'General.stepTitle',
         tagConfig: {
-          id: 'tag',
-          type: 'success',
-          size: 'small'
+          id: 'progress_indicator_step1',
+          type: 'success'
+        }
+      },
+      {
+        title: 'General.stepTitle',
+        tagConfig: {
+          id: 'progress_indicator_step2',
+          type: 'primary'
+        }
+      },
+      {
+        title: 'General.stepTitle',
+        tagConfig: {
+          id: 'progress_indicator_step3',
+          type: 'critical'
+        }
+      },
+      {
+        title: 'General.stepTitle',
+        tagConfig: {
+          id: 'progress_indicator_step4',
+          type: 'notStarted'
         }
       }
     ]
@@ -69,11 +88,11 @@ export class ProgressIndicatorDocCodeComponent
       options: [
         {
           text: 'General.Horizontal',
-          value: 'Horizanotal'
+          value: 'horizontal'
         },
         {
           text: 'General.Vertical',
-          value: 'Vertical'
+          value: 'vertical'
         }
       ]
     },
@@ -183,14 +202,14 @@ export class ProgressIndicatorDocCodeComponent
 
     this.formProgressIndicator.patchValue({
       size: 'Small',
-      layout: 'Horizontal',
+      orientation: 'horizontal',
       gated: 'False',
       step3: 'True',
       step4: 'True'
     });
 
     this.formProgressIndicator.valueChanges.subscribe((value: any) => {
-      this.parseToggleConfig(value);
+      this.progressIndicatorConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
   }
@@ -198,8 +217,8 @@ export class ProgressIndicatorDocCodeComponent
   private parseToggleConfig(value: any): IProgressIndicatorConfig {
     return {
       ...this.progressIndicatorConfig,
-      size: value['sizeToggle'],
-      orientation: value['orientation']
+      size: value['size'].toLowerCase(),
+      orientation: value['orientation'],
       // gated: value['gated'] === 'Flase',
       // step3: value['step3'] === 'True',
       // step4: value['step4'] === 'True'

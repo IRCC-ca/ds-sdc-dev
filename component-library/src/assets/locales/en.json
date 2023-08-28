@@ -897,6 +897,7 @@
 		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"</code>",
 		"Step3": "Step 3",
 		"Step4": "Step 4",
+		"stepTitle": "Step title",
 		"Gated": "Gated",
 		"Labelling": "Labelling"
 	},

@@ -897,6 +897,7 @@
 		"EnabledBannerContent": "La définition de l'état de contrôle de formulaire déclenche automatiquement le style désactivé / activé <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //définit le contrôle de formulaire à activer\"</code>",
 		"Step3": "Étape 3",
 		"Step4": "Étape 4",
+		"stepTitle": "Titre de l'étape",
 		"Gated": "Fermé",
 		"Labelling": "Étiquetage"
 	},
