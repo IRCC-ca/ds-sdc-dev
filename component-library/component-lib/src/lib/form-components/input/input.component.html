@@ -98,7 +98,7 @@
         </div>
       </div>
       <div aria-live="polite">
-        <div *ngIf="formControl?.touched && formControl?.invalid">
+        <div *ngIf="currentStatus === 'INVALID'">
           <span class="sr-only">{{
             errorStubText + ': ' + (config.label || '' | translate) + ': '
           }}</span>
