@@ -24,7 +24,7 @@
           <input
             (blur)="onTouchedLabel()"
             (focus)="onFocus()"
-            (change)="onTouch(); changeValue($event)"
+            (change)="changeValue($event)"
             name="{{ config.id }}"
             class="input-field"
             placeholder="{{ config.placeholder || '' | translate }}"
@@ -65,7 +65,7 @@
             tabindex="0"
             class="passwordIcon"
             (click)="hideShow()"
-            [disabled]="disabled"
+            [disabled]="currentStatus !== 'DISABLED'"
             attr.aria-label="{{ btnAriaLabel }}"
             aria-live="polite"
           >

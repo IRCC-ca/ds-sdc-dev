@@ -12,6 +12,7 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -129,6 +130,7 @@ export class InputComponent
   };
   touched = false;
   errorStubText = '';
+  currentStatus: FormControlStatus = 'VALID';
 
   buttonAutoCompleteClear: IIconButtonComponentConfig = {
     id: `${this.config.id}-button-autocomplete`,
@@ -170,9 +172,13 @@ export class InputComponent
   }
 
   //Removed '!' and added null case in onChange
-  onTouch = () => {};
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+
   onChange = (value: string) => {
-    console.log(value);
     this.config.formGroup.get(this.config.id)?.setValue(value);
   };
 
@@ -227,10 +233,26 @@ export class InputComponent
       );
     }
 
-    //Get the error text when the formControl value changes
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+    }    //Get the error text when the formControl value changes
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
       this.getAriaErrorText();
-    });
+      if(change !== this.currentStatus){
+        this.currentStatus = change;
+        switch (this.currentStatus) {
+          case 'DISABLED':
+            this.setDisabledState(true);
+            break;
+          default:
+            this.setDisabledState(false);
+        }}
+      });
   }
 
   /**
@@ -350,8 +372,8 @@ export class InputComponent
   }
 
   changeValue(event: any){
-    console.log(event.srcElement.value);
     this.writeValue(event.srcElement.value);
+    this.onTouch();
   }
 
   /**
@@ -376,12 +398,9 @@ export class InputComponent
    * Apply a disabled state
    */
   setDisabledState(isDisabled: boolean) {
-    console.log('setDisabledState');
     if(isDisabled){
-      this.inputDisabled = true;
       this.formGroup.get(this.config.id)?.disable();
     }else{
-      this.inputDisabled = false;
       this.formGroup.get(this.config.id)?.enable();
     }
   }
