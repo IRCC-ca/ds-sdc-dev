@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import {
@@ -26,6 +27,7 @@ export class ProgressIndicatorDocCodeComponent
   currentLanguage: string = '';
   altLangLink = 'progressIndicator';
   formProgressIndicator: FormGroup = new FormGroup({});
+  isMobile = false;
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress_indicator',
@@ -60,7 +62,8 @@ export class ProgressIndicatorDocCodeComponent
           type: 'notStarted'
         }
       }
-    ]
+    ],
+    // gated: false
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -150,7 +153,8 @@ export class ProgressIndicatorDocCodeComponent
     id: this.progressIndicatorConfig.id,
     size: this.progressIndicatorConfig.size,
     orientation: this.progressIndicatorConfig.orientation,
-    steps: this.progressIndicatorConfig.steps
+    steps: this.progressIndicatorConfig.steps,
+    // gated: this.progressIndicatorConfig.gated
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -176,12 +180,29 @@ export class ProgressIndicatorDocCodeComponent
     ]
   };
   constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
     private translate: TranslateService,
     private lang: LangSwitchService,
     private slugify: SlugifyPipe
   ) {
     this.currentLanguage = translate.currentLang;
+    // this.isMobile = window.innerWidth <= 360;
   }
+
+  @HostListener('window:resize', ['$event'])
+  // handleResize(e: any) {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     this.isMobile = window.innerWidth <= 768;
+  //     this.progressIndicatorConfig.orientation = 'vertical';
+  //     this.toggles.forEach(toggle => {
+  //       if (toggle.id === 'orientation') {
+  //         toggle.options?.forEach(option => {
+  //           option.value = 'vertical'
+  //         });
+  //       }
+  //     })
+  //   }
+  // }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
@@ -198,6 +219,12 @@ export class ProgressIndicatorDocCodeComponent
           new FormControl(toggle.options[1].value)
         );
       }
+      if (window.innerWidth <= 768 && toggle.id === 'orientation') {
+        this.progressIndicatorConfig.orientation = 'vertical';
+        toggle.options?.forEach(option => {
+          option.value = 'vertical'
+        });
+      }
     });
 
     this.formProgressIndicator.patchValue({
@@ -209,6 +236,7 @@ export class ProgressIndicatorDocCodeComponent
     });
 
     this.formProgressIndicator.valueChanges.subscribe((value: any) => {
+      // if (value['gated'] !== undefined) this.toggleGated(value['gated']);
       this.progressIndicatorConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
@@ -223,6 +251,16 @@ export class ProgressIndicatorDocCodeComponent
       // step3: value['step3'] === 'True',
       // step4: value['step4'] === 'True'
     };
+  }
+
+  private toggleGated(gated: boolean) {
+    this.progressIndicatorConfig.steps?.forEach((step) => {
+      if (gated && step.tagConfig.type === 'success') {
+        step.tagConfig.type = 'primary';
+      } else if (gated && step.tagConfig.type !== 'locked') {
+        step.tagConfig.type = 'locked';
+      }
+    });
   }
 
   private parseCodeViewConfig() {

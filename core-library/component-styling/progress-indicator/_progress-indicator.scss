@@ -106,6 +106,17 @@
       margin-right: 16px;
     }
   }
+
+  // ::ng-deep {
+  //   div.main-container div.container-plus-line nav.progress-nav {
+  //     > button {
+  //       padding: 0;
+  //       background-color: red;
+  //     }
+  //   }
+  // }
+
+  &.container,
   .container {
     padding: 0;
     margin-right: 16px;
