@@ -84,5 +84,24 @@ export class FormBackendStack extends cdk.Stack {
         verificationClickEventLambda
       ),
     });
+
+    //Add Endpoints to the Lamndas
+    sendVerificationEmailLambda.addEnvironment(
+      "endpoindHttpApi",
+      httpApi.apiEndpoint
+    );
+    sendVerificationEmailLambda.addEnvironment(
+      "endpoindwebSocketApi",
+      webSocketApi.apiEndpoint
+    );
+
+    verificationClickEventLambda.addEnvironment(
+      "endpoindHttpApi",
+      httpApi.apiEndpoint
+    );
+    verificationClickEventLambda.addEnvironment(
+      "endpoindwebSocketApi",
+      webSocketApi.apiEndpoint
+    );
   }
 }
