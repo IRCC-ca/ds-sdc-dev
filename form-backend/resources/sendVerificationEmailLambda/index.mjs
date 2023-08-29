@@ -3,8 +3,9 @@ import {
   PostToConnectionCommand,
 } from "@aws-sdk/client-apigatewaymanagementapi";
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+import {LambdaClient, InvokeCommand} from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
-import * as aws from "aws-sdk";
+
 
 export const handler = async (event) => {
   const ses = new SESClient({ region: "ca-central-1" });
@@ -92,24 +93,17 @@ async function sendSocketMessage(event, message) {
 }
 
 async function createUser(event) {
-  var lambda = new aws.Lambda({
-    region: "ca-central-1", //change to your region
+
+  const client = new LambdaClient();
+  const command = new InvokeCommand({
+    FunctionName: process.env.crudUserLambda,
+    Payload: JSON.stringify(event)
   });
 
-  new Promise((resolve, reject) => {
-    lambda.invoke(
-      {
-        FunctionName: process.env.crudUserLambda,
-        Payload: JSON.stringify(event, null, 2), // pass params
-      },
-      (error, data) => {
-        if (error) {
-          reject(error);
-        }
-        if (data.Payload) {
-          resolve(data.Payload);
-        }
-      }
-    );
-  });
+  try{
+    const response = await client.send(command);
+  }
+  catch(err){
+    console.log(err);
+  }
 }

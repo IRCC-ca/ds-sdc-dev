@@ -6,7 +6,10 @@ import * as apigateway from "@aws-cdk/aws-apigatewayv2-alpha";
 import * as integrations from "@aws-cdk/aws-apigatewayv2-integrations-alpha";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as iam from "aws-cdk-lib/aws-iam";
-import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
+
+import * as stepfunctions from "aws-cdk-lib/aws-stepfunctions";
+import * as tasks from "aws-cdk-lib/aws-stepfunctions-tasks";
 export class FormBackendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -20,8 +23,21 @@ export class FormBackendStack extends cdk.Stack {
       actions: ["execute-api:Invoke", "execute-api:ManageConnections"],
       resources: ["arn:aws:execute-api:*:*:*"],
     });
+
+    const InvokeFunctionPolicyStatement = new iam.PolicyStatement({
+      actions: ["lambda:InvokeFunction"],
+      resources: ["*"],
+    });
+
     const dynamoDbLambdaPolicyStatement = new iam.PolicyStatement({
-      actions: ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem", "dynamodb:UpdateTable", "dynamodb:ListTables", "dynamodb:GetItem",],
+      actions: [
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:UpdateTable",
+        "dynamodb:ListTables",
+        "dynamodb:GetItem",
+      ],
       resources: ["arn:aws:dynamodb:::table/"],
     });
 
@@ -36,13 +52,12 @@ export class FormBackendStack extends cdk.Stack {
       }
     );
     sendVerificationEmailLambda.role?.attachInlinePolicy(
-      new iam.Policy(this, "sesPolicySendVerificationEmailFunction", {
-        statements: [sesPolicyStatement],
-      })
-    );
-    sendVerificationEmailLambda.role?.attachInlinePolicy(
-      new iam.Policy(this, "executeApiSendVerificationEmailFunction", {
-        statements: [executeApiPolicyStatement],
+      new iam.Policy(this, "sendVerificationEmailLambdaPolicy", {
+        statements: [
+          sesPolicyStatement,
+          executeApiPolicyStatement,
+          InvokeFunctionPolicyStatement,
+        ],
       })
     );
 
@@ -57,26 +72,50 @@ export class FormBackendStack extends cdk.Stack {
       }
     );
     verificationClickEventLambda.role?.attachInlinePolicy(
-      new iam.Policy(this, "executeApiverificationClickEventFunction", {
+      new iam.Policy(this, "verificationClickEventLambdaPolicy", {
         statements: [executeApiPolicyStatement],
       })
     );
 
     //Lambdas
-    const crudUserLambda = new lambda.Function(
-      this,
-      "crudUserEventFunction",
-      {
-        runtime: lambda.Runtime.NODEJS_18_X,
-        handler: "index.handler",
-        code: lambda.Code.fromAsset("resources/crudUserLambda"),
-      }
+    const crudUserLambda = new lambda.Function(this, "crudUserEventFunction", {
+      runtime: lambda.Runtime.NODEJS_18_X,
+      handler: "index.handler",
+      code: lambda.Code.fromAsset("resources/crudUserLambda"),
+    });
+    crudUserLambda.role?.addManagedPolicy(
+      iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonDynamoDBFullAccess")
     );
-    crudUserLambda.role?.attachInlinePolicy(
-      new iam.Policy(this, "dynamoDbCrudUserEventFunction", {
-        statements: [dynamoDbLambdaPolicyStatement],
-      })
-    );
+
+    //stepfunction
+    // const sendVerificationEmailLambdaFirstState = new tasks.LambdaInvoke(
+    //   this,
+    //   "sendEmail",
+    //   {
+    //     lambdaFunction: verificationClickEventLambda,
+    //   }
+    // );
+    // const sendVerificationEmailLambdaSecondState = new tasks.LambdaInvoke(
+    //   this,
+    //   "createUser",
+    //   {
+    //     lambdaFunction: crudUserLambda,
+    //   }
+    // );
+
+    // let definition = sendVerificationEmailLambdaFirstState.next(
+    //   sendVerificationEmailLambdaSecondState
+    // );
+
+    // const sendVerificationEmailLambdaStateMachine =
+    //   new stepfunctions.StateMachine(
+    //     this,
+    //     "sendVerificationEmailLambdaStateMachine",
+    //     {
+    //       definition,
+    //       timeout: cdk.Duration.minutes(5),
+    //     }
+    //   );
 
     //APIGateways
     const webSocketApi = new apigateway.WebSocketApi(
@@ -108,17 +147,17 @@ export class FormBackendStack extends cdk.Stack {
     //DynamoDb Table
     // Define the partition key
     const partitionKey: dynamodb.Attribute = {
-      name: 'id',
-      type: dynamodb.AttributeType.STRING
+      name: "id",
+      type: dynamodb.AttributeType.STRING,
     };
-    
+
     // Create the DynamoDB table
-    const table = new dynamodb.Table(this, 'DSRequestFormTable', {
+    const table = new dynamodb.Table(this, "DSRequestFormTable", {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey,
       removalPolicy: cdk.RemovalPolicy.RETAIN,
       encryption: dynamodb.TableEncryption.AWS_MANAGED,
-      tableName: 'DSRequestFormTable' 
+      tableName: "DSRequestFormTable",
     });
 
     //Add Endpoints to the Lambdas
@@ -130,6 +169,10 @@ export class FormBackendStack extends cdk.Stack {
       "endpoindwebSocketApi",
       webSocketApi.apiEndpoint
     );
+    sendVerificationEmailLambda.addEnvironment(
+      "crudUserLambda",
+      crudUserLambda.functionName
+    );
 
     verificationClickEventLambda.addEnvironment(
       "endpoindHttpApi",
@@ -139,17 +182,11 @@ export class FormBackendStack extends cdk.Stack {
       "endpoindwebSocketApi",
       webSocketApi.apiEndpoint
     );
-    crudUserLambda.addEnvironment(
-      "endpoindHttpApi",
-      httpApi.apiEndpoint
-    );
+    crudUserLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
     crudUserLambda.addEnvironment(
       "endpoindwebSocketApi",
       webSocketApi.apiEndpoint
     );
-    crudUserLambda.addEnvironment(
-      "TableName",
-      table.tableName
-    );
-  } 
+    crudUserLambda.addEnvironment("TableName", table.tableName);
+  }
 }

@@ -18,16 +18,16 @@ export const handler = async (event, context) => {
   let connectionId;
   let body;
   let routeKey;
-  
+
   if (event.body) {
-        email = event.body.email || '';
+    email = JSON.parse(event?.body).email || "";
   }
-  
+
   if (event.requestContext.connectionId) {
-    connectionId = event.requestContext.connectionId
-    routeKey = event.requestContext.routeKey
+    connectionId = event.requestContext.connectionId;
+    routeKey = event.requestContext.routeKey;
   }
-  
+
   let statusCode = 200;
   const headers = {
     "Content-Type": "application/json",
@@ -54,13 +54,13 @@ export const handler = async (event, context) => {
               email: email,
               date: Date.now(),
               verified: false,
-              id: connectionId
+              id: connectionId,
             },
           })
         );
         body = `Put item ${connectionId}`;
         break;
-        case "updateClientRoute":
+      case "updateClientRoute":
         await dynamo.send(
           new PutCommand({
             TableName: tableName,
@@ -68,7 +68,7 @@ export const handler = async (event, context) => {
               email: email,
               date: Date.now(),
               verified: true,
-              id: connectionId
+              id: connectionId,
             },
           })
         );
