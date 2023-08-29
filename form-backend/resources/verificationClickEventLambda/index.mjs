@@ -6,7 +6,9 @@ import {
 export const handler = async (event) => {
   const connectionId = event.queryStringParameters.id;
 
-  const callbackUrl = `https://36rj0z1fre.execute-api.ca-central-1.amazonaws.com/production`;
+  let endpointURL = process.env.endpoindwebSocketApi;
+  endpointURL = endpointURL.replace("wss:", "");
+  const callbackUrl = `https://${endpointURL}/production`;
   const client = new ApiGatewayManagementApiClient({ endpoint: callbackUrl });
   const requestParams = {
     ConnectionId: connectionId,
@@ -30,7 +32,7 @@ export const handler = async (event) => {
   } catch (error) {
     const response = {
       statusCode: 400,
-      body: JSON.stringify(error),
+      body: JSON.stringify({ error: error }),
       headers: {
         "Content-Type": "application/json",
       },

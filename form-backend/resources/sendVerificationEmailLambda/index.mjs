@@ -9,8 +9,9 @@ export const handler = async (event) => {
   const ses = new SESClient({ region: "ca-central-1" });
   const file = readFileSync("./template.html", "utf-8");
   const connectionId = event.requestContext.connectionId;
+  const endpointURL = process.env.endpoindHttpApi;
+  let endpoint = `${endpointURL}/verify?id=${connectionId}`;
   const template = assemble(file, "id");
-  // <a href="https://o0g0eqinwk.execute-api.ca-central-1.amazonaws.com/DS-Test?id=${id}">`
   let to = "";
   if (event.body) {
     to = JSON.parse(event?.body).email || "";
@@ -23,7 +24,7 @@ export const handler = async (event) => {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: template(connectionId),
+          Data: template(endpoint),
         },
       },
       Subject: { Data: "Test Email" },

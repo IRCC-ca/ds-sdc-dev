@@ -49,7 +49,7 @@ export class FormBackendStack extends cdk.Stack {
       {
         runtime: lambda.Runtime.NODEJS_18_X,
         handler: "index.handler",
-        code: lambda.Code.fromAsset("resources/sendVerificationEmailLambda"),
+        code: lambda.Code.fromAsset("resources/verificationClickEventLambda"),
       }
     );
     verificationClickEventLambda.role?.attachInlinePolicy(

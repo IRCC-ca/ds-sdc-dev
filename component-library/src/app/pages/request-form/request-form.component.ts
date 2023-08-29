@@ -378,7 +378,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
 
   status: string = 'start';
   subject = webSocket(
-    'wss://wfxmpwj6xe.execute-api.ca-central-1.amazonaws.com/production'
+    'wss://1x7bqu1ba8.execute-api.ca-central-1.amazonaws.com/production'
   );
 
   /**
