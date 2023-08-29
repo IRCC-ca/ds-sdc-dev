@@ -63,6 +63,7 @@ export class navigationComponent implements OnInit, AfterViewInit {
   configSub?: Subscription;
   scrollTimeout: any;
   wrapperTop?: number; // Relative height from top of nav to top of page in px
+  wrapperWidth?: number; // Width of wrapper in px
   wrapperFixed: boolean = false;
 
   listenerScroll = () => {};
@@ -139,17 +140,20 @@ export class navigationComponent implements OnInit, AfterViewInit {
   };
 
   ngAfterViewInit() {
+    this.wrapperWidth = this.el.nativeElement.getBoundingClientRect().width;
     if (this.config.scrolling === true) {
       this.getHeight();
       this.renderer.listen('window', 'resize', () => {
         this.getHeight();
+        // Update element width upon window resize
+        this.wrapperWidth = this.el.nativeElement.getBoundingClientRect().width;
       });
     }
     if (this.config.fixed) {
       this.renderer.listen('window', 'scroll', () => {
         // Check if navigation top has hit top of viewport
         if (this.wrapperTop) {
-          this.wrapperFixed = this.wrapperTop <= window.scrollY;
+          this.wrapperFixed = this.wrapperTop < window.scrollY;
         }
       });
     }
