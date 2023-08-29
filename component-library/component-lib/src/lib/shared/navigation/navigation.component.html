@@ -3,7 +3,7 @@
   [attr.size]="config.size"
   class="lib-navigation"
   [ngClass]="{ fixed: config.fixed && wrapperFixed }"
-  [style.max-width]="wrapperFixed && wrapperWidth + 'px'"
+  [style.max-width]="wrapperFixed && wrapperWidth > 0 && wrapperWidth + 'px'"
   #navigation
 >
   <div
