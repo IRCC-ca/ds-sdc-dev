@@ -5,6 +5,7 @@ import {
   IButtonConfig,
   IDatePickerConfig,
   IDatePickerErrorMessages,
+  IInputComponentConfig,
   IRadioInputComponentConfig,
   ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
@@ -21,11 +22,17 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
-import { first } from 'rxjs/operators';
+import { delay, first, retryWhen, switchMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 
+import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+
+interface statusStatus {
+  start: 'start';
+  waiting: 'waiting';
+}
 @Component({
   selector: 'app-request-form',
   templateUrl: './request-form.component.html',
@@ -330,7 +337,49 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
      * Get local storage form data on page reload
      */
     this.getFormDataFromService();
+
+    this.subject.subscribe({
+      next: (msg: any) => {
+        // console.log('onmessage - next: ', msg);
+        console.log(msg);
+        if (msg.message === 'You Have been veried!') {
+          this.status = 'done';
+        }
+      },
+      error: (err) => console.log(err), // Called if at any point WebSocket API signals some kind of error.
+      complete: () => console.log('complete') // Called when connection is closed (for whatever reason).
+    });
+    this.status = 'start';
+    this.form.addControl(
+      this.emailconfig.id,
+      new FormControl('', Validators.required)
+    );
   }
+
+  sendSocketMessage() {
+    this.subject.next({
+      action: 'sendVerificationEmailRoute',
+      route: 'sendVerificationEmailRoute',
+      email: this.form.get(this.emailconfig.id)?.value
+    });
+    this.status = 'waiting';
+  }
+
+  reset() {
+    this.status = 'start';
+  }
+
+  emailconfig: IInputComponentConfig = {
+    formGroup: this.form,
+    id: 'emailconfig',
+    label: 'email',
+    size: 'small'
+  };
+
+  status: string = 'start';
+  subject = webSocket(
+    'wss://wfxmpwj6xe.execute-api.ca-central-1.amazonaws.com/production'
+  );
 
   /**
    * Get local storage form data on page reload from the RequestFormService

@@ -1,5 +1,48 @@
 <div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
-  <app-title-slug-url
+  <ng-container *ngIf="status === 'start'; else second">
+    <div style="display: flex; align-items: center; justify-content: center">
+      <ircc-cl-lib-input
+        [config]="emailconfig"
+        style="margin-right: 25px"
+      ></ircc-cl-lib-input>
+      <ircc-cl-lib-button
+        [config]="buttonConfig"
+        (click)="sendSocketMessage()"
+        >Verify Email</ircc-cl-lib-button
+      >
+    </div>
+  </ng-container>
+  <ng-template #second>
+    <ng-container *ngIf="status === 'waiting'; else third">
+      <div style="display: flex; align-items: center; justify-content: center">
+        <ircc-cl-lib-spinner></ircc-cl-lib-spinner>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #third>
+    <ng-container *ngIf="status === 'done'">
+      <div style="display: flex; align-items: center; justify-content: center">
+        <p>Verification Done!</p>
+      </div>
+    </ng-container>
+  </ng-template>
+
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 50px;
+    "
+  >
+    <ircc-cl-lib-button
+      [config]="buttonConfig"
+      (click)="reset()"
+      >reset</ircc-cl-lib-button
+    >
+  </div>
+
+  <!-- <app-title-slug-url
     [config]="submitRequestTitleSlugConfig"
     class="h1 emphasis"
   ></app-title-slug-url>
@@ -95,9 +138,10 @@
         >
       </div>
     </div>
-  </section>
-</div>
-<app-side-nav
+  </section> -->
+  <!-- </div> -->
+  <!-- <app-side-nav
   class="right-nav col-12 col-lg-3 col-xl-2"
   [navBarData]="rightNavData"
-></app-side-nav>
+></app-side-nav> -->
+</div>
