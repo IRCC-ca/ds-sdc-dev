@@ -68,40 +68,10 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       ]
     },
     {
-      id: 'hint',
-      formGroup: this.form,
-      size: 'small',
-      label: 'General.Hint',
-      options: [
-        {
-          text: 'General.TrueLabel',
-          value: 'True'
-        },
-        {
-          text: 'General.FalseLabel',
-          value: 'False'
-        }
-      ]
-    },
-    {
       id: 'required',
       formGroup: this.form,
       size: 'small',
       label: 'General.Required',
-      options: [
-        {
-          text: 'True'
-        },
-        {
-          text: 'False'
-        }
-      ]
-    },
-    {
-      id: 'error',
-      formGroup: this.form,
-      size: 'small',
-      label: 'General.Error',
       options: [
         {
           text: 'True'
@@ -124,6 +94,36 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
         {
           text: 'General.FalseLabel',
           value: 'False'
+        }
+      ]
+    },
+    {
+      id: 'hint',
+      formGroup: this.form,
+      size: 'small',
+      label: 'General.Hint',
+      options: [
+        {
+          text: 'General.TrueLabel',
+          value: 'True'
+        },
+        {
+          text: 'General.FalseLabel',
+          value: 'False'
+        }
+      ]
+    },
+    {
+      id: 'error',
+      formGroup: this.form,
+      size: 'small',
+      label: 'General.Error',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
         }
       ]
     }
