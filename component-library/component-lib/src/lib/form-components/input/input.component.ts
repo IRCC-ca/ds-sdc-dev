@@ -297,6 +297,13 @@ export class InputComponent
     } else {
       this.errorIds = [];
     }
+
+    if (this.config.type === InputTypes.text)
+      this.typeControl = InputTypes.text;
+
+    this.showPassword =
+      this.config.type === InputTypes.password &&
+      this.typeControl === InputTypes.text;
   }
 
   /**

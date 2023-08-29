@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslatedPageComponent } from '@app/pages/translated-page-component';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
+  IBannerConfig,
   ICheckBoxComponentConfig,
   IInputComponentConfig,
   IRadioInputComponentConfig,
@@ -17,6 +18,7 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { TranslateService } from '@app/share/templates/parent-template.module';
 
 /**
  * Interactive input demo & code block
@@ -27,15 +29,15 @@ import {
   styleUrls: ['./input-doc-code.component.scss']
 })
 export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
-  altLangLink = 'inputDocumentation';
-  form = new FormGroup({});
+  altLangLink = 'input';
+  formInput = new FormGroup({});
   state: boolean = false;
 
-  constructor(private lang: LangSwitchService) {}
+  constructor(private lang: LangSwitchService, private translate: TranslateService) {}
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
-    formGroup: this.form,
+    formGroup: this.formInput,
     size: 'small',
     type: 'text',
     required: false,
@@ -48,23 +50,23 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ...this.inputConfig,
     id: 'input_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: 'ERROR.singleError' }]
+    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
   };
 
   inputConfigMulti: IInputComponentConfig = {
     ...this.inputConfig,
     id: 'input_multi',
     errorMessages: [
-      { key: 'email', errorLOV: 'ERROR.singleError' },
-      { key: 'email', errorLOV: 'ERROR.additionalError' },
-      { key: 'maxlength', errorLOV: 'ERROR.additionalError' }
+      { key: 'email', errorLOV: this.translate.instant('ERROR.singleError') },
+      { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+      { key: 'maxlength', errorLOV: this.translate.instant('ERROR.additionalError') }
     ]
   };
 
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -80,7 +82,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'hint',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Hint',
       options: [
@@ -96,7 +98,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'required',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Required',
       options: [
@@ -110,7 +112,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'error',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'ERROR.errorMessage',
       options: [
@@ -130,7 +132,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'desc',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Description',
       options: [
@@ -146,7 +148,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     },
     {
       id: 'placeholder',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.Placeholder',
       options: [
@@ -165,7 +167,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
-      formGroup: this.form,
+      formGroup: this.formInput,
       size: 'small',
       label: 'General.StateLabel',
       inlineLabel: 'General.DisabledLabel'
@@ -185,6 +187,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         title: 'General.Password'
       }
     ]
+  };
+
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
   };
 
   inputConfigCodeView: any = {
@@ -218,8 +229,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `inputConfig: IInputComponentConfig = ${stringify(
             this.inputConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-            this.stateTxt(this.state)
           )}
           `
       }
@@ -246,22 +255,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     this.parseCodeViewConfig();
   }
 
-  stateTxt(disabled: boolean): string {
-    const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
-    const ENABLE = `this.formGroupName.get('formControlName')?.enable(); //sets the form control to be enabled`;
-    return disabled ? DISABLE : ENABLE;
-  }
-
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.form.addControl(this.inputConfig.id, new FormControl());
+    this.formInput.addControl(this.inputConfig.id, new FormControl());
     // Two more form controls, one for each combination of validators
-    this.form.addControl(
+    this.formInput.addControl(
       this.inputConfig.id + '_single',
       new FormControl('', [Validators.required])
     );
-    this.form.addControl(
+    this.formInput.addControl(
       this.inputConfig.id + '_multi',
       new FormControl('', [
         Validators.required,
@@ -272,7 +275,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form.addControl(
+        this.formInput.addControl(
           toggle.id,
           new FormControl(toggle.options[1].text)
         );
@@ -280,10 +283,21 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     });
 
     this.checkboxes.forEach((checkbox) => {
-      this.form.addControl(checkbox.id, new FormControl());
+      this.formInput.addControl(checkbox.id, new FormControl());
     });
 
-    this.form.patchValue({
+    this.formInput.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
+      }
+    });
+
+    this.formInput.patchValue({
       size: 'Small',
       hint: 'False',
       desc: 'True',
@@ -291,7 +305,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       error: 'None'
     });
 
-    this.form.valueChanges.subscribe((value: any) => {
+    this.formInput.valueChanges.subscribe((value: any) => {
       if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
       if (value['state'] !== undefined) {
         this.toggleDisabled(value['state']);
@@ -349,8 +363,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Set input field as touched, toggle error states of input
    */
   private toggleErrors(error: string) {
-    if (!this.form.get(this.currentConfigId)?.touched && error !== 'None')
-      this.form.get(this.currentConfigId)?.markAsTouched();
+    if (!this.formInput.get(this.currentConfigId)?.touched && error !== 'None')
+      this.formInput.get(this.currentConfigId)?.markAsTouched();
 
     this.errorState = error;
     switch (error) {
@@ -360,16 +374,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         break;
       case 'Single':
         this.currentConfigId = this.inputConfigSingle.id;
-        if (!this.form.get(this.currentConfigId)?.touched)
-          this.form.get(this.currentConfigId)?.markAsTouched();
+        if (!this.formInput.get(this.currentConfigId)?.touched)
+          this.formInput.get(this.currentConfigId)?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigSingle.errorMessages;
         break;
       case 'Multiple':
         this.currentConfigId = this.inputConfigMulti.id;
-        this.form.get(this.inputConfigMulti.id)?.setValue('test');
-        if (!this.form.get(this.currentConfigId)?.touched)
-          this.form.get(this.currentConfigId)?.markAsTouched();
+        this.formInput.get(this.inputConfigMulti.id)?.setValue('test');
+        if (!this.formInput.get(this.currentConfigId)?.touched)
+          this.formInput.get(this.currentConfigId)?.markAsTouched();
         this.inputConfigCodeView.errorMessages =
           this.inputConfigMulti.errorMessages;
         break;
@@ -381,7 +395,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Toggle disabled state of input
    */
   private toggleDisabled(disabled: boolean) {
-    const inputControl: AbstractControl | null = this.form.get(
+    const inputControl: AbstractControl | null = this.formInput.get(
       this.currentConfigId
     );
     if (
@@ -447,10 +461,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `inputConfig: IInputComponentConfig = ${stringify(
           this.inputConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-          this.stateTxt(this.state)
-        )}
-        `;
+      )}`;
     }
   }
 }

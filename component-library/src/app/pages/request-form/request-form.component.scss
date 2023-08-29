@@ -75,6 +75,22 @@ h3 {
   line-height: 20px;
 }
 
+::ng-deep {
+  ircc-cl-lib-banner {
+    .banner-component .banner-container .banner-right {
+      .banner-body .banner-text .banner-content {
+        > a {
+          padding: 0;
+          &:hover,
+          &:active {
+            background-color: transparent;
+          }
+        }
+      }   
+    }
+  }       
+}
+
 .submit-request-container {
   margin-top: 48px;
   max-width: 139px;

@@ -1,4 +1,4 @@
-<div class="content-doc-wrapper">
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url [config]="pageTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'IconButtonDocumentation.Intro' | translate }}</p>
 
@@ -66,7 +66,7 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="row element-wrapper-container">
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3 class="sub-headings">
             {{ 'General.Size' | translate }}
           </h3>
@@ -76,7 +76,7 @@
             <li>{{ 'General.Large' | translate }}</li>
           </ul>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3 class="sub-headings">{{ 'General.TypesHeading' | translate }}</h3>
           <ul>
             <li>{{ 'General.Primary' | translate }}</li>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="row element-wrapper-container">
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3 class="sub-headings">
             {{ 'General.StateLabel' | translate }}
           </h3>
@@ -292,11 +292,12 @@
                 srcset="assets/img/icon-btn-content/icon-spacing.png"
               />
               <img
+                class="mb_12"
                 src="assets/img/icon-btn-content/icon-spacing.png"
                 alt="{{ 'IconButtonDocumentation.Spacing.ImgAlt' | translate }}"
               />
             </picture>
-            <p class="description">
+            <p>
               {{ 'IconButtonDocumentation.SpacingText' | translate }}
             </p>
           </div>
@@ -404,10 +405,10 @@
         <h3 class="sub-headings">
           {{ 'General.AccessibilityColourHeading' | translate }}
         </h3>
-        <p class="accessible-color">
+        <p class="mt_12">
           {{ 'IconButtonDocumentation.AccessibilityColourText1' | translate }}
         </p>
-        <p class="accessible-color">
+        <p class="accessible">
           {{ 'IconButtonDocumentation.AccessibilityColourText2' | translate }}
         </p>
       </div>

@@ -7,18 +7,16 @@
 
 $page-width: 1440px;
 $page-content-width: 1156px;
-$navigation-width-desktop: 230px;
+$navigation-width-desktop: 244px;
+$desktop-padding: 40px;
 $tablet-padding: 24px;
 $mobile-padding: 16px;
 
 .header {
   overflow: hidden;
-  top: 0;
   max-width: $page-width;
   width: 100%;
   background: var(--surface1);
-  z-index: 100;
-  position: fixed;
   border-bottom: 1px solid var(--divider);
 
   @include un-tablet-layout {
@@ -67,11 +65,6 @@ $mobile-padding: 16px;
   }
 
   &.top {
-    margin-top: 175px;
-
-    @include un-tablet-layout {
-      margin-top: 180px;
-    }
   }
 
   > app-side-nav.left-nav {
@@ -90,28 +83,30 @@ $mobile-padding: 16px;
     }
   }
 
+  > nav {
+    @include up-laptop-layout {
+      width: $navigation-width-desktop;
+    }
+  }
+
   .content-router-outlet {
     box-sizing: border-box;
     min-height: calc(100vh - 60px);
 
     @include in-tablet-layout {
       @include col-12;
+
+      padding: 0 $tablet-padding;
     }
 
     @include up-laptop-layout {
       width: 100%;
       max-width: calc(100% - $navigation-width-desktop);
-      padding-left: sizes.$fixed-36;
-    }
-
-    @include in-desktop-layout {
-      padding-left: sizes.$fixed-40;
+      padding-left: $desktop-padding;
     }
 
     @include un-tablet-layout {
       @include col-12;
-
-      padding: 0 $tablet-padding;
     }
 
     @include in-phone-layout {

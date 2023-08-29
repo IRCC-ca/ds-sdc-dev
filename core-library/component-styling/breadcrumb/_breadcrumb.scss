@@ -24,7 +24,7 @@
 // For size small overwrite
 @mixin size-sm {
   ircc-cl-lib-breadcrumb-link {
-    a,
+    a.breadcrumb-anchor,
     ircc-cl-lib-button .text {
       @include typography.fontSet(body, 3, regular);
     }
@@ -62,7 +62,7 @@
   ircc-cl-lib-breadcrumb-link {
     margin-right: 4px;
 
-    a,
+    a.breadcrumb-anchor,
     ircc-cl-lib-button .text {
       @include typography.fontSet(body, 2, regular);
     }
@@ -104,7 +104,7 @@
   padding: 6px 0;
   position: relative;
 
-  > div {
+  > nav {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -132,9 +132,11 @@
       }
     }
 
-    a {
+    a.breadcrumb-anchor {
       text-decoration: none;
-      padding: 0;
+      border-radius: 4px;
+      padding: 2px 4px;
+      color: var(--link-text);
 
       &:focus {
         outline: none;
@@ -143,6 +145,11 @@
       &:hover,
       &:active {
         background: none;
+      }
+
+      &:hover {
+        color: var(--link-text-hover);
+        background-color: var(--generic-hover);
       }
     }
 
@@ -225,6 +232,10 @@
     ircc-cl-lib-breadcrumb-link {
       &:hover {
         background-color: var(--generic-active);
+
+        a.breadcrumb-anchor {
+          background-color: transparent;
+        }
       }
 
       a {

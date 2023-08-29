@@ -63,22 +63,14 @@ export class DatePickerDocumentationComponent implements OnInit {
     'DatePicker.UsageInFigma.FigmaDirectionsSecondItem2'
   ];
 
-  accessibilityColorContrast: string[] = [
-    'DatePicker.Accessibility.ColorText1',
-    'DatePicker.Accessibility.ColorText2',
-    'DatePicker.Accessibility.ColorText3',
-    'DatePicker.Accessibility.ColorText4',
-    'DatePicker.Accessibility.ColorText5'
-  ];
-
   accessibilityContent: string[] = [
-    'DatePicker.Accessibility.ContentTxt1',
+    'General.AccessibilityContentItem1',
     'DatePicker.Accessibility.ContentTxt2',
     'DatePicker.Accessibility.ContentTxt3',
     'DatePicker.Accessibility.ContentTxt4',
     'DatePicker.Accessibility.ContentTxt5',
     'DatePicker.Accessibility.ContentTxt6',
-    'DatePicker.Accessibility.ContentTxt7'
+    'General.AccessibilityContentItemMax'
   ];
   rightNavData: string[] = [
     // list of all right nav items

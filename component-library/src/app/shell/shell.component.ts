@@ -136,6 +136,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.multiCheckbox'
   };
 
+  spinnerPage: INavigationItemLink = {
+    id: 'spinnerPageNavItem',
+    label: ' Spinner ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.spinner'
+  };
+
   autoCompletePage: INavigationItemLink = {
     id: 'autoCompletePageNavItem',
     label: ' AutoComplete ',
@@ -173,7 +181,9 @@ export class ShellComponent implements OnInit {
       this.buttonsPage,
       this.datePickerPage,
       this.iconBtnPage,
-      this.multiCheckboxPage
+      this.multiCheckboxPage,
+      this.spinnerPage,
+      this.inputPage
     ]
   };
 
@@ -206,9 +216,10 @@ export class ShellComponent implements OnInit {
   navConfig: INavigationConfig = {
     id: 'shell_nav',
     size: 'small',
-    height: '50vh',
+    height: '100vh',
     marginTop: 182,
-    scrolling: false,
+    scrolling: true,
+    fixed: true,
     navigationConfig: [
       this.gettingStartedNav,
       this.foundationsNav,

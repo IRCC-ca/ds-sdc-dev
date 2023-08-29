@@ -6,7 +6,8 @@ import {
   ITabNavConfig,
   CLASS_X_MARK,
   CLASS_TRASHCAN,
-  IconButtonCategories
+  IconButtonCategories,
+  IBannerConfig
 } from 'ircc-ds-angular-component-library';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,34 +16,40 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
   selector: 'app-icon-button-doc-code',
   templateUrl: './icon-button-doc-code.component.html',
   styleUrls: ['./icon-button-doc-code.component.scss']
 })
-export class IconButtonDocCodeComponent implements OnInit {
+export class IconButtonDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   @ViewChild('iconButton', { static: false }) iconButton!: ElementRef;
-  altLangLink = 'iconButtonDocumentation';
+  altLangLink = 'iconButton';
 
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
   ) {}
 
-  form_interactive_iconBtn = new FormGroup({});
+  formIconBtn = new FormGroup({});
 
   iconBtnConfig: IIconButtonComponentConfig = {
     id: 'icon-button',
     category: IconButtonCategories.primary,
     size: 'small',
-    disabled: false
+    disabled: false,
+    icon: {
+      class: 'fa-light'
+    }
   };
 
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'sizeToggle',
-      formGroup: this.form_interactive_iconBtn,
+      formGroup: this.formIconBtn,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -65,7 +72,7 @@ export class IconButtonDocCodeComponent implements OnInit {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'stateToggle',
-      formGroup: this.form_interactive_iconBtn,
+      formGroup: this.formIconBtn,
       label: 'General.StateLabel',
       size: 'small',
       inlineLabel: 'Disabled'
@@ -85,6 +92,15 @@ export class IconButtonDocCodeComponent implements OnInit {
         title: 'General.Critical'
       }
     ]
+  };
+
+  bannerConfig: IBannerConfig = {
+    id: "banner-disabled-desc",
+    type: "info",
+    size: "small",
+    title:'General.EnabledBannerTitle',
+    content: "General.EnabledBannerContent",
+    rounded: true
   };
 
   iconBtnConfigCodeView: any = {
@@ -181,23 +197,31 @@ export class IconButtonDocCodeComponent implements OnInit {
 
     this.checkboxes.forEach((checkbox) => {
       if (checkbox) {
-        this.form_interactive_iconBtn.addControl(
-          checkbox.id,
-          new FormControl()
-        );
+        this.formIconBtn.addControl(checkbox.id, new FormControl());
+      }
+    });
+
+    this.formIconBtn.get(this.checkboxes[0].id)
+    ?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title='General.DisabledBannerTitle'
+        this.bannerConfig.content="General.DisabledBannerContent"
+      } else {
+        this.bannerConfig.title='General.EnabledBannerTitle'
+        this.bannerConfig.content="General.EnabledBannerContent"
       }
     });
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_interactive_iconBtn.addControl(
+        this.formIconBtn.addControl(
           toggle.id,
           new FormControl(toggle.options[1].value)
         );
       }
     });
 
-    this.form_interactive_iconBtn.valueChanges.subscribe((value: any) => {
+    this.formIconBtn.valueChanges.subscribe((value: any) => {
       this.iconBtnConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });

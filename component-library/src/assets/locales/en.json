@@ -649,7 +649,7 @@
 	"RequestForm": {
 		"Title": "Submit a request",
 		"Intro": "Some intro about what this is used for. Change requests, feature requests, bugs, etc.",
-		"BannerDesc": "This form is submitted to<a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a>which is viewed by the design system team. We will review and respond to your request as soon as possible.",
+		"BannerDesc": "This form is submitted to <a href='mailto:IRCC.JLDS-JLSDC.IRCC@cic.gc.ca'>IRCC.JLDS-JLSDC.IRCC@cic.gc.ca</a> which is viewed by the design system team. We will review and respond to your request as soon as possible.",
 		"RequestCriteriaTitle": "Request criteria",
 		"requestCriteriaSubText1": "A request should show that the contribution to the system would be useful and unique.",
 		"requestCriteriaSubHeading1": "Useful",
@@ -779,6 +779,9 @@
 			"CTA3Label": "CTA 3 (if CTA 1 is set to true)"
 		}
 	},
+	"Breadcrumb": {
+		"Title": "Breadcrumb"
+	},
 	"General": {
 		"InteractiveDemo": "Interactive Demo",
 		"InteractiveDemoDesc1": "Try our",
@@ -888,9 +891,9 @@
 		"TitleLabel": "Title",
 		"CloseLabel": "Close",
 		"DisabledBannerTitle": "How to access the disabled state for developers",
-		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"",
+		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"</code>",
 		"EnabledBannerTitle": "How to access the enabled state for developers",
-		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> \"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"",
+		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"</code>",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
