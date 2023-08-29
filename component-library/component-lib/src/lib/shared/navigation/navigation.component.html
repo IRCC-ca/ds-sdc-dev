@@ -4,7 +4,9 @@
   class="lib-navigation"
   [ngClass]="{ fixed: config.fixed && wrapperFixed }"
   [style.max-width]="
-    wrapperFixed && wrapperWidth && wrapperWidth > 0 && wrapperWidth + 'px'
+    wrapperFixed && wrapperWidth && wrapperWidth > 0
+      ? wrapperWidth + 'px'
+      : 'none'
   "
   #navigation
 >
