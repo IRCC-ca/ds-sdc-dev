@@ -20,7 +20,7 @@ export const handler = async (event, context) => {
   let routeKey;
 
   if (event.body) {
-    email = JSON.parse(event?.body).email || "";
+    email = event?.body.email || "";
   }
 
   if (event.requestContext.connectionId) {
