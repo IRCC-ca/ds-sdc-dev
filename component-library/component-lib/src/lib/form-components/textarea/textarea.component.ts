@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -82,8 +83,9 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = [];
   charLimitStatus = '';
   currentCharacterStatusAria = '';
-  announceCharStatusChangeAria : boolean = false;
-  charLength : number = -1;
+  currentStatus: FormControlStatus = 'VALID';
+  announceCharStatusChangeAria: boolean = false;
+  charLength: number = -1;
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
@@ -96,8 +98,14 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     ) {}
 
   //Removed '!' and added null case in onChange
-  private onTouch?: () => void;
-  private onChange?: (value: any) => void;
+  onTouch = () => {
+    if (this.config.formGroup?.get(this.config.id)?.touched === false) {
+      this.config.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
 
   ngOnInit(): void {
     
@@ -146,6 +154,29 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
       this.config.required,
       this.config.labelIconConfig
     );
+
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((change) => {
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          this.toggleDisabledState();
+        }
+      });
+  }
+
+  toggleDisabledState() {
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+        break;
+    }
   }
 
   ngOnChanges() {
@@ -210,7 +241,14 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   }
 
   public clearvalue() {}
-  writeValue(value: string): void {}
+
+  changeValue(event: any) {
+    this.writeValue(event.target.value);
+    this.onTouch();
+  }
+  writeValue(value: string): void {
+    this.onChange(value);
+  }
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
@@ -218,6 +256,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     this.onTouch = fn;
   }
   setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled;
+    isDisabled
+      ? this.formGroup.get(this.config.id)?.disable()
+      : this.formGroup.get(this.config.id)?.disable();
   }
 }
