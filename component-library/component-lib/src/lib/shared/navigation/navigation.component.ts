@@ -140,13 +140,15 @@ export class navigationComponent implements OnInit, AfterViewInit {
   };
 
   ngAfterViewInit() {
-    this.wrapperWidth = this.el.nativeElement.getBoundingClientRect().width;
+    this.wrapperWidth = this.el.nativeElement.parentElement.offsetWidth;
     if (this.config.scrolling === true) {
       this.getHeight();
       this.renderer.listen('window', 'resize', () => {
         this.getHeight();
-        // Update element width upon window resize
-        this.wrapperWidth = this.el.nativeElement.getBoundingClientRect().width;
+        setTimeout(() => {
+          // Update element width upon window resize
+          this.wrapperWidth = this.el.nativeElement.parentElement.offsetWidth;
+        });
       });
     }
     if (this.config.fixed) {
