@@ -105,6 +105,22 @@ export class FormBackendStack extends cdk.Stack {
       ),
     });
 
+    //DynamoDb Table
+    // Define the partition key
+    const partitionKey: dynamodb.Attribute = {
+      name: 'id',
+      type: dynamodb.AttributeType.STRING
+    };
+    
+    // Create the DynamoDB table
+    const table = new dynamodb.Table(this, 'DSRequestFormTable', {
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+      partitionKey,
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
+      encryption: dynamodb.TableEncryption.AWS_MANAGED,
+      tableName: 'DSRequestFormTable' 
+    });
+
     //Add Endpoints to the Lambdas
     sendVerificationEmailLambda.addEnvironment(
       "endpoindHttpApi",
@@ -131,20 +147,9 @@ export class FormBackendStack extends cdk.Stack {
       "endpoindwebSocketApi",
       webSocketApi.apiEndpoint
     );
-
-    //DynamoDb Table
-    // Define the partition key
-    const partitionKey: dynamodb.Attribute = {
-      name: 'id',
-      type: dynamodb.AttributeType.STRING
-    };
-    
-    // Create the DynamoDB table
-    new dynamodb.Table(this, 'DSRequestFormTable', {
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      partitionKey,
-      removalPolicy: cdk.RemovalPolicy.RETAIN,
-      encryption: dynamodb.TableEncryption.AWS_MANAGED 
-    });
+    crudUserLambda.addEnvironment(
+      "TableName",
+      table.tableName
+    );
   } 
 }

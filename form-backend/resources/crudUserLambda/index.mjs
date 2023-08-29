@@ -11,7 +11,7 @@ const client = new DynamoDBClient({});
 
 const dynamo = DynamoDBDocumentClient.from(client);
 
-const tableName = "DSRequestFormTable";
+const tableName = process.env.TableName;
 
 export const handler = async (event, context) => {
   let email;
