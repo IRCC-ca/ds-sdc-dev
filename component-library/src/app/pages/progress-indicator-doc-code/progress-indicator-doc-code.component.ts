@@ -1,5 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  OnInit,
+  PLATFORM_ID
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import {
@@ -62,7 +68,7 @@ export class ProgressIndicatorDocCodeComponent
           type: 'notStarted'
         }
       }
-    ],
+    ]
     // gated: false
   };
 
@@ -153,7 +159,7 @@ export class ProgressIndicatorDocCodeComponent
     id: this.progressIndicatorConfig.id,
     size: this.progressIndicatorConfig.size,
     orientation: this.progressIndicatorConfig.orientation,
-    steps: this.progressIndicatorConfig.steps,
+    steps: this.progressIndicatorConfig.steps
     // gated: this.progressIndicatorConfig.gated
   };
 
@@ -203,7 +209,6 @@ export class ProgressIndicatorDocCodeComponent
   //     })
   //   }
   // }
-
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
@@ -221,8 +226,8 @@ export class ProgressIndicatorDocCodeComponent
       }
       if (window.innerWidth <= 768 && toggle.id === 'orientation') {
         this.progressIndicatorConfig.orientation = 'vertical';
-        toggle.options?.forEach(option => {
-          option.value = 'vertical'
+        toggle.options?.forEach((option) => {
+          option.value = 'vertical';
         });
       }
     });
@@ -246,7 +251,7 @@ export class ProgressIndicatorDocCodeComponent
     return {
       ...this.progressIndicatorConfig,
       size: value['size'].toLowerCase(),
-      orientation: value['orientation'],
+      orientation: value['orientation']
       // gated: value['gated'] === 'Flase',
       // step3: value['step3'] === 'True',
       // step4: value['step4'] === 'True'
