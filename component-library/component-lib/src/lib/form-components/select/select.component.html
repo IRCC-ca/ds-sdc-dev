@@ -12,7 +12,7 @@
         [name]="config.id"
         [id]="config.id"
         [formControlName]="config.id"
-        (change)="valueChange($event)"
+        (change)="changeValue($event)"
         [class.activited-select]="activiatedSelect"
         [attr.aria-invalid]="formControl?.invalid"
         [attr.aria-live]="'off'"
@@ -32,9 +32,15 @@
               (config.hint || '' | translate)
         "
       >
-        <option
+        <!-- <option
           [value]="''"
           [disabled]="true"
+          [selected]="true"
+          [hidden]="true"
+        > -->
+        <option
+          [value]="''"
+          [disabled]="currentStatus !== 'DISABLED'"
           [selected]="true"
           [hidden]="true"
         >
@@ -59,7 +65,8 @@
       aria-live="polite"
       *ngIf="!config.disableError"
     >
-      <div *ngIf="formControl?.touched && formControl?.invalid">
+      <!-- <div *ngIf="formControl?.touched && formControl?.invalid"> -->
+      <div *ngIf="currentStatus === 'INVALID'">
         <span class="sr-only">{{
           errorStubText + ': ' + (config.label || '' | translate) + ': '
         }}</span>

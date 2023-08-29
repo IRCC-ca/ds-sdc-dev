@@ -2,6 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -54,13 +55,15 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = [];
   activiatedSelect: boolean = false;
   rotateChevron: boolean = false;
+  currentStatus: FormControlStatus = 'VALID';
+  formGroupEmpty: FormGroup = new FormGroup({});
 
   @Input() config: ISelectConfig = {
     id: '',
     formGroup: new FormGroup({})
   };
   @Input() id = '';
-  @Input() formGroup?: FormGroup;
+  @Input() formGroup = this.formGroupEmpty;
   @Input() size?: keyof typeof DSSizes;
   @Input() label?: string;
   @Input() desc?: string;
@@ -87,10 +90,25 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     private translate: TranslateService
   ) {}
 
-  onChange = (formValue: string) => {};
-  onTouched = () => {};
-  writeValue(formValue: any) {
-    // this.form.get('formControl')?.setValue(formValue);
+  // onChange = (formValue: string) => {};
+  // onTouched = () => {};
+  onTouched = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouched();
+  }
+
+  writeValue(value: string): void {
+    this.onChange(value);
   }
   registerOnChange(onChange: any) {
     this.onChange = onChange;
@@ -99,12 +117,12 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     this.onTouched = onTouched;
   }
 
-  markAsTouched() {
-    if (!this.touched) {
-      this.onTouched();
-      this.touched = true;
-    }
-  }
+  // markAsTouched() {
+  //   if (!this.touched) {
+  //     this.onTouched();
+  //     this.touched = true;
+  //   }
+  // }
 
   valueChange($event: any) {
     this.activiatedSelect = true;
@@ -162,6 +180,29 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
         this.config.errorMessages
       );
     }
+
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+    }    //Get the error text when the formControl value changes 
+    
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
+      this.getAriaErrorText();
+      if(change !== this.currentStatus){
+        this.currentStatus = change;
+        switch (this.currentStatus) {
+          case 'DISABLED':
+            this.setDisabledState(true);
+            break;
+          default:
+            this.setDisabledState(false);
+        }
+      }
+    });
   }
 
   //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
@@ -178,6 +219,17 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.labelIconConfig,
       this.config.topLabel
     );
+  }
+
+  /**
+   * Apply a disabled state
+   */
+   setDisabledState(isDisabled: boolean) {
+    if(isDisabled){
+      this.formGroup?.get(this.config.id)?.disable();
+    }else{
+      this.formGroup?.get(this.config.id)?.enable();
+    }
   }
 
   /**
