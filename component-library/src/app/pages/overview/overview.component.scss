@@ -42,7 +42,7 @@
         border: 1px solid;
         border-color: var(--divider);
         border-radius: 12px;
-        padding: 20px 24px 44px 24px;
+        padding: 20px 24px;
 
         h2 {
           margin: 0;
@@ -59,12 +59,12 @@
             color: var(--blue-8);
             background-color: transparent;
           }
-        
+
           &:active {
             color: var(--navy-9);
             background-color: transparent;
           }
-        
+
           &:visited {
             color: var(--purple-8);
           }
