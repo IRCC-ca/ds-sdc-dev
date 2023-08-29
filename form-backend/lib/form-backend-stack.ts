@@ -6,7 +6,7 @@ import * as apigateway from "@aws-cdk/aws-apigatewayv2-alpha";
 import * as integrations from "@aws-cdk/aws-apigatewayv2-integrations-alpha";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as iam from "aws-cdk-lib/aws-iam";
-
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 export class FormBackendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -19,6 +19,10 @@ export class FormBackendStack extends cdk.Stack {
     const executeApiPolicyStatement = new iam.PolicyStatement({
       actions: ["execute-api:Invoke", "execute-api:ManageConnections"],
       resources: ["arn:aws:execute-api:*:*:*"],
+    });
+    const dynamoDbLambdaPolicyStatement = new iam.PolicyStatement({
+      actions: ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem", "dynamodb:UpdateTable", "dynamodb:ListTables", "dynamodb:GetItem",],
+      resources: ["arn:aws:dynamodb:::table/"],
     });
 
     //Lambdas
@@ -58,6 +62,22 @@ export class FormBackendStack extends cdk.Stack {
       })
     );
 
+    //Lambdas
+    const crudUserLambda = new lambda.Function(
+      this,
+      "crudUserEventFunction",
+      {
+        runtime: lambda.Runtime.NODEJS_18_X,
+        handler: "index.handler",
+        code: lambda.Code.fromAsset("resources/crudUserLambda"),
+      }
+    );
+    crudUserLambda.role?.attachInlinePolicy(
+      new iam.Policy(this, "dynamoDbCrudUserEventFunction", {
+        statements: [dynamoDbLambdaPolicyStatement],
+      })
+    );
+
     //APIGateways
     const webSocketApi = new apigateway.WebSocketApi(
       this,
@@ -85,7 +105,7 @@ export class FormBackendStack extends cdk.Stack {
       ),
     });
 
-    //Add Endpoints to the Lamndas
+    //Add Endpoints to the Lambdas
     sendVerificationEmailLambda.addEnvironment(
       "endpoindHttpApi",
       httpApi.apiEndpoint
@@ -103,5 +123,28 @@ export class FormBackendStack extends cdk.Stack {
       "endpoindwebSocketApi",
       webSocketApi.apiEndpoint
     );
-  }
+    crudUserLambda.addEnvironment(
+      "endpoindHttpApi",
+      httpApi.apiEndpoint
+    );
+    crudUserLambda.addEnvironment(
+      "endpoindwebSocketApi",
+      webSocketApi.apiEndpoint
+    );
+
+    //DynamoDb Table
+    // Define the partition key
+    const partitionKey: dynamodb.Attribute = {
+      name: 'id',
+      type: dynamodb.AttributeType.STRING
+    };
+    
+    // Create the DynamoDB table
+    new dynamodb.Table(this, 'DSRequestFormTable', {
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+      partitionKey,
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
+      encryption: dynamodb.TableEncryption.AWS_MANAGED 
+    });
+  } 
 }
