@@ -2,10 +2,17 @@ import {
   ApiGatewayManagementApiClient,
   PostToConnectionCommand,
 } from "@aws-sdk/client-apigatewaymanagementapi";
+import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
+import { readFileSync } from "fs";
 
 export const handler = async (event) => {
   const connectionId = event.queryStringParameters.id;
+  event.requestContext.routeKey = "updateClientRoute";
+  event.requestContext.connectionId = connectionId;
 
+  await updateUser(event);
+
+  const file = readFileSync("./template.html", "utf-8");
   let endpointURL = process.env.endpoindwebSocketApi;
   endpointURL = endpointURL.replace("wss:", "");
   const callbackUrl = `https://${endpointURL}/production`;
@@ -22,11 +29,10 @@ export const handler = async (event) => {
     await client.send(command);
     const response = {
       statusCode: 200,
-
-      body: JSON.stringify({
-        message: "You Have been veried!",
-        id: connectionId,
-      }),
+      body: file,
+      headers: {
+        "Content-Type": "text/html",
+      },
     };
     return response;
   } catch (error) {
@@ -40,3 +46,17 @@ export const handler = async (event) => {
     return response;
   }
 };
+
+async function updateUser(event) {
+  const client = new LambdaClient();
+  const command = new InvokeCommand({
+    FunctionName: process.env.crudUserLambda,
+    Payload: JSON.stringify(event),
+  });
+
+  try {
+    return await client.send(command);
+  } catch (err) {
+    console.log(err);
+  }
+}

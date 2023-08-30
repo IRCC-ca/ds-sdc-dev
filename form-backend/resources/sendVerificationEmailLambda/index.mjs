@@ -3,9 +3,8 @@ import {
   PostToConnectionCommand,
 } from "@aws-sdk/client-apigatewaymanagementapi";
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-import {LambdaClient, InvokeCommand} from "@aws-sdk/client-lambda";
+import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
-
 
 export const handler = async (event) => {
   const ses = new SESClient({ region: "ca-central-1" });
@@ -93,17 +92,15 @@ async function sendSocketMessage(event, message) {
 }
 
 async function createUser(event) {
-
   const client = new LambdaClient();
   const command = new InvokeCommand({
     FunctionName: process.env.crudUserLambda,
-    Payload: JSON.stringify(event)
+    Payload: JSON.stringify(event),
   });
 
-  try{
+  try {
     const response = await client.send(command);
-  }
-  catch(err){
+  } catch (err) {
     console.log(err);
   }
 }

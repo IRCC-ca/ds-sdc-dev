@@ -73,7 +73,7 @@ export class FormBackendStack extends cdk.Stack {
     );
     verificationClickEventLambda.role?.attachInlinePolicy(
       new iam.Policy(this, "verificationClickEventLambdaPolicy", {
-        statements: [executeApiPolicyStatement],
+        statements: [executeApiPolicyStatement, InvokeFunctionPolicyStatement],
       })
     );
 
@@ -182,6 +182,11 @@ export class FormBackendStack extends cdk.Stack {
       "endpoindwebSocketApi",
       webSocketApi.apiEndpoint
     );
+    verificationClickEventLambda.addEnvironment(
+      "crudUserLambda",
+      crudUserLambda.functionName
+    );
+
     crudUserLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
     crudUserLambda.addEnvironment(
       "endpoindwebSocketApi",

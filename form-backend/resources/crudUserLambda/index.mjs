@@ -4,6 +4,7 @@ import {
   ScanCommand,
   PutCommand,
   GetCommand,
+  UpdateCommand,
   DeleteCommand,
 } from "@aws-sdk/lib-dynamodb";
 
@@ -19,12 +20,10 @@ export const handler = async (event, context) => {
   let body;
   let routeKey;
 
-  if (event.body) {
-    email = event?.body.email || "";
-  }
-
   if (event.requestContext.connectionId) {
     connectionId = event.requestContext.connectionId;
+  }
+  if (event.requestContext.routeKey) {
     routeKey = event.requestContext.routeKey;
   }
 
@@ -47,6 +46,9 @@ export const handler = async (event, context) => {
         body = `Deleted item ${connectionId}`;
         break;
       case "sendVerificationEmailRoute":
+        if (event.body) {
+          email = JSON.parse(event?.body).email || "";
+        }
         await dynamo.send(
           new PutCommand({
             TableName: tableName,
@@ -62,17 +64,18 @@ export const handler = async (event, context) => {
         break;
       case "updateClientRoute":
         await dynamo.send(
-          new PutCommand({
+          new UpdateCommand({
             TableName: tableName,
-            Item: {
-              email: email,
-              date: Date.now(),
-              verified: true,
+            Key: {
               id: connectionId,
+            },
+            UpdateExpression: "set verified = :booleanValue",
+            ExpressionAttributeValues: {
+              ":booleanValue": true,
             },
           })
         );
-        body = `Put item ${connectionId}`;
+        body = `update item ${connectionId}`;
         break;
       default:
         throw new Error(`Unsupported route: "${event.routeKey}"`);
