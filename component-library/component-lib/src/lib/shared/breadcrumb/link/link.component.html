@@ -1,5 +1,6 @@
 <ng-container *ngIf="config.href">
   <a
+    class="breadcrumb-anchor"
     [href]="config.href"
     tabindex="-1"
     >{{ config.text | translate }}
@@ -7,6 +8,7 @@
 </ng-container>
 <ng-container *ngIf="config.routerLink">
   <a
+    class="breadcrumb-anchor"
     type="button"
     tabindex="-1"
     [routerLink]="config.routerLink"
