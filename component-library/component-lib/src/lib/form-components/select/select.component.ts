@@ -182,28 +182,28 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
 
     this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
-    this.toggleDisabledState();
-    this.config.formGroup
-      .get(this.config.id)
-      ?.statusChanges.subscribe((change) => {
-        this.getAriaErrorText();
-        if (change !== this.currentStatus) {
-          this.currentStatus = change;
-          this.toggleDisabledState();
-        }
-      });
-    }
-
-    toggleDisabledState() {
     switch (this.currentStatus) {
       case 'DISABLED':
-      this.setDisabledState(true);
-      break;
-    default:
-      this.setDisabledState(false);
-      break;
-    }
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+    }    //Get the error text when the formControl value changes
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
+      this.getAriaErrorText();
+      if(change !== this.currentStatus) {
+        this.currentStatus = change;
+        switch (this.currentStatus) {
+          case 'DISABLED':
+            this.setDisabledState(true);
+            break;
+          default:
+            this.setDisabledState(false);
+        }
+      }
+    });
   }
+
 
   //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
   //TODO: Replace this with something less blunt
@@ -220,7 +220,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.topLabel
     );
   }
-
   /**
    * Apply a disabled state
    */
