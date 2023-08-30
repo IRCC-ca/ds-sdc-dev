@@ -3,7 +3,7 @@ import {
   EventEmitter,
   HostListener,
   Input,
-  OnInit,
+  OnInit
 } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 import {

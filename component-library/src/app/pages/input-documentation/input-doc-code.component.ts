@@ -33,7 +33,10 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   formInput = new FormGroup({});
   state: boolean = false;
 
-  constructor(private lang: LangSwitchService, private translate: TranslateService) {}
+  constructor(
+    private lang: LangSwitchService,
+    private translate: TranslateService
+  ) {}
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
@@ -50,7 +53,9 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ...this.inputConfig,
     id: 'input_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
+    errorMessages: [
+      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }
+    ]
   };
 
   inputConfigMulti: IInputComponentConfig = {
@@ -58,8 +63,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     id: 'input_multi',
     errorMessages: [
       { key: 'email', errorLOV: this.translate.instant('ERROR.singleError') },
-      { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-      { key: 'maxlength', errorLOV: this.translate.instant('ERROR.additionalError') }
+      {
+        key: 'email',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      },
+      {
+        key: 'maxlength',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      }
     ]
   };
 
@@ -190,11 +201,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   };
 
   bannerConfig: IBannerConfig = {
-    id: "banner-disabled-desc",
-    type: "info",
-    size: "small",
-    title:'General.EnabledBannerTitle',
-    content: "General.EnabledBannerContent",
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
     rounded: true
   };
 
@@ -286,16 +297,17 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       this.formInput.addControl(checkbox.id, new FormControl());
     });
 
-    this.formInput.get(this.checkboxes[0].id)
-    ?.valueChanges.subscribe((change) => {
-      if (change) {
-        this.bannerConfig.title='General.DisabledBannerTitle'
-        this.bannerConfig.content="General.DisabledBannerContent"
-      } else {
-        this.bannerConfig.title='General.EnabledBannerTitle'
-        this.bannerConfig.content="General.EnabledBannerContent"
-      }
-    });
+    this.formInput
+      .get(this.checkboxes[0].id)
+      ?.valueChanges.subscribe((change) => {
+        if (change) {
+          this.bannerConfig.title = 'General.DisabledBannerTitle';
+          this.bannerConfig.content = 'General.DisabledBannerContent';
+        } else {
+          this.bannerConfig.title = 'General.EnabledBannerTitle';
+          this.bannerConfig.content = 'General.EnabledBannerContent';
+        }
+      });
 
     this.formInput.patchValue({
       size: 'Small',
@@ -461,7 +473,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `inputConfig: IInputComponentConfig = ${stringify(
           this.inputConfigCodeView
-      )}`;
+        )}`;
     }
   }
 }

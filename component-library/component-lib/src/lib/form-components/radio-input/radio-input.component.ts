@@ -2,6 +2,7 @@ import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR,
   ValidatorFn
@@ -62,6 +63,7 @@ export class RadioInputComponent
   touched = false;
   errorIds: IErrorIDs[] = [];
   formControl?: AbstractControl;
+  currentStatus: FormControlStatus = 'VALID';
 
   @Input() config: IRadioInputComponentConfig = {
     id: '',
@@ -93,21 +95,36 @@ export class RadioInputComponent
     private translate: TranslateService
   ) {}
 
-  onChange = (formValue: string) => {};
-  onTouched = () => {};
-  writeValue(formValue: any) {
-    // this.form.get('formControl')?.setValue(formValue);
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+  
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
   }
+
+  writeValue(value: string): void {
+      this.onChange(value);
+  }
+  
   registerOnChange(onChange: any) {
     this.onChange = onChange;
   }
+  
   registerOnTouched(onTouched: any) {
-    this.onTouched = onTouched;
+    this.onTouch = onTouched;
   }
 
   markAsTouched() {
     if (!this.touched) {
-      this.onTouched();
+      this.onTouch();
       this.touched = true;
     }
   }
@@ -158,9 +175,28 @@ export class RadioInputComponent
       );
     }
 
-    this.formControl?.statusChanges.subscribe((status) => {
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup
+    .get(this.config.id)
+    ?.statusChanges.subscribe((change) => {
       this.getAriaErrorText();
+      if (change !== this.currentStatus) {
+        this.currentStatus = change;
+        this.toggleDisabledState();
+      }
     });
+}
+
+    toggleDisabledState() {
+    switch (this.currentStatus) {
+      case 'DISABLED':
+      this.setDisabledState(true);
+      break;
+    default:
+      this.setDisabledState(false);
+      break;
+    }
   }
 
   ngOnChanges() {
@@ -206,21 +242,28 @@ export class RadioInputComponent
       this.errorStubText = ERROR_TEXT_STUB.fr;
     }
   }
-
+  
+  setDisabledState(isDisabled: boolean) {
+    if(isDisabled){
+      this.formGroup.get(this.config.id)?.disable();
+    }else{
+      this.formGroup.get(this.config.id)?.enable();
+    }
+  }
   /**
    * used to disable individual fields (from the config under 'options')
    * @param index of the option field to be disabled
    * @returns null if value is undefined, empty string otherwise. This works with [attr.disabled].
    */
-  getDisabled(index: number) {
-    if (this.config.options) {
-      if (
-        this.config.options[index].disabled === undefined &&
-        !this.config.disabled
-      ) {
-        return null;
-      }
-    }
-    return '';
-  }
+  // getDisabled(index: number) {
+  //   if (this.config.options) {
+  //     if (
+  //       this.config.options[index].disabled === undefined &&
+  //       !this.config.disabled
+  //     ) {
+  //       return null;
+  //     }
+  //   }
+  //   return '';
+  // }
 }
