@@ -196,11 +196,11 @@ export class AutocompleteDocumentationComponent
   ];
 
   bannerConfig: IBannerConfig = {
-    id: "banner-disabled-desc",
-    type: "info",
-    size: "small",
-    title:'General.EnabledBannerTitle',
-    content: "General.EnabledBannerContent",
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
     rounded: true
   };
 
@@ -243,7 +243,7 @@ export class AutocompleteDocumentationComponent
           "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n//...\n" +
           `config: IAutocompleteComponent = ${stringify(
             this.autocompleteCodeView
-          )}`
+          )}`;
       }
     });
 
@@ -257,12 +257,12 @@ export class AutocompleteDocumentationComponent
       ?.valueChanges.subscribe((change) => {
         if (change) {
           this.config.formGroup.get(this.config.id)?.disable(change);
-          this.bannerConfig.title='General.DisabledBannerTitle'
-          this.bannerConfig.content="General.DisabledBannerContent"
+          this.bannerConfig.title = 'General.DisabledBannerTitle';
+          this.bannerConfig.content = 'General.DisabledBannerContent';
         } else {
           this.config.formGroup.get(this.config.id)?.enable(change);
-          this.bannerConfig.title='General.EnabledBannerTitle'
-          this.bannerConfig.content="General.EnabledBannerContent"
+          this.bannerConfig.title = 'General.EnabledBannerTitle';
+          this.bannerConfig.content = 'General.EnabledBannerContent';
         }
       });
 
