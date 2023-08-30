@@ -92,7 +92,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   // onChange = (formValue: string) => {};
   // onTouched = () => {};
-  onTouched = () => {
+  onTouch = () => {
     if (this.formGroup?.get(this.config.id)?.touched === false) {
       this.formGroup?.get(this.config.id)?.markAsTouched();
     }
@@ -104,7 +104,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   changeValue(event: any){
     this.writeValue(event.srcElement.value);
-    this.onTouched();
+    this.onTouch();
   }
 
   writeValue(value: string): void {
@@ -114,15 +114,15 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     this.onChange = onChange;
   }
   registerOnTouched(onTouched: any) {
-    this.onTouched = onTouched;
+    this.onTouch = onTouched;
   }
 
-  // markAsTouched() {
-  //   if (!this.touched) {
-  //     this.onTouched();
-  //     this.touched = true;
-  //   }
-  // }
+  markAsTouched() {
+    if (!this.touched) {
+      this.onTouch();
+      this.touched = true;
+    }
+  }
 
   valueChange($event: any) {
     this.activiatedSelect = true;
@@ -182,27 +182,27 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     }
 
     this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((change) => {
+        this.getAriaErrorText();
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          this.toggleDisabledState();
+        }
+      });
+    }
+
+    toggleDisabledState() {
     switch (this.currentStatus) {
       case 'DISABLED':
-        this.setDisabledState(true);
-        break;
-      default:
-        this.setDisabledState(false);
-    }    //Get the error text when the formControl value changes 
-    
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
-      this.getAriaErrorText();
-      if(change !== this.currentStatus){
-        this.currentStatus = change;
-        switch (this.currentStatus) {
-          case 'DISABLED':
-            this.setDisabledState(true);
-            break;
-          default:
-            this.setDisabledState(false);
-        }
-      }
-    });
+      this.setDisabledState(true);
+      break;
+    default:
+      this.setDisabledState(false);
+      break;
+    }
   }
 
   //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
@@ -225,11 +225,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
    * Apply a disabled state
    */
    setDisabledState(isDisabled: boolean) {
-    if(isDisabled){
-      this.formGroup?.get(this.config.id)?.disable();
-    }else{
-      this.formGroup?.get(this.config.id)?.enable();
-    }
+    isDisabled
+      ? this.formGroup?.get(this.config.id)?.disable()
+      : this.formGroup?.get(this.config.id)?.enable();
   }
 
   /**
