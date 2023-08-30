@@ -250,20 +250,4 @@ export class RadioInputComponent
       this.formGroup.get(this.config.id)?.enable();
     }
   }
-  /**
-   * used to disable individual fields (from the config under 'options')
-   * @param index of the option field to be disabled
-   * @returns null if value is undefined, empty string otherwise. This works with [attr.disabled].
-   */
-  // getDisabled(index: number) {
-  //   if (this.config.options) {
-  //     if (
-  //       this.config.options[index].disabled === undefined &&
-  //       !this.config.disabled
-  //     ) {
-  //       return null;
-  //     }
-  //   }
-  //   return '';
-  // }
 }
