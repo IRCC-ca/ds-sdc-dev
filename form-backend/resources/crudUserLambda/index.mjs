@@ -77,6 +77,17 @@ export const handler = async (event, context) => {
         );
         body = `update item ${connectionId}`;
         break;
+      case "isUserVerifiedRoute":
+        body = await dynamo.send(
+          new GetCommand({
+            TableName: tableName,
+            Key: {
+              id: connectionId
+            },
+          })
+        );
+        body = body.Item;
+        break;
       default:
         throw new Error(`Unsupported route: "${event.routeKey}"`);
     }

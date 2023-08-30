@@ -87,6 +87,26 @@ export class FormBackendStack extends cdk.Stack {
       iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonDynamoDBFullAccess")
     );
 
+    //Lambdas
+    const sendFormInfoLambda = new lambda.Function(
+      this,
+      "sendFormInfoFunction",
+      {
+        runtime: lambda.Runtime.NODEJS_18_X,
+        handler: "index.handler",
+        code: lambda.Code.fromAsset("resources/sendFormInfoLambda"),
+      }
+    );
+    sendFormInfoLambda.role?.attachInlinePolicy(
+      new iam.Policy(this, "sendFormInfoLambdaPolicy", {
+        statements: [
+          sesPolicyStatement,
+          executeApiPolicyStatement,
+          InvokeFunctionPolicyStatement,
+        ],
+      })
+    );
+
     //stepfunction
     // const sendVerificationEmailLambdaFirstState = new tasks.LambdaInvoke(
     //   this,
@@ -131,6 +151,13 @@ export class FormBackendStack extends cdk.Stack {
       integration: new integrations.WebSocketLambdaIntegration(
         "sendVerificationEmailRoute",
         sendVerificationEmailLambda
+      ),
+    });
+
+    webSocketApi.addRoute("sendFormInfoRoute", {
+      integration: new integrations.WebSocketLambdaIntegration(
+        "sendFormInfoRoute",
+        sendFormInfoLambda
       ),
     });
 
