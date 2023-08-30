@@ -44,7 +44,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     size: 'small',
     type: 'text',
     required: false,
-    label: 'Label text',
+    label: 'Label Text',
     desc: 'Description line of text',
     errorMessages: []
   };
@@ -249,17 +249,20 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   errorState = 'None';
   currentConfigId = this.inputConfig.id;
 
-  setInputType(value: any) {
+  setInputType(value: string) {
     this.inputConfig = {
       ...this.inputConfig,
+      label: value == 'password' ? 'Password' : 'Label Text',
       type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigSingle = {
       ...this.inputConfigSingle,
+      label: value == 'password' ? 'Password' : 'Label Text',
       type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigMulti = {
       ...this.inputConfigMulti,
+      label: value == 'password' ? 'Password' : 'Label Text',
       type: value == 'password' ? 'password' : 'text'
     };
 
