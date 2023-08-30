@@ -268,6 +268,6 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   setDisabledState(isDisabled: boolean) {
     isDisabled
       ? this.formGroup.get(this.config.id)?.disable()
-      : this.formGroup.get(this.config.id)?.disable();
+      : this.formGroup.get(this.config.id)?.enable();
   }
 }
