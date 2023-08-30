@@ -453,5 +453,11 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
         this.handleExceptions(error);
       }
     });
+
+    // this.subject.next({
+    //   action: 'sendVerificationEmailRoute',
+    //   route: 'sendVerificationEmailRoute',
+    //   formbody: this.form.value
+    // });
   }
 }

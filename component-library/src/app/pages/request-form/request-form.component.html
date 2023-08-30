@@ -30,100 +30,112 @@
     </p>
   </section>
 
-  <ng-container *ngIf="status === 'start'; else second">
-    <div style="display: flex; align-items: center; justify-content: center">
-      <ircc-cl-lib-input
-        [config]="emailconfig"
-        style="margin-right: 25px"
-      ></ircc-cl-lib-input>
-      <ircc-cl-lib-button
-        [config]="buttonConfig"
-        (click)="sendSocketMessage()"
-        >Verify Email</ircc-cl-lib-button
-      >
-    </div>
-  </ng-container>
-  <ng-template #second>
-    <ng-container *ngIf="status === 'waiting'; else third">
-      <div style="display: flex; align-items: center; justify-content: center">
-        <ircc-cl-lib-spinner></ircc-cl-lib-spinner>
-      </div>
-    </ng-container>
-  </ng-template>
-  <ng-template #third>
-    <ng-container *ngIf="status === 'done'">
-      <div style="display: flex; align-items: center; justify-content: center">
-        <section class="form-container">
-          <app-title-slug-url
-            [config]="requestFormTitleSlugConfig"
-            class="h3 emphasis"
-          ></app-title-slug-url>
+  <div style="display: flex; align-items: center; justify-content: center">
+    <section class="form-container">
+      <app-title-slug-url
+        [config]="requestFormTitleSlugConfig"
+        class="h3 emphasis"
+      ></app-title-slug-url>
 
-          <p>Verification Done!</p>
-          <div class="form-container">
-            <div class="type-request-radio-container">
-              <ircc-cl-lib-radio-input
-                [config]="typeOfRequestRadioConfig"
-                (change)="radioButtonChanged($event)"
-              ></ircc-cl-lib-radio-input>
-            </div>
-            <div class="request-title-text-area-container">
-              <ircc-cl-lib-textarea
-                [config]="requestTitleTextAreaConfig"
-              ></ircc-cl-lib-textarea>
-            </div>
-            <div class="request-details-text-area-container">
-              <ircc-cl-lib-textarea
-                [config]="requestDetailsTextAreaConfig"
-              ></ircc-cl-lib-textarea>
-            </div>
+      <p>Verification Done!</p>
+      <div class="form-container">
+        <div class="type-request-radio-container">
+          <ircc-cl-lib-radio-input
+            [config]="typeOfRequestRadioConfig"
+            (change)="radioButtonChanged($event)"
+          ></ircc-cl-lib-radio-input>
+        </div>
+        <div class="request-title-text-area-container">
+          <ircc-cl-lib-textarea
+            [config]="requestTitleTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div class="request-details-text-area-container">
+          <ircc-cl-lib-textarea
+            [config]="requestDetailsTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div
+          class="use-case-text-area-container"
+          *ngIf="showUseCase"
+        >
+          <ircc-cl-lib-textarea
+            [config]="useCaseTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div class="references-text-area-container">
+          <ircc-cl-lib-textarea
+            [config]="referencesTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div class="urgent-request-radio-container">
+          <ircc-cl-lib-radio-input
+            [config]="urgentRequestRadioConfig"
+            (change)="radioButtonChanged($event)"
+          ></ircc-cl-lib-radio-input>
+        </div>
+        <div
+          class="urgent-details-container"
+          *ngIf="requestUrgent"
+        >
+          <ircc-cl-lib-textarea
+            [config]="urgentDetailsTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div
+          class="date-requested-container"
+          *ngIf="requestUrgent"
+        >
+          <ircc-cl-lib-date-picker
+            [config]="requestedDateDatePickerConfig"
+          ></ircc-cl-lib-date-picker>
+        </div>
+        <div class="">
+          <ng-container *ngIf="status === 'start'; else second">
             <div
-              class="use-case-text-area-container"
-              *ngIf="showUseCase"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
             >
-              <ircc-cl-lib-textarea
-                [config]="useCaseTextAreaConfig"
-              ></ircc-cl-lib-textarea>
+              <ircc-cl-lib-input
+                [config]="emailconfig"
+                style="margin-right: 25px"
+              ></ircc-cl-lib-input>
+              <ircc-cl-lib-button
+                [config]="buttonConfig"
+                (click)="sendSocketMessage()"
+                >Verify Email</ircc-cl-lib-button
+              >
             </div>
-            <div class="references-text-area-container">
-              <ircc-cl-lib-textarea
-                [config]="referencesTextAreaConfig"
-              ></ircc-cl-lib-textarea>
-            </div>
-            <div class="urgent-request-radio-container">
-              <ircc-cl-lib-radio-input
-                [config]="urgentRequestRadioConfig"
-                (change)="radioButtonChanged($event)"
-              ></ircc-cl-lib-radio-input>
-            </div>
-            <div
-              class="urgent-details-container"
-              *ngIf="requestUrgent"
-            >
-              <ircc-cl-lib-textarea
-                [config]="urgentDetailsTextAreaConfig"
-              ></ircc-cl-lib-textarea>
-            </div>
-            <div
-              class="date-requested-container"
-              *ngIf="requestUrgent"
-            >
-              <ircc-cl-lib-date-picker
-                [config]="requestedDateDatePickerConfig"
-              ></ircc-cl-lib-date-picker>
-            </div>
-            <div class="submit-request-container">
+          </ng-container>
+          <ng-template #second>
+            <ng-container *ngIf="status === 'waiting'; else third">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <ircc-cl-lib-spinner></ircc-cl-lib-spinner>
+              </div>
+            </ng-container>
+          </ng-template>
+          <ng-template #third>
+            <ng-container *ngIf="status === 'done'">
               <ircc-cl-lib-button
                 [config]="buttonConfig"
                 (click)="submitForm()"
                 >{{ 'RequestForm.SubmitBtn' | translate }}</ircc-cl-lib-button
               >
-            </div>
-          </div>
-        </section>
+            </ng-container>
+          </ng-template>
+        </div>
       </div>
-    </ng-container>
-  </ng-template>
+    </section>
+  </div>
 
   <div
     style="
