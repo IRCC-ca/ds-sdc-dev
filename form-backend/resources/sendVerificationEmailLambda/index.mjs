@@ -5,24 +5,20 @@ import {
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
-import * as AWS from "aws-sdk";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import Handlebars from "handlebars";
 
 export const handler = async (event) => {
-  const bucketName = process.env.bucketName;
-  const key = "gocheader.png";
-  const s3 = new AWS.S3();
-  const params = {
-    Bucket: bucketName,
-    Key: key,
-  };
-
-  const data = await s3.getObject(params).promise();
-  const content = data.Body.toString("utf-8");
-
-  console.log("Object content:", content);
-
   const ses = new SESClient({ region: "ca-central-1" });
+  const s3Client = new S3Client({ region: "ca-central-1" });
+
+  const s3Command = new GetObjectCommand({
+    Bucket: process.env.bucketName,
+    Key: "gocheader.png",
+  });
+  const response = await s3Client.send(s3Command);
+
+  console.log("Object content:", response);
 
   let to = "";
   if (event.body) {

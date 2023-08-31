@@ -12,12 +12,29 @@ import * as s3Deployment from "aws-cdk-lib/aws-s3-deployment";
 
 import * as stepfunctions from "aws-cdk-lib/aws-stepfunctions";
 import * as tasks from "aws-cdk-lib/aws-stepfunctions-tasks";
+import { PolicyStatement } from "aws-cdk-lib/aws-iam";
 export class FormBackendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // Create an S3 bucket
     const bucket = new s3.Bucket(this, "assets");
+    // bucket.addToResourcePolicy(
+    //   new PolicyStatement({
+    //     resources: [bucket.arnForObjects("*")],
+    //     actions: ["s3:List*", "s3:Get*"],
+    //     principals: [new cdk.Anyone()],
+    //   })
+    // );
+    const bucketPolicy = new iam.PolicyStatement({
+      actions: ["s3:GetObject"],
+      resources: [bucket.arnForObjects("*")],
+      effect: iam.Effect.ALLOW,
+      principals: [new iam.ArnPrincipal("*")],
+    });
+
+    // Attach the bucket policy to the bucket
+    bucket.addToResourcePolicy(bucketPolicy);
 
     // Upload a local folder to the S3 bucket
     new s3Deployment.BucketDeployment(this, "UploadFiles", {
@@ -38,6 +55,11 @@ export class FormBackendStack extends cdk.Stack {
     const InvokeFunctionPolicyStatement = new iam.PolicyStatement({
       actions: ["lambda:InvokeFunction"],
       resources: ["*"],
+    });
+
+    const AllowS3AccessPolicyStatement = new iam.PolicyStatement({
+      actions: ["s3:*"],
+      resources: [bucket.bucketArn],
     });
 
     const dynamoDbLambdaPolicyStatement = new iam.PolicyStatement({
@@ -68,6 +90,7 @@ export class FormBackendStack extends cdk.Stack {
           sesPolicyStatement,
           executeApiPolicyStatement,
           InvokeFunctionPolicyStatement,
+          AllowS3AccessPolicyStatement,
         ],
       })
     );
