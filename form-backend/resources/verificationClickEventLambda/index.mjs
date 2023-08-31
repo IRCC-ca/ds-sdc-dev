@@ -15,7 +15,6 @@ export const handler = async (event) => {
 
   await updateUser(event);
 
-  const file = readFileSync("./template.html", "utf-8");
   let endpointURL = process.env.endpoindwebSocketApi;
   endpointURL = endpointURL.replace("wss:", "");
   const callbackUrl = `https://${endpointURL}/production`;
@@ -28,7 +27,11 @@ export const handler = async (event) => {
     }),
   };
   const command = new PostToConnectionCommand(requestParams);
-  let html = await assembleHTML(event);
+  let html = await assembleHTML(
+    event,
+    "Your email has been verified!",
+    "Votre adresse email a été vérifiée"
+  );
   try {
     await client.send(command);
     const response = {
@@ -40,18 +43,23 @@ export const handler = async (event) => {
     };
     return response;
   } catch (error) {
+    html = await assembleHTML(
+      event,
+      "An error has occurred, please try again",
+      "Une erreur s'est produite, veuillez réessayer"
+    );
     const response = {
-      statusCode: 400,
-      body: JSON.stringify({ error: error }),
+      statusCode: 200,
+      body: html,
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/html",
       },
     };
     return response;
   }
 };
 
-async function assembleHTML(event) {
+async function assembleHTML(event, english_text, french_text) {
   const s3Client = new S3Client({ region: "ca-central-1" });
 
   const file = readFileSync("./template.html", "utf-8");
@@ -59,11 +67,6 @@ async function assembleHTML(event) {
   const headerTemplate = Handlebars.compile(header);
   const footer = readFileSync("./template-footer.html", "utf-8");
   const footerTemplate = Handlebars.compile(footer);
-
-  const connectionId = event.requestContext.connectionId;
-  const endpointURL = process.env.endpoindHttpApi;
-  let endpoint = `${endpointURL}/verify?id=${connectionId}`;
-
   const s3CommandHeaderImage = new GetObjectCommand({
     Bucket: process.env.bucketName,
     Key: "gocheader.png",
@@ -85,8 +88,8 @@ async function assembleHTML(event) {
   return template({
     header: headerTemplate({ imgURL: urlHeaderImage }),
     footer: footerTemplate({ imgURL: urlFooterImage }),
-    english_text: "Your email has been verified!",
-    french_text: "Votre adresse email a été vérifiée",
+    english_text: english_text,
+    french_text: french_text,
   });
 }
 
