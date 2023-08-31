@@ -99,7 +99,6 @@
   </head>
   <body
     style="
-      background-color: #f6f6f6;
       font-family: sans-serif;
       -webkit-font-smoothing: antialiased;
       font-size: 14px;
@@ -110,6 +109,7 @@
       -webkit-text-size-adjust: 100%;
     "
   >
+    {{{header}}}
     <table
       role="presentation"
       border="0"
@@ -120,11 +120,9 @@
         border-collapse: separate;
         mso-table-lspace: 0pt;
         mso-table-rspace: 0pt;
-        background-color: #f6f6f6;
         width: 100%;
       "
       width="100%"
-      bgcolor="#f6f6f6"
     >
       <tr>
         <td
@@ -217,7 +215,7 @@
                             margin-bottom: 15px;
                           "
                         >
-                          Your email has been verified!
+                          {{english_text}}
                         </p>
                         <p
                           style="
@@ -228,7 +226,7 @@
                             margin-bottom: 15px;
                           "
                         >
-                          Votre adresse email a été vérifiée
+                          {{french_text}}
                         </p>
                         <table
                           role="presentation"
@@ -280,5 +278,6 @@
         </td>
       </tr>
     </table>
+    {{{footer}}}
   </body>
 </html>

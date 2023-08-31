@@ -16,7 +16,7 @@ export const handler = async (event) => {
   if (event.body) {
     to = JSON.parse(event?.body).email || "";
   }
-  let email = assembleEmail(event);
+  let email = await assembleEmail(event);
 
   const command = new SendEmailCommand({
     Destination: {
@@ -71,10 +71,16 @@ export const handler = async (event) => {
 
 async function assembleEmail(event) {
   const s3Client = new S3Client({ region: "ca-central-1" });
+
+  const file = readFileSync("./template.html", "utf-8");
+  const header = readFileSync("./template-header.html", "utf-8");
+  const headerTemplate = Handlebars.compile(header);
+  const footer = readFileSync("./template-footer.html", "utf-8");
+  const footerTemplate = Handlebars.compile(footer);
+  
   const connectionId = event.requestContext.connectionId;
   const endpointURL = process.env.endpoindHttpApi;
   let endpoint = `${endpointURL}/verify?id=${connectionId}`;
-  const file = readFileSync("./template.html", "utf-8");
 
   const s3CommandHeaderImage = new GetObjectCommand({
     Bucket: process.env.bucketName,
@@ -84,20 +90,19 @@ async function assembleEmail(event) {
     expiresIn: 3600,
   });
 
-  const s3CommandHeaderTemplate = new GetObjectCommand({
+  const s3CommandFooterImage = new GetObjectCommand({
     Bucket: process.env.bucketName,
-    Key: "template-header.html",
+    Key: "gocwordmark.png",
   });
-  const urlHeaderTemplate = await getSignedUrl(s3Client, s3CommandHeaderTemplate, {
+  const urlFooterImage = await getSignedUrl(s3Client, s3CommandFooterImage, {
     expiresIn: 3600,
   });
 
-  const header = readFileSync(urlHeaderTemplate, "utf-8");
-  const headerTemplate = Handlebars.compile(header);
   const template = Handlebars.compile(file);
 
-  template({
+  return template({
     header: headerTemplate({ imgURL: urlHeaderImage }),
+    footer: footerTemplate({ imgURL: urlFooterImage }),
     endpoint: endpoint,
     verify_text: "Verify / Vérifier",
     english_text: "Click the button to verify your email",
