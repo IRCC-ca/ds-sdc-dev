@@ -5,18 +5,21 @@ import {
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
+import Handlebars from "handlebars";
 
 export const handler = async (event) => {
   const ses = new SESClient({ region: "ca-central-1" });
-  const file = readFileSync("./template.html", "utf-8");
-  const connectionId = event.requestContext.connectionId;
-  const endpointURL = process.env.endpoindHttpApi;
-  let endpoint = `${endpointURL}/verify?id=${connectionId}`;
-  const template = assemble(file, "id");
+
   let to = "";
   if (event.body) {
     to = JSON.parse(event?.body).email || "";
   }
+
+  const connectionId = event.requestContext.connectionId;
+  const endpointURL = process.env.endpoindHttpApi;
+  let endpoint = `${endpointURL}/verify?id=${connectionId}`;  
+  const file = readFileSync("./template.html", "utf-8");
+  const template = Handlebars.compile(file);
   const command = new SendEmailCommand({
     Destination: {
       ToAddresses: [to],
@@ -25,7 +28,12 @@ export const handler = async (event) => {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: template(endpoint),
+          Data: template({
+            endpoint: endpoint,
+            verify_text: "Verify / Vérifier",
+            english_text: "Click the button to verify your email",
+            french_text: "Appuyer sur le bouton pour vérifier votre address",
+          }),
         },
       },
       Subject: { Data: "Test Email" },
@@ -67,9 +75,7 @@ export const handler = async (event) => {
     };
   }
 };
-function assemble(literal, params) {
-  return new Function(params, "return `" + literal + "`;");
-}
+
 async function sendSocketMessage(event, message) {
   const domain = event.requestContext.domainName;
   const stage = event.requestContext.stage;
