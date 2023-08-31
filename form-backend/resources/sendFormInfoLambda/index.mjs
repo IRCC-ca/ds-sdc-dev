@@ -5,18 +5,13 @@ import {
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
-
 export const handler = async (event) => {
   const ses = new SESClient({ region: "ca-central-1" });
-  const file = readFileSync("./template.html", "utf-8");
-  const connectionId = event.requestContext.connectionId;
-  const endpointURL = process.env.endpoindHttpApi;
-  let endpoint = `${endpointURL}/verify?id=${connectionId}`;
   const template = assemble(file, "id");
+  const file = readFileSync("./template.html", "utf-8");
+
   let to = "";
-  if (event.body) {
-    to = JSON.parse(event?.body).email || "";
-  }
+
   const command = new SendEmailCommand({
     Destination: {
       ToAddresses: [to],
@@ -25,34 +20,35 @@ export const handler = async (event) => {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: template(endpoint),
+          Data: template,
         },
       },
       Subject: { Data: "Test Email" },
     },
     Source: "alexandre.grenier@cic.gc.ca",
   });
+
   try {
-    const response = await ses.send(command);
-    console.log(response);
-    sendSocketMessage(
+    const isVerified = await isUserVerified(event);
+    if (isVerified.verified) {
+          sendSocketMessage(
       event,
       JSON.stringify({
         reponse: { ...response },
         ...event,
       })
     );
-    await createUser(event);
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        reponse: { ...response },
-        ...event,
-      }),
-    };
+      const response = await ses.send(command);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          reponse: { ...response },
+          ...event,
+        }),
+      };
+    }
   } catch (error) {
-    console.log(error);
-    await sendSocketMessage(
+      await sendSocketMessage(
       event,
       JSON.stringify({
         message: error,
@@ -61,15 +57,17 @@ export const handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        message: "hello world",
+        message: "rattlesnakes",
         event,
       }),
     };
   }
 };
+
 function assemble(literal, params) {
   return new Function(params, "return `" + literal + "`;");
 }
+
 async function sendSocketMessage(event, message) {
   const domain = event.requestContext.domainName;
   const stage = event.requestContext.stage;
@@ -91,7 +89,7 @@ async function sendSocketMessage(event, message) {
   }
 }
 
-async function createUser(event) {
+async function isUserVerified(event) {
   const client = new LambdaClient();
   const command = new InvokeCommand({
     FunctionName: process.env.crudUserLambda,
@@ -99,7 +97,7 @@ async function createUser(event) {
   });
 
   try {
-    const response = await client.send(command);
+    return await client.send(command);
   } catch (err) {
     console.log(err);
   }

@@ -445,19 +445,10 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
 
   submitForm() {
     const data = localStorage.getItem('requestFormData');
-    this.requestFormService.sendRequestForm(this.email, data).subscribe({
-      next: () => {
-        console.log('email sent');
-      },
-      error: (error: HttpErrorResponse) => {
-        this.handleExceptions(error);
-      }
+    this.subject.next({
+      action: 'sendFormInfoRoute',
+      route: 'sendFormInfoRoute',
+      email: data
     });
-
-    // this.subject.next({
-    //   action: 'sendVerificationEmailRoute',
-    //   route: 'sendVerificationEmailRoute',
-    //   formbody: this.form.value
-    // });
   }
 }
