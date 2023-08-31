@@ -30,7 +30,7 @@ import { TranslateService } from '@app/share/templates/parent-template.module';
 })
 export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'input';
-  formInput = new FormGroup({});
+  formInput: FormGroup = new FormGroup({});
   state: boolean = false;
 
   constructor(
@@ -252,6 +252,12 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   currentConfigId = this.inputConfig.id;
 
   setInputType(value: string) {
+    // If set type to password, automatically select placeholder to False
+    if (value == 'password')
+      this.formInput.patchValue({
+        placeholder: 'False'
+      });
+
     this.inputConfig = {
       ...this.inputConfig,
       label:

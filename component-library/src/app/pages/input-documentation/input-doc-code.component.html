@@ -27,7 +27,14 @@
   </div>
   <ng-container toggles>
     <ng-container *ngFor="let toggle of toggles">
-      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+      <ng-container
+        *ngIf="
+          (inputConfig.type === 'password' && toggle.id !== 'placeholder') ||
+          inputConfig.type !== 'password'
+        "
+      >
+        <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+      </ng-container>
     </ng-container>
     <ng-container *ngFor="let checkbox of checkboxes">
       <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
