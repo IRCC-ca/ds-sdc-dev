@@ -6,31 +6,18 @@ import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import Handlebars from "handlebars";
 
 export const handler = async (event) => {
   const ses = new SESClient({ region: "ca-central-1" });
-  const s3Client = new S3Client({ region: "ca-central-1" });
-
-  const s3Command = new GetObjectCommand({
-    Bucket: process.env.bucketName,
-    Key: "gocheader.png",
-  });
-  const response = await s3Client.send(s3Command);
-
-  console.log("Object content:", response);
 
   let to = "";
   if (event.body) {
     to = JSON.parse(event?.body).email || "";
   }
+  let email = assembleEmail(event);
 
-  const connectionId = event.requestContext.connectionId;
-  const endpointURL = process.env.endpoindHttpApi;
-  let endpoint = `${endpointURL}/verify?id=${connectionId}`;
-  const file = readFileSync("./template.html", "utf-8");
-  const header = readFileSync("./template-header.html", "utf-8");
-  const template = Handlebars.compile(file);
   const command = new SendEmailCommand({
     Destination: {
       ToAddresses: [to],
@@ -39,13 +26,7 @@ export const handler = async (event) => {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: template({
-            header: header,
-            endpoint: endpoint,
-            verify_text: "Verify / Vérifier",
-            english_text: "Click the button to verify your email",
-            french_text: "Appuyer sur le bouton pour vérifier votre address",
-          }),
+          Data: email,
         },
       },
       Subject: { Data: "Test Email" },
@@ -87,6 +68,42 @@ export const handler = async (event) => {
     };
   }
 };
+
+async function assembleEmail(event) {
+  const s3Client = new S3Client({ region: "ca-central-1" });
+  const connectionId = event.requestContext.connectionId;
+  const endpointURL = process.env.endpoindHttpApi;
+  let endpoint = `${endpointURL}/verify?id=${connectionId}`;
+  const file = readFileSync("./template.html", "utf-8");
+
+  const s3CommandHeaderImage = new GetObjectCommand({
+    Bucket: process.env.bucketName,
+    Key: "gocheader.png",
+  });
+  const urlHeaderImage = await getSignedUrl(s3Client, s3CommandHeaderImage, {
+    expiresIn: 3600,
+  });
+
+  const s3CommandHeaderTemplate = new GetObjectCommand({
+    Bucket: process.env.bucketName,
+    Key: "template-header.html",
+  });
+  const urlHeaderTemplate = await getSignedUrl(s3Client, s3CommandHeaderTemplate, {
+    expiresIn: 3600,
+  });
+
+  const header = readFileSync(urlHeaderTemplate, "utf-8");
+  const headerTemplate = Handlebars.compile(header);
+  const template = Handlebars.compile(file);
+
+  template({
+    header: headerTemplate({ imgURL: urlHeaderImage }),
+    endpoint: endpoint,
+    verify_text: "Verify / Vérifier",
+    english_text: "Click the button to verify your email",
+    french_text: "Appuyer sur le bouton pour vérifier votre address",
+  });
+}
 
 async function sendSocketMessage(event, message) {
   const domain = event.requestContext.domainName;

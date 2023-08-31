@@ -18,23 +18,16 @@ export class FormBackendStack extends cdk.Stack {
     super(scope, id, props);
 
     // Create an S3 bucket
-    const bucket = new s3.Bucket(this, "assets");
-    // bucket.addToResourcePolicy(
-    //   new PolicyStatement({
-    //     resources: [bucket.arnForObjects("*")],
-    //     actions: ["s3:List*", "s3:Get*"],
-    //     principals: [new cdk.Anyone()],
-    //   })
-    // );
-    const bucketPolicy = new iam.PolicyStatement({
+    const bucket = new s3.Bucket(this, "assets", {
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ACLS,
+      accessControl: s3.BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
+    });
+    const bucketPolicyStatement = new iam.PolicyStatement({
       actions: ["s3:GetObject"],
-      resources: [bucket.arnForObjects("*")],
-      effect: iam.Effect.ALLOW,
+      resources: [`${bucket.bucketArn}/*`],
       principals: [new iam.ArnPrincipal("*")],
     });
-
-    // Attach the bucket policy to the bucket
-    bucket.addToResourcePolicy(bucketPolicy);
+    bucket.addToResourcePolicy(bucketPolicyStatement);
 
     // Upload a local folder to the S3 bucket
     new s3Deployment.BucketDeployment(this, "UploadFiles", {
