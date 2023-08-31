@@ -7,12 +7,23 @@ import * as integrations from "@aws-cdk/aws-apigatewayv2-integrations-alpha";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
+import * as s3 from "aws-cdk-lib/aws-s3";
+import * as s3Deployment from "aws-cdk-lib/aws-s3-deployment";
 
 import * as stepfunctions from "aws-cdk-lib/aws-stepfunctions";
 import * as tasks from "aws-cdk-lib/aws-stepfunctions-tasks";
 export class FormBackendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+
+    // Create an S3 bucket
+    const bucket = new s3.Bucket(this, "assets");
+
+    // Upload a local folder to the S3 bucket
+    new s3Deployment.BucketDeployment(this, "UploadFiles", {
+      sources: [s3Deployment.Source.asset("assets")],
+      destinationBucket: bucket,
+    });
 
     //Policies
     const sesPolicyStatement = new iam.PolicyStatement({
@@ -200,6 +211,7 @@ export class FormBackendStack extends cdk.Stack {
       "crudUserLambda",
       crudUserLambda.functionName
     );
+    sendVerificationEmailLambda.addEnvironment("bucketName", bucket.bucketName);
 
     verificationClickEventLambda.addEnvironment(
       "endpoindHttpApi",

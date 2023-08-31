@@ -5,9 +5,23 @@ import {
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
+import * as AWS from "aws-sdk";
 import Handlebars from "handlebars";
 
 export const handler = async (event) => {
+  const bucketName = process.env.bucketName;
+  const key = "gocheader.png";
+  const s3 = new AWS.S3();
+  const params = {
+    Bucket: bucketName,
+    Key: key,
+  };
+
+  const data = await s3.getObject(params).promise();
+  const content = data.Body.toString("utf-8");
+
+  console.log("Object content:", content);
+
   const ses = new SESClient({ region: "ca-central-1" });
 
   let to = "";
@@ -17,8 +31,9 @@ export const handler = async (event) => {
 
   const connectionId = event.requestContext.connectionId;
   const endpointURL = process.env.endpoindHttpApi;
-  let endpoint = `${endpointURL}/verify?id=${connectionId}`;  
+  let endpoint = `${endpointURL}/verify?id=${connectionId}`;
   const file = readFileSync("./template.html", "utf-8");
+  const header = readFileSync("./template-header.html", "utf-8");
   const template = Handlebars.compile(file);
   const command = new SendEmailCommand({
     Destination: {
@@ -29,6 +44,7 @@ export const handler = async (event) => {
         Html: {
           Charset: "UTF-8",
           Data: template({
+            header: header,
             endpoint: endpoint,
             verify_text: "Verify / Vérifier",
             english_text: "Click the button to verify your email",
