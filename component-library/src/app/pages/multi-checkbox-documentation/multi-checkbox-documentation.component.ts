@@ -56,7 +56,7 @@ export class MultiCheckboxDocumentationComponent
         id: 'mushrooms',
         formGroup: this.form,
         inlineLabel: 'Mushrooms',
-        size: 'small'
+        size: 'small',
       },
       {
         id: 'onions',

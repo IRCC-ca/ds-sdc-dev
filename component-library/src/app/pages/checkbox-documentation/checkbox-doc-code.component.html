@@ -1,1 +1,72 @@
-<p>checkbox-doc-code works!</p>
+<app-interactive-demo>
+  <ircc-cl-lib-tabs
+    tabs
+    (valueChange)="setCheckboxType($event)"
+    [config]="demoTabsConfig"
+  >
+  </ircc-cl-lib-tabs>
+  <div
+    component
+    class="input-container"
+    #input
+  >
+    <ng-container
+      [ngSwitch]="errorState"
+      *ngIf="checkbox_type === 'single'"
+    >
+      <ircc-cl-lib-checkbox
+        *ngSwitchDefault
+        [config]="checkboxConfig"
+      ></ircc-cl-lib-checkbox>
+      <ircc-cl-lib-checkbox
+        *ngSwitchCase="'Single'"
+        [config]="checkboxConfigSingleError"
+      ></ircc-cl-lib-checkbox>
+      <ircc-cl-lib-checkbox
+        *ngSwitchCase="'Multiple'"
+        [config]="checkboxConfigMultiErrors"
+      ></ircc-cl-lib-checkbox>
+    </ng-container>
+
+    <ng-container *ngIf="checkbox_type === 'group'">
+      <p>Group checkbox not implemented yet</p>
+    </ng-container>
+
+    <ng-container
+      *ngIf="checkbox_type === 'multi'"
+      [ngSwitch]="errorState"
+    >
+      <ircc-cl-lib-multi-checkbox
+        [config]="multiCheckboxConfig"
+        *ngSwitchDefault
+      ></ircc-cl-lib-multi-checkbox>
+    </ng-container>
+  </div>
+  <ng-container
+    toggles
+    *ngIf="checkbox_type === 'single'"
+  >
+    <ng-container *ngFor="let toggle of togglesSingleCheckbox">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxesSingle">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+  <ng-container banner>
+    <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
+  </ng-container>
+
+  <ng-container
+    toggles
+    *ngIf="checkbox_type === 'multi'"
+  >
+    <ng-container *ngFor="let toggle of togglesMultiCheckbox">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxesMulti">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+</app-interactive-demo>
+<!-- <app-code-viewer [config]="codeViewConfig"></app-code-viewer> -->
