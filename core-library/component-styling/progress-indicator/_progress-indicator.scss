@@ -107,14 +107,15 @@
     }
   }
 
-  // ::ng-deep {
-  //   div.main-container div.container-plus-line nav.progress-nav {
-  //     > button {
-  //       padding: 0;
-  //       background-color: red;
-  //     }
-  //   }
-  // }
+  > div.main-container {
+    > div.container-plus-line {
+      > nav.progress-nav {
+        > button.container {
+          padding: 0;
+        }
+      }
+    }
+  }
 
   &.container,
   .container {
