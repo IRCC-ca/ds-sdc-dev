@@ -231,6 +231,11 @@ export class FormBackendStack extends cdk.Stack {
       webSocketApi.apiEndpoint
     );
 
+    sendFormInfoLambda.addEnvironment(
+      "crudUserLambda",
+      crudUserLambda.functionName
+    );
+
     crudUserLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
     crudUserLambda.addEnvironment(
       "endpoindwebSocketApi",
