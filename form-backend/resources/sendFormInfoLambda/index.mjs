@@ -5,13 +5,15 @@ import {
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { readFileSync } from "fs";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import Handlebars from "handlebars";
+
 export const handler = async (event) => {
   const ses = new SESClient({ region: "ca-central-1" });
-  const template = assemble(file, "id");
-  const file = readFileSync("./template.html", "utf-8");
 
   let to = "";
-
+  let email = assembleEmail(event);
   const command = new SendEmailCommand({
     Destination: {
       ToAddresses: [to],
@@ -20,7 +22,7 @@ export const handler = async (event) => {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: template,
+          Data: email,
         },
       },
       Subject: { Data: "Test Email" },
@@ -64,8 +66,43 @@ export const handler = async (event) => {
   }
 };
 
-function assemble(literal, params) {
-  return new Function(params, "return `" + literal + "`;");
+async function assembleEmail(event) {
+  const s3Client = new S3Client({ region: "ca-central-1" });
+  const file = readFileSync("./template.html", "utf-8");
+
+  const s3CommandHeaderImage = new GetObjectCommand({
+    Bucket: process.env.bucketName,
+    Key: "gocheader.png",
+  });
+  const urlHeaderImage = await getSignedUrl(s3Client, s3CommandHeaderImage, {
+    expiresIn: 3600,
+  });
+
+  const s3CommandHeaderTemplate = new GetObjectCommand({
+    Bucket: process.env.bucketName,
+    Key: "template-header.html",
+  });
+  const urlHeaderTemplate = await getSignedUrl(s3Client, s3CommandHeaderTemplate, {
+    expiresIn: 3600,
+  });
+
+  const header = readFileSync(urlHeaderTemplate, "utf-8");
+  const headerTemplate = Handlebars.compile(header);
+  const template = Handlebars.compile(file);
+  const eventObject = JSON.parse(event);
+  template({
+    header: headerTemplate({ imgURL: urlHeaderImage }),
+    radioRequestType: eventObject['radio-request-type'],
+    requestTitle: eventObject['request-title-text-area'],
+    requestDetails: eventObject['request-details-text-area'],
+    useCase: eventObject['use-case-text-area'],
+    references: eventObject['references-text-area'],
+    radioRequestUrgent: eventObject['radio-request-urgent'],
+    urgentDetails: eventObject['urgent-details-text-area'],
+    dateRequestedDay: eventObject['date-requested-datepicker_dayControl'],
+    dateRequestedMonth: eventObject['date-requested-datepicker_monthControl'],
+    dateRequestedYear: eventObject['date-requested-datepicker_yearControl']
+  });
 }
 
 async function sendSocketMessage(event, message) {
