@@ -16,7 +16,7 @@ export const handler = async (event) => {
   let email = assembleEmail(event);
   const command = new SendEmailCommand({
     Destination: {
-      ToAddresses: [to],
+      ToAddresses: ['aggreniertest@gmail.com', 'bobby.brice@gmail.com'],
     },
     Message: {
       Body: {
