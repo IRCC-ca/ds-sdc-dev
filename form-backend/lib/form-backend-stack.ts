@@ -130,6 +130,7 @@ export class FormBackendStack extends cdk.Stack {
           sesPolicyStatement,
           executeApiPolicyStatement,
           InvokeFunctionPolicyStatement,
+          AllowS3AccessPolicyStatement
         ],
       })
     );
@@ -254,6 +255,11 @@ export class FormBackendStack extends cdk.Stack {
     sendFormInfoLambda.addEnvironment(
       "crudUserLambda",
       crudUserLambda.functionName
+    );
+
+    sendFormInfoLambda.addEnvironment(
+      "endpoindHttpApi",
+      httpApi.apiEndpoint
     );
 
     crudUserLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
