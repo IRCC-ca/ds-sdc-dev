@@ -10,13 +10,16 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import Handlebars from "handlebars";
 
 export const handler = async (event) => {
+  event.requestContext.routeKey = "isUserVerifiedRoute";
+
   const ses = new SESClient({ region: "ca-central-1" });
 
   let to = "";
-  let email = assembleEmail(event);
+  let email = await assembleEmail(event);
+  console.log(email);
   const command = new SendEmailCommand({
     Destination: {
-      ToAddresses: ['aggreniertest@gmail.com', 'bobby.brice@gmail.com'],
+      ToAddresses: ["aggreniertest@gmail.com", "bobby.brice@gmail.com"],
     },
     Message: {
       Body: {
@@ -32,15 +35,15 @@ export const handler = async (event) => {
 
   try {
     const isVerified = await isUserVerified(event);
-    if (isVerified.verified) {
-          sendSocketMessage(
-      event,
-      JSON.stringify({
-        reponse: { ...response },
-        ...event,
-      })
-    );
+    if (isVerified) {
       const response = await ses.send(command);
+      sendSocketMessage(
+        event,
+        JSON.stringify({
+          reponse: { ...response },
+          ...event,
+        })
+      );
       return {
         statusCode: 200,
         body: JSON.stringify({
@@ -50,7 +53,7 @@ export const handler = async (event) => {
       };
     }
   } catch (error) {
-      await sendSocketMessage(
+    await sendSocketMessage(
       event,
       JSON.stringify({
         message: error,
@@ -69,6 +72,10 @@ export const handler = async (event) => {
 async function assembleEmail(event) {
   const s3Client = new S3Client({ region: "ca-central-1" });
   const file = readFileSync("./template.html", "utf-8");
+  const header = readFileSync("./template-header.html", "utf-8");
+  const headerTemplate = Handlebars.compile(header);
+  const footer = readFileSync("./template-footer.html", "utf-8");
+  const footerTemplate = Handlebars.compile(footer);
 
   const s3CommandHeaderImage = new GetObjectCommand({
     Bucket: process.env.bucketName,
@@ -82,26 +89,30 @@ async function assembleEmail(event) {
     Bucket: process.env.bucketName,
     Key: "template-header.html",
   });
-  const urlHeaderTemplate = await getSignedUrl(s3Client, s3CommandHeaderTemplate, {
-    expiresIn: 3600,
-  });
+  const urlHeaderTemplate = await getSignedUrl(
+    s3Client,
+    s3CommandHeaderTemplate,
+    {
+      expiresIn: 3600,
+    }
+  );
 
-  const header = readFileSync(urlHeaderTemplate, "utf-8");
-  const headerTemplate = Handlebars.compile(header);
   const template = Handlebars.compile(file);
-  const eventObject = JSON.parse(event);
-  template({
+  const eventObject = JSON.parse(event.body);
+  const formObject = JSON.parse(eventObject.email);
+
+  return template({
     header: headerTemplate({ imgURL: urlHeaderImage }),
-    radioRequestType: eventObject['radio-request-type'],
-    requestTitle: eventObject['request-title-text-area'],
-    requestDetails: eventObject['request-details-text-area'],
-    useCase: eventObject['use-case-text-area'],
-    references: eventObject['references-text-area'],
-    radioRequestUrgent: eventObject['radio-request-urgent'],
-    urgentDetails: eventObject['urgent-details-text-area'],
-    dateRequestedDay: eventObject['date-requested-datepicker_dayControl'],
-    dateRequestedMonth: eventObject['date-requested-datepicker_monthControl'],
-    dateRequestedYear: eventObject['date-requested-datepicker_yearControl']
+    radioRequestType: formObject["radio-request-type"],
+    requestTitle: formObject["request-title-text-area"],
+    requestDetails: formObject["request-details-text-area"],
+    useCase: formObject["use-case-text-area"],
+    references: formObject["references-text-area"],
+    radioRequestUrgent: formObject["radio-request-urgent"],
+    urgentDetails: formObject["urgent-details-text-area"],
+    dateRequestedDay: formObject["date-requested-datepicker_dayControl"],
+    dateRequestedMonth: formObject["date-requested-datepicker_monthControl"],
+    dateRequestedYear: formObject["date-requested-datepicker_yearControl"],
   });
 }
 
@@ -134,7 +145,10 @@ async function isUserVerified(event) {
   });
 
   try {
-    return await client.send(command);
+    let promisewait = await client.send(command);
+    const textDecoder = new TextDecoder("utf-8");
+    const decodedString = textDecoder.decode(promisewait.Payload);
+    return JSON.parse(JSON.parse(decodedString).body).verified;
   } catch (err) {
     console.log(err);
   }

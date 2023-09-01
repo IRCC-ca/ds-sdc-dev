@@ -82,7 +82,7 @@ export const handler = async (event, context) => {
           new GetCommand({
             TableName: tableName,
             Key: {
-              id: connectionId
+              id: connectionId,
             },
           })
         );
