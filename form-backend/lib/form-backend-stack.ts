@@ -21,6 +21,7 @@ export class FormBackendStack extends cdk.Stack {
     const bucket = new s3.Bucket(this, "assets", {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ACLS,
       accessControl: s3.BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
     const bucketPolicyStatement = new iam.PolicyStatement({
       actions: ["s3:GetObject"],
@@ -130,7 +131,7 @@ export class FormBackendStack extends cdk.Stack {
           sesPolicyStatement,
           executeApiPolicyStatement,
           InvokeFunctionPolicyStatement,
-          AllowS3AccessPolicyStatement
+          AllowS3AccessPolicyStatement,
         ],
       })
     );
@@ -165,11 +166,9 @@ export class FormBackendStack extends cdk.Stack {
     //     }
     //   );
 
-    //APIGateways
-    const webSocketApi = new apigateway.WebSocketApi(
-      this,
-      "DesignSystem-SocketAPI"
-    );
+    //APIGateways\
+    let webSocketApiName = `DesignSystem-SocketAPI-${this.stackName}`;
+    const webSocketApi = new apigateway.WebSocketApi(this, webSocketApiName);
     new apigateway.WebSocketStage(this, "prodStage", {
       webSocketApi,
       stageName: "production",
@@ -189,7 +188,8 @@ export class FormBackendStack extends cdk.Stack {
       ),
     });
 
-    const httpApi = new apigateway.HttpApi(this, "DesignSystem-HTTPAPI");
+    let httpApiName = `DesignSystem-HTTPAPI-${this.stackName}`;
+    const httpApi = new apigateway.HttpApi(this, httpApiName);
     httpApi.addRoutes({
       path: "/verify",
       methods: [apigateway.HttpMethod.GET],
@@ -207,12 +207,13 @@ export class FormBackendStack extends cdk.Stack {
     };
 
     // Create the DynamoDB table
-    const table = new dynamodb.Table(this, "DSRequestFormTable", {
+    let tableName = `DSRequestFormTable-${this.stackName}`;
+    const table = new dynamodb.Table(this, tableName, {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey,
-      removalPolicy: cdk.RemovalPolicy.RETAIN,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
       encryption: dynamodb.TableEncryption.AWS_MANAGED,
-      tableName: "DSRequestFormTable",
+      tableName: tableName,
     });
 
     //Add Endpoints to the Lambdas
@@ -257,15 +258,9 @@ export class FormBackendStack extends cdk.Stack {
       crudUserLambda.functionName
     );
 
-    sendFormInfoLambda.addEnvironment(
-      "endpoindHttpApi",
-      httpApi.apiEndpoint
-    );
+    sendFormInfoLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
 
-    sendFormInfoLambda.addEnvironment(
-      "bucketName",
-      bucket.bucketName
-    );
+    sendFormInfoLambda.addEnvironment("bucketName", bucket.bucketName);
 
     crudUserLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
     crudUserLambda.addEnvironment(
