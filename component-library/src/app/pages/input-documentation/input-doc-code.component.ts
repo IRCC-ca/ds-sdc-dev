@@ -30,7 +30,7 @@ import { TranslateService } from '@app/share/templates/parent-template.module';
 })
 export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'input';
-  formInput = new FormGroup({});
+  formInput: FormGroup = new FormGroup({});
   state: boolean = false;
 
   constructor(
@@ -73,6 +73,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       }
     ]
   };
+
+  inputConfigRequired: boolean = false;
 
   toggles: IRadioInputComponentConfig[] = [
     {
@@ -250,19 +252,34 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   currentConfigId = this.inputConfig.id;
 
   setInputType(value: string) {
+    // If set type to password, automatically select placeholder to False
+    if (value == 'password')
+      this.formInput.patchValue({
+        placeholder: 'False'
+      });
+
     this.inputConfig = {
       ...this.inputConfig,
-      label: value == 'password' ? 'Password' : 'Label Text',
+      label:
+        value == 'password'
+          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
+          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigSingle = {
       ...this.inputConfigSingle,
-      label: value == 'password' ? 'Password' : 'Label Text',
+      label:
+        value == 'password'
+          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
+          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigMulti = {
       ...this.inputConfigMulti,
-      label: value == 'password' ? 'Password' : 'Label Text',
+      label:
+        value == 'password'
+          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
+          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
 
@@ -326,6 +343,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.toggleDisabled(value['state']);
         this.state = value['state'];
       }
+      if (value['required'])
+        this.inputConfigRequired = value['required'] === 'True';
       this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
@@ -341,7 +360,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           ...this.inputConfigSingle,
           size: value['size'].toLowerCase(),
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: value['required'] === 'True',
+          required: this.inputConfigRequired,
+          label: this.parseRequiredLabel(
+            this.inputConfigSingle.label as string,
+            this.inputConfigRequired
+          ),
           desc:
             value['desc'] === 'True' ? 'Description line of text' : undefined,
           placeholder:
@@ -353,7 +376,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           ...this.inputConfigMulti,
           size: value['size'].toLowerCase(),
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: value['required'] === 'True',
+          required: this.inputConfigRequired,
+          label: this.parseRequiredLabel(
+            this.inputConfigMulti.label as string,
+            this.inputConfigRequired
+          ),
           desc:
             value['desc'] === 'True' ? 'Description line of text' : undefined,
           placeholder:
@@ -365,7 +392,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           ...this.inputConfig,
           size: value['size'].toLowerCase(),
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: value['required'] === 'True',
+          required: this.inputConfigRequired,
+          label: this.parseRequiredLabel(
+            this.inputConfig.label as string,
+            this.inputConfigRequired
+          ),
           desc:
             value['desc'] === 'True' ? 'Description line of text' : undefined,
           placeholder:
@@ -478,5 +509,25 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           this.inputConfigCodeView
         )}`;
     }
+  }
+
+  private parseRequiredLabel(
+    label: string,
+    required: string | boolean
+  ): string {
+    const requiredLabel = ' (required)';
+    if (
+      (required === 'True' || required === true) &&
+      !label.includes(requiredLabel)
+    ) {
+      label += requiredLabel;
+    }
+    if (
+      (required === 'False' || required === false) &&
+      label.endsWith(requiredLabel)
+    ) {
+      label = label.substring(0, label.length - requiredLabel.length);
+    }
+    return label;
   }
 }
