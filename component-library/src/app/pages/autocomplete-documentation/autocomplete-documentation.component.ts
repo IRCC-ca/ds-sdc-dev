@@ -30,7 +30,7 @@ export class AutocompleteDocumentationComponent
   currentLanguage: string = '';
   altLangLink = 'autocomplete';
   form: FormGroup = new FormGroup({});
-  form_interactive_button = new FormGroup({});
+  form_interactive_button: FormGroup = new FormGroup({});
 
   testArrays = TestArrays;
 
@@ -273,6 +273,13 @@ export class AutocompleteDocumentationComponent
           new FormControl(toggle.options[0].value)
         );
       }
+    });
+
+    // Set initial values for config toggles
+    this.form_interactive_button.patchValue({
+      hint: 'False',
+      error: 'False',
+      description: 'False'
     });
 
     this.form_interactive_button
