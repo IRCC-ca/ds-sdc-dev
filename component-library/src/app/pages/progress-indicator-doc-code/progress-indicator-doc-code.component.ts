@@ -33,7 +33,6 @@ export class ProgressIndicatorDocCodeComponent
   currentLanguage: string = '';
   altLangLink = 'progressIndicator';
   formProgressIndicator: FormGroup = new FormGroup({});
-  isMobile = false;
 
   progressIndicatorConfig: IProgressIndicatorConfig = {
     id: 'progress_indicator',
@@ -69,7 +68,6 @@ export class ProgressIndicatorDocCodeComponent
         }
       }
     ]
-    // gated: false
   };
 
   toggles: IRadioInputComponentConfig[] = [
@@ -160,7 +158,6 @@ export class ProgressIndicatorDocCodeComponent
     size: this.progressIndicatorConfig.size,
     orientation: this.progressIndicatorConfig.orientation,
     steps: this.progressIndicatorConfig.steps
-    // gated: this.progressIndicatorConfig.gated
   };
 
   codeViewConfig: ICodeViewerConfig = {
@@ -192,23 +189,29 @@ export class ProgressIndicatorDocCodeComponent
     private slugify: SlugifyPipe
   ) {
     this.currentLanguage = translate.currentLang;
-    // this.isMobile = window.innerWidth <= 360;
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  handleResize(e: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.toggles.forEach(toggle => {
+        if (toggle.id === 'orientation') {
+          if (window.innerWidth <= 768) {
+            this.progressIndicatorConfig.orientation = 'vertical';
+            this.formProgressIndicator.patchValue({
+              orientation: 'vertical'
+            })
+          } else {
+            this.progressIndicatorConfig.orientation = 'horizontal';
+            this.formProgressIndicator.patchValue({
+              orientation: 'horizontal'
+            })
+          }
+        }
+      })
+    }
   }
 
-  @HostListener('window:resize', ['$event'])
-  // handleResize(e: any) {
-  //   if (isPlatformBrowser(this.platformId)) {
-  //     this.isMobile = window.innerWidth <= 768;
-  //     this.progressIndicatorConfig.orientation = 'vertical';
-  //     this.toggles.forEach(toggle => {
-  //       if (toggle.id === 'orientation') {
-  //         toggle.options?.forEach(option => {
-  //           option.value = 'vertical'
-  //         });
-  //       }
-  //     })
-  //   }
-  // }
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
@@ -224,14 +227,7 @@ export class ProgressIndicatorDocCodeComponent
           new FormControl(toggle.options[1].value)
         );
       }
-      if (window.innerWidth <= 768 && toggle.id === 'orientation') {
-        this.progressIndicatorConfig.orientation = 'vertical';
-        toggle.options?.forEach((option) => {
-          option.value = 'vertical';
-        });
-      }
     });
-
     this.formProgressIndicator.patchValue({
       size: 'Small',
       orientation: 'horizontal',
@@ -241,7 +237,6 @@ export class ProgressIndicatorDocCodeComponent
     });
 
     this.formProgressIndicator.valueChanges.subscribe((value: any) => {
-      // if (value['gated'] !== undefined) this.toggleGated(value['gated']);
       this.progressIndicatorConfig = this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
@@ -252,20 +247,7 @@ export class ProgressIndicatorDocCodeComponent
       ...this.progressIndicatorConfig,
       size: value['size'].toLowerCase(),
       orientation: value['orientation']
-      // gated: value['gated'] === 'Flase',
-      // step3: value['step3'] === 'True',
-      // step4: value['step4'] === 'True'
     };
-  }
-
-  private toggleGated(gated: boolean) {
-    this.progressIndicatorConfig.steps?.forEach((step) => {
-      if (gated && step.tagConfig.type === 'success') {
-        step.tagConfig.type = 'primary';
-      } else if (gated && step.tagConfig.type !== 'locked') {
-        step.tagConfig.type = 'locked';
-      }
-    });
   }
 
   private parseCodeViewConfig() {
