@@ -190,25 +190,25 @@ export class ProgressIndicatorDocCodeComponent
   ) {
     this.currentLanguage = translate.currentLang;
   }
-  
+
   @HostListener('window:resize', ['$event'])
   handleResize(e: any) {
     if (isPlatformBrowser(this.platformId)) {
-      this.toggles.forEach(toggle => {
+      this.toggles.forEach((toggle) => {
         if (toggle.id === 'orientation') {
           if (window.innerWidth <= 768) {
             this.progressIndicatorConfig.orientation = 'vertical';
             this.formProgressIndicator.patchValue({
               orientation: 'vertical'
-            })
+            });
           } else {
             this.progressIndicatorConfig.orientation = 'horizontal';
             this.formProgressIndicator.patchValue({
               orientation: 'horizontal'
-            })
+            });
           }
         }
-      })
+      });
     }
   }
 
