@@ -138,6 +138,7 @@ export class InputComponent
       color: 'var(--neutral-text)'
     }
   };
+  buttonAutoCompleteClearClicked: boolean = false;
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -244,7 +245,13 @@ export class InputComponent
   onTouchedLabel() {
     this.touched = true;
     this.getAriaErrorText();
-    this.focusEvent.emit(false);
+    setTimeout(() => {
+      // Do not emit blur event after clicking clear button
+      if (!this.buttonAutoCompleteClearClicked) {
+        this.focusEvent.emit(false);
+      }
+      this.buttonAutoCompleteClearClicked = false;
+    }, 100);
   }
 
   onFocus() {
@@ -327,6 +334,7 @@ export class InputComponent
   }
 
   public clearvalue() {
+    this.buttonAutoCompleteClearClicked = true;
     this.config.formGroup.controls[this.config.id].setValue('');
     this.focusEvent.emit(true);
   }
