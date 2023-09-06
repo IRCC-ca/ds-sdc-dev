@@ -48,7 +48,7 @@ import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-docu
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxDocCodeComponent } from '@app/pages/checkbox-documentation/checkbox-doc-code.component';
 import { CheckboxDocumentationComponent } from '@app/pages/checkbox-documentation/checkbox-documentation.component';
-
+import { MultiCheckboxDocComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-doc.component';
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -87,7 +87,8 @@ import { CheckboxDocumentationComponent } from '@app/pages/checkbox-documentatio
     SpinnerDocumentationComponent,
     AutocompleteDocumentationComponent,
     CheckboxDocCodeComponent,
-    CheckboxDocumentationComponent
+    CheckboxDocumentationComponent,
+    MultiCheckboxDocComponent
   ],
   imports: [
     CommonModule,
