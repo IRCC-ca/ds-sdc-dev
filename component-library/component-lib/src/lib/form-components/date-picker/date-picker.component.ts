@@ -336,10 +336,9 @@ export class DatePickerComponent implements OnInit {
         break;
       default:
         this.setDisabledState(false);
-    }    //Get the error text when the formControl value changes 
+    }
     
     this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
-      // this.getAriaErrorText();
       if(change !== this.currentStatus){
         this.currentStatus = change;
         switch (this.currentStatus) {
@@ -546,22 +545,22 @@ export class DatePickerComponent implements OnInit {
     return false;
   }
 
-  datePickerTouchedOrInvalid(): boolean {
-    let datePickerState: boolean | undefined = false;
+  // datePickerTouchedOrInvalid(): boolean {
+  //   let datePickerState: boolean | undefined = false;
 
-    datePickerState =
-      (this.config.formGroup.get(this.dropDownConfigs.year.id)?.touched &&
-        this.config.formGroup.get(this.dropDownConfigs.year.id)?.invalid) ||
-      (this.config.formGroup.get(this.dropDownConfigs.month.id)?.touched &&
-        this.config.formGroup.get(this.dropDownConfigs.month.id)?.invalid) ||
-      (this.config.formGroup.get(this.dropDownConfigs.day.id)?.touched &&
-        this.config.formGroup.get(this.dropDownConfigs.day.id)?.invalid);
+  //   datePickerState =
+  //     (this.config.formGroup.get(this.dropDownConfigs.year.id)?.touched &&
+  //       this.config.formGroup.get(this.dropDownConfigs.year.id)?.invalid) ||
+  //     (this.config.formGroup.get(this.dropDownConfigs.month.id)?.touched &&
+  //       this.config.formGroup.get(this.dropDownConfigs.month.id)?.invalid) ||
+  //     (this.config.formGroup.get(this.dropDownConfigs.day.id)?.touched &&
+  //       this.config.formGroup.get(this.dropDownConfigs.day.id)?.invalid);
 
-    this.touched = datePickerState || false;
-    this.getAriaOverride(datePickerState);
-    return datePickerState ?? false;
-    //  return this.config.formGroup?.touched && this.config.formGroup?.invalid;
-  }
+  //   this.touched = datePickerState || false;
+  //   this.getAriaOverride(datePickerState);
+  //   return datePickerState ?? false;
+  //   //  return this.config.formGroup?.touched && this.config.formGroup?.invalid;
+  // }
 
   /**
    * Override the aria labels for each of the select fields in the date picker
@@ -657,7 +656,7 @@ export class DatePickerComponent implements OnInit {
     return errors;
   }
 
-  onTouched = () => {
+  onTouch = () => {
     if (this.formGroup?.get(this.config.id)?.touched === false) {
       this.formGroup?.get(this.config.id)?.markAsTouched();
     }
@@ -668,14 +667,9 @@ export class DatePickerComponent implements OnInit {
 
   changeValue(event: any){
     this.writeValue(event.srcElement.value);
-    this.onTouched();
+    this.onTouch();
   }
 
-  // writeValue(obj: any): void {
-  //   if (obj) {
-  //     this.config.formGroup.setValue(obj, { emitEvent: false });
-  //   }
-  // }
   writeValue(value: string): void {
     this.onChange(value);
   }
@@ -683,22 +677,16 @@ export class DatePickerComponent implements OnInit {
     this.config.formGroup.valueChanges.subscribe(fn);
   }
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
+    this.onTouch = fn;
   }
   /**
    * Apply a disabled state
    */
    setDisabledState(isDisabled: boolean) {
-    if(isDisabled){
+    if(isDisabled) {
       this.formGroup?.get(this.config.id)?.disable();
-    }else{
+    } else {
       this.formGroup?.get(this.config.id)?.enable();
     }
   }
-  // setDisabledState?(isDisabled: boolean): void {
-  //   isDisabled
-  //     ? this.config.formGroup.disable()
-  //     : this.config.formGroup.enable();
-  // }
-  // private onTouched: () => void = () => {};
 }
