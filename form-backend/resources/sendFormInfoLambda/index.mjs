@@ -11,7 +11,8 @@ import Handlebars from "handlebars";
 
 export const handler = async (event) => {
   event.requestContext.routeKey = "isUserVerifiedRoute";
-
+  console.log("initial event ", event);
+  const connectionId = event.requestContext.connectionId
   const ses = new SESClient({ region: "ca-central-1" });
 
   let to = "";
@@ -39,13 +40,10 @@ try {
     const response = await ses.send(command);
     // Check if the email was sent successfully
     if (response.$metadata.httpStatusCode === 200) {
-    console.log("res", response)
-      const connectionId = event.requestContext.connectionId;
-      // Check the response and decide whether to call the deletion lambda
-      if (response.body === JSON.stringify({ message: "formSent" })) {
+        console.log("res", response)
         // Call the deletion lambda
         await deleteUserData(connectionId);
-      }
+
 
       return {
         statusCode: 200,
