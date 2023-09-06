@@ -131,7 +131,7 @@ async function isUserVerified(event) {
 async function deleteUserData(connectionId) {
   const client = new LambdaClient();
   const payload = {
-    connectionId: connectionId,
+    id: connectionId,
     routeKey: 'deleteUserRoute'
   };
 
