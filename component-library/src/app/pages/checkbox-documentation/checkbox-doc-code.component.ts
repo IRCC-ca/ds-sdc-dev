@@ -43,7 +43,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     disableFocus: false,
     inlineLabelBold: false,
     errorMessages:[
-      // { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+      { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+      { key: 'email2', errorLOV: this.translate.instant('ERROR.additionalError') }
     ]
   }
   
@@ -216,6 +218,8 @@ export class CheckboxDocCodeComponent implements OnInit {
 
     this.formCheckbox.addControl(this.singleCheckboxConfig.id, new FormControl());
 
+    console.log("ERRORS::::", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
+
     this.togglesSingleCheckbox.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
         this.formCheckbox.addControl(
@@ -313,44 +317,70 @@ export class CheckboxDocCodeComponent implements OnInit {
 
         else if (value === 'Single') {
           // this.setValidators(this.singleCheckboxConfig.id, this.formCheckbox);
-          this.singleCheckboxConfig.errorMessages= [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
+          // this.singleCheckboxConfig.errorMessages= [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
           this.formCheckbox.removeControl(this.singleCheckboxConfig.id);
           this.formCheckbox.addControl(
             this.singleCheckboxConfig.id,
             new FormControl('', [Validators.required])
             );
-            
+            this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({'required': false})
+            console.log("ERRORS::Single:before:", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
+            // this.formCheckbox.get(this.singleCheckboxConfig.id)?.updateValueAndValidity();
+            // console.log("ERRORS::Single:after:", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
+
+
             if (!this.formCheckbox.get(this.singleCheckboxConfig.id)?.touched){
               this.formCheckbox.get(this.singleCheckboxConfig.id)?.markAsTouched();
             }
             console.log('SingleError', this.singleCheckboxConfig)
           }
-        else if (value === 'Multiple') {
-          // this.singleCheckboxConfig.errorMessages= [
-          //   { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-          //   { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-          //   { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
-          // ];
+          else if (value === 'Multiple') {
+            this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({ 'required': true})
+            console.log("ERRORS::::", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
 
-          this.formCheckbox.removeControl(this.singleCheckboxConfig.id);
-          this.formCheckbox.addControl(
-            this.singleCheckboxConfig.id,
-            new FormControl('', [
-              Validators.required,
-              Validators.maxLength(3),
-              Validators.email
-            ])
-          )
-         this.formCheckbox.controls['error'].setErrors({'incorrect': true})
-
-          // this.setValidators(this.singleCheckboxConfig.id, this.formCheckbox)
-
-          if (!this.formCheckbox.get(this.singleCheckboxConfig.id)?.touched){
+            // const currentErrors = this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors;
+            // console.log("current errors", currentErrors)
+            // if (currentErrors && currentErrors['required']) {
+            //   delete currentErrors['required'];
+            //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors(Object.keys(currentErrors).length === 0 ? null : currentErrors);
+            // }
             this.formCheckbox.get(this.singleCheckboxConfig.id)?.markAsTouched();
+            console.log('MultipleError', this.singleCheckboxConfig)
           }
-          console.log('MultipleError', this.singleCheckboxConfig)
-        }
-        break;
+          break;
+        // else if (value === 'Multiple') {
+        //   // this.singleCheckboxConfig.errorMessages= [
+        //   //   { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+        //   //   { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+        //   //   { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
+        //   // ];
+
+        //   // this.formCheckbox.removeControl(this.singleCheckboxConfig.id);
+        //   // this.formCheckbox.addControl(
+        //   //   this.singleCheckboxConfig.id,
+        //   //   new FormControl('')
+        //   // )
+
+        //   // this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({ required: true, maxLength: 3 })
+        //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({ required: true})
+
+        //   // Remove the 'required' error
+        //   // const currentErrors = this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors;
+        //   // console.log("current errors", currentErrors)
+        //   // if (currentErrors && currentErrors['required']) {
+        //   //   delete currentErrors['required'];
+        //   //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors(Object.keys(currentErrors).length === 0 ? null : currentErrors);
+        //   // }
+        //   // this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({'required': true})
+        //   // this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({'email': null})
+        //   console.log("ERRORS::::", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
+
+
+        //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.markAsTouched();
+          
+        //   console.log('MultipleError', this.singleCheckboxConfig)
+        // }
+        // break;
       case 'state':
         console.log("State", value)
         if(value !== undefined) {
