@@ -32,12 +32,6 @@
               (config.hint || '' | translate)
         "
       >
-        <!-- <option
-          [value]="''"
-          [disabled]="true"
-          [selected]="true"
-          [hidden]="true"
-        > -->
         <option
           [value]="''"
           [disabled]="currentStatus !== 'DISABLED'"
@@ -65,7 +59,6 @@
       aria-live="polite"
       *ngIf="!config.disableError"
     >
-      <!-- <div *ngIf="formControl?.touched && formControl?.invalid"> -->
       <div *ngIf="currentStatus === 'INVALID'">
         <span class="sr-only">{{
           errorStubText + ': ' + (config.label || '' | translate) + ': '

@@ -90,8 +90,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     private translate: TranslateService
   ) {}
 
-  // onChange = (formValue: string) => {};
-  // onTouched = () => {};
   onTouch = () => {
     if (this.formGroup?.get(this.config.id)?.touched === false) {
       this.formGroup?.get(this.config.id)?.markAsTouched();
@@ -188,7 +186,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
         break;
       default:
         this.setDisabledState(false);
-    }    //Get the error text when the formControl value changes
+    }
+    
     this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
       this.getAriaErrorText();
       if(change !== this.currentStatus) {
