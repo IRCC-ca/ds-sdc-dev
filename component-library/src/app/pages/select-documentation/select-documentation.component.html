@@ -1,6 +1,6 @@
-<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
-  <app-title-slug-url [config]="inputTitleSlugConfig"></app-title-slug-url>
-  <p class="body1 intro">{{ 'Input.Intro' | translate }}</p>
+<div class="content-doc-wrapper">
+  <app-title-slug-url [config]="selectTitleSlugConfig"></app-title-slug-url>
+  <p class="body1 intro">{{ 'Select.Intro' | translate }}</p>
 
   <section class="interactive-demo">
     <app-title-slug-url
@@ -8,46 +8,14 @@
     ></app-title-slug-url>
     <p class="body3">
       {{ 'General.InteractiveDemoDesc1' | translate }}
-      <strong> {{ ('Input.Title' | translate).toLowerCase() }}</strong>
+      <strong> {{ ('Select.Title' | translate).toLowerCase() }}</strong>
       {{ 'General.InteractiveDemoDesc2' | translate }}
     </p>
-    <app-input-doc-code></app-input-doc-code>
-  </section>
-
-  <section class="types">
-    <app-title-slug-url
-      [config]="headingConfig.typesSlugConfig"
-    ></app-title-slug-url>
-    <div class="wrapper-container">
-      <div class="element-wrapper-container">
-        <h3 class="emphasis type-heading">
-          {{ 'Input.PrimaryHeading' | translate }}
-        </h3>
-        <app-component-preview
-          class="h6 component-preview"
-          copyText="<ircc-cl-lib-input type='text'></ircc-cl-lib-input>"
-        >
-          <ircc-cl-lib-input [config]="basicInputConfig"></ircc-cl-lib-input>
-        </app-component-preview>
-        <p class="body3 subtext-1">{{ 'Input.PrimaryText' | translate }}</p>
-      </div>
-      <div class="element-wrapper-container">
-        <h3 class="emphasis type-sub-heading">
-          {{ 'Input.SecondaryHeading' | translate }}
-        </h3>
-        <app-component-preview
-          class="h6 component-preview"
-          copyText="<ircc-cl-lib-input type='password'></ircc-cl-lib-input>"
-        >
-          <ircc-cl-lib-input [config]="passwordInputConfig"></ircc-cl-lib-input>
-        </app-component-preview>
-        <p class="body3 last">{{ 'Input.SecondaryText' | translate }}</p>
-      </div>
-    </div>
+    <app-select-doc-code></app-select-doc-code>
   </section>
   <section class="configs">
     <app-title-slug-url
-      [config]="headingConfig.configurationSlugConfig"
+      [config]="headingConfig.configurationMainSlugConfig"
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="row element-wrapper-container">
@@ -59,7 +27,7 @@
           </ul>
         </div>
         <div class="col-6">
-          <h3>{{ 'General.Hint' | translate }}</h3>
+          <h3>{{ 'General.Required' | translate }}</h3>
           <ul>
             <li>{{ 'General.TrueLabel' | translate }}</li>
             <li>{{ 'General.FalseLabel' | translate }}</li>
@@ -69,7 +37,7 @@
       <div class="row element-wrapper-container">
         <div class="col-6">
           <h3 class="config-heading">
-            {{ 'General.Required' | translate }}
+            {{ 'General.Description' | translate }}
           </h3>
           <ul>
             <li>{{ 'General.TrueLabel' | translate }}</li>
@@ -78,7 +46,7 @@
         </div>
         <div class="col-6">
           <h3 class="config-heading">
-            {{ 'Input.ConfigErrorHeading' | translate }}
+            {{ 'General.Hint' | translate }}
           </h3>
           <ul>
             <li>{{ 'General.TrueLabel' | translate }}</li>
@@ -89,16 +57,7 @@
       <div class="row element-wrapper-container">
         <div class="col-6">
           <h3 class="config-heading">
-            {{ 'General.DescriptionHeading' | translate }}
-          </h3>
-          <ul class="end-list">
-            <li>{{ 'General.TrueLabel' | translate }}</li>
-            <li>{{ 'General.FalseLabel' | translate }}</li>
-          </ul>
-        </div>
-        <div class="col-6">
-          <h3 class="config-heading">
-            {{ 'General.Placeholder' | translate }}
+            {{ 'General.ErrorMessage' | translate }}
           </h3>
           <ul class="end-list">
             <li>{{ 'General.TrueLabel' | translate }}</li>
@@ -107,8 +66,43 @@
         </div>
       </div>
     </div>
+    <app-title-slug-url
+      [config]="headingConfig.configurationSubSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3>{{ 'General.Content' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.Populated' | translate }}</li>
+            <li>{{ 'General.Unpopulated' | translate }}</li>
+            <li>{{ 'General.Placeholder' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h3>{{ 'General.Error' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3 class="config-heading">
+            {{ 'General.StateLabel' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.DefaultLabel' | translate }}</li>
+            <li>{{ 'General.ActiveLabel' | translate }}</li>
+            <li>{{ 'General.HoverLabel' | translate }}</li>
+            <li>{{ 'General.FocusLabel' | translate }}</li>
+            <li>{{ 'General.DisabledLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
-
   <section class="design-guide">
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
@@ -116,31 +110,60 @@
     <div class="wrapper-container do-dont-container">
       <div class="element-wrapper-container">
         <h3 class="emphasis subtitles">
-          {{ 'Input.FieldWidth' | translate }}
+          {{ 'Select.DesignGuidelines.SubHeading1' | translate }}
         </h3>
         <div class="row">
           <div class="col-12 col-md-6">
             <img
-              src="assets/img/input-content/field-width-do.png"
-              alt="{{ 'Input.FieldWidthImgDo' | translate }}"
+              src="assets/img/select-content/select-do-1.png"
+              alt="{{ 'Select.Alt.Do1' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
             <p class="body3 subtext-4">
-              {{ 'Input.FieldWidthDoText' | translate }}
+              {{ 'Select.Do1' | translate }}
             </p>
           </div>
           <div class="col-12 col-md-6">
             <img
-              src="assets/img/input-content/field-width-dont.png"
-              alt="{{ 'Input.FieldWidthImgDont' | translate }}"
+              src="assets/img/select-content/select-dont-1.png"
+              alt="{{ 'Select.Alt.Dont1' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h4>
             <p class="body3 subtext-4">
-              {{ 'Input.FieldWidthDontText' | translate }}
+              {{ 'Select.Dont1' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'Select.DesignGuidelines.SubHeading2' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-do-2.png"
+              alt="{{ 'Select.Alt.Do2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-5">{{ 'Select.Do2' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-dont-2.png"
+              alt="{{ 'Select.Alt.Dont2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Select.Dont2' | translate }}
             </p>
           </div>
         </div>
@@ -152,24 +175,53 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <img
-              src="assets/img/input-content/error-do.png"
-              alt="{{ 'Input.ErrorDoImgAlt' | translate }}"
+              src="assets/img/select-content/select-do-3.png"
+              alt="{{ 'Select.Alt.Do3' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
-            <p class="body3 subtext-5">{{ 'Input.ErrorDoText' | translate }}</p>
+            <p class="body3 subtext-5">{{ 'Select.Do3' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
             <img
-              src="assets/img/input-content/error-dont.png"
-              alt="{{ 'Input.ErrorDontImgAlt' | translate }}"
+              src="assets/img/select-content/select-dont-3.png"
+              alt="{{ 'Select.Alt.Dont3' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h4>
             <p class="body3 subtext-7">
-              {{ 'Input.ErrorDontText' | translate }}
+              {{ 'Select.Dont3' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'Select.DesignGuidelines.SubHeading4' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-do-4.png"
+              alt="{{ 'Select.Alt.Do4' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-5">{{ 'Select.Do4' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-dont-4.png"
+              alt="{{ 'Select.Alt.Dont4' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Select.Dont4' | translate }}
             </p>
           </div>
         </div>
@@ -181,11 +233,11 @@
         <div class="row">
           <div [style.max-width]="'100%'">
             <img
-              src="assets/img/input-content/input-max-width.png"
-              alt="{{ 'Input.MaxMinWidthImgAlt' | translate }}"
+              src="assets/img/select-content/select-min-max.png"
+              alt="{{ 'Select.Alt.MinMax' | translate }}"
               class="mb_12"
             />
-            <p>{{ 'Input.MaxMinWidthText' | translate }}</p>
+            <p>{{ 'Select.MinMax' | translate }}</p>
           </div>
         </div>
       </div>
@@ -199,22 +251,13 @@
     <div class="wrapper-container">
       <div class="element-wrapper-container">
         <img
-          src="assets/img/input-content/input-anatomy.png"
-          alt="{{ 'Input.AnatomyImgAlt' | translate }}"
+          src="assets/img/select-content/select-anatomy.png"
+          alt="{{ 'Select.Alt.Anatomy' | translate }}"
         />
       </div>
       <div class="element-wrapper-container">
-        <div class="counter-and-heading-container">
+        <div class="counter-and-heading-container row">
           <div class="round-purple-num-count">1</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'General.LabelHeading' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">
-          {{ 'General.AnatomyLabelText' | translate }}
-        </p>
-        <div class="counter-and-heading-container">
-          <div class="round-purple-num-count">2</div>
           <h3 class="h5 emphasis round-purple-num-heading">
             {{ 'General.RequiredIndicatorHeading' | translate }}
           </h3>
@@ -222,21 +265,30 @@
         <p class="body3 anatomy">
           {{ 'General.RequiredIndicatorTxt' | translate }}
         </p>
-        <div class="counter-and-heading-container">
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">2</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.LabelHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'General.AnatomyLabelText' | translate }}
+        </p>
+        <div class="counter-and-heading-container row">
           <div class="round-purple-num-count">3</div>
           <h3 class="h5 emphasis round-purple-num-heading">
             {{ 'General.DescriptionHeading' | translate }}
           </h3>
         </div>
         <p class="body3 anatomy">{{ 'General.AnatomyDescText' | translate }}</p>
-        <div class="counter-and-heading-container">
+        <div class="counter-and-heading-container row">
           <div class="round-purple-num-count">4</div>
           <h3 class="h5 emphasis round-purple-num-heading">
             {{ 'General.Hint' | translate }}
           </h3>
         </div>
         <p class="body3 anatomy">{{ 'General.AnatomyHintText' | translate }}</p>
-        <div class="counter-and-heading-container">
+        <div class="counter-and-heading-container row">
           <div class="round-purple-num-count">5</div>
           <h3 class="h5 emphasis round-purple-num-heading">
             {{ 'General.InputField' | translate }}
@@ -245,32 +297,23 @@
         <p class="body3 anatomy">
           {{ 'Input.AnatomyInputFieldText' | translate }}
         </p>
-        <div class="counter-and-heading-container">
+        <div class="counter-and-heading-container row">
           <div class="round-purple-num-count">6</div>
           <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'Input.AnatomyInputContentHeading' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">
-          {{ 'Input.AnatomyInputContentText' | translate }}
-        </p>
-        <div class="counter-and-heading-container">
-          <div class="round-purple-num-count">7</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'ERROR.errorMessage' | translate }}
+            {{ 'General.ErrorMessage' | translate }}
           </h3>
         </div>
         <p class="body3 anatomy">
           {{ 'General.AnatomyErrorText' | translate }}
         </p>
-        <div class="counter-and-heading-container">
-          <div class="round-purple-num-count">8</div>
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">7</div>
           <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'Input.AnatomyPasswordHeading' | translate }}
+            {{ 'Select.Anatomy.Dropdown' | translate }}
           </h3>
         </div>
         <p class="body3 anatomy">
-          {{ 'Input.AnatomyPasswordText' | translate }}
+          {{ 'Select.Anatomy.DropdownText' | translate }}
         </p>
       </div>
     </div>
@@ -284,13 +327,13 @@
       <div class="element-wrapper-container">
         <img
           class="single-img"
-          src="assets/img/input-content/input-specs.png"
-          alt="{{ 'Input.SpecsImgAlt' | translate }}"
+          src="assets/img/select-content/select-specs.png"
+          alt="{{ 'Select.Alt.Specs' | translate }}"
         />
       </div>
       <div class="element-wrapper-container">
-        <p>{{ 'Input.SpecsImgDesc1' | translate }}</p>
-        <p>{{ 'Input.SpecsImgDesc2' | translate }}</p>
+        <p>{{ 'Select.Specs1' | translate }}</p>
+        <p>{{ 'Select.Specs2' | translate }}</p>
       </div>
     </div>
   </section>
@@ -305,31 +348,31 @@
           {{ 'General.WriteLabelsHeading' | translate }}
         </h3>
         <p class="body3 subtext-3">
-          {{ 'Input.WriteLabelsSubHeading' | translate }}
+          {{ 'Select.WritingLabelsText' | translate }}
         </p>
         <div class="row">
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/label-do-1.png"
-              alt="{{ 'Input.WriteLabelsDoImgAlt1' | translate }}"
+              src="assets/img/select-content/select-do-5.png"
+              alt="{{ 'Select.Alt.Do5' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
             <p class="body3 subtext-4">
-              {{ 'Input.WriteLabelsDoText1' | translate }}
+              {{ 'Select.Do5' | translate }}
             </p>
           </div>
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/label-dont-1.png"
-              alt="{{ 'Input.WriteLabelsDontImgAlt1' | translate }}"
+              src="assets/img/select-content/select-dont-5.png"
+              alt="{{ 'Select.Alt.Dont5' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
+            <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DontHeading' | translate }}
             </h4>
-            <p class="body3 subtext-7">
-              {{ 'Input.WriteLabelsDontText1' | translate }}
+            <p class="body3 subtext-4">
+              {{ 'Select.Dont5' | translate }}
             </p>
           </div>
         </div>
@@ -338,26 +381,24 @@
         <div class="row">
           <div class="col-12 col-md-6">
             <img
-              src="assets/img/input-content/label-do-2.png"
-              alt="{{ 'Input.WriteLabelsDoImgAlt2' | translate }}"
+              src="assets/img/select-content/select-do-6.png"
+              alt="{{ 'Select.Alt.Do6' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
-            <p class="body3 subtext-12">
-              {{ 'Input.WriteLabelsDoText2' | translate }}
-            </p>
+            <p class="body3 subtext-5">{{ 'Select.Do6' | translate }}</p>
           </div>
           <div class="col-12 col-md-6">
             <img
-              src="assets/img/input-content/label-dont-2.png"
-              alt="{{ 'Input.WriteLabelsDontImgAlt2' | translate }}"
+              src="assets/img/select-content/select-dont-6.png"
+              alt="{{ 'Select.Alt.Dont6' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h4>
-            <p class="body3 subtext-12">
-              {{ 'Input.WriteLabelsDontText2' | translate }}
+            <p class="body3 subtext-7">
+              {{ 'Select.Dont6' | translate }}
             </p>
           </div>
         </div>
@@ -372,26 +413,26 @@
         <div class="row">
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/desc-do.png"
-              alt="{{ 'Input.WriteDescDoImgAlt' | translate }}"
+              src="assets/img/select-content/select-do-7.png"
+              alt="{{ 'Select.Alt.Do7' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
             <p class="body3 subtext-11">
-              {{ 'Input.WriteDescDoText' | translate }}
+              {{ 'Select.Do7' | translate }}
             </p>
           </div>
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/desc-dont.png"
-              alt="{{ 'Input.WriteDescDontImgAlt' | translate }}"
+              src="assets/img/select-content/select-dont-7.png"
+              alt="{{ 'Select.Alt.Dont7' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h4>
             <p class="body3 subtext-12">
-              {{ 'Input.WriteDescDontText' | translate }}
+              {{ 'Select.Dont7' | translate }}
             </p>
           </div>
         </div>
@@ -401,59 +442,31 @@
           {{ 'General.PlaceholderSubheading' | translate }}
         </h3>
         <p class="body3 subtext-3">
-          {{ 'Input.WritePlaceholderSubHeading' | translate }}
+          {{ 'Select.WritingPlaceholderText' | translate }}
         </p>
         <div class="row">
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/placeholder-do-1.png"
-              alt="{{ 'Input.WritePlaceholderDoImgAlt1' | translate }}"
+              src="assets/img/select-content/select-do-8.png"
+              alt="{{ 'Select.Alt.Do8' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
             <p class="body3 subtext-12">
-              {{ 'Input.WritePlaceholderDoText1' | translate }}
+              {{ 'Select.Do8' | translate }}
             </p>
           </div>
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/placeholder-dont-1.png"
-              alt="{{ 'Input.WritePlaceholderDontImgAlt1' | translate }}"
+              src="assets/img/select-content/select-dont-8.png"
+              alt="{{ 'Select.Alt.Dont8' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h4>
             <p class="body3 subtext-9">
-              {{ 'Input.WritePlaceholderDontText1' | translate }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="element-wrapper-container">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <img
-              src="assets/img/input-content/placeholder-do-2.png"
-              alt="{{ 'Input.WritePlaceholderDoImgAlt2' | translate }}"
-            />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-12">
-              {{ 'Input.WritePlaceholderDoText2' | translate }}
-            </p>
-          </div>
-          <div class="col-12 col-md-6">
-            <img
-              src="assets/img/input-content/placeholder-dont-2.png"
-              alt="{{ 'Input.WritePlaceholderDontImgAlt2' | translate }}"
-            />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-11">
-              {{ 'Input.WritePlaceholderDontText2' | translate }}
+              {{ 'Select.Dont8' | translate }}
             </p>
           </div>
         </div>
@@ -466,57 +479,26 @@
         <div class="row">
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/error-message-do.png"
-              alt="{{ 'Input.WriteErrorsDoImgAlt' | translate }}"
+              src="assets/img/select-content/select-do-9.png"
+              alt="{{ 'Select.Alt.Do9' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
             <p class="body3 subtext-12">
-              {{ 'Input.WriteErrorsDoText' | translate }}
+              {{ 'Select.Do9' | translate }}
             </p>
           </div>
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/error-message-dont.png"
-              alt="{{ 'Input.WriteErrorsDontImgAlt' | translate }}"
+              src="assets/img/select-content/select-dont-9.png"
+              alt="{{ 'Select.Alt.Dont9' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h4>
             <p class="body3 subtext-11">
-              {{ 'Input.WriteErrorsDontText' | translate }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="element-wrapper-container">
-        <h3 class="subtitles">
-          {{ 'General.NecessaryContentHeading' | translate }}
-        </h3>
-        <div class="row">
-          <div class="col-12 col-md-6 do-dont-desc">
-            <img
-              src="assets/img/input-content/necessary-content-do.png"
-              alt="{{ 'Input.NecessaryContentDoImgAlt' | translate }}"
-            />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-12">
-              {{ 'Input.NecessaryContentDoText' | translate }}
-            </p>
-          </div>
-          <div class="col-12 col-md-6 do-dont-desc">
-            <img
-              src="assets/img/input-content/necessary-content-dont.png"
-              alt="{{ 'Input.NecessaryContentDontImgAlt' | translate }}"
-            />
-            <h4 class="text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-11">
-              {{ 'Input.NecessaryContentDontText' | translate }}
+              {{ 'Select.Dont9' | translate }}
             </p>
           </div>
         </div>
@@ -528,26 +510,26 @@
         <div class="row">
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/required-field-do.png"
-              alt="{{ 'Input.RequiredFieldsDoImgAlt' | translate }}"
+              src="assets/img/select-content/select-do-10.png"
+              alt="{{ 'Select.Alt.Do10' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-green">
               {{ 'General.DoHeading' | translate }}
             </h4>
             <p class="body3 subtext-13">
-              {{ 'Input.RequiredFieldsDoText' | translate }}
+              {{ 'Select.Do10' | translate }}
             </p>
           </div>
           <div class="col-12 col-md-6 do-dont-desc">
             <img
-              src="assets/img/input-content/required-field-dont.png"
-              alt="{{ 'Input.RequiredFieldsDontImgAlt' | translate }}"
+              src="assets/img/select-content/select-dont-10.png"
+              alt="{{ 'Select.Alt.Dont10' | translate }}"
             />
             <h4 class="emphasis text-underline text-color-red">
               {{ 'General.DontHeading' | translate }}
             </h4>
             <p class="body3 subtext-13">
-              {{ 'Input.RequiredFieldsDontText' | translate }}
+              {{ 'Select.Dont10' | translate }}
             </p>
           </div>
         </div>
@@ -555,7 +537,7 @@
     </div>
   </section>
 
-  <section class="figma-usage">
+  <section class="usage-figma">
     <app-title-slug-url
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
@@ -564,60 +546,59 @@
         <h3 class="sub-headings">
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h3>
-        <ol class="figma-list">
+        <ol>
           <li
             class="list-item"
-            [innerHTML]="'Input.FigmaDirectionsListItem1' | translate"
-          ></li>
-          <li
-            class="list-item"
-            [innerHTML]="'General.FigmaDirectionsListItem2' | translate"
-          ></li>
-          <li
-            class="list-item"
-            [innerHTML]="'General.FigmaDirectionsListItem3' | translate"
-          ></li>
-          <li
-            class="list-item"
-            [innerHTML]="'Input.FigmaDirectionsListItem4' | translate"
+            *ngFor="let direction of figmaDirections"
+            [innerHtml]="direction | translate"
           ></li>
         </ol>
       </div>
-      <div class="col-12 col-md-4">
-        <img
-          src="assets/img/input-content/figma-usage-1.png"
-          alt="{{ 'Input.FigmaDirectionsImgAlt' | translate }}"
-        />
+      <div class="col-12 col-md-4 justify-ctr">
+        <div class="image-1 image-container">
+          <img
+            src="assets/img/select-content/select-usage-1.png"
+            alt="{{ 'Select.Alt.Usage1' | translate }}"
+          />
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-8">
-        <h3 class="sub-headings">
+      <div class="col-12 col-md-8 mb_12">
+        <h3 class="sub-headings accessInputHeading">
           {{ 'General.FigmaAccessInput' | translate }}
         </h3>
         <ol>
           <li
-            class="list-item"
-            [innerHTML]="'Input.AccessInputsListItem1' | translate"
-          ></li>
-          <li
-            class="list-item"
-            [innerHTML]="'Input.AccessInputsListItem2' | translate"
+            class="list-item figmaUsageList"
+            *ngFor="let direction of figmaDirectionsSecond"
+            [innerHtml]="direction | translate"
           ></li>
         </ol>
+      </div>
+    </div>
+    <div class="images">
+      <div class="img1">
         <img
-          src="assets/img/input-content/figma-usage-2.png"
-          alt="{{ 'Input.AccessInputsImgAlt1' | translate }}"
+          src="assets/img/select-content/select-usage-2.png"
+          alt="{{ 'Select.Alt.Usage2' | translate }}"
         />
       </div>
-      <div class="col-12 col-md-4 align-btm">
+      <div class="img2">
         <img
-          src="assets/img/input-content/figma-usage-3.png"
-          alt="{{ 'Input.AccessInputsImgAlt2' | translate }}"
+          src="assets/img/select-content/usage-select-screenshot.png"
+          alt="{{ 'Select.Alt.UsageScreenshot' | translate }}"
+        />
+      </div>
+      <div class="img3">
+        <img
+          src="assets/img/select-content/select-usage-3.png"
+          alt="{{ 'Select.Alt.Usage3' | translate }}"
         />
       </div>
     </div>
   </section>
+
   <section class="accessibility">
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
@@ -628,7 +609,7 @@
           {{ 'General.AccessibilityColourHeading' | translate }}
         </h3>
         <p class="body3 subtext-1">
-          {{ 'Input.AccessibilityColourText' | translate }}
+          {{ 'Select.ColourContrast' | translate }}
         </p>
       </div>
       <div class="element-wrapper-container">
@@ -650,6 +631,9 @@
           <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
           <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
           <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
+          <li
+            [innerHTML]="'Select.AccesiblityPopulatedContentItem' | translate"
+          ></li>
           <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
           <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
           <li
@@ -664,7 +648,7 @@
         <ul class="validation-list">
           <li
             class="body3 last"
-            [innerHtml]="'Input.AccessibilityValidationText' | translate"
+            [innerHtml]="'General.ValidationText' | translate"
           ></li>
         </ul>
       </div>
