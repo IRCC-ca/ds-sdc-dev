@@ -33,10 +33,19 @@ export const handler = async (event) => {
     Source: "alexandre.grenier@cic.gc.ca",
   });
 
-  try {
-    const isVerified = await isUserVerified(event);
-    if (isVerified) {
-      const response = await ses.send(command);
+try {
+  const isVerified = await isUserVerified(event);
+  if (isVerified) {
+    const response = await ses.send(command);
+    // Check if the email was sent successfully
+    if (response.$metadata.httpStatusCode === 200) {
+    console.log("res", response)
+      const connectionId = event.requestContext.connectionId;
+      // Check the response and decide whether to call the deletion lambda
+      if (response.body === JSON.stringify({ message: "formSent" })) {
+        // Call the deletion lambda
+        await deleteUserData(connectionId);
+      }
 
       return {
         statusCode: 200,
@@ -45,14 +54,15 @@ export const handler = async (event) => {
         }),
       };
     }
-  } catch (error) {
-    return {
-      statusCode: 418,
-      body: JSON.stringify({
-        message: "rattlesnakes",
-      }),
-    };
   }
+} catch (error) {
+  return {
+    statusCode: 418,
+    body: JSON.stringify({
+      message: "rattlesnakes",
+    }),
+  };
+}
 };
 
 async function assembleEmail(event) {
@@ -116,5 +126,25 @@ async function isUserVerified(event) {
     return JSON.parse(JSON.parse(decodedString).body).verified;
   } catch (err) {
     console.log(err);
+  }
+}
+
+async function deleteUserData(connectionId) {
+  const client = new LambdaClient();
+  const payload = {
+    connectionId: connectionId,
+    routeKey: 'deleteUserRoute'
+  };
+
+  const command = new InvokeCommand({
+    FunctionName: process.env.crudUserLambda,
+    Payload: JSON.stringify(payload),
+  });
+
+  try {
+    await client.send(command);
+    console.log("Deletion lambda called successfully");
+  } catch (err) {
+    console.error("Error calling deletion lambda:", err);
   }
 }
