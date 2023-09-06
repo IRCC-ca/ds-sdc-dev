@@ -1,5 +1,5 @@
-@use 'src/scss/grid';
-@use '~@ircc-ca/ds-sdc-core/typography/typography';
+@use "../../../scss/grid";
+@use "@ircc-ca/ds-sdc-core/typography/typography";
 
 :host {
   @include grid.row;
@@ -21,21 +21,17 @@
     }
 
     .wrapper-container {
-      margin-top: 64px;
+      @include grid.row(12px);
 
-      >.box {
-        padding-bottom: 12px;
+      margin-top: 80px;
+      align-items: stretch;
 
-        // This can be replaced by Bootstrap's gutter
-        &:nth-child(1) {
-          @include grid.up-phone-layout {
-            padding-right: 6px;
-          }
-        }
+      > div.box {
+        display: flex;
 
-        &:nth-child(2) {
-          @include grid.up-phone-layout {
-            padding-left: 6px;
+        @include grid.in-phone-layout {
+          &:not(:first-child) {
+            margin-top: 12px;
           }
         }
       }
@@ -46,7 +42,7 @@
         border: 1px solid;
         border-color: var(--divider);
         border-radius: 12px;
-        padding: 20px 24px 44px 24px;
+        padding: 20px 24px;
 
         h2 {
           margin: 0;
@@ -63,12 +59,12 @@
             color: var(--blue-8);
             background-color: transparent;
           }
-        
+
           &:active {
             color: var(--navy-9);
             background-color: transparent;
           }
-        
+
           &:visited {
             color: var(--purple-8);
           }

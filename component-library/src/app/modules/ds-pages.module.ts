@@ -49,6 +49,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxDocCodeComponent } from '@app/pages/checkbox-documentation/checkbox-doc-code.component';
 import { CheckboxDocumentationComponent } from '@app/pages/checkbox-documentation/checkbox-documentation.component';
 import { MultiCheckboxDocComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-doc.component';
+import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
+import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
+
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -72,9 +75,11 @@ import { MultiCheckboxDocComponent } from '@app/pages/multi-checkbox-documentati
     ButtonDocCodeComponent,
     ButtonDocumentationComponent,
     InputDocumentationComponent,
+    SelectDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
     InputDocCodeComponent,
+    SelectDocCodeComponent,
     EncapsulatedElementComponent,
     RequestFormComponent,
     DatePickerDocCodeComponent,

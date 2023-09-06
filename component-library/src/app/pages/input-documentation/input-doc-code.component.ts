@@ -30,10 +30,13 @@ import { TranslateService } from '@app/share/templates/parent-template.module';
 })
 export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'input';
-  formInput = new FormGroup({});
+  formInput: FormGroup = new FormGroup({});
   state: boolean = false;
 
-  constructor(private lang: LangSwitchService, private translate: TranslateService) {}
+  constructor(
+    private lang: LangSwitchService,
+    private translate: TranslateService
+  ) {}
 
   inputConfig: IInputComponentConfig = {
     id: 'input',
@@ -41,7 +44,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     size: 'small',
     type: 'text',
     required: false,
-    label: 'Label text',
+    label: 'Label Text',
     desc: 'Description line of text',
     errorMessages: []
   };
@@ -50,7 +53,9 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ...this.inputConfig,
     id: 'input_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
+    errorMessages: [
+      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }
+    ]
   };
 
   inputConfigMulti: IInputComponentConfig = {
@@ -58,10 +63,18 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     id: 'input_multi',
     errorMessages: [
       { key: 'email', errorLOV: this.translate.instant('ERROR.singleError') },
-      { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-      { key: 'maxlength', errorLOV: this.translate.instant('ERROR.additionalError') }
+      {
+        key: 'email',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      },
+      {
+        key: 'maxlength',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      }
     ]
   };
+
+  inputConfigRequired: boolean = false;
 
   toggles: IRadioInputComponentConfig[] = [
     {
@@ -190,11 +203,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   };
 
   bannerConfig: IBannerConfig = {
-    id: "banner-disabled-desc",
-    type: "info",
-    size: "small",
-    title:'General.EnabledBannerTitle',
-    content: "General.EnabledBannerContent",
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
     rounded: true
   };
 
@@ -238,17 +251,35 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   errorState = 'None';
   currentConfigId = this.inputConfig.id;
 
-  setInputType(value: any) {
+  setInputType(value: string) {
+    // If set type to password, automatically select placeholder to False
+    if (value == 'password')
+      this.formInput.patchValue({
+        placeholder: 'False'
+      });
+
     this.inputConfig = {
       ...this.inputConfig,
+      label:
+        value == 'password'
+          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
+          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigSingle = {
       ...this.inputConfigSingle,
+      label:
+        value == 'password'
+          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
+          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
     this.inputConfigMulti = {
       ...this.inputConfigMulti,
+      label:
+        value == 'password'
+          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
+          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
 
@@ -286,16 +317,17 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       this.formInput.addControl(checkbox.id, new FormControl());
     });
 
-    this.formInput.get(this.checkboxes[0].id)
-    ?.valueChanges.subscribe((change) => {
-      if (change) {
-        this.bannerConfig.title='General.DisabledBannerTitle'
-        this.bannerConfig.content="General.DisabledBannerContent"
-      } else {
-        this.bannerConfig.title='General.EnabledBannerTitle'
-        this.bannerConfig.content="General.EnabledBannerContent"
-      }
-    });
+    this.formInput
+      .get(this.checkboxes[0].id)
+      ?.valueChanges.subscribe((change) => {
+        if (change) {
+          this.bannerConfig.title = 'General.DisabledBannerTitle';
+          this.bannerConfig.content = 'General.DisabledBannerContent';
+        } else {
+          this.bannerConfig.title = 'General.EnabledBannerTitle';
+          this.bannerConfig.content = 'General.EnabledBannerContent';
+        }
+      });
 
     this.formInput.patchValue({
       size: 'Small',
@@ -311,6 +343,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.toggleDisabled(value['state']);
         this.state = value['state'];
       }
+      if (value['required'])
+        this.inputConfigRequired = value['required'] === 'True';
       this.parseToggleConfig(value);
       this.parseCodeViewConfig();
     });
@@ -326,7 +360,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           ...this.inputConfigSingle,
           size: value['size'].toLowerCase(),
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: value['required'] === 'True',
+          required: this.inputConfigRequired,
+          label: this.parseRequiredLabel(
+            this.inputConfigSingle.label as string,
+            this.inputConfigRequired
+          ),
           desc:
             value['desc'] === 'True' ? 'Description line of text' : undefined,
           placeholder:
@@ -338,7 +376,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           ...this.inputConfigMulti,
           size: value['size'].toLowerCase(),
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: value['required'] === 'True',
+          required: this.inputConfigRequired,
+          label: this.parseRequiredLabel(
+            this.inputConfigMulti.label as string,
+            this.inputConfigRequired
+          ),
           desc:
             value['desc'] === 'True' ? 'Description line of text' : undefined,
           placeholder:
@@ -350,7 +392,11 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           ...this.inputConfig,
           size: value['size'].toLowerCase(),
           hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: value['required'] === 'True',
+          required: this.inputConfigRequired,
+          label: this.parseRequiredLabel(
+            this.inputConfig.label as string,
+            this.inputConfigRequired
+          ),
           desc:
             value['desc'] === 'True' ? 'Description line of text' : undefined,
           placeholder:
@@ -461,7 +507,27 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `inputConfig: IInputComponentConfig = ${stringify(
           this.inputConfigCodeView
-      )}`;
+        )}`;
     }
+  }
+
+  private parseRequiredLabel(
+    label: string,
+    required: string | boolean
+  ): string {
+    const requiredLabel = ' (required)';
+    if (
+      (required === 'True' || required === true) &&
+      !label.includes(requiredLabel)
+    ) {
+      label += requiredLabel;
+    }
+    if (
+      (required === 'False' || required === false) &&
+      label.endsWith(requiredLabel)
+    ) {
+      label = label.substring(0, label.length - requiredLabel.length);
+    }
+    return label;
   }
 }

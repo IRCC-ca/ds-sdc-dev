@@ -99,7 +99,6 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
       }
     ],
     size: 'small',
-    disabled: false,
     error: true
   };
 
@@ -288,7 +287,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
 
     this.form.addControl(
       this.referencesTextAreaConfig.id,
-      new FormControl('', Validators.required)
+      new FormControl('', null)
     );
 
     this.form.addControl(

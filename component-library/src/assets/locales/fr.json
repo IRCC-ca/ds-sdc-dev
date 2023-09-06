@@ -526,7 +526,7 @@
 		"WriteDescDoText": "Incluez toutes les informations pertinentes dans la description.",
 		"WriteDescDontImgAlt": "Un champ de saisie pour collecter l'adresse e-mail de l'utilisateur. L'étiquette est «Adresse e-mail (requise)». Le champ de saisie est vide.",
 		"WriteDescDontText": "Incluez une description lorsque des instructions ou des détails supplémentaires ne sont pas nécessaires pour clarifier comment remplir correctement le terrain.",
-		"WritePlaceholderSubHeading": "Le texte de l'espace réservé apparaît dans le champ de saisie. Utilisez-le uniquement là où il est nécessaire pour accélérer la compréhension par un utilisateur des informations qu'il doit fournir. Le texte de l'espace réservé peut être un exemple du type de valeur attendue qui doit être saisi, soit afficher le format exact de ce qui doit être saisi.",
+		"WritePlaceholderSubHeading": "Le texte du placement apparaît dans le champ de saisie. Utilisez-le uniquement là où il est nécessaire pour accélérer la compréhension par un utilisateur des informations qu'il doit fournir. Le texte de l'espace réservé peut être un exemple du type de valeur attendue qui doit être saisi, soit afficher le format exact de ce qui doit être saisi.",
 		"WritePlaceholderDoImgAlt1": "Un champ de saisie pour collecter le numéro d'identification des étudiants de l'utilisateur. L'étiquette est «numéro d'identification des élèves (requis)». La description est «Entrez votre numéro d'identification à 9 chiffres trouvé dans votre profil». Le champ de saisie contient du texte d'espace réservé. Le texte du placement est «Ex: 301297423»",
 		"WritePlaceholderDoText1": "Fournissez du texte de placement comme exemple spécifique de la valeur attendue, dans un champ de saisie.",
 		"WritePlaceholderDontImgAlt1": "Un champ de saisie pour collecter l'adresse e-mail de l'utilisateur. L'étiquette est «Adresse e-mail (requise)». Le champ de saisie contient du texte d'espace réservé. Le texte du placement est «johnsmith@email.com»",
@@ -687,7 +687,7 @@
 		"SuccessPrimaryText": "Les bannières de réussite sont utilisées pour transmettre des actions ou des validations réussies.",
 		"GenericPrimaryText": "Des bannières génériques sont utilisées lorsqu'un sentiment d'alerte n'est pas approprié pour afficher un message à l'utilisateur.",
 		"BannerPreview": {
-			"Content": "Description Texte Lorem ipsum Dolor Sit Amet Consectetter Adipiscing Elit."
+			"Content": "Description Texte Lorem ipsum Dolor Sit Amet CONSECTEUR ADPISCING ELIT."
 		},
 		"DesignGuideLines": {
 			"KeepActionsSimpleLabel": "Gardez les actions simples",
