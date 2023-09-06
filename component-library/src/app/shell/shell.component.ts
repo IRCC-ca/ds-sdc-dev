@@ -181,7 +181,8 @@ export class ShellComponent implements OnInit {
       this.iconBtnPage,
       this.checkboxPage,
       this.spinnerPage,
-      this.inputPage
+      this.inputPage,
+      this.multiCheckboxPage
     ]
   };
 
