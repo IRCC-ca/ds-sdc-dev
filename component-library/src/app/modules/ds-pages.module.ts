@@ -44,6 +44,8 @@ import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-d
 
 import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
 
+import { emailVerificationComponent } from '@app/components/email-verification/email-verification.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -80,7 +82,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IconButtonDocumentationComponent,
     IconButtonDocCodeComponent,
     MultiCheckboxDocumentationComponent,
-    AutocompleteDocumentationComponent
+    AutocompleteDocumentationComponent,
+    emailVerificationComponent
   ],
   imports: [
     CommonModule,

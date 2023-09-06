@@ -1,0 +1,99 @@
+@use '../../../../../core-library/tokens/template-const' as template-const;
+@use '../../../../../core-library/tokens/sizes' as sizes;
+@use '../../../../../core-library/layout/layout-grid' as layout-grid;
+@use '../../../../../core-library/util/device' as device;
+@use '../../../scss/grid';
+
+@mixin selector {
+  app-accordian-container#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin layout {
+  .accordion-nav {
+    display: grid;
+    grid-template-columns: 30% auto 30%;
+
+    &.fullWidth {
+      grid-template-columns: auto auto auto;
+    }
+
+    &.no-extra-left {
+      padding: 0 12px;
+
+      @include grid.in-phone-layout {
+        grid-template-columns: auto auto;
+
+        .accordion-expand-button {
+          grid-column: 1;
+          justify-content: start;
+        }
+      }
+    }
+
+    @include device.in-phone-layout() {
+      grid-template-columns: auto 30% 30%;
+
+      &.fullWidth {
+        grid-template-columns: 100% auto auto;
+      }
+    }
+
+    .accordion-extra-left {
+      grid-column: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      @include device.in-phone-layout() {
+        grid-column: 2;
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    .accordion-expand-button {
+      grid-column: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include device.in-phone-layout() {
+        grid-column: 1;
+      }
+    }
+    .accordion-extra-right {
+      grid-column: 3;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      @include device.in-phone-layout() {
+        grid-column: 3;
+      }
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  .accordion-content {
+    &.open {
+      height: auto;
+    }
+
+    &.close {
+      height: 0px;
+      padding-bottom: 0px;
+      display: none;
+    }
+  }
+}

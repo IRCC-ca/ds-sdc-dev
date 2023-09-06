@@ -37,33 +37,19 @@ export const handler = async (event) => {
     const isVerified = await isUserVerified(event);
     if (isVerified) {
       const response = await ses.send(command);
-      sendSocketMessage(
-        event,
-        JSON.stringify({
-          reponse: { ...response },
-          ...event,
-        })
-      );
+
       return {
         statusCode: 200,
         body: JSON.stringify({
-          reponse: { ...response },
-          ...event,
+          message: "formSent",
         }),
       };
     }
   } catch (error) {
-    await sendSocketMessage(
-      event,
-      JSON.stringify({
-        message: error,
-      })
-    );
     return {
-      statusCode: 200,
+      statusCode: 418,
       body: JSON.stringify({
         message: "rattlesnakes",
-        event,
       }),
     };
   }
@@ -114,27 +100,6 @@ async function assembleEmail(event) {
     dateRequestedMonth: formObject["date-requested-datepicker_monthControl"],
     dateRequestedYear: formObject["date-requested-datepicker_yearControl"],
   });
-}
-
-async function sendSocketMessage(event, message) {
-  const domain = event.requestContext.domainName;
-  const stage = event.requestContext.stage;
-  const connectionId = event.requestContext.connectionId;
-  const callbackUrl = `https://${domain}/${stage}`;
-  const client = new ApiGatewayManagementApiClient({ endpoint: callbackUrl });
-  const requestParams = {
-    ConnectionId: connectionId,
-    Data: JSON.stringify({
-      message: message,
-      id: connectionId,
-    }),
-  };
-  const command = new PostToConnectionCommand(requestParams);
-  try {
-    await client.send(command);
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 async function isUserVerified(event) {

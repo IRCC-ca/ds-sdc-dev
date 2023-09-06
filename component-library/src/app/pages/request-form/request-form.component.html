@@ -90,66 +90,11 @@
             [config]="requestedDateDatePickerConfig"
           ></ircc-cl-lib-date-picker>
         </div>
-        <div class="">
-          <ng-container *ngIf="status === 'start'; else second">
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <ircc-cl-lib-input
-                [config]="emailconfig"
-                style="margin-right: 25px"
-              ></ircc-cl-lib-input>
-              <ircc-cl-lib-button
-                [config]="buttonConfig"
-                (click)="sendSocketMessage()"
-                >Verify Email</ircc-cl-lib-button
-              >
-            </div>
-          </ng-container>
-          <ng-template #second>
-            <ng-container *ngIf="status === 'waiting'; else third">
-              <div
-                style="
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                "
-              >
-                <ircc-cl-lib-spinner></ircc-cl-lib-spinner>
-              </div>
-            </ng-container>
-          </ng-template>
-          <ng-template #third>
-            <ng-container *ngIf="status === 'done'">
-              <ircc-cl-lib-button
-                [config]="buttonConfig"
-                (click)="submitForm()"
-                >{{ 'RequestForm.SubmitBtn' | translate }}</ircc-cl-lib-button
-              >
-            </ng-container>
-          </ng-template>
-        </div>
+
+        <!-- insert email verification here-->
+        <email-verification-container></email-verification-container>
       </div>
     </section>
-  </div>
-
-  <div
-    style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 50px;
-    "
-  >
-    <ircc-cl-lib-button
-      [config]="buttonConfig"
-      (click)="reset()"
-      >reset</ircc-cl-lib-button
-    >
   </div>
 
   <!-- 

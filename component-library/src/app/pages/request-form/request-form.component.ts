@@ -27,12 +27,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 
-import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-
-interface statusStatus {
-  start: 'start';
-  waiting: 'waiting';
-}
 @Component({
   selector: 'app-request-form',
   templateUrl: './request-form.component.html',
@@ -337,49 +331,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
      * Get local storage form data on page reload
      */
     this.getFormDataFromService();
-
-    this.subject.subscribe({
-      next: (msg: any) => {
-        // console.log('onmessage - next: ', msg);
-        console.log(msg);
-        if (msg.message === 'You Have been veried!') {
-          this.status = 'done';
-        }
-      },
-      error: (err) => console.log(err), // Called if at any point WebSocket API signals some kind of error.
-      complete: () => console.log('complete') // Called when connection is closed (for whatever reason).
-    });
-    this.status = 'start';
-    this.form.addControl(
-      this.emailconfig.id,
-      new FormControl('', Validators.required)
-    );
   }
-
-  sendSocketMessage() {
-    this.subject.next({
-      action: 'sendVerificationEmailRoute',
-      route: 'sendVerificationEmailRoute',
-      email: this.form.get(this.emailconfig.id)?.value
-    });
-    this.status = 'waiting';
-  }
-
-  reset() {
-    this.status = 'start';
-  }
-
-  emailconfig: IInputComponentConfig = {
-    formGroup: this.form,
-    id: 'emailconfig',
-    label: 'email',
-    size: 'small'
-  };
-
-  status: string = 'start';
-  subject = webSocket(
-    'wss://7g2z37hj48.execute-api.ca-central-1.amazonaws.com/production'
-  );
 
   /**
    * Get local storage form data on page reload from the RequestFormService
@@ -441,14 +393,5 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
   private handleExceptions(errorName: HttpErrorResponse) {
     // handle exception according to the exception name
     console.log(errorName);
-  }
-
-  submitForm() {
-    const data = localStorage.getItem('requestFormData');
-    this.subject.next({
-      action: 'sendFormInfoRoute',
-      route: 'sendFormInfoRoute',
-      email: data
-    });
   }
 }

@@ -69,6 +69,18 @@ export class FormBackendStack extends cdk.Stack {
     });
 
     //Lambdas
+    const onConnectLambda = new lambda.Function(this, "onConnectFunction", {
+      runtime: lambda.Runtime.NODEJS_18_X,
+      handler: "index.handler",
+      code: lambda.Code.fromAsset("resources/onConnectLambda"),
+    });
+    onConnectLambda.role?.attachInlinePolicy(
+      new iam.Policy(this, "onConnectLambdaPolicy", {
+        statements: [executeApiPolicyStatement, InvokeFunctionPolicyStatement],
+      })
+    );
+
+    //Lambdas
     const sendVerificationEmailLambda = new lambda.Function(
       this,
       "SendVerificationEmailFunction",
@@ -136,44 +148,27 @@ export class FormBackendStack extends cdk.Stack {
       })
     );
 
-    //stepfunction
-    // const sendVerificationEmailLambdaFirstState = new tasks.LambdaInvoke(
-    //   this,
-    //   "sendEmail",
-    //   {
-    //     lambdaFunction: verificationClickEventLambda,
-    //   }
-    // );
-    // const sendVerificationEmailLambdaSecondState = new tasks.LambdaInvoke(
-    //   this,
-    //   "createUser",
-    //   {
-    //     lambdaFunction: crudUserLambda,
-    //   }
-    // );
-
-    // let definition = sendVerificationEmailLambdaFirstState.next(
-    //   sendVerificationEmailLambdaSecondState
-    // );
-
-    // const sendVerificationEmailLambdaStateMachine =
-    //   new stepfunctions.StateMachine(
-    //     this,
-    //     "sendVerificationEmailLambdaStateMachine",
-    //     {
-    //       definition,
-    //       timeout: cdk.Duration.minutes(5),
-    //     }
-    //   );
-
     //APIGateways\
     let webSocketApiName = `DesignSystem-SocketAPI-${this.stackName}`;
-    const webSocketApi = new apigateway.WebSocketApi(this, webSocketApiName);
+    const webSocketApi = new apigateway.WebSocketApi(
+      this,
+      webSocketApiName,
+      {}
+    );
     new apigateway.WebSocketStage(this, "prodStage", {
       webSocketApi,
       stageName: "production",
       autoDeploy: true,
     });
+
+    webSocketApi.addRoute("onConnectRoute", {
+      integration: new integrations.WebSocketLambdaIntegration(
+        "onConnectRoute",
+        onConnectLambda
+      ),
+      returnResponse: true,
+    });
+
     webSocketApi.addRoute("sendVerificationEmailRoute", {
       integration: new integrations.WebSocketLambdaIntegration(
         "sendVerificationEmailRoute",
@@ -186,6 +181,7 @@ export class FormBackendStack extends cdk.Stack {
         "sendFormInfoRoute",
         sendFormInfoLambda
       ),
+      returnResponse: true,
     });
 
     let httpApiName = `DesignSystem-HTTPAPI-${this.stackName}`;
