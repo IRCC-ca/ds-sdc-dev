@@ -1,0 +1,28 @@
+<app-interactive-demo [hasTabs]="false">
+  <div
+    component
+    class="select-container"
+    #select
+  >
+    <ng-container [ngSwitch]="errorState">
+      <ircc-cl-lib-select
+        *ngSwitchDefault
+        [config]="selectConfig"
+      ></ircc-cl-lib-select>
+      <ircc-cl-lib-select
+        *ngSwitchCase="'True'"
+        [config]="errorSelectConfig"
+      ></ircc-cl-lib-select>
+    </ng-container>
+  </div>
+  <ng-container toggles>
+    <ng-container *ngFor="let toggle of toggles">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxes">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+</app-interactive-demo>
+
+<app-code-viewer [config]="codeViewConfig"></app-code-viewer>

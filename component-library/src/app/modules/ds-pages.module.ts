@@ -46,6 +46,8 @@ import { SpinnerDocumentationComponent } from '@app/pages/spinner-documentation/
 import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
+import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
 
 @NgModule({
   declarations: [
@@ -70,9 +72,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ButtonDocCodeComponent,
     ButtonDocumentationComponent,
     InputDocumentationComponent,
+    SelectDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
     InputDocCodeComponent,
+    SelectDocCodeComponent,
     EncapsulatedElementComponent,
     RequestFormComponent,
     DatePickerDocCodeComponent,
