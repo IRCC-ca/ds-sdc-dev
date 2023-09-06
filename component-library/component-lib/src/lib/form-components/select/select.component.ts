@@ -187,7 +187,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       default:
         this.setDisabledState(false);
     }
-    
+
     this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
       this.getAriaErrorText();
       if(change !== this.currentStatus) {
@@ -219,6 +219,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.topLabel
     );
   }
+
   /**
    * Apply a disabled state
    */
