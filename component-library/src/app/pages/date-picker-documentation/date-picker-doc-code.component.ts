@@ -56,15 +56,26 @@ export class DatePickerDocCodeComponent
     ...this.datePickerConfig,
     id: 'datepicker_single',
     required: true,
-    errorMessages: [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
+    errorMessages: [
+      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }
+    ]
   };
   datePickerConfigMulti: IDatePickerConfig = {
     ...this.datePickerConfig,
     id: 'datepicker_multi',
     errorMessages: [
-      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-      { key: 'required', errorLOV: this.translate.instant('ERROR.additionalError') },
-      { key: 'required', errorLOV: this.translate.instant('ERROR.additionalError') }
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.singleError')
+      },
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      },
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      }
     ]
   };
 
@@ -197,11 +208,11 @@ export class DatePickerDocCodeComponent
   ];
 
   bannerConfig: IBannerConfig = {
-    id: "banner-disabled-desc",
-    type: "info",
-    size: "small",
-    title:'General.EnabledBannerTitle',
-    content: "General.EnabledBannerContent",
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
     rounded: true
   };
 
@@ -321,16 +332,17 @@ export class DatePickerDocCodeComponent
       this.formDatePicker.addControl(checkbox.id, new FormControl());
     });
 
-    this.formDatePicker.get(this.checkboxes[0].id)
-    ?.valueChanges.subscribe((change) => {
-      if (change) {
-        this.bannerConfig.title='General.DisabledBannerTitle'
-        this.bannerConfig.content="General.DisabledBannerContent"
-      } else {
-        this.bannerConfig.title='General.EnabledBannerTitle'
-        this.bannerConfig.content="General.EnabledBannerContent"
-      }
-    });
+    this.formDatePicker
+      .get(this.checkboxes[0].id)
+      ?.valueChanges.subscribe((change) => {
+        if (change) {
+          this.bannerConfig.title = 'General.DisabledBannerTitle';
+          this.bannerConfig.content = 'General.DisabledBannerContent';
+        } else {
+          this.bannerConfig.title = 'General.EnabledBannerTitle';
+          this.bannerConfig.content = 'General.EnabledBannerContent';
+        }
+      });
 
     this.formDatePicker.patchValue({
       size: 'Small',
@@ -552,7 +564,7 @@ export class DatePickerDocCodeComponent
         "import { FormGroup } from '@angular/forms';\n\n" +
         `datePickerConfig: IDatePickerConfig = ${stringify(
           this.datePickerConfigCodeView
-      )}`;
+        )}`;
     }
   }
 }
