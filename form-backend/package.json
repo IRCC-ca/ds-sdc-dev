@@ -5,6 +5,8 @@
     "form-backend": "bin/form-backend.js"
   },
   "scripts": {
+    "install:resources": "node install-packages.js",
+    "postinstall": "(npm run install:resources);",
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
