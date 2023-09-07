@@ -18,7 +18,7 @@ export const handler = async (event) => {
 
   const command = new SendEmailCommand({
     Destination: {
-      ToAddresses: ["aggreniertest@gmail.com", "bobby.brice@gmail.com"],
+      ToAddresses: process.env.EMAIL_TO.split(", "),
     },
     Message: {
       Body: {
@@ -29,36 +29,35 @@ export const handler = async (event) => {
       },
       Subject: { Data: "Test Email" },
     },
-    Source: "alexandre.grenier@cic.gc.ca",
+    Source: process.env.EMAIL_FROM,
   });
 
-try {
-  const isVerified = await isUserVerified(event);
-  if (isVerified) {
-    const response = await ses.send(command);
-    // Check if the email was sent successfully
-    if (response.$metadata.httpStatusCode === 200) {
-        const connectionId = event.requestContext.connectionId
+  try {
+    const isVerified = await isUserVerified(event);
+    if (isVerified) {
+      const response = await ses.send(command);
+      // Check if the email was sent successfully
+      if (response.$metadata.httpStatusCode === 200) {
+        const connectionId = event.requestContext.connectionId;
         // Call the deletion lambda
         await deleteUserData(connectionId);
 
-
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          message: "formSent",
-        }),
-      };
+        return {
+          statusCode: 200,
+          body: JSON.stringify({
+            message: "formSent",
+          }),
+        };
+      }
     }
+  } catch (error) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: "reset",
+      }),
+    };
   }
-} catch (error) {
-  return {
-    statusCode: 418,
-    body: JSON.stringify({
-      message: "rattlesnakes",
-    }),
-  };
-}
 };
 
 async function assembleEmail(event) {
@@ -130,8 +129,8 @@ async function deleteUserData(connectionId) {
   const payload = {
     requestContext: {
       connectionId: connectionId,
-      routeKey: 'deleteUserRoute'
-    }
+      routeKey: "deleteUserRoute",
+    },
   };
 
   const command = new InvokeCommand({

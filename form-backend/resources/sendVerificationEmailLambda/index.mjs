@@ -31,39 +31,22 @@ export const handler = async (event) => {
       },
       Subject: { Data: "Test Email" },
     },
-    Source: "alexandre.grenier@cic.gc.ca",
+    Source: process.env.EMAIL_FROM,
   });
   try {
     const response = await ses.send(command);
-    console.log(response);
-    sendSocketMessage(
-      event,
-      JSON.stringify({
-        reponse: { ...response },
-        ...event,
-      })
-    );
     await createUser(event);
     return {
       statusCode: 200,
       body: JSON.stringify({
-        reponse: { ...response },
-        ...event,
+        message: "emailSent",
       }),
     };
   } catch (error) {
-    console.log(error);
-    await sendSocketMessage(
-      event,
-      JSON.stringify({
-        message: error,
-      })
-    );
     return {
-      statusCode: 200,
+      statusCode: 400,
       body: JSON.stringify({
-        message: "hello world",
-        event,
+        message: "reset",
       }),
     };
   }
@@ -77,7 +60,7 @@ async function assembleEmail(event) {
   const headerTemplate = Handlebars.compile(header);
   const footer = readFileSync("./template-footer.html", "utf-8");
   const footerTemplate = Handlebars.compile(footer);
-  
+
   const connectionId = event.requestContext.connectionId;
   const endpointURL = process.env.endpoindHttpApi;
   let endpoint = `${endpointURL}/verify?id=${connectionId}`;
@@ -108,27 +91,6 @@ async function assembleEmail(event) {
     english_text: "Click the button to verify your email",
     french_text: "Appuyer sur le bouton pour vérifier votre address",
   });
-}
-
-async function sendSocketMessage(event, message) {
-  const domain = event.requestContext.domainName;
-  const stage = event.requestContext.stage;
-  const connectionId = event.requestContext.connectionId;
-  const callbackUrl = `https://${domain}/${stage}`;
-  const client = new ApiGatewayManagementApiClient({ endpoint: callbackUrl });
-  const requestParams = {
-    ConnectionId: connectionId,
-    Data: JSON.stringify({
-      message: message,
-      id: connectionId,
-    }),
-  };
-  const command = new PostToConnectionCommand(requestParams);
-  try {
-    await client.send(command);
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 async function createUser(event) {

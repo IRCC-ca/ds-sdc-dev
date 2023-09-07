@@ -80,8 +80,13 @@ export class emailVerificationComponent
           this.status = 'done';
         }
       },
-      error: (err) => console.log(err), // Called if at any point WebSocket API signals some kind of error.
-      complete: () => console.log('complete') // Called when connection is closed (for whatever reason).
+      error: (err) => {
+        this.reset();
+        console.log(err);
+      }, // Called if at any point WebSocket API signals some kind of error.
+      complete: () => {
+        this.reset();
+      } // Called when connection is closed (for whatever reason).
     });
     this.status = 'start';
 
@@ -112,6 +117,7 @@ export class emailVerificationComponent
       route: 'sendFormInfoRoute',
       email: data
     });
+    this.status = 'sendingEmail';
   }
 
   reset() {

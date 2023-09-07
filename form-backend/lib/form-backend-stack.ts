@@ -10,12 +10,21 @@ import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as s3Deployment from "aws-cdk-lib/aws-s3-deployment";
 
-import * as stepfunctions from "aws-cdk-lib/aws-stepfunctions";
-import * as tasks from "aws-cdk-lib/aws-stepfunctions-tasks";
-import { PolicyStatement } from "aws-cdk-lib/aws-iam";
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname + "/.env" });
+
 export class FormBackendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+
+    let EMAIL_FROM = process.env.EMAIL_FROM || "";
+    if (EMAIL_FROM.length === 0) {
+      throw "Missing EMAIL_FROM from .env file";
+    }
+    let EMAIL_TO = process.env.EMAIL_TO || "";
+    if (EMAIL_TO.split(", ").length === 0) {
+      throw `Missing EMAIL_TO from .env file: EMAIL_TO=email@mail.com, email2@mail.com`;
+    }
 
     // Create an S3 bucket
     const bucket = new s3.Bucket(this, "assets", {
@@ -174,6 +183,7 @@ export class FormBackendStack extends cdk.Stack {
         "sendVerificationEmailRoute",
         sendVerificationEmailLambda
       ),
+      returnResponse: true,
     });
 
     webSocketApi.addRoute("sendFormInfoRoute", {
@@ -226,6 +236,7 @@ export class FormBackendStack extends cdk.Stack {
       crudUserLambda.functionName
     );
     sendVerificationEmailLambda.addEnvironment("bucketName", bucket.bucketName);
+    sendVerificationEmailLambda.addEnvironment("EMAIL_FROM", EMAIL_FROM);
 
     verificationClickEventLambda.addEnvironment(
       "endpoindHttpApi",
@@ -257,6 +268,9 @@ export class FormBackendStack extends cdk.Stack {
     sendFormInfoLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
 
     sendFormInfoLambda.addEnvironment("bucketName", bucket.bucketName);
+
+    sendFormInfoLambda.addEnvironment("EMAIL_FROM", EMAIL_FROM);
+    sendFormInfoLambda.addEnvironment("EMAIL_TO", EMAIL_TO);
 
     crudUserLambda.addEnvironment("endpoindHttpApi", httpApi.apiEndpoint);
     crudUserLambda.addEnvironment(

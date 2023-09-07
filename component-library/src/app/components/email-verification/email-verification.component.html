@@ -2,10 +2,10 @@
   class="email-verification"
   style="margin: 32px 0 0 0"
 >
-  <ng-container *ngIf="status === 'start'; else second">
+  <ng-container *ngIf="status === 'start'; else waiting">
     <div>
       <p>
-        {{ 'Please verify your mail before submitting the form' | translate }}
+        {{ 'Please verify your mail before submitting the form.' | translate }}
       </p>
       <div style="display: grid; grid-template-columns: 50% 50%">
         <div style="display: flex; align-items: center">
@@ -24,8 +24,8 @@
       </div>
     </div>
   </ng-container>
-  <ng-template #second>
-    <ng-container *ngIf="status === 'waiting'; else third">
+  <ng-template #waiting>
+    <ng-container *ngIf="status === 'waiting'; else verified">
       <div style="display: grid; grid-template-columns: 100%">
         <p>
           {{
@@ -41,8 +41,8 @@
       </div>
     </ng-container>
   </ng-template>
-  <ng-template #third>
-    <ng-container *ngIf="status === 'verified'; else fourth">
+  <ng-template #verified>
+    <ng-container *ngIf="status === 'verified'; else sendingEmail">
       <div style="display: grid; grid-template-columns: 100%">
         <p>
           {{ 'Your email has been verified!' | translate }}
@@ -57,7 +57,21 @@
       </div>
     </ng-container>
   </ng-template>
-  <ng-template #fourth>
+  <ng-template #sendingEmail>
+    <ng-container *ngIf="status === 'sendingEmail'; else done">
+      <div style="display: grid; grid-template-columns: 100%">
+        <p>
+          {{ 'Submitting' | translate }}
+        </p>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <ircc-cl-lib-spinner></ircc-cl-lib-spinner>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #done>
     <ng-container *ngIf="status === 'done'">
       <div style="display: grid; grid-template-columns: 100%">
         <p>
