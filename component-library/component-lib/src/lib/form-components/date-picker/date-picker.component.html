@@ -9,16 +9,19 @@
       [attr.aria-live]="'off'"
       [config]="dropDownConfigs.year"
       *ngIf="config.yearSelectShow"
+      (change)="changeValue($event)"
     ></ircc-cl-lib-select>
     <ircc-cl-lib-select
       class="select-month"
       [config]="dropDownConfigs.month"
       *ngIf="config.monthSelectShow"
+      (change)="changeValue($event)"
     ></ircc-cl-lib-select>
     <ircc-cl-lib-select
       class="select-day"
       [config]="dropDownConfigs.day"
       *ngIf="config.daySelectShow"
+      (change)="changeValue($event)"
     ></ircc-cl-lib-select>
   </fieldset>
   <div aria-live="polite">
