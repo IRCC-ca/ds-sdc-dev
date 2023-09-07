@@ -11,12 +11,11 @@ import Handlebars from "handlebars";
 
 export const handler = async (event) => {
   event.requestContext.routeKey = "isUserVerifiedRoute";
-  console.log("initial event ", event);
   const ses = new SESClient({ region: "ca-central-1" });
 
   let to = "";
   let email = await assembleEmail(event);
-  console.log(email);
+
   const command = new SendEmailCommand({
     Destination: {
       ToAddresses: ["aggreniertest@gmail.com", "bobby.brice@gmail.com"],
@@ -40,8 +39,6 @@ try {
     // Check if the email was sent successfully
     if (response.$metadata.httpStatusCode === 200) {
         const connectionId = event.requestContext.connectionId
-        console.log("connId", connectionId);
-        console.log("res", response)
         // Call the deletion lambda
         await deleteUserData(connectionId);
 
@@ -131,8 +128,10 @@ async function isUserVerified(event) {
 async function deleteUserData(connectionId) {
   const client = new LambdaClient();
   const payload = {
-    id: connectionId,
-    routeKey: 'deleteUserRoute'
+    requestContext: {
+      connectionId: connectionId,
+      routeKey: 'deleteUserRoute'
+    }
   };
 
   const command = new InvokeCommand({
