@@ -95,7 +95,7 @@ async function assembleEmail(event) {
 
   return template({
     header: headerTemplate({ imgURL: urlHeaderImage }),
-    formObject
+    requestData: formObject
   });
 }
 
