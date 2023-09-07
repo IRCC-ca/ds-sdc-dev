@@ -79,6 +79,10 @@ export class emailVerificationComponent
         if (msg.message === 'formSent') {
           this.status = 'done';
         }
+
+        if (msg.message === 'Internal server error') {
+          this.status = 'error';
+        }
       },
       error: (err) => {
         this.reset();

@@ -72,7 +72,7 @@
     </ng-container>
   </ng-template>
   <ng-template #done>
-    <ng-container *ngIf="status === 'done'">
+    <ng-container *ngIf="status === 'done'; else error">
       <div style="display: grid; grid-template-columns: 100%">
         <p>
           {{ 'Your form has been submitted' | translate }}
@@ -80,19 +80,24 @@
       </div>
     </ng-container>
   </ng-template>
-</div>
-
-<div
-  style="
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 50px;
-  "
->
-  <ircc-cl-lib-button
-    [config]="buttonConfig"
-    (click)="reset()"
-    >reset</ircc-cl-lib-button
-  >
+  <ng-template #error>
+    <ng-container *ngIf="status === 'error'">
+      <div style="display: grid; grid-template-columns: 100%">
+        <p>
+          {{
+            'An Error has occured, please restart the verification flow'
+              | translate
+          }}
+        </p>
+        <div style="display: flex; align-items: center">
+          <ircc-cl-lib-button
+            [config]="buttonConfig"
+            (click)="reset()"
+          >
+            {{ 'Restart' | translate }}</ircc-cl-lib-button
+          >
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
 </div>
