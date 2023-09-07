@@ -119,7 +119,7 @@ export class emailVerificationComponent
     const dataJson = JSON.parse(data);
     console.log(data);
 
-    let body: any[] = [];
+    const body: any[] = [];
 
     (Object.keys(dataJson) as (keyof typeof dataJson)[]).forEach(
       (key, index) => {
