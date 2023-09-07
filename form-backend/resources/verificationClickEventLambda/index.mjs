@@ -29,8 +29,8 @@ export const handler = async (event) => {
   const command = new PostToConnectionCommand(requestParams);
   let html = await assembleHTML(
     event,
-    "Your email has been verified!",
-    "Votre adresse email a été vérifiée"
+    "Your email has been verified! - This window will automatically close in 5 seconds",
+    "Votre adresse email a été vérifiée - Cette fenêtre se fermera automatiquement dans 5 secondes"
   );
   try {
     await client.send(command);
