@@ -116,12 +116,27 @@ export class emailVerificationComponent
 
   submitForm() {
     const data = localStorage.getItem('requestFormData');
-    this.subject.next({
-      action: 'sendFormInfoRoute',
-      route: 'sendFormInfoRoute',
-      email: data
-    });
-    this.status = 'sendingEmail';
+    if (data) {
+      const requestData = [
+        { label: 'Request Title', value: data["request-title-text-area"]},
+        { label: 'Request Type', value: data["radio-request-type"] },
+        { label: 'Request Details', value: data["request-details-text-area"] },
+        { label: 'Use Case', value: data["use-case-text-area"] },
+        { label: 'References', value: data["references-text-area"] ? data["references-text-area"] : '' },
+        { label: 'Urgent Request?', value: data["radio-request-urgent"] ? data["radio-request-urgent"] : '' },
+        { label: 'Urgent Request Details', value: data["urgent-details-text-area"] ? data["urgent-details-text-area"] : '' },
+        { label: 'Request Month', value: data["date-requested-datepicker_monthControl"] ? data["date-requested-datepicker_monthControl"] : '' },
+        { label: 'Request Day', value: data["date-requested-datepicker_dayControl"] ? data["date-requested-datepicker_dayControl"] : '' },
+        { label: 'Request Year', value: data["date-requested-datepicker_yearControl"] ? data["date-requested-datepicker_yearControl"] : '' },
+      ];
+
+      this.subject.next({
+        action: 'sendFormInfoRoute',
+        route: 'sendFormInfoRoute',
+        email: requestData
+      });
+      this.status = 'sendingEmail';
+    }
   }
 
   reset() {

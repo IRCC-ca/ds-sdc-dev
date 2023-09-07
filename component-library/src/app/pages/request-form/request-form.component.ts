@@ -88,7 +88,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
       },
       {
         text: 'RequestForm.radioOption2',
-        value: 'Request'
+        value: 'Feature'
       },
       {
         text: 'RequestForm.radioOption3',

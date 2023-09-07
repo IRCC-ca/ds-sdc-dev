@@ -91,20 +91,11 @@ async function assembleEmail(event) {
   const template = Handlebars.compile(file);
   const eventObject = JSON.parse(event.body);
   const formObject = JSON.parse(eventObject.email);
-  const requestData = [
-  { label: 'Request Title', value: formObject["request-title-text-area"]},
-  { label: 'Request Type', value: formObject["radio-request-type"] },
-  { label: 'Request Details', value: formObject["request-details-text-area"] },
-  { label: 'Use Case', value: formObject["use-case-text-area"] },
-  { label: 'References', value: formObject["references-text-area"] ? formObject["references-text-area"] : '' },
-  { label: 'Urgent Request?', value: formObject["radio-request-urgent"] ? formObject["radio-request-urgent"] : '' },
-  { label: 'Urgent Request Details', value: formObject["urgent-details-text-area"] ? formObject["urgent-details-text-area"] : '' },
-  // { label: 'Requested Date', value: `${formObject["date-requested-datepicker_monthControl"] }, ${formObject["date-requested-datepicker_dayControl"] }, ${formObject["date-requested-datepicker_yearControl"] }` }
-];
+
 
   return template({
     header: headerTemplate({ imgURL: urlHeaderImage }),
-    requestData
+    formObject
   });
 }
 
