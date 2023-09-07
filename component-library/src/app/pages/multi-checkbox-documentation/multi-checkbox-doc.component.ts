@@ -60,7 +60,9 @@ export class MultiCheckboxDocComponent implements OnInit {
         size: 'small'
       }
     ],
-    errorMessages: []
+    errorMessages: [{id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+    {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+    {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }]
   };
 
   togglesMultiCheckbox: IRadioInputComponentConfig[] = [
@@ -330,57 +332,60 @@ export class MultiCheckboxDocComponent implements OnInit {
         };
         break;
       case 'error':
-        if (value === 'None') {
-          this.multiCheckboxConfig.errorMessages= []
-          this.multiCheckboxConfig.parent.formGroup.removeControl(this.multiCheckboxConfig.parent.id);
-          this.multiCheckboxConfig.parent.formGroup.addControl(
-            this.multiCheckboxConfig.parent.id,
-            new FormControl('')
-          );
-          this.multiCheckboxConfig.children?.forEach((child) => {
-            this.formMultiCheckbox.removeControl(child.id);
-            this.formMultiCheckbox.addControl(
-              child.id,
-              new FormControl('')
-            );
-          })
-        }
-
-        else if (value === 'Single') {
-          this.multiCheckboxConfig.errorMessages= [{id:'singleError', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
-          this.setValidators(this.multiCheckboxConfig.parent.id);
-   
-          if (!this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.touched){
-            this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.markAsTouched();
-          }
-          this.multiCheckboxConfig.children?.forEach((child) => {
-            this.setValidators(child.id);
-            if(!this.formMultiCheckbox.get(child.id)?.touched) {
-              this.formMultiCheckbox.get(child.id)?.markAsTouched();
-            }
-          });
-        }
-        else if (value === 'Multiple') {
-          this.multiCheckboxConfig.errorMessages= [
-            {id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-            {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-            {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
-          ];
-
-          this.setValidators(this.multiCheckboxConfig.parent.id)
-
-          if (!this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.touched){
-            this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.markAsTouched();
-          }
-
-          this.multiCheckboxConfig.children?.forEach((child) => {
-            this.setValidators(child.id)
-            if(!this.formMultiCheckbox.get(child.id)?.touched) {
-              this.formMultiCheckbox.get(child.id)?.markAsTouched();
-            }
-          });
-        }
+        console.log("value", value)
+        this.determineErrorState(value, this.formMultiCheckbox, this.multiCheckboxConfig.id)
         break;
+        // if (value === 'None') {
+        //   this.multiCheckboxConfig.errorMessages= []
+        //   this.multiCheckboxConfig.parent.formGroup.removeControl(this.multiCheckboxConfig.parent.id);
+        //   this.multiCheckboxConfig.parent.formGroup.addControl(
+        //     this.multiCheckboxConfig.parent.id,
+        //     new FormControl('')
+        //   );
+        //   this.multiCheckboxConfig.children?.forEach((child) => {
+        //     this.formMultiCheckbox.removeControl(child.id);
+        //     this.formMultiCheckbox.addControl(
+        //       child.id,
+        //       new FormControl('')
+        //     );
+        //   })
+        // }
+
+        // else if (value === 'Single') {
+        //   this.multiCheckboxConfig.errorMessages= [{id:'singleError', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
+        //   this.setValidators(this.multiCheckboxConfig.parent.id);
+   
+        //   if (!this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.touched){
+        //     this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.markAsTouched();
+        //   }
+        //   this.multiCheckboxConfig.children?.forEach((child) => {
+        //     this.setValidators(child.id);
+        //     if(!this.formMultiCheckbox.get(child.id)?.touched) {
+        //       this.formMultiCheckbox.get(child.id)?.markAsTouched();
+        //     }
+        //   });
+        // }
+        // else if (value === 'Multiple') {
+        //   this.multiCheckboxConfig.errorMessages= [
+        //     {id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+        //     {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+        //     {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
+        //   ];
+
+        //   this.setValidators(this.multiCheckboxConfig.parent.id)
+
+        //   if (!this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.touched){
+        //     this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.markAsTouched();
+        //   }
+
+        //   this.multiCheckboxConfig.children?.forEach((child) => {
+        //     this.setValidators(child.id)
+        //     if(!this.formMultiCheckbox.get(child.id)?.touched) {
+        //       this.formMultiCheckbox.get(child.id)?.markAsTouched();
+        //     }
+        //   });
+        // }
+        // break;
       case 'state':
         console.log("State", value)
         if(value !== undefined) {
@@ -396,12 +401,41 @@ export class MultiCheckboxDocComponent implements OnInit {
     }
   }
 
-  private setValidators(id : string) {
-    this.formMultiCheckbox.removeControl(id);
-    this.formMultiCheckbox.addControl(
-      id,
-      new FormControl('', [Validators.required])
-    );
+  determineErrorState(value: string, formGroup: FormGroup, formID: string) {
+    let errorArray: string[] = [];
+    switch (value) {
+      case 'Single':
+        errorArray = ['required']
+        console.log("single Error")
+        // errorArray.push(errors[0]);
+        this.setErrors(formGroup, formID, errorArray)
+        break;
+      case 'Multiple':
+        console.log("Mulit Error")
+        errorArray = ['required', 'email']
+        this.setErrors(formGroup, formID, errorArray)
+        break;
+      case 'None':
+        console.log("No Error")
+        errorArray = []
+        this.setErrors(formGroup, formID, errorArray)
+        break;
+    }
+  }
+
+  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
+    let errorVals = {};
+    console.log("------------>",errorKeys)
+    if (errorKeys.length === 0) {
+      formGroup.get(formID)?.setErrors(null);
+    } else {
+      errorKeys.forEach(error => {
+        errorVals[error] = true
+      });
+      formGroup.get(formID)?.setErrors(errorVals);
+      formGroup.get(formID)?.markAsTouched();
+    }
+    console.log('for errors:', formGroup.get(formID)?.errors)
   }
 
   private toggleDisabled(disabled: boolean, currentConfigId : string, formType : FormGroup) {

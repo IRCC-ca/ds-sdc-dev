@@ -218,8 +218,6 @@ export class CheckboxDocCodeComponent implements OnInit {
 
     this.formCheckbox.addControl(this.singleCheckboxConfig.id, new FormControl());
 
-    console.log("ERRORS::::", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
-
     this.togglesSingleCheckbox.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
         this.formCheckbox.addControl(
@@ -305,82 +303,8 @@ export class CheckboxDocCodeComponent implements OnInit {
         };
         break;
       case 'error':
-        if (value === 'None') {
-          this.singleCheckboxConfig.errorMessages= []
-          this.singleCheckboxConfig.formGroup.removeControl(this.singleCheckboxConfig.id);
-          this.singleCheckboxConfig.formGroup.addControl(
-            this.singleCheckboxConfig.id,
-            new FormControl('')
-          );
-          console.log('Error Array None', this.singleCheckboxConfig)
-        }
-
-        else if (value === 'Single') {
-          // this.setValidators(this.singleCheckboxConfig.id, this.formCheckbox);
-          // this.singleCheckboxConfig.errorMessages= [{ key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
-          this.formCheckbox.removeControl(this.singleCheckboxConfig.id);
-          this.formCheckbox.addControl(
-            this.singleCheckboxConfig.id,
-            new FormControl('', [Validators.required])
-            );
-            this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({'required': false})
-            console.log("ERRORS::Single:before:", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
-            // this.formCheckbox.get(this.singleCheckboxConfig.id)?.updateValueAndValidity();
-            // console.log("ERRORS::Single:after:", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
-
-
-            if (!this.formCheckbox.get(this.singleCheckboxConfig.id)?.touched){
-              this.formCheckbox.get(this.singleCheckboxConfig.id)?.markAsTouched();
-            }
-            console.log('SingleError', this.singleCheckboxConfig)
-          }
-          else if (value === 'Multiple') {
-            this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({ 'required': true})
-            console.log("ERRORS::::", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
-
-            // const currentErrors = this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors;
-            // console.log("current errors", currentErrors)
-            // if (currentErrors && currentErrors['required']) {
-            //   delete currentErrors['required'];
-            //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors(Object.keys(currentErrors).length === 0 ? null : currentErrors);
-            // }
-            this.formCheckbox.get(this.singleCheckboxConfig.id)?.markAsTouched();
-            console.log('MultipleError', this.singleCheckboxConfig)
-          }
-          break;
-        // else if (value === 'Multiple') {
-        //   // this.singleCheckboxConfig.errorMessages= [
-        //   //   { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-        //   //   { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-        //   //   { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
-        //   // ];
-
-        //   // this.formCheckbox.removeControl(this.singleCheckboxConfig.id);
-        //   // this.formCheckbox.addControl(
-        //   //   this.singleCheckboxConfig.id,
-        //   //   new FormControl('')
-        //   // )
-
-        //   // this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({ required: true, maxLength: 3 })
-        //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({ required: true})
-
-        //   // Remove the 'required' error
-        //   // const currentErrors = this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors;
-        //   // console.log("current errors", currentErrors)
-        //   // if (currentErrors && currentErrors['required']) {
-        //   //   delete currentErrors['required'];
-        //   //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors(Object.keys(currentErrors).length === 0 ? null : currentErrors);
-        //   // }
-        //   // this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({'required': true})
-        //   // this.formCheckbox.get(this.singleCheckboxConfig.id)?.setErrors({'email': null})
-        //   console.log("ERRORS::::", this.formCheckbox.get(this.singleCheckboxConfig.id)?.errors)
-
-
-        //   this.formCheckbox.get(this.singleCheckboxConfig.id)?.markAsTouched();
-          
-        //   console.log('MultipleError', this.singleCheckboxConfig)
-        // }
-        // break;
+        this.determineErrorState(value, this.formCheckbox, this.singleCheckboxConfig.id)
+        break;
       case 'state':
         console.log("State", value)
         if(value !== undefined) {
@@ -393,13 +317,43 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-  // private setValidators(id : string, formName : FormGroup) {
-  //   formName.removeControl(id);
-  //   formName.addControl(
-  //     id,
-  //     new FormControl('', [Validators.required])
-  //   );
-  // }
+  
+
+  determineErrorState(value: string, formGroup: FormGroup, formID: string) {
+    let errorArray: string[] = [];
+    switch (value) {
+      case 'Single':
+        errorArray = ['required']
+        console.log("single Error")
+        this.setErrors(formGroup, formID, errorArray)
+        break;
+      case 'Multiple':
+        console.log("Mulit Error")
+        errorArray = ['required', 'email', 'email2']
+        this.setErrors(formGroup, formID, errorArray)
+        break;
+      case 'None':
+        console.log("No Error")
+        errorArray = []
+        this.setErrors(formGroup, formID, errorArray)
+        break;
+    }
+  }
+
+  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
+    console.log("errorKeys--->", errorKeys)
+    let errorVals = {};
+    if (errorKeys.length === 0) {
+      formGroup.get(formID)?.setErrors(null);
+    } else {
+      errorKeys.forEach(error => {
+        errorVals[error] = true
+      });
+      formGroup.get(formID)?.setErrors(errorVals);
+      formGroup.get(formID)?.markAsTouched();
+    }
+    console.log('for errors:', formGroup.get(formID)?.errors)
+  }
 
     /**
    * Toggle disabled state of input
@@ -421,77 +375,4 @@ export class CheckboxDocCodeComponent implements OnInit {
         checkboxControl?.enable();
       }
     }
-
-    /**
-   * Return mapping of input config from form values
-   */
-  // private parseToggleConfigSingleCheckbox(value: any) {
-  //   switch (this.errorState) {
-  //     case 'Single':
-  //       this.checkboxConfigSingleError = {
-  //         ...this.checkboxConfigSingleError,
-  //         size: value['size'].toLowerCase(),
-  //         required: value['required'] === 'True',
-  //         label:
-  //           value['label'] === 'True' ? 'Label Text' : undefined,
-  //         desc:
-  //           value['desc'] === 'True' ? 'Description line of text' : undefined,
-  //         helpText:
-  //           value['hint'] === 'True' ? 'Hint Text' : undefined,
-  //       };
-  //       break;
-  //     case 'Multiple':
-  //       console.log('Multiple')
-  //       this.checkboxConfigMultiErrors = {
-  //         ...this.checkboxConfigMultiErrors,
-  //         size: value['size'].toLowerCase(),
-  //         required: value['required'] === 'True',
-  //         label:
-  //           value['label'] === 'True' ? 'Label Text' : undefined,
-  //         desc:
-  //           value['desc'] === 'True' ? 'Description line of text' : undefined,
-  //         helpText:
-  //           value['hint'] === 'True' ? 'Hint Text' : undefined,
-  //       };
-  //       break;
-  //     default:
-  //       this.singleCheckboxConfig = {
-  //         ...this.singleCheckboxConfig,
-  //         size: value['size'].toLowerCase(),
-  //         required: value['required'] === 'True',
-  //         label:
-  //           value['label'] === 'True' ? 'Label Text' : undefined,
-  //         desc:
-  //           value['desc'] === 'True' ? 'Description line of text' : undefined,
-  //         helpText:
-  //           value['hint'] === 'True' ? 'Hint Text' : undefined,
-  //       };
-  //       console.log('Single checkbox config', this.singleCheckboxConfig)
-  //   }
-  // }
-
-  /**
-   * Set input field as touched, toggle error states of input
-   */
-  // private toggleErrors(error: string) {
-  //   if (!this.formCheckbox.get(this.currentConfigId)?.touched && error !== 'None')
-  //     this.formCheckbox.get(this.currentConfigId)?.markAsTouched();
-
-  //   this.errorState = error;
-  //   switch (error) {
-  //     case 'None':
-  //       this.currentConfigId = this.singleCheckboxConfig.id;
-  //       break;
-  //     case 'Single':
-  //       this.currentConfigId = this.checkboxConfigSingleError.id;
-  //       if (!this.formCheckbox.get(this.currentConfigId)?.touched)
-  //         this.formCheckbox.get(this.currentConfigId)?.markAsTouched();
-  //       break;
-  //     case 'Multiple':
-  //       this.currentConfigId = this.checkboxConfigMultiErrors.id;
-  //       if (!this.formCheckbox.get(this.currentConfigId)?.touched)
-  //         this.formCheckbox.get(this.currentConfigId)?.markAsTouched();
-  //       break;
-  //   }
-  // }
 }
