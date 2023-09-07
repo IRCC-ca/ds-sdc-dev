@@ -349,7 +349,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
          */
         if (
           this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Change' ||
-          this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Request'
+          this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Feature'
         )
           this.showUseCase = true;
         if (this.requestFormData[this.urgentRequestRadioConfig.id] === 'Y')
