@@ -191,7 +191,9 @@ export class DatePickerComponent implements OnInit {
     );
 
     //set config from individual options, if present
-    if (this.formGroup) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    };
     if (this.id) this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
@@ -545,22 +547,22 @@ export class DatePickerComponent implements OnInit {
     return false;
   }
 
-  // datePickerTouchedOrInvalid(): boolean {
-  //   let datePickerState: boolean | undefined = false;
+  datePickerTouchedOrInvalid(): boolean {
+    let datePickerState: boolean | undefined = false;
 
-  //   datePickerState =
-  //     (this.config.formGroup.get(this.dropDownConfigs.year.id)?.touched &&
-  //       this.config.formGroup.get(this.dropDownConfigs.year.id)?.invalid) ||
-  //     (this.config.formGroup.get(this.dropDownConfigs.month.id)?.touched &&
-  //       this.config.formGroup.get(this.dropDownConfigs.month.id)?.invalid) ||
-  //     (this.config.formGroup.get(this.dropDownConfigs.day.id)?.touched &&
-  //       this.config.formGroup.get(this.dropDownConfigs.day.id)?.invalid);
+    datePickerState =
+      (this.config.formGroup.get(this.dropDownConfigs.year.id)?.touched &&
+        this.config.formGroup.get(this.dropDownConfigs.year.id)?.invalid) ||
+      (this.config.formGroup.get(this.dropDownConfigs.month.id)?.touched &&
+        this.config.formGroup.get(this.dropDownConfigs.month.id)?.invalid) ||
+      (this.config.formGroup.get(this.dropDownConfigs.day.id)?.touched &&
+        this.config.formGroup.get(this.dropDownConfigs.day.id)?.invalid);
 
-  //   this.touched = datePickerState || false;
-  //   this.getAriaOverride(datePickerState);
-  //   return datePickerState ?? false;
-  //   //  return this.config.formGroup?.touched && this.config.formGroup?.invalid;
-  // }
+    this.touched = datePickerState || false;
+    this.getAriaOverride(datePickerState);
+    return datePickerState ?? false;
+    //  return this.config.formGroup?.touched && this.config.formGroup?.invalid;
+  }
 
   /**
    * Override the aria labels for each of the select fields in the date picker

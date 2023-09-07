@@ -25,7 +25,6 @@
     ></ircc-cl-lib-select>
   </fieldset>
   <div aria-live="polite">
-    <!-- <ng-container *ngIf="datePickerTouchedOrInvalid()"> -->
     <ng-container *ngIf="currentStatus === 'INVALID'">
       <span class="sr-only">{{
         errorStubText + ': ' + (config.label || '' | translate) + ': '
