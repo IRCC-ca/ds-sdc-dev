@@ -35,7 +35,7 @@ export const handler = async (event, context) => {
   try {
     switch (routeKey) {
       case "deleteUserRoute":
-        const test = await dynamo.send(
+        await dynamo.send(
           new DeleteCommand({
             TableName: tableName,
             Key: {
@@ -43,7 +43,6 @@ export const handler = async (event, context) => {
             },
           })
         );
-        console.log("deletion obj", test)
         body = `Deleted item ${connectionId}`;
         break;
       case "sendVerificationEmailRoute":
