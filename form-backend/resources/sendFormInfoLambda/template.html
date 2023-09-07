@@ -111,14 +111,9 @@
     "
   >
   <div>
-    <h2>{{ requestTitle }}</h2>
-    <p>Request Type: {{ radioRequestType }}</p>
-    <p>Request Details: {{ requestDetails }}</p>
-    <p>Use Case: {{ useCase }}</p>
-    <p>References: {{ references }}</p>
-    <p>Urgent Request?: {{ radioRequestUrgent }}</p>
-    <p>Urgent Request Details: {{ urgentDetails }}</p>
-    <p>Requested Date: {{ dateRequestedMonth }},{{ dateRequestedDay }}, {{ dateRequestedYear }}</p>
-</div>
+    {{#each requestData}}
+      <p>{{ label }}: {{ value }}</p>
+    {{/each}}
+  </div>
   </body>
 </html>
