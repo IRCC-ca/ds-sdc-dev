@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@app/share/templates/parent-template.module';
-import { IBannerConfig, ICheckBoxComponentConfig, IMultiCheckboxConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICheckBoxComponentConfig, IMultiCheckboxConfig, IRadioInputComponentConfig, ITabNavConfig, MultiCheckboxService } from 'ircc-ds-angular-component-library';
 
 const enum CheckboxTypes {
   single = "single",
@@ -27,7 +27,7 @@ export class MultiCheckboxDocComponent implements OnInit {
 
   checkbox_type = CheckboxTypes.single
 
-  constructor(private lang: LangSwitchService, private translate: TranslateService) {}
+  constructor(private lang: LangSwitchService, private translate: TranslateService,     private multicheckboxService: MultiCheckboxService) {}
 
   multiCheckboxConfig: IMultiCheckboxConfig = {
     id: 'multi_checkbox',
@@ -60,9 +60,10 @@ export class MultiCheckboxDocComponent implements OnInit {
         size: 'small'
       }
     ],
-    errorMessages: [{id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-    {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-    {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }]
+    errorMessages: []
+    // errorMessages: [{id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+    // {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+    // {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }]
   };
 
   togglesMultiCheckbox: IRadioInputComponentConfig[] = [
@@ -333,7 +334,7 @@ export class MultiCheckboxDocComponent implements OnInit {
         break;
       case 'error':
         console.log("value", value)
-        this.determineErrorState(value, this.formMultiCheckbox, this.multiCheckboxConfig.id)
+        this.determineErrorState(value, this.formMultiCheckbox, this.multiCheckboxConfig.parent.id)
         break;
         // if (value === 'None') {
         //   this.multiCheckboxConfig.errorMessages= []
@@ -401,40 +402,66 @@ export class MultiCheckboxDocComponent implements OnInit {
     }
   }
 
+  getAllChildrenIds() : string[] {
+    let childIdArray : string[] = []
+    this.multiCheckboxConfig.children?.forEach((child) => {
+      childIdArray.push(child.id)
+    })
+    return childIdArray;
+  }
+
   determineErrorState(value: string, formGroup: FormGroup, formID: string) {
     let errorArray: string[] = [];
+    let childIdArray = this.getAllChildrenIds()
     switch (value) {
       case 'Single':
-        errorArray = ['required']
-        console.log("single Error")
-        // errorArray.push(errors[0]);
-        this.setErrors(formGroup, formID, errorArray)
+        this.multiCheckboxConfig.errorMessages= [{id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError')}]
+        this.setErrors(formGroup, [...childIdArray, this.multiCheckboxConfig.parent.id] , ['required' ]);
         break;
       case 'Multiple':
         console.log("Mulit Error")
-        errorArray = ['required', 'email']
-        this.setErrors(formGroup, formID, errorArray)
+        // this.multiCheckboxConfig.errorMessages= [
+        //   {id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+        //   {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+        //   {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
+        // ]
+
+
+        // for (const field in formGroup.controls) {
+        //   let field = formGroup.get(formID)
+        //   field?.setErrors({ 'required': true });
+        //   field?.markAsTouched();
+        //   field?.markAsDirty();
+    
+        //   this.multicheckboxService.checkField(
+        //     field,
+        //     formID,
+        //     `${this.translate.instant('ERROR.singleError')}`
+        //   );
+        // }
         break;
       case 'None':
         console.log("No Error")
         errorArray = []
-        this.setErrors(formGroup, formID, errorArray)
+        this.setErrors(formGroup, [formID], errorArray)
         break;
     }
   }
 
-  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
+  setErrors(formGroup: FormGroup, formID: string[], errorKeys: string[]) {
     let errorVals = {};
     console.log("------------>",errorKeys)
-    if (errorKeys.length === 0) {
-      formGroup.get(formID)?.setErrors(null);
-    } else {
-      errorKeys.forEach(error => {
-        errorVals[error] = true
-      });
-      formGroup.get(formID)?.setErrors(errorVals);
-      formGroup.get(formID)?.markAsTouched();
-    }
+    formID.forEach(id => {
+      if (errorKeys.length === 0) {
+        formGroup.get(id)?.setErrors(null);
+      } else {
+        errorKeys.forEach(error => {
+          errorVals[error] = true
+        });
+        formGroup.get(id)?.setErrors(errorVals);
+        formGroup.get(id)?.markAsTouched();
+      }
+  })
     console.log('for errors:', formGroup.get(formID)?.errors)
   }
 
