@@ -165,6 +165,11 @@ export class AutoCompleteComponent
     setTimeout(() => {
       this.showSuggestions = event;
     }, timeoutTime);
+
+    // Set 1st option as active when on focus
+    if (this.flyout.options.length > 0) {
+      this.flyout.options[0].active = true;
+    }
   }
 
   isSelected(event: any) {
