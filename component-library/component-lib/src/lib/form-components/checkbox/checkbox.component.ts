@@ -123,6 +123,11 @@ export class CheckboxComponent
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if (retControl) {
+      this.formControl = retControl;
+    }
+
     this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
       (response) => {
         if (response.id === this.config.id) {
@@ -185,13 +190,14 @@ export class CheckboxComponent
         this.config.id,
         this.config.errorMessages
       );
-
+      console.log("config.errormesages->", this.config.errorMessages)
       this.errorIds.forEach((errorId) => {
         this.multicheckboxService.errorEvent({
           id: this.config.id,
           event: errorId
         });
       });
+      console.log("Error ids", this.errorIds)
     }
 
     //Get the error text when the formControl value changes
@@ -207,6 +213,8 @@ export class CheckboxComponent
           });
         }
       });
+
+      // console.log("formControl?.errors?.[errors.key]", this.formControl?.errors)
   }
 
   ngOnChanges() {
