@@ -319,7 +319,7 @@ export class CheckboxDocCodeComponent implements OnInit {
   }
 
     /**
-   * Toggle disabled state of input
+   * Toggle disabled state of checkbox
    */
     private toggleDisabled(disabled: boolean, currentConfigId : string, formType : FormGroup) {
       const checkboxControl: AbstractControl | null = formType.get(
