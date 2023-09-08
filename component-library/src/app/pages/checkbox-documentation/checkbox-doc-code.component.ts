@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@app/share/templates/parent-template.module';
-import { IBannerConfig, ICheckBoxComponentConfig, IMultiCheckboxConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
+import { IBannerConfig, ICheckBoxComponentConfig, IRadioInputComponentConfig, ITabNavConfig } from 'ircc-ds-angular-component-library';
 
 const enum CheckboxTypes {
   single = "single",
@@ -189,27 +189,21 @@ export class CheckboxDocCodeComponent implements OnInit {
   };
 
   setCheckboxType(value: any) {
-    console.log("Tab name:", value)
     switch(value) {
       case 'single-checkbox':
-        console.log("single checkbox  ----");
         this.checkbox_type = CheckboxTypes.single
         break;
       case 'group-checkbox':
-        console.log("group checkbox  ----");
         this.checkbox_type = CheckboxTypes.group
         break;
       case 'multi-checkbox':
-        console.log("multi checkbox  ----");
         this.checkbox_type = CheckboxTypes.multi
         break
       default:
-        console.log("default checkbox  ----");
+        console.log("Hit default case")
     }
   }
 
-  // errorState = 'None';
-  // currentConfigId = this.singleCheckboxConfig.id;
   listOfConfigItems = ['size', 'required', 'label', 'desc', 'hint', 'error', 'state']
 
   
@@ -231,18 +225,6 @@ export class CheckboxDocCodeComponent implements OnInit {
       this.formCheckbox.addControl(checkbox.id, new FormControl());
     });
 
-    // this.formCheckbox.get(this.checkboxesSingle[0].id)
-    // ?.valueChanges.subscribe((change) => {
-    //   if (change) {
-    //     this.bannerConfig.title='General.DisabledBannerTitle'
-    //     this.bannerConfig.content="General.DisabledBannerContent"
-    //   } else {
-    //     this.bannerConfig.title='General.EnabledBannerTitle'
-    //     this.bannerConfig.content="General.EnabledBannerContent"
-    //   }
-    // });
-
-
     this.formCheckbox.patchValue({
       size: 'Small',
       label: 'True',
@@ -251,16 +233,6 @@ export class CheckboxDocCodeComponent implements OnInit {
       required: 'True',
       error: 'None'
     });
-
-    // this.formCheckbox.valueChanges.subscribe((value: any) => {
-    //   if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
-    //   if (value['state'] !== undefined) {
-    //     this.toggleDisabled(value['state'], this.checkboxConfig.id, this.formCheckbox);
-    //     // this.state = value['state'];
-    //   }
-    //   this.parseToggleConfigSingleCheckbox(value);
-    //   // this.parseCodeViewConfig();
-    // });
 
     this.listOfConfigItems.forEach((configItem) => {
       this.formCheckbox.get(configItem)?.valueChanges.subscribe((value : any) => {
@@ -306,9 +278,7 @@ export class CheckboxDocCodeComponent implements OnInit {
         this.determineErrorState(value, this.formCheckbox, this.singleCheckboxConfig.id)
         break;
       case 'state':
-        console.log("State", value)
         if(value !== undefined) {
-          console.log("Disable")
           this.toggleDisabled(value, this.singleCheckboxConfig.id, this.formCheckbox);
         }
         break;
@@ -317,23 +287,18 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-  
-
   determineErrorState(value: string, formGroup: FormGroup, formID: string) {
     let errorArray: string[] = [];
     switch (value) {
       case 'Single':
         errorArray = ['required']
-        console.log("single Error")
         this.setErrors(formGroup, formID, errorArray)
         break;
       case 'Multiple':
-        console.log("Mulit Error")
         errorArray = ['required', 'email', 'email2']
         this.setErrors(formGroup, formID, errorArray)
         break;
       case 'None':
-        console.log("No Error")
         errorArray = []
         this.setErrors(formGroup, formID, errorArray)
         break;
@@ -341,7 +306,6 @@ export class CheckboxDocCodeComponent implements OnInit {
   }
 
   setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
-    console.log("errorKeys--->", errorKeys)
     let errorVals = {};
     if (errorKeys.length === 0) {
       formGroup.get(formID)?.setErrors(null);
@@ -352,7 +316,6 @@ export class CheckboxDocCodeComponent implements OnInit {
       formGroup.get(formID)?.setErrors(errorVals);
       formGroup.get(formID)?.markAsTouched();
     }
-    console.log('for errors:', formGroup.get(formID)?.errors)
   }
 
     /**
@@ -362,7 +325,6 @@ export class CheckboxDocCodeComponent implements OnInit {
       const checkboxControl: AbstractControl | null = formType.get(
         currentConfigId
       );
-      console.log("Abstract:", checkboxControl)
       if (
         (disabled && checkboxControl?.disabled) ||
         (!disabled && checkboxControl?.enabled)
