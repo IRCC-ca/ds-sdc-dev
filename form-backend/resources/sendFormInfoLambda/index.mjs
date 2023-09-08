@@ -12,7 +12,6 @@ import Handlebars from "handlebars";
 export const handler = async (event) => {
   event.requestContext.routeKey = "isUserVerifiedRoute";
   const ses = new SESClient({ region: "ca-central-1" });
-
   let to = "";
   let email = await assembleEmail(event);
 
@@ -49,6 +48,13 @@ export const handler = async (event) => {
           }),
         };
       }
+    } else {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          message: "Internal server error",
+        }),
+      };
     }
   } catch (error) {
     return {
@@ -88,14 +94,22 @@ async function assembleEmail(event) {
     }
   );
 
+  const s3CommandFooterImage = new GetObjectCommand({
+    Bucket: process.env.bucketName,
+    Key: "gocwordmark.png",
+  });
+  const urlFooterImage = await getSignedUrl(s3Client, s3CommandFooterImage, {
+    expiresIn: 3600,
+  });
+
   const template = Handlebars.compile(file);
   const eventObject = JSON.parse(event.body);
-  const formObject = JSON.parse(eventObject.email);
-
+  const formObject = eventObject.email;
 
   return template({
     header: headerTemplate({ imgURL: urlHeaderImage }),
-    requestData: formObject
+    footer: footerTemplate({ imgURL: urlFooterImage }),
+    requestData: formObject,
   });
 }
 
@@ -110,7 +124,12 @@ async function isUserVerified(event) {
     let promisewait = await client.send(command);
     const textDecoder = new TextDecoder("utf-8");
     const decodedString = textDecoder.decode(promisewait.Payload);
-    return JSON.parse(JSON.parse(decodedString).body).verified;
+
+    const parseDecodedString = JSON.parse(decodedString);
+
+    const parseBody = JSON.parse(JSON.parse(decodedString).body);
+    const verified = parseBody.verified || false;
+    return verified;
   } catch (err) {
     console.log(err);
   }

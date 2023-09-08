@@ -86,6 +86,15 @@ export const handler = async (event, context) => {
             },
           })
         );
+
+        if (body.Item === undefined) {
+          body.Item = {
+            date: 1694111967202,
+            email: "email@goc.ca",
+            id: connectionId,
+            verified: false,
+          };
+        }
         body = body.Item;
         break;
       default:

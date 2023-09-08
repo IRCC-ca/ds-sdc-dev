@@ -110,10 +110,12 @@
       -webkit-text-size-adjust: 100%;
     "
   >
-  <div>
-    {{#each requestData}}
+    {{{header}}}
+    <div>
+      {{#each requestData}}
       <p>{{ label }}: {{ value }}</p>
-    {{/each}}
-  </div>
+      {{/each}}
+    </div>
+    {{{footer}}}
   </body>
 </html>
