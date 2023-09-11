@@ -11,6 +11,7 @@ import {
   IconButtonCategories
 } from 'ircc-ds-angular-component-library';
 import { ContentItem } from '@app/share/interface/content-item.interface';
+import { IResponsiveImageComponentConfig } from '@app/components/responsive-image/responsive-image.component';
 @Component({
   selector: 'app-icon-button-documentation',
   templateUrl: './icon-button-documentation.component.html',
@@ -40,6 +41,36 @@ export class IconButtonDocumentationComponent implements OnInit {
     size: 'small',
     disabled: false
   };
+
+  imageSpacingConfig: IResponsiveImageComponentConfig = {
+    id: 'image-spacing',
+    mobileSrc: 'assets/img/icon-btn-content/icon-spacing-phone-328w.png',
+    desktopSrc: 'assets/img/icon-btn-content/icon-spacing.png',
+    defaultSrc: 'assets/img/icon-btn-content/icon-spacing.png',
+    maxWidth: 768,
+    altText: 'IconButtonDocumentation.Spacing.ImgAlt',
+    lazyLoad: true
+  }
+
+  anatomyImgConfig: IResponsiveImageComponentConfig = {
+    id: 'anatomy-image',
+    mobileSrc: 'assets/img/icon-btn-content/icon-anatomy-phone.png',
+    desktopSrc: 'assets/img/icon-btn-content/anatomy-image-button.png',
+    defaultSrc: 'assets/img/icon-btn-content/anatomy-image-button.png',
+    maxWidth: 768,
+    altText: 'IconButtonDocumentation.AnatomyImgAlt',
+    lazyLoad: true
+  }
+
+  specImgConfig: IResponsiveImageComponentConfig = {
+    id: 'spec-image',
+    mobileSrc: 'assets/img/icon-btn-content/icon-spec-phone-328w.png',
+    desktopSrc: 'assets/img/icon-btn-content/spec-image-872w.png',
+    defaultSrc: 'assets/img/icon-btn-content/spec-image-872w.png',
+    maxWidth: 768,
+    altText: 'IconButtonDocumentation.SpecsImgAlt',
+    lazyLoad: true
+  }
 
   anatomyContentItems: ContentItem[] = [
     {

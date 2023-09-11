@@ -1,0 +1,15 @@
+<div id="{{ config.id + '-container' }}"
+  class="responsive-image-wrapper">
+  <picture>
+    <source
+      [attr.media]="'(max-width: ' + config.maxWidth + 'px)'"
+      [srcset]="config.mobileSrc"
+    />
+    <source
+      [attr.media]="'(min-width: ' + config.maxWidth + 'px)'"
+      [srcset]="config.desktopSrc"
+    />
+    <img [src]="config.defaultSrc" alt="{{ config.altText || '' | translate }}" [attr.loading]="config.lazyLoad ? 'lazy' : null"/>
+  </picture>
+</div>
+

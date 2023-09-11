@@ -268,21 +268,8 @@
         </h3>
         <div class="row">
           <div [style.max-width]="'100%'">
-            <picture>
-              <source
-                media="(max-width: 768px)"
-                srcset="assets/img/icon-btn-content/icon-spacing-phone-328w.png"
-              />
-              <source
-                media="(min-width: 768px)"
-                srcset="assets/img/icon-btn-content/icon-spacing.png"
-              />
-              <img
-                class="mb_12"
-                src="assets/img/icon-btn-content/icon-spacing.png"
-                alt="{{ 'IconButtonDocumentation.Spacing.ImgAlt' | translate }}"
-              />
-            </picture>
+            <app-responsive-image
+            [config]="imageSpacingConfig"></app-responsive-image>
             <p>
               {{ 'IconButtonDocumentation.SpacingText' | translate }}
             </p>
@@ -298,20 +285,7 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcset="assets/img/icon-btn-content/icon-anatomy-phone.png"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcset="assets/img/icon-btn-content/anatomy-image-button.png"
-          />
-          <img
-            src="assets/img/icon-btn-content/anatomy-image-button.png"
-            alt="{{ 'IconButtonDocumentation.AnatomyImgAlt' | translate }}"
-          />
-        </picture>
+        <app-responsive-image [config]="anatomyImgConfig"></app-responsive-image>
       </div>
       <div class="element-wrapper-container anatomy-content-container">
         <div class="counter-and-heading-container">
@@ -333,20 +307,7 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcset="assets/img/icon-btn-content/icon-spec-phone-328w.png"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcset="assets/img/icon-btn-content/spec-image-872w.png"
-          />
-          <img
-            src="assets/img/icon-btn-content/spec-image-872w.png"
-            alt="{{ 'IconButtonDocumentation.SpecsImgAlt' | translate }}"
-          />
-        </picture>
+        <app-responsive-image [config]="specImgConfig"></app-responsive-image>
       </div>
       <div class="element-wrapper-container">
         <p class="specs-description">
