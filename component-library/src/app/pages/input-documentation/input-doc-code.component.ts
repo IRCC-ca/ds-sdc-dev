@@ -317,15 +317,14 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         };
         break;
       case 'required':
+        this.inputConfigRequired = value === 'True';
         this.inputConfig = {
           ...this.inputConfig,
+          label: this.parseRequiredLabel(
+            'Label Text',
+            this.inputConfigRequired
+          ),
           required: value === 'True'
-        };
-        break;
-      case 'label':
-        this.inputConfig = {
-          ...this.inputConfig,
-          label: value === 'True' ? 'Label Text' : undefined
         };
         break;
       case 'desc':
