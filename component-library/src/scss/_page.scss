@@ -1,5 +1,5 @@
-@use "@ircc-ca/ds-sdc-core/typography/typography";
-@use "grid";
+@use '@ircc-ca/ds-sdc-core/typography/typography';
+@use 'grid';
 
 $round-purple-num-size: 32px;
 
@@ -13,11 +13,19 @@ $round-purple-num-size: 32px;
   text-align: center;
 }
 
-@mixin template {
+@mixin template($d-flex: true) {
+  @if ($d-flex) {
+    :host {
+      @include grid.row;
+    }
+  }
+
   .content-doc-wrapper {
     box-sizing: border-box;
-    max-width: 872px;
-    margin: 0 auto;
+
+    @include grid.up-laptop-layout {
+      padding-right: 40px;
+    }
 
     img {
       display: block;
@@ -193,9 +201,13 @@ $round-purple-num-size: 32px;
         }
       }
     }
+    &.design-guide {
+      p {
+        margin: 0;
+      }
+    }
 
     &.anatomy,
-    &.design-guide,
     &.accessibility,
     &.research {
       p {
@@ -206,6 +218,9 @@ $round-purple-num-size: 32px;
     &.anatomy {
       p {
         margin-top: 6px;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
       }
 
       h3.round-purple-num-heading {

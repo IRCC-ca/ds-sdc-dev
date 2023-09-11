@@ -1,4 +1,4 @@
-<div class="content-doc-wrapper">
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
   <app-title-slug-url [config]="inputTitleSlugConfig"></app-title-slug-url>
   <p class="body1 intro">{{ 'Input.Intro' | translate }}</p>
 
@@ -6,10 +6,11 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p
-      class="body3 demo"
-      [innerHTML]="'Input.InteractiveDemoDesc' | translate"
-    ></p>
+    <p class="body3">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong> {{ ('Input.Title' | translate).toLowerCase() }}</strong>
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
     <app-input-doc-code></app-input-doc-code>
   </section>
 
@@ -50,14 +51,14 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="row element-wrapper-container">
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3>{{ 'General.Size' | translate }}</h3>
           <ul>
             <li>{{ 'General.Small' | translate }}</li>
             <li>{{ 'General.Large' | translate }}</li>
           </ul>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3>{{ 'General.Hint' | translate }}</h3>
           <ul>
             <li>{{ 'General.TrueLabel' | translate }}</li>
@@ -66,7 +67,7 @@
         </div>
       </div>
       <div class="row element-wrapper-container">
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3 class="config-heading">
             {{ 'General.Required' | translate }}
           </h3>
@@ -75,7 +76,7 @@
             <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3 class="config-heading">
             {{ 'Input.ConfigErrorHeading' | translate }}
           </h3>
@@ -86,7 +87,7 @@
         </div>
       </div>
       <div class="row element-wrapper-container">
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3 class="config-heading">
             {{ 'General.DescriptionHeading' | translate }}
           </h3>
@@ -95,7 +96,7 @@
             <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-6">
           <h3 class="config-heading">
             {{ 'General.Placeholder' | translate }}
           </h3>
@@ -146,7 +147,7 @@
       </div>
       <div class="element-wrapper-container">
         <h3 class="h5 emphasis subtitles">
-          {{ 'Input.ErrorsHeading' | translate }}
+          {{ 'General.ErrorsHeading' | translate }}
         </h3>
         <div class="row">
           <div class="col-12 col-md-6">
@@ -362,9 +363,11 @@
         </div>
       </div>
       <div class="element-wrapper-container">
-        <h3 class="subtitles">{{ 'Input.WriteDescHeading' | translate }}</h3>
+        <h3 class="subtitles">
+          {{ 'General.DescriptionSubheading' | translate }}
+        </h3>
         <p class="body3 subtext-3">
-          {{ 'Input.WriteDescSubHeading' | translate }}
+          {{ 'General.DescriptionText' | translate }}
         </p>
         <div class="row">
           <div class="col-12 col-md-6 do-dont-desc">
@@ -395,7 +398,7 @@
       </div>
       <div class="element-wrapper-container">
         <h3 class="subtitles">
-          {{ 'Input.WritePlaceholderHeading' | translate }}
+          {{ 'General.PlaceholderSubheading' | translate }}
         </h3>
         <p class="body3 subtext-3">
           {{ 'Input.WritePlaceholderSubHeading' | translate }}
@@ -458,7 +461,7 @@
       <div class="element-wrapper-container">
         <h3 class="subtitles">{{ 'ERROR.WritingErrHeading' | translate }}</h3>
         <p class="body3 subtext-3">
-          {{ 'Input.WriteErrorsSubHeading' | translate }}
+          {{ 'ERROR.WritingErrText' | translate }}
         </p>
         <div class="row">
           <div class="col-12 col-md-6 do-dont-desc">
@@ -590,7 +593,7 @@
     <div class="row">
       <div class="col-12 col-md-8">
         <h3 class="sub-headings">
-          {{ 'Input.AccessInputsHeading' | translate }}
+          {{ 'General.FigmaAccessInput' | translate }}
         </h3>
         <ol>
           <li
@@ -641,13 +644,17 @@
           {{ 'General.ContentHeading' | translate }}
         </h3>
         <ul class="content-list">
-          <li [innerHtml]="'Input.AccessibilityContentItem1' | translate"></li>
+          <li
+            [innerHtml]="'General.AccessibilityContentItem1' | translate"
+          ></li>
           <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
           <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
           <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
           <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
           <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem7' | translate"></li>
+          <li
+            [innerHtml]="'General.AccessibilityContentItemMax' | translate"
+          ></li>
         </ul>
       </div>
       <div class="element-wrapper-container">

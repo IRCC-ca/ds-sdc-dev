@@ -15,7 +15,6 @@ import {
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
 import { DisplayLanguages, Languages } from '../share/global-params';
-import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { environment } from '../../environments/environment';
 
@@ -33,7 +32,6 @@ import {
 export class ShellComponent implements OnInit {
   dateModified = environment.dateModified;
   title = 'ds-sdc-doc';
-  leftNavData: ISideNavDataInterface[];
   mobile = false;
   navStatus = 'nav-open';
   public innerWidth: any; // Width of viewport window
@@ -106,6 +104,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.input'
   };
 
+  selectPage: INavigationItemLink = {
+    id: 'selectPageNavItem',
+    label: ' Select ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.select'
+  };
+
   datePickerPage: INavigationItemLink = {
     id: 'datePickerPageNavItem',
     label: ' Date Picker ',
@@ -128,6 +134,14 @@ export class ShellComponent implements OnInit {
     type: 'link',
     children: [],
     href: 'ROUTES.multiCheckbox'
+  };
+
+  spinnerPage: INavigationItemLink = {
+    id: 'spinnerPageNavItem',
+    label: ' Spinner ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.spinner'
   };
 
   autoCompletePage: INavigationItemLink = {
@@ -162,11 +176,13 @@ export class ShellComponent implements OnInit {
     children: [
       this.autoCompletePage,
       this.bannerPage,
+      this.inputPage,
+      this.selectPage,
       this.buttonsPage,
       this.datePickerPage,
       this.iconBtnPage,
-      this.inputPage,
-      this.multiCheckboxPage
+      this.multiCheckboxPage,
+      this.spinnerPage
     ]
   };
 
@@ -199,9 +215,10 @@ export class ShellComponent implements OnInit {
   navConfig: INavigationConfig = {
     id: 'shell_nav',
     size: 'small',
-    height: '50vh',
+    height: '100vh',
     marginTop: 182,
-    scrolling: false,
+    scrolling: true,
+    fixed: true,
     navigationConfig: [
       this.gettingStartedNav,
       this.foundationsNav,
@@ -221,9 +238,7 @@ export class ShellComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: object,
     private navBarConfig: SideNavConfig,
     private navService: NavigationService
-  ) {
-    this.leftNavData = navBarConfig.getLeftNavBarConfig();
-  }
+  ) {}
 
   ngOnInit() {
     this.onResize();

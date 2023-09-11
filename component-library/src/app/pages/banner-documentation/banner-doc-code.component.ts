@@ -18,6 +18,7 @@ import {
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
 import { Subscription } from 'rxjs';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 const NUMBER_OF_CTA_ALLOWED: number = 3;
 
@@ -26,9 +27,9 @@ const NUMBER_OF_CTA_ALLOWED: number = 3;
   templateUrl: './banner-doc-code.component.html',
   styleUrls: ['./banner-doc-code.component.scss']
 })
-export class BannerDocCodeComponent implements OnInit {
+export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
   @ViewChild('banner', { static: false }) banner!: ElementRef;
-  altLangLink = 'bannerDocumentation';
+  altLangLink = 'banner';
 
   constructor(
     private translate: TranslateService,
@@ -36,7 +37,7 @@ export class BannerDocCodeComponent implements OnInit {
     private bannerService: BannerService
   ) {}
 
-  form_interactive_banner = new FormGroup({});
+  formBanner = new FormGroup({});
 
   currentButtonSet = new Set<string>();
   buttonSetWithAllOptions = new Set<string>([
@@ -94,7 +95,7 @@ export class BannerDocCodeComponent implements OnInit {
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'showSizeToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -110,7 +111,7 @@ export class BannerDocCodeComponent implements OnInit {
     },
     {
       id: 'showTitleToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowTitleLabel',
       size: 'small',
       options: [
@@ -126,7 +127,7 @@ export class BannerDocCodeComponent implements OnInit {
     },
     {
       id: 'showDescToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowDescriptionLabel',
       size: 'small',
       options: [
@@ -142,7 +143,7 @@ export class BannerDocCodeComponent implements OnInit {
     },
     {
       id: 'showCloseToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowCloseLabel',
       size: 'small',
       options: [
@@ -158,7 +159,7 @@ export class BannerDocCodeComponent implements OnInit {
     },
     {
       id: 'showPrimaryButtonToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowPrimaryButtonLabel',
       size: 'small',
       options: [
@@ -174,7 +175,7 @@ export class BannerDocCodeComponent implements OnInit {
     },
     {
       id: 'showSecondaryButtonToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowSecondaryButtonLabel',
       size: 'small',
       options: [
@@ -190,7 +191,7 @@ export class BannerDocCodeComponent implements OnInit {
     },
     {
       id: 'showPlainButtonToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowPlainButtonLabel',
       size: 'small',
       options: [
@@ -206,7 +207,7 @@ export class BannerDocCodeComponent implements OnInit {
     },
     {
       id: 'showLinkToggle',
-      formGroup: this.form_interactive_banner,
+      formGroup: this.formBanner,
       label: 'Banner.BannerConfig.ShowLinkLabel',
       size: 'small',
       options: [
@@ -488,14 +489,14 @@ export class BannerDocCodeComponent implements OnInit {
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_interactive_banner.addControl(
+        this.formBanner.addControl(
           toggle.id,
           new FormControl(toggle.options[1].value)
         );
       }
     });
 
-    this.form_interactive_banner.valueChanges.subscribe((value: any) => {
+    this.formBanner.valueChanges.subscribe((value: any) => {
       this.bannerConfig = this.parseToggleConfig(value);
       this.handlePrimaryButtonToggle(value);
       this.handlePlainButtonToggle(value);

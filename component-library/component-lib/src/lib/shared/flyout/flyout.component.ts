@@ -155,6 +155,16 @@ export class FlyoutComponent implements OnInit {
       : this.isSelected.emit(null);
   }
 
+  @HostListener('mouseenter')
+  onHover() {
+    // Remove default active state for 1st option when user hover on flyout
+    if (
+      this.config.options.length > 0 &&
+      this.config.options[0].active === true
+    )
+      this.config.options[0].active = false;
+  }
+
   //takes in the active index from HostListeners and sets the config option to active state which triggers styling
   highlightIndex(el_id: any) {
     if (el_id) {

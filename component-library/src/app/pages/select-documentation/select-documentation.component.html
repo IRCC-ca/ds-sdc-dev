@@ -1,0 +1,663 @@
+<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url [config]="selectTitleSlugConfig"></app-title-slug-url>
+  <p class="body1 intro">{{ 'Select.Intro' | translate }}</p>
+
+  <section class="interactive-demo">
+    <app-title-slug-url
+      [config]="headingConfig.interactiveDemoSlugConfig"
+    ></app-title-slug-url>
+    <p class="body3">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong> {{ ('Select.Title' | translate).toLowerCase() }}</strong>
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
+    <app-select-doc-code></app-select-doc-code>
+  </section>
+  <section class="configs">
+    <app-title-slug-url
+      [config]="headingConfig.configurationMainSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3>{{ 'General.Size' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.Small' | translate }}</li>
+            <li>{{ 'General.Large' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h3>{{ 'General.Required' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3 class="config-heading">
+            {{ 'General.Description' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h3 class="config-heading">
+            {{ 'General.Hint' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3 class="config-heading">
+            {{ 'General.ErrorMessage' | translate }}
+          </h3>
+          <ul class="end-list">
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <app-title-slug-url
+      [config]="headingConfig.configurationSubSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3>{{ 'General.Content' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.Populated' | translate }}</li>
+            <li>{{ 'General.Unpopulated' | translate }}</li>
+            <li>{{ 'General.Placeholder' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h3>{{ 'General.Error' | translate }}</h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3 class="config-heading">
+            {{ 'General.StateLabel' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.DefaultLabel' | translate }}</li>
+            <li>{{ 'General.ActiveLabel' | translate }}</li>
+            <li>{{ 'General.HoverLabel' | translate }}</li>
+            <li>{{ 'General.FocusLabel' | translate }}</li>
+            <li>{{ 'General.DisabledLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="design-guide">
+    <app-title-slug-url
+      [config]="headingConfig.guidelineSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container do-dont-container">
+      <div class="element-wrapper-container">
+        <h3 class="emphasis subtitles">
+          {{ 'Select.DesignGuidelines.SubHeading1' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-do-1.png"
+              alt="{{ 'Select.Alt.Do1' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-4">
+              {{ 'Select.Do1' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-dont-1.png"
+              alt="{{ 'Select.Alt.Dont1' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-4">
+              {{ 'Select.Dont1' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'Select.DesignGuidelines.SubHeading2' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-do-2.png"
+              alt="{{ 'Select.Alt.Do2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-5">{{ 'Select.Do2' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-dont-2.png"
+              alt="{{ 'Select.Alt.Dont2' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Select.Dont2' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.ErrorsHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-do-3.png"
+              alt="{{ 'Select.Alt.Do3' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-5">{{ 'Select.Do3' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-dont-3.png"
+              alt="{{ 'Select.Alt.Dont3' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Select.Dont3' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'Select.DesignGuidelines.SubHeading4' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-do-4.png"
+              alt="{{ 'Select.Alt.Do4' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-5">{{ 'Select.Do4' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-dont-4.png"
+              alt="{{ 'Select.Alt.Dont4' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Select.Dont4' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.MaxMinWidthHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div [style.max-width]="'100%'">
+            <img
+              src="assets/img/select-content/select-min-max.png"
+              alt="{{ 'Select.Alt.MinMax' | translate }}"
+              class="mb_12"
+            />
+            <p>{{ 'Select.MinMax' | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="anatomy">
+    <app-title-slug-url
+      [config]="headingConfig.anatomySlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/select-content/select-anatomy.png"
+          alt="{{ 'Select.Alt.Anatomy' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">1</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.RequiredIndicatorHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'General.RequiredIndicatorTxt' | translate }}
+        </p>
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">2</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.LabelHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'General.AnatomyLabelText' | translate }}
+        </p>
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">3</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.DescriptionHeading' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">{{ 'General.AnatomyDescText' | translate }}</p>
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">4</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.Hint' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">{{ 'General.AnatomyHintText' | translate }}</p>
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">5</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.InputField' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'Input.AnatomyInputFieldText' | translate }}
+        </p>
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">6</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'General.ErrorMessage' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'General.AnatomyErrorText' | translate }}
+        </p>
+        <div class="counter-and-heading-container row">
+          <div class="round-purple-num-count">7</div>
+          <h3 class="h5 emphasis round-purple-num-heading">
+            {{ 'Select.Anatomy.Dropdown' | translate }}
+          </h3>
+        </div>
+        <p class="body3 anatomy">
+          {{ 'Select.Anatomy.DropdownText' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs">
+    <app-title-slug-url
+      [config]="headingConfig.specsSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          class="single-img"
+          src="assets/img/select-content/select-specs.png"
+          alt="{{ 'Select.Alt.Specs' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <p>{{ 'Select.Specs1' | translate }}</p>
+        <p>{{ 'Select.Specs2' | translate }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-guidelines">
+    <app-title-slug-url
+      [config]="headingConfig.contentGuideSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'General.WriteLabelsHeading' | translate }}
+        </h3>
+        <p class="body3 subtext-3">
+          {{ 'Select.WritingLabelsText' | translate }}
+        </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-do-5.png"
+              alt="{{ 'Select.Alt.Do5' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-4">
+              {{ 'Select.Do5' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-dont-5.png"
+              alt="{{ 'Select.Alt.Dont5' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-4">
+              {{ 'Select.Dont5' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container do-dont-container">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-do-6.png"
+              alt="{{ 'Select.Alt.Do6' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-5">{{ 'Select.Do6' | translate }}</p>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/select-content/select-dont-6.png"
+              alt="{{ 'Select.Alt.Dont6' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-7">
+              {{ 'Select.Dont6' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'General.DescriptionSubheading' | translate }}
+        </h3>
+        <p class="body3 subtext-3">
+          {{ 'General.DescriptionText' | translate }}
+        </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-do-7.png"
+              alt="{{ 'Select.Alt.Do7' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-11">
+              {{ 'Select.Do7' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-dont-7.png"
+              alt="{{ 'Select.Alt.Dont7' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Select.Dont7' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'General.PlaceholderSubheading' | translate }}
+        </h3>
+        <p class="body3 subtext-3">
+          {{ 'Select.WritingPlaceholderText' | translate }}
+        </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-do-8.png"
+              alt="{{ 'Select.Alt.Do8' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Select.Do8' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-dont-8.png"
+              alt="{{ 'Select.Alt.Dont8' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-9">
+              {{ 'Select.Dont8' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">{{ 'ERROR.WritingErrHeading' | translate }}</h3>
+        <p class="body3 subtext-3">
+          {{ 'ERROR.WritingErrText' | translate }}
+        </p>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-do-9.png"
+              alt="{{ 'Select.Alt.Do9' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-12">
+              {{ 'Select.Do9' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-dont-9.png"
+              alt="{{ 'Select.Alt.Dont9' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-11">
+              {{ 'Select.Dont9' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="subtitles">
+          {{ 'General.RequiredFieldsHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-do-10.png"
+              alt="{{ 'Select.Alt.Do10' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-green">
+              {{ 'General.DoHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-13">
+              {{ 'Select.Do10' | translate }}
+            </p>
+          </div>
+          <div class="col-12 col-md-6 do-dont-desc">
+            <img
+              src="assets/img/select-content/select-dont-10.png"
+              alt="{{ 'Select.Alt.Dont10' | translate }}"
+            />
+            <h4 class="emphasis text-underline text-color-red">
+              {{ 'General.DontHeading' | translate }}
+            </h4>
+            <p class="body3 subtext-13">
+              {{ 'Select.Dont10' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usage-figma">
+    <app-title-slug-url
+      [config]="headingConfig.figmaSlugConfig"
+    ></app-title-slug-url>
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <h3 class="sub-headings">
+          {{ 'General.FigmaDirectionsHeading' | translate }}
+        </h3>
+        <ol>
+          <li
+            class="list-item"
+            *ngFor="let direction of figmaDirections"
+            [innerHtml]="direction | translate"
+          ></li>
+        </ol>
+      </div>
+      <div class="col-12 col-md-4 justify-ctr">
+        <div class="image-1 image-container">
+          <img
+            src="assets/img/select-content/select-usage-1.png"
+            alt="{{ 'Select.Alt.Usage1' | translate }}"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8 mb_12">
+        <h3 class="sub-headings accessInputHeading">
+          {{ 'General.FigmaAccessInput' | translate }}
+        </h3>
+        <ol>
+          <li
+            class="list-item figmaUsageList"
+            *ngFor="let direction of figmaDirectionsSecond"
+            [innerHtml]="direction | translate"
+          ></li>
+        </ol>
+      </div>
+    </div>
+    <div class="images">
+      <div class="img1">
+        <img
+          src="assets/img/select-content/select-usage-2.png"
+          alt="{{ 'Select.Alt.Usage2' | translate }}"
+        />
+      </div>
+      <div class="img2">
+        <img
+          src="assets/img/select-content/usage-select-screenshot.png"
+          alt="{{ 'Select.Alt.UsageScreenshot' | translate }}"
+        />
+      </div>
+      <div class="img3">
+        <img
+          src="assets/img/select-content/select-usage-3.png"
+          alt="{{ 'Select.Alt.Usage3' | translate }}"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="accessibility">
+    <app-title-slug-url
+      [config]="headingConfig.accessibilitySlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.AccessibilityColourHeading' | translate }}
+        </h3>
+        <p class="body3 subtext-1">
+          {{ 'Select.ColourContrast' | translate }}
+        </p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.AccessibilityKeyboardHeading' | translate }}
+        </h3>
+        <p class="body3 subtext-1">
+          {{ 'Input.AccessibilityKeyboardText' | translate }}
+        </p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="h5 emphasis subtitles">
+          {{ 'General.ContentHeading' | translate }}
+        </h3>
+        <ul class="content-list">
+          <li
+            [innerHtml]="'General.AccessibilityContentItem1' | translate"
+          ></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
+          <li
+            [innerHTML]="'Select.AccesiblityPopulatedContentItem' | translate"
+          ></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
+          <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
+          <li
+            [innerHtml]="'General.AccessibilityContentItemMax' | translate"
+          ></li>
+        </ul>
+      </div>
+      <div class="element-wrapper-container">
+        <h3 class="validation-heading">
+          {{ 'General.Validation' | translate }}
+        </h3>
+        <ul class="validation-list">
+          <li
+            class="body3 last"
+            [innerHtml]="'General.ValidationText' | translate"
+          ></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="research">
+    <app-title-slug-url
+      [config]="headingConfig.researchSlugConfig"
+    ></app-title-slug-url>
+    <p class="body3">{{ 'General.ComingSoon' | translate }}</p>
+  </section>
+</div>

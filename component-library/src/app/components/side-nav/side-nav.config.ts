@@ -34,6 +34,9 @@ export class SideNavConfig {
     return rightNavData;
   }
 
+  /**
+   * @deprecated Left nav bar has been replaced by ircc-cl-lib-navigation
+   */
   getLeftNavBarConfig(): ISideNavDataInterface[] {
     return [
       {

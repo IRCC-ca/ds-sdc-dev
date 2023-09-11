@@ -4,7 +4,11 @@ import {
   HostListener,
   Input,
   OnInit,
-  AfterViewChecked
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ViewChildren,
+  QueryList
 } from '@angular/core';
 
 import {
@@ -20,6 +24,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/icon/icon.component';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { IsActiveMatchOptions } from '@angular/router';
+import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
+import {
+  INavigationItemLink,
+  NavigationItemType,
+  DSSizes
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-side-nav',
@@ -41,8 +51,13 @@ import { IsActiveMatchOptions } from '@angular/router';
 })
 export class SideNavComponent implements OnInit, AfterViewChecked {
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
-  @Input() navBarData: ISideNavDataInterface[] = [];
+  @Input() rightNavLOVs: string[] = [];
+  wrapperTop?: number; // Relative height from top of side nav to top of page in px
+  wrapperFixed: boolean = false;
 
+  /**
+   * Add active state to side nav item when scroll in to page section
+   */
   @HostListener('window:scroll', [])
   onWindowScroll() {
     let current = '';
@@ -50,8 +65,11 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     const height =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
-    const sideNavTitles = document.querySelectorAll('h2');
-    const sideNavLinks = document.querySelectorAll('.right-nav a');
+    const sideNavTitles: NodeListOf<HTMLHeadElement> =
+      document.querySelectorAll('app-title-slug-url h1, app-title-slug-url h2');
+    // Query all side nav anchor tags from current elementRef
+    const sideNavLinks: NodeListOf<HTMLAnchorElement> =
+      this.el.nativeElement.querySelectorAll('ircc-cl-lib-nav-item a');
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
@@ -63,7 +81,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     if (window.scrollY >= height)
       current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute('id')}`; //runs through links to set current active link
     sideNavLinks.forEach((link) => {
-      link.classList.remove('active');
+      link.classList.remove('active-link');
       //blur required to remove focus from previous link if it was clicked
       if (document.activeElement instanceof HTMLElement)
         document.activeElement.blur();
@@ -73,12 +91,18 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         link instanceof HTMLElement
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
-        link.classList.add('active');
+        link.classList.add('active-link');
         link.focus();
       }
     });
+
+    // Check if wrapper top has hit top of viewport
+    if (this.wrapperTop) {
+      this.wrapperFixed = this.wrapperTop <= window.scrollY - 178;
+    }
   }
 
+  navBarData: ISideNavDataInterface[] = [];
   currentLanguage: string = '';
   mobile = false; // If window is under mobile view
   showMenu = true; // If show or hide side menu
@@ -101,7 +125,13 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     fragment: 'exact'
   };
 
-  constructor(private el: ElementRef, private translate: TranslateService) {
+  constructor(
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef,
+    private translate: TranslateService,
+    private navBarConfig: SideNavConfig,
+    private slugify: SlugifyPipe
+  ) {
     if (el?.nativeElement?.className) {
       this.navClassName = el?.nativeElement?.classList[0];
     }
@@ -111,6 +141,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     // See node_modules/@ircc-ca/ds-sdc-core/tokens/_sizes.scss:3
     this.currentLanguage = this.translate.currentLang;
     this.showActive = this.el?.nativeElement.classList[0] === 'left-nav';
+    this.navBarData = this.navBarConfig.getRightNavBarConfig(this.rightNavLOVs);
     if (this.mobileToggleIcon) {
       this.toggleMobile();
     }
@@ -118,8 +149,9 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    //fake scroll event when ViewChecked to give focus and active to top link (if not navigating by heading ID)
-    dispatchEvent(new CustomEvent('scroll'));
+    this.cdr.detectChanges();
+    // Record relative height from top of page for sidenav
+    this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
   }
 
   private toggleMobile() {
@@ -171,5 +203,24 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         this.navStatus = 'nav-open';
       }
     }
+  }
+
+  getINavigationItemLinkFromISideNavData(
+    data: ISideNavDataInterface
+  ): INavigationItemLink {
+    let anchor = this.translate.instant(data.path ?? '');
+    anchor = this.slugify.transform(anchor);
+
+    return {
+      id: 'nav-item-' + anchor,
+      href: '.',
+      anchor: anchor,
+      label: data.text,
+      type: NavigationItemType.link,
+      size: DSSizes.small,
+      border: false,
+      external: false,
+      children: []
+    };
   }
 }

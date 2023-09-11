@@ -3,7 +3,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from '../../share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IMultiCheckboxConfig } from 'ircc-ds-angular-component-library';
+import {
+  IMultiCheckboxConfig,
+  StandAloneFunctions
+} from 'ircc-ds-angular-component-library';
 import { MultiCheckboxService } from 'ircc-ds-angular-component-library';
 import { TranslatedPageComponent } from '../translated-page-component';
 
@@ -17,7 +20,7 @@ export class MultiCheckboxDocumentationComponent
   implements OnInit, TranslatedPageComponent
 {
   currentLanguage: string = '';
-  altLangLink = 'multi-checkbox-documentation';
+  altLangLink = 'multiCheckbox';
   form: FormGroup = new FormGroup({});
 
   config: IMultiCheckboxConfig = {
@@ -76,7 +79,8 @@ export class MultiCheckboxDocumentationComponent
     private translate: TranslateService,
     private lang: LangSwitchService,
     private slugify: SlugifyPipe,
-    private multicheckboxService: MultiCheckboxService
+    private multicheckboxService: MultiCheckboxService,
+    public standAloneFunctions: StandAloneFunctions
   ) {
     this.currentLanguage = translate.currentLang;
   }
@@ -111,10 +115,13 @@ export class MultiCheckboxDocumentationComponent
 
   submitForm() {
     for (const field in this.form.controls) {
+      this.standAloneFunctions.wasTouched(this.form, field);
+
       this.multicheckboxService.checkField(
         this.form.get(field),
         field,
-        `Field ${field} is required`
+        `Field ${field} is required`,
+        'required'
       );
     }
   }
