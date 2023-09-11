@@ -50,7 +50,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     maxWidth: 768,
     altText: 'IconButtonDocumentation.Spacing.ImgAlt',
     lazyLoad: true
-  }
+  };
 
   anatomyImgConfig: IResponsiveImageComponentConfig = {
     id: 'anatomy-image',
@@ -60,7 +60,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     maxWidth: 768,
     altText: 'IconButtonDocumentation.AnatomyImgAlt',
     lazyLoad: true
-  }
+  };
 
   specImgConfig: IResponsiveImageComponentConfig = {
     id: 'spec-image',
@@ -70,7 +70,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     maxWidth: 768,
     altText: 'IconButtonDocumentation.SpecsImgAlt',
     lazyLoad: true
-  }
+  };
 
   anatomyContentItems: ContentItem[] = [
     {

@@ -16,7 +16,6 @@ export interface IResponsiveImageComponentConfig {
   styleUrls: ['./responsive-image.component.scss']
 })
 export class ResponsiveImageComponent {
-
   @Input() config: IResponsiveImageComponentConfig = {
     id: '',
     altText: '',
@@ -27,9 +26,5 @@ export class ResponsiveImageComponent {
     lazyLoad: false
   };
 
-
-  constructor(
-    private translate: TranslateService,
-  ) {}
-
+  constructor(private translate: TranslateService) {}
 }
