@@ -231,6 +231,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
+  errorState = 'None';
+
   setInputType(value: string) {
     // If set type to password, automatically select placeholder to False
     if (value == 'password')
@@ -246,6 +248,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
+    this.parseCodeViewConfig(this.errorState);
   }
 
   listOfConfigItems = [
@@ -335,6 +338,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         };
         break;
       case 'error':
+        this.errorState = value;
         this.determineErrorState(value, this.formInput, this.inputConfig.id);
         break;
       case 'state':
@@ -343,6 +347,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       default:
         break;
     }
+
+    this.parseCodeViewConfig(this.errorState);
   }
 
   /**
@@ -379,7 +385,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.setErrors(formGroup, formID, errorArray);
         break;
     }
-    this.parseCodeViewConfig(value);
   }
 
   setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
