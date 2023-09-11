@@ -30,7 +30,6 @@ export class MultiCheckboxDocumentationComponent
       formGroup: this.form,
       inlineLabel: 'Meat',
       size: 'small'
-      // errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
     },
     children: [
       {
@@ -40,17 +39,11 @@ export class MultiCheckboxDocumentationComponent
         size: 'small'
       }
     ],
-    errorMessages: []
+    errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsRequired' }]
   };
 
   config2: IMultiCheckboxConfig = {
     id: '',
-    parent: {
-      id: 'vegetables',
-      formGroup: this.form,
-      inlineLabel: 'Vegetables',
-      size: 'small'
-    },
     children: [
       {
         id: 'mushrooms',
@@ -71,8 +64,7 @@ export class MultiCheckboxDocumentationComponent
         size: 'small'
       }
     ],
-    errorMessages: []
-    // errorMessages: [{ key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' }]
+    errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsRequired' }]
   };
 
   constructor(
@@ -88,9 +80,9 @@ export class MultiCheckboxDocumentationComponent
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.config.parent.formGroup.addControl(
+    this.config?.parent?.formGroup.addControl(
       this.config.parent.id,
-      new FormControl(false)
+      new FormControl(false, Validators.requiredTrue)
     );
 
     this.config.children?.forEach((res) => {
@@ -100,9 +92,9 @@ export class MultiCheckboxDocumentationComponent
       );
     });
 
-    this.config2.parent.formGroup.addControl(
+    this.config2?.parent?.formGroup.addControl(
       this.config2.parent.id,
-      new FormControl(false)
+      new FormControl(false, Validators.requiredTrue)
     );
 
     this.config2.children?.forEach((res) => {
@@ -114,15 +106,15 @@ export class MultiCheckboxDocumentationComponent
   }
 
   submitForm() {
-    for (const field in this.form.controls) {
-      this.standAloneFunctions.wasTouched(this.form, field);
-
-      this.multicheckboxService.checkField(
-        this.form.get(field),
-        field,
-        `Field ${field} is required`,
-        'required'
-      );
-    }
+    // for (const field in this.form.controls) {
+    //   // this.form.get(field)?.markAsTouched();
+    //   // this.form.get(field)?.markAsDirty();
+    //   this.multicheckboxService.checkField(
+    //     this.form.get(field),
+    //     field,
+    //     `Field ${field} is required`,
+    //     'required'
+    //   );
+    // }
   }
 }
