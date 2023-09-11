@@ -182,7 +182,8 @@ export class ShellComponent implements OnInit {
       this.datePickerPage,
       this.iconBtnPage,
       this.multiCheckboxPage,
-      this.spinnerPage    ]
+      this.spinnerPage
+    ]
   };
 
   supportNav: INavigationItemAccordion = {
