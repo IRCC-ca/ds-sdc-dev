@@ -344,12 +344,31 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.determineErrorState(value, this.formInput, this.inputConfig.id);
         break;
       case 'state':
+        this.toggleDisabled(this.inputConfig.id, value);
         break;
       default:
         break;
     }
   }
 
+  /**
+   * Toggle disabled state of input
+   */
+  private toggleDisabled(currentConfigId: string, disabled: boolean) {
+    const inputControl: AbstractControl | null =
+      this.formInput.get(currentConfigId);
+    if (
+      (disabled && inputControl?.disabled) ||
+      (!disabled && inputControl?.enabled)
+    )
+      return;
+
+    if (disabled) {
+      inputControl?.disable();
+    } else {
+      inputControl?.enable();
+    }
+  }
   determineErrorState(value: string, formGroup: FormGroup, formID: string) {
     let errorArray: string[] = [];
     switch (value) {
