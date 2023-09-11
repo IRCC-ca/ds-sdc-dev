@@ -13,7 +13,7 @@
     <div
       class="checkbox-layout"
       [ngClass]="{
-        error: currentStatus === 'INVALID'
+        error: currentStatus === 'INVALID' && currentTouch === true
       }"
     >
       <div class="checkbox">
@@ -25,7 +25,7 @@
           [ngClass]="{
             mixed: config.mixed,
             focus: !config.disableFocus,
-            error: currentStatus === 'INVALID'
+            error: currentStatus === 'INVALID' && currentTouch === true
           }"
           [attr.size]="config.size"
           type="checkbox"
@@ -50,7 +50,7 @@
     </div>
     <div aria-live="polite">
       <div
-        *ngIf="currentStatus === 'INVALID'"
+        *ngIf="currentStatus === 'INVALID' && currentTouch === true"
         class="check-error"
         [ngClass]="{ small: config.size === 'small' }"
       >

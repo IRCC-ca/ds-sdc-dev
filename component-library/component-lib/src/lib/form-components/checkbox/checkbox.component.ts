@@ -97,6 +97,7 @@ export class CheckboxComponent
   errorAria = '';
   errorStubText = '';
   currentStatus: FormControlStatus = 'VALID';
+  currentTouch: boolean = false
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -231,7 +232,17 @@ export class CheckboxComponent
           this.currentStatus = change;
           this.toggleDisabledState();
         }
+        this.setStatus()
       });
+  }
+
+  setStatus() {
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.currentTouch = this.config.formGroup.controls[this.config.id].touched;
+  }
+
+  ngAfterViewInit() {
+    this.setStatus();
   }
 
   toggleDisabledState() {
