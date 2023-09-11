@@ -24,6 +24,7 @@
           <input
             (blur)="onTouchedLabel()"
             (focus)="onFocus()"
+            (change)="changeValue($event)"
             name="{{ config.id }}"
             class="input-field"
             placeholder="{{ config.placeholder || '' | translate }}"
@@ -64,7 +65,7 @@
             tabindex="0"
             class="passwordIcon"
             (click)="hideShow()"
-            [disabled]="disabled"
+            [disabled]="currentStatus !== 'DISABLED'"
             attr.aria-label="{{ btnAriaLabel }}"
             aria-live="polite"
           >
@@ -97,7 +98,7 @@
         </div>
       </div>
       <div aria-live="polite">
-        <div *ngIf="formControl?.touched && formControl?.invalid">
+        <div *ngIf="currentStatus === 'INVALID'">
           <span class="sr-only">{{
             errorStubText + ': ' + (config.label || '' | translate) + ': '
           }}</span>
