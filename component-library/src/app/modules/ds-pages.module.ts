@@ -90,8 +90,7 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     AutocompleteDocumentationComponent,
     emailVerificationComponent,
     SpinnerDocCodeComponent,
-    SpinnerDocumentationComponent,
-
+    SpinnerDocumentationComponent
   ],
   imports: [
     CommonModule,
