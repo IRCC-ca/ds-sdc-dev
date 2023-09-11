@@ -27,7 +27,7 @@ import {
   styleUrls: ['./select-doc-code.component.scss']
 })
 export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
-  altLangLink = 'selectDocumentation';
+  altLangLink = 'select';
   form = new FormGroup({});
   state: boolean = false;
 
