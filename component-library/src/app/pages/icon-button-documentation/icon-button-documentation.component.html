@@ -331,9 +331,30 @@
         </h3>
         <ol>
           <li
-            *ngFor="let direction of figmaDirections"
-            [innerHtml]="direction | translate"
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.FigmaDirectionsListItem1' | translate
+            "
           ></li>
+          <li
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.FigmaDirectionsListItem2' | translate
+            "
+          ></li>
+          <li
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.FigmaDirectionsListItem3' | translate
+            "
+          ></li>
+          <li class="list-item">
+            <app-encapsulated-element
+              [injectedHtml]="
+                'IconButtonDocumentation.FigmaDirectionsListItem4' | translate
+              "
+            ></app-encapsulated-element>
+          </li>
         </ol>
       </div>
       <div class="col-12 col-md-4">

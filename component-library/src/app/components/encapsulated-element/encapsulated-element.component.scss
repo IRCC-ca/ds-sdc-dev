@@ -21,4 +21,8 @@
   &:visited {
     color: var(--purple-8);
   }
+
+  &.no-underline {
+    text-decoration: none;
+  }
 }

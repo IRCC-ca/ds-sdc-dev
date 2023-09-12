@@ -79,19 +79,6 @@ export class IconButtonDocumentationComponent implements OnInit {
     }
   ];
 
-  figmaDirections: string[] = [
-    'IconButtonDocumentation.FigmaDirectionsListItem1',
-    'General.FigmaDirectionsListItem2',
-    'General.FigmaDirectionsListItem3',
-    'IconButtonDocumentation.FigmaDirectionsListItem4'
-  ];
-
-  accessibilityContent: string[] = [
-    'IconButtonDocumentation.AccessibilityContentItem1',
-    'IconButtonDocumentation.AccessibilityContentItem2',
-    'IconButtonDocumentation.AccessibilityContentItem3'
-  ];
-
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
