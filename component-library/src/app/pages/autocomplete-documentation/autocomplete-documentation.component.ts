@@ -279,7 +279,7 @@ export class AutocompleteDocumentationComponent
     this.form_interactive_button.patchValue({
       hint: 'False',
       error: 'False',
-      description: 'False'
+      desc: 'False'
     });
 
     this.form_interactive_button
