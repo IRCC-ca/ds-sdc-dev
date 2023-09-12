@@ -7,7 +7,7 @@ export interface IResponsiveImageComponentConfig {
   defaultSrc: string;
   desktopSrc: string;
   mobileSrc: string;
-  maxWidth?: number | null;
+  maxWidth: number;
   lazyLoad?: boolean | null;
 }
 @Component({
