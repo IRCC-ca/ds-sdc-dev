@@ -190,9 +190,9 @@ export class ShellComponent implements OnInit {
       this.datePickerPage,
       this.iconBtnPage,
       this.checkboxPage,
+      this.multiCheckboxPage,
       this.spinnerPage,
-      this.inputPage,
-      this.multiCheckboxPage
+      this.spinnerPage
     ]
   };
 
