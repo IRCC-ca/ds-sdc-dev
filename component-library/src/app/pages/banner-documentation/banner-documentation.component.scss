@@ -4,13 +4,15 @@
 
 @include page.template;
 
-.types {
-  .component-preview {
-    max-width: 400px;
-    padding-bottom: 16px;
-  }
+.block {
+  &__types {
+    .component-preview {
+      max-width: 400px;
+      padding-bottom: 16px;
+    }
 
-  .banner-preview {
-    margin-top: 24px;
+    .banner-preview {
+      margin-top: 24px;
+    }
   }
 }
