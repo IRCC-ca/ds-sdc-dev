@@ -24,7 +24,7 @@ export const breakpoint = {
   mobile: 360,
   tablet: 768,
   desktop: 1366
-}
+};
 
 @Component({
   selector: 'app-responsive-image',
