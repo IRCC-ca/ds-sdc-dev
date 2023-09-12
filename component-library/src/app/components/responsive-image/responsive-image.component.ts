@@ -19,6 +19,13 @@ export interface IResponsiveImageComponentConfig {
   lazyLoad?: boolean;
 }
 
+export const breakpoint = {
+  default: 0,
+  mobile: 360,
+  tablet: 768,
+  desktop: 1366
+}
+
 @Component({
   selector: 'app-responsive-image',
   templateUrl: './responsive-image.component.html',
@@ -29,7 +36,7 @@ export class ResponsiveImageComponent implements AfterViewInit {
   image!: ElementRef<HTMLImageElement>;
   @Input() config: IResponsiveImageComponentConfig = {
     id: '',
-    breakpoints: [{ maxWidth: 0, src: '' }],
+    breakpoints: [{ maxWidth: breakpoint.default, src: '' }],
     altText: '',
     defaultSrc: '',
     lazyLoad: false
