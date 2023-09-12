@@ -72,13 +72,6 @@ export class IconButtonDocumentationComponent implements OnInit {
     lazyLoad: true
   };
 
-  anatomyContentItems: ContentItem[] = [
-    {
-      title: 'IconButtonDocumentation.AnatomyHeading',
-      description: 'IconButtonDocumentation.AnatomyText'
-    }
-  ];
-
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
