@@ -256,6 +256,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     'required',
     'label',
     'desc',
+    'placeholder',
     'hint',
     'error',
     'state'
@@ -329,6 +330,12 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.inputConfig = {
           ...this.inputConfig,
           desc: value === 'True' ? 'Description line of text' : undefined
+        };
+        break;
+      case 'placeholder':
+        this.inputConfig = {
+          ...this.inputConfig,
+          placeholder: value === 'True' ? 'Placeholder text' : undefined
         };
         break;
       case 'hint':
