@@ -406,8 +406,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   }
 
   setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
-    // eslint-disable-next-line
-    let errorVals = {};
+    const errorVals = {};
     if (errorKeys.length === 0) {
       formGroup.get(formID)?.setErrors(null);
     } else {
