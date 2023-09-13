@@ -16,8 +16,10 @@
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
 		"multiCheckbox": "multi-checkbox-documentation",
+		"checkbox": "checkbox-documentation",
 		"autocomplete": "autocomplete-documentation",
 		"spinner": "spinner-documentation",
+		"progressIndicator": "progress-indicator-documentation",
 		"contact": "contact",
 		"codeview": "codeview",
 		"mahsa": "mahsa-en",
@@ -49,7 +51,6 @@
 		"Title": "Buttons",
 		"Intro": "Buttons trigger an action or navigate to another page. They have multiple styles and configurations for various needs. They call attention to actions the user should take to progress through a flow.",
 		"IntroAlert": "This UI element is currently available in our styles package only. The component version is coming soon.",
-		"PrimaryHeading": "Primary",
 		"PrimaryBtnText": "Primary button",
 		"PrimaryText": "Primary buttons are used to highlight the most important actions in any experience. Avoid using more than one primary button in a section or screen whenever possible.",
 		"SecondaryHeading": "Secondary",
@@ -65,7 +66,6 @@
 		"ConfigLayoutFluid": "Fluid",
 		"ConfigLayoutFixed": "Fixed",
 		"ConfigIconHeading": "Icon",
-		"ConfigIconNone": "None",
 		"ConfigIconLeading": "Leading",
 		"ConfigIconTrailing": "Trailing",
 		"HierarchyHeading": "Hierarchy",
@@ -366,7 +366,6 @@
 		"fieldExceededMaxLength": "This field has exceeded max length.",
 		"requiredTextAreaError": "This field is required.",
 		"testErrorMessage": "Test error message.",
-		"errorMessage": "Error",
 		"requiredRadioError": "No selection has been made. Please select an option",
 		"WritingErrHeading": "Writing error messages",
 		"WritingErrText": "Error messages inform a user of missing or incorrect information. Write error messages to be helpful, allowing a user to correct their omissions or mistakes.",
@@ -489,8 +488,6 @@
 		"SecondaryHeading": "Password input",
 		"PrimaryText": "The basic input allows for entry of single-line information. The form component is configurable to fit various use cases and layouts. See available configurations below.",
 		"SecondaryText": "The password input allows users to enter their password. The password can be hidden or shown.",
-		"ConfigErrorHeading": "Error",
-		"ConfigPlaceholderHeading": "Placeholder",
 		"FieldWidth": "Field widths",
 		"FieldWidthImgDo": "A wide input field for typing a country name and a narrow input field for typing a year.",
 		"FieldWidthDoText": "Use field widths that are appropriate for the type of content being gathered.",
@@ -561,8 +558,7 @@
 		"AccessibilityContentItem6": "Clear labelling for required fields, including the word “required” in parentheses.",
 		"AccessibilityValidationText": "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
 		"CodeViewer": "Code viewer block displaying the html and typescript code generated from the interactive demo",
-		"LabelText1": "Label text",
-		"LabelText2": "Password"
+		"LabelText1": "Label text"
 	},
 	"DatePicker": {
 		"MainTitle": "Date picker",
@@ -773,7 +769,6 @@
 			"ShowSecondaryButtonLabel": "Show secondary button",
 			"ShowPlainButtonLabel": "Show plain button",
 			"ShowLinkLabel": "Show link",
-			"DefaultLabel": "Default",
 			"CTA1Label": "CTA 1",
 			"CTA2Label": "CTA 2 (if CTA 1 is set to true)",
 			"CTA3Label": "CTA 3 (if CTA 1 is set to true)"
@@ -803,7 +798,6 @@
 		"Content": "Content",
 		"FigmaHeading": "Usage in Figma",
 		"FigmaAccessInput": "To access the input field’s states",
-		"CriticalHeading": "Critical",
 		"AccessibilityHeading": "Accessibility",
 		"ResearchHeading": "Research",
 		"FigmaDirectionsHeading": "Directions for use",
@@ -859,11 +853,9 @@
 		"AccessibilityKeyboardHeading": "Keyboard accessible",
 		"TypographyHeading": "Typography",
 		"ColourHeading": "Colours",
-		"DescriptionHeading": "Description",
 		"InputField": "Input field ",
 		"DesignerHeading": "For designers",
 		"DeveloperHeading": "For developers",
-		"ContentHeading": "Content",
 		"DescriptionText": "Write a complete description of the action a user is to perform. Include all the relevant information required, but try to keep the description concise.",
 		"DescriptionSubheading": "Writing descriptions",
 		"PlaceholderSubheading": "Writing placeholder text",
@@ -894,6 +886,10 @@
 		"DisabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.disable(); //sets the form control to be disabled\"</code>",
 		"EnabledBannerTitle": "How to access the enabled state for developers",
 		"EnabledBannerContent": "Setting form control state triggers disabled/enabled styling automatically <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //sets the form control to be enabled\"</code>",
+		"Step3": "Step 3",
+		"Step4": "Step 4",
+		"stepTitle": "Step title",
+		"Gated": "Gated",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
@@ -930,9 +926,7 @@
 		"SpecsImgAlt": "Specs displaying the padding and layer measurements within the icon button component. Specs are described in the paragraph below.",
 		"SpecsText": "The extra small button with fixed layout has no pixels of vertical padding and horizontal padding inside the button. The icon has a 16 pixel width and height. The small button with fixed layout has 10 pixels of vertical padding and  horizontal padding inside the button. The icon has a 20 pixel width and height. The large button with fluid layout has 14 pixels of vertical padding and horizontal padding inside the button. The icon has a 24 pixel width and height. ",
 		"FigmaDirectionsListItem1": "From the “Assets” panel, drag in the <strong>“icon-button”</strong> component from the Components library.",
-		"FigmaDirectionsListItem2": "In the right panel, configure the properties and variants to meet your needs. ",
-		"FigmaDirectionsListItem3": "Never override colours, radius, padding, icon size, etc. This way foundational elements are kept consistent. ",
-		"FigmaDirectionsListItem4": "Designers can change the Font Awesome keyword to update the icon in the icon-button to any Font Awesome icon.",
+		"FigmaDirectionsListItem4": "Designers can  <a class='link no-underline' target='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'>change the Font Awesome keyword</a> to update the icon in the icon-button to any Font Awesome icon.",
 		"FigmaDirectionsImgAlt": "A screenshot of the design panel from Figma. The design panel displays the configuration options designers can choose from when customizing an icon button.",
 		"AccessibilityColourText1": "Primary icon buttons have a colour contrast ratio of 18.08:1 and passes AAA accessibility standards under WCAG 2.1.",
 		"AccessibilityColourText2": "Critical icon buttons have a colour contrast ratio of 7.03:1 and passes AAA accessibility standards under WCAG 2.1.",
@@ -1020,8 +1014,7 @@
 		},
 		"Accessibility": {
 			"ColorContrastTxt": "All elements within the spinner component have a colour contrast ratio of 4.5:1 and passes AA accessibility standards under WCAG 2.1."
-		},
-		"Validation": "If an error is automatically detected, the item that is in error is identified and the error is described to the user in text."
+		}
 	},
 	"Select": {
 		"Title": "Select",
@@ -1093,5 +1086,15 @@
 			"UsageScreenshot": "A screenshot of the form-input component with the input-field layer selected in the component."
 		},
 		"AccesiblityPopulatedContentItem": "Populated and placeholder content are placed inside of the select and are always visible to the user."
+	},
+	"ProgressIndicatorDocumentation": {
+		"Title": "progress-indicator-documentation"
+	},
+	"ProgressIndicator": {
+		"MainTitle": "Progress Indicator",
+		"Intro": "Progress indicator are most commonly used to provide a way for clients and officers to make a range of selections (zero, one, or multiple)."
+	},
+	"Checkbox": {
+		"Title": "Checkbox"
 	}
 }

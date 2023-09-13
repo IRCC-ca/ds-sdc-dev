@@ -85,7 +85,7 @@ export class IconButtonDocCodeComponent
     tab: [
       {
         id: 'primary',
-        title: 'Buttons.PrimaryHeading'
+        title: 'General.Primary'
       },
       {
         id: 'critical',

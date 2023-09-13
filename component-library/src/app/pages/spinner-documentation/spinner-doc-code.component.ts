@@ -108,7 +108,7 @@ export class SpinnerDocCodeComponent
           value: 'success'
         },
         {
-          text: 'ERROR.errorMessage',
+          text: 'General.Error',
           value: 'critical'
         }
       ]
@@ -157,7 +157,7 @@ export class SpinnerDocCodeComponent
           "import { ISpinnerConfig } from 'ircc-ds-angular-component-library';\n\n" +
           `spinnerConfig: ISpinnerConfig = ${stringify(
             this.spinnerConfigCodeView
-          )} 
+          )}
           `
       }
     ]
@@ -232,7 +232,7 @@ export class SpinnerDocCodeComponent
         "import { ISpinnerConfig } from 'ircc-ds-angular-component-library';\n\n" +
         `spinnerConfig: ISpinnerConfig = ${stringify(
           this.spinnerConfigCodeView
-        )} 
+        )}
       `;
     }
   }
