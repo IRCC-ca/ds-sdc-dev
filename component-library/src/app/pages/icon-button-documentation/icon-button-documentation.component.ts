@@ -8,9 +8,10 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@ngx-translate/core';
 import {
   IIconButtonComponentConfig,
-  IconButtonCategories
+  IconButtonCategories,
+  DSViewPortSize
 } from 'ircc-ds-angular-component-library';
-import { ContentItem } from '@app/share/interface/content-item.interface';
+
 import { IResponsiveImageComponentConfig } from '@app/components/responsive-image/responsive-image.component';
 @Component({
   selector: 'app-icon-button-documentation',
@@ -46,7 +47,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     id: 'image-spacing',
     breakpoints: [
       {
-        maxWidth: 768,
+        maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/icon-btn-content/icon-spacing-phone-328w.png'
       }
     ],
@@ -59,7 +60,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     id: 'anatomy-image',
     breakpoints: [
       {
-        maxWidth: 768,
+        maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/icon-btn-content/icon-anatomy-phone.png'
       }
     ],
@@ -72,7 +73,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     id: 'spec-image',
     breakpoints: [
       {
-        maxWidth: 768,
+        maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/icon-btn-content/icon-spec-phone-328w.png'
       }
     ],

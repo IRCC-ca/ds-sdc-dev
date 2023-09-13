@@ -7,18 +7,19 @@ import {
   ViewChild
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { DSViewPortSize } from 'ircc-ds-angular-component-library';
 
 export interface IResponsiveImageComponentConfig {
   id: string;
-  breakpoints: {
-    maxWidth: number;
-    src: string;
-  }[];
+  breakpoints: IBreakpoint[] 
   defaultSrc: string;
   altText: string;
   lazyLoad?: boolean;
 }
-
+export interface IBreakpoint {
+  maxWidth: DSViewPortSize;
+  src: string;
+}
 @Component({
   selector: 'app-responsive-image',
   templateUrl: './responsive-image.component.html',
@@ -29,7 +30,7 @@ export class ResponsiveImageComponent implements AfterViewInit {
   image!: ElementRef<HTMLImageElement>;
   @Input() config: IResponsiveImageComponentConfig = {
     id: '',
-    breakpoints: [{ maxWidth: 0, src: '' }],
+    breakpoints: [{ maxWidth: DSViewPortSize.default, src: '' }],
     altText: '',
     defaultSrc: '',
     lazyLoad: false
