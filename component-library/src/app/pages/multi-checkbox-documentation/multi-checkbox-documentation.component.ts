@@ -106,15 +106,10 @@ export class MultiCheckboxDocumentationComponent
   }
 
   submitForm() {
-    // for (const field in this.form.controls) {
-    //   // this.form.get(field)?.markAsTouched();
-    //   // this.form.get(field)?.markAsDirty();
-    //   this.multicheckboxService.checkField(
-    //     this.form.get(field),
-    //     field,
-    //     `Field ${field} is required`,
-    //     'required'
-    //   );
-    // }
+    for (const field in this.form.controls) {
+      this.form.get(field)?.markAsTouched();
+      this.form.get(field)?.markAsDirty();
+      this.multicheckboxService.checkField(field);
+    }
   }
 }

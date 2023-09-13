@@ -186,27 +186,27 @@ export class CheckboxComponent
         this.config.errorMessages
       );
 
-      this.errorIds.forEach((errorId) => {
-        this.multicheckboxService.errorEvent({
-          id: this.config.id,
-          event: errorId
-        });
-      });
+      // this.errorIds.forEach((errorId) => {
+      //   this.multicheckboxService.errorEvent({
+      //     id: this.config.id,
+      //     event: errorId
+      //   });
+      // });
     }
 
     //Get the error text when the formControl value changes
-    this.config.formGroup
-      .get(this.config.id)
-      ?.statusChanges.subscribe((error) => {
-        this.getAriaErrorText();
+    // this.config.formGroup
+    //   .get(this.config.id)
+    //   ?.statusChanges.subscribe((error) => {
+    //     this.getAriaErrorText();
 
-        if (error === 'VALID') {
-          this.multicheckboxService.errorEvent({
-            id: this.config.id,
-            event: { remove: true }
-          });
-        }
-      });
+    //     if (error === 'VALID') {
+    //       this.multicheckboxService.errorEvent({
+    //         id: this.config.id,
+    //         event: { remove: true }
+    //       });
+    //     }
+    //   });
   }
 
   ngOnChanges() {
