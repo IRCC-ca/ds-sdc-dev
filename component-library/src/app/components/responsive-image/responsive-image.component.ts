@@ -11,7 +11,7 @@ import { DSViewPortSize } from 'ircc-ds-angular-component-library';
 
 export interface IResponsiveImageComponentConfig {
   id: string;
-  breakpoints: IBreakpoint[] 
+  breakpoints: IBreakpoint[];
   defaultSrc: string;
   altText: string;
   lazyLoad?: boolean;
