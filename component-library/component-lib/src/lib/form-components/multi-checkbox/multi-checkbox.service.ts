@@ -25,64 +25,20 @@ export class MultiCheckboxService {
     this.multiCheckboxEventSubj.next(event);
   }
 
-  private multiCheckboxErrorSubj = new Subject<ImultiCheckboxEvent>();
+  private multiCheckboxErrorSubj = new Subject<string>();
   multiCheckboxErrorobs$ = this.multiCheckboxErrorSubj.asObservable();
 
-  errorEvent(event: ImultiCheckboxEvent) {
+  errorEvent(event: string) {
     this.multiCheckboxErrorSubj.next(event);
   }
 
   /**
    * Checks to see if an AbstractControl is valid or not.
-   * If the control is valid, it will send an event on the observable multiCheckboxErrorSubj
    * @param control: AbstractControl field that we are checking
    * @param field: string, name of the field we are checking
-   * @param errorMessage: string that will be sent as an error
-   * @param errorKey: Error that is being checked
    */
-  checkField(
-    control: AbstractControl<any, any> | null,
-    field: string,
-    errorMessage: string,
-    errorKey?: string
-  ): void {
+  checkField(id: string): void {
     //is the control valid
-    if (control?.valid === false) {
-      if (control.errors) {
-        // is the function checking for a specific error
-        if (errorKey === undefined) {
-          // function is checking all the errors, loop them and send them
-          Object.entries(control.errors).map(([key, value]) => {
-            this.errorEvent({
-              id: field,
-              event: {
-                id: field,
-                key: key,
-                errorLOV: errorMessage
-              }
-            });
-          });
-        }
-
-        // function is checking a specific error, check to see if it's there
-        else if (control.errors.hasOwnProperty(errorKey)) {
-          this.errorEvent({
-            id: field,
-            event: {
-              id: field,
-              key: errorKey,
-              errorLOV: errorMessage
-            }
-          });
-        }
-      }
-    }
-    // control is valid remove error
-    else {
-      this.errorEvent({
-        id: field,
-        event: { remove: true }
-      });
-    }
+    this.errorEvent(id);
   }
 }

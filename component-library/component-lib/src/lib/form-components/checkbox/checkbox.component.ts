@@ -211,14 +211,13 @@ export class CheckboxComponent
         this.config.id,
         this.config.errorMessages
       );
-      console.log("config.errormesages->", this.config.errorMessages)
+      
       this.errorIds.forEach((errorId) => {
         this.multicheckboxService.errorEvent({
           id: this.config.id,
           event: errorId
         });
       });
-      console.log("Error ids", this.errorIds)
     }
 
     
