@@ -331,7 +331,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.inputConfig = {
           ...this.inputConfig,
           label: this.parseRequiredLabel(
-            'Label Text',
+            this.inputConfig.label as string,
             this.inputConfigRequired
           ),
           required: value === 'True'
