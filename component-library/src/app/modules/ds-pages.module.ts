@@ -46,6 +46,9 @@ import { SpinnerDocumentationComponent } from '@app/pages/spinner-documentation/
 import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheckboxDocCodeComponent } from '@app/pages/checkbox-documentation/checkbox-doc-code.component';
+import { CheckboxDocumentationComponent } from '@app/pages/checkbox-documentation/checkbox-documentation.component';
+import { MultiCheckboxDocComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-doc.component';
 import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
 import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
 
@@ -87,7 +90,10 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     MultiCheckboxDocumentationComponent,
     SpinnerDocCodeComponent,
     SpinnerDocumentationComponent,
-    AutocompleteDocumentationComponent
+    AutocompleteDocumentationComponent,
+    CheckboxDocCodeComponent,
+    CheckboxDocumentationComponent,
+    MultiCheckboxDocComponent
   ],
   imports: [
     CommonModule,

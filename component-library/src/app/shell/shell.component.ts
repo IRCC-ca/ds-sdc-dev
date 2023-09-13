@@ -136,6 +136,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.multiCheckbox'
   };
 
+  checkboxPage: INavigationItemLink = {
+    id: 'checkboxPageNavItem',
+    label: ' Checkbox ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.checkbox'
+  };
+
   spinnerPage: INavigationItemLink = {
     id: 'spinnerPageNavItem',
     label: ' Spinner ',
@@ -181,7 +189,9 @@ export class ShellComponent implements OnInit {
       this.buttonsPage,
       this.datePickerPage,
       this.iconBtnPage,
+      this.checkboxPage,
       this.multiCheckboxPage,
+      this.spinnerPage,
       this.spinnerPage
     ]
   };

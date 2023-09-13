@@ -16,8 +16,10 @@
 		"datePicker": "datePicker-doc-fr",
 		"iconButton": "icon-button-documentation-fr",
 		"multiCheckbox": "multi-checkbox-documentation-fr",
+		"checkbox": "checkbox-documentation-fr",
 		"autocomplete": "autocomplete-documentation-fr",
 		"spinner": "spinner-documentation-fr",
+		"progressIndicator": "progress-indicator-documentation-fr",
 		"contact": "contactez",
 		"codeview": "codeview-fr",
 		"mahsa": "mahsa-fr",
@@ -38,7 +40,7 @@
 		"Naseer": "Naseer",
 		"Bobby": "Bobby",
 		"AccessibilityDemo": "Démo d'accessibilité",
-		"BannerDocumentation": "Documentation de bannière",
+		"BannerDocumentation": "Documentation de la bannière",
 		"Codeview": "Comeew",
 		"ButtonDocumentation": "Documentation des boutones",
 		"InputDocumentation": "Documentation d'entrée",
@@ -152,7 +154,7 @@
 		"ColourTableDescriptionRow13": "Bordure du bouton secondaire.",
 		"ColourTableDescriptionRow14": "Bordure du bouton secondaire dans l'état de survol.",
 		"ColourTableDescriptionRow15": "Bordure du bouton secondaire à l'état actif.",
-		"ColourTableDescriptionRow16": "Bordure du bouton secondaire lors de l'état désactivé.",
+		"ColourTableDescriptionRow16": "Bordure du bouton secondaire lors de l'état handicapé.",
 		"ColourTableDescriptionRow17": "Texte et icône dans le bouton secondaire.",
 		"ColourTableDescriptionRow18": "Texte et icône dans l'état désactivé du bouton secondaire.",
 		"ColourTableDescriptionRow19": "Bordure du bouton secondaire en utilisant le rôle de couleur critique.",
@@ -190,7 +192,7 @@
 		"ColourTableDescriptionRow51": "Border des éléments de formulaire non sélectionnés lors de l'affichage d'une erreur et dans un état désactivé.",
 		"ColourTableDescriptionRow52": "Texte utilisé pour les messages d'erreur.",
 		"ColourTableDescriptionRow53": "Contexte des éléments de forme sélectionnés tout en affichant le succès.",
-		"ColourTableDescriptionRow54": "Contexte des éléments de forme sélectionnés lors de l'affichage du succès et dans l'état de survol.",
+		"ColourTableDescriptionRow54": "Contexte des éléments de forme sélectionnés tout en affichant le succès et dans l'état de survol.",
 		"ColourTableDescriptionRow55": "Contexte des éléments de forme sélectionnés lors de l'affichage du succès et à l'état actif.",
 		"ColourTableDescriptionRow56": "Contexte des éléments de forme sélectionnés lors de l'affichage du succès et à l'état désactivé.",
 		"ColourTableDescriptionRow57": "Contexte des éléments de forme non sélectionnés tout en affichant le succès.",
@@ -390,7 +392,7 @@
 		"NEXT_PAGE": "Ceci est un exemple d'une page suivante - il est simplement là à des fins de démonstration et n'est pas configuré pour une accessibilité correcte. Notez la mise à jour de l'indicateur de progression en haut de la page. Vous pouvez naviguer en utilisant l'indicateur de progression",
 		"ERRORS": {
 			"FAMILY_NAME_REQUIRED": "Ce champ est vide. Veuillez saisir un nom de famille",
-			"DOB_NO_SELECTION_REQUIRED": "Aucune sélection n'a été faite. Veuillez remplir les champs pour terminer votre date de naissance.",
+			"DOB_NO_SELECTION_REQUIRED": "Aucune sélection n'a été faite. Veuillez remplir les champs pour compléter votre date de naissance.",
 			"DOB_REQUIRED": "Veuillez remplir les champs manquants pour terminer votre date de naissance.",
 			"DECLARATION_REQUIRED": "Aucune sélection n'a été faite. Veuillez faire une sélection pour compléter votre déclaration",
 			"DECLARATION_CUSTOM": "Vous devez accepter de continuer"
@@ -504,7 +506,7 @@
 		"MaxMinWidthText": "Les petites entrées ont une largeur maximale de 552 pixels et une largeur minimale de 92 pixels. Les grandes entrées ont une largeur maximale de 632 pixels et une largeur minimale de 104 pixels.",
 		"AnatomyImgAlt": "Les pièces qui constituent le composant d'entrée. Les pièces sont décrites dans le contenu ci-dessous.",
 		"AnatomyInputFieldText": "La zone avec laquelle l'utilisateur interagit pour saisir le contenu.",
-		"AnatomyInputContentHeading": "Contenu de champ de saisie",
+		"AnatomyInputContentHeading": "Contenu du champ de saisie",
 		"AnatomyInputContentText": "Le contenu que l'utilisateur entre dans le champ. Le champ prend également en charge le texte d'espace pour placement facultatif qui s'affiche avant que l'utilisateur entre le texte.",
 		"AnatomyPasswordHeading": "Champ de mot de passe",
 		"AnatomyPasswordText": "Le champ de mot de passe permet aux utilisateurs d'entrer leur mot de passe. Le mot de passe peut être caché ou affiché.",
@@ -531,7 +533,7 @@
 		"WritePlaceholderDontText1": "Utilisez le texte de placement lorsque la valeur attendue est déjà évidente pour l'utilisateur ou où l'exemple donne l'impression que le champ a déjà été terminé.",
 		"WritePlaceholderDoImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée contiennent du texte d'espace réservé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDoText2": "Fournissez du texte de placement pour afficher le format exact requis, dans un champ de saisie.",
-		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont du texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
+		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont un texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDontText2": "Remplacez le texte de l'indice avec le texte de l'espace réservé.",
 		"WriteErrorsDoImgAlt": "Un champ de saisie pour collecter le nom de famille de l'utilisateur. L'étiquette est «Nom de famille (obligatoire)». La description est «Ceci est votre nom de famille ou votre nom.» Le message d'erreur est «Ce champ est vide. Veuillez saisir un nom de famille.",
 		"WriteErrorsDoText": "Fournissez du texte d'erreur utile et guide l'utilisateur sur ce qu'il faut corriger.",
@@ -560,7 +562,7 @@
 		"AccessibilityContentItem5": "L'étiquette qui comprend un astérisque pour indiquer que le contrôle est requis.",
 		"AccessibilityContentItem6": "Étiquetage clair pour les champs requis, y compris le mot «requis» entre parenthèses.",
 		"AccessibilityValidationText": "Si une erreur d'entrée est automatiquement détectée, l'élément qui est en erreur est identifié et l'erreur est décrite à l'utilisateur dans le texte.",
-		"CodeViewer": "Bloc de la visionneuse de code affichant le code HTML et le code TypeScript généré à partir de la démo interactive",
+		"CodeViewer": "Bloc de la visionneuse de code affichant le HTML et le code TypeScript généré à partir de la démo interactive",
 		"LabelText1": "Étiqueter le texte",
 		"LabelText2": "Mot de passe"
 	},
@@ -572,7 +574,7 @@
 			"Maintain": "Maintenir les largeurs de sélection par défaut",
 			"MaintainDoAlt": "Un petit cueilleur de date dans la disposition horizontale avec des largeurs cohérentes.",
 			"MaintainDoText": "Maintenez la largeur par défaut de chaque liste déroulante de sélection. Ils sont intentionnellement dimensionnés pour s'adapter à l'option «inconnue».",
-			"MaintainDontAlt": "Un petit cueilleur de rendez-vous dans la disposition horizontale est mieux utilisé pour le mobile.",
+			"MaintainDontAlt": "Un petit cueilleur de date dans la disposition horizontale est mieux utilisé pour le mobile.",
 			"MaintainDontText": "Modifier la largeur fixe des déroutes sélectionnées.",
 			"ErrorValidation": "Utiliser les traitements de validation d'erreur appropriés",
 			"ErrorValidationDoAlt": "Champ de sélecteur de date qui affiche la validation en mettant en évidence le champ rouge avec trois messages d'erreur en dessous.",
@@ -607,7 +609,7 @@
 			"WritingLabelsDo": "Gardez les étiquettes aussi claires et courtes que possible.",
 			"WritingLabelsDontAlt": "Date Picker Fields avec l'étiquette «Le jour où vous êtes né».",
 			"WritingLabelsDont": "Écrivez des étiquettes difficiles à comprendre ou des étiquettes qui sont plus longues que nécessaire.",
-			"PlaceholderHeading": "Utilisez le texte du Payholder dans les listes déroulantes sélectionnées",
+			"PlaceholderHeading": "Utilisez le texte du placeur dans les déroutes sélectionnées",
 			"PlaceholderDoAlt": "Champs de cueilleurs de date avec l'étiquette «Date de naissance» et le texte d'espace réservé dans les champs.",
 			"PlaceholderDo": "Fournissez du texte de placement pour afficher le format exact requis, dans une liste déroulante sélectionnée.",
 			"PlaceholderDontAlt": "Un sélecteur de date qui n'a pas de texte d'espace réservé à l'intérieur des listes déroulantes sélectionnées.",
@@ -622,7 +624,7 @@
 			"NecessaryContentDont": "Ajoutez des couches de contenu inutiles ou redondantes à l'entrée.",
 			"RequiredFieldsDoAlt": "Une date de cueilleur de dates percut la date de naissance d'un utilisateur avec l'étiquette «Date de naissance (requise)».",
 			"RequiredFieldsDo": "En plus d'utiliser l'astérisque requis (*), ajoutez également «(requis)» à la fin de toutes les étiquettes dans les champs requis.",
-			"RequiredFieldsDontAlt": "Une date de cueilleur de dates collecte la date de naissance d'un utilisateur avec l'étiquette «Date de naissance».",
+			"RequiredFieldsDontAlt": "Une date de cueilleur de dattes collecte la date de naissance d'un utilisateur avec l'étiquette «Date de naissance».",
 			"RequiredFieldsDont": "Indiquez les champs requis avec seulement l'astérisque (*)."
 		},
 		"UsageInFigma": {
@@ -663,7 +665,7 @@
 		"urgentRequestRadio": "La demande est-elle urgente? (requis)",
 		"requestTitleLabel": "Titre de demande (requis)",
 		"requestTitleDesc": "Entrez un bref titre qui représente la fonctionnalité, le changement ou le bug.",
-		"requestDetailsLabel": "Détails de la demande (requis)",
+		"requestDetailsLabel": "Détails de demande (requis)",
 		"requestDetailsDesc": "Décrivez la fonctionnalité, le changement ou le bug.",
 		"useCaseLabel": "Cas d'utilisation (s) (requis)",
 		"useCaseDesc": "Décrivez le ou les cas d'utilisation que vous ne pouvez actuellement pas satisfaire au système de conception.",
@@ -716,7 +718,7 @@
 			"bannerMinMaxWidthText": "Les petites bannières ont une largeur maximale de 600 pixels et une largeur minimale de 300 pixels. Les grandes bannières ont une largeur maximale de 680 pixels et une largeur minimale de 340 pixels."
 		},
 		"Anatomy": {
-			"ImgAlt": "Les pièces qui constituent le composant de la bannière. Les pièces sont décrites dans le contenu ci-dessous.",
+			"ImgAlt": "Les pièces qui constituent la composante de la bannière. Les pièces sont décrites dans le contenu ci-dessous.",
 			"ContainerHeading": "Récipient",
 			"ContainerText": "La limite de la bannière. Le conteneur peut afficher divers styles et peut être réglé sur n'importe quelle largeur fixe souhaitée.",
 			"BannerIconTypeHeading": "Icône de type bannière",
@@ -771,7 +773,7 @@
 			"ShowCloseLabel": "Se rapprocher",
 			"ShowPrimaryButtonLabel": "Afficher le bouton primaire",
 			"ShowSecondaryButtonLabel": "Afficher le bouton secondaire",
-			"ShowPlainButtonLabel": "Afficher le bouton Plain",
+			"ShowPlainButtonLabel": "Afficher le bouton simple",
 			"ShowLinkLabel": "Montrer le lien",
 			"DefaultLabel": "Défaut",
 			"CTA1Label": "CTA 1",
@@ -790,7 +792,7 @@
 		"ConfigurationsHeading": "Configurations",
 		"ConfigurationsMain": "Configurations (composante principale)",
 		"ConfigurationsSub": "Configurations (sous-composant)",
-		"DesignGuidelinesHeading": "Lignes directrices de conception",
+		"DesignGuidelinesHeading": "Concevoir des directives",
 		"AnatomyHeading": "Anatomie",
 		"SpecsHeading": "Spécifications",
 		"Populated": "Peuplé",
@@ -869,7 +871,7 @@
 		"PlaceholderSubheading": "Texte d'écriture",
 		"RequiredIndicatorHeading": "Indicateur requis",
 		"RequiredIndicatorTxt": "Indique quels champs sont obligatoires pour soumettre avec succès le formulaire.",
-		"AnatomyLabelText": "L'étiquette indique clairement le but du champ.",
+		"AnatomyLabelText": "L'étiquette rend clairement le but du champ.",
 		"AnatomyDescText": "La description comprend l'action qu'un utilisateur doit effectuer ainsi que toutes les informations pertinentes requises.",
 		"AnatomyHintText": "L'indice est utilisé pour afficher des informations secondaires ou tertiaires. Il n'est utilisé que lorsque l'étiquette et la description ne suffiront pas à aider l'utilisateur à comprendre l'entrée.",
 		"AnatomyErrorText": "Le texte d'erreur qui s'affiche si le champ est dans un état non valide.",
@@ -894,13 +896,17 @@
 		"DisabledBannerContent": "La définition de l'état de contrôle de formulaire déclenche automatiquement le style désactivé / activé <br> <code>\"this.formGroupName.get('FormControlName')?.disable(); //définit le contrôle de formulaire à désactiver\"</code>",
 		"EnabledBannerTitle": "Comment accéder à l'état activé pour les développeurs",
 		"EnabledBannerContent": "La définition de l'état de contrôle de formulaire déclenche automatiquement le style désactivé / activé <br> <code>\"this.formGroupName.get('FormControlName')?.enable(); //définit le contrôle de formulaire à activer\"</code>",
+		"Step3": "Étape 3",
+		"Step4": "Étape 4",
+		"stepTitle": "Titre de l'étape",
+		"Gated": "Fermé",
 		"Labelling": "Étiquetage"
 	},
 	"IconButtonDocumentation": {
 		"Title": "Bouton d'icône",
 		"Intro": "Les boutons d'icônes peuvent être utilisés pour une seule action bien compris qui peut être clairement communiquée avec une icône autonome.",
 		"PrimaryText": "Les boutons d'icône principaux sont utilisés pour mettre en évidence des actions importantes et faciles à comprendre. Il peut être utilisé dans un groupe de boutons d'icônes.",
-		"CriticalText": "Les boutons d'icônes critiques sont souvent utilisés pour des actions destructrices comme la suppression du contenu contribué à l'utilisateur.",
+		"CriticalText": "Les boutons d'icônes critiques sont souvent utilisés pour des actions destructrices comme la suppression du contenu contribué par l'utilisateur.",
 		"OrganizeIcons": "Organiser les groupes de bouton d'icône",
 		"OrganizeIconsAlt": "Une barre d'outils de visionneuse de documents avec des icônes de pagination, des icônes de zoom et des icônes de redimensionnement groupées et séparées.",
 		"OrganizeIconsDoText": "Organisez logiquement les boutons d'icônes qui ont une relation contextuelle en gardant les actions connexes ensemble et des actions non liées séparées soit par l'espace blanc ou les séparateurs.",
@@ -943,7 +949,7 @@
 		"LabellingText": "Les boutons d'icône doivent avoir des étiquettes par programme qui leur sont associés afin que l'action de l'icône de l'icône soit claire pour l'écran les utilisateurs du lecteur."
 	},
 	"MultiCheckboxDocumentation": {
-		"Title": "Docbox multiche"
+		"Title": "Docbox multichette"
 	},
 	"Spinner": {
 		"Title": "Spinner-DOC",
@@ -987,7 +993,7 @@
 			"ImgAlt": "Les pièces qui maquillent le compoennt de spinner. Les pièces sont décrites dans le contenu ci-dessous."
 		},
 		"Specs": {
-			"ImgAlt": "Spécifications affichant le rembourrage et les mesures de couche dans le composant de fileur. Les spécifications sont décrites dans le paragraphe ci-dessous.",
+			"ImgAlt": "Spécifications affichant les mesures de rembourrage et de couche dans le composant de la spinner. Les spécifications sont décrites dans le paragraphe ci-dessous.",
 			"Text1": "Le petit récipient de fileur supplémentaire a une largeur fixe et une hauteur de fluide. Le spinner lui-même a une largeur et une hauteur uniformes fixes de 20px. L'étiquette est définie pour remplir. Il y a 8 pixels de rembourrage entre le petit spinner supplémentaire et l'étiquette.",
 			"Text2": "Le petit récipient de spinner a une largeur fixe et une hauteur de fluide. Le spinner lui-même a une largeur et une hauteur uniformes fixes de 28px. L'étiquette est définie pour remplir. Il y a 8 pixels de rembourrage entre le petit spinner et l'étiquette.",
 			"Text3": "Le grand récipient de spinner a une largeur fixe et une hauteur de fluide. Le spinner lui-même a une largeur et une hauteur uniformes fixes de 80px. Le conteneur de texte est défini pour remplir et contient l'étiquette et la description. Il y a un rembourrage de 16 pixels entre le grand spinner et le conteneur de texte. Dans le conteneur de texte, l'étiquette est de 36px de hauteur et a un rembourrage de 8px au-dessus. La description a une hauteur de 24px et a un rembourrage de 8px en dessous. Il y a un rembourrage 4px entre l'étiquette et la description."
@@ -1060,7 +1066,7 @@
 		"Dont5": "Comptez sur l'étiquette pour faire tout le travail d'informer un utilisateur de la tâche à effectuer.",
 		"Dont6": "Écrivez plus longtemps que les étiquettes nécessaires. Ne tronquez pas les étiquettes.",
 		"Dont7": "Incluez une description lorsque des instructions ou des détails supplémentaires ne sont pas nécessaires pour clarifier comment faire correctement une sélection.",
-		"Dont8": "Fournissez du texte de placement pour afficher le format exact requis.",
+		"Dont8": "Fournissez du texte de l'espace pour afficher le format exact requis.",
 		"Dont9": "Écrivez des messages d'erreur qui ressemblent à un robot.",
 		"Dont10": "Indiquez les champs requis avec seulement l'astérisque (*).",
 		"Alt": {
@@ -1093,5 +1099,16 @@
 			"UsageScreenshot": "Une capture d'écran du composant de formulaire-entrée avec la couche de champ d'entrée sélectionnée dans le composant."
 		},
 		"AccesiblityPopulatedContentItem": "Le contenu de peuplement et d'espace réservé sont placés à l'intérieur de la sélection et sont toujours visibles pour l'utilisateur."
+	},
+	"ProgressIndicatorDocumentation": {
+		"Title": "progress-indicator-documentation-fr"
+	},
+	"ProgressIndicator": {
+		"MainTitle": "Indicateur de progrès",
+		"Intro": "Les indicateurs de progression sont le plus souvent utilisés pour permettre aux clients et aux agents de faire une gamme de sélections (zéro, un ou plusieurs).",
+		"InteractiveDemoDesc": "Essayez notre composant indicateur de progression et les options configurables disponibles dans celui-ci."
+	},
+	"Checkbox": {
+		"Title": "Cocher"
 	}
 }

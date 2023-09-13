@@ -36,6 +36,7 @@ import { SelectDocumentationComponent } from './pages/select-documentation/selec
 import { MultiCheckboxDocumentationComponent } from './pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 import { SpinnerDocumentationComponent } from './pages/spinner-documentation/spinner-documentation.component';
 import { AutocompleteDocumentationComponent } from './pages/autocomplete-documentation/autocomplete-documentation.component';
+import { CheckboxDocumentationComponent } from './pages/checkbox-documentation/checkbox-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -124,6 +125,11 @@ const routes: Routes = [
       component: AutocompleteDocumentationComponent,
       title: 'AutocompleteDocumentation.Title'
     },
+    {
+      path: 'checkbox-documentation',
+      component: CheckboxDocumentationComponent,
+      title: 'Checkbox.Title'
+    },
 
     // French
     { path: 'aperçu', component: OverviewComponent, title: 'Overview.Heading' },
@@ -191,6 +197,11 @@ const routes: Routes = [
       path: 'autocomplete-documentation-fr',
       component: AutocompleteDocumentationComponent,
       title: 'AutocompleteDocumentation.Title'
+    },
+    {
+      path: 'checkbox-documentation-fr',
+      component: CheckboxDocumentationComponent,
+      title: 'Checkbox.Title'
     },
 
     //QA PATHS

@@ -1,0 +1,45 @@
+<app-interactive-demo>
+  <ircc-cl-lib-tabs
+    tabs
+    (valueChange)="setCheckboxType($event)"
+    [config]="demoTabsConfig"
+  >
+  </ircc-cl-lib-tabs>
+  <div
+    component
+    class="input-container"
+    #input
+  >
+    <ng-container *ngIf="checkbox_type === 'single'">
+      <ircc-cl-lib-checkbox
+        [config]="singleCheckboxConfig"
+      ></ircc-cl-lib-checkbox>
+    </ng-container>
+
+    <ng-container *ngIf="checkbox_type === 'group'">
+      <p>Group checkbox not implemented yet</p>
+    </ng-container>
+
+    <ng-container *ngIf="checkbox_type === 'multi'">
+      <p>MULTI CHECKBOX PAGE</p>
+    </ng-container>
+  </div>
+  <ng-container
+    toggles
+    *ngIf="checkbox_type === 'single'"
+  >
+    <ng-container *ngFor="let toggle of togglesSingleCheckbox">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxesSingle">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+  <ng-container
+    banner
+    *ngIf="checkbox_type === 'single'"
+  >
+    <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
+  </ng-container>
+</app-interactive-demo>
+<!-- <app-code-viewer [config]="codeViewConfig"></app-code-viewer> -->
