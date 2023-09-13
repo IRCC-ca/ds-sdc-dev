@@ -38,7 +38,9 @@ export class ResponsiveImageComponent implements OnInit, AfterViewInit {
   };
 
   @Input() id: string = '';
-  @Input() breakpoints: [{ maxWidth: DSViewPortSize.default; src: ''; }] | undefined;
+  @Input() breakpoints:
+    | [{ maxWidth: DSViewPortSize.default; src: '' }]
+    | undefined;
   @Input() altText: string = '';
   @Input() defaultSrc?: string = '';
   @Input() lazyLoad: boolean = false;
