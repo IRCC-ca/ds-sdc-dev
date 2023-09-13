@@ -4,7 +4,8 @@ import {
   Renderer2,
   ElementRef,
   AfterViewInit,
-  ViewChild
+  ViewChild,
+  OnInit
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DSViewPortSize } from 'ircc-ds-angular-component-library';
@@ -25,7 +26,7 @@ export interface IBreakpoint {
   templateUrl: './responsive-image.component.html',
   styleUrls: ['./responsive-image.component.scss']
 })
-export class ResponsiveImageComponent implements AfterViewInit {
+export class ResponsiveImageComponent implements OnInit, AfterViewInit {
   @ViewChild('image', { static: true })
   image!: ElementRef<HTMLImageElement>;
   @Input() config: IResponsiveImageComponentConfig = {
@@ -36,11 +37,25 @@ export class ResponsiveImageComponent implements AfterViewInit {
     lazyLoad: false
   };
 
+  @Input() id: string = '';
+  @Input() breakpoints: [{ maxWidth: DSViewPortSize.default; src: ''; }] | undefined;
+  @Input() altText: string = '';
+  @Input() defaultSrc?: string = '';
+  @Input() lazyLoad: boolean = false;
+
   constructor(
     private translate: TranslateService,
     private renderer: Renderer2,
     private el: ElementRef
   ) {}
+
+  ngOnInit() {
+    if (this.id) this.config.id = this.id;
+    if (this.breakpoints) this.config.breakpoints = this.breakpoints;
+    if (this.altText) this.config.altText = this.altText;
+    if (this.defaultSrc) this.config.defaultSrc = this.defaultSrc;
+    if (this.lazyLoad) this.config.lazyLoad = this.lazyLoad;
+  }
 
   ngAfterViewInit() {
     this.updateImageSrc();
