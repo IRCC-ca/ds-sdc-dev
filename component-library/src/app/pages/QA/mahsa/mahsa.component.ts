@@ -68,7 +68,7 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Small Error',
         errorMessages: [
-          { key: 'maxlength', errorLOV: 'ERROR.errorMessage' },
+          { key: 'maxlength', errorLOV: 'General.Error' },
           { key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' },
           { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],
@@ -85,7 +85,7 @@ export class MahsaComponent implements OnInit {
         formGroup: this.form,
         label: 'Large Error',
         errorMessages: [
-          { key: 'maxlength', errorLOV: 'ERROR.errorMessage' },
+          { key: 'maxlength', errorLOV: 'General.Error' },
           { key: 'invalid', errorLOV: 'ERROR.fieldIsInvalid' },
           { key: 'testingError', errorLOV: 'ERROR.errorMessageMahsa' }
         ],

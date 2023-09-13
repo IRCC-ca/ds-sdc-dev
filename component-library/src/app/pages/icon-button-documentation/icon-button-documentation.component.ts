@@ -50,8 +50,8 @@ export class IconButtonDocumentationComponent implements OnInit {
 
   figmaDirections: string[] = [
     'IconButtonDocumentation.FigmaDirectionsListItem1',
-    'IconButtonDocumentation.FigmaDirectionsListItem2',
-    'IconButtonDocumentation.FigmaDirectionsListItem3',
+    'General.FigmaDirectionsListItem2',
+    'General.FigmaDirectionsListItem3',
     'IconButtonDocumentation.FigmaDirectionsListItem4'
   ];
 

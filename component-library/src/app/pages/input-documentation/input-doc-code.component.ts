@@ -110,7 +110,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'error',
       formGroup: this.formInput,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.NoneErr',
