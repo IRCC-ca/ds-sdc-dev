@@ -63,7 +63,7 @@ export class ResponsiveImageComponent implements AfterViewInit {
         breakpoint.src
       );
     } else {
-      // If no matching breakpoint is found, use the default src
+      // If no matching breakpoint is found, use the default src image
       this.renderer.setAttribute(
         this.image.nativeElement,
         'src',
