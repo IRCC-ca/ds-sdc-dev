@@ -37,6 +37,12 @@ export class MultiCheckboxDocumentationComponent
         formGroup: this.form,
         inlineLabel: 'Pepperoni',
         size: 'small'
+      },
+      {
+        id: 'bacon',
+        formGroup: this.form,
+        inlineLabel: 'Bacon',
+        size: 'small'
       }
     ],
     errorMessages: [{ key: 'required', errorLOV: 'ERROR.fieldIsRequired' }]

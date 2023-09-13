@@ -157,42 +157,6 @@ export class MultiCheckboxComponent implements OnInit {
             }
           }
         );
-    } else {
-      this.configSub =
-        this.multicheckboxService.multiCheckboxEventObs$.subscribe(
-          (response) => {
-            if (this.config.children) {
-              if (
-                this.config.children?.findIndex((child) => {
-                  return child.id === response.id;
-                }) > -1
-              ) {
-                let positive = 0;
-                let negative = 0;
-
-                this.config.children?.forEach((res) => {
-                  res.formGroup.get(res.id)?.value === true
-                    ? positive++
-                    : negative++;
-                });
-
-                if (positive > 0 && negative > 0) {
-                  this.config.children?.forEach((res) => {
-                    res.mixed = true;
-                  });
-                } else if (positive > 0 && negative == 0) {
-                  this.config.children?.forEach((res) => {
-                    res.mixed = false;
-                  });
-                } else if (positive == 0 && negative > 0) {
-                  this.config.children?.forEach((res) => {
-                    res.mixed = false;
-                  });
-                }
-              }
-            }
-          }
-        );
     }
   }
 
