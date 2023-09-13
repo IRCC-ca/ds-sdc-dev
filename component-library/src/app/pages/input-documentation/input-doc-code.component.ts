@@ -44,15 +44,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     errorMessages: [
       {
         key: 'required',
-        errorLOV: 'ERROR.singleError'
+        errorLOV: this.translate.instant('ERROR.singleError')
       },
       {
         key: 'email',
-        errorLOV: 'ERROR.additionalError'
+        errorLOV: this.translate.instant('ERROR.additionalError')
       },
       {
         key: 'email2',
-        errorLOV: 'ERROR.additionalError'
+        errorLOV: this.translate.instant('ERROR.additionalError')
       }
     ]
   };
@@ -442,7 +442,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           errorMessages: [
             {
               key: 'required',
-              errorLOV: 'ERROR.singleError'
+              errorLOV: this.translate.instant('ERROR.singleError')
             }
           ]
         };
@@ -453,15 +453,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           errorMessages: [
             {
               key: 'required',
-              errorLOV: 'ERROR.singleError'
+              errorLOV: this.translate.instant('ERROR.singleError')
             },
             {
               key: 'email',
-              errorLOV: 'ERROR.additionalError'
+              errorLOV: this.translate.instant('ERROR.additionalError')
             },
             {
               key: 'email2',
-              errorLOV: 'ERROR.additionalError'
+              errorLOV: this.translate.instant('ERROR.additionalError')
             }
           ]
         };
