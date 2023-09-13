@@ -139,23 +139,22 @@ export class MultiCheckboxComponent implements OnInit {
                     ?.patchValue(false, { emitEvent: false });
                   this.config!.parent!.mixed = false;
                 }
+                this.checkError(
+                  this.config?.parent?.formGroup?.get(this.config.parent?.id)
+                    ?.status,
+                  this.config.parent?.formGroup || new FormGroup({}),
+                  this.config.parent?.id || ''
+                );
+
+                this.config.children?.forEach((res) => {
+                  this.checkError(
+                    this.config?.parent?.formGroup?.get(res.id)?.status,
+                    this.config?.parent?.formGroup || new FormGroup({}),
+                    res.id
+                  );
+                });
               }
             }
-
-            this.checkError(
-              this.config?.parent?.formGroup?.get(this.config.parent?.id)
-                ?.status,
-              this.config.parent?.formGroup || new FormGroup({}),
-              this.config.parent?.id || ''
-            );
-
-            this.config.children?.forEach((res) => {
-              this.checkError(
-                this.config?.parent?.formGroup?.get(res.id)?.status,
-                this.config?.parent?.formGroup || new FormGroup({}),
-                res.id
-              );
-            });
           }
         );
     } else {
@@ -205,7 +204,6 @@ export class MultiCheckboxComponent implements OnInit {
     });
 
     if (this.config.parent != undefined) {
-      console.log('here');
       this.config.parent.formGroup
         ?.get(this.config.parent.id)
         ?.statusChanges.subscribe((value: any) => {
