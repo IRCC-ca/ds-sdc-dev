@@ -6,7 +6,7 @@
     (config.label ?? '')
   "
   [tabindex]="config.tabIndex"
-  [attr.role]="config.ariaLabel ? 'group' : null"
+  role="group"
 >
   <div
     *ngIf="config.type === 'text' || config.type === 'number'"
