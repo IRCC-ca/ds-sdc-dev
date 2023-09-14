@@ -70,10 +70,12 @@ export class MultiCheckboxDocComponent implements OnInit {
         size: 'small'
       }
     ],
-    errorMessages: []
-    // errorMessages: [{id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-    // {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-    // {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }]
+    // errorMessages: []
+    errorMessages: [
+      {id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
+      {id:'singleError2', key: 'email', errorLOV: "TEST" },
+      {id:'singleError3', key: 'test', errorLOV: "HELLo" }
+    ]
   };
 
   togglesMultiCheckbox: IRadioInputComponentConfig[] = [
@@ -372,57 +374,6 @@ export class MultiCheckboxDocComponent implements OnInit {
           this.multiCheckboxConfig?.parent?.id || ''
         );
         break;
-      // if (value === 'None') {
-      //   this.multiCheckboxConfig.errorMessages= []
-      //   this.multiCheckboxConfig.parent.formGroup.removeControl(this.multiCheckboxConfig.parent.id);
-      //   this.multiCheckboxConfig.parent.formGroup.addControl(
-      //     this.multiCheckboxConfig.parent.id,
-      //     new FormControl('')
-      //   );
-      //   this.multiCheckboxConfig.children?.forEach((child) => {
-      //     this.formMultiCheckbox.removeControl(child.id);
-      //     this.formMultiCheckbox.addControl(
-      //       child.id,
-      //       new FormControl('')
-      //     );
-      //   })
-      // }
-
-      // else if (value === 'Single') {
-      //   this.multiCheckboxConfig.errorMessages= [{id:'singleError', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }]
-      //   this.setValidators(this.multiCheckboxConfig.parent.id);
-
-      //   if (!this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.touched){
-      //     this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.markAsTouched();
-      //   }
-      //   this.multiCheckboxConfig.children?.forEach((child) => {
-      //     this.setValidators(child.id);
-      //     if(!this.formMultiCheckbox.get(child.id)?.touched) {
-      //       this.formMultiCheckbox.get(child.id)?.markAsTouched();
-      //     }
-      //   });
-      // }
-      // else if (value === 'Multiple') {
-      //   this.multiCheckboxConfig.errorMessages= [
-      //     {id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-      //     {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-      //     {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
-      //   ];
-
-      //   this.setValidators(this.multiCheckboxConfig.parent.id)
-
-      //   if (!this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.touched){
-      //     this.formMultiCheckbox.get(this.multiCheckboxConfig.parent.id)?.markAsTouched();
-      //   }
-
-      //   this.multiCheckboxConfig.children?.forEach((child) => {
-      //     this.setValidators(child.id)
-      //     if(!this.formMultiCheckbox.get(child.id)?.touched) {
-      //       this.formMultiCheckbox.get(child.id)?.markAsTouched();
-      //     }
-      //   });
-      // }
-      // break;
       case 'state':
         console.log('State', value);
         if (value !== undefined) {
@@ -455,66 +406,41 @@ export class MultiCheckboxDocComponent implements OnInit {
     let childIdArray = this.getAllChildrenIds();
     switch (value) {
       case 'Single':
-        this.multiCheckboxConfig.errorMessages = [
-          {
-            id: 'singleError1',
-            key: 'required',
-            errorLOV: this.translate.instant('ERROR.singleError')
-          }
-        ];
-
-        if (this.multiCheckboxConfig.parent) {
-          this.setErrors(
-            formGroup,
-            [...childIdArray, this.multiCheckboxConfig.parent.id],
-            ['required']
-          );
-        }
-
+        errorArray = ['required']
+        this.setErrors(formGroup, formID, errorArray)
         break;
       case 'Multiple':
         console.log('Mulit Error');
-        // this.multiCheckboxConfig.errorMessages= [
-        //   {id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-        //   {id:'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-        //   {id:'singleError3', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') }
-        // ]
-
-        // for (const field in formGroup.controls) {
-        //   let field = formGroup.get(formID)
-        //   field?.setErrors({ 'required': true });
-        //   field?.markAsTouched();
-        //   field?.markAsDirty();
-
-        //   this.multicheckboxService.checkField(
-        //     field,
-        //     formID,
-        //     `${this.translate.instant('ERROR.singleError')}`
-        //   );
-        // }
+        errorArray = ['required', 'email', 'test']
+        this.setErrors(formGroup, formID, errorArray)
         break;
       case 'None':
         console.log('No Error');
         errorArray = [];
-        this.setErrors(formGroup, [formID], errorArray);
+        this.setErrors(formGroup, formID, errorArray);
         break;
     }
   }
 
-  setErrors(formGroup: FormGroup, formID: string[], errorKeys: string[]) {
+  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
     let errorVals = {};
     console.log('------------>', errorKeys);
-    formID.forEach((id) => {
       if (errorKeys.length === 0) {
-        formGroup.get(id)?.setErrors(null);
+        formGroup.get(formID)?.setErrors(null);
+        this.multiCheckboxConfig.children?.forEach((child) => {
+          formGroup.get(child.id)?.setErrors(null);
+        })
       } else {
         errorKeys.forEach((error) => {
           errorVals[error] = true;
         });
-        formGroup.get(id)?.setErrors(errorVals);
-        formGroup.get(id)?.markAsTouched();
+        formGroup.get(formID)?.setErrors(errorVals);
+        formGroup.get(formID)?.markAsTouched();
+        this.multiCheckboxConfig.children?.forEach((child) => {
+          formGroup.get(child.id)?.setErrors(errorVals);
+          formGroup.get(child.id)?.markAsTouched();
+        })
       }
-    });
     console.log('for errors:', formGroup.get(formID)?.errors);
   }
 
