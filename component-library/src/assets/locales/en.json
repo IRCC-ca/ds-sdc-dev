@@ -561,7 +561,7 @@
 		"LabelText1": "Label text"
 	},
 	"DatePicker": {
-		"MainTitle": "Date picker",
+		"MainTitle": "Date Picker",
 		"Title": "DatePicker-doc",
 		"Intro": "The date picker component allows users to input a specific year, month and/or day.",
 		"DesignGuideLines": {
