@@ -119,7 +119,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     {
       id: 'showCriticalToggle',
       formGroup: this.formButton,
-      label: 'General.CriticalHeading',
+      label: 'General.Critical',
       size: 'small',
       options: [
         {
@@ -155,7 +155,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
       size: 'small',
       options: [
         {
-          text: 'Buttons.ConfigIconNone',
+          text: 'General.NoneErr',
           value: 'None'
         },
         {
@@ -176,7 +176,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
     tab: [
       {
         id: 'primary',
-        title: 'Buttons.PrimaryHeading'
+        title: 'General.Primary'
       },
       {
         id: 'secondary',

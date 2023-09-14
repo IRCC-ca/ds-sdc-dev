@@ -44,7 +44,7 @@ export class InputDocumentationComponent implements OnInit {
   passwordInputConfig: IInputComponentConfig = {
     id: this.PASSWORD_INPUT_ID,
     formGroup: this.form_input,
-    label: 'Input.LabelText2',
+    label: 'General.Password',
     type: InputTypes.password,
     size: 'small'
   };
