@@ -17,6 +17,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { DomChangeDirective } from '../../shared/directives/dom-change.directive';
 import { FlyoutComponent } from './flyout/flyout.component';
 import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
+import { ResponsiveImageComponent } from './responsive-image/responsive-image.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ScrollingModule as ExperimentalScrollingModule } from '@angular/cdk-experimental/scrolling';
 
@@ -37,7 +38,8 @@ const IrccDsSharedComponents = [
   ProgressIndicatorComponent,
   SpinnerComponent,
   FlyoutComponent,
-  FlyoutOptionComponent
+  FlyoutOptionComponent,
+  ResponsiveImageComponent
 ];
 
 @NgModule({

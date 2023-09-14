@@ -9,10 +9,10 @@ import { TranslateService } from '@ngx-translate/core';
 import {
   IIconButtonComponentConfig,
   IconButtonCategories,
+  IDynamicImageComponentConfig,
   DSViewPortSize
 } from 'ircc-ds-angular-component-library';
 
-import { IResponsiveImageComponentConfig } from '@app/components/responsive-image/responsive-image.component';
 @Component({
   selector: 'app-icon-button-documentation',
   templateUrl: './icon-button-documentation.component.html',
@@ -43,7 +43,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     disabled: false
   };
 
-  imageSpacingConfig: IResponsiveImageComponentConfig = {
+  imageSpacingConfig: IDynamicImageComponentConfig = {
     id: 'image-spacing',
     breakpoints: [
       {
@@ -56,7 +56,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     lazyLoad: true
   };
 
-  anatomyImgConfig: IResponsiveImageComponentConfig = {
+  anatomyImgConfig: IDynamicImageComponentConfig = {
     id: 'anatomy-image',
     breakpoints: [
       {
@@ -69,7 +69,7 @@ export class IconButtonDocumentationComponent implements OnInit {
     lazyLoad: true
   };
 
-  specImgConfig: IResponsiveImageComponentConfig = {
+  specImgConfig: IDynamicImageComponentConfig = {
     id: 'spec-image',
     breakpoints: [
       {

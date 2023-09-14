@@ -8,9 +8,9 @@ import {
   OnInit
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DSViewPortSize } from 'ircc-ds-angular-component-library';
+import { DSViewPortSize } from '../../../shared/constants/jl-components.constants';
 
-export interface IResponsiveImageComponentConfig {
+export interface IDynamicImageComponentConfig {
   id: string;
   breakpoints: IBreakpoint[];
   defaultSrc: string;
@@ -22,14 +22,12 @@ export interface IBreakpoint {
   src: string;
 }
 @Component({
-  selector: 'app-responsive-image',
-  templateUrl: './responsive-image.component.html',
-  styleUrls: ['./responsive-image.component.scss']
+  selector: 'ircc-cl-lib-dynamic-image',
+  templateUrl: './responsive-image.component.html'
 })
 export class ResponsiveImageComponent implements OnInit, AfterViewInit {
-  @ViewChild('image', { static: true })
-  image!: ElementRef<HTMLImageElement>;
-  @Input() config: IResponsiveImageComponentConfig = {
+  @ViewChild('image', { static: true }) image: ElementRef | undefined;
+  @Input() config: IDynamicImageComponentConfig = {
     id: '',
     breakpoints: [{ maxWidth: DSViewPortSize.default, src: '' }],
     altText: '',
@@ -65,27 +63,29 @@ export class ResponsiveImageComponent implements OnInit, AfterViewInit {
   }
 
   updateImageSrc() {
-    const screenWidth = window.innerWidth;
-
-    // Find the matching breakpoint for the current screen width
-    const breakpoint = this.config.breakpoints.find(
-      (breakpoint) => screenWidth <= breakpoint.maxWidth
-    );
-
-    if (breakpoint) {
-      // Set the src attribute of the image to the matched breakpoint's src
-      this.renderer.setAttribute(
-        this.image.nativeElement,
-        'src',
-        breakpoint.src
+    if (this.image?.nativeElement) {
+      const screenWidth = window.innerWidth;
+  
+      // Find the matching breakpoint for the current screen width
+      const breakpoint = this.config.breakpoints.find(
+        (breakpoint) => screenWidth <= breakpoint.maxWidth
       );
-    } else {
-      // If no matching breakpoint is found, use the default src image
-      this.renderer.setAttribute(
-        this.image.nativeElement,
-        'src',
-        this.config.defaultSrc
-      );
+  
+      if (breakpoint) {
+        // Set the src attribute of the image to the matched breakpoint's src
+        this.renderer.setAttribute(
+          this.image?.nativeElement,
+          'src',
+          breakpoint.src
+        );
+      } else {
+        // If no matching breakpoint is found, use the default src image
+        this.renderer.setAttribute(
+          this.image?.nativeElement,
+          'src',
+          this.config.defaultSrc
+        );
+      }
     }
   }
 }
