@@ -82,7 +82,7 @@ export class SelectDocumentationComponent implements OnInit {
       description: 'Select.Anatomy.DropdownText'
     }
   ];
-  
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
