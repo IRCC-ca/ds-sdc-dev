@@ -180,7 +180,7 @@ export class DatePickerDocCodeComponent
       id: 'error',
       formGroup: this.formDatePicker,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.NoneErr',

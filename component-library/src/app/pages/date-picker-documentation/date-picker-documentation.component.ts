@@ -35,7 +35,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       description: 'General.RequiredIndicatorTxt'
     },
     {
-      title: 'General.DescriptionHeading',
+      title: 'General.Description',
       description: 'General.AnatomyDescText'
     },
     {
@@ -47,7 +47,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       description: 'DatePicker.Anatomy.SelectCompoTxt'
     },
     {
-      title: 'ERROR.errorMessage',
+      title: 'General.Error',
       description: 'General.AnatomyErrorText'
     }
   ];

@@ -149,7 +149,7 @@ export class AutocompleteDocumentationComponent
       id: 'error',
       formGroup: this.form_interactive_button,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.TrueLabel',

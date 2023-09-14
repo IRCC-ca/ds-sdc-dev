@@ -8,12 +8,7 @@ import {
   IRadioInputComponentConfig,
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import {
   ICodeViewerConfig,
   stringify
@@ -46,29 +41,17 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     required: false,
     label: 'Label Text',
     desc: 'Description line of text',
-    errorMessages: []
-  };
-
-  inputConfigSingle: IInputComponentConfig = {
-    ...this.inputConfig,
-    id: 'input_single',
-    required: true,
     errorMessages: [
-      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }
-    ]
-  };
-
-  inputConfigMulti: IInputComponentConfig = {
-    ...this.inputConfig,
-    id: 'input_multi',
-    errorMessages: [
-      { key: 'email', errorLOV: this.translate.instant('ERROR.singleError') },
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.singleError')
+      },
       {
         key: 'email',
         errorLOV: this.translate.instant('ERROR.additionalError')
       },
       {
-        key: 'maxlength',
+        key: 'email2',
         errorLOV: this.translate.instant('ERROR.additionalError')
       }
     ]
@@ -127,7 +110,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       id: 'error',
       formGroup: this.formInput,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.NoneErr',
@@ -249,7 +232,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
   };
 
   errorState = 'None';
-  currentConfigId = this.inputConfig.id;
 
   setInputType(value: string) {
     // If set type to password, automatically select placeholder to False
@@ -266,43 +248,24 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
           : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
       type: value == 'password' ? 'password' : 'text'
     };
-    this.inputConfigSingle = {
-      ...this.inputConfigSingle,
-      label:
-        value == 'password'
-          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
-          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
-      type: value == 'password' ? 'password' : 'text'
-    };
-    this.inputConfigMulti = {
-      ...this.inputConfigMulti,
-      label:
-        value == 'password'
-          ? this.parseRequiredLabel('Password', this.inputConfigRequired)
-          : this.parseRequiredLabel('Label Text', this.inputConfigRequired),
-      type: value == 'password' ? 'password' : 'text'
-    };
-
-    this.parseCodeViewConfig();
+    this.parseCodeViewConfig(this.errorState);
   }
+
+  listOfConfigItems = [
+    'size',
+    'required',
+    'label',
+    'desc',
+    'placeholder',
+    'hint',
+    'error',
+    'state'
+  ];
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
     this.formInput.addControl(this.inputConfig.id, new FormControl());
-    // Two more form controls, one for each combination of validators
-    this.formInput.addControl(
-      this.inputConfig.id + '_single',
-      new FormControl('', [Validators.required])
-    );
-    this.formInput.addControl(
-      this.inputConfig.id + '_multi',
-      new FormControl('', [
-        Validators.required,
-        Validators.maxLength(3),
-        Validators.email
-      ])
-    );
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
@@ -329,6 +292,17 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         }
       });
 
+    // Watch input change & overwrite error state on the fly
+    this.formInput
+      .get(this.inputConfig.id)
+      ?.valueChanges.subscribe((changes) => {
+        this.determineErrorState(
+          this.errorState,
+          this.formInput,
+          this.inputConfig.id
+        );
+      });
+
     this.formInput.patchValue({
       size: 'Small',
       hint: 'False',
@@ -337,113 +311,70 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       error: 'None'
     });
 
-    this.formInput.valueChanges.subscribe((value: any) => {
-      if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
-      if (value['state'] !== undefined) {
-        this.toggleDisabled(value['state']);
-        this.state = value['state'];
-      }
-      if (value['required'])
-        this.inputConfigRequired = value['required'] === 'True';
-      this.parseToggleConfig(value);
-      this.parseCodeViewConfig();
+    this.listOfConfigItems.forEach((configItem) => {
+      this.formInput.get(configItem)?.valueChanges.subscribe((value: any) => {
+        this.parseConfigSingleCheckbox(configItem, value);
+      });
     });
   }
 
-  /**
-   * Return mapping of input config from form values
-   */
-  private parseToggleConfig(value: any) {
-    switch (this.errorState) {
-      case 'Single':
-        this.inputConfigSingle = {
-          ...this.inputConfigSingle,
-          size: value['size'].toLowerCase(),
-          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: this.inputConfigRequired,
-          label: this.parseRequiredLabel(
-            this.inputConfigSingle.label as string,
-            this.inputConfigRequired
-          ),
-          desc:
-            value['desc'] === 'True' ? 'Description line of text' : undefined,
-          placeholder:
-            value['placeholder'] === 'True' ? 'Placeholder text' : undefined
-        };
-        break;
-      case 'Multiple':
-        this.inputConfigMulti = {
-          ...this.inputConfigMulti,
-          size: value['size'].toLowerCase(),
-          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: this.inputConfigRequired,
-          label: this.parseRequiredLabel(
-            this.inputConfigMulti.label as string,
-            this.inputConfigRequired
-          ),
-          desc:
-            value['desc'] === 'True' ? 'Description line of text' : undefined,
-          placeholder:
-            value['placeholder'] === 'True' ? 'Placeholder text' : undefined
-        };
-        break;
-      default:
+  private parseConfigSingleCheckbox(type: string, value: any) {
+    switch (type) {
+      case 'size':
         this.inputConfig = {
           ...this.inputConfig,
-          size: value['size'].toLowerCase(),
-          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
-          required: this.inputConfigRequired,
+          size: value.toLowerCase()
+        };
+        break;
+      case 'required':
+        this.inputConfigRequired = value === 'True';
+        this.inputConfig = {
+          ...this.inputConfig,
           label: this.parseRequiredLabel(
             this.inputConfig.label as string,
             this.inputConfigRequired
           ),
-          desc:
-            value['desc'] === 'True' ? 'Description line of text' : undefined,
-          placeholder:
-            value['placeholder'] === 'True' ? 'Placeholder text' : undefined
+          required: value === 'True'
         };
-    }
-  }
-
-  /**
-   * Set input field as touched, toggle error states of input
-   */
-  private toggleErrors(error: string) {
-    if (!this.formInput.get(this.currentConfigId)?.touched && error !== 'None')
-      this.formInput.get(this.currentConfigId)?.markAsTouched();
-
-    this.errorState = error;
-    switch (error) {
-      case 'None':
-        this.currentConfigId = this.inputConfig.id;
-        this.inputConfigCodeView.errorMessages = undefined;
         break;
-      case 'Single':
-        this.currentConfigId = this.inputConfigSingle.id;
-        if (!this.formInput.get(this.currentConfigId)?.touched)
-          this.formInput.get(this.currentConfigId)?.markAsTouched();
-        this.inputConfigCodeView.errorMessages =
-          this.inputConfigSingle.errorMessages;
+      case 'desc':
+        this.inputConfig = {
+          ...this.inputConfig,
+          desc: value === 'True' ? 'Description line of text' : undefined
+        };
         break;
-      case 'Multiple':
-        this.currentConfigId = this.inputConfigMulti.id;
-        this.formInput.get(this.inputConfigMulti.id)?.setValue('test');
-        if (!this.formInput.get(this.currentConfigId)?.touched)
-          this.formInput.get(this.currentConfigId)?.markAsTouched();
-        this.inputConfigCodeView.errorMessages =
-          this.inputConfigMulti.errorMessages;
+      case 'placeholder':
+        this.inputConfig = {
+          ...this.inputConfig,
+          placeholder: value === 'True' ? 'Placeholder text' : undefined
+        };
+        break;
+      case 'hint':
+        this.inputConfig = {
+          ...this.inputConfig,
+          hint: value === 'True' ? 'Hint Text' : undefined
+        };
+        break;
+      case 'error':
+        this.errorState = value;
+        this.determineErrorState(value, this.formInput, this.inputConfig.id);
+        break;
+      case 'state':
+        this.toggleDisabled(this.inputConfig.id, value);
+        break;
+      default:
         break;
     }
-    this.parseCodeViewConfig();
+
+    this.parseCodeViewConfig(this.errorState);
   }
 
   /**
    * Toggle disabled state of input
    */
-  private toggleDisabled(disabled: boolean) {
-    const inputControl: AbstractControl | null = this.formInput.get(
-      this.currentConfigId
-    );
+  private toggleDisabled(currentConfigId: string, disabled: boolean) {
+    const inputControl: AbstractControl | null =
+      this.formInput.get(currentConfigId);
     if (
       (disabled && inputControl?.disabled) ||
       (!disabled && inputControl?.enabled)
@@ -456,47 +387,88 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
       inputControl?.enable();
     }
   }
+  determineErrorState(value: string, formGroup: FormGroup, formID: string) {
+    let errorArray: string[] = [];
+    switch (value) {
+      case 'Single':
+        errorArray = ['required'];
+        this.setErrors(formGroup, formID, errorArray);
+        break;
+      case 'Multiple':
+        errorArray = ['required', 'email', 'email2'];
+        this.setErrors(formGroup, formID, errorArray);
+        break;
+      case 'None':
+        errorArray = [];
+        this.setErrors(formGroup, formID, errorArray);
+        break;
+    }
+  }
 
-  private parseCodeViewConfig() {
+  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
+    const errorVals = {};
+    if (errorKeys.length === 0) {
+      formGroup.get(formID)?.setErrors(null);
+    } else {
+      errorKeys.forEach((error) => {
+        errorVals[error] = true;
+      });
+      formGroup.get(formID)?.setErrors(errorVals);
+      formGroup.get(formID)?.markAsTouched();
+    }
+  }
+
+  private parseCodeViewConfig(errorState: string) {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
     if (-1 == index || !index) return;
     // New Method - Using Pointer manipulation
     const tab = this.codeViewConfig?.tab?.find((t) => t.id === 'ts');
-    switch (this.errorState) {
+    this.inputConfigCodeView = {
+      ...this.inputConfigCodeView,
+      size: this.inputConfig.size,
+      type: this.inputConfig.type,
+      required: this.inputConfig.required,
+      label: this.inputConfig.label,
+      desc: this.inputConfig.desc,
+      hint: this.inputConfig.hint,
+      placeholder: this.inputConfig.placeholder
+    };
+
+    switch (errorState) {
       case 'Single':
         this.inputConfigCodeView = {
           ...this.inputConfigCodeView,
-          size: this.inputConfigSingle.size,
-          type: this.inputConfigSingle.type,
-          required: this.inputConfigSingle.required,
-          label: this.inputConfigSingle.label,
-          desc: this.inputConfigSingle.desc,
-          hint: this.inputConfigSingle.hint,
-          placeholder: this.inputConfigSingle.placeholder
+          errorMessages: [
+            {
+              key: 'required',
+              errorLOV: this.translate.instant('ERROR.singleError')
+            }
+          ]
         };
         break;
       case 'Multiple':
         this.inputConfigCodeView = {
           ...this.inputConfigCodeView,
-          size: this.inputConfigMulti.size,
-          type: this.inputConfigMulti.type,
-          required: this.inputConfigMulti.required,
-          label: this.inputConfigMulti.label,
-          desc: this.inputConfigMulti.desc,
-          hint: this.inputConfigMulti.hint,
-          placeholder: this.inputConfigMulti.placeholder
+          errorMessages: [
+            {
+              key: 'required',
+              errorLOV: this.translate.instant('ERROR.singleError')
+            },
+            {
+              key: 'email',
+              errorLOV: this.translate.instant('ERROR.additionalError')
+            },
+            {
+              key: 'email2',
+              errorLOV: this.translate.instant('ERROR.additionalError')
+            }
+          ]
         };
         break;
       default:
         this.inputConfigCodeView = {
           ...this.inputConfigCodeView,
-          size: this.inputConfig.size,
-          type: this.inputConfig.type,
-          required: this.inputConfig.required,
-          label: this.inputConfig.label,
-          desc: this.inputConfig.desc,
-          hint: this.inputConfig.hint,
-          placeholder: this.inputConfig.placeholder
+          errorMessages: []
         };
         break;
     }
