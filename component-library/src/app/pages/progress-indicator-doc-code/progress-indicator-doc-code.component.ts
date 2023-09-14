@@ -102,54 +102,6 @@ export class ProgressIndicatorDocCodeComponent
           value: 'vertical'
         }
       ]
-    },
-    {
-      id: 'gated',
-      formGroup: this.formProgressIndicator,
-      size: 'small',
-      label: 'General.Gated',
-      options: [
-        {
-          text: 'General.TrueLabel',
-          value: 'True'
-        },
-        {
-          text: 'General.FalseLabel',
-          value: 'False'
-        }
-      ]
-    },
-    {
-      id: 'step3',
-      formGroup: this.formProgressIndicator,
-      size: 'small',
-      label: 'General.Step3',
-      options: [
-        {
-          text: 'General.TrueLabel',
-          value: 'True'
-        },
-        {
-          text: 'General.FalseLabel',
-          value: 'False'
-        }
-      ]
-    },
-    {
-      id: 'step4',
-      formGroup: this.formProgressIndicator,
-      size: 'small',
-      label: 'General.Step4',
-      options: [
-        {
-          text: 'General.TrueLabel',
-          value: 'True'
-        },
-        {
-          text: 'General.FalseLabel',
-          value: 'False'
-        }
-      ]
     }
   ];
 
@@ -230,10 +182,7 @@ export class ProgressIndicatorDocCodeComponent
     });
     this.formProgressIndicator.patchValue({
       size: 'Small',
-      orientation: 'horizontal',
-      gated: 'False',
-      step3: 'True',
-      step4: 'True'
+      orientation: 'horizontal'
     });
 
     this.formProgressIndicator.valueChanges.subscribe((value: any) => {
