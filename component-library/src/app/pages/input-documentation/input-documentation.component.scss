@@ -14,13 +14,4 @@
       width: 232px;
     }
   }
-  &__anatomy {
-    div.counter-and-heading-container {
-      display: inline-flex;
-    
-      &:not(:nth-child(1)) {
-        margin-top: 20px;
-      }
-    }
-  }
 }

@@ -74,7 +74,7 @@ export class SelectDocumentationComponent implements OnInit {
       description: 'Input.AnatomyInputFieldText'
     },
     {
-      title: 'ERROR.errorMessage',
+      title: 'General.Error',
       description: 'General.AnatomyErrorText'
     },
     {

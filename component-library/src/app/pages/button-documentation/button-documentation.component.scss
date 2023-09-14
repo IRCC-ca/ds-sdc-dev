@@ -7,6 +7,7 @@
 .block {
   img.button-figma-usage {
     max-width: 224px;
+    height: 286px;
 
     @include grid.in-phone-layout() {
       margin-top: 24px;

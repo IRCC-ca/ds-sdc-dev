@@ -85,7 +85,7 @@ export class InputDocumentationComponent implements OnInit {
       description: 'Input.AnatomyInputContentText'
     },
     {
-      title: 'ERROR.errorMessage',
+      title: 'General.Error',
       description: 'General.AnatomyErrorText'
     },
     {
