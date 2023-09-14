@@ -77,8 +77,8 @@ export class MultiCheckboxDocComponent implements OnInit {
         key: 'required',
         errorLOV: this.translate.instant('ERROR.singleError')
       },
-      { id: 'singleError2', key: 'email', errorLOV: 'TEST' },
-      { id: 'singleError3', key: 'test', errorLOV: 'HELLo' }
+      { id: 'singleError2', key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
+      { id: 'singleError3', key: 'maxLength', errorLOV: this.translate.instant('ERROR.additionalError') }
     ]
   };
 
@@ -222,18 +222,14 @@ export class MultiCheckboxDocComponent implements OnInit {
   };
 
   setCheckboxType(value: any) {
-    console.log('Tab name:', value);
     switch (value) {
       case 'single-checkbox':
-        console.log('single checkbox  ----');
         this.checkbox_type = CheckboxTypes.single;
         break;
       case 'group-checkbox':
-        console.log('group checkbox  ----');
         this.checkbox_type = CheckboxTypes.group;
         break;
       case 'multi-checkbox':
-        console.log('multi checkbox  ----');
         this.checkbox_type = CheckboxTypes.multi;
         break;
       default:
@@ -371,7 +367,6 @@ export class MultiCheckboxDocComponent implements OnInit {
         }
         break;
       case 'error':
-        console.log('value', value);
         this.determineErrorState(
           value,
           this.formMultiCheckbox,
@@ -379,7 +374,6 @@ export class MultiCheckboxDocComponent implements OnInit {
         );
         break;
       case 'state':
-        console.log('State', value);
         if (value !== undefined) {
           this.toggleDisabled(
             value,
@@ -387,7 +381,6 @@ export class MultiCheckboxDocComponent implements OnInit {
             this.formMultiCheckbox
           );
           this.multiCheckboxConfig.children?.forEach((child) => {
-            console.log(child.id);
             this.toggleDisabled(value, child.id, this.formMultiCheckbox);
           });
         }
@@ -414,27 +407,29 @@ export class MultiCheckboxDocComponent implements OnInit {
         this.setErrors(formGroup, formID, errorArray);
         break;
       case 'Multiple':
-        console.log('Mulit Error');
-        errorArray = ['required', 'email', 'test'];
+        errorArray = ['required', 'email', 'maxLength'];
         this.setErrors(formGroup, formID, errorArray);
         break;
       case 'None':
-        console.log('No Error');
         errorArray = [];
         this.setErrors(formGroup, formID, errorArray);
         break;
     }
   }
 
+  clearErrors(formGroup: FormGroup, formID: string) {
+    formGroup.get(formID)?.setErrors(null);
+    this.multiCheckboxConfig.children?.forEach((child) => {
+      formGroup.get(child.id)?.setErrors(null);
+    });
+  } 
+
   setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
     const errorVals = {};
-    console.log('------------>', errorKeys);
     if (errorKeys.length === 0) {
-      formGroup.get(formID)?.setErrors(null);
-      this.multiCheckboxConfig.children?.forEach((child) => {
-        formGroup.get(child.id)?.setErrors(null);
-      });
+      this.clearErrors(formGroup, formID)
     } else {
+      this.clearErrors(formGroup, formID)
       errorKeys.forEach((error) => {
         errorVals[error] = true;
       });
@@ -445,7 +440,6 @@ export class MultiCheckboxDocComponent implements OnInit {
         formGroup.get(child.id)?.markAsTouched();
       });
     }
-    console.log('for errors:', formGroup.get(formID)?.errors);
   }
 
   private toggleDisabled(
@@ -455,7 +449,6 @@ export class MultiCheckboxDocComponent implements OnInit {
   ) {
     const checkboxControl: AbstractControl | null =
       formType.get(currentConfigId);
-    console.log('Control-->', checkboxControl?.disabled);
     if (
       (disabled && checkboxControl?.disabled) ||
       (!disabled && checkboxControl?.enabled)
@@ -463,10 +456,8 @@ export class MultiCheckboxDocComponent implements OnInit {
       return;
 
     if (disabled) {
-      console.log('disable');
       checkboxControl?.disable();
     } else {
-      console.log('ENABLE');
       checkboxControl?.enable();
     }
   }
