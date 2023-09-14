@@ -152,6 +152,14 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.autocomplete'
   };
 
+  progressIndicatorPage: INavigationItemLink = {
+    id: 'progressIndicatorPageNavItem',
+    label: ' Progress Indicator ',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.progressIndicator'
+  };
+
   gettingStartedNav: INavigationItemAccordion = {
     open: true,
     id: 'gettingStartedNavAccordian',
@@ -182,7 +190,8 @@ export class ShellComponent implements OnInit {
       this.datePickerPage,
       this.iconBtnPage,
       this.multiCheckboxPage,
-      this.spinnerPage
+      this.spinnerPage,
+      this.progressIndicatorPage
     ]
   };
 

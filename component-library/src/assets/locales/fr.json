@@ -208,7 +208,7 @@
 		"ColourTableDescriptionRow69": "Contexte des éléments de forme non sélectionnés tout en affichant un avertissement.",
 		"ColourTableDescriptionRow70": "Contexte des éléments de forme non sélectionnés tout en affichant l'avertissement et dans l'état de survol.",
 		"ColourTableDescriptionRow71": "Contexte des éléments de forme non sélectionnés tout en affichant l'avertissement et à l'état actif.",
-		"ColourTableDescriptionRow72": "Contexte des éléments de formulaire non sélectionnés lors de l'affichage de l'avertissement et à l'état désactivé.",
+		"ColourTableDescriptionRow72": "Contexte des éléments de formulaire non sélectionnés tout en affichant l'avertissement et à l'état désactivé.",
 		"ColourTableDescriptionRow73": "Border des éléments de forme non sélectionnés tout en affichant un avertissement.",
 		"ColourTableDescriptionRow74": "Border des éléments de forme non sélectionnés tout en affichant un avertissement et dans un état de survol.",
 		"ColourTableDescriptionRow75": "Border des éléments de forme non sélectionnés tout en affichant un avertissement et dans un état handicapé.",
@@ -528,7 +528,7 @@
 		"WritePlaceholderDontText1": "Utilisez le texte de placement lorsque la valeur attendue est déjà évidente pour l'utilisateur ou où l'exemple donne l'impression que le champ a déjà été terminé.",
 		"WritePlaceholderDoImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée contiennent du texte d'espace réservé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDoText2": "Fournissez du texte de placement pour afficher le format exact requis, dans un champ de saisie.",
-		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont du texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
+		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont un texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDontText2": "Remplacez le texte de l'indice avec le texte de l'espace réservé.",
 		"WriteErrorsDoImgAlt": "Un champ de saisie pour collecter le nom de famille de l'utilisateur. L'étiquette est «Nom de famille (obligatoire)». La description est «Ceci est votre nom de famille ou votre nom.» Le message d'erreur est «Ce champ est vide. Veuillez saisir un nom de famille.",
 		"WriteErrorsDoText": "Fournissez du texte d'erreur utile et guide l'utilisateur sur ce qu'il faut corriger.",
@@ -618,7 +618,7 @@
 			"NecessaryContentDont": "Ajoutez des couches de contenu inutiles ou redondantes à l'entrée.",
 			"RequiredFieldsDoAlt": "Une date de cueilleur de dates percuse la date de naissance d'un utilisateur avec l'étiquette «Date de naissance (requise)».",
 			"RequiredFieldsDo": "En plus d'utiliser l'astérisque requis (*), ajoutez également «(requis)» à la fin de toutes les étiquettes dans les champs requis.",
-			"RequiredFieldsDontAlt": "Une date de cueilleur de dates collecte la date de naissance d'un utilisateur avec l'étiquette «Date de naissance».",
+			"RequiredFieldsDontAlt": "Une date de cueilleur de dattes collecte la date de naissance d'un utilisateur avec l'étiquette «Date de naissance».",
 			"RequiredFieldsDont": "Indiquez les champs requis avec seulement l'astérisque (*)."
 		},
 		"UsageInFigma": {
@@ -1053,7 +1053,7 @@
 		"Dont5": "Comptez sur l'étiquette pour faire tout le travail d'informer un utilisateur de la tâche à effectuer.",
 		"Dont6": "Écrivez plus longtemps que les étiquettes nécessaires. Ne tronquez pas les étiquettes.",
 		"Dont7": "Incluez une description lorsque des instructions ou des détails supplémentaires ne sont pas nécessaires pour clarifier comment faire correctement une sélection.",
-		"Dont8": "Fournissez du texte de placement pour afficher le format exact requis.",
+		"Dont8": "Fournissez du texte de l'espace pour afficher le format exact requis.",
 		"Dont9": "Écrivez des messages d'erreur qui ressemblent à un robot.",
 		"Dont10": "Indiquez les champs requis avec seulement l'astérisque (*).",
 		"Alt": {
