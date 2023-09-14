@@ -1,4 +1,4 @@
-<app-interactive-demo>
+<app-interactive-demo componentType="checkbox">
   <ircc-cl-lib-tabs
     tabs
     (valueChange)="setCheckboxType($event)"
@@ -7,8 +7,8 @@
   </ircc-cl-lib-tabs>
   <div
     component
-    class="input-container"
-    #input
+    class="checkbox-container"
+    #checkbox
   >
     <ng-container *ngIf="checkbox_type === 'single'">
       <ircc-cl-lib-checkbox
@@ -17,7 +17,9 @@
     </ng-container>
 
     <ng-container *ngIf="checkbox_type === 'group'">
-      <p>Group checkbox not implemented yet</p>
+      <ircc-cl-lib-multi-checkbox
+        [config]="groupCheckboxConfig"
+      ></ircc-cl-lib-multi-checkbox>
     </ng-container>
 
     <ng-container *ngIf="checkbox_type === 'multi'">
@@ -63,6 +65,26 @@
   >
     <ircc-cl-lib-banner
       [config]="bannerConfigMultiCheckBox"
+    ></ircc-cl-lib-banner>
+  </ng-container>
+
+  <ng-container
+    toggles
+    *ngIf="checkbox_type === 'group'"
+  >
+    <ng-container *ngFor="let toggle of togglesGroupCheckbox">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxesGroup">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+  <ng-container
+    banner
+    *ngIf="checkbox_type === 'group'"
+  >
+    <ircc-cl-lib-banner
+      [config]="bannerConfigGroupCheckBox"
     ></ircc-cl-lib-banner>
   </ng-container>
 </app-interactive-demo>
