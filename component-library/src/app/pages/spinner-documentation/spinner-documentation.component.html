@@ -2,14 +2,15 @@
   <app-title-slug-url [config]="spinnerTitleSlugConfig"></app-title-slug-url>
   <p class="block__intro">{{ 'Spinner.Intro' | translate }}</p>
 
-  <section class="interactive-demo">
+  <section class="block__interactive-demo">
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p
-      class="text"
-      [innerHTML]="'Spinner.InteractiveDemoDesc' | translate"
-    ></p>
+    <p class="text">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong> {{ ('Spinner.MainTitle' | translate).toLowerCase() }}</strong>
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
     <app-spinner-doc-code></app-spinner-doc-code>
   </section>
 
@@ -482,7 +483,7 @@
 
       <div class="element-wrapper-container pt_8">
         <h3>
-          {{ 'Input.WriteDescHeading' | translate }}
+          {{ 'General.DescriptionSubheading' | translate }}
         </h3>
         <p class="sub-heading-text">
           {{ 'Spinner.ContentGuideLines.WriteDescTxt' | translate }}
@@ -564,7 +565,7 @@
       </div>
       <div class="element-wrapper-container">
         <h3>
-          {{ 'General.ContentHeading' | translate }}
+          {{ 'General.Content' | translate }}
         </h3>
         <ul>
           <li
