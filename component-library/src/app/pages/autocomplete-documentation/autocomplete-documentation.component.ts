@@ -228,9 +228,15 @@ export class AutocompleteDocumentationComponent
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
     this.config.formGroup.addControl(this.config.id, new FormControl());
-    if (!this.form.get(this.config.id)?.touched) {
-      this.form.get(this.config.id)?.markAsTouched();
-    }
+
+    this.config.formGroup.valueChanges.subscribe((changes) => {
+      // Stop user input from clearing error messages if error is toggled to True
+      if (this.form_interactive_button.get('error')?.value === 'True') {
+        this.standalone.setFormErrors(this.config.formGroup, this.config.id, [
+          'required'
+        ]);
+      }
+    });
 
     this.form_interactive_button.valueChanges.subscribe((change) => {
       this.autocompleteCodeView = {
