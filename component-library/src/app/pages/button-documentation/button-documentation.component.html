@@ -96,7 +96,7 @@
     </div>
   </section>
 
-  <section class="bock__configs">
+  <section class="block__configs">
     <app-title-slug-url
       [config]="headingConfig.configurationSlugConfig"
     ></app-title-slug-url>
@@ -142,12 +142,12 @@
     </div>
   </section>
 
-  <section class="bock__design-guide">
+  <section class="block__design-guide">
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
     ></app-title-slug-url>
     <div class="wrapper-container">
-      <div class="element-wrapper-container do-dont-container">
+      <div class="element-wrapper-container">
         <h3>
           {{ 'Buttons.HierarchyHeading' | translate }}
         </h3>
@@ -157,24 +157,28 @@
               src="assets/img/button-content/btn-do-1.jpg"
               alt="{{ 'Buttons.HierarchyDoImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-green mt_8">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p>{{ 'General.ButtonTypeDoText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'General.ButtonTypeDoText' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/btn-do-2.jpg"
               alt="{{ 'Buttons.HierarchyDontImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-red mt_8">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.HierarchyDontText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.HierarchyDontText' | translate }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container pt_8 do-dont-container">
+      <div class="element-wrapper-container pt_8">
         <h3>
           {{ 'Buttons.DestructiveHeading' | translate }}
         </h3>
@@ -184,24 +188,28 @@
               src="assets/img/button-content/btn-do-3.jpg"
               alt="{{ 'Buttons.DestructiveDoImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-green mt_8">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.DestructiveDoText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.DestructiveDoText' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/btn-do-4.jpg"
               alt="{{ 'Buttons.DestructiveDontImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-red mt_8">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.DestructiveDontText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.DestructiveDontText' | translate }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container pt_8 do-dont-container">
+      <div class="element-wrapper-container pt_8">
         <h3>
           {{ 'Buttons.PlainBtnTexts' | translate }}
         </h3>
@@ -211,20 +219,24 @@
               src="assets/img/button-content/btn-do-5.jpg"
               alt="{{ 'Buttons.PlainDoImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-green mt_8">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.PlainDoText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.PlainDoText' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/btn-do-6.jpg"
               alt="{{ 'Buttons.PlainDontImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-red mt_8">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.PlainDontText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.PlainDontText' | translate }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -276,21 +288,19 @@
         />
       </div>
       <div class="element-wrapper-container">
-        <span class="round-purple-num">1</span>
-        <h3 class="round-purple-num">
-          {{ 'Buttons.AnatomyBGHeading' | translate }}
-        </h3>
-        <p>{{ 'Buttons.AnatomyBGText' | translate }}</p>
-        <span class="round-purple-num">2</span>
-        <h3 class="round-purple-num">
-          {{ 'Buttons.ConfigIconHeading' | translate }}
-        </h3>
-        <p>{{ 'Buttons.AnatomyIconText' | translate }}</p>
-        <span class="round-purple-num">3</span>
-        <h3 class="round-purple-num">
-          {{ 'General.LabelHeading' | translate }}
-        </h3>
-        <p>{{ 'Buttons.AnatomyLblText' | translate }}</p>
+        <ng-container *ngFor="let content of anatomyContentItems; let i = index"
+          ><div class="anatomy-content-container">
+            <div class="counter-and-heading-container">
+              <div class="round-purple-num-count">{{ i + 1 }}</div>
+              <h3 class="round-purple-num-heading">
+                {{ content.title | translate }}
+              </h3>
+            </div>
+            <p class="anatomy-desc">
+              {{ content.description | translate }}
+            </p>
+          </div>
+        </ng-container>
       </div>
     </div>
   </section>
@@ -321,7 +331,7 @@
       [config]="headingConfig.contentGuideSlugConfig"
     ></app-title-slug-url>
     <div class="wrapper-container">
-      <div class="element-wrapper-container do-dont-container">
+      <div class="element-wrapper-container">
         <h3>{{ 'Buttons.CaseHeading' | translate }}</h3>
         <div class="row">
           <div class="col-12 col-md-6">
@@ -329,24 +339,28 @@
               src="assets/img/button-content/button-content-guide-1.jpg"
               alt="{{ 'Buttons.CaseDoImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-green mt_8">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.CaseDoText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.CaseDoText' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/button-content-guide-2.jpg"
               alt="{{ 'Buttons.CaseDontImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-red mt_8">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.CaseDontText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.CaseDontText' | translate }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container pt_8 do-dont-container">
+      <div class="element-wrapper-container pt_8">
         <h3>{{ 'Buttons.DescriptiveHeading' | translate }}</h3>
         <div class="row">
           <div class="col-12 col-md-6">
@@ -354,20 +368,24 @@
               src="assets/img/button-content/button-content-guide-3.jpg"
               alt="{{ 'Buttons.DescriptiveDoImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-green mt_8">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.DescriptiveDoText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.DescriptiveDoText' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/button-content/button-content-guide-4.jpg"
               alt="{{ 'Buttons.DescriptiveDontImgAlt' | translate }}"
             />
-            <h4 class="text-underline text-color-red mt_8">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p>{{ 'Buttons.DescriptiveDontText' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>{{ 'Buttons.DescriptiveDontText' | translate }}</p>
+            </div>
           </div>
         </div>
       </div>

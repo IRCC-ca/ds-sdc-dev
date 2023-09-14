@@ -100,7 +100,7 @@
     </div>
   </section>
 
-  <section class="bock__design-guide">
+  <section class="block__design-guide">
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
     ></app-title-slug-url>
@@ -263,6 +263,7 @@
       </div>
     </div>
   </section>
+
   <section class="block__specs">
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
@@ -270,7 +271,6 @@
     <div class="wrapper-container">
       <div class="element-wrapper-container">
         <img
-          class="single-img"
           src="assets/img/datePicker-content/specs.png"
           alt="{{ 'DatePicker.Specs.ImgAlt' | translate }}"
         />
@@ -340,6 +340,7 @@
           {{ 'General.WriteLabelsHeading' | translate }}
         </h3>
         <p
+          class="sub-heading-text"
           [innerHTML]="
             'DatePicker.ContentGuideLines.WritingLabelsTxt' | translate
           "
@@ -426,7 +427,7 @@
         <h3>
           {{ 'ERROR.WritingErrHeading' | translate }}
         </h3>
-        <p>{{ 'ERROR.WritingErrText' | translate }}</p>
+        <p class="sub-heading-text">{{ 'ERROR.WritingErrText' | translate }}</p>
         <div class="row">
           <div class="col-12 col-md-6">
             <img

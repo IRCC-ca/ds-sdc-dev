@@ -10,6 +10,7 @@ import {
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
+import { ContentItem } from '@app/share/interface/content-item.interface';
 
 @Component({
   selector: 'app-select-documentation',
@@ -51,6 +52,37 @@ export class SelectDocumentationComponent implements OnInit {
     'Select.FigmaAccess3'
   ];
 
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'General.RequiredIndicatorHeading',
+      description: 'General.RequiredIndicatorTxt'
+    },
+    {
+      title: 'General.LabelHeading',
+      description: 'General.AnatomyLabelText'
+    },
+    {
+      title: 'General.DescriptionHeading',
+      description: 'General.AnatomyDescText'
+    },
+    {
+      title: 'General.Hint',
+      description: 'General.AnatomyHintText'
+    },
+    {
+      title: 'General.InputField',
+      description: 'Input.AnatomyInputFieldText'
+    },
+    {
+      title: 'ERROR.errorMessage',
+      description: 'General.AnatomyErrorText'
+    },
+    {
+      title: 'Select.Anatomy.Dropdown',
+      description: 'Select.Anatomy.DropdownText'
+    }
+  ];
+  
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,

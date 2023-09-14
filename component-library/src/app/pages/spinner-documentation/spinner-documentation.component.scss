@@ -5,18 +5,20 @@
 
 @include page.template;
 
-.usage-figma {
-  .image-1 {
-    max-width: 239px;
-    @include device.in-phone-layout {
-      margin-top: 42px;
+.block {
+  &__usage-figma {
+    .image-1 {
+      max-width: 239px;
+      @include device.in-phone-layout {
+        margin-top: 42px;
+      }
     }
   }
-}
-
-.image-1 {
-  @include device.in-phone-layout {
-    width: 179px;
-    height: 152px;
+  
+  .image-1 {
+    @include device.in-phone-layout {
+      width: 179px;
+      height: 152px;
+    }
   }
 }

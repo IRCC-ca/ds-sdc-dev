@@ -32,30 +32,38 @@ $round-purple-num-size: 32px;
       margin-bottom: 0;
       @include typography.fontSet(body, 1, regular);
     }
-    p {
-      @include typography.fontSet(body, 3, regular);
-    }
 
-    // Section
     &__interactive-demo {
       .text {
         margin-top: 0;
         margin-bottom: 24px;
       }
     }
-    // Container
+
     &__configs,
     &__design-guide,
     &__anatomy,
     &__specs,
     &__content-guidelines,
-    &__accessibility {
+    &__accessibility,
+    &__types {
       .wrapper-container {
         .element-wrapper-container {
         margin-bottom: 24px;
           &:last-child {
             margin-bottom: 0;
           }
+        }
+      }
+    }
+
+    &__content-guidelines {
+      .element-wrapper-container {
+        p.sub-heading-text {
+          margin: {
+            top: 0;
+            bottom: 12px;
+          };
         }
       }
     }
@@ -68,7 +76,10 @@ $round-purple-num-size: 32px;
 
     &__anatomy {
       .anatomy-desc {
-        margin-top: 6px;
+        margin: {
+          top: 6px;
+          bottom: 0;
+        };
         &:not(:last-child) {
           margin-bottom: 20px;
         }
@@ -91,6 +102,7 @@ $round-purple-num-size: 32px;
         }
       }
     }
+
     &__specs {
       p {
         margin-bottom: 0;
@@ -126,11 +138,13 @@ $round-purple-num-size: 32px;
       }
     }
 
-    &__anatomy,
     &__accessibility,
     &__research {
       p {
-        margin-bottom: 0;
+        margin: {
+          top: 0;
+          bottom: 0;
+        }
       }
     }
 
@@ -138,6 +152,12 @@ $round-purple-num-size: 32px;
       p {
         margin-top: 12px;
         margin-bottom: 0;
+      }
+    }
+
+    section {
+      p {
+        @include typography.fontSet(body, 3, regular);
       }
     }
 

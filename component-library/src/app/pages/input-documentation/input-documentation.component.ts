@@ -13,6 +13,7 @@ import {
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
+import { ContentItem } from '@app/share/interface/content-item.interface';
 
 @Component({
   selector: 'app-input-documentation',
@@ -53,6 +54,45 @@ export class InputDocumentationComponent implements OnInit {
     heading: 'h1',
     anchorType: slugAnchorType.primary
   };
+
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'General.LabelHeading',
+      description: 'General.AnatomyLabelText'
+    },
+    {
+      title: 'General.RequiredIndicatorHeading',
+      description: 'General.RequiredIndicatorTxt'
+    },
+    {
+      title: 'General.DescriptionHeading',
+      description: 'General.AnatomyDescText'
+    },
+    {
+      title: 'General.TitleHeading',
+      description: 'Banner.Anatomy.TitleText'
+    },
+    {
+      title: 'General.Hint',
+      description: 'General.AnatomyHintText'
+    },
+    {
+      title: 'General.InputField',
+      description: 'Input.AnatomyInputFieldText'
+    },
+    {
+      title: 'Input.AnatomyInputContentHeading',
+      description: 'Input.AnatomyInputContentText'
+    },
+    {
+      title: 'ERROR.errorMessage',
+      description: 'General.AnatomyErrorText'
+    },
+    {
+      title: 'Input.AnatomyPasswordHeading',
+      description: 'Input.AnatomyPasswordText'
+    }
+  ];
 
   constructor(
     private translate: TranslateService,
