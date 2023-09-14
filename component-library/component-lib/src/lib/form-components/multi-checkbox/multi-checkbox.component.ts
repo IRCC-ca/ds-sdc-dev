@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import {
+  DSSizes,
   ICheckBoxComponentConfig,
-  IErrorPairs,
   MultiCheckboxService
 } from '../../../public-api';
 
@@ -30,7 +30,7 @@ export interface IMultiCheckboxConfig {
   templateUrl: './multi-checkbox.component.html',
   styleUrls: ['./multi-checkbox.component.css']
 })
-export class MultiCheckboxComponent implements OnInit {
+export class MultiCheckboxComponent implements OnInit, DoCheck {
   form: FormGroup = new FormGroup({});
   configSub?: Subscription;
   errorSub?: Subscription;
@@ -42,13 +42,21 @@ export class MultiCheckboxComponent implements OnInit {
   };
 
   errorMessages: IErrorPairsMutltiCheckBox[] = [];
-
   errorMessagesAccumulator: IErrorPairsMutltiCheckBox[] = [];
+  errorSize: keyof typeof DSSizes | DSSizes = 'large';
 
   constructor(
     private multicheckboxService: MultiCheckboxService,
     public standAloneFunctions: StandAloneFunctions
   ) {}
+
+  ngDoCheck() {
+    if (this.config.parent != undefined) {
+      this.errorSize = this.config.parent.size || DSSizes.large;
+    } else if (this.config.children) {
+      this.errorSize = this.config.children[0].size || DSSizes.large;
+    }
+  }
 
   ngOnInit() {
     //errorChecking

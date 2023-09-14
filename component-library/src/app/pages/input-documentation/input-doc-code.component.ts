@@ -46,10 +46,19 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     required: false,
     label: 'Label Text',
     desc: 'Description line of text',
-    errorMessages:[
-      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-      { key: 'email', errorLOV: this.translate.instant('ERROR.additionalError') },
-      { key: 'email2', errorLOV: this.translate.instant('ERROR.additionalError') }
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.singleError')
+      },
+      {
+        key: 'email',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      },
+      {
+        key: 'email2',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      }
     ]
   };
 
@@ -227,7 +236,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     ]
   };
 
-
   setInputType(value: string) {
     // If set type to password, automatically select placeholder to False
     if (value == 'password')
@@ -245,7 +253,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     };
   }
 
-  listOfConfigItems = ['size', 'required', 'label', 'desc', 'hint', 'error', 'state']
+  listOfConfigItems = [
+    'size',
+    'required',
+    'label',
+    'desc',
+    'hint',
+    'error',
+    'state'
+  ];
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
@@ -286,99 +302,94 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     });
 
     this.listOfConfigItems.forEach((configItem) => {
-      this.formInput.get(configItem)?.valueChanges.subscribe((value : any) => {
-        this.parseConfigSingleCheckbox(configItem, value)
+      this.formInput.get(configItem)?.valueChanges.subscribe((value: any) => {
+        this.parseConfigSingleCheckbox(configItem, value);
       });
-    })
-
+    });
   }
 
-  private parseConfigSingleCheckbox (type : string, value : any) {
+  private parseConfigSingleCheckbox(type: string, value: any) {
     switch (type) {
       case 'size':
         this.inputConfig = {
           ...this.inputConfig,
-          size: value.toLowerCase(),
+          size: value.toLowerCase()
         };
         break;
       case 'required':
         this.inputConfig = {
           ...this.inputConfig,
-          required: value === 'True',
+          required: value === 'True'
         };
         break;
       case 'label':
         this.inputConfig = {
           ...this.inputConfig,
-          label: value === 'True' ? 'Label Text' : undefined,
-
+          label: value === 'True' ? 'Label Text' : undefined
         };
         break;
       case 'desc':
         this.inputConfig = {
           ...this.inputConfig,
-          desc: value === 'True' ? 'Description line of text' : undefined,
+          desc: value === 'True' ? 'Description line of text' : undefined
         };
         break;
       case 'hint':
         this.inputConfig = {
           ...this.inputConfig,
-          hint: value === 'True' ? 'Hint Text' : undefined,
+          hint: value === 'True' ? 'Hint Text' : undefined
         };
         break;
       case 'error':
-        this.determineErrorState(value, this.formInput, this.inputConfig.id)
+        this.determineErrorState(value, this.formInput, this.inputConfig.id);
         break;
       case 'state':
-        console.log("State", value)
+        console.log('State', value);
         // if(value !== undefined) {
         //   console.log("Disable")
         //   this.toggleDisabled(value, this.inputConfig.id, this.formInput);
         // }
         break;
-      default: 
-        console.log("Hit default case")
+      default:
+        console.log('Hit default case');
     }
   }
-
-  
 
   determineErrorState(value: string, formGroup: FormGroup, formID: string) {
     let errorArray: string[] = [];
     switch (value) {
       case 'Single':
-        errorArray = ['required']
-        console.log("single Error")
+        errorArray = ['required'];
+        console.log('single Error');
         // errorArray.push(errors[0]);
-        this.setErrors(formGroup, formID, errorArray)
+        this.setErrors(formGroup, formID, errorArray);
         break;
       case 'Multiple':
-        console.log("Mulit Error")
-        errorArray = ['required', 'email', 'email2']
-        this.setErrors(formGroup, formID, errorArray)
+        console.log('Mulit Error');
+        errorArray = ['required', 'email', 'email2'];
+        this.setErrors(formGroup, formID, errorArray);
         break;
       case 'None':
-        console.log("No Error")
-        errorArray = []
-        this.setErrors(formGroup, formID, errorArray)
+        console.log('No Error');
+        errorArray = [];
+        this.setErrors(formGroup, formID, errorArray);
         break;
     }
   }
 
   setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
-    let errorVals = {};
+    const errorVals = {};
     if (errorKeys.length === 0) {
       formGroup.get(formID)?.setErrors(null);
     } else {
-      errorKeys.forEach(error => {
-        errorVals[error] = true
+      errorKeys.forEach((error) => {
+        errorVals[error] = true;
       });
       formGroup.get(formID)?.setErrors(errorVals);
       formGroup.get(formID)?.markAsTouched();
     }
-    console.log('for errors:', formGroup.get(formID)?.errors)
+    console.log('for errors:', formGroup.get(formID)?.errors);
   }
-
 
   private parseRequiredLabel(
     label: string,

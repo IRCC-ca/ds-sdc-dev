@@ -72,9 +72,13 @@ export class MultiCheckboxDocComponent implements OnInit {
     ],
     // errorMessages: []
     errorMessages: [
-      {id:'singleError1', key: 'required', errorLOV: this.translate.instant('ERROR.singleError') },
-      {id:'singleError2', key: 'email', errorLOV: "TEST" },
-      {id:'singleError3', key: 'test', errorLOV: "HELLo" }
+      {
+        id: 'singleError1',
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.singleError')
+      },
+      { id: 'singleError2', key: 'email', errorLOV: 'TEST' },
+      { id: 'singleError3', key: 'test', errorLOV: 'HELLo' }
     ]
   };
 
@@ -394,7 +398,7 @@ export class MultiCheckboxDocComponent implements OnInit {
   }
 
   getAllChildrenIds(): string[] {
-    let childIdArray: string[] = [];
+    const childIdArray: string[] = [];
     this.multiCheckboxConfig.children?.forEach((child) => {
       childIdArray.push(child.id);
     });
@@ -403,16 +407,16 @@ export class MultiCheckboxDocComponent implements OnInit {
 
   determineErrorState(value: string, formGroup: FormGroup, formID: string) {
     let errorArray: string[] = [];
-    let childIdArray = this.getAllChildrenIds();
+    const childIdArray = this.getAllChildrenIds();
     switch (value) {
       case 'Single':
-        errorArray = ['required']
-        this.setErrors(formGroup, formID, errorArray)
+        errorArray = ['required'];
+        this.setErrors(formGroup, formID, errorArray);
         break;
       case 'Multiple':
         console.log('Mulit Error');
-        errorArray = ['required', 'email', 'test']
-        this.setErrors(formGroup, formID, errorArray)
+        errorArray = ['required', 'email', 'test'];
+        this.setErrors(formGroup, formID, errorArray);
         break;
       case 'None':
         console.log('No Error');
@@ -423,24 +427,24 @@ export class MultiCheckboxDocComponent implements OnInit {
   }
 
   setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
-    let errorVals = {};
+    const errorVals = {};
     console.log('------------>', errorKeys);
-      if (errorKeys.length === 0) {
-        formGroup.get(formID)?.setErrors(null);
-        this.multiCheckboxConfig.children?.forEach((child) => {
-          formGroup.get(child.id)?.setErrors(null);
-        })
-      } else {
-        errorKeys.forEach((error) => {
-          errorVals[error] = true;
-        });
-        formGroup.get(formID)?.setErrors(errorVals);
-        formGroup.get(formID)?.markAsTouched();
-        this.multiCheckboxConfig.children?.forEach((child) => {
-          formGroup.get(child.id)?.setErrors(errorVals);
-          formGroup.get(child.id)?.markAsTouched();
-        })
-      }
+    if (errorKeys.length === 0) {
+      formGroup.get(formID)?.setErrors(null);
+      this.multiCheckboxConfig.children?.forEach((child) => {
+        formGroup.get(child.id)?.setErrors(null);
+      });
+    } else {
+      errorKeys.forEach((error) => {
+        errorVals[error] = true;
+      });
+      formGroup.get(formID)?.setErrors(errorVals);
+      formGroup.get(formID)?.markAsTouched();
+      this.multiCheckboxConfig.children?.forEach((child) => {
+        formGroup.get(child.id)?.setErrors(errorVals);
+        formGroup.get(child.id)?.markAsTouched();
+      });
+    }
     console.log('for errors:', formGroup.get(formID)?.errors);
   }
 

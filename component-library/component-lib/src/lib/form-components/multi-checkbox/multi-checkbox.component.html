@@ -26,28 +26,15 @@
     <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
   </div>
 </ng-template>
-
 <ng-container *ngFor="let errors of errorMessagesAccumulator; let i = index">
   <div
     *ngIf="errorMessagesAccumulator.length > -1"
     class="radio-errors"
   >
-    <ng-container *ngIf="config.parent; error">
-      <ircc-cl-lib-error
-        [id]="errors.id"
-        [errorLOV]="errors.errorLOV"
-        [attr.size]="config.parent.size"
-      ></ircc-cl-lib-error>
-    </ng-container>
-
-    <ng-container #error>
-      <ng-container *ngIf="config.children">
-        <ircc-cl-lib-error
-          [id]="errors.id"
-          [errorLOV]="errors.errorLOV"
-          [attr.size]="config.children[0].size"
-        ></ircc-cl-lib-error
-      ></ng-container>
-    </ng-container>
+    <ircc-cl-lib-error
+      [id]="errors.id"
+      [errorLOV]="errors.errorLOV"
+      [attr.size]="errorSize"
+    ></ircc-cl-lib-error>
   </div>
 </ng-container>

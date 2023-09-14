@@ -1,6 +1,6 @@
 import {
-  AfterViewInit,
   Component,
+  DoCheck,
   forwardRef,
   Input,
   OnChanges,
@@ -57,7 +57,7 @@ export interface ICheckBoxComponentConfig {
   ]
 })
 export class CheckboxComponent
-  implements ControlValueAccessor, OnInit, OnChanges
+  implements ControlValueAccessor, OnInit, OnChanges, DoCheck
 {
   formGroupEmpty: FormGroup = new FormGroup({});
   configSub?: Subscription;
@@ -237,6 +237,10 @@ export class CheckboxComponent
       });
 
     // console.log("formControl?.errors?.[errors.key]", this.formControl?.errors)
+  }
+
+  ngDoCheck() {
+    this.setStatus();
   }
 
   setStatus() {
