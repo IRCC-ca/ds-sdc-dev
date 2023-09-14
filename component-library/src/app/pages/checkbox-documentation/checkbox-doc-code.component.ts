@@ -11,6 +11,7 @@ import { TranslateService } from '@app/share/templates/parent-template.module';
 import {
   IBannerConfig,
   ICheckBoxComponentConfig,
+  IMultiCheckboxConfig,
   IRadioInputComponentConfig,
   ITabNavConfig
 } from 'ircc-ds-angular-component-library';
@@ -30,6 +31,7 @@ export class CheckboxDocCodeComponent implements OnInit {
   altLangLink = 'checkbox';
 
   formCheckbox = new FormGroup({});
+  formMultiCheckbox: FormGroup = new FormGroup({});
 
   checkbox_type = CheckboxTypes.single;
 
@@ -61,6 +63,56 @@ export class CheckboxDocCodeComponent implements OnInit {
       {
         key: 'email2',
         errorLOV: this.translate.instant('ERROR.additionalError')
+      }
+    ]
+  };
+
+  multiCheckboxConfig: IMultiCheckboxConfig = {
+    id: 'multi_checkbox',
+    parent: {
+      id: 'parent',
+      label: 'Label Text',
+      desc: 'Description line of text',
+      required: true,
+      formGroup: this.formMultiCheckbox,
+      inlineLabel: 'Parent Item',
+      size: 'small'
+    },
+    children: [
+      {
+        id: 'child1',
+        formGroup: this.formMultiCheckbox,
+        inlineLabel: 'Child Item',
+        size: 'small'
+      },
+      {
+        id: 'child2',
+        formGroup: this.formMultiCheckbox,
+        inlineLabel: 'Child Item',
+        size: 'small'
+      },
+      {
+        id: 'child3',
+        formGroup: this.formMultiCheckbox,
+        inlineLabel: 'Child Item',
+        size: 'small'
+      }
+    ],
+    errorMessages: [
+      {
+        id: 'singleError1',
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.singleError')
+      },
+      { 
+        id: 'singleError2',
+        key: 'email',
+        errorLOV: this.translate.instant('ERROR.additionalError') 
+      },
+      { 
+        id: 'singleError3', 
+        key: 'maxLength', 
+        errorLOV: this.translate.instant('ERROR.additionalError') 
       }
     ]
   };
@@ -176,6 +228,117 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   ];
 
+  togglesMultiCheckbox: IRadioInputComponentConfig[] = [
+    {
+      id: 'size',
+      formGroup: this.formMultiCheckbox,
+      size: 'small',
+      label: 'General.Size',
+      options: [
+        {
+          text: 'General.Small',
+          value: 'Small'
+        },
+        {
+          text: 'General.Large',
+          value: 'Large'
+        }
+      ]
+    },
+    {
+      id: 'required',
+      formGroup: this.formMultiCheckbox,
+      size: 'small',
+      label: 'General.Required',
+      options: [
+        {
+          text: 'True'
+        },
+        {
+          text: 'False'
+        }
+      ]
+    },
+    {
+      id: 'label',
+      formGroup: this.formMultiCheckbox,
+      size: 'small',
+      label: 'General.LabelHeading',
+      options: [
+        {
+          text: 'General.TrueLabel',
+          value: 'True'
+        },
+        {
+          text: 'General.FalseLabel',
+          value: 'False'
+        }
+      ]
+    },
+    {
+      id: 'desc',
+      formGroup: this.formMultiCheckbox,
+      size: 'small',
+      label: 'General.Description',
+      options: [
+        {
+          text: 'General.TrueLabel',
+          value: 'True'
+        },
+        {
+          text: 'General.FalseLabel',
+          value: 'False'
+        }
+      ]
+    },
+    {
+      id: 'hint',
+      formGroup: this.formMultiCheckbox,
+      size: 'small',
+      label: 'General.Hint',
+      options: [
+        {
+          text: 'General.TrueLabel',
+          value: 'True'
+        },
+        {
+          text: 'General.FalseLabel',
+          value: 'False'
+        }
+      ]
+    },
+    {
+      id: 'error',
+      formGroup: this.formMultiCheckbox,
+      size: 'small',
+      label: 'ERROR.errorMessage',
+      options: [
+        {
+          text: 'General.NoneErr',
+          value: 'None'
+        },
+        {
+          text: 'General.SingleErr',
+          value: 'Single'
+        },
+        {
+          text: 'General.MultipleErr',
+          value: 'Multiple'
+        }
+      ]
+    }
+  ];
+
+  checkboxesMulti: ICheckBoxComponentConfig[] = [
+    {
+      id: 'state',
+      formGroup: this.formMultiCheckbox,
+      size: 'small',
+      label: 'General.StateLabel',
+      inlineLabel: 'General.DisabledLabel'
+    }
+  ];
+
   demoTabsConfig: ITabNavConfig = {
     id: 'demoTabs',
     size: 'small',
@@ -195,7 +358,16 @@ export class CheckboxDocCodeComponent implements OnInit {
     ]
   };
 
-  bannerConfig: IBannerConfig = {
+  bannerConfigSingleCheckBox: IBannerConfig = {
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
+    rounded: true
+  };
+
+  bannerConfigMultiCheckBox: IBannerConfig = {
     id: 'banner-disabled-desc',
     type: 'info',
     size: 'small',
@@ -238,9 +410,27 @@ export class CheckboxDocCodeComponent implements OnInit {
       new FormControl()
     );
 
+    this.multiCheckboxConfig?.parent?.formGroup.addControl(
+      this.multiCheckboxConfig.parent.id,
+      new FormControl('')
+    );
+
+    this.multiCheckboxConfig.children?.forEach((res) => {
+      res.formGroup.addControl(res.id, new FormControl(''));
+    });
+
     this.togglesSingleCheckbox.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
         this.formCheckbox.addControl(
+          toggle.id,
+          new FormControl(toggle.options[1].text)
+        );
+      }
+    });
+
+    this.togglesMultiCheckbox.forEach((toggle) => {
+      if (toggle.options && toggle.options[1].text) {
+        this.formMultiCheckbox.addControl(
           toggle.id,
           new FormControl(toggle.options[1].text)
         );
@@ -251,7 +441,44 @@ export class CheckboxDocCodeComponent implements OnInit {
       this.formCheckbox.addControl(checkbox.id, new FormControl());
     });
 
+    this.checkboxesMulti.forEach((checkbox) => {
+      this.formMultiCheckbox.addControl(checkbox.id, new FormControl());
+    });
+
+    this.formCheckbox
+      .get(this.checkboxesSingle[0].id)
+      ?.valueChanges.subscribe((change) => {
+        if (change) {
+          this.bannerConfigSingleCheckBox.title = 'General.DisabledBannerTitle';
+          this.bannerConfigSingleCheckBox.content = 'General.DisabledBannerContent';
+        } else {
+          this.bannerConfigSingleCheckBox.title = 'General.EnabledBannerTitle';
+          this.bannerConfigSingleCheckBox.content = 'General.EnabledBannerContent';
+        }
+      });
+
+    this.formMultiCheckbox
+      .get(this.checkboxesMulti[0].id)
+      ?.valueChanges.subscribe((change) => {
+        if (change) {
+          this.bannerConfigMultiCheckBox.title = 'General.DisabledBannerTitle';
+          this.bannerConfigMultiCheckBox.content = 'General.DisabledBannerContent';
+        } else {
+          this.bannerConfigMultiCheckBox.title = 'General.EnabledBannerTitle';
+          this.bannerConfigMultiCheckBox.content = 'General.EnabledBannerContent';
+        }
+      });
+
     this.formCheckbox.patchValue({
+      size: 'Small',
+      label: 'True',
+      hint: 'False',
+      desc: 'True',
+      required: 'True',
+      error: 'None'
+    });
+
+    this.formMultiCheckbox.patchValue({
       size: 'Small',
       label: 'True',
       hint: 'False',
@@ -265,6 +492,14 @@ export class CheckboxDocCodeComponent implements OnInit {
         .get(configItem)
         ?.valueChanges.subscribe((value: any) => {
           this.parseConfigSingleCheckbox(configItem, value);
+        });
+    });
+
+    this.listOfConfigItems.forEach((configItem) => {
+      this.formMultiCheckbox
+        .get(configItem)
+        ?.valueChanges.subscribe((value: any) => {
+          this.parseConfigMultiCheckbox(configItem, value);
         });
     });
   }
@@ -305,7 +540,8 @@ export class CheckboxDocCodeComponent implements OnInit {
         this.determineErrorState(
           value,
           this.formCheckbox,
-          this.singleCheckboxConfig.id
+          this.singleCheckboxConfig.id,
+          CheckboxTypes.single
         );
         break;
       case 'state':
@@ -322,36 +558,145 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-  determineErrorState(value: string, formGroup: FormGroup, formID: string) {
+  private parseConfigMultiCheckbox(type: string, value: any) {
+    switch (type) {
+      case 'size':
+        this.multiCheckboxConfig = {
+          ...this.multiCheckboxConfig
+        };
+
+        if (this.multiCheckboxConfig.parent) {
+          this.multiCheckboxConfig.parent = {
+            ...this.multiCheckboxConfig?.parent,
+            size: value.toLowerCase()
+          };
+        }
+
+        this.multiCheckboxConfig.children?.forEach((res) => {
+          res.size = value.toLowerCase();
+        });
+        break;
+      case 'required':
+        this.multiCheckboxConfig = {
+          ...this.multiCheckboxConfig
+        };
+
+        if (this.multiCheckboxConfig.parent) {
+          this.multiCheckboxConfig.parent = {
+            ...this.multiCheckboxConfig?.parent,
+            required: value === 'True'
+          };
+        }
+
+        break;
+      case 'label':
+        this.multiCheckboxConfig = {
+          ...this.multiCheckboxConfig
+        };
+
+        if (this.multiCheckboxConfig.parent) {
+          this.multiCheckboxConfig.parent = {
+            ...this.multiCheckboxConfig?.parent,
+            label: value === 'True' ? 'Label Text' : undefined
+          };
+        }
+        break;
+      case 'desc':
+        this.multiCheckboxConfig = {
+          ...this.multiCheckboxConfig
+        };
+        if (this.multiCheckboxConfig.parent) {
+          this.multiCheckboxConfig.parent = {
+            ...this.multiCheckboxConfig?.parent,
+            desc: value === 'True' ? 'Description line of text' : undefined
+          };
+        }
+        break;
+      case 'hint':
+        this.multiCheckboxConfig = {
+          ...this.multiCheckboxConfig
+        };
+
+        if (this.multiCheckboxConfig.parent) {
+          this.multiCheckboxConfig.parent = {
+            ...this.multiCheckboxConfig?.parent,
+            helpText: value === 'True' ? 'Hint Text' : undefined
+          };
+        }
+        break;
+      case 'error':
+        this.determineErrorState(
+          value,
+          this.formMultiCheckbox,
+          this.multiCheckboxConfig?.parent?.id || '',
+          CheckboxTypes.multi
+        );
+        break;
+      case 'state':
+        if (value !== undefined) {
+          this.toggleDisabled(
+            value,
+            this.multiCheckboxConfig?.parent?.id || '',
+            this.formMultiCheckbox
+          );
+          this.multiCheckboxConfig.children?.forEach((child) => {
+            this.toggleDisabled(value, child.id, this.formMultiCheckbox);
+          });
+        }
+        break;
+      default:
+        console.log('Hit default case');
+    }
+  }
+
+  determineErrorState(value: string, formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
     let errorArray: string[] = [];
     switch (value) {
       case 'Single':
         errorArray = ['required'];
-        this.setErrors(formGroup, formID, errorArray);
+        this.setErrors(formGroup, formID, errorArray, checkbox_type);
         break;
       case 'Multiple':
-        errorArray = ['required', 'email', 'email2'];
-        this.setErrors(formGroup, formID, errorArray);
+        errorArray = ['required', 'email', 'maxLength'];
+        this.setErrors(formGroup, formID, errorArray, checkbox_type);
         break;
       case 'None':
         errorArray = [];
-        this.setErrors(formGroup, formID, errorArray);
+        this.setErrors(formGroup, formID, errorArray, checkbox_type);
         break;
     }
   }
 
-  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
+  clearErrors(formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
+    formGroup.get(formID)?.setErrors(null);
+    if(checkbox_type = CheckboxTypes.multi) {
+      this.multiCheckboxConfig.children?.forEach((child) => {
+        formGroup.get(child.id)?.setErrors(null);
+      });
+    }
+  }
+
+  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[],  checkbox_type: CheckboxTypes) {
     const errorVals = {};
     if (errorKeys.length === 0) {
-      formGroup.get(formID)?.setErrors(null);
+      this.clearErrors(formGroup, formID, checkbox_type)
     } else {
+      this.clearErrors(formGroup, formID, checkbox_type)
       errorKeys.forEach((error) => {
         errorVals[error] = true;
       });
       formGroup.get(formID)?.setErrors(errorVals);
       formGroup.get(formID)?.markAsTouched();
+
+      if(checkbox_type === CheckboxTypes.multi) {
+        this.multiCheckboxConfig.children?.forEach((child) => {
+          formGroup.get(child.id)?.setErrors(errorVals);
+          formGroup.get(child.id)?.markAsTouched();
+        });
+      }
     }
   }
+
 
   /**
    * Toggle disabled state of checkbox
@@ -361,6 +706,7 @@ export class CheckboxDocCodeComponent implements OnInit {
     currentConfigId: string,
     formType: FormGroup
   ) {
+    console.log("------->",currentConfigId)
     const checkboxControl: AbstractControl | null =
       formType.get(currentConfigId);
     if (
