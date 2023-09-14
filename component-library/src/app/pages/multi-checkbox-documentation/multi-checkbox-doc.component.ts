@@ -390,17 +390,8 @@ export class MultiCheckboxDocComponent implements OnInit {
     }
   }
 
-  getAllChildrenIds(): string[] {
-    const childIdArray: string[] = [];
-    this.multiCheckboxConfig.children?.forEach((child) => {
-      childIdArray.push(child.id);
-    });
-    return childIdArray;
-  }
-
   determineErrorState(value: string, formGroup: FormGroup, formID: string) {
     let errorArray: string[] = [];
-    const childIdArray = this.getAllChildrenIds();
     switch (value) {
       case 'Single':
         errorArray = ['required'];
