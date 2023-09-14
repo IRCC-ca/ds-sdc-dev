@@ -6,10 +6,15 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p
-      class="demo"
-      [innerHTML]="'IconButtonDocumentation.InteractiveDemoDesc' | translate"
-    ></p>
+    <p class="body3">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong>
+        {{
+          ('IconButtonDocumentation.Title' | translate).toLowerCase()
+        }}</strong
+      >
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
     <app-icon-button-doc-code></app-icon-button-doc-code>
   </section>
   <section class="types">

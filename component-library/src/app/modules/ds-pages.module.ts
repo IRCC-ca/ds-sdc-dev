@@ -48,6 +48,8 @@ import { ProgressIndicatorDocCodeComponent } from '@app/pages/progress-indicator
 import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-documentation.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
+import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
 
 @NgModule({
   declarations: [
@@ -72,9 +74,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ButtonDocCodeComponent,
     ButtonDocumentationComponent,
     InputDocumentationComponent,
+    SelectDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
     InputDocCodeComponent,
+    SelectDocCodeComponent,
     EncapsulatedElementComponent,
     RequestFormComponent,
     DatePickerDocCodeComponent,

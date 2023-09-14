@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormGroup, NG_VALUE_ACCESSOR, FormControlStatus, } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ISelectConfig } from '../select/select.component';
 import {
@@ -105,12 +105,16 @@ export interface IDatePickerDropDownConfigs {
   ]
 })
 export class DatePickerComponent implements OnInit {
+
+  currentStatus: FormControlStatus = 'VALID';
+  formGroupEmpty: FormGroup = new FormGroup({});
+
   @Input() config: IDatePickerConfig = {
     id: '',
     formGroup: new FormGroup({})
   };
 
-  @Input() formGroup?: FormGroup;
+  @Input() formGroup = this.formGroupEmpty;
   @Input() id?: string;
   @Input() size?: keyof typeof DSSizes;
   @Input() label?: string;
@@ -187,7 +191,9 @@ export class DatePickerComponent implements OnInit {
     );
 
     //set config from individual options, if present
-    if (this.formGroup) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    };
     if (this.id) this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
@@ -324,6 +330,28 @@ export class DatePickerComponent implements OnInit {
         this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
     }
+
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+    }
+    
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
+      if(change !== this.currentStatus){
+        this.currentStatus = change;
+        switch (this.currentStatus) {
+          case 'DISABLED':
+            this.setDisabledState(true);
+            break;
+          default:
+            this.setDisabledState(false);
+        }
+      }
+    });
   }
 
   ngOnChanges() {
@@ -630,21 +658,37 @@ export class DatePickerComponent implements OnInit {
     return errors;
   }
 
-  writeValue(obj: any): void {
-    if (obj) {
-      this.config.formGroup.setValue(obj, { emitEvent: false });
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
     }
+  };
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
+  }
+
+  writeValue(value: string): void {
+    this.onChange(value);
   }
   registerOnChange(fn: any): void {
     this.config.formGroup.valueChanges.subscribe(fn);
   }
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
+    this.onTouch = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    isDisabled
-      ? this.config.formGroup.disable()
-      : this.config.formGroup.enable();
+  /**
+   * Apply a disabled state
+   */
+   setDisabledState(isDisabled: boolean) {
+    if(isDisabled) {
+      this.formGroup?.get(this.config.id)?.disable();
+    } else {
+      this.formGroup?.get(this.config.id)?.enable();
+    }
   }
-  private onTouched: () => void = () => {};
 }

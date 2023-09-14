@@ -6,10 +6,13 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p
-      class="body3"
-      [innerHtml]="'Buttons.InteractiveDemoDesc' | translate"
-    ></p>
+    <p class="body3">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong>
+        {{ ('Buttons.Title' | translate).toLowerCase().slice(0, -1) }}</strong
+      >
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
     <app-button-doc-code></app-button-doc-code>
   </section>
 
@@ -21,7 +24,7 @@
     <div class="wrapper-container">
       <div class="element-wrapper-container">
         <h3>
-          {{ 'Buttons.PrimaryHeading' | translate }}
+          {{ 'General.Primary' | translate }}
         </h3>
         <app-component-preview
           copyText="<button>{{ 'Buttons.PrimaryBtnText' | translate }}</button>"

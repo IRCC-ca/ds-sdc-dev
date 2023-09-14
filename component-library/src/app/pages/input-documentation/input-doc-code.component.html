@@ -10,19 +10,8 @@
     class="input-container"
     #input
   >
-    <ng-container [ngSwitch]="errorState">
-      <ircc-cl-lib-input
-        *ngSwitchDefault
-        [config]="inputConfig"
-      ></ircc-cl-lib-input>
-      <ircc-cl-lib-input
-        *ngSwitchCase="'Single'"
-        [config]="inputConfigSingle"
-      ></ircc-cl-lib-input>
-      <ircc-cl-lib-input
-        *ngSwitchCase="'Multiple'"
-        [config]="inputConfigMulti"
-      ></ircc-cl-lib-input>
+    <ng-container>
+      <ircc-cl-lib-input [config]="inputConfig"></ircc-cl-lib-input>
     </ng-container>
   </div>
   <ng-container toggles>

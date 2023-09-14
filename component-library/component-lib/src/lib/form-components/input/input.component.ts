@@ -12,6 +12,7 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -128,6 +129,7 @@ export class InputComponent
   };
   touched = false;
   errorStubText = '';
+  currentStatus: FormControlStatus = 'VALID';
 
   buttonAutoCompleteClear: IIconButtonComponentConfig = {
     id: `${this.config.id}-button-autocomplete`,
@@ -138,6 +140,7 @@ export class InputComponent
       color: 'var(--neutral-text)'
     }
   };
+  buttonAutoCompleteClearClicked: boolean = false;
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -169,8 +172,15 @@ export class InputComponent
   }
 
   //Removed '!' and added null case in onChange
-  private onTouch?: () => void;
-  private onChange?: (value: any) => void;
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
 
   ngAfterContentChecked() {
     this.changeDetectorRef.detectChanges();
@@ -210,6 +220,7 @@ export class InputComponent
       this.disabled = this.config.formGroup.get(this.config.id)
         ?.disabled as boolean;
     });
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -218,10 +229,26 @@ export class InputComponent
       );
     }
 
-    //Get the error text when the formControl value changes
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+    }    //Get the error text when the formControl value changes
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
       this.getAriaErrorText();
-    });
+      if(change !== this.currentStatus){
+        this.currentStatus = change;
+        switch (this.currentStatus) {
+          case 'DISABLED':
+            this.setDisabledState(true);
+            break;
+          default:
+            this.setDisabledState(false);
+        }}
+      });
   }
 
   /**
@@ -244,7 +271,13 @@ export class InputComponent
   onTouchedLabel() {
     this.touched = true;
     this.getAriaErrorText();
-    this.focusEvent.emit(false);
+    setTimeout(() => {
+      // Do not emit blur event after clicking clear button
+      if (!this.buttonAutoCompleteClearClicked) {
+        this.focusEvent.emit(false);
+      }
+      this.buttonAutoCompleteClearClicked = false;
+    }, 100);
   }
 
   onFocus() {
@@ -327,6 +360,7 @@ export class InputComponent
   }
 
   public clearvalue() {
+    this.buttonAutoCompleteClearClicked = true;
     this.config.formGroup.controls[this.config.id].setValue('');
     this.focusEvent.emit(true);
   }
@@ -347,10 +381,14 @@ export class InputComponent
     this.focusEvent.emit(false);
   }
 
-  /**
-   *
-   */
-  writeValue(value: string): void {}
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
+  }
+
+  writeValue(value: string): void {
+      this.onChange(value);
+  }
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -364,7 +402,11 @@ export class InputComponent
    * Apply a disabled state
    */
   setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled;
+    if(isDisabled){
+      this.formGroup.get(this.config.id)?.disable();
+    }else{
+      this.formGroup.get(this.config.id)?.enable();
+    }
   }
 
   /**

@@ -6,10 +6,13 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p
-      class="demo body3"
-      [innerHTML]="'Banner.InteractiveDemoDesc' | translate"
-    ></p>
+    <p class="body3">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong>
+        {{ ('Banner.Title' | translate).toLowerCase().slice(0, -1) }}</strong
+      >
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
     <app-banner-doc-code></app-banner-doc-code>
   </section>
 
