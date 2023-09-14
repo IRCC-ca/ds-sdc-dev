@@ -8,10 +8,13 @@
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p
-      class="demo"
-      [innerHTML]="'ProgressIndicator.InteractiveDemoDesc' | translate"
-    ></p>
+    <p class="body3">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong>
+        {{ ('ProgressIndicator.MainTitle' | translate).toLowerCase() }}</strong
+      >
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
     <app-progress-indicator-doc-code></app-progress-indicator-doc-code>
   </section>
 </div>
