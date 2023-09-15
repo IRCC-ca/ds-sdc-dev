@@ -40,7 +40,6 @@ import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documen
 import { IconButtonDocumentationComponent } from '@app/pages/icon-button-documentation/icon-button-documentation.component';
 import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation/icon-button-doc-code.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
-import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 import { SpinnerDocCodeComponent } from '@app/pages/spinner-documentation/spinner-doc-code.component';
 import { SpinnerDocumentationComponent } from '@app/pages/spinner-documentation/spinner-documentation.component';
 import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
@@ -50,7 +49,7 @@ import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-ind
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxDocCodeComponent } from '@app/pages/checkbox-documentation/checkbox-doc-code.component';
 import { CheckboxDocumentationComponent } from '@app/pages/checkbox-documentation/checkbox-documentation.component';
-import { MultiCheckboxDocComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-doc.component';
+
 import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
 import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
 
@@ -89,13 +88,11 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     BannerDocumentationComponent,
     IconButtonDocumentationComponent,
     IconButtonDocCodeComponent,
-    MultiCheckboxDocumentationComponent,
     SpinnerDocCodeComponent,
     SpinnerDocumentationComponent,
     AutocompleteDocumentationComponent,
     CheckboxDocCodeComponent,
     CheckboxDocumentationComponent,
-    MultiCheckboxDocComponent,
     ProgressIndicatorDocCodeComponent,
     ProgressIndicatorDocumentationComponent
   ],

@@ -33,7 +33,6 @@ import { DatePickerDocumentationComponent } from './pages/date-picker-documentat
 import { IconButtonDocumentationComponent } from './pages/icon-button-documentation/icon-button-documentation.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { SelectDocumentationComponent } from './pages/select-documentation/select-documentation.component';
-import { MultiCheckboxDocumentationComponent } from './pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 import { SpinnerDocumentationComponent } from './pages/spinner-documentation/spinner-documentation.component';
 import { AutocompleteDocumentationComponent } from './pages/autocomplete-documentation/autocomplete-documentation.component';
 import { CheckboxDocumentationComponent } from './pages/checkbox-documentation/checkbox-documentation.component';
@@ -112,11 +111,6 @@ const routes: Routes = [
       title: 'IconButtonDocumentation.Title'
     },
     {
-      path: 'multi-checkbox-documentation',
-      component: MultiCheckboxDocumentationComponent,
-      title: 'MultiCheckboxDocumentation.Title'
-    },
-    {
       path: 'spinner-documentation',
       component: SpinnerDocumentationComponent,
       title: 'Spinner.Title'
@@ -188,11 +182,6 @@ const routes: Routes = [
       path: 'icon-button-documentation-fr',
       component: IconButtonDocumentationComponent,
       title: 'IconButtonDocumentation.Title'
-    },
-    {
-      path: 'multi-checkbox-documentation-fr',
-      component: MultiCheckboxDocumentationComponent,
-      title: 'MultiCheckboxDocumentation.Title'
     },
     {
       path: 'spinner-documentation-fr',
