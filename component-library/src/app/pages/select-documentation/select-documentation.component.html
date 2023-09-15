@@ -547,7 +547,7 @@
         </ol>
       </div>
       <div class="col-12 col-md-4 justify-ctr">
-        <div>
+        <div class="image-container">
           <img
             src="assets/img/select-content/select-usage-1.png"
             alt="{{ 'Select.Alt.Usage1' | translate }}"
@@ -569,19 +569,19 @@
       </div>
     </div>
     <div class="images">
-      <div>
+      <div class="image-container">
         <img
           src="assets/img/select-content/select-usage-2.png"
           alt="{{ 'Select.Alt.Usage2' | translate }}"
         />
       </div>
-      <div>
+      <div class="image-container">
         <img
           src="assets/img/select-content/usage-select-screenshot.png"
           alt="{{ 'Select.Alt.UsageScreenshot' | translate }}"
         />
       </div>
-      <div>
+      <div class="image-container">
         <img
           src="assets/img/select-content/select-usage-3.png"
           alt="{{ 'Select.Alt.Usage3' | translate }}"
@@ -617,18 +617,8 @@
         </h3>
         <ul>
           <li
-            [innerHtml]="'General.AccessibilityContentItem1' | translate"
-          ></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
-          <li
-            [innerHTML]="'Select.AccesiblityPopulatedContentItem' | translate"
-          ></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
-          <li
-            [innerHtml]="'General.AccessibilityContentItemMax' | translate"
+            *ngFor="let item of accessibilityContent"
+            [innerHtml]="item | translate"
           ></li>
         </ul>
       </div>

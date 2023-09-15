@@ -596,10 +596,10 @@
         </ol>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt_12">
       <div class="col-12 col-lg-8 access-input-1-2">
         <div class="row">
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-4 image-container">
             <img
               src="assets/img/datePicker-content/access-input1.png"
               alt="{{
@@ -607,7 +607,7 @@
               }}"
             />
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-8 image-container">
             <img
               src="assets/img/datePicker-content/access-input2.png"
               alt="{{
@@ -655,7 +655,6 @@
         </h3>
         <ul>
           <li
-            class="list-item"
             *ngFor="let item of accessibilityContent"
             [innerHtml]="item | translate"
           ></li>
@@ -666,7 +665,7 @@
           {{ 'General.Validation' | translate }}
         </h3>
         <ul>
-          <li class="list-item">{{ 'DatePicker.Validation' | translate }}</li>
+          <li>{{ 'DatePicker.Validation' | translate }}</li>
         </ul>
       </div>
     </div>

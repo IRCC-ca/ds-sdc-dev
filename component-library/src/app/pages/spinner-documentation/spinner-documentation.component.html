@@ -535,14 +535,13 @@
         </h3>
         <ol>
           <li
-            class="list-item"
             *ngFor="let direction of figmaDirections"
             [innerHtml]="direction | translate"
           ></li>
         </ol>
       </div>
       <div class="col-12 col-md-4 justify-ctr">
-        <div class="image-1">
+        <div class="image-1 image-container">
           <img
             src="assets/img/spinner-content/spinner-figmaUsage.png"
             alt="{{ 'Spinner.UsageInFigma.FigmaDirectionsImgAlt' | translate }}"
@@ -569,7 +568,6 @@
         </h3>
         <ul>
           <li
-            class="list-item"
             *ngFor="let item of accessibilityContent"
             [innerHtml]="item | translate"
           ></li>
@@ -580,7 +578,7 @@
           {{ 'General.Validation' | translate }}
         </h3>
         <ul>
-          <li class="list-item">{{ 'General.ValidationText' | translate }}</li>
+          <li>{{ 'General.ValidationText' | translate }}</li>
         </ul>
       </div>
     </div>

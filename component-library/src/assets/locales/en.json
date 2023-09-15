@@ -61,7 +61,7 @@
 		"PlainHeading": "Plain",
 		"PlainBtnText": "Plain button",
 		"PlainBtnTexts": "Plain buttons",
-		"PlainText": "Plain buttons can be used for actions that require less attention than a primary or secondary button. They are also useful in situations where the UI is more compact. They are not to be used as links. Use the <a href='#'>link text styles</a> for those scenarios.",
+		"PlainText": "Plain buttons can be used for actions that require less attention than a primary or secondary button. They are also useful in situations where the UI is more compact. They are not to be used as links. Use the <a class='link' href='#'>link text styles</a> for those scenarios.",
 		"PlainCritBtnText": "Plain critical button",
 		"ConfigLayoutFluid": "Fluid",
 		"ConfigLayoutFixed": "Fixed",
@@ -561,7 +561,7 @@
 		"LabelText1": "Label text"
 	},
 	"DatePicker": {
-		"MainTitle": "Date picker",
+		"MainTitle": "Date Picker",
 		"Title": "DatePicker-doc",
 		"Intro": "The date picker component allows users to input a specific year, month and/or day.",
 		"DesignGuideLines": {

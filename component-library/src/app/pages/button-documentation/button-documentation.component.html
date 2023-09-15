@@ -89,8 +89,10 @@
             {{ 'Buttons.PlainCritBtnText' | translate }}
           </ircc-cl-lib-button>
         </app-component-preview>
-        <p [innerHtml]="'Buttons.PlainText' | translate">
-          {{ 'Buttons.PlainText' | translate }}
+        <p>
+          <app-encapsulated-element
+            [injectedHtml]="'Buttons.PlainText' | translate"
+          ></app-encapsulated-element>
         </p>
       </div>
     </div>
@@ -123,7 +125,7 @@
         <div class="col-6">
           <h3>{{ 'Buttons.ConfigIconHeading' | translate }}</h3>
           <ul>
-            <li>{{ 'Buttons.ConfigIconNone' | translate }}</li>
+            <li>{{ 'General.NoneErr' | translate }}</li>
             <li>{{ 'Buttons.ConfigIconLeading' | translate }}</li>
             <li>{{ 'Buttons.ConfigIconTrailing' | translate }}</li>
           </ul>
@@ -412,7 +414,7 @@
           </li>
         </ol>
       </div>
-      <div class="col-12 col-md-4 justify-ctr">
+      <div class="col-12 col-md-4 justify-ctr image-container">
         <img
           class="button-figma-usage"
           src="assets/img/button-content/button-figma.png"

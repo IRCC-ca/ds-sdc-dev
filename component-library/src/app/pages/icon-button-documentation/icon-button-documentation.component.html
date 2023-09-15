@@ -367,7 +367,6 @@
         </h3>
         <ol>
           <li
-            class="list-item"
             *ngFor="let direction of figmaDirections"
             [innerHtml]="direction | translate"
           ></li>
@@ -395,7 +394,7 @@
         <h3>
           {{ 'General.AccessibilityColourHeading' | translate }}
         </h3>
-        <p class="mt_12">
+        <p>
           {{ 'IconButtonDocumentation.AccessibilityColourText1' | translate }}
         </p>
         <p class="accessible">
@@ -406,27 +405,13 @@
         <h3>
           {{ 'General.AccessibilityKeyboardHeading' | translate }}
         </h3>
-        <p class="accessible">
+        <p>
           {{ 'IconButtonDocumentation.AccessibilityKeyboardText' | translate }}
         </p>
         <ul class="mt_8">
           <li
-            class="list-item"
-            [innerHtml]="
-              'IconButtonDocumentation.AccessibilityContentItem1' | translate
-            "
-          ></li>
-          <li
-            class="list-item"
-            [innerHtml]="
-              'IconButtonDocumentation.AccessibilityContentItem2' | translate
-            "
-          ></li>
-          <li
-            class="list-item"
-            [innerHtml]="
-              'IconButtonDocumentation.AccessibilityContentItem3' | translate
-            "
+            *ngFor="let item of accessibilityContent"
+            [innerHtml]="item | translate"
           ></li>
         </ul>
       </div>

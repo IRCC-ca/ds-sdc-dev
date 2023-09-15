@@ -1,4 +1,5 @@
 @use '../../../../../core-library/util/device' as device;
+@use "../../../scss/grid";
 @use "../../../scss/page";
 @use '@ircc-ca/ds-sdc-core/typography/typography';
 
@@ -13,6 +14,20 @@
 
     .banner-preview {
       margin-top: 24px;
+    }
+  }
+  &__accessibility {
+    ul {
+      padding-left: 0;
+    }
+  }
+  &__usage-figma {
+    .image-container {
+      width: 163px;
+      margin-left: 86px;
+      @include grid.up-phone-layout {
+        margin-top: 12px;
+      }
     }
   }
 }

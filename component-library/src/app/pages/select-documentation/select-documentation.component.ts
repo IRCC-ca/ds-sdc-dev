@@ -62,7 +62,7 @@ export class SelectDocumentationComponent implements OnInit {
       description: 'General.AnatomyLabelText'
     },
     {
-      title: 'General.DescriptionHeading',
+      title: 'General.Description',
       description: 'General.AnatomyDescText'
     },
     {
@@ -81,6 +81,16 @@ export class SelectDocumentationComponent implements OnInit {
       title: 'Select.Anatomy.Dropdown',
       description: 'Select.Anatomy.DropdownText'
     }
+  ];
+
+  accessibilityContent: string[] = [
+    'General.AccessibilityContentItem1',
+    'Input.AccessibilityContentItem2',
+    'Input.AccessibilityContentItem3',
+    'Input.AccessibilityContentItem4',
+    'Input.AccessibilityContentItem5',
+    'Input.AccessibilityContentItem6',
+    'General.AccessibilityContentItemMax'
   ];
 
   constructor(

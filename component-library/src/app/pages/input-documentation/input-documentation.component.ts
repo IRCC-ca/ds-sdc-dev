@@ -65,7 +65,7 @@ export class InputDocumentationComponent implements OnInit {
       description: 'General.RequiredIndicatorTxt'
     },
     {
-      title: 'General.DescriptionHeading',
+      title: 'General.Description',
       description: 'General.AnatomyDescText'
     },
     {
@@ -92,6 +92,16 @@ export class InputDocumentationComponent implements OnInit {
       title: 'Input.AnatomyPasswordHeading',
       description: 'Input.AnatomyPasswordText'
     }
+  ];
+
+  accessibilityContent: string[] = [
+    'General.AccessibilityContentItem1',
+    'Input.AccessibilityContentItem2',
+    'Input.AccessibilityContentItem3',
+    'Input.AccessibilityContentItem4',
+    'Input.AccessibilityContentItem5',
+    'Input.AccessibilityContentItem6',
+    'General.AccessibilityContentItemMax'
   ];
 
   constructor(

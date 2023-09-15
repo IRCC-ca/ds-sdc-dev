@@ -11,14 +11,9 @@
       max-width: 239px;
       @include device.in-phone-layout {
         margin-top: 42px;
+        width: 179px;
+        height: 152px;
       }
-    }
-  }
-  
-  .image-1 {
-    @include device.in-phone-layout {
-      width: 179px;
-      height: 152px;
     }
   }
 }
