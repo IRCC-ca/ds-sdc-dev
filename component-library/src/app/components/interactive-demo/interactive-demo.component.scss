@@ -21,9 +21,14 @@
     margin-bottom: 8px;
   }
 
-  .banner, .spinner {
+  .banner,
+  .spinner {
     background-color: var(--surface1);
     border-bottom: 1px solid var(--neutral-border);
+  }
+
+  .checkbox {
+    min-height: 150px;
   }
 
   .hide-show-button {
