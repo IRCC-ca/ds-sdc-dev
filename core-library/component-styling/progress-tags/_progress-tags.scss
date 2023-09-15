@@ -40,7 +40,7 @@
     font-weight: 400;
   }
   .content {
-    @include typography.fontSet(body, 3, emphasis);
+    @include typography.fontSet(body, 3, regular);
   }
 }
 

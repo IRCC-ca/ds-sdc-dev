@@ -1,0 +1,16 @@
+<app-interactive-demo [hasTabs]="false">
+  <div
+    component
+    class="progressIndicator-container"
+  >
+    <ircc-cl-lib-progress-indicator
+      [config]="progressIndicatorConfig"
+    ></ircc-cl-lib-progress-indicator>
+  </div>
+  <ng-container toggles>
+    <ng-container *ngFor="let toggle of toggles">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+  </ng-container>
+</app-interactive-demo>
+<app-code-viewer [config]="codeViewConfig"></app-code-viewer>

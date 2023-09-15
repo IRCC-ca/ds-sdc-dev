@@ -8,7 +8,8 @@ import {
   IBannerConfig,
   ICheckBoxComponentConfig,
   IRadioInputComponentConfig,
-  ITabNavConfig
+  ITabNavConfig,
+  StandAloneFunctions
 } from 'ircc-ds-angular-component-library';
 import { TranslatedPageComponent } from '../translated-page-component';
 
@@ -149,7 +150,7 @@ export class AutocompleteDocumentationComponent
       id: 'error',
       formGroup: this.form_interactive_button,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.TrueLabel',
@@ -218,20 +219,24 @@ export class AutocompleteDocumentationComponent
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private slugify: SlugifyPipe
+    private slugify: SlugifyPipe,
+    private standalone: StandAloneFunctions
   ) {
     this.currentLanguage = translate.currentLang;
   }
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
-    this.config.formGroup.addControl(
-      this.config.id,
-      new FormControl(null, Validators.required)
-    );
-    if (!this.form.get(this.config.id)?.touched) {
-      this.form.get(this.config.id)?.markAsTouched();
-    }
+    this.config.formGroup.addControl(this.config.id, new FormControl());
+
+    this.config.formGroup.valueChanges.subscribe((changes) => {
+      // Stop user input from clearing error messages if error is toggled to True
+      if (this.form_interactive_button.get('error')?.value === 'True') {
+        this.standalone.setFormErrors(this.config.formGroup, this.config.id, [
+          'required'
+        ]);
+      }
+    });
 
     this.form_interactive_button.valueChanges.subscribe((change) => {
       this.autocompleteCodeView = {
@@ -331,15 +336,9 @@ export class AutocompleteDocumentationComponent
       .get('error')
       ?.valueChanges.subscribe((change: string) => {
         if (change === 'True') {
-          this.config.formGroup.removeControl(this.config.id);
-          this.config.formGroup.addControl(
-            this.config.id,
-            new FormControl(null, Validators.required)
-          );
-
-          if (!this.form.get(this.config.id)?.touched) {
-            this.form.get(this.config.id)?.markAsTouched();
-          }
+          this.standalone.setFormErrors(this.config.formGroup, this.config.id, [
+            'required'
+          ]);
           this.config = {
             ...this.config,
             errorMessages: [
@@ -350,12 +349,11 @@ export class AutocompleteDocumentationComponent
             ]
           };
         } else {
-          this.config.formGroup.removeControl(this.config.id);
-          this.config.formGroup.addControl(this.config.id, new FormControl());
-
-          if (!this.form.get(this.config.id)?.touched) {
-            this.form.get(this.config.id)?.markAsUntouched();
-          }
+          this.standalone.setFormErrors(
+            this.config.formGroup,
+            this.config.id,
+            []
+          );
           this.config = {
             ...this.config,
             errorMessages: undefined
