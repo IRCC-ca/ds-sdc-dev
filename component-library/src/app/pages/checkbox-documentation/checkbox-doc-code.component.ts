@@ -245,7 +245,7 @@ export class CheckboxDocCodeComponent implements OnInit {
       id: 'error',
       formGroup: this.formCheckbox,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.NoneErr',
@@ -356,7 +356,7 @@ export class CheckboxDocCodeComponent implements OnInit {
       id: 'error',
       formGroup: this.formMultiCheckbox,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.NoneErr',
@@ -467,7 +467,7 @@ export class CheckboxDocCodeComponent implements OnInit {
       id: 'error',
       formGroup: this.formGroupCheckbox,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
           text: 'General.NoneErr',
