@@ -1,9 +1,9 @@
-@use "../../../../../core-library/util/theme" as theme;
-@use "../../../../../core-library/util/size" as size;
-@use "../../../../../component-library/src/scss/grid" as grid;
-@use "../../../../../core-library/tokens/template-const";
-@use "sass:map";
-$selectors: "app-component-preview";
+@use '../../../../../core-library/util/theme' as theme;
+@use '../../../../../core-library/util/size' as size;
+@use '../../../../../component-library/src/scss/grid' as grid;
+@use '../../../../../core-library/tokens/template-const';
+@use 'sass:map';
+$selectors: 'app-component-preview';
 
 @mixin selector {
   #{$selectors}#{template-const.$escape} {
@@ -61,8 +61,12 @@ $selectors: "app-component-preview";
   .background-white {
     background-color: var(--surface1);
     max-width: 400px;
-  }
 
+    @include grid.up-phone-layout {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
   .background-gray {
     background-color: var(--surface2);
   }
