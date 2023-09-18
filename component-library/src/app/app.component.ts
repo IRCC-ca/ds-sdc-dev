@@ -1,4 +1,10 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { NavigationEnd, Router, Scroll } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Languages } from './share/global-params';
@@ -25,7 +31,7 @@ const isInViewport = (elem: Element) => {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'ds-sdc-doc';
   mobile = false;
   navStatus = 'nav-open';
@@ -36,6 +42,7 @@ export class AppComponent {
   constructor(
     private translate: TranslateService,
     private router: Router,
+    private element: ElementRef,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
     translate.setDefaultLang(Languages.English);
@@ -74,6 +81,30 @@ export class AppComponent {
           }
         }, this.SCROLL_DELAY);
       }
+    });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      // shadowRoot seems to be empty
+      // const shadowRoot = this.element.nativeElement.shadowRoot;
+      const tabbableElements: NodeListOf<Element> =
+        this.element.nativeElement?.querySelectorAll(
+          'a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'
+        );
+
+      const tabOrder = Array.from(tabbableElements)
+        .map((el) => {
+          const tabIndex = el?.getAttribute('tabindex') || '0';
+          return {
+            element: el,
+            order: parseInt(tabIndex, 10)
+          };
+        })
+        .sort((a, b) => a.order - b.order)
+        .map((el) => el.element);
+
+      console.log(tabOrder);
     });
   }
 }
