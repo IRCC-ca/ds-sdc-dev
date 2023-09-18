@@ -1,13 +1,10 @@
-<div
-  class="email-verification"
-  style="margin: 32px 0 0 0"
->
+<div class="email-verification">
   <ng-container *ngIf="status === 'start'; else waiting">
     <div>
       <p>
         {{ 'Please verify your mail before submitting the form.' | translate }}
       </p>
-      <div style="display: grid; grid-template-columns: 50% 50%">
+      <div class="grid-half">
         <div style="display: flex; align-items: center">
           <ircc-cl-lib-input
             [config]="emailconfig"
@@ -26,7 +23,7 @@
   </ng-container>
   <ng-template #waiting>
     <ng-container *ngIf="status === 'waiting'; else verified">
-      <div style="display: grid; grid-template-columns: 100%">
+      <div class="grid-full">
         <p>
           {{
             'Please check your email and click the verification link. The email might appear in your spam folder.'
@@ -43,7 +40,7 @@
   </ng-template>
   <ng-template #verified>
     <ng-container *ngIf="status === 'verified'; else sendingEmail">
-      <div style="display: grid; grid-template-columns: 100%">
+      <div class="grid-full">
         <p>
           {{ 'Your email has been verified!' | translate }}
         </p>
@@ -59,7 +56,7 @@
   </ng-template>
   <ng-template #sendingEmail>
     <ng-container *ngIf="status === 'sendingEmail'; else done">
-      <div style="display: grid; grid-template-columns: 100%">
+      <div class="grid-full">
         <p>
           {{ 'Submitting' | translate }}
         </p>
@@ -73,7 +70,7 @@
   </ng-template>
   <ng-template #done>
     <ng-container *ngIf="status === 'done'; else error">
-      <div style="display: grid; grid-template-columns: 100%">
+      <div class="grid-full">
         <p>
           {{ 'Your form has been submitted' | translate }}
         </p>
@@ -82,7 +79,7 @@
   </ng-template>
   <ng-template #error>
     <ng-container *ngIf="status === 'error'">
-      <div style="display: grid; grid-template-columns: 100%">
+      <div class="grid-full">
         <p>
           {{
             'An Error has occured, please restart the verification flow'

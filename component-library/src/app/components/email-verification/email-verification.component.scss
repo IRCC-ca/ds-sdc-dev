@@ -4,96 +4,31 @@
 @use '../../../../../core-library/util/device' as device;
 @use '../../../scss/grid';
 
-@mixin selector {
-  app-accordian-container#{template-const.$escape} {
-    @content;
-  }
-}
+.email-verification {
+  margin: 32px 0 0 0;
 
-@mixin create {
-  @include selector() {
-    @include layout();
-  }
-}
-
-@mixin layout {
-  .accordion-nav {
+  .grid-full {
     display: grid;
-    grid-template-columns: 30% auto 30%;
-
-    &.fullWidth {
-      grid-template-columns: auto auto auto;
-    }
-
-    &.no-extra-left {
-      padding: 0 12px;
-
-      @include grid.in-phone-layout {
-        grid-template-columns: auto auto;
-
-        .accordion-expand-button {
-          grid-column: 1;
-          justify-content: start;
-        }
-      }
-    }
-
-    @include device.in-phone-layout() {
-      grid-template-columns: auto 30% 30%;
-
-      &.fullWidth {
-        grid-template-columns: 100% auto auto;
-      }
-    }
-
-    .accordion-extra-left {
-      grid-column: 1;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      @include device.in-phone-layout() {
-        grid-column: 2;
-      }
-
-      &:empty {
-        display: none;
-      }
-    }
-
-    .accordion-expand-button {
-      grid-column: 2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      @include device.in-phone-layout() {
-        grid-column: 1;
-      }
-    }
-    .accordion-extra-right {
-      grid-column: 3;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      @include device.in-phone-layout() {
-        grid-column: 3;
-      }
-      &:empty {
-        display: none;
-      }
-    }
+    grid-template-columns: 100%;
+  }
+  .grid-half {
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 
-  .accordion-content {
-    &.open {
-      height: auto;
-    }
+  .flex {
+    display: flex;
+  }
 
-    &.close {
-      height: 0px;
-      padding-bottom: 0px;
-      display: none;
-    }
+  .align-items-center {
+    align-items: center;
+  }
+
+  .align-items-end {
+    align-items: flex-end;
+  }
+
+  .justify-content-center {
+    justify-content: center;
   }
 }
