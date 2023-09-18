@@ -6,7 +6,8 @@ import {
   ICheckBoxComponentConfig,
   IInputComponentConfig,
   IRadioInputComponentConfig,
-  ITabNavConfig
+  ITabNavConfig,
+  StandAloneFunctions
 } from 'ircc-ds-angular-component-library';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import {
@@ -30,7 +31,8 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
   constructor(
     private lang: LangSwitchService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private standalone: StandAloneFunctions
   ) {}
 
   inputConfig: IInputComponentConfig = {
@@ -392,30 +394,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     switch (value) {
       case 'Single':
         errorArray = ['required'];
-        this.setErrors(formGroup, formID, errorArray);
         break;
       case 'Multiple':
         errorArray = ['required', 'email', 'email2'];
-        this.setErrors(formGroup, formID, errorArray);
         break;
       case 'None':
         errorArray = [];
-        this.setErrors(formGroup, formID, errorArray);
         break;
     }
-  }
-
-  setErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
-    const errorVals = {};
-    if (errorKeys.length === 0) {
-      formGroup.get(formID)?.setErrors(null);
-    } else {
-      errorKeys.forEach((error) => {
-        errorVals[error] = true;
-      });
-      formGroup.get(formID)?.setErrors(errorVals);
-      formGroup.get(formID)?.markAsTouched();
-    }
+    this.standalone.setFormErrors(formGroup, formID, errorArray);
   }
 
   private parseCodeViewConfig(errorState: string) {

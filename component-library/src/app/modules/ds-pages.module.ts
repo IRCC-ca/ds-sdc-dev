@@ -44,6 +44,8 @@ import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-d
 import { SpinnerDocCodeComponent } from '@app/pages/spinner-documentation/spinner-doc-code.component';
 import { SpinnerDocumentationComponent } from '@app/pages/spinner-documentation/spinner-documentation.component';
 import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
+import { ProgressIndicatorDocCodeComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-doc-code.component';
+import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-documentation.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
@@ -87,7 +89,9 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     MultiCheckboxDocumentationComponent,
     SpinnerDocCodeComponent,
     SpinnerDocumentationComponent,
-    AutocompleteDocumentationComponent
+    AutocompleteDocumentationComponent,
+    ProgressIndicatorDocCodeComponent,
+    ProgressIndicatorDocumentationComponent
   ],
   imports: [
     CommonModule,
