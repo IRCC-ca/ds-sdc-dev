@@ -44,6 +44,7 @@ export class MultiCheckboxComponent implements OnInit, DoCheck {
   errorMessages: IErrorPairsMutltiCheckBox[] = [];
   errorMessagesAccumulator: IErrorPairsMutltiCheckBox[] = [];
   errorSize: keyof typeof DSSizes | DSSizes = 'large';
+  disabledStatus: boolean = false;
 
   constructor(
     private multicheckboxService: MultiCheckboxService,
@@ -172,6 +173,7 @@ export class MultiCheckboxComponent implements OnInit, DoCheck {
     this.config.children?.forEach((res) => {
       res.formGroup?.get(res.id)?.statusChanges.subscribe((value: any) => {
         this.checkError(value, res.formGroup, res.id);
+        value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
       });
     });
 
@@ -184,12 +186,14 @@ export class MultiCheckboxComponent implements OnInit, DoCheck {
             this.config?.parent?.formGroup || new FormGroup({}),
             this.config?.parent?.id || ''
           );
+          value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
 
           this.config.children?.forEach((res) => {
             res.formGroup
               ?.get(res.id)
               ?.statusChanges.subscribe((value: any) => {
                 this.checkError(value, res.formGroup, res.id);
+                value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
               });
           });
         });

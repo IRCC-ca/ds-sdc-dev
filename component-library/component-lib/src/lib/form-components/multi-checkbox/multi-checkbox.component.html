@@ -28,7 +28,7 @@
 </ng-template>
 <ng-container *ngFor="let errors of errorMessagesAccumulator; let i = index">
   <div
-    *ngIf="errorMessagesAccumulator.length > -1"
+    *ngIf="errorMessagesAccumulator.length > -1 && !disabledStatus"
     class="radio-errors"
   >
     <ircc-cl-lib-error
