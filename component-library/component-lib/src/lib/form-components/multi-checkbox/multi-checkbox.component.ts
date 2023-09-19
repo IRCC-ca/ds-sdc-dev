@@ -53,7 +53,7 @@ export class MultiCheckboxComponent implements OnInit {
     }
     return this.config.parent?.size || 'large'
   }
-  
+
   constructor(
     private multicheckboxService: MultiCheckboxService,
     public standAloneFunctions: StandAloneFunctions
@@ -241,6 +241,10 @@ export class MultiCheckboxComponent implements OnInit {
         this.errorMessagesAccumulator.push(error);
       }
     });
+
+    if(this.errorMessagesAccumulator[0]) {
+      this.errorMessagesAccumulator[0].id = this.errorMessagesAccumulator[0].id + "_error0"
+    }
   }
 
   isValid(checkbox: ICheckBoxComponentConfig) {
