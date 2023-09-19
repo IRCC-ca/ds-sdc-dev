@@ -92,7 +92,6 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
         link.classList.add('active-link');
-        link.focus();
       }
     });
 
