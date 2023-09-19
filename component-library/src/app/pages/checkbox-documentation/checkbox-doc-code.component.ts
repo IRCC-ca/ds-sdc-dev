@@ -35,6 +35,7 @@ export class CheckboxDocCodeComponent implements OnInit {
   formGroupCheckbox: FormGroup = new FormGroup({});
 
   checkbox_type = CheckboxTypes.single;
+  errorState = 'None';
 
   constructor(
     private lang: LangSwitchService,
@@ -42,7 +43,7 @@ export class CheckboxDocCodeComponent implements OnInit {
   ) {}
 
   singleCheckboxConfig: ICheckBoxComponentConfig = {
-    id: 'checkbox',
+    id: 'single_checkbox',
     formGroup: this.formCheckbox,
     size: 'small',
     required: true,
@@ -575,7 +576,7 @@ export class CheckboxDocCodeComponent implements OnInit {
 
     this.formCheckbox.addControl(
       this.singleCheckboxConfig.id,
-      new FormControl('', {nonNullable: true})
+      new FormControl('')
     );
 
     this.multiCheckboxConfig?.parent?.formGroup.addControl(
@@ -655,7 +656,7 @@ export class CheckboxDocCodeComponent implements OnInit {
         }
       });
 
-      this.formGroupCheckbox
+    this.formGroupCheckbox
       .get(this.checkboxesGroup[0].id)
       ?.valueChanges.subscribe((change) => {
         if (change) {
@@ -748,8 +749,9 @@ export class CheckboxDocCodeComponent implements OnInit {
         };
         break;
       case 'error':
+        this.errorState = value
         this.determineErrorState(
-          value,
+          this.errorState,
           this.formCheckbox,
           this.singleCheckboxConfig.id,
           CheckboxTypes.single
@@ -762,6 +764,15 @@ export class CheckboxDocCodeComponent implements OnInit {
             this.singleCheckboxConfig.id,
             this.formCheckbox
           );
+          //re-set error if error was set before disabled
+          if(value === false && this.errorState !== 'None') {
+            this.determineErrorState(
+              this.errorState,
+              this.formCheckbox,
+              this.singleCheckboxConfig.id,
+              CheckboxTypes.single
+            );
+          }
         }
         break;
       default:
@@ -836,8 +847,9 @@ export class CheckboxDocCodeComponent implements OnInit {
         }
         break;
       case 'error':
+        this.errorState = value;
         this.determineErrorState(
-          value,
+          this.errorState,
           this.formMultiCheckbox,
           this.multiCheckboxConfig?.parent?.id || '',
           CheckboxTypes.multi
@@ -853,6 +865,16 @@ export class CheckboxDocCodeComponent implements OnInit {
           this.multiCheckboxConfig.children?.forEach((child) => {
             this.toggleDisabled(value, child.id, this.formMultiCheckbox);
           });
+
+          //re-set error if error was set before disabled
+          if(value === false && this.errorState !== 'None') {
+            this.determineErrorState(
+              this.errorState,
+              this.formMultiCheckbox,
+              this.multiCheckboxConfig?.parent?.id || '',
+              CheckboxTypes.multi
+            );
+          }
         }
         break;
       default:
@@ -912,6 +934,7 @@ export class CheckboxDocCodeComponent implements OnInit {
         }
         break;
       case 'error':
+        this.errorState = value;
         this.determineErrorState(
           value,
           this.formGroupCheckbox,
@@ -924,6 +947,16 @@ export class CheckboxDocCodeComponent implements OnInit {
           this.groupCheckboxConfig.children?.forEach((child) => {
             this.toggleDisabled(value, child.id, this.formGroupCheckbox);
           });
+
+          //re-set error if error was set before disabled
+          if(value === false && this.errorState !== 'None') {
+            this.determineErrorState(
+              this.errorState,
+              this.formGroupCheckbox,
+              this.groupCheckboxConfig.id,
+              CheckboxTypes.group
+            );
+          }
         }
         break;
       default:
@@ -931,9 +964,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-  private determineErrorState(value: string, formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
+  private determineErrorState(errorState: string, formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
     let errorArray: string[] = [];
-    switch (value) {
+    switch (errorState) {
       case 'Single':
         errorArray = ['required'];
         this.setErrors(formGroup, formID, errorArray, checkbox_type);
