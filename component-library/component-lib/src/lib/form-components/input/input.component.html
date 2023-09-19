@@ -65,7 +65,7 @@
             tabindex="0"
             class="passwordIcon"
             (click)="hideShow()"
-            [disabled]="currentStatus !== 'DISABLED'"
+            [disabled]="currentStatus === 'DISABLED'"
             attr.aria-label="{{ btnAriaLabel }}"
             aria-live="polite"
           >
