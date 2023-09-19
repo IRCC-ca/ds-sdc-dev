@@ -7,10 +7,16 @@
 .types {
   .component-preview {
     max-width: 400px;
-    padding-bottom: 16px;
   }
+}
 
-  .banner-preview {
-    margin-top: 24px;
+::ng-deep {
+  app-component-preview {
+    .background-white.preview-wrapper {
+      padding: {
+        top: 24px;
+        bottom: 14px;
+      };
+    }
   }
 }
