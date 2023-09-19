@@ -758,21 +758,19 @@ export class CheckboxDocCodeComponent implements OnInit {
         );
         break;
       case 'state':
-        if (value !== undefined) {
-          this.toggleDisabled(
-            value,
+        this.toggleDisabled(
+          value,
+          this.singleCheckboxConfig.id,
+          this.formCheckbox
+        );
+        //re-set error if error was set before disabled
+        if(value === false && this.errorState !== 'None') {
+          this.determineErrorState(
+            this.errorState,
+            this.formCheckbox,
             this.singleCheckboxConfig.id,
-            this.formCheckbox
+            CheckboxTypes.single
           );
-          //re-set error if error was set before disabled
-          if(value === false && this.errorState !== 'None') {
-            this.determineErrorState(
-              this.errorState,
-              this.formCheckbox,
-              this.singleCheckboxConfig.id,
-              CheckboxTypes.single
-            );
-          }
         }
         break;
       default:
@@ -856,25 +854,23 @@ export class CheckboxDocCodeComponent implements OnInit {
         );
         break;
       case 'state':
-        if (value !== undefined) {
-          this.toggleDisabled(
-            value,
-            this.multiCheckboxConfig?.parent?.id || '',
-            this.formMultiCheckbox
-          );
-          this.multiCheckboxConfig.children?.forEach((child) => {
-            this.toggleDisabled(value, child.id, this.formMultiCheckbox);
-          });
+        this.toggleDisabled(
+          value,
+          this.multiCheckboxConfig?.parent?.id || '',
+          this.formMultiCheckbox
+        );
+        this.multiCheckboxConfig.children?.forEach((child) => {
+          this.toggleDisabled(value, child.id, this.formMultiCheckbox);
+        });
 
-          //re-set error if error was set before disabled
-          if(value === false && this.errorState !== 'None') {
-            this.determineErrorState(
-              this.errorState,
-              this.formMultiCheckbox,
-              this.multiCheckboxConfig?.parent?.id || '',
-              CheckboxTypes.multi
-            );
-          }
+        //re-set error if error was set before disabled
+        if(value === false && this.errorState !== 'None') {
+          this.determineErrorState(
+            this.errorState,
+            this.formMultiCheckbox,
+            this.multiCheckboxConfig?.parent?.id || '',
+            CheckboxTypes.multi
+          );
         }
         break;
       default:
@@ -943,20 +939,18 @@ export class CheckboxDocCodeComponent implements OnInit {
         );
         break;
       case 'state':
-        if (value !== undefined) {
-          this.groupCheckboxConfig.children?.forEach((child) => {
-            this.toggleDisabled(value, child.id, this.formGroupCheckbox);
-          });
+        this.groupCheckboxConfig.children?.forEach((child) => {
+          this.toggleDisabled(value, child.id, this.formGroupCheckbox);
+        });
 
-          //re-set error if error was set before disabled
-          if(value === false && this.errorState !== 'None') {
-            this.determineErrorState(
-              this.errorState,
-              this.formGroupCheckbox,
-              this.groupCheckboxConfig.id,
-              CheckboxTypes.group
-            );
-          }
+        //re-set error if error was set before disabled
+        if(value === false && this.errorState !== 'None') {
+          this.determineErrorState(
+            this.errorState,
+            this.formGroupCheckbox,
+            this.groupCheckboxConfig.id,
+            CheckboxTypes.group
+          );
         }
         break;
       default:
