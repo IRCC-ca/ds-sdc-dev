@@ -235,8 +235,6 @@ export class CheckboxComponent
         }
         this.setStatus();
       });
-
-    // console.log("formControl?.errors?.[errors.key]", this.formControl?.errors)
   }
 
   ngDoCheck() {

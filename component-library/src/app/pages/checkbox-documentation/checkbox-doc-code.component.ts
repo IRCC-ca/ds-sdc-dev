@@ -717,244 +717,250 @@ export class CheckboxDocCodeComponent implements OnInit {
   }
 
   private parseConfigSingleCheckbox(type: string, value: any) {
-    switch (type) {
-      case 'size':
-        this.singleCheckboxConfig = {
-          ...this.singleCheckboxConfig,
-          size: value.toLowerCase()
-        };
-        break;
-      case 'required':
-        this.singleCheckboxConfig = {
-          ...this.singleCheckboxConfig,
-          required: value === 'True'
-        };
-        break;
-      case 'label':
-        this.singleCheckboxConfig = {
-          ...this.singleCheckboxConfig,
-          label: value === 'True' ? 'Label Text' : undefined
-        };
-        break;
-      case 'desc':
-        this.singleCheckboxConfig = {
-          ...this.singleCheckboxConfig,
-          desc: value === 'True' ? 'Description line of text' : undefined
-        };
-        break;
-      case 'hint':
-        this.singleCheckboxConfig = {
-          ...this.singleCheckboxConfig,
-          helpText: value === 'True' ? 'Hint Text' : undefined
-        };
-        break;
-      case 'error':
-        this.errorState = value
-        this.determineErrorState(
-          this.errorState,
-          this.formCheckbox,
-          this.singleCheckboxConfig.id,
-          CheckboxTypes.single
-        );
-        break;
-      case 'state':
-        this.toggleDisabled(
-          value,
-          this.singleCheckboxConfig.id,
-          this.formCheckbox
-        );
-        //re-set error if error was set before disabled
-        if(value === false && this.errorState !== 'None') {
+    if (value !== null) {
+      switch (type) {
+        case 'size':
+          this.singleCheckboxConfig = {
+            ...this.singleCheckboxConfig,
+            size: value.toLowerCase()
+          };
+          break;
+        case 'required':
+          this.singleCheckboxConfig = {
+            ...this.singleCheckboxConfig,
+            required: value === 'True'
+          };
+          break;
+        case 'label':
+          this.singleCheckboxConfig = {
+            ...this.singleCheckboxConfig,
+            label: value === 'True' ? 'Label Text' : undefined
+          };
+          break;
+        case 'desc':
+          this.singleCheckboxConfig = {
+            ...this.singleCheckboxConfig,
+            desc: value === 'True' ? 'Description line of text' : undefined
+          };
+          break;
+        case 'hint':
+          this.singleCheckboxConfig = {
+            ...this.singleCheckboxConfig,
+            helpText: value === 'True' ? 'Hint Text' : undefined
+          };
+          break;
+        case 'error':
+          this.errorState = value
           this.determineErrorState(
             this.errorState,
             this.formCheckbox,
             this.singleCheckboxConfig.id,
             CheckboxTypes.single
           );
-        }
-        break;
-      default:
-        console.log('Hit default case');
+          break;
+        case 'state':
+          this.toggleDisabled(
+            value,
+            this.singleCheckboxConfig.id,
+            this.formCheckbox
+          );
+          //re-set error if error was set before disabled
+          if(value === false && this.errorState !== 'None') {
+            this.determineErrorState(
+              this.errorState,
+              this.formCheckbox,
+              this.singleCheckboxConfig.id,
+              CheckboxTypes.single
+            );
+          }
+          break;
+        default:
+          console.log('Hit default case');
+      }
     }
   }
 
   private parseConfigMultiCheckbox(type: string, value: any) {
-    switch (type) {
-      case 'size':
-        this.multiCheckboxConfig = {
-          ...this.multiCheckboxConfig
-        };
-
-        if (this.multiCheckboxConfig.parent) {
-          this.multiCheckboxConfig.parent = {
-            ...this.multiCheckboxConfig?.parent,
-            size: value.toLowerCase()
+    if (value !== null) {
+      switch (type) {
+        case 'size':
+          this.multiCheckboxConfig = {
+            ...this.multiCheckboxConfig
           };
-        }
-
-        this.multiCheckboxConfig.children?.forEach((res) => {
-          res.size = value.toLowerCase();
-        });
-        break;
-      case 'required':
-        this.multiCheckboxConfig = {
-          ...this.multiCheckboxConfig
-        };
-
-        if (this.multiCheckboxConfig.parent) {
-          this.multiCheckboxConfig.parent = {
-            ...this.multiCheckboxConfig?.parent,
-            required: value === 'True'
+  
+          if (this.multiCheckboxConfig.parent) {
+            this.multiCheckboxConfig.parent = {
+              ...this.multiCheckboxConfig?.parent,
+              size: value.toLowerCase()
+            };
+          }
+  
+          this.multiCheckboxConfig.children?.forEach((res) => {
+            res.size = value.toLowerCase();
+          });
+          break;
+        case 'required':
+          this.multiCheckboxConfig = {
+            ...this.multiCheckboxConfig
           };
-        }
-
-        break;
-      case 'label':
-        this.multiCheckboxConfig = {
-          ...this.multiCheckboxConfig
-        };
-
-        if (this.multiCheckboxConfig.parent) {
-          this.multiCheckboxConfig.parent = {
-            ...this.multiCheckboxConfig?.parent,
-            label: value === 'True' ? 'Label Text' : undefined
+  
+          if (this.multiCheckboxConfig.parent) {
+            this.multiCheckboxConfig.parent = {
+              ...this.multiCheckboxConfig?.parent,
+              required: value === 'True'
+            };
+          }
+  
+          break;
+        case 'label':
+          this.multiCheckboxConfig = {
+            ...this.multiCheckboxConfig
           };
-        }
-        break;
-      case 'desc':
-        this.multiCheckboxConfig = {
-          ...this.multiCheckboxConfig
-        };
-        if (this.multiCheckboxConfig.parent) {
-          this.multiCheckboxConfig.parent = {
-            ...this.multiCheckboxConfig?.parent,
-            desc: value === 'True' ? 'Description line of text' : undefined
+  
+          if (this.multiCheckboxConfig.parent) {
+            this.multiCheckboxConfig.parent = {
+              ...this.multiCheckboxConfig?.parent,
+              label: value === 'True' ? 'Label Text' : undefined
+            };
+          }
+          break;
+        case 'desc':
+          this.multiCheckboxConfig = {
+            ...this.multiCheckboxConfig
           };
-        }
-        break;
-      case 'hint':
-        this.multiCheckboxConfig = {
-          ...this.multiCheckboxConfig
-        };
-
-        if (this.multiCheckboxConfig.parent) {
-          this.multiCheckboxConfig.parent = {
-            ...this.multiCheckboxConfig?.parent,
-            helpText: value === 'True' ? 'Hint Text' : undefined
+          if (this.multiCheckboxConfig.parent) {
+            this.multiCheckboxConfig.parent = {
+              ...this.multiCheckboxConfig?.parent,
+              desc: value === 'True' ? 'Description line of text' : undefined
+            };
+          }
+          break;
+        case 'hint':
+          this.multiCheckboxConfig = {
+            ...this.multiCheckboxConfig
           };
-        }
-        break;
-      case 'error':
-        this.errorState = value;
-        this.determineErrorState(
-          this.errorState,
-          this.formMultiCheckbox,
-          this.multiCheckboxConfig?.parent?.id || '',
-          CheckboxTypes.multi
-        );
-        break;
-      case 'state':
-        this.toggleDisabled(
-          value,
-          this.multiCheckboxConfig?.parent?.id || '',
-          this.formMultiCheckbox
-        );
-        this.multiCheckboxConfig.children?.forEach((child) => {
-          this.toggleDisabled(value, child.id, this.formMultiCheckbox);
-        });
-
-        //re-set error if error was set before disabled
-        if(value === false && this.errorState !== 'None') {
+  
+          if (this.multiCheckboxConfig.parent) {
+            this.multiCheckboxConfig.parent = {
+              ...this.multiCheckboxConfig?.parent,
+              helpText: value === 'True' ? 'Hint Text' : undefined
+            };
+          }
+          break;
+        case 'error':
+          this.errorState = value;
           this.determineErrorState(
             this.errorState,
             this.formMultiCheckbox,
             this.multiCheckboxConfig?.parent?.id || '',
             CheckboxTypes.multi
           );
-        }
-        break;
-      default:
-        console.log('Hit default case');
+          break;
+        case 'state':
+          this.toggleDisabled(
+            value,
+            this.multiCheckboxConfig?.parent?.id || '',
+            this.formMultiCheckbox
+          );
+          this.multiCheckboxConfig.children?.forEach((child) => {
+            this.toggleDisabled(value, child.id, this.formMultiCheckbox);
+          });
+  
+          //re-set error if error was set before disabled
+          if(value === false && this.errorState !== 'None') {
+            this.determineErrorState(
+              this.errorState,
+              this.formMultiCheckbox,
+              this.multiCheckboxConfig?.parent?.id || '',
+              CheckboxTypes.multi
+            );
+          }
+          break;
+        default:
+          console.log('Hit default case');
+      }
     }
   }
 
   private parseConfigGroupCheckbox(type: string, value: any) {
-    switch (type) {
-      case 'size':
-        this.groupCheckboxConfig = {
-          ...this.groupCheckboxConfig
-        };
-
-        this.groupCheckboxConfig.children?.forEach((res) => {
-          res.size = value.toLowerCase();
-        });
-        break;
-      case 'required':
-        if(this.groupCheckboxConfig.children) {
-          if (this.groupCheckboxConfig.children?.length > 0) {
-            this.groupCheckboxConfig.children[0] = {
-              ...this.groupCheckboxConfig.children[0],
-              required: value === 'True'
-            };
+    if (value !== null) {
+      switch (type) {
+        case 'size':
+          this.groupCheckboxConfig = {
+            ...this.groupCheckboxConfig
+          };
+  
+          this.groupCheckboxConfig.children?.forEach((res) => {
+            res.size = value.toLowerCase();
+          });
+          break;
+        case 'required':
+          if(this.groupCheckboxConfig.children) {
+            if (this.groupCheckboxConfig.children?.length > 0) {
+              this.groupCheckboxConfig.children[0] = {
+                ...this.groupCheckboxConfig.children[0],
+                required: value === 'True'
+              };
+            }
           }
-        }
-        break;
-      case 'label':
-        if(this.groupCheckboxConfig.children) {
-          if (this.groupCheckboxConfig.children?.length > 0) {
-            this.groupCheckboxConfig.children[0] = {
-              ...this.groupCheckboxConfig.children[0],
-              label: value === 'True' ? 'Label Text' : undefined
-            };
+          break;
+        case 'label':
+          if(this.groupCheckboxConfig.children) {
+            if (this.groupCheckboxConfig.children?.length > 0) {
+              this.groupCheckboxConfig.children[0] = {
+                ...this.groupCheckboxConfig.children[0],
+                label: value === 'True' ? 'Label Text' : undefined
+              };
+            }
           }
-        }
-        break;
-      case 'desc':
-        if(this.groupCheckboxConfig.children) {
-          if (this.groupCheckboxConfig.children?.length > 0) {
-            this.groupCheckboxConfig.children[0] = {
-              ...this.groupCheckboxConfig.children[0],
-              desc: value === 'True' ? 'Description line of text' : undefined
-            };
+          break;
+        case 'desc':
+          if(this.groupCheckboxConfig.children) {
+            if (this.groupCheckboxConfig.children?.length > 0) {
+              this.groupCheckboxConfig.children[0] = {
+                ...this.groupCheckboxConfig.children[0],
+                desc: value === 'True' ? 'Description line of text' : undefined
+              };
+            }
           }
-        }
-        break;
-      case 'hint':
-        if(this.groupCheckboxConfig.children) {
-          if (this.groupCheckboxConfig.children?.length > 0) {
-            this.groupCheckboxConfig.children[0] = {
-              ...this.groupCheckboxConfig.children[0],
-              helpText: value === 'True' ? 'Hint Text' : undefined
-            };
+          break;
+        case 'hint':
+          if(this.groupCheckboxConfig.children) {
+            if (this.groupCheckboxConfig.children?.length > 0) {
+              this.groupCheckboxConfig.children[0] = {
+                ...this.groupCheckboxConfig.children[0],
+                helpText: value === 'True' ? 'Hint Text' : undefined
+              };
+            }
           }
-        }
-        break;
-      case 'error':
-        this.errorState = value;
-        this.determineErrorState(
-          value,
-          this.formGroupCheckbox,
-          this.groupCheckboxConfig?.parent?.id || '',
-          CheckboxTypes.group
-        );
-        break;
-      case 'state':
-        this.groupCheckboxConfig.children?.forEach((child) => {
-          this.toggleDisabled(value, child.id, this.formGroupCheckbox);
-        });
-
-        //re-set error if error was set before disabled
-        if(value === false && this.errorState !== 'None') {
+          break;
+        case 'error':
+          this.errorState = value;
           this.determineErrorState(
-            this.errorState,
+            value,
             this.formGroupCheckbox,
-            this.groupCheckboxConfig.id,
+            this.groupCheckboxConfig?.parent?.id || '',
             CheckboxTypes.group
           );
-        }
-        break;
-      default:
-        console.log('Hit default case');
+          break;
+        case 'state':
+          this.groupCheckboxConfig.children?.forEach((child) => {
+            this.toggleDisabled(value, child.id, this.formGroupCheckbox);
+          });
+  
+          //re-set error if error was set before disabled
+          if(value === false && this.errorState !== 'None') {
+            this.determineErrorState(
+              this.errorState,
+              this.formGroupCheckbox,
+              this.groupCheckboxConfig.id,
+              CheckboxTypes.group
+            );
+          }
+          break;
+        default:
+          console.log('Hit default case');
+      }
     }
   }
 
