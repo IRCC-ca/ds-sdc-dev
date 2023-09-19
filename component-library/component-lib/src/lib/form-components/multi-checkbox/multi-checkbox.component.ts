@@ -30,7 +30,7 @@ export interface IMultiCheckboxConfig {
   templateUrl: './multi-checkbox.component.html',
   styleUrls: ['./multi-checkbox.component.css']
 })
-export class MultiCheckboxComponent implements OnInit, DoCheck {
+export class MultiCheckboxComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   configSub?: Subscription;
   errorSub?: Subscription;
@@ -43,21 +43,21 @@ export class MultiCheckboxComponent implements OnInit, DoCheck {
 
   errorMessages: IErrorPairsMutltiCheckBox[] = [];
   errorMessagesAccumulator: IErrorPairsMutltiCheckBox[] = [];
-  errorSize: keyof typeof DSSizes | DSSizes = 'large';
   disabledStatus: boolean = false;
+  groupCheckbox: boolean = true;
 
+  // returns size depending on if its group or multicheckbox
+  get getSize() : keyof typeof DSSizes {
+    if(this.groupCheckbox && this.config.children) {
+      return this.config?.children[0]?.size || 'large'
+    }
+    return this.config.parent?.size || 'large'
+  }
+  
   constructor(
     private multicheckboxService: MultiCheckboxService,
     public standAloneFunctions: StandAloneFunctions
   ) {}
-
-  ngDoCheck() {
-    if (this.config.parent != undefined) {
-      this.errorSize = this.config.parent.size || DSSizes.large;
-    } else if (this.config.children) {
-      this.errorSize = this.config.children[0].size || DSSizes.large;
-    }
-  }
 
   ngOnInit() {
     //errorChecking
@@ -90,6 +90,7 @@ export class MultiCheckboxComponent implements OnInit, DoCheck {
     );
 
     if (this.config.parent != undefined) {
+      this.groupCheckbox = false
       this.configSub =
         this.multicheckboxService.multiCheckboxEventObs$.subscribe(
           (response) => {
