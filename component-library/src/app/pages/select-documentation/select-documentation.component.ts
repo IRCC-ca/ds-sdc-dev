@@ -10,6 +10,7 @@ import {
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
+import { ContentItem } from '@app/share/interface/content-item.interface';
 
 @Component({
   selector: 'app-select-documentation',
@@ -49,6 +50,47 @@ export class SelectDocumentationComponent implements OnInit {
     'Input.AccessInputsListItem1',
     'Select.FigmaAccess2',
     'Select.FigmaAccess3'
+  ];
+
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'General.RequiredIndicatorHeading',
+      description: 'General.RequiredIndicatorTxt'
+    },
+    {
+      title: 'General.LabelHeading',
+      description: 'General.AnatomyLabelText'
+    },
+    {
+      title: 'General.Description',
+      description: 'General.AnatomyDescText'
+    },
+    {
+      title: 'General.Hint',
+      description: 'General.AnatomyHintText'
+    },
+    {
+      title: 'General.InputField',
+      description: 'Input.AnatomyInputFieldText'
+    },
+    {
+      title: 'General.Error',
+      description: 'General.AnatomyErrorText'
+    },
+    {
+      title: 'Select.Anatomy.Dropdown',
+      description: 'Select.Anatomy.DropdownText'
+    }
+  ];
+
+  accessibilityContent: string[] = [
+    'General.AccessibilityContentItem1',
+    'Input.AccessibilityContentItem2',
+    'Input.AccessibilityContentItem3',
+    'Input.AccessibilityContentItem4',
+    'Input.AccessibilityContentItem5',
+    'Input.AccessibilityContentItem6',
+    'General.AccessibilityContentItemMax'
   ];
 
   constructor(

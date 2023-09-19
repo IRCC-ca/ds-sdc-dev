@@ -5,26 +5,24 @@
 
 @include page.template;
 
-.usage-figma {
-  .access-input-1-2 {
-    @include grid.up-laptop-layout {
-      padding-left: 22px;
+.block {
+  &__usage-figma {
+    .access-input-1-2 {
+      @include grid.up-laptop-layout {
+        padding-left: 22px;
+      }
     }
-  }
 
-  .image-container {
-    filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
-  }
+    .image-1 {
+      max-width: 167px;
+    }
 
-  .image-1 {
-    max-width: 167px;
-  }
+    .accessInput3 {
+      max-width: 210px;
 
-  .accessInput3 {
-    max-width: 210px;
-
-    @include grid.up-laptop-layout {
-      margin-left: 36px;
+      @include grid.up-laptop-layout {
+        margin-left: 36px;
+      }
     }
   }
 }

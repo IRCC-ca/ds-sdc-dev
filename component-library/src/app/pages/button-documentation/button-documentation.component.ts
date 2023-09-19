@@ -8,6 +8,7 @@ import {
 import { IButtonConfig } from 'ircc-ds-angular-component-library';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { DSViewPortSize } from 'ircc-ds-angular-component-library';
+import { ContentItem } from '@app/share/interface/content-item.interface';
 
 @Component({
   selector: 'app-button-documentation',
@@ -60,6 +61,21 @@ export class ButtonDocumentationComponent implements OnInit {
       size: 'large'
     }
   };
+
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'Buttons.AnatomyBGHeading',
+      description: 'Buttons.AnatomyBGText'
+    },
+    {
+      title: 'Buttons.ConfigIconHeading',
+      description: 'Buttons.AnatomyIconText'
+    },
+    {
+      title: 'General.LabelHeading',
+      description: 'Buttons.AnatomyLblText'
+    }
+  ];
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
