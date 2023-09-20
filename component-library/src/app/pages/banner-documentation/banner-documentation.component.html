@@ -225,7 +225,7 @@
       </div>
       <div class="element-wrapper-container">
         <div class="row">
-          <div class="col-6">
+          <div class="col-12">
             <h3>
               {{ 'Banner.BannerConfig.CTA3Label' | translate }}
             </h3>
@@ -696,13 +696,10 @@
         <h3>
           {{ 'General.AccessibilityColourHeading' | translate }}
         </h3>
-        <ul>
-          <li
-            class="list-item"
-            *ngFor="let item of accessibilityColorContrast"
-            [innerHtml]="item | translate"
-          ></li>
-        </ul>
+        <p
+          *ngFor="let item of accessibilityColorContrast"
+          [innerHtml]="item | translate"
+        ></p>
       </div>
       <div class="element-wrapper-container">
         <h3>
