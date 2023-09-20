@@ -7,6 +7,10 @@ import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@ngx-translate/core';
+import {
+  IDynamicImageComponentConfig,
+  DSViewPortSize
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-spinner-documentation',
@@ -22,6 +26,32 @@ export class SpinnerDocumentationComponent implements OnInit {
     title: 'Spinner.MainTitle',
     heading: 'h1',
     anchorType: slugAnchorType.primary
+  };
+
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/spinner-content/spinner-anatomy-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/spinner-content/spinner-anatomy.png',
+    altText: 'Spinner.Anatomy.ImgAlt',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/spinner-content/spinner-specs-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/spinner-content/spinner-specs.png',
+    altText: 'Spinner.Specs.ImgAlt',
+    lazyLoad: true
   };
 
   anatomyContentItems: ContentItem[] = [
