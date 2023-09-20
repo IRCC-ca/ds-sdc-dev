@@ -1,10 +1,10 @@
-@use "../../../scss/grid";
-@use "@ircc-ca/ds-sdc-core/typography/typography";
+@use '../../../scss/grid';
+@use '@ircc-ca/ds-sdc-core/typography/typography';
 
 :host {
   @include grid.row;
 
-  >.content-doc-wrapper {
+  > .content-doc-wrapper {
     @include grid.col-12;
 
     @include grid.up-laptop-layout {
@@ -55,6 +55,7 @@
 
         a {
           color: var(--navy-7);
+          padding: 0;
           &:hover {
             color: var(--blue-8);
             background-color: transparent;
