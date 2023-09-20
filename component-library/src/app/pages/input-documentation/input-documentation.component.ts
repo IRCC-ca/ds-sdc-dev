@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
+  DSViewPortSize,
+  IDynamicImageComponentConfig,
   IInputComponentConfig,
   InputTypes
 } from 'ircc-ds-angular-component-library';
@@ -55,50 +57,31 @@ export class InputDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
-  anatomyContentItems: ContentItem[] = [
-    {
-      title: 'General.LabelHeading',
-      description: 'General.AnatomyLabelText'
-    },
-    {
-      title: 'General.RequiredIndicatorHeading',
-      description: 'General.RequiredIndicatorTxt'
-    },
-    {
-      title: 'General.Description',
-      description: 'General.AnatomyDescText'
-    },
-    {
-      title: 'General.Hint',
-      description: 'General.AnatomyHintText'
-    },
-    {
-      title: 'General.InputField',
-      description: 'Input.AnatomyInputFieldText'
-    },
-    {
-      title: 'Input.AnatomyInputContentHeading',
-      description: 'Input.AnatomyInputContentText'
-    },
-    {
-      title: 'General.Error',
-      description: 'General.AnatomyErrorText'
-    },
-    {
-      title: 'Input.AnatomyPasswordHeading',
-      description: 'Input.AnatomyPasswordText'
-    }
-  ];
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/input-content/input-anatomy-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/input-content/input-anatomy.png',
+    altText: 'Input.AnatomyImgAlt',
+    lazyLoad: true
+  };
 
-  accessibilityContent: string[] = [
-    'General.AccessibilityContentItem1',
-    'Input.AccessibilityContentItem2',
-    'Input.AccessibilityContentItem3',
-    'Input.AccessibilityContentItem4',
-    'Input.AccessibilityContentItem5',
-    'Input.AccessibilityContentItem6',
-    'General.AccessibilityContentItemMax'
-  ];
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/input-content/input-specs-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/input-content/input-specs.png',
+    altText: 'Input.SpecsImgAlt',
+    lazyLoad: true
+  };
 
   constructor(
     private translate: TranslateService,
