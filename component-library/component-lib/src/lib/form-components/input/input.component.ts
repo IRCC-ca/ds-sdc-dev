@@ -229,25 +229,29 @@ export class InputComponent
       );
     }
 
-    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
     switch (this.currentStatus) {
       case 'DISABLED':
         this.setDisabledState(true);
         break;
       default:
         this.setDisabledState(false);
-    }    //Get the error text when the formControl value changes
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
-      this.getAriaErrorText();
-      if(change !== this.currentStatus){
-        this.currentStatus = change;
-        switch (this.currentStatus) {
-          case 'DISABLED':
-            this.setDisabledState(true);
-            break;
-          default:
-            this.setDisabledState(false);
-        }}
+    } //Get the error text when the formControl value changes
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((change) => {
+        this.getAriaErrorText();
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          switch (this.currentStatus) {
+            case 'DISABLED':
+              this.setDisabledState(true);
+              break;
+            default:
+              this.setDisabledState(false);
+          }
+        }
       });
   }
 
@@ -331,8 +335,7 @@ export class InputComponent
       this.errorIds = [];
     }
 
-    if (this.config.type === InputTypes.text)
-      this.typeControl = InputTypes.text;
+    if (this.config.type) this.typeControl = this.config.type;
 
     this.showPassword =
       this.config.type === InputTypes.password &&
@@ -381,13 +384,13 @@ export class InputComponent
     this.focusEvent.emit(false);
   }
 
-  changeValue(event: any){
+  changeValue(event: any) {
     this.writeValue(event.srcElement.value);
     this.onTouch();
   }
 
   writeValue(value: string): void {
-      this.onChange(value);
+    this.onChange(value);
   }
 
   registerOnChange(fn: any): void {
@@ -402,9 +405,9 @@ export class InputComponent
    * Apply a disabled state
    */
   setDisabledState(isDisabled: boolean) {
-    if(isDisabled){
+    if (isDisabled) {
       this.formGroup.get(this.config.id)?.disable();
-    }else{
+    } else {
       this.formGroup.get(this.config.id)?.enable();
     }
   }
