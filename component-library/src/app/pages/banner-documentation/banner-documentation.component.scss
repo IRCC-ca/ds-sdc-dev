@@ -25,15 +25,15 @@
       }
     }
   }
-}
-
-::ng-deep {
-  app-component-preview {
-    .background-white.preview-wrapper {
-      padding: {
-        top: 24px;
-        bottom: 14px;
-      };
+  ::ng-deep {
+    app-component-preview {
+      .background-white.preview-wrapper {
+        padding: {
+          top: 24px;
+          bottom: 14px;
+        };
+      }
     }
   }
 }
+
