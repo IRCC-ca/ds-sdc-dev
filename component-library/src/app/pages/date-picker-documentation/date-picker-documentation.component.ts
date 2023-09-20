@@ -7,6 +7,10 @@ import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { ContentItem } from '@app/share/interface/content-item.interface';
+import {
+  IDynamicImageComponentConfig,
+  DSViewPortSize
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-date-picker-documentation',
@@ -23,6 +27,32 @@ export class DatePickerDocumentationComponent implements OnInit {
     title: 'DatePicker.MainTitle',
     heading: 'h1',
     anchorType: slugAnchorType.primary
+  };
+
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/datePicker-content/datepicker-anatomy-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/datePicker-content/anatomy.png',
+    altText: 'DatePicker.Anatomy.ImgAlt',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/datePicker-content/datepicker-specs-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/datePicker-content/specs.png',
+    altText: 'DatePicker.Specs.ImgAlt',
+    lazyLoad: true
   };
 
   anatomyContentItems: ContentItem[] = [

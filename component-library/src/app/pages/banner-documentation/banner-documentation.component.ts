@@ -3,7 +3,11 @@ import {
   slugAnchorType,
   slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
-import { IBannerConfig } from 'ircc-ds-angular-component-library';
+import {
+  DSViewPortSize,
+  IBannerConfig,
+  IDynamicImageComponentConfig
+} from 'ircc-ds-angular-component-library';
 import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -64,6 +68,32 @@ export class BannerDocumentationComponent implements OnInit {
     title: 'Banner.Title',
     heading: 'h1',
     anchorType: slugAnchorType.primary
+  };
+
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/banner-content/banner-anatomy-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/banner-content/banner-anatomy.png',
+    altText: 'Banner.Anatomy.ImgAlt',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/banner-content/banner-spec-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/banner-content/banner-specs.png',
+    altText: 'Banner.Specs.ImgAlt',
+    lazyLoad: true
   };
 
   figmaDirections: string[] = [

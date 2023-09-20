@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ISelectConfig } from 'ircc-ds-angular-component-library';
+import {
+  DSViewPortSize,
+  IDynamicImageComponentConfig,
+  ISelectConfig
+} from 'ircc-ds-angular-component-library';
 
 import {
   slugAnchorType,
@@ -38,6 +42,32 @@ export class SelectDocumentationComponent implements OnInit {
     title: 'Select.Title',
     heading: 'h1',
     anchorType: slugAnchorType.primary
+  };
+
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/select-content/anatomy-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/select-content/select-anatomy.png',
+    altText: 'Select.Alt.Anatomy',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/select-content/select-specs-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/select-content/select-specs.png',
+    altText: 'Select.Alt.Specs',
+    lazyLoad: true
   };
 
   figmaDirections: string[] = [
