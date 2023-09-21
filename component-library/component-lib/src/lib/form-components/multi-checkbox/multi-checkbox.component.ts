@@ -223,7 +223,10 @@ export class MultiCheckboxComponent implements OnInit {
       }
     } else {
       this.errorMessages = this.errorMessages.filter(
-        (errorPair) => errorPair.id != id
+        (errorPair) => 
+        {
+          errorPair.id != id
+        }
       );
       this.filterErrorList();
     }
@@ -242,8 +245,10 @@ export class MultiCheckboxComponent implements OnInit {
       }
     });
 
-    if(this.errorMessagesAccumulator[0]) {
-      this.errorMessagesAccumulator[0].id = this.errorMessagesAccumulator[0].id + "_error0"
+    if(this.errorMessagesAccumulator[0]){
+      if(this.errorMessagesAccumulator[0].id && !this.errorMessagesAccumulator[0].id.endsWith("_error0")) {
+        this.errorMessagesAccumulator[0].id = this.errorMessagesAccumulator[0].id + "_error0"
+      }
     }
   }
 
