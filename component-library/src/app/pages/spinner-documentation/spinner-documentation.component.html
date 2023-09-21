@@ -245,11 +245,9 @@
         </h3>
         <div class="row">
           <div [style.max-width]="'100%'">
-            <img
-              src="assets/img/spinner-content/spinner-minMaxWidth.png"
-              alt="{{ 'Spinner.MaxMinWidthImgAlt' | translate }}"
-              class="mb_12"
-            />
+            <ircc-cl-lib-dynamic-image
+              [config]="imageMaxWidthConfig"
+            ></ircc-cl-lib-dynamic-image>
             <p>{{ 'Spinner.MaxMinWidthText' | translate }}</p>
           </div>
         </div>

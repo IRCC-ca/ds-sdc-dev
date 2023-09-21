@@ -28,6 +28,19 @@ export class SpinnerDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
+  imageMaxWidthConfig: IDynamicImageComponentConfig = {
+    id: 'max-width-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/spinner-content/spinner-minMaxWidth-mobile.png'
+      }
+    ],
+    defaultSrc: 'assets/img/spinner-content/spinner-minMaxWidth.png',
+    altText: 'Spinner.MaxMinWidthImgAlt',
+    lazyLoad: true
+  };
+
   imageAnatomyConfig: IDynamicImageComponentConfig = {
     id: 'anatomy-image',
     breakpoints: [
@@ -47,9 +60,13 @@ export class SpinnerDocumentationComponent implements OnInit {
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/spinner-content/spinner-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/spinner-content/spinner-specs-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/spinner-content/spinner-specs.png',
+    defaultSrc: 'assets/img/spinner-content/spinner-specs-desktop.png',
     altText: 'Spinner.Specs.ImgAlt',
     lazyLoad: true
   };
