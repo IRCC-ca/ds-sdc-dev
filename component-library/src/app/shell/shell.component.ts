@@ -42,7 +42,7 @@ export class ShellComponent implements OnInit {
 
   overviewPage: INavigationItemLink = {
     id: 'overviewPageNavItem',
-    label: ' Overview ',
+    label: 'Overview.Heading',
     type: 'link',
     children: [],
     href: 'ROUTES.overview'
@@ -50,7 +50,7 @@ export class ShellComponent implements OnInit {
 
   forDeveloperPage: INavigationItemLink = {
     id: 'forDeveloperPagenNavItem',
-    label: 'For developers',
+    label: 'General.DeveloperHeading',
     type: 'link',
     children: [],
     href: 'ROUTES.forDevelopers'
@@ -58,7 +58,7 @@ export class ShellComponent implements OnInit {
 
   forDesignersPage: INavigationItemLink = {
     id: 'forDesignersPageNavItem',
-    label: 'For designers',
+    label: 'General.DesignerHeading',
     type: 'link',
     children: [],
     href: 'ROUTES.forDesigners'
@@ -66,7 +66,7 @@ export class ShellComponent implements OnInit {
 
   requestFormPage: INavigationItemLink = {
     id: 'requestFormPageNavItem',
-    label: ' Submit a request ',
+    label: 'RequestForm.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.requestForm'
@@ -74,7 +74,7 @@ export class ShellComponent implements OnInit {
 
   utilPage: INavigationItemLink = {
     id: 'utilPageNavItem',
-    label: ' Utilities ',
+    label: 'Utilities.Heading',
     type: 'link',
     children: [],
     href: 'ROUTES.utilities'
@@ -82,7 +82,7 @@ export class ShellComponent implements OnInit {
 
   buttonsPage: INavigationItemLink = {
     id: 'buttonsPageNavItem',
-    label: ' Buttons ',
+    label: 'Buttons.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.buttons'
@@ -90,7 +90,7 @@ export class ShellComponent implements OnInit {
 
   bannerPage: INavigationItemLink = {
     id: 'bannerPageNavItem',
-    label: ' Banner ',
+    label: 'Banner.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.banner'
@@ -98,7 +98,7 @@ export class ShellComponent implements OnInit {
 
   inputPage: INavigationItemLink = {
     id: 'inputPageNavItem',
-    label: ' Input ',
+    label: 'Input.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.input'
@@ -106,7 +106,7 @@ export class ShellComponent implements OnInit {
 
   selectPage: INavigationItemLink = {
     id: 'selectPageNavItem',
-    label: ' Select ',
+    label: 'Select.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.select'
@@ -114,7 +114,7 @@ export class ShellComponent implements OnInit {
 
   datePickerPage: INavigationItemLink = {
     id: 'datePickerPageNavItem',
-    label: ' Date Picker ',
+    label: 'DatePicker.MainTitle',
     type: 'link',
     children: [],
     href: 'ROUTES.datePicker'
@@ -122,7 +122,7 @@ export class ShellComponent implements OnInit {
 
   iconBtnPage: INavigationItemLink = {
     id: 'iconBtnPageNavItem',
-    label: ' Icon Button ',
+    label: 'IconButtonDocumentation.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.iconButton'
@@ -138,7 +138,7 @@ export class ShellComponent implements OnInit {
 
   spinnerPage: INavigationItemLink = {
     id: 'spinnerPageNavItem',
-    label: ' Spinner ',
+    label: 'Spinner.MainTitle',
     type: 'link',
     children: [],
     href: 'ROUTES.spinner'
@@ -146,7 +146,7 @@ export class ShellComponent implements OnInit {
 
   autoCompletePage: INavigationItemLink = {
     id: 'autoCompletePageNavItem',
-    label: ' AutoComplete ',
+    label: 'AutoComplete.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.autocomplete'
@@ -154,7 +154,7 @@ export class ShellComponent implements OnInit {
 
   progressIndicatorPage: INavigationItemLink = {
     id: 'progressIndicatorPageNavItem',
-    label: ' Progress Indicator ',
+    label: 'ProgressIndicator.MainTitle',
     type: 'link',
     children: [],
     href: 'ROUTES.progressIndicator'
@@ -163,7 +163,7 @@ export class ShellComponent implements OnInit {
   gettingStartedNav: INavigationItemAccordion = {
     open: true,
     id: 'gettingStartedNavAccordian',
-    label: 'Getting Started',
+    label: 'Developers.GetStartedHeading',
     type: 'accordion',
     children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
   };
@@ -171,7 +171,7 @@ export class ShellComponent implements OnInit {
   foundationsNav: INavigationItemAccordion = {
     open: true,
     id: 'foundationsNavAccordian',
-    label: 'Foundations',
+    label: 'LeftSideNav.title.foundation',
     type: 'accordion',
     children: [this.utilPage]
   };
@@ -179,26 +179,26 @@ export class ShellComponent implements OnInit {
   componentNav: INavigationItemAccordion = {
     open: true,
     id: 'componentNavAccordian',
-    label: 'Components',
+    label: 'LeftSideNav.title.components',
     type: 'accordion',
     children: [
       this.autoCompletePage,
       this.bannerPage,
-      this.inputPage,
-      this.selectPage,
       this.buttonsPage,
       this.datePickerPage,
       this.iconBtnPage,
+      this.inputPage,
       this.multiCheckboxPage,
+      this.progressIndicatorPage,
+      this.selectPage,
       this.spinnerPage,
-      this.progressIndicatorPage
     ]
   };
 
   supportNav: INavigationItemAccordion = {
     open: true,
     id: 'supportNavAccordian',
-    label: 'Support',
+    label: 'LeftSideNav.title.support',
     type: 'accordion',
     children: [this.requestFormPage]
   };
