@@ -502,15 +502,15 @@ export class CheckboxDocCodeComponent implements OnInit {
     tab: [
       {
         id: 'single-checkbox',
-        title: ' Checkbox '
+        title: 'Checkbox.Title'
       },
       {
         id: 'group-checkbox',
-        title: 'Checkbox Group'
+        title: 'Checkbox.GroupTitle'
       },
       {
         id: 'multi-checkbox',
-        title: 'Checkbox Parent/Child'
+        title: 'Checkbox.MultiTitle'
       }
     ]
   };
