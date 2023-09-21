@@ -57,7 +57,7 @@ export interface ICheckBoxComponentConfig {
   ]
 })
 export class CheckboxComponent
-  implements ControlValueAccessor, OnInit, OnChanges, DoCheck
+  implements ControlValueAccessor, OnInit, OnChanges
 {
   formGroupEmpty: FormGroup = new FormGroup({});
   configSub?: Subscription;
@@ -216,7 +216,6 @@ export class CheckboxComponent
         this.multicheckboxService.errorEvent(this.config.id);
       });
     }
-
     this.currentStatus =
       this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
     this.toggleDisabledState();
@@ -237,13 +236,9 @@ export class CheckboxComponent
       });
   }
 
-  ngDoCheck() {
-    this.setStatus();
-  }
-
   setStatus() {
     this.currentStatus =
-      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
     this.currentTouch = this.config.formGroup.controls[this.config.id].touched;
   }
 
@@ -309,7 +304,7 @@ export class CheckboxComponent
   /**
    * Return error state from FormGroup, must be touched & invalid
    */
-  getErrorState(): boolean {
+  get getErrorState(): boolean {
     return (
       (this.config.formGroup.get(this.config.id)?.touched &&
         this.config.formGroup.get(this.config.id)?.invalid) ??
