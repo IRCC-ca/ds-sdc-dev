@@ -189,11 +189,9 @@
         </h3>
         <div class="row">
           <div [style.max-width]="'100%'">
-            <img
-              src="assets/img/input-content/input-max-width.png"
-              alt="{{ 'Input.MaxMinWidthImgAlt' | translate }}"
-              class="mb_12"
-            />
+            <ircc-cl-lib-dynamic-image
+              [config]="imageMinMaxConfig"
+            ></ircc-cl-lib-dynamic-image>
             <p>{{ 'Input.MaxMinWidthText' | translate }}</p>
           </div>
         </div>

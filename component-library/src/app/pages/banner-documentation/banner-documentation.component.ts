@@ -70,15 +70,36 @@ export class BannerDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
+  imageMinMaxConfig: IDynamicImageComponentConfig = {
+    id: 'min-max-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/banner-content/banner-max-width-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/banner-content/banner-max-width-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/banner-content/banner-max-width-desktop.png',
+    altText: 'Banner.DesignGuideLines.bannerMinMaxWidthAlt',
+    lazyLoad: true
+  };
+
   imageAnatomyConfig: IDynamicImageComponentConfig = {
     id: 'anatomy-image',
     breakpoints: [
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/banner-content/banner-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/banner-content/banner-anatomy-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/banner-content/banner-anatomy.png',
+    defaultSrc: 'assets/img/banner-content/banner-anatomy-desktop.png',
     altText: 'Banner.Anatomy.ImgAlt',
     lazyLoad: true
   };
@@ -88,10 +109,14 @@ export class BannerDocumentationComponent implements OnInit {
     breakpoints: [
       {
         maxWidth: DSViewPortSize.mobile,
-        src: 'assets/img/banner-content/banner-spec-mobile.png'
+        src: 'assets/img/banner-content/banner-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/banner-content/banner-specs-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/banner-content/banner-specs.png',
+    defaultSrc: 'assets/img/banner-content/banner-specs-desktop.png',
     altText: 'Banner.Specs.ImgAlt',
     lazyLoad: true
   };

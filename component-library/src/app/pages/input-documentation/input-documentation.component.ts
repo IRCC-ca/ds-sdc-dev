@@ -57,15 +57,36 @@ export class InputDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
+  imageMinMaxConfig: IDynamicImageComponentConfig = {
+    id: 'min-max-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/input-content/input-max-width-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/input-content/input-max-width-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/input-content/input-max-width-desktop.png',
+    altText: 'Input.MaxMinWidthImgAlt',
+    lazyLoad: true
+  };
+
   imageAnatomyConfig: IDynamicImageComponentConfig = {
     id: 'anatomy-image',
     breakpoints: [
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/input-content/input-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/input-content/input-anatomy-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/input-content/input-anatomy.png',
+    defaultSrc: 'assets/img/input-content/input-anatomy-desktop.png',
     altText: 'Input.AnatomyImgAlt',
     lazyLoad: true
   };
@@ -76,9 +97,13 @@ export class InputDocumentationComponent implements OnInit {
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/input-content/input-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/input-content/input-specs-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/input-content/input-specs.png',
+    defaultSrc: 'assets/img/input-content/input-specs-desktop.png',
     altText: 'Input.SpecsImgAlt',
     lazyLoad: true
   };

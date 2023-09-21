@@ -44,15 +44,36 @@ export class SelectDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
+  imageMaxWidthConfig: IDynamicImageComponentConfig = {
+    id: 'min-max-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/select-content/select-max-width-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/select-content/select-max-width-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/select-content/select-max-width-desktop.png',
+    altText: 'Select.Alt.MinMax',
+    lazyLoad: true
+  };
+
   imageAnatomyConfig: IDynamicImageComponentConfig = {
     id: 'anatomy-image',
     breakpoints: [
       {
         maxWidth: DSViewPortSize.mobile,
-        src: 'assets/img/select-content/anatomy-mobile.png'
+        src: 'assets/img/select-content/select-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/select-content/select-anatomy-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/select-content/select-anatomy.png',
+    defaultSrc: 'assets/img/select-content/select-anatomy-desktop.png',
     altText: 'Select.Alt.Anatomy',
     lazyLoad: true
   };
@@ -63,9 +84,13 @@ export class SelectDocumentationComponent implements OnInit {
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/select-content/select-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/select-content/select-specs-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/select-content/select-specs.png',
+    defaultSrc: 'assets/img/select-content/select-specs-desktop.png',
     altText: 'Select.Alt.Specs',
     lazyLoad: true
   };
