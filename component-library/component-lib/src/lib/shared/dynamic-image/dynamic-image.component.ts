@@ -23,9 +23,9 @@ export interface IBreakpoint {
 }
 @Component({
   selector: 'ircc-cl-lib-dynamic-image',
-  templateUrl: './responsive-image.component.html'
+  templateUrl: './dynamic-image.component.html'
 })
-export class ResponsiveImageComponent implements OnInit, AfterViewInit {
+export class DynamicImageComponent implements OnInit, AfterViewInit {
   @ViewChild('image', { static: true }) image: ElementRef | undefined;
   @Input() config: IDynamicImageComponentConfig = {
     id: '',

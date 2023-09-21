@@ -17,7 +17,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { DomChangeDirective } from '../../shared/directives/dom-change.directive';
 import { FlyoutComponent } from './flyout/flyout.component';
 import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
-import { ResponsiveImageComponent } from './responsive-image/responsive-image.component';
+import { DynamicImageComponent } from './dynamic-image/dynamic-image.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ScrollingModule as ExperimentalScrollingModule } from '@angular/cdk-experimental/scrolling';
 
@@ -39,7 +39,7 @@ const IrccDsSharedComponents = [
   SpinnerComponent,
   FlyoutComponent,
   FlyoutOptionComponent,
-  ResponsiveImageComponent
+  DynamicImageComponent
 ];
 
 @NgModule({
@@ -61,4 +61,4 @@ const IrccDsSharedComponents = [
     ...IrccDsSharedComponents
   ]
 })
-export class IrccDsAngularComponentsSharedModule {}
+export class IrccDsAngularComponentsSharedModule { }
