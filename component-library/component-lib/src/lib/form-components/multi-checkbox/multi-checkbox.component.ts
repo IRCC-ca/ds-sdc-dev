@@ -225,7 +225,7 @@ export class MultiCheckboxComponent implements OnInit {
       this.errorMessages = this.errorMessages.filter(
         (errorPair) => 
         {
-          errorPair.id != id
+          return (errorPair.id)?.replace('_error0', '') != id
         }
       );
       this.filterErrorList();
