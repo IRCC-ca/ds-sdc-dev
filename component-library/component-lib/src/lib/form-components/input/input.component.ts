@@ -341,7 +341,11 @@ export class InputComponent
       this.errorIds = [];
     }
 
-    if (this.config.type) this.typeControl = this.config.type;
+    if (this.config.type === InputTypes.autocomplete) {
+      this.typeControl = InputTypes.text;
+    } else if (this.config.type) {
+      this.typeControl = this.config.type;
+    }
 
     this.showPassword =
       this.config.type === InputTypes.password &&
