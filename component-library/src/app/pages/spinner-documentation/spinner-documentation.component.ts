@@ -34,9 +34,13 @@ export class SpinnerDocumentationComponent implements OnInit {
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/spinner-content/spinner-minMaxWidth-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/spinner-content/spinner-minMaxWidth-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/spinner-content/spinner-minMaxWidth.png',
+    defaultSrc: 'assets/img/spinner-content/spinner-minMaxWidth-desktop.png',
     altText: 'Spinner.MaxMinWidthImgAlt',
     lazyLoad: true
   };
@@ -47,9 +51,13 @@ export class SpinnerDocumentationComponent implements OnInit {
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/spinner-content/spinner-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/spinner-content/spinner-anatomy-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/spinner-content/spinner-anatomy.png',
+    defaultSrc: 'assets/img/spinner-content/spinner-anatomy-desktop.png',
     altText: 'Spinner.Anatomy.ImgAlt',
     lazyLoad: true
   };
