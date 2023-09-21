@@ -15,7 +15,6 @@
 		"select": "select-documentation",
 		"datePicker": "datePicker-doc",
 		"iconButton": "icon-button-documentation",
-		"multiCheckbox": "multi-checkbox-documentation",
 		"checkbox": "checkbox-documentation",
 		"autocomplete": "autocomplete-documentation",
 		"spinner": "spinner-documentation",
@@ -936,9 +935,6 @@
 		"AccessibilityContentItem3": "Prevent keyboard traps. Every element that can be focused on using the keyboard can be unfocused using the keyboard.",
 		"LabellingText": "Icon buttons should have labels programmatically associated to them so the purpose of the icon button’s action is clear to screen reader users."
 	},
-	"MultiCheckboxDocumentation": {
-		"Title": "MultiCheckbox-doc"
-	},
 	"Spinner": {
 		"Title": "Spinner-doc",
 		"MainTitle": "Spinner",
@@ -1095,6 +1091,8 @@
 		"Intro": "Progress indicator are most commonly used to provide a way for clients and officers to make a range of selections (zero, one, or multiple)."
 	},
 	"Checkbox": {
-		"Title": "Checkbox"
+		"Title": "Checkbox",
+		"GroupTitle": "Checkbox Group",
+		"MultiTitle": "Parent/Child"
 	}
 }
