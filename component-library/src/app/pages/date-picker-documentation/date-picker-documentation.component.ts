@@ -35,6 +35,10 @@ export class DatePickerDocumentationComponent implements OnInit {
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/datePicker-content/datepicker-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/datePicker-content/datepicker-anatomy-tablet.png'
       }
     ],
     defaultSrc: 'assets/img/datePicker-content/anatomy.png',
@@ -48,9 +52,13 @@ export class DatePickerDocumentationComponent implements OnInit {
       {
         maxWidth: DSViewPortSize.mobile,
         src: 'assets/img/datePicker-content/datepicker-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/datePicker-content/datepicker-specs-tablet.png'
       }
     ],
-    defaultSrc: 'assets/img/datePicker-content/specs.png',
+    defaultSrc: 'assets/img/datePicker-content/datepicker-specs-desktop.png',
     altText: 'DatePicker.Specs.ImgAlt',
     lazyLoad: true
   };
