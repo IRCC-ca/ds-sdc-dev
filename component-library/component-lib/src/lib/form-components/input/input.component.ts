@@ -2,12 +2,15 @@ import {
   AfterContentChecked,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   EventEmitter,
   forwardRef,
   Input,
   OnChanges,
   OnInit,
-  Output
+  Output,
+  Renderer2,
+  ViewChild
 } from '@angular/core';
 import {
   AbstractControl,
@@ -112,6 +115,8 @@ export class InputComponent
   @Input() errorMessages?: IErrorPairs[];
   @Output() focusEvent = new EventEmitter();
 
+  @ViewChild('inputEl') inputEl?: ElementRef;
+
   disabled = false;
   focusState = false;
   showPassword?: boolean;
@@ -145,7 +150,8 @@ export class InputComponent
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private renderer: Renderer2
   ) {
     //set config from individual options, if present
     if (this.formGroup !== this.formGroupEmpty) {
@@ -365,6 +371,7 @@ export class InputComponent
   public clearvalue() {
     this.buttonAutoCompleteClearClicked = true;
     this.config.formGroup.controls[this.config.id].setValue('');
+    this.renderer.selectRootElement(this.inputEl?.nativeElement).focus();
     this.focusEvent.emit(true);
   }
 
