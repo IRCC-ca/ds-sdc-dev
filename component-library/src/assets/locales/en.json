@@ -260,7 +260,7 @@
 	},
 	"LeftSideNav": {
 		"title": {
-			"foundation": "Foundation",
+			"foundation": "Foundations",
 			"components": "Components",
 			"support": "Support"
 		},
@@ -1094,5 +1094,8 @@
 		"Title": "Checkbox",
 		"GroupTitle": "Checkbox Group",
 		"MultiTitle": "Parent/Child"
+	},
+	"AutoComplete": {
+		"Title": "AutoComplete"
 	}
 }

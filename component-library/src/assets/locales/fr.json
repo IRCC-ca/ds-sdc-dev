@@ -260,7 +260,7 @@
 	},
 	"LeftSideNav": {
 		"title": {
-			"foundation": "Fondation",
+			"foundation": "Fondations",
 			"components": "Composants",
 			"support": "Soutien"
 		},
@@ -1094,5 +1094,8 @@
 		"Title": "Cocher",
 		"GroupTitle": "Groupe de cocher",
 		"MultiTitle": "Parent / enfant"
+	},
+	"AutoComplete": {
+		"Title": "Saisie automatique"
 	}
 }
