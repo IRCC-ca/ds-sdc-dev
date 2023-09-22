@@ -55,7 +55,7 @@ export class MultiCheckboxComponent implements OnInit {
   }
 
   constructor(
-    private multicheckboxService: MultiCheckboxService,
+    private multiCheckboxService: MultiCheckboxService,
     public standAloneFunctions: StandAloneFunctions
   ) {}
 
@@ -64,7 +64,7 @@ export class MultiCheckboxComponent implements OnInit {
 
     this.checkErrorsSubscription();
 
-    this.errorSub = this.multicheckboxService.multiCheckboxErrorobs$.subscribe(
+    this.errorSub = this.multiCheckboxService.multiCheckboxErrorObs$.subscribe(
       (response) => {
         if (this.config.children) {
           let children = this.config.children?.findIndex((child) => {
@@ -92,12 +92,12 @@ export class MultiCheckboxComponent implements OnInit {
     if (this.config.parent != undefined) {
       this.groupCheckbox = false
       this.configSub =
-        this.multicheckboxService.multiCheckboxEventObs$.subscribe(
+        this.multiCheckboxService.multiCheckboxEventObs$.subscribe(
           (response) => {
             if (this.config.children) {
               if (response.id === this.config.parent?.id) {
                 this.config.children?.forEach((res) => {
-                  this.multicheckboxService.checkEvent({
+                  this.multiCheckboxService.checkEvent({
                     id: res.id,
                     event: response.event
                   });
