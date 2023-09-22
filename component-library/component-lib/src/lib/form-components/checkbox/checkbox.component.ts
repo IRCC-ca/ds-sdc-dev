@@ -1,6 +1,5 @@
 import {
   Component,
-  DoCheck,
   forwardRef,
   Input,
   OnChanges,
