@@ -305,9 +305,10 @@ export class CheckboxComponent
    * Return error state from FormGroup, must be touched & invalid
    */
   get getErrorState(): boolean {
+    this.setStatus()
     return (
-      (this.config.formGroup.get(this.config.id)?.touched &&
-        this.config.formGroup.get(this.config.id)?.invalid) ??
+      (this.currentTouch &&
+        this.currentStatus === 'INVALID') ??
       false
     );
   }
