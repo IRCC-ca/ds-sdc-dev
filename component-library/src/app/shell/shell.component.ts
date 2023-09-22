@@ -130,7 +130,7 @@ export class ShellComponent implements OnInit {
 
   checkboxPage: INavigationItemLink = {
     id: 'checkboxPageNavItem',
-    label: ' Checkbox ',
+    label: 'Checkbox.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.checkbox'
