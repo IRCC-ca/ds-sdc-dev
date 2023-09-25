@@ -89,7 +89,7 @@ export class MultiCheckboxComponent implements OnInit {
       }
     );
 
-    if (this.config.parent != undefined) {
+    if (this.config.parent !== undefined) {
       this.groupCheckbox = false
       this.configSub =
         this.multiCheckboxService.multiCheckboxEventObs$.subscribe(
@@ -178,7 +178,7 @@ export class MultiCheckboxComponent implements OnInit {
       });
     });
 
-    if (this.config.parent != undefined) {
+    if (this.config.parent !== undefined) {
       this.config.parent.formGroup
         ?.get(this.config.parent.id)
         ?.statusChanges.subscribe((value: any) => {
@@ -202,7 +202,7 @@ export class MultiCheckboxComponent implements OnInit {
   }
 
   checkError(value: any, group: FormGroup, id: string) {
-    if (value != 'VALID') {
+    if (value !== 'VALID') {
       for (const error in group.get(id)?.errors) {
         let errorIndex = this.config.errorMessages?.findIndex((errorPair) => {
           return errorPair.key === error;
@@ -225,7 +225,7 @@ export class MultiCheckboxComponent implements OnInit {
       this.errorMessages = this.errorMessages.filter(
         (errorPair) => 
         {
-          return (errorPair.id)?.replace('_error0', '') != id
+          return (errorPair.id)?.replace('_error0', '') !== id
         }
       );
       this.filterErrorList();
