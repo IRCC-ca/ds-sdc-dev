@@ -66,7 +66,7 @@ export class BreadcrumbComponent implements OnInit, OnChanges, AfterViewInit {
   displayOverflow = false;
   private maxHeight: number = 0; // Max height of element in px
   @ViewChild('breadcrumb_div', { static: false })
-  divRef?: ElementRef<HTMLDivElement>;
+  divRef?: ElementRef<HTMLElement>;
   @ViewChild('breadcrumb_child', { static: false })
   childRef?: ElementRef<HTMLParagraphElement>;
   isChildOverflow: boolean = false;

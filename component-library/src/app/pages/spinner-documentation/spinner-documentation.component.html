@@ -1,0 +1,593 @@
+<div class="block col-12 col-lg-9 col-xl-10">
+  <app-title-slug-url [config]="spinnerTitleSlugConfig"></app-title-slug-url>
+  <p class="block__intro">{{ 'Spinner.Intro' | translate }}</p>
+
+  <section class="block__interactive-demo">
+    <app-title-slug-url
+      [config]="headingConfig.interactiveDemoSlugConfig"
+    ></app-title-slug-url>
+    <p class="text">
+      {{ 'General.InteractiveDemoDesc1' | translate }}
+      <strong> {{ ('Spinner.MainTitle' | translate).toLowerCase() }}</strong>
+      {{ 'General.InteractiveDemoDesc2' | translate }}
+    </p>
+    <app-spinner-doc-code></app-spinner-doc-code>
+  </section>
+
+  <section class="block__configs">
+    <app-title-slug-url
+      [config]="headingConfig.configurationSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3>
+            {{ 'General.Size' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.ExtraSmall' | translate }}</li>
+            <li>{{ 'General.Small' | translate }}</li>
+            <li>{{ 'General.Large' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h3>
+            {{ 'General.LabelHeading' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3>
+            {{ 'General.Description' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.TrueLabel' | translate }}</li>
+            <li>{{ 'General.FalseLabel' | translate }}</li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <h3>
+            {{ 'General.StatesLabel' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.ActiveLabel' | translate }}</li>
+            <li>{{ 'General.SuccessHeading' | translate }}</li>
+            <li>{{ 'General.Error' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row element-wrapper-container">
+        <div class="col-6">
+          <h3>
+            {{ 'General.Layout' | translate }}
+          </h3>
+          <ul>
+            <li>{{ 'General.Vertical' | translate }}</li>
+            <li>{{ 'General.Horizontal' | translate }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block__design-guide">
+    <app-title-slug-url
+      [config]="headingConfig.guidelineSlugConfig"
+    ></app-title-slug-url>
+
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3>
+          {{ 'Spinner.DesignGuideLines.UseSpinner' | translate }}
+        </h3>
+
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/useSpinnerDo.png"
+              alt="{{ 'Spinner.DesignGuideLines.UseSpinnerDoAlt' | translate }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.DesignGuideLines.UseSpinnerDoTxt' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/useSpinnerDont.png"
+              alt="{{
+                'Spinner.DesignGuideLines.UseSpinnerDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.DesignGuideLines.UseSpinnerDontTxt' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container pt_8">
+        <h3>
+          {{ 'Spinner.DesignGuideLines.InlineLoading' | translate }}
+        </h3>
+
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/inilineLoadingDo.png"
+              alt="{{
+                'Spinner.DesignGuideLines.InlineLoadingDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.DesignGuideLines.InlineLoadingDoTxt' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/inilineLoadingDont.png"
+              alt="{{
+                'Spinner.DesignGuideLines.InlineLoadingDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{
+                  'Spinner.DesignGuideLines.InlineLoadingDontTxt' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container pt_8">
+        <h3>
+          {{ 'Spinner.DesignGuideLines.PageLoad' | translate }}
+        </h3>
+
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/pageLoadDo.png"
+              alt="{{ 'Spinner.DesignGuideLines.PageLoadDoAlt' | translate }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.DesignGuideLines.PageLoadDoTxt' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/pageLoadDont.png"
+              alt="{{ 'Spinner.DesignGuideLines.PageLoadDontAlt' | translate }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.DesignGuideLines.PageLoadDontTxt' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container pt_8">
+        <h3>
+          {{ 'Spinner.DesignGuideLines.ShowOneSpinner' | translate }}
+        </h3>
+
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/showOneSpinnerDo.png"
+              alt="{{
+                'Spinner.DesignGuideLines.ShowOneSpinnerDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.DesignGuideLines.ShowOneSpinnerDoTxt' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/showOneSpinnerDont.png"
+              alt="{{
+                'Spinner.DesignGuideLines.ShowOneSpinnerDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{
+                  'Spinner.DesignGuideLines.ShowOneSpinnerDontTxt' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="element-wrapper-container">
+        <h3>
+          {{ 'General.MaxMinWidthHeading' | translate }}
+        </h3>
+        <div class="row">
+          <div [style.max-width]="'100%'">
+            <img
+              src="assets/img/spinner-content/spinner-minMaxWidth.png"
+              alt="{{ 'Spinner.MaxMinWidthImgAlt' | translate }}"
+              class="mb_12"
+            />
+            <p>{{ 'Spinner.MaxMinWidthText' | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block__anatomy">
+    <app-title-slug-url
+      [config]="headingConfig.anatomySlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/spinner-content/spinner-anatomy.png"
+          alt="{{ 'Spinner.Anatomy.ImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <ng-container
+          *ngFor="let content of anatomyContentItems; let i = index"
+        >
+          <div class="anatomy-content-container">
+            <div class="counter-and-heading-container">
+              <div class="round-purple-num-count">{{ i + 1 }}</div>
+              <h3 class="round-purple-num">
+                {{ content.title | translate }}
+              </h3>
+            </div>
+            <p class="anatomy-desc">
+              {{ content.description | translate }}
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+
+  <section class="block__specs">
+    <app-title-slug-url
+      [config]="headingConfig.specsSlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <img
+          src="assets/img/spinner-content/spinner-specs.png"
+          alt="{{ 'Spinner.Specs.ImgAlt' | translate }}"
+        />
+      </div>
+      <div class="element-wrapper-container">
+        <p>
+          {{ 'Spinner.Specs.Text1' | translate }}
+        </p>
+        <p>
+          {{ 'Spinner.Specs.Text2' | translate }}
+        </p>
+        <p>
+          {{ 'Spinner.Specs.Text3' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block__content-guidelines">
+    <app-title-slug-url
+      [config]="headingConfig.contentGuideSlugConfig"
+    ></app-title-slug-url>
+
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3>
+          {{ 'General.WriteLabelsHeading' | translate }}
+        </h3>
+        <p class="sub-heading-text">
+          {{ 'Spinner.ContentGuideLines.WritingLabelsTxt' | translate }}
+        </p>
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/writeLabelDo.png"
+              alt="{{
+                'Spinner.ContentGuideLines.WritingLabelsDoAlt1' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.WritingLabelsDo1' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/writeLabelDont.png"
+              alt="{{
+                'Spinner.ContentGuideLines.WritingLabelsDontAlt1' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.WritingLabelsDont1' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container pt_8">
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/clearLabelDo.png"
+              alt="{{
+                'Spinner.ContentGuideLines.WritingLabelsDoAlt2' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.WritingLabelsDo2' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/clearLabelDont.png"
+              alt="{{
+                'Spinner.ContentGuideLines.WritingLabelsDontAlt2' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.WritingLabelsDont2' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container pt_8">
+        <h3>
+          {{ 'Spinner.ContentGuideLines.IncludeLabel' | translate }}
+        </h3>
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/includeLabelDo.png"
+              alt="{{
+                'Spinner.ContentGuideLines.IncludeLabelDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.IncludeLabelDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/includeLabelDont.png"
+              alt="{{
+                'Spinner.ContentGuideLines.IncludeLabelDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.IncludeLabelDont' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container pt_8">
+        <h3>
+          {{ 'Spinner.ContentGuideLines.NotIncludeLabel' | translate }}
+        </h3>
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/notIncludeLabelDo.png"
+              alt="{{
+                'Spinner.ContentGuideLines.NotIncludeLabelDoAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.NotIncludeLabelDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/notIncludeLabelDont.png"
+              alt="{{
+                'Spinner.ContentGuideLines.NotIncludeLabelDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{
+                  'Spinner.ContentGuideLines.NotIncludeLabelDont' | translate
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="element-wrapper-container pt_8">
+        <h3>
+          {{ 'General.DescriptionSubheading' | translate }}
+        </h3>
+        <p class="sub-heading-text">
+          {{ 'Spinner.ContentGuideLines.WriteDescTxt' | translate }}
+        </p>
+        <div class="row row-container">
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/writeDescDo.png"
+              alt="{{ 'Spinner.ContentGuideLines.WriteDescDoAlt' | translate }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.WriteDescDo' | translate }}
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              src="assets/img/spinner-content/writeDescDont.png"
+              alt="{{
+                'Spinner.ContentGuideLines.WriteDescDontAlt' | translate
+              }}"
+            />
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Spinner.ContentGuideLines.WriteDescDont' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block__usage-figma">
+    <app-title-slug-url
+      [config]="headingConfig.figmaSlugConfig"
+    ></app-title-slug-url>
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <h3>
+          {{ 'General.FigmaDirectionsHeading' | translate }}
+        </h3>
+        <ol>
+          <li
+            *ngFor="let direction of figmaDirections"
+            [innerHtml]="direction | translate"
+          ></li>
+        </ol>
+      </div>
+      <div class="col-12 col-md-4 justify-ctr">
+        <div class="image-1 image-container">
+          <img
+            src="assets/img/spinner-content/spinner-figmaUsage.png"
+            alt="{{ 'Spinner.UsageInFigma.FigmaDirectionsImgAlt' | translate }}"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block__accessibility">
+    <app-title-slug-url
+      [config]="headingConfig.accessibilitySlugConfig"
+    ></app-title-slug-url>
+    <div class="wrapper-container">
+      <div class="element-wrapper-container">
+        <h3>
+          {{ 'General.AccessibilityColourHeading' | translate }}
+        </h3>
+        <p>{{ 'Spinner.Accessibility.ColorContrastTxt' | translate }}</p>
+      </div>
+      <div class="element-wrapper-container">
+        <h3>
+          {{ 'General.Content' | translate }}
+        </h3>
+        <ul>
+          <li
+            *ngFor="let item of accessibilityContent"
+            [innerHtml]="item | translate"
+          ></li>
+        </ul>
+      </div>
+      <div class="element-wrapper-container">
+        <h3>
+          {{ 'General.Validation' | translate }}
+        </h3>
+        <ul>
+          <li>{{ 'General.ValidationText' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block__research">
+    <app-title-slug-url
+      [config]="headingConfig.researchSlugConfig"
+    ></app-title-slug-url>
+    <p>{{ 'General.ComingSoon' | translate }}</p>
+  </section>
+</div>

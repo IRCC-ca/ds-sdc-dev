@@ -1,0 +1,19 @@
+@use '../../../../../core-library/util/device' as device;
+@use "../../../scss/page";
+@use "../../../scss/grid";
+@use '@ircc-ca/ds-sdc-core/typography/typography';
+
+@include page.template;
+
+.block {
+  &__usage-figma {
+    .image-1 {
+      max-width: 239px;
+      @include device.in-phone-layout {
+        margin-top: 42px;
+        width: 179px;
+        height: 152px;
+      }
+    }
+  }
+}

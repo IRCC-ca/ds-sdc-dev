@@ -47,6 +47,7 @@
           display: block;
           overflow: visible;
           padding: 0;
+          max-width: none;
 
           &:hover {
             background: none;
@@ -72,6 +73,13 @@
     &-text {
       padding: 0;
       margin: 0;
+
+      .bolded {
+        font-weight: 600;
+      }
+      .normal {
+        font-weight: 400;
+      }
     }
 
     &-check {

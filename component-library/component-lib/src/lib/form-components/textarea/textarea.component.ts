@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -20,8 +21,10 @@ import { TranslateService } from '@ngx-translate/core';
 export const MAX_CHAR_LIMIT_EN = 'Maximum character limit reached.';
 export const MAX_CHAR_LIMIT_FR = 'Limite maximale de caractères atteinte.';
 
-export const WARNING_CHAR_LIMIT_EN = 'Maximum character limit reached in 15 characters.';
-export const WARNING_CHAR_LIMIT_FR = 'Limite maximale de caractères atteinte en 15 caractères.';
+export const WARNING_CHAR_LIMIT_EN =
+  'Maximum character limit reached in 15 characters.';
+export const WARNING_CHAR_LIMIT_FR =
+  'Limite maximale de caractères atteinte en 15 caractères.';
 
 export interface ITextareaComponentConfig {
   formGroup: FormGroup;
@@ -82,8 +85,9 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = [];
   charLimitStatus = '';
   currentCharacterStatusAria = '';
-  announceCharStatusChangeAria : boolean = false;
-  charLength : number = -1;
+  currentStatus: FormControlStatus = 'VALID';
+  announceCharStatusChangeAria: boolean = false;
+  charLength: number = -1;
   labelConfig: ILabelConfig = {
     formGroup: this.config.formGroup,
     parentID: ''
@@ -93,17 +97,23 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   constructor(
     public standAloneFunctions: StandAloneFunctions,
     private translate: TranslateService
-    ) {}
+  ) {}
 
   //Removed '!' and added null case in onChange
-  private onTouch?: () => void;
-  private onChange?: (value: any) => void;
+  onTouch = () => {
+    if (this.config.formGroup?.get(this.config.id)?.touched === false) {
+      this.config.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
 
   ngOnInit(): void {
-    
     //set config from individual options, if present
     if (this.id !== '') this.config.id = this.id;
-    if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty)
+      this.config.formGroup = this.formGroup;
     if (this.charLimit !== '') this.config.charLimit = this.charLimit;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
@@ -128,13 +138,15 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
 
     if (this.config.formGroup.controls[this.config.id].value) {
-      this.charLength = this.config.formGroup.controls[this.config.id].value.length;
-      this.characterCountStatus(this.config.formGroup.controls[this.config.id].value.length);
+      this.charLength =
+        this.config.formGroup.controls[this.config.id].value.length;
+      this.characterCountStatus(
+        this.config.formGroup.controls[this.config.id].value.length
+      );
     }
 
     this.config.formGroup.valueChanges.subscribe((change) => {
       this.characterCountStatus(change[this.config.id]?.length);
-      
     });
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
@@ -147,6 +159,29 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
       this.config.required,
       this.config.labelIconConfig
     );
+
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((change) => {
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          this.toggleDisabledState();
+        }
+      });
+  }
+
+  toggleDisabledState() {
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+        break;
+    }
   }
 
   ngOnChanges() {
@@ -171,15 +206,15 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     if (this.config?.charLimit) {
       if (this.config?.charLimit == currCharCount) {
         this.charLimitStatus = 'maxLimit';
-        (currLang === 'en' || currLang === 'en-US') 
-        ? (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_EN) 
-        : (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_FR);
+        currLang === 'en' || currLang === 'en-US'
+          ? (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_EN)
+          : (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_FR);
         this.announceCharStatusChangeAria = true;
       } else if (Number(this.config?.charLimit) - currCharCount == 15) {
         this.charLimitStatus = 'warningLimit';
-        (currLang === 'en' || currLang === 'en-US') 
-        ? (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_EN) 
-        : (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_FR);
+        currLang === 'en' || currLang === 'en-US'
+          ? (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_EN)
+          : (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_FR);
         this.announceCharStatusChangeAria = true;
       } else if (Number(this.config?.charLimit) - currCharCount < 15) {
         this.charLimitStatus = 'warningLimit';
@@ -194,22 +229,36 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   onBlur() {
     this.announceCharStatusChangeAria = false;
     if (this.config.formGroup.controls[this.config.id].value) {
-      this.charLength = this.config.formGroup.controls[this.config.id].value.length;
+      this.charLength =
+        this.config.formGroup.controls[this.config.id].value.length;
+    } else {
+      this.charLength = 0;
     }
   }
 
-  formatCharacterUsedString(currentLength :  number) : string {
-    var formatedString = ''
-    var currentLengthString = currentLength.toString()
-    if (currentLengthString === '-1' || this.config.charLimit === '' || !this.config.charLimit) {
+  formatCharacterUsedString(currentLength: number): string {
+    var formatedString = '';
+    var currentLengthString = currentLength.toString();
+    if (
+      currentLengthString === '-1' ||
+      this.config.charLimit === '' ||
+      !this.config.charLimit
+    ) {
       return formatedString;
     }
-    formatedString = currentLengthString + "/" + this.config.charLimit
+    formatedString = currentLengthString + '/' + this.config.charLimit;
     return formatedString;
   }
 
   public clearvalue() {}
-  writeValue(value: string): void {}
+
+  changeValue(event: any) {
+    this.writeValue(event.target.value);
+    this.onTouch();
+  }
+  writeValue(value: string): void {
+    this.onChange(value);
+  }
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
@@ -217,6 +266,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     this.onTouch = fn;
   }
   setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled;
+    isDisabled
+      ? this.formGroup.get(this.config.id)?.disable()
+      : this.formGroup.get(this.config.id)?.enable();
   }
 }

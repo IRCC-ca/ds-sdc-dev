@@ -9,7 +9,7 @@
       <th>{{ 'Utilities.ColourTableTokenHeading' | translate }}</th>
       <th>{{ 'Utilities.ColourTableColourHeading' | translate }}</th>
       <th>{{ 'Utilities.ColourTableFigmaHeading' | translate }}</th>
-      <th>{{ 'General.DescriptionHeading' | translate }}</th>
+      <th>{{ 'General.Description' | translate }}</th>
     </tr>
     <tr *ngFor="let color of colorSample">
       <td>
@@ -39,7 +39,7 @@
       <th>{{ 'General.Size' | translate }}</th>
       <th>{{ 'Utilities.TypographyTableLineHeightHeading' | translate }}</th>
       <th>{{ 'Utilities.TypographyTableFigmaHeading' | translate }}</th>
-      <th>{{ 'General.DescriptionHeading' | translate }}</th>
+      <th>{{ 'General.Description' | translate }}</th>
     </tr>
     <tr *ngFor="let typo of typographySample">
       <td class="typo-sample">
@@ -112,5 +112,5 @@
 </div>
 <app-side-nav
   class="right-nav col-12 col-lg-3 col-xl-2"
-  [navBarData]="rightNavData"
+  [rightNavLOVs]="rightNavData"
 ></app-side-nav>

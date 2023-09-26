@@ -15,6 +15,12 @@
       <div class="toggles">
         <ng-content select="[toggles]"></ng-content>
       </div>
+      <div
+        class="disabled-banner"
+        *ngIf="hasDisabledBanner"
+      >
+        <ng-content select="[banner]"></ng-content>
+      </div>
     </app-accordian-container>
   </div>
 </div>

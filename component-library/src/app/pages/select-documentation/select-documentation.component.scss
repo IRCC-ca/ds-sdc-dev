@@ -1,0 +1,13 @@
+@use '../../../../../core-library/util/device' as device;
+@use '../../../../../core-library/tokens/template-const' as template-const;
+@use '../../../../../core-library/layout/layout-grid' as layout-grid;
+@use '../../../scss/page';
+@use '@ircc-ca/ds-sdc-core/typography/typography';
+
+@include page.template;
+
+.images {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}

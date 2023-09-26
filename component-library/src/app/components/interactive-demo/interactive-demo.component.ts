@@ -3,8 +3,7 @@ import {
   EventEmitter,
   HostListener,
   Input,
-  OnInit,
-  Output
+  OnInit
 } from '@angular/core';
 import { IIconButtonIconConfig } from 'ircc-ds-angular-component-library';
 import {
@@ -14,7 +13,8 @@ import {
 
 export enum InteractiveComponentType {
   banner = 'banner',
-  iconBtn = 'icon-button'
+  iconBtn = 'icon-button',
+  spinner = 'spinner'
 }
 
 @Component({
@@ -34,6 +34,7 @@ export class InteractiveDemoComponent implements OnInit {
    banner has a white background and rest have a grey background.
   */
   @Input() hasTabs: boolean = true;
+  @Input() hasDisabledBanner: boolean = true;
   @Input() componentType?: keyof typeof InteractiveComponentType;
   mobile = false;
   accordionConfig: IAccordionContainerConfig = {

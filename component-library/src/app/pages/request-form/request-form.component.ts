@@ -4,7 +4,6 @@ import {
   IBannerConfig,
   IButtonConfig,
   IDatePickerConfig,
-  IDatePickerErrorMessages,
   IRadioInputComponentConfig,
   ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
@@ -33,8 +32,7 @@ import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
   providers: [SlugifyPipe]
 })
 export class RequestFormComponent implements OnInit, AfterViewInit {
-  rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [
+  rightNavData: string[] = [
     // list of all right nav items
     'RequestForm.Title',
     'RequestForm.RequestCriteriaTitle',
@@ -101,7 +99,6 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
       }
     ],
     size: 'small',
-    disabled: false,
     error: true
   };
 
@@ -227,15 +224,6 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     // errorIcon?: IErrorIconConfig;
   };
 
-  datePickerErrorMessages: IDatePickerErrorMessages = {
-    general: [
-      {
-        key: 'required',
-        errorLOV: 'RequestForm.requiredDateError'
-      }
-    ]
-  };
-
   requestedDateDatePickerConfig: IDatePickerConfig = {
     id: 'date-requested-datepicker',
     formGroup: this.form,
@@ -243,7 +231,12 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
     desc: 'RequestForm.requestedDateDesc',
     required: true,
     size: 'small',
-    errorMessages: this.datePickerErrorMessages,
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: 'RequestForm.requiredDateError'
+      }
+    ],
     minYear: 2023
   };
 
@@ -257,13 +250,8 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private requestFormService: RequestFormService,
-    private navBarConfig: SideNavConfig
-  ) {
-    this.rightNavData = this.navBarConfig.getRightNavBarConfig(
-      this.rightNavDataRaw
-    );
-  }
+    private requestFormService: RequestFormService
+  ) {}
   ngAfterViewInit(): void {
     /**
      * Set local storage form data when form values change after init so we're not setting and getting at the same time
@@ -299,7 +287,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
 
     this.form.addControl(
       this.referencesTextAreaConfig.id,
-      new FormControl('', Validators.required)
+      new FormControl('', null)
     );
 
     this.form.addControl(

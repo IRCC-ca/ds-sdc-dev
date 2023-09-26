@@ -40,6 +40,17 @@ import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documen
 import { IconButtonDocumentationComponent } from '@app/pages/icon-button-documentation/icon-button-documentation.component';
 import { IconButtonDocCodeComponent } from '@app/pages/icon-button-documentation/icon-button-doc-code.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
+import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
+import { SpinnerDocCodeComponent } from '@app/pages/spinner-documentation/spinner-doc-code.component';
+import { SpinnerDocumentationComponent } from '@app/pages/spinner-documentation/spinner-documentation.component';
+import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
+import { ProgressIndicatorDocCodeComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-doc-code.component';
+import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-documentation.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
+import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
+
 @NgModule({
   declarations: [
     TitleSlugUrlComponent,
@@ -63,16 +74,24 @@ import { ButtonDocumentationComponent } from '@app/pages/button-documentation/bu
     ButtonDocCodeComponent,
     ButtonDocumentationComponent,
     InputDocumentationComponent,
+    SelectDocumentationComponent,
     ComponentPreviewComponent,
     InteractiveDemoComponent,
     InputDocCodeComponent,
+    SelectDocCodeComponent,
     EncapsulatedElementComponent,
     RequestFormComponent,
     DatePickerDocCodeComponent,
     DatePickerDocumentationComponent,
     BannerDocumentationComponent,
     IconButtonDocumentationComponent,
-    IconButtonDocCodeComponent
+    IconButtonDocCodeComponent,
+    MultiCheckboxDocumentationComponent,
+    SpinnerDocCodeComponent,
+    SpinnerDocumentationComponent,
+    AutocompleteDocumentationComponent,
+    ProgressIndicatorDocCodeComponent,
+    ProgressIndicatorDocumentationComponent
   ],
   imports: [
     CommonModule,
@@ -86,7 +105,9 @@ import { ButtonDocumentationComponent } from '@app/pages/button-documentation/bu
     IrccDsAngularNavigationModule,
     TranslateModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     TitleSlugUrlComponent,

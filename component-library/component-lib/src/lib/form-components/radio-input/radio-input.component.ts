@@ -1,7 +1,8 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR,
   ValidatorFn
@@ -55,11 +56,14 @@ export interface IRadioInputOption {
     }
   ]
 })
-export class RadioInputComponent implements OnInit, ControlValueAccessor {
+export class RadioInputComponent
+  implements OnInit, OnChanges, ControlValueAccessor
+{
   formGroupEmpty = new FormGroup({});
   touched = false;
   errorIds: IErrorIDs[] = [];
   formControl?: AbstractControl;
+  currentStatus: FormControlStatus = 'VALID';
 
   @Input() config: IRadioInputComponentConfig = {
     id: '',
@@ -91,21 +95,36 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
     private translate: TranslateService
   ) {}
 
-  onChange = (formValue: string) => {};
-  onTouched = () => {};
-  writeValue(formValue: any) {
-    // this.form.get('formControl')?.setValue(formValue);
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+  
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
   }
+
+  writeValue(value: string): void {
+      this.onChange(value);
+  }
+  
   registerOnChange(onChange: any) {
     this.onChange = onChange;
   }
+  
   registerOnTouched(onTouched: any) {
-    this.onTouched = onTouched;
+    this.onTouch = onTouched;
   }
 
   markAsTouched() {
     if (!this.touched) {
-      this.onTouched();
+      this.onTouch();
       this.touched = true;
     }
   }
@@ -134,7 +153,8 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
 
     //set config from individual options, if present
     if (this.id !== '') this.config.id = this.id;
-    if (this.formGroup !== this.formGroupEmpty) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty)
+      this.config.formGroup = this.formGroup;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
     if (this.desc) this.config.desc = this.desc;
@@ -153,6 +173,29 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
         this.config.id,
         this.config.errorMessages
       );
+    }
+
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup
+    .get(this.config.id)
+    ?.statusChanges.subscribe((change) => {
+      this.getAriaErrorText();
+      if (change !== this.currentStatus) {
+        this.currentStatus = change;
+        this.toggleDisabledState();
+      }
+    });
+}
+
+    toggleDisabledState() {
+    switch (this.currentStatus) {
+      case 'DISABLED':
+      this.setDisabledState(true);
+      break;
+    default:
+      this.setDisabledState(false);
+      break;
     }
   }
 
@@ -199,21 +242,12 @@ export class RadioInputComponent implements OnInit, ControlValueAccessor {
       this.errorStubText = ERROR_TEXT_STUB.fr;
     }
   }
-
-  /**
-   * used to disable individual fields (from the config under 'options')
-   * @param index of the option field to be disabled
-   * @returns null if value is undefined, empty string otherwise. This works with [attr.disabled].
-   */
-  getDisabled(index: number) {
-    if (this.config.options) {
-      if (
-        this.config.options[index].disabled === undefined &&
-        !this.config.disabled
-      ) {
-        return null;
-      }
+  
+  setDisabledState(isDisabled: boolean) {
+    if(isDisabled){
+      this.formGroup.get(this.config.id)?.disable();
+    }else{
+      this.formGroup.get(this.config.id)?.enable();
     }
-    return '';
   }
 }

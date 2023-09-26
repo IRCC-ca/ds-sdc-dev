@@ -1,7 +1,15 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -17,13 +25,15 @@ import {
   ILabelIconConfig
 } from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
+import { MultiCheckboxService } from '../multi-checkbox/multi-checkbox.service';
+import { Subscription } from 'rxjs';
 
 export interface ICheckBoxComponentConfig {
   formGroup: FormGroup;
   label?: string;
   required?: boolean;
   size?: keyof typeof DSSizes | DSSizes;
-  mixed?: true;
+  mixed?: boolean;
   disableFocus?: boolean; //Default is true
   inlineLabel?: string;
   inlineLabelBold?: boolean;
@@ -46,14 +56,19 @@ export interface ICheckBoxComponentConfig {
     }
   ]
 })
-export class CheckboxComponent implements ControlValueAccessor, OnInit {
+export class CheckboxComponent
+  implements ControlValueAccessor, OnInit, OnChanges
+{
   formGroupEmpty: FormGroup = new FormGroup({});
+  configSub?: Subscription;
 
   //TODO: Add output - consider using a formControl as output rather than anything else. Many different approaches are possible
   @Input() config: ICheckBoxComponentConfig = {
     id: '',
     formGroup: this.formGroupEmpty,
-    size: DSSizes.large
+    size: DSSizes.large,
+    label: '',
+    inlineLabel: ''
   };
 
   @Input() formGroup = this.formGroupEmpty;
@@ -81,37 +96,72 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   touched = false;
   errorAria = '';
   errorStubText = '';
+  currentStatus: FormControlStatus = 'VALID';
+  currentTouch: boolean = false
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private multicheckboxService: MultiCheckboxService
   ) {}
 
-  onTouch = () => {};
-  onChange = () => {};
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
 
-  writeValue(): void {}
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
   }
-  registerOnTouched(fn: any): void {
-    this.onTouch = fn;
+
+  writeValue(value: string): void {
+    this.onChange(value);
+  }
+
+  registerOnChange(onChange: any): void {
+    this.onChange = onChange;
+  }
+  registerOnTouched(onTouched: any): void {
+    this.onTouch = onTouched;
   }
 
   /**
    * This is used automatically by the parent formControl. It is used in the template to set the label to disabled
    * @param isDisabled
    */
-  setDisabledState?(isDisabled: boolean) {
-    // (this.config !== undefined) ? this.config.disabled = isDisabled : this.disabled = isDisabled;
-    this.isDisabled = isDisabled;
+  setDisabledState(isDisabled: boolean) {
+    if(isDisabled){
+      this.formGroup.get(this.config.id)?.disable();
+    }else{
+      this.formGroup.get(this.config.id)?.enable();
+    }
   }
 
   ngOnInit() {
-    const retControl = this.config.formGroup.get(this.config.id);
-    if (retControl) {
-      this.formControl = retControl;
-    }
+    this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
+      (response) => {
+        if (response.id === this.config.id) {
+          this.config.formGroup
+            .get(this.config.id)
+            ?.patchValue(response.event, { emitEvent: false });
+        }
+      }
+    );
+
+    this.config.formGroup
+      .get(this.config.id)
+      ?.valueChanges.subscribe((event) => {
+        this.multicheckboxService.checkEvent({
+          id: this.config.id,
+          event: event
+        });
+      });
 
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {
@@ -140,27 +190,70 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     if (this.mixed) this.config.mixed = this.mixed;
     if (this.disableFocus) this.config.disableFocus = this.disableFocus;
     if (this.inlineLabel) this.config.inlineLabel = this.inlineLabel;
-    if (this.inlineLabelBold) this.config.inlineLabelBold = this.inlineLabelBold;
+    if (this.inlineLabelBold)
+      this.config.inlineLabelBold = this.inlineLabelBold;
     if (this.helpText) this.config.helpText = this.helpText;
-    if (this.customErrorText) this.config.customErrorText = this.customErrorText;
+    if (this.customErrorText)
+      this.config.customErrorText = this.customErrorText;
     if (this.desc) this.config.desc = this.desc;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
-    
-    
+
     if (!this.config?.size) this.config.size = DSSizes.large;
-    
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
         this.config.id,
         this.config.errorMessages
       );
+
+      this.errorIds.forEach((errorId) => {
+        this.multicheckboxService.errorEvent({
+          id: this.config.id,
+          event: errorId
+        });
+      });
     }
 
-    //Get the error text when the formControl value changes
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
-      this.getAriaErrorText();
-    });
+    
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
+        this.getAriaErrorText();
+        //Get the error text when the formControl value changes
+        if (change === 'VALID') {
+          this.multicheckboxService.errorEvent({
+            id: this.config.id,
+            event: { remove: true }
+          });
+        }
+
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          this.toggleDisabledState();
+        }
+        this.setStatus()
+      });
+  }
+
+  setStatus() {
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.currentTouch = this.config.formGroup.controls[this.config.id].touched;
+  }
+
+  ngAfterViewInit() {
+    this.setStatus();
+  }
+
+  toggleDisabledState() {
+    switch (this.currentStatus) {
+      case 'DISABLED':
+      this.setDisabledState(true);
+      break;
+    default:
+      this.setDisabledState(false);
+      break;
+    }
   }
 
   ngOnChanges() {
@@ -216,5 +309,34 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
         this.config.formGroup.get(this.config.id)?.invalid) ??
       false
     );
+  }
+
+  clickEvent() {
+    this.standAloneFunctions.wasTouched(this.config.formGroup, this.config.id);
+  }
+
+  ariaAccess(): string {
+    let returnVal = '';
+    if (this.config.label)
+      returnVal += this.translate.instant(this.config.label || '') + ' ';
+    if (this.config.desc)
+      returnVal += this.translate.instant(this.config.desc || '') + ' ';
+    if (this.config.helpText)
+      returnVal += this.translate.instant(this.config.helpText || '') + ' ';
+    if (this.config.inlineLabel)
+      returnVal += this.translate.instant(this.config.inlineLabel || '') + ' ';
+
+    if (this.config.mixed) {
+      returnVal += 'Mixed checkbox';
+    }
+
+    if (
+      this.config.formGroup.get(this.config.id)?.invalid &&
+      this.config.formGroup.get(this.config.id)?.touched
+    ) {
+      returnVal += this.errorStubText;
+      returnVal += this.errorAria;
+    }
+    return returnVal;
   }
 }

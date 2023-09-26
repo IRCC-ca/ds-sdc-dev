@@ -1,7 +1,21 @@
-import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -17,6 +31,7 @@ import {
   ILabelIconConfig
 } from '../../shared/label/label.component';
 import { TranslateService } from '@ngx-translate/core';
+import { IIconButtonComponentConfig } from '../../shared/icon-button/icon-button.component';
 
 export interface IInputComponentConfig {
   label?: string;
@@ -34,19 +49,22 @@ export interface IInputComponentConfig {
 
 export enum InputTypes {
   text = 'text',
-  password = 'password'
+  password = 'password',
+  autocomplete = 'autocomplete'
 }
 
 export const ARIA_TEXT = {
   en: {
     btnTypePasswordAriaLabel: 'password eye icon',
     btnTypePasswordShowAriaLabel: 'display password text',
-    btnTypePasswordHideAriaLabel: 'mark password text'
+    btnTypePasswordHideAriaLabel: 'mark password text',
+    btnTypeAutoCompleteClear: 'clear text'
   },
   fr: {
     btnTypePasswordAriaLabel: "icône d'oeil de mot de passe",
     btnTypePasswordShowAriaLabel: 'afficher le texte du mot de passe',
-    btnTypePasswordHideAriaLabel: 'mark password text'
+    btnTypePasswordHideAriaLabel: 'mark password text',
+    btnTypeAutoCompleteClear: 'Effacer le texte'
   }
 };
 
@@ -61,7 +79,9 @@ export const ARIA_TEXT = {
     }
   ]
 })
-export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
+export class InputComponent
+  implements ControlValueAccessor, OnInit, OnChanges, AfterContentChecked
+{
   formGroupEmpty: FormGroup = new FormGroup({});
   /**
    * Note: DON'T include default values of '' unless it REALLY makes sense to do so - instead, make them optional.
@@ -93,6 +113,9 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   @Input() required?: boolean; // This field only adds styling to the label and DOES NOT add any validation to the input field.
   @Input() placeholder?: string;
   @Input() errorMessages?: IErrorPairs[];
+  @Output() focusEvent = new EventEmitter();
+
+  @ViewChild('inputEl') inputEl?: ElementRef;
 
   disabled = false;
   focusState = false;
@@ -101,6 +124,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   btnAriaLabel = '';
   btnAriaLabelHide = '';
   btnAriaLabelShow = '';
+  btnAriaTypeAutoCompleteClear = '';
   errorIds: IErrorIDs[] = [];
   errorAria = '';
   formControl?: AbstractControl;
@@ -110,10 +134,24 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   };
   touched = false;
   errorStubText = '';
+  currentStatus: FormControlStatus = 'VALID';
+
+  buttonAutoCompleteClear: IIconButtonComponentConfig = {
+    id: `${this.config.id}-button-autocomplete`,
+    category: 'custom',
+    size: 'extraSmall',
+    icon: {
+      class: 'fa-solid fa-circle-xmark',
+      color: 'var(--neutral-text)'
+    }
+  };
+  buttonAutoCompleteClearClicked: boolean = false;
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private renderer: Renderer2
   ) {
     //set config from individual options, if present
     if (this.formGroup !== this.formGroupEmpty) {
@@ -140,8 +178,19 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   }
 
   //Removed '!' and added null case in onChange
-  private onTouch?: () => void;
-  private onChange?: (value: any) => void;
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  ngAfterContentChecked() {
+    this.changeDetectorRef.detectChanges();
+  }
 
   /**
    * When the page loads, we initialize the form with it's controls, labels, and config, and detect value changes and errors. setLang detects changes to the language toggle to serve the correct text
@@ -156,10 +205,10 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     this.translate.onLangChange.subscribe((change) => {
       this.setLang(change.lang);
     });
-    
+
     this.type === InputTypes.text
-    ? (this.showPassword = false)
-    : (this.showPassword = true);
+      ? (this.showPassword = false)
+      : (this.showPassword = true);
 
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
@@ -177,6 +226,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       this.disabled = this.config.formGroup.get(this.config.id)
         ?.disabled as boolean;
     });
+
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
@@ -185,10 +235,30 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       );
     }
 
-    //Get the error text when the formControl value changes
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
-      this.getAriaErrorText();
-    });
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+    } //Get the error text when the formControl value changes
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((change) => {
+        this.getAriaErrorText();
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          switch (this.currentStatus) {
+            case 'DISABLED':
+              this.setDisabledState(true);
+              break;
+            default:
+              this.setDisabledState(false);
+          }
+        }
+      });
   }
 
   /**
@@ -211,7 +281,21 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   onTouchedLabel() {
     this.touched = true;
     this.getAriaErrorText();
+    setTimeout(() => {
+      // Do not emit blur event after clicking clear button
+      if (!this.buttonAutoCompleteClearClicked) {
+        this.focusEvent.emit(false);
+      }
+      this.buttonAutoCompleteClearClicked = false;
+    }, 100);
   }
+
+  onFocus() {
+    if (!this.config.formGroup.get(this.config.id)?.disabled) {
+      this.focusEvent.emit(true);
+    }
+  }
+
   /**
    * setLang detects changes to the language toggle to serve the correct aria error text
    */
@@ -222,11 +306,13 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       this.btnAriaLabel = ARIA_TEXT.en.btnTypePasswordAriaLabel;
       this.btnAriaLabelHide = ARIA_TEXT.en.btnTypePasswordHideAriaLabel;
       this.btnAriaLabelShow = ARIA_TEXT.en.btnTypePasswordShowAriaLabel;
+      this.btnAriaTypeAutoCompleteClear = ARIA_TEXT.en.btnTypeAutoCompleteClear;
     } else {
       this.errorStubText = ERROR_TEXT_STUB.fr;
       this.btnAriaLabel = ARIA_TEXT.fr.btnTypePasswordAriaLabel;
       this.btnAriaLabelHide = ARIA_TEXT.fr.btnTypePasswordHideAriaLabel;
       this.btnAriaLabelShow = ARIA_TEXT.fr.btnTypePasswordShowAriaLabel;
+      this.btnAriaTypeAutoCompleteClear = ARIA_TEXT.en.btnTypeAutoCompleteClear;
     }
   }
 
@@ -244,6 +330,26 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
       this.config.required,
       this.config.labelIconConfig
     );
+
+    if (this.config.errorMessages) {
+      this.errorIds = this.standAloneFunctions.getErrorIds(
+        this.config.formGroup,
+        this.config.id,
+        this.config.errorMessages
+      );
+    } else {
+      this.errorIds = [];
+    }
+
+    if (this.config.type === InputTypes.autocomplete) {
+      this.typeControl = InputTypes.text;
+    } else if (this.config.type) {
+      this.typeControl = this.config.type;
+    }
+
+    this.showPassword =
+      this.config.type === InputTypes.password &&
+      this.typeControl === InputTypes.text;
   }
 
   /**
@@ -266,7 +372,12 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
     }
   }
 
-  public clearvalue() {}
+  public clearvalue() {
+    this.buttonAutoCompleteClearClicked = true;
+    this.config.formGroup.controls[this.config.id].setValue('');
+    this.renderer.selectRootElement(this.inputEl?.nativeElement).focus();
+    this.focusEvent.emit(true);
+  }
 
   /**
    * Prevents the info button from being triggered and marks the input as touched.
@@ -275,12 +386,23 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
   enterEvent(event: Event) {
     event.preventDefault();
     this.config.formGroup.get(this.config.id)?.markAsTouched();
+    this.focusEvent.emit(false);
   }
 
-  /**
-   *
-   */
-  writeValue(value: string): void {}
+  escapeEvent(event: Event) {
+    event.preventDefault();
+    this.config.formGroup.get(this.config.id)?.markAsTouched();
+    this.focusEvent.emit(false);
+  }
+
+  changeValue(event: any) {
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
+  }
+
+  writeValue(value: string): void {
+    this.onChange(value);
+  }
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -294,7 +416,11 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
    * Apply a disabled state
    */
   setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled;
+    if (isDisabled) {
+      this.formGroup.get(this.config.id)?.disable();
+    } else {
+      this.formGroup.get(this.config.id)?.enable();
+    }
   }
 
   /**
@@ -306,5 +432,13 @@ export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
         this.config.formGroup.get(this.config.id)?.invalid) ??
       false
     );
+  }
+
+  get getValueLength(): number {
+    if (this.config.formGroup.get(this.config.id)?.value) {
+      return this.config.formGroup.get(this.config.id)?.value.length;
+    } else {
+      return 0;
+    }
   }
 }

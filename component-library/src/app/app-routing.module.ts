@@ -32,6 +32,11 @@ import { BannerDocumentationComponent } from './pages/banner-documentation/banne
 import { DatePickerDocumentationComponent } from './pages/date-picker-documentation/date-picker-documentation.component';
 import { IconButtonDocumentationComponent } from './pages/icon-button-documentation/icon-button-documentation.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
+import { SelectDocumentationComponent } from './pages/select-documentation/select-documentation.component';
+import { MultiCheckboxDocumentationComponent } from './pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
+import { SpinnerDocumentationComponent } from './pages/spinner-documentation/spinner-documentation.component';
+import { AutocompleteDocumentationComponent } from './pages/autocomplete-documentation/autocomplete-documentation.component';
+import { ProgressIndicatorDocumentationComponent } from './pages/progress-indicator-doc-code/progress-indicator-documentation.component';
 
 export function HttpLoaderFactory(
   translate: TranslateService,
@@ -86,6 +91,11 @@ const routes: Routes = [
       title: 'Input.Title'
     },
     {
+      path: 'select-documentation',
+      component: SelectDocumentationComponent,
+      title: 'Select.Title'
+    },
+    {
       path: 'request-form',
       component: RequestFormComponent,
       title: 'General.RequestFormTitle'
@@ -99,6 +109,26 @@ const routes: Routes = [
       path: 'icon-button-documentation',
       component: IconButtonDocumentationComponent,
       title: 'IconButtonDocumentation.Title'
+    },
+    {
+      path: 'multi-checkbox-documentation',
+      component: MultiCheckboxDocumentationComponent,
+      title: 'MultiCheckboxDocumentation.Title'
+    },
+    {
+      path: 'spinner-documentation',
+      component: SpinnerDocumentationComponent,
+      title: 'Spinner.Title'
+    },
+    {
+      path: 'autocomplete-documentation',
+      component: AutocompleteDocumentationComponent,
+      title: 'AutocompleteDocumentation.Title'
+    },
+    {
+      path: 'progress-indicator-documentation',
+      component: ProgressIndicatorDocumentationComponent,
+      title: 'ProgressIndicatorDocumentation.Title'
     },
 
     // French
@@ -124,12 +154,17 @@ const routes: Routes = [
       title: 'Banner.Title'
     },
     {
+      path: 'select-documentation-fr',
+      component: SelectDocumentationComponent,
+      title: 'Select.Title'
+    },
+    {
       path: 'boutons',
       component: ButtonDocCodeComponent,
       title: 'Buttons.Title'
     },
     {
-      path: 'documentation dentree',
+      path: 'documentation-dentree',
       component: InputDocumentationComponent,
       title: 'Input.Title'
     },
@@ -147,6 +182,26 @@ const routes: Routes = [
       path: 'icon-button-documentation-fr',
       component: IconButtonDocumentationComponent,
       title: 'IconButtonDocumentation.Title'
+    },
+    {
+      path: 'multi-checkbox-documentation-fr',
+      component: MultiCheckboxDocumentationComponent,
+      title: 'MultiCheckboxDocumentation.Title'
+    },
+    {
+      path: 'spinner-documentation-fr',
+      component: SpinnerDocumentationComponent,
+      title: 'Spinner.Title'
+    },
+    {
+      path: 'autocomplete-documentation-fr',
+      component: AutocompleteDocumentationComponent,
+      title: 'AutocompleteDocumentation.Title'
+    },
+    {
+      path: 'progress-indicator-documentation-fr',
+      component: ProgressIndicatorDocumentationComponent,
+      title: 'ProgressIndicatorDocumentation.Title'
     },
 
     //QA PATHS

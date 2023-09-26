@@ -17,7 +17,10 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { DomChangeDirective } from '../../shared/directives/dom-change.directive';
 import { FlyoutComponent } from './flyout/flyout.component';
 import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ScrollingModule as ExperimentalScrollingModule } from '@angular/cdk-experimental/scrolling';
 
+import { IrccDsAngularPipesdModule } from '../../shared/pipes/pipes.module';
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -34,16 +37,25 @@ const IrccDsSharedComponents = [
   ProgressIndicatorComponent,
   SpinnerComponent,
   FlyoutComponent,
-  FlyoutOptionComponent,
+  FlyoutOptionComponent
 ];
 
 @NgModule({
   declarations: [...IrccDsSharedComponents, DomChangeDirective],
-  imports: [CommonModule, TranslateModule, RouterModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    RouterModule,
+    ScrollingModule,
+    ExperimentalScrollingModule,
+    IrccDsAngularPipesdModule
+  ],
   exports: [
     CommonModule,
     TranslateModule,
     RouterModule,
+    ScrollingModule,
+    ExperimentalScrollingModule,
     ...IrccDsSharedComponents
   ]
 })

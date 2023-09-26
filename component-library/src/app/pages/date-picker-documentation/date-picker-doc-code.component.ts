@@ -13,12 +13,13 @@ import {
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@ngx-translate/core';
 import {
+  IBannerConfig,
   ICheckBoxComponentConfig,
   IDatePickerConfig,
-  IDatePickerErrorMessages,
   IRadioInputComponentConfig
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
+import { TranslatedPageComponent } from '../translated-page-component';
 
 @Component({
   selector: 'app-date-picker-doc-code',
@@ -26,29 +27,22 @@ import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
   styleUrls: ['./date-picker-doc-code.component.scss'],
   providers: [SlugifyPipe]
 })
-export class DatePickerDocCodeComponent implements OnInit {
+export class DatePickerDocCodeComponent
+  implements OnInit, TranslatedPageComponent
+{
   currentLanguage: string = '';
-  altLangLink = 'datePickerDocCode';
-  form_datePicker = new FormGroup({});
-  errorState = 'None';
-
-  datePickerErrorMessages: IDatePickerErrorMessages = {
-    general: [
-      {
-        key: 'required',
-        errorLOV: 'ERROR.requiredTextAreaError'
-      }
-    ]
-  };
+  altLangLink = 'datePicker';
+  formDatePicker = new FormGroup({});
+  state: boolean = false;
 
   datePickerConfig: IDatePickerConfig = {
     id: 'datePicker',
-    formGroup: this.form_datePicker,
+    formGroup: this.formDatePicker,
     label: 'Label text',
     required: true,
     desc: 'Description line of text',
     size: 'small',
-    errorMessages: this.datePickerErrorMessages,
+    errorMessages: [],
     unknownDateToggle: {
       dayUnknown: true,
       monthUnknown: true,
@@ -58,10 +52,37 @@ export class DatePickerDocCodeComponent implements OnInit {
     daySelectShow: true
   };
 
+  datePickerConfigSingle: IDatePickerConfig = {
+    ...this.datePickerConfig,
+    id: 'datepicker_single',
+    required: true,
+    errorMessages: [
+      { key: 'required', errorLOV: this.translate.instant('ERROR.singleError') }
+    ]
+  };
+  datePickerConfigMulti: IDatePickerConfig = {
+    ...this.datePickerConfig,
+    id: 'datepicker_multi',
+    errorMessages: [
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.singleError')
+      },
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      },
+      {
+        key: 'required',
+        errorLOV: this.translate.instant('ERROR.additionalError')
+      }
+    ]
+  };
+
   toggles: IRadioInputComponentConfig[] = [
     {
       id: 'size',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Size',
       options: [
@@ -77,97 +98,101 @@ export class DatePickerDocCodeComponent implements OnInit {
     },
     {
       id: 'required',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Required',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'desc',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Description',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'hint',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Hint',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'monthSelectShow',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Month',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'daySelectShow',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.Day',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.TrueLabel',
+          value: 'True'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.FalseLabel',
+          value: 'False'
         }
       ]
     },
     {
       id: 'error',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
-      label: 'ERROR.errorMessage',
+      label: 'General.Error',
       options: [
         {
-          text: 'General.Yes',
-          value: 'Yes'
+          text: 'General.NoneErr',
+          value: 'None'
         },
         {
-          text: 'General.No',
-          value: 'No'
+          text: 'General.SingleErr',
+          value: 'Single'
+        },
+        {
+          text: 'General.MultipleErr',
+          value: 'Multiple'
         }
       ]
     }
@@ -175,12 +200,21 @@ export class DatePickerDocCodeComponent implements OnInit {
   checkboxes: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
-      formGroup: this.form_datePicker,
+      formGroup: this.formDatePicker,
       size: 'small',
       label: 'General.StateLabel',
-      inlineLabel: 'Disabled'
+      inlineLabel: 'General.DisabledLabel'
     }
   ];
+
+  bannerConfig: IBannerConfig = {
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
+    rounded: true
+  };
 
   datePickerConfigCodeView: any = {
     id: this.datePickerConfig.id,
@@ -220,6 +254,9 @@ export class DatePickerDocCodeComponent implements OnInit {
     ]
   };
 
+  errorState = 'None';
+  currentConfigId = this.datePickerConfig.id;
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
@@ -231,99 +268,215 @@ export class DatePickerDocCodeComponent implements OnInit {
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
-    this.checkboxes.forEach((checkbox) => {
-      this.form_datePicker.addControl(checkbox.id, new FormControl());
-    });
-
-    this.form_datePicker.addControl(
-      this.datePickerConfig.id,
-      new FormControl()
+    this.formDatePicker.addControl(this.datePickerConfig.id, new FormControl());
+    this.formDatePicker.addControl(
+      this.datePickerConfig.id + '_single',
+      new FormControl('', [Validators.required])
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
+      this.datePickerConfig.id + '_multi',
+      new FormControl('', [
+        Validators.required,
+        Validators.maxLength(3),
+        Validators.email
+      ])
+    );
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_dayControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_monthControl',
       new FormControl('', Validators.required)
     );
-    this.form_datePicker.addControl(
+    this.formDatePicker.addControl(
       this.datePickerConfig.id + '_yearControl',
+      new FormControl('', Validators.required)
+    );
+
+    this.formDatePicker.addControl(
+      this.datePickerConfigSingle.id + '_dayControl',
+      new FormControl('', Validators.required)
+    );
+    this.formDatePicker.addControl(
+      this.datePickerConfigSingle.id + '_monthControl',
+      new FormControl('', Validators.required)
+    );
+    this.formDatePicker.addControl(
+      this.datePickerConfigSingle.id + '_yearControl',
+      new FormControl('', Validators.required)
+    );
+
+    this.formDatePicker.addControl(
+      this.datePickerConfigMulti.id + '_dayControl',
+      new FormControl('', Validators.required)
+    );
+    this.formDatePicker.addControl(
+      this.datePickerConfigMulti.id + '_monthControl',
+      new FormControl('', Validators.required)
+    );
+    this.formDatePicker.addControl(
+      this.datePickerConfigMulti.id + '_yearControl',
       new FormControl('', Validators.required)
     );
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
-        this.form_datePicker.addControl(
+        this.formDatePicker.addControl(
           toggle.id,
           new FormControl(toggle.options[1].value)
         );
       }
     });
-
-    this.form_datePicker.patchValue({
-      size: 'Small',
-      required: 'Yes',
-      desc: 'Yes',
-      hint: 'No',
-      monthSelectShow: 'Yes',
-      daySelectShow: 'Yes',
-      error: 'No'
+    this.checkboxes.forEach((checkbox) => {
+      this.formDatePicker.addControl(checkbox.id, new FormControl());
     });
 
-    this.form_datePicker.valueChanges.subscribe((value: any) => {
-      this.datePickerConfig = this.parseToggleConfig(value);
+    this.formDatePicker
+      .get(this.checkboxes[0].id)
+      ?.valueChanges.subscribe((change) => {
+        if (change) {
+          this.bannerConfig.title = 'General.DisabledBannerTitle';
+          this.bannerConfig.content = 'General.DisabledBannerContent';
+        } else {
+          this.bannerConfig.title = 'General.EnabledBannerTitle';
+          this.bannerConfig.content = 'General.EnabledBannerContent';
+        }
+      });
+
+    this.formDatePicker.patchValue({
+      size: 'Small',
+      required: 'True',
+      desc: 'True',
+      hint: 'False',
+      monthSelectShow: 'True',
+      daySelectShow: 'True',
+      error: 'None'
+    });
+
+    this.formDatePicker.valueChanges.subscribe((value: any) => {
+      if (value['error'] !== this.errorState) this.toggleErrors(value['error']);
+      if (value['state'] !== undefined) {
+        this.toggleDisabled(value['state']);
+        this.state = value['state'];
+      }
+      this.parseToggleConfig(value);
       this.parseCodeViewConfig();
-      if (value['error']) this.toggleErrors(value['error']);
-      if (value['state'] !== undefined) this.toggleDisabled(value['state']);
     });
   }
 
   /**
    * Return mapping of Datepicker config from form values
    */
-  private parseToggleConfig(value: any): IDatePickerConfig {
-    return {
-      ...this.datePickerConfig,
-      size: value['size'].toLowerCase(),
-      hint: value['hint'] === 'Yes' ? 'Hint text' : undefined,
-      monthSelectShow: value['monthSelectShow'] === 'Yes',
-      daySelectShow: value['daySelectShow'] === 'Yes',
-      required: value['required'] === 'Yes',
-      desc: value['desc'] === 'Yes' ? 'Description line of text' : undefined
-    };
+  private parseToggleConfig(value: any) {
+    switch (this.errorState) {
+      case 'Single':
+        this.datePickerConfigSingle = {
+          ...this.datePickerConfigSingle,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'True',
+          daySelectShow: value['daySelectShow'] === 'True',
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined
+        };
+        break;
+      case 'Multiple':
+        this.datePickerConfigMulti = {
+          ...this.datePickerConfigMulti,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'True',
+          daySelectShow: value['daySelectShow'] === 'True',
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined
+        };
+        break;
+      default:
+        this.datePickerConfig = {
+          ...this.datePickerConfig,
+          size: value['size'].toLowerCase(),
+          hint: value['hint'] === 'True' ? 'Hint text' : undefined,
+          monthSelectShow: value['monthSelectShow'] === 'True',
+          daySelectShow: value['daySelectShow'] === 'True',
+          required: value['required'] === 'True',
+          desc:
+            value['desc'] === 'True' ? 'Description line of text' : undefined
+        };
+    }
   }
 
   /**
    * Set datePicker field as touched, toggle error states
    */
   private toggleErrors(error: string) {
-    if (error === 'Yes') {
-      this.form_datePicker.get(this.datePickerConfig.id)?.markAsTouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_dayControl')
+    if (
+      !this.formDatePicker.get(this.currentConfigId)?.touched &&
+      error !== 'None'
+    ) {
+      this.formDatePicker.get(this.currentConfigId)?.markAsTouched();
+      this.formDatePicker
+        .get(this.currentConfigId + '_dayControl')
         ?.markAsTouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_monthControl')
+      this.formDatePicker
+        .get(this.currentConfigId + '_monthControl')
         ?.markAsTouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_yearControl')
+      this.formDatePicker
+        .get(this.currentConfigId + '_yearControl')
         ?.markAsTouched();
-
-      this.errorState = error;
-      this.datePickerConfigCodeView.errorMessages =
-        this.datePickerConfig.errorMessages;
-    } else {
-      this.form_datePicker.get(this.datePickerConfig.id)?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_dayControl')
-        ?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_monthControl')
-        ?.markAsUntouched();
-      this.form_datePicker
-        .get(this.datePickerConfig.id + '_yearControl')
-        ?.markAsUntouched();
+    }
+    this.errorState = error;
+    switch (error) {
+      case 'None':
+        this.formDatePicker.get(this.datePickerConfig.id)?.markAsUntouched();
+        this.formDatePicker
+          .get(this.datePickerConfig.id + '_dayControl')
+          ?.markAsUntouched();
+        this.formDatePicker
+          .get(this.datePickerConfig.id + '_monthControl')
+          ?.markAsUntouched();
+        this.formDatePicker
+          .get(this.datePickerConfig.id + '_yearControl')
+          ?.markAsUntouched();
+        this.currentConfigId = this.datePickerConfig.id;
+        this.datePickerConfigCodeView.errorMessages = undefined;
+        break;
+      case 'Single':
+        this.currentConfigId = this.datePickerConfigSingle.id;
+        if (!this.formDatePicker.get(this.currentConfigId)?.touched) {
+          this.formDatePicker.get(this.currentConfigId)?.markAsTouched();
+          this.formDatePicker
+            .get(this.currentConfigId + '_dayControl')
+            ?.markAsTouched();
+          this.formDatePicker
+            .get(this.currentConfigId + '_monthControl')
+            ?.markAsTouched();
+          this.formDatePicker
+            .get(this.currentConfigId + '_yearControl')
+            ?.markAsTouched();
+        }
+        this.datePickerConfigCodeView.errorMessages =
+          this.datePickerConfigSingle.errorMessages;
+        break;
+      case 'Multiple':
+        this.currentConfigId = this.datePickerConfigMulti.id;
+        if (!this.formDatePicker.get(this.currentConfigId)?.touched) {
+          this.formDatePicker.get(this.currentConfigId)?.markAsTouched();
+          this.formDatePicker
+            .get(this.currentConfigId + '_dayControl')
+            ?.markAsTouched();
+          this.formDatePicker
+            .get(this.currentConfigId + '_monthControl')
+            ?.markAsTouched();
+          this.formDatePicker
+            .get(this.currentConfigId + '_yearControl')
+            ?.markAsTouched();
+        }
+        this.datePickerConfigCodeView.errorMessages =
+          this.datePickerConfigMulti.errorMessages;
+        break;
     }
     this.parseCodeViewConfig();
   }
@@ -333,13 +486,13 @@ export class DatePickerDocCodeComponent implements OnInit {
    */
   private toggleDisabled(disabled: boolean) {
     const datePickerYearControl =
-      this.form_datePicker.controls['datePicker_yearControl'];
+      this.formDatePicker.controls['datePicker_yearControl'];
     const datePickerMonthControl =
-      this.form_datePicker.controls['datePicker_monthControl'];
+      this.formDatePicker.controls['datePicker_monthControl'];
     const datePickerDayControl =
-      this.form_datePicker.controls['datePicker_dayControl'];
+      this.formDatePicker.controls['datePicker_dayControl'];
 
-    const datePickerControl: AbstractControl | null = this.form_datePicker.get(
+    const datePickerControl: AbstractControl | null = this.formDatePicker.get(
       this.datePickerConfig.id
     );
     if (
@@ -364,26 +517,54 @@ export class DatePickerDocCodeComponent implements OnInit {
   private parseCodeViewConfig() {
     const index = this.codeViewConfig?.tab?.findIndex((t) => t.id === 'ts');
     if (-1 == index || !index) return;
-    this.datePickerConfigCodeView = {
-      ...this.datePickerConfigCodeView,
-      size: this.datePickerConfig.size,
-      label: this.datePickerConfig.label,
-      hint: this.datePickerConfig.hint,
-      required: this.datePickerConfig.required,
-      desc: this.datePickerConfig.desc,
-      errorMessages: undefined,
-      unknownDateToggle: this.datePickerConfig.unknownDateToggle,
-      monthSelectShow: this.datePickerConfig.monthSelectShow,
-      daySelectShow: this.datePickerConfig.daySelectShow
-    };
+    switch (this.errorState) {
+      case 'Single':
+        this.datePickerConfigCodeView = {
+          ...this.datePickerConfigCodeView,
+          size: this.datePickerConfigSingle.size,
+          label: this.datePickerConfigSingle.label,
+          hint: this.datePickerConfigSingle.hint,
+          required: this.datePickerConfigSingle.required,
+          desc: this.datePickerConfigSingle.desc,
+          unknownDateToggle: this.datePickerConfigSingle.unknownDateToggle,
+          monthSelectShow: this.datePickerConfigSingle.monthSelectShow,
+          daySelectShow: this.datePickerConfigSingle.daySelectShow
+        };
+        break;
+      case 'Multiple':
+        this.datePickerConfigCodeView = {
+          ...this.datePickerConfigCodeView,
+          size: this.datePickerConfigMulti.size,
+          label: this.datePickerConfigMulti.label,
+          hint: this.datePickerConfigMulti.hint,
+          required: this.datePickerConfigMulti.required,
+          desc: this.datePickerConfigMulti.desc,
+          unknownDateToggle: this.datePickerConfigMulti.unknownDateToggle,
+          monthSelectShow: this.datePickerConfigMulti.monthSelectShow,
+          daySelectShow: this.datePickerConfigMulti.daySelectShow
+        };
+        break;
+      default:
+        this.datePickerConfigCodeView = {
+          ...this.datePickerConfigCodeView,
+          size: this.datePickerConfig.size,
+          label: this.datePickerConfig.label,
+          hint: this.datePickerConfig.hint,
+          required: this.datePickerConfig.required,
+          desc: this.datePickerConfig.desc,
+          unknownDateToggle: this.datePickerConfig.unknownDateToggle,
+          monthSelectShow: this.datePickerConfig.monthSelectShow,
+          daySelectShow: this.datePickerConfig.daySelectShow
+        };
+        break;
+    }
     if (this.codeViewConfig?.tab) {
       this.codeViewConfig.tab[index].value =
         "import { IDatePickerConfig } from 'ircc-ds-angular-component-library';\r" +
         "import { FormGroup } from '@angular/forms';\n\n" +
         `datePickerConfig: IDatePickerConfig = ${stringify(
           this.datePickerConfigCodeView
-        )}
-        `;
+        )}`;
     }
   }
 }

@@ -1,0 +1,7 @@
+.parent-checkbox {
+  min-height: 55px;
+  margin-right: 32px;
+}
+.child-checkbox {
+  margin-left: 20px;
+}
