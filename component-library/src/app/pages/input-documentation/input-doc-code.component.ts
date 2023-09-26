@@ -242,8 +242,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         placeholder: 'False',
         required: 'False'
       });
-    }
-    else {
+    } else {
       this.formInput.patchValue({
         required: 'True'
       });

@@ -222,17 +222,15 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       this.form.addControl(checkbox.id, new FormControl());
     });
 
-    this.form
-      .get(this.checkboxes[0].id)
-      ?.valueChanges.subscribe((change) => {
-        if (change) {
-          this.bannerConfig.title = 'General.DisabledBannerTitle';
-          this.bannerConfig.content = 'General.DisabledBannerContent';
-        } else {
-          this.bannerConfig.title = 'General.EnabledBannerTitle';
-          this.bannerConfig.content = 'General.EnabledBannerContent';
-        }
-      });
+    this.form.get(this.checkboxes[0].id)?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title = 'General.DisabledBannerTitle';
+        this.bannerConfig.content = 'General.DisabledBannerContent';
+      } else {
+        this.bannerConfig.title = 'General.EnabledBannerTitle';
+        this.bannerConfig.content = 'General.EnabledBannerContent';
+      }
+    });
 
     this.form.patchValue({
       size: 'Small',
