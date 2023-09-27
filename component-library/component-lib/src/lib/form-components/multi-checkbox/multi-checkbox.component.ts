@@ -12,7 +12,7 @@ import {
   StandAloneFunctions
 } from '../../../shared/functions/stand-alone.functions';
 
-export interface IErrorPairsMutltiCheckBox {
+export interface IErrorPairsMultiCheckBox {
   id?: string;
   key: string;
   errorLOV: string;
@@ -22,7 +22,7 @@ export interface IMultiCheckboxConfig {
   id: string;
   parent?: ICheckBoxComponentConfig;
   children?: ICheckBoxComponentConfig[];
-  errorMessages: IErrorPairsMutltiCheckBox[];
+  errorMessages: IErrorPairsMultiCheckBox[];
 }
 
 @Component({
@@ -41,13 +41,13 @@ export class MultiCheckboxComponent implements OnInit {
     errorMessages: []
   };
 
-  errorMessages: IErrorPairsMutltiCheckBox[] = [];
-  errorMessagesAccumulator: IErrorPairsMutltiCheckBox[] = [];
+  errorMessages: IErrorPairsMultiCheckBox[] = [];
+  errorMessagesAccumulator: IErrorPairsMultiCheckBox[] = [];
   disabledStatus: boolean = false;
   groupCheckbox: boolean = true;
 
   // returns size depending on if its group or multicheckbox
-  get getSize() : keyof typeof DSSizes {
+  get size() : keyof typeof DSSizes {
     if(this.groupCheckbox && this.config.children) {
       return this.config?.children[0]?.size || 'large'
     }

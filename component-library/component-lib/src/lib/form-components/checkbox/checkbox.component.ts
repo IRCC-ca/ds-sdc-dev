@@ -303,7 +303,7 @@ export class CheckboxComponent
   /**
    * Return error state from FormGroup, must be touched & invalid
    */
-  get getErrorState(): boolean {
+  get errorState(): boolean {
     this.setStatus()
     return (
       (this.currentTouch &&
