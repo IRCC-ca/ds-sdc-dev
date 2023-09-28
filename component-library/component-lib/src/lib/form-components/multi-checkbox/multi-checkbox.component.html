@@ -26,9 +26,11 @@
     <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
   </div>
 </ng-template>
-<ng-container *ngFor="let errors of errorMessagesAccumulator; let i = index">
+<ng-container
+  *ngFor="let errors of errorMessagesAccumulatorUniqueType; let i = index"
+>
   <div
-    *ngIf="errorMessagesAccumulator.length > -1 && !disabledStatus"
+    *ngIf="errorMessagesAccumulatorUniqueType.length > -1 && !disabledStatus"
     class="radio-errors"
   >
     <ircc-cl-lib-error

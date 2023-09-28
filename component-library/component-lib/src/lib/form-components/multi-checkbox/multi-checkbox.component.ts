@@ -1,5 +1,5 @@
 import { Component, DoCheck, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControlStatus, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import {
   DSSizes,
@@ -41,8 +41,17 @@ export class MultiCheckboxComponent implements OnInit {
     errorMessages: []
   };
 
-  errorMessages: IErrorPairsMultiCheckBox[] = [];
+  /**
+   * Accumulates all the errors on parents and children checkboxes
+   * @type IErrorPairsMultiCheckBox[]
+   */
   errorMessagesAccumulator: IErrorPairsMultiCheckBox[] = [];
+
+  /**
+   * Accumulates unique error types and used in the frontend to display
+   * @type IErrorPairsMultiCheckBox[]
+   */
+  errorMessagesAccumulatorUniqueType: IErrorPairsMultiCheckBox[] = [];
   disabledStatus: boolean = false;
   groupCheckbox: boolean = true;
 
@@ -201,19 +210,26 @@ export class MultiCheckboxComponent implements OnInit {
     }
   }
 
-  checkError(value: any, group: FormGroup, id: string) {
+  /**
+   * Will check the status of a formcontrol.  If the control is not in a valid status, it will loop through the errors
+   * and add them to this.errorMessages.
+   * @param value Status of the formcontrol
+   * @param group - Formgroup to be checked
+   * @param id - ID of the control that is being checked for error in the formgroup
+   */
+  checkError(value: FormControlStatus | undefined, group: FormGroup, id: string) {
     if (value !== 'VALID') {
       for (const error in group.get(id)?.errors) {
         let errorIndex = this.config.errorMessages?.findIndex((errorPair) => {
           return errorPair.key === error;
         });
 
-        let errorMessagesKeys = this.errorMessages?.findIndex((errorPair) => {
+        let errorMessagesKeys = this.errorMessagesAccumulator?.findIndex((errorPair) => {
           return errorPair.key === error && id === errorPair.id;
         });
 
         if (errorIndex > -1 && errorMessagesKeys === -1) {
-          this.errorMessages.push({
+          this.errorMessagesAccumulator.push({
             id: id,
             key: this.config.errorMessages[errorIndex].key,
             errorLOV: this.config.errorMessages[errorIndex].errorLOV
@@ -222,7 +238,7 @@ export class MultiCheckboxComponent implements OnInit {
         this.filterErrorList();
       }
     } else {
-      this.errorMessages = this.errorMessages.filter(
+      this.errorMessagesAccumulator = this.errorMessagesAccumulator.filter(
         (errorPair) => 
         {
           return (errorPair.id)?.replace('_error0', '') !== id
@@ -232,22 +248,27 @@ export class MultiCheckboxComponent implements OnInit {
     }
   }
 
+  /**
+   * Will loop through the errors in the variable errorMessages.
+   * It will then add a copy in errorMessagesAccumulator for each unique error type.
+   * THe first error in errorMessagesAccumulator will get _error0 appended to it's ID to display the icon
+   */
   filterErrorList() {
-    this.errorMessagesAccumulator = [];
+    this.errorMessagesAccumulatorUniqueType = [];
 
-    this.errorMessages.forEach((error) => {
-      let errorIndex = this.errorMessagesAccumulator.findIndex((errorPair) => {
+    this.errorMessagesAccumulator.forEach((error) => {
+      let errorIndex = this.errorMessagesAccumulatorUniqueType.findIndex((errorPair) => {
         return errorPair.key === error.key;
       });
 
       if (errorIndex === -1) {
-        this.errorMessagesAccumulator.push(error);
+        this.errorMessagesAccumulatorUniqueType.push(error);
       }
     });
 
-    if(this.errorMessagesAccumulator[0]){
-      if(this.errorMessagesAccumulator[0].id && !this.errorMessagesAccumulator[0].id.endsWith("_error0")) {
-        this.errorMessagesAccumulator[0].id = this.errorMessagesAccumulator[0].id + "_error0"
+    if(this.errorMessagesAccumulatorUniqueType[0]){
+      if(this.errorMessagesAccumulatorUniqueType[0].id && !this.errorMessagesAccumulatorUniqueType[0].id.endsWith("_error0")) {
+        this.errorMessagesAccumulatorUniqueType[0].id = this.errorMessagesAccumulatorUniqueType[0].id + "_error0"
       }
     }
   }
