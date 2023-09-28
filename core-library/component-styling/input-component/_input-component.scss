@@ -120,12 +120,15 @@
     }
   }
 
-
   .input-wrapper {
     padding: 0;
   }
 
   .sr-only {
     @include a11y.sr-only;
+  }
+
+  ::-ms-reveal {
+    display: none;
   }
 }
