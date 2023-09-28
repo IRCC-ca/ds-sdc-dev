@@ -41,6 +41,11 @@ export class MultiCheckboxComponent implements OnInit {
     errorMessages: []
   };
 
+  @Input() id = '';
+  @Input() parent? : ICheckBoxComponentConfig;
+  @Input() children? : ICheckBoxComponentConfig[];
+  @Input() errorMessages?: IErrorPairsMultiCheckBox[];
+
   /**
    * Accumulates all the errors on parents and children checkboxes
    * @type IErrorPairsMultiCheckBox[]
@@ -66,7 +71,12 @@ export class MultiCheckboxComponent implements OnInit {
   constructor(
     private multiCheckboxService: MultiCheckboxService,
     public standAloneFunctions: StandAloneFunctions
-  ) {}
+  ) {
+    if (this.id !== '') this.config.id = this.id;
+    if (this.parent) this.config.parent = this.parent;
+    if (this.children) this.config.children = this.children;
+    if (this.errorMessages) this.config.errorMessages = this.errorMessages;
+  }
 
   ngOnInit() {
     //errorChecking
