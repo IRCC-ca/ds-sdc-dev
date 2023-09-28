@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import {
   DSSizes,
   ICheckBoxComponentConfig,
+  ILabelConfig,
   MultiCheckboxService
 } from '../../../public-api';
 
@@ -20,6 +21,7 @@ export interface IErrorPairsMutltiCheckBox {
 
 export interface IMultiCheckboxConfig {
   id: string;
+  label: ILabelConfig;
   parent?: ICheckBoxComponentConfig;
   children?: ICheckBoxComponentConfig[];
   errorMessages: IErrorPairsMutltiCheckBox[];
@@ -38,6 +40,10 @@ export class MultiCheckboxComponent implements OnInit {
 
   @Input() config: IMultiCheckboxConfig = {
     id: '',
+    label: {
+      parentID: '',
+      formGroup: this.form
+    },
     errorMessages: []
   };
 
@@ -47,11 +53,11 @@ export class MultiCheckboxComponent implements OnInit {
   groupCheckbox: boolean = true;
 
   // returns size depending on if its group or multicheckbox
-  get getSize() : keyof typeof DSSizes {
-    if(this.groupCheckbox && this.config.children) {
-      return this.config?.children[0]?.size || 'large'
+  get getSize(): keyof typeof DSSizes {
+    if (this.groupCheckbox && this.config.children) {
+      return this.config?.children[0]?.size || 'large';
     }
-    return this.config.parent?.size || 'large'
+    return this.config.parent?.size || 'large';
   }
 
   constructor(
@@ -90,7 +96,7 @@ export class MultiCheckboxComponent implements OnInit {
     );
 
     if (this.config.parent != undefined) {
-      this.groupCheckbox = false
+      this.groupCheckbox = false;
       this.configSub =
         this.multiCheckboxService.multiCheckboxEventObs$.subscribe(
           (response) => {
@@ -174,7 +180,9 @@ export class MultiCheckboxComponent implements OnInit {
     this.config.children?.forEach((res) => {
       res.formGroup?.get(res.id)?.statusChanges.subscribe((value: any) => {
         this.checkError(value, res.formGroup, res.id);
-        value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
+        value === 'DISABLED'
+          ? (this.disabledStatus = true)
+          : (this.disabledStatus = false);
       });
     });
 
@@ -187,14 +195,18 @@ export class MultiCheckboxComponent implements OnInit {
             this.config?.parent?.formGroup || new FormGroup({}),
             this.config?.parent?.id || ''
           );
-          value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
+          value === 'DISABLED'
+            ? (this.disabledStatus = true)
+            : (this.disabledStatus = false);
 
           this.config.children?.forEach((res) => {
             res.formGroup
               ?.get(res.id)
               ?.statusChanges.subscribe((value: any) => {
                 this.checkError(value, res.formGroup, res.id);
-                value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
+                value === 'DISABLED'
+                  ? (this.disabledStatus = true)
+                  : (this.disabledStatus = false);
               });
           });
         });
@@ -222,12 +234,9 @@ export class MultiCheckboxComponent implements OnInit {
         this.filterErrorList();
       }
     } else {
-      this.errorMessages = this.errorMessages.filter(
-        (errorPair) => 
-        {
-          return (errorPair.id)?.replace('_error0', '') != id
-        }
-      );
+      this.errorMessages = this.errorMessages.filter((errorPair) => {
+        return errorPair.id?.replace('_error0', '') != id;
+      });
       this.filterErrorList();
     }
   }
@@ -245,9 +254,13 @@ export class MultiCheckboxComponent implements OnInit {
       }
     });
 
-    if(this.errorMessagesAccumulator[0]){
-      if(this.errorMessagesAccumulator[0].id && !this.errorMessagesAccumulator[0].id.endsWith("_error0")) {
-        this.errorMessagesAccumulator[0].id = this.errorMessagesAccumulator[0].id + "_error0"
+    if (this.errorMessagesAccumulator[0]) {
+      if (
+        this.errorMessagesAccumulator[0].id &&
+        !this.errorMessagesAccumulator[0].id.endsWith('_error0')
+      ) {
+        this.errorMessagesAccumulator[0].id =
+          this.errorMessagesAccumulator[0].id + '_error0';
       }
     }
   }

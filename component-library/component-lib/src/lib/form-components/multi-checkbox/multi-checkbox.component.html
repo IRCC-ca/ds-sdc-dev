@@ -1,40 +1,53 @@
-<div class="parent-checkbox">
-  <ng-container *ngIf="config.parent; else group">
-    <ircc-cl-lib-checkbox [config]="config.parent"></ircc-cl-lib-checkbox>
-    <ng-container *ngFor="let child of config.children">
-      <ng-container
-        *ngTemplateOutlet="
-          recursiveListTmpl;
-          context: { checkBoxConfig: child }
-        "
-      ></ng-container>
-    </ng-container>
-  </ng-container>
-</div>
-
-<ng-template #group>
-  <ng-container *ngFor="let child of config.children">
-    <ircc-cl-lib-checkbox [config]="child"></ircc-cl-lib-checkbox>
-  </ng-container>
-</ng-template>
-
-<ng-template
-  #recursiveListTmpl
-  let-checkBoxConfig="checkBoxConfig"
->
-  <div class="child-checkbox">
-    <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
-  </div>
-</ng-template>
-<ng-container *ngFor="let errors of errorMessagesAccumulator; let i = index">
-  <div
-    *ngIf="errorMessagesAccumulator.length > -1 && !disabledStatus"
-    class="radio-errors"
-  >
-    <ircc-cl-lib-error
-      [id]="errors.id"
-      [errorLOV]="errors.errorLOV"
+<fieldset>
+  <legend class="visually-hidden">
+    {{ config.label.label || '' | translate }}
+  </legend>
+  <ng-container *ngIf="config.label">
+    <ircc-cl-lib-label
+      [config]="config.label"
+      [legend]="true"
       [attr.size]="getSize"
-    ></ircc-cl-lib-error>
+    ></ircc-cl-lib-label>
+  </ng-container>
+  <div class="parent-checkbox">
+    <ng-container *ngIf="config.parent; else group">
+      <ircc-cl-lib-checkbox [config]="config.parent"></ircc-cl-lib-checkbox>
+      <ng-container *ngFor="let child of config.children">
+        <ng-container
+          *ngTemplateOutlet="
+            recursiveListTmpl;
+            context: { checkBoxConfig: child }
+          "
+        ></ng-container>
+      </ng-container>
+    </ng-container>
   </div>
-</ng-container>
+
+  <ng-template #group>
+    <ng-container *ngFor="let child of config.children">
+      <ircc-cl-lib-checkbox [config]="child"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-template>
+
+  <ng-template
+    #recursiveListTmpl
+    let-checkBoxConfig="checkBoxConfig"
+  >
+    {{ checkBoxConfig.label }}
+    <div class="child-checkbox">
+      <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
+    </div>
+  </ng-template>
+  <ng-container *ngFor="let errors of errorMessagesAccumulator; let i = index">
+    <div
+      *ngIf="errorMessagesAccumulator.length > -1 && !disabledStatus"
+      class="radio-errors"
+    >
+      <ircc-cl-lib-error
+        [id]="errors.id"
+        [errorLOV]="errors.errorLOV"
+        [attr.size]="getSize"
+      ></ircc-cl-lib-error>
+    </div>
+  </ng-container>
+</fieldset>
