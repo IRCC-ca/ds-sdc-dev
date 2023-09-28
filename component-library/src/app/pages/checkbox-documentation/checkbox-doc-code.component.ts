@@ -272,6 +272,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   ];
 
+  /**
+   * Disable enable checkbox config for single checkbox
+   */
   checkboxesSingle: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
@@ -383,6 +386,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   ];
 
+  /**
+   * Disable enable checkbox config for multicheckbox
+   */
   checkboxesMulti: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
@@ -494,6 +500,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   ];
 
+  /**
+   * Disable enable checkbox config for group checkbox
+   */
   checkboxesGroup: ICheckBoxComponentConfig[] = [
     {
       id: 'state',
@@ -550,6 +559,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     rounded: true
   };
 
+  /**
+   * Set checkbox type based on the tab selected
+   */
   setCheckboxType(value: any) {
     switch (value) {
       case 'single-checkbox':
@@ -712,12 +724,14 @@ export class CheckboxDocCodeComponent implements OnInit {
     });
   }
 
-  private resetAndPatchFormValues(
-    formGroup: FormGroup,
-    checkbox_type: CheckboxTypes
-  ) {
-    formGroup.reset();
-    if (checkbox_type === 'single') {
+
+  /**
+   * Reset form and set default values for toggles
+   */
+  private resetAndPatchFormValues(formGroup : FormGroup, checkbox_type : CheckboxTypes) {
+    formGroup.reset()
+    if(checkbox_type === 'single') {
+
       formGroup.patchValue({
         size: 'Small',
         label: 'False',
@@ -738,6 +752,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
+  /**
+   * Parse single checkbox config and update config based on selection made
+   */
   private parseConfigSingleCheckbox(type: string, value: any) {
     if (value !== null) {
       switch (type) {
@@ -802,6 +819,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
+  /**
+   * Parse multi checkbox config and update config based on selection made
+   */
   private parseConfigMultiCheckbox(type: string, value: any) {
     if (value !== null) {
       switch (type) {
@@ -908,6 +928,9 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
+  /**
+   * Parse group checkbox config and update config based on selection made
+   */
   private parseConfigGroupCheckbox(type: string, value: any) {
     if (value !== null) {
       switch (type) {
@@ -985,12 +1008,11 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-  private determineErrorState(
-    errorState: string,
-    formGroup: FormGroup,
-    formID: string,
-    checkbox_type: CheckboxTypes
-  ) {
+
+  /**
+   * Check Error type and set errors based on type
+   */
+  private determineErrorState(errorState: string, formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
     let errorArray: string[] = [];
     switch (errorState) {
       case 'Single':
@@ -1008,12 +1030,12 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-  private clearErrors(
-    formGroup: FormGroup,
-    formID: string,
-    checkbox_type: CheckboxTypes
-  ) {
-    if (checkbox_type !== CheckboxTypes.group) {
+
+  /**
+   * Clear all errors on the component
+   */
+  private clearErrors(formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
+    if(checkbox_type !== CheckboxTypes.group) {
       formGroup.get(formID)?.setErrors(null);
     }
     if (checkbox_type === CheckboxTypes.multi) {
@@ -1027,12 +1049,11 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-  private setErrors(
-    formGroup: FormGroup,
-    formID: string,
-    errorKeys: string[],
-    checkbox_type: CheckboxTypes
-  ) {
+
+  /**
+   * Set errors on the form control
+   */
+  private setErrors(formGroup: FormGroup, formID: string, errorKeys: string[],  checkbox_type: CheckboxTypes) {
     const errorVals = {};
     if (errorKeys.length === 0) {
       this.clearErrors(formGroup, formID, checkbox_type);

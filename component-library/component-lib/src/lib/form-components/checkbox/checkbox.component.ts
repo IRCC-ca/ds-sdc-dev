@@ -299,9 +299,13 @@ export class CheckboxComponent
   /**
    * Return error state from FormGroup, must be touched & invalid
    */
-  get getErrorState(): boolean {
-    this.setStatus();
-    return (this.currentTouch && this.currentStatus === 'INVALID') ?? false;
+  get errorState(): boolean {
+    this.setStatus()
+    return (
+      (this.currentTouch &&
+        this.currentStatus === 'INVALID') ??
+      false
+    );
   }
 
   clickEvent() {

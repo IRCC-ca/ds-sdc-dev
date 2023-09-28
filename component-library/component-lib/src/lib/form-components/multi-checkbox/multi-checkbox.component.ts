@@ -13,7 +13,7 @@ import {
   StandAloneFunctions
 } from '../../../shared/functions/stand-alone.functions';
 
-export interface IErrorPairsMutltiCheckBox {
+export interface IErrorPairsMultiCheckBox {
   id?: string;
   key: string;
   errorLOV: string;
@@ -24,7 +24,7 @@ export interface IMultiCheckboxConfig {
   label: ILabelConfig;
   parent?: ICheckBoxComponentConfig;
   children?: ICheckBoxComponentConfig[];
-  errorMessages: IErrorPairsMutltiCheckBox[];
+  errorMessages: IErrorPairsMultiCheckBox[];
 }
 
 @Component({
@@ -47,15 +47,17 @@ export class MultiCheckboxComponent implements OnInit {
     errorMessages: []
   };
 
-  errorMessages: IErrorPairsMutltiCheckBox[] = [];
-  errorMessagesAccumulator: IErrorPairsMutltiCheckBox[] = [];
+  errorMessages: IErrorPairsMultiCheckBox[] = [];
+  errorMessagesAccumulator: IErrorPairsMultiCheckBox[] = [];
   disabledStatus: boolean = false;
   groupCheckbox: boolean = true;
 
   // returns size depending on if its group or multicheckbox
-  get getSize(): keyof typeof DSSizes {
-    if (this.groupCheckbox && this.config.children) {
-      return this.config?.children[0]?.size || 'large';
+
+  get size() : keyof typeof DSSizes {
+    if(this.groupCheckbox && this.config.children) {
+      return this.config?.children[0]?.size || 'large'
+
     }
     return this.config.parent?.size || 'large';
   }
@@ -95,8 +97,9 @@ export class MultiCheckboxComponent implements OnInit {
       }
     );
 
-    if (this.config.parent != undefined) {
-      this.groupCheckbox = false;
+
+    if (this.config.parent !== undefined) {
+      this.groupCheckbox = false
       this.configSub =
         this.multiCheckboxService.multiCheckboxEventObs$.subscribe(
           (response) => {
@@ -186,7 +189,7 @@ export class MultiCheckboxComponent implements OnInit {
       });
     });
 
-    if (this.config.parent != undefined) {
+    if (this.config.parent !== undefined) {
       this.config.parent.formGroup
         ?.get(this.config.parent.id)
         ?.statusChanges.subscribe((value: any) => {
@@ -214,7 +217,7 @@ export class MultiCheckboxComponent implements OnInit {
   }
 
   checkError(value: any, group: FormGroup, id: string) {
-    if (value != 'VALID') {
+    if (value !== 'VALID') {
       for (const error in group.get(id)?.errors) {
         let errorIndex = this.config.errorMessages?.findIndex((errorPair) => {
           return errorPair.key === error;
@@ -234,9 +237,13 @@ export class MultiCheckboxComponent implements OnInit {
         this.filterErrorList();
       }
     } else {
-      this.errorMessages = this.errorMessages.filter((errorPair) => {
-        return errorPair.id?.replace('_error0', '') != id;
-      });
+
+      this.errorMessages = this.errorMessages.filter(
+        (errorPair) => 
+        {
+          return (errorPair.id)?.replace('_error0', '') !== id
+        }
+      );
       this.filterErrorList();
     }
   }
