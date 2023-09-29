@@ -754,6 +754,8 @@ export class CheckboxDocCodeComponent implements OnInit {
 
   /**
    * Parse single checkbox config and update config based on selection made
+   * @param type checkbox type, eg: single, multi, group
+   * @param value from value change
    */
   private parseConfigSingleCheckbox(type: string, value: any) {
     if (value !== null) {
@@ -821,6 +823,8 @@ export class CheckboxDocCodeComponent implements OnInit {
 
   /**
    * Parse multi checkbox config and update config based on selection made
+   * @param type checkbox type, eg: single, multi, group
+   * @param value from value change
    */
   private parseConfigMultiCheckbox(type: string, value: any) {
     if (value !== null) {
@@ -930,6 +934,8 @@ export class CheckboxDocCodeComponent implements OnInit {
 
   /**
    * Parse group checkbox config and update config based on selection made
+   * @param type checkbox type, eg: single, multi, group
+   * @param value from value change
    */
   private parseConfigGroupCheckbox(type: string, value: any) {
     if (value !== null) {
@@ -1011,7 +1017,11 @@ export class CheckboxDocCodeComponent implements OnInit {
 
   /**
    * Check Error type and set errors based on type
-   */
+   * @param errorState current error state
+   * @param formGroup Formgroup to be checked
+   * @param formID ID of the control that is being checked for error in the formgroup
+   * @param checkbox_type checkbox type, example: single, multi, group
+  */
   private determineErrorState(errorState: string, formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
     let errorArray: string[] = [];
     switch (errorState) {
@@ -1052,6 +1062,10 @@ export class CheckboxDocCodeComponent implements OnInit {
 
   /**
    * Set errors on the form control
+   * @param formGroup Formgroup to be checked
+   * @param formID ID of the control that is being checked in the formgroup
+   * @param errorKeys errors that are being set on the form control
+   * @param checkbox_type checkbox type, example: single, multi, group
    */
   private setErrors(formGroup: FormGroup, formID: string, errorKeys: string[],  checkbox_type: CheckboxTypes) {
     const errorVals = {};

@@ -5,7 +5,8 @@ import {
   ICheckBoxComponentConfig,
   ISelectConfig,
   IRadioInputComponentConfig,
-  ITabNavConfig
+  ITabNavConfig,
+  IBannerConfig
 } from 'ircc-ds-angular-component-library';
 import {
   AbstractControl,
@@ -152,6 +153,15 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
     errorMessages: undefined
   };
 
+  bannerConfig: IBannerConfig = {
+    id: 'banner-disabled-desc',
+    type: 'info',
+    size: 'small',
+    title: 'General.EnabledBannerTitle',
+    content: 'General.EnabledBannerContent',
+    rounded: true
+  };
+
   codeViewConfig: ICodeViewerConfig = {
     id: 'select-code-viewer',
     openAccordion: true,
@@ -210,6 +220,16 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.checkboxes.forEach((checkbox) => {
       this.form.addControl(checkbox.id, new FormControl());
+    });
+
+    this.form.get(this.checkboxes[0].id)?.valueChanges.subscribe((change) => {
+      if (change) {
+        this.bannerConfig.title = 'General.DisabledBannerTitle';
+        this.bannerConfig.content = 'General.DisabledBannerContent';
+      } else {
+        this.bannerConfig.title = 'General.EnabledBannerTitle';
+        this.bannerConfig.content = 'General.EnabledBannerContent';
+      }
     });
 
     this.form.patchValue({

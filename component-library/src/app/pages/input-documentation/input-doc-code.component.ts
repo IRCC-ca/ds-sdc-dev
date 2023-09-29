@@ -40,7 +40,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
     formGroup: this.formInput,
     size: 'small',
     type: 'text',
-    required: false,
+    required: true,
     label: 'Label Text',
     desc: 'Description line of text',
     errorMessages: [
@@ -237,10 +237,16 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
   setInputType(value: string) {
     // If set type to password, automatically select placeholder to False
-    if (value == 'password')
+    if (value == 'password') {
       this.formInput.patchValue({
-        placeholder: 'False'
+        placeholder: 'False',
+        required: 'False'
       });
+    } else {
+      this.formInput.patchValue({
+        required: 'True'
+      });
+    }
 
     this.inputConfig = {
       ...this.inputConfig,
@@ -296,6 +302,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
 
     this.formInput.patchValue({
       size: 'Small',
+      required: 'True',
       hint: 'False',
       desc: 'True',
       placeholder: 'False',
