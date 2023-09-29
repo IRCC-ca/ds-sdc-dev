@@ -29,30 +29,19 @@
     </ng-container>
   </ng-template>
 
-
-<ng-template
-  #recursiveListTmpl
-  let-checkBoxConfig="checkBoxConfig"
->
-  <div class="child-checkbox">
-    <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
-  </div>
-</ng-template>
-<ng-container
-  *ngFor="let errors of errorMessagesAccumulatorUniqueType; let i = index"
->
-  <div
-    *ngIf="errorMessagesAccumulatorUniqueType.length > -1 && !disabledStatus"
-    class="radio-errors"
+  <ng-template
+    #recursiveListTmpl
+    let-checkBoxConfig="checkBoxConfig"
   >
-    {{ checkBoxConfig.label }}
     <div class="child-checkbox">
       <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
     </div>
   </ng-template>
-  <ng-container *ngFor="let errors of errorMessagesAccumulator; let i = index">
+  <ng-container
+    *ngFor="let errors of errorMessagesAccumulatorUniqueType; let i = index"
+  >
     <div
-      *ngIf="errorMessagesAccumulator.length > -1 && !disabledStatus"
+      *ngIf="errorMessagesAccumulatorUniqueType.length > -1 && !disabledStatus"
       class="radio-errors"
     >
       <ircc-cl-lib-error
