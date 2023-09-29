@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import {
   DSSizes,
   ICheckBoxComponentConfig,
+  ILabelConfig,
   MultiCheckboxService
 } from '../../../public-api';
 
@@ -20,6 +21,7 @@ export interface IErrorPairsMultiCheckBox {
 
 export interface IMultiCheckboxConfig {
   id: string;
+  label: ILabelConfig;
   parent?: ICheckBoxComponentConfig;
   children?: ICheckBoxComponentConfig[];
   errorMessages: IErrorPairsMultiCheckBox[];
@@ -38,6 +40,10 @@ export class MultiCheckboxComponent implements OnInit {
 
   @Input() config: IMultiCheckboxConfig = {
     id: '',
+    label: {
+      parentID: '',
+      formGroup: this.form
+    },
     errorMessages: []
   };
 
@@ -61,11 +67,13 @@ export class MultiCheckboxComponent implements OnInit {
   groupCheckbox: boolean = true;
 
   // returns size depending on if its group or multicheckbox
+
   get size() : keyof typeof DSSizes {
     if(this.groupCheckbox && this.config.children) {
       return this.config?.children[0]?.size || 'large'
+
     }
-    return this.config.parent?.size || 'large'
+    return this.config.parent?.size || 'large';
   }
 
   constructor(
@@ -107,6 +115,7 @@ export class MultiCheckboxComponent implements OnInit {
         }
       }
     );
+
 
     if (this.config.parent !== undefined) {
       this.groupCheckbox = false
@@ -193,7 +202,9 @@ export class MultiCheckboxComponent implements OnInit {
     this.config.children?.forEach((res) => {
       res.formGroup?.get(res.id)?.statusChanges.subscribe((value: any) => {
         this.checkError(value, res.formGroup, res.id);
-        value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
+        value === 'DISABLED'
+          ? (this.disabledStatus = true)
+          : (this.disabledStatus = false);
       });
     });
 
@@ -206,14 +217,18 @@ export class MultiCheckboxComponent implements OnInit {
             this.config?.parent?.formGroup || new FormGroup({}),
             this.config?.parent?.id || ''
           );
-          value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
+          value === 'DISABLED'
+            ? (this.disabledStatus = true)
+            : (this.disabledStatus = false);
 
           this.config.children?.forEach((res) => {
             res.formGroup
               ?.get(res.id)
               ?.statusChanges.subscribe((value: any) => {
                 this.checkError(value, res.formGroup, res.id);
-                value === 'DISABLED' ? this.disabledStatus = true : this.disabledStatus = false;
+                value === 'DISABLED'
+                  ? (this.disabledStatus = true)
+                  : (this.disabledStatus = false);
               });
           });
         });
@@ -248,6 +263,7 @@ export class MultiCheckboxComponent implements OnInit {
         this.filterErrorList();
       }
     } else {
+
       this.errorMessagesAccumulator = this.errorMessagesAccumulator.filter(
         (errorPair) => 
         {
@@ -275,6 +291,7 @@ export class MultiCheckboxComponent implements OnInit {
         this.errorMessagesAccumulatorUniqueType.push(error);
       }
     });
+
 
     if(this.errorMessagesAccumulatorUniqueType[0]){
       if(this.errorMessagesAccumulatorUniqueType[0].id && !this.errorMessagesAccumulatorUniqueType[0].id.endsWith("_error0")) {

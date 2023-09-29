@@ -1,10 +1,4 @@
-import {
-  Component,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit
-} from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -233,11 +227,13 @@ export class CheckboxComponent
         }
         this.setStatus();
       });
+
+    console.log(this.labelConfig);
   }
 
   setStatus() {
     this.currentStatus =
-    this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
     this.currentTouch = this.config.formGroup.controls[this.config.id].touched;
   }
 
