@@ -17,20 +17,22 @@ jobs:
         run: |
           cd core-library
           echo "Change working direction to core-library"
-          ls
 
-#      - name: Set up Node.js
-#        uses: actions/setup-node@v2
-#        with:
-#          node-version: 16
-#
-#      - name: Install dependencies
-#        run: npm install
-#
-#      - name: Bump version
-#        run: npm version prerelease --preid=beta
-#
-#      - name: Publish to npm
-#        run: npm publish --access public # Replace with your npm registry and access if needed
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies for core-library
+        run: npm install
+
+      - name: Bump version for core-library
+        run: npm version prerelease --preid=beta
+
+      - name: Publish core-library to npm
+        run: |
+          npm set @ircc-ca:registry=https://registry.npmjs.com/
+          npm set "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
