@@ -23,11 +23,11 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install dependencies for core-library
-        run: npm install
-
       - name: Bump version for core-library
         run: npm version prerelease --preid=beta
+
+      - name: Install dependencies for core-library
+        run: npm install
 
       - name: Publish core-library to npm
         run: |
