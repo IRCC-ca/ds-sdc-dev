@@ -1,0 +1,36 @@
+name: Publish ds & cl beta version to NPM
+
+on:
+  push:
+    branches:
+      - feature/publish-action # replace to beta
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Change working direction to core-library
+        run: |
+          cd core-library
+          echo "Change working direction to core-library"
+          ls
+
+#      - name: Set up Node.js
+#        uses: actions/setup-node@v2
+#        with:
+#          node-version: 16
+#
+#      - name: Install dependencies
+#        run: npm install
+#
+#      - name: Bump version
+#        run: npm version prerelease --preid=beta
+#
+#      - name: Publish to npm
+#        run: npm publish --access public # Replace with your npm registry and access if needed
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
