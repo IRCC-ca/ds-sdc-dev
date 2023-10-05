@@ -13,11 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Change working direction to core-library
-        run: |
-          cd core-library
-          echo "Change working direction to core-library"
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -31,12 +26,19 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Bump version for core-library
-        run: npm version prerelease --preid=beta
+        working-directory: core-library/
+        run: | 
+          npm version prerelease --preid=beta
+          git add .
+          git commit -m "core-library: Bump version beta"
+          git push
 
       - name: Install dependencies for core-library
+        working-directory: core-library/
         run: npm install
 
       - name: Publish core-library to npm
+        working-directory: core-library/
         run: |
           npm set @ircc-ca:registry=https://registry.npmjs.com/
           npm set "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}"
