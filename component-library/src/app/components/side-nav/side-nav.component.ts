@@ -73,7 +73,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
-      //content begins 215px below sectionTop. Set current when scrollY passes top of section.
+      //content begins 40px below sectionTop. Set current when scrollY passes top of section.
       if (window.scrollY >= sectionTop - 40 && window.scrollY != height)
         current = `${section.getAttribute('id')}`;
     });
@@ -82,9 +82,6 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute('id')}`; //runs through links to set current active link
     sideNavLinks.forEach((link) => {
       link.classList.remove('active-link');
-      //blur required to remove focus from previous link if it was clicked
-      if (document.activeElement instanceof HTMLElement)
-        document.activeElement.blur();
       if (
         current != '' &&
         link.getAttribute('href')?.endsWith(current) &&
