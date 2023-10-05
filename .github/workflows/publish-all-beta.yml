@@ -42,7 +42,6 @@ jobs:
         run: |
           npm set @ircc-ca:registry=https://registry.npmjs.com/
           npm set "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}"
-          echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
