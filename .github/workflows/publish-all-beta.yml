@@ -47,7 +47,7 @@ jobs:
 
   publish_cl:
     runs-on: ubuntu-latest
-    needs: publish_core
+    needs: [publish_core]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -66,4 +66,4 @@ jobs:
 
       - name: Check core version
         run: |
-          echo "Version: ${{needs.publish_core.outputs.package_version}}"
+          echo "Version: ${{ needs.publish_core.outputs.package_version }}"
