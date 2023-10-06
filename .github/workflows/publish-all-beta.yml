@@ -30,6 +30,7 @@ jobs:
         id: bump_version_core
         working-directory: core-library/
         run: |
+          git pull
           npm version prerelease --preid=beta
           echo "package_version=$(npm pkg get version)" >> "$GITHUB_OUTPUT"
           git add .
