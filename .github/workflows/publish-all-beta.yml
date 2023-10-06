@@ -66,4 +66,4 @@ jobs:
 
       - name: Check core version
         run: |
-          echo "Version: ${{needs.bump_version_core.package_version}}"
+          echo "Version: ${{needs.publish_core.outputs.package_version}}"
