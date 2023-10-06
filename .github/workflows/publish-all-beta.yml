@@ -28,8 +28,9 @@ jobs:
       - name: Bump version for core-library
         id: bump_version_core
         working-directory: core-library/
-        run: | 
-          version=$(npm version prerelease --preid=beta)
+        run: |
+          npm version prerelease --preid=beta
+          version=$(npm pkg get version)
           echo "::set-output name=package_version::$version" # Set the output variable
   #          git add .
   #          git commit -m "core-library: Bump version beta"
