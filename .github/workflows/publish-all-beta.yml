@@ -30,10 +30,10 @@ jobs:
         working-directory: core-library/
         run: | 
           npm version prerelease --preid=beta
-#          git add .
-#          git commit -m "core-library: Bump version beta"
-#          git push
           echo "::set-output name=package_version::$version" # Set the output variable
+  #          git add .
+  #          git commit -m "core-library: Bump version beta"
+  #          git push
 
 #      - name: Publish core-library to npm
 #        working-directory: core-library/
