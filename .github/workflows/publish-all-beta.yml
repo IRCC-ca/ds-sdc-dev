@@ -32,21 +32,19 @@ jobs:
         run: |
           npm version prerelease --preid=beta
           echo "package_version=$(npm pkg get version)" >> "$GITHUB_OUTPUT"
-  #          package_version=$(npm pkg get version)
-#          echo "::set-output name=package_version::$package_version"
-  #          git add .
-  #          git commit -m "core-library: Bump version beta"
-  #          git push
+          git add .
+          git commit -m "core-library: Bump version $package_version"
+          git push
 
-#      - name: Publish core-library to npm
-#        working-directory: core-library/
-#        run: |
-#          npm install
-#          npm set @ircc-ca:registry=https://registry.npmjs.com/
-#          npm set "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}"
-#          npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish core-library to npm
+        working-directory: core-library/
+        run: |
+          npm install
+          npm set @ircc-ca:registry=https://registry.npmjs.com/
+          npm set "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish_cl:
     runs-on: ubuntu-latest
