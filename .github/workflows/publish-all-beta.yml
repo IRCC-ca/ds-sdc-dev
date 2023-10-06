@@ -8,7 +8,8 @@ on:
 jobs:
   publish_core:
     runs-on: ubuntu-latest
-
+    outputs:
+      package_version: ${{ steps.bump_version_core.outputs.package_version }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,8 +31,9 @@ jobs:
         working-directory: core-library/
         run: |
           npm version prerelease --preid=beta
-          package_version=$(npm pkg get version)
-          echo "::set-output name=package_version::$package_version"
+#          package_version=$(npm pkg get version)
+          echo "package_version=$(npm pkg get version)" >> "$GITHUB_OUTPUT"
+#          echo "::set-output name=package_version::$package_version"
   #          git add .
   #          git commit -m "core-library: Bump version beta"
   #          git push
