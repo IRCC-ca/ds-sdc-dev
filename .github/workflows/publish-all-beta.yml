@@ -65,6 +65,24 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Check core version
+      - name: Bump version for component-lib
+        working-directory: component-library/component-lib/
         run: |
-          echo "Version: ${{ needs.publish_core.outputs.package_version }}"
+          npm version prerelease --preid=beta
+          echo "cl_version=$(npm pkg get version)" >> "$GITHUB_OUTPUT"
+          git add .
+          git commit -m "component-lib: Bump version $cl_version"
+          git push
+          npm install --save @ircc-ca/ds-sdc-core@${{ needs.publish_core.outputs.package_version }}
+#          echo "Version: ${{ needs.publish_core.outputs.package_version }}"
+
+      - name: Publish core-library to npm
+        working-directory: component-library/component-lib/
+        run: |
+          npm install
+          ng build && cd ../dist/ircc-ds-angular-component-library
+          npm set @ircc-ca:registry=https://registry.npmjs.com/
+          npm set "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}"
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
