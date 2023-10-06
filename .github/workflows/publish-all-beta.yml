@@ -69,6 +69,7 @@ jobs:
       - name: Bump version for component-lib
         working-directory: component-library/component-lib/
         run: |
+          git pull
           npm version prerelease --preid=beta
           echo "cl_version=$(npm pkg get version)" >> "$GITHUB_OUTPUT"
           git add .
