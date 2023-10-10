@@ -76,9 +76,9 @@ jobs:
         run: |
           git pull
           npm version prerelease --preid=beta
-          echo "cl_version=$(npm pkg get version)" >> "$GITHUB_ENV"
+          echo "export CL_VERSION=$(npm pkg get version)" >> "$GITHUB_ENV"
           git add .
-          git commit -m "component-lib: Bump version $cl_version"
+          git commit -m "component-lib: Bump version $CL_VERSION"
           git push
           npm install --save @ircc-ca/ds-sdc-core@${{ needs.publish_core.outputs.package_version }}
 
