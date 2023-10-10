@@ -33,6 +33,10 @@ jobs:
           git pull
           npm version prerelease --preid=beta
           echo "package_version=$(npm pkg get version)" >> "$GITHUB_OUTPUT"
+
+      - name: Save version change commit for core-library
+        working-directory: core-library/
+        run: |
           git add .
           git commit -m "core-library: Bump version ${{ steps.bump_version_core.outputs.package_version }}"
           git push
@@ -73,11 +77,14 @@ jobs:
           git pull
           npm version prerelease --preid=beta
           echo "cl_version=$(npm pkg get version)" >> "$GITHUB_OUTPUT"
+
+      - name: Save version change commit for component-lib
+        working-directory: core-library/
+        run: |
           git add .
           git commit -m "component-lib: Bump version ${{ steps.bump_version_cl.outputs.cl_version }}"
           git push
           npm install --save @ircc-ca/ds-sdc-core@${{ needs.publish_core.outputs.package_version }}
-#          echo "Version: ${{ needs.publish_core.outputs.package_version }}"
 
       - name: Publish core-library to npm
         working-directory: component-library/component-lib/
