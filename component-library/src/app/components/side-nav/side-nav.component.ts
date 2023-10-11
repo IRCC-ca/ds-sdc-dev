@@ -90,9 +90,8 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
         link.classList.add('active-link');
-      }
-      else if(current === '' && link instanceof HTMLElement) {
-        sideNavLinks[0].classList.add('active-link')
+      } else if (current === '' && link instanceof HTMLElement) {
+        sideNavLinks[0].classList.add('active-link');
       }
     });
 
@@ -146,18 +145,18 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       this.toggleMobile();
     }
     this.adjustWidth();
-
   }
 
   ngAfterViewInit() {
-
-    if(window.location.hash != ''){
+    if (window.location.hash != '') {
       const hashID = window.location.hash;
-      const el : HTMLAnchorElement = document.querySelector(`a[href$='${hashID}']`) as HTMLAnchorElement;
-      const aTags : NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.rightnav a') as NodeListOf<HTMLAnchorElement>;
-      console.log(el);
-      if(el != aTags[(aTags.length - 1)]){
-        console.log('click');
+      const el: HTMLAnchorElement = document.querySelector(
+        `a[href$='${hashID}']`
+      ) as HTMLAnchorElement;
+      const aTags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll(
+        '.rightnav a'
+      ) as NodeListOf<HTMLAnchorElement>;
+      if (el != aTags[aTags.length - 1]) {
         setTimeout(() => {
           el.click();
         }, 200);
@@ -165,7 +164,6 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         window.scrollTo(0, document.body.scrollHeight);
       }
     }
-
   }
 
   ngAfterViewChecked() {
@@ -173,7 +171,6 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     this.cdr.detectChanges();
     // Record relative height from top of page for sidenav
     this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
-
   }
 
   private toggleMobile() {
