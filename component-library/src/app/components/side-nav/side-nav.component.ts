@@ -73,18 +73,15 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
-      //content begins 215px below sectionTop. Set current when scrollY passes top of section.
-      if (window.scrollY >= sectionTop - 215 && window.scrollY != height)
+      //content begins 40px below sectionTop. Set current when scrollY passes top of section.
+      if (window.scrollY >= sectionTop - 40 && window.scrollY != height)
         current = `${section.getAttribute('id')}`;
     });
-    //set current to lowest section is scroll is at bottom of content
+    //set current to lowest section if scroll is at bottom of content
     if (window.scrollY >= height)
       current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute('id')}`; //runs through links to set current active link
     sideNavLinks.forEach((link) => {
       link.classList.remove('active-link');
-      //blur required to remove focus from previous link if it was clicked
-      if (document.activeElement instanceof HTMLElement)
-        document.activeElement.blur();
       if (
         current != '' &&
         link.getAttribute('href')?.endsWith(current) &&
@@ -92,7 +89,9 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
         link.classList.add('active-link');
-        link.focus();
+      }
+      else if(current === '' && link instanceof HTMLElement) {
+        sideNavLinks[0].classList.add('active-link')
       }
     });
 
@@ -149,6 +148,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
+    this.onWindowScroll()
     this.cdr.detectChanges();
     // Record relative height from top of page for sidenav
     this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;

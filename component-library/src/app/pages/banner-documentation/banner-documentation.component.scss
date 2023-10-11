@@ -1,16 +1,39 @@
 @use '../../../../../core-library/util/device' as device;
+@use "../../../scss/grid";
 @use "../../../scss/page";
 @use '@ircc-ca/ds-sdc-core/typography/typography';
 
 @include page.template;
 
-.types {
-  .component-preview {
-    max-width: 400px;
-    padding-bottom: 16px;
+.block {
+  &__types {
+    .component-preview {
+      max-width: 400px;
+    }
   }
-
-  .banner-preview {
-    margin-top: 24px;
+  &__accessibility {
+    ul {
+      padding-left: 0;
+    }
+  }
+  &__usage-figma {
+    .image-container {
+      width: 163px;
+      margin-left: 86px;
+      @include grid.up-phone-layout {
+        margin-top: 12px;
+      }
+    }
+  }
+  ::ng-deep {
+    app-component-preview {
+      .background-white.preview-wrapper {
+        padding: {
+          top: 24px;
+          bottom: 14px;
+        };
+      }
+    }
   }
 }
+

@@ -1,19 +1,19 @@
-<div class="content-doc-wrapper col-12 col-lg-9 col-xl-10">
+<div class="block col-12 col-lg-9 col-xl-10">
   <app-title-slug-url [config]="selectTitleSlugConfig"></app-title-slug-url>
-  <p class="body1 intro">{{ 'Select.Intro' | translate }}</p>
+  <p class="block__intro">{{ 'Select.Intro' | translate }}</p>
 
-  <section class="interactive-demo">
+  <section class="block__interactive-demo">
     <app-title-slug-url
       [config]="headingConfig.interactiveDemoSlugConfig"
     ></app-title-slug-url>
-    <p class="body3">
+    <p class="text">
       {{ 'General.InteractiveDemoDesc1' | translate }}
       <strong> {{ ('Select.Title' | translate).toLowerCase() }}</strong>
       {{ 'General.InteractiveDemoDesc2' | translate }}
     </p>
     <app-select-doc-code></app-select-doc-code>
   </section>
-  <section class="configs">
+  <section class="block__configs">
     <app-title-slug-url
       [config]="headingConfig.configurationMainSlugConfig"
     ></app-title-slug-url>
@@ -36,7 +36,7 @@
       </div>
       <div class="row element-wrapper-container">
         <div class="col-6">
-          <h3 class="config-heading">
+          <h3>
             {{ 'General.Description' | translate }}
           </h3>
           <ul>
@@ -45,7 +45,7 @@
           </ul>
         </div>
         <div class="col-6">
-          <h3 class="config-heading">
+          <h3>
             {{ 'General.Hint' | translate }}
           </h3>
           <ul>
@@ -56,10 +56,10 @@
       </div>
       <div class="row element-wrapper-container">
         <div class="col-6">
-          <h3 class="config-heading">
+          <h3>
             {{ 'General.ErrorMessage' | translate }}
           </h3>
-          <ul class="end-list">
+          <ul>
             <li>{{ 'General.TrueLabel' | translate }}</li>
             <li>{{ 'General.FalseLabel' | translate }}</li>
           </ul>
@@ -89,7 +89,7 @@
       </div>
       <div class="row element-wrapper-container">
         <div class="col-6">
-          <h3 class="config-heading">
+          <h3>
             {{ 'General.StateLabel' | translate }}
           </h3>
           <ul>
@@ -103,13 +103,13 @@
       </div>
     </div>
   </section>
-  <section class="design-guide">
+  <section class="block__design-guide">
     <app-title-slug-url
       [config]="headingConfig.guidelineSlugConfig"
     ></app-title-slug-url>
-    <div class="wrapper-container do-dont-container">
+    <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h3 class="emphasis subtitles">
+        <h3>
           {{ 'Select.DesignGuidelines.SubHeading1' | translate }}
         </h3>
         <div class="row">
@@ -118,29 +118,33 @@
               src="assets/img/select-content/select-do-1.png"
               alt="{{ 'Select.Alt.Do1' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-4">
-              {{ 'Select.Do1' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Do1' | translate }}
+              </p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-1.png"
               alt="{{ 'Select.Alt.Dont1' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-4">
-              {{ 'Select.Dont1' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont1' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
-        <h3 class="h5 emphasis subtitles">
+      <div class="element-wrapper-container pt_8">
+        <h3>
           {{ 'Select.DesignGuidelines.SubHeading2' | translate }}
         </h3>
         <div class="row">
@@ -149,27 +153,31 @@
               src="assets/img/select-content/select-do-2.png"
               alt="{{ 'Select.Alt.Do2' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-5">{{ 'Select.Do2' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Select.Do2' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-2.png"
               alt="{{ 'Select.Alt.Dont2' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-7">
-              {{ 'Select.Dont2' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont2' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
-        <h3 class="h5 emphasis subtitles">
+      <div class="element-wrapper-container pt_8">
+        <h3>
           {{ 'General.ErrorsHeading' | translate }}
         </h3>
         <div class="row">
@@ -178,27 +186,31 @@
               src="assets/img/select-content/select-do-3.png"
               alt="{{ 'Select.Alt.Do3' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-5">{{ 'Select.Do3' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Select.Do3' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-3.png"
               alt="{{ 'Select.Alt.Dont3' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-7">
-              {{ 'Select.Dont3' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont3' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
-        <h3 class="h5 emphasis subtitles">
+      <div class="element-wrapper-container pt_8">
+        <h3>
           {{ 'Select.DesignGuidelines.SubHeading4' | translate }}
         </h3>
         <div class="row">
@@ -207,27 +219,31 @@
               src="assets/img/select-content/select-do-4.png"
               alt="{{ 'Select.Alt.Do4' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-5">{{ 'Select.Do4' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Select.Do4' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-4.png"
               alt="{{ 'Select.Alt.Dont4' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-7">
-              {{ 'Select.Dont4' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont4' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
-        <h3 class="h5 emphasis subtitles">
+      <div class="element-wrapper-container pt_8">
+        <h3>
           {{ 'General.MaxMinWidthHeading' | translate }}
         </h3>
         <div class="row">
@@ -244,7 +260,7 @@
     </div>
   </section>
 
-  <section class="anatomy">
+  <section class="block__anatomy">
     <app-title-slug-url
       [config]="headingConfig.anatomySlugConfig"
     ></app-title-slug-url>
@@ -256,77 +272,30 @@
         />
       </div>
       <div class="element-wrapper-container">
-        <div class="counter-and-heading-container row">
-          <div class="round-purple-num-count">1</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'General.RequiredIndicatorHeading' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">
-          {{ 'General.RequiredIndicatorTxt' | translate }}
-        </p>
-        <div class="counter-and-heading-container row">
-          <div class="round-purple-num-count">2</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'General.LabelHeading' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">
-          {{ 'General.AnatomyLabelText' | translate }}
-        </p>
-        <div class="counter-and-heading-container row">
-          <div class="round-purple-num-count">3</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'General.DescriptionHeading' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">{{ 'General.AnatomyDescText' | translate }}</p>
-        <div class="counter-and-heading-container row">
-          <div class="round-purple-num-count">4</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'General.Hint' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">{{ 'General.AnatomyHintText' | translate }}</p>
-        <div class="counter-and-heading-container row">
-          <div class="round-purple-num-count">5</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'General.InputField' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">
-          {{ 'Input.AnatomyInputFieldText' | translate }}
-        </p>
-        <div class="counter-and-heading-container row">
-          <div class="round-purple-num-count">6</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'General.ErrorMessage' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">
-          {{ 'General.AnatomyErrorText' | translate }}
-        </p>
-        <div class="counter-and-heading-container row">
-          <div class="round-purple-num-count">7</div>
-          <h3 class="h5 emphasis round-purple-num-heading">
-            {{ 'Select.Anatomy.Dropdown' | translate }}
-          </h3>
-        </div>
-        <p class="body3 anatomy">
-          {{ 'Select.Anatomy.DropdownText' | translate }}
-        </p>
+        <ng-container *ngFor="let content of anatomyContentItems; let i = index"
+          ><div class="anatomy-content-container">
+            <div class="counter-and-heading-container">
+              <div class="round-purple-num-count">{{ i + 1 }}</div>
+              <h3 class="round-purple-num-heading">
+                {{ content.title | translate }}
+              </h3>
+            </div>
+            <p class="anatomy-desc">
+              {{ content.description | translate }}
+            </p>
+          </div>
+        </ng-container>
       </div>
     </div>
   </section>
 
-  <section class="specs">
+  <section class="block__specs">
     <app-title-slug-url
       [config]="headingConfig.specsSlugConfig"
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
         <img
-          class="single-img"
           src="assets/img/select-content/select-specs.png"
           alt="{{ 'Select.Alt.Specs' | translate }}"
         />
@@ -338,224 +307,247 @@
     </div>
   </section>
 
-  <section class="content-guidelines">
+  <section class="block__content-guidelines">
     <app-title-slug-url
       [config]="headingConfig.contentGuideSlugConfig"
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h3 class="subtitles">
+        <h3>
           {{ 'General.WriteLabelsHeading' | translate }}
         </h3>
-        <p class="body3 subtext-3">
+        <p class="sub-heading-text">
           {{ 'Select.WritingLabelsText' | translate }}
         </p>
         <div class="row">
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-do-5.png"
               alt="{{ 'Select.Alt.Do5' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-4">
-              {{ 'Select.Do5' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Do5' | translate }}
+              </p>
+            </div>
           </div>
           <div class="col-12 col-md-6 do-dont-desc">
             <img
               src="assets/img/select-content/select-dont-5.png"
               alt="{{ 'Select.Alt.Dont5' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-4">
-              {{ 'Select.Dont5' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont5' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container do-dont-container">
+      <div class="element-wrapper-container pt_8">
         <div class="row">
           <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-do-6.png"
               alt="{{ 'Select.Alt.Do6' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-5">{{ 'Select.Do6' | translate }}</p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>{{ 'Select.Do6' | translate }}</p>
+            </div>
           </div>
           <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-6.png"
               alt="{{ 'Select.Alt.Dont6' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-7">
-              {{ 'Select.Dont6' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont6' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
-        <h3 class="subtitles">
+      <div class="element-wrapper-container pt_8">
+        <h3>
           {{ 'General.DescriptionSubheading' | translate }}
         </h3>
-        <p class="body3 subtext-3">
+        <p class="sub-heading-text">
           {{ 'General.DescriptionText' | translate }}
         </p>
         <div class="row">
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-do-7.png"
               alt="{{ 'Select.Alt.Do7' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-11">
-              {{ 'Select.Do7' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Do7' | translate }}
+              </p>
+            </div>
           </div>
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-7.png"
               alt="{{ 'Select.Alt.Dont7' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-12">
-              {{ 'Select.Dont7' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont7' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
+      <div class="element-wrapper-container pt_8">
         <h3 class="subtitles">
           {{ 'General.PlaceholderSubheading' | translate }}
         </h3>
-        <p class="body3 subtext-3">
+        <p class="sub-heading-text">
           {{ 'Select.WritingPlaceholderText' | translate }}
         </p>
         <div class="row">
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-do-8.png"
               alt="{{ 'Select.Alt.Do8' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-12">
-              {{ 'Select.Do8' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Do8' | translate }}
+              </p>
+            </div>
           </div>
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-8.png"
               alt="{{ 'Select.Alt.Dont8' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-9">
-              {{ 'Select.Dont8' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont8' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
-        <h3 class="subtitles">{{ 'ERROR.WritingErrHeading' | translate }}</h3>
-        <p class="body3 subtext-3">
+      <div class="element-wrapper-container pt_8">
+        <h3>{{ 'ERROR.WritingErrHeading' | translate }}</h3>
+        <p class="sub-heading-text">
           {{ 'ERROR.WritingErrText' | translate }}
         </p>
         <div class="row">
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-do-9.png"
               alt="{{ 'Select.Alt.Do9' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-12">
-              {{ 'Select.Do9' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Do9' | translate }}
+              </p>
+            </div>
           </div>
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-9.png"
               alt="{{ 'Select.Alt.Dont9' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-11">
-              {{ 'Select.Dont9' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont9' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="element-wrapper-container">
-        <h3 class="subtitles">
+      <div class="element-wrapper-container pt_8">
+        <h3>
           {{ 'General.RequiredFieldsHeading' | translate }}
         </h3>
         <div class="row">
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-do-10.png"
               alt="{{ 'Select.Alt.Do10' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-green">
-              {{ 'General.DoHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-13">
-              {{ 'Select.Do10' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-green">
+                {{ 'General.DoHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Do10' | translate }}
+              </p>
+            </div>
           </div>
-          <div class="col-12 col-md-6 do-dont-desc">
+          <div class="col-12 col-md-6">
             <img
               src="assets/img/select-content/select-dont-10.png"
               alt="{{ 'Select.Alt.Dont10' | translate }}"
             />
-            <h4 class="emphasis text-underline text-color-red">
-              {{ 'General.DontHeading' | translate }}
-            </h4>
-            <p class="body3 subtext-13">
-              {{ 'Select.Dont10' | translate }}
-            </p>
+            <div class="do-dont-desc">
+              <h4 class="do-dont-heading text-color-red">
+                {{ 'General.DontHeading' | translate }}
+              </h4>
+              <p>
+                {{ 'Select.Dont10' | translate }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="usage-figma">
+  <section class="block__usage-figma">
     <app-title-slug-url
       [config]="headingConfig.figmaSlugConfig"
     ></app-title-slug-url>
     <div class="row">
       <div class="col-12 col-md-8">
-        <h3 class="sub-headings">
+        <h3>
           {{ 'General.FigmaDirectionsHeading' | translate }}
         </h3>
         <ol>
           <li
-            class="list-item"
             *ngFor="let direction of figmaDirections"
             [innerHtml]="direction | translate"
           ></li>
         </ol>
       </div>
       <div class="col-12 col-md-4 justify-ctr">
-        <div class="image-1 image-container">
+        <div class="image-container">
           <img
             src="assets/img/select-content/select-usage-1.png"
             alt="{{ 'Select.Alt.Usage1' | translate }}"
@@ -565,12 +557,11 @@
     </div>
     <div class="row">
       <div class="col-12 col-md-8 mb_12">
-        <h3 class="sub-headings accessInputHeading">
+        <h3>
           {{ 'General.FigmaAccessInput' | translate }}
         </h3>
         <ol>
           <li
-            class="list-item figmaUsageList"
             *ngFor="let direction of figmaDirectionsSecond"
             [innerHtml]="direction | translate"
           ></li>
@@ -578,19 +569,19 @@
       </div>
     </div>
     <div class="images">
-      <div class="img1">
+      <div class="image-container">
         <img
           src="assets/img/select-content/select-usage-2.png"
           alt="{{ 'Select.Alt.Usage2' | translate }}"
         />
       </div>
-      <div class="img2">
+      <div class="image-container">
         <img
           src="assets/img/select-content/usage-select-screenshot.png"
           alt="{{ 'Select.Alt.UsageScreenshot' | translate }}"
         />
       </div>
-      <div class="img3">
+      <div class="image-container">
         <img
           src="assets/img/select-content/select-usage-3.png"
           alt="{{ 'Select.Alt.Usage3' | translate }}"
@@ -599,65 +590,52 @@
     </div>
   </section>
 
-  <section class="accessibility">
+  <section class="block__accessibility">
     <app-title-slug-url
       [config]="headingConfig.accessibilitySlugConfig"
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <h3 class="h5 emphasis subtitles">
+        <h3>
           {{ 'General.AccessibilityColourHeading' | translate }}
         </h3>
-        <p class="body3 subtext-1">
+        <p>
           {{ 'Select.ColourContrast' | translate }}
         </p>
       </div>
       <div class="element-wrapper-container">
-        <h3 class="h5 emphasis subtitles">
+        <h3>
           {{ 'General.AccessibilityKeyboardHeading' | translate }}
         </h3>
-        <p class="body3 subtext-1">
+        <p>
           {{ 'Input.AccessibilityKeyboardText' | translate }}
         </p>
       </div>
       <div class="element-wrapper-container">
-        <h3 class="h5 emphasis subtitles">
-          {{ 'General.ContentHeading' | translate }}
+        <h3>
+          {{ 'General.Content' | translate }}
         </h3>
-        <ul class="content-list">
+        <ul>
           <li
-            [innerHtml]="'General.AccessibilityContentItem1' | translate"
-          ></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem2' | translate"></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem3' | translate"></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem4' | translate"></li>
-          <li
-            [innerHTML]="'Select.AccesiblityPopulatedContentItem' | translate"
-          ></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem5' | translate"></li>
-          <li [innerHtml]="'Input.AccessibilityContentItem6' | translate"></li>
-          <li
-            [innerHtml]="'General.AccessibilityContentItemMax' | translate"
+            *ngFor="let item of accessibilityContent"
+            [innerHtml]="item | translate"
           ></li>
         </ul>
       </div>
       <div class="element-wrapper-container">
-        <h3 class="validation-heading">
+        <h3>
           {{ 'General.Validation' | translate }}
         </h3>
-        <ul class="validation-list">
-          <li
-            class="body3 last"
-            [innerHtml]="'General.ValidationText' | translate"
-          ></li>
+        <ul>
+          <li [innerHtml]="'General.ValidationText' | translate"></li>
         </ul>
       </div>
     </div>
   </section>
-  <section class="research">
+  <section class="block__research">
     <app-title-slug-url
       [config]="headingConfig.researchSlugConfig"
     ></app-title-slug-url>
-    <p class="body3">{{ 'General.ComingSoon' | translate }}</p>
+    <p>{{ 'General.ComingSoon' | translate }}</p>
   </section>
 </div>

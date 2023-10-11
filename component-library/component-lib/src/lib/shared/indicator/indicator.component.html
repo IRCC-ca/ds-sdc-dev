@@ -1,11 +1,12 @@
 <div
   [ngClass]="['indicator-container', config.size ?? '']"
-  [attr.aria-label]="
+    [attr.aria-label]="
     (config.ariaLabel ?? 'Indicator.Heading' | translate) +
     ' ' +
     (config.label ?? '')
   "
   [tabindex]="config.tabIndex"
+  role="group"
 >
   <div
     *ngIf="config.type === 'text' || config.type === 'number'"

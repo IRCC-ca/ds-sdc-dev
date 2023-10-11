@@ -44,6 +44,8 @@ import { MultiCheckboxDocumentationComponent } from '@app/pages/multi-checkbox-d
 import { SpinnerDocCodeComponent } from '@app/pages/spinner-documentation/spinner-doc-code.component';
 import { SpinnerDocumentationComponent } from '@app/pages/spinner-documentation/spinner-documentation.component';
 import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-documentation/autocomplete-documentation.component';
+import { ProgressIndicatorDocCodeComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-doc-code.component';
+import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-documentation.component';
 
 import { emailVerificationComponent } from '@app/components/email-verification/email-verification.component';
 
@@ -90,7 +92,12 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     AutocompleteDocumentationComponent,
     emailVerificationComponent,
     SpinnerDocCodeComponent,
-    SpinnerDocumentationComponent
+    qa/backend-form-integration
+    SpinnerDocumentationComponent,
+    AutocompleteDocumentationComponent,
+    ProgressIndicatorDocCodeComponent,
+    ProgressIndicatorDocumentationComponent
+
   ],
   imports: [
     CommonModule,

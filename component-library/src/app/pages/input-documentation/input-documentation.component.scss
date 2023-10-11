@@ -6,20 +6,10 @@
 
 @include page.template;
 
-.component-preview {
-  max-width: 362px;
-  height: 225px;
-  ircc-cl-lib-input {
-    width: 232px;
-  }
-}
-
-.anatomy {
-  div.counter-and-heading-container {
-    display: inline-flex;
-
-    &:not(:nth-child(1)) {
-      margin-top: 20px;
+.block {
+  .component-preview {
+    ircc-cl-lib-input {
+      width: 232px;
     }
   }
 }

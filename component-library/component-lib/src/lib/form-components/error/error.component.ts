@@ -6,6 +6,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
+import { IIconConfig } from '../../shared/icon/icon.component';
 
 export interface IErrorIconConfig {
   class: string; // Fontawesome icon class
@@ -29,6 +30,7 @@ export class ErrorComponent implements OnInit, OnChanges {
   @Input() errorLOV?: string;
   @Input() icon?: IErrorIconConfig;
   @Input() size?: keyof typeof DSSizes;
+  iconConfig?: IIconConfig;
 
   constructor() {}
   ngOnInit() {
@@ -51,6 +53,12 @@ export class ErrorComponent implements OnInit, OnChanges {
       if (this.errorLOV) this.config.errorLOV = this.errorLOV;
       if (this.icon) this.config.icon = this.icon;
       if (this.size) this.config.size = this.size;
+
+      this.iconConfig = {
+        FA_keywords:
+          this.config.icon?.class ?? 'fa-light fa-circle-exclamation',
+        size: this.config.size
+      };
     }
   }
 }

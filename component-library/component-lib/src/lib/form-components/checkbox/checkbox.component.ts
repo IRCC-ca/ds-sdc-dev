@@ -9,6 +9,7 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -95,6 +96,8 @@ export class CheckboxComponent
   touched = false;
   errorAria = '';
   errorStubText = '';
+  currentStatus: FormControlStatus = 'VALID';
+  currentTouch: boolean = false
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -102,24 +105,42 @@ export class CheckboxComponent
     private multicheckboxService: MultiCheckboxService
   ) {}
 
-  onTouch = () => {};
-  onChange = () => {};
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
 
-  writeValue(): void {}
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
   }
-  registerOnTouched(fn: any): void {
-    this.onTouch = fn;
+
+  writeValue(value: string): void {
+    this.onChange(value);
+  }
+
+  registerOnChange(onChange: any): void {
+    this.onChange = onChange;
+  }
+  registerOnTouched(onTouched: any): void {
+    this.onTouch = onTouched;
   }
 
   /**
    * This is used automatically by the parent formControl. It is used in the template to set the label to disabled
    * @param isDisabled
    */
-  setDisabledState?(isDisabled: boolean) {
-    // (this.config !== undefined) ? this.config.disabled = isDisabled : this.disabled = isDisabled;
-    this.isDisabled = isDisabled;
+  setDisabledState(isDisabled: boolean) {
+    if(isDisabled){
+      this.formGroup.get(this.config.id)?.disable();
+    }else{
+      this.formGroup.get(this.config.id)?.enable();
+    }
   }
 
   ngOnInit() {
@@ -194,19 +215,45 @@ export class CheckboxComponent
       });
     }
 
-    //Get the error text when the formControl value changes
-    this.config.formGroup
-      .get(this.config.id)
-      ?.statusChanges.subscribe((error) => {
+    
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
         this.getAriaErrorText();
-
-        if (error === 'VALID') {
+        //Get the error text when the formControl value changes
+        if (change === 'VALID') {
           this.multicheckboxService.errorEvent({
             id: this.config.id,
             event: { remove: true }
           });
         }
+
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          this.toggleDisabledState();
+        }
+        this.setStatus()
       });
+  }
+
+  setStatus() {
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.currentTouch = this.config.formGroup.controls[this.config.id].touched;
+  }
+
+  ngAfterViewInit() {
+    this.setStatus();
+  }
+
+  toggleDisabledState() {
+    switch (this.currentStatus) {
+      case 'DISABLED':
+      this.setDisabledState(true);
+      break;
+    default:
+      this.setDisabledState(false);
+      break;
+    }
   }
 
   ngOnChanges() {

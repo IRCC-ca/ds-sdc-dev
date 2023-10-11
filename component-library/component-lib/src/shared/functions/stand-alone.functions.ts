@@ -71,6 +71,25 @@ export class StandAloneFunctions {
   }
 
   /**
+   * Given a form group & form control id, set errors & mark as touch on specific form controls
+   * @param formGroup
+   * @param formID ID of form control
+   * @param errorKeys
+   */
+  setFormErrors(formGroup: FormGroup, formID: string, errorKeys: string[]) {
+    const errorVals = {};
+    if (errorKeys.length === 0) {
+      formGroup.get(formID)?.setErrors(null);
+    } else {
+      errorKeys.forEach((error) => {
+        errorVals[error] = true;
+      });
+      formGroup.get(formID)?.setErrors(errorVals);
+      formGroup.get(formID)?.markAsTouched();
+    }
+  }
+
+  /**
    * Create a label config - for use inside form input components
    * @param formGroup
    * @param id
