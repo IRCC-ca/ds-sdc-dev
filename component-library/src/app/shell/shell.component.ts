@@ -224,7 +224,7 @@ export class ShellComponent implements OnInit {
   navConfig: INavigationConfig = {
     id: 'shell_nav',
     size: 'small',
-    height: '100vh',
+    height: '71vh',
     marginTop: 182,
     scrolling: true,
     fixed: true,
