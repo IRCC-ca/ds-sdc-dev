@@ -4,7 +4,6 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
-  Validators
 } from '@angular/forms';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@app/share/templates/parent-template.module';
@@ -55,7 +54,7 @@ export class CheckboxDocCodeComponent implements OnInit {
     inlineLabelBold: false,
     errorMessages: [
       {
-        key: 'required',
+        key: 'test',
         errorLOV: this.translate.instant('ERROR.singleError')
       },
       {
@@ -107,7 +106,7 @@ export class CheckboxDocCodeComponent implements OnInit {
     errorMessages: [
       {
         id: 'singleError1',
-        key: 'required',
+        key: 'test',
         errorLOV: this.translate.instant('ERROR.singleError')
       },
       {
@@ -155,7 +154,7 @@ export class CheckboxDocCodeComponent implements OnInit {
     errorMessages: [
       {
         id: 'singleError1',
-        key: 'required',
+        key: 'test',
         errorLOV: this.translate.instant('ERROR.singleError')
       },
       {
@@ -722,6 +721,16 @@ export class CheckboxDocCodeComponent implements OnInit {
           this.parseConfigGroupCheckbox(configItem, value);
         });
     });
+
+    //add error if error is selected even when checkbox is clicked
+    this.formCheckbox.get(this.singleCheckboxConfig.id)?.valueChanges.subscribe((val : any) => {
+      this.determineErrorState(
+        this.errorState,
+        this.formCheckbox,
+        this.singleCheckboxConfig.id,
+        CheckboxTypes.single
+      );
+    })
   }
 
 
@@ -846,10 +855,6 @@ export class CheckboxDocCodeComponent implements OnInit {
           });
           break;
         case 'required':
-          // this.multiCheckboxConfig = {
-          //   ...this.multiCheckboxConfig
-          // };
-
           if (this.multiCheckboxConfig.parent) {
             this.multiCheckboxConfig.label = {
               ...this.multiCheckboxConfig?.label,
@@ -859,29 +864,10 @@ export class CheckboxDocCodeComponent implements OnInit {
 
           break;
         case 'label':
-          // this.multiCheckboxConfig = {
-          //   ...this.multiCheckboxConfig
-          // };
-
-          // if (this.multiCheckboxConfig.parent) {
-          //   this.multiCheckboxConfig.parent = {
-          //     ...this.multiCheckboxConfig?.parent,
-          //     label: value === 'True' ? 'Label Text' : undefined
-          //   };
-          // }
           this.multiCheckboxConfig.label.label =
             value === 'True' ? 'Label Text' : undefined;
           break;
         case 'desc':
-          // this.multiCheckboxConfig = {
-          //   ...this.multiCheckboxConfig
-          // };
-          // if (this.multiCheckboxConfig.parent) {
-          //   this.multiCheckboxConfig.parent = {
-          //     ...this.multiCheckboxConfig?.parent,
-          //     desc: value === 'True' ? 'Description line of text' : undefined
-          //   };
-          // }
           this.multiCheckboxConfig.label.desc =
             value === 'True' ? 'Description line of text' : undefined;
           break;
@@ -1026,11 +1012,11 @@ export class CheckboxDocCodeComponent implements OnInit {
     let errorArray: string[] = [];
     switch (errorState) {
       case 'Single':
-        errorArray = ['required'];
+        errorArray = ['test'];
         this.setErrors(formGroup, formID, errorArray, checkbox_type);
         break;
       case 'Multiple':
-        errorArray = ['required', 'email', 'maxLength'];
+        errorArray = ['test', 'email', 'maxLength'];
         this.setErrors(formGroup, formID, errorArray, checkbox_type);
         break;
       case 'None':
