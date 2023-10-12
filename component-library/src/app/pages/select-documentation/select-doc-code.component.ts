@@ -340,9 +340,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       tab.value =
         "import { ISelectConfig } from 'ircc-ds-angular-component-library';\r" +
         "import { FormGroup } from '@angular/forms';\n\n" +
-        `selectConfig: ISelectConfig = ${stringify(
-          this.selectConfigCodeView
-        )}`;
+        `selectConfig: ISelectConfig = ${stringify(this.selectConfigCodeView)}`;
     }
   }
 }
