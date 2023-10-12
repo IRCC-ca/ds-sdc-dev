@@ -89,9 +89,8 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
         link.classList.add('active-link');
-      }
-      else if(current === '' && link instanceof HTMLElement) {
-        sideNavLinks[0].classList.add('active-link')
+      } else if (current === '' && link instanceof HTMLElement) {
+        sideNavLinks[0].classList.add('active-link');
       }
     });
 
@@ -148,7 +147,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    this.onWindowScroll()
+    this.onWindowScroll();
     this.cdr.detectChanges();
     // Record relative height from top of page for sidenav
     this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
