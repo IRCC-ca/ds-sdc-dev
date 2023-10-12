@@ -524,7 +524,7 @@ export class DatePickerComponent implements OnInit {
     return false;
   }
 
-  datePickerTouchedOrInvalid(): boolean {
+  getDatePickerTouchedOrInvalid(): boolean {
     let datePickerState: boolean | undefined = false;
 
     datePickerState =
