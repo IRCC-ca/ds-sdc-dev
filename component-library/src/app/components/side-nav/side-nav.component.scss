@@ -1,5 +1,5 @@
-@use "../../../scss/grid";
-@use "../../../../../core-library/tokens/sizes" as ircc-ds-sizes;
+@use '../../../scss/grid';
+@use '../../../../../core-library/tokens/sizes' as ircc-ds-sizes;
 
 $footer-height: 310px;
 
@@ -96,7 +96,8 @@ $footer-height: 310px;
       background: var(--generic-active);
     }
 
-    &:visited { // Do we have visited state here?!
+    &:visited {
+      // Do we have visited state here?!
       // color:black;
       // text-decoration: none;
     }
@@ -117,6 +118,9 @@ $footer-height: 310px;
 
       &:focus {
         border: var(--navigation) solid 1px;
+      }
+
+      &:focus-visible {
         outline: var(--navigation) solid 3px;
         outline-offset: 2px;
         box-shadow: none;
@@ -155,6 +159,9 @@ $footer-height: 310px;
 
               &:focus {
                 border: var(--navigation) solid 1px;
+              }
+
+              &:focus-visible {
                 outline: var(--navigation) solid 3px;
                 outline-offset: 2px;
                 box-shadow: none;
