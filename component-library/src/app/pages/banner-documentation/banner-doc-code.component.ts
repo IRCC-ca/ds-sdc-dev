@@ -49,8 +49,11 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
 
   bannerConfig: IBannerConfig = {
     id: 'banner',
-    cta: [],
-    size: 'large'
+    size: 'small',
+    dismissible: true,
+    title: 'General.TitleHeading',
+    content: 'Banner.BannerPreview.Content',
+    cta: []
   };
 
   bannerConfigCodeView: any = {
@@ -274,7 +277,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    */
   addItemtoCTAList(text: string) {
     const plainExample: ICTAConfig = {
-      text: 'Plain',
+      text: 'Default',
       type: 'button',
       btnConfig: {
         id: 'ctaPlain',
@@ -283,7 +286,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     };
 
     const secondaryExample: ICTAConfig = {
-      text: 'Secondary',
+      text: 'Default',
       type: 'button',
       btnConfig: {
         id: 'ctaSecondary',
@@ -292,7 +295,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     };
 
     const primaryExample: ICTAConfig = {
-      text: 'Primary',
+      text: 'Default',
       type: 'button',
       btnConfig: {
         id: 'ctaPrimary',
@@ -301,20 +304,24 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     };
 
     const linkExample: ICTAConfig = {
-      text: 'Link-Text',
+      text: 'Default',
       type: 'link'
     };
 
     const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
-      return object.text === text;
+      if(object.btnConfig?.category) {
+        return object.btnConfig?.category === text;
+      } else {
+        return object.type === text
+      }
     });
 
     if (indexOfObject == -1) {
-      if (text === 'Primary') this.bannerConfig?.cta?.push(primaryExample);
-      else if (text === 'Secondary')
+      if (text === 'primary') this.bannerConfig?.cta?.push(primaryExample);
+      else if (text === 'secondary')
         this.bannerConfig?.cta?.push(secondaryExample);
-      else if (text === 'Plain') this.bannerConfig?.cta?.push(plainExample);
-      else if (text === 'Link-Text') this.bannerConfig?.cta?.push(linkExample);
+      else if (text === 'plain') this.bannerConfig?.cta?.push(plainExample);
+      else if (text === 'link') this.bannerConfig?.cta?.push(linkExample);
     }
   }
 
@@ -323,7 +330,11 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    */
   removeItemFromCTAList(text: string) {
     const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
-      return object.text === text;
+      if(object.btnConfig?.category) {
+        return object.btnConfig?.category === text;
+      } else {
+        return object.type === text
+      }
     });
 
     if (indexOfObject !== -1) {
@@ -375,11 +386,11 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    */
   handlePrimaryButtonToggle(value: any) {
     if (value['showPrimaryButtonToggle'] === 'True') {
-      this.addItemtoCTAList('Primary');
+      this.addItemtoCTAList('primary');
       this.currentButtonSet.add('showPrimaryButtonToggle');
       this.checkCurrentButtonCounter();
     } else {
-      this.removeItemFromCTAList('Primary');
+      this.removeItemFromCTAList('primary');
       this.currentButtonSet.delete('showPrimaryButtonToggle');
       this.checkCurrentButtonCounter();
     }
@@ -390,11 +401,11 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    */
   handleSecondaryButtonToggle(value: any) {
     if (value['showSecondaryButtonToggle'] === 'True') {
-      this.addItemtoCTAList('Secondary');
+      this.addItemtoCTAList('secondary');
       this.currentButtonSet.add('showSecondaryButtonToggle');
       this.checkCurrentButtonCounter();
     } else {
-      this.removeItemFromCTAList('Secondary');
+      this.removeItemFromCTAList('secondary');
       this.currentButtonSet.delete('showSecondaryButtonToggle');
       this.checkCurrentButtonCounter();
     }
@@ -405,11 +416,11 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    */
   handlePlainButtonToggle(value: any) {
     if (value['showPlainButtonToggle'] === 'True') {
-      this.addItemtoCTAList('Plain');
+      this.addItemtoCTAList('plain');
       this.currentButtonSet.add('showPlainButtonToggle');
       this.checkCurrentButtonCounter();
     } else {
-      this.removeItemFromCTAList('Plain');
+      this.removeItemFromCTAList('plain');
       this.currentButtonSet.delete('showPlainButtonToggle');
       this.checkCurrentButtonCounter();
     }
@@ -420,11 +431,11 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    */
   handleLinkToggle(value: any) {
     if (value['showLinkToggle'] === 'True') {
-      this.addItemtoCTAList('Link-Text');
+      this.addItemtoCTAList('link');
       this.currentButtonSet.add('showLinkToggle');
       this.checkCurrentButtonCounter();
     } else {
-      this.removeItemFromCTAList('Link-Text');
+      this.removeItemFromCTAList('link');
       this.currentButtonSet.delete('showLinkToggle');
       this.checkCurrentButtonCounter();
     }
@@ -491,9 +502,16 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       if (toggle.options && toggle.options[1].text) {
         this.formBanner.addControl(
           toggle.id,
-          new FormControl(toggle.options[1].value)
+          new FormControl(toggle.options[0].value)
         );
       }
+    });
+    
+    this.formBanner.patchValue({
+      showPrimaryButtonToggle: "False",
+      showPlainButtonToggle: "False",
+      showLinkToggle: "False",
+      showSecondaryButtonToggle: "False"
     });
 
     this.formBanner.valueChanges.subscribe((value: any) => {
@@ -506,6 +524,8 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       this.parseCodeViewConfig();
       this.bannerService.setBanner(this.parseToggleConfig(value));
     });
+
+    
 
     this.configSubToggle = this.bannerService.toggleSubjObs$.subscribe(
       (response) => {
