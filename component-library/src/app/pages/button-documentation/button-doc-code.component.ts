@@ -268,7 +268,6 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
           );
           break;
         default: {
-          console.log('Default');
           this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[0].value)

@@ -153,7 +153,6 @@ export class IconButtonDocCodeComponent
         color: 'var(--critical-text)'
       };
     }
-    console.log('setIconConf', this.iconBtnConfig);
 
     this.parseCodeViewConfig();
   }
