@@ -180,10 +180,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `selectConfig: ISelectConfig = ${stringify(
             this.selectConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-            this.stateTxt(this.state)
-          )}
-          `
+          )}`
       }
     ]
   };
@@ -345,10 +342,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
         "import { FormGroup } from '@angular/forms';\n\n" +
         `selectConfig: ISelectConfig = ${stringify(
           this.selectConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-          this.stateTxt(this.state)
-        )}
-        `;
+        )}`;
     }
   }
 }
