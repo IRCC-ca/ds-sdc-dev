@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormGroup, NG_VALUE_ACCESSOR, FormControlStatus, } from '@angular/forms';
+import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ISelectConfig } from '../select/select.component';
 import {
@@ -106,7 +106,6 @@ export interface IDatePickerDropDownConfigs {
 })
 export class DatePickerComponent implements OnInit {
 
-  currentStatus: FormControlStatus = 'VALID';
   formGroupEmpty: FormGroup = new FormGroup({});
 
   @Input() config: IDatePickerConfig = {
@@ -330,28 +329,6 @@ export class DatePickerComponent implements OnInit {
         this.dropDownConfigs.day.options?.push({ text: i.toString() });
       }
     }
-
-    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
-    switch (this.currentStatus) {
-      case 'DISABLED':
-        this.setDisabledState(true);
-        break;
-      default:
-        this.setDisabledState(false);
-    }
-    
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
-      if(change !== this.currentStatus){
-        this.currentStatus = change;
-        switch (this.currentStatus) {
-          case 'DISABLED':
-            this.setDisabledState(true);
-            break;
-          default:
-            this.setDisabledState(false);
-        }
-      }
-    });
   }
 
   ngOnChanges() {
@@ -547,7 +524,7 @@ export class DatePickerComponent implements OnInit {
     return false;
   }
 
-  datePickerTouchedOrInvalid(): boolean {
+  getDatePickerTouchedOrInvalid(): boolean {
     let datePickerState: boolean | undefined = false;
 
     datePickerState =
@@ -663,6 +640,7 @@ export class DatePickerComponent implements OnInit {
       this.formGroup?.get(this.config.id)?.markAsTouched();
     }
   };
+  
   onChange = (value: string) => {
     this.config.formGroup.get(this.config.id)?.setValue(value);
   };
@@ -675,12 +653,14 @@ export class DatePickerComponent implements OnInit {
   writeValue(value: string): void {
     this.onChange(value);
   }
+  
   registerOnChange(fn: any): void {
     this.config.formGroup.valueChanges.subscribe(fn);
   }
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
   }
+
   /**
    * Apply a disabled state
    */
