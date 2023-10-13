@@ -511,8 +511,9 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       showPrimaryButtonToggle: "False",
       showPlainButtonToggle: "False",
       showLinkToggle: "False",
-      showSecondaryButtonToggle: "False"
+      showSecondaryButtonToggle: "True"
     });
+    this.handleSecondaryButtonToggle({ showSecondaryButtonToggle: "True" })
 
     this.formBanner.valueChanges.subscribe((value: any) => {
       this.bannerConfig = this.parseToggleConfig(value);
