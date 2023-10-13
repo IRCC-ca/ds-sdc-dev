@@ -41,7 +41,7 @@ $footer-height: 310px;
       @include grid.up-laptop-layout {
         position: fixed;
         top: 0;
-        height: 90vh;
+        height: 75vh;
         overflow-y: auto;
       }
     }
