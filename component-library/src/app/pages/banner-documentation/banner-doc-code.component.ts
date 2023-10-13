@@ -507,6 +507,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       }
     });
     
+    // update default toggles to match figma
     this.formBanner.patchValue({
       showPrimaryButtonToggle: "False",
       showPlainButtonToggle: "False",
