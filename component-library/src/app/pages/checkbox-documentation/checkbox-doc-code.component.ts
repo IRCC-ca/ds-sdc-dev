@@ -796,7 +796,7 @@ export class CheckboxDocCodeComponent implements OnInit {
         case 'hint':
           this.singleCheckboxConfig = {
             ...this.singleCheckboxConfig,
-            helpText: value === 'True' ? 'Hint Text' : undefined
+            hint: value === 'True' ? 'Hint Text' : undefined
           };
           break;
         case 'error':
@@ -879,7 +879,7 @@ export class CheckboxDocCodeComponent implements OnInit {
           if (this.multiCheckboxConfig.parent) {
             this.multiCheckboxConfig.parent = {
               ...this.multiCheckboxConfig?.parent,
-              helpText: value === 'True' ? 'Hint Text' : undefined
+              hint: value === 'True' ? 'Hint Text' : undefined
             };
           }
           break;
@@ -965,7 +965,7 @@ export class CheckboxDocCodeComponent implements OnInit {
             if (this.groupCheckboxConfig.children?.length > 0) {
               this.groupCheckboxConfig.children[0] = {
                 ...this.groupCheckboxConfig.children[0],
-                helpText: value === 'True' ? 'Hint Text' : undefined
+                hint: value === 'True' ? 'Hint Text' : undefined
               };
             }
           }
