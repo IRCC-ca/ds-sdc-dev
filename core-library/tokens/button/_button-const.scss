@@ -59,6 +59,6 @@ $selectors: "button";
 
   @include size.select(large) {
     @include text.fontSet(heading, 5, regular);
-    mix-width: 64px;
+    min-width: 64px;
   }
 }
