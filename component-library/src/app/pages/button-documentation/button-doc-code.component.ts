@@ -258,7 +258,7 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
         case 'showSizeToggle':
           this.formButton.addControl(
             toggle.id,
-            new FormControl(toggle.options[1].value)
+            new FormControl(toggle.options[0].value)
           );
           break;
         case 'showCriticalToggle':
