@@ -15,12 +15,12 @@
 .hljs-section, .hljs-attr, .hljs-selector-class,
 .hljs-selector-id, .hljs-type, .hljs-built_in {
     background: #fff;
-    color: #aa0d91
+    color: #000
 }
 
 .hljs-code,.hljs-meta .hljs-string,.hljs-string, .hljs-comment,
 .hljs-quote {
-    color: #1c00cf
+    color: #000
 }
 
 .xml .hljs-meta {
