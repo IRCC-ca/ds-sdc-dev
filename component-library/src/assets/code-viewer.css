@@ -19,7 +19,7 @@
 }
 
 .hljs-code,.hljs-meta .hljs-string,.hljs-string, .hljs-comment,
-.hljs-quote {
+.hljs-quote, .hljs-subst {
     color: #000
 }
 
@@ -42,10 +42,6 @@
 
 .hljs-class .hljs-title,.hljs-params,.hljs-title.class_ {
     color: #5c2699
-}
-
-.hljs-subst {
-    color: #000
 }
 
 .hljs-formula {
