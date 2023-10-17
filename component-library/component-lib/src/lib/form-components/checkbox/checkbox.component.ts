@@ -38,7 +38,7 @@ export interface ICheckBoxComponentConfig {
   inlineLabel?: string;
   inlineLabelBold?: boolean;
   id: string; //used for identifying the component everywhere and should NEVER be missing
-  helpText?: string;
+  hint?: string;
   customErrorText?: string;
   desc?: string;
   errorMessages?: IErrorPairs[];
@@ -81,7 +81,7 @@ export class CheckboxComponent
   @Input() disableFocus?: boolean; //Default is true
   @Input() inlineLabel?: string;
   @Input() inlineLabelBold?: boolean;
-  @Input() helpText?: string;
+  @Input() hint?: string;
   @Input() customErrorText?: string;
   @Input() desc?: string;
   @Input() errorMessages?: IErrorPairs[];
@@ -174,7 +174,7 @@ export class CheckboxComponent
       this.config.errorMessages,
       this.config.label,
       this.config.desc,
-      this.config.helpText,
+      this.config.hint,
       this.config.required,
       this.config.labelIconConfig
     );
@@ -192,7 +192,7 @@ export class CheckboxComponent
     if (this.inlineLabel) this.config.inlineLabel = this.inlineLabel;
     if (this.inlineLabelBold)
       this.config.inlineLabelBold = this.inlineLabelBold;
-    if (this.helpText) this.config.helpText = this.helpText;
+    if (this.hint) this.config.hint = this.hint;
     if (this.customErrorText)
       this.config.customErrorText = this.customErrorText;
     if (this.desc) this.config.desc = this.desc;
@@ -263,7 +263,7 @@ export class CheckboxComponent
       this.config.errorMessages,
       this.config.label,
       this.config.desc,
-      this.config.helpText,
+      this.config.hint,
       this.config.required,
       this.config.labelIconConfig
     );
@@ -321,8 +321,8 @@ export class CheckboxComponent
       returnVal += this.translate.instant(this.config.label || '') + ' ';
     if (this.config.desc)
       returnVal += this.translate.instant(this.config.desc || '') + ' ';
-    if (this.config.helpText)
-      returnVal += this.translate.instant(this.config.helpText || '') + ' ';
+    if (this.config.hint)
+      returnVal += this.translate.instant(this.config.hint || '') + ' ';
     if (this.config.inlineLabel)
       returnVal += this.translate.instant(this.config.inlineLabel || '') + ' ';
 

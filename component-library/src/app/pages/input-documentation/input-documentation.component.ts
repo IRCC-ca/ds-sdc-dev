@@ -69,10 +69,6 @@ export class InputDocumentationComponent implements OnInit {
       description: 'General.AnatomyDescText'
     },
     {
-      title: 'General.TitleHeading',
-      description: 'Banner.Anatomy.TitleText'
-    },
-    {
       title: 'General.Hint',
       description: 'General.AnatomyHintText'
     },

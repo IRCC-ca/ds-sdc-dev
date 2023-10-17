@@ -39,7 +39,7 @@ export class IconButtonDocCodeComponent
   iconBtnConfig: IIconButtonComponentConfig = {
     id: 'icon-button',
     category: IconButtonCategories.primary,
-    size: 'small',
+    size: 'extraSmall',
     disabled: false,
     icon: {
       class: 'fa-light'
@@ -217,7 +217,7 @@ export class IconButtonDocCodeComponent
       if (toggle.options && toggle.options[1].text) {
         this.formIconBtn.addControl(
           toggle.id,
-          new FormControl(toggle.options[1].value)
+          new FormControl(toggle.options[0].value)
         );
       }
     });
