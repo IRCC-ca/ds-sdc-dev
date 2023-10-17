@@ -862,7 +862,10 @@
 		"RequiredIndicatorTxt": "Indicates which fields are mandatory to successfully submit the form.",
 		"AnatomyLabelText": "The label makes the purpose of the field clear.",
 		"AnatomyDescText": "The description includes the action a user is to perform as well as all the relevant information required.",
+		"AnatomyDescriptionText": "The description provides further detail of the purpose when needed.",
 		"AnatomyHintText": "The hint is used to display secondary or tertiary information. It is only used when the label and description will not suffice in helping the user understand the input.",
+		"AnatomyHintTxt": "The hint describes the expected value of the field. It can also be used as a supporting instruction.",
+		"AnatomyInputFieldText": "The rectangular element where users can click to open a dropdown-menu in order to select an option.",
 		"AnatomyErrorText": "The error text that displays if the field is in an invalid state.",
 		"WriteLabelsHeading": "Writing labels",
 		"RequiredFieldsHeading": "Required fields",
@@ -889,6 +892,10 @@
 		"Step4": "Step 4",
 		"stepTitle": "Step title",
 		"Gated": "Gated",
+		"NotGated": "Not Gated",
+		"Note": "Note",
+		"Continue": "Continue",
+		"Back": "Back",
 		"Labelling": "Labelling"
 	},
 	"IconButtonDocumentation": {
@@ -1088,7 +1095,9 @@
 	},
 	"ProgressIndicator": {
 		"MainTitle": "Progress Indicator",
-		"Intro": "Progress indicator are most commonly used to provide a way for clients and officers to make a range of selections (zero, one, or multiple)."
+		"Intro": "Progress indicator are most commonly used to provide a way for clients and officers to make a range of selections (zero, one, or multiple).",
+		"NoteDesc": "The “Back” and “Save and continue” buttons are not part of the progress indicator design. They are included just to display the components functionality.",
+		"UnlockCheckbox": "Unlock next step"
 	},
 	"Checkbox": {
 		"Title": "Checkbox",

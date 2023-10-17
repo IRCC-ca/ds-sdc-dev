@@ -1,3 +1,5 @@
+@use '../../../../../core-library/util/device';
+
 .title-slug-wrapper {
   display: flex;
   align-items: center;
@@ -22,6 +24,8 @@
   }
 }
 
-ircc-cl-lib-button {
-  margin-left: 8px;
+@media (min-width: 361px) {
+  ircc-cl-lib-button {
+    margin-left: 8px;
+  }
 }
