@@ -63,15 +63,15 @@ export class SelectDocumentationComponent implements OnInit {
     },
     {
       title: 'General.Description',
-      description: 'General.AnatomyDescText'
+      description: 'General.AnatomyDescriptionText'
     },
     {
       title: 'General.Hint',
-      description: 'General.AnatomyHintText'
+      description: 'General.AnatomyHintTxt'
     },
     {
       title: 'General.InputField',
-      description: 'Input.AnatomyInputFieldText'
+      description: 'General.AnatomyInputFieldText'
     },
     {
       title: 'General.Error',
