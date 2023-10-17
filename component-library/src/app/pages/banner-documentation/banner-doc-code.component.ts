@@ -10,10 +10,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
 import {
-  slugAnchorType,
-  slugTitleURLConfig
-} from '@app/components/title-slug-url/title-slug-url.component';
-import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
@@ -51,8 +47,8 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     id: 'banner',
     size: 'small',
     dismissible: true,
-    title: 'General.TitleHeading',
-    content: 'Banner.BannerPreview.Content',
+    title: 'Title text',
+    content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
     cta: []
   };
 
@@ -346,22 +342,14 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    * disable radio button based on id
    */
   disableRadio(name: string) {
-    this.toggles.forEach((item) => {
-      if (item.id === name) {
-        item.disabled = true;
-      }
-    });
+    this.formBanner.get(name)?.disable()
   }
 
   /**
    * enable radio button based on id
    */
   enableRadio(name: string) {
-    this.toggles.forEach((item) => {
-      if (item.id === name) {
-        item.disabled = false;
-      }
-    });
+    this.formBanner.get(name)?.enable()
   }
 
   /**
@@ -371,13 +359,17 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     if (this.currentButtonSet.size >= NUMBER_OF_CTA_ALLOWED) {
       this.buttonSetWithAllOptions.forEach((btn) => {
         if (!this.currentButtonSet.has(btn)) {
-          this.disableRadio(btn);
+          if(!this.formBanner.get(btn)?.disabled) {
+            this.disableRadio(btn);
+          }
         }
       });
     } else {
-      this.buttonSetWithAllOptions.forEach((btn) => {
-        this.enableRadio(btn);
-      });
+      for (let btn of this.buttonSetWithAllOptions){
+        if(this.formBanner.get(btn)?.disabled) {
+          this.enableRadio(btn);
+        }
+      }
     }
   }
 
@@ -385,7 +377,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Hide or show Primary button on test banner based on radio selection
    */
   handlePrimaryButtonToggle(value: any) {
-    if (value['showPrimaryButtonToggle'] === 'True') {
+    if (value === 'True') {
       this.addItemtoCTAList('primary');
       this.currentButtonSet.add('showPrimaryButtonToggle');
       this.checkCurrentButtonCounter();
@@ -400,7 +392,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Hide or show Secondary button on test banner based on radio selection
    */
   handleSecondaryButtonToggle(value: any) {
-    if (value['showSecondaryButtonToggle'] === 'True') {
+    if (value === 'True') {
       this.addItemtoCTAList('secondary');
       this.currentButtonSet.add('showSecondaryButtonToggle');
       this.checkCurrentButtonCounter();
@@ -415,7 +407,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Hide or show plain button on test banner based on radio selection
    */
   handlePlainButtonToggle(value: any) {
-    if (value['showPlainButtonToggle'] === 'True') {
+    if (value === 'True') {
       this.addItemtoCTAList('plain');
       this.currentButtonSet.add('showPlainButtonToggle');
       this.checkCurrentButtonCounter();
@@ -430,7 +422,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Hide or show Link on test banner based on radio selection
    */
   handleLinkToggle(value: any) {
-    if (value['showLinkToggle'] === 'True') {
+    if (value === 'True') {
       this.addItemtoCTAList('link');
       this.currentButtonSet.add('showLinkToggle');
       this.checkCurrentButtonCounter();
@@ -445,32 +437,13 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    * Sets dismissable to true or false and sets ariaDismissable respectively based on radio selection
    */
   handleCloseToggle(value: any) {
-    if (value['showCloseToggle'] === 'True') {
+    if (value === 'True') {
       this.bannerConfig.dismissible = true;
       this.bannerConfig.ariaDissmissible = 'close';
     } else {
       this.bannerConfig.dismissible = false;
       this.bannerConfig.ariaDissmissible = '';
     }
-  }
-
-  /**
-   * Return mapping of input config from form values
-   */
-  private parseToggleConfig(value: any): IBannerConfig {
-    return {
-      ...this.bannerConfig,
-      size: value['showSizeToggle'].toLowerCase(),
-      title:
-        value['showTitleToggle'] === 'True'
-          ? (this.bannerConfig.title = 'Title text')
-          : '',
-      content:
-        value['showDescToggle'] === 'True'
-          ? (this.bannerConfig.content =
-              'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.')
-          : ''
-    };
   }
 
   private parseCodeViewConfig() {
@@ -495,6 +468,17 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     }
   }
 
+  listOfConfigItems = [
+    'showCloseToggle',
+    'showDescToggle',
+    'showLinkToggle',
+    'showPlainButtonToggle',
+    'showPrimaryButtonToggle',
+    'showSecondaryButtonToggle',
+    'showSizeToggle',
+    'showTitleToggle'
+  ];
+
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
 
@@ -514,20 +498,13 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       showLinkToggle: "False",
       showSecondaryButtonToggle: "True"
     });
-    this.handleSecondaryButtonToggle({ showSecondaryButtonToggle: "True" })
+    this.handleSecondaryButtonToggle("True")
 
-    this.formBanner.valueChanges.subscribe((value: any) => {
-      this.bannerConfig = this.parseToggleConfig(value);
-      this.handlePrimaryButtonToggle(value);
-      this.handlePlainButtonToggle(value);
-      this.handleSecondaryButtonToggle(value);
-      this.handleLinkToggle(value);
-      this.handleCloseToggle(value);
-      this.parseCodeViewConfig();
-      this.bannerService.setBanner(this.parseToggleConfig(value));
+    this.listOfConfigItems.forEach((configItem) => {
+      this.formBanner.get(configItem)?.valueChanges.subscribe((value: any) => {
+        this.parseConfig(configItem, value);
+      });
     });
-
-    
 
     this.configSubToggle = this.bannerService.toggleSubjObs$.subscribe(
       (response) => {
@@ -538,5 +515,49 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
         }
       }
     );
+  }
+
+  private parseConfig(type: string, value: any) {
+    switch (type) {
+      case 'showSizeToggle':
+        this.bannerConfig = {
+          ...this.bannerConfig,
+          size: value.toLowerCase(),
+        }
+        this.bannerService.setBanner(this.bannerConfig);
+        break;
+      case 'showTitleToggle':
+        this.bannerConfig = {
+          ...this.bannerConfig,
+          title: value === 'True' ? 'Title text' : undefined
+        };
+        this.bannerService.setBanner(this.bannerConfig);
+        break;
+       case 'showDescToggle':
+          this.bannerConfig = {
+            ...this.bannerConfig,
+            content: value === 'True' ? 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.' : undefined
+          };
+          this.bannerService.setBanner(this.bannerConfig);
+          break;
+      case 'showCloseToggle':
+        this.handleCloseToggle(value);
+        break;
+      case 'showPrimaryButtonToggle':
+        this.handlePrimaryButtonToggle(value);
+        break;
+      case 'showSecondaryButtonToggle':
+        this.handleSecondaryButtonToggle(value);
+        break;
+      case 'showPlainButtonToggle':
+        this.handlePlainButtonToggle(value);
+        break;
+      case 'showLinkToggle':
+        this.handleLinkToggle(value);
+        break;
+      default:
+        break;
+    }
+    this.parseCodeViewConfig();
   }
 }
