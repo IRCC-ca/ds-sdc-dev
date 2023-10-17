@@ -864,23 +864,21 @@ export class CheckboxDocCodeComponent implements OnInit {
 
           break;
         case 'label':
-          this.multiCheckboxConfig.label.label =
-            value === 'True' ? 'Label Text' : undefined;
+          this.multiCheckboxConfig.label = {
+            ...this.multiCheckboxConfig.label,
+            label: value === 'True' ? 'Label Text' : undefined
+          }
           break;
         case 'desc':
-          this.multiCheckboxConfig.label.desc =
-            value === 'True' ? 'Description line of text' : undefined;
+          this.multiCheckboxConfig.label = {
+            ...this.multiCheckboxConfig.label,
+            desc: value === 'True' ? 'Description line of text' : undefined
+          }
           break;
         case 'hint':
-          this.multiCheckboxConfig = {
-            ...this.multiCheckboxConfig
-          };
-
-          if (this.multiCheckboxConfig.parent) {
-            this.multiCheckboxConfig.parent = {
-              ...this.multiCheckboxConfig?.parent,
-              hint: value === 'True' ? 'Hint Text' : undefined
-            };
+          this.multiCheckboxConfig.label = {
+            ...this.multiCheckboxConfig.label,
+            hint: value === 'True' ? 'Hint Text test' : undefined
           }
           break;
         case 'error':
@@ -963,8 +961,8 @@ export class CheckboxDocCodeComponent implements OnInit {
         case 'hint':
           if (this.groupCheckboxConfig.children) {
             if (this.groupCheckboxConfig.children?.length > 0) {
-              this.groupCheckboxConfig.children[0] = {
-                ...this.groupCheckboxConfig.children[0],
+              this.groupCheckboxConfig.label = {
+                ...this.groupCheckboxConfig?.label,
                 hint: value === 'True' ? 'Hint Text' : undefined
               };
             }
