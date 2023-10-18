@@ -38,7 +38,7 @@ jobs:
         working-directory: core-library/
         run: |
           git add .
-          git commit -m "core-library: Bump version ${{ steps.bump_version_core.outputs.package_version }}"
+          git commit -n -m "core-library: Bump version ${{ steps.bump_version_core.outputs.package_version }}"
           git push
 
       - name: Publish core-library to npm
@@ -78,7 +78,7 @@ jobs:
           npm version prerelease --preid=beta
           echo "export CL_VERSION=$(npm pkg get version)" >> "$GITHUB_ENV"
           git add .
-          git commit -m "component-lib: Bump version $CL_VERSION"
+          git commit -n -m "component-lib: Bump version $CL_VERSION"
           git push
           npm install --save @ircc-ca/ds-sdc-core@${{ needs.publish_core.outputs.package_version }}
 
