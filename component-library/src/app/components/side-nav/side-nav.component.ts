@@ -23,13 +23,14 @@ import { ISideNavDataInterface } from './side-nav.model';
 import { TranslateService } from '@ngx-translate/core';
 import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/icon/icon.component';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
-import { IsActiveMatchOptions } from '@angular/router';
+import { IsActiveMatchOptions, NavigationEnd, Router } from '@angular/router';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import {
   INavigationItemLink,
   NavigationItemType,
   DSSizes
 } from 'ircc-ds-angular-component-library';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-side-nav',
@@ -73,7 +74,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
-      //content begins 215px below sectionTop. Set current when scrollY passes top of section.
+      //content begins 40px below sectionTop. Set current when scrollY passes top of section.
       if (window.scrollY >= sectionTop - 40 && window.scrollY != height)
         current = `${section.getAttribute('id')}`;
     });
@@ -82,9 +83,6 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute('id')}`; //runs through links to set current active link
     sideNavLinks.forEach((link) => {
       link.classList.remove('active-link');
-      //blur required to remove focus from previous link if it was clicked
-      if (document.activeElement instanceof HTMLElement)
-        document.activeElement.blur();
       if (
         current != '' &&
         link.getAttribute('href')?.endsWith(current) &&
@@ -92,9 +90,8 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
         link.classList.add('active-link');
-      }
-      else if(current === '' && link instanceof HTMLElement) {
-        sideNavLinks[0].classList.add('active-link')
+      } else if (current === '' && link instanceof HTMLElement) {
+        sideNavLinks[0].classList.add('active-link');
       }
     });
 
@@ -150,8 +147,27 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     this.adjustWidth();
   }
 
+  ngAfterViewInit() {
+    if (window.location.hash != '') {
+      const hashID = window.location.hash;
+      const el: HTMLAnchorElement = document.querySelector(
+        `a[href$='${hashID}']`
+      ) as HTMLAnchorElement;
+      const aTags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll(
+        '.rightnav a'
+      ) as NodeListOf<HTMLAnchorElement>;
+      if (el != aTags[aTags.length - 1]) {
+        setTimeout(() => {
+          el.click();
+        }, 200);
+      } else {
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    }
+  }
+
   ngAfterViewChecked() {
-    this.onWindowScroll()
+    this.onWindowScroll();
     this.cdr.detectChanges();
     // Record relative height from top of page for sidenav
     this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;

@@ -59,7 +59,7 @@
     </div>
   </div>
   <div aria-live="polite">
-    <ng-container *ngIf="currentStatus === 'INVALID'">
+    <ng-container *ngIf="config.formGroup.get(config.id)?.touched && currentStatus === 'INVALID'">
       <span class="sr-only">{{
         errorStubText + ': ' + (config.label || '' | translate) + ': '
       }}</span>
