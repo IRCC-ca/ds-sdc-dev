@@ -1,0 +1,27 @@
+@use "../../tokens/template-const" as template-const;
+@use "sass:map";
+
+@mixin selector {
+  ircc-cl-lib-dynamic-image#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin layout {
+.dynamic-image-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0px;
+}
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

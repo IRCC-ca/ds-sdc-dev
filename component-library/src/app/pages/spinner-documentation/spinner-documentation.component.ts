@@ -7,6 +7,10 @@ import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@ngx-translate/core';
+import {
+  IDynamicImageComponentConfig,
+  DSViewPortSize
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-spinner-documentation',
@@ -22,6 +26,57 @@ export class SpinnerDocumentationComponent implements OnInit {
     title: 'Spinner.MainTitle',
     heading: 'h1',
     anchorType: slugAnchorType.primary
+  };
+
+  imageMaxWidthConfig: IDynamicImageComponentConfig = {
+    id: 'max-width-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/spinner-content/spinner-minMaxWidth-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/spinner-content/spinner-minMaxWidth-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/spinner-content/spinner-minMaxWidth-desktop.png',
+    altText: 'Spinner.MaxMinWidthImgAlt',
+    lazyLoad: true
+  };
+
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/spinner-content/spinner-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/spinner-content/spinner-anatomy-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/spinner-content/spinner-anatomy-desktop.png',
+    altText: 'Spinner.Anatomy.ImgAlt',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/spinner-content/spinner-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/spinner-content/spinner-specs-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/spinner-content/spinner-specs-desktop.png',
+    altText: 'Spinner.Specs.ImgAlt',
+    lazyLoad: true
   };
 
   anatomyContentItems: ContentItem[] = [

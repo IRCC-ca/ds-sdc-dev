@@ -246,15 +246,11 @@
         <h3>
           {{ 'General.MaxMinWidthHeading' | translate }}
         </h3>
-        <div class="row">
-          <div [style.max-width]="'100%'">
-            <img
-              src="assets/img/select-content/select-min-max.png"
-              alt="{{ 'Select.Alt.MinMax' | translate }}"
-              class="mb_12"
-            />
-            <p>{{ 'Select.MinMax' | translate }}</p>
-          </div>
+        <div class="element-wrapper-container">
+          <ircc-cl-lib-dynamic-image
+            [config]="imageMaxWidthConfig"
+          ></ircc-cl-lib-dynamic-image>
+          <p>{{ 'Select.MinMax' | translate }}</p>
         </div>
       </div>
     </div>
@@ -266,10 +262,9 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <img
-          src="assets/img/select-content/select-anatomy.png"
-          alt="{{ 'Select.Alt.Anatomy' | translate }}"
-        />
+        <ircc-cl-lib-dynamic-image
+          [config]="imageAnatomyConfig"
+        ></ircc-cl-lib-dynamic-image>
       </div>
       <div class="element-wrapper-container">
         <ng-container *ngFor="let content of anatomyContentItems; let i = index"
@@ -295,10 +290,9 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <img
-          src="assets/img/select-content/select-specs.png"
-          alt="{{ 'Select.Alt.Specs' | translate }}"
-        />
+        <ircc-cl-lib-dynamic-image
+          [config]="imageSpecsConfig"
+        ></ircc-cl-lib-dynamic-image>
       </div>
       <div class="element-wrapper-container">
         <p>{{ 'Select.Specs1' | translate }}</p>

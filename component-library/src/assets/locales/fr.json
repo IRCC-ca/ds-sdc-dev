@@ -520,14 +520,14 @@
 		"WriteDescDoText": "Incluez toutes les informations pertinentes dans la description.",
 		"WriteDescDontImgAlt": "Un champ de saisie pour collecter l'adresse e-mail de l'utilisateur. L'étiquette est «Adresse e-mail (requise)». Le champ de saisie est vide.",
 		"WriteDescDontText": "Incluez une description lorsque des instructions ou des détails supplémentaires ne sont pas nécessaires pour clarifier comment remplir correctement le terrain.",
-		"WritePlaceholderSubHeading": "Le texte du placement apparaît dans le champ de saisie. Utilisez-le uniquement là où il est nécessaire pour accélérer la compréhension par un utilisateur des informations qu'il doit fournir. Le texte de l'espace réservé peut être un exemple du type de valeur attendue qui doit être saisi, soit afficher le format exact de ce qui doit être saisi.",
+		"WritePlaceholderSubHeading": "Le texte de l'espace réservé apparaît dans le champ de saisie. Utilisez-le uniquement là où il est nécessaire pour accélérer la compréhension par un utilisateur des informations qu'il doit fournir. Le texte de l'espace réservé peut être un exemple du type de valeur attendue qui doit être saisi, soit afficher le format exact de ce qui doit être saisi.",
 		"WritePlaceholderDoImgAlt1": "Un champ de saisie pour collecter le numéro d'identification des étudiants de l'utilisateur. L'étiquette est «numéro d'identification des élèves (requis)». La description est «Entrez votre numéro d'identification à 9 chiffres trouvé dans votre profil». Le champ de saisie contient du texte d'espace réservé. Le texte du placement est «Ex: 301297423»",
 		"WritePlaceholderDoText1": "Fournissez du texte de placement comme exemple spécifique de la valeur attendue, dans un champ de saisie.",
 		"WritePlaceholderDontImgAlt1": "Un champ de saisie pour collecter l'adresse e-mail de l'utilisateur. L'étiquette est «Adresse e-mail (requise)». Le champ de saisie contient du texte d'espace réservé. Le texte du placement est «johnsmith@email.com»",
 		"WritePlaceholderDontText1": "Utilisez le texte de placement lorsque la valeur attendue est déjà évidente pour l'utilisateur ou où l'exemple donne l'impression que le champ a déjà été terminé.",
 		"WritePlaceholderDoImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée contiennent du texte d'espace réservé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDoText2": "Fournissez du texte de placement pour afficher le format exact requis, dans un champ de saisie.",
-		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont du texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
+		"WritePlaceholderDontImgAlt2": "Un champ de saisie pour collecter la date de naissance de l'utilisateur. L'étiquette est «Date de naissance (requise)». Il y a trois champs pour l'année, le mois et le jour. Les champs d'entrée ont un texte d'espace-garde où le texte indique est censé être utilisé. Le texte de l'espace pour l'année est «Yyyy». Le texte de l'espace pour le mois est «mois». Le texte de place pour la journée est «DD».",
 		"WritePlaceholderDontText2": "Remplacez le texte de l'indice avec le texte de l'espace réservé.",
 		"WriteErrorsDoImgAlt": "Un champ de saisie pour collecter le nom de famille de l'utilisateur. L'étiquette est «Nom de famille (obligatoire)». La description est «Ceci est votre nom de famille ou votre nom.» Le message d'erreur est «Ce champ est vide. Veuillez saisir un nom de famille.",
 		"WriteErrorsDoText": "Fournissez du texte d'erreur utile et guide l'utilisateur sur ce qu'il faut corriger.",
@@ -602,7 +602,7 @@
 			"WritingLabelsDo": "Gardez les étiquettes aussi claires et courtes que possible.",
 			"WritingLabelsDontAlt": "Date Picker Fields avec l'étiquette «Le jour où vous êtes né».",
 			"WritingLabelsDont": "Écrivez des étiquettes difficiles à comprendre ou des étiquettes qui sont plus longues que nécessaire.",
-			"PlaceholderHeading": "Utilisez le texte du Payholder dans les listes déroulantes sélectionnées",
+			"PlaceholderHeading": "Utilisez le texte du placeur dans les déroutes sélectionnées",
 			"PlaceholderDoAlt": "Champs de cueilleurs de date avec l'étiquette «Date de naissance» et le texte d'espace réservé dans les champs.",
 			"PlaceholderDo": "Fournissez du texte de placement pour afficher le format exact requis, dans une liste déroulante sélectionnée.",
 			"PlaceholderDontAlt": "Un sélecteur de date qui n'a pas de texte d'espace réservé à l'intérieur des listes déroulantes sélectionnées.",
@@ -766,7 +766,7 @@
 			"ShowCloseLabel": "Se rapprocher",
 			"ShowPrimaryButtonLabel": "Afficher le bouton primaire",
 			"ShowSecondaryButtonLabel": "Afficher le bouton secondaire",
-			"ShowPlainButtonLabel": "Afficher le bouton Plain",
+			"ShowPlainButtonLabel": "Afficher le bouton simple",
 			"ShowLinkLabel": "Montrer le lien",
 			"CTA1Label": "CTA 1",
 			"CTA2Label": "CTA 2 (si CTA 1 est défini sur true)",
@@ -784,7 +784,7 @@
 		"ConfigurationsHeading": "Configurations",
 		"ConfigurationsMain": "Configurations (composante principale)",
 		"ConfigurationsSub": "Configurations (sous-composant)",
-		"DesignGuidelinesHeading": "Lignes directrices de conception",
+		"DesignGuidelinesHeading": "Concevoir des directives",
 		"AnatomyHeading": "Anatomie",
 		"SpecsHeading": "Spécifications",
 		"Populated": "Peuplé",
@@ -932,6 +932,8 @@
 		"SpecsImgAlt": "Spécifications affichant les mesures de rembourrage et de couche dans le composant du bouton d'icône. Les spécifications sont décrites dans le paragraphe ci-dessous.",
 		"SpecsText": "Le petit bouton supplémentaire avec disposition fixe n'a pas de pixels de rembourrage vertical et de rembourrage horizontal à l'intérieur du bouton. L'icône a une largeur et une hauteur de 16 pixels. Le petit bouton avec disposition fixe a 10 pixels de rembourrage vertical et de rembourrage horizontal à l'intérieur du bouton. L'icône a une largeur et une hauteur de 20 pixels. Le gros bouton avec disposition du fluide a 14 pixels de rembourrage vertical et de rembourrage horizontal à l'intérieur du bouton. L'icône a une largeur et une hauteur de 24 pixels.",
 		"FigmaDirectionsListItem1": "Dans le panneau «Assets», faites glisser le composant <strong> «icône-bouton» </strong> de la bibliothèque Components.",
+		"FigmaDirectionsListItem2": "Dans le panneau de droite, configurez les propriétés et les variantes pour répondre à vos besoins.",
+		"FigmaDirectionsListItem3": "Ne pas remplacer les couleurs, le rayon, le rembourrage, la taille de l'icône, etc. De cette façon, les éléments fondamentaux sont cohérents.",
 		"FigmaDirectionsListItem4": "Les concepteurs peuvent <a class='link no-underline' cible='_blank' href='https://www.loom.com/share/b0d137f991034f08b504c93278384c2f'> Changez le mot-clé impressionnant de la police </a> pour mettre à jour l'icône de l'icône dans l'icon Icône-bouton de toute icône impressionnante de police.",
 		"FigmaDirectionsImgAlt": "Une capture d'écran du panneau de conception de Figma. Le panneau de conception affiche les options de configuration que les concepteurs peuvent choisir lors de la personnalisation d'un bouton d'icône.",
 		"AccessibilityColourText1": "Les boutons d'icône primaire ont un rapport de contraste de couleur de 18,08: 1 et passe les normes d'accessibilité AAA sous WCAG 2.1.",
@@ -941,6 +943,9 @@
 		"AccessibilityContentItem2": "Étant donné que les boutons d'icône ne rendent qu'une icône, il doit passer l'hélice Aria-Label, afin que les lecteurs d'écran peuvent donner un sens au bouton.",
 		"AccessibilityContentItem3": "Empêcher les pièges à clavier. Chaque élément qui peut être axé sur l'utilisation du clavier peut être flou à l'aide du clavier.",
 		"LabellingText": "Les boutons d'icône doivent avoir des étiquettes par programme qui leur sont associés afin que l'action de l'icône de l'icône soit claire pour l'écran les utilisateurs du lecteur."
+	},
+	"MultiCheckboxDocumentation": {
+		"Title": "Docbox multichette"
 	},
 	"Spinner": {
 		"Title": "Spinner-DOC",
@@ -1097,7 +1102,8 @@
 		"MainTitle": "Indicateur de progrès",
 		"Intro": "Les indicateurs de progression sont le plus souvent utilisés pour permettre aux clients et aux agents de faire une gamme de sélections (zéro, un ou plusieurs).",
 		"NoteDesc": "Les boutons « Retour » et « Enregistrer et continuer » ne font pas partie de la conception de l'indicateur de progression. Ils sont inclus uniquement pour afficher les fonctionnalités des composants.",
-		"UnlockCheckbox": "Débloquez l'étape suivante"
+		"UnlockCheckbox": "Débloquez l'étape suivante",
+		"InteractiveDemoDesc": "Essayez notre composant indicateur de progression et les options configurables disponibles dans celui-ci."
 	},
 	"Checkbox": {
 		"Title": "Cocher",
