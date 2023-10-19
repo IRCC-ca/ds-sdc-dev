@@ -33,7 +33,9 @@ import { EncapsulatedElementComponent } from '@app/components/encapsulated-eleme
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DynamicImageComponent, IrccDsAngularNavigationModule } from 'ircc-ds-angular-component-library';
+import {
+  IrccDsAngularNavigationModule
+} from 'ircc-ds-angular-component-library';
 
 import { DatePickerDocCodeComponent } from '@app/pages/date-picker-documentation/date-picker-doc-code.component';
 import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
@@ -50,7 +52,6 @@ import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-ind
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
 import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
-
 
 @NgModule({
   declarations: [
@@ -93,7 +94,6 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     AutocompleteDocumentationComponent,
     ProgressIndicatorDocCodeComponent,
     ProgressIndicatorDocumentationComponent,
-    DynamicImageComponent,
     AutocompleteDocumentationComponent
   ],
   imports: [
