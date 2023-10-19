@@ -21,7 +21,9 @@
       (click)="clickIconLeading(config.id + '_icon_leading')"
       [attr.size]="config.size"
     ></ircc-cl-lib-icon>
-    <h3>{{ config?.label || '' | translate }}</h3>
+    <ng-container *ngIf="config?.label">
+      <h3>{{ config?.label || '' | translate }}</h3>
+    </ng-container>
     <ircc-cl-lib-icon
       [id]="config.id + '_icon_trailing'"
       class="icon-trailing"
