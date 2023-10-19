@@ -108,6 +108,55 @@ export class InputDocumentationComponent implements OnInit {
     lazyLoad: true
   };
 
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'General.LabelHeading',
+      description: 'General.AnatomyLabelText'
+    },
+    {
+      title: 'General.RequiredIndicatorHeading',
+      description: 'General.RequiredIndicatorTxt'
+    },
+    {
+      title: 'General.Description',
+      description: 'General.AnatomyDescText'
+    },
+    {
+      title: 'General.TitleHeading',
+      description: 'Banner.Anatomy.TitleText'
+    },
+    {
+      title: 'General.Hint',
+      description: 'General.AnatomyHintText'
+    },
+    {
+      title: 'General.InputField',
+      description: 'Input.AnatomyInputFieldText'
+    },
+    {
+      title: 'Input.AnatomyInputContentHeading',
+      description: 'Input.AnatomyInputContentText'
+    },
+    {
+      title: 'General.Error',
+      description: 'General.AnatomyErrorText'
+    },
+    {
+      title: 'Input.AnatomyPasswordHeading',
+      description: 'Input.AnatomyPasswordText'
+    }
+  ];
+
+  accessibilityContent: string[] = [
+    'General.AccessibilityContentItem1',
+    'Input.AccessibilityContentItem2',
+    'Input.AccessibilityContentItem3',
+    'Input.AccessibilityContentItem4',
+    'Input.AccessibilityContentItem5',
+    'Input.AccessibilityContentItem6',
+    'General.AccessibilityContentItemMax'
+  ];
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,

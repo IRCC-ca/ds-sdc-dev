@@ -82,6 +82,12 @@ export class IconButtonDocumentationComponent implements OnInit {
     lazyLoad: true
   };
 
+  accessibilityContent: string[] = [
+    'IconButtonDocumentation.AccessibilityContentItem1',
+    'IconButtonDocumentation.AccessibilityContentItem2',
+    'IconButtonDocumentation.AccessibilityContentItem3'
+  ];
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService

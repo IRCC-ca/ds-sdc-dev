@@ -50,7 +50,6 @@ import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-ind
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectDocumentationComponent } from '@app/pages/select-documentation/select-documentation.component';
 import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-doc-code.component';
-import { ResponsiveImageComponent } from 'component-lib/src/lib/shared/responsive-image/responsive-image.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +92,6 @@ import { ResponsiveImageComponent } from 'component-lib/src/lib/shared/responsiv
     AutocompleteDocumentationComponent,
     ProgressIndicatorDocCodeComponent,
     ProgressIndicatorDocumentationComponent,
-    ResponsiveImageComponent,
     AutocompleteDocumentationComponent
   ],
   imports: [
