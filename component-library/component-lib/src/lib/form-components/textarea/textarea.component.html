@@ -25,7 +25,6 @@
             tabindex="0"
             (blur)="onBlur()"
             (change)="changeValue($event)"
-            [disabled]="currentStatus !== 'DISABLED'"
             [formControlName]="config.id"
             [attr.aria-label]="
               announceCharStatusChangeAria

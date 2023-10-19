@@ -204,7 +204,6 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       new FormControl('', [Validators.required])
     );
     // Two more form controls, one for each combination of validators
-    console.log(this.form);
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {

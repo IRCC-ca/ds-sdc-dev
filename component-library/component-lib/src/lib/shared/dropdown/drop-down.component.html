@@ -4,10 +4,9 @@
 >
   <button
     aria-live="polite"
-    attr.aria-label= "{{ btnAriaLabel }}"
+    attr.aria-label="{{ btnAriaLabel }}"
     [id]="config.id"
     (click)="toggleFlyout(!selected)"
-    [disabled]="config.disabled"
     class="dropdown selected-{{ selected }} {{ config.category }}"
     attr.category="{{ config.category }}"
   >
