@@ -33,9 +33,7 @@ import { EncapsulatedElementComponent } from '@app/components/encapsulated-eleme
 import { RequestFormComponent } from '@app/pages/request-form/request-form.component';
 import { BannerDocumentationComponent } from '@app/pages/banner-documentation/banner-documentation.component';
 import { HttpClientModule } from '@angular/common/http';
-import {
-  IrccDsAngularNavigationModule
-} from 'ircc-ds-angular-component-library';
+import { IrccDsAngularNavigationModule } from 'ircc-ds-angular-component-library';
 
 import { DatePickerDocCodeComponent } from '@app/pages/date-picker-documentation/date-picker-doc-code.component';
 import { DatePickerDocumentationComponent } from '@app/pages/date-picker-documentation/date-picker-documentation.component';
