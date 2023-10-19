@@ -39,8 +39,8 @@ export class AutocompleteDocumentationComponent
     id: 'auto-complete',
     formGroup: this.form,
     label: 'Label',
-    hint: 'Hint',
-    desc: 'Description',
+    hint: '',
+    desc: '',
     placeholder: 'Placeholder',
     size: 'small',
     required: true,
@@ -79,7 +79,7 @@ export class AutocompleteDocumentationComponent
         id: 'ts',
         title: 'TypeScript',
         value:
-          "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n" +
+          "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n\n" +
           `config: IAutocompleteComponent = ${stringify(
             this.autocompleteCodeView
           )}\nthis.config.formGroup.addControl(this.config.id, new FormControl());`
@@ -245,7 +245,7 @@ export class AutocompleteDocumentationComponent
       };
       if (this.codeViewConfig.tab) {
         this.codeViewConfig.tab[1].value =
-          "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n//...\n" +
+          "import { IAutocompleteComponent } from 'ircc-ds-angular-component-library';\n\n" +
           `config: IAutocompleteComponent = ${stringify(
             this.autocompleteCodeView
           )}`;

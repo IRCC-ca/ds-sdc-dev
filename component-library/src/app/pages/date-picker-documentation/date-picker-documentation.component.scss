@@ -15,6 +15,12 @@
 
     .image-1 {
       max-width: 167px;
+      @include device.in-phone-layout {
+        margin: {
+          top: 12.38px;
+          bottom: 133.62px;
+        }
+      }
     }
 
     .accessInput3 {

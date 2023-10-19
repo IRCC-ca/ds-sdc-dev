@@ -189,11 +189,9 @@
         </h3>
         <div class="row">
           <div [style.max-width]="'100%'">
-            <img
-              src="assets/img/input-content/input-max-width.png"
-              alt="{{ 'Input.MaxMinWidthImgAlt' | translate }}"
-              class="mb_12"
-            />
+            <ircc-cl-lib-dynamic-image
+              [config]="imageMinMaxConfig"
+            ></ircc-cl-lib-dynamic-image>
             <p>{{ 'Input.MaxMinWidthText' | translate }}</p>
           </div>
         </div>
@@ -207,10 +205,9 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <img
-          src="assets/img/input-content/input-anatomy.png"
-          alt="{{ 'Input.AnatomyImgAlt' | translate }}"
-        />
+        <ircc-cl-lib-dynamic-image
+          [config]="imageAnatomyConfig"
+        ></ircc-cl-lib-dynamic-image>
       </div>
       <div class="element-wrapper-container">
         <ng-container *ngFor="let content of anatomyContentItems; let i = index"
@@ -236,10 +233,9 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <img
-          src="assets/img/input-content/input-specs.png"
-          alt="{{ 'Input.SpecsImgAlt' | translate }}"
-        />
+        <ircc-cl-lib-dynamic-image
+          [config]="imageSpecsConfig"
+        ></ircc-cl-lib-dynamic-image>
       </div>
       <div class="element-wrapper-container">
         <p>{{ 'Input.SpecsImgDesc1' | translate }}</p>

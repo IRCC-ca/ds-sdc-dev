@@ -180,10 +180,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
           "import { FormGroup } from '@angular/forms';\n\n" +
           `selectConfig: ISelectConfig = ${stringify(
             this.selectConfigCodeView
-          )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-            this.stateTxt(this.state)
-          )}
-          `
+          )}`
       }
     ]
   };
@@ -207,7 +204,6 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       new FormControl('', [Validators.required])
     );
     // Two more form controls, one for each combination of validators
-    console.log(this.form);
 
     this.toggles.forEach((toggle) => {
       if (toggle.options && toggle.options[1].text) {
@@ -343,12 +339,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       tab.value =
         "import { ISelectConfig } from 'ircc-ds-angular-component-library';\r" +
         "import { FormGroup } from '@angular/forms';\n\n" +
-        `selectConfig: ISelectConfig = ${stringify(
-          this.selectConfigCodeView
-        )} \n //Note: Setting formControl state triggers disabled/enabled styling automatically \n ${JSON.stringify(
-          this.stateTxt(this.state)
-        )}
-        `;
+        `selectConfig: ISelectConfig = ${stringify(this.selectConfigCodeView)}`;
     }
   }
 }

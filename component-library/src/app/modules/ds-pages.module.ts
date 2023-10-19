@@ -96,8 +96,8 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     SpinnerDocumentationComponent,
     AutocompleteDocumentationComponent,
     ProgressIndicatorDocCodeComponent,
-    ProgressIndicatorDocumentationComponent
-
+    ProgressIndicatorDocumentationComponent,
+    AutocompleteDocumentationComponent
   ],
   imports: [
     CommonModule,

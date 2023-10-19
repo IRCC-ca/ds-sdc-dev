@@ -1,0 +1,10 @@
+<div
+  id="{{ config.id + '-container' }}"
+  class="dynamic-image-wrapper"
+>
+  <img
+    #image
+    [alt]="config.altText || '' | translate"
+    [attr.loading]="config.lazyLoad ? 'lazy' : null"
+  />
+</div>

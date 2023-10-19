@@ -19,7 +19,6 @@
         id="{{ config.id + index }}"
         (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
         [formControlName]="config.id ? config.id : 'formControl'"
-        [disabled]="currentStatus !== 'DISABLED'"
         [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size"
         [attr.aria-invalid]="formControl?.invalid"
         [attr.aria-live]="'off'"
@@ -59,7 +58,7 @@
     </div>
   </div>
   <div aria-live="polite">
-    <ng-container *ngIf="currentStatus === 'INVALID'">
+    <ng-container *ngIf="config.formGroup.get(config.id)?.touched && currentStatus === 'INVALID'">
       <span class="sr-only">{{
         errorStubText + ': ' + (config.label || '' | translate) + ': '
       }}</span>

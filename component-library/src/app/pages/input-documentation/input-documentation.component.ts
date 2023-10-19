@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
+  DSViewPortSize,
+  IDynamicImageComponentConfig,
   IInputComponentConfig,
   InputTypes
 } from 'ircc-ds-angular-component-library';
@@ -53,6 +55,57 @@ export class InputDocumentationComponent implements OnInit {
     title: 'Input.Title',
     heading: 'h1',
     anchorType: slugAnchorType.primary
+  };
+
+  imageMinMaxConfig: IDynamicImageComponentConfig = {
+    id: 'min-max-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/input-content/input-max-width-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/input-content/input-max-width-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/input-content/input-max-width-desktop.png',
+    altText: 'Input.MaxMinWidthImgAlt',
+    lazyLoad: true
+  };
+
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/input-content/input-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/input-content/input-anatomy-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/input-content/input-anatomy-desktop.png',
+    altText: 'Input.AnatomyImgAlt',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/input-content/input-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/input-content/input-specs-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/input-content/input-specs-desktop.png',
+    altText: 'Input.SpecsImgAlt',
+    lazyLoad: true
   };
 
   anatomyContentItems: ContentItem[] = [
