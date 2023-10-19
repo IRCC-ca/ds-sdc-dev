@@ -4,6 +4,7 @@ import {
   IBannerConfig,
   IButtonConfig,
   IDatePickerConfig,
+  IInputComponentConfig,
   IRadioInputComponentConfig,
   ITextareaComponentConfig
 } from 'ircc-ds-angular-component-library';
@@ -20,7 +21,7 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
 import { TranslateService } from '@app/share/templates/parent-template.module';
-import { first } from 'rxjs/operators';
+import { delay, first, retryWhen, switchMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
@@ -85,7 +86,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
       },
       {
         text: 'RequestForm.radioOption2',
-        value: 'Request'
+        value: 'Feature'
       },
       {
         text: 'RequestForm.radioOption3',
@@ -336,7 +337,7 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
          */
         if (
           this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Change' ||
-          this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Request'
+          this.requestFormData[this.typeOfRequestRadioConfig.id] === 'Feature'
         )
           this.showUseCase = true;
         if (this.requestFormData[this.urgentRequestRadioConfig.id] === 'Y')
@@ -380,17 +381,5 @@ export class RequestFormComponent implements OnInit, AfterViewInit {
   private handleExceptions(errorName: HttpErrorResponse) {
     // handle exception according to the exception name
     console.log(errorName);
-  }
-
-  submitForm() {
-    const data = localStorage.getItem('requestFormData');
-    this.requestFormService.sendRequestForm(this.email, data).subscribe({
-      next: () => {
-        console.log('email sent');
-      },
-      error: (error: HttpErrorResponse) => {
-        this.handleExceptions(error);
-      }
-    });
   }
 }
