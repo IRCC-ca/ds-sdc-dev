@@ -277,7 +277,8 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       type: 'button',
       btnConfig: {
         id: 'ctaPlain',
-        category: 'plain'
+        category: 'plain',
+        size: this.bannerConfig.size
       }
     };
 
@@ -286,7 +287,8 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       type: 'button',
       btnConfig: {
         id: 'ctaSecondary',
-        category: 'secondary'
+        category: 'secondary',
+        size: this.bannerConfig.size
       }
     };
 
@@ -295,7 +297,8 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       type: 'button',
       btnConfig: {
         id: 'ctaPrimary',
-        category: 'primary'
+        category: 'primary',
+        size: this.bannerConfig.size
       }
     };
 
@@ -517,6 +520,26 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     );
   }
 
+  private updateCTAbuttonSize() {
+    if(this.bannerConfig.cta && this.bannerConfig.cta?.length > 0) {
+      let ctaArray = this.bannerConfig.cta
+      this.currentButtonSet.clear()
+      this.bannerConfig.cta = [] //clear banner config cta 
+
+      //add buttons to the cta again with the updated size to maintain order
+      ctaArray.forEach((btn : ICTAConfig) => {
+        if(btn.btnConfig?.category === 'primary') 
+          this.handlePrimaryButtonToggle("True")
+        else if(btn.btnConfig?.category === 'secondary')
+          this.handleSecondaryButtonToggle("True")
+        else if(btn.btnConfig?.category === 'plain')
+          this.handlePlainButtonToggle("True")
+        else if(btn.type === 'link')
+          this.handleLinkToggle("True")
+      })
+    }
+  }
+
   private parseConfig(type: string, value: any) {
     switch (type) {
       case 'showSizeToggle':
@@ -524,6 +547,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
           ...this.bannerConfig,
           size: value.toLowerCase(),
         }
+        this.updateCTAbuttonSize()
         this.bannerService.setBanner(this.bannerConfig);
         break;
       case 'showTitleToggle':
