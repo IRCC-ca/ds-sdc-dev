@@ -50,7 +50,6 @@ export interface IBannerConfig {
   type?: keyof typeof BannerType;
   rounded?: boolean;
   dismissible?: boolean;
-  show?: boolean;
   cta?: ICTAConfig[];
   size?: keyof typeof BannerSize;
   ariaDissmissible?: string;
@@ -68,8 +67,7 @@ export class BannerComponent implements OnInit {
   textId = '';
 
   @Input() config: IBannerConfig = {
-    id: '',
-    show: true
+    id: ''
   };
   @Input() id?: string;
   @Input() title?: string;

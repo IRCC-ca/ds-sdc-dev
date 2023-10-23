@@ -31,7 +31,6 @@ export interface ISelectConfig {
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
-  topLabel?: string;
   disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
 }
 export interface ISelectOptionsConfig {
@@ -72,7 +71,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() required?: boolean;
   @Input() options?: ISelectOptionsConfig[];
   @Input() errorMessages?: IErrorPairs[];
-  @Input() topLabel?: string;
   @Input() disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
   labelIconConfig?: ILabelIconConfig;
 
@@ -154,7 +152,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.hint,
       this.config.required,
       this.config.labelIconConfig,
-      this.config.topLabel
     );
 
     //set config from individual options, if present
@@ -170,7 +167,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     if (this.required) this.config.required = this.required;
     if (this.options) this.config.options = this.options;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
-    if (this.topLabel) this.config.topLabel = this.topLabel;
     if (this.disableError) this.config.disableError = this.disableError;
 
     if (this.config.errorMessages) {
@@ -218,7 +214,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.hint,
       this.config.required,
       this.config.labelIconConfig,
-      this.config.topLabel
     );
   }
 
