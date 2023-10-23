@@ -6,7 +6,8 @@ import {
   ISelectConfig,
   IRadioInputComponentConfig,
   ITabNavConfig,
-  IBannerConfig
+  IBannerConfig,
+  StandAloneFunctions
 } from 'ircc-ds-angular-component-library';
 import {
   AbstractControl,
@@ -18,6 +19,8 @@ import {
   ICodeViewerConfig,
   stringify
 } from '@app/components/code-viewer/code-viewer.component';
+import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
+import { TranslateService } from '@app/share/templates/parent-template.module';
 
 /**
  * Interactive input demo & code block
@@ -29,10 +32,9 @@ import {
 })
 export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
   altLangLink = 'select';
+  currentLanguage: string = '';
   form = new FormGroup({});
   state: boolean = false;
-
-  constructor(private lang: LangSwitchService) {}
 
   selectConfig: ISelectConfig = {
     id: 'select',
@@ -42,7 +44,21 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
     label: 'Label text',
     options: [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }],
     size: 'small',
-    placeholder: 'Default'
+    placeholder: 'Default',
+    errorMessages: [
+      {
+        key: this.translate.instant('ERROR.singleError'),
+        errorLOV: this.translate.instant('ERROR.singleError')
+      },
+      {
+        key: this.translate.instant('ERROR.additionalError2'),
+        errorLOV: this.translate.instant('ERROR.additionalError2')
+      },
+      {
+        key: this.translate.instant('ERROR.additionalError2'),
+        errorLOV: this.translate.instant('ERROR.additionalError2')
+      }
+    ]
   };
 
   errorSelectConfig: ISelectConfig = {
@@ -121,10 +137,16 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       label: 'General.Error',
       options: [
         {
-          text: 'True'
+          text: 'General.NoneErr',
+          value: 'None'
         },
         {
-          text: 'False'
+          text: 'General.SingleErr',
+          value: 'Single'
+        },
+        {
+          text: 'General.MultipleErr',
+          value: 'Multiple'
         }
       ]
     }
@@ -150,7 +172,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
     hint: this.selectConfig.hint,
     options: this.selectConfig.options,
     placeholder: this.selectConfig.placeholder,
-    errorMessages: undefined
+    errorMessages: this.selectConfig.errorMessages
   };
 
   bannerConfig: IBannerConfig = {
@@ -187,6 +209,15 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
 
   errorState = 'None';
   currentConfigId = this.selectConfig.id;
+
+  constructor(
+    private translate: TranslateService,
+    private lang: LangSwitchService,
+    private slugify: SlugifyPipe,
+    private standalone: StandAloneFunctions
+  ) {
+    this.currentLanguage = translate.currentLang;
+  }
 
   stateTxt(disabled: boolean): string {
     const DISABLE = `this.formGroupName.get('formControlName')?.disable(); //sets the form control to be disabled`;
@@ -232,7 +263,7 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       size: 'Small',
       hint: 'False',
       desc: 'True',
-      error: 'False',
+      error: this.translate.instant('General.NoneErr'),
       required: 'True'
     });
 
@@ -282,17 +313,22 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       this.form.get(this.currentConfigId)?.markAsTouched();
 
     this.errorState = error;
+
     switch (error) {
-      case 'False':
-        this.currentConfigId = this.selectConfig.id;
-        this.selectConfigCodeView.errorMessages = undefined;
+      case 'Single':
+        this.standalone.setFormErrors(this.form, this.selectConfig.id, [
+          this.translate.instant('ERROR.singleError')
+        ]);
         break;
-      case 'True':
-        this.currentConfigId = this.errorSelectConfig.id;
-        if (!this.form.get(this.currentConfigId)?.touched)
-          this.form.get(this.currentConfigId)?.markAsTouched();
-        this.selectConfigCodeView.errorMessages =
-          this.errorSelectConfig.errorMessages;
+      case 'Multiple':
+        this.standalone.setFormErrors(this.form, this.selectConfig.id, [
+          this.translate.instant('ERROR.singleError'),
+          this.translate.instant('ERROR.additionalError'),
+          this.translate.instant('ERROR.additionalError2')
+        ]);
+        break;
+      default:
+        this.standalone.setFormErrors(this.form, this.selectConfig.id, []);
         break;
     }
     this.parseCodeViewConfig();
@@ -330,10 +366,9 @@ export class SelectDocCodeComponent implements OnInit, TranslatedPageComponent {
       required: this.selectConfig.required,
       label: this.selectConfig.label,
       desc: this.selectConfig.desc,
-      hint: this.selectConfig.hint
+      hint: this.selectConfig.hint,
+      errorMessages: this.selectConfig.errorMessages
     };
-
-    console.log(this.selectConfigCodeView);
 
     if (tab) {
       tab.value =

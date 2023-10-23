@@ -339,7 +339,6 @@ export class AutocompleteDocumentationComponent
     this.form_interactive_button
       .get('error')
       ?.valueChanges.subscribe((change: string) => {
-        console.log(change);
         switch (change) {
           case 'Single':
             this.config = {
@@ -397,30 +396,6 @@ export class AutocompleteDocumentationComponent
             );
             break;
         }
-        // if (change === 'True') {
-        //   this.standalone.setFormErrors(this.config.formGroup, this.config.id, [
-        //     'required'
-        //   ]);
-        //   this.config = {
-        //     ...this.config,
-        //     errorMessages: [
-        //       {
-        //         key: 'required',
-        //         errorLOV: 'ERROR.fieldIsRequired'
-        //       }
-        //     ]
-        //   };
-        // } else {
-        //   this.standalone.setFormErrors(
-        //     this.config.formGroup,
-        //     this.config.id,
-        //     []
-        //   );
-        //   this.config = {
-        //     ...this.config,
-        //     errorMessages: undefined
-        //   };
-        // }
       });
   }
 }
