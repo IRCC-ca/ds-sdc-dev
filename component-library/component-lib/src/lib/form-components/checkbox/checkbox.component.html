@@ -24,7 +24,6 @@
           (click)="clickEvent()"
           [ngClass]="{
             mixed: config.mixed,
-            focus: !config.disableFocus,
             error: currentStatus === 'INVALID' && currentTouch === true
           }"
           [attr.size]="config.size"
