@@ -99,6 +99,32 @@ $selectors: "ircc-cl-lib-spinner";
   }
 }
 
+@mixin size-extra-small() {
+  .spinner-container {
+        .icon-div {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          .spinner-icon {
+            > .ds-icon-container > span > svg {
+              width: 12px;
+              height: 12px;
+            }
+          }
+        }
+      }
+
+      .loading-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .label {
+        margin-left: 8px;
+        margin-bottom: 0;
+        @include typography.fontSet(body, 3, regular);
+      }
+}
+
 @mixin layout {
   .horizontal {
     .container {
@@ -167,33 +193,11 @@ $selectors: "ircc-cl-lib-spinner";
       @include size-large();
     }
   }
+  
+  .extraSmall {
+    @include size-extra-small();
+  }
 
   @include types(success);
   @include types(critical);
-
-  .extraSmall {
-    .spinner-container {
-      .icon-div {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        .spinner-icon {
-          > .ds-icon-container > span > svg {
-            width: 12px;
-            height: 12px;
-          }
-        }
-      }
-    }
-
-    .loading-icon {
-      width: 20px;
-      height: 20px;
-    }
-    .label {
-      margin-left: 8px;
-      margin-bottom: 0;
-      @include typography.fontSet(body, 3, regular);
-    }
-  }
 }
