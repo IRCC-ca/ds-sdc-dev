@@ -49,6 +49,11 @@
           >
             {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>
+          <span
+            class="sr-only"
+            *ngIf="isEventActive"
+            >{{ testVar }}</span
+          >
         </div>
       </div>
 

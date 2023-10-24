@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, HostListener, Input, OnInit } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControlStatus,
@@ -93,6 +93,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     parentID: ''
   };
   textAreaAriaLabel = '';
+
+  isEventActive = false;
+
+  testVar = ''
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -205,23 +209,28 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     let currLang = this.translate.currentLang;
     if (this.config?.charLimit) {
       if (this.config?.charLimit == currCharCount) {
+        console.log("MAX LIMIT CONDITION")
         this.charLimitStatus = 'maxLimit';
         currLang === 'en' || currLang === 'en-US'
           ? (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_EN)
           : (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_FR);
         this.announceCharStatusChangeAria = true;
+        this.isEventActive = true;
       } else if (Number(this.config?.charLimit) - currCharCount == 15) {
         this.charLimitStatus = 'warningLimit';
         currLang === 'en' || currLang === 'en-US'
           ? (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_EN)
           : (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_FR);
         this.announceCharStatusChangeAria = true;
+        this.isEventActive = false;
       } else if (Number(this.config?.charLimit) - currCharCount < 15) {
         this.charLimitStatus = 'warningLimit';
         this.currentCharacterStatusAria = '';
+        this.isEventActive = false;
       } else {
         this.charLimitStatus = '';
         this.currentCharacterStatusAria = '';
+        this.isEventActive = false;
       }
     }
   }
@@ -234,6 +243,24 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     } else {
       this.charLength = 0;
     }
+  }
+
+
+  @HostListener('window:keypress', ['$event'])
+  onKeyPress(event: KeyboardEvent) {
+    if (this.isEventActive) {
+      console.log("EVENT ACTIVE")
+      this.testVar = 'MAX LIMIT REACHED TESTING'
+    }
+    if (this.charLimitStatus !== 'maxLimit') {
+      console.log("EVENT NOT ACTIVE")
+      this.removeKeyPressEvent();
+    }
+  }
+
+  removeKeyPressEvent() {
+    // Set isEventActive to false to disable the event
+    this.isEventActive = false;
   }
 
   formatCharacterUsedString(currentLength: number): string {
