@@ -7,7 +7,7 @@
         class="tabs-btn"
         [id]="val.id"
         (click)="setSelected(val.id)"
-        [attr.aria-label]="val.title + ' selected'"
+        [attr.aria-label]="(val.title | translate) + ' selected'"
       >
         {{ val.title || '' | translate }}
       </button>
