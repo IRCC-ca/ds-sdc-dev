@@ -48,7 +48,8 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     size: 'small',
     dismissible: true,
     title: 'Title text',
-    content: 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
+    content:
+      'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.',
     cta: []
   };
 
@@ -308,10 +309,10 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     };
 
     const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
-      if(object.btnConfig?.category) {
+      if (object.btnConfig?.category) {
         return object.btnConfig?.category === text;
       } else {
-        return object.type === text
+        return object.type === text;
       }
     });
 
@@ -329,10 +330,10 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    */
   removeItemFromCTAList(text: string) {
     const indexOfObject: any = this.bannerConfig?.cta?.findIndex((object) => {
-      if(object.btnConfig?.category) {
+      if (object.btnConfig?.category) {
         return object.btnConfig?.category === text;
       } else {
-        return object.type === text
+        return object.type === text;
       }
     });
 
@@ -345,14 +346,14 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
    * disable radio button based on id
    */
   disableRadio(name: string) {
-    this.formBanner.get(name)?.disable()
+    this.formBanner.get(name)?.disable();
   }
 
   /**
    * enable radio button based on id
    */
   enableRadio(name: string) {
-    this.formBanner.get(name)?.enable()
+    this.formBanner.get(name)?.enable();
   }
 
   /**
@@ -362,14 +363,14 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
     if (this.currentButtonSet.size >= NUMBER_OF_CTA_ALLOWED) {
       this.buttonSetWithAllOptions.forEach((btn) => {
         if (!this.currentButtonSet.has(btn)) {
-          if(!this.formBanner.get(btn)?.disabled) {
+          if (!this.formBanner.get(btn)?.disabled) {
             this.disableRadio(btn);
           }
         }
       });
     } else {
-      for (let btn of this.buttonSetWithAllOptions){
-        if(this.formBanner.get(btn)?.disabled) {
+      for (const btn of this.buttonSetWithAllOptions) {
+        if (this.formBanner.get(btn)?.disabled) {
           this.enableRadio(btn);
         }
       }
@@ -493,15 +494,15 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
         );
       }
     });
-    
+
     // update default toggles to match figma
     this.formBanner.patchValue({
-      showPrimaryButtonToggle: "False",
-      showPlainButtonToggle: "False",
-      showLinkToggle: "False",
-      showSecondaryButtonToggle: "True"
+      showPrimaryButtonToggle: 'False',
+      showPlainButtonToggle: 'False',
+      showLinkToggle: 'False',
+      showSecondaryButtonToggle: 'True'
     });
-    this.handleSecondaryButtonToggle("True")
+    this.handleSecondaryButtonToggle('True');
 
     this.listOfConfigItems.forEach((configItem) => {
       this.formBanner.get(configItem)?.valueChanges.subscribe((value: any) => {
@@ -521,22 +522,21 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
   }
 
   private updateCTAbuttonSize() {
-    if(this.bannerConfig.cta && this.bannerConfig.cta?.length > 0) {
-      let ctaArray = this.bannerConfig.cta
-      this.currentButtonSet.clear()
-      this.bannerConfig.cta = [] //clear banner config cta 
+    if (this.bannerConfig.cta && this.bannerConfig.cta?.length > 0) {
+      const ctaArray = this.bannerConfig.cta;
+      this.currentButtonSet.clear();
+      this.bannerConfig.cta = []; //clear banner config cta
 
       //add buttons to the cta again with the updated size to maintain order
-      ctaArray.forEach((btn : ICTAConfig) => {
-        if(btn.btnConfig?.category === 'primary') 
-          this.handlePrimaryButtonToggle("True")
-        else if(btn.btnConfig?.category === 'secondary')
-          this.handleSecondaryButtonToggle("True")
-        else if(btn.btnConfig?.category === 'plain')
-          this.handlePlainButtonToggle("True")
-        else if(btn.type === 'link')
-          this.handleLinkToggle("True")
-      })
+      ctaArray.forEach((btn: ICTAConfig) => {
+        if (btn.btnConfig?.category === 'primary')
+          this.handlePrimaryButtonToggle('True');
+        else if (btn.btnConfig?.category === 'secondary')
+          this.handleSecondaryButtonToggle('True');
+        else if (btn.btnConfig?.category === 'plain')
+          this.handlePlainButtonToggle('True');
+        else if (btn.type === 'link') this.handleLinkToggle('True');
+      });
     }
   }
 
@@ -545,9 +545,9 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
       case 'showSizeToggle':
         this.bannerConfig = {
           ...this.bannerConfig,
-          size: value.toLowerCase(),
-        }
-        this.updateCTAbuttonSize()
+          size: value.toLowerCase()
+        };
+        this.updateCTAbuttonSize();
         this.bannerService.setBanner(this.bannerConfig);
         break;
       case 'showTitleToggle':
@@ -557,13 +557,16 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
         };
         this.bannerService.setBanner(this.bannerConfig);
         break;
-       case 'showDescToggle':
-          this.bannerConfig = {
-            ...this.bannerConfig,
-            content: value === 'True' ? 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.' : undefined
-          };
-          this.bannerService.setBanner(this.bannerConfig);
-          break;
+      case 'showDescToggle':
+        this.bannerConfig = {
+          ...this.bannerConfig,
+          content:
+            value === 'True'
+              ? 'Description text lorem ipsum dolor sit amet consecteteur adipiscing elit.'
+              : undefined
+        };
+        this.bannerService.setBanner(this.bannerConfig);
+        break;
       case 'showCloseToggle':
         this.handleCloseToggle(value);
         break;
