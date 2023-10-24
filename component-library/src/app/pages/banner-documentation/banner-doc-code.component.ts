@@ -375,7 +375,7 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
           }
         });
       }
-  }
+    }
 
   /**
    * Hide or show Primary button on test banner based on radio selection
