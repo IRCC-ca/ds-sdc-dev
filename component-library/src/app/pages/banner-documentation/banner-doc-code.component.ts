@@ -369,13 +369,13 @@ export class BannerDocCodeComponent implements OnInit, TranslatedPageComponent {
         }
       });
     } else {
-      for (const btn of this.buttonSetWithAllOptions) {
-        if (this.formBanner.get(btn)?.disabled) {
-          this.enableRadio(btn);
-        }
+        this.buttonSetWithAllOptions.forEach((btn) => {
+          if (this.formBanner.get(btn)?.disabled) {
+            this.enableRadio(btn);
+          }
+        });
       }
     }
-  }
 
   /**
    * Hide or show Primary button on test banner based on radio selection
