@@ -23,6 +23,21 @@ import { ContentItem } from '@app/share/interface/content-item.interface';
   providers: [SlugifyPipe]
 })
 export class SelectDocumentationComponent implements OnInit {
+  rightNavData: string[] = [
+    // list of all right nav items
+    'Select.Title',
+    'General.InteractiveDemo',
+    'General.ConfigurationsMain',
+    'General.ConfigurationsSub',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.ContentGuidelinesHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
+  ];
+
   currentLanguage: string = '';
   anchorType = slugAnchorType;
   headingConfig = docPageheadingConfig;

@@ -166,6 +166,22 @@ export class BannerDocumentationComponent implements OnInit {
       description: 'Banner.Anatomy.CTAGroupText'
     }
   ];
+
+  rightNavData: string[] = [
+    // list of all right nav items
+    'Banner.Title',
+    'General.InteractiveDemo',
+    'General.TypesHeading',
+    'General.ConfigurationsHeading',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.ContentGuidelinesHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
+  ];
+  
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService

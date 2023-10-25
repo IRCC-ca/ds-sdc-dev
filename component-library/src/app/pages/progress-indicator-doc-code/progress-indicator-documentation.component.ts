@@ -23,6 +23,21 @@ export class ProgressIndicatorDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
+  rightNavData: string[] = [
+    // list of all right nav items
+    'ProgressIndicator.MainTitle',
+    'General.InteractiveDemo',
+    // 'General.TypesHeading',
+    // 'General.ConfigurationsHeading',
+    // 'General.DesignGuidelinesHeading',
+    // 'General.AnatomyHeading',
+    // 'General.SpecsHeading',
+    // 'General.ContentGuidelinesHeading',
+    // 'General.FigmaHeading',
+    // 'General.AccessibilityHeading',
+    // 'General.ResearchHeading'
+  ];
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService

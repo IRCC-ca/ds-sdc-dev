@@ -3,7 +3,7 @@
 @use "../../../scss/page";
 @use "@ircc-ca/ds-sdc-core/typography/typography";
 
-@include page.template(false);
+@include page.template;
 .block {
   img.button-figma-usage {
     max-width: 224px;
