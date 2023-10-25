@@ -105,11 +105,11 @@
           }
         }
       }
-    }
-  }
 
-  .sr-only {
-    @include a11y.sr-only;
+      .sr-only {
+        @include a11y.sr-only;
+      }
+    }
   }
 
   @include at-resize(none);

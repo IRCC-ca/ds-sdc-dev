@@ -51,9 +51,10 @@
           </p>
           <span
             class="sr-only"
-            *ngIf="isEventActive"
-            >{{ testVar }}</span
+            aria-live="polite"
+            [innerHTML]="announceMaxCharaterLimitReached"
           >
+          </span>
         </div>
       </div>
 

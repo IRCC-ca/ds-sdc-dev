@@ -1,4 +1,4 @@
-import { Component, forwardRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, forwardRef, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControlStatus,
@@ -92,11 +92,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     formGroup: this.config.formGroup,
     parentID: ''
   };
-  textAreaAriaLabel = '';
-
   isEventActive = false;
-
-  testVar = ''
+  announceMaxCharaterLimitReached = ''
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -175,6 +172,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
           this.toggleDisabledState();
         }
       });
+
+    this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US'
+      ? (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_EN)
+      : (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_FR);
   }
 
   toggleDisabledState() {
@@ -209,7 +210,6 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     let currLang = this.translate.currentLang;
     if (this.config?.charLimit) {
       if (this.config?.charLimit == currCharCount) {
-        console.log("MAX LIMIT CONDITION")
         this.charLimitStatus = 'maxLimit';
         currLang === 'en' || currLang === 'en-US'
           ? (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_EN)
@@ -245,22 +245,22 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-
+  //Keep announcing max char limit reached for each keypress made after max limit has reached
   @HostListener('window:keypress', ['$event'])
   onKeyPress(event: KeyboardEvent) {
     if (this.isEventActive) {
-      console.log("EVENT ACTIVE")
-      this.testVar = 'MAX LIMIT REACHED TESTING'
+      if(this.announceMaxCharaterLimitReached === MAX_CHAR_LIMIT_EN || this.announceMaxCharaterLimitReached === MAX_CHAR_LIMIT_FR) {
+        this.announceMaxCharaterLimitReached+='&nbsp;'
+      }
+      else {
+        this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US'
+          ? (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_EN)
+          : (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_FR);
+      }
     }
     if (this.charLimitStatus !== 'maxLimit') {
-      console.log("EVENT NOT ACTIVE")
-      this.removeKeyPressEvent();
+      this.isEventActive = false;
     }
-  }
-
-  removeKeyPressEvent() {
-    // Set isEventActive to false to disable the event
-    this.isEventActive = false;
   }
 
   formatCharacterUsedString(currentLength: number): string {
