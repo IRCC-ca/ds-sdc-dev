@@ -97,7 +97,6 @@ export class IconButtonDocumentationComponent implements OnInit {
     'General.DesignGuidelinesHeading',
     'General.AnatomyHeading',
     'General.SpecsHeading',
-    'General.ContentGuidelinesHeading',
     'General.FigmaHeading',
     'General.AccessibilityHeading',
     'General.ResearchHeading'
