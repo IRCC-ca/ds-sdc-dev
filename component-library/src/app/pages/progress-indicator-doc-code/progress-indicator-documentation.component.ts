@@ -26,7 +26,7 @@ export class ProgressIndicatorDocumentationComponent implements OnInit {
   rightNavData: string[] = [
     // list of all right nav items
     'ProgressIndicator.MainTitle',
-    'General.InteractiveDemo',
+    'General.InteractiveDemo'
     // 'General.TypesHeading',
     // 'General.ConfigurationsHeading',
     // 'General.DesignGuidelinesHeading',

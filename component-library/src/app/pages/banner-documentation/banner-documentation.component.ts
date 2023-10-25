@@ -181,7 +181,7 @@ export class BannerDocumentationComponent implements OnInit {
     'General.AccessibilityHeading',
     'General.ResearchHeading'
   ];
-  
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
