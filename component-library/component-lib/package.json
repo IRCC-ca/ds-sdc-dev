@@ -11,10 +11,10 @@
     "@angular/core": "^14.1.0",
     "@angular/forms": "^14.2.12",
     "@ircc-ca/ds-sdc-core": "file:../../core-library",
-    "@ngx-translate/core": "^14.0.0"
+    "@ngx-translate/core": "^14.0.0",
+    "@angular/elements": "14.2.x"
   },
   "dependencies": {
-    "@angular/elements": "14.2.x",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
