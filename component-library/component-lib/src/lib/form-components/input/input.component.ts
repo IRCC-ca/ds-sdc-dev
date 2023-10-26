@@ -15,6 +15,7 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControl,
   FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
@@ -196,6 +197,14 @@ export class InputComponent
    * When the page loads, we initialize the form with it's controls, labels, and config, and detect value changes and errors. setLang detects changes to the language toggle to serve the correct text
    */
   ngOnInit() {
+    console.log(this.formGroup);
+    console.log(this.config.formGroup);
+
+    if (!this.config.formGroup) {
+      this.config.formGroup = this.formGroup;
+      this.config.formGroup.addControl(this.config.id, new FormControl());
+    }
+
     const retControl = this.config.formGroup.get(this.config.id);
     if (retControl) {
       this.formControl = retControl;
