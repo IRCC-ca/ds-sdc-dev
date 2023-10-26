@@ -50,7 +50,6 @@ export class CheckboxDocCodeComponent implements OnInit {
     desc: 'Description line of text',
     inlineLabel: 'Default',
     mixed: false,
-    disableFocus: false,
     inlineLabelBold: false,
     errorMessages: [
       {
