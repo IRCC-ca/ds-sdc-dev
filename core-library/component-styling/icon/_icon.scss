@@ -28,6 +28,13 @@
   }
 }
 
+@mixin extra-small-styles() {
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+}
+
 @mixin layout {
   @include size.select(large) {
     @include large-styles();
@@ -43,6 +50,10 @@
     .large {
       @include large-styles();
     }
+  }
+
+  .extraSmall {
+    @include extra-small-styles();
   }
 
   span {

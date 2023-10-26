@@ -3,7 +3,11 @@ import {
   slugAnchorType,
   slugTitleURLConfig
 } from '@app/components/title-slug-url/title-slug-url.component';
-import { IBannerConfig } from 'ircc-ds-angular-component-library';
+import {
+  DSViewPortSize,
+  IBannerConfig,
+  IDynamicImageComponentConfig
+} from 'ircc-ds-angular-component-library';
 import { ContentItem } from '@app/share/interface/content-item.interface';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -64,6 +68,57 @@ export class BannerDocumentationComponent implements OnInit {
     title: 'Banner.Title',
     heading: 'h1',
     anchorType: slugAnchorType.primary
+  };
+
+  imageMinMaxConfig: IDynamicImageComponentConfig = {
+    id: 'min-max-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/banner-content/banner-max-width-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/banner-content/banner-max-width-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/banner-content/banner-max-width-desktop.png',
+    altText: 'Banner.DesignGuideLines.bannerMinMaxWidthAlt',
+    lazyLoad: true
+  };
+
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/banner-content/banner-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/banner-content/banner-anatomy-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/banner-content/banner-anatomy-desktop.png',
+    altText: 'Banner.Anatomy.ImgAlt',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/banner-content/banner-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/banner-content/banner-specs-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/banner-content/banner-specs-desktop.png',
+    altText: 'Banner.Specs.ImgAlt',
+    lazyLoad: true
   };
 
   figmaDirections: string[] = [

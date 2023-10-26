@@ -30,74 +30,73 @@
     </p>
   </section>
 
-  <section class="form-container">
-    <app-title-slug-url
-      [config]="requestFormTitleSlugConfig"
-      class="h3 emphasis"
-    ></app-title-slug-url>
-    <div class="form-container">
-      <div class="type-request-radio-container">
-        <ircc-cl-lib-radio-input
-          [config]="typeOfRequestRadioConfig"
-          (change)="radioButtonChanged($event)"
-        ></ircc-cl-lib-radio-input>
-      </div>
-      <div class="request-title-text-area-container">
-        <ircc-cl-lib-textarea
-          [config]="requestTitleTextAreaConfig"
-        ></ircc-cl-lib-textarea>
-      </div>
-      <div class="request-details-text-area-container">
-        <ircc-cl-lib-textarea
-          [config]="requestDetailsTextAreaConfig"
-        ></ircc-cl-lib-textarea>
-      </div>
-      <div
-        class="use-case-text-area-container"
-        *ngIf="showUseCase"
-      >
-        <ircc-cl-lib-textarea
-          [config]="useCaseTextAreaConfig"
-        ></ircc-cl-lib-textarea>
-      </div>
-      <div class="references-text-area-container">
-        <ircc-cl-lib-textarea
-          [config]="referencesTextAreaConfig"
-        ></ircc-cl-lib-textarea>
-      </div>
-      <div class="urgent-request-radio-container">
-        <ircc-cl-lib-radio-input
-          [config]="urgentRequestRadioConfig"
-          (change)="radioButtonChanged($event)"
-        ></ircc-cl-lib-radio-input>
-      </div>
-      <div
-        class="urgent-details-container"
-        *ngIf="requestUrgent"
-      >
-        <ircc-cl-lib-textarea
-          [config]="urgentDetailsTextAreaConfig"
-        ></ircc-cl-lib-textarea>
-      </div>
-      <div
-        class="date-requested-container"
-        *ngIf="requestUrgent"
-      >
-        <ircc-cl-lib-date-picker
-          [config]="requestedDateDatePickerConfig"
-        ></ircc-cl-lib-date-picker>
-      </div>
-      <div class="submit-request-container">
-        <ircc-cl-lib-button
-          [config]="buttonConfig"
-          (click)="submitForm()"
-          >{{ 'RequestForm.SubmitBtn' | translate }}</ircc-cl-lib-button
+  <div style="display: flex; align-items: center; justify-content: center">
+    <section class="form-container">
+      <app-title-slug-url
+        [config]="requestFormTitleSlugConfig"
+        class="h3 emphasis"
+      ></app-title-slug-url>
+
+      <div class="form-container">
+        <div class="type-request-radio-container">
+          <ircc-cl-lib-radio-input
+            [config]="typeOfRequestRadioConfig"
+            (change)="radioButtonChanged($event)"
+          ></ircc-cl-lib-radio-input>
+        </div>
+        <div class="request-title-text-area-container">
+          <ircc-cl-lib-textarea
+            [config]="requestTitleTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div class="request-details-text-area-container">
+          <ircc-cl-lib-textarea
+            [config]="requestDetailsTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div
+          class="use-case-text-area-container"
+          *ngIf="showUseCase"
         >
+          <ircc-cl-lib-textarea
+            [config]="useCaseTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div class="references-text-area-container">
+          <ircc-cl-lib-textarea
+            [config]="referencesTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div class="urgent-request-radio-container">
+          <ircc-cl-lib-radio-input
+            [config]="urgentRequestRadioConfig"
+            (change)="radioButtonChanged($event)"
+          ></ircc-cl-lib-radio-input>
+        </div>
+        <div
+          class="urgent-details-container"
+          *ngIf="requestUrgent"
+        >
+          <ircc-cl-lib-textarea
+            [config]="urgentDetailsTextAreaConfig"
+          ></ircc-cl-lib-textarea>
+        </div>
+        <div
+          class="date-requested-container"
+          *ngIf="requestUrgent"
+        >
+          <ircc-cl-lib-date-picker
+            [config]="requestedDateDatePickerConfig"
+          ></ircc-cl-lib-date-picker>
+        </div>
+
+        <!-- insert email verification here-->
+        <email-verification-container></email-verification-container>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+  <!-- <app-side-nav
+    class="right-nav col-12 col-lg-3 col-xl-2"
+    [rightNavLOVs]="rightNavData"
+  ></app-side-nav> -->
 </div>
-<app-side-nav
-  class="right-nav col-12 col-lg-3 col-xl-2"
-  [rightNavLOVs]="rightNavData"
-></app-side-nav>

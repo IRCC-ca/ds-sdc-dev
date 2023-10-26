@@ -244,7 +244,7 @@
           </div>
           <div class="col-12 col-md-6">
             <img
-              src="assets/img/icon-btn-content/easy-icon-do.png"
+              src="assets/img/icon-btn-content/easy-icon-dont.png"
               alt="{{
                 'IconButtonDocumentation.EasyUnderStandDontAlt' | translate
               }}"
@@ -268,21 +268,9 @@
         </h3>
         <div class="row">
           <div [style.max-width]="'100%'">
-            <picture>
-              <source
-                media="(max-width: 768px)"
-                srcset="assets/img/icon-btn-content/icon-spacing-phone-328w.png"
-              />
-              <source
-                media="(min-width: 768px)"
-                srcset="assets/img/icon-btn-content/icon-spacing.png"
-              />
-              <img
-                class="mb_12"
-                src="assets/img/icon-btn-content/icon-spacing.png"
-                alt="{{ 'IconButtonDocumentation.Spacing.ImgAlt' | translate }}"
-              />
-            </picture>
+            <ircc-cl-lib-dynamic-image
+              [config]="imageSpacingConfig"
+            ></ircc-cl-lib-dynamic-image>
             <p>
               {{ 'IconButtonDocumentation.SpacingText' | translate }}
             </p>
@@ -298,20 +286,9 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcset="assets/img/icon-btn-content/icon-anatomy-phone.png"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcset="assets/img/icon-btn-content/anatomy-image-button.png"
-          />
-          <img
-            src="assets/img/icon-btn-content/anatomy-image-button.png"
-            alt="{{ 'IconButtonDocumentation.AnatomyImgAlt' | translate }}"
-          />
-        </picture>
+        <ircc-cl-lib-dynamic-image
+          [config]="anatomyImgConfig"
+        ></ircc-cl-lib-dynamic-image>
       </div>
       <div class="element-wrapper-container anatomy-content-container">
         <div class="counter-and-heading-container">
@@ -333,20 +310,9 @@
     ></app-title-slug-url>
     <div class="wrapper-container">
       <div class="element-wrapper-container">
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcset="assets/img/icon-btn-content/icon-spec-phone-328w.png"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcset="assets/img/icon-btn-content/spec-image-872w.png"
-          />
-          <img
-            src="assets/img/icon-btn-content/spec-image-872w.png"
-            alt="{{ 'IconButtonDocumentation.SpecsImgAlt' | translate }}"
-          />
-        </picture>
+        <ircc-cl-lib-dynamic-image
+          [config]="specImgConfig"
+        ></ircc-cl-lib-dynamic-image>
       </div>
       <div class="element-wrapper-container">
         <p class="specs-description">
@@ -367,9 +333,30 @@
         </h3>
         <ol>
           <li
-            *ngFor="let direction of figmaDirections"
-            [innerHtml]="direction | translate"
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.FigmaDirectionsListItem1' | translate
+            "
           ></li>
+          <li
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.FigmaDirectionsListItem2' | translate
+            "
+          ></li>
+          <li
+            class="list-item"
+            [innerHtml]="
+              'IconButtonDocumentation.FigmaDirectionsListItem3' | translate
+            "
+          ></li>
+          <li class="list-item">
+            <app-encapsulated-element
+              [injectedHtml]="
+                'IconButtonDocumentation.FigmaDirectionsListItem4' | translate
+              "
+            ></app-encapsulated-element>
+          </li>
         </ol>
       </div>
       <div class="col-12 col-md-4">

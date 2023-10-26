@@ -47,6 +47,8 @@ export class accordionContainerComponent
   noExtraLeft: boolean = false;
   noExtraRight: boolean = false;
 
+  extraClasses = '';
+
   @Output() getOpen = new EventEmitter<boolean>();
 
   buttonConfigAcccordionOpen: IButtonConfig = {
@@ -71,6 +73,18 @@ export class accordionContainerComponent
 
   ngAfterContentChecked() {
     this.changeDetectorRef.detectChanges();
+
+    this.noExtraLeft = this.extraLeftRef?.nativeElement.childElementCount === 0;
+    this.noExtraRight =
+      this.extraRightRef?.nativeElement.childElementCount === 0;
+
+    if (this.noExtraLeft && this.noExtraRight) {
+      this.extraClasses = 'no-extra';
+    } else if (this.noExtraLeft && !this.noExtraRight) {
+      this.extraClasses = 'no-extra-left';
+    } else {
+      this.extraClasses = 'no-extra-right';
+    }
   }
 
   ngOnInit() {
@@ -98,24 +112,10 @@ export class accordionContainerComponent
       this.config.mobileBehaviour = this.mobileBehaviour;
   }
 
-  ngAfterViewInit() {
-    this.noExtraLeft = this.extraLeftRef?.nativeElement.childElementCount === 0;
-    this.noExtraRight =
-      this.extraRightRef?.nativeElement.childElementCount === 0;
-  }
+  ngAfterViewInit() {}
 
   openAccordion() {
     this.config.open = !this.config.open;
     this.getOpen.emit(this.config.open);
-  }
-
-  getExtraClass(): string {
-    if (this.noExtraLeft && this.noExtraRight) {
-      return 'no-extra';
-    } else if (this.noExtraLeft && !this.noExtraRight) {
-      return 'no-extra-left';
-    } else {
-      return 'no-extra-right';
-    }
   }
 }

@@ -1,4 +1,5 @@
 @use "../../tokens/template-const" as template-const;
+@use "../../util/size" as size;
 
 @mixin selector {
   ircc-cl-lib-autocomplete#{template-const.$escape} {
@@ -12,7 +13,23 @@
   }
 }
 
+@mixin size-lg {
+  ircc-cl-lib-flyout {
+    top: 90px;
+  }
+}
+
+@mixin size-sm {
+}
+
 @mixin layout {
+  @include size.select(large) {
+    @include size-lg();
+    .small {
+      @include size-sm();
+    }
+  }
+
   position: relative;
 
   button {
@@ -31,5 +48,10 @@
   ircc-cl-lib-flyout {
     position: absolute;
     width: 100%;
+    top: 70px;
+
+    &.large {
+      top: 85px;
+    }
   }
 }

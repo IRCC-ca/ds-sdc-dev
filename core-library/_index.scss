@@ -57,6 +57,7 @@
 @use "./component-styling/navigation/navigation-header";
 @use "./component-styling/navigation/navigation-item";
 @use "./component-styling/navigation/navigation-divider";
+@use "./component-styling//dynamic-image/dynamic-image" as dynamic-image;
 @use "./typography/fa-wrapper";
 
 @forward "./theme/theme" as theme-*;
@@ -147,6 +148,7 @@
     @include element(navigation-header);
     @include element(navigation-item);
     @include element(navigation-divider);
+    @include element(dynamic-image);
   } @else {
     @each $key in $include {
       @include element($key);
@@ -254,5 +256,8 @@
   }
   @else if $key == navigation-divider {
     @include navigation-divider.create();
+  }
+  @else if $key == dynamic-image {
+    @include dynamic-image.create();
   }
 }

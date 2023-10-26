@@ -56,6 +56,18 @@
   }
 }
 
+@mixin xs {
+  > span {
+    width: 16px;
+    height: 16px;
+  }
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+}
+
 @mixin layout {
   > button[category="plain"].icon-btn {
     border-radius: 50%;
@@ -84,28 +96,20 @@
 
     &.large {
       padding: 10px;
-
+      min-width: 44px;
       @include lg;
     }
 
     &.small {
       padding: 10px;
-
+      min-width: 40px;
       @include sm;
     }
 
     &.extraSmall {
       padding: 4px;
-
-      > span {
-        width: 16px;
-        height: 16px;
-      }
-
-      svg {
-        height: 16px;
-        width: 16px;
-      }
+      min-width: 24px;
+      @include xs;
     }
 
     @include size.select(large) {

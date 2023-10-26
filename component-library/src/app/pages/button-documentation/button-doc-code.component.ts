@@ -117,6 +117,26 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
       ]
     },
     {
+      id: 'showIconToggle',
+      formGroup: this.formButton,
+      label: 'Buttons.ConfigIconHeading',
+      size: 'small',
+      options: [
+        {
+          text: 'General.NoneErr',
+          value: 'None'
+        },
+        {
+          text: 'Buttons.ConfigIconLeading',
+          value: 'Leading'
+        },
+        {
+          text: 'Buttons.ConfigIconTrailing',
+          value: 'Trailing'
+        }
+      ]
+    },
+    {
       id: 'showCriticalToggle',
       formGroup: this.formButton,
       label: 'General.Critical',
@@ -145,26 +165,6 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
         {
           text: 'Buttons.ConfigLayoutFixed',
           value: 'Fixed'
-        }
-      ]
-    },
-    {
-      id: 'showIconToggle',
-      formGroup: this.formButton,
-      label: 'Buttons.ConfigIconHeading',
-      size: 'small',
-      options: [
-        {
-          text: 'General.NoneErr',
-          value: 'None'
-        },
-        {
-          text: 'Buttons.ConfigIconLeading',
-          value: 'Leading'
-        },
-        {
-          text: 'Buttons.ConfigIconTrailing',
-          value: 'Trailing'
         }
       ]
     }
@@ -268,7 +268,6 @@ export class ButtonDocCodeComponent implements OnInit, TranslatedPageComponent {
           );
           break;
         default: {
-          console.log('Default');
           this.formButton.addControl(
             toggle.id,
             new FormControl(toggle.options[0].value)

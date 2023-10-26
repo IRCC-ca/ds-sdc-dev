@@ -223,10 +223,6 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.month.size = this.config.size;
     this.dropDownConfigs.year.size = this.config.size;
 
-    this.dropDownConfigs.day.topLabel = this.config.label;
-    this.dropDownConfigs.month.topLabel = this.config.label;
-    this.dropDownConfigs.year.topLabel = this.config.label;
-
     if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,

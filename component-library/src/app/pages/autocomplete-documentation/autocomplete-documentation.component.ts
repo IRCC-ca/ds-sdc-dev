@@ -137,11 +137,11 @@ export class AutocompleteDocumentationComponent
       label: 'General.Required',
       options: [
         {
-          text: 'True',
+          text: 'General.TrueLabel',
           value: 'True'
         },
         {
-          text: 'False',
+          text: 'General.FalseLabel',
           value: 'False'
         }
       ]
@@ -153,12 +153,16 @@ export class AutocompleteDocumentationComponent
       label: 'General.Error',
       options: [
         {
-          text: 'General.TrueLabel',
-          value: 'True'
+          text: 'General.NoneErr',
+          value: 'None'
         },
         {
-          text: 'General.FalseLabel',
-          value: 'False'
+          text: 'General.SingleErr',
+          value: 'Single'
+        },
+        {
+          text: 'General.MultipleErr',
+          value: 'Multiple'
         }
       ]
     },
@@ -335,30 +339,64 @@ export class AutocompleteDocumentationComponent
     this.form_interactive_button
       .get('error')
       ?.valueChanges.subscribe((change: string) => {
-        if (change === 'True') {
-          this.standalone.setFormErrors(this.config.formGroup, this.config.id, [
-            'required'
-          ]);
-          this.config = {
-            ...this.config,
-            errorMessages: [
-              {
-                key: 'required',
-                errorLOV: 'ERROR.fieldIsRequired'
-              }
-            ]
-          };
-        } else {
-          this.standalone.setFormErrors(
-            this.config.formGroup,
-            this.config.id,
-            []
-          );
-          this.config = {
-            ...this.config,
-            errorMessages: undefined
-          };
+        switch (change) {
+          case 'Single':
+            this.config = {
+              ...this.config,
+              errorMessages: [
+                {
+                  key: this.translate.instant('ERROR.singleError'),
+                  errorLOV: 'ERROR.fieldIsRequired'
+                }
+              ]
+            };
+            this.standalone.setFormErrors(
+              this.config.formGroup,
+              this.config.id,
+              [this.translate.instant('ERROR.singleError')]
+            );
+            break;
+          case 'Multiple':
+            this.config = {
+              ...this.config,
+              errorMessages: [
+                {
+                  key: this.translate.instant('ERROR.singleError'),
+                  errorLOV: this.translate.instant('ERROR.singleError')
+                },
+                {
+                  key: this.translate.instant('ERROR.additionalError2'),
+                  errorLOV: this.translate.instant('ERROR.additionalError2')
+                },
+                {
+                  key: this.translate.instant('ERROR.additionalError2'),
+                  errorLOV: this.translate.instant('ERROR.additionalError2')
+                }
+              ]
+            };
+            this.standalone.setFormErrors(
+              this.config.formGroup,
+              this.config.id,
+              [
+                this.translate.instant('ERROR.singleError'),
+                this.translate.instant('ERROR.additionalError'),
+                this.translate.instant('ERROR.additionalError2')
+              ]
+            );
+            break;
+          default:
+            this.config = {
+              ...this.config,
+              errorMessages: []
+            };
+            this.standalone.setFormErrors(
+              this.config.formGroup,
+              this.config.id,
+              []
+            );
+            break;
         }
       });
   }
 }
+

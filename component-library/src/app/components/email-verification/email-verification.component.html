@@ -1,0 +1,100 @@
+<div class="email-verification">
+  <ng-container *ngIf="status === 'start'; else waiting">
+    <div>
+      <p>
+        {{ 'Please verify your mail before submitting the form.' | translate }}
+      </p>
+      <div class="grid-half">
+        <div style="display: flex; align-items: center">
+          <ircc-cl-lib-input
+            [config]="emailconfig"
+            style="margin-right: 25px"
+          ></ircc-cl-lib-input>
+        </div>
+        <div style="display: flex; align-items: flex-end">
+          <ircc-cl-lib-button
+            [config]="buttonConfig"
+            (click)="sendSocketMessage()"
+            >Verify Email</ircc-cl-lib-button
+          >
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #waiting>
+    <ng-container *ngIf="status === 'waiting'; else verified">
+      <div class="grid-full">
+        <p>
+          {{
+            'Please check your email and click the verification link. The email might appear in your spam folder.'
+              | translate
+          }}
+        </p>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <ircc-cl-lib-spinner></ircc-cl-lib-spinner>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #verified>
+    <ng-container *ngIf="status === 'verified'; else sendingEmail">
+      <div class="grid-full">
+        <p>
+          {{ 'Your email has been verified!' | translate }}
+        </p>
+        <div style="display: flex; align-items: center">
+          <ircc-cl-lib-button
+            [config]="buttonConfig"
+            (click)="submitForm()"
+            >{{ 'RequestForm.SubmitBtn' | translate }}</ircc-cl-lib-button
+          >
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #sendingEmail>
+    <ng-container *ngIf="status === 'sendingEmail'; else done">
+      <div class="grid-full">
+        <p>
+          {{ 'Submitting' | translate }}
+        </p>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <ircc-cl-lib-spinner></ircc-cl-lib-spinner>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #done>
+    <ng-container *ngIf="status === 'done'; else error">
+      <div class="grid-full">
+        <p>
+          {{ 'Your form has been submitted' | translate }}
+        </p>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-template #error>
+    <ng-container *ngIf="status === 'error'">
+      <div class="grid-full">
+        <p>
+          {{
+            'An Error has occured, please restart the verification flow'
+              | translate
+          }}
+        </p>
+        <div style="display: flex; align-items: center">
+          <ircc-cl-lib-button
+            [config]="buttonConfig"
+            (click)="reset()"
+          >
+            {{ 'Restart' | translate }}</ircc-cl-lib-button
+          >
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+</div>

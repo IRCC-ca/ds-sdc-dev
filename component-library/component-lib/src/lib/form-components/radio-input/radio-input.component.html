@@ -20,7 +20,6 @@
         id="{{ config.id + index }}"
         (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
         [formControlName]="config.id ? config.id : 'formControl'"
-        [disabled]="currentStatus !== 'DISABLED'"
         [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size"
         [attr.aria-invalid]="formControl?.invalid"
         [attr.aria-live]="'off'"

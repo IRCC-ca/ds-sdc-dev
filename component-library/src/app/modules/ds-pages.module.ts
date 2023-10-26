@@ -46,6 +46,8 @@ import { AutocompleteDocumentationComponent } from '@app/pages/autocomplete-docu
 import { ProgressIndicatorDocCodeComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-doc-code.component';
 import { ProgressIndicatorDocumentationComponent } from '@app/pages/progress-indicator-doc-code/progress-indicator-documentation.component';
 
+import { emailVerificationComponent } from '@app/components/email-verification/email-verification.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxDocCodeComponent } from '@app/pages/checkbox-documentation/checkbox-doc-code.component';
 import { CheckboxDocumentationComponent } from '@app/pages/checkbox-documentation/checkbox-documentation.component';
@@ -88,13 +90,16 @@ import { SelectDocCodeComponent } from '@app/pages/select-documentation/select-d
     BannerDocumentationComponent,
     IconButtonDocumentationComponent,
     IconButtonDocCodeComponent,
+    AutocompleteDocumentationComponent,
+    emailVerificationComponent,
     SpinnerDocCodeComponent,
     SpinnerDocumentationComponent,
     AutocompleteDocumentationComponent,
     CheckboxDocCodeComponent,
     CheckboxDocumentationComponent,
     ProgressIndicatorDocCodeComponent,
-    ProgressIndicatorDocumentationComponent
+    ProgressIndicatorDocumentationComponent,
+    AutocompleteDocumentationComponent
   ],
   imports: [
     CommonModule,

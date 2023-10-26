@@ -27,12 +27,10 @@ export interface ICheckBoxComponentConfig {
   required?: boolean;
   size?: keyof typeof DSSizes | DSSizes;
   mixed?: boolean;
-  disableFocus?: boolean; //Default is true
   inlineLabel?: string;
   inlineLabelBold?: boolean;
   id: string; //used for identifying the component everywhere and should NEVER be missing
   hint?: string;
-  customErrorText?: string;
   desc?: string;
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
@@ -71,11 +69,9 @@ export class CheckboxComponent
   @Input() required?: boolean;
   @Input() size?: keyof typeof DSSizes | DSSizes;
   @Input() mixed?: boolean;
-  @Input() disableFocus?: boolean; //Default is true
   @Input() inlineLabel?: string;
   @Input() inlineLabelBold?: boolean;
   @Input() hint?: string;
-  @Input() customErrorText?: string;
   @Input() desc?: string;
   @Input() errorMessages?: IErrorPairs[];
 
@@ -186,13 +182,10 @@ export class CheckboxComponent
     if (this.required) this.config.required = this.required;
     if (this.size) this.config.size = this.size;
     if (this.mixed) this.config.mixed = this.mixed;
-    if (this.disableFocus) this.config.disableFocus = this.disableFocus;
     if (this.inlineLabel) this.config.inlineLabel = this.inlineLabel;
     if (this.inlineLabelBold)
       this.config.inlineLabelBold = this.inlineLabelBold;
     if (this.hint) this.config.hint = this.hint;
-    if (this.customErrorText)
-      this.config.customErrorText = this.customErrorText;
     if (this.desc) this.config.desc = this.desc;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
 
