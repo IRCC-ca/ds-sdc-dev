@@ -64,6 +64,10 @@
   .banner-text {
     gap: 8px;
   }
+
+  .cta-link {
+    font-size: 20px;
+  }
 }
 
 @mixin small-styles() {
@@ -93,6 +97,10 @@
 
   .banner-text {
     gap: 4px;
+  }
+
+  .cta-link {
+    font-size: 16px;
   }
 }
 
