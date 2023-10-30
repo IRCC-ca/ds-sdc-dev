@@ -196,6 +196,13 @@
     .cta-link {
       align-self: center;
       cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      color: var(--link-text);
+
+      &:visited {
+        color: var(--link-text-visited);
+      }
     }
   }
 
