@@ -49,6 +49,12 @@
           >
             {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>
+          <span
+            class="sr-only"
+            aria-live="polite"
+            [innerHTML]="announceMaxCharaterLimitReached"
+          >
+          </span>
         </div>
       </div>
 

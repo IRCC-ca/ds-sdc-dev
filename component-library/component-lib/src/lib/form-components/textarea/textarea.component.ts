@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, forwardRef, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControlStatus,
@@ -92,7 +92,8 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
     formGroup: this.config.formGroup,
     parentID: ''
   };
-  textAreaAriaLabel = '';
+  isEventActive = false;
+  announceMaxCharaterLimitReached = ''
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -171,6 +172,10 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
           this.toggleDisabledState();
         }
       });
+
+    this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US'
+      ? (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_EN)
+      : (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_FR);
   }
 
   toggleDisabledState() {
@@ -210,18 +215,22 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
           ? (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_EN)
           : (this.currentCharacterStatusAria = MAX_CHAR_LIMIT_FR);
         this.announceCharStatusChangeAria = true;
+        this.isEventActive = true;
       } else if (Number(this.config?.charLimit) - currCharCount == 15) {
         this.charLimitStatus = 'warningLimit';
         currLang === 'en' || currLang === 'en-US'
           ? (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_EN)
           : (this.currentCharacterStatusAria = WARNING_CHAR_LIMIT_FR);
         this.announceCharStatusChangeAria = true;
+        this.isEventActive = false;
       } else if (Number(this.config?.charLimit) - currCharCount < 15) {
         this.charLimitStatus = 'warningLimit';
         this.currentCharacterStatusAria = '';
+        this.isEventActive = false;
       } else {
         this.charLimitStatus = '';
         this.currentCharacterStatusAria = '';
+        this.isEventActive = false;
       }
     }
   }
@@ -233,6 +242,24 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
         this.config.formGroup.controls[this.config.id].value.length;
     } else {
       this.charLength = 0;
+    }
+  }
+
+  //Keep announcing max char limit reached for each keypress made after max limit has reached
+  @HostListener('window:keypress', ['$event'])
+  onKeyPress(event: KeyboardEvent) {
+    if (this.isEventActive) {
+      if(this.announceMaxCharaterLimitReached === MAX_CHAR_LIMIT_EN || this.announceMaxCharaterLimitReached === MAX_CHAR_LIMIT_FR) {
+        this.announceMaxCharaterLimitReached+='&nbsp;'
+      }
+      else {
+        this.translate.currentLang === 'en' || this.translate.currentLang === 'en-US'
+          ? (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_EN)
+          : (this.announceMaxCharaterLimitReached = MAX_CHAR_LIMIT_FR);
+      }
+    }
+    if (this.charLimitStatus !== 'maxLimit') {
+      this.isEventActive = false;
     }
   }
 
