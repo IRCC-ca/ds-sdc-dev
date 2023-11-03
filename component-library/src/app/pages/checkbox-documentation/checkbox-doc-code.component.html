@@ -1,0 +1,91 @@
+<app-interactive-demo componentType="checkbox">
+  <ircc-cl-lib-tabs
+    tabs
+    (valueChange)="setCheckboxType($event)"
+    [config]="demoTabsConfig"
+  >
+  </ircc-cl-lib-tabs>
+  <div
+    component
+    class="checkbox-container"
+    #checkbox
+  >
+    <ng-container *ngIf="checkbox_type === 'single'">
+      <ircc-cl-lib-checkbox
+        [config]="singleCheckboxConfig"
+      ></ircc-cl-lib-checkbox>
+    </ng-container>
+
+    <ng-container *ngIf="checkbox_type === 'group'">
+      <ircc-cl-lib-multi-checkbox
+        [config]="groupCheckboxConfig"
+      ></ircc-cl-lib-multi-checkbox>
+    </ng-container>
+
+    <ng-container *ngIf="checkbox_type === 'multi'">
+      <ircc-cl-lib-multi-checkbox
+        [config]="multiCheckboxConfig"
+      ></ircc-cl-lib-multi-checkbox>
+    </ng-container>
+  </div>
+  <ng-container
+    toggles
+    *ngIf="checkbox_type === 'single'"
+  >
+    <ng-container *ngFor="let toggle of togglesSingleCheckbox">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxesSingle">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+  <ng-container
+    banner
+    *ngIf="checkbox_type === 'single'"
+  >
+    <ircc-cl-lib-banner
+      [config]="bannerConfigSingleCheckBox"
+    ></ircc-cl-lib-banner>
+  </ng-container>
+
+  <ng-container
+    toggles
+    *ngIf="checkbox_type === 'multi'"
+  >
+    <ng-container *ngFor="let toggle of togglesMultiCheckbox">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxesMulti">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+  <ng-container
+    banner
+    *ngIf="checkbox_type === 'multi'"
+  >
+    <ircc-cl-lib-banner
+      [config]="bannerConfigMultiCheckBox"
+    ></ircc-cl-lib-banner>
+  </ng-container>
+
+  <ng-container
+    toggles
+    *ngIf="checkbox_type === 'group'"
+  >
+    <ng-container *ngFor="let toggle of togglesGroupCheckbox">
+      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+    </ng-container>
+    <ng-container *ngFor="let checkbox of checkboxesGroup">
+      <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-container>
+  <ng-container
+    banner
+    *ngIf="checkbox_type === 'group'"
+  >
+    <ircc-cl-lib-banner
+      [config]="bannerConfigGroupCheckBox"
+    ></ircc-cl-lib-banner>
+  </ng-container>
+</app-interactive-demo>
+<!-- <app-code-viewer [config]="codeViewConfig"></app-code-viewer> -->

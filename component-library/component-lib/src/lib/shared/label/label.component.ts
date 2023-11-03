@@ -22,6 +22,7 @@ export interface ILabelConfig {
   iconButton?: ILabelIconConfig;
   topLabel?: string;
   touched?: boolean;
+  legend?: boolean;
 }
 
 export const ERROR_TEXT_STUB = {
@@ -41,7 +42,8 @@ export const HELP_ICON_ALT = {
 export class LabelComponent implements OnInit {
   @Input() config: ILabelConfig = {
     formGroup: new FormGroup({}),
-    parentID: ''
+    parentID: '',
+    legend: false
   };
   @Input() formGroup?: FormGroup;
   @Input() errorMessages?: IErrorPairs[];
@@ -53,6 +55,7 @@ export class LabelComponent implements OnInit {
   @Input() iconButton?: ILabelIconConfig;
   @Input() topLabel?: string;
   @Input() touched?: boolean;
+  @Input() legend?: boolean;
 
   labelIconText = '';
 
@@ -74,7 +77,7 @@ export class LabelComponent implements OnInit {
     if (this.iconButton) this.config.iconButton = this.iconButton;
     if (this.topLabel) this.config.topLabel = this.topLabel;
     if (this.touched) this.config.touched = this.touched;
-
+    if (this.legend) this.config.legend = this.legend;
 
     this.setLang(this.translate.currentLang);
     this.translate.onLangChange.subscribe((change) => {

@@ -128,12 +128,12 @@ export class ShellComponent implements OnInit {
     href: 'ROUTES.iconButton'
   };
 
-  multiCheckboxPage: INavigationItemLink = {
-    id: 'multiCheckboxPageNavItem',
-    label: ' Multi Checkbox ',
+  checkboxPage: INavigationItemLink = {
+    id: 'checkboxPageNavItem',
+    label: 'Checkbox.Title',
     type: 'link',
     children: [],
-    href: 'ROUTES.multiCheckbox'
+    href: 'ROUTES.checkbox'
   };
 
   spinnerPage: INavigationItemLink = {
@@ -185,10 +185,10 @@ export class ShellComponent implements OnInit {
       this.autoCompletePage,
       this.bannerPage,
       this.buttonsPage,
+      this.checkboxPage,
       this.datePickerPage,
       this.iconBtnPage,
       this.inputPage,
-      this.multiCheckboxPage,
       this.progressIndicatorPage,
       this.selectPage,
       this.spinnerPage

@@ -33,9 +33,9 @@ import { DatePickerDocumentationComponent } from './pages/date-picker-documentat
 import { IconButtonDocumentationComponent } from './pages/icon-button-documentation/icon-button-documentation.component';
 import { ButtonDocumentationComponent } from '@app/pages/button-documentation/button-documentation.component';
 import { SelectDocumentationComponent } from './pages/select-documentation/select-documentation.component';
-import { MultiCheckboxDocumentationComponent } from './pages/multi-checkbox-documentation/multi-checkbox-documentation.component';
 import { SpinnerDocumentationComponent } from './pages/spinner-documentation/spinner-documentation.component';
 import { AutocompleteDocumentationComponent } from './pages/autocomplete-documentation/autocomplete-documentation.component';
+import { CheckboxDocumentationComponent } from './pages/checkbox-documentation/checkbox-documentation.component';
 import { ProgressIndicatorDocumentationComponent } from './pages/progress-indicator-doc-code/progress-indicator-documentation.component';
 
 export function HttpLoaderFactory(
@@ -111,11 +111,6 @@ const routes: Routes = [
       title: 'IconButtonDocumentation.Title'
     },
     {
-      path: 'multi-checkbox-documentation',
-      component: MultiCheckboxDocumentationComponent,
-      title: 'MultiCheckboxDocumentation.Title'
-    },
-    {
       path: 'spinner-documentation',
       component: SpinnerDocumentationComponent,
       title: 'Spinner.Title'
@@ -124,6 +119,11 @@ const routes: Routes = [
       path: 'autocomplete-documentation',
       component: AutocompleteDocumentationComponent,
       title: 'AutocompleteDocumentation.Title'
+    },
+    {
+      path: 'checkbox-documentation',
+      component: CheckboxDocumentationComponent,
+      title: 'Checkbox.Title'
     },
     {
       path: 'progress-indicator-documentation',
@@ -184,11 +184,6 @@ const routes: Routes = [
       title: 'IconButtonDocumentation.Title'
     },
     {
-      path: 'multi-checkbox-documentation-fr',
-      component: MultiCheckboxDocumentationComponent,
-      title: 'MultiCheckboxDocumentation.Title'
-    },
-    {
       path: 'spinner-documentation-fr',
       component: SpinnerDocumentationComponent,
       title: 'Spinner.Title'
@@ -197,6 +192,11 @@ const routes: Routes = [
       path: 'autocomplete-documentation-fr',
       component: AutocompleteDocumentationComponent,
       title: 'AutocompleteDocumentation.Title'
+    },
+    {
+      path: 'checkbox-documentation-fr',
+      component: CheckboxDocumentationComponent,
+      title: 'Checkbox.Title'
     },
     {
       path: 'progress-indicator-documentation-fr',

@@ -29,7 +29,7 @@
     @include typography.fontSet(body, 2, regular);
   }
 
-  .input-hint {
+  p.input-hint {
     @include typography.fontSet(body, 2, regular);
     margin: 12px 0px 0px 0px;
   }
@@ -62,7 +62,7 @@
     @include typography.fontSet(body, 3, regular);
   }
 
-  .input-hint {
+  p.input-hint {
     @include typography.fontSet(body, 3, regular);
     margin: 8px 0px 0px 0px;
   }
@@ -101,7 +101,7 @@
       margin: 4px 0px 0px 0px;
     }
 
-    .input-hint {
+    p.input-hint {
       word-break: break-all;
       white-space: normal;
       color: var(--text-placeholder);

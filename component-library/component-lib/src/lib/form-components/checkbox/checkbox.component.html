@@ -9,6 +9,7 @@
     <ircc-cl-lib-label
       [config]="labelConfig"
       [attr.size]="config.size"
+      [legend]="true"
     ></ircc-cl-lib-label>
     <div
       class="checkbox-layout"
@@ -49,7 +50,7 @@
     </div>
     <div aria-live="polite">
       <div
-        *ngIf="currentStatus === 'INVALID' && currentTouch === true"
+        *ngIf="errorState"
         class="check-error"
         [ngClass]="{ small: config.size === 'small' }"
       >
@@ -59,7 +60,7 @@
 
         <ng-container *ngFor="let errors of errorIds; let i = index">
           <div
-            *ngIf="errorIds.length > 0"
+            *ngIf="formControl?.errors?.[errors.key]"
             class="radio-errors"
           >
             <ircc-cl-lib-error

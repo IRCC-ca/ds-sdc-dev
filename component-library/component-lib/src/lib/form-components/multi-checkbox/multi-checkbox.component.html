@@ -1,29 +1,54 @@
-<div class="parent-checkbox">
-  <ircc-cl-lib-checkbox [config]="config.parent"></ircc-cl-lib-checkbox>
-  <ng-container *ngFor="let child of config.children">
-    <ng-container
-      *ngTemplateOutlet="recursiveListTmpl; context: { checkBoxConfig: child }"
-    ></ng-container>
+<fieldset>
+  <legend class="visually-hidden">
+    {{ config.label.label || '' | translate }}
+  </legend>
+  <ng-container *ngIf="config.label">
+    <ircc-cl-lib-label
+      [config]="config.label"
+      [legend]="true"
+      [attr.size]="size"
+    ></ircc-cl-lib-label>
   </ng-container>
-</div>
-
-<ng-template
-  #recursiveListTmpl
-  let-checkBoxConfig="checkBoxConfig"
->
-  <div class="child-checkbox">
-    <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
+  <div class="parent-checkbox">
+    <ng-container *ngIf="config.parent; else group">
+      <ircc-cl-lib-checkbox [config]="config.parent"></ircc-cl-lib-checkbox>
+      <ng-container *ngFor="let child of config.children">
+        <ng-container
+          *ngTemplateOutlet="
+            recursiveListTmpl;
+            context: { checkBoxConfig: child }
+          "
+        ></ng-container>
+      </ng-container>
+    </ng-container>
   </div>
-</ng-template>
 
-<ng-container *ngFor="let errors of this.config.errorMessages; let i = index">
-  <div
-    *ngIf="errorIds.length > -1"
-    class="radio-errors"
+  <ng-template #group>
+    <ng-container *ngFor="let child of config.children">
+      <ircc-cl-lib-checkbox [config]="child"></ircc-cl-lib-checkbox>
+    </ng-container>
+  </ng-template>
+
+  <ng-template
+    #recursiveListTmpl
+    let-checkBoxConfig="checkBoxConfig"
   >
-    <ircc-cl-lib-error
-      [id]="errors.id"
-      [errorLOV]="errors.errorLOV"
-    ></ircc-cl-lib-error>
-  </div>
-</ng-container>
+    <div class="child-checkbox">
+      <ircc-cl-lib-checkbox [config]="checkBoxConfig"></ircc-cl-lib-checkbox>
+    </div>
+  </ng-template>
+  <ng-container
+    *ngFor="let errors of errorMessagesAccumulatorUniqueType; let i = index"
+  >
+    <div
+      *ngIf="errorMessagesAccumulatorUniqueType.length > -1 && !disabledStatus"
+      class="radio-errors"
+    >
+      <ircc-cl-lib-error
+        [id]="errors.id"
+        [errorLOV]="errors.errorLOV"
+        [attr.size]="size"
+      ></ircc-cl-lib-error>
+    </div>
+  </ng-container>
+</fieldset>

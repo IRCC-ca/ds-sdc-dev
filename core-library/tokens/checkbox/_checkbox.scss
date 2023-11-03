@@ -23,8 +23,7 @@
 @mixin layout {
   border-radius: token-size.$border-radius;
   appearance: none;
-  margin-right: token-size.$fixed-12;
-  margin-left: 0;
+  margin: 0px token-size.$fixed-12 0px 0px;
   box-sizing: border-box;
   box-shadow: token-size.$border-style;
   vertical-align: middle;

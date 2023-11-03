@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit
-} from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -93,7 +86,7 @@ export class CheckboxComponent
   errorAria = '';
   errorStubText = '';
   currentStatus: FormControlStatus = 'VALID';
-  currentTouch: boolean = false
+  currentTouch: boolean = false;
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -111,7 +104,7 @@ export class CheckboxComponent
     this.config.formGroup.get(this.config.id)?.setValue(value);
   };
 
-  changeValue(event: any){
+  changeValue(event: any) {
     this.writeValue(event.srcElement.value);
     this.onTouch();
   }
@@ -132,14 +125,19 @@ export class CheckboxComponent
    * @param isDisabled
    */
   setDisabledState(isDisabled: boolean) {
-    if(isDisabled){
+    if (isDisabled) {
       this.formGroup.get(this.config.id)?.disable();
-    }else{
+    } else {
       this.formGroup.get(this.config.id)?.enable();
     }
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if (retControl) {
+      this.formControl = retControl;
+    }
+
     this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
       (response) => {
         if (response.id === this.config.id) {
@@ -201,36 +199,34 @@ export class CheckboxComponent
       );
 
       this.errorIds.forEach((errorId) => {
-        this.multicheckboxService.errorEvent({
-          id: this.config.id,
-          event: errorId
-        });
+        this.multicheckboxService.errorEvent(this.config.id);
       });
     }
-
-    
-    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
     this.toggleDisabledState();
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((change) => {
         this.getAriaErrorText();
         //Get the error text when the formControl value changes
         if (change === 'VALID') {
-          this.multicheckboxService.errorEvent({
-            id: this.config.id,
-            event: { remove: true }
-          });
+          this.multicheckboxService.errorEvent(this.config.id);
         }
 
         if (change !== this.currentStatus) {
           this.currentStatus = change;
           this.toggleDisabledState();
         }
-        this.setStatus()
+        this.setStatus();
       });
+
+    console.log(this.labelConfig);
   }
 
   setStatus() {
-    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
     this.currentTouch = this.config.formGroup.controls[this.config.id].touched;
   }
 
@@ -241,11 +237,11 @@ export class CheckboxComponent
   toggleDisabledState() {
     switch (this.currentStatus) {
       case 'DISABLED':
-      this.setDisabledState(true);
-      break;
-    default:
-      this.setDisabledState(false);
-      break;
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+        break;
     }
   }
 
@@ -296,10 +292,11 @@ export class CheckboxComponent
   /**
    * Return error state from FormGroup, must be touched & invalid
    */
-  getErrorState(): boolean {
+  get errorState(): boolean {
+    this.setStatus()
     return (
-      (this.config.formGroup.get(this.config.id)?.touched &&
-        this.config.formGroup.get(this.config.id)?.invalid) ??
+      (this.currentTouch &&
+        this.currentStatus === 'INVALID') ??
       false
     );
   }

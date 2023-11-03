@@ -300,17 +300,6 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         }
       });
 
-    // Watch input change & overwrite error state on the fly
-    this.formInput
-      .get(this.inputConfig.id)
-      ?.valueChanges.subscribe((changes) => {
-        this.determineErrorState(
-          this.errorState,
-          this.formInput,
-          this.inputConfig.id
-        );
-      });
-
     this.formInput.patchValue({
       size: 'Small',
       required: 'True',
@@ -370,6 +359,15 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         break;
       case 'state':
         this.toggleDisabled(this.inputConfig.id, value);
+
+        //re-set error if error was set before disabled
+        if(value === false && this.errorState !== 'None') {
+          this.determineErrorState(
+            this.errorState,
+            this.formInput,
+            this.inputConfig.id
+          );
+        }
         break;
       default:
         break;
