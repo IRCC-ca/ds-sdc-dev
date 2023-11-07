@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@app/share/templates/parent-template.module';
 import {
@@ -722,24 +718,27 @@ export class CheckboxDocCodeComponent implements OnInit {
     });
 
     //add error if error is selected even when checkbox is clicked
-    this.formCheckbox.get(this.singleCheckboxConfig.id)?.valueChanges.subscribe((val : any) => {
-      this.determineErrorState(
-        this.errorState,
-        this.formCheckbox,
-        this.singleCheckboxConfig.id,
-        CheckboxTypes.single
-      );
-    })
+    this.formCheckbox
+      .get(this.singleCheckboxConfig.id)
+      ?.valueChanges.subscribe((val: any) => {
+        this.determineErrorState(
+          this.errorState,
+          this.formCheckbox,
+          this.singleCheckboxConfig.id,
+          CheckboxTypes.single
+        );
+      });
   }
-
 
   /**
    * Reset form and set default values for toggles
    */
-  private resetAndPatchFormValues(formGroup : FormGroup, checkbox_type : CheckboxTypes) {
-    formGroup.reset()
-    if(checkbox_type === 'single') {
-
+  private resetAndPatchFormValues(
+    formGroup: FormGroup,
+    checkbox_type: CheckboxTypes
+  ) {
+    formGroup.reset();
+    if (checkbox_type === 'single') {
       formGroup.patchValue({
         size: 'Small',
         label: 'False',
@@ -866,19 +865,19 @@ export class CheckboxDocCodeComponent implements OnInit {
           this.multiCheckboxConfig.label = {
             ...this.multiCheckboxConfig.label,
             label: value === 'True' ? 'Label Text' : undefined
-          }
+          };
           break;
         case 'desc':
           this.multiCheckboxConfig.label = {
             ...this.multiCheckboxConfig.label,
             desc: value === 'True' ? 'Description line of text' : undefined
-          }
+          };
           break;
         case 'hint':
           this.multiCheckboxConfig.label = {
             ...this.multiCheckboxConfig.label,
             hint: value === 'True' ? 'Hint Text test' : undefined
-          }
+          };
           break;
         case 'error':
           this.errorState = value;
@@ -997,15 +996,19 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-
   /**
    * Check Error type and set errors based on type
    * @param errorState current error state
    * @param formGroup Formgroup to be checked
    * @param formID ID of the control that is being checked for error in the formgroup
    * @param checkbox_type checkbox type, example: single, multi, group
-  */
-  private determineErrorState(errorState: string, formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
+   */
+  private determineErrorState(
+    errorState: string,
+    formGroup: FormGroup,
+    formID: string,
+    checkbox_type: CheckboxTypes
+  ) {
     let errorArray: string[] = [];
     switch (errorState) {
       case 'Single':
@@ -1023,12 +1026,15 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-
   /**
    * Clear all errors on the component
    */
-  private clearErrors(formGroup: FormGroup, formID: string, checkbox_type: CheckboxTypes) {
-    if(checkbox_type !== CheckboxTypes.group) {
+  private clearErrors(
+    formGroup: FormGroup,
+    formID: string,
+    checkbox_type: CheckboxTypes
+  ) {
+    if (checkbox_type !== CheckboxTypes.group) {
       formGroup.get(formID)?.setErrors(null);
     }
     if (checkbox_type === CheckboxTypes.multi) {
@@ -1042,7 +1048,6 @@ export class CheckboxDocCodeComponent implements OnInit {
     }
   }
 
-
   /**
    * Set errors on the form control
    * @param formGroup Formgroup to be checked
@@ -1050,7 +1055,12 @@ export class CheckboxDocCodeComponent implements OnInit {
    * @param errorKeys errors that are being set on the form control
    * @param checkbox_type checkbox type, example: single, multi, group
    */
-  private setErrors(formGroup: FormGroup, formID: string, errorKeys: string[],  checkbox_type: CheckboxTypes) {
+  private setErrors(
+    formGroup: FormGroup,
+    formID: string,
+    errorKeys: string[],
+    checkbox_type: CheckboxTypes
+  ) {
     const errorVals = {};
     if (errorKeys.length === 0) {
       this.clearErrors(formGroup, formID, checkbox_type);

@@ -361,7 +361,7 @@ export class InputDocCodeComponent implements OnInit, TranslatedPageComponent {
         this.toggleDisabled(this.inputConfig.id, value);
 
         //re-set error if error was set before disabled
-        if(value === false && this.errorState !== 'None') {
+        if (value === false && this.errorState !== 'None') {
           this.determineErrorState(
             this.errorState,
             this.formInput,
