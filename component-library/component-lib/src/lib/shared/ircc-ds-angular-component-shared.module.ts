@@ -18,10 +18,12 @@ import { DomChangeDirective } from '../../shared/directives/dom-change.directive
 import { FlyoutComponent } from './flyout/flyout.component';
 import { FlyoutOptionComponent } from './flyout-option/flyout-option.component';
 import { DynamicImageComponent } from './dynamic-image/dynamic-image.component';
+import { CardComponent } from './card/card.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ScrollingModule as ExperimentalScrollingModule } from '@angular/cdk-experimental/scrolling';
 
 import { IrccDsAngularPipesdModule } from '../../shared/pipes/pipes.module';
+
 
 const IrccDsSharedComponents = [
   ButtonComponent,
@@ -39,7 +41,8 @@ const IrccDsSharedComponents = [
   SpinnerComponent,
   FlyoutComponent,
   FlyoutOptionComponent,
-  DynamicImageComponent
+  DynamicImageComponent,
+  CardComponent
 ];
 
 @NgModule({

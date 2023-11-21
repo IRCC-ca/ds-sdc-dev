@@ -1,0 +1,53 @@
+@use "../../util/color" as color;
+@use "../../util/theme" as theme;
+@use "../../util/device" as device;
+@use "../../util/size" as size;
+@use "../../tokens/template-const" as template-const;
+@use "../../tokens/sizes" as token-size;
+@use "../../typography/typography" as typography;
+@use "../../tokens/text" as text;
+@use "sass:map";
+
+@mixin selector {
+  ircc-cl-lib-card#{template-const.$escape} {
+    @content;
+  }
+}
+
+@mixin create {
+  @include selector() {
+    @include layout();
+  }
+}
+
+@mixin flex-props {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+@mixin layout {
+  .card {
+    display: flex;
+    border: 2px solid var(--grey-3);
+    border-radius: 4px;
+    margin: 12px 24px;
+    &-content {
+      margin: 24px;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 2px;
+      &-header {
+        @include flex-props();
+      }
+      &-body {
+        @include flex-props();
+      }
+      &-footer {
+        @include flex-props();
+      }
+    }
+  }
+}

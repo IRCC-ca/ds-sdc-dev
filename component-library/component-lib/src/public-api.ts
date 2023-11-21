@@ -61,6 +61,7 @@ export * from './lib/shared/spinner/spinner.component';
 export * from './lib/shared/flyout/flyout.component';
 export * from './lib/shared/flyout-option/flyout-option.component';
 export * from './lib/shared/dynamic-image/dynamic-image.component';
+export * from './lib/shared/card/card.component';
 
 
 /** Navigation Components */
