@@ -33,6 +33,11 @@
     border: 2px solid var(--grey-3);
     border-radius: 4px;
     margin: 12px 24px;
+    &.leftBorder {
+      border: none;
+      border-radius: 0;
+      border-left: 4px solid var(--border);
+    }
     &-content {
       margin: 24px;
       display: flex;

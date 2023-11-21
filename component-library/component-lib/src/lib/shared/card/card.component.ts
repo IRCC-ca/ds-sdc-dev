@@ -20,11 +20,11 @@ export class CardComponent {
   @Input() type?: keyof typeof CardTypes;
 
   @Input() config: ICardConfig = {
-    id: '',
-    type: 'primary'
+    id: ''
   };
 
   ngOnInit() {
     this.id !== '' ? (this.config.id = this.id) : undefined;
+    this.type !== undefined ? (this.config.type = this.type) : 'primary';
   }
 }
