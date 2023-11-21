@@ -1,0 +1,16 @@
+<div
+  class="card"
+  [class]="config.type"
+>
+  <div class="card-content">
+    <div class="card-content-header">
+      <ng-content select="[header]"></ng-content>
+    </div>
+    <div class="card-content-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="card-conent-footer">
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </div>
+</div>
