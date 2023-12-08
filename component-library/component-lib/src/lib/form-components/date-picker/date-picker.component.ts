@@ -259,20 +259,20 @@ export class DatePickerComponent implements OnInit {
 
     if (this.config.minYear || this.config.maxYear) {
       if (this.config.minYear && this.config.maxYear) {
-        for (let i = this.config.minYear; i <= this.config.maxYear; i++) {
+        for (let i = this.config.maxYear; i >= this.config.minYear; i--) {
           this.dropDownConfigs.year.options?.push({ text: i.toString() });
         }
       } else if (this.config.minYear && !this.config.maxYear) {
-        for (let i = this.config.minYear; i <= this.currentYear; i++) {
+        for (let i = this.currentYear; i >= this.config.minYear; i--) {
           this.dropDownConfigs.year.options?.push({ text: i.toString() });
         }
       } else if (this.config.maxYear && !this.config.minYear) {
-        for (let i = 1900; i <= this.config.maxYear; i++) {
+        for (let i = this.currentYear; i >= 1900; i--) {
           this.dropDownConfigs.year.options?.push({ text: i.toString() });
         }
       }
     } else {
-      for (let i = 1900; i <= this.currentYear; i++) {
+      for (let i = this.currentYear; i >= 1900; i--) {
         this.dropDownConfigs.year.options?.push({ text: i.toString() });
       }
     }
