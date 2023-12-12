@@ -55,6 +55,7 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
   @Input() rightNavLOVs: string[] = [];
   wrapperTop?: number; // Relative height from top of side nav to top of page in px
   wrapperFixed: boolean = false;
+  sectionTopMargin: number = 0;
 
   /**
    * Add active state to side nav item when scroll in to page section
@@ -74,8 +75,11 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
-      //content begins 40px below sectionTop. Set current when scrollY passes top of section.
-      if (window.scrollY >= sectionTop - 40 && window.scrollY != height)
+      // Set current when scrollY passes top of section.
+      if (
+        window.scrollY >= sectionTop - this.sectionTopMargin &&
+        window.scrollY != height
+      )
         current = `${section.getAttribute('id')}`;
     });
     //set current to lowest section if scroll is at bottom of content
@@ -129,7 +133,8 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     private cdr: ChangeDetectorRef,
     private translate: TranslateService,
     private navBarConfig: SideNavConfig,
-    private slugify: SlugifyPipe
+    private slugify: SlugifyPipe,
+    private renderer: Renderer2
   ) {
     if (el?.nativeElement?.className) {
       this.navClassName = el?.nativeElement?.classList[0];
@@ -164,6 +169,15 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         window.scrollTo(0, document.body.scrollHeight);
       }
     }
+
+    // Get section top margin by querying parent dom
+    const sectionTopDiv = this.renderer
+      .parentNode(this.el.nativeElement)
+      .querySelector('app-title-slug-url > div.h2-heading-type');
+    this.sectionTopMargin =
+      parseFloat(getComputedStyle(sectionTopDiv).marginTop) > 0
+        ? parseFloat(getComputedStyle(sectionTopDiv).marginTop)
+        : 80;
   }
 
   ngAfterViewChecked() {
