@@ -50,7 +50,9 @@ import { Renderer2 } from '@angular/core';
   ],
   providers: [SlugifyPipe]
 })
-export class SideNavComponent implements OnInit, AfterViewChecked {
+export class SideNavComponent
+  implements OnInit, AfterViewChecked, AfterViewInit
+{
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
   @Input() rightNavLOVs: string[] = [];
   wrapperTop?: number; // Relative height from top of side nav to top of page in px
