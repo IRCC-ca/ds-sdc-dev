@@ -108,6 +108,21 @@ export class SpinnerDocumentationComponent implements OnInit {
     'General.AccessibilityContentItemMax'
   ];
 
+  rightNavData: string[] = [
+    // list of all right nav items
+    'Spinner.MainTitle',
+    'General.InteractiveDemo',
+    'General.ConfigurationsMain',
+    'General.ConfigurationsSub',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.ContentGuidelinesHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
+  ];
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService

@@ -1,0 +1,5 @@
+@use "../../../../../core-library/util/device" as device;
+@use "../../../scss/page";
+@use "@ircc-ca/ds-sdc-core/typography/typography";
+
+@include page.template;

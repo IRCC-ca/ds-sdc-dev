@@ -88,6 +88,20 @@ export class IconButtonDocumentationComponent implements OnInit {
     'IconButtonDocumentation.AccessibilityContentItem3'
   ];
 
+  rightNavData: string[] = [
+    // list of all right nav items
+    'IconButtonDocumentation.Title',
+    'General.InteractiveDemo',
+    'General.TypesHeading',
+    'General.ConfigurationsHeading',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
+  ];
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
