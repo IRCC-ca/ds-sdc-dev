@@ -50,18 +50,24 @@ import { Renderer2 } from '@angular/core';
   ],
   providers: [SlugifyPipe]
 })
-export class SideNavComponent implements OnInit, AfterViewChecked {
+export class SideNavComponent
+  implements OnInit, AfterViewChecked, AfterViewInit
+{
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
   @Input() rightNavLOVs: string[] = [];
   wrapperTop?: number; // Relative height from top of side nav to top of page in px
   wrapperFixed: boolean = false;
+  sectionTopMargin: number = 0;
+  current: string = ''; // Current url fragment
+  navigationEnd: boolean = false;
 
   /**
    * Add active state to side nav item when scroll in to page section
    */
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    let current = '';
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event?: Event) {
+    if (!event || event?.type !== 'scroll') return;
+
     //calculating real height of scrollable content
     const height =
       document.documentElement.scrollHeight -
@@ -71,34 +77,51 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     // Query all side nav anchor tags from current elementRef
     const sideNavLinks: NodeListOf<HTMLAnchorElement> =
       this.el.nativeElement.querySelectorAll('ircc-cl-lib-nav-item a');
+
+    if (this.navigationEnd) {
+      this.updateActiveSideNavLink(sideNavLinks);
+      this.navigationEnd = false;
+      return;
+    }
+
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
-      //content begins 40px below sectionTop. Set current when scrollY passes top of section.
-      if (window.scrollY >= sectionTop - 40 && window.scrollY != height)
-        current = `${section.getAttribute('id')}`;
+      // Set current when scrollY passes top of section.
+      if (
+        window.scrollY >= sectionTop - this.sectionTopMargin &&
+        window.scrollY != height
+      )
+        this.current = `${section.getAttribute('id')}`;
     });
     //set current to lowest section if scroll is at bottom of content
     if (window.scrollY >= height)
-      current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute('id')}`; //runs through links to set current active link
-    sideNavLinks.forEach((link) => {
-      link.classList.remove('active-link');
-      if (
-        current != '' &&
-        link.getAttribute('href')?.endsWith(current) &&
-        link instanceof HTMLElement
-      ) {
-        //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
-        link.classList.add('active-link');
-      } else if (current === '' && link instanceof HTMLElement) {
-        sideNavLinks[0].classList.add('active-link');
-      }
-    });
+      this.current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute(
+        'id'
+      )}`; //runs through links to set current active link
+    this.updateActiveSideNavLink(sideNavLinks);
 
     // Check if wrapper top has hit top of viewport
     if (this.wrapperTop) {
       this.wrapperFixed = this.wrapperTop <= window.scrollY - 178;
     }
+  }
+
+  private updateActiveSideNavLink(sideNavLinks: NodeListOf<HTMLAnchorElement>) {
+    sideNavLinks.forEach((link) => {
+      const fragment = link.hash.substring(1);
+      link.classList.remove('active-link');
+      if (
+        this.current != '' &&
+        fragment === this.current &&
+        link instanceof HTMLElement
+      ) {
+        //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
+        link.classList.add('active-link');
+      } else if (this.current === '' && link instanceof HTMLElement) {
+        sideNavLinks[0].classList.add('active-link');
+      }
+    });
   }
 
   navBarData: ISideNavDataInterface[] = [];
@@ -129,7 +152,9 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     private cdr: ChangeDetectorRef,
     private translate: TranslateService,
     private navBarConfig: SideNavConfig,
-    private slugify: SlugifyPipe
+    private slugify: SlugifyPipe,
+    private renderer: Renderer2,
+    private router: Router
   ) {
     if (el?.nativeElement?.className) {
       this.navClassName = el?.nativeElement?.classList[0];
@@ -145,6 +170,15 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
       this.toggleMobile();
     }
     this.adjustWidth();
+    // Subscribe to url fragment change
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Check for anchor changes here
+        const urlTree = this.router.parseUrl(event.url);
+        this.current = urlTree.fragment ? urlTree.fragment : this.current;
+        this.navigationEnd = true;
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -164,10 +198,20 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         window.scrollTo(0, document.body.scrollHeight);
       }
     }
+
+    // Get section top margin by querying parent dom
+    const sectionTopDiv = this.renderer
+      .parentNode(this.el.nativeElement)
+      .querySelector('app-title-slug-url > div.h2-heading-type');
+    this.sectionTopMargin =
+      parseFloat(getComputedStyle(sectionTopDiv).marginTop) > 0
+        ? parseFloat(getComputedStyle(sectionTopDiv).marginTop)
+        : 80;
+    // Initiate fake scroll event on page load
+    this.onWindowScroll(new Event('scroll'));
   }
 
   ngAfterViewChecked() {
-    this.onWindowScroll();
     this.cdr.detectChanges();
     // Record relative height from top of page for sidenav
     this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
