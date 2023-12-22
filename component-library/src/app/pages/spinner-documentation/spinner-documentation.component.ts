@@ -112,8 +112,7 @@ export class SpinnerDocumentationComponent implements OnInit {
     // list of all right nav items
     'Spinner.MainTitle',
     'General.InteractiveDemo',
-    'General.ConfigurationsMain',
-    'General.ConfigurationsSub',
+    'General.ConfigurationsHeading',
     'General.DesignGuidelinesHeading',
     'General.AnatomyHeading',
     'General.SpecsHeading',
