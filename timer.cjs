@@ -82,8 +82,9 @@ function getTotalTime(start, end) {
 
 function printTotals() {
     let i = 0;
+    console.log('Times: \n');
     order.forEach(caseName => {
-        console.log('Times: \n', caseName, ': ', storedTimes[i], '\n');
+        console.log(caseName, ': ', storedTimes[i], '\n');
         i++;
     });
 }
