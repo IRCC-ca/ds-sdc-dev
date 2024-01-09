@@ -386,7 +386,9 @@ export class DatePickerComponent implements OnInit {
    * Used to set the language of year/day 'unknown' field when langauge changes
    */
   setYearDayLanguage() {
+    if (this.config.unknownDateToggle?.dayUnknown) 
     this.dropDownConfigs.day.options?.shift();
+    if (this.config.unknownDateToggle?.yearUnknown)
     this.dropDownConfigs.year.options?.shift();
     if (
       this.translate.currentLang === 'en' ||
