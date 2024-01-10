@@ -52,6 +52,12 @@
           &:hover {
             background: none;
           }
+
+          &:focus-visible,
+          &:focus {
+            outline: none;
+            background: var(--generic-hover);
+          }
         }
       }
     }

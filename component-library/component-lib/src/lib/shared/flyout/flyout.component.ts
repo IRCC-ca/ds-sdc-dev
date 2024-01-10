@@ -5,18 +5,12 @@ import {
   OnInit,
   EventEmitter,
   HostListener,
-  ViewChildren,
-  ElementRef,
-  QueryList,
-  OnChanges,
-  SimpleChanges
+  ElementRef
 } from '@angular/core';
 import { DSSizes } from '../../../shared/constants/jl-components.constants';
 import {
-  FlyoutOptionComponent,
   IFlyoutOptionConfig
 } from '../flyout-option/flyout-option.component';
-import { TranslateService } from '@ngx-translate/core';
 
 export enum IFlyoutSelectTypes {
   single = 'single',
@@ -33,19 +27,13 @@ export interface IFlyoutConfig {
   type?: keyof typeof IFlyoutSelectTypes;
   size?: keyof typeof DSSizes;
 }
-export const FLYOUT_CURRENT_SELECTED = {
-  en: ' currently selected',
-  fr: ' actuellement selectionne'
-};
 
 @Component({
   selector: 'ircc-cl-lib-flyout',
   templateUrl: './flyout.component.html'
 })
 export class FlyoutComponent implements OnInit {
-  constructor(private translate: TranslateService) {}
-  @ViewChildren('option') optionContainers: QueryList<ElementRef> =
-    new QueryList<ElementRef>();
+  constructor(private elementRef: ElementRef) {}
 
   @Input() config: IFlyoutConfig = {
     id: '',
@@ -63,7 +51,8 @@ export class FlyoutComponent implements OnInit {
 
   selectedIndex: number = -1;
   a11yText: string = '';
-  currentSelected: string = '';
+  optionContainers : Array<HTMLElement> = [];
+
 
   ngOnInit() {
     if (this.config.type === undefined) this.config.type = 'single';
@@ -76,10 +65,6 @@ export class FlyoutComponent implements OnInit {
     if (this.type) this.config.type = this.type;
     if (this.size) this.config.size = this.size;
 
-    this.setLang(this.translate.currentLang);
-    this.translate.onLangChange.subscribe((change) => {
-      this.setLang(change.lang);
-    });
   }
 
   calculateContainerHeight(): string {
@@ -171,32 +156,31 @@ export class FlyoutComponent implements OnInit {
       this.config.options?.forEach((option) => {
         if (option.id === el_id) {
           option.active = true;
-          this.optionContainers
-            .toArray()
-            [this.selectedIndex]?.nativeElement?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'end'
-            });
-          console.log('HERE', option.value);
-
           this.a11yText = option.value;
-          //updates a11yText to indicate currently selected item if scrolling through flyout again
-          if (option.selected) this.a11yText += this.currentSelected;
         } else {
           option.active = false;
         }
       });
-    }
+
+      const el = this.elementRef.nativeElement.querySelector(`#${el_id}`);
+      const flyoutContainer = this.elementRef.nativeElement.querySelector('.flyout-container');
+
+      if (el && flyoutContainer) {
+        const elRect = el.getBoundingClientRect();
+        const containerRect = flyoutContainer.getBoundingClientRect();
+
+        if (elRect.bottom > containerRect.bottom) {
+          // Scroll down if the element is below the container's visible area
+          flyoutContainer.scrollTop += (elRect.bottom - containerRect.bottom);
+        } else if (elRect.top < containerRect.top) {
+          // Scroll up if the element is above the container's visible area
+          flyoutContainer.scrollTop -= (containerRect.top - elRect.top);
+        }
+      }
+        }
   }
 
-  /**
-   * setLang detects changes to the language toggle to serve the correct aria error text
-   */
-  setLang(lang: string) {
-    lang === 'en' || lang === 'en-US'
-      ? (this.currentSelected = FLYOUT_CURRENT_SELECTED.en)
-      : (this.currentSelected = FLYOUT_CURRENT_SELECTED.fr);
-  }
+
 
   //clears all selections by setting the option.selected to false
   clearOptions() {

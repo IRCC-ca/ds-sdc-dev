@@ -119,6 +119,7 @@ export class DropdownComponent implements OnInit {
     let target = e?.relatedTarget as HTMLElement;
     if (!target?.id.includes(this.config.id) || !e) {
       this.selected = status;
+      target?.focus({preventScroll: true});
       !status && this.clearFlyoutFocus(); //clear the flyout focus if the flyout is closed.
     }
   }

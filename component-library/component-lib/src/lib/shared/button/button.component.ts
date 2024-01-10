@@ -39,6 +39,7 @@ export interface IButtonConfig {
   iconDirection?: keyof typeof ButtonIconDirection;
   tabIndex?: number;
   fill?: boolean;
+  maxWidthOverride?: boolean;
 }
 
 @Component({
@@ -59,6 +60,7 @@ export class ButtonComponent {
   @Input() iconDirection?: keyof typeof ButtonIconDirection;
   @Input() tabIndex?: number;
   @Input() fill?: boolean;
+  @Input() maxWidthOverride?: boolean;
 
   @Output() btnAction: EventEmitter<any> = new EventEmitter();
 
@@ -79,6 +81,7 @@ export class ButtonComponent {
       ? (this.config.tabIndex = this.tabIndex)
       : undefined;
     this.fill !== undefined ? (this.config.fill = this.fill) : undefined;
+    this.maxWidthOverride !== undefined ? (this.config.maxWidthOverride = this.maxWidthOverride) : undefined;
     if (this.icon || this.config.icon) {
       this.config.icon = this.icon ? this.icon : this.config.icon;
       this.config.iconDirection = this.iconDirection

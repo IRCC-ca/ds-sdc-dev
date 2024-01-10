@@ -5,14 +5,19 @@
   <ircc-cl-lib-button
     [category]="'plain'"
     [id]="config.id ? config.id : ''"
-    role="option"
     [tabIndex]="-1"
+    [attr.aria-hidden]="config.disabled ? true : null"
+    [attr.role]="config.disabled ? 'none' : 'option'"
+    [fill]="true"
+    [maxWidthOverride]="true"
   >
     <div class="option-contents">
-      <p
-        class="option-text"
-        [innerHTML]="config.value || '' | translate"
-      ></p>
+      <p class="option-text">
+        {{ config.value || '' | translate }}
+        <span class="sr-only"
+          >&nbsp;{{ config.selected ? currentlySelected : '' }}</span
+        >
+      </p>
       <div *ngIf="config.selected">
         <span class="fa-solid fa-check option-check"></span>
       </div>
