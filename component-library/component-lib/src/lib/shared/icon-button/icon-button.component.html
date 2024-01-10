@@ -1,7 +1,7 @@
 <button
   category="plain"
   [id]="config.id"
-  [attr.aria-label]="config.ariaLabel"
+  [attr.aria-label]="config?.ariaLabel ?? '' | translate"
   [disabled]="config.disabled"
   (click)="buttonClick()"
   [class]="config.category + ' ' + config.size"
