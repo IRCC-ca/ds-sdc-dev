@@ -40,6 +40,7 @@ export class IconButtonDocCodeComponent
     id: 'icon-button',
     category: IconButtonCategories.primary,
     size: 'extraSmall',
+    ariaLabel: 'General.Primary',
     disabled: false,
     icon: {
       class: 'fa-light'
@@ -107,6 +108,7 @@ export class IconButtonDocCodeComponent
     id: this.iconBtnConfig.id,
     category: this.iconBtnConfig.category,
     size: this.iconBtnConfig.size,
+    ariaLabel: this.iconBtnConfig.ariaLabel,
     disabled: this.iconBtnConfig.disabled,
     icon: this.iconBtnConfig.icon
   };
@@ -141,16 +143,24 @@ export class IconButtonDocCodeComponent
    */
   setIconBtnCategory(value: any) {
     if (value === 'primary') {
-      this.iconBtnConfig.category = 'primary';
-      this.iconBtnConfig.icon = {
-        class: CLASS_X_MARK,
-        color: 'var(--text-primary)'
+      this.iconBtnConfig = {
+        ...this.iconBtnConfig,
+        category: 'primary',
+        ariaLabel: 'General.Primary',
+        icon: {
+          class: CLASS_X_MARK,
+          color: 'var(--text-primary)'
+        }
       };
     } else if (value === 'critical') {
-      this.iconBtnConfig.category = 'critical';
-      this.iconBtnConfig.icon = {
-        class: CLASS_TRASHCAN,
-        color: 'var(--critical-text)'
+      this.iconBtnConfig = {
+        ...this.iconBtnConfig,
+        category: 'critical',
+        ariaLabel: 'General.Critical',
+        icon: {
+          class: CLASS_TRASHCAN,
+          color: 'var(--critical-text)'
+        }
       };
     }
 
@@ -179,6 +189,7 @@ export class IconButtonDocCodeComponent
       id: this.iconBtnConfig.id,
       category: this.iconBtnConfig.category,
       size: this.iconBtnConfig.size,
+      ariaLabel: this.iconBtnConfig.ariaLabel,
       disabled: this.iconBtnConfig.disabled,
       icon: this.iconBtnConfig.icon
     };
