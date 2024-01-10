@@ -45,7 +45,6 @@ $selectors: "ircc-cl-lib-spinner";
     }
   }
   .spinner-container {
-    height: 80px;
     .icon-div {
       width: 80px;
       height: 80px;
@@ -77,7 +76,6 @@ $selectors: "ircc-cl-lib-spinner";
 
 @mixin size-small() {
   .spinner-container {
-    height: 28px;
     .icon-div {
       width: 28px;
       height: 28px;
@@ -99,6 +97,32 @@ $selectors: "ircc-cl-lib-spinner";
     margin-bottom: 0;
     @include typography.fontSet(body, 1, regular);
   }
+}
+
+@mixin size-extra-small() {
+  .spinner-container {
+        .icon-div {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          .spinner-icon {
+            > .ds-icon-container > span > svg {
+              width: 12px;
+              height: 12px;
+            }
+          }
+        }
+      }
+
+      .loading-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .label {
+        margin-left: 8px;
+        margin-bottom: 0;
+        @include typography.fontSet(body, 3, regular);
+      }
 }
 
 @mixin layout {
@@ -169,35 +193,11 @@ $selectors: "ircc-cl-lib-spinner";
       @include size-large();
     }
   }
+  
+  .extraSmall {
+    @include size-extra-small();
+  }
 
   @include types(success);
   @include types(critical);
-
-  .extraSmall {
-    .spinner-container {
-      height: 20px;
-      .icon-div {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        .spinner-icon {
-          align-self: flex-end;
-          > .ds-icon-container > span > svg {
-            width: 12px;
-            height: 12px;
-          }
-        }
-      }
-    }
-
-    .loading-icon {
-      width: 20px;
-      height: 20px;
-    }
-    .label {
-      margin-left: 8px;
-      margin-bottom: 0;
-      @include typography.fontSet(body, 3, regular);
-    }
-  }
 }

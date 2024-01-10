@@ -4,7 +4,11 @@ import {
   HostListener,
   Input,
   OnInit,
-  AfterViewChecked
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ViewChildren,
+  QueryList
 } from '@angular/core';
 
 import {
@@ -19,7 +23,14 @@ import { ISideNavDataInterface } from './side-nav.model';
 import { TranslateService } from '@ngx-translate/core';
 import { IIconConfig } from 'dist/ircc-ds-angular-component-library/lib/shared/icon/icon.component';
 import { SlugifyPipe } from '@app/share/pipe-slugify.pipe';
-import { IsActiveMatchOptions } from '@angular/router';
+import { IsActiveMatchOptions, NavigationEnd, Router } from '@angular/router';
+import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
+import {
+  INavigationItemLink,
+  NavigationItemType,
+  DSSizes
+} from 'ircc-ds-angular-component-library';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-side-nav',
@@ -39,46 +50,81 @@ import { IsActiveMatchOptions } from '@angular/router';
   ],
   providers: [SlugifyPipe]
 })
-export class SideNavComponent implements OnInit, AfterViewChecked {
+export class SideNavComponent
+  implements OnInit, AfterViewChecked, AfterViewInit
+{
   @Input() mobileToggleIcon: boolean = false; // If display toggle menu icon
-  @Input() navBarData: ISideNavDataInterface[] = [];
+  @Input() rightNavLOVs: string[] = [];
+  wrapperTop?: number; // Relative height from top of side nav to top of page in px
+  wrapperFixed: boolean = false;
+  sectionTopMargin: number = 0;
+  current: string = ''; // Current url fragment
+  navigationEnd: boolean = false;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    let current = '';
+  /**
+   * Add active state to side nav item when scroll in to page section
+   */
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event?: Event) {
+    if (!event || event?.type !== 'scroll') return;
+
     //calculating real height of scrollable content
     const height =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight;
-    const sideNavTitles = document.querySelectorAll('h2');
-    const sideNavLinks = document.querySelectorAll('.right-nav a');
+    const sideNavTitles: NodeListOf<HTMLHeadElement> =
+      document.querySelectorAll('app-title-slug-url h1, app-title-slug-url h2');
+    // Query all side nav anchor tags from current elementRef
+    const sideNavLinks: NodeListOf<HTMLAnchorElement> =
+      this.el.nativeElement.querySelectorAll('ircc-cl-lib-nav-item a');
+
+    if (this.navigationEnd) {
+      this.updateActiveSideNavLink(sideNavLinks);
+      this.navigationEnd = false;
+      return;
+    }
+
     //runs through sections to locate TOP of each heading
     sideNavTitles.forEach((section) => {
       const sectionTop = section.offsetTop;
-      //content begins 215px below sectionTop. Set current when scrollY passes top of section.
-      if (window.scrollY >= sectionTop - 215 && window.scrollY != height)
-        current = `${section.getAttribute('id')}`;
-    });
-    //set current to lowest section is scroll is at bottom of content
-    if (window.scrollY >= height)
-      current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute('id')}`; //runs through links to set current active link
-    sideNavLinks.forEach((link) => {
-      link.classList.remove('active');
-      //blur required to remove focus from previous link if it was clicked
-      if (document.activeElement instanceof HTMLElement)
-        document.activeElement.blur();
+      // Set current when scrollY passes top of section.
       if (
-        current != '' &&
-        link.getAttribute('href')?.endsWith(current) &&
+        window.scrollY >= sectionTop - this.sectionTopMargin &&
+        window.scrollY != height
+      )
+        this.current = `${section.getAttribute('id')}`;
+    });
+    //set current to lowest section if scroll is at bottom of content
+    if (window.scrollY >= height)
+      this.current = `${sideNavTitles[sideNavTitles.length - 1].getAttribute(
+        'id'
+      )}`; //runs through links to set current active link
+    this.updateActiveSideNavLink(sideNavLinks);
+
+    // Check if wrapper top has hit top of viewport
+    if (this.wrapperTop) {
+      this.wrapperFixed = this.wrapperTop <= window.scrollY - 178;
+    }
+  }
+
+  private updateActiveSideNavLink(sideNavLinks: NodeListOf<HTMLAnchorElement>) {
+    sideNavLinks.forEach((link) => {
+      const fragment = link.hash.substring(1);
+      link.classList.remove('active-link');
+      if (
+        this.current != '' &&
+        fragment === this.current &&
         link instanceof HTMLElement
       ) {
         //class active needed for styling as well as focus to prevent negative interaction if using both clicking + scrolling
-        link.classList.add('active');
-        link.focus();
+        link.classList.add('active-link');
+      } else if (this.current === '' && link instanceof HTMLElement) {
+        sideNavLinks[0].classList.add('active-link');
       }
     });
   }
 
+  navBarData: ISideNavDataInterface[] = [];
   currentLanguage: string = '';
   mobile = false; // If window is under mobile view
   showMenu = true; // If show or hide side menu
@@ -101,7 +147,15 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     fragment: 'exact'
   };
 
-  constructor(private el: ElementRef, private translate: TranslateService) {
+  constructor(
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef,
+    private translate: TranslateService,
+    private navBarConfig: SideNavConfig,
+    private slugify: SlugifyPipe,
+    private renderer: Renderer2,
+    private router: Router
+  ) {
     if (el?.nativeElement?.className) {
       this.navClassName = el?.nativeElement?.classList[0];
     }
@@ -111,15 +165,56 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
     // See node_modules/@ircc-ca/ds-sdc-core/tokens/_sizes.scss:3
     this.currentLanguage = this.translate.currentLang;
     this.showActive = this.el?.nativeElement.classList[0] === 'left-nav';
+    this.navBarData = this.navBarConfig.getRightNavBarConfig(this.rightNavLOVs);
     if (this.mobileToggleIcon) {
       this.toggleMobile();
     }
     this.adjustWidth();
+    // Subscribe to url fragment change
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Check for anchor changes here
+        const urlTree = this.router.parseUrl(event.url);
+        this.current = urlTree.fragment ? urlTree.fragment : this.current;
+        this.navigationEnd = true;
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    if (window.location.hash != '') {
+      const hashID = window.location.hash;
+      const el: HTMLAnchorElement = document.querySelector(
+        `a[href$='${hashID}']`
+      ) as HTMLAnchorElement;
+      const aTags: NodeListOf<HTMLAnchorElement> = document.querySelectorAll(
+        '.rightnav a'
+      ) as NodeListOf<HTMLAnchorElement>;
+      if (el != aTags[aTags.length - 1]) {
+        setTimeout(() => {
+          el.click();
+        }, 200);
+      } else {
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    }
+
+    // Get section top margin by querying parent dom
+    const sectionTopDiv = this.renderer
+      .parentNode(this.el.nativeElement)
+      .querySelector('app-title-slug-url > div.h2-heading-type');
+    this.sectionTopMargin =
+      parseFloat(getComputedStyle(sectionTopDiv).marginTop) > 0
+        ? parseFloat(getComputedStyle(sectionTopDiv).marginTop)
+        : 80;
+    // Initiate fake scroll event on page load
+    this.onWindowScroll(new Event('scroll'));
   }
 
   ngAfterViewChecked() {
-    //fake scroll event when ViewChecked to give focus and active to top link (if not navigating by heading ID)
-    dispatchEvent(new CustomEvent('scroll'));
+    this.cdr.detectChanges();
+    // Record relative height from top of page for sidenav
+    this.wrapperTop = this.el.nativeElement?.getBoundingClientRect().top;
   }
 
   private toggleMobile() {
@@ -171,5 +266,24 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
         this.navStatus = 'nav-open';
       }
     }
+  }
+
+  getINavigationItemLinkFromISideNavData(
+    data: ISideNavDataInterface
+  ): INavigationItemLink {
+    let anchor = this.translate.instant(data.path ?? '');
+    anchor = this.slugify.transform(anchor);
+
+    return {
+      id: 'nav-item-' + anchor,
+      href: '.',
+      anchor: anchor,
+      label: data.text,
+      type: NavigationItemType.link,
+      size: DSSizes.small,
+      border: false,
+      external: false,
+      children: []
+    };
   }
 }

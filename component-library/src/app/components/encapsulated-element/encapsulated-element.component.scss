@@ -1,23 +1,28 @@
 @use "../../../../../core-library/util/device" as device;
+
 .link {
   color: var(--navy-7);
 
-  @include device.if-hover {
-    color: var(--navy-8);
-    background-color: var(--generic-hover);
+  &:hover {
+    color: var(--blue-8);
   }
 
   &:focus {
-    box-shadow: none;
-    outline-offset: 0;
+    outline-width: 0px 0px  0px 3px;
+    outline-color: var(--blue-7);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   &:active {
     color: var(--navy-9);
-    background-color: var(--generic-active);
   }
 
   &:visited {
     color: var(--purple-8);
+  }
+
+  &.no-underline {
+    text-decoration: none;
   }
 }

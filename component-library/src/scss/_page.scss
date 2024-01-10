@@ -1,5 +1,5 @@
-@use "@ircc-ca/ds-sdc-core/typography/typography";
-@use "grid";
+@use '@ircc-ca/ds-sdc-core/typography/typography';
+@use 'grid';
 
 $round-purple-num-size: 32px;
 
@@ -13,11 +13,150 @@ $round-purple-num-size: 32px;
   text-align: center;
 }
 
-@mixin template {
-  .content-doc-wrapper {
+@mixin template($d-flex: true) {
+  @if ($d-flex) {
+    :host {
+      @include grid.row;
+    }
+  }
+
+  .block {
     box-sizing: border-box;
-    max-width: 872px;
-    margin: 0 auto;
+
+    @include grid.up-laptop-layout {
+      padding-right: 40px;
+    }
+
+    &__intro {
+      margin-top: 0;
+      margin-bottom: 0;
+      @include typography.fontSet(body, 1, regular);
+    }
+
+    &__interactive-demo {
+      .text {
+        margin-top: 0;
+        margin-bottom: 24px;
+      }
+    }
+
+    &__configs,
+    &__design-guide,
+    &__anatomy,
+    &__specs,
+    &__content-guidelines,
+    &__accessibility,
+    &__types {
+      .wrapper-container {
+        .element-wrapper-container {
+        margin-bottom: 24px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    &__content-guidelines {
+      .element-wrapper-container {
+        p.sub-heading-text {
+          margin: {
+            top: 0;
+            bottom: 12px;
+          };
+        }
+      }
+    }
+
+    &__design-guide {
+      p {
+        margin: 0;
+      }
+    }
+
+    &__anatomy {
+      .anatomy-desc {
+        margin: {
+          top: 6px;
+          bottom: 0;
+        };
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+
+      h3.round-purple-num-heading {
+        display: inline-block;
+        margin: 0 0 2px 8px;
+        position: relative;
+        top: 2px;
+      }
+
+      .anatomy-content-container {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+
+        .counter-and-heading-container {
+          display: flex;
+        }
+      }
+    }
+
+    &__specs {
+      p {
+        margin-bottom: 0;
+
+        &:nth-child(1) {
+          margin: 24px 0 0;
+        }
+
+        &:not(:nth-child(1)) {
+          margin-top: 12px;
+        }
+      }
+    }
+
+    &__accessibility {
+      ul {
+        padding-left: 24px;
+      }
+
+      .element-wrapper-container {
+        > p:not(:nth-child(2)) {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    &__accessibility,
+    &__research {
+      p {
+        margin: {
+          top: 0;
+          bottom: 0;
+        }
+      }
+    }
+
+    &__types {
+      p {
+        margin-top: 12px;
+        margin-bottom: 0;
+      }
+    }
+
+    &__usage-figma {
+      .image-container {
+        filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.2));
+      }
+    }
+
+    section {
+      p {
+        @include typography.fontSet(body, 3, regular);
+      }
+    }
 
     img {
       display: block;
@@ -59,15 +198,6 @@ $round-purple-num-size: 32px;
         margin-top: 22px;
         top: 2px;
       }
-    }
-  }
-
-  p {
-    @include typography.fontSet(body, 3, regular);
-
-    &.intro.body1 {
-      margin-top: 0;
-      margin-bottom: 0;
     }
   }
 
@@ -137,17 +267,6 @@ $round-purple-num-size: 32px;
     justify-content: center;
   }
 
-  // Container
-  .wrapper-container {
-    .element-wrapper-container {
-      margin-bottom: 24px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
   @include grid.up-phone-layout() {
     .col-md-6:nth-child(odd) {
       padding-right: 12px;
@@ -161,90 +280,6 @@ $round-purple-num-size: 32px;
   @include grid.in-phone-layout {
     .col-md-6:not(:last-child) {
       margin-bottom: 24px;
-    }
-  }
-
-  // Section
-  section {
-    &.interactive-demo {
-      p {
-        margin-top: 0;
-        margin-bottom: 24px;
-      }
-    }
-
-    &.types {
-      p {
-        margin-top: 12px;
-        margin-bottom: 0;
-      }
-    }
-
-    &.specs {
-      p {
-        margin-bottom: 0;
-
-        &:nth-child(1) {
-          margin: 24px 0 0;
-        }
-
-        &:not(:nth-child(1)) {
-          margin-top: 12px;
-        }
-      }
-    }
-
-    &.anatomy,
-    &.design-guide,
-    &.accessibility,
-    &.research {
-      p {
-        margin-bottom: 0;
-      }
-    }
-
-    &.anatomy {
-      p {
-        margin-top: 6px;
-      }
-
-      h3.round-purple-num-heading {
-        display: inline-block;
-        margin: 0 0 2px 8px;
-        position: relative;
-        top: 2px;
-      }
-
-      .anatomy-content-container {
-        &:not(:last-child) {
-          margin-bottom: 20px;
-        }
-
-        .counter-and-heading-container {
-          display: flex;
-        }
-      }
-    }
-
-    &.accessibility {
-      ul.list-container {
-        padding-left: 0;
-
-        .list-item {
-          list-style-type: none;
-          padding-bottom: 20px;
-
-          &:last-child {
-            padding-bottom: 0;
-          }
-        }
-      }
-
-      .element-wrapper-container {
-        > p:not(:nth-child(2)) {
-          margin-top: 8px;
-        }
-      }
     }
   }
 

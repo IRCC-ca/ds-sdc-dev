@@ -10,28 +10,27 @@
     class="input-container"
     #input
   >
-    <ng-container [ngSwitch]="errorState">
-      <ircc-cl-lib-input
-        *ngSwitchDefault
-        [config]="inputConfig"
-      ></ircc-cl-lib-input>
-      <ircc-cl-lib-input
-        *ngSwitchCase="'Single'"
-        [config]="inputConfigSingle"
-      ></ircc-cl-lib-input>
-      <ircc-cl-lib-input
-        *ngSwitchCase="'Multiple'"
-        [config]="inputConfigMulti"
-      ></ircc-cl-lib-input>
+    <ng-container>
+      <ircc-cl-lib-input [config]="inputConfig"></ircc-cl-lib-input>
     </ng-container>
   </div>
   <ng-container toggles>
     <ng-container *ngFor="let toggle of toggles">
-      <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+      <ng-container
+        *ngIf="
+          (inputConfig.type === 'password' && toggle.id !== 'placeholder') ||
+          inputConfig.type !== 'password'
+        "
+      >
+        <ircc-cl-lib-radio-input [config]="toggle"></ircc-cl-lib-radio-input>
+      </ng-container>
     </ng-container>
     <ng-container *ngFor="let checkbox of checkboxes">
       <ircc-cl-lib-checkbox [config]="checkbox"></ircc-cl-lib-checkbox>
     </ng-container>
+  </ng-container>
+  <ng-container banner>
+    <ircc-cl-lib-banner [config]="bannerConfig"></ircc-cl-lib-banner>
   </ng-container>
 </app-interactive-demo>
 <app-code-viewer [config]="codeViewConfig"></app-code-viewer>

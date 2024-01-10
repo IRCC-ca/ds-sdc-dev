@@ -5,6 +5,7 @@
   <ircc-cl-lib-label
     [config]="labelConfig"
     [attr.size]="config.size"
+    [legend]="true"
   ></ircc-cl-lib-label>
   <div class="radio-buttons">
     <div
@@ -19,7 +20,6 @@
         id="{{ config.id + index }}"
         (click)="standAloneFunctions.wasTouched(config.formGroup, config.id)"
         [formControlName]="config.id ? config.id : 'formControl'"
-        [attr.disabled]="getDisabled(index)"
         [ngClass]="option?.sizeOverride ? option?.sizeOverride : config.size"
         [attr.aria-invalid]="formControl?.invalid"
         [attr.aria-live]="'off'"
@@ -59,7 +59,7 @@
     </div>
   </div>
   <div aria-live="polite">
-    <ng-container *ngIf="formControl?.touched && formControl?.invalid">
+    <ng-container *ngIf="config.formGroup.get(config.id)?.touched && currentStatus === 'INVALID'">
       <span class="sr-only">{{
         errorStubText + ': ' + (config.label || '' | translate) + ': '
       }}</span>

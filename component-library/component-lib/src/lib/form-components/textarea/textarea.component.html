@@ -24,6 +24,7 @@
             [id]="config.id"
             tabindex="0"
             (blur)="onBlur()"
+            (change)="changeValue($event)"
             [formControlName]="config.id"
             [attr.aria-label]="
               announceCharStatusChangeAria
@@ -48,6 +49,12 @@
           >
             {{ textareaInput.value.length }}/{{ config.charLimit }}
           </p>
+          <span
+            class="sr-only"
+            aria-live="polite"
+            [innerHTML]="announceMaxCharaterLimitReached"
+          >
+          </span>
         </div>
       </div>
 

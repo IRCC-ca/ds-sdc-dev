@@ -4,6 +4,8 @@
 // Referenced from bootstrap's grid system https://getbootstrap.com/docs/4.0/layout/grid/
 // To be replaced by ircc design system's grid system.
 
+$prefix: ds- !default;
+
 @mixin col-1 {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 8.33333%;
@@ -92,9 +94,16 @@ $col-3-width: 25%;
   max-width: 100%;
 }
 
-@mixin row {
+@mixin row($gutter: $grid-gutter-width) {
   display: flex;
   flex-wrap: wrap;
+
+  @if ($gutter != 0) {
+    --#{$prefix}gutter-x: #{$gutter};
+
+    margin-right: calc(-.5 * var(--#{$prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
+    margin-left: calc(-.5 * var(--#{$prefix}gutter-x)); // stylelint-disable-line function-disallowed-list
+  }
 }
 
 // Media Queries Preset
@@ -162,7 +171,7 @@ $screen_xl: ircc-ds-sizes.$bp-width-desktop;
   }
 }
 
-// The following was copied & modified from https://github.com/twbs/bootstrap/blob/main/scss/_grid.scss
+// The following was copied & modified from https://github.com/twbs/bootstrap/blob/v5.2.2/scss/_grid.scss
 // scss-docs-start grid-breakpoints
 // Aligned with IRCC Design System Breakpoints
 $grid-breakpoints: (
@@ -178,17 +187,19 @@ $grid-breakpoints: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns: 12 !default;
-$grid-gutter-width: 1.5rem !default;
+$grid-gutter-width: 0 !default;
 $grid-row-columns: 6 !default;
 
 @mixin make-col-ready() {
   flex-shrink: 0;
   box-sizing: border-box;
+  padding-right: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
 }
 
 // Convenience classes for grid layout.
 .row {
-  @include row;
+  @include row($grid-gutter-width);
 
   > * {
     @include make-col-ready();

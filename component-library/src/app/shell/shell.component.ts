@@ -15,7 +15,6 @@ import {
 } from 'ircc-ds-angular-component-library';
 import { LangSwitchService } from '../share/lan-switch/lang-switch.service';
 import { DisplayLanguages, Languages } from '../share/global-params';
-import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
 import { environment } from '../../environments/environment';
 
@@ -33,7 +32,6 @@ import {
 export class ShellComponent implements OnInit {
   dateModified = environment.dateModified;
   title = 'ds-sdc-doc';
-  leftNavData: ISideNavDataInterface[];
   mobile = false;
   navStatus = 'nav-open';
   public innerWidth: any; // Width of viewport window
@@ -44,7 +42,7 @@ export class ShellComponent implements OnInit {
 
   overviewPage: INavigationItemLink = {
     id: 'overviewPageNavItem',
-    label: ' Overview ',
+    label: 'Overview.Heading',
     type: 'link',
     children: [],
     href: 'ROUTES.overview'
@@ -52,7 +50,7 @@ export class ShellComponent implements OnInit {
 
   forDeveloperPage: INavigationItemLink = {
     id: 'forDeveloperPagenNavItem',
-    label: 'For developers',
+    label: 'General.DeveloperHeading',
     type: 'link',
     children: [],
     href: 'ROUTES.forDevelopers'
@@ -60,7 +58,7 @@ export class ShellComponent implements OnInit {
 
   forDesignersPage: INavigationItemLink = {
     id: 'forDesignersPageNavItem',
-    label: 'For designers',
+    label: 'General.DesignerHeading',
     type: 'link',
     children: [],
     href: 'ROUTES.forDesigners'
@@ -68,7 +66,7 @@ export class ShellComponent implements OnInit {
 
   requestFormPage: INavigationItemLink = {
     id: 'requestFormPageNavItem',
-    label: ' Submit a request ',
+    label: 'RequestForm.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.requestForm'
@@ -76,7 +74,7 @@ export class ShellComponent implements OnInit {
 
   utilPage: INavigationItemLink = {
     id: 'utilPageNavItem',
-    label: ' Utilities ',
+    label: 'Utilities.Heading',
     type: 'link',
     children: [],
     href: 'ROUTES.utilities'
@@ -84,7 +82,7 @@ export class ShellComponent implements OnInit {
 
   buttonsPage: INavigationItemLink = {
     id: 'buttonsPageNavItem',
-    label: ' Buttons ',
+    label: 'Buttons.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.buttons'
@@ -92,7 +90,7 @@ export class ShellComponent implements OnInit {
 
   bannerPage: INavigationItemLink = {
     id: 'bannerPageNavItem',
-    label: ' Banner ',
+    label: 'Banner.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.banner'
@@ -100,15 +98,23 @@ export class ShellComponent implements OnInit {
 
   inputPage: INavigationItemLink = {
     id: 'inputPageNavItem',
-    label: ' Input ',
+    label: 'Input.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.input'
   };
 
+  selectPage: INavigationItemLink = {
+    id: 'selectPageNavItem',
+    label: 'Select.Title',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.select'
+  };
+
   datePickerPage: INavigationItemLink = {
     id: 'datePickerPageNavItem',
-    label: ' Date Picker ',
+    label: 'DatePicker.MainTitle',
     type: 'link',
     children: [],
     href: 'ROUTES.datePicker'
@@ -116,24 +122,48 @@ export class ShellComponent implements OnInit {
 
   iconBtnPage: INavigationItemLink = {
     id: 'iconBtnPageNavItem',
-    label: ' Icon Button ',
+    label: 'IconButtonDocumentation.Title',
     type: 'link',
     children: [],
     href: 'ROUTES.iconButton'
   };
 
-  multiCheckboxPage: INavigationItemLink = {
-    id: 'multiCheckboxPageNavItem',
-    label: ' Multi Checkbox ',
+  checkboxPage: INavigationItemLink = {
+    id: 'checkboxPageNavItem',
+    label: 'Checkbox.Title',
     type: 'link',
     children: [],
-    href: 'ROUTES.multiCheckbox'
+    href: 'ROUTES.checkbox'
+  };
+
+  spinnerPage: INavigationItemLink = {
+    id: 'spinnerPageNavItem',
+    label: 'Spinner.MainTitle',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.spinner'
+  };
+
+  autoCompletePage: INavigationItemLink = {
+    id: 'autoCompletePageNavItem',
+    label: 'AutoComplete.Title',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.autocomplete'
+  };
+
+  progressIndicatorPage: INavigationItemLink = {
+    id: 'progressIndicatorPageNavItem',
+    label: 'ProgressIndicator.MainTitle',
+    type: 'link',
+    children: [],
+    href: 'ROUTES.progressIndicator'
   };
 
   gettingStartedNav: INavigationItemAccordion = {
     open: true,
     id: 'gettingStartedNavAccordian',
-    label: 'Getting Started',
+    label: 'Developers.GetStartedHeading',
     type: 'accordion',
     children: [this.overviewPage, this.forDeveloperPage, this.forDesignersPage]
   };
@@ -141,7 +171,7 @@ export class ShellComponent implements OnInit {
   foundationsNav: INavigationItemAccordion = {
     open: true,
     id: 'foundationsNavAccordian',
-    label: 'Foundations',
+    label: 'LeftSideNav.title.foundation',
     type: 'accordion',
     children: [this.utilPage]
   };
@@ -149,22 +179,26 @@ export class ShellComponent implements OnInit {
   componentNav: INavigationItemAccordion = {
     open: true,
     id: 'componentNavAccordian',
-    label: 'Components',
+    label: 'LeftSideNav.title.components',
     type: 'accordion',
     children: [
-      this.buttonsPage,
+      this.autoCompletePage,
       this.bannerPage,
-      this.inputPage,
+      this.buttonsPage,
+      this.checkboxPage,
       this.datePickerPage,
       this.iconBtnPage,
-      this.multiCheckboxPage
+      this.inputPage,
+      this.progressIndicatorPage,
+      this.selectPage,
+      this.spinnerPage
     ]
   };
 
   supportNav: INavigationItemAccordion = {
     open: true,
     id: 'supportNavAccordian',
-    label: 'Support',
+    label: 'LeftSideNav.title.support',
     type: 'accordion',
     children: [this.requestFormPage]
   };
@@ -190,9 +224,10 @@ export class ShellComponent implements OnInit {
   navConfig: INavigationConfig = {
     id: 'shell_nav',
     size: 'small',
-    height: '50vh',
+    height: '71vh',
     marginTop: 182,
-    scrolling: false,
+    scrolling: true,
+    fixed: true,
     navigationConfig: [
       this.gettingStartedNav,
       this.foundationsNav,
@@ -212,9 +247,7 @@ export class ShellComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: object,
     private navBarConfig: SideNavConfig,
     private navService: NavigationService
-  ) {
-    this.leftNavData = navBarConfig.getLeftNavBarConfig();
-  }
+  ) {}
 
   ngOnInit() {
     this.onResize();

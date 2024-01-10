@@ -16,13 +16,12 @@
     [className]="config.anchorType"
     category="plain"
     size="small"
-    routerLink="{{ windowPathname }}"
+    [routerLink]="'.'"
     fragment="{{ config.title | translate | SlugifyPipe }}"
     cdkCopyToClipboard="{{ windowOrigin }}{{ windowPathname }}#{{
       config.title | translate | SlugifyPipe
     }}"
     tabindex="-1"
-    aria-hidden="true"
   >
     {{ 'General.CopyURL' | translate }}
   </ircc-cl-lib-button>

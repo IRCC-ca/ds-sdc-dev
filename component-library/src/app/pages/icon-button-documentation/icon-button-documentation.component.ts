@@ -8,9 +8,11 @@ import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { TranslateService } from '@ngx-translate/core';
 import {
   IIconButtonComponentConfig,
-  IconButtonCategories
+  IconButtonCategories,
+  IDynamicImageComponentConfig,
+  DSViewPortSize
 } from 'ircc-ds-angular-component-library';
-import { ContentItem } from '@app/share/interface/content-item.interface';
+
 @Component({
   selector: 'app-icon-button-documentation',
   templateUrl: './icon-button-documentation.component.html',
@@ -41,18 +43,63 @@ export class IconButtonDocumentationComponent implements OnInit {
     disabled: false
   };
 
-  anatomyContentItems: ContentItem[] = [
-    {
-      title: 'IconButtonDocumentation.AnatomyHeading',
-      description: 'IconButtonDocumentation.AnatomyText'
-    }
+  imageSpacingConfig: IDynamicImageComponentConfig = {
+    id: 'image-spacing',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/icon-btn-content/icon-spacing-phone-328w.png'
+      }
+    ],
+    defaultSrc: 'assets/img/icon-btn-content/icon-spacing.png',
+    altText: 'IconButtonDocumentation.Spacing.ImgAlt',
+    lazyLoad: true
+  };
+
+  anatomyImgConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/icon-btn-content/icon-anatomy-phone.png'
+      }
+    ],
+    defaultSrc: 'assets/img/icon-btn-content/anatomy-image-button.png',
+    altText: 'IconButtonDocumentation.AnatomyImgAlt',
+    lazyLoad: true
+  };
+
+  specImgConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/icon-btn-content/icon-spec-phone-328w.png'
+      }
+    ],
+    defaultSrc: 'assets/img/icon-btn-content/spec-image-872w.png',
+    altText: 'IconButtonDocumentation.SpecsImgAlt',
+    lazyLoad: true
+  };
+
+  accessibilityContent: string[] = [
+    'IconButtonDocumentation.AccessibilityContentItem1',
+    'IconButtonDocumentation.AccessibilityContentItem2',
+    'IconButtonDocumentation.AccessibilityContentItem3'
   ];
 
-  figmaDirections: string[] = [
-    'IconButtonDocumentation.FigmaDirectionsListItem1',
-    'IconButtonDocumentation.FigmaDirectionsListItem2',
-    'IconButtonDocumentation.FigmaDirectionsListItem3',
-    'IconButtonDocumentation.FigmaDirectionsListItem4'
+  rightNavData: string[] = [
+    // list of all right nav items
+    'IconButtonDocumentation.Title',
+    'General.InteractiveDemo',
+    'General.TypesHeading',
+    'General.ConfigurationsHeading',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
   ];
 
   constructor(

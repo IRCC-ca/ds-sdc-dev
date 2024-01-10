@@ -2,6 +2,12 @@
   [id]="config.id"
   [attr.size]="config.size"
   class="lib-navigation"
+  [ngClass]="{ fixed: config.fixed && wrapperFixed }"
+  [style.max-width]="
+    wrapperFixed && wrapperWidth && wrapperWidth > 0
+      ? wrapperWidth + 'px'
+      : 'none'
+  "
   #navigation
 >
   <div
@@ -15,7 +21,9 @@
       (click)="clickIconLeading(config.id + '_icon_leading')"
       [attr.size]="config.size"
     ></ircc-cl-lib-icon>
-    <h3>{{ config?.label || '' | translate }}</h3>
+    <ng-container *ngIf="config?.label">
+      <h3>{{ config?.label || '' | translate }}</h3>
+    </ng-container>
     <ircc-cl-lib-icon
       [id]="config.id + '_icon_trailing'"
       class="icon-trailing"
@@ -26,6 +34,7 @@
   </div>
 
   <div #navigationAreaScroll>
+    <!-- ignore-->
     <!-- prettier-ignore -->
     <div class="navigation-content-top" #navigationContentTop ><ng-content select="[navigationContentTop]"></ng-content></div>
 

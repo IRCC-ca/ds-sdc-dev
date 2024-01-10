@@ -1,14 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit
-} from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -33,12 +27,10 @@ export interface ICheckBoxComponentConfig {
   required?: boolean;
   size?: keyof typeof DSSizes | DSSizes;
   mixed?: boolean;
-  disableFocus?: boolean; //Default is true
   inlineLabel?: string;
   inlineLabelBold?: boolean;
   id: string; //used for identifying the component everywhere and should NEVER be missing
-  helpText?: string;
-  customErrorText?: string;
+  hint?: string;
   desc?: string;
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
@@ -77,11 +69,9 @@ export class CheckboxComponent
   @Input() required?: boolean;
   @Input() size?: keyof typeof DSSizes | DSSizes;
   @Input() mixed?: boolean;
-  @Input() disableFocus?: boolean; //Default is true
   @Input() inlineLabel?: string;
   @Input() inlineLabelBold?: boolean;
-  @Input() helpText?: string;
-  @Input() customErrorText?: string;
+  @Input() hint?: string;
   @Input() desc?: string;
   @Input() errorMessages?: IErrorPairs[];
 
@@ -95,6 +85,8 @@ export class CheckboxComponent
   touched = false;
   errorAria = '';
   errorStubText = '';
+  currentStatus: FormControlStatus = 'VALID';
+  currentTouch: boolean = false;
 
   constructor(
     public standAloneFunctions: StandAloneFunctions,
@@ -102,27 +94,50 @@ export class CheckboxComponent
     private multicheckboxService: MultiCheckboxService
   ) {}
 
-  onTouch = () => {};
-  onChange = () => {};
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
 
-  writeValue(): void {}
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  changeValue(event: any) {
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
   }
-  registerOnTouched(fn: any): void {
-    this.onTouch = fn;
+
+  writeValue(value: string): void {
+    this.onChange(value);
+  }
+
+  registerOnChange(onChange: any): void {
+    this.onChange = onChange;
+  }
+  registerOnTouched(onTouched: any): void {
+    this.onTouch = onTouched;
   }
 
   /**
    * This is used automatically by the parent formControl. It is used in the template to set the label to disabled
    * @param isDisabled
    */
-  setDisabledState?(isDisabled: boolean) {
-    // (this.config !== undefined) ? this.config.disabled = isDisabled : this.disabled = isDisabled;
-    this.isDisabled = isDisabled;
+  setDisabledState(isDisabled: boolean) {
+    if (isDisabled) {
+      this.formGroup.get(this.config.id)?.disable();
+    } else {
+      this.formGroup.get(this.config.id)?.enable();
+    }
   }
 
   ngOnInit() {
+    const retControl = this.config.formGroup.get(this.config.id);
+    if (retControl) {
+      this.formControl = retControl;
+    }
+
     this.configSub = this.multicheckboxService.multiCheckboxEventObs$.subscribe(
       (response) => {
         if (response.id === this.config.id) {
@@ -153,7 +168,7 @@ export class CheckboxComponent
       this.config.errorMessages,
       this.config.label,
       this.config.desc,
-      this.config.helpText,
+      this.config.hint,
       this.config.required,
       this.config.labelIconConfig
     );
@@ -167,13 +182,10 @@ export class CheckboxComponent
     if (this.required) this.config.required = this.required;
     if (this.size) this.config.size = this.size;
     if (this.mixed) this.config.mixed = this.mixed;
-    if (this.disableFocus) this.config.disableFocus = this.disableFocus;
     if (this.inlineLabel) this.config.inlineLabel = this.inlineLabel;
     if (this.inlineLabelBold)
       this.config.inlineLabelBold = this.inlineLabelBold;
-    if (this.helpText) this.config.helpText = this.helpText;
-    if (this.customErrorText)
-      this.config.customErrorText = this.customErrorText;
+    if (this.hint) this.config.hint = this.hint;
     if (this.desc) this.config.desc = this.desc;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
 
@@ -187,17 +199,50 @@ export class CheckboxComponent
       );
 
       this.errorIds.forEach((errorId) => {
-        this.multicheckboxService.errorEvent({
-          id: this.config.id,
-          event: errorId
-        });
+        this.multicheckboxService.errorEvent(this.config.id);
       });
     }
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.toggleDisabledState();
+    this.config.formGroup
+      .get(this.config.id)
+      ?.statusChanges.subscribe((change) => {
+        this.getAriaErrorText();
+        //Get the error text when the formControl value changes
+        if (change === 'VALID') {
+          this.multicheckboxService.errorEvent(this.config.id);
+        }
 
-    //Get the error text when the formControl value changes
-    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe(() => {
-      this.getAriaErrorText();
-    });
+        if (change !== this.currentStatus) {
+          this.currentStatus = change;
+          this.toggleDisabledState();
+        }
+        this.setStatus();
+      });
+
+    console.log(this.labelConfig);
+  }
+
+  setStatus() {
+    this.currentStatus =
+      this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    this.currentTouch = this.config.formGroup.controls[this.config.id].touched;
+  }
+
+  ngAfterViewInit() {
+    this.setStatus();
+  }
+
+  toggleDisabledState() {
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+        break;
+    }
   }
 
   ngOnChanges() {
@@ -207,7 +252,7 @@ export class CheckboxComponent
       this.config.errorMessages,
       this.config.label,
       this.config.desc,
-      this.config.helpText,
+      this.config.hint,
       this.config.required,
       this.config.labelIconConfig
     );
@@ -247,15 +292,18 @@ export class CheckboxComponent
   /**
    * Return error state from FormGroup, must be touched & invalid
    */
-  getErrorState(): boolean {
+  get errorState(): boolean {
+    this.setStatus()
     return (
-      (this.config.formGroup.get(this.config.id)?.touched &&
-        this.config.formGroup.get(this.config.id)?.invalid) ??
+      (this.currentTouch &&
+        this.currentStatus === 'INVALID') ??
       false
     );
   }
 
-  clickEvent() {}
+  clickEvent() {
+    this.standAloneFunctions.wasTouched(this.config.formGroup, this.config.id);
+  }
 
   ariaAccess(): string {
     let returnVal = '';
@@ -263,8 +311,8 @@ export class CheckboxComponent
       returnVal += this.translate.instant(this.config.label || '') + ' ';
     if (this.config.desc)
       returnVal += this.translate.instant(this.config.desc || '') + ' ';
-    if (this.config.helpText)
-      returnVal += this.translate.instant(this.config.helpText || '') + ' ';
+    if (this.config.hint)
+      returnVal += this.translate.instant(this.config.hint || '') + ' ';
     if (this.config.inlineLabel)
       returnVal += this.translate.instant(this.config.inlineLabel || '') + ' ';
 

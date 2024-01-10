@@ -1,18 +1,13 @@
 <div
-  class="errorComponent"
-  class="{{ config?.size }}"
+  class="{{ config?.size }} errorComponent"
   id="{{ config?.id }}"
   [ngClass]="{ errorContainer: config?.id?.endsWith('error0') }"
 >
-  <i
-    *ngIf="config?.id?.endsWith('error0')"
-    [ngClass]="
-      config?.icon !== undefined
-        ? config?.icon?.class
-        : 'fa-light fa-circle-exclamation'
-    "
+  <ircc-cl-lib-icon
+    *ngIf="config?.id?.endsWith('error0') && iconConfig"
+    [config]="iconConfig"
     class="errorIcon"
-  ></i>
+  ></ircc-cl-lib-icon>
   <p
     [ngClass]="{ additionalError: !config?.id?.endsWith('error0') }"
     class="errorText"

@@ -109,6 +109,7 @@
       align-items: center;
       padding: 12px 10px 12px 24px;
       border-left: 4px solid transparent;
+      outline-offset: -3px;
 
       &.active-link {
         border-left: 4px solid var(--navigation);

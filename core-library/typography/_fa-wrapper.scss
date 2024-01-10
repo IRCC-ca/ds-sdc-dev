@@ -1,127 +1,23 @@
-@use 'sass:string';
+@use "sass:string";
 
 /// Placeholders for fontawesome constants - will be extended when create mixin is included
 %far,
 %fa-regular {
-    font-family: 'Font Awesome 6 Pro', serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Font Awesome 6 Pro", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-%fab,
-%fa-brands {
-    font-family: 'Font Awesome 6 Brands', serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-%fas,
-%fa-solid {
-    font-family: 'Font Awesome 6 Pro', serif;
-    font-weight: 900;
-    font-style: normal;
-}
-
-%fal,
-%fa-light {
-    font-family: 'Font Awesome 6 Pro', serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-%fat,
-%fa-thin {
-    font-family: 'Font Awesome 6 Pro', serif;
-    font-weight: 100;
-    font-style: normal;
-}
 /// Mixin to include to define all fontawesome fonts used in the design system
 @mixin create() {
-    $font-root: '../fonts';
-    @font-face {
-        font-family: 'Font Awesome 6 Brands';
-        font-style: normal;
-        font-weight: 400;
-        font-display: block;
-        src: url('#{$font-root}/fa-brands-400.woff2') format('woff2'),
-            url('#{$font-root}/fa-brands-400.ttf') format('truetype');
-    }
+  $font-root: "../fonts";
 
-    .fab,
-    .fa-brands {
-        @extend %fa-brands;
-    }
-
-    @font-face {
-        font-family: 'Font Awesome 6 Pro';
-        font-style: normal;
-        font-weight: 400;
-        font-display: block;
-        src: url('#{$font-root}/fa-regular-400.woff2') format('woff2'),
-            url('#{$font-root}/fa-regular-400.ttf') format('truetype');
-    }
-
-    .far,
-    .fa-regular {
-        @extend %fa-regular;
-    }
-
-    @font-face {
-        font-family: 'Font Awesome 6 Pro';
-        font-style: normal;
-        font-weight: 900;
-        font-display: block;
-        src: url('#{$font-root}/fa-solid-900.woff2') format('woff2'),
-            url('#{$font-root}/fa-solid-900.ttf') format('truetype');
-    }
-
-    .fas,
-    .fa-solid {
-        @extend %fa-solid;
-    }
-
-    @font-face {
-        font-family: 'Font Awesome 6 Pro';
-        font-style: normal;
-        font-weight: 300;
-        font-display: block;
-        src: url('#{$font-root}/fa-light-300.woff2') format('woff2'),
-            url('#{$font-root}/fa-light-300.ttf') format('truetype');
-    }
-
-    .fal,
-    .fa-light {
-        @extend %fa-light;
-    }
-
-    @font-face {
-        font-family: 'Font Awesome 6 Pro';
-        font-style: normal;
-        font-weight: 100;
-        font-display: block;
-        src: url('#{$font-root}/fa-thin-100.woff2') format('woff2'),
-            url('#{$font-root}/fa-thin-100.ttf') format('truetype');
-    }
-
-    .fat,
-    .fa-thin {
-        @extend %fa-thin;
-    }
-}
-
-/// Use this mixin to add a static icon in a pseudo element that supports content
-/// eg: ::before, ::after
-@mixin decor-icon($fa-var, $fa-family) {
-    @extend %#{$fa-family};
-
-    content: string.unquote('"#{ $fa-var }"');
-    speak: none;
-}
-
-/// Use this mixin to add a dynamic icon in a pseudo element that supports content
-/// eg: ::before,.::after using a css property
-/// @param {String} $fa-var css property name
-@mixin variable-icon($fa-var) {
-    content: var($fa-var);
-    speak: none;
+  @font-face {
+    font-family: "Font Awesome 6 Pro";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("#{$font-root}/fa-regular-400.woff2") format("woff2"),
+      url("#{$font-root}/fa-regular-400.ttf") format("truetype");
+  }
 }

@@ -4,16 +4,11 @@
 
 @include page.template;
 
-.types {
-  .component-preview {
-    max-width: 236px;
-    height: 193px;
-  }
-}
-
-.figma-usage {
-  .image-1 {
-    max-width: 232px;
-    height: auto;
+.block {
+  &__figma-usage {
+    .image-1 {
+      max-width: 232px;
+      height: auto;
+    }
   }
 }

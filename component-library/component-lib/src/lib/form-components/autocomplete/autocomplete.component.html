@@ -1,0 +1,19 @@
+<div
+  #inputAutocomplete
+  [attr.size]="config.size"
+>
+  <ircc-cl-lib-input
+    [attr.size]="config.size"
+    [config]="inputComponent"
+    type="autocomplete"
+    (focusEvent)="onFocus($event)"
+  ></ircc-cl-lib-input>
+
+  <ng-container *ngIf="showSuggestions === true">
+    <ircc-cl-lib-flyout
+      (isSelected)="isSelected($event)"
+      [config]="flyout"
+      [class]="config.size"
+    ></ircc-cl-lib-flyout>
+  </ng-container>
+</div>

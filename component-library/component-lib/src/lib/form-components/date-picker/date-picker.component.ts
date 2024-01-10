@@ -71,7 +71,7 @@ export interface IDatePickerConfig {
   required?: boolean;
   hint?: string;
   desc?: string;
-  errorMessages?: IDatePickerErrorMessages;
+  errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
   maxYear?: number;
   minYear?: number;
@@ -85,13 +85,6 @@ export interface IDatePickerUnknownDateToggleConfig {
   dayUnknown?: boolean;
   monthUnknown?: boolean;
   yearUnknown?: boolean;
-}
-
-export interface IDatePickerErrorMessages {
-  general?: IErrorPairs[];
-  day?: IErrorPairs[];
-  month?: IErrorPairs[];
-  year?: IErrorPairs[];
 }
 
 export interface IDatePickerDropDownConfigs {
@@ -112,19 +105,22 @@ export interface IDatePickerDropDownConfigs {
   ]
 })
 export class DatePickerComponent implements OnInit {
+
+  formGroupEmpty: FormGroup = new FormGroup({});
+
   @Input() config: IDatePickerConfig = {
     id: '',
     formGroup: new FormGroup({})
   };
 
-  @Input() formGroup?: FormGroup;
+  @Input() formGroup = this.formGroupEmpty;
   @Input() id?: string;
   @Input() size?: keyof typeof DSSizes;
   @Input() label?: string;
   @Input() required?: boolean;
   @Input() hint?: string;
   @Input() desc?: string;
-  @Input() errorMessages?: IDatePickerErrorMessages;
+  @Input() errorMessages?: IErrorPairs[];
   @Input() maxYear?: number;
   @Input() minYear?: number;
   @Input() unknownDateToggle?: IDatePickerUnknownDateToggleConfig;
@@ -185,7 +181,7 @@ export class DatePickerComponent implements OnInit {
     this.labelConfig = this.standAloneFunctions.makeLabelConfig(
       this.config.formGroup,
       this.config.id,
-      this.config.errorMessages?.general,
+      this.config.errorMessages,
       this.config.label,
       this.config.desc,
       this.config.hint,
@@ -194,7 +190,9 @@ export class DatePickerComponent implements OnInit {
     );
 
     //set config from individual options, if present
-    if (this.formGroup) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    };
     if (this.id) this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
@@ -225,15 +223,11 @@ export class DatePickerComponent implements OnInit {
     this.dropDownConfigs.month.size = this.config.size;
     this.dropDownConfigs.year.size = this.config.size;
 
-    this.dropDownConfigs.day.topLabel = this.config.label;
-    this.dropDownConfigs.month.topLabel = this.config.label;
-    this.dropDownConfigs.year.topLabel = this.config.label;
-
-    if (this.config.errorMessages?.general) {
+    if (this.config.errorMessages) {
       this.errorIds = this.standAloneFunctions.getErrorIds(
         this.config.formGroup,
         this.config.id + DATE_PICKER_YEAR_CONTROL_ID_EXTENSION,
-        this.config.errorMessages.general
+        this.config.errorMessages
       );
     }
 
@@ -265,20 +259,20 @@ export class DatePickerComponent implements OnInit {
 
     if (this.config.minYear || this.config.maxYear) {
       if (this.config.minYear && this.config.maxYear) {
-        for (let i = this.config.minYear; i <= this.config.maxYear; i++) {
+        for (let i = this.config.maxYear; i >= this.config.minYear; i--) {
           this.dropDownConfigs.year.options?.push({ text: i.toString() });
         }
       } else if (this.config.minYear && !this.config.maxYear) {
-        for (let i = this.config.minYear; i <= this.currentYear; i++) {
+        for (let i = this.currentYear; i >= this.config.minYear; i--) {
           this.dropDownConfigs.year.options?.push({ text: i.toString() });
         }
       } else if (this.config.maxYear && !this.config.minYear) {
-        for (let i = 1900; i <= this.config.maxYear; i++) {
+        for (let i = this.currentYear; i >= 1900; i--) {
           this.dropDownConfigs.year.options?.push({ text: i.toString() });
         }
       }
     } else {
-      for (let i = 1900; i <= this.currentYear; i++) {
+      for (let i = this.currentYear; i >= 1900; i--) {
         this.dropDownConfigs.year.options?.push({ text: i.toString() });
       }
     }
@@ -392,7 +386,9 @@ export class DatePickerComponent implements OnInit {
    * Used to set the language of year/day 'unknown' field when langauge changes
    */
   setYearDayLanguage() {
+    if (this.config.unknownDateToggle?.dayUnknown) 
     this.dropDownConfigs.day.options?.shift();
+    if (this.config.unknownDateToggle?.yearUnknown)
     this.dropDownConfigs.year.options?.shift();
     if (
       this.translate.currentLang === 'en' ||
@@ -526,7 +522,7 @@ export class DatePickerComponent implements OnInit {
     return false;
   }
 
-  datePickerTouchedOrInvalid(): boolean {
+  getDatePickerTouchedOrInvalid(): boolean {
     let datePickerState: boolean | undefined = false;
 
     datePickerState =
@@ -637,21 +633,40 @@ export class DatePickerComponent implements OnInit {
     return errors;
   }
 
-  writeValue(obj: any): void {
-    if (obj) {
-      this.config.formGroup.setValue(obj, { emitEvent: false });
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
     }
+  };
+  
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
   }
+
+  writeValue(value: string): void {
+    this.onChange(value);
+  }
+  
   registerOnChange(fn: any): void {
     this.config.formGroup.valueChanges.subscribe(fn);
   }
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
+    this.onTouch = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    isDisabled
-      ? this.config.formGroup.disable()
-      : this.config.formGroup.enable();
+
+  /**
+   * Apply a disabled state
+   */
+   setDisabledState(isDisabled: boolean) {
+    if(isDisabled) {
+      this.formGroup?.get(this.config.id)?.disable();
+    } else {
+      this.formGroup?.get(this.config.id)?.enable();
+    }
   }
-  private onTouched: () => void = () => {};
 }

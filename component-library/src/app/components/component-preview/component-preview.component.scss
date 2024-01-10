@@ -1,9 +1,9 @@
-@use "../../../../../core-library/util/theme" as theme;
-@use "../../../../../core-library/util/size" as size;
-@use "../../../../../component-library/src/scss/grid" as grid;
-@use "../../../../../core-library/tokens/template-const";
-@use "sass:map";
-$selectors: "app-component-preview";
+@use '../../../../../core-library/util/theme' as theme;
+@use '../../../../../core-library/util/size' as size;
+@use '../../../../../component-library/src/scss/grid' as grid;
+@use '../../../../../core-library/tokens/template-const';
+@use 'sass:map';
+$selectors: 'app-component-preview';
 
 @mixin selector {
   #{$selectors}#{template-const.$escape} {
@@ -21,29 +21,52 @@ $selectors: "app-component-preview";
   display: block;
 
   .preview-wrapper {
-    min-width: 300px;
+    box-sizing: border-box;
+    padding-top: 60px;
+    padding-bottom: 44px;
     height: 100%;
     display: inline-flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     min-height: 170px;
 
-    @include grid.un-tablet-layout {
+    &.multi-first {
+      padding-bottom: 16px;
+    }
+
+    &.multi-middle {
+      padding-top: 0;
+      padding-bottom: 16px;
+    }
+
+    &.multi-last {
+      padding-top: 0;
+    }
+
+    @include grid.in-phone-layout {
       width: 100%;
     }
 
+    @include grid.up-phone-layout {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+
     ircc-cl-lib-button.copy {
-      margin-top: 10px;
+      margin-top: 12px;
     }
   }
 
   .background-white {
     background-color: var(--surface1);
     max-width: 400px;
-  }
 
+    @include grid.up-phone-layout {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
   .background-gray {
     background-color: var(--surface2);
   }

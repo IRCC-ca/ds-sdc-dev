@@ -24,11 +24,15 @@ $selectors: "ircc-cl-lib-error";
   &.errorComponent,
   .errorComponent {
     line-height: 20px;
-    margin-top: 8px;
   }
   .errorIcon {
     height: 16px;
     width: 16px;
+
+    svg {
+      height: 16px;
+      width: 16px;
+    }
     @include device.in-tablet-layout {
       margin-top: 2px;
   }
@@ -55,12 +59,16 @@ $selectors: "ircc-cl-lib-error";
   &.errorComponent,
   .errorComponent {
     line-height: 24px;
-    margin-top: 12px;
   }
 
   .errorIcon {
     height: 20px;
     width: 20px;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
   }
 
   .errorText {
@@ -72,6 +80,7 @@ $selectors: "ircc-cl-lib-error";
     margin: {
       left: 24px;
       bottom: 0px;
+      top: 4px;
     }
   }
 }
@@ -97,6 +106,8 @@ $selectors: "ircc-cl-lib-error";
     display: flex;
     color: var(--critical-text);
     align-items: center;
+    margin-top: 8px;
+
     @include device.in-tablet-layout {
       display: flex;
       align-items: flex-start;
@@ -105,7 +116,6 @@ $selectors: "ircc-cl-lib-error";
       display: flex;
       align-items: flex-start;
     }
-
   }
 
   .errorIcon {

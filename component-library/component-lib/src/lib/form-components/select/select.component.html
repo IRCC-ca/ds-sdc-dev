@@ -12,7 +12,7 @@
         [name]="config.id"
         [id]="config.id"
         [formControlName]="config.id"
-        (change)="valueChange($event)"
+        (change)="changeValue($event)"
         [class.activited-select]="activiatedSelect"
         [attr.aria-invalid]="formControl?.invalid"
         [attr.aria-live]="'off'"
@@ -34,9 +34,9 @@
       >
         <option
           [value]="''"
-          [disabled]="true"
-          [selected]="true"
-          [hidden]="true"
+          disabled
+          selected
+          hidden
         >
           {{ config.placeholder || '' | translate }}
         </option>
@@ -55,11 +55,17 @@
         <i class="fa-thin fa-chevron-down custom-chevron"></i>
       </div>
     </div>
+
     <div
       aria-live="polite"
       *ngIf="!config.disableError"
     >
-      <div *ngIf="formControl?.touched && formControl?.invalid">
+      <div
+        *ngIf="
+          config.formGroup.get(config.id)?.touched &&
+          currentStatus === 'INVALID'
+        "
+      >
         <span class="sr-only">{{
           errorStubText + ': ' + (config.label || '' | translate) + ': '
         }}</span>

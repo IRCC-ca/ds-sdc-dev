@@ -1,0 +1,34 @@
+@use '../../../../../core-library/tokens/template-const' as template-const;
+@use '../../../../../core-library/tokens/sizes' as sizes;
+@use '../../../../../core-library/layout/layout-grid' as layout-grid;
+@use '../../../../../core-library/util/device' as device;
+@use '../../../scss/grid';
+
+.email-verification {
+  margin: 32px 0 0 0;
+
+  .grid-full {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  .grid-half {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .align-items-center {
+    align-items: center;
+  }
+
+  .align-items-end {
+    align-items: flex-end;
+  }
+
+  .justify-content-center {
+    justify-content: center;
+  }
+}

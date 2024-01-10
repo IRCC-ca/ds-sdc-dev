@@ -2,6 +2,7 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormControlStatus,
   FormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
@@ -30,7 +31,6 @@ export interface ISelectConfig {
   size?: keyof typeof DSSizes;
   errorMessages?: IErrorPairs[];
   labelIconConfig?: ILabelIconConfig;
-  topLabel?: string;
   disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
 }
 export interface ISelectOptionsConfig {
@@ -54,13 +54,15 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   errorIds: IErrorIDs[] = [];
   activiatedSelect: boolean = false;
   rotateChevron: boolean = false;
+  currentStatus: FormControlStatus = 'VALID';
+  formGroupEmpty: FormGroup = new FormGroup({});
 
   @Input() config: ISelectConfig = {
     id: '',
     formGroup: new FormGroup({})
   };
   @Input() id = '';
-  @Input() formGroup?: FormGroup;
+  @Input() formGroup = this.formGroupEmpty;
   @Input() size?: keyof typeof DSSizes;
   @Input() label?: string;
   @Input() desc?: string;
@@ -69,7 +71,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() required?: boolean;
   @Input() options?: ISelectOptionsConfig[];
   @Input() errorMessages?: IErrorPairs[];
-  @Input() topLabel?: string;
   @Input() disableError?: boolean; //used to disable the error aria-live (mostly for use when nested, as in date picker)
   labelIconConfig?: ILabelIconConfig;
 
@@ -87,21 +88,34 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     private translate: TranslateService
   ) {}
 
-  onChange = (formValue: string) => {};
-  onTouched = () => {};
-  writeValue(formValue: any) {
-    // this.form.get('formControl')?.setValue(formValue);
+  onTouch = () => {
+    if (this.formGroup?.get(this.config.id)?.touched === false) {
+      this.formGroup?.get(this.config.id)?.markAsTouched();
+    }
+  };
+
+  onChange = (value: string) => {
+    this.config.formGroup.get(this.config.id)?.setValue(value);
+  };
+
+  changeValue(event: any){
+    this.writeValue(event.srcElement.value);
+    this.onTouch();
+  }
+
+  writeValue(value: string): void {
+    this.onChange(value);
   }
   registerOnChange(onChange: any) {
     this.onChange = onChange;
   }
   registerOnTouched(onTouched: any) {
-    this.onTouched = onTouched;
+    this.onTouch = onTouched;
   }
 
   markAsTouched() {
     if (!this.touched) {
-      this.onTouched();
+      this.onTouch();
       this.touched = true;
     }
   }
@@ -138,11 +152,12 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.hint,
       this.config.required,
       this.config.labelIconConfig,
-      this.config.topLabel
     );
 
     //set config from individual options, if present
-    if (this.formGroup) this.config.formGroup = this.formGroup;
+    if (this.formGroup !== this.formGroupEmpty) {
+      this.config.formGroup = this.formGroup;
+    };
     if (this.id !== '') this.config.id = this.id;
     if (this.size) this.config.size = this.size;
     if (this.label) this.config.label = this.label;
@@ -152,7 +167,6 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     if (this.required) this.config.required = this.required;
     if (this.options) this.config.options = this.options;
     if (this.errorMessages) this.config.errorMessages = this.errorMessages;
-    if (this.topLabel) this.config.topLabel = this.topLabel;
     if (this.disableError) this.config.disableError = this.disableError;
 
     if (this.config.errorMessages) {
@@ -162,7 +176,31 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
         this.config.errorMessages
       );
     }
+
+    this.currentStatus = this.config.formGroup.get(this.config.id)?.status || 'DISABLED';
+    switch (this.currentStatus) {
+      case 'DISABLED':
+        this.setDisabledState(true);
+        break;
+      default:
+        this.setDisabledState(false);
+    }
+
+    this.config.formGroup.get(this.config.id)?.statusChanges.subscribe((change) => {
+      this.getAriaErrorText();
+      if(change !== this.currentStatus) {
+        this.currentStatus = change;
+        switch (this.currentStatus) {
+          case 'DISABLED':
+            this.setDisabledState(true);
+            break;
+          default:
+            this.setDisabledState(false);
+        }
+      }
+    });
   }
+
 
   //This is used instead of ngOnChange here because it allows the config to be updated in date-picker.
   //TODO: Replace this with something less blunt
@@ -176,8 +214,16 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
       this.config.hint,
       this.config.required,
       this.config.labelIconConfig,
-      this.config.topLabel
     );
+  }
+
+  /**
+   * Apply a disabled state
+   */
+   setDisabledState(isDisabled: boolean) {
+    isDisabled
+      ? this.formGroup?.get(this.config.id)?.disable()
+      : this.formGroup?.get(this.config.id)?.enable();
   }
 
   /**

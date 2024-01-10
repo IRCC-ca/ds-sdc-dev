@@ -1,5 +1,7 @@
 import {
+  AfterContentChecked,
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -28,7 +30,9 @@ export interface IAccordionContainerConfig {
   templateUrl: './accordion-container.component.html',
   styleUrls: ['./accordion-container.component.scss']
 })
-export class accordionContainerComponent implements OnInit, AfterViewInit {
+export class accordionContainerComponent
+  implements OnInit, AfterViewInit, AfterContentChecked
+{
   @Input() config: IAccordionContainerConfig = {
     id: '',
     mobileBehaviour: mobileBehaviourType.column
@@ -43,19 +47,53 @@ export class accordionContainerComponent implements OnInit, AfterViewInit {
   noExtraLeft: boolean = false;
   noExtraRight: boolean = false;
 
+  extraClasses = '';
+
   @Output() getOpen = new EventEmitter<boolean>();
 
-  buttonConfigAcccordion: IButtonConfig = {
-    id: 'accordion-button',
+  buttonConfigAcccordionOpen: IButtonConfig = {
+    id: 'accordion-button-open',
+    category: 'plain',
+    size: 'small',
+    ariaLabel: 'Click to expand the accordion',
+    iconDirection: 'left'
+  };
+  buttonConfigAcccordionClose: IButtonConfig = {
+    id: 'accordion-button-close',
     category: 'plain',
     size: 'small',
     ariaLabel: 'Click to expand the accordion',
     iconDirection: 'left'
   };
 
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
+
+  ngAfterContentChecked() {
+    this.changeDetectorRef.detectChanges();
+
+    this.noExtraLeft = this.extraLeftRef?.nativeElement.childElementCount === 0;
+    this.noExtraRight =
+      this.extraRightRef?.nativeElement.childElementCount === 0;
+
+    if (this.noExtraLeft && this.noExtraRight) {
+      this.extraClasses = 'no-extra';
+    } else if (this.noExtraLeft && !this.noExtraRight) {
+      this.extraClasses = 'no-extra-left';
+    } else {
+      this.extraClasses = 'no-extra-right';
+    }
+  }
 
   ngOnInit() {
+    // Insuring accordion-container btns have unique IDs
+    this.buttonConfigAcccordionOpen.id =
+      this.buttonConfigAcccordionOpen.id + '-' + this.config.id;
+    this.buttonConfigAcccordionClose.id =
+      this.buttonConfigAcccordionClose.id + '-' + this.config.id;
+
     if (this.config.buttonText === '' || this.config.buttonText === undefined)
       this.config.buttonText = 'Accordion.HideCode';
 
@@ -74,24 +112,10 @@ export class accordionContainerComponent implements OnInit, AfterViewInit {
       this.config.mobileBehaviour = this.mobileBehaviour;
   }
 
-  ngAfterViewInit() {
-    this.noExtraLeft = this.extraLeftRef?.nativeElement.childElementCount === 0;
-    this.noExtraRight =
-      this.extraRightRef?.nativeElement.childElementCount === 0;
-  }
+  ngAfterViewInit() {}
 
   openAccordion() {
     this.config.open = !this.config.open;
     this.getOpen.emit(this.config.open);
-  }
-
-  getExtraClass(): string {
-    if (this.noExtraLeft && this.noExtraRight) {
-      return 'no-extra';
-    } else if (this.noExtraLeft && !this.noExtraRight) {
-      return 'no-extra-left';
-    } else {
-      return 'no-extra-right';
-    }
   }
 }

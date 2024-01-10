@@ -7,6 +7,10 @@ import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import { ContentItem } from '@app/share/interface/content-item.interface';
+import {
+  IDynamicImageComponentConfig,
+  DSViewPortSize
+} from 'ircc-ds-angular-component-library';
 
 @Component({
   selector: 'app-date-picker-documentation',
@@ -25,6 +29,40 @@ export class DatePickerDocumentationComponent implements OnInit {
     anchorType: slugAnchorType.primary
   };
 
+  imageAnatomyConfig: IDynamicImageComponentConfig = {
+    id: 'anatomy-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/datePicker-content/datepicker-anatomy-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/datePicker-content/datepicker-anatomy-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/datePicker-content/anatomy.png',
+    altText: 'DatePicker.Anatomy.ImgAlt',
+    lazyLoad: true
+  };
+
+  imageSpecsConfig: IDynamicImageComponentConfig = {
+    id: 'spec-image',
+    breakpoints: [
+      {
+        maxWidth: DSViewPortSize.mobile,
+        src: 'assets/img/datePicker-content/datepicker-specs-mobile.png'
+      },
+      {
+        maxWidth: DSViewPortSize.tablet,
+        src: 'assets/img/datePicker-content/datepicker-specs-tablet.png'
+      }
+    ],
+    defaultSrc: 'assets/img/datePicker-content/datepicker-specs-desktop.png',
+    altText: 'DatePicker.Specs.ImgAlt',
+    lazyLoad: true
+  };
+
   anatomyContentItems: ContentItem[] = [
     {
       title: 'General.LabelHeading',
@@ -35,7 +73,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       description: 'General.RequiredIndicatorTxt'
     },
     {
-      title: 'General.DescriptionHeading',
+      title: 'General.Description',
       description: 'General.AnatomyDescText'
     },
     {
@@ -47,7 +85,7 @@ export class DatePickerDocumentationComponent implements OnInit {
       description: 'DatePicker.Anatomy.SelectCompoTxt'
     },
     {
-      title: 'ERROR.errorMessage',
+      title: 'General.Error',
       description: 'General.AnatomyErrorText'
     }
   ];
@@ -63,22 +101,27 @@ export class DatePickerDocumentationComponent implements OnInit {
     'DatePicker.UsageInFigma.FigmaDirectionsSecondItem2'
   ];
 
-  accessibilityColorContrast: string[] = [
-    'DatePicker.Accessibility.ColorText1',
-    'DatePicker.Accessibility.ColorText2',
-    'DatePicker.Accessibility.ColorText3',
-    'DatePicker.Accessibility.ColorText4',
-    'DatePicker.Accessibility.ColorText5'
-  ];
-
   accessibilityContent: string[] = [
-    'DatePicker.Accessibility.ContentTxt1',
+    'General.AccessibilityContentItem1',
     'DatePicker.Accessibility.ContentTxt2',
     'DatePicker.Accessibility.ContentTxt3',
     'DatePicker.Accessibility.ContentTxt4',
     'DatePicker.Accessibility.ContentTxt5',
     'DatePicker.Accessibility.ContentTxt6',
-    'DatePicker.Accessibility.ContentTxt7'
+    'General.AccessibilityContentItemMax'
+  ];
+  rightNavData: string[] = [
+    // list of all right nav items
+    'DatePicker.MainTitle',
+    'General.InteractiveDemo',
+    'General.ConfigurationsHeading',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.ContentGuidelinesHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
   ];
   constructor(
     private translate: TranslateService,

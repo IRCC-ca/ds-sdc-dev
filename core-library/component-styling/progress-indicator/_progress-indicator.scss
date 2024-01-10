@@ -23,13 +23,13 @@
 
 @mixin large-styles() {
   button.tags-btn {
-    @include typography.fontSet(body, 3, emphasis);
+    @include typography.fontSet(body, 3, regular);
     &:where([selected])::after {
       transform: translateY(sizes.$fixed-0);
     }
   }
   button.tags-btn-plus {
-    @include typography.fontSet(body, 3, emphasis);
+    @include typography.fontSet(body, 3, regular);
     padding-bottom: 4px;
   }
   .stepTitle {
@@ -40,13 +40,13 @@
 
 @mixin small-styles() {
   button.tags-btn {
-    @include typography.fontSet(body, 4, emphasis);
+    @include typography.fontSet(body, 4, regular);
     &:where([selected])::after {
       transform: translateY(sizes.$fixed-0);
     }
   }
   button.tags-btn-plus {
-    @include typography.fontSet(body, 4, emphasis);
+    @include typography.fontSet(body, 4, regular);
     padding-bottom: 4px;
   }
   .stepTitle {
@@ -64,6 +64,12 @@
     justify-content: space-between;
     .container-plus-line {
       width: 100%;
+      .progress-nav {
+        padding: {
+          right: 16px;
+          bottom: 16px;
+        };
+      }
     }
     .line {
       border-bottom-style: solid;
@@ -90,26 +96,40 @@
       display: flex;
       flex-direction: row-reverse;
       justify-content: flex-end;
+      .progress-nav {
+        padding: {
+          left: 16px;
+          bottom: 12px;
+        };
+        height: 115px;//127-12px
+      }
     }
     .line {
       border-left-style: solid;
       border-left-width: 1px;
       border-left-color: var(--divider);
-      margin-right: 16px;
-      height: 100%;
+      margin-right: 0;
       justify-self: flex-start;
     }
     .green-line {
       border-left-style: solid;
       border-left-width: 1px;
       border-left-color: var(--success-border);
-      margin-right: 16px;
+      margin-right: 0;
     }
   }
+
+  > div.main-container {
+    > div.container-plus-line {
+      > nav.progress-nav {
+        > button.container {
+          padding: 0;
+        }
+      }
+    }
+  }
+
   .container {
-    padding: 0;
-    margin-right: 16px;
-    margin-bottom: 16px;
 
     .except-line {
       display: flex;

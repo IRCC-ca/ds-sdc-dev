@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SideNavConfig } from '@app/components/side-nav/side-nav.config';
-import { ISideNavDataInterface } from '@app/components/side-nav/side-nav.model';
 import { TranslateService } from '@ngx-translate/core';
 import { SlugifyPipe } from 'src/app/share/pipe-slugify.pipe';
 import { LangSwitchService } from '../../share/lan-switch/lang-switch.service';
@@ -14,8 +12,7 @@ import { slugTitleURLConfig } from '@app/components/title-slug-url/title-slug-ur
   providers: [SlugifyPipe]
 })
 export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
-  rightNavData: ISideNavDataInterface[];
-  rightNavDataRaw: string[] = [
+  rightNavData: string[] = [
     // list of all right nav items
     'General.DeveloperHeading',
     'Developers.GetStartedHeading',
@@ -56,11 +53,8 @@ export class ForDevelopersComponent implements OnInit, TranslatedPageComponent {
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService,
-    private navBarConfig: SideNavConfig,
     private clipboard: Clipboard
-  ) {
-    this.rightNavData = navBarConfig.getRightNavBarConfig(this.rightNavDataRaw);
-  }
+  ) {}
 
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);

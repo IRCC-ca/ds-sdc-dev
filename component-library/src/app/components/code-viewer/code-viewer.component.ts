@@ -56,7 +56,7 @@ export class codeViewerComponent implements OnInit, OnChanges {
   height: number = 150;
 
   buttonConfigCopy: IButtonConfig = {
-    id: 'accordion-button',
+    id: 'accordion-button-copy',
     category: 'plain',
     size: 'small',
     ariaLabel: 'Click to copy the code'

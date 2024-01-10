@@ -6,6 +6,7 @@
 export * from './shared/functions/stand-alone.functions';
 export * from './shared/interfaces/component-configs';
 export * from './shared/constants/jl-components.constants';
+export * from './shared/pipes/autocomplete.pipe';
 
 /** Banner Component **/
 export * from './lib/banner-component/ircc-ds-angular-banner.module';
@@ -23,6 +24,7 @@ export * from './lib/form-components/textarea/textarea.component';
 export * from './lib/form-components/select/select.component';
 export * from './lib/form-components/multi-checkbox/multi-checkbox.component';
 export * from './lib/form-components/multi-checkbox/multi-checkbox.service';
+export * from './lib/form-components/autocomplete/autocomplete.component';
 
 /** Header/Footer Components **/
 export * from './lib/header-footer/ircc-ds-angular-header-footer.module';
@@ -58,6 +60,9 @@ export * from './lib/shared/breadcrumb/link/link.component';
 export * from './lib/shared/spinner/spinner.component';
 export * from './lib/shared/flyout/flyout.component';
 export * from './lib/shared/flyout-option/flyout-option.component';
+export * from './lib/shared/dynamic-image/dynamic-image.component';
+export * from './lib/shared/card/card.component';
+
 
 /** Navigation Components */
 export * from './lib/shared/navigation/ircc-ds-angular-navigation.module';

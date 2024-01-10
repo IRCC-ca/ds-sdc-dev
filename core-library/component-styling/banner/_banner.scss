@@ -64,6 +64,10 @@
   .banner-text {
     gap: 8px;
   }
+
+  .cta-link {
+    font-size: 20px;
+  }
 }
 
 @mixin small-styles() {
@@ -93,6 +97,10 @@
 
   .banner-text {
     gap: 4px;
+  }
+
+  .cta-link {
+    font-size: 16px;
   }
 }
 
@@ -178,6 +186,7 @@
 
   .banner-content {
     align-self: flex-start;
+    word-break: break-word;
 
     * {
       margin: 2px 0;
@@ -195,6 +204,13 @@
     .cta-link {
       align-self: center;
       cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      color: var(--link-text);
+
+      &:visited {
+        color: var(--link-text-visited);
+      }
     }
   }
 

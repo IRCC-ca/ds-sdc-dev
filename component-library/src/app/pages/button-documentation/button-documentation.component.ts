@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSwitchService } from '@app/share/lan-switch/lang-switch.service';
 import {
@@ -7,6 +7,8 @@ import {
 } from '@app/components/title-slug-url/title-slug-url.component';
 import { IButtonConfig } from 'ircc-ds-angular-component-library';
 import { docPageheadingConfig } from '@app/share/documentation-page-headings';
+import { DSViewPortSize } from 'ircc-ds-angular-component-library';
+import { ContentItem } from '@app/share/interface/content-item.interface';
 
 @Component({
   selector: 'app-button-documentation',
@@ -15,15 +17,27 @@ import { docPageheadingConfig } from '@app/share/documentation-page-headings';
 })
 export class ButtonDocumentationComponent implements OnInit {
   altLangLink = 'buttonDocumentation';
+  mobile: boolean = false;
+
+  rightNavData: string[] = [
+    // list of all right nav items
+    'Buttons.Title',
+    'General.InteractiveDemo',
+    'General.TypesHeading',
+    'General.ConfigurationsHeading',
+    'General.DesignGuidelinesHeading',
+    'General.AnatomyHeading',
+    'General.SpecsHeading',
+    'General.ContentGuidelinesHeading',
+    'General.FigmaHeading',
+    'General.AccessibilityHeading',
+    'General.ResearchHeading'
+  ];
+
   constructor(
     private translate: TranslateService,
     private lang: LangSwitchService
   ) {}
-
-  interactiveDemoSlugTitleURLConfig: slugTitleURLConfig = {
-    title: 'Interactive Demo',
-    anchorType: slugAnchorType.primary
-  };
 
   pageTitleSlugConfig: slugTitleURLConfig = {
     title: 'Buttons.Title',
@@ -64,7 +78,28 @@ export class ButtonDocumentationComponent implements OnInit {
     }
   };
 
+  anatomyContentItems: ContentItem[] = [
+    {
+      title: 'Buttons.AnatomyBGHeading',
+      description: 'Buttons.AnatomyBGText'
+    },
+    {
+      title: 'Buttons.ConfigIconHeading',
+      description: 'Buttons.AnatomyIconText'
+    },
+    {
+      title: 'General.LabelHeading',
+      description: 'Buttons.AnatomyLblText'
+    }
+  ];
+
   ngOnInit() {
     this.lang.setAltLangLink(this.altLangLink);
+    this.mobile = window.innerWidth < DSViewPortSize.mobile;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.mobile = window.innerWidth < DSViewPortSize.mobile;
   }
 }

@@ -21,14 +21,18 @@ export class LanguageHeaderFooterSwitchService {
    * We check system preference for preferred color scheme in the constructor before components are rendered in the DOM and subscribe to changes in the header and footer components
    */
   updateDarkModePreference() {
-    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const darkModeListener = (event: MediaQueryListEvent) => {
-      this.isDarkModeSubject.next(event.matches);
-    };
+    const currentScheme = document.documentElement.getAttribute('scheme');
 
-    darkModeQuery.addEventListener('change', darkModeListener);
-    this.isDarkModeSubject.next(darkModeQuery.matches);
+    if(currentScheme === 'system' || currentScheme === 'dark') {
+      const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+      const darkModeListener = (event: MediaQueryListEvent) => {
+        this.isDarkModeSubject.next(event.matches);
+      };
+  
+      darkModeQuery.addEventListener('change', darkModeListener);
+      this.isDarkModeSubject.next(darkModeQuery.matches);
+    }
   }
 
   languageToggleClick() {
